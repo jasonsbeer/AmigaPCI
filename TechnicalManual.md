@@ -37,6 +37,10 @@ PCI Slot|Address Bit
 2|18
 3|19
 
+### 2.3 Interrupt Handling
+
+Each PCI slot has four interrupt signals, identified as _INTA, _INTB, _INTC, and _INTD. Single function PCI devices are only allowed to use _INTA. The remaining signals are only used in the event of a multifunction PCI device, with one interrupt line per pci function. As a hyptothetical example, a multifunction I/O device may use _INTA for a floppy drive interface, _INTB for a hard drive interface, _INTC for a serial interface, etc. The Amiga supports three externally available interrupts identified as _INT2, _INT3, and _INT6. _INT3 is used by Agnus with _INT2 (PORTS) and _INT6 (EXTER) being used by the Zorro 3 expansion bus. For the purposes of the AmigaPCI design, _INTA, _INTB, _INTC, and _INTD are OR'd together and connected to _INT2. Driver design should use _INT2 to signal an interrupt request from devices on the PCI bus. When an interrupt is asserted, the driver needs to poll its device on the PCI bus to determine if its device is asserting the interrupt.
+
 ### Bus Mastering/DMA
 
 ## References
