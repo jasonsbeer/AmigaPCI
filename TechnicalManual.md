@@ -2,32 +2,57 @@ THIS IS A WORK IN PROGRESS AND LIKELY HAS BAD ASSUMPTIONS AND ERRORS IN PROCEDUR
 
 # AmigaPCI
 
-The AmigaPCI is a 68030 based OCS/ECS* Amiga computer in the ATX form factor. It provides four AUTOCONFIG capable PCI slots for expansion purposes. 
+The AmigaPCI is a 68030 based OCS/ECS* Amiga computer in the ATX form factor. It provides four AUTOCONFIG capable PCI slots for expansion purposes such as video, sound, ethernet connectivity, etc. Amiga OS and Kickstart 2.0+ is required for operation. 
+
+* Original Chip Set and Enhanced Chip Set, respectively.
 
 ## 1. Overview
 
-### 1.1 Expansion Bus
+### 1.1 Processor
 
-### 1.2 Amiga Chipset
+### 1.2 Expansion Bus
 
-### 1.3 Floppy Drive Support
+### 1.3 Amiga Chipset
 
-### 1.4 IDE Support
+The AmigaPCI must be populated with the Amiga OCS/ECS chips shown in table 1.3 in order to function properly. Reproductions in FPGA/CPLD may be used as well as the original equipment from Commodore. The chipset is required to supply basic functioning of the Amiga computer.
 
-### 1.5 HID Support
+Table 1.3. Amiga chipset.
+Name|Chip ID|Commodore Part Number(s)|Quantity
+-|-|-|-
+Agnus|8372A, 8375||1
+Denise|||1
+Paula|||1
+CIA|||2
+Gary|8510||1
 
-### 1.6 Legacy User Ports
+### 1.4 Floppy Drives
+
+### 1.5 Integrated Device Electronics (IDE)
+
+### 1.6 Human Interface Devices (HID)
+
+### 1.7 Audio
+
+### 1.8 Legacy User Ports
+
+### 1.9 Parallel
+
+### 1.10 Serial
+
+### 1.11 15KHz Video
+
+### 1.12 Joystick
 
 
 ## 2. PCI Bus
 
 The AmigaPCI is designed to comply with the PCI Local Bus Revision 2.3 specificiation. Each slot supports universal and 5V cards, as defined in the PCI Local Bus Revision 2.3 specification. Like Zorro 2 and Zorro 3, PCI supports auto configuration of devices on power up. This allows, via some translation, for the use of Amiga AUTOCONFIG to configure devices at start up. This fits well with Amiga OS as each device is configured as a Zorro 3 device, which function natively with Amiga OS. 
 
-The PCI Bus is implemented via a Motorola 68030 to PCI bridge via a PCI Controller ASIC concept. The PCI Controller logic translates data requests from the Motorola 68030 and PCI devices in order that they may communicate in an effective manner. 
+By definition, the PCI Local Bus is a processor independent, 32 bit expasion bus. The AmigaPCI PCI Bus is implemented via a Motorola 68030 to PCI bridge using a PCI Controller ASIC concept. The PCI Controller Logic translates data requests from the Motorola 68030 and PCI devices in order that they may communicate in an effective manner. 
 
 ### 2.1 Endianness
 
-Devices such as the Motorola 68000 (M68k) series processors are big endian devices. PCI devices, by contrast, are little endian devices. This means we must byte swap the address and data signals to provide a compatability layer between devices with different endianness[[1]](#1). This byte swap occurs in the PCI Controller logic and is transparent to the devices. Any devices created for the AmigaPCI must be designed as little endian, as defined in the PCI Local Bus Specifications. Because PCI can mask any byte, we swap each byte individually.
+Devices such as the Motorola 68000 (M68k) series processors are big endian devices. PCI devices, by contrast, are little endian devices. This means we must byte swap the address and data signals to provide a compatability layer between devices with different endianness[[1]](#1). This byte swap occurs in the PCI Controller Logic and is transparent to the devices. Any devices created for the AmigaPCI must be designed as little endian, as defined in the PCI Local Bus Specifications. Because PCI can mask any byte, we swap each byte individually.
 
 Device|0x00|0x01|0x02|0x03|Endianess
 -|-|-|-|-|-
