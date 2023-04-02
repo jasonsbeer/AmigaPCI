@@ -2,11 +2,28 @@ THIS IS A WORK IN PROGRESS AND LIKELY HAS BAD ASSUMPTIONS AND ERRORS IN PROCEDUR
 
 # AmigaPCI
 
+The AmigaPCI is a 68030 based OCS/ECS* Amiga computer in the ATX form factor. It provides four AUTOCONFIG capable PCI slots for expansion purposes. 
+
 ## 1. Overview
+
+### 1.1 Expansion Bus
+
+### 1.2 Amiga Chipset
+
+### 1.3 Floppy Drive Support
+
+### 1.4 IDE Support
+
+### 1.5 HID Support
+
+### 1.6 Legacy User Ports
+
 
 ## 2. PCI Bus
 
-The PCI Bus is implemented via a Motorola 68030 to PCI bridge. The PCI Controller logic translates data requests from the Motorola 68030 and PCI devices in order that they may communicate in an effective manner. 
+The AmigaPCI is designed to comply with the PCI Local Bus Revision 2.3 specificiation. Each slot supports universal and 5V cards, as defined in the PCI Local Bus Revision 2.3 specification. Like Zorro 2 and Zorro 3, PCI supports auto configuration of devices on power up. This allows, via some translation, for the use of Amiga AUTOCONFIG to configure devices at start up. This fits well with Amiga OS as each device is configured as a Zorro 3 device, which function natively with Amiga OS. 
+
+The PCI Bus is implemented via a Motorola 68030 to PCI bridge via a PCI Controller ASIC concept. The PCI Controller logic translates data requests from the Motorola 68030 and PCI devices in order that they may communicate in an effective manner. 
 
 ### 2.1 Endianness
 
