@@ -10,7 +10,11 @@ The AmigaPCI is a 68030 based OCS/ECS* Amiga computer in the ATX form factor. It
 
 ### 1.1 Processor
 
-### 1.2 Expansion Bus
+### 1.2 Expansion Busses
+
+#### 1.2.1 PCI
+
+#### 1.2.2 Video Slot
 
 ### 1.3 Amiga Chipset
 
@@ -35,18 +39,21 @@ Gary|8510||1
 
 ### 1.8 Legacy User Ports
 
-### 1.9 Parallel
+### 1.8.1 Parallel
 
-### 1.10 Serial
+### 1.8.2 Serial
 
-### 1.11 15KHz Video
+### 1.8.4 Joystick
 
-### 1.12 Joystick
+### 1.9 15KHz Video
 
+### 1.10 Real Time Clock
+
+The real time clock of the AmigaPCI is a modern device with I2C interface. Amiga OS bus requests for real time clock functions are translated through the Board Controller.
 
 ## 2. PCI Bus
 
-The AmigaPCI is designed to comply with the PCI Local Bus Revision 2.3 specificiation. Each slot supports universal and 5V cards, as defined in the PCI Local Bus Revision 2.3 specification. Like Zorro 2 and Zorro 3, PCI supports auto configuration of devices on power up. This allows, via some translation, for the use of Amiga AUTOCONFIG to configure devices at start up. This fits well with Amiga OS as each device is configured as a Zorro 3 device, which function natively with Amiga OS. 
+The AmigaPCI is designed to comply with the PCI Local Bus Revision 2.3 specificiation. Each slot supports Universal and 5V cards, as defined in the PCI Local Bus Revision 2.3 specification. Like Zorro 2 and Zorro 3, PCI supports auto configuration of devices on power up. This allows, via some translation, for the use of Amiga AUTOCONFIG to configure devices at start up. This fits well with Amiga OS as each device is configured as a Zorro 3 device, which function natively with Amiga OS. 
 
 By definition, the PCI Local Bus is a processor independent, 32 bit expasion bus. The AmigaPCI PCI Bus is implemented via a Motorola 68030 to PCI bridge using a PCI Controller ASIC concept. The PCI Controller Logic translates data requests from the Motorola 68030 and PCI devices in order that they may communicate in an effective manner. 
 
