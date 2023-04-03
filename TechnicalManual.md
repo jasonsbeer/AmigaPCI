@@ -18,20 +18,27 @@ The AmigaPCI is a 68030 based OCS/ECS* Amiga computer in the ATX form factor. It
 
 ### 1.3 Amiga Chipset
 
-The AmigaPCI must be populated with the Amiga OCS/ECS chips shown in table 1.3 in order to function properly. Reproductions in FPGA/CPLD may be used as well as the original equipment from Commodore. The chipset is required to supply basic functioning of the Amiga computer.
+The AmigaPCI must be populated with the Amiga OCS/ECS chips shown in table 1.3 in order to function properly. Reproductions in FPGA/CPLD may be used as well as the original equipment from Commodore. The Amiga chipset is required to enable basic functioning of the Amiga computer.
 
 Table 1.3. Amiga chipset.
 Name|Chip ID|Commodore Part Number(s)|Quantity
 -|-|-|-
-Agnus|8372A, 8375||1
-Denise|||1
-Paula|||1
-CIA|||2
-Gary|8510||1
+Agnus|8372A or 8375||1
+Denise|8362 or 8373||1
+Paula|8364||1
+CIA|8520A||2
+Gary|5719||1
 
 ### 1.4 Floppy Drives
 
 ### 1.5 Integrated Device Electronics (IDE)
+
+The Amiga PCI includes a buffered, host terminated Gayle compatible AUTOBOOT* IDE port for hard drives and ATAPI** devices. The IDE port complies with the ATA/ATAPI Revision 4[[1]](#1) standard. The IDE port supports two devices (master and slave). For instructions on installing a new hard drive on Amiga computers, refer to the [Commodore Hard Drive User's Guide](DataSheet/Hard_Drive_Users_Guide.pdf). This includes the HDToolBox user guide and other useful information for setting up both IDE and SCSI devices.
+
+The IDE cable header and the compact flash card adapter are on the same IDE port. They may be used simultaneously, but one device must be set to master, the other to slave. The IDE port only supports two devices, so when the CF card slot is in use, only one device may be installed on the IDE cable.
+
+*AUTOBOOT requires Kickstart v37.300 or greater or compatible scsi.device in Kickstart.  
+**ATAPI support included in Kickstart 3.1.4+. Older versions of Kickstart may require installation of third party ATAPI drivers.  
 
 ### 1.6 Human Interface Devices (HID)
 
@@ -99,5 +106,6 @@ Each PCI slot has four interrupt signals, identified as _INTA, _INTB, _INTC, and
 ### Bus Mastering/DMA
 
 ## References
+<a id="1">[1]</a>Data Movement Between Big-Endian and Little-Endian Devices. Freescale Semiconductor.  
 <a id="1">[1]</a>Data Movement Between Big-Endian and Little-Endian Devices. Freescale Semiconductor.  
 <a id="2">[2]</a>PCI Local Bus Specification Revision 2.3. PCI Special Interest Group. Section 3.2.2.3.5. System Generation of IDSEL. pp. 36-37.
