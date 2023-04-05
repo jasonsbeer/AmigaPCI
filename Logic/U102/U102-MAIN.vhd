@@ -101,7 +101,7 @@ begin
 						
 					END IF;
 					
-				WHEN 10 =>
+				WHEN ResetCount =>
 				
 					ResetCounter <= 0;
 					IsReset <= '0';
