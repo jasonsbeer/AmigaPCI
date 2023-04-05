@@ -30,19 +30,25 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity U102_MAIN is
-    Port ( BCLK : IN STD_LOGIC;
+    Port ( CLK7 : IN STD_LOGIC;
+	   BCLK : IN STD_LOGIC;
 	   --KBCLK : in  STD_LOGIC;
            --KBDATA : in  STD_LOGIC;
-           nBTNRST : in  STD_LOGIC;
-           nRESET : INOUT STD_LOGIC);
+           nBTNRST : IN STD_LOGIC;
+	  
+           nRESET : INOUT STD_LOGIC;
+	 
+	   E : OUT STD_LOGIC);
 			  
 end U102_MAIN;
 
 architecture Behavioral of U102_MAIN is
 
 	CONSTANT ResetCount : INTEGER := 10;	
-   SIGNAL ResetCounter : INTEGER RANGE 0 to ResetCount := 0;
+	SIGNAL ResetCounter : INTEGER RANGE 0 TO ResetCount := 0;
 	SIGNAL IsReset : STD_LOGIC := '1';
+
+	SIGNAL ECount : INTEGER RANGE 0 TO 5 := 0;
 
 begin
 
@@ -54,6 +60,9 @@ begin
 	-- 1. STARTUP RESET
 	-- 2. KEYBOARD RESET
 	-- 3. CASE BUTTON RESET
+	
+	--IsReset DEFAULTS TO A LOGIC VALUE OF 1, WHICH TRIGGERS THE 
+	--STARTUP RESET.
 	
 	--KEYBOARD RESET IS ASSERTED BY HOLDING KCLK LOW FOR 500 MICROSECONDS.
 	--A REGULAR KCLK ASSERTION IS ABOUT 20 MICROSECONDS, SO ANYTHING LONGER
@@ -104,7 +113,43 @@ begin
 		END IF;	
 	
 	END PROCESS;
-
+			
+	-------------------
+	-- ENABLE SIGNAL --
+	-------------------
+			
+	--THE MC6800 ENABLE SIGNAL IS REQUIRED FOR CIA TIMING AND IS ASYNCHRONOUS TO ALL OTHER CLOCKS.
+	--BY DEFINITION, IT IS 6 CLOCK CYCLES LOW AND 4 HIGH.
+	--THERE IS A NOTE IN THE A3000 TECHNICAL DETAILS THAT
+	--INDICATES THE CIA'S WILL TOLERATE A 4 LOW/2 HIGH PATTERN.
+	--SINCE WE ARE NOT SUPPORTING ANY OTHER MC6800 OR MOS 6502
+	--PERIPHERALS, FOLLOWING THE A3000 PATTERN WILL SPEED THINGS UP A LOT.
+			
+	PROCESS (CLK7) BEGIN
+		
+		IF FALLING_EDGE(CLK7)
+			
+			ECount <= ECount + 1;
+			
+			CASE ECount IS
+				
+				WHEN 4 =>	
+				
+					E <= '1';
+			
+				WHEN 5 =>
+		
+					ECount <= 0;
+			
+				WHEN OTHERS =>
+			
+					E <= '0';
+				
+			END CASE;
+				
+		END IF;
+			
+	END PROCESS;
 
 end Behavioral;
 
