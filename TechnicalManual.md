@@ -101,9 +101,29 @@ MORE DETAIL...HOW DOES THIS WORK?
 
 ### 2.3 Interrupt Handling
 
-Each PCI slot has four interrupt signals, identified as _INTA, _INTB, _INTC, and _INTD. Single function PCI devices are only allowed to use _INTA. The remaining signals are only used in the event of a multifunction PCI device, with one interrupt line per pci function. As a hyptothetical example, a multifunction I/O device may use _INTA for a floppy drive interface, _INTB for a hard drive interface, _INTC for a serial interface, etc. The Amiga supports three externally available interrupts identified as _INT2, _INT3, and _INT6. _INT3 is used by Agnus with _INT2 (PORTS) and _INT6 (EXTER) being used by the Zorro 3 expansion bus. For the purposes of the AmigaPCI design, _INTA, _INTB, _INTC, and _INTD are OR'd together and connected to _INT2. Driver design should use _INT2 to signal an interrupt request from devices on the PCI bus. When an interrupt is asserted, the driver needs to poll its device on the PCI bus to determine if its device is asserting the interrupt.
+Each PCI slot has four interrupt signals, identified as _INTA, _INTB, _INTC, and _INTD. Single function PCI devices are only allowed to use _INTA. The remaining signals are only used in the event of a multifunction PCI device, with one interrupt line per pci function. As a hyptothetical example, a multifunction I/O device may use _INTA for a floppy drive interface, _INTB for a hard drive interface, _INTC for a serial interface, etc. For the purposes of the AmigaPCI design, _INTA, _INTB, _INTC, and _INTD are OR'd together and connected to _INT2. Driver design should look for assertion of _INT2 to signal an interrupt request from devices on the PCI bus. When an interrupt is asserted, the driver needs to poll its device on the PCI bus to determine if its device is asserting the interrupt.
 
-### Bus Mastering/DMA
+### 2.4 Bus Mastering
+
+Direct memory access activities are available to the MC68040 and PCI cards via bus mastering. When a device has mastered the bus, it has control of the entire AmigaPCI system and may directly access any valid address location. This is typically done for direct reading and writing of memory or direct control of chipset functions. The AmigaPCI bus arbiter accepts bus requests from the MC608040 and the PCI bus. Each slot on the PCI bus has a dedicated bus reqeust signal so the bus arbiter assigns a priority to each slot. The bus arbitor will grant the bus to highest priority device when the current bus cycle is complete. See Table 2.4. In the event there is not pending bus request, the MC68040 is given explicit ownership until a bus request from a PCI device is asserted.
+
+Table 2.4. Bus arbitration priority.
+Device|Priority
+-|-
+PCI Slot 0|0 (Greatest)
+PCI Slot 1|1
+PCI Slot 2|2
+PCI Slot 3|3
+MC68040|4 (Least)
+
+#### 2.4.1 MC68040 Bus Mastering
+
+When it is ready to take ownership of the system bus, if _BB is negated, indicating there is no current bus cycle in progress, the MC68040 will assert _BR to indicate its intention. If appropriate, the bus arbiter will assert _BG so that the MC68040 may begin its bus activities. Once _BG is asserted by the arbiter, the MC68040 will assert _BB to indicate ownership of the bus. _BG is asserted until the MC68040 bus access is complete, indicated by negation of _BR. While posessing explicit ownership of the bus, the MC68040 may access the bus by asserting _BB or the bus may be idle (_BB is tri-state) in the event there are no bus operations necessary.
+
+#### 2.4.2 PCI Bus Mastering
+
+When a PCI device is ready to take ownership of the system bus, it will assert _REQx, where x is the slot designation of the device (0-3). Once the current bus cycle has completed (_BB is negated) the arbiter will assert _BB to indicate a bus operation is in progress and assert _GNTx, allowing the requesting PCI device to take ownership of the bus and begin its operation. _GNTx and _BB will remain asserted until _REQx is negated. At that time, _GNTx will be negated and _BB will set to tri-state by the arbier..
+
 
 ## References
 <a id="1">[1]</a>Data Movement Between Big-Endian and Little-Endian Devices. Freescale Semiconductor.  
