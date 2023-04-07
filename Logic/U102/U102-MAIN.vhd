@@ -42,6 +42,17 @@ entity U102_MAIN is
 
 		nRESET : INOUT STD_LOGIC;
 		nVMA : INOUT STD_LOGIC;
+		--nBR : IN STD_LOGIC;
+		nREQ0 : IN STD_LOGIC;
+		nREQ1 : IN STD_LOGIC;
+		nREQ2 : IN STD_LOGIC;
+		nREQ3 : IN STD_LOGIC;
+		nBB : INOUT STD_LOGIC;
+		nBG : INOUT STD_LOGIC;
+		nGNT0 : INOUT STD_LOGIC;
+		nGNT1 : INOUT STD_LOGIC; 
+		nGNT2 : INOUT STD_LOGIC;
+		nGNT3 : INOUT STD_LOGIC;
 	 
 	   E : OUT STD_LOGIC		
 		
@@ -73,6 +84,27 @@ begin
 		
 	);
 	
+	----------------------
+	-- BUS ARBRITRATION --
+	----------------------
+	
+	Arbitration: ENTITY work.Arbitration PORT MAP(
+	
+		BCLK => BCLK,
+		nRESET => nRESET,
+		--nBR => nBR,
+		nREQ0 => nREQ0,
+		nREQ1 => nREQ1,
+		nREQ2 => nREQ2,
+		nREQ3 => nREQ3,
+		nBB => nBB,
+		nBG => nBG,
+		nGNT0 => nGNT0,
+		nGNT1 => nGNT1,
+		nGNT2 => nGNT2,
+		nGNT3 => nGNT3
+		
+	);
 	
 	--------------------------
 	-- MC6800 STATE MACHINE --
