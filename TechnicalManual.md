@@ -42,7 +42,7 @@ The IDE cable header and the compact flash card adapter are on the same IDE port
 
 ### 1.6 Human Interface Devices (HID)
 
-The AmigaPCI support human interface devices (HID) via the two USB ports. Only keyboards and mice are supported. Support is supplied via the on-board STMxxxxx microcontroller, which translates the HID inputs into Amiga compatable signals. The mouse HID signals are shared with the JOY1 port (see 1.8.4) and are diode protected. This is to prevent +5V from any devices on the JOY1 port from feeding into the microcontroller.
+The AmigaPCI support human interface devices (HID) via the two USB ports. Only keyboards and mice are supported. Support is supplied via the on-board STM32F205RET7 microcontroller, which translates the HID inputs into Amiga compatable signals. The mouse HID signals are shared with the JOY1 port (see 1.8.4) and are diode protected. This is to prevent +5V from any devices on the JOY1 port from feeding into the microcontroller.
 
 ### 1.7 Audio
 
