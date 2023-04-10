@@ -1,0 +1,4 @@
+vhdtdtfi -prj U102 -o "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U102/Arbitration.vhi" -module Arbitration -template /mnt/work/ISE/14.7/ISE_DS/ISE//data/vhdlinst.tft -deleteonerror -lib work Arbitration.vhd 
+vhdtdtfi -prj U102 -o "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U102/Arbitration.vhi" -module Arbitration -template /mnt/work/ISE/14.7/ISE_DS/ISE//data/vhdlinst.tft -deleteonerror -lib work Arbitration.vhd 
+vhdtdtfi -prj U102 -o "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U102/Arbitration.vhi" -module Arbitration -template /mnt/work/ISE/14.7/ISE_DS/ISE//data/vhdlinst.tft -deleteonerror -lib work Arbitration.vhd 
+vhdtdtfi -prj U102 -o "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U102/Arbitration.vhi" -module Arbitration -template /mnt/work/ISE/14.7/ISE_DS/ISE//data/vhdlinst.tft -deleteonerror -lib work Arbitration.vhd 
