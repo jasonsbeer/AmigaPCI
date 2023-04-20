@@ -40,7 +40,7 @@ entity ROMSelect is
      
 	);
 
-end MC6800;
+end ROMSelect;
 
 architecture Behavioral of ROMSelect is
   
