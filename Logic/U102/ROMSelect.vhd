@@ -39,7 +39,7 @@ entity ROMSelect is
    	nTIP : IN STD_LOGIC;
 	   
      nROMSEL : OUT STD_LOGIC;
-	nCHIPSEL : OUT STD_LOGIC;
+	nCHIPSEL : OUT STD_LOGIC
      
 	);
 
