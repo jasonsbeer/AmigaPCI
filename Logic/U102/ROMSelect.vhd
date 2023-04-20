@@ -40,7 +40,8 @@ entity ROMSelect is
 	   RnW : IN STD_LOGIC;
 	   
      nROMOE : OUT STD_LOGIC;
-	nRAMEN : OUT STD_LOGIC
+	nRAMEN : OUT STD_LOGIC;
+	   nREGEN : OUT STD_LOGIC
      
 	);
 
@@ -79,6 +80,18 @@ begin
 
   ChipSpace <= '1' WHEN A(31 DOWNTO 17) = "000000000000000" ELSE '0';
   nRAMEN <= NOT ( ChipSpace AND NOT nTIP AND NOT OVL AND NOT CPUSpace AND nRESET );  
+
+  -----------------------------------
+  -- CHIPSET REGISTER SELECT LOGIC --
+  -----------------------------------
+
+--THE CHIPSET REGISTERS ARE SELECTED IN THE ADDRESS SPACE $00DF C000 - $00DF FFFF AND
+--$00C0 0000 - $00CF FFFF. DO NOT SELECT THE CHIP REGISTERS DURING CPU CYCLES.
+
+ChipSpaceLow <= '1' WHEN A(31 DOWNTO 22) = "0000000011" ELSE '0';
+ChipSpaceHigh <= '1' WHEN A (31 DOWNTO 14) = "000000001101111111" ELSE '0';
+	
+nREGEN <= NOT (NOT nTIP AND NOT CPUSpace AND nRESET AND (ChipSpaceLow OR ChipSpaceHigh);
 
 end Behavioral;
 
