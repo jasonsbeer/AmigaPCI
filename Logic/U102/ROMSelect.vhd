@@ -67,7 +67,7 @@ begin
   ROMSelLow <= '1' WHEN A(31 DOWNTO 19) = "0000000000000" AND OVL = '1' AND RnW = '1' ELSE '0';
   ROMSelHigh <= '1' WHEN A(31 DOWNTO 19) = "0000000011111" AND OVL = '0' AND RnW = '1' ELSE '0';
   
-  nROMSOE <= NOT ( NOT nTIP AND NOT CPUSPACE AND nRESET AND ( ROMSelLow OR ROMSelHigh ));  
+  nROMOE <= NOT ( NOT nTIP AND NOT CPUSPACE AND nRESET AND ( ROMSelLow OR ROMSelHigh ));  
 
   ---------------------------
   -- CHIP RAM SELECT LOGIC --
