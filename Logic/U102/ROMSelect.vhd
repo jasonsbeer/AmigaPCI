@@ -36,7 +36,7 @@ entity ROMSelect is
      A : IN STD_LOGIC_VECTOR (31 DOWNTO 2);
      OVL : IN STD_LOGIC;
      FC : IN STD_LOGIC_VECTOR (2 DOWNTO 0);
-     ROMSEL : OUT STD_LOGIC;  
+     ROMSEL : OUT STD_LOGIC
      
 	);
 
