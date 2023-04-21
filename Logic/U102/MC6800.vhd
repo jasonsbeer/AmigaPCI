@@ -34,11 +34,11 @@ entity MC6800 is
    Port ( 
 
 	   	CLK7 : IN STD_LOGIC;
-		CLK28 : IN STD_LOGIC;
-		nRESET : IN STD_LOGIC;	
-		nVPA : IN STD_LOGIC;		
-		nVMA : INOUT STD_LOGIC;		
-	   E : OUT STD_LOGIC
+			CLK28 : IN STD_LOGIC;
+			nRESET : IN STD_LOGIC;	
+			nVPA : IN STD_LOGIC;		
+			nVMA : INOUT STD_LOGIC;		
+			E : OUT STD_LOGIC
 		
 	);
 
@@ -48,8 +48,8 @@ architecture Behavioral of MC6800 is
 
 	SIGNAL ECount : INTEGER RANGE 0 TO 9 := 0;
 	SIGNAL VMACycle : STD_LOGIC;
-	SIGNAL MY14 : STD_LOGIC := 0;
-	SIGNAL MY7 : STD_LOGIC := 0;
+	SIGNAL MY14 : STD_LOGIC := '0';
+	SIGNAL MY7 : STD_LOGIC := '0';
 
 begin
 	------------

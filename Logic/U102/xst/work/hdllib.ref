@@ -1,0 +1,12 @@
+EN byteenable NULL "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U102/ByteEnable.vhd" sub00/vhpl10 1682042217
+EN mc6800 NULL "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U102/MC6800.vhd" sub00/vhpl04 1682042213
+EN u102_main NULL "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U102/U102-MAIN.vhd" sub00/vhpl08 1682042219
+AR byteenable behavioral "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U102/ByteEnable.vhd" sub00/vhpl11 1682042218
+EN arbitration NULL "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U102/Arbitration.vhd" sub00/vhpl02 1682042211
+AR arbitration behavioral "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U102/Arbitration.vhd" sub00/vhpl03 1682042212
+AR reset behavioral "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U102/RESET.vhd" sub00/vhpl01 1682042210
+AR addressdecoding behavioral "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U102/AddressDecoding.vhd" sub00/vhpl07 1682042216
+AR u102_main behavioral "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U102/U102-MAIN.vhd" sub00/vhpl09 1682042220
+AR mc6800 behavioral "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U102/MC6800.vhd" sub00/vhpl05 1682042214
+EN reset NULL "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U102/RESET.vhd" sub00/vhpl00 1682042209
+EN addressdecoding NULL "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U102/AddressDecoding.vhd" sub00/vhpl06 1682042215

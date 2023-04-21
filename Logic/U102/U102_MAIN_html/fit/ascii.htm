@@ -1,0 +1,719 @@
+<html><body>
+<pre>
+ 
+cpldfit:  version P.20131013                        Xilinx Inc.
+                                  Fitter Report
+Design Name: U102_MAIN                           Date:  4-20-2023,  8:57PM
+Device Used: XC9572XL-10-TQ100
+Fitting Status: Successful
+
+*************************  Mapped Resource Summary  **************************
+
+Macrocells     Product Terms    Function Block   Registers      Pins           
+Used/Tot       Used/Tot         Inps Used/Tot    Used/Tot       Used/Tot       
+35 /72  ( 49%) 94  /360  ( 26%) 116/216 ( 54%)   28 /72  ( 39%) 61 /72  ( 85%)
+
+** Function Block Resources **
+
+Function    Mcells      FB Inps     Pterms      IO          
+Block       Used/Tot    Used/Tot    Used/Tot    Used/Tot    
+FB1           8/18       33/54       24/90      16/18
+FB2          12/18       18/54       26/90      16/18
+FB3          10/18       32/54       31/90      13/18
+FB4           5/18       33/54       13/90      16/18
+             -----       -----       -----      -----    
+             35/72      116/216      94/360     61/72 
+
+* - Resource is exhausted
+
+** Global Control Resources **
+
+Signal 'BCLK' mapped onto global clock net GCK1.
+Signal 'CLK28' mapped onto global clock net GCK2.
+Signal 'CLK7' mapped onto global clock net GCK3.
+Global output enable net(s) unused.
+Signal 'nBTNRST' mapped onto global set/reset net GSR.
+
+** Pin Resources **
+
+Signal Type    Required     Mapped  |  Pin Type            Used    Total 
+------------------------------------|------------------------------------
+Input         :   35          35    |  I/O              :    55      66
+Output        :   22          22    |  GCK/IO           :     3       3
+Bidirectional :    0           0    |  GTS/IO           :     2       2
+GCK           :    3           3    |  GSR/IO           :     1       1
+GTS           :    0           0    |
+GSR           :    1           1    |
+                 ----        ----
+        Total     61          61
+
+** Power Data **
+
+There are 35 macrocells in high performance mode (MCHP).
+There are 0 macrocells in low power mode (MCLP).
+End of Mapped Resource Summary
+**************************  Errors and Warnings  ***************************
+
+WARNING:Cpld - Unable to retrieve the path to the iSE Project Repository. Will
+   use the default filename of 'U102_MAIN.ise'.
+*************************  Summary of Mapped Logic  ************************
+
+** 22 Outputs **
+
+Signal                  Total Total Loc     Pin  Pin     Pin     Pwr  Slew Reg Init
+Name                    Pts   Inps          No.  Type    Use     Mode Rate State
+nROMOE                  6     20    FB1_2   13   I/O     O       STD  FAST 
+nCIA0                   3     25    FB1_6   15   I/O     O       STD  FAST 
+nCIA1                   3     25    FB1_13  36   I/O     O       STD  FAST 
+nUMBE                   3     6     FB2_1   87   I/O     O       STD  FAST RESET
+nBG                     2     6     FB2_3   91   I/O     O       STD  FAST RESET
+nGNT0                   2     3     FB2_6   96   I/O     O       STD  FAST RESET
+nGNT1                   2     4     FB2_8   97   I/O     O       STD  FAST RESET
+nGNT2                   2     5     FB2_12  6    I/O     O       STD  FAST RESET
+nGNT3                   2     6     FB2_13  8    I/O     O       STD  FAST RESET
+nLDS                    2     4     FB2_15  11   I/O     O       STD  FAST RESET
+nUDS                    2     2     FB2_18  92   I/O     O       STD  FAST RESET
+nLLBE                   5     6     FB3_1   41   I/O     O       STD  FAST RESET
+nLMBE                   4     6     FB3_4   50   I/O     O       STD  FAST RESET
+nRAMEN                  3     21    FB3_7   54   I/O     O       STD  FAST 
+nRTCRD                  3     19    FB3_10  60   I/O     O       STD  FAST 
+nRTCWR                  3     19    FB3_13  63   I/O     O       STD  FAST 
+nUUBE                   3     4     FB3_16  64   I/O     O       STD  FAST RESET
+E                       4     6     FB4_2   67   I/O     O       STD  FAST RESET
+nREGEN                  3     15    FB4_6   76   I/O     O       STD  FAST 
+nVMA                    3     4     FB4_10  81   I/O     O       STD  FAST RESET
+nBB                     2     5     FB4_14  78   I/O     O       STD  FAST RESET
+nRESET                  1     4     FB4_17  90   I/O     O       STD  FAST RESET
+
+** 13 Buried Nodes **
+
+Signal                  Total Total Loc     Pwr  Reg Init
+Name                    Pts   Inps          Mode State
+MC6800/ECount<0>        1     1     FB1_14  STD  RESET
+RESET/ResetCounter<1>   2     2     FB1_15  STD  RESET
+RESET/ResetCounter<3>   3     5     FB1_16  STD  RESET
+RESET/ResetCounter<2>   3     5     FB1_17  STD  RESET
+RESET/ResetCounter<0>   3     6     FB1_18  STD  RESET
+MC6800/MY7              1     1     FB2_11  STD  RESET
+MC6800/MY14             0     0     FB2_14  STD  RESET
+Arbitration/Mtrien_nBB  2     6     FB2_16  STD  RESET
+Arbitration/BusActive   6     10    FB2_17  STD  RESET
+MC6800/VMACycle         2     6     FB3_14  STD  RESET
+MC6800/ECount<2>        2     3     FB3_15  STD  RESET
+MC6800/ECount<3>        3     5     FB3_17  STD  RESET
+MC6800/ECount<1>        3     5     FB3_18  STD  RESET
+
+** 39 Inputs **
+
+Signal                  Loc     Pin  Pin     Pin     
+Name                            No.  Type    Use     
+FC<2>                   FB1_1   16   I/O     I
+A<1>                    FB1_3   18   I/O     I
+A<22>                   FB1_4   20   I/O     I
+A<29>                   FB1_5   14   I/O     I
+OVL                     FB1_7   25   I/O     I
+A<0>                    FB1_8   17   I/O     I
+BCLK                    FB1_9   22~  GCK/I/O GCK
+nREQ1                   FB1_10  28   I/O     I
+CLK28                   FB1_11  23~  GCK/I/O GCK
+A<23>                   FB1_12  33   I/O     I
+CLK7                    FB1_14  27~  GCK/I/O GCK
+RnW                     FB1_15  29   I/O     I
+A<19>                   FB1_17  30   I/O     I
+A<17>                   FB2_2   94   I/O     I
+A<26>                   FB2_4   93   I/O     I
+nREQ0                   FB2_5   95   I/O     I
+A<28>                   FB2_7   3    GTS/I/O I
+nBTNRST                 FB2_9   99~  GSR/I/O GSR/I
+nREQ3                   FB2_11  4    GTS/I/O I
+nTIP                    FB2_16  10   I/O     I
+A<24>                   FB2_17  12   I/O     I
+nREQ2                   FB3_3   49   I/O     I
+A<18>                   FB3_6   53   I/O     I
+FC<0>                   FB3_9   42   I/O     I
+nVPA                    FB3_11  52   I/O     I
+A<13>                   FB3_12  61   I/O     I
+A<14>                   FB3_15  56   I/O     I
+A<21>                   FB3_18  59   I/O     I
+A<16>                   FB4_1   65   I/O     I
+FC<1>                   FB4_3   71   I/O     I
+SIZ<1>                  FB4_5   68   I/O     I
+A<31>                   FB4_7   77   I/O     I
+A<20>                   FB4_8   70   I/O     I
+A<15>                   FB4_9   66   I/O     I
+SIZ<0>                  FB4_11  74   I/O     I
+A<27>                   FB4_12  82   I/O     I
+A<12>                   FB4_13  85   I/O     I
+A<25>                   FB4_15  89   I/O     I
+A<30>                   FB4_18  79   I/O     I
+
+Legend:
+Pin No. - ~ - User Assigned
+**************************  Function Block Details  ************************
+Legend:
+Total Pt     - Total product terms used by the macrocell signal
+Imp Pt       - Product terms imported from other macrocells
+Exp Pt       - Product terms exported to other macrocells
+               in direction shown
+Unused Pt    - Unused local product terms remaining in macrocell
+Loc          - Location where logic was mapped in device
+Pin Type/Use - I  - Input             GCK - Global Clock
+               O  - Output            GTS - Global Output Enable
+              (b) - Buried macrocell  GSR - Global Set/Reset
+X            - Signal used as input to the macrocell logic.
+Pin No.      - ~  - User Assigned
+*********************************** FB1  ***********************************
+Number of function block inputs used/remaining:               33/21
+Number of signals used by logic mapping into function block:  33
+Signal              Total   Imp   Exp Unused  Loc     Pin   Pin     Pin
+Name                Pt      Pt    Pt  Pt               #    Type    Use
+(unused)              0       0   \/1   4     FB1_1   16    I/O     I
+nROMOE                6       1<-   0   0     FB1_2   13    I/O     O
+(unused)              0       0     0   5     FB1_3   18    I/O     I
+(unused)              0       0     0   5     FB1_4   20    I/O     I
+(unused)              0       0     0   5     FB1_5   14    I/O     I
+nCIA0                 3       0     0   2     FB1_6   15    I/O     O
+(unused)              0       0     0   5     FB1_7   25    I/O     I
+(unused)              0       0     0   5     FB1_8   17    I/O     I
+(unused)              0       0     0   5     FB1_9   22    GCK/I/O GCK
+(unused)              0       0     0   5     FB1_10  28    I/O     I
+(unused)              0       0     0   5     FB1_11  23    GCK/I/O GCK
+(unused)              0       0     0   5     FB1_12  33    I/O     I
+nCIA1                 3       0     0   2     FB1_13  36    I/O     O
+MC6800/ECount<0>      1       0     0   4     FB1_14  27    GCK/I/O GCK
+RESET/ResetCounter<1>
+                      2       0     0   3     FB1_15  29    I/O     I
+RESET/ResetCounter<3>
+                      3       0     0   2     FB1_16  39    I/O     (b)
+RESET/ResetCounter<2>
+                      3       0     0   2     FB1_17  30    I/O     I
+RESET/ResetCounter<0>
+                      3       0     0   2     FB1_18  40    I/O     (b)
+
+Signals Used by Logic in Function Block
+  1: A<12>             12: A<23>             23: FC<2> 
+  2: A<13>             13: A<24>             24: MC6800/MY7 
+  3: A<14>             14: A<25>             25: OVL 
+  4: A<15>             15: A<26>             26: RESET/ResetCounter<0> 
+  5: A<16>             16: A<27>             27: RESET/ResetCounter<1> 
+  6: A<17>             17: A<28>             28: RESET/ResetCounter<2> 
+  7: A<18>             18: A<29>             29: RESET/ResetCounter<3> 
+  8: A<19>             19: A<30>             30: RnW 
+  9: A<20>             20: A<31>             31: nBTNRST 
+ 10: A<21>             21: FC<0>             32: nRESET 
+ 11: A<22>             22: FC<1>             33: nTIP 
+
+Signal                        1         2         3         4 FB
+Name                0----+----0----+----0----+----0----+----0 Inputs
+nROMOE               .......XXXXXXXXXXXXXXXX.X....X.XX....... 20
+nCIA0                XXXXXXXXXXXXXXXXXXXXXXX........XX....... 25
+nCIA1                XXXXXXXXXXXXXXXXXXXXXXX........XX....... 25
+MC6800/ECount<0>     .......................X................ 1
+RESET/ResetCounter<1> 
+                     .........................X....X......... 2
+RESET/ResetCounter<3> 
+                     .........................XXXX.X......... 5
+RESET/ResetCounter<2> 
+                     .........................XXXX.X......... 5
+RESET/ResetCounter<0> 
+                     .........................XXXX.XX........ 6
+                    0----+----1----+----2----+----3----+----4
+                              0         0         0         0
+*********************************** FB2  ***********************************
+Number of function block inputs used/remaining:               18/36
+Number of signals used by logic mapping into function block:  18
+Signal              Total   Imp   Exp Unused  Loc     Pin   Pin     Pin
+Name                Pt      Pt    Pt  Pt               #    Type    Use
+nUMBE                 3       0     0   2     FB2_1   87    I/O     O
+(unused)              0       0     0   5     FB2_2   94    I/O     I
+nBG                   2       0     0   3     FB2_3   91    I/O     O
+(unused)              0       0     0   5     FB2_4   93    I/O     I
+(unused)              0       0     0   5     FB2_5   95    I/O     I
+nGNT0                 2       0     0   3     FB2_6   96    I/O     O
+(unused)              0       0     0   5     FB2_7   3     GTS/I/O I
+nGNT1                 2       0     0   3     FB2_8   97    I/O     O
+(unused)              0       0     0   5     FB2_9   99    GSR/I/O GSR/I
+(unused)              0       0     0   5     FB2_10  1     I/O     
+MC6800/MY7            1       0     0   4     FB2_11  4     GTS/I/O I
+nGNT2                 2       0     0   3     FB2_12  6     I/O     O
+nGNT3                 2       0     0   3     FB2_13  8     I/O     O
+MC6800/MY14           0       0     0   5     FB2_14  9     I/O     (b)
+nLDS                  2       0     0   3     FB2_15  11    I/O     O
+Arbitration/Mtrien_nBB
+                      2       0   \/1   2     FB2_16  10    I/O     I
+Arbitration/BusActive
+                      6       1<-   0   0     FB2_17  12    I/O     I
+nUDS                  2       0     0   3     FB2_18  92    I/O     O
+
+Signals Used by Logic in Function Block
+  1: A<0>                    7: SIZ<1>            13: nREQ0 
+  2: A<1>                    8: nBG               14: nREQ1 
+  3: Arbitration/BusActive   9: nGNT0             15: nREQ2 
+  4: MC6800/MY14            10: nGNT1             16: nREQ3 
+  5: RnW                    11: nGNT2             17: nRESET 
+  6: SIZ<0>                 12: nGNT3             18: nTIP 
+
+Signal                        1         2         3         4 FB
+Name                0----+----0----+----0----+----0----+----0 Inputs
+nUMBE                XX..XXX.........X....................... 6
+nBG                  ..X.........XXXXX....................... 6
+nGNT0                ..X.........X...X....................... 3
+nGNT1                ..X.........XX..X....................... 4
+MC6800/MY7           ...X.................................... 1
+nGNT2                ..X.........XXX.X....................... 5
+nGNT3                ..X.........XXXXX....................... 6
+MC6800/MY14          ........................................ 0
+nLDS                 X....XX.........X....................... 4
+Arbitration/Mtrien_nBB 
+                     .......XXXXX....X....................... 6
+Arbitration/BusActive 
+                     ........XXXXXXXXXX...................... 10
+nUDS                 X...............X....................... 2
+                    0----+----1----+----2----+----3----+----4
+                              0         0         0         0
+*********************************** FB3  ***********************************
+Number of function block inputs used/remaining:               32/22
+Number of signals used by logic mapping into function block:  32
+Signal              Total   Imp   Exp Unused  Loc     Pin   Pin     Pin
+Name                Pt      Pt    Pt  Pt               #    Type    Use
+nLLBE                 5       0     0   0     FB3_1   41    I/O     O
+(unused)              0       0     0   5     FB3_2   32    I/O     
+(unused)              0       0     0   5     FB3_3   49    I/O     I
+nLMBE                 4       0     0   1     FB3_4   50    I/O     O
+(unused)              0       0     0   5     FB3_5   35    I/O     
+(unused)              0       0     0   5     FB3_6   53    I/O     I
+nRAMEN                3       0     0   2     FB3_7   54    I/O     O
+(unused)              0       0     0   5     FB3_8   37    I/O     
+(unused)              0       0     0   5     FB3_9   42    I/O     I
+nRTCRD                3       0     0   2     FB3_10  60    I/O     O
+(unused)              0       0     0   5     FB3_11  52    I/O     I
+(unused)              0       0     0   5     FB3_12  61    I/O     I
+nRTCWR                3       0     0   2     FB3_13  63    I/O     O
+MC6800/VMACycle       2       0     0   3     FB3_14  55    I/O     (b)
+MC6800/ECount<2>      2       0     0   3     FB3_15  56    I/O     I
+nUUBE                 3       0     0   2     FB3_16  64    I/O     O
+MC6800/ECount<3>      3       0     0   2     FB3_17  58    I/O     (b)
+MC6800/ECount<1>      3       0     0   2     FB3_18  59    I/O     I
+
+Signals Used by Logic in Function Block
+  1: A<0>              12: A<26>             23: MC6800/ECount<2> 
+  2: A<17>             13: A<27>             24: MC6800/ECount<3> 
+  3: A<18>             14: A<28>             25: MC6800/MY7 
+  4: A<19>             15: A<29>             26: OVL 
+  5: A<1>              16: A<30>             27: RnW 
+  6: A<20>             17: A<31>             28: SIZ<0> 
+  7: A<21>             18: FC<0>             29: SIZ<1> 
+  8: A<22>             19: FC<1>             30: nRESET 
+  9: A<23>             20: FC<2>             31: nTIP 
+ 10: A<24>             21: MC6800/ECount<0>  32: nVPA 
+ 11: A<25>             22: MC6800/ECount<1> 
+
+Signal                        1         2         3         4 FB
+Name                0----+----0----+----0----+----0----+----0 Inputs
+nLLBE                X...X.....................XXXX.......... 6
+nLMBE                X...X.....................XXXX.......... 6
+nRAMEN               .XXX.XXXXXXXXXXXXXXX.....X...XX......... 21
+nRTCRD               ..XX.XXXXXXXXXXXXXXX......X..X.......... 19
+nRTCWR               ..XX.XXXXXXXXXXXXXXX......X..X.......... 19
+MC6800/VMACycle      ....................XXXX.....X.X........ 6
+MC6800/ECount<2>     ....................XX..X............... 3
+nUUBE                X...X.....................X..X.......... 4
+MC6800/ECount<3>     ....................XXXXX............... 5
+MC6800/ECount<1>     ....................XXXXX............... 5
+                    0----+----1----+----2----+----3----+----4
+                              0         0         0         0
+*********************************** FB4  ***********************************
+Number of function block inputs used/remaining:               33/21
+Number of signals used by logic mapping into function block:  33
+Signal              Total   Imp   Exp Unused  Loc     Pin   Pin     Pin
+Name                Pt      Pt    Pt  Pt               #    Type    Use
+(unused)              0       0     0   5     FB4_1   65    I/O     I
+E                     4       0     0   1     FB4_2   67    I/O     O
+(unused)              0       0     0   5     FB4_3   71    I/O     I
+(unused)              0       0     0   5     FB4_4   72    I/O     
+(unused)              0       0     0   5     FB4_5   68    I/O     I
+nREGEN                3       0     0   2     FB4_6   76    I/O     O
+(unused)              0       0     0   5     FB4_7   77    I/O     I
+(unused)              0       0     0   5     FB4_8   70    I/O     I
+(unused)              0       0     0   5     FB4_9   66    I/O     I
+nVMA                  3       0     0   2     FB4_10  81    I/O     O
+(unused)              0       0     0   5     FB4_11  74    I/O     I
+(unused)              0       0     0   5     FB4_12  82    I/O     I
+(unused)              0       0     0   5     FB4_13  85    I/O     I
+nBB                   2       0     0   3     FB4_14  78    I/O     O
+(unused)              0       0     0   5     FB4_15  89    I/O     I
+(unused)              0       0     0   5     FB4_16  86    I/O     
+nRESET                1       0     0   4     FB4_17  90    I/O     O
+(unused)              0       0     0   5     FB4_18  79    I/O     I
+
+Signals Used by Logic in Function Block
+  1: A<22>                   12: E                      23: RESET/ResetCounter<1> 
+  2: A<23>                   13: FC<0>                  24: RESET/ResetCounter<2> 
+  3: A<24>                   14: FC<1>                  25: RESET/ResetCounter<3> 
+  4: A<25>                   15: FC<2>                  26: nGNT0 
+  5: A<26>                   16: MC6800/ECount<0>       27: nGNT1 
+  6: A<27>                   17: MC6800/ECount<1>       28: nGNT2 
+  7: A<28>                   18: MC6800/ECount<2>       29: nGNT3 
+  8: A<29>                   19: MC6800/ECount<3>       30: nRESET 
+  9: A<30>                   20: MC6800/MY7             31: nTIP 
+ 10: A<31>                   21: MC6800/VMACycle        32: nVMA 
+ 11: Arbitration/Mtrien_nBB  22: RESET/ResetCounter<0>  33: nVPA 
+
+Signal                        1         2         3         4 FB
+Name                0----+----0----+----0----+----0----+----0 Inputs
+E                    ...........X...XXXXX.................... 6
+nREGEN               XXXXXXXXXX..XXX..............XX......... 15
+nVMA                 ....................X........X.XX....... 4
+nBB                  ..........X..............XXXX........... 5
+nRESET               .....................XXXX............... 4
+                    0----+----1----+----2----+----3----+----4
+                              0         0         0         0
+*******************************  Equations  ********************************
+
+********** Mapped Logic **********
+
+FDCPE_Arbitration/BusActive: FDCPE port map (Arbitration/BusActive,Arbitration/BusActive_D,BCLK,NOT nRESET,'0');
+Arbitration/BusActive_D <= ((NOT nTIP)
+	OR (NOT nREQ1 AND NOT nGNT1)
+	OR (NOT nREQ3 AND NOT nGNT3)
+	OR (NOT nREQ2 AND NOT nGNT2)
+	OR (NOT nREQ0 AND NOT nGNT0));
+
+FDCPE_Arbitration/Mtrien_nBB: FDCPE port map (Arbitration/Mtrien_nBB,Arbitration/Mtrien_nBB_D,BCLK,'0',NOT nRESET);
+Arbitration/Mtrien_nBB_D <= (nGNT0 AND nGNT1 AND nGNT2 AND nGNT3 AND NOT nBG);
+
+FDCPE_E: FDCPE port map (E,E_D,NOT MC6800/MY7,'0','0');
+E_D <= ((MC6800/ECount(1) AND MC6800/ECount(2) AND 
+	NOT MC6800/ECount(3))
+	OR (E AND NOT MC6800/ECount(1) AND NOT MC6800/ECount(2) AND 
+	MC6800/ECount(3))
+	OR (NOT MC6800/ECount(0) AND NOT MC6800/ECount(1) AND 
+	NOT MC6800/ECount(2) AND MC6800/ECount(3)));
+
+
+
+FTCPE_MC6800/ECount0: FTCPE port map (MC6800/ECount(0),'1',NOT MC6800/MY7,'0','0');
+
+FTCPE_MC6800/ECount1: FTCPE port map (MC6800/ECount(1),MC6800/ECount_T(1),NOT MC6800/MY7,'0','0');
+MC6800/ECount_T(1) <= ((NOT MC6800/ECount(0))
+	OR (NOT MC6800/ECount(1) AND NOT MC6800/ECount(2) AND 
+	MC6800/ECount(3)));
+
+FTCPE_MC6800/ECount2: FTCPE port map (MC6800/ECount(2),MC6800/ECount_T(2),NOT MC6800/MY7,'0','0');
+MC6800/ECount_T(2) <= (MC6800/ECount(0) AND MC6800/ECount(1));
+
+FTCPE_MC6800/ECount3: FTCPE port map (MC6800/ECount(3),MC6800/ECount_T(3),NOT MC6800/MY7,'0','0');
+MC6800/ECount_T(3) <= ((MC6800/ECount(0) AND MC6800/ECount(1) AND 
+	MC6800/ECount(2))
+	OR (MC6800/ECount(0) AND NOT MC6800/ECount(1) AND 
+	NOT MC6800/ECount(2) AND MC6800/ECount(3)));
+
+FTCPE_MC6800/MY14: FTCPE port map (MC6800/MY14,'1',CLK28,'0','0');
+
+FTCPE_MC6800/MY7: FTCPE port map (MC6800/MY7,'1',MC6800/MY14,'0','0');
+
+FDCPE_MC6800/VMACycle: FDCPE port map (MC6800/VMACycle,MC6800/VMACycle_D,NOT CLK7,NOT nRESET,'0');
+MC6800/VMACycle_D <= (NOT nVPA AND NOT MC6800/ECount(0) AND MC6800/ECount(1) AND 
+	NOT MC6800/ECount(2) AND NOT MC6800/ECount(3));
+
+FTCPE_RESET/ResetCounter0: FTCPE port map (RESET/ResetCounter(0),RESET/ResetCounter_T(0),BCLK,'0','0',nBTNRST);
+RESET/ResetCounter_T(0) <= ((RESET/ResetCounter(2) AND NOT RESET/ResetCounter(0) AND 
+	RESET/ResetCounter(3) AND NOT RESET/ResetCounter(1))
+	OR (NOT RESET/ResetCounter(2) AND NOT RESET/ResetCounter(0) AND 
+	NOT RESET/ResetCounter(3) AND NOT RESET/ResetCounter(1) AND nRESET));
+
+FTCPE_RESET/ResetCounter1: FTCPE port map (RESET/ResetCounter(1),RESET/ResetCounter(0),BCLK,'0','0',nBTNRST);
+
+FTCPE_RESET/ResetCounter2: FTCPE port map (RESET/ResetCounter(2),RESET/ResetCounter_T(2),BCLK,'0','0',nBTNRST);
+RESET/ResetCounter_T(2) <= ((RESET/ResetCounter(0) AND RESET/ResetCounter(1))
+	OR (RESET/ResetCounter(2) AND NOT RESET/ResetCounter(0) AND 
+	RESET/ResetCounter(3) AND NOT RESET/ResetCounter(1)));
+
+FTCPE_RESET/ResetCounter3: FTCPE port map (RESET/ResetCounter(3),RESET/ResetCounter_T(3),BCLK,'0','0',nBTNRST);
+RESET/ResetCounter_T(3) <= ((RESET/ResetCounter(2) AND RESET/ResetCounter(0) AND 
+	RESET/ResetCounter(1))
+	OR (RESET/ResetCounter(2) AND NOT RESET/ResetCounter(0) AND 
+	RESET/ResetCounter(3) AND NOT RESET/ResetCounter(1)));
+
+FDCPE_nBB: FDCPE port map (nBB_I,nBB,BCLK,'0','0');
+nBB <= (nGNT0 AND nGNT1 AND nGNT2 AND nGNT3);
+nBB <= nBB_I when nBB_OE = '1' else 'Z';
+nBB_OE <= NOT Arbitration/Mtrien_nBB;
+
+FDCPE_nBG: FDCPE port map (nBG,nBG_D,BCLK,'0',NOT nRESET);
+nBG_D <= (nREQ3 AND nREQ2 AND nREQ1 AND nREQ0 AND 
+	NOT Arbitration/BusActive);
+
+
+nCIA0 <= NOT (((A(19) AND A(18) AND A(17) AND A(16) AND A(15) AND A(14) AND 
+	A(13) AND NOT A(12) AND NOT nTIP AND A(20) AND NOT A(28) AND NOT A(27) AND NOT A(26) AND 
+	NOT A(25) AND NOT A(24) AND A(23) AND NOT A(22) AND A(21) AND NOT A(30) AND NOT A(29) AND 
+	NOT A(31) AND NOT FC(2) AND nRESET)
+	OR (A(19) AND A(18) AND A(17) AND A(16) AND A(15) AND A(14) AND 
+	A(13) AND NOT A(12) AND NOT nTIP AND A(20) AND NOT A(28) AND NOT A(27) AND NOT A(26) AND 
+	NOT A(25) AND NOT A(24) AND A(23) AND NOT A(22) AND A(21) AND NOT A(30) AND NOT A(29) AND 
+	NOT A(31) AND NOT FC(1) AND nRESET)
+	OR (A(19) AND A(18) AND A(17) AND A(16) AND A(15) AND A(14) AND 
+	A(13) AND NOT A(12) AND NOT nTIP AND A(20) AND NOT A(28) AND NOT A(27) AND NOT A(26) AND 
+	NOT A(25) AND NOT A(24) AND A(23) AND NOT A(22) AND A(21) AND NOT A(30) AND NOT A(29) AND 
+	NOT A(31) AND NOT FC(0) AND nRESET)));
+
+
+nCIA1 <= NOT (((A(19) AND A(18) AND A(17) AND A(16) AND A(15) AND A(14) AND 
+	NOT A(13) AND A(12) AND NOT nTIP AND A(20) AND NOT A(28) AND NOT A(27) AND NOT A(26) AND 
+	NOT A(25) AND NOT A(24) AND A(23) AND NOT A(22) AND A(21) AND NOT A(30) AND NOT A(29) AND 
+	NOT A(31) AND NOT FC(2) AND nRESET)
+	OR (A(19) AND A(18) AND A(17) AND A(16) AND A(15) AND A(14) AND 
+	NOT A(13) AND A(12) AND NOT nTIP AND A(20) AND NOT A(28) AND NOT A(27) AND NOT A(26) AND 
+	NOT A(25) AND NOT A(24) AND A(23) AND NOT A(22) AND A(21) AND NOT A(30) AND NOT A(29) AND 
+	NOT A(31) AND NOT FC(1) AND nRESET)
+	OR (A(19) AND A(18) AND A(17) AND A(16) AND A(15) AND A(14) AND 
+	NOT A(13) AND A(12) AND NOT nTIP AND A(20) AND NOT A(28) AND NOT A(27) AND NOT A(26) AND 
+	NOT A(25) AND NOT A(24) AND A(23) AND NOT A(22) AND A(21) AND NOT A(30) AND NOT A(29) AND 
+	NOT A(31) AND NOT FC(0) AND nRESET)));
+
+FDCPE_nGNT0: FDCPE port map (nGNT0,nGNT0_D,BCLK,'0',NOT nRESET);
+nGNT0_D <= (NOT nREQ0 AND NOT Arbitration/BusActive);
+
+FDCPE_nGNT1: FDCPE port map (nGNT1,nGNT1_D,BCLK,'0',NOT nRESET);
+nGNT1_D <= (NOT nREQ1 AND nREQ0 AND NOT Arbitration/BusActive);
+
+FDCPE_nGNT2: FDCPE port map (nGNT2,nGNT2_D,BCLK,'0',NOT nRESET);
+nGNT2_D <= (NOT nREQ2 AND nREQ1 AND nREQ0 AND NOT Arbitration/BusActive);
+
+FDCPE_nGNT3: FDCPE port map (nGNT3,nGNT3_D,BCLK,'0',NOT nRESET);
+nGNT3_D <= (NOT nREQ3 AND nREQ2 AND nREQ1 AND nREQ0 AND 
+	NOT Arbitration/BusActive);
+
+FDCPE_nLDS: FDCPE port map (nLDS,nLDS_D,CLK7,'0',NOT nRESET);
+nLDS_D <= (SIZ(0) AND NOT SIZ(1) AND NOT A(0));
+
+FDCPE_nLLBE: FDCPE port map (nLLBE,nLLBE_D,BCLK,'0',NOT nRESET);
+nLLBE_D <= ((NOT RnW AND SIZ(0) AND NOT SIZ(1) AND NOT A(0))
+	OR (NOT RnW AND SIZ(0) AND NOT SIZ(1) AND NOT A(1))
+	OR (NOT RnW AND NOT SIZ(0) AND SIZ(1) AND NOT A(1))
+	OR (NOT RnW AND SIZ(1) AND NOT A(0) AND NOT A(1)));
+
+FDCPE_nLMBE: FDCPE port map (nLMBE,nLMBE_D,BCLK,'0',NOT nRESET);
+nLMBE_D <= ((NOT RnW AND A(0) AND A(1))
+	OR (NOT RnW AND SIZ(0) AND NOT SIZ(1) AND NOT A(1))
+	OR (NOT RnW AND NOT SIZ(0) AND SIZ(1) AND NOT A(0) AND NOT A(1)));
+
+
+nRAMEN <= NOT (((NOT A(19) AND NOT A(18) AND NOT A(17) AND NOT nTIP AND NOT OVL AND NOT A(20) AND 
+	NOT A(28) AND NOT A(27) AND NOT A(26) AND NOT A(25) AND NOT A(24) AND NOT A(23) AND NOT A(22) AND 
+	NOT A(21) AND NOT A(30) AND NOT A(29) AND NOT A(31) AND NOT FC(2) AND nRESET)
+	OR (NOT A(19) AND NOT A(18) AND NOT A(17) AND NOT nTIP AND NOT OVL AND NOT A(20) AND 
+	NOT A(28) AND NOT A(27) AND NOT A(26) AND NOT A(25) AND NOT A(24) AND NOT A(23) AND NOT A(22) AND 
+	NOT A(21) AND NOT A(30) AND NOT A(29) AND NOT A(31) AND NOT FC(1) AND nRESET)
+	OR (NOT A(19) AND NOT A(18) AND NOT A(17) AND NOT nTIP AND NOT OVL AND NOT A(20) AND 
+	NOT A(28) AND NOT A(27) AND NOT A(26) AND NOT A(25) AND NOT A(24) AND NOT A(23) AND NOT A(22) AND 
+	NOT A(21) AND NOT A(30) AND NOT A(29) AND NOT A(31) AND NOT FC(0) AND nRESET)));
+
+
+nREGEN <= NOT (((NOT nTIP AND NOT A(28) AND NOT A(27) AND NOT A(26) AND NOT A(25) AND NOT A(24) AND 
+	A(23) AND A(22) AND NOT A(30) AND NOT A(29) AND NOT A(31) AND NOT FC(2) AND 
+	nRESET)
+	OR (NOT nTIP AND NOT A(28) AND NOT A(27) AND NOT A(26) AND NOT A(25) AND NOT A(24) AND 
+	A(23) AND A(22) AND NOT A(30) AND NOT A(29) AND NOT A(31) AND NOT FC(1) AND 
+	nRESET)
+	OR (NOT nTIP AND NOT A(28) AND NOT A(27) AND NOT A(26) AND NOT A(25) AND NOT A(24) AND 
+	A(23) AND A(22) AND NOT A(30) AND NOT A(29) AND NOT A(31) AND NOT FC(0) AND 
+	nRESET)));
+
+FDCPE_nRESET: FDCPE port map (nRESET,'1',BCLK,NOT nBTNRST,'0',nRESET_CE);
+nRESET_CE <= (RESET/ResetCounter(2) AND NOT RESET/ResetCounter(0) AND 
+	RESET/ResetCounter(3) AND NOT RESET/ResetCounter(1));
+
+
+nROMOE <= NOT (((A(19) AND NOT nTIP AND NOT OVL AND A(20) AND NOT A(28) AND NOT A(27) AND 
+	NOT A(26) AND NOT A(25) AND NOT A(24) AND A(23) AND A(22) AND A(21) AND NOT A(30) AND 
+	NOT A(29) AND NOT A(31) AND RnW AND NOT FC(2) AND nRESET)
+	OR (A(19) AND NOT nTIP AND NOT OVL AND A(20) AND NOT A(28) AND NOT A(27) AND 
+	NOT A(26) AND NOT A(25) AND NOT A(24) AND A(23) AND A(22) AND A(21) AND NOT A(30) AND 
+	NOT A(29) AND NOT A(31) AND RnW AND NOT FC(1) AND nRESET)
+	OR (A(19) AND NOT nTIP AND NOT OVL AND A(20) AND NOT A(28) AND NOT A(27) AND 
+	NOT A(26) AND NOT A(25) AND NOT A(24) AND A(23) AND A(22) AND A(21) AND NOT A(30) AND 
+	NOT A(29) AND NOT A(31) AND RnW AND NOT FC(0) AND nRESET)
+	OR (NOT A(19) AND NOT nTIP AND OVL AND NOT A(20) AND NOT A(28) AND NOT A(27) AND 
+	NOT A(26) AND NOT A(25) AND NOT A(24) AND NOT A(23) AND NOT A(22) AND NOT A(21) AND NOT A(30) AND 
+	NOT A(29) AND NOT A(31) AND RnW AND NOT FC(2) AND nRESET)
+	OR (NOT A(19) AND NOT nTIP AND OVL AND NOT A(20) AND NOT A(28) AND NOT A(27) AND 
+	NOT A(26) AND NOT A(25) AND NOT A(24) AND NOT A(23) AND NOT A(22) AND NOT A(21) AND NOT A(30) AND 
+	NOT A(29) AND NOT A(31) AND RnW AND NOT FC(1) AND nRESET)
+	OR (NOT A(19) AND NOT nTIP AND OVL AND NOT A(20) AND NOT A(28) AND NOT A(27) AND 
+	NOT A(26) AND NOT A(25) AND NOT A(24) AND NOT A(23) AND NOT A(22) AND NOT A(21) AND NOT A(30) AND 
+	NOT A(29) AND NOT A(31) AND RnW AND NOT FC(0) AND nRESET)));
+
+
+nRTCRD <= NOT (((A(19) AND A(18) AND A(20) AND NOT A(28) AND NOT A(27) AND NOT A(26) AND 
+	NOT A(25) AND NOT A(24) AND A(23) AND A(22) AND NOT A(21) AND NOT A(30) AND NOT A(29) AND 
+	NOT A(31) AND RnW AND NOT FC(2) AND nRESET)
+	OR (A(19) AND A(18) AND A(20) AND NOT A(28) AND NOT A(27) AND NOT A(26) AND 
+	NOT A(25) AND NOT A(24) AND A(23) AND A(22) AND NOT A(21) AND NOT A(30) AND NOT A(29) AND 
+	NOT A(31) AND RnW AND NOT FC(1) AND nRESET)
+	OR (A(19) AND A(18) AND A(20) AND NOT A(28) AND NOT A(27) AND NOT A(26) AND 
+	NOT A(25) AND NOT A(24) AND A(23) AND A(22) AND NOT A(21) AND NOT A(30) AND NOT A(29) AND 
+	NOT A(31) AND RnW AND NOT FC(0) AND nRESET)));
+
+
+nRTCWR <= NOT (((A(19) AND A(18) AND A(20) AND NOT A(28) AND NOT A(27) AND NOT A(26) AND 
+	NOT A(25) AND NOT A(24) AND A(23) AND A(22) AND NOT A(21) AND NOT A(30) AND NOT A(29) AND 
+	NOT A(31) AND NOT RnW AND NOT FC(2) AND nRESET)
+	OR (A(19) AND A(18) AND A(20) AND NOT A(28) AND NOT A(27) AND NOT A(26) AND 
+	NOT A(25) AND NOT A(24) AND A(23) AND A(22) AND NOT A(21) AND NOT A(30) AND NOT A(29) AND 
+	NOT A(31) AND NOT RnW AND NOT FC(1) AND nRESET)
+	OR (A(19) AND A(18) AND A(20) AND NOT A(28) AND NOT A(27) AND NOT A(26) AND 
+	NOT A(25) AND NOT A(24) AND A(23) AND A(22) AND NOT A(21) AND NOT A(30) AND NOT A(29) AND 
+	NOT A(31) AND NOT RnW AND NOT FC(0) AND nRESET)));
+
+FDCPE_nUDS: FDCPE port map (nUDS,A(0),CLK7,'0',NOT nRESET);
+
+FDCPE_nUMBE: FDCPE port map (nUMBE,nUMBE_D,BCLK,'0',NOT nRESET);
+nUMBE_D <= ((NOT RnW AND A(1))
+	OR (NOT RnW AND SIZ(0) AND NOT SIZ(1) AND NOT A(0)));
+
+FDCPE_nUUBE: FDCPE port map (nUUBE,nUUBE_D,BCLK,'0',NOT nRESET);
+nUUBE_D <= ((NOT RnW AND A(0))
+	OR (NOT RnW AND A(1)));
+
+FDCPE_nVMA: FDCPE port map (nVMA,nVMA_D,NOT CLK7,'0',NOT nRESET);
+nVMA_D <= ((nVPA)
+	OR (nVMA AND NOT MC6800/VMACycle));
+
+Register Legend:
+ FDCPE (Q,D,C,CLR,PRE,CE); 
+ FTCPE (Q,D,C,CLR,PRE,CE); 
+ LDCP  (Q,D,G,CLR,PRE); 
+
+******************************  Device Pin Out *****************************
+
+Device : XC9572XL-10-TQ100
+
+
+   --------------------------------------------------  
+  /100 98  96  94  92  90  88  86  84  82  80  78  76  \
+ |   99  97  95  93  91  89  87  85  83  81  79  77    |
+ | 1                                               75  | 
+ | 2                                               74  | 
+ | 3                                               73  | 
+ | 4                                               72  | 
+ | 5                                               71  | 
+ | 6                                               70  | 
+ | 7                                               69  | 
+ | 8                                               68  | 
+ | 9                                               67  | 
+ | 10                                              66  | 
+ | 11                                              65  | 
+ | 12                                              64  | 
+ | 13               XC9572XL-10-TQ100              63  | 
+ | 14                                              62  | 
+ | 15                                              61  | 
+ | 16                                              60  | 
+ | 17                                              59  | 
+ | 18                                              58  | 
+ | 19                                              57  | 
+ | 20                                              56  | 
+ | 21                                              55  | 
+ | 22                                              54  | 
+ | 23                                              53  | 
+ | 24                                              52  | 
+ | 25                                              51  | 
+ |   27  29  31  33  35  37  39  41  43  45  47  49    |
+  \26  28  30  32  34  36  38  40  42  44  46  48  50  /
+   --------------------------------------------------  
+
+
+Pin Signal                         Pin Signal                        
+No. Name                           No. Name                          
+  1 KPR                              51 VCC                           
+  2 NC                               52 nVPA                          
+  3 A<28>                            53 A<18>                         
+  4 nREQ3                            54 nRAMEN                        
+  5 VCC                              55 KPR                           
+  6 nGNT2                            56 A<14>                         
+  7 NC                               57 VCC                           
+  8 nGNT3                            58 KPR                           
+  9 KPR                              59 A<21>                         
+ 10 nTIP                             60 nRTCRD                        
+ 11 nLDS                             61 A<13>                         
+ 12 A<24>                            62 GND                           
+ 13 nROMOE                           63 nRTCWR                        
+ 14 A<29>                            64 nUUBE                         
+ 15 nCIA0                            65 A<16>                         
+ 16 FC<2>                            66 A<15>                         
+ 17 A<0>                             67 E                             
+ 18 A<1>                             68 SIZ<1>                        
+ 19 NC                               69 GND                           
+ 20 A<22>                            70 A<20>                         
+ 21 GND                              71 FC<1>                         
+ 22 BCLK                             72 KPR                           
+ 23 CLK28                            73 NC                            
+ 24 NC                               74 SIZ<0>                        
+ 25 OVL                              75 GND                           
+ 26 VCC                              76 nREGEN                        
+ 27 CLK7                             77 A<31>                         
+ 28 nREQ1                            78 nBB                           
+ 29 RnW                              79 A<30>                         
+ 30 A<19>                            80 NC                            
+ 31 GND                              81 nVMA                          
+ 32 KPR                              82 A<27>                         
+ 33 A<23>                            83 TDO                           
+ 34 NC                               84 GND                           
+ 35 KPR                              85 A<12>                         
+ 36 nCIA1                            86 KPR                           
+ 37 KPR                              87 nUMBE                         
+ 38 VCC                              88 VCC                           
+ 39 KPR                              89 A<25>                         
+ 40 KPR                              90 nRESET                        
+ 41 nLLBE                            91 nBG                           
+ 42 FC<0>                            92 nUDS                          
+ 43 NC                               93 A<26>                         
+ 44 GND                              94 A<17>                         
+ 45 TDI                              95 nREQ0                         
+ 46 NC                               96 nGNT0                         
+ 47 TMS                              97 nGNT1                         
+ 48 TCK                              98 VCC                           
+ 49 nREQ2                            99 nBTNRST                       
+ 50 nLMBE                           100 GND                           
+
+
+Legend :  NC  = Not Connected, unbonded pin
+         PGND = Unused I/O configured as additional Ground pin
+         TIE  = Unused I/O floating -- must tie to VCC, GND or other signal
+         KPR  = Unused I/O with weak keeper (leave unconnected)
+         VCC  = Dedicated Power Pin
+         GND  = Dedicated Ground Pin
+         TDI  = Test Data In, JTAG pin
+         TDO  = Test Data Out, JTAG pin
+         TCK  = Test Clock, JTAG pin
+         TMS  = Test Mode Select, JTAG pin
+  PROHIBITED  = User reserved pin
+****************************  Compiler Options  ****************************
+
+Following is a list of all global compiler options used by the fitter run.
+
+Device(s) Specified                         : xc9572xl-10-TQ100
+Optimization Method                         : SPEED
+Multi-Level Logic Optimization              : ON
+Ignore Timing Specifications                : OFF
+Default Register Power Up Value             : LOW
+Keep User Location Constraints              : ON
+What-You-See-Is-What-You-Get                : OFF
+Exhaustive Fitting                          : OFF
+Keep Unused Inputs                          : OFF
+Slew Rate                                   : FAST
+Power Mode                                  : STD
+Ground on Unused IOs                        : OFF
+Set I/O Pin Termination                     : KEEPER
+Global Clock Optimization                   : ON
+Global Set/Reset Optimization               : ON
+Global Ouput Enable Optimization            : ON
+Input Limit                                 : 54
+Pterm Limit                                 : 25
+</pre>
+<form><span class="pgRef"><table width="90%" align="center"><tr>
+<td align="left"><input type="button" onclick="javascript:parent.leftnav.showTop()" onmouseover="window.status='goto top of page'; return true;" onmouseout="window.status=''" value="back to top"></td>
+<td align="right"><input type="button" onclick="window.print()" onmouseover="window.status='print page'; return true;" onmouseout="window.status=''" value="print page"></td>
+</tr></table></span></form>
+</body></html>

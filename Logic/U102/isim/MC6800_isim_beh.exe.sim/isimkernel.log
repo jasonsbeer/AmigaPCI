@@ -1,0 +1,29 @@
+Command line:
+   MC6800_isim_beh.exe
+     -simmode  gui
+     -simrunnum  0
+     -socket  57449
+
+Thu Apr 20 20:15:21 2023
+
+
+ Elaboration Time: 0.03 sec
+
+ Current Memory Usage: 192.979 Meg
+
+ Total Signals          : 10
+ Total Nets             : 10
+ Total Signal Drivers   : 6
+ Total Blocks           : 2
+ Total Primitive Blocks : 2
+ Total Processes        : 4
+ Total Traceable Variables  : 8
+ Total Scalar Nets and Variables : 370
+Total Line Count : 19
+
+ Total Simulation Time: 0.08 sec
+
+ Current Memory Usage: 268.481 Meg
+
+Thu Apr 20 21:09:51 2023
+
