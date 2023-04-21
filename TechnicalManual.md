@@ -34,14 +34,12 @@ CIA|8520A||2
 
 The Amiga PCI includes a buffered, host terminated Gayle compatible AUTOBOOT* IDE port for hard drives and ATAPI** devices. The IDE port complies with the ATA/ATAPI Revision 4[[1]](#1) standard. The IDE port supports two devices (master and slave). For instructions on installing a new hard drive on Amiga computers, refer to the [Commodore Hard Drive User's Guide](DataSheet/Hard_Drive_Users_Guide.pdf). This includes the HDToolBox user guide and other useful information for setting up both IDE and SCSI devices.
 
-The IDE cable header and the compact flash card adapter are on the same IDE port. They may be used simultaneously, but one device must be set to master, the other to slave. The IDE port only supports two devices, so when the CF card slot is in use, only one device may be installed on the IDE cable.
-
 *AUTOBOOT requires Kickstart v37.300 or greater or compatible scsi.device in Kickstart.  
 **ATAPI support included in Kickstart 3.1.4+. Older versions of Kickstart may require installation of third party ATAPI drivers.  
 
 ### 1.6 Human Interface Devices (HID)
 
-The AmigaPCI support human interface devices (HID) via the two USB ports. Only keyboards and mice are supported. Support is supplied via the on-board STM32F205RET7 microcontroller, which translates the HID inputs into Amiga compatable signals. The mouse HID signals are shared with the JOY1 port (see 1.8.4) via a 74LVC245 buffer. HID input to the shared port is only active when the HID mouse is actively being used. When the HID mouse is not actively being used, the buffer outputs are tristate and will not adversely affect input from a device on JOY1. 
+The AmigaPCI support human interface devices (HID) via the two USB ports. Only keyboards and mice are supported. Support is supplied via the on-board STM32F205RET7 microcontroller, which translates the HID inputs into Amiga compatable signals. The mouse HID signals are shared with the JOY1 port (see 1.8.4) via a 74LVC245 buffer. HID input to the shared port is only active when the HID mouse is actively being used. When the HID mouse is not actively being used, the buffer outputs are tristate and will not adversely affect input from a device on JOY1. HID keyboards are supported with no option for legacy Amiga keyboards. 
 
 **NOTE:** Using an HID mouse and a device on JOY1 at the same time will result in udersireable behavior.
 
