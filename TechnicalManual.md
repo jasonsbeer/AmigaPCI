@@ -27,7 +27,6 @@ Agnus|8372A or 8375||1
 Denise|8362 or 8373||1
 Paula|8364||1
 CIA|8520A||2
-Gary|5719||1
 
 ### 1.4 Floppy Drives
 
@@ -42,7 +41,9 @@ The IDE cable header and the compact flash card adapter are on the same IDE port
 
 ### 1.6 Human Interface Devices (HID)
 
-The AmigaPCI support human interface devices (HID) via the two USB ports. Only keyboards and mice are supported. Support is supplied via the on-board STM32F205RET7 microcontroller, which translates the HID inputs into Amiga compatable signals. The mouse HID signals are shared with the JOY1 port (see 1.8.4) and are diode protected. This is to prevent +5V from any devices on the JOY1 port from feeding into the microcontroller.
+The AmigaPCI support human interface devices (HID) via the two USB ports. Only keyboards and mice are supported. Support is supplied via the on-board STM32F205RET7 microcontroller, which translates the HID inputs into Amiga compatable signals. The mouse HID signals are shared with the JOY1 port (see 1.8.4) via a 74LVC245 buffer. HID input to the shared port is only active when the HID mouse is actively being used. When the HID mouse is not actively being used, the buffer outputs are tristate and will not adversely affect input from a device on JOY1. 
+
+**NOTE:** Using an HID mouse and a device on JOY1 at the same time will result in udersireable behavior.
 
 ### 1.7 Audio
 
@@ -60,7 +61,9 @@ The serial port is a male DB25 connector, which is stacked with the parallel fem
 
 #### 1.8.4 Legacy Joystick and Mouse Ports
 
-There are two legacy joystick port headers on the board. JOY1 is for Amiga mice and joysticks. JOY2 is a joystick only input.
+There are two legacy joystick port headers on the board. JOY1 is always active and is shared with the HID mouse input. See 1.6.
+
+**NOTE:** Using an HID mouse and a device on JOY1 at the same time will result in udersireable behavior.
 
 ### 1.9 15KHz Video
 
@@ -76,12 +79,14 @@ By definition, the PCI Local Bus is a processor independent, 32 bit expasion bus
 
 ### 2.1 Endianness
 
-Devices such as the Motorola 68000 (M68k) series processors are big endian devices. PCI devices, by contrast, are little endian devices. This means we must byte swap the address and data signals to provide a compatability layer between devices with different endianness[[1]](#1). This byte swap occurs in the PCI Controller Logic and is transparent to the devices. Any devices created for the AmigaPCI must be designed as little endian, as defined in the PCI Local Bus Specifications. Because PCI can mask any byte, we swap each byte individually.
+Devices such as the Motorola 68000 (M68k) series processors are big endian devices. PCI devices, by contrast, are little endian devices. This means we must byte swap the address and data signals to provide a compatability layer between devices with different endianness[[1]](#1). This byte swap occurs in the PCI Controller Logic and is transparent to the devices. Any devices created for the AmigaPCI must be designed as little endian, as defined in the PCI Local Bus Specifications.
 
 Device|0x00|0x01|0x02|0x03|Endianess
 -|-|-|-|-|-
 M68k Data Bus|0*..7|8..15|16..23|24..31|Big
 PCI AD Bus|7..0|15..8|23..16|31*..24|Little
+
+**NOTE:** For the purposes of this project, a bus's most significant bit will be listed first and least significant last. For example, [31..0] indicates bit 31 as the most significant bit. Zero is the least. Thus, [31..0] indicates a little endian device. The opposite will be true for a big endian device.
 
 *Most significant bit.
 
