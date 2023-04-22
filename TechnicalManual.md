@@ -10,11 +10,19 @@ The AmigaPCI is a Motrola MC68040 based OCS/ECS* Amiga computer in the ATX form 
 
 ### 1.1 Processor
 
+The Amiga PCI is based on the Motorola 68040 processor (MC68040). The MC68040 has many advantages over previous generation processors. It includes an integrated floating point unit (FPU) as well as more efficient instruction execution, making it several time faster than the MC68030 processor. The MC68040 can be obtained for about the same price as the MC68030 + FPU.
+
 ### 1.2 Expansion Busses
+
+The Amiga PCI includes expansion busses that allow for the user to expand the machine beyond its original capabilities.
 
 #### 1.2.1 PCI
 
+The PCI bus is based on the PCI Local Bus Revision 2.3 specifications[[2]](#2) and is discussed in detail in Section 2.
+
 #### 1.2.2 Video Slot
+
+The Amiga PCI includes the Amiga 2000/3000 video bus. This allows for any OCS/ECS compatable video device to be used with the Amiga PCI.
 
 ### 1.3 Amiga Chipset
 
@@ -28,7 +36,9 @@ Denise|8362 or 8373||1
 Paula|8364||1
 CIA|8520A||2
 
-### 1.4 Floppy Drives
+### 1.4 Floppy Disk Drives
+
+Although deprecated for many years, the floppy disk interface is the primary way Amiga based computers store and retrieve data external data. The Amiga PCI includes headers for internal and external disk drives. The internal drive port supports up to two 3.5 inch double density floppy disk drives. Jumper Jxxx tells the Amiga PCI how many internal floppy disk drives are installed. When only one drive is installed (DF0), there should be no jumper on Jxxx. In the event a second floppy disk drive (DF0 and DF1) is installed on the internal floppy disk drive header, Jxxx must have a jumper placed.
 
 ### 1.5 Integrated Device Electronics (IDE)
 
@@ -83,7 +93,7 @@ By definition, the PCI Local Bus is a processor independent, 32 bit expasion bus
 
 ### 2.1 Endianness
 
-Devices such as the Motorola 68000 (M68k) series processors are big endian devices. PCI devices, by contrast, are little endian devices. This means we must byte swap the address and data signals to provide a compatability layer between devices with different endianness[[1]](#1). This byte swap occurs in the PCI Controller Logic and is transparent to the devices. Any devices created for the AmigaPCI must be designed as little endian, as defined in the PCI Local Bus Specifications.
+Motorola 68000 series processors are big endian devices. PCI devices, by contrast, are little endian devices. This means we must byte swap the address and data signals to provide compatability between devices with different endianness[[1]](#1). This byte swap occurs in the PCI Controller Logic and is transparent to the devices. Any devices created for the AmigaPCI must be designed as little endian, as defined in the PCI Local Bus Specifications.
 
 Device|0x00|0x01|0x02|0x03|Endianess
 -|-|-|-|-|-
