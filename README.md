@@ -1,3 +1,3 @@
-<img src="/Images/amigapci-logo.png">  
+<img src="/Images/AmigaPCI-logo-dark.png">  
 
-Amiga with Native PCI Bus
+Motorola 68040 based Amiga with native PCI bus.
