@@ -10,7 +10,7 @@ The AmigaPCI is a Motrola MC68040 based OCS/ECS* Amiga computer in the ATX form 
 
 ### 1.1 Processor
 
-The Amiga PCI is based on the Motorola 68040 processor (MC68040). The MC68040 has many advantages over previous generation processors. It includes an integrated floating point unit (FPU) as well as more efficient instruction execution, making it several time faster than the MC68030 processor. The MC68040 can be obtained for about the same price as the MC68030 + FPU.
+The Amiga PCI is based on the Motorola 68040 processor (MC68040). The MC68040 has many advantages over previous generation processors. It includes an integrated floating point unit (FPU) as well as more efficient instruction execution, making it several time faster than the MC68030 processor at similar clock speeds. The MC68040 can be obtained for about the same price as the MC68030 + FPU.
 
 ### 1.2 Expansion Busses
 
