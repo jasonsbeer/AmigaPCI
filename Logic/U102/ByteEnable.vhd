@@ -147,8 +147,8 @@ begin
 			
 		ELSIF RISING_EDGE(CLK7) THEN
 	
-			nLDS <= NOT (SIZ(1) OR NOT SIZ(0) OR A(0));
-			nUDS <= A(0);
+			nLDS <= NOT (SIZ(1) OR NOT SIZ(0) OR A(0)); --LOWER BYTE
+			nUDS <= A(0); --UPPER BYTE
 			
 		END IF;
 		

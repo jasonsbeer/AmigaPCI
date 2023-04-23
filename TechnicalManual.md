@@ -83,7 +83,34 @@ The 15KHz standard Amiga video is output via an HD15 connector. This allows easy
 
 ### 1.10 Real Time Clock
 
-The real time clock of the AmigaPCI is a modern device with I2C interface. Amiga OS bus requests for real time clock functions are translated through the Board Controller.
+The real time clock (RTC) of the AmigaPCI uses the RTC of the STM32F205RET7 microcontroller.
+
+### 1.11 Chipset RAM
+
+Chip RAM is supplied by SDRAM via the board controller.
+
+#### 1.11.1 Slow RAM
+
+The CPU can access the chipset RAM through Agnus. Because this process is mediated through Agnus, this RAM is referred to as "Slow RAM". The process is as follows:
+
+1) The CPU drives A1..20 in the chipset RAM address space and drives the data bus for write cycles.
+2) The RAM controller asserts _LDS, _UDS, and _RAMEN to indicate CPU access to the SDRAM.
+3) The CPU asserts _TIP to indicate the address and data (for write cycles) is valid.
+4) Agnus drives _WE low for write cycles.
+5) On the rising 7MHz clock edge, Agnus drives a valid _RAS address on MA0 - MA9.
+6) On the rising edge of BCLK, the RAM controller drives the _RAS address to the SDRAM with a bank activate command.
+7) On the next rising 7MHz clock edge, Agnus drives a valid _CAS address on MA0 - MA9.
+8) On the rising edge of BCLK, the RAM controller drives the _CAS address to the SDRAM with a read or write command.
+9) For read cycles, after any latency requirements, data is driven to the data bus by the SDRAM. Write cycles are latched immediately with the _CAS command.
+10) _TA is asserted by the board controller to signal the MC68040 to complete the cycle.
+
+NOTE: Agnus is RAS only refresh. This means any _RAS command followed by another _RAS command should be ignored. SDRAM refresh is handled by the RAM controller and is independent of the Agnus refresh command. An Agnus refresh cycle can be recognized by the assertion of _RAS0 and _RAS1 simultaneously, which will only happen during refresh cycles.
+
+#### 1.11.2 Chipset DMA
+
+
+_DBR is asserted for chipset RAM DMA cycle.
+
 
 ## 2. PCI Bus
 
