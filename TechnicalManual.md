@@ -38,7 +38,7 @@ CIA|8520A||2
 
 ### 1.4 Floppy Disk Drives
 
-Although deprecated for many years, the floppy disk interface is the primary way Amiga based computers store and retrieve data external data. The Amiga PCI includes headers for internal and external disk drives. The internal drive port supports up to two 3.5 inch double density floppy disk drives. Jumper Jxxx tells the Amiga PCI how many internal floppy disk drives are installed. When only one drive is installed (DF0), there should be no jumper on Jxxx. In the event a second floppy disk drive (DF0 and DF1) is installed on the internal floppy disk drive header, Jxxx must have a jumper placed.
+Although deprecated for many years, the floppy disk interface is the primary way Amiga based computers store and retrieve external data. The Amiga PCI includes a header that supports two internal double density floppy disk drives. In the event two floppy disk drives (DF0 and DF1) are installed on the floppy disk drive header, J200 must have a jumper placed. When only one floppy disk drive is installed (DF0), there should be no jumper.
 
 ### 1.5 Integrated Device Electronics (IDE)
 
