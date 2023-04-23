@@ -122,7 +122,7 @@ By definition, the PCI Local Bus is a processor independent, 32 bit expasion bus
 
 ### 2.1 Endianness
 
-Motorola 68000 series processors are big endian devices. PCI devices, by contrast, are little endian devices. This means we must byte swap the address and data signals to provide compatability between devices with different endianness[[1]](#1). This byte swap occurs in the PCI Controller Logic and is transparent to the devices. Any devices created for the AmigaPCI must be designed as little endian, as defined in the PCI Local Bus Specifications.
+Motorola 68000 series processors are big endian devices. PCI devices, by contrast, are little endian devices. This means we must byte swap the address and data signals to provide compatability between devices with different endianness[[1]](#1). The Amiga PCI implements address (or byte) invariance to implement the endian conversion. Any devices created for the AmigaPCI must be designed as little endian, as defined in the PCI Local Bus Specifications.
 
 Device|0x00|0x01|0x02|0x03|Endianess
 -|-|-|-|-|-
