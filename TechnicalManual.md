@@ -91,20 +91,22 @@ Chip RAM is supplied by SDRAM via the board controller.
 
 #### 1.11.1 Slow RAM
 
-The CPU can access the chipset RAM through Agnus. Because this process is mediated through Agnus, this RAM is referred to as "Slow RAM". The process is as follows:
+The CPU can access the chipset RAM through Agnus. Because this process is mediated through Agnus, this RAM is referred to as "Slow RAM". The RAM controller must adhear to MC68000 timings. The process is as follows:
 
 1) The CPU drives A1..20 in the chipset RAM address space and drives the data bus for write cycles.
-2) The RAM controller asserts _LDS, _UDS, and _RAMEN to indicate CPU access to the SDRAM.
-3) The CPU asserts _TIP to indicate the address and data (for write cycles) is valid.
+2) The CPU asserts _TIP to indicate the address and data (for write cycles) is valid.
+3) The RAM controller asserts _AS, _LDS, _UDS, and _RAMEN on the falling 7MHz edge (S1) to indicate CPU access to Agnus. According to Commodore technical publications, _AS should only be asserted when both C1 and C3 are low, otherwise a 7MHz wait state is to be inserted.
 4) Agnus drives _WE low for write cycles.
-5) On the rising 7MHz clock edge, Agnus drives a valid _RAS address on MA0 - MA9.
-6) On the rising edge of BCLK, the RAM controller drives the _RAS address to the SDRAM with a bank activate command.
-7) On the next rising 7MHz clock edge, Agnus drives a valid _CAS address on MA0 - MA9.
-8) On the rising edge of BCLK, the RAM controller drives the _CAS address to the SDRAM with a read or write command.
+5) On the rising edge of C3, Agnus drives a valid _RAS address on MA0 - MA9 (S2).
+6) On the rising edge of C1, Agnus drives a valid _CAS address on MA0 - MA9 (S3).
+7) On the first falling edge of BCLK after entering MC68000 S6, the RAM controller drives the _RAS address to the SDRAM with a bank activate command.
+8) On the next falling edge of BCLK, the RAM controller drives the _CAS address to the SDRAM with a read or write command.
 9) For read cycles, after any latency requirements, data is driven to the data bus by the SDRAM. Write cycles are latched immediately with the _CAS command.
-10) _TA is asserted by the board controller to signal the MC68040 to complete the cycle.
+10) On the next falling edge of BCLK, _TA and _TBI are asserted by the board controller to signal the MC68040 to complete the cycle and inhibit burst transfers.
 
-NOTE: Agnus is RAS only refresh. This means any _RAS command followed by another _RAS command should be ignored. SDRAM refresh is handled by the RAM controller and is independent of the Agnus refresh command. An Agnus refresh cycle can be recognized by the assertion of _RAS0 and _RAS1 simultaneously, which will only happen during refresh cycles.
+See [Timing Diagram](</DataSheets/TimingDiagrams/CPU Chip Register and Slow RAM.png>)
+
+NOTE: Agnus is RAS only refresh. SDRAM refresh is handled by the RAM controller and is independent of the Agnus refresh command. An Agnus refresh cycle can be recognized by the assertion of _RAS0 and _RAS1 simultaneously, which will only happen during refresh cycles.
 
 #### 1.11.2 Chipset DMA
 
