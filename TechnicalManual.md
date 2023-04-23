@@ -93,7 +93,7 @@ Chip RAM is supplied by SDRAM via the board controller.
 
 The CPU can access the chipset RAM through Agnus. Because this process is mediated through Agnus, this RAM is referred to as "Slow RAM". The RAM controller must adhear to MC68000 timings. The process is as follows:
 
-1) The CPU drives A1..20 in the chipset RAM address space and drives the data bus for write cycles.
+1) The CPU drives A1..20 in the chipset RAM address space and drives the data bus and R_W low for write cycles.
 2) The CPU asserts _TIP to indicate the address and data (for write cycles) is valid.
 3) The RAM controller asserts _AS, _LDS, _UDS, and _RAMEN on the falling 7MHz edge (S1) to indicate CPU access to Agnus. According to Commodore technical publications, _AS should only be asserted when both C1 and C3 are low, otherwise a 7MHz wait state is to be inserted.
 4) Agnus drives _WE low for write cycles.
