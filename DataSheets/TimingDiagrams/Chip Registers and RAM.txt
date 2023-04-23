@@ -1,5 +1,5 @@
 {signal: [
-  ['Agnus Clocks',
+  ['Chipset Clocks',
   {name: 'C1(CCK)', wave: 'n..', "period": 22, "phase": 0.8}, 
   {name: 'C3(CCKQ)', wave: 'n..', "period": 22, "phase": 6.25}, 
   {name: 'CLK7', wave: 'n.....', "period": 11, "phase": 0.8}], 
