@@ -81,11 +81,11 @@ There are two legacy joystick port headers on the board. JOY1 is always active a
 
 ### 1.9 15KHz Video
 
-The 15KHz standard Amiga video is output via an HD15 connector. This allows easy connection to converter boxes or any monitors that support the 15KHz standard. 
+The 15KHz standard Amiga video is output via an HD15 connector. This allows easy connection to converter boxes or any monitors that support the 15KHz standard. This connector only includes the signals needed for video output. Other signals present on the orignal Amiga video port are not included.
 
 ### 1.10 Real Time Clock
 
-The real time clock (RTC) of the AmigaPCI uses the RTC of the STM32F205RET7 microcontroller.
+The real time clock (RTC) of the AmigaPCI uses the RTC of the STM32F205RET7 microcontroller. When the RTC address space is active, the board controller signals the microcontroller with the associated request. The microcontroller then either consumes or supplies the necessary data in the correct format. The microcontroller is connected to an external crystal to supply an accurate clock signal for the microcontroller. The crystal is adjustable via the trim capacitor VC200.
 
 ### 1.11 Chipset RAM
 
