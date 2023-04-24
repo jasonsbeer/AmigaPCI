@@ -174,10 +174,10 @@ Each slot is capable of auto configuration via the Amiga OS AUTOCONFIG process. 
 Table 2.2a
 PCI Slot|Address Bit
 -|-
-0|AD[16]
-1|AD[17]
-2|AD[18]
-3|AD[19]
+0|AD[11]
+1|AD[12]
+2|AD[13]
+3|AD[14]
 
 #### 2.2.1 AUTOCONFIG
 
