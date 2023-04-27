@@ -116,6 +116,8 @@ NOTE: Agnus is RAS only refresh. SDRAM refresh is handled by the RAM controller 
 
 _DBR is asserted for chipset RAM DMA cycle.
 
+### 1.12 Ethernet
+
 
 ## 2. PCI Bus
 
