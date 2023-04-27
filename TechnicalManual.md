@@ -51,7 +51,8 @@ The Amiga PCI includes a buffered, host terminated Gayle compatible AUTOBOOT* ID
 
 ### 1.6 Human Interface Devices (HID)
 
-The AmigaPCI support human interface devices (HID) via the two USB ports. Only keyboards and mice are supported. Support is supplied via the on-board STM32F205RET7 microcontroller, which translates the HID inputs into Amiga compatable signals. The mouse HID signals are shared with the JOY1 port (see 1.8.4) via a 74LVC245 buffer. HID input to the shared port is only active when the HID mouse is actively being used. When the HID mouse is not actively being used, the buffer outputs are tristate and will not adversely affect input from a device on JOY1. HID keyboards are supported with no option for legacy Amiga keyboards. 
+The AmigaPCI support human interface devices (HID) via the two USB ports. Only keyboards and mice are supported. Support is supplied via the on-board STM32F205RET7 (OR STM32F207VE
+) microcontroller, which translates the HID inputs into Amiga compatable signals. The mouse HID signals are shared with the JOY1 port (see 1.8.4) via a 74LVC245 buffer. HID input to the shared port is only active when the HID mouse is actively being used. When the HID mouse is not actively being used, the buffer outputs are tristate and will not adversely affect input from a device on JOY1. HID keyboards are supported with no option for legacy Amiga keyboards. 
 
 **NOTE:** Using an HID mouse and a device on JOY1 at the same time will result in udersireable behavior.
 
