@@ -4,7 +4,7 @@ THIS DOCUMENT IS A WORK IN PROGRESS AND SHOULD BE CONSIDERD ALPHA.
 
 # AmigaPCI
 
-The AmigaPCI is a Motrola MC68040 based OCS/ECS* Amiga computer in the ATX form factor. It provides four AUTOCONFIG capable PCI slots for expansion purposes such as video, sound, ethernet connectivity, etc. Amiga OS and Kickstart 2.0+ is required for operation. 
+The AmigaPCI is a Motrola MC68040 based OCS/ECS* Amiga computer in the ATX form factor. It provides four AUTOCONFIG capable PCI slots for expansion purposes such as video, sound, etc. Amiga OS and Kickstart 2.0+ is required for operation. 
 
 * Original Chip Set and Enhanced Chip Set, respectively.
 
@@ -113,11 +113,11 @@ NOTE: Agnus is RAS only refresh. SDRAM refresh is handled by the RAM controller 
 
 #### 1.11.2 Chipset DMA
 
-
 _DBR is asserted for chipset RAM DMA cycle.
 
 ### 1.12 Ethernet
 
+Ethernet 10/100 is provided via the STM32F207VE microcontroller. It is set up as a 16 bit device and responds in the address space $000D 8000 - 000D 8FFF. This is the address space defined as "spare" in the Gayle specification, this, it should be a safe space to use. SANA II drivers will need to be adapted to this and the code to handle the communication interface between the MC68040 bus and ethernet will need to be developed.
 
 ## 2. PCI Bus
 
