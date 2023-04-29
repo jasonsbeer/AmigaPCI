@@ -103,7 +103,7 @@ The CPU can access the 32 bit chipset RAM through Agnus. Because this process is
 1) The CPU drives A1..20 in the chipset RAM address space and drives the data bus and R_W low for write cycles. The data bus bridge is tristate.
 2) The CPU asserts _TS for one clock and _TIP for the duration of the transfer to indicate the address and data (for write cycles) is valid.
 3) The RAM controller asserts _AS, _LDS, _UDS, and _RAMEN on the falling 7MHz edge (S1) to indicate CPU access to Agnus. According to Commodore technical publications, _AS should only be asserted when both C1 and C3 are low, otherwise a 7MHz wait state is to be inserted.
-4) If _DBR is negated, Agnus proceeds with the RAM cycle and drives _WE low for write cycles. If _DBR is asserted, wait states are inserted until _DBR is negated and the CPU RAM cycle can proceed.
+4) If _DBR is negated, Agnus proceeds with the CPU RAM cycle. If _DBR is asserted, wait states are inserted until _DBR is negated and the CPU RAM cycle can proceed.
 5) On the rising edge of C3, Agnus drives a valid _RAS address on MA0 - MA9 (S2). Because the CPU is a 32 bit port, DRA0 is ignored by the RAM controller. 
 6) On the rising edge of C1, Agnus drives a valid _CAS address on MA0 - MA9 (S3). Because the CPU is a 32 bit port, DRA0 is ignored by the RAM controller.
 7) On the first falling edge of BCLK after entering MC68000 S6, the RAM controller drives the _RAS address to the SDRAM with a bank activate command.
@@ -194,10 +194,10 @@ Each slot is capable of auto configuration via the Amiga OS AUTOCONFIG process. 
 Table 2.2a
 PCI Slot|Address Bit
 -|-
-0|AD[11]
-1|AD[12]
-2|AD[13]
-3|AD[14]
+0|AD[15]
+1|AD[16]
+2|AD[17]
+3|AD[18]
 
 #### 2.2.1 AUTOCONFIG
 
