@@ -112,7 +112,7 @@ NOTE: Agnus is RAS only refresh. SDRAM refresh is handled by the RAM controller 
 
 #### 1.11.2 Chipset DMA
 
-The Amiga chipset accesses the chipset RAM via direct memory access. The chipset accesses SDRAM as a 16 bit port. Because the chipset SDRAM is a 32 bit, the chipset data access is directed to either the low word or high word of the 32 bit SDRAM by considering the Agnus DRA0 address signal. The process is as follows:
+The Amiga chipset accesses the chipset RAM via direct memory access. The chipset accesses SDRAM as a 16 bit port. Because the chipset SDRAM is a 32 bit, the chipset data access is directed to either the low word or high word of the 32 bit SDRAM by considering the Agnus DRA0 address signal. **In order to work correctly with the chipset timings, <ins>the RAM controller must adhear to MC68000 timings</ins>**. The process is as follows:
 
 1) The chipset asserts DMAL to request direct memory access (DMA).
 2) Agnus asserts _DBR to indicate a chipset DMA cycle is in progress.
