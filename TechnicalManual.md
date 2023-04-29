@@ -132,7 +132,9 @@ See [Timing Diagram](</DataSheets/TimingDiagrams/Chipset RAM Access.png>)
 
 ### 1.12 Ethernet
 
-Ethernet 10/100 is provided via the XXXXXXXX. It is set up as a 16 bit device and responds in the address space $000D 8000 - 000D 8FFF. This is the address space defined as "spare" in the Gayle specification, this, it should be a safe space to use. SANA II drivers will need to be adapted to this and the code to handle the communication interface between the MC68040 bus and ethernet will need to be developed.
+**THIS IS A STRETCH GOAL AND MAY NOT MAKE IT TO THE FINAL PROPOSAL**
+
+Ethernet 10/100 is provided via the KSZ8851-16MLL MAC controller and PHY. It is set up as a 16 bit device and responds in the address space $000D 8000 - 000D 8FFF. This is the address space defined as "spare" in the Gayle specification, this, it should be a safe space to use. SANA II drivers will need to be adapted to this and the code to handle the communication interface between the MC68040 bus and ethernet will need to be developed.
 
 ## 2. PCI Bus
 
