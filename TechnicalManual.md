@@ -51,8 +51,7 @@ The AmigaPCI includes a buffered, host terminated Gayle compatible AUTOBOOT* IDE
 
 ### 1.6 Human Interface Devices (HID)
 
-The AmigaPCI support human interface devices (HID) via the two USB ports. Only keyboards and mice are supported. Support is supplied via the on-board STM32F205RET7 (OR STM32F207VE
-) microcontroller, which translates the HID inputs into Amiga compatable signals. The mouse HID signals are shared with the JOY1 port (see 1.8.4) via a 74LVC245 buffer. HID input to the shared port is only active when the HID mouse is actively being used. When the HID mouse is not actively being used, the buffer outputs are tristate and will not adversely affect input from a device on JOY1. HID keyboards are supported with no option for legacy Amiga keyboards. 
+The AmigaPCI support human interface devices (HID) via the two USB ports. Only keyboards and mice are supported. Support is supplied via the on-board STM32F205 microcontroller, which translates the HID inputs into Amiga compatable signals. The mouse HID signals are shared with the JOY1 port (see 1.8.4) via a 74LVC245 buffer. HID input to the shared port is only active when the HID mouse is actively being used. When the HID mouse is not actively being used, the buffer outputs are tristate and will not adversely affect input from a device on JOY1. HID keyboards are supported with no option for legacy Amiga keyboards. 
 
 **NOTE:** Using an HID mouse and a device on JOY1 at the same time will result in udersireable behavior.
 
@@ -76,9 +75,9 @@ The serial port is a male DB25 connector, which is stacked with the parallel fem
 
 #### 1.8.4 Legacy Joystick and Mouse Ports
 
-There are two legacy joystick port headers on the board. JOY1 is always active and is shared with the HID mouse input. See 1.6.
+There are two legacy joystick port headers on the board. JOY1 is shared with the HID mouse input. See 1.6.
 
-**NOTE:** Using an HID mouse and a device on JOY1 at the same time will result in udersireable behavior.
+**NOTE:** Using an HID mouse and JOY1 at the same time will result in udersireable behavior.
 
 ### 1.9 15KHz Video
 
@@ -86,7 +85,7 @@ The 15KHz standard Amiga video is output via an HD15 connector. This allows easy
 
 ### 1.10 Real Time Clock
 
-The real time clock (RTC) of the AmigaPCI uses the RTC of the STM32F205RET7 microcontroller. When the RTC address space is active, the board controller signals the microcontroller with the associated request. The microcontroller then either consumes or supplies the necessary data in the correct format. The microcontroller is connected to an external crystal to supply an accurate clock signal for the microcontroller. The crystal is adjustable via the trim capacitor VC200.
+The real time clock (RTC) of the AmigaPCI uses the RTC of the STM32F205 microcontroller. When the RTC address space is active, the board controller signals the microcontroller with the associated request. The microcontroller then either consumes or supplies the necessary data in the correct format. The microcontroller is connected to an external crystal to supply an accurate clock signal for the microcontroller. The crystal is adjustable via the trim capacitor VC200.
 
 ### 1.11 Chipset RAM
 
@@ -100,8 +99,8 @@ The CPU can access the 32 bit chipset RAM through Agnus. Because this process is
 2) The CPU asserts _TS for one clock and _TIP for the duration of the transfer to indicate the address and data (for write cycles) is valid.
 3) The RAM controller asserts _AS, _LDS, _UDS, and _RAMEN on the falling 7MHz edge (S1) to indicate CPU access to Agnus. According to Commodore technical publications, _AS should only be asserted when both C1 and C3 are low, otherwise a 7MHz wait state is to be inserted.
 4) Agnus drives _WE low for write cycles.
-5) On the rising edge of C3, Agnus drives a valid _RAS address on MA0 - MA9 (S2).
-6) On the rising edge of C1, Agnus drives a valid _CAS address on MA0 - MA9 (S3).
+5) On the rising edge of C3, Agnus drives a valid _RAS address on MA0 - MA9 (S2). Because the CPU is a 32 bit port, DRA0 is ignored by the RAM controller. 
+6) On the rising edge of C1, Agnus drives a valid _CAS address on MA0 - MA9 (S3). Because the CPU is a 32 bit port, DRA0 is ignored by the RAM controller.
 7) On the first falling edge of BCLK after entering MC68000 S6, the RAM controller drives the _RAS address to the SDRAM with a bank activate command.
 8) On the next falling edge of BCLK, the RAM controller drives the _CAS address to the SDRAM with a read or write command.
 9) For read cycles, after any latency requirements, data is driven to the data bus by the SDRAM. Write cycles are latched immediately with the _CAS command.
@@ -113,11 +112,22 @@ NOTE: Agnus is RAS only refresh. SDRAM refresh is handled by the RAM controller 
 
 #### 1.11.2 Chipset DMA
 
-_DBR is asserted for chipset RAM DMA cycle.
+The Amiga chipset accesses the chipset RAM via direct memory access. The chipset accesses SDRAM as a 16 bit port. Because the chipset SDRAM is a 32 bit, the chipset data access is directed to either the low word or high word of the 32 bit SDRAM by considering the Agnus DRA0 address signal. The process is as follows:
+
+1) The chipset asserts DMAL to request direct memory access (DMA).
+2) Agnus asserts _DBR to indicate a chipset DMA cycle is in progress.
+3) Agnus drives _WE low for write cycles.
+4) On the rising edge of C3, Agnus drives a valid _RAS address on MA0 - MA9 (S2). If MA0 = 1, the data bridge is tristate and the data goes to the lower word of the SDRAM.
+5) On the rising edge of C1, Agnus drives a valid _CAS address on MA0 - MA9 (S3). If MA0 = 0, the data bridge is enabled and the data goes to the upper word of the SDRAM.
+6) On the first falling edge of BCLK after entering MC68000 S6, the RAM controller drives the _RAS address to the SDRAM with a bank activate command.
+7) On the next falling edge of BCLK, the RAM controller drives the _CAS address to the SDRAM with a read or write command.
+8) For read cycles, after any latency requirements, data is driven to the data bus by the SDRAM. Write cycles are latched immediately with the _CAS command.
+
+See [Timing Diagram](</DataSheets/TimingDiagrams/Chipset RAM Access.png>)
 
 ### 1.12 Ethernet
 
-Ethernet 10/100 is provided via the STM32F207VE microcontroller. It is set up as a 16 bit device and responds in the address space $000D 8000 - 000D 8FFF. This is the address space defined as "spare" in the Gayle specification, this, it should be a safe space to use. SANA II drivers will need to be adapted to this and the code to handle the communication interface between the MC68040 bus and ethernet will need to be developed.
+Ethernet 10/100 is provided via the XXXXXXXX. It is set up as a 16 bit device and responds in the address space $000D 8000 - 000D 8FFF. This is the address space defined as "spare" in the Gayle specification, this, it should be a safe space to use. SANA II drivers will need to be adapted to this and the code to handle the communication interface between the MC68040 bus and ethernet will need to be developed.
 
 ## 2. PCI Bus
 
