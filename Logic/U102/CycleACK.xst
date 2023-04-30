@@ -1,0 +1,5 @@
+set -tmpdir "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U102/xst/projnav.tmp"
+set -xsthdpdir "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U102/xst"
+elaborate
+-ifn ROMCycle.prj
+-ifmt mixed

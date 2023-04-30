@@ -37,15 +37,15 @@ entity U102_MAIN is
 		CLK28 : IN STD_LOGIC;
 		CLK7 : IN STD_LOGIC;
 	   BCLK : IN STD_LOGIC;
-	   --KBCLK : in  STD_LOGIC;
-	   --KBDATA : in  STD_LOGIC;
 		nBTNRST : IN STD_LOGIC;
 		nVPA : IN STD_LOGIC;
 		RnW : IN STD_LOGIC;
 		OVL : IN STD_LOGIC;
 		FC : IN STD_LOGIC_VECTOR (2 DOWNTO 0);
 		nTIP : IN STD_LOGIC;
+		nTS : IN STD_LOGIC;
 		SIZ : IN STD_LOGIC_VECTOR (1 DOWNTO 0);
+		nRAMZ3 : IN STD_LOGIC;
 
 		nRESET : INOUT STD_LOGIC;
 		nVMA : INOUT STD_LOGIC;
@@ -63,9 +63,9 @@ entity U102_MAIN is
 		nGNT3 : INOUT STD_LOGIC;
 	 
 	   E : OUT STD_LOGIC;
-		nROMOE : OUT std_logic;
-		nRAMEN : OUT std_logic;
-		nREGEN : OUT std_logic;
+		nROMEN : INOUT std_logic;
+		nRAMEN : INOUT std_logic;
+		nREGEN : INOUT std_logic;
 		nCIA0 : OUT std_logic;
 		nCIA1 : OUT std_logic;
 		nRTCRD : OUT std_logic;
@@ -75,7 +75,10 @@ entity U102_MAIN is
 		nLMBE : OUT STD_LOGIC;
 		nLLBE : OUT STD_LOGIC;
 		nUDS : OUT STD_LOGIC;
-		nLDS : OUT STD_LOGIC
+		nLDS : OUT STD_LOGIC;
+		nTEA : OUT STD_LOGIC;
+		nTA : OUT STD_LOGIC;
+		nTBI : OUT STD_LOGIC
 		
 	);
 			  
@@ -83,7 +86,10 @@ end U102_MAIN;
 
 architecture Behavioral of U102_MAIN is
 
-		
+	SIGNAL cpu_space : STD_LOGIC;
+	SIGNAL gayle_space : STD_LOGIC;
+	SIGNAL ide_space : STD_LOGIC;
+	SIGNAL autoconfig_space : STD_LOGIC;
 
 begin
 	
@@ -155,13 +161,17 @@ begin
 		nTIP => nTIP,
 		RnW => RnW,
 		nRESET => nRESET,
-		nROMOE => nROMOE,
+		nROMEN => nROMEN,
 		nRAMEN => nRAMEN,
 		nREGEN => nREGEN,
 		nCIA0 => nCIA0,
 		nCIA1 => nCIA1,
 		nRTCRD => nRTCRD,
-		nRTCWR => nRTCWR
+		nRTCWR => nRTCWR,
+		CPUSpace => cpu_space,
+		IDESpace => ide_space,
+		GayleSpace => gayle_space,
+		ACSpace => autoconfig_space
 		
 	);
 	
@@ -182,6 +192,27 @@ begin
 		nLLBE => nLLBE,
 		nUDS => nUDS,
 		nLDS => nLDS
+	);
+	
+	--------------------------------
+	-- TRANSFER CYCLE ACKNOWLEDGE --
+	--------------------------------
+	
+	CycleACK: ENTITY work.CycleACK PORT MAP(
+		BCLK => BCLK,
+		nROMEN => nROMEN,
+		nRAMEN => nRAMEN,
+		nREGEN => nREGEN,
+		nRAMZ3 => nRAMZ3,
+		nTS => nTS,
+		nRESET => nRESET,
+		CPUSpace => cpu_space,
+		nTA => nTA,
+		nTBI => nTBI,
+		nTEA => nTEA,
+		GayleSpace => gayle_space,
+		IDESpace => ide_space,
+		ACSpace => autoconfig_space
 	);
 
 end Behavioral;

@@ -8,5 +8,197 @@
 <msg type="warning" file="Cpld" num="0" delta="new" >Unable to retrieve the path to the iSE Project Repository. Will use the default filename of &apos;<arg fmt="%s" index="1">U102_MAIN.ise</arg>&apos;.
 </msg>
 
+<msg type="info" file="Cpld" num="994" delta="old" >Exhaustive fitting is trying <arg fmt="%s" index="1">pterm limit</arg>: <arg fmt="%d" index="2">25</arg> and <arg fmt="%s" index="3">input limit</arg>: <arg fmt="%d" index="4">54</arg>
+</msg>
+
+<msg type="error" file="Cpld" num="892" delta="old" >Cannot place signal <arg fmt="%s" index="1">MC6800/MY7</arg>. Consider reducing the collapsing input limit or the product term limit to prevent the fitter from creating high input and/or high product term functions.
+</msg>
+
+<msg type="error" file="Cpld" num="868" delta="old" >Cannot fit the design into any of the specified devices with the selected implementation options.
+</msg>
+
+<msg type="info" file="Cpld" num="994" delta="old" >Exhaustive fitting is trying <arg fmt="%s" index="1">pterm limit</arg>: <arg fmt="%d" index="2">25</arg> and <arg fmt="%s" index="3">input limit</arg>: <arg fmt="%d" index="4">53</arg>
+</msg>
+
+<msg type="error" file="Cpld" num="892" delta="old" >Cannot place signal <arg fmt="%s" index="1">MC6800/MY7</arg>. Consider reducing the collapsing input limit or the product term limit to prevent the fitter from creating high input and/or high product term functions.
+</msg>
+
+<msg type="error" file="Cpld" num="868" delta="old" >Cannot fit the design into any of the specified devices with the selected implementation options.
+</msg>
+
+<msg type="info" file="Cpld" num="994" delta="old" >Exhaustive fitting is trying <arg fmt="%s" index="1">pterm limit</arg>: <arg fmt="%d" index="2">25</arg> and <arg fmt="%s" index="3">input limit</arg>: <arg fmt="%d" index="4">52</arg>
+</msg>
+
+<msg type="error" file="Cpld" num="892" delta="old" >Cannot place signal <arg fmt="%s" index="1">MC6800/MY7</arg>. Consider reducing the collapsing input limit or the product term limit to prevent the fitter from creating high input and/or high product term functions.
+</msg>
+
+<msg type="error" file="Cpld" num="868" delta="old" >Cannot fit the design into any of the specified devices with the selected implementation options.
+</msg>
+
+<msg type="info" file="Cpld" num="994" delta="old" >Exhaustive fitting is trying <arg fmt="%s" index="1">pterm limit</arg>: <arg fmt="%d" index="2">25</arg> and <arg fmt="%s" index="3">input limit</arg>: <arg fmt="%d" index="4">51</arg>
+</msg>
+
+<msg type="error" file="Cpld" num="892" delta="old" >Cannot place signal <arg fmt="%s" index="1">MC6800/MY7</arg>. Consider reducing the collapsing input limit or the product term limit to prevent the fitter from creating high input and/or high product term functions.
+</msg>
+
+<msg type="error" file="Cpld" num="868" delta="old" >Cannot fit the design into any of the specified devices with the selected implementation options.
+</msg>
+
+<msg type="info" file="Cpld" num="994" delta="old" >Exhaustive fitting is trying <arg fmt="%s" index="1">pterm limit</arg>: <arg fmt="%d" index="2">25</arg> and <arg fmt="%s" index="3">input limit</arg>: <arg fmt="%d" index="4">50</arg>
+</msg>
+
+<msg type="error" file="Cpld" num="892" delta="old" >Cannot place signal <arg fmt="%s" index="1">MC6800/MY7</arg>. Consider reducing the collapsing input limit or the product term limit to prevent the fitter from creating high input and/or high product term functions.
+</msg>
+
+<msg type="error" file="Cpld" num="868" delta="old" >Cannot fit the design into any of the specified devices with the selected implementation options.
+</msg>
+
+<msg type="info" file="Cpld" num="994" delta="old" >Exhaustive fitting is trying <arg fmt="%s" index="1">pterm limit</arg>: <arg fmt="%d" index="2">25</arg> and <arg fmt="%s" index="3">input limit</arg>: <arg fmt="%d" index="4">49</arg>
+</msg>
+
+<msg type="error" file="Cpld" num="892" delta="old" >Cannot place signal <arg fmt="%s" index="1">MC6800/MY7</arg>. Consider reducing the collapsing input limit or the product term limit to prevent the fitter from creating high input and/or high product term functions.
+</msg>
+
+<msg type="error" file="Cpld" num="868" delta="old" >Cannot fit the design into any of the specified devices with the selected implementation options.
+</msg>
+
+<msg type="info" file="Cpld" num="994" delta="old" >Exhaustive fitting is trying <arg fmt="%s" index="1">pterm limit</arg>: <arg fmt="%d" index="2">25</arg> and <arg fmt="%s" index="3">input limit</arg>: <arg fmt="%d" index="4">48</arg>
+</msg>
+
+<msg type="error" file="Cpld" num="892" delta="old" >Cannot place signal <arg fmt="%s" index="1">MC6800/MY7</arg>. Consider reducing the collapsing input limit or the product term limit to prevent the fitter from creating high input and/or high product term functions.
+</msg>
+
+<msg type="error" file="Cpld" num="868" delta="old" >Cannot fit the design into any of the specified devices with the selected implementation options.
+</msg>
+
+<msg type="info" file="Cpld" num="994" delta="old" >Exhaustive fitting is trying <arg fmt="%s" index="1">pterm limit</arg>: <arg fmt="%d" index="2">25</arg> and <arg fmt="%s" index="3">input limit</arg>: <arg fmt="%d" index="4">47</arg>
+</msg>
+
+<msg type="error" file="Cpld" num="892" delta="old" >Cannot place signal <arg fmt="%s" index="1">MC6800/MY7</arg>. Consider reducing the collapsing input limit or the product term limit to prevent the fitter from creating high input and/or high product term functions.
+</msg>
+
+<msg type="error" file="Cpld" num="868" delta="old" >Cannot fit the design into any of the specified devices with the selected implementation options.
+</msg>
+
+<msg type="info" file="Cpld" num="994" delta="old" >Exhaustive fitting is trying <arg fmt="%s" index="1">pterm limit</arg>: <arg fmt="%d" index="2">25</arg> and <arg fmt="%s" index="3">input limit</arg>: <arg fmt="%d" index="4">46</arg>
+</msg>
+
+<msg type="error" file="Cpld" num="892" delta="old" >Cannot place signal <arg fmt="%s" index="1">MC6800/MY7</arg>. Consider reducing the collapsing input limit or the product term limit to prevent the fitter from creating high input and/or high product term functions.
+</msg>
+
+<msg type="error" file="Cpld" num="868" delta="old" >Cannot fit the design into any of the specified devices with the selected implementation options.
+</msg>
+
+<msg type="info" file="Cpld" num="994" delta="old" >Exhaustive fitting is trying <arg fmt="%s" index="1">pterm limit</arg>: <arg fmt="%d" index="2">25</arg> and <arg fmt="%s" index="3">input limit</arg>: <arg fmt="%d" index="4">45</arg>
+</msg>
+
+<msg type="error" file="Cpld" num="892" delta="old" >Cannot place signal <arg fmt="%s" index="1">MC6800/MY7</arg>. Consider reducing the collapsing input limit or the product term limit to prevent the fitter from creating high input and/or high product term functions.
+</msg>
+
+<msg type="error" file="Cpld" num="868" delta="old" >Cannot fit the design into any of the specified devices with the selected implementation options.
+</msg>
+
+<msg type="info" file="Cpld" num="994" delta="old" >Exhaustive fitting is trying <arg fmt="%s" index="1">pterm limit</arg>: <arg fmt="%d" index="2">25</arg> and <arg fmt="%s" index="3">input limit</arg>: <arg fmt="%d" index="4">44</arg>
+</msg>
+
+<msg type="error" file="Cpld" num="892" delta="old" >Cannot place signal <arg fmt="%s" index="1">MC6800/MY7</arg>. Consider reducing the collapsing input limit or the product term limit to prevent the fitter from creating high input and/or high product term functions.
+</msg>
+
+<msg type="error" file="Cpld" num="868" delta="old" >Cannot fit the design into any of the specified devices with the selected implementation options.
+</msg>
+
+<msg type="info" file="Cpld" num="994" delta="old" >Exhaustive fitting is trying <arg fmt="%s" index="1">pterm limit</arg>: <arg fmt="%d" index="2">25</arg> and <arg fmt="%s" index="3">input limit</arg>: <arg fmt="%d" index="4">43</arg>
+</msg>
+
+<msg type="error" file="Cpld" num="892" delta="old" >Cannot place signal <arg fmt="%s" index="1">MC6800/MY7</arg>. Consider reducing the collapsing input limit or the product term limit to prevent the fitter from creating high input and/or high product term functions.
+</msg>
+
+<msg type="error" file="Cpld" num="868" delta="old" >Cannot fit the design into any of the specified devices with the selected implementation options.
+</msg>
+
+<msg type="info" file="Cpld" num="994" delta="old" >Exhaustive fitting is trying <arg fmt="%s" index="1">pterm limit</arg>: <arg fmt="%d" index="2">25</arg> and <arg fmt="%s" index="3">input limit</arg>: <arg fmt="%d" index="4">42</arg>
+</msg>
+
+<msg type="error" file="Cpld" num="892" delta="old" >Cannot place signal <arg fmt="%s" index="1">MC6800/MY7</arg>. Consider reducing the collapsing input limit or the product term limit to prevent the fitter from creating high input and/or high product term functions.
+</msg>
+
+<msg type="error" file="Cpld" num="868" delta="old" >Cannot fit the design into any of the specified devices with the selected implementation options.
+</msg>
+
+<msg type="info" file="Cpld" num="994" delta="old" >Exhaustive fitting is trying <arg fmt="%s" index="1">pterm limit</arg>: <arg fmt="%d" index="2">25</arg> and <arg fmt="%s" index="3">input limit</arg>: <arg fmt="%d" index="4">41</arg>
+</msg>
+
+<msg type="error" file="Cpld" num="892" delta="old" >Cannot place signal <arg fmt="%s" index="1">MC6800/MY7</arg>. Consider reducing the collapsing input limit or the product term limit to prevent the fitter from creating high input and/or high product term functions.
+</msg>
+
+<msg type="error" file="Cpld" num="868" delta="old" >Cannot fit the design into any of the specified devices with the selected implementation options.
+</msg>
+
+<msg type="info" file="Cpld" num="994" delta="old" >Exhaustive fitting is trying <arg fmt="%s" index="1">pterm limit</arg>: <arg fmt="%d" index="2">25</arg> and <arg fmt="%s" index="3">input limit</arg>: <arg fmt="%d" index="4">40</arg>
+</msg>
+
+<msg type="error" file="Cpld" num="892" delta="old" >Cannot place signal <arg fmt="%s" index="1">MC6800/MY7</arg>. Consider reducing the collapsing input limit or the product term limit to prevent the fitter from creating high input and/or high product term functions.
+</msg>
+
+<msg type="error" file="Cpld" num="868" delta="old" >Cannot fit the design into any of the specified devices with the selected implementation options.
+</msg>
+
+<msg type="info" file="Cpld" num="994" delta="old" >Exhaustive fitting is trying <arg fmt="%s" index="1">pterm limit</arg>: <arg fmt="%d" index="2">25</arg> and <arg fmt="%s" index="3">input limit</arg>: <arg fmt="%d" index="4">39</arg>
+</msg>
+
+<msg type="error" file="Cpld" num="892" delta="old" >Cannot place signal <arg fmt="%s" index="1">MC6800/MY7</arg>. Consider reducing the collapsing input limit or the product term limit to prevent the fitter from creating high input and/or high product term functions.
+</msg>
+
+<msg type="error" file="Cpld" num="868" delta="old" >Cannot fit the design into any of the specified devices with the selected implementation options.
+</msg>
+
+<msg type="info" file="Cpld" num="994" delta="old" >Exhaustive fitting is trying <arg fmt="%s" index="1">pterm limit</arg>: <arg fmt="%d" index="2">25</arg> and <arg fmt="%s" index="3">input limit</arg>: <arg fmt="%d" index="4">38</arg>
+</msg>
+
+<msg type="error" file="Cpld" num="892" delta="old" >Cannot place signal <arg fmt="%s" index="1">MC6800/MY7</arg>. Consider reducing the collapsing input limit or the product term limit to prevent the fitter from creating high input and/or high product term functions.
+</msg>
+
+<msg type="error" file="Cpld" num="868" delta="old" >Cannot fit the design into any of the specified devices with the selected implementation options.
+</msg>
+
+<msg type="info" file="Cpld" num="994" delta="old" >Exhaustive fitting is trying <arg fmt="%s" index="1">pterm limit</arg>: <arg fmt="%d" index="2">25</arg> and <arg fmt="%s" index="3">input limit</arg>: <arg fmt="%d" index="4">37</arg>
+</msg>
+
+<msg type="error" file="Cpld" num="892" delta="old" >Cannot place signal <arg fmt="%s" index="1">MC6800/MY7</arg>. Consider reducing the collapsing input limit or the product term limit to prevent the fitter from creating high input and/or high product term functions.
+</msg>
+
+<msg type="error" file="Cpld" num="868" delta="old" >Cannot fit the design into any of the specified devices with the selected implementation options.
+</msg>
+
+<msg type="info" file="Cpld" num="994" delta="old" >Exhaustive fitting is trying <arg fmt="%s" index="1">pterm limit</arg>: <arg fmt="%d" index="2">25</arg> and <arg fmt="%s" index="3">input limit</arg>: <arg fmt="%d" index="4">36</arg>
+</msg>
+
+<msg type="error" file="Cpld" num="892" delta="old" >Cannot place signal <arg fmt="%s" index="1">MC6800/MY7</arg>. Consider reducing the collapsing input limit or the product term limit to prevent the fitter from creating high input and/or high product term functions.
+</msg>
+
+<msg type="error" file="Cpld" num="868" delta="old" >Cannot fit the design into any of the specified devices with the selected implementation options.
+</msg>
+
+<msg type="info" file="Cpld" num="994" delta="old" >Exhaustive fitting is trying <arg fmt="%s" index="1">pterm limit</arg>: <arg fmt="%d" index="2">25</arg> and <arg fmt="%s" index="3">input limit</arg>: <arg fmt="%d" index="4">35</arg>
+</msg>
+
+<msg type="error" file="Cpld" num="892" delta="old" >Cannot place signal <arg fmt="%s" index="1">MC6800/MY7</arg>. Consider reducing the collapsing input limit or the product term limit to prevent the fitter from creating high input and/or high product term functions.
+</msg>
+
+<msg type="error" file="Cpld" num="868" delta="old" >Cannot fit the design into any of the specified devices with the selected implementation options.
+</msg>
+
+<msg type="info" file="Cpld" num="994" delta="old" >Exhaustive fitting is trying <arg fmt="%s" index="1">pterm limit</arg>: <arg fmt="%d" index="2">25</arg> and <arg fmt="%s" index="3">input limit</arg>: <arg fmt="%d" index="4">34</arg>
+</msg>
+
+<msg type="error" file="Cpld" num="892" delta="new" >Cannot place signal <arg fmt="%s" index="1">$OpTx$$OpTx$FX_DC$17985_INV$18266</arg>. Consider reducing the collapsing input limit or the product term limit to prevent the fitter from creating high input and/or high product term functions.
+</msg>
+
+<msg type="error" file="Cpld" num="868" delta="old" >Cannot fit the design into any of the specified devices with the selected implementation options.
+</msg>
+
+<msg type="info" file="Cpld" num="994" delta="old" >Exhaustive fitting is trying <arg fmt="%s" index="1">pterm limit</arg>: <arg fmt="%d" index="2">25</arg> and <arg fmt="%s" index="3">input limit</arg>: <arg fmt="%d" index="4">33</arg>
+</msg>
+
 </messages>
 
