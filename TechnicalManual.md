@@ -44,6 +44,8 @@ CIA|8520A||2
 
 Kickstart ROMs for the Amiga 3000 should be burned to 100ns or faster 27C4096 EPROMs for use by the AmigaPCI. Original 27C400 Amiga EPROMs are not supported. U210 is the "high" (D15..0) ROM and U211 is the "low" (D31..16) ROM. 
 
+See [Timing Diagram](</DataSheets/TimingDiagrams/ROM Cycle.png>)
+
 ### 1.4 Floppy Disk Drives
 
 The floppy disk interface is the primary way Amiga based computers store and retrieve external data. The AmigaPCI includes a header that supports two internal double density floppy disk drives. In the event two floppy disk drives (DF0 and DF1) are installed on the floppy disk drive header, J200 must have a jumper placed. When only one floppy disk drive is installed (DF0), there should be no jumper.
