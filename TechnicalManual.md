@@ -6,7 +6,7 @@ THIS DOCUMENT IS A WORK IN PROGRESS.
 
 The AmigaPCI is a Motorola MC68040 based OCS/ECS* Amiga computer in the ATX form factor. It provides four AUTOCONFIG capable PCI slots for expansion purposes such as video, sound, etc. Amiga OS and Kickstart 2.0+ is required for operation. 
 
-* Original Chip Set and Enhanced Chip Set, respectively.
+*Original Chip Set and Enhanced Chip Set, respectively.
 
 ## 1. Overview
 
