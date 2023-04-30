@@ -61,7 +61,7 @@ J2XX|?|?
 
 ### 1.5 Integrated Device Electronics (IDE)
 
-The AmigaPCI includes a buffered, host terminated Gayle compatible AUTOBOOT* IDE port for hard drives and ATAPI** devices. The IDE port complies with the ATA/ATAPI Revision 4[[1]](#1) standard. The IDE port supports two devices (master and slave). For instructions on installing a new hard drive on Amiga computers, refer to the [Commodore Hard Drive User's Guide](DataSheet/Hard_Drive_Users_Guide.pdf). This includes the HDToolBox user guide and other useful information for setting up both IDE and SCSI devices.
+The AmigaPCI includes a buffered, host terminated Gayle compatible AUTOBOOT* IDE port for hard drives and ATAPI** devices. The IDE port complies with the ATA/ATAPI Revision 4[[1]](#1) standard. The IDE port supports two devices (master and slave). For instructions on installing a new hard drive on Amiga computers, refer to the [Commodore Hard Drive User's Guide](DataSheets/Hard_Drive_Users_Guide.pdf). This includes the HDToolBox user guide and other useful information for setting up both IDE and SCSI devices.
 
 *AUTOBOOT requires Kickstart v37.300 or greater or compatible scsi.device in Kickstart.  
 **ATAPI support included in Kickstart 3.1.4+. Older versions of Kickstart may require installation of third party ATAPI drivers.  
