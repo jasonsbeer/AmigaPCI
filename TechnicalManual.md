@@ -1,6 +1,8 @@
-<img src="/Images/AmigaPCI-logo-dark.png">  
+<p align="center"><img src="/Images/AmigaPCI-logo-dark.png"></p>
 
-THIS DOCUMENT IS A WORK IN PROGRESS.
+<p align="center">"If I have seen further, it is by standing on the shoulders of giants."<br>-Sir Isaac Newton</p>
+
+**THIS DOCUMENT IS A WORK IN PROGRESS.**
 
 # AmigaPCI
 
