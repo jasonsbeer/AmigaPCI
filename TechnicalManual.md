@@ -42,7 +42,7 @@ CIA|8520A||2
 
 #### 1.3.2 Kickstart ROMs
 
-Kickstart ROMs for the Amiga 3000 should be burned to 27C4096 EPROMs for use by the AmigaPCI. Original 27C400 Amiga EPROMs are not supported. U210 is the "high" (D15..0) ROM and U211 is the "low" (D31..16) ROM. 
+Kickstart ROMs for the Amiga 3000 should be burned to 100ns or faster 27C4096 EPROMs for use by the AmigaPCI. Original 27C400 Amiga EPROMs are not supported. U210 is the "high" (D15..0) ROM and U211 is the "low" (D31..16) ROM. 
 
 ### 1.4 Floppy Disk Drives
 
