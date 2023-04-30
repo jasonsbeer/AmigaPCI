@@ -46,7 +46,14 @@ Kickstart ROMs for the Amiga 3000 should be burned to 27C4096 EPROMs for use by 
 
 ### 1.4 Floppy Disk Drives
 
-Although deprecated for many years, the floppy disk interface is the primary way Amiga based computers store and retrieve external data. The AmigaPCI includes a header that supports two internal double density floppy disk drives. In the event two floppy disk drives (DF0 and DF1) are installed on the floppy disk drive header, J200 must have a jumper placed. When only one floppy disk drive is installed (DF0), there should be no jumper.
+The floppy disk interface is the primary way Amiga based computers store and retrieve external data. The AmigaPCI includes a header that supports two internal double density floppy disk drives. In the event two floppy disk drives (DF0 and DF1) are installed on the floppy disk drive header, J200 must have a jumper placed. When only one floppy disk drive is installed (DF0), there should be no jumper.
+
+In addition to supporting original Amiga floppy disk drives, the AmigaPCI also supports floppy disk drives designed for the PC using Ian Steadman's PC floppy interface. Set the jumpers as show in table 1.4 depending on the type of floppy disk drive you are using. When using high density disk drives with high density floppy disks, it may be necessary to cover the high density hole with tape to prevent the disk drive from attempting to use the disk as high density, which is not supported by the Amiga chipset. This may not be necessary for all high density floppy disk drive mechanisms.
+
+Jumper|Amiga Drive|PC Drive
+-|-|-
+J2xx|?|?
+J2XX|?|?
 
 ### 1.5 Integrated Device Electronics (IDE)
 
