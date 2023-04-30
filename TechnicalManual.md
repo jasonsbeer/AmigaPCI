@@ -122,7 +122,7 @@ The Amiga chipset accesses the chipset RAM via direct memory access. The chipset
 1) The chipset asserts DMAL to request direct memory access (DMA).
 2) Agnus asserts _DBR to indicate a chipset DMA cycle is in progress.
 3) On the rising edge of C3, Agnus drives a valid _RAS address on MA0 - MA9 (S2). If MA0 = 1, the data bridge is tristate and the data goes to the lower word of the SDRAM.
-4) On the rising edge of C1, Agnus drives a valid _CAS address on MA0 - MA9 (S3) and drives _WE low for write cycles. If MA0 = 0, the data bridge is enabled and the data goes to the upper word of the SDRAM.
+4) On the rising edge of C1, Agnus drives a valid _CAS address on MA0 - MA9 (S3) and drives _AWE low for write cycles. If MA0 = 0, the data bridge is enabled and the data goes to the upper word of the SDRAM.
 5) On the first falling edge of BCLK after entering MC68000 S6, the RAM controller drives the _RAS address to the SDRAM with a bank activate command.
 6) On the next falling edge of BCLK, the RAM controller drives the _CAS address to the SDRAM with a read or write command.
 7) For read cycles, after any latency requirements, data is driven to the data bus by the SDRAM. Write cycles are latched immediately with the _CAS command.
