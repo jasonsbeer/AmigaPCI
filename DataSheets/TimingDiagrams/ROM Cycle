@@ -1,0 +1,23 @@
+{signal: [
+  ['Clocks', 
+  {name: 'BCLK40', wave: 'p........',  "period": 2}],
+['68040',  
+  {name: 'STATE', wave: 'z.=.=.......=.z..', data:['1', 'W', '2']},
+  {name: 'A(19..2)', wave: 'x..=...........x..', "phase": 0.5},
+ {name: '_TS', wave: '1..0.1............', "phase": 0.5}, 
+  {name: '_TIP', wave: '1..0...........1..', "phase": 0.5},
+  {name: 'R_W', wave: '1.................'},
+  {name: '_TA', wave: 'z..1.........0.1z.'},
+  {name: '_TBI', wave: 'z..1.........0.1z.'}],
+
+['27C4096',
+ {name: '_ROMEN', wave : '1...0..........1..'},
+ {name: 'D(0..31)', wave : 'x...........=...x.', data:['Valid']},
+]
+ 
+], 
+ head:{
+   text:'ROM Cycle'
+ }, foot:{
+   text:'100ns OR FASTER 27C4096'
+ }, config:{skin:'narrow'}}
