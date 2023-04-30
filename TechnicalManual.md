@@ -139,7 +139,13 @@ The Amiga chipset accesses the chipset RAM via direct memory access. The chipset
 
 See [Timing Diagram](</DataSheets/TimingDiagrams/Chipset RAM Access.png>)
 
-### 1.12 Ethernet
+### 1.12 Fast RAM
+
+The AmigaPCI comes with 128MB of Fast RAM on the mother board in the form of four 16Mx16 SDRAM. The AmigaPCI Fast RAM controller supports the MC68040 four long word burst mode in both read and write mode. 
+
+See [Timing Diagram](</DataSheets/TimingDiagrams/Fast RAM.png>)
+
+### 1.13 Ethernet
 
 **THIS IS A STRETCH GOAL AND MAY NOT MAKE IT TO THE FINAL PROPOSAL**
 
