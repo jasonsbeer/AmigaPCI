@@ -141,7 +141,7 @@ See [Timing Diagram](</DataSheets/TimingDiagrams/Chipset RAM Access.png>)
 
 ### 1.12 Fast RAM
 
-The AmigaPCI comes with 128MB of Fast RAM on the mother board in the form of four 16Mx16 SDRAM. The AmigaPCI Fast RAM controller supports the MC68040 four long word burst mode in both read and write mode. 
+The AmigaPCI comes with 128MB of Fast RAM on the mother board in the form of four 16Mx16 SDRAM clocked by BCLK. The AmigaPCI Fast RAM controller supports the MC68040 burst mode of four long word transfers in both read and write mode. Write mode has no wait states. Read mode includes two wait states due to CAS latency.
 
 See [Timing Diagram](</DataSheets/TimingDiagrams/Fast RAM.png>)
 
