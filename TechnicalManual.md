@@ -50,14 +50,22 @@ See [Timing Diagram](</DataSheets/TimingDiagrams/ROM Cycle.png>)
 
 ### 1.4 Floppy Disk Drives
 
-The floppy disk interface is the primary way Amiga based computers store and retrieve external data. The AmigaPCI includes a header that supports two internal double density floppy disk drives. In the event two floppy disk drives (DF0 and DF1) are installed on the floppy disk drive header, J200 must have a jumper placed. When only one floppy disk drive is installed (DF0), there should be no jumper.
+The floppy disk interface is the primary way Amiga based computers store and retrieve external data. The AmigaPCI includes a header that supports two internal double density floppy disk drives. In the event two floppy disk drives (DF0 and DF1) are installed on the floppy disk drive header, J200 must have a jumper placed. When only one floppy disk drive is installed (DF0), there should be no jumper. See Table 1.4.1.
 
-In addition to supporting original Amiga floppy disk drives, the AmigaPCI also supports floppy disk drives designed for the PC using Ian Steadman's PC floppy interface. Set the jumpers as show in table 1.4 depending on the type of floppy disk drive you are using. When using high density disk drives with high density floppy disks, it may be necessary to cover the high density hole with tape to prevent the disk drive from attempting to use the disk as high density, which is not supported by the Amiga chipset. This may not be necessary for all high density floppy disk drive mechanisms.
+In addition to supporting original Amiga floppy disk drives, the AmigaPCI also supports floppy disk drives designed for the PC. An adaptation of Ian Steadman's PC floppy interface is implemented. Set the jumpers as shown in Table 1.4.2 depending on the type of floppy disk drives you are using. When using high density disk drives with high density floppy disks, it may be necessary to cover the high density hole with tape to prevent the disk drive from attempting to use the disk as high density, which is not supported by the Amiga chipset. This may not be necessary for all high density floppy disk drive mechanisms.
 
+**NOTE: You must use either Amiga disk drives or PC disk drives. Do not mix the two types.** 
+
+Table 1.4.1. DF0/DF1 Configuration.
+Jumper|DF0 Only|DF1 Present
+-|-|-
+J200|Not Shorted|Shorted
+
+Table 1.4.2. Floppy Drive Configuration.
 Jumper|Amiga Drive|PC Drive
 -|-|-
-J2xx|?|?
-J2XX|?|?
+J201|1-2|2-3
+J201|1-2|2-3
 
 ### 1.5 Integrated Device Electronics (IDE)
 
