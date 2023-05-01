@@ -65,7 +65,7 @@ Table 1.4.2. Floppy Drive Configuration.
 Jumper|Amiga Drive|PC Drive
 -|-|-
 J201|1-2|2-3
-J201|1-2|2-3
+J202|1-2|2-3
 
 ### 1.5 Integrated Device Electronics (IDE)
 
