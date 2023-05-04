@@ -36,7 +36,6 @@ entity AddressDecoding is
 				A : IN STD_LOGIC_VECTOR (31 DOWNTO 12);
 				OVL : IN STD_LOGIC;
 				FC : IN STD_LOGIC_VECTOR (2 DOWNTO 0);
-				nTIP : IN STD_LOGIC;
 				RnW : IN STD_LOGIC;
 				nRESET : IN STD_LOGIC;
 				
@@ -101,7 +100,7 @@ begin
 	ROMSpaceLow <= '1' WHEN A(23 DOWNTO 19) = "00000" AND OVL = '1' ELSE '0';
 	ROMSpaceHigh <= '1' WHEN A(23 DOWNTO 19) = "11111" AND OVL = '0' ELSE '0';
 
-	nROMEN <= NOT ( ZorroTwoSpace AND NOT nTIP AND NOT CPUSpace AND nRESET AND RnW AND ( ROMSpaceLow OR ROMSpaceHigh ));  
+	nROMEN <= NOT ( ZorroTwoSpace AND NOT CPUSpace AND nRESET AND RnW AND ( ROMSpaceLow OR ROMSpaceHigh ));  
 
 	---------------------------
 	-- CHIP RAM SELECT LOGIC --
@@ -111,7 +110,7 @@ begin
 	--WHEN OVL IS NEGATED (LOW). DO NOT SELECT THE CHIP RAM WHEN IN A CPU CYCLE.
 
 	ChipRegSpace <= '1' WHEN A(23 DOWNTO 17) = "0000000" ELSE '0';
-	nRAMEN <= NOT ( ZorroTwoSpace AND ChipRegSpace AND NOT nTIP AND NOT OVL AND NOT CPUSpace AND nRESET );  
+	nRAMEN <= NOT ( ZorroTwoSpace AND ChipRegSpace AND NOT OVL AND NOT CPUSpace AND nRESET );  
 
 	-----------------------------------
 	-- CHIPSET REGISTER SELECT LOGIC --
@@ -123,7 +122,7 @@ begin
 	ChipSpaceLow <= '1' WHEN A(23 DOWNTO 22) = "11" ELSE '0';
 	ChipSpaceHigh <= '1' WHEN A (23 DOWNTO 14) = "1101111111" ELSE '0';
 
-	nREGEN <= NOT (ZorroTwoSpace AND NOT nTIP AND NOT CPUSpace AND nRESET AND (ChipSpaceLow OR ChipSpaceHigh));
+	nREGEN <= NOT (ZorroTwoSpace AND NOT CPUSpace AND nRESET AND (ChipSpaceLow OR ChipSpaceHigh));
 
 	----------------------
 	-- CIA SELECT LOGIC --
@@ -137,8 +136,8 @@ begin
 	CIA0Space <= '1' WHEN A(23 DOWNTO 12) = "101111111110" ELSE '0';
 	CIA1Space <= '1' WHEN A(23 DOWNTO 12) = "101111111101" ELSE '0';
 
-	nCIA0 <= NOT (ZorroTwoSpace AND CIA0Space AND NOT nTIP AND NOT CPUSpace AND nRESET);
-	nCIA1 <= NOT (ZorroTwoSpace AND CIA1Space AND NOT nTIP AND NOT CPUSpace AND nRESET);
+	nCIA0 <= NOT (ZorroTwoSpace AND CIA0Space AND NOT CPUSpace AND nRESET);
+	nCIA1 <= NOT (ZorroTwoSpace AND CIA1Space AND NOT CPUSpace AND nRESET);
 	
 	----------------------------------
 	-- REAL TIME CLOCK SELECT LOGIC --
