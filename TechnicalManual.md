@@ -125,7 +125,7 @@ The CPU can access the 32 bit chipset RAM through Agnus. Because this process is
 3) The RAM controller asserts _AS, _LDS, _UDS, and _RAMEN on the falling 7MHz edge (S1) to indicate CPU access to Agnus. According to Commodore technical publications, _AS should only be asserted when both C1 and C3 are low, otherwise a 7MHz wait state is to be inserted.
 4) If _DBR is negated, Agnus proceeds with the CPU RAM cycle. If _DBR is asserted, wait states are inserted until _DBR is negated and the CPU RAM cycle can proceed.
 5) On the rising edge of C3, Agnus drives a valid row address on MA0 - MA9 (S2) and asserts _RAS0 or _RAS1. Because the CPU is a 32 bit port, DRA0 is ignored by the RAM controller. 
-6) On the rising edge of C1, Agnus drives a valid column address on MA0 - MA9 (S3), asserts _CASL or _CASU, and drives _AWE low for write cycles. Because the CPU is a 32 bit port, DRA0 is ignored by the RAM controller.
+6) On the rising edge of C1, Agnus drives a valid column address on MA0 - MA9 (S3), asserts _CASL or _CASU, and drives _AWE low for write cycles. DRA0 is used here as it represents a more signficant bit in the address.
 7) On the first falling edge of BCLK after entering MC68000 S6, the RAM controller drives the _RAS address to the SDRAM with a bank activate command.
 8) On the next falling edge of BCLK, the RAM controller drives the _CAS address to the SDRAM with a read or write command.
 9) For read cycles, after any latency requirements, data is driven to the data bus by the SDRAM. Write cycles are latched immediately with the _CAS command.
