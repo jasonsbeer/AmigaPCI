@@ -38,6 +38,7 @@ entity AddressDecoding is
 				FC : IN STD_LOGIC_VECTOR (2 DOWNTO 0);
 				RnW : IN STD_LOGIC;
 				nRESET : IN STD_LOGIC;
+	   			nDBR : IN STD_LOGIC;
 				
 				CPUSpace : INOUT STD_LOGIC;
 
@@ -60,7 +61,7 @@ architecture Behavioral of AddressDecoding is
   
 	SIGNAL ROMSpaceLow : STD_LOGIC;
 	SIGNAL ROMSpaceHigh : STD_LOGIC;
-	SIGNAL ChipRegSpace : STD_LOGIC;
+	SIGNAL ChipRAMSpace : STD_LOGIC;
 	SIGNAL ChipSpaceLow : STD_LOGIC;
 	SIGNAL ChipSpaceHigh : STD_LOGIC;
 	SIGNAL CIA0Space : STD_LOGIC;
@@ -74,8 +75,15 @@ architecture Behavioral of AddressDecoding is
 
 begin
 
-
-	---ADD _TCI!!!
+	----------------------------
+	-- TRANSFER CACHE INHIBIT --
+	----------------------------
+	
+	--THERE ARE CERTAIN SPACES WHERE WE DO NOT WANT TO ALLOW THE MC68040 TO CACHE DATA.
+	--CHIP RAM IS NOT CACHABLE BECAUSE THE CHIPSET CAN ALSO ACCESS THAT SPACE. WE DO NOT
+	--WANT TO CACHE CHIPSET REGISTER SPACES BUT ROM AND OTHER MEMORY SPACES ARE OK.
+	
+	nTCI <= NOT ( NOT nRAMEN OR NOT nCIA0 OR NOT nCIA1 OR NOT nREGEN OR GayleSpace OR ACSpace )';	
 	
 	--------------------
 	-- COMMON SIGNALS --
@@ -109,8 +117,8 @@ begin
 	--CHIP RAM IS SELECTED IN THE ADDRESS SPACE $0000 0000 - $0001 FFFF
 	--WHEN OVL IS NEGATED (LOW). DO NOT SELECT THE CHIP RAM WHEN IN A CPU CYCLE.
 
-	ChipRegSpace <= '1' WHEN A(23 DOWNTO 17) = "0000000" ELSE '0';
-	nRAMEN <= NOT ( ZorroTwoSpace AND ChipRegSpace AND NOT OVL AND NOT CPUSpace AND nRESET );  
+	ChipRAMSpace <= '1' WHEN A(23 DOWNTO 17) = "0000000" ELSE '0';
+	nRAMEN <= NOT ( ZorroTwoSpace AND ChipRegSpace AND NOT OVL AND NOT CPUSpace AND nRESET AND nDBR );  
 
 	-----------------------------------
 	-- CHIPSET REGISTER SELECT LOGIC --
