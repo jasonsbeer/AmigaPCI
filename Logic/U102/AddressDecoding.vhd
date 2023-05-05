@@ -51,7 +51,8 @@ entity AddressDecoding is
 				nRTCWR : OUT STD_LOGIC;
 				IDESpace : OUT STD_LOGIC;
 				GayleSpace : OUT STD_LOGIC;
-				ACSpace : OUT STD_LOGIC
+				ACSpace : OUT STD_LOGIC;
+	   			nTCI : OUT STD_LOGIC;
      
 	);
 
@@ -79,11 +80,11 @@ begin
 	-- TRANSFER CACHE INHIBIT --
 	----------------------------
 	
-	--THERE ARE CERTAIN SPACES WHERE WE DO NOT WANT TO ALLOW THE MC68040 TO CACHE DATA.
+	--THERE ARE CERTAIN SPACES WHERE WE DO NOT WANT TO THE MC68040 TO CACHE INSTRUCTIONS.
 	--CHIP RAM IS NOT CACHABLE BECAUSE THE CHIPSET CAN ALSO ACCESS THAT SPACE. WE DO NOT
 	--WANT TO CACHE CHIPSET REGISTER SPACES BUT ROM AND OTHER MEMORY SPACES ARE OK.
 	
-	nTCI <= NOT ( NOT nRAMEN OR NOT nCIA0 OR NOT nCIA1 OR NOT nREGEN OR GayleSpace OR ACSpace )';	
+	nTCI <= NOT ( ChipRAMSPace OR ChipSpaceLow OR ChipSpaceHigh OR CIA0Space OR CIA1Space OR GayleSpace )';	
 	
 	--------------------
 	-- COMMON SIGNALS --
@@ -105,10 +106,10 @@ begin
 	--IN THE ADDRESS SPACE $00F8 0000 - $00FF FFFF. DO NOT SELECT THE ROM WHEN
 	--IN THE CPU SPACE OR DURING WRITE CYCLES.	
 	
-	ROMSpaceLow <= '1' WHEN A(23 DOWNTO 19) = "00000" AND OVL = '1' ELSE '0';
-	ROMSpaceHigh <= '1' WHEN A(23 DOWNTO 19) = "11111" AND OVL = '0' ELSE '0';
+	ROMSpaceLow <= '1' WHEN A(23 DOWNTO 19) = "00000" AND OVL = '1' AND ZorroTwoSpace = '1' AND CPUSpace = '0' ELSE '0';
+	ROMSpaceHigh <= '1' WHEN A(23 DOWNTO 19) = "11111" AND OVL = '0' AND ZorroTwoSpace = '1' ELSE '0';
 
-	nROMEN <= NOT ( ZorroTwoSpace AND NOT CPUSpace AND nRESET AND RnW AND ( ROMSpaceLow OR ROMSpaceHigh ));  
+	nROMEN <= NOT ( nRESET AND RnW AND ( ROMSpaceLow OR ROMSpaceHigh ));  
 
 	---------------------------
 	-- CHIP RAM SELECT LOGIC --
@@ -117,8 +118,8 @@ begin
 	--CHIP RAM IS SELECTED IN THE ADDRESS SPACE $0000 0000 - $0001 FFFF
 	--WHEN OVL IS NEGATED (LOW). DO NOT SELECT THE CHIP RAM WHEN IN A CPU CYCLE.
 
-	ChipRAMSpace <= '1' WHEN A(23 DOWNTO 17) = "0000000" ELSE '0';
-	nRAMEN <= NOT ( ZorroTwoSpace AND ChipRegSpace AND NOT OVL AND NOT CPUSpace AND nRESET AND nDBR );  
+	ChipRAMSpace <= '1' WHEN A(23 DOWNTO 17) = "0000000" AND ZorroTwoSpace = '1' AND CPUSpace = '0' ELSE '0';
+	nRAMEN <= NOT ( ChipRegSpace AND NOT OVL AND nRESET AND nDBR );  
 
 	-----------------------------------
 	-- CHIPSET REGISTER SELECT LOGIC --
@@ -127,10 +128,10 @@ begin
 	--THE CHIPSET REGISTERS ARE SELECTED IN THE ADDRESS SPACE $00DF C000 - $00DF FFFF AND
 	--$00C0 0000 - $00CF FFFF. DO NOT SELECT THE CHIP REGISTERS DURING CPU CYCLES.
 
-	ChipSpaceLow <= '1' WHEN A(23 DOWNTO 22) = "11" ELSE '0';
-	ChipSpaceHigh <= '1' WHEN A (23 DOWNTO 14) = "1101111111" ELSE '0';
+	ChipSpaceLow <= '1' WHEN A(23 DOWNTO 22) = "11" AND ZorroTwoSpace = '1' AND CPUSpace = '0' ELSE '0';
+	ChipSpaceHigh <= '1' WHEN A (23 DOWNTO 14) = "1101111111" AND ZorroTwoSpace = '1' AND CPUSpace = '0' ELSE '0';
 
-	nREGEN <= NOT (ZorroTwoSpace AND NOT CPUSpace AND nRESET AND (ChipSpaceLow OR ChipSpaceHigh));
+	nREGEN <= NOT (nRESET AND (ChipSpaceLow OR ChipSpaceHigh));
 
 	----------------------
 	-- CIA SELECT LOGIC --
@@ -141,11 +142,11 @@ begin
 	--CIA0 CONTROLS THE PARALLEL PORT AND FLOPPY DISK DRIVES.
 	--CIA1 CONTROLS THE SERIAL PORT AND FLOPPY DISK DRIVES.
 
-	CIA0Space <= '1' WHEN A(23 DOWNTO 12) = "101111111110" ELSE '0';
-	CIA1Space <= '1' WHEN A(23 DOWNTO 12) = "101111111101" ELSE '0';
+	CIA0Space <= '1' WHEN A(23 DOWNTO 12) = "101111111110" AND ZorroTwoSpace = '1' AND CPUSpace = '0' ELSE '0';
+	CIA1Space <= '1' WHEN A(23 DOWNTO 12) = "101111111101" AND ZorroTwoSpace = '1' AND CPUSpace = '0' ELSE '0';
 
-	nCIA0 <= NOT (ZorroTwoSpace AND CIA0Space AND NOT CPUSpace AND nRESET);
-	nCIA1 <= NOT (ZorroTwoSpace AND CIA1Space AND NOT CPUSpace AND nRESET);
+	nCIA0 <= NOT (CIA0Space AND nRESET);
+	nCIA1 <= NOT (CIA1Space AND nRESET);
 	
 	----------------------------------
 	-- REAL TIME CLOCK SELECT LOGIC --
@@ -153,10 +154,10 @@ begin
 	
 	--THE REAL TIME CLOCK IS SELECTED AT $00DC 0000 - $00DC FFFF.
 	
-	RTCSpace <= '1' WHEN A(23 DOWNTO 18) = "110111" ELSE '0';
+	RTCSpace <= '1' WHEN A(23 DOWNTO 18) = "110111" AND ZorroTwoSpace = '1' AND CPUSpace = '0' ELSE '0';
 	
-	nRTCRD <= NOT (ZorroTwoSpace AND RTCSpace AND RnW AND NOT CPUSpace AND nRESET);
-	nRTCWR <= NOT (ZorroTwoSpace AND RTCSpace AND NOT RnW AND NOT CPUSpace AND nRESET);
+	nRTCRD <= NOT (RTCSpace AND RnW AND nRESET);
+	nRTCWR <= NOT (RTCSpace AND NOT RnW AND nRESET);
 	
 	---------------------------------------
 	-- GAYLE IDE CONTROLLER SELECT LOGIC --
@@ -166,12 +167,12 @@ begin
 	--IDE REGISTERS ARE SELECTED AT $00DA 8000, $00DA 9000, AND $00DA A000
 	--IDE DRIVE SPACE IS SELECTED AT $00DA 0000 - $00DA 3FFF
 	
-	IDE_Space <= '1' WHEN A(23 DOWNTO 15) = "110110100" ELSE '0';	
-	GayleIDSpace <= '1' WHEN A(23 DOWNTO 15) = "110111100" ELSE '0';
-	GayleRegSpace <= '1' WHEN A(23 DOWNTO 15) = "110110101" ELSE '0';
+	IDE_Space <= '1' WHEN A(23 DOWNTO 15) = "110110100" AND ZorroTwoSpace = '1' AND CPUSpace = '0' ELSE '0';	
+	GayleIDSpace <= '1' WHEN A(23 DOWNTO 15) = "110111100" AND ZorroTwoSpace = '1' AND CPUSpace = '0' ELSE '0';
+	GayleRegSpace <= '1' WHEN A(23 DOWNTO 15) = "110110101" AND ZorroTwoSpace = '1' AND CPUSpace = '0' ELSE '0';
 	
-	GayleSpace <= (GayleIDSpace OR GayleRegSpace) AND NOT CPUSpace AND nRESET AND ZorroTwoSpace;
-	IDESpace <= IDE_Space AND NOT CPUSpace AND nRESET AND ZorroTwoSpace;
+	GayleSpace <= (GayleIDSpace OR GayleRegSpace) AND nRESET;
+	IDESpace <= IDE_Space AND nRESET;
 	
 	-----------------------------
 	-- AUTOCONFIG SELECT LOGIC --
