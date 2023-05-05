@@ -37,6 +37,7 @@ entity ChipRAMController is
 			nRESET : IN STD_LOGIC;
 			RnW : IN STD_LOGIC;
 			nRAMEN : IN STD_LOGIC;
+	    		nTIP : IN STD_LOGIC;
 			
 			DRA : IN  STD_LOGIC_VECTOR (9 downto 0);
 			nRAS0 : IN STD_LOGIC;
@@ -50,7 +51,8 @@ entity ChipRAMController is
 			nCWE : OUT STD_LOGIC;
 			nCCS : OUT STD_LOGIC;
 			nCCLKE : OUT STD_LOGIC;
-			nDBEN : OUT STD_LOGIC
+			nDBEN : OUT STD_LOGIC;
+	    		DATADIR : OUT STD_LOGIC
 		
 		);
 		
@@ -159,9 +161,9 @@ begin
 		
 	END PROCESS;
 
-	---------------------------
-	-- AGNUS ADDRESS STROBES --
-	---------------------------
+	--------------------------------
+	-- AGNUS DRAM ADDRESS STROBES --
+	--------------------------------
 
 	AGNUS_RAS <= NOT nRAS0 OR NOT nRAS1;
 	AGNUS_CAS <= NOT nCASL OR NOT nCASU;
@@ -197,11 +199,52 @@ begin
 		END IF;
 
 	END PROCESS;
-	
+			
+	---------------------------------------
+	-- MC68000 COMPATABLE ADDRESS STROBE --
+	--        AND STATE COUNTER          --
+	---------------------------------------
+			
+	--WE NEED TO GENERATE A MOTOROLA MC68000 COMPATABLE ADDRESS STROBE FOR AGNUS.
+	--WE ALSO NEED TO KNOW THE CURRENT MC68000 STATE FOR THE SDRAM TIMING.
+			
+	PROCESS (BCLK, nRESET) BEGIN
+		
+		IF nRESET = '0' THEN
+			
+			nAS <= '1';
+			STATE68K <= 0;
+		
+		ELSIF FALLING_EDGE (BCLK) THEN
+			
+			IF nAS = '1' AND nTIP = '0' THEN
+				IF nRAMEN = '0' THEN
+					--ASSERT ADDRESS STROBE TO BEGIN CHIP RAM CYCLE.
+					--ACCORDING TO C= LITERATURE, WE SHOULD PREFERABLY START WHEN C1 AND C3
+					--ARE BOTH LOW. OTHERWISE, WE SHOULD INSERT A WAIT STATE TO GET BACK IN SYNC.
+					nAS <= NOT (CLK7 AND NOT C1 AND NOT C3);
+					STATE68K <= 2;
+					LASTCLK7 <= CLK7;
+				END IF;					
+			ELSE
+				IF STATE68K = 7 THEN
+					nAS <= '1';
+					STATE68K <= 0;
+				ELSIF LASTCLK7 /= CLK7 THEN
+					STATE68K = STATE68K + 1;
+					LASTCLK7 <= CLK7;
+				END IF;
+			END IF;
+				
+		END IF;
+			
+	END PROCESS;	
 	
 	-------------------------
 	-- SDRAM STATE MACHINE --
 	-------------------------
+			
+	DATADIR <= RnW;
 	
 	--THE SDRAM MUST BE PROGRAMMED AT EACH RESET.
 	--WE ARE PROGRAMMING CAS LATENCY=2 AND BURST=1.
@@ -225,7 +268,6 @@ begin
 			STARTUP_REFRESH <= '1';
 			nCCLKE <= '1';
 			nDBEN <= '1';
-			DBDIR <= '1';
 			
 		ELSIF FALLING_EDGE (BCLK) THEN
 		
