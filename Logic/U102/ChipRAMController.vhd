@@ -225,6 +225,7 @@ begin
 			STARTUP_REFRESH <= '1';
 			nCCLKE <= '1';
 			nDBEN <= '1';
+			DBDIR <= '1';
 			
 		ELSIF FALLING_EDGE (BCLK) THEN
 		
@@ -301,12 +302,16 @@ begin
 					
 					ELSIF AGNUS_CAS = '1' THEN
 					
-						IF nRAMEN = '0' THEN
+						IF nRAMEN = '0' AND nDBR = '1' THEN
 						
 							--THIS IS A 32 BIT CPU ACCESS						
 							CURRENT_STATE <= ACTIVATE;
 							SDRAMCMDOUT <= ramstate_BANKACTIVATE;
-							SDRAMOUT <= AA_RAS(8 DOWNTO 0) & AA_CAS(9 DOWNTO 8);							
+							SDRAMOUT <= AA_RAS(8 DOWNTO 0) & AA_CAS(9 DOWNTO 8);	
+
+						ELSIF nDBR = '0' THEN
+							
+							--THIS IS A CHIPSET DMA ACCESS.
 						
 						END IF;
 					
