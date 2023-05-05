@@ -35,7 +35,9 @@ entity U102_MAIN is
 	
 		A : IN STD_LOGIC_VECTOR (31 DOWNTO 0);
 		CLK28 : IN STD_LOGIC;
-		CLK7 : IN STD_LOGIC;
+		--CLK7 : IN STD_LOGIC;
+		C1 : IN STD_LOGIC;
+		C3 : IN STD_LOGIC;
 	   BCLK : IN STD_LOGIC;
 		nBTNRST : IN STD_LOGIC;
 		nVPA : IN STD_LOGIC;
@@ -46,6 +48,11 @@ entity U102_MAIN is
 		nTS : IN STD_LOGIC;
 		SIZ : IN STD_LOGIC_VECTOR (1 DOWNTO 0);
 		nRAMZ3 : IN STD_LOGIC;
+		DRA : IN STD_LOGIC_VECTOR (9 DOWNTO 0);
+		nRAS0 : IN STD_LOGIC;
+		nRAS1 : IN STD_LOGIC;
+		nCASL : IN STD_LOGIC;
+		nCASU : IN STD_LOGIC;
 
 		nRESET : INOUT STD_LOGIC;
 		nVMA : INOUT STD_LOGIC;
@@ -78,7 +85,13 @@ entity U102_MAIN is
 		nLDS : OUT STD_LOGIC;
 		nTEA : OUT STD_LOGIC;
 		nTA : OUT STD_LOGIC;
-		nTBI : OUT STD_LOGIC
+		nTBI : OUT STD_LOGIC;
+		CRAM_ADDRESS : OUT STD_LOGIC_VECTOR (10 DOWNTO 0);
+		nCRAS : OUT STD_LOGIC;
+		nCCAS : OUT STD_LOGIC;
+		nCWE : OUT STD_LOGIC;
+		nCCS : OUT STD_LOGIC;
+		nCCLKE : OUT STD_LOGIC
 		
 	);
 			  
@@ -90,6 +103,7 @@ architecture Behavioral of U102_MAIN is
 	SIGNAL gayle_space : STD_LOGIC;
 	SIGNAL ide_space : STD_LOGIC;
 	SIGNAL autoconfig_space : STD_LOGIC;
+	SIGNAL CLK7 : STD_LOGIC;
 
 begin
 	
@@ -97,7 +111,7 @@ begin
 	-- CLOCK GENERATION --
 	----------------------
 	
-	--CLK7 <= C1 XOR C3;   
+	CLK7 <= C1 XOR C3;   
 	
 	-----------
 	-- RESET --
@@ -213,6 +227,29 @@ begin
 		GayleSpace => gayle_space,
 		IDESpace => ide_space,
 		ACSpace => autoconfig_space
+	);
+	
+	-------------------------
+	-- CHIP RAM CONTROLLER --
+	-------------------------
+	
+	ChipRAMController: ENTITY work.ChipRAMController PORT MAP(
+		BCLK => BCLK,
+		CLK7 => CLK7,
+		nRESET => nRESET,
+		RnW => RnW,
+		nRAMEN => nRAMEN,
+		DRA => DRA,
+		nRAS0 => nRAS0,
+		nRAS1 => nRAS1,
+		nCASL => nCASL,
+		nCASU => nCASU,
+		CRAM_ADDRESS => CRAM_ADDRESS,
+		nCRAS => nCRAS,
+		nCCAS => nCCAS,
+		nCWE => nCWE,
+		nCCS => nCCS,
+		nCCLKE => nCCLKE
 	);
 
 end Behavioral;

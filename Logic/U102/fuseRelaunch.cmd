@@ -1,1 +1,1 @@
--intstyle "ise" -incremental -o "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U102/CycleACK_isim_beh.exe" -prj "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U102/CycleACK_beh.prj" "work.CycleACK" 
+-intstyle "ise" -incremental -o "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U102/ChipRAMController_isim_beh.exe" -prj "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U102/ChipRAMController_beh.prj" "work.ChipRAMController" 
