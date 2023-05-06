@@ -38,7 +38,7 @@ entity AddressDecoding is
 				FC : IN STD_LOGIC_VECTOR (2 DOWNTO 0);
 				RnW : IN STD_LOGIC;
 				nRESET : IN STD_LOGIC;
-	   			nDBR : IN STD_LOGIC;
+	   		nDBR : IN STD_LOGIC;
 				
 				CPUSpace : INOUT STD_LOGIC;
 
@@ -50,9 +50,9 @@ entity AddressDecoding is
 				nRTCRD : OUT STD_LOGIC;
 				nRTCWR : OUT STD_LOGIC;
 				IDESpace : OUT STD_LOGIC;
-				GayleSpace : OUT STD_LOGIC;
+				GayleSpace : INOUT STD_LOGIC;
 				ACSpace : OUT STD_LOGIC;
-	   			nTCI : OUT STD_LOGIC;
+	   		nTCI : OUT STD_LOGIC
      
 	);
 
@@ -84,7 +84,7 @@ begin
 	--CHIP RAM IS NOT CACHABLE BECAUSE THE CHIPSET CAN ALSO ACCESS THAT SPACE. WE DO NOT
 	--WANT TO CACHE CHIPSET REGISTER SPACES BUT ROM AND OTHER MEMORY SPACES ARE OK.
 	
-	nTCI <= NOT ( ChipRAMSPace OR ChipSpaceLow OR ChipSpaceHigh OR CIA0Space OR CIA1Space OR GayleSpace )';	
+	nTCI <= NOT ( ChipRAMSPace OR ChipSpaceLow OR ChipSpaceHigh OR CIA0Space OR CIA1Space OR GayleSpace );	
 	
 	--------------------
 	-- COMMON SIGNALS --
@@ -119,7 +119,7 @@ begin
 	--WHEN OVL IS NEGATED (LOW). DO NOT SELECT THE CHIP RAM WHEN IN A CPU CYCLE.
 
 	ChipRAMSpace <= '1' WHEN A(23 DOWNTO 17) = "0000000" AND ZorroTwoSpace = '1' AND CPUSpace = '0' ELSE '0';
-	nRAMEN <= NOT ( ChipRegSpace AND NOT OVL AND nRESET AND nDBR );  
+	nRAMEN <= NOT ( ChipRAMSpace AND NOT OVL AND nRESET AND nDBR );  
 
 	-----------------------------------
 	-- CHIPSET REGISTER SELECT LOGIC --

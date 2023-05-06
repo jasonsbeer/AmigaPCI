@@ -34,10 +34,12 @@ entity ChipRAMController is
 	 
 			BCLK : IN STD_LOGIC;
 			CLK7 : IN STD_LOGIC;
+			C1 : IN STD_LOGIC;
+			C3 : IN STD_LOGIC;
 			nRESET : IN STD_LOGIC;
 			RnW : IN STD_LOGIC;
 			nRAMEN : IN STD_LOGIC;
-	    		nTIP : IN STD_LOGIC;
+	    	nTIP : IN STD_LOGIC;
 			
 			DRA : IN  STD_LOGIC_VECTOR (9 downto 0);
 			nRAS0 : IN STD_LOGIC;
@@ -52,8 +54,8 @@ entity ChipRAMController is
 			nCCS : OUT STD_LOGIC;
 			nCCLKE : OUT STD_LOGIC;
 			nDBEN : OUT STD_LOGIC;
-	    		DATADIR : OUT STD_LOGIC;
-	    		nAS : OUT STD_LOGIC
+	    	DATADIR : OUT STD_LOGIC;
+	    	nAS : INOUT STD_LOGIC
 		
 		);
 		
@@ -71,6 +73,7 @@ architecture Behavioral of ChipRAMController is
 	SIGNAL SDRAMCMDOUT : STD_LOGIC_VECTOR (3 DOWNTO 0);
 	SIGNAL SDRAM_READY : STD_LOGIC;
 	SIGNAL CLOCK_COUNT : INTEGER RANGE 0 TO 2;
+	SIGNAL LASTCLK7 : STD_LOGIC;
 	
 	--THE SDRAM COMMAND CONSTANTS ARE, IN THIS ORDER: _CS, _RAS, _CAS, _WE
 	CONSTANT ramstate_NOP : STD_LOGIC_VECTOR (3 DOWNTO 0) := "1111"; --SDRAM NOP
@@ -233,7 +236,7 @@ begin
 					nAS <= '1';
 					STATE68K <= 1;
 				ELSIF LASTCLK7 /= CLK7 THEN
-					STATE68K = STATE68K + 1;
+					STATE68K <= STATE68K + 1;
 					LASTCLK7 <= CLK7;
 				END IF;
 			END IF;

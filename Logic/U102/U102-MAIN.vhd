@@ -53,6 +53,8 @@ entity U102_MAIN is
 		nRAS1 : IN STD_LOGIC;
 		nCASL : IN STD_LOGIC;
 		nCASU : IN STD_LOGIC;
+		nTIP : IN STD_LOGIC;
+		nDBR : IN STD_LOGIC;
 
 		nRESET : INOUT STD_LOGIC;
 		nVMA : INOUT STD_LOGIC;
@@ -91,7 +93,8 @@ entity U102_MAIN is
 		nCCAS : OUT STD_LOGIC;
 		nCWE : OUT STD_LOGIC;
 		nCCS : OUT STD_LOGIC;
-		nCCLKE : OUT STD_LOGIC
+		nCCLKE : OUT STD_LOGIC;
+		nAS : OUT STD_LOGIC
 		
 	);
 			  
@@ -175,6 +178,7 @@ begin
 		nTIP => nTIP,
 		RnW => RnW,
 		nRESET => nRESET,
+		nDBR => nDBR,
 		nROMEN => nROMEN,
 		nRAMEN => nRAMEN,
 		nREGEN => nREGEN,
@@ -236,6 +240,8 @@ begin
 	ChipRAMController: ENTITY work.ChipRAMController PORT MAP(
 		BCLK => BCLK,
 		CLK7 => CLK7,
+		C1 => C1,
+		C3 => C3,
 		nRESET => nRESET,
 		RnW => RnW,
 		nRAMEN => nRAMEN,
@@ -249,7 +255,9 @@ begin
 		nCCAS => nCCAS,
 		nCWE => nCWE,
 		nCCS => nCCS,
-		nCCLKE => nCCLKE
+		nCCLKE => nCCLKE,
+		nTIP => nTIP,
+		nAS => nAS
 	);
 
 end Behavioral;

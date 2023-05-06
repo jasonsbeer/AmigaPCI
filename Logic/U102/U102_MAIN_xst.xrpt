@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<document OS="lin64" product="ISE" version="14.7">
+
+  <!--The data in this file is primarily intended for consumption by Xilinx tools.
+    The structure and the elements are likely to change over the next few releases.
+    This means code written to parse this file will need to be revisited each subsequent release.-->
+
+  <application stringID="Xst" timeStamp="Fri May  5 18:44:44 2023">
+    <section stringID="User_Env">
+      <table stringID="User_EnvVar">
+        <column stringID="variable"/>
+        <column stringID="value"/>
+        <row stringID="row" value="0">
+          <item stringID="variable" value="XILINX_DSP"/>
+          <item stringID="value" value="/mnt/work/ISE/14.7/ISE_DS/ISE"/>
+        </row>
+        <row stringID="row" value="1">
+          <item stringID="variable" value="XILINX_EDK"/>
+          <item stringID="value" value="/mnt/work/ISE/14.7/ISE_DS/EDK"/>
+        </row>
+        <row stringID="row" value="2">
+          <item stringID="variable" value="XILINX_PLANAHEAD"/>
+          <item stringID="value" value="/mnt/work/ISE/14.7/ISE_DS/PlanAhead"/>
+        </row>
+        <row stringID="row" value="3">
+          <item stringID="variable" value="LD_LIBRARY_PATH"/>
+          <item stringID="value" value="/mnt/work/ISE/14.7/ISE_DS/ISE//lib/lin64:/mnt/work/ISE/14.7/ISE_DS/ISE/lib/lin64:/mnt/work/ISE/14.7/ISE_DS/ISE/smartmodel/lin64/installed_lin64/lib:/mnt/work/ISE/14.7/ISE_DS/ISE/sysgen/lib:/mnt/work/ISE/14.7/ISE_DS/EDK/lib/lin64:/mnt/work/ISE/14.7/ISE_DS/common/lib/lin64"/>
+        </row>
+        <row stringID="row" value="4">
+          <item stringID="variable" value="XILINX"/>
+          <item stringID="value" value="/mnt/work/ISE/14.7/ISE_DS/ISE/"/>
+        </row>
+        <row stringID="row" value="5">
+          <item stringID="variable" value="PATH"/>
+          <item stringID="value" value="/mnt/work/ISE/14.7/ISE_DS/ISE//bin/lin64:/mnt/work/ISE/14.7/ISE_DS/ISE/bin/lin64:/mnt/work/ISE/14.7/ISE_DS/ISE/sysgen/util:/mnt/work/ISE/14.7/ISE_DS/ISE/sysgen/bin:/mnt/work/ISE/14.7/ISE_DS/ISE/../../../DocNav:/mnt/work/ISE/14.7/ISE_DS/PlanAhead/bin:/mnt/work/ISE/14.7/ISE_DS/EDK/bin/lin64:/mnt/work/ISE/14.7/ISE_DS/EDK/gnu/microblaze/lin/bin:/mnt/work/ISE/14.7/ISE_DS/EDK/gnu/powerpc-eabi/lin/bin:/mnt/work/ISE/14.7/ISE_DS/EDK/gnu/arm/lin/bin:/mnt/work/ISE/14.7/ISE_DS/EDK/gnu/microblaze/linux_toolchain/lin64_be/bin:/mnt/work/ISE/14.7/ISE_DS/EDK/gnu/microblaze/linux_toolchain/lin64_le/bin:/mnt/work/ISE/14.7/ISE_DS/common/bin/lin64:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin"/>
+        </row>
+        <row stringID="row" value="6">
+          <item stringID="variable" value="LMC_HOME"/>
+          <item stringID="value" value="/mnt/work/ISE/14.7/ISE_DS/ISE/smartmodel/lin64/installed_lin64"/>
+        </row>
+      </table>
+      <item stringID="User_EnvOs" value="OS Information">
+        <item stringID="User_EnvOsname" value="Ubuntu"/>
+        <item stringID="User_EnvOsrelease" value="Ubuntu 20.04.6 LTS"/>
+      </item>
+      <item stringID="User_EnvHost" value="jasondesktop"/>
+      <table stringID="User_EnvCpu">
+        <column stringID="arch"/>
+        <column stringID="speed"/>
+        <row stringID="row" value="0">
+          <item stringID="arch" value="AMD Ryzen 5 2600X Six-Core Processor"/>
+          <item stringID="speed" value="2200.000 MHz"/>
+        </row>
+        <row stringID="row" value="1">
+          <item stringID="arch" value="AMD Ryzen 5 2600X Six-Core Processor"/>
+          <item stringID="speed" value="2200.000 MHz"/>
+        </row>
+      </table>
+    </section>
+    <section stringID="XST_OPTION_SUMMARY">
+      <item DEFAULT="" label="-ifn" stringID="XST_IFN" value="U102_MAIN.prj"/>
+      <item DEFAULT="MIXED" label="-ifmt" stringID="XST_IFMT" value="mixed"/>
+      <item DEFAULT="" label="-ofn" stringID="XST_OFN" value="U102_MAIN"/>
+      <item DEFAULT="NGC" label="-ofmt" stringID="XST_OFMT" value="NGC"/>
+      <item DEFAULT="" label="-p" stringID="XST_P" value="xc9500xl"/>
+      <item DEFAULT="" label="-top" stringID="XST_TOP" value="U102_MAIN"/>
+      <item DEFAULT="SPEED" label="-opt_mode" stringID="XST_OPTMODE" value="Speed"/>
+      <item DEFAULT="1" label="-opt_level" stringID="XST_OPTLEVEL" value="1"/>
+      <item DEFAULT="NO" label="-iuc" stringID="XST_IUC" value="NO"/>
+      <item DEFAULT="YES" label="-keep_hierarchy" stringID="XST_KEEPHIERARCHY" value="Yes"/>
+      <item DEFAULT="as_optimized" label="-netlist_hierarchy" stringID="XST_NETLISTHIERARCHY" value="As_Optimized"/>
+      <item DEFAULT="NO" label="-rtlview" stringID="XST_RTLVIEW" value="Yes"/>
+      <item DEFAULT="/" stringID="XST_HIERARCHYSEPARATOR" value="/"/>
+      <item DEFAULT="&lt;>" label="-bus_delimiter" stringID="XST_BUSDELIMITER" value="&lt;>"/>
+      <item DEFAULT="MAINTAIN" stringID="XST_CASE" value="Maintain"/>
+      <item DEFAULT="YES" label="-verilog2001" stringID="XST_VERILOG2001" value="YES"/>
+      <item DEFAULT="YES" label="-fsm_extract" stringID="XST_FSMEXTRACT" value="YES"/>
+      <item DEFAULT="AUTO" label="-fsm_encoding" stringID="XST_FSMENCODING" value="Auto"/>
+      <item DEFAULT="NO" label="-safe_implementation" stringID="XST_SAFEIMPLEMENTATION" value="No"/>
+      <item DEFAULT="YES" stringID="XST_MUXEXTRACT" value="Yes"/>
+      <item DEFAULT="YES" label="-resource_sharing" stringID="XST_RESOURCESHARING" value="YES"/>
+      <item DEFAULT="YES" label="-iobuf" stringID="XST_IOBUF" value="YES"/>
+      <item DEFAULT="YES" label="-equivalent_register_removal" stringID="XST_EQUIVALENTREGISTERREMOVAL" value="YES"/>
+    </section>
+    <section stringID="XST_ERRORS_STATISTICS">
+      <item dataType="int" filtered="0" stringID="XST_NUMBER_OF_ERRORS" value="3"/>
+      <item dataType="int" filtered="0" stringID="XST_NUMBER_OF_WARNINGS" value="0"/>
+      <item dataType="int" filtered="0" stringID="XST_NUMBER_OF_INFOS" value="0"/>
+    </section>
+  </application>
+
+</document>
