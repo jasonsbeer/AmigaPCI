@@ -53,7 +53,6 @@ entity U102_MAIN is
 		nRAS1 : IN STD_LOGIC;
 		nCASL : IN STD_LOGIC;
 		nCASU : IN STD_LOGIC;
-		nTIP : IN STD_LOGIC;
 		nDBR : IN STD_LOGIC;
 
 		nRESET : INOUT STD_LOGIC;
@@ -94,7 +93,9 @@ entity U102_MAIN is
 		nCWE : OUT STD_LOGIC;
 		nCCS : OUT STD_LOGIC;
 		nCCLKE : OUT STD_LOGIC;
-		nAS : OUT STD_LOGIC
+		nAS : INOUT STD_LOGIC;
+		nDBEN : OUT STD_LOGIC;
+		DATADIR : OUT STD_LOGIC
 		
 	);
 			  
@@ -175,7 +176,6 @@ begin
 		A => A(31 DOWNTO 12),
 		OVL => OVL,
 		FC => FC,
-		nTIP => nTIP,
 		RnW => RnW,
 		nRESET => nRESET,
 		nDBR => nDBR,
@@ -245,6 +245,8 @@ begin
 		nRESET => nRESET,
 		RnW => RnW,
 		nRAMEN => nRAMEN,
+		nTIP => nTIP,
+		nDBR => nDBR,
 		DRA => DRA,
 		nRAS0 => nRAS0,
 		nRAS1 => nRAS1,
@@ -256,7 +258,8 @@ begin
 		nCWE => nCWE,
 		nCCS => nCCS,
 		nCCLKE => nCCLKE,
-		nTIP => nTIP,
+		nDBEN => nDBEN,
+		DATADIR => DATADIR,
 		nAS => nAS
 	);
 

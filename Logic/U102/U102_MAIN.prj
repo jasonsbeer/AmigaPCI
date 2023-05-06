@@ -1,8 +1,0 @@
-vhdl work "RESET.vhd"
-vhdl work "MC6800.vhd"
-vhdl work "CycleACK.vhd"
-vhdl work "ChipRAMController.vhd"
-vhdl work "ByteEnable.vhd"
-vhdl work "Arbitration.vhd"
-vhdl work "AddressDecoding.vhd"
-vhdl work "U102-MAIN.vhd"
