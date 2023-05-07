@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2023-05-06T17:40:47</DateModified>
+  <DateModified>2023-05-07T07:59:01</DateModified>
   <ModuleName>MAIN</ModuleName>
   <SummaryTimeStamp>Unknown</SummaryTimeStamp>
   <SavedFilePath>/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/iseconfig/MAIN.xreport</SavedFilePath>
-  <ImplementationReportsDirectory>/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER</ImplementationReportsDirectory>
+  <ImplementationReportsDirectory>/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/</ImplementationReportsDirectory>
   <DateInitialized>2023-05-06T17:40:47</DateInitialized>
   <EnableMessageFiltering>false</EnableMessageFiltering>
  </header>
