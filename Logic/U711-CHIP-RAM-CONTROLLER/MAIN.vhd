@@ -89,7 +89,6 @@ end MAIN;
 
 architecture Behavioral of MAIN is
 
-	SIGNAL CLK7 : STD_LOGIC; --7MHz CLOCK
 	SIGNAL REFRESH : STD_LOGIC; --SIGNALS WHEN TO REFRESH SDRAM
 	SIGNAL REFRESET : STD_LOGIC; --RESET THE SDRAM REFRESH COUNTER
 	SIGNAL ARAS : STD_LOGIC_VECTOR (9 DOWNTO 0);
@@ -97,12 +96,6 @@ architecture Behavioral of MAIN is
 	SIGNAL AGNUS_CAS : STD_LOGIC;
 
 begin
-
-	----------------
-	-- 7MHz CLOCK --
-	----------------
-	
-	CLK7 <= C1 XOR C3;	
 	
 	---------------------------
 	-- SDRAM REFRESH COUNTER --
@@ -110,7 +103,7 @@ begin
 	
 	RefreshCounter: ENTITY work.RefreshCounter PORT MAP(
 		BCLK => BCLK,
-		CLK7 => CLK7,
+		C1 => C1,
 		nRESET => nRESET,
 		REFRESET => REFRESET,
 		REFRESH => REFRESH
@@ -120,15 +113,15 @@ begin
 	-- MC68000 COMPATABLE ADDRESS STROBE --
 	---------------------------------------
 	
-	AddressStrobe: ENTITY work.AddressStrobe PORT MAP(
-		BCLK => BCLK,
-		C1 => C1,
-		C3 => C3,
-		CLK7 => CLK7,
-		nRESET => nRESET,
-		nRAMEN => nRAMEN,
-		nAS => nAS
-	);
+--	AddressStrobe: ENTITY work.AddressStrobe PORT MAP(
+--		BCLK => BCLK,
+--		C1 => C1,
+--		C3 => C3,
+--		CLK7 => CLK7,
+--		nRESET => nRESET,
+--		nRAMEN => nRAMEN,
+--		nAS => nAS
+--	);
 
 	--------------------------------
 	-- AGNUS DRAM ADDRESS STROBES --
@@ -161,6 +154,7 @@ begin
 		nDBR => nDBR,
 		nRAMEN => nRAMEN,
 		nRESET => nRESET,
+		ACAS0 => ACAS(0),
 		nCUUBE => nCUUBE,
 		nCUMBE => nCUMBE,
 		nCLMBE => nCLMBE,
@@ -173,7 +167,6 @@ begin
 	
 	MemoryController: ENTITY work.MemoryController PORT MAP(
 		BCLK => BCLK,
-		CLK7 => CLK7,
 		C1 => C1,
 		C3 => C3,
 		nRESET => nRESET,

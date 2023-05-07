@@ -1,0 +1,355 @@
+Release 14.7 - xst P.20131013 (lin64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> 
+Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.03 secs
+ 
+--> 
+Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.03 secs
+ 
+--> 
+Reading design: MAIN.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) Design Hierarchy Analysis
+  4) HDL Analysis
+  5) HDL Synthesis
+     5.1) HDL Synthesis Report
+  6) Advanced HDL Synthesis
+     6.1) Advanced HDL Synthesis Report
+  7) Low Level Synthesis
+  8) Partition Report
+  9) Final Report
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "MAIN.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "MAIN"
+Output Format                      : NGC
+Target Device                      : XC9500XL CPLDs
+
+---- Source Options
+Top Module Name                    : MAIN
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+Mux Extraction                     : Yes
+Resource Sharing                   : YES
+
+---- Target Options
+Add IO Buffers                     : YES
+MACRO Preserve                     : YES
+XOR Preserve                       : YES
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Keep Hierarchy                     : Yes
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Verilog 2001                       : YES
+
+---- Other Options
+Clock Enable                       : YES
+wysiwyg                            : NO
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/RefreshCounter.vhd" in Library work.
+Architecture behavioral of Entity refreshcounter is up to date.
+Compiling vhdl file "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/AgnusAddressStrobes.vhd" in Library work.
+Architecture behavioral of Entity agnusaddressstrobes is up to date.
+Compiling vhdl file "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/ByteEnable.vhd" in Library work.
+Architecture behavioral of Entity byteenable is up to date.
+Compiling vhdl file "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/MemoryController.vhd" in Library work.
+Architecture behavioral of Entity memorycontroller is up to date.
+Compiling vhdl file "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/MAIN.vhd" in Library work.
+Entity <main> compiled.
+Entity <main> (Architecture <behavioral>) compiled.
+
+=========================================================================
+*                     Design Hierarchy Analysis                         *
+=========================================================================
+Analyzing hierarchy for entity <MAIN> in library <work> (architecture <behavioral>).
+
+Analyzing hierarchy for entity <RefreshCounter> in library <work> (architecture <Behavioral>).
+
+Analyzing hierarchy for entity <AgnusAddressStrobes> in library <work> (architecture <Behavioral>).
+
+Analyzing hierarchy for entity <ByteEnable> in library <work> (architecture <Behavioral>).
+
+Analyzing hierarchy for entity <MemoryController> in library <work> (architecture <Behavioral>).
+
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing Entity <MAIN> in library <work> (Architecture <behavioral>).
+Entity <MAIN> analyzed. Unit <MAIN> generated.
+
+Analyzing Entity <RefreshCounter> in library <work> (Architecture <Behavioral>).
+Entity <RefreshCounter> analyzed. Unit <RefreshCounter> generated.
+
+Analyzing Entity <AgnusAddressStrobes> in library <work> (Architecture <Behavioral>).
+Entity <AgnusAddressStrobes> analyzed. Unit <AgnusAddressStrobes> generated.
+
+Analyzing Entity <ByteEnable> in library <work> (Architecture <Behavioral>).
+Entity <ByteEnable> analyzed. Unit <ByteEnable> generated.
+
+Analyzing Entity <MemoryController> in library <work> (Architecture <Behavioral>).
+Entity <MemoryController> analyzed. Unit <MemoryController> generated.
+
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Performing bidirectional port resolution...
+
+Synthesizing Unit <RefreshCounter>.
+    Related source file is "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/RefreshCounter.vhd".
+    Found 1-bit register for signal <REFRESH>.
+    Found 5-bit comparator greatequal for signal <REFRESH$cmp_ge0000> created at line 102.
+    Found 5-bit up counter for signal <REFRESH_COUNTER>.
+    Summary:
+	inferred   1 Counter(s).
+	inferred   1 D-type flip-flop(s).
+	inferred   1 Comparator(s).
+Unit <RefreshCounter> synthesized.
+
+
+Synthesizing Unit <AgnusAddressStrobes>.
+    Related source file is "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/AgnusAddressStrobes.vhd".
+    Found 10-bit register for signal <ARAS>.
+    Found 10-bit register for signal <ACAS>.
+Unit <AgnusAddressStrobes> synthesized.
+
+
+Synthesizing Unit <ByteEnable>.
+    Related source file is "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/ByteEnable.vhd".
+    Found 1-bit register for signal <nCUMBE>.
+    Found 1-bit register for signal <nCUUBE>.
+    Found 1-bit register for signal <nCLLBE>.
+    Found 1-bit register for signal <nCLMBE>.
+    Summary:
+	inferred   4 D-type flip-flop(s).
+Unit <ByteEnable> synthesized.
+
+
+Synthesizing Unit <MemoryController>.
+    Related source file is "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/MemoryController.vhd".
+    Found finite state machine <FSM_0> for signal <CURRENT_STATE>.
+    -----------------------------------------------------------------------
+    | States             | 7                                              |
+    | Transitions        | 16                                             |
+    | Inputs             | 9                                              |
+    | Outputs            | 8                                              |
+    | Clock              | BCLK                      (falling_edge)       |
+    | Reset              | nRESET                    (negative)           |
+    | Reset type         | asynchronous                                   |
+    | Reset State        | prestart                                       |
+    | Power Up State     | reg                                            |
+    | Encoding           | automatic                                      |
+    | Implementation     | automatic                                      |
+    -----------------------------------------------------------------------
+    Found finite state machine <FSM_1> for signal <CLOCK_COUNT>.
+    -----------------------------------------------------------------------
+    | States             | 3                                              |
+    | Transitions        | 21                                             |
+    | Inputs             | 7                                              |
+    | Outputs            | 3                                              |
+    | Clock              | BCLK                      (falling_edge)       |
+    | Clock enable       | nRESET                    (positive)           |
+    | Power Up State     | 00                                             |
+    | Encoding           | automatic                                      |
+    | Implementation     | automatic                                      |
+    -----------------------------------------------------------------------
+    Found 1-bit register for signal <CCLKE>.
+    Found 11-bit register for signal <CRAM_ADDRESS>.
+    Found 1-bit register for signal <AGNUSWRITE>.
+    Found 1-bit register for signal <CYCLE>.
+    Found 1-bit register for signal <DMACYCLE>.
+    Found 1-bit register for signal <SDRAM_READY>.
+    Found 4-bit register for signal <SDRAMCMDOUT>.
+    Found 1-bit register for signal <STARTUP_REFRESH>.
+    Summary:
+	inferred   2 Finite State Machine(s).
+	inferred   6 D-type flip-flop(s).
+Unit <MemoryController> synthesized.
+
+
+Synthesizing Unit <MAIN>.
+    Related source file is "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/MAIN.vhd".
+Unit <MAIN> synthesized.
+
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# Counters                                             : 1
+ 5-bit up counter                                      : 1
+# Registers                                            : 15
+ 1-bit register                                        : 11
+ 10-bit register                                       : 2
+ 11-bit register                                       : 1
+ 4-bit register                                        : 1
+# Comparators                                          : 1
+ 5-bit comparator greatequal                           : 1
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+Analyzing FSM <FSM_1> for best encoding.
+Optimizing FSM <MemoryController/CLOCK_COUNT/FSM> on signal <CLOCK_COUNT[1:2]> with user encoding.
+-------------------
+ State | Encoding
+-------------------
+ 00    | 00
+ 01    | 01
+ 10    | 10
+-------------------
+Analyzing FSM <FSM_0> for best encoding.
+Optimizing FSM <MemoryController/CURRENT_STATE/FSM> on signal <CURRENT_STATE[1:7]> with one-hot encoding.
+--------------------------
+ State        | Encoding
+--------------------------
+ reg          | 0000001
+ prestart     | 0000010
+ precharge    | 0000100
+ auto_refresh | 0001000
+ idle         | 0010000
+ activate     | 0100000
+ readwrite    | 1000000
+--------------------------
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# FSMs                                                 : 2
+# Counters                                             : 1
+ 5-bit up counter                                      : 1
+# Registers                                            : 11
+ Flip-Flops                                            : 11
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+
+Optimizing unit <MAIN> ...
+
+Optimizing unit <ByteEnable> ...
+
+Optimizing unit <AgnusAddressStrobes> ...
+
+Optimizing unit <MemoryController> ...
+  implementation constraint: INIT=s	 : CURRENT_STATE_FSM_FFd7
+  implementation constraint: INIT=r	 : CURRENT_STATE_FSM_FFd6
+  implementation constraint: INIT=r	 : CURRENT_STATE_FSM_FFd3
+  implementation constraint: INIT=r	 : CURRENT_STATE_FSM_FFd4
+  implementation constraint: INIT=r	 : CURRENT_STATE_FSM_FFd5
+  implementation constraint: INIT=r	 : CLOCK_COUNT_FSM_FFd1
+  implementation constraint: INIT=r	 : CLOCK_COUNT_FSM_FFd2
+  implementation constraint: INIT=r	 : CURRENT_STATE_FSM_FFd1
+  implementation constraint: INIT=r	 : CURRENT_STATE_FSM_FFd2
+
+Optimizing unit <RefreshCounter> ...
+  implementation constraint: INIT=r	 : REFRESH_COUNTER_4
+  implementation constraint: INIT=r	 : REFRESH_COUNTER_3
+  implementation constraint: INIT=r	 : REFRESH_COUNTER_2
+  implementation constraint: INIT=r	 : REFRESH_COUNTER_1
+  implementation constraint: INIT=r	 : REFRESH_COUNTER_0
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : MAIN.ngr
+Top Level Output File Name         : MAIN
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : Yes
+Target Technology                  : XC9500XL CPLDs
+Macro Preserve                     : YES
+XOR Preserve                       : YES
+Clock Enable                       : YES
+wysiwyg                            : NO
+
+Design Statistics
+# IOs                              : 52
+
+Cell Usage :
+# BELS                             : 400
+#      AND2                        : 152
+#      AND3                        : 4
+#      GND                         : 1
+#      INV                         : 97
+#      OR2                         : 113
+#      OR3                         : 23
+#      OR4                         : 3
+#      OR5                         : 2
+#      VCC                         : 1
+#      XOR2                        : 4
+# FlipFlops/Latches                : 60
+#      FDC                         : 46
+#      FDCE                        : 3
+#      FDP                         : 9
+#      FDPE                        : 2
+# IO Buffers                       : 52
+#      IBUF                        : 27
+#      OBUF                        : 25
+=========================================================================
+
+
+Total REAL time to Xst completion: 2.00 secs
+Total CPU time to Xst completion: 2.13 secs
+ 
+--> 
+
+
+Total memory usage is 507524 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :    0 (   0 filtered)
+Number of infos    :    0 (   0 filtered)
+

@@ -41,7 +41,7 @@ entity AgnusAddressStrobes is
 		nCASL : IN STD_LOGIC;
 		nCASU : IN STD_LOGIC;
 		DRA : IN STD_LOGIC_VECTOR (9 DOWNTO 0);
-		nRESET : IN STD_LOGIC;		
+		nRESET : IN STD_LOGIC;
 		
 		AGNUS_CAS : INOUT STD_LOGIC;
 		
@@ -96,7 +96,6 @@ begin
 		END IF;
 
 	END PROCESS;
-
 
 end Behavioral;
 

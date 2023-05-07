@@ -37,7 +37,6 @@ entity AddressStrobe is
 		BCLK : IN STD_LOGIC;
       C1 : IN  STD_LOGIC;
       C3 : IN  STD_LOGIC;
-		CLK7 : IN STD_LOGIC;
 		nRESET : IN STD_LOGIC;
 		nRAMEN : IN STD_LOGIC;
 		
@@ -49,6 +48,7 @@ end AddressStrobe;
 
 architecture Behavioral of AddressStrobe is
 
+	SIGNAL CLK7 : STD_LOGIC;
 	SIGNAL LASTCLK7 : STD_LOGIC;
 	SIGNAL STATE68K : INTEGER RANGE 0 TO 7;
 
@@ -58,6 +58,8 @@ begin
 	---------------------------------------
 	-- MC68000 COMPATABLE ADDRESS STROBE --
 	---------------------------------------
+	
+	CLK7 <= C1 XOR C3;
 			
 	--WE NEED TO GENERATE A MOTOROLA MC68000 COMPATABLE ADDRESS STROBE FOR AGNUS.
 	--AFTER THE ADDRESS DECODER HAS ASSERTED _RAMEN, WE ASSERT ADDRESS STROBE WHEN
@@ -77,7 +79,7 @@ begin
 			
 				IF nRAMEN = '0' THEN		
 				
-					nAS <= NOT (NOT CLK7 AND NOT C1 AND NOT C3);
+					nAS <= NOT (NOT C1 AND NOT C3);
 					STATE68K <= 1;
 					LASTCLK7 <= CLK7;
 					

@@ -1,0 +1,30 @@
+Running: /mnt/work/ISE/14.7/ISE_DS/ISE/bin/lin64/unwrapped/fuse -relaunch -intstyle "ise" -incremental -o "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/MAIN_isim_beh.exe" -prj "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/MAIN_beh.prj" "work.MAIN" 
+ISim P.20131013 (signature 0xfbc00daa)
+Number of CPUs detected in this system: 12
+Turning on mult-threading, number of parallel sub-compilation jobs: 24 
+Determining compilation order of HDL files
+Parsing VHDL file "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/RefreshCounter.vhd" into library work
+Parsing VHDL file "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/MemoryController.vhd" into library work
+Parsing VHDL file "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/ByteEnable.vhd" into library work
+Parsing VHDL file "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/AgnusAddressStrobes.vhd" into library work
+Parsing VHDL file "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/AddressStrobe.vhd" into library work
+Parsing VHDL file "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/MAIN.vhd" into library work
+Starting static elaboration
+Completed static elaboration
+Fuse Memory Usage: 83664 KB
+Fuse CPU Usage: 430 ms
+Compiling package standard
+Compiling package std_logic_1164
+Compiling architecture behavioral of entity RefreshCounter [refreshcounter_default]
+Compiling architecture behavioral of entity AddressStrobe [addressstrobe_default]
+Compiling architecture behavioral of entity AgnusAddressStrobes [agnusaddressstrobes_default]
+Compiling architecture behavioral of entity ByteEnable [byteenable_default]
+Compiling architecture behavioral of entity MemoryController [memorycontroller_default]
+Compiling architecture behavioral of entity main
+Time Resolution for simulation is 1ps.
+Waiting for 1 sub-compilation(s) to finish...
+Compiled 13 VHDL Units
+Built simulation executable /mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/MAIN_isim_beh.exe
+Fuse Memory Usage: 1698048 KB
+Fuse CPU Usage: 450 ms
+GCC CPU Usage: 180 ms

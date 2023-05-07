@@ -37,7 +37,6 @@ entity MemoryController is
 	(
 	
 		BCLK : IN STD_LOGIC;
-		CLK7 : IN STD_LOGIC;
 		C1 : IN STD_LOGIC;
 		C3 : IN STD_LOGIC;
 		nRESET : IN STD_LOGIC;
@@ -91,6 +90,7 @@ architecture Behavioral of MemoryController is
 	SIGNAL CYCLE : STD_LOGIC;
 	SIGNAL AGNUSWRITE : STD_LOGIC;
 	SIGNAL STARTUP_REFRESH : STD_LOGIC;
+	SIGNAL DMACYCLE : STD_LOGIC;
 
 begin
 
@@ -99,6 +99,29 @@ begin
 	---------------------------
 	
 	REFRESET <= '1' WHEN CURRENT_STATE = AUTO_REFRESH ELSE '0';	
+	
+	-------------------------------------
+	-- LATCH THE DMA SIGNAL FROM AGNUS --
+	-------------------------------------
+	
+	--AGNUS ASSERTS THE _DBR SIGNAL TO INDICATE A CHIPSET DMA CYCLE.
+	--WE NEED TO LATCH THAT HERE BECAUSE THE SIGNAL IS NEGATED BEFORE 
+	--WE ADDRESS THE SDRAM.
+	
+	PROCESS (nDBR, CYCLE, nRESET) BEGIN
+	
+		IF nRESET = '0' OR CYCLE = '0' THEN
+		
+			DMACYCLE <= '0';
+			
+		--ELSIF FALLING_EDGE (nDBR) THEN
+		ELSIF nDBR'EVENT AND nDBR = '0' THEN
+		
+			DMACYCLE <= '1';
+			
+		END IF;
+		
+	END PROCESS;
 	
 	---------------------------------------------
 	-- LATCH THE AGNUS WRITE SIGNAL DURING DMA --
@@ -110,13 +133,14 @@ begin
 	--CAS, WHICH IS PRETTY LATE IN THE CYCLE. WE RESET THE DMAWRITE
 	--SIGNAL WHEN _DBR IS NEGATED.	
 	
-	PROCESS (nAWE, nAS, nRESET) BEGIN
+	PROCESS (nAWE, CYCLE, nRESET) BEGIN
 	
-		IF nRESET = '0' OR nAS = '1' THEN
+		IF nRESET = '0' OR CYCLE = '0' THEN
 		
 			AGNUSWRITE <= '0';
 			
-		ELSIF FALLING_EDGE (nAWE) THEN
+		--ELSIF FALLING_EDGE (nAWE) THEN
+		ELSIF nAWE'EVENT AND nAWE = '0' THEN
 		
 			AGNUSWRITE <= '1';
 			
@@ -140,7 +164,7 @@ begin
 	--REG WRITE = ENABLED, DIR = 0 (B>A)
 	--CPU CHIP RAM ACCESS = TRISTATE
 		
-	nDRDEN <= NOT (nRESET AND ((NOT nDBR AND CYCLE) OR NOT nREGEN));
+	nDRDEN <= NOT (nRESET AND ((DMACYCLE AND CYCLE) OR NOT nREGEN));
 	
 	--DIRECTION 1 = AGNUS TO CPU BUS (DMA WRITE OR CPU READ), 0 CPU BUS TO AGNUS (CPU TO CHIPSET REGISTER WRITE)
 	
@@ -153,7 +177,7 @@ begin
 	
 	nCUCS <= NOT (
 						(NOT SDRAMCMDOUT(3) AND nRESET AND NOT SDRAM_READY) OR --startup PROGRAMMING
-						(NOT SDRAMCMDOUT(3) AND SDRAM_READY AND nRESET AND ((NOT nDBR AND NOT ACAS(0)))) OR --dma
+						(NOT SDRAMCMDOUT(3) AND SDRAM_READY AND nRESET AND ((DMACYCLE AND NOT ACAS(0)))) OR --dma
 						(NOT SDRAMCMDOUT(3) AND nRESET AND NOT nRAMEN) OR --cpu
 						(NOT SDRAMCMDOUT(3) AND nRESET AND REFRESET) --REFRESH
 					 ); 	
@@ -161,7 +185,7 @@ begin
 						
 	nCLCS <= NOT (
 						(NOT SDRAMCMDOUT(3) AND nRESET AND NOT SDRAM_READY) OR --startup PROGRAMMING
-						(NOT SDRAMCMDOUT(3) AND SDRAM_READY AND nRESET AND ((NOT nDBR AND ACAS(0)))) OR --dma
+						(NOT SDRAMCMDOUT(3) AND SDRAM_READY AND nRESET AND ((DMACYCLE AND ACAS(0)))) OR --dma
 						(NOT SDRAMCMDOUT(3) AND nRESET AND NOT nRAMEN) OR --cpu
 						(NOT SDRAMCMDOUT(3) AND nRESET AND REFRESET) --REFRESH
 					 ); 
@@ -170,7 +194,8 @@ begin
 	-- DATA BRIDGE ENABLE --
 	------------------------
 	
-	nDBEN <= NOT (nRESET AND ((CYCLE AND (NOT nDBR AND NOT ACAS(0)))));
+	nDBEN <= NOT (nRESET AND ((CYCLE AND (DMACYCLE AND NOT ACAS(0)))));
+	--nDBEN <= NOT ((CYCLE AND (NOT nDBR AND NOT ACAS(0))));
 	
 	---------------------------
 	-- DATA BRIDGE DIRECTION --
@@ -252,11 +277,9 @@ begin
 								SDRAMCMDOUT <= ramstate_AUTOREFRESH;
 								STARTUP_REFRESH <= '0';
 							
-							END IF;
-							
+							END IF;							
 						
-					END CASE;
-					
+					END CASE;					
 			
 				WHEN REG =>				
 					
@@ -271,7 +294,7 @@ begin
 						CURRENT_STATE <= AUTO_REFRESH;
 						SDRAMCMDOUT <= ramstate_AUTOREFRESH;						
 					
-					ELSIF AGNUS_CAS = '1' AND CLK7 = '0' AND C1 = '0' AND C3 = '0' THEN
+					ELSIF AGNUS_CAS = '1' AND ((C1 = '0' AND C3 = '0') OR DMACYCLE = '1') THEN
 						
 						CURRENT_STATE <= ACTIVATE;
 						SDRAMCMDOUT <= ramstate_BANKACTIVATE;
@@ -293,8 +316,7 @@ begin
 					
 						SDRAMCMDOUT <= ramstate_READ;
 						
-					END IF;
-					
+					END IF;					
 				
 				WHEN READWRITE =>	
 				

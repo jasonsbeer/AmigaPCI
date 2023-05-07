@@ -1,0 +1,1197 @@
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="paths.js"></script><script src="eqns.js"></script><script>
+      var design = "MAIN";
+      var device = "XC9572XL";
+      signals = new Array("ACAS0_SPECSIG","ACAS1_SPECSIG","ACAS2_SPECSIG","ACAS3_SPECSIG","ACAS4_SPECSIG","ACAS5_SPECSIG","ACAS6_SPECSIG","ACAS7_SPECSIG","ACAS8_SPECSIG","ACAS9ACAS<9>_CLKF_SPECSIG","ACAS9_SPECSIG","ARAS0_SPECSIG","ARAS1_SPECSIG","ARAS2_SPECSIG","ARAS3_SPECSIG","ARAS4_SPECSIG","ARAS5_SPECSIG","ARAS6_SPECSIG","ARAS7_SPECSIG","ARAS8_SPECSIG","ARAS9_SPECSIG","CCLKE","CMA0_SPECSIG","CMA10_SPECSIG","CMA1_SPECSIG","CMA2_SPECSIG","CMA3_SPECSIG","CMA4_SPECSIG","CMA5_SPECSIG","CMA6_SPECSIG","CMA7_SPECSIG","CMA8_SPECSIG","CMA9_SPECSIG","DBDIR","DRDDIR","MemoryControllerCLOCK_COUNT_FSM_FFd1_SPECSIG","MemoryControllerCLOCK_COUNT_FSM_FFd2_SPECSIG","MemoryControllerCURRENT_STATE_FSM_FFd1_SPECSIG","MemoryControllerCURRENT_STATE_FSM_FFd2_SPECSIG","MemoryControllerCURRENT_STATE_FSM_FFd3_SPECSIG","MemoryControllerCURRENT_STATE_FSM_FFd5_SPECSIG","MemoryControllerCURRENT_STATE_FSM_FFd6_SPECSIG","MemoryControllerCURRENT_STATE_FSM_FFd7_SPECSIG","MemoryControllerCYCLE_SPECSIG","MemoryControllerDMACYCLEMemoryControllerDMACYCLE_RSTF_SPECSIG","MemoryControllerDMACYCLE_SPECSIG","MemoryControllerSDRAMCMDOUT3_SPECSIG","MemoryControllerSDRAM_READY_SPECSIG","MemoryControllerSTARTUP_REFRESH_SPECSIG","OpTxFX_DC6_SPECSIG","REFRESET","REFRESH","RefreshCounterREFRESH_COUNTER0_SPECSIG","RefreshCounterREFRESH_COUNTER1_SPECSIG","RefreshCounterREFRESH_COUNTER2_SPECSIG","RefreshCounterREFRESH_COUNTER3_SPECSIG","RefreshCounterREFRESH_COUNTER4_SPECSIG","nCCAS","nCLCS","nCLLBE","nCLMBE","nCRAS","nCUCS","nCUMBE","nCUUBE","nCWE","nDBEN","nDRDEN");
+      sigNegs = new Array("OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","ON","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","ON","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","ON","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","ON","ON","OFF","OFF","ON","ON","OFF","ON","ON");
+      sigTypes = new Array("D","D","D","D","D","D","D","D","D","","D","D","D","D","D","D","D","D","D","D","D","D","D","D","D","D","D","D","T","D","D","D","T","D","","T","T","D","D","D","D","D","D","T","","D","D","D","D","","D","D","T","T","T","T","T","D","","D","D","D","","D","D","D","","");
+
+      
+        specSig["DRA0_SPECSIG"]=new Array("DRA<0>");
+      
+        specSig["DRA1_SPECSIG"]=new Array("DRA<1>");
+      
+        specSig["DRA2_SPECSIG"]=new Array("DRA<2>");
+      
+        specSig["DRA3_SPECSIG"]=new Array("DRA<3>");
+      
+        specSig["DRA4_SPECSIG"]=new Array("DRA<4>");
+      
+        specSig["DRA5_SPECSIG"]=new Array("DRA<5>");
+      
+        specSig["DRA6_SPECSIG"]=new Array("DRA<6>");
+      
+        specSig["DRA7_SPECSIG"]=new Array("DRA<7>");
+      
+        specSig["DRA8_SPECSIG"]=new Array("DRA<8>");
+      
+        specSig["DRA9_SPECSIG"]=new Array("DRA<9>");
+      
+        specSig["GCKI_SPECSIG"]=new Array("GCK/I");
+      
+        specSig["CMA7_SPECSIG"]=new Array("CMA<7>");
+      
+        specSig["CMA5_SPECSIG"]=new Array("CMA<5>");
+      
+        specSig["CMA6_SPECSIG"]=new Array("CMA<6>");
+      
+        specSig["CMA8_SPECSIG"]=new Array("CMA<8>");
+      
+        specSig["CMA9_SPECSIG"]=new Array("CMA<9>");
+      
+        specSig["CMA10_SPECSIG"]=new Array("CMA<10>");
+      
+        specSig["GSRI_SPECSIG"]=new Array("GSR/I");
+      
+        specSig["CMA1_SPECSIG"]=new Array("CMA<1>");
+      
+        specSig["CMA2_SPECSIG"]=new Array("CMA<2>");
+      
+        specSig["CMA0_SPECSIG"]=new Array("CMA<0>");
+      
+        specSig["CMA3_SPECSIG"]=new Array("CMA<3>");
+      
+        specSig["CMA4_SPECSIG"]=new Array("CMA<4>");
+      
+        specSig["ACAS9ACAS<9>_CLKF_SPECSIG"]=new Array("ACAS<9>/ACAS<9>_CLKF");
+      
+        specSig["MemoryControllerDMACYCLE_SPECSIG"]=new Array("MemoryController/DMACYCLE");
+      
+        specSig["ARAS9_SPECSIG"]=new Array("ARAS<9>");
+      
+        specSig["ARAS8_SPECSIG"]=new Array("ARAS<8>");
+      
+        specSig["ARAS7_SPECSIG"]=new Array("ARAS<7>");
+      
+        specSig["ARAS6_SPECSIG"]=new Array("ARAS<6>");
+      
+        specSig["ARAS5_SPECSIG"]=new Array("ARAS<5>");
+      
+        specSig["ARAS4_SPECSIG"]=new Array("ARAS<4>");
+      
+        specSig["ARAS3_SPECSIG"]=new Array("ARAS<3>");
+      
+        specSig["ARAS2_SPECSIG"]=new Array("ARAS<2>");
+      
+        specSig["ARAS1_SPECSIG"]=new Array("ARAS<1>");
+      
+        specSig["ARAS0_SPECSIG"]=new Array("ARAS<0>");
+      
+        specSig["ACAS6_SPECSIG"]=new Array("ACAS<6>");
+      
+        specSig["ACAS0_SPECSIG"]=new Array("ACAS<0>");
+      
+        specSig["MemoryControllerDMACYCLEMemoryControllerDMACYCLE_RSTF_SPECSIG"]=new Array("MemoryController/DMACYCLE/MemoryController/DMACYCLE_RSTF");
+      
+        specSig["RefreshCounterREFRESH_COUNTER0_SPECSIG"]=new Array("RefreshCounter/REFRESH_COUNTER<0>");
+      
+        specSig["MemoryControllerSDRAM_READY_SPECSIG"]=new Array("MemoryController/SDRAM_READY");
+      
+        specSig["MemoryControllerCURRENT_STATE_FSM_FFd6_SPECSIG"]=new Array("MemoryController/CURRENT_STATE_FSM_FFd6");
+      
+        specSig["MemoryControllerCURRENT_STATE_FSM_FFd5_SPECSIG"]=new Array("MemoryController/CURRENT_STATE_FSM_FFd5");
+      
+        specSig["RefreshCounterREFRESH_COUNTER2_SPECSIG"]=new Array("RefreshCounter/REFRESH_COUNTER<2>");
+      
+        specSig["RefreshCounterREFRESH_COUNTER1_SPECSIG"]=new Array("RefreshCounter/REFRESH_COUNTER<1>");
+      
+        specSig["MemoryControllerCYCLE_SPECSIG"]=new Array("MemoryController/CYCLE");
+      
+        specSig["MemoryControllerSDRAMCMDOUT3_SPECSIG"]=new Array("MemoryController/SDRAMCMDOUT<3>");
+      
+        specSig["OpTxFX_DC6_SPECSIG"]=new Array("$OpTx$FX_DC$6");
+      
+        specSig["ACAS7_SPECSIG"]=new Array("ACAS<7>");
+      
+        specSig["ACAS8_SPECSIG"]=new Array("ACAS<8>");
+      
+        specSig["MemoryControllerCLOCK_COUNT_FSM_FFd1_SPECSIG"]=new Array("MemoryController/CLOCK_COUNT_FSM_FFd1");
+      
+        specSig["MemoryControllerCLOCK_COUNT_FSM_FFd2_SPECSIG"]=new Array("MemoryController/CLOCK_COUNT_FSM_FFd2");
+      
+        specSig["MemoryControllerCURRENT_STATE_FSM_FFd1_SPECSIG"]=new Array("MemoryController/CURRENT_STATE_FSM_FFd1");
+      
+        specSig["MemoryControllerCURRENT_STATE_FSM_FFd2_SPECSIG"]=new Array("MemoryController/CURRENT_STATE_FSM_FFd2");
+      
+        specSig["MemoryControllerCURRENT_STATE_FSM_FFd3_SPECSIG"]=new Array("MemoryController/CURRENT_STATE_FSM_FFd3");
+      
+        specSig["MemoryControllerCURRENT_STATE_FSM_FFd7_SPECSIG"]=new Array("MemoryController/CURRENT_STATE_FSM_FFd7");
+      
+        specSig["MemoryControllerSTARTUP_REFRESH_SPECSIG"]=new Array("MemoryController/STARTUP_REFRESH");
+      
+        specSig["RefreshCounterREFRESH_COUNTER4_SPECSIG"]=new Array("RefreshCounter/REFRESH_COUNTER<4>");
+      
+        specSig["RefreshCounterREFRESH_COUNTER3_SPECSIG"]=new Array("RefreshCounter/REFRESH_COUNTER<3>");
+      
+        specSig["ACAS9_SPECSIG"]=new Array("ACAS<9>");
+      
+        specSig["ACAS5_SPECSIG"]=new Array("ACAS<5>");
+      
+        specSig["ACAS4_SPECSIG"]=new Array("ACAS<4>");
+      
+        specSig["ACAS3_SPECSIG"]=new Array("ACAS<3>");
+      
+        specSig["ACAS2_SPECSIG"]=new Array("ACAS<2>");
+      
+        specSig["ACAS1_SPECSIG"]=new Array("ACAS<1>");
+      
+            pterms["FB1_2_1"]=new Array("nCASU","nCASL");
+          
+            pterms["FB1_3_1"]=new Array("/MemoryControllerDMACYCLEMemoryControllerDMACYCLE_RSTF_SPECSIG");
+          
+            pterms["FB1_3_2"]=new Array("/nDBR");
+          
+            pterms["FB1_4_1"]=new Array("/ACAS0_SPECSIG","MemoryControllerDMACYCLE_SPECSIG","MemoryControllerDMACYCLEMemoryControllerDMACYCLE_RSTF_SPECSIG");
+          
+            pterms["FB1_5_1"]=new Array("DRA9_SPECSIG");
+          
+            pterms["FB1_5_2"]=new Array("nRAS1","nRAS0");
+          
+            pterms["FB1_6_1"]=new Array("DRA8_SPECSIG");
+          
+            pterms["FB1_6_2"]=new Array("nRAS1","nRAS0");
+          
+            pterms["FB1_7_1"]=new Array("DRA7_SPECSIG");
+          
+            pterms["FB1_7_2"]=new Array("nRAS1","nRAS0");
+          
+            pterms["FB1_8_1"]=new Array("DRA6_SPECSIG");
+          
+            pterms["FB1_8_2"]=new Array("nRAS1","nRAS0");
+          
+            pterms["FB1_9_1"]=new Array("DRA5_SPECSIG");
+          
+            pterms["FB1_9_2"]=new Array("nRAS1","nRAS0");
+          
+            pterms["FB1_10_1"]=new Array("DRA4_SPECSIG");
+          
+            pterms["FB1_10_2"]=new Array("nRAS1","nRAS0");
+          
+            pterms["FB1_11_1"]=new Array("DRA3_SPECSIG");
+          
+            pterms["FB1_11_2"]=new Array("nRAS1","nRAS0");
+          
+            pterms["FB1_12_1"]=new Array("/MemoryControllerDMACYCLEMemoryControllerDMACYCLE_RSTF_SPECSIG");
+          
+            pterms["FB1_12_2"]=new Array("/nAWE");
+          
+            pterms["FB1_13_1"]=new Array("DRA2_SPECSIG");
+          
+            pterms["FB1_13_2"]=new Array("nRAS1","nRAS0");
+          
+            pterms["FB1_14_1"]=new Array("DRA1_SPECSIG");
+          
+            pterms["FB1_14_2"]=new Array("nRAS1","nRAS0");
+          
+            pterms["FB1_15_1"]=new Array("DBDIR","/nREGEN");
+          
+            pterms["FB1_16_1"]=new Array("DRA0_SPECSIG");
+          
+            pterms["FB1_16_2"]=new Array("nRAS1","nRAS0");
+          
+            pterms["FB1_17_1"]=new Array("nRESET","/nREGEN");
+          
+            pterms["FB1_17_2"]=new Array("nRESET","MemoryControllerDMACYCLE_SPECSIG","MemoryControllerDMACYCLEMemoryControllerDMACYCLE_RSTF_SPECSIG");
+          
+            pterms["FB1_18_1"]=new Array("DRA6_SPECSIG");
+          
+            pterms["FB1_18_2"]=new Array("nCASU","nCASL");
+          
+            pterms["FB2_1_1"]=new Array("REFRESET");
+          
+            pterms["FB2_1_2"]=new Array("MemoryControllerCURRENT_STATE_FSM_FFd3_SPECSIG","/REFRESH","ARAS6_SPECSIG","MemoryControllerDMACYCLE_SPECSIG","/ACAS9ACAS<9>_CLKF_SPECSIG");
+          
+            pterms["FB2_1_3"]=new Array("MemoryControllerCURRENT_STATE_FSM_FFd3_SPECSIG","/REFRESH","/C1","ARAS6_SPECSIG","/C3","/ACAS9ACAS<9>_CLKF_SPECSIG");
+          
+            pterms["FB2_2_1"]=new Array("CMA7_SPECSIG","/OpTxFX_DC6_SPECSIG");
+          
+            pterms["FB2_2_2"]=new Array("MemoryControllerCURRENT_STATE_FSM_FFd2_SPECSIG","ACAS8_SPECSIG");
+          
+            pterms["FB2_2_3"]=new Array("CMA5_SPECSIG","/MemoryControllerCURRENT_STATE_FSM_FFd3_SPECSIG","/REFRESET","/MemoryControllerCURRENT_STATE_FSM_FFd1_SPECSIG","/MemoryControllerCURRENT_STATE_FSM_FFd7_SPECSIG","/MemoryControllerCURRENT_STATE_FSM_FFd2_SPECSIG","/MemoryControllerCURRENT_STATE_FSM_FFd5_SPECSIG");
+          
+            pterms["FB2_2_4"]=new Array("CMA5_SPECSIG","/REFRESET","/REFRESH","/MemoryControllerCURRENT_STATE_FSM_FFd1_SPECSIG","/MemoryControllerCURRENT_STATE_FSM_FFd7_SPECSIG","/MemoryControllerCURRENT_STATE_FSM_FFd2_SPECSIG","/MemoryControllerCURRENT_STATE_FSM_FFd5_SPECSIG","/ARAS4_SPECSIG","MemoryControllerDMACYCLE_SPECSIG","/ACAS9ACAS<9>_CLKF_SPECSIG");
+          
+            pterms["FB2_2_5"]=new Array("CMA5_SPECSIG","/REFRESET","/REFRESH","/MemoryControllerCURRENT_STATE_FSM_FFd1_SPECSIG","/MemoryControllerCURRENT_STATE_FSM_FFd7_SPECSIG","/MemoryControllerCURRENT_STATE_FSM_FFd5_SPECSIG","/ACAS6_SPECSIG","/ARAS4_SPECSIG","MemoryControllerDMACYCLE_SPECSIG","/ACAS9ACAS<9>_CLKF_SPECSIG");
+          
+            pterms["FB2_3_1"]=new Array("/CMA5_SPECSIG","MemoryControllerCURRENT_STATE_FSM_FFd2_SPECSIG","ACAS6_SPECSIG");
+          
+            pterms["FB2_3_2"]=new Array("/CMA5_SPECSIG","REFRESET","MemoryControllerCLOCK_COUNT_FSM_FFd1_SPECSIG","/MemoryControllerSDRAM_READY_SPECSIG","/MemoryControllerSTARTUP_REFRESH_SPECSIG");
+          
+            pterms["FB2_3_3"]=new Array("/CMA5_SPECSIG","MemoryControllerCURRENT_STATE_FSM_FFd3_SPECSIG","/REFRESH","ARAS4_SPECSIG","MemoryControllerDMACYCLE_SPECSIG","/ACAS9ACAS<9>_CLKF_SPECSIG");
+          
+            pterms["FB2_3_4"]=new Array("CMA5_SPECSIG","/MemoryControllerCURRENT_STATE_FSM_FFd3_SPECSIG","/REFRESET","/MemoryControllerCURRENT_STATE_FSM_FFd1_SPECSIG","/MemoryControllerCURRENT_STATE_FSM_FFd7_SPECSIG","/MemoryControllerCURRENT_STATE_FSM_FFd5_SPECSIG","/ACAS6_SPECSIG");
+          
+            pterms["FB2_3_5"]=new Array("/CMA5_SPECSIG","MemoryControllerCURRENT_STATE_FSM_FFd3_SPECSIG","/REFRESH","/C1","ARAS4_SPECSIG","/C3","/ACAS9ACAS<9>_CLKF_SPECSIG");
+          
+            pterms["FB2_4_1"]=new Array("CMA6_SPECSIG","/OpTxFX_DC6_SPECSIG");
+          
+            pterms["FB2_4_2"]=new Array("MemoryControllerCURRENT_STATE_FSM_FFd2_SPECSIG","ACAS7_SPECSIG");
+          
+            pterms["FB2_4_3"]=new Array("MemoryControllerCURRENT_STATE_FSM_FFd3_SPECSIG","/REFRESH","ARAS5_SPECSIG","MemoryControllerDMACYCLE_SPECSIG","/ACAS9ACAS<9>_CLKF_SPECSIG");
+          
+            pterms["FB2_4_4"]=new Array("CMA5_SPECSIG","/REFRESET","/REFRESH","/MemoryControllerCURRENT_STATE_FSM_FFd1_SPECSIG","/MemoryControllerCURRENT_STATE_FSM_FFd7_SPECSIG","/MemoryControllerCURRENT_STATE_FSM_FFd2_SPECSIG","/MemoryControllerCURRENT_STATE_FSM_FFd5_SPECSIG","/C1","/ARAS4_SPECSIG","/C3","/ACAS9ACAS<9>_CLKF_SPECSIG");
+          
+            pterms["FB2_4_5"]=new Array("CMA5_SPECSIG","/REFRESET","/REFRESH","/MemoryControllerCURRENT_STATE_FSM_FFd1_SPECSIG","/MemoryControllerCURRENT_STATE_FSM_FFd7_SPECSIG","/MemoryControllerCURRENT_STATE_FSM_FFd5_SPECSIG","/C1","/ACAS6_SPECSIG","/ARAS4_SPECSIG","/C3","/ACAS9ACAS<9>_CLKF_SPECSIG");
+          
+            pterms["FB2_5_1"]=new Array("CMA8_SPECSIG","/OpTxFX_DC6_SPECSIG");
+          
+            pterms["FB2_5_2"]=new Array("MemoryControllerCURRENT_STATE_FSM_FFd3_SPECSIG","/REFRESH","ARAS7_SPECSIG","MemoryControllerDMACYCLE_SPECSIG","/ACAS9ACAS<9>_CLKF_SPECSIG");
+          
+            pterms["FB2_5_3"]=new Array("MemoryControllerCURRENT_STATE_FSM_FFd3_SPECSIG","/REFRESH","/C1","ARAS7_SPECSIG","/C3","/ACAS9ACAS<9>_CLKF_SPECSIG");
+          
+            pterms["FB2_5_4"]=new Array("MemoryControllerCURRENT_STATE_FSM_FFd3_SPECSIG","/REFRESH","/C1","ARAS5_SPECSIG","/C3","/ACAS9ACAS<9>_CLKF_SPECSIG");
+          
+            pterms["FB2_6_1"]=new Array("/CMA9_SPECSIG","REFRESET","MemoryControllerCLOCK_COUNT_FSM_FFd1_SPECSIG","/MemoryControllerSDRAM_READY_SPECSIG","/MemoryControllerSTARTUP_REFRESH_SPECSIG");
+          
+            pterms["FB2_6_2"]=new Array("CMA9_SPECSIG","/MemoryControllerCURRENT_STATE_FSM_FFd3_SPECSIG","/REFRESET","/MemoryControllerCURRENT_STATE_FSM_FFd1_SPECSIG","/MemoryControllerCURRENT_STATE_FSM_FFd7_SPECSIG","/MemoryControllerCURRENT_STATE_FSM_FFd5_SPECSIG");
+          
+            pterms["FB2_6_3"]=new Array("/CMA9_SPECSIG","MemoryControllerCURRENT_STATE_FSM_FFd3_SPECSIG","/REFRESH","ARAS8_SPECSIG","MemoryControllerDMACYCLE_SPECSIG","/ACAS9ACAS<9>_CLKF_SPECSIG");
+          
+            pterms["FB2_6_4"]=new Array("/CMA9_SPECSIG","MemoryControllerCURRENT_STATE_FSM_FFd3_SPECSIG","/REFRESH","/C1","ARAS8_SPECSIG","/C3","/ACAS9ACAS<9>_CLKF_SPECSIG");
+          
+            pterms["FB2_6_5"]=new Array("CMA9_SPECSIG","/REFRESET","/REFRESH","/MemoryControllerCURRENT_STATE_FSM_FFd1_SPECSIG","/MemoryControllerCURRENT_STATE_FSM_FFd7_SPECSIG","/MemoryControllerCURRENT_STATE_FSM_FFd5_SPECSIG","/ARAS8_SPECSIG","MemoryControllerDMACYCLE_SPECSIG","/ACAS9ACAS<9>_CLKF_SPECSIG");
+          
+            pterms["FB2_7_1"]=new Array("CMA9_SPECSIG","/REFRESET","/REFRESH","/MemoryControllerCURRENT_STATE_FSM_FFd1_SPECSIG","/MemoryControllerCURRENT_STATE_FSM_FFd7_SPECSIG","/MemoryControllerCURRENT_STATE_FSM_FFd5_SPECSIG","/C1","/ARAS8_SPECSIG","/C3","/ACAS9ACAS<9>_CLKF_SPECSIG");
+          
+            pterms["FB2_8_1"]=new Array("MemoryControllerCURRENT_STATE_FSM_FFd2_SPECSIG");
+          
+            pterms["FB2_8_2"]=new Array("MemoryControllerCURRENT_STATE_FSM_FFd6_SPECSIG");
+          
+            pterms["FB2_8_3"]=new Array("CMA10_SPECSIG","/OpTxFX_DC6_SPECSIG");
+          
+            pterms["FB2_8_4"]=new Array("MemoryControllerCURRENT_STATE_FSM_FFd3_SPECSIG","/REFRESH","ARAS9_SPECSIG","MemoryControllerDMACYCLE_SPECSIG","/ACAS9ACAS<9>_CLKF_SPECSIG");
+          
+            pterms["FB2_8_5"]=new Array("MemoryControllerCURRENT_STATE_FSM_FFd3_SPECSIG","/REFRESH","/C1","ARAS9_SPECSIG","/C3","/ACAS9ACAS<9>_CLKF_SPECSIG");
+          
+            pterms["FB2_11_1"]=new Array("MemoryControllerCURRENT_STATE_FSM_FFd7_SPECSIG");
+          
+            pterms["FB2_12_1"]=new Array("nRESET","MemoryControllerCYCLE_SPECSIG");
+          
+            pterms["FB2_14_1"]=new Array("MemoryControllerCURRENT_STATE_FSM_FFd6_SPECSIG");
+          
+            pterms["FB2_15_1"]=new Array("RefreshCounterREFRESH_COUNTER0_SPECSIG","RefreshCounterREFRESH_COUNTER1_SPECSIG");
+          
+            pterms["FB2_15_2"]=new Array("REFRESET");
+          
+            pterms["FB2_16_1"]=new Array("RefreshCounterREFRESH_COUNTER0_SPECSIG");
+          
+            pterms["FB2_16_2"]=new Array("REFRESET");
+          
+            pterms["FB2_16_3"]=new Array("nAS","/MemoryControllerCURRENT_STATE_FSM_FFd3_SPECSIG","/REFRESET","/MemoryControllerCURRENT_STATE_FSM_FFd7_SPECSIG","/MemoryControllerCURRENT_STATE_FSM_FFd2_SPECSIG","/MemoryControllerCURRENT_STATE_FSM_FFd5_SPECSIG","MemoryControllerCYCLE_SPECSIG","/MemoryControllerCURRENT_STATE_FSM_FFd6_SPECSIG");
+          
+            pterms["FB2_16_4"]=new Array("/MemoryControllerCURRENT_STATE_FSM_FFd3_SPECSIG","/REFRESET","/MemoryControllerCURRENT_STATE_FSM_FFd1_SPECSIG","/MemoryControllerCURRENT_STATE_FSM_FFd7_SPECSIG","/MemoryControllerCURRENT_STATE_FSM_FFd2_SPECSIG","/MemoryControllerCURRENT_STATE_FSM_FFd5_SPECSIG","MemoryControllerCYCLE_SPECSIG","/MemoryControllerCURRENT_STATE_FSM_FFd6_SPECSIG");
+          
+            pterms["FB2_17_1"]=new Array("MemoryControllerCURRENT_STATE_FSM_FFd3_SPECSIG","/REFRESH","/MemoryControllerCYCLE_SPECSIG","MemoryControllerDMACYCLE_SPECSIG","/ACAS9ACAS<9>_CLKF_SPECSIG");
+          
+            pterms["FB2_17_2"]=new Array("MemoryControllerCURRENT_STATE_FSM_FFd3_SPECSIG","/REFRESH","/MemoryControllerCYCLE_SPECSIG","/C1","/C3","/ACAS9ACAS<9>_CLKF_SPECSIG");
+          
+            pterms["FB2_17_3"]=new Array("MemoryControllerCURRENT_STATE_FSM_FFd3_SPECSIG","/REFRESH","MemoryControllerSDRAMCMDOUT3_SPECSIG","ACAS9ACAS<9>_CLKF_SPECSIG");
+          
+            pterms["FB2_17_4"]=new Array("MemoryControllerCURRENT_STATE_FSM_FFd3_SPECSIG","/REFRESH","MemoryControllerSDRAMCMDOUT3_SPECSIG","C1","/MemoryControllerDMACYCLE_SPECSIG");
+          
+            pterms["FB2_17_5"]=new Array("MemoryControllerCURRENT_STATE_FSM_FFd3_SPECSIG","/REFRESH","MemoryControllerSDRAMCMDOUT3_SPECSIG","/MemoryControllerDMACYCLE_SPECSIG","C3");
+          
+            pterms["FB2_18_1"]=new Array("MemoryControllerCURRENT_STATE_FSM_FFd1_SPECSIG");
+          
+            pterms["FB2_18_2"]=new Array("MemoryControllerCURRENT_STATE_FSM_FFd7_SPECSIG");
+          
+            pterms["FB2_18_3"]=new Array("REFRESET","/MemoryControllerCLOCK_COUNT_FSM_FFd1_SPECSIG","/MemoryControllerCLOCK_COUNT_FSM_FFd2_SPECSIG");
+          
+            pterms["FB2_18_4"]=new Array("REFRESET","MemoryControllerCLOCK_COUNT_FSM_FFd2_SPECSIG","MemoryControllerSDRAMCMDOUT3_SPECSIG");
+          
+            pterms["FB2_18_5"]=new Array("REFRESET","MemoryControllerSDRAM_READY_SPECSIG","/MemoryControllerSTARTUP_REFRESH_SPECSIG","MemoryControllerSDRAMCMDOUT3_SPECSIG");
+          
+            pterms["FB3_1_1"]=new Array("RefreshCounterREFRESH_COUNTER2_SPECSIG","RefreshCounterREFRESH_COUNTER3_SPECSIG","RefreshCounterREFRESH_COUNTER4_SPECSIG");
+          
+            pterms["FB3_2_1"]=new Array("RefreshCounterREFRESH_COUNTER0_SPECSIG","RefreshCounterREFRESH_COUNTER2_SPECSIG","RefreshCounterREFRESH_COUNTER3_SPECSIG","RefreshCounterREFRESH_COUNTER1_SPECSIG");
+          
+            pterms["FB3_2_2"]=new Array("REFRESET");
+          
+            pterms["FB3_3_1"]=new Array("RefreshCounterREFRESH_COUNTER0_SPECSIG","RefreshCounterREFRESH_COUNTER2_SPECSIG","RefreshCounterREFRESH_COUNTER1_SPECSIG");
+          
+            pterms["FB3_3_2"]=new Array("REFRESET");
+          
+            pterms["FB3_4_1"]=new Array("ACAS0_SPECSIG","/nCASL","/nDBR");
+          
+            pterms["FB3_4_2"]=new Array("nDBR","/nRAMEN","/nLLBE");
+          
+            pterms["FB3_5_1"]=new Array("DRA9_SPECSIG");
+          
+            pterms["FB3_5_2"]=new Array("nCASU","nCASL");
+          
+            pterms["FB3_6_1"]=new Array("/ACAS0_SPECSIG","/nCASL","/nDBR");
+          
+            pterms["FB3_6_2"]=new Array("nDBR","/nRAMEN","/nUMBE");
+          
+            pterms["FB3_7_1"]=new Array("DRA8_SPECSIG");
+          
+            pterms["FB3_7_2"]=new Array("nCASU","nCASL");
+          
+            pterms["FB3_8_1"]=new Array("DRA7_SPECSIG");
+          
+            pterms["FB3_8_2"]=new Array("nCASU","nCASL");
+          
+            pterms["FB3_9_1"]=new Array("DRA5_SPECSIG");
+          
+            pterms["FB3_9_2"]=new Array("nCASU","nCASL");
+          
+            pterms["FB3_10_1"]=new Array("DRA4_SPECSIG");
+          
+            pterms["FB3_10_2"]=new Array("nCASU","nCASL");
+          
+            pterms["FB3_11_1"]=new Array("ACAS0_SPECSIG","/nCASU","/nDBR");
+          
+            pterms["FB3_11_2"]=new Array("nDBR","/nRAMEN","/nLMBE");
+          
+            pterms["FB3_12_1"]=new Array("DRA3_SPECSIG");
+          
+            pterms["FB3_12_2"]=new Array("nCASU","nCASL");
+          
+            pterms["FB3_13_1"]=new Array("DRA2_SPECSIG");
+          
+            pterms["FB3_13_2"]=new Array("nCASU","nCASL");
+          
+            pterms["FB3_14_1"]=new Array("/ACAS0_SPECSIG","/nCASU","/nDBR");
+          
+            pterms["FB3_14_2"]=new Array("nDBR","/nRAMEN","/nUUBE");
+          
+            pterms["FB3_15_1"]=new Array("/nRESET");
+          
+            pterms["FB3_15_2"]=new Array("MemoryControllerSDRAMCMDOUT3_SPECSIG");
+          
+            pterms["FB3_15_3"]=new Array("/REFRESET","MemoryControllerSDRAM_READY_SPECSIG","/ACAS0_SPECSIG","nRAMEN");
+          
+            pterms["FB3_15_4"]=new Array("/REFRESET","MemoryControllerSDRAM_READY_SPECSIG","/MemoryControllerDMACYCLE_SPECSIG","nRAMEN");
+          
+            pterms["FB3_16_1"]=new Array("DRA1_SPECSIG");
+          
+            pterms["FB3_16_2"]=new Array("nCASU","nCASL");
+          
+            pterms["FB3_17_1"]=new Array("/nRESET");
+          
+            pterms["FB3_17_2"]=new Array("MemoryControllerSDRAMCMDOUT3_SPECSIG");
+          
+            pterms["FB3_17_3"]=new Array("/REFRESET","MemoryControllerSDRAM_READY_SPECSIG","ACAS0_SPECSIG","nRAMEN");
+          
+            pterms["FB3_17_4"]=new Array("/REFRESET","MemoryControllerSDRAM_READY_SPECSIG","/MemoryControllerDMACYCLE_SPECSIG","nRAMEN");
+          
+            pterms["FB3_18_1"]=new Array("DRA0_SPECSIG");
+          
+            pterms["FB3_18_2"]=new Array("nCASU","nCASL");
+          
+            pterms["FB4_1_1"]=new Array("REFRESET","MemoryControllerCLOCK_COUNT_FSM_FFd1_SPECSIG","MemoryControllerSTARTUP_REFRESH_SPECSIG","/MemoryControllerCLOCK_COUNT_FSM_FFd2_SPECSIG");
+          
+            pterms["FB4_1_2"]=new Array("REFRESET","MemoryControllerCLOCK_COUNT_FSM_FFd1_SPECSIG","/MemoryControllerSDRAM_READY_SPECSIG","/MemoryControllerSTARTUP_REFRESH_SPECSIG");
+          
+            pterms["FB4_2_1"]=new Array("nCWE","MemoryControllerCURRENT_STATE_FSM_FFd3_SPECSIG");
+          
+            pterms["FB4_2_2"]=new Array("MemoryControllerCURRENT_STATE_FSM_FFd3_SPECSIG","REFRESH");
+          
+            pterms["FB4_2_3"]=new Array("nCWE","REFRESET","/MemoryControllerCLOCK_COUNT_FSM_FFd1_SPECSIG");
+          
+            pterms["FB4_2_4"]=new Array("MemoryControllerCURRENT_STATE_FSM_FFd3_SPECSIG","MemoryControllerDMACYCLE_SPECSIG","/ACAS9ACAS<9>_CLKF_SPECSIG");
+          
+            pterms["FB4_2_5"]=new Array("MemoryControllerCURRENT_STATE_FSM_FFd3_SPECSIG","/C1","/C3","/ACAS9ACAS<9>_CLKF_SPECSIG");
+          
+            pterms["FB4_3_1"]=new Array("MemoryControllerCURRENT_STATE_FSM_FFd1_SPECSIG");
+          
+            pterms["FB4_3_2"]=new Array("MemoryControllerCURRENT_STATE_FSM_FFd7_SPECSIG");
+          
+            pterms["FB4_3_3"]=new Array("MemoryControllerCURRENT_STATE_FSM_FFd5_SPECSIG");
+          
+            pterms["FB4_3_4"]=new Array("MemoryControllerCURRENT_STATE_FSM_FFd2_SPECSIG","/DBDIR");
+          
+            pterms["FB4_3_5"]=new Array("REFRESET","/MemoryControllerCLOCK_COUNT_FSM_FFd1_SPECSIG","/MemoryControllerCLOCK_COUNT_FSM_FFd2_SPECSIG");
+          
+            pterms["FB4_4_1"]=new Array("/nAS","/DBDIR");
+          
+            pterms["FB4_4_2"]=new Array("MemoryControllerCURRENT_STATE_FSM_FFd1_SPECSIG");
+          
+            pterms["FB4_4_3"]=new Array("nCWE","REFRESET","MemoryControllerSDRAM_READY_SPECSIG");
+          
+            pterms["FB4_4_4"]=new Array("nCWE","REFRESET","MemoryControllerCLOCK_COUNT_FSM_FFd2_SPECSIG");
+          
+            pterms["FB4_4_5"]=new Array("REFRESET","MemoryControllerCLOCK_COUNT_FSM_FFd1_SPECSIG","MemoryControllerSTARTUP_REFRESH_SPECSIG");
+          
+            pterms["FB4_5_1"]=new Array("MemoryControllerCURRENT_STATE_FSM_FFd1_SPECSIG");
+          
+            pterms["FB4_5_2"]=new Array("MemoryControllerCURRENT_STATE_FSM_FFd7_SPECSIG");
+          
+            pterms["FB4_5_3"]=new Array("MemoryControllerCURRENT_STATE_FSM_FFd2_SPECSIG");
+          
+            pterms["FB4_5_4"]=new Array("nCRAS","REFRESET","MemoryControllerCLOCK_COUNT_FSM_FFd2_SPECSIG");
+          
+            pterms["FB4_5_5"]=new Array("REFRESET","/MemoryControllerCLOCK_COUNT_FSM_FFd1_SPECSIG","/MemoryControllerCLOCK_COUNT_FSM_FFd2_SPECSIG");
+          
+            pterms["FB4_6_1"]=new Array("MemoryControllerCURRENT_STATE_FSM_FFd3_SPECSIG","/REFRESH","MemoryControllerDMACYCLE_SPECSIG","/ACAS9ACAS<9>_CLKF_SPECSIG");
+          
+            pterms["FB4_6_2"]=new Array("nCRAS","MemoryControllerCURRENT_STATE_FSM_FFd3_SPECSIG","/REFRESH","ACAS9ACAS<9>_CLKF_SPECSIG");
+          
+            pterms["FB4_6_3"]=new Array("nCRAS","REFRESET","MemoryControllerSDRAM_READY_SPECSIG","/MemoryControllerSTARTUP_REFRESH_SPECSIG");
+          
+            pterms["FB4_6_4"]=new Array("nCRAS","MemoryControllerCURRENT_STATE_FSM_FFd3_SPECSIG","/REFRESH","C1","/MemoryControllerDMACYCLE_SPECSIG");
+          
+            pterms["FB4_6_5"]=new Array("nCRAS","MemoryControllerCURRENT_STATE_FSM_FFd3_SPECSIG","/REFRESH","/MemoryControllerDMACYCLE_SPECSIG","C3");
+          
+            pterms["FB4_7_1"]=new Array("MemoryControllerCURRENT_STATE_FSM_FFd2_SPECSIG");
+          
+            pterms["FB4_7_2"]=new Array("/nAS","MemoryControllerCURRENT_STATE_FSM_FFd1_SPECSIG");
+          
+            pterms["FB4_7_3"]=new Array("MemoryControllerCURRENT_STATE_FSM_FFd3_SPECSIG","/REFRESH","/C1","/C3","/ACAS9ACAS<9>_CLKF_SPECSIG");
+          
+            pterms["FB4_8_1"]=new Array("MemoryControllerCURRENT_STATE_FSM_FFd1_SPECSIG");
+          
+            pterms["FB4_8_2"]=new Array("MemoryControllerCURRENT_STATE_FSM_FFd7_SPECSIG");
+          
+            pterms["FB4_8_3"]=new Array("MemoryControllerCURRENT_STATE_FSM_FFd6_SPECSIG");
+          
+            pterms["FB4_8_4"]=new Array("nCCAS","REFRESET","MemoryControllerCLOCK_COUNT_FSM_FFd2_SPECSIG");
+          
+            pterms["FB4_8_5"]=new Array("REFRESET","/MemoryControllerCLOCK_COUNT_FSM_FFd1_SPECSIG","/MemoryControllerCLOCK_COUNT_FSM_FFd2_SPECSIG");
+          
+            pterms["FB4_9_1"]=new Array("nRESET");
+          
+            pterms["FB4_9_2"]=new Array("nCCAS","MemoryControllerCURRENT_STATE_FSM_FFd3_SPECSIG","/REFRESH");
+          
+            pterms["FB4_9_3"]=new Array("nCCAS","REFRESET","MemoryControllerSDRAM_READY_SPECSIG","/MemoryControllerSTARTUP_REFRESH_SPECSIG");
+          
+            pterms["FB4_9_4"]=new Array("MemoryControllerCURRENT_STATE_FSM_FFd3_SPECSIG","/REFRESH","MemoryControllerDMACYCLE_SPECSIG","/ACAS9ACAS<9>_CLKF_SPECSIG");
+          
+            pterms["FB4_9_5"]=new Array("MemoryControllerCURRENT_STATE_FSM_FFd3_SPECSIG","/REFRESH","/C1","/C3","/ACAS9ACAS<9>_CLKF_SPECSIG");
+          
+            pterms["FB4_10_1"]=new Array("CMA1_SPECSIG","/OpTxFX_DC6_SPECSIG");
+          
+            pterms["FB4_10_2"]=new Array("MemoryControllerCURRENT_STATE_FSM_FFd2_SPECSIG","ACAS2_SPECSIG");
+          
+            pterms["FB4_10_3"]=new Array("MemoryControllerCURRENT_STATE_FSM_FFd3_SPECSIG","/REFRESH","ARAS0_SPECSIG","MemoryControllerDMACYCLE_SPECSIG","/ACAS9ACAS<9>_CLKF_SPECSIG");
+          
+            pterms["FB4_10_4"]=new Array("REFRESET","/MemoryControllerCLOCK_COUNT_FSM_FFd1_SPECSIG","/MemoryControllerCLOCK_COUNT_FSM_FFd2_SPECSIG");
+          
+            pterms["FB4_10_5"]=new Array("/MemoryControllerCURRENT_STATE_FSM_FFd3_SPECSIG","/MemoryControllerCURRENT_STATE_FSM_FFd1_SPECSIG","/MemoryControllerCURRENT_STATE_FSM_FFd7_SPECSIG","/MemoryControllerCURRENT_STATE_FSM_FFd2_SPECSIG","MemoryControllerCLOCK_COUNT_FSM_FFd2_SPECSIG","/MemoryControllerCURRENT_STATE_FSM_FFd6_SPECSIG");
+          
+            pterms["FB4_11_1"]=new Array("/MemoryControllerCURRENT_STATE_FSM_FFd3_SPECSIG","/REFRESET","/MemoryControllerCURRENT_STATE_FSM_FFd5_SPECSIG");
+          
+            pterms["FB4_11_2"]=new Array("/REFRESET","/REFRESH","/MemoryControllerCURRENT_STATE_FSM_FFd5_SPECSIG");
+          
+            pterms["FB4_11_3"]=new Array("/MemoryControllerCURRENT_STATE_FSM_FFd3_SPECSIG","MemoryControllerCLOCK_COUNT_FSM_FFd1_SPECSIG","/MemoryControllerSTARTUP_REFRESH_SPECSIG","/MemoryControllerCURRENT_STATE_FSM_FFd5_SPECSIG");
+          
+            pterms["FB4_11_4"]=new Array("/REFRESH","MemoryControllerCLOCK_COUNT_FSM_FFd1_SPECSIG","/MemoryControllerSTARTUP_REFRESH_SPECSIG","/MemoryControllerCURRENT_STATE_FSM_FFd5_SPECSIG");
+          
+            pterms["FB4_11_5"]=new Array("MemoryControllerCURRENT_STATE_FSM_FFd3_SPECSIG","/REFRESH","/C1","ARAS0_SPECSIG","/C3","/ACAS9ACAS<9>_CLKF_SPECSIG");
+          
+            pterms["FB4_12_1"]=new Array("CMA2_SPECSIG","/OpTxFX_DC6_SPECSIG");
+          
+            pterms["FB4_12_2"]=new Array("MemoryControllerCURRENT_STATE_FSM_FFd2_SPECSIG","ACAS3_SPECSIG");
+          
+            pterms["FB4_12_3"]=new Array("MemoryControllerCURRENT_STATE_FSM_FFd3_SPECSIG","/REFRESH","ARAS1_SPECSIG","MemoryControllerDMACYCLE_SPECSIG","/ACAS9ACAS<9>_CLKF_SPECSIG");
+          
+            pterms["FB4_12_4"]=new Array("MemoryControllerCURRENT_STATE_FSM_FFd3_SPECSIG","/REFRESH","/C1","ARAS1_SPECSIG","/C3","/ACAS9ACAS<9>_CLKF_SPECSIG");
+          
+            pterms["FB4_13_1"]=new Array("REFRESET","/MemoryControllerCLOCK_COUNT_FSM_FFd1_SPECSIG","MemoryControllerCLOCK_COUNT_FSM_FFd2_SPECSIG");
+          
+            pterms["FB4_13_2"]=new Array("/MemoryControllerCURRENT_STATE_FSM_FFd3_SPECSIG","/REFRESET","MemoryControllerCLOCK_COUNT_FSM_FFd1_SPECSIG","/MemoryControllerCURRENT_STATE_FSM_FFd1_SPECSIG","/MemoryControllerCURRENT_STATE_FSM_FFd7_SPECSIG","/MemoryControllerCURRENT_STATE_FSM_FFd2_SPECSIG","/MemoryControllerCURRENT_STATE_FSM_FFd6_SPECSIG");
+          
+            pterms["FB4_13_3"]=new Array("/MemoryControllerCURRENT_STATE_FSM_FFd3_SPECSIG","MemoryControllerCLOCK_COUNT_FSM_FFd1_SPECSIG","/MemoryControllerCURRENT_STATE_FSM_FFd1_SPECSIG","/MemoryControllerCURRENT_STATE_FSM_FFd7_SPECSIG","/MemoryControllerCURRENT_STATE_FSM_FFd2_SPECSIG","/MemoryControllerCLOCK_COUNT_FSM_FFd2_SPECSIG","/MemoryControllerCURRENT_STATE_FSM_FFd6_SPECSIG");
+          
+            pterms["FB4_13_4"]=new Array("nRESET");
+          
+            pterms["FB4_14_1"]=new Array("CMA0_SPECSIG","/OpTxFX_DC6_SPECSIG");
+          
+            pterms["FB4_14_2"]=new Array("MemoryControllerCURRENT_STATE_FSM_FFd2_SPECSIG","ACAS1_SPECSIG");
+          
+            pterms["FB4_14_3"]=new Array("MemoryControllerCURRENT_STATE_FSM_FFd3_SPECSIG","/REFRESH","ACAS9_SPECSIG","MemoryControllerDMACYCLE_SPECSIG","/ACAS9ACAS<9>_CLKF_SPECSIG");
+          
+            pterms["FB4_14_4"]=new Array("MemoryControllerCURRENT_STATE_FSM_FFd3_SPECSIG","/REFRESH","/C1","ACAS9_SPECSIG","/C3","/ACAS9ACAS<9>_CLKF_SPECSIG");
+          
+            pterms["FB4_15_1"]=new Array("CMA3_SPECSIG","/OpTxFX_DC6_SPECSIG");
+          
+            pterms["FB4_15_2"]=new Array("MemoryControllerCURRENT_STATE_FSM_FFd2_SPECSIG","ACAS4_SPECSIG");
+          
+            pterms["FB4_15_3"]=new Array("MemoryControllerCURRENT_STATE_FSM_FFd3_SPECSIG","/REFRESH","ARAS2_SPECSIG","MemoryControllerDMACYCLE_SPECSIG","/ACAS9ACAS<9>_CLKF_SPECSIG");
+          
+            pterms["FB4_15_4"]=new Array("MemoryControllerCURRENT_STATE_FSM_FFd3_SPECSIG","/REFRESH","/C1","ARAS2_SPECSIG","/C3","/ACAS9ACAS<9>_CLKF_SPECSIG");
+          
+            pterms["FB4_15_5"]=new Array("MemoryControllerCURRENT_STATE_FSM_FFd3_SPECSIG","/REFRESH","/MemoryControllerDMACYCLE_SPECSIG","C3");
+          
+            pterms["FB4_16_1"]=new Array("MemoryControllerCURRENT_STATE_FSM_FFd7_SPECSIG");
+          
+            pterms["FB4_16_2"]=new Array("nAS","MemoryControllerCURRENT_STATE_FSM_FFd1_SPECSIG");
+          
+            pterms["FB4_16_3"]=new Array("MemoryControllerCURRENT_STATE_FSM_FFd3_SPECSIG","/REFRESH","ACAS9ACAS<9>_CLKF_SPECSIG");
+          
+            pterms["FB4_16_4"]=new Array("MemoryControllerCURRENT_STATE_FSM_FFd3_SPECSIG","/REFRESH","C1","/MemoryControllerDMACYCLE_SPECSIG");
+          
+            pterms["FB4_16_5"]=new Array("REFRESET","MemoryControllerCLOCK_COUNT_FSM_FFd1_SPECSIG","MemoryControllerSDRAM_READY_SPECSIG","/MemoryControllerSTARTUP_REFRESH_SPECSIG");
+          
+            pterms["FB4_17_1"]=new Array("CMA4_SPECSIG","/OpTxFX_DC6_SPECSIG");
+          
+            pterms["FB4_17_2"]=new Array("MemoryControllerCURRENT_STATE_FSM_FFd2_SPECSIG","ACAS5_SPECSIG");
+          
+            pterms["FB4_17_3"]=new Array("MemoryControllerCURRENT_STATE_FSM_FFd3_SPECSIG","/REFRESH","ARAS3_SPECSIG","MemoryControllerDMACYCLE_SPECSIG","/ACAS9ACAS<9>_CLKF_SPECSIG");
+          
+            pterms["FB4_17_4"]=new Array("MemoryControllerCURRENT_STATE_FSM_FFd3_SPECSIG","/REFRESH","/C1","ARAS3_SPECSIG","/C3","/ACAS9ACAS<9>_CLKF_SPECSIG");
+          
+            pterms["FB4_17_5"]=new Array("/REFRESH","MemoryControllerCLOCK_COUNT_FSM_FFd1_SPECSIG","/MemoryControllerCURRENT_STATE_FSM_FFd1_SPECSIG","/MemoryControllerCURRENT_STATE_FSM_FFd7_SPECSIG","/MemoryControllerSDRAM_READY_SPECSIG","/MemoryControllerSTARTUP_REFRESH_SPECSIG","/MemoryControllerCURRENT_STATE_FSM_FFd5_SPECSIG","/C1","/C3","/ACAS9ACAS<9>_CLKF_SPECSIG");
+          
+            pterms["FB4_18_1"]=new Array("/MemoryControllerCURRENT_STATE_FSM_FFd3_SPECSIG","/REFRESET","/MemoryControllerCURRENT_STATE_FSM_FFd1_SPECSIG","/MemoryControllerCURRENT_STATE_FSM_FFd7_SPECSIG","/MemoryControllerCURRENT_STATE_FSM_FFd5_SPECSIG");
+          
+            pterms["FB4_18_2"]=new Array("/MemoryControllerCURRENT_STATE_FSM_FFd3_SPECSIG","MemoryControllerCLOCK_COUNT_FSM_FFd1_SPECSIG","/MemoryControllerCURRENT_STATE_FSM_FFd1_SPECSIG","/MemoryControllerCURRENT_STATE_FSM_FFd7_SPECSIG","/MemoryControllerSDRAM_READY_SPECSIG","/MemoryControllerSTARTUP_REFRESH_SPECSIG","/MemoryControllerCURRENT_STATE_FSM_FFd5_SPECSIG");
+          
+            pterms["FB4_18_3"]=new Array("/REFRESET","/REFRESH","/MemoryControllerCURRENT_STATE_FSM_FFd1_SPECSIG","/MemoryControllerCURRENT_STATE_FSM_FFd7_SPECSIG","/MemoryControllerCURRENT_STATE_FSM_FFd5_SPECSIG","MemoryControllerDMACYCLE_SPECSIG","/ACAS9ACAS<9>_CLKF_SPECSIG");
+          
+            pterms["FB4_18_4"]=new Array("/REFRESET","/REFRESH","/MemoryControllerCURRENT_STATE_FSM_FFd1_SPECSIG","/MemoryControllerCURRENT_STATE_FSM_FFd7_SPECSIG","/MemoryControllerCURRENT_STATE_FSM_FFd5_SPECSIG","/C1","/C3","/ACAS9ACAS<9>_CLKF_SPECSIG");
+          
+            pterms["FB4_18_5"]=new Array("/REFRESH","MemoryControllerCLOCK_COUNT_FSM_FFd1_SPECSIG","/MemoryControllerCURRENT_STATE_FSM_FFd1_SPECSIG","/MemoryControllerCURRENT_STATE_FSM_FFd7_SPECSIG","/MemoryControllerSDRAM_READY_SPECSIG","/MemoryControllerSTARTUP_REFRESH_SPECSIG","/MemoryControllerCURRENT_STATE_FSM_FFd5_SPECSIG","MemoryControllerDMACYCLE_SPECSIG","/ACAS9ACAS<9>_CLKF_SPECSIG");
+          
+          d2["ACAS9ACAS<9>_CLKF_SPECSIG"]=new Array("FB1_2_1");
+          
+            d2imp["ACAS9ACAS<9>_CLKF_SPECSIG"]=new Array("1");
+          
+          d2["MemoryControllerDMACYCLE_SPECSIG"]=new Array("VCC");
+          
+            d2imp["MemoryControllerDMACYCLE_SPECSIG"]=new Array("1");
+          
+              clk["MemoryControllerDMACYCLE_SPECSIG"]=new Array("FB1_3_2");
+              
+                clkimp["MemoryControllerDMACYCLE_SPECSIG"]=new Array("1");
+              
+              rst["MemoryControllerDMACYCLE_SPECSIG"]=new Array("FB1_3_1");
+              
+                rstimp["MemoryControllerDMACYCLE_SPECSIG"]=new Array("1");
+              prld["MemoryControllerDMACYCLE_SPECSIG"]="GND";
+          d2["nDBEN"]=new Array("FB1_4_1");
+          
+            d2imp["nDBEN"]=new Array("1");
+          
+          d2["ARAS9_SPECSIG"]=new Array("FB1_5_1");
+          
+            d2imp["ARAS9_SPECSIG"]=new Array("1");
+          
+              clk["ARAS9_SPECSIG"]=new Array("FB1_5_2");
+              
+                clkimp["ARAS9_SPECSIG"]=new Array("1");
+              
+              gblrst["ARAS9_SPECSIG"]=new Array("nRESET");
+            prld["ARAS9_SPECSIG"]="GND";
+          d2["ARAS8_SPECSIG"]=new Array("FB1_6_1");
+          
+            d2imp["ARAS8_SPECSIG"]=new Array("1");
+          
+              clk["ARAS8_SPECSIG"]=new Array("FB1_6_2");
+              
+                clkimp["ARAS8_SPECSIG"]=new Array("1");
+              
+              gblrst["ARAS8_SPECSIG"]=new Array("nRESET");
+            prld["ARAS8_SPECSIG"]="GND";
+          d2["ARAS7_SPECSIG"]=new Array("FB1_7_1");
+          
+            d2imp["ARAS7_SPECSIG"]=new Array("1");
+          
+              clk["ARAS7_SPECSIG"]=new Array("FB1_7_2");
+              
+                clkimp["ARAS7_SPECSIG"]=new Array("1");
+              
+              gblrst["ARAS7_SPECSIG"]=new Array("nRESET");
+            prld["ARAS7_SPECSIG"]="GND";
+          d2["ARAS6_SPECSIG"]=new Array("FB1_8_1");
+          
+            d2imp["ARAS6_SPECSIG"]=new Array("1");
+          
+              clk["ARAS6_SPECSIG"]=new Array("FB1_8_2");
+              
+                clkimp["ARAS6_SPECSIG"]=new Array("1");
+              
+              gblrst["ARAS6_SPECSIG"]=new Array("nRESET");
+            prld["ARAS6_SPECSIG"]="GND";
+          d2["ARAS5_SPECSIG"]=new Array("FB1_9_1");
+          
+            d2imp["ARAS5_SPECSIG"]=new Array("1");
+          
+              clk["ARAS5_SPECSIG"]=new Array("FB1_9_2");
+              
+                clkimp["ARAS5_SPECSIG"]=new Array("1");
+              
+              gblrst["ARAS5_SPECSIG"]=new Array("nRESET");
+            prld["ARAS5_SPECSIG"]="GND";
+          d2["ARAS4_SPECSIG"]=new Array("FB1_10_1");
+          
+            d2imp["ARAS4_SPECSIG"]=new Array("1");
+          
+              clk["ARAS4_SPECSIG"]=new Array("FB1_10_2");
+              
+                clkimp["ARAS4_SPECSIG"]=new Array("1");
+              
+              gblrst["ARAS4_SPECSIG"]=new Array("nRESET");
+            prld["ARAS4_SPECSIG"]="GND";
+          d2["ARAS3_SPECSIG"]=new Array("FB1_11_1");
+          
+            d2imp["ARAS3_SPECSIG"]=new Array("1");
+          
+              clk["ARAS3_SPECSIG"]=new Array("FB1_11_2");
+              
+                clkimp["ARAS3_SPECSIG"]=new Array("1");
+              
+              gblrst["ARAS3_SPECSIG"]=new Array("nRESET");
+            prld["ARAS3_SPECSIG"]="GND";
+          d2["DBDIR"]=new Array("VCC");
+          
+            d2imp["DBDIR"]=new Array("1");
+          
+              clk["DBDIR"]=new Array("FB1_12_2");
+              
+                clkimp["DBDIR"]=new Array("1");
+              
+              rst["DBDIR"]=new Array("FB1_12_1");
+              
+                rstimp["DBDIR"]=new Array("1");
+              prld["DBDIR"]="GND";
+          d2["ARAS2_SPECSIG"]=new Array("FB1_13_1");
+          
+            d2imp["ARAS2_SPECSIG"]=new Array("1");
+          
+              clk["ARAS2_SPECSIG"]=new Array("FB1_13_2");
+              
+                clkimp["ARAS2_SPECSIG"]=new Array("1");
+              
+              gblrst["ARAS2_SPECSIG"]=new Array("nRESET");
+            prld["ARAS2_SPECSIG"]="GND";
+          d2["ARAS1_SPECSIG"]=new Array("FB1_14_1");
+          
+            d2imp["ARAS1_SPECSIG"]=new Array("1");
+          
+              clk["ARAS1_SPECSIG"]=new Array("FB1_14_2");
+              
+                clkimp["ARAS1_SPECSIG"]=new Array("1");
+              
+              gblrst["ARAS1_SPECSIG"]=new Array("nRESET");
+            prld["ARAS1_SPECSIG"]="GND";
+          d2["DRDDIR"]=new Array("FB1_15_1");
+          
+            d2imp["DRDDIR"]=new Array("1");
+          
+          d2["ARAS0_SPECSIG"]=new Array("FB1_16_1");
+          
+            d2imp["ARAS0_SPECSIG"]=new Array("1");
+          
+              clk["ARAS0_SPECSIG"]=new Array("FB1_16_2");
+              
+                clkimp["ARAS0_SPECSIG"]=new Array("1");
+              
+              gblrst["ARAS0_SPECSIG"]=new Array("nRESET");
+            prld["ARAS0_SPECSIG"]="GND";
+          d2["nDRDEN"]=new Array("FB1_17_1","FB1_17_2");
+          
+            d2imp["nDRDEN"]=new Array("1","1");
+          
+          d2["ACAS6_SPECSIG"]=new Array("FB1_18_1");
+          
+            d2imp["ACAS6_SPECSIG"]=new Array("1");
+          
+              clk["ACAS6_SPECSIG"]=new Array("FB1_18_2");
+              
+                clkimp["ACAS6_SPECSIG"]=new Array("1");
+              
+              gblrst["ACAS6_SPECSIG"]=new Array("nRESET");
+            prld["ACAS6_SPECSIG"]="GND";
+          d2["RefreshCounterREFRESH_COUNTER0_SPECSIG"]=new Array("VCC");
+          
+            d2imp["RefreshCounterREFRESH_COUNTER0_SPECSIG"]=new Array("1");
+          
+              gblclk["RefreshCounterREFRESH_COUNTER0_SPECSIG"]=new Array("C1");
+            
+              rst["RefreshCounterREFRESH_COUNTER0_SPECSIG"]=new Array("FB2_1_1");
+              
+                rstimp["RefreshCounterREFRESH_COUNTER0_SPECSIG"]=new Array("1");
+              prld["RefreshCounterREFRESH_COUNTER0_SPECSIG"]="GND";
+          d2["CMA7_SPECSIG"]=new Array("FB2_2_1","FB2_2_2","FB2_1_2","FB2_1_3");
+          
+            d2imp["CMA7_SPECSIG"]=new Array("1","1","1","1");
+          clkNegs["CMA7_SPECSIG"]=1;
+              gblclk["CMA7_SPECSIG"]=new Array("BCLK");
+            
+              gblrst["CMA7_SPECSIG"]=new Array("nRESET");
+            prld["CMA7_SPECSIG"]="GND";
+          d2["CMA5_SPECSIG"]=new Array("FB2_3_1","FB2_3_2","FB2_3_3","FB2_3_4","FB2_3_5","FB2_2_3","FB2_2_4","FB2_2_5","FB2_4_4","FB2_4_5");
+          
+            d2imp["CMA5_SPECSIG"]=new Array("1","1","1","1","1","1","1","1","1","1");
+          clkNegs["CMA5_SPECSIG"]=1;
+              gblclk["CMA5_SPECSIG"]=new Array("BCLK");
+            
+              gblrst["CMA5_SPECSIG"]=new Array("nRESET");
+            prld["CMA5_SPECSIG"]="GND";
+          d2["CMA6_SPECSIG"]=new Array("FB2_4_1","FB2_4_2","FB2_4_3","FB2_5_4");
+          
+            d2imp["CMA6_SPECSIG"]=new Array("1","1","1","1");
+          clkNegs["CMA6_SPECSIG"]=1;
+              gblclk["CMA6_SPECSIG"]=new Array("BCLK");
+            
+              gblrst["CMA6_SPECSIG"]=new Array("nRESET");
+            prld["CMA6_SPECSIG"]="GND";
+          d2["CMA8_SPECSIG"]=new Array("FB2_5_1","FB2_5_2","FB2_5_3");
+          
+            d2imp["CMA8_SPECSIG"]=new Array("1","1","1");
+          clkNegs["CMA8_SPECSIG"]=1;
+              gblclk["CMA8_SPECSIG"]=new Array("BCLK");
+            
+              gblrst["CMA8_SPECSIG"]=new Array("nRESET");
+            prld["CMA8_SPECSIG"]="GND";
+          d2["CMA9_SPECSIG"]=new Array("FB2_6_1","FB2_6_2","FB2_6_3","FB2_6_4","FB2_6_5","FB2_7_1");
+          
+            d2imp["CMA9_SPECSIG"]=new Array("1","1","1","1","1","1");
+          clkNegs["CMA9_SPECSIG"]=1;
+              gblclk["CMA9_SPECSIG"]=new Array("BCLK");
+            
+              gblrst["CMA9_SPECSIG"]=new Array("nRESET");
+            prld["CMA9_SPECSIG"]="GND";
+          d2["CMA10_SPECSIG"]=new Array("FB2_8_1","FB2_8_2","FB2_8_3","FB2_8_4","FB2_8_5");
+          
+            d2imp["CMA10_SPECSIG"]=new Array("1","1","1","1","1");
+          clkNegs["CMA10_SPECSIG"]=1;
+              gblclk["CMA10_SPECSIG"]=new Array("BCLK");
+            
+              gblrst["CMA10_SPECSIG"]=new Array("nRESET");
+            prld["CMA10_SPECSIG"]="GND";
+          d2["MemoryControllerSDRAM_READY_SPECSIG"]=new Array("VCC");
+          
+            d2imp["MemoryControllerSDRAM_READY_SPECSIG"]=new Array("1");
+          clkNegs["MemoryControllerSDRAM_READY_SPECSIG"]=1;
+              gblclk["MemoryControllerSDRAM_READY_SPECSIG"]=new Array("BCLK");
+            
+              gblrst["MemoryControllerSDRAM_READY_SPECSIG"]=new Array("nRESET");
+            
+          ce["MemoryControllerSDRAM_READY_SPECSIG"]=new Array("FB2_11_1");
+          
+            ceimp["MemoryControllerSDRAM_READY_SPECSIG"]=new Array("1");
+          prld["MemoryControllerSDRAM_READY_SPECSIG"]="GND";
+          d2["MemoryControllerDMACYCLEMemoryControllerDMACYCLE_RSTF_SPECSIG"]=new Array("FB2_12_1");
+          
+            d2imp["MemoryControllerDMACYCLEMemoryControllerDMACYCLE_RSTF_SPECSIG"]=new Array("1");
+          
+          d2["MemoryControllerCURRENT_STATE_FSM_FFd6_SPECSIG"]=new Array("GND");
+          
+            d2imp["MemoryControllerCURRENT_STATE_FSM_FFd6_SPECSIG"]=new Array("1");
+          clkNegs["MemoryControllerCURRENT_STATE_FSM_FFd6_SPECSIG"]=1;
+              gblclk["MemoryControllerCURRENT_STATE_FSM_FFd6_SPECSIG"]=new Array("BCLK");
+            
+              gblset["MemoryControllerCURRENT_STATE_FSM_FFd6_SPECSIG"]=new Array("nRESET");
+            prld["MemoryControllerCURRENT_STATE_FSM_FFd6_SPECSIG"]="GND";
+          d2["MemoryControllerCURRENT_STATE_FSM_FFd5_SPECSIG"]=new Array("FB2_14_1");
+          
+            d2imp["MemoryControllerCURRENT_STATE_FSM_FFd5_SPECSIG"]=new Array("1");
+          clkNegs["MemoryControllerCURRENT_STATE_FSM_FFd5_SPECSIG"]=1;
+              gblclk["MemoryControllerCURRENT_STATE_FSM_FFd5_SPECSIG"]=new Array("BCLK");
+            
+              gblrst["MemoryControllerCURRENT_STATE_FSM_FFd5_SPECSIG"]=new Array("nRESET");
+            prld["MemoryControllerCURRENT_STATE_FSM_FFd5_SPECSIG"]="GND";
+          d2["RefreshCounterREFRESH_COUNTER2_SPECSIG"]=new Array("FB2_15_1");
+          
+            d2imp["RefreshCounterREFRESH_COUNTER2_SPECSIG"]=new Array("1");
+          
+              gblclk["RefreshCounterREFRESH_COUNTER2_SPECSIG"]=new Array("C1");
+            
+              rst["RefreshCounterREFRESH_COUNTER2_SPECSIG"]=new Array("FB2_15_2");
+              
+                rstimp["RefreshCounterREFRESH_COUNTER2_SPECSIG"]=new Array("1");
+              prld["RefreshCounterREFRESH_COUNTER2_SPECSIG"]="GND";
+          d2["RefreshCounterREFRESH_COUNTER1_SPECSIG"]=new Array("FB2_16_1");
+          
+            d2imp["RefreshCounterREFRESH_COUNTER1_SPECSIG"]=new Array("1");
+          
+              gblclk["RefreshCounterREFRESH_COUNTER1_SPECSIG"]=new Array("C1");
+            
+              rst["RefreshCounterREFRESH_COUNTER1_SPECSIG"]=new Array("FB2_16_2");
+              
+                rstimp["RefreshCounterREFRESH_COUNTER1_SPECSIG"]=new Array("1");
+              prld["RefreshCounterREFRESH_COUNTER1_SPECSIG"]="GND";
+          d2["MemoryControllerCYCLE_SPECSIG"]=new Array("FB2_17_1","FB2_17_2","FB2_16_3","FB2_16_4");
+          
+            d2imp["MemoryControllerCYCLE_SPECSIG"]=new Array("1","1","1","1");
+          clkNegs["MemoryControllerCYCLE_SPECSIG"]=1;
+              gblclk["MemoryControllerCYCLE_SPECSIG"]=new Array("BCLK");
+            
+              gblrst["MemoryControllerCYCLE_SPECSIG"]=new Array("nRESET");
+            prld["MemoryControllerCYCLE_SPECSIG"]="GND";
+          d2["MemoryControllerSDRAMCMDOUT3_SPECSIG"]=new Array("FB2_18_1","FB2_18_2","FB2_18_3","FB2_18_4","FB2_18_5","FB2_17_3","FB2_17_4","FB2_17_5");
+          
+            d2imp["MemoryControllerSDRAMCMDOUT3_SPECSIG"]=new Array("1","1","1","1","1","1","1","1");
+          clkNegs["MemoryControllerSDRAMCMDOUT3_SPECSIG"]=1;
+              gblclk["MemoryControllerSDRAMCMDOUT3_SPECSIG"]=new Array("BCLK");
+            
+              gblset["MemoryControllerSDRAMCMDOUT3_SPECSIG"]=new Array("nRESET");
+            prld["MemoryControllerSDRAMCMDOUT3_SPECSIG"]="GND";
+          d2["REFRESH"]=new Array("FB3_1_1");
+          
+            d2imp["REFRESH"]=new Array("1");
+          
+              gblclk["REFRESH"]=new Array("BCLK");
+            
+              gblrst["REFRESH"]=new Array("nRESET");
+            prld["REFRESH"]="GND";
+          d2["RefreshCounterREFRESH_COUNTER4_SPECSIG"]=new Array("FB3_2_1");
+          
+            d2imp["RefreshCounterREFRESH_COUNTER4_SPECSIG"]=new Array("1");
+          
+              gblclk["RefreshCounterREFRESH_COUNTER4_SPECSIG"]=new Array("C1");
+            
+              rst["RefreshCounterREFRESH_COUNTER4_SPECSIG"]=new Array("FB3_2_2");
+              
+                rstimp["RefreshCounterREFRESH_COUNTER4_SPECSIG"]=new Array("1");
+              prld["RefreshCounterREFRESH_COUNTER4_SPECSIG"]="GND";
+          d2["RefreshCounterREFRESH_COUNTER3_SPECSIG"]=new Array("FB3_3_1");
+          
+            d2imp["RefreshCounterREFRESH_COUNTER3_SPECSIG"]=new Array("1");
+          
+              gblclk["RefreshCounterREFRESH_COUNTER3_SPECSIG"]=new Array("C1");
+            
+              rst["RefreshCounterREFRESH_COUNTER3_SPECSIG"]=new Array("FB3_3_2");
+              
+                rstimp["RefreshCounterREFRESH_COUNTER3_SPECSIG"]=new Array("1");
+              prld["RefreshCounterREFRESH_COUNTER3_SPECSIG"]="GND";
+          d2["nCLLBE"]=new Array("FB3_4_1","FB3_4_2");
+          
+            d2imp["nCLLBE"]=new Array("1","1");
+          clkNegs["nCLLBE"]=1;
+              gblclk["nCLLBE"]=new Array("BCLK");
+            
+              gblset["nCLLBE"]=new Array("nRESET");
+            prld["nCLLBE"]="GND";
+          d2["ACAS9_SPECSIG"]=new Array("FB3_5_1");
+          
+            d2imp["ACAS9_SPECSIG"]=new Array("1");
+          
+              clk["ACAS9_SPECSIG"]=new Array("FB3_5_2");
+              
+                clkimp["ACAS9_SPECSIG"]=new Array("1");
+              
+              gblrst["ACAS9_SPECSIG"]=new Array("nRESET");
+            prld["ACAS9_SPECSIG"]="GND";
+          d2["nCUMBE"]=new Array("FB3_6_1","FB3_6_2");
+          
+            d2imp["nCUMBE"]=new Array("1","1");
+          clkNegs["nCUMBE"]=1;
+              gblclk["nCUMBE"]=new Array("BCLK");
+            
+              gblset["nCUMBE"]=new Array("nRESET");
+            prld["nCUMBE"]="GND";
+          d2["ACAS8_SPECSIG"]=new Array("FB3_7_1");
+          
+            d2imp["ACAS8_SPECSIG"]=new Array("1");
+          
+              clk["ACAS8_SPECSIG"]=new Array("FB3_7_2");
+              
+                clkimp["ACAS8_SPECSIG"]=new Array("1");
+              
+              gblrst["ACAS8_SPECSIG"]=new Array("nRESET");
+            prld["ACAS8_SPECSIG"]="GND";
+          d2["ACAS7_SPECSIG"]=new Array("FB3_8_1");
+          
+            d2imp["ACAS7_SPECSIG"]=new Array("1");
+          
+              clk["ACAS7_SPECSIG"]=new Array("FB3_8_2");
+              
+                clkimp["ACAS7_SPECSIG"]=new Array("1");
+              
+              gblrst["ACAS7_SPECSIG"]=new Array("nRESET");
+            prld["ACAS7_SPECSIG"]="GND";
+          d2["ACAS5_SPECSIG"]=new Array("FB3_9_1");
+          
+            d2imp["ACAS5_SPECSIG"]=new Array("1");
+          
+              clk["ACAS5_SPECSIG"]=new Array("FB3_9_2");
+              
+                clkimp["ACAS5_SPECSIG"]=new Array("1");
+              
+              gblrst["ACAS5_SPECSIG"]=new Array("nRESET");
+            prld["ACAS5_SPECSIG"]="GND";
+          d2["ACAS4_SPECSIG"]=new Array("FB3_10_1");
+          
+            d2imp["ACAS4_SPECSIG"]=new Array("1");
+          
+              clk["ACAS4_SPECSIG"]=new Array("FB3_10_2");
+              
+                clkimp["ACAS4_SPECSIG"]=new Array("1");
+              
+              gblrst["ACAS4_SPECSIG"]=new Array("nRESET");
+            prld["ACAS4_SPECSIG"]="GND";
+          d2["nCLMBE"]=new Array("FB3_11_1","FB3_11_2");
+          
+            d2imp["nCLMBE"]=new Array("1","1");
+          clkNegs["nCLMBE"]=1;
+              gblclk["nCLMBE"]=new Array("BCLK");
+            
+              gblset["nCLMBE"]=new Array("nRESET");
+            prld["nCLMBE"]="GND";
+          d2["ACAS3_SPECSIG"]=new Array("FB3_12_1");
+          
+            d2imp["ACAS3_SPECSIG"]=new Array("1");
+          
+              clk["ACAS3_SPECSIG"]=new Array("FB3_12_2");
+              
+                clkimp["ACAS3_SPECSIG"]=new Array("1");
+              
+              gblrst["ACAS3_SPECSIG"]=new Array("nRESET");
+            prld["ACAS3_SPECSIG"]="GND";
+          d2["ACAS2_SPECSIG"]=new Array("FB3_13_1");
+          
+            d2imp["ACAS2_SPECSIG"]=new Array("1");
+          
+              clk["ACAS2_SPECSIG"]=new Array("FB3_13_2");
+              
+                clkimp["ACAS2_SPECSIG"]=new Array("1");
+              
+              gblrst["ACAS2_SPECSIG"]=new Array("nRESET");
+            prld["ACAS2_SPECSIG"]="GND";
+          d2["nCUUBE"]=new Array("FB3_14_1","FB3_14_2");
+          
+            d2imp["nCUUBE"]=new Array("1","1");
+          clkNegs["nCUUBE"]=1;
+              gblclk["nCUUBE"]=new Array("BCLK");
+            
+              gblset["nCUUBE"]=new Array("nRESET");
+            prld["nCUUBE"]="GND";
+          d2["nCLCS"]=new Array("FB3_15_1","FB3_15_2","FB3_15_3","FB3_15_4");
+          
+            d2imp["nCLCS"]=new Array("1","1","1","1");
+          
+          d2["ACAS1_SPECSIG"]=new Array("FB3_16_1");
+          
+            d2imp["ACAS1_SPECSIG"]=new Array("1");
+          
+              clk["ACAS1_SPECSIG"]=new Array("FB3_16_2");
+              
+                clkimp["ACAS1_SPECSIG"]=new Array("1");
+              
+              gblrst["ACAS1_SPECSIG"]=new Array("nRESET");
+            prld["ACAS1_SPECSIG"]="GND";
+          d2["nCUCS"]=new Array("FB3_17_1","FB3_17_2","FB3_17_3","FB3_17_4");
+          
+            d2imp["nCUCS"]=new Array("1","1","1","1");
+          
+          d2["ACAS0_SPECSIG"]=new Array("FB3_18_1");
+          
+            d2imp["ACAS0_SPECSIG"]=new Array("1");
+          
+              clk["ACAS0_SPECSIG"]=new Array("FB3_18_2");
+              
+                clkimp["ACAS0_SPECSIG"]=new Array("1");
+              
+              gblrst["ACAS0_SPECSIG"]=new Array("nRESET");
+            prld["ACAS0_SPECSIG"]="GND";
+          d2["MemoryControllerSTARTUP_REFRESH_SPECSIG"]=new Array("GND");
+          
+            d2imp["MemoryControllerSTARTUP_REFRESH_SPECSIG"]=new Array("1");
+          clkNegs["MemoryControllerSTARTUP_REFRESH_SPECSIG"]=1;
+              gblclk["MemoryControllerSTARTUP_REFRESH_SPECSIG"]=new Array("BCLK");
+            
+              gblset["MemoryControllerSTARTUP_REFRESH_SPECSIG"]=new Array("nRESET");
+            
+          ce["MemoryControllerSTARTUP_REFRESH_SPECSIG"]=new Array("FB4_1_1");
+          
+            ceimp["MemoryControllerSTARTUP_REFRESH_SPECSIG"]=new Array("1");
+          prld["MemoryControllerSTARTUP_REFRESH_SPECSIG"]="GND";
+          d2["MemoryControllerCURRENT_STATE_FSM_FFd7_SPECSIG"]=new Array("FB4_1_2");
+          
+            d2imp["MemoryControllerCURRENT_STATE_FSM_FFd7_SPECSIG"]=new Array("1");
+          clkNegs["MemoryControllerCURRENT_STATE_FSM_FFd7_SPECSIG"]=1;
+              gblclk["MemoryControllerCURRENT_STATE_FSM_FFd7_SPECSIG"]=new Array("BCLK");
+            
+              gblrst["MemoryControllerCURRENT_STATE_FSM_FFd7_SPECSIG"]=new Array("nRESET");
+            prld["MemoryControllerCURRENT_STATE_FSM_FFd7_SPECSIG"]="VCC";
+          d2["nCWE"]=new Array("FB4_3_1","FB4_3_2","FB4_3_3","FB4_3_4","FB4_3_5","FB4_2_1","FB4_2_2","FB4_2_3","FB4_2_4","FB4_2_5","FB4_4_3","FB4_4_4","FB4_4_5");
+          
+            d2imp["nCWE"]=new Array("1","1","1","1","1","1","1","1","1","1","1","1","1");
+          clkNegs["nCWE"]=1;
+              gblclk["nCWE"]=new Array("BCLK");
+            
+              gblset["nCWE"]=new Array("nRESET");
+            prld["nCWE"]="GND";
+          d2["CCLKE"]=new Array("FB4_4_1");
+          
+            d2imp["CCLKE"]=new Array("1");
+          clkNegs["CCLKE"]=1;
+              gblclk["CCLKE"]=new Array("BCLK");
+            
+              gblset["CCLKE"]=new Array("nRESET");
+            
+          ce["CCLKE"]=new Array("FB4_4_2");
+          
+            ceimp["CCLKE"]=new Array("1");
+          prld["CCLKE"]="GND";
+          d2["nCRAS"]=new Array("FB4_5_1","FB4_5_2","FB4_5_3","FB4_5_4","FB4_5_5","FB4_6_2","FB4_6_3","FB4_6_4","FB4_6_5");
+          
+            d2imp["nCRAS"]=new Array("1","1","1","1","1","1","1","1","1");
+          clkNegs["nCRAS"]=1;
+              gblclk["nCRAS"]=new Array("BCLK");
+            
+              gblset["nCRAS"]=new Array("nRESET");
+            prld["nCRAS"]="GND";
+          d2["MemoryControllerCURRENT_STATE_FSM_FFd2_SPECSIG"]=new Array("FB4_6_1","FB4_7_3");
+          
+            d2imp["MemoryControllerCURRENT_STATE_FSM_FFd2_SPECSIG"]=new Array("1","1");
+          clkNegs["MemoryControllerCURRENT_STATE_FSM_FFd2_SPECSIG"]=1;
+              gblclk["MemoryControllerCURRENT_STATE_FSM_FFd2_SPECSIG"]=new Array("BCLK");
+            
+              gblrst["MemoryControllerCURRENT_STATE_FSM_FFd2_SPECSIG"]=new Array("nRESET");
+            prld["MemoryControllerCURRENT_STATE_FSM_FFd2_SPECSIG"]="GND";
+          d2["MemoryControllerCURRENT_STATE_FSM_FFd1_SPECSIG"]=new Array("FB4_7_1","FB4_7_2");
+          
+            d2imp["MemoryControllerCURRENT_STATE_FSM_FFd1_SPECSIG"]=new Array("1","1");
+          clkNegs["MemoryControllerCURRENT_STATE_FSM_FFd1_SPECSIG"]=1;
+              gblclk["MemoryControllerCURRENT_STATE_FSM_FFd1_SPECSIG"]=new Array("BCLK");
+            
+              gblrst["MemoryControllerCURRENT_STATE_FSM_FFd1_SPECSIG"]=new Array("nRESET");
+            prld["MemoryControllerCURRENT_STATE_FSM_FFd1_SPECSIG"]="GND";
+          d2["nCCAS"]=new Array("FB4_8_1","FB4_8_2","FB4_8_3","FB4_8_4","FB4_8_5","FB4_9_2","FB4_9_3","FB4_9_4","FB4_9_5");
+          
+            d2imp["nCCAS"]=new Array("1","1","1","1","1","1","1","1","1");
+          clkNegs["nCCAS"]=1;
+              gblclk["nCCAS"]=new Array("BCLK");
+            
+              gblset["nCCAS"]=new Array("nRESET");
+            prld["nCCAS"]="GND";
+          d2["MemoryControllerCLOCK_COUNT_FSM_FFd2_SPECSIG"]=new Array("FB4_10_4","FB4_10_5");
+          
+            d2imp["MemoryControllerCLOCK_COUNT_FSM_FFd2_SPECSIG"]=new Array("1","1");
+          clkNegs["MemoryControllerCLOCK_COUNT_FSM_FFd2_SPECSIG"]=1;
+              gblclk["MemoryControllerCLOCK_COUNT_FSM_FFd2_SPECSIG"]=new Array("BCLK");
+            
+          ce["MemoryControllerCLOCK_COUNT_FSM_FFd2_SPECSIG"]=new Array("FB4_9_1");
+          
+            ceimp["MemoryControllerCLOCK_COUNT_FSM_FFd2_SPECSIG"]=new Array("1");
+          prld["MemoryControllerCLOCK_COUNT_FSM_FFd2_SPECSIG"]="GND";
+          d2["CMA1_SPECSIG"]=new Array("FB4_10_1","FB4_10_2","FB4_10_3","FB4_11_5");
+          
+            d2imp["CMA1_SPECSIG"]=new Array("1","1","1","1");
+          clkNegs["CMA1_SPECSIG"]=1;
+              gblclk["CMA1_SPECSIG"]=new Array("BCLK");
+            
+              gblrst["CMA1_SPECSIG"]=new Array("nRESET");
+            prld["CMA1_SPECSIG"]="GND";
+          d2["REFRESET"]=new Array("FB4_11_1","FB4_11_2","FB4_11_3","FB4_11_4");
+          
+            d2imp["REFRESET"]=new Array("1","1","1","1");
+          clkNegs["REFRESET"]=1;
+              gblclk["REFRESET"]=new Array("BCLK");
+            
+              gblrst["REFRESET"]=new Array("nRESET");
+            prld["REFRESET"]="GND";
+          d2["CMA2_SPECSIG"]=new Array("FB4_12_1","FB4_12_2","FB4_12_3","FB4_12_4");
+          
+            d2imp["CMA2_SPECSIG"]=new Array("1","1","1","1");
+          clkNegs["CMA2_SPECSIG"]=1;
+              gblclk["CMA2_SPECSIG"]=new Array("BCLK");
+            
+              gblrst["CMA2_SPECSIG"]=new Array("nRESET");
+            prld["CMA2_SPECSIG"]="GND";
+          d2["MemoryControllerCLOCK_COUNT_FSM_FFd1_SPECSIG"]=new Array("FB4_13_1","FB4_13_2","FB4_13_3");
+          
+            d2imp["MemoryControllerCLOCK_COUNT_FSM_FFd1_SPECSIG"]=new Array("1","1","1");
+          clkNegs["MemoryControllerCLOCK_COUNT_FSM_FFd1_SPECSIG"]=1;
+              gblclk["MemoryControllerCLOCK_COUNT_FSM_FFd1_SPECSIG"]=new Array("BCLK");
+            
+          ce["MemoryControllerCLOCK_COUNT_FSM_FFd1_SPECSIG"]=new Array("FB4_13_4");
+          
+            ceimp["MemoryControllerCLOCK_COUNT_FSM_FFd1_SPECSIG"]=new Array("1");
+          prld["MemoryControllerCLOCK_COUNT_FSM_FFd1_SPECSIG"]="GND";
+          d2["CMA0_SPECSIG"]=new Array("FB4_14_1","FB4_14_2","FB4_14_3","FB4_14_4");
+          
+            d2imp["CMA0_SPECSIG"]=new Array("1","1","1","1");
+          clkNegs["CMA0_SPECSIG"]=1;
+              gblclk["CMA0_SPECSIG"]=new Array("BCLK");
+            
+              gblrst["CMA0_SPECSIG"]=new Array("nRESET");
+            prld["CMA0_SPECSIG"]="GND";
+          d2["CMA3_SPECSIG"]=new Array("FB4_15_1","FB4_15_2","FB4_15_3","FB4_15_4");
+          
+            d2imp["CMA3_SPECSIG"]=new Array("1","1","1","1");
+          clkNegs["CMA3_SPECSIG"]=1;
+              gblclk["CMA3_SPECSIG"]=new Array("BCLK");
+            
+              gblrst["CMA3_SPECSIG"]=new Array("nRESET");
+            prld["CMA3_SPECSIG"]="GND";
+          d2["MemoryControllerCURRENT_STATE_FSM_FFd3_SPECSIG"]=new Array("FB4_16_1","FB4_16_2","FB4_16_3","FB4_16_4","FB4_16_5","FB4_15_5");
+          
+            d2imp["MemoryControllerCURRENT_STATE_FSM_FFd3_SPECSIG"]=new Array("1","1","1","1","1","1");
+          clkNegs["MemoryControllerCURRENT_STATE_FSM_FFd3_SPECSIG"]=1;
+              gblclk["MemoryControllerCURRENT_STATE_FSM_FFd3_SPECSIG"]=new Array("BCLK");
+            
+              gblrst["MemoryControllerCURRENT_STATE_FSM_FFd3_SPECSIG"]=new Array("nRESET");
+            prld["MemoryControllerCURRENT_STATE_FSM_FFd3_SPECSIG"]="GND";
+          d2["CMA4_SPECSIG"]=new Array("FB4_17_1","FB4_17_2","FB4_17_3","FB4_17_4");
+          
+            d2imp["CMA4_SPECSIG"]=new Array("1","1","1","1");
+          clkNegs["CMA4_SPECSIG"]=1;
+              gblclk["CMA4_SPECSIG"]=new Array("BCLK");
+            
+              gblrst["CMA4_SPECSIG"]=new Array("nRESET");
+            prld["CMA4_SPECSIG"]="GND";
+          d2["OpTxFX_DC6_SPECSIG"]=new Array("FB4_18_1","FB4_18_2","FB4_18_3","FB4_18_4","FB4_18_5","FB4_17_5");
+          
+            d2imp["OpTxFX_DC6_SPECSIG"]=new Array("1","1","1","1","1","1");
+          
+
+      uimSignals = new Array();
+
+      uimSigNegs = new Array();
+
+      uimPterms = new Array();
+      
+
+      
+        function getEqnList() {
+          var str = "<html><head><link type='text/css' href='style.css' rel='stylesheet'></head><body class='pgBgnd'>";
+          str += "<center><h3>Equations</h3></center>";
+          str += "<table width='90%' align='center' border='1' cellpadding='0' cellspacing='0'>";
+          for (s=0; s<uimSignals.length; s++) {
+            str += "<tr><td>";
+            str += retUimEqn(uimSignals[s]);
+            str += "</td></tr>";
+          }
+          for (s=0; s<signals.length; s++) {
+            str += "<tr><td>";
+            str += retEqn(signals[s]);
+            str += "</td></tr>";
+          }
+
+          var legend = retLegend();
+		      if (legend != "") {
+		        str += "<tr><td>" + legend + "</td></tr>";
+		      }
+
+          str += "</table>";
+          str += "<form><span class='pgRef'>";
+
+          if (!parent.leftnav.IsNS()) {
+            str += "<table width='90%' align='center'>";
+            str += "<tr><td align='left'><input type='button' value='back to top' ";
+            str += "onclick='javascript:parent.leftnav.showEqnAll()' ";
+            str += "onmouseover=\"window.status='goto top of page'; return true;\" ";
+            str += "onmouseout=\"window.status=''\">";
+            str += "</td>";
+            str += "<td align='right'>";
+            str += "<input type='button' value='print page' ";
+            str += "onclick='javascript:window.print()' ";
+            str += "onmouseover=\"window.status='print page'; return true;\" ";
+            str += "onmouseout=\"window.status=''\">";
+            str += "</td>";
+            str += "</tr></table>";
+          }
+          else {
+            str += "<table width='90%' align='center'>";
+            str += "<tr><td align='left'><a href='javascript:parent.leftnav.showEqnAll()'>back to top</a>";
+            str += "</td>";
+            str += "<td align='right'>";
+            str += "<a href='javascript:window.print()'>";
+            str += "print page</a>";
+            str += "</td>";
+            str += "</tr></table>";
+          }
+
+          str += "</span></form>";
+          str += "</body></html>";
+          return str;
+        }
+      
+    </script>
+</head></html>

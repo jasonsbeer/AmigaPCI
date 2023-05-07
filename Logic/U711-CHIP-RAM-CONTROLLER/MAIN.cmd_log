@@ -1,0 +1,83 @@
+xst -intstyle ise -ifn "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/MAIN.xst" -ofn "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/MAIN.syr" 
+ngdbuild -intstyle ise -dd _ngo -uc MAIN-CON.ucf -p xc9572xl-VQ64-10 "MAIN.ngc" MAIN.ngd  
+cpldfit -intstyle ise -p xc9572xl-10-VQ64 -ofmt vhdl -optimize speed -htmlrpt -loc on -slew slow -init low -inputs 54 -pterms 25 -unused float -power std -terminate keeper MAIN.ngd 
+XSLTProcess MAIN_build.xml 
+tsim -intstyle ise MAIN MAIN.nga 
+taengine -intstyle ise -f MAIN -w --format html1 -l MAIN_html/tim/timing_report.htm 
+xst -intstyle ise -ifn "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/MAIN.xst" -ofn "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/MAIN.syr" 
+ngdbuild -intstyle ise -dd _ngo -uc MAIN-CON.ucf -p xc9572xl-VQ64-10 "MAIN.ngc" MAIN.ngd  
+cpldfit -intstyle ise -p xc9572xl-10-VQ64 -ofmt vhdl -optimize speed -htmlrpt -loc on -slew slow -init low -inputs 54 -pterms 25 -unused float -power std -terminate keeper MAIN.ngd 
+XSLTProcess MAIN_build.xml 
+tsim -intstyle ise MAIN MAIN.nga 
+xst -intstyle ise -ifn "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/MAIN.xst" -ofn "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/MAIN.syr" 
+ngdbuild -intstyle ise -dd _ngo -uc MAIN-CON.ucf -p xc9572xl-VQ64-10 "MAIN.ngc" MAIN.ngd  
+cpldfit -intstyle ise -p xc9572xl-10-VQ64 -ofmt vhdl -optimize speed -htmlrpt -loc on -slew slow -init low -inputs 54 -pterms 25 -unused float -power std -terminate keeper MAIN.ngd 
+XSLTProcess MAIN_build.xml 
+tsim -intstyle ise MAIN MAIN.nga 
+xst -intstyle ise -ifn "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/MAIN.xst" -ofn "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/MAIN.syr" 
+ngdbuild -intstyle ise -dd _ngo -uc MAIN-CON.ucf -p xc9572xl-VQ64-10 "MAIN.ngc" MAIN.ngd  
+cpldfit -intstyle ise -p xc9572xl-10-VQ64 -ofmt vhdl -optimize speed -htmlrpt -loc on -slew slow -init low -inputs 54 -pterms 25 -unused float -power std -terminate keeper MAIN.ngd 
+XSLTProcess MAIN_build.xml 
+tsim -intstyle ise MAIN MAIN.nga 
+xst -intstyle ise -ifn "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/MAIN.xst" -ofn "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/MAIN.syr" 
+ngdbuild -intstyle ise -dd _ngo -uc MAIN-CON.ucf -p xc9572xl-VQ64-10 "MAIN.ngc" MAIN.ngd  
+cpldfit -intstyle ise -p xc9572xl-10-VQ64 -ofmt vhdl -optimize speed -htmlrpt -loc on -slew slow -init low -inputs 54 -pterms 25 -unused float -power std -terminate keeper MAIN.ngd 
+XSLTProcess MAIN_build.xml 
+tsim -intstyle ise MAIN MAIN.nga 
+xst -intstyle ise -ifn "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/MAIN.xst" -ofn "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/MAIN.syr" 
+ngdbuild -intstyle ise -dd _ngo -uc MAIN-CON.ucf -p xc9572xl-VQ64-10 "MAIN.ngc" MAIN.ngd  
+cpldfit -intstyle ise -p xc9572xl-10-VQ64 -ofmt vhdl -optimize speed -htmlrpt -loc on -slew slow -init low -inputs 54 -pterms 25 -unused float -power std -terminate keeper MAIN.ngd 
+XSLTProcess MAIN_build.xml 
+xst -intstyle ise -ifn "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/MAIN.xst" -ofn "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/MAIN.syr" 
+xst -intstyle ise -ifn "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/MAIN.xst" -ofn "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/MAIN.syr" 
+xst -intstyle ise -ifn "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/MAIN.xst" -ofn "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/MAIN.syr" 
+xst -intstyle ise -ifn "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/MAIN.xst" -ofn "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/MAIN.syr" 
+ngdbuild -intstyle ise -dd _ngo -uc MAIN-CON.ucf -p xc9572xl-VQ64-10 "MAIN.ngc" MAIN.ngd  
+cpldfit -intstyle ise -p xc9572xl-10-VQ64 -ofmt vhdl -optimize speed -htmlrpt -loc on -slew slow -init low -inputs 54 -pterms 25 -unused float -power std -terminate keeper MAIN.ngd 
+XSLTProcess MAIN_build.xml 
+xst -intstyle ise -ifn "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/MAIN.xst" -ofn "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/MAIN.syr" 
+xst -intstyle ise -ifn "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/MAIN.xst" -ofn "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/MAIN.syr" 
+xst -intstyle ise -ifn "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/MAIN.xst" -ofn "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/MAIN.syr" 
+xst -intstyle ise -ifn "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/MAIN.xst" -ofn "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/MAIN.syr" 
+ngdbuild -intstyle ise -dd _ngo -uc MAIN-CON.ucf -p xc9572xl-VQ64-10 "MAIN.ngc" MAIN.ngd  
+cpldfit -intstyle ise -p xc9572xl-10-VQ64 -ofmt vhdl -optimize speed -htmlrpt -loc on -slew slow -init low -exhaust -inputs 54 -pterms 25 -unused float -power std -terminate keeper MAIN.ngd 
+xst -intstyle ise -ifn "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/MAIN.xst" -ofn "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/MAIN.syr" 
+xst -intstyle ise -ifn "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/MAIN.xst" -ofn "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/MAIN.syr" 
+ngdbuild -intstyle ise -dd _ngo -uc MAIN-CON.ucf -p xc9572xl-VQ64-10 "MAIN.ngc" MAIN.ngd  
+cpldfit -intstyle ise -p xc9572xl-10-VQ64 -ofmt vhdl -optimize speed -htmlrpt -loc on -slew slow -init low -exhaust -inputs 54 -pterms 25 -unused float -power std -terminate keeper MAIN.ngd 
+XSLTProcess MAIN_build.xml 
+tsim -intstyle ise MAIN MAIN.nga 
+xst -intstyle ise -ifn "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/MAIN.xst" -ofn "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/MAIN.syr" 
+xst -intstyle ise -ifn "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/MAIN.xst" -ofn "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/MAIN.syr" 
+ngdbuild -intstyle ise -dd _ngo -uc MAIN-CON.ucf -p xc9572xl-VQ64-10 "MAIN.ngc" MAIN.ngd  
+cpldfit -intstyle ise -p xc9572xl-10-VQ64 -ofmt vhdl -optimize speed -htmlrpt -loc on -slew slow -init low -exhaust -inputs 54 -pterms 25 -unused float -power std -terminate keeper MAIN.ngd 
+cpldfit -intstyle ise -p xc9572xl-10-VQ64 -ofmt vhdl -optimize density -htmlrpt -loc on -slew slow -init low -inputs 54 -pterms 25 -unused float -power std -terminate keeper MAIN.ngd 
+XSLTProcess MAIN_build.xml 
+tsim -intstyle ise MAIN MAIN.nga 
+xst -intstyle ise -ifn "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/MAIN.xst" -ofn "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/MAIN.syr" 
+ngdbuild -intstyle ise -dd _ngo -uc MAIN-CON.ucf -p xc9572xl-VQ64-10 "MAIN.ngc" MAIN.ngd  
+cpldfit -intstyle ise -p xc9572xl-10-VQ64 -ofmt vhdl -optimize density -htmlrpt -loc on -slew slow -init low -inputs 54 -pterms 25 -unused float -power std -terminate keeper MAIN.ngd 
+XSLTProcess MAIN_build.xml 
+cpldfit -intstyle ise -p xc9572xl-10-VQ64 -ofmt vhdl -optimize speed -htmlrpt -loc on -slew slow -init low -inputs 54 -pterms 90 -unused float -power std -terminate keeper MAIN.ngd 
+XSLTProcess MAIN_build.xml 
+cpldfit -intstyle ise -p xc9572xl-10-VQ64 -ofmt vhdl -optimize density -htmlrpt -loc on -slew slow -init low -exhaust -inputs 54 -pterms 25 -unused float -power std -terminate keeper MAIN.ngd 
+cpldfit -intstyle ise -p xc9572xl-10-VQ64 -ofmt vhdl -optimize density -htmlrpt -loc on -slew slow -init low -exhaust -inputs 54 -pterms 90 -unused float -power std -terminate keeper MAIN.ngd 
+xst -intstyle ise -ifn "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/MAIN.xst" -ofn "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/MAIN.syr" 
+ngdbuild -intstyle ise -dd _ngo -uc MAIN-CON.ucf -p xc9572xl-VQ64-10 "MAIN.ngc" MAIN.ngd  
+cpldfit -intstyle ise -p xc9572xl-10-VQ64 -ofmt vhdl -optimize speed -htmlrpt -loc on -slew slow -init low -exhaust -inputs 54 -pterms 25 -unused float -power std -terminate keeper MAIN.ngd 
+XSLTProcess MAIN_build.xml 
+tsim -intstyle ise MAIN MAIN.nga 
+cpldfit -intstyle ise -p xc9572xl-10-VQ64 -ofmt vhdl -optimize density -htmlrpt -loc on -slew slow -init low -exhaust -inputs 54 -pterms 90 -unused float -power std -terminate keeper MAIN.ngd 
+XSLTProcess MAIN_build.xml 
+tsim -intstyle ise MAIN MAIN.nga 
+xst -intstyle ise -ifn "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/MAIN.xst" -ofn "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/MAIN.syr" 
+xst -intstyle ise -ifn "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/MAIN.xst" -ofn "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/MAIN.syr" 
+ngdbuild -intstyle ise -dd _ngo -uc MAIN-CON.ucf -p xc9572xl-VQ64-10 "MAIN.ngc" MAIN.ngd  
+cpldfit -intstyle ise -p xc9572xl-10-VQ64 -ofmt vhdl -optimize density -htmlrpt -loc on -slew slow -init low -exhaust -inputs 54 -pterms 90 -unused float -power std -terminate keeper MAIN.ngd 
+XSLTProcess MAIN_build.xml 
+tsim -intstyle ise MAIN MAIN.nga 
+xst -intstyle ise -ifn "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/MAIN.xst" -ofn "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/MAIN.syr" 
+ngdbuild -intstyle ise -dd _ngo -uc MAIN-CON.ucf -p xc9572xl-VQ64-10 "MAIN.ngc" MAIN.ngd  
+cpldfit -intstyle ise -p xc9572xl-10-VQ64 -ofmt vhdl -optimize density -htmlrpt -loc on -slew slow -init low -exhaust -inputs 54 -pterms 90 -unused float -power std -terminate keeper MAIN.ngd 
+XSLTProcess MAIN_build.xml 
+tsim -intstyle ise MAIN MAIN.nga 

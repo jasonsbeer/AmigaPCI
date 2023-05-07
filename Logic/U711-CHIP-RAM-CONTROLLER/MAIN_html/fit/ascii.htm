@@ -1,0 +1,1022 @@
+<html><body>
+<pre>
+ 
+cpldfit:  version P.20131013                        Xilinx Inc.
+                                  Fitter Report
+Design Name: MAIN                                Date:  5- 7-2023,  4:15PM
+Device Used: XC9572XL-10-VQ64
+Fitting Status: Successful
+
+*************************  Mapped Resource Summary  **************************
+
+Macrocells     Product Terms    Function Block   Registers      Pins           
+Used/Tot       Used/Tot         Inps Used/Tot    Used/Tot       Used/Tot       
+68 /72  ( 94%) 204 /360  ( 57%) 126/216 ( 58%)   60 /72  ( 83%) 52 /52  (100%)
+
+** Function Block Resources **
+
+Function    Mcells      FB Inps     Pterms      IO          
+Block       Used/Tot    Used/Tot    Used/Tot    Used/Tot    
+FB1          17/18       22/54       31/90      13/13*
+FB2          15/18       38/54       52/90      13/13*
+FB3          18/18*      28/54       39/90      14/14*
+FB4          18/18*      38/54       82/90      12/12*
+             -----       -----       -----      -----    
+             68/72      126/216     204/360     52/52 
+
+* - Resource is exhausted
+
+** Global Control Resources **
+
+Signal 'C1' mapped onto global clock net GCK2.
+Signal 'BCLK' mapped onto global clock net GCK3.
+Global output enable net(s) unused.
+Signal 'nRESET' mapped onto global set/reset net GSR.
+
+** Pin Resources **
+
+Signal Type    Required     Mapped  |  Pin Type            Used    Total 
+------------------------------------|------------------------------------
+Input         :   24          24    |  I/O              :    46      46
+Output        :   25          25    |  GCK/IO           :     3       3
+Bidirectional :    0           0    |  GTS/IO           :     2       2
+GCK           :    2           2    |  GSR/IO           :     1       1
+GTS           :    0           0    |
+GSR           :    1           1    |
+                 ----        ----
+        Total     52          52
+
+** Power Data **
+
+There are 68 macrocells in high performance mode (MCHP).
+There are 0 macrocells in low power mode (MCLP).
+End of Mapped Resource Summary
+**************************  Errors and Warnings  ***************************
+
+WARNING:Cpld - Unable to retrieve the path to the iSE Project Repository. Will
+   use the default filename of 'MAIN.ise'.
+INFO:Cpld - Inferring BUFG constraint for signal 'BCLK' based upon the LOC
+   constraint 'P17'. It is recommended that you declare this BUFG explicitedly
+   in your design. Note that for certain device families the output of a BUFG
+   constraint can not drive a gated clock, and the BUFG constraint will be
+   ignored.
+WARNING:Cpld:1239 - The global clock designation (BUFG) on signal 'C3_IBUF' is
+   ignored. Most likely the signal is gated and therefore cannot be used as a
+   global control signal.
+INFO:Cpld:994 - Exhaustive fitting is trying pterm limit: 90 and input limit: 54
+*************************  Summary of Mapped Logic  ************************
+
+** 25 Outputs **
+
+Signal                                                    Total Total Loc     Pin  Pin     Pin     Pwr  Slew Reg Init
+Name                                                      Pts   Inps          No.  Type    Use     Mode Rate State
+nDBEN                                                     1     3     FB1_4   13   I/O     O       STD  SLOW 
+DBDIR                                                     2     2     FB1_12  23   I/O     O       STD  SLOW RESET
+DRDDIR                                                    1     2     FB1_15  19   I/O     O       STD  SLOW 
+nDRDEN                                                    2     4     FB1_17  20   I/O     O       STD  SLOW 
+CMA<7>                                                    4     11    FB2_2   60   I/O     O       STD  SLOW RESET
+CMA<5>                                                    10    17    FB2_3   58   I/O     O       STD  SLOW RESET
+CMA<6>                                                    4     11    FB2_4   59   I/O     O       STD  SLOW RESET
+CMA<8>                                                    3     9     FB2_5   61   I/O     O       STD  SLOW RESET
+CMA<9>                                                    6     15    FB2_6   62   I/O     O       STD  SLOW RESET
+CMA<10>                                                   5     11    FB2_8   63   I/O     O       STD  SLOW RESET
+nCLLBE                                                    2     5     FB3_4   32   I/O     O       STD  SLOW RESET
+nCUMBE                                                    2     5     FB3_6   34   I/O     O       STD  SLOW RESET
+nCLMBE                                                    2     5     FB3_11  33   I/O     O       STD  SLOW RESET
+nCUUBE                                                    2     5     FB3_14  35   I/O     O       STD  SLOW RESET
+nCLCS                                                     4     7     FB3_15  36   I/O     O       STD  SLOW 
+nCUCS                                                     4     7     FB3_17  38   I/O     O       STD  SLOW 
+nCWE                                                      13    17    FB4_3   46   I/O     O       STD  SLOW RESET
+CCLKE                                                     2     3     FB4_4   47   I/O     O       STD  SLOW RESET
+nCRAS                                                     9     15    FB4_5   44   I/O     O       STD  SLOW RESET
+nCCAS                                                     9     15    FB4_8   45   I/O     O       STD  SLOW RESET
+CMA<1>                                                    4     11    FB4_10  51   I/O     O       STD  SLOW RESET
+CMA<2>                                                    4     11    FB4_12  52   I/O     O       STD  SLOW RESET
+CMA<0>                                                    4     11    FB4_14  50   I/O     O       STD  SLOW RESET
+CMA<3>                                                    4     11    FB4_15  56   I/O     O       STD  SLOW RESET
+CMA<4>                                                    4     11    FB4_17  57   I/O     O       STD  SLOW RESET
+
+** 43 Buried Nodes **
+
+Signal                                                    Total Total Loc     Pwr  Reg Init
+Name                                                      Pts   Inps          Mode State
+ACAS<9>/ACAS<9>_CLKF                                      1     2     FB1_2   STD  
+MemoryController/DMACYCLE                                 2     2     FB1_3   STD  RESET
+ARAS<9>                                                   2     3     FB1_5   STD  RESET
+ARAS<8>                                                   2     3     FB1_6   STD  RESET
+ARAS<7>                                                   2     3     FB1_7   STD  RESET
+ARAS<6>                                                   2     3     FB1_8   STD  RESET
+ARAS<5>                                                   2     3     FB1_9   STD  RESET
+ARAS<4>                                                   2     3     FB1_10  STD  RESET
+ARAS<3>                                                   2     3     FB1_11  STD  RESET
+ARAS<2>                                                   2     3     FB1_13  STD  RESET
+ARAS<1>                                                   2     3     FB1_14  STD  RESET
+ARAS<0>                                                   2     3     FB1_16  STD  RESET
+ACAS<6>                                                   2     3     FB1_18  STD  RESET
+RefreshCounter/REFRESH_COUNTER<0>                         1     1     FB2_1   STD  RESET
+MemoryController/SDRAM_READY                              1     1     FB2_11  STD  RESET
+MemoryController/DMACYCLE/MemoryController/DMACYCLE_RSTF  1     2     FB2_12  STD  
+MemoryController/CURRENT_STATE_FSM_FFd6                   0     0     FB2_13  STD  RESET
+MemoryController/CURRENT_STATE_FSM_FFd5                   1     1     FB2_14  STD  RESET
+RefreshCounter/REFRESH_COUNTER<2>                         2     3     FB2_15  STD  RESET
+RefreshCounter/REFRESH_COUNTER<1>                         2     2     FB2_16  STD  RESET
+MemoryController/CYCLE                                    4     14    FB2_17  STD  RESET
+MemoryController/SDRAMCMDOUT<3>                           8     14    FB2_18  STD  RESET
+REFRESH                                                   1     3     FB3_1   STD  RESET
+RefreshCounter/REFRESH_COUNTER<4>                         2     5     FB3_2   STD  RESET
+RefreshCounter/REFRESH_COUNTER<3>                         2     4     FB3_3   STD  RESET
+ACAS<9>                                                   2     3     FB3_5   STD  RESET
+ACAS<8>                                                   2     3     FB3_7   STD  RESET
+ACAS<7>                                                   2     3     FB3_8   STD  RESET
+ACAS<5>                                                   2     3     FB3_9   STD  RESET
+ACAS<4>                                                   2     3     FB3_10  STD  RESET
+ACAS<3>                                                   2     3     FB3_12  STD  RESET
+ACAS<2>                                                   2     3     FB3_13  STD  RESET
+ACAS<1>                                                   2     3     FB3_16  STD  RESET
+ACAS<0>                                                   2     3     FB3_18  STD  RESET
+MemoryController/STARTUP_REFRESH                          1     4     FB4_1   STD  RESET
+MemoryController/CURRENT_STATE_FSM_FFd7                   1     4     FB4_2   STD  SET
+MemoryController/CURRENT_STATE_FSM_FFd2                   2     6     FB4_6   STD  RESET
+MemoryController/CURRENT_STATE_FSM_FFd1                   2     3     FB4_7   STD  RESET
+MemoryController/CLOCK_COUNT_FSM_FFd2                     3     9     FB4_9   STD  RESET
+REFRESET                                                  4     6     FB4_11  STD  RESET
+
+Signal                                                    Total Total Loc     Pwr  Reg Init
+Name                                                      Pts   Inps          Mode State
+MemoryController/CLOCK_COUNT_FSM_FFd1                     4     9     FB4_13  STD  RESET
+MemoryController/CURRENT_STATE_FSM_FFd3                   6     13    FB4_16  STD  RESET
+$OpTx$FX_DC$6                                             6     13    FB4_18  STD  
+
+** 27 Inputs **
+
+Signal                                                    Loc     Pin  Pin     Pin     
+Name                                                              No.  Type    Use     
+DRA<6>                                                    FB1_2   8    I/O     I
+nDBR                                                      FB1_3   12   I/O     I
+DRA<7>                                                    FB1_5   9    I/O     I
+DRA<8>                                                    FB1_6   10   I/O     I
+DRA<9>                                                    FB1_8   11   I/O     I
+C3                                                        FB1_9   15   GCK/I/O I
+nAS                                                       FB1_10  18   I/O     I
+C1                                                        FB1_11  16   GCK/I/O GCK/I
+BCLK                                                      FB1_14  17   GCK/I/O GCK
+nRESET                                                    FB2_9   64   GSR/I/O GSR/I
+DRA<0>                                                    FB2_10  1    I/O     I
+DRA<1>                                                    FB2_11  2    GTS/I/O I
+DRA<2>                                                    FB2_12  4    I/O     I
+DRA<3>                                                    FB2_14  5    GTS/I/O I
+DRA<4>                                                    FB2_15  6    I/O     I
+DRA<5>                                                    FB2_17  7    I/O     I
+nRAS0                                                     FB3_2   22   I/O     I
+nAWE                                                      FB3_3   31   I/O     I
+nRAS1                                                     FB3_5   24   I/O     I
+nCASL                                                     FB3_8   25   I/O     I
+nCASU                                                     FB3_9   27   I/O     I
+nUMBE                                                     FB3_10  39   I/O     I
+nUUBE                                                     FB3_12  40   I/O     I
+nLMBE                                                     FB3_16  42   I/O     I
+nLLBE                                                     FB4_2   43   I/O     I
+nREGEN                                                    FB4_6   49   I/O     I
+nRAMEN                                                    FB4_11  48   I/O     I
+
+Legend:
+Pin No. - ~ - User Assigned
+**************************  Function Block Details  ************************
+Legend:
+Total Pt     - Total product terms used by the macrocell signal
+Imp Pt       - Product terms imported from other macrocells
+Exp Pt       - Product terms exported to other macrocells
+               in direction shown
+Unused Pt    - Unused local product terms remaining in macrocell
+Loc          - Location where logic was mapped in device
+Pin Type/Use - I  - Input             GCK - Global Clock
+               O  - Output            GTS - Global Output Enable
+              (b) - Buried macrocell  GSR - Global Set/Reset
+X            - Signal used as input to the macrocell logic.
+Pin No.      - ~  - User Assigned
+*********************************** FB1  ***********************************
+Number of function block inputs used/remaining:               22/32
+Number of signals used by logic mapping into function block:  22
+Signal              Total   Imp   Exp Unused  Loc     Pin   Pin     Pin
+Name                Pt      Pt    Pt  Pt               #    Type    Use
+(unused)              0       0     0   5     FB1_1         (b)     
+ACAS<9>/ACAS<9>_CLKF
+                      1       0     0   4     FB1_2   8     I/O     I
+MemoryController/DMACYCLE
+                      2       0     0   3     FB1_3   12    I/O     I
+nDBEN                 1       0     0   4     FB1_4   13    I/O     O
+ARAS<9>               2       0     0   3     FB1_5   9     I/O     I
+ARAS<8>               2       0     0   3     FB1_6   10    I/O     I
+ARAS<7>               2       0     0   3     FB1_7         (b)     (b)
+ARAS<6>               2       0     0   3     FB1_8   11    I/O     I
+ARAS<5>               2       0     0   3     FB1_9   15    GCK/I/O I
+ARAS<4>               2       0     0   3     FB1_10  18    I/O     I
+ARAS<3>               2       0     0   3     FB1_11  16    GCK/I/O GCK/I
+DBDIR                 2       0     0   3     FB1_12  23    I/O     O
+ARAS<2>               2       0     0   3     FB1_13        (b)     (b)
+ARAS<1>               2       0     0   3     FB1_14  17    GCK/I/O GCK
+DRDDIR                1       0     0   4     FB1_15  19    I/O     O
+ARAS<0>               2       0     0   3     FB1_16        (b)     (b)
+nDRDEN                2       0     0   3     FB1_17  20    I/O     O
+ACAS<6>               2       0     0   3     FB1_18        (b)     (b)
+
+Signals Used by Logic in Function Block
+  1: ACAS<0>            9: DRA<6>                                                    16: nCASL 
+  2: DBDIR             10: DRA<7>                                                    17: nCASU 
+  3: DRA<0>            11: DRA<8>                                                    18: nDBR 
+  4: DRA<1>            12: DRA<9>                                                    19: nRAS0 
+  5: DRA<2>            13: MemoryController/DMACYCLE                                 20: nRAS1 
+  6: DRA<3>            14: MemoryController/DMACYCLE/MemoryController/DMACYCLE_RSTF  21: nREGEN 
+  7: DRA<4>            15: nAWE                                                      22: nRESET 
+  8: DRA<5>           
+
+Signal                        1         2         3         4 FB
+Name                0----+----0----+----0----+----0----+----0 Inputs
+ACAS<9>/ACAS<9>_CLKF 
+                     ...............XX....................... 2
+MemoryController/DMACYCLE 
+                     .............X...X...................... 2
+nDBEN                X...........XX.......................... 3
+ARAS<9>              ...........X......XX.................... 3
+ARAS<8>              ..........X.......XX.................... 3
+ARAS<7>              .........X........XX.................... 3
+ARAS<6>              ........X.........XX.................... 3
+ARAS<5>              .......X..........XX.................... 3
+ARAS<4>              ......X...........XX.................... 3
+ARAS<3>              .....X............XX.................... 3
+DBDIR                .............XX......................... 2
+ARAS<2>              ....X.............XX.................... 3
+ARAS<1>              ...X..............XX.................... 3
+DRDDIR               .X..................X................... 2
+ARAS<0>              ..X...............XX.................... 3
+nDRDEN               ............XX......XX.................. 4
+ACAS<6>              ........X......XX....................... 3
+                    0----+----1----+----2----+----3----+----4
+                              0         0         0         0
+*********************************** FB2  ***********************************
+Number of function block inputs used/remaining:               38/16
+Number of signals used by logic mapping into function block:  38
+Signal              Total   Imp   Exp Unused  Loc     Pin   Pin     Pin
+Name                Pt      Pt    Pt  Pt               #    Type    Use
+RefreshCounter/REFRESH_COUNTER<0>
+                      1       0   \/2   2     FB2_1         (b)     (b)
+CMA<7>                4       2<- \/3   0     FB2_2   60    I/O     O
+CMA<5>               10       5<-   0   0     FB2_3   58    I/O     O
+CMA<6>                4       1<- /\2   0     FB2_4   59    I/O     O
+CMA<8>                3       0   /\1   1     FB2_5   61    I/O     O
+CMA<9>                6       1<-   0   0     FB2_6   62    I/O     O
+(unused)              0       0   /\1   4     FB2_7         (b)     (b)
+CMA<10>               5       0     0   0     FB2_8   63    I/O     O
+(unused)              0       0     0   5     FB2_9   64    GSR/I/O GSR/I
+(unused)              0       0     0   5     FB2_10  1     I/O     I
+MemoryController/SDRAM_READY
+                      1       0     0   4     FB2_11  2     GTS/I/O I
+MemoryController/DMACYCLE/MemoryController/DMACYCLE_RSTF
+                      1       0     0   4     FB2_12  4     I/O     I
+MemoryController/CURRENT_STATE_FSM_FFd6
+                      0       0     0   5     FB2_13        (b)     (b)
+MemoryController/CURRENT_STATE_FSM_FFd5
+                      1       0     0   4     FB2_14  5     GTS/I/O I
+RefreshCounter/REFRESH_COUNTER<2>
+                      2       0     0   3     FB2_15  6     I/O     I
+RefreshCounter/REFRESH_COUNTER<1>
+                      2       0   \/2   1     FB2_16        (b)     (b)
+MemoryController/CYCLE
+                      4       2<- \/3   0     FB2_17  7     I/O     I
+MemoryController/SDRAMCMDOUT<3>
+                      8       3<-   0   0     FB2_18        (b)     (b)
+
+Signals Used by Logic in Function Block
+  1: $OpTx$FX_DC$6         14: CMA<10>                                  27: MemoryController/CURRENT_STATE_FSM_FFd7 
+  2: ACAS<6>               15: CMA<5>                                   28: MemoryController/CYCLE 
+  3: ACAS<7>               16: CMA<6>                                   29: MemoryController/DMACYCLE 
+  4: ACAS<8>               17: CMA<7>                                   30: MemoryController/SDRAMCMDOUT<3> 
+  5: ACAS<9>/ACAS<9>_CLKF  18: CMA<8>                                   31: MemoryController/SDRAM_READY 
+  6: ARAS<4>               19: CMA<9>                                   32: MemoryController/STARTUP_REFRESH 
+  7: ARAS<5>               20: MemoryController/CLOCK_COUNT_FSM_FFd1    33: REFRESET 
+  8: ARAS<6>               21: MemoryController/CLOCK_COUNT_FSM_FFd2    34: REFRESH 
+  9: ARAS<7>               22: MemoryController/CURRENT_STATE_FSM_FFd1  35: RefreshCounter/REFRESH_COUNTER<0> 
+ 10: ARAS<8>               23: MemoryController/CURRENT_STATE_FSM_FFd2  36: RefreshCounter/REFRESH_COUNTER<1> 
+ 11: ARAS<9>               24: MemoryController/CURRENT_STATE_FSM_FFd3  37: nAS 
+ 12: C1                    25: MemoryController/CURRENT_STATE_FSM_FFd5  38: nRESET 
+ 13: C3                    26: MemoryController/CURRENT_STATE_FSM_FFd6 
+
+Signal                        1         2         3         4 FB
+Name                0----+----0----+----0----+----0----+----0 Inputs
+RefreshCounter/REFRESH_COUNTER<0> 
+                     ................................X....... 1
+CMA<7>               X..XX..X...XX...X.....XX....X....X...... 11
+CMA<5>               .X..XX.....XX.X....X.XXXX.X.X.XXXX...... 17
+CMA<6>               X.X.X.X....XX..X......XX....X....X...... 11
+CMA<8>               X...X...X..XX....X.....X....X....X...... 9
+CMA<9>               ....X....X.XX.....XX.X.XX.X.X.XXXX...... 15
+CMA<10>              X...X.....XXXX........XX.X..X....X...... 11
+MemoryController/SDRAM_READY 
+                     ..........................X............. 1
+MemoryController/DMACYCLE/MemoryController/DMACYCLE_RSTF 
+                     ...........................X.........X.. 2
+MemoryController/CURRENT_STATE_FSM_FFd6 
+                     ........................................ 0
+MemoryController/CURRENT_STATE_FSM_FFd5 
+                     .........................X.............. 1
+RefreshCounter/REFRESH_COUNTER<2> 
+                     ................................X.XX.... 3
+RefreshCounter/REFRESH_COUNTER<1> 
+                     ................................X.X..... 2
+MemoryController/CYCLE 
+                     ....X......XX........XXXXXXXX...XX..X... 14
+MemoryController/SDRAMCMDOUT<3> 
+                     ....X......XX......XXX.X..X.XXXXXX...... 14
+                    0----+----1----+----2----+----3----+----4
+                              0         0         0         0
+*********************************** FB3  ***********************************
+Number of function block inputs used/remaining:               28/26
+Number of signals used by logic mapping into function block:  28
+Signal              Total   Imp   Exp Unused  Loc     Pin   Pin     Pin
+Name                Pt      Pt    Pt  Pt               #    Type    Use
+REFRESH               1       0     0   4     FB3_1         (b)     (b)
+RefreshCounter/REFRESH_COUNTER<4>
+                      2       0     0   3     FB3_2   22    I/O     I
+RefreshCounter/REFRESH_COUNTER<3>
+                      2       0     0   3     FB3_3   31    I/O     I
+nCLLBE                2       0     0   3     FB3_4   32    I/O     O
+ACAS<9>               2       0     0   3     FB3_5   24    I/O     I
+nCUMBE                2       0     0   3     FB3_6   34    I/O     O
+ACAS<8>               2       0     0   3     FB3_7         (b)     (b)
+ACAS<7>               2       0     0   3     FB3_8   25    I/O     I
+ACAS<5>               2       0     0   3     FB3_9   27    I/O     I
+ACAS<4>               2       0     0   3     FB3_10  39    I/O     I
+nCLMBE                2       0     0   3     FB3_11  33    I/O     O
+ACAS<3>               2       0     0   3     FB3_12  40    I/O     I
+ACAS<2>               2       0     0   3     FB3_13        (b)     (b)
+nCUUBE                2       0     0   3     FB3_14  35    I/O     O
+nCLCS                 4       0     0   1     FB3_15  36    I/O     O
+ACAS<1>               2       0     0   3     FB3_16  42    I/O     I
+nCUCS                 4       0     0   1     FB3_17  38    I/O     O
+ACAS<0>               2       0     0   3     FB3_18        (b)     (b)
+
+Signals Used by Logic in Function Block
+  1: ACAS<0>           11: MemoryController/DMACYCLE          20: nCASL 
+  2: DRA<0>            12: MemoryController/SDRAMCMDOUT<3>    21: nCASU 
+  3: DRA<1>            13: MemoryController/SDRAM_READY       22: nDBR 
+  4: DRA<2>            14: REFRESET                           23: nLLBE 
+  5: DRA<3>            15: RefreshCounter/REFRESH_COUNTER<0>  24: nLMBE 
+  6: DRA<4>            16: RefreshCounter/REFRESH_COUNTER<1>  25: nRAMEN 
+  7: DRA<5>            17: RefreshCounter/REFRESH_COUNTER<2>  26: nRESET 
+  8: DRA<7>            18: RefreshCounter/REFRESH_COUNTER<3>  27: nUMBE 
+  9: DRA<8>            19: RefreshCounter/REFRESH_COUNTER<4>  28: nUUBE 
+ 10: DRA<9>           
+
+Signal                        1         2         3         4 FB
+Name                0----+----0----+----0----+----0----+----0 Inputs
+REFRESH              ................XXX..................... 3
+RefreshCounter/REFRESH_COUNTER<4> 
+                     .............XXXXX...................... 5
+RefreshCounter/REFRESH_COUNTER<3> 
+                     .............XXXX....................... 4
+nCLLBE               X..................X.XX.X............... 5
+ACAS<9>              .........X.........XX................... 3
+nCUMBE               X..................X.X..X.X............. 5
+ACAS<8>              ........X..........XX................... 3
+ACAS<7>              .......X...........XX................... 3
+ACAS<5>              ......X............XX................... 3
+ACAS<4>              .....X.............XX................... 3
+nCLMBE               X...................XX.XX............... 5
+ACAS<3>              ....X..............XX................... 3
+ACAS<2>              ...X...............XX................... 3
+nCUUBE               X...................XX..X..X............ 5
+nCLCS                X.........XXXX..........XX.............. 7
+ACAS<1>              ..X................XX................... 3
+nCUCS                X.........XXXX..........XX.............. 7
+ACAS<0>              .X.................XX................... 3
+                    0----+----1----+----2----+----3----+----4
+                              0         0         0         0
+*********************************** FB4  ***********************************
+Number of function block inputs used/remaining:               38/16
+Number of signals used by logic mapping into function block:  38
+Signal              Total   Imp   Exp Unused  Loc     Pin   Pin     Pin
+Name                Pt      Pt    Pt  Pt               #    Type    Use
+MemoryController/STARTUP_REFRESH
+                      1       0   \/1   3     FB4_1         (b)     (b)
+MemoryController/CURRENT_STATE_FSM_FFd7
+                      1       1<- \/5   0     FB4_2   43    I/O     I
+nCWE                 13       8<-   0   0     FB4_3   46    I/O     O
+CCLKE                 2       0   /\3   0     FB4_4   47    I/O     O
+nCRAS                 9       4<-   0   0     FB4_5   44    I/O     O
+MemoryController/CURRENT_STATE_FSM_FFd2
+                      2       1<- /\4   0     FB4_6   49    I/O     I
+MemoryController/CURRENT_STATE_FSM_FFd1
+                      2       0   /\1   2     FB4_7         (b)     (b)
+nCCAS                 9       4<-   0   0     FB4_8   45    I/O     O
+MemoryController/CLOCK_COUNT_FSM_FFd2
+                      3       2<- /\4   0     FB4_9         (b)     (b)
+CMA<1>                4       1<- /\2   0     FB4_10  51    I/O     O
+REFRESET              4       0   /\1   0     FB4_11  48    I/O     I
+CMA<2>                4       0     0   1     FB4_12  52    I/O     O
+MemoryController/CLOCK_COUNT_FSM_FFd1
+                      4       0     0   1     FB4_13        (b)     (b)
+CMA<0>                4       0     0   1     FB4_14  50    I/O     O
+CMA<3>                4       0   \/1   0     FB4_15  56    I/O     O
+MemoryController/CURRENT_STATE_FSM_FFd3
+                      6       1<-   0   0     FB4_16        (b)     (b)
+CMA<4>                4       0   \/1   0     FB4_17  57    I/O     O
+$OpTx$FX_DC$6         6       1<-   0   0     FB4_18        (b)     (b)
+
+Signals Used by Logic in Function Block
+  1: $OpTx$FX_DC$6         14: C3                                       27: MemoryController/CURRENT_STATE_FSM_FFd6 
+  2: ACAS<1>               15: CMA<0>                                   28: MemoryController/CURRENT_STATE_FSM_FFd7 
+  3: ACAS<2>               16: CMA<1>                                   29: MemoryController/DMACYCLE 
+  4: ACAS<3>               17: CMA<2>                                   30: MemoryController/SDRAM_READY 
+  5: ACAS<4>               18: CMA<3>                                   31: MemoryController/STARTUP_REFRESH 
+  6: ACAS<5>               19: CMA<4>                                   32: REFRESET 
+  7: ACAS<9>               20: DBDIR                                    33: REFRESH 
+  8: ACAS<9>/ACAS<9>_CLKF  21: MemoryController/CLOCK_COUNT_FSM_FFd1    34: nAS 
+  9: ARAS<0>               22: MemoryController/CLOCK_COUNT_FSM_FFd2    35: nCCAS 
+ 10: ARAS<1>               23: MemoryController/CURRENT_STATE_FSM_FFd1  36: nCRAS 
+ 11: ARAS<2>               24: MemoryController/CURRENT_STATE_FSM_FFd2  37: nCWE 
+ 12: ARAS<3>               25: MemoryController/CURRENT_STATE_FSM_FFd3  38: nRESET 
+ 13: C1                    26: MemoryController/CURRENT_STATE_FSM_FFd5 
+
+Signal                        1         2         3         4 FB
+Name                0----+----0----+----0----+----0----+----0 Inputs
+MemoryController/STARTUP_REFRESH 
+                     ....................XX........XX........ 4
+MemoryController/CURRENT_STATE_FSM_FFd7 
+                     ....................X........XXX........ 4
+nCWE                 .......X....XX.....XXXXXXX.XXXXXX...X... 17
+CCLKE                ...................X..X..........X...... 3
+nCRAS                .......X....XX......XXXXX..XXXXXX..X.... 15
+MemoryController/CURRENT_STATE_FSM_FFd2 
+                     .......X....XX..........X...X...X....... 6
+MemoryController/CURRENT_STATE_FSM_FFd1 
+                     ......................XX.........X...... 3
+nCCAS                .......X....XX......XXX.X.XXXXXXX.X..... 15
+MemoryController/CLOCK_COUNT_FSM_FFd2 
+                     ....................XXXXX.XX...X.....X.. 9
+CMA<1>               X.X....XX...XX.X.......XX...X...X....... 11
+REFRESET             ....................X...XX....XXX....... 6
+CMA<2>               X..X...X.X..XX..X......XX...X...X....... 11
+MemoryController/CLOCK_COUNT_FSM_FFd1 
+                     ....................XXXXX.XX...X.....X.. 9
+CMA<0>               XX....XX....XXX........XX...X...X....... 11
+CMA<3>               X...X..X..X.XX...X.....XX...X...X....... 11
+MemoryController/CURRENT_STATE_FSM_FFd3 
+                     .......X....XX......X.X.X..XXXXXXX...... 13
+CMA<4>               X....X.X...XXX....X....XX...X...X....... 11
+$OpTx$FX_DC$6        .......X....XX......X.X.XX.XXXXXX....... 13
+                    0----+----1----+----2----+----3----+----4
+                              0         0         0         0
+*******************************  Equations  ********************************
+
+********** Mapped Logic **********
+
+
+$OpTx$FX_DC$6 <= ((NOT REFRESH AND MemoryController/CLOCK_COUNT_FSM_FFd1 AND 
+	NOT MemoryController/CURRENT_STATE_FSM_FFd1 AND NOT MemoryController/CURRENT_STATE_FSM_FFd7 AND 
+	NOT MemoryController/SDRAM_READY AND NOT MemoryController/STARTUP_REFRESH AND 
+	NOT MemoryController/CURRENT_STATE_FSM_FFd5 AND NOT C1 AND NOT C3 AND NOT ACAS(9)/ACAS(9)_CLKF)
+	OR (NOT MemoryController/CURRENT_STATE_FSM_FFd3 AND 
+	NOT REFRESET AND NOT MemoryController/CURRENT_STATE_FSM_FFd1 AND 
+	NOT MemoryController/CURRENT_STATE_FSM_FFd7 AND NOT MemoryController/CURRENT_STATE_FSM_FFd5)
+	OR (NOT MemoryController/CURRENT_STATE_FSM_FFd3 AND 
+	MemoryController/CLOCK_COUNT_FSM_FFd1 AND NOT MemoryController/CURRENT_STATE_FSM_FFd1 AND 
+	NOT MemoryController/CURRENT_STATE_FSM_FFd7 AND NOT MemoryController/SDRAM_READY AND 
+	NOT MemoryController/STARTUP_REFRESH AND NOT MemoryController/CURRENT_STATE_FSM_FFd5)
+	OR (NOT REFRESET AND NOT REFRESH AND 
+	NOT MemoryController/CURRENT_STATE_FSM_FFd1 AND NOT MemoryController/CURRENT_STATE_FSM_FFd7 AND 
+	NOT MemoryController/CURRENT_STATE_FSM_FFd5 AND MemoryController/DMACYCLE AND NOT ACAS(9)/ACAS(9)_CLKF)
+	OR (NOT REFRESET AND NOT REFRESH AND 
+	NOT MemoryController/CURRENT_STATE_FSM_FFd1 AND NOT MemoryController/CURRENT_STATE_FSM_FFd7 AND 
+	NOT MemoryController/CURRENT_STATE_FSM_FFd5 AND NOT C1 AND NOT C3 AND NOT ACAS(9)/ACAS(9)_CLKF)
+	OR (NOT REFRESH AND MemoryController/CLOCK_COUNT_FSM_FFd1 AND 
+	NOT MemoryController/CURRENT_STATE_FSM_FFd1 AND NOT MemoryController/CURRENT_STATE_FSM_FFd7 AND 
+	NOT MemoryController/SDRAM_READY AND NOT MemoryController/STARTUP_REFRESH AND 
+	NOT MemoryController/CURRENT_STATE_FSM_FFd5 AND MemoryController/DMACYCLE AND NOT ACAS(9)/ACAS(9)_CLKF));
+
+FDCPE_ACAS0: FDCPE port map (ACAS(0),DRA(0),ACAS_C(0),NOT nRESET,'0');
+ACAS_C(0) <= NOT ((nCASU AND nCASL));
+
+FDCPE_ACAS1: FDCPE port map (ACAS(1),DRA(1),ACAS_C(1),NOT nRESET,'0');
+ACAS_C(1) <= NOT ((nCASU AND nCASL));
+
+FDCPE_ACAS2: FDCPE port map (ACAS(2),DRA(2),ACAS_C(2),NOT nRESET,'0');
+ACAS_C(2) <= NOT ((nCASU AND nCASL));
+
+FDCPE_ACAS3: FDCPE port map (ACAS(3),DRA(3),ACAS_C(3),NOT nRESET,'0');
+ACAS_C(3) <= NOT ((nCASU AND nCASL));
+
+FDCPE_ACAS4: FDCPE port map (ACAS(4),DRA(4),ACAS_C(4),NOT nRESET,'0');
+ACAS_C(4) <= NOT ((nCASU AND nCASL));
+
+FDCPE_ACAS5: FDCPE port map (ACAS(5),DRA(5),ACAS_C(5),NOT nRESET,'0');
+ACAS_C(5) <= NOT ((nCASU AND nCASL));
+
+FDCPE_ACAS6: FDCPE port map (ACAS(6),DRA(6),ACAS_C(6),NOT nRESET,'0');
+ACAS_C(6) <= NOT ((nCASU AND nCASL));
+
+FDCPE_ACAS7: FDCPE port map (ACAS(7),DRA(7),ACAS_C(7),NOT nRESET,'0');
+ACAS_C(7) <= NOT ((nCASU AND nCASL));
+
+FDCPE_ACAS8: FDCPE port map (ACAS(8),DRA(8),ACAS_C(8),NOT nRESET,'0');
+ACAS_C(8) <= NOT ((nCASU AND nCASL));
+
+FDCPE_ACAS9: FDCPE port map (ACAS(9),DRA(9),ACAS_C(9),NOT nRESET,'0');
+ACAS_C(9) <= NOT ((nCASU AND nCASL));
+
+
+ACAS(9)/ACAS(9)_CLKF <= (nCASU AND nCASL);
+
+FDCPE_ARAS0: FDCPE port map (ARAS(0),DRA(0),ARAS_C(0),NOT nRESET,'0');
+ARAS_C(0) <= NOT ((nRAS1 AND nRAS0));
+
+FDCPE_ARAS1: FDCPE port map (ARAS(1),DRA(1),ARAS_C(1),NOT nRESET,'0');
+ARAS_C(1) <= NOT ((nRAS1 AND nRAS0));
+
+FDCPE_ARAS2: FDCPE port map (ARAS(2),DRA(2),ARAS_C(2),NOT nRESET,'0');
+ARAS_C(2) <= NOT ((nRAS1 AND nRAS0));
+
+FDCPE_ARAS3: FDCPE port map (ARAS(3),DRA(3),ARAS_C(3),NOT nRESET,'0');
+ARAS_C(3) <= NOT ((nRAS1 AND nRAS0));
+
+FDCPE_ARAS4: FDCPE port map (ARAS(4),DRA(4),ARAS_C(4),NOT nRESET,'0');
+ARAS_C(4) <= NOT ((nRAS1 AND nRAS0));
+
+FDCPE_ARAS5: FDCPE port map (ARAS(5),DRA(5),ARAS_C(5),NOT nRESET,'0');
+ARAS_C(5) <= NOT ((nRAS1 AND nRAS0));
+
+FDCPE_ARAS6: FDCPE port map (ARAS(6),DRA(6),ARAS_C(6),NOT nRESET,'0');
+ARAS_C(6) <= NOT ((nRAS1 AND nRAS0));
+
+FDCPE_ARAS7: FDCPE port map (ARAS(7),DRA(7),ARAS_C(7),NOT nRESET,'0');
+ARAS_C(7) <= NOT ((nRAS1 AND nRAS0));
+
+FDCPE_ARAS8: FDCPE port map (ARAS(8),DRA(8),ARAS_C(8),NOT nRESET,'0');
+ARAS_C(8) <= NOT ((nRAS1 AND nRAS0));
+
+FDCPE_ARAS9: FDCPE port map (ARAS(9),DRA(9),ARAS_C(9),NOT nRESET,'0');
+ARAS_C(9) <= NOT ((nRAS1 AND nRAS0));
+
+FDCPE_CCLKE: FDCPE port map (CCLKE,CCLKE_D,NOT BCLK,'0',NOT nRESET,MemoryController/CURRENT_STATE_FSM_FFd1);
+CCLKE_D <= (NOT nAS AND NOT DBDIR);
+
+FDCPE_CMA0: FDCPE port map (CMA(0),CMA_D(0),NOT BCLK,NOT nRESET,'0');
+CMA_D(0) <= ((CMA(0) AND NOT $OpTx$FX_DC$6)
+	OR (MemoryController/CURRENT_STATE_FSM_FFd2 AND ACAS(1))
+	OR (MemoryController/CURRENT_STATE_FSM_FFd3 AND NOT REFRESH AND 
+	ACAS(9) AND MemoryController/DMACYCLE AND NOT ACAS(9)/ACAS(9)_CLKF)
+	OR (MemoryController/CURRENT_STATE_FSM_FFd3 AND NOT REFRESH AND 
+	NOT C1 AND ACAS(9) AND NOT C3 AND NOT ACAS(9)/ACAS(9)_CLKF));
+
+FDCPE_CMA1: FDCPE port map (CMA(1),CMA_D(1),NOT BCLK,NOT nRESET,'0');
+CMA_D(1) <= ((MemoryController/CURRENT_STATE_FSM_FFd3 AND NOT REFRESH AND 
+	NOT C1 AND ARAS(0) AND NOT C3 AND NOT ACAS(9)/ACAS(9)_CLKF)
+	OR (CMA(1) AND NOT $OpTx$FX_DC$6)
+	OR (MemoryController/CURRENT_STATE_FSM_FFd2 AND ACAS(2))
+	OR (MemoryController/CURRENT_STATE_FSM_FFd3 AND NOT REFRESH AND 
+	ARAS(0) AND MemoryController/DMACYCLE AND NOT ACAS(9)/ACAS(9)_CLKF));
+
+FDCPE_CMA2: FDCPE port map (CMA(2),CMA_D(2),NOT BCLK,NOT nRESET,'0');
+CMA_D(2) <= ((CMA(2) AND NOT $OpTx$FX_DC$6)
+	OR (MemoryController/CURRENT_STATE_FSM_FFd2 AND ACAS(3))
+	OR (MemoryController/CURRENT_STATE_FSM_FFd3 AND NOT REFRESH AND 
+	ARAS(1) AND MemoryController/DMACYCLE AND NOT ACAS(9)/ACAS(9)_CLKF)
+	OR (MemoryController/CURRENT_STATE_FSM_FFd3 AND NOT REFRESH AND 
+	NOT C1 AND ARAS(1) AND NOT C3 AND NOT ACAS(9)/ACAS(9)_CLKF));
+
+FDCPE_CMA3: FDCPE port map (CMA(3),CMA_D(3),NOT BCLK,NOT nRESET,'0');
+CMA_D(3) <= ((CMA(3) AND NOT $OpTx$FX_DC$6)
+	OR (MemoryController/CURRENT_STATE_FSM_FFd2 AND ACAS(4))
+	OR (MemoryController/CURRENT_STATE_FSM_FFd3 AND NOT REFRESH AND 
+	ARAS(2) AND MemoryController/DMACYCLE AND NOT ACAS(9)/ACAS(9)_CLKF)
+	OR (MemoryController/CURRENT_STATE_FSM_FFd3 AND NOT REFRESH AND 
+	NOT C1 AND ARAS(2) AND NOT C3 AND NOT ACAS(9)/ACAS(9)_CLKF));
+
+FDCPE_CMA4: FDCPE port map (CMA(4),CMA_D(4),NOT BCLK,NOT nRESET,'0');
+CMA_D(4) <= ((CMA(4) AND NOT $OpTx$FX_DC$6)
+	OR (MemoryController/CURRENT_STATE_FSM_FFd2 AND ACAS(5))
+	OR (MemoryController/CURRENT_STATE_FSM_FFd3 AND NOT REFRESH AND 
+	ARAS(3) AND MemoryController/DMACYCLE AND NOT ACAS(9)/ACAS(9)_CLKF)
+	OR (MemoryController/CURRENT_STATE_FSM_FFd3 AND NOT REFRESH AND 
+	NOT C1 AND ARAS(3) AND NOT C3 AND NOT ACAS(9)/ACAS(9)_CLKF));
+
+FTCPE_CMA5: FTCPE port map (CMA(5),CMA_T(5),NOT BCLK,NOT nRESET,'0');
+CMA_T(5) <= ((CMA(5) AND NOT MemoryController/CURRENT_STATE_FSM_FFd3 AND 
+	NOT REFRESET AND NOT MemoryController/CURRENT_STATE_FSM_FFd1 AND 
+	NOT MemoryController/CURRENT_STATE_FSM_FFd7 AND NOT MemoryController/CURRENT_STATE_FSM_FFd2 AND 
+	NOT MemoryController/CURRENT_STATE_FSM_FFd5)
+	OR (CMA(5) AND NOT REFRESET AND NOT REFRESH AND 
+	NOT MemoryController/CURRENT_STATE_FSM_FFd1 AND NOT MemoryController/CURRENT_STATE_FSM_FFd7 AND 
+	NOT MemoryController/CURRENT_STATE_FSM_FFd2 AND NOT MemoryController/CURRENT_STATE_FSM_FFd5 AND NOT ARAS(4) AND 
+	MemoryController/DMACYCLE AND NOT ACAS(9)/ACAS(9)_CLKF)
+	OR (CMA(5) AND NOT REFRESET AND NOT REFRESH AND 
+	NOT MemoryController/CURRENT_STATE_FSM_FFd1 AND NOT MemoryController/CURRENT_STATE_FSM_FFd7 AND 
+	NOT MemoryController/CURRENT_STATE_FSM_FFd5 AND NOT ACAS(6) AND NOT ARAS(4) AND MemoryController/DMACYCLE AND 
+	NOT ACAS(9)/ACAS(9)_CLKF)
+	OR (CMA(5) AND NOT REFRESET AND NOT REFRESH AND 
+	NOT MemoryController/CURRENT_STATE_FSM_FFd1 AND NOT MemoryController/CURRENT_STATE_FSM_FFd7 AND 
+	NOT MemoryController/CURRENT_STATE_FSM_FFd2 AND NOT MemoryController/CURRENT_STATE_FSM_FFd5 AND NOT C1 AND 
+	NOT ARAS(4) AND NOT C3 AND NOT ACAS(9)/ACAS(9)_CLKF)
+	OR (CMA(5) AND NOT REFRESET AND NOT REFRESH AND 
+	NOT MemoryController/CURRENT_STATE_FSM_FFd1 AND NOT MemoryController/CURRENT_STATE_FSM_FFd7 AND 
+	NOT MemoryController/CURRENT_STATE_FSM_FFd5 AND NOT C1 AND NOT ACAS(6) AND NOT ARAS(4) AND NOT C3 AND 
+	NOT ACAS(9)/ACAS(9)_CLKF)
+	OR (NOT CMA(5) AND MemoryController/CURRENT_STATE_FSM_FFd2 AND 
+	ACAS(6))
+	OR (NOT CMA(5) AND REFRESET AND 
+	MemoryController/CLOCK_COUNT_FSM_FFd1 AND NOT MemoryController/SDRAM_READY AND 
+	NOT MemoryController/STARTUP_REFRESH)
+	OR (NOT CMA(5) AND MemoryController/CURRENT_STATE_FSM_FFd3 AND 
+	NOT REFRESH AND ARAS(4) AND MemoryController/DMACYCLE AND 
+	NOT ACAS(9)/ACAS(9)_CLKF)
+	OR (CMA(5) AND NOT MemoryController/CURRENT_STATE_FSM_FFd3 AND 
+	NOT REFRESET AND NOT MemoryController/CURRENT_STATE_FSM_FFd1 AND 
+	NOT MemoryController/CURRENT_STATE_FSM_FFd7 AND NOT MemoryController/CURRENT_STATE_FSM_FFd5 AND NOT ACAS(6))
+	OR (NOT CMA(5) AND MemoryController/CURRENT_STATE_FSM_FFd3 AND 
+	NOT REFRESH AND NOT C1 AND ARAS(4) AND NOT C3 AND NOT ACAS(9)/ACAS(9)_CLKF));
+
+FDCPE_CMA6: FDCPE port map (CMA(6),CMA_D(6),NOT BCLK,NOT nRESET,'0');
+CMA_D(6) <= ((MemoryController/CURRENT_STATE_FSM_FFd3 AND NOT REFRESH AND 
+	NOT C1 AND ARAS(5) AND NOT C3 AND NOT ACAS(9)/ACAS(9)_CLKF)
+	OR (CMA(6) AND NOT $OpTx$FX_DC$6)
+	OR (MemoryController/CURRENT_STATE_FSM_FFd2 AND ACAS(7))
+	OR (MemoryController/CURRENT_STATE_FSM_FFd3 AND NOT REFRESH AND 
+	ARAS(5) AND MemoryController/DMACYCLE AND NOT ACAS(9)/ACAS(9)_CLKF));
+
+FDCPE_CMA7: FDCPE port map (CMA(7),CMA_D(7),NOT BCLK,NOT nRESET,'0');
+CMA_D(7) <= ((MemoryController/CURRENT_STATE_FSM_FFd3 AND NOT REFRESH AND 
+	ARAS(6) AND MemoryController/DMACYCLE AND NOT ACAS(9)/ACAS(9)_CLKF)
+	OR (MemoryController/CURRENT_STATE_FSM_FFd3 AND NOT REFRESH AND 
+	NOT C1 AND ARAS(6) AND NOT C3 AND NOT ACAS(9)/ACAS(9)_CLKF)
+	OR (CMA(7) AND NOT $OpTx$FX_DC$6)
+	OR (MemoryController/CURRENT_STATE_FSM_FFd2 AND ACAS(8)));
+
+FDCPE_CMA8: FDCPE port map (CMA(8),CMA_D(8),NOT BCLK,NOT nRESET,'0');
+CMA_D(8) <= ((CMA(8) AND NOT $OpTx$FX_DC$6)
+	OR (MemoryController/CURRENT_STATE_FSM_FFd3 AND NOT REFRESH AND 
+	ARAS(7) AND MemoryController/DMACYCLE AND NOT ACAS(9)/ACAS(9)_CLKF)
+	OR (MemoryController/CURRENT_STATE_FSM_FFd3 AND NOT REFRESH AND 
+	NOT C1 AND ARAS(7) AND NOT C3 AND NOT ACAS(9)/ACAS(9)_CLKF));
+
+FTCPE_CMA9: FTCPE port map (CMA(9),CMA_T(9),NOT BCLK,NOT nRESET,'0');
+CMA_T(9) <= ((CMA(9) AND NOT REFRESET AND NOT REFRESH AND 
+	NOT MemoryController/CURRENT_STATE_FSM_FFd1 AND NOT MemoryController/CURRENT_STATE_FSM_FFd7 AND 
+	NOT MemoryController/CURRENT_STATE_FSM_FFd5 AND NOT C1 AND NOT ARAS(8) AND NOT C3 AND NOT ACAS(9)/ACAS(9)_CLKF)
+	OR (NOT CMA(9) AND REFRESET AND 
+	MemoryController/CLOCK_COUNT_FSM_FFd1 AND NOT MemoryController/SDRAM_READY AND 
+	NOT MemoryController/STARTUP_REFRESH)
+	OR (CMA(9) AND NOT MemoryController/CURRENT_STATE_FSM_FFd3 AND 
+	NOT REFRESET AND NOT MemoryController/CURRENT_STATE_FSM_FFd1 AND 
+	NOT MemoryController/CURRENT_STATE_FSM_FFd7 AND NOT MemoryController/CURRENT_STATE_FSM_FFd5)
+	OR (NOT CMA(9) AND MemoryController/CURRENT_STATE_FSM_FFd3 AND 
+	NOT REFRESH AND ARAS(8) AND MemoryController/DMACYCLE AND 
+	NOT ACAS(9)/ACAS(9)_CLKF)
+	OR (NOT CMA(9) AND MemoryController/CURRENT_STATE_FSM_FFd3 AND 
+	NOT REFRESH AND NOT C1 AND ARAS(8) AND NOT C3 AND NOT ACAS(9)/ACAS(9)_CLKF)
+	OR (CMA(9) AND NOT REFRESET AND NOT REFRESH AND 
+	NOT MemoryController/CURRENT_STATE_FSM_FFd1 AND NOT MemoryController/CURRENT_STATE_FSM_FFd7 AND 
+	NOT MemoryController/CURRENT_STATE_FSM_FFd5 AND NOT ARAS(8) AND MemoryController/DMACYCLE AND 
+	NOT ACAS(9)/ACAS(9)_CLKF));
+
+FDCPE_CMA10: FDCPE port map (CMA(10),CMA_D(10),NOT BCLK,NOT nRESET,'0');
+CMA_D(10) <= ((MemoryController/CURRENT_STATE_FSM_FFd2)
+	OR (MemoryController/CURRENT_STATE_FSM_FFd6)
+	OR (CMA(10) AND NOT $OpTx$FX_DC$6)
+	OR (MemoryController/CURRENT_STATE_FSM_FFd3 AND NOT REFRESH AND 
+	ARAS(9) AND MemoryController/DMACYCLE AND NOT ACAS(9)/ACAS(9)_CLKF)
+	OR (MemoryController/CURRENT_STATE_FSM_FFd3 AND NOT REFRESH AND 
+	NOT C1 AND ARAS(9) AND NOT C3 AND NOT ACAS(9)/ACAS(9)_CLKF));
+
+FDCPE_DBDIR: FDCPE port map (DBDIR,'1',NOT nAWE,NOT MemoryController/DMACYCLE/MemoryController/DMACYCLE_RSTF,'0');
+
+
+DRDDIR <= NOT ((DBDIR AND NOT nREGEN));
+
+
+
+FTCPE_MemoryController/CLOCK_COUNT_FSM_FFd1: FTCPE port map (MemoryController/CLOCK_COUNT_FSM_FFd1,MemoryController/CLOCK_COUNT_FSM_FFd1_T,NOT BCLK,'0','0',nRESET);
+MemoryController/CLOCK_COUNT_FSM_FFd1_T <= ((REFRESET AND NOT MemoryController/CLOCK_COUNT_FSM_FFd1 AND 
+	MemoryController/CLOCK_COUNT_FSM_FFd2)
+	OR (NOT MemoryController/CURRENT_STATE_FSM_FFd3 AND 
+	NOT REFRESET AND MemoryController/CLOCK_COUNT_FSM_FFd1 AND 
+	NOT MemoryController/CURRENT_STATE_FSM_FFd1 AND NOT MemoryController/CURRENT_STATE_FSM_FFd7 AND 
+	NOT MemoryController/CURRENT_STATE_FSM_FFd2 AND NOT MemoryController/CURRENT_STATE_FSM_FFd6)
+	OR (NOT MemoryController/CURRENT_STATE_FSM_FFd3 AND 
+	MemoryController/CLOCK_COUNT_FSM_FFd1 AND NOT MemoryController/CURRENT_STATE_FSM_FFd1 AND 
+	NOT MemoryController/CURRENT_STATE_FSM_FFd7 AND NOT MemoryController/CURRENT_STATE_FSM_FFd2 AND 
+	NOT MemoryController/CLOCK_COUNT_FSM_FFd2 AND NOT MemoryController/CURRENT_STATE_FSM_FFd6));
+
+FTCPE_MemoryController/CLOCK_COUNT_FSM_FFd2: FTCPE port map (MemoryController/CLOCK_COUNT_FSM_FFd2,MemoryController/CLOCK_COUNT_FSM_FFd2_T,NOT BCLK,'0','0',nRESET);
+MemoryController/CLOCK_COUNT_FSM_FFd2_T <= ((REFRESET AND NOT MemoryController/CLOCK_COUNT_FSM_FFd1 AND 
+	NOT MemoryController/CLOCK_COUNT_FSM_FFd2)
+	OR (NOT MemoryController/CURRENT_STATE_FSM_FFd3 AND 
+	NOT MemoryController/CURRENT_STATE_FSM_FFd1 AND NOT MemoryController/CURRENT_STATE_FSM_FFd7 AND 
+	NOT MemoryController/CURRENT_STATE_FSM_FFd2 AND MemoryController/CLOCK_COUNT_FSM_FFd2 AND 
+	NOT MemoryController/CURRENT_STATE_FSM_FFd6));
+
+FDCPE_MemoryController/CURRENT_STATE_FSM_FFd1: FDCPE port map (MemoryController/CURRENT_STATE_FSM_FFd1,MemoryController/CURRENT_STATE_FSM_FFd1_D,NOT BCLK,NOT nRESET,'0');
+MemoryController/CURRENT_STATE_FSM_FFd1_D <= ((MemoryController/CURRENT_STATE_FSM_FFd2)
+	OR (NOT nAS AND MemoryController/CURRENT_STATE_FSM_FFd1));
+
+FDCPE_MemoryController/CURRENT_STATE_FSM_FFd2: FDCPE port map (MemoryController/CURRENT_STATE_FSM_FFd2,MemoryController/CURRENT_STATE_FSM_FFd2_D,NOT BCLK,NOT nRESET,'0');
+MemoryController/CURRENT_STATE_FSM_FFd2_D <= ((MemoryController/CURRENT_STATE_FSM_FFd3 AND NOT REFRESH AND 
+	NOT C1 AND NOT C3 AND NOT ACAS(9)/ACAS(9)_CLKF)
+	OR (MemoryController/CURRENT_STATE_FSM_FFd3 AND NOT REFRESH AND 
+	MemoryController/DMACYCLE AND NOT ACAS(9)/ACAS(9)_CLKF));
+
+FDCPE_MemoryController/CURRENT_STATE_FSM_FFd3: FDCPE port map (MemoryController/CURRENT_STATE_FSM_FFd3,MemoryController/CURRENT_STATE_FSM_FFd3_D,NOT BCLK,NOT nRESET,'0');
+MemoryController/CURRENT_STATE_FSM_FFd3_D <= ((MemoryController/CURRENT_STATE_FSM_FFd7)
+	OR (MemoryController/CURRENT_STATE_FSM_FFd3 AND NOT REFRESH AND 
+	NOT MemoryController/DMACYCLE AND C3)
+	OR (nAS AND MemoryController/CURRENT_STATE_FSM_FFd1)
+	OR (MemoryController/CURRENT_STATE_FSM_FFd3 AND NOT REFRESH AND 
+	ACAS(9)/ACAS(9)_CLKF)
+	OR (MemoryController/CURRENT_STATE_FSM_FFd3 AND NOT REFRESH AND 
+	C1 AND NOT MemoryController/DMACYCLE)
+	OR (REFRESET AND MemoryController/CLOCK_COUNT_FSM_FFd1 AND 
+	MemoryController/SDRAM_READY AND NOT MemoryController/STARTUP_REFRESH));
+
+FDCPE_MemoryController/CURRENT_STATE_FSM_FFd5: FDCPE port map (MemoryController/CURRENT_STATE_FSM_FFd5,MemoryController/CURRENT_STATE_FSM_FFd6,NOT BCLK,NOT nRESET,'0');
+
+FDCPE_MemoryController/CURRENT_STATE_FSM_FFd6: FDCPE port map (MemoryController/CURRENT_STATE_FSM_FFd6,'0',NOT BCLK,'0',NOT nRESET);
+
+FDCPE_MemoryController/CURRENT_STATE_FSM_FFd7: FDCPE port map (MemoryController/CURRENT_STATE_FSM_FFd7,MemoryController/CURRENT_STATE_FSM_FFd7_D,NOT BCLK,NOT nRESET,'0');
+MemoryController/CURRENT_STATE_FSM_FFd7_D <= (REFRESET AND MemoryController/CLOCK_COUNT_FSM_FFd1 AND 
+	NOT MemoryController/SDRAM_READY AND NOT MemoryController/STARTUP_REFRESH);
+
+FTCPE_MemoryController/CYCLE: FTCPE port map (MemoryController/CYCLE,MemoryController/CYCLE_T,NOT BCLK,NOT nRESET,'0');
+MemoryController/CYCLE_T <= ((nAS AND NOT MemoryController/CURRENT_STATE_FSM_FFd3 AND 
+	NOT REFRESET AND NOT MemoryController/CURRENT_STATE_FSM_FFd7 AND 
+	NOT MemoryController/CURRENT_STATE_FSM_FFd2 AND NOT MemoryController/CURRENT_STATE_FSM_FFd5 AND 
+	MemoryController/CYCLE AND NOT MemoryController/CURRENT_STATE_FSM_FFd6)
+	OR (NOT MemoryController/CURRENT_STATE_FSM_FFd3 AND 
+	NOT REFRESET AND NOT MemoryController/CURRENT_STATE_FSM_FFd1 AND 
+	NOT MemoryController/CURRENT_STATE_FSM_FFd7 AND NOT MemoryController/CURRENT_STATE_FSM_FFd2 AND 
+	NOT MemoryController/CURRENT_STATE_FSM_FFd5 AND MemoryController/CYCLE AND 
+	NOT MemoryController/CURRENT_STATE_FSM_FFd6)
+	OR (MemoryController/CURRENT_STATE_FSM_FFd3 AND NOT REFRESH AND 
+	NOT MemoryController/CYCLE AND MemoryController/DMACYCLE AND NOT ACAS(9)/ACAS(9)_CLKF)
+	OR (MemoryController/CURRENT_STATE_FSM_FFd3 AND NOT REFRESH AND 
+	NOT MemoryController/CYCLE AND NOT C1 AND NOT C3 AND NOT ACAS(9)/ACAS(9)_CLKF));
+
+FDCPE_MemoryController/DMACYCLE: FDCPE port map (MemoryController/DMACYCLE,'1',NOT nDBR,NOT MemoryController/DMACYCLE/MemoryController/DMACYCLE_RSTF,'0');
+
+
+MemoryController/DMACYCLE/MemoryController/DMACYCLE_RSTF <= (nRESET AND MemoryController/CYCLE);
+
+FDCPE_MemoryController/SDRAMCMDOUT3: FDCPE port map (MemoryController/SDRAMCMDOUT(3),MemoryController/SDRAMCMDOUT_D(3),NOT BCLK,'0',NOT nRESET);
+MemoryController/SDRAMCMDOUT_D(3) <= ((MemoryController/CURRENT_STATE_FSM_FFd1)
+	OR (MemoryController/CURRENT_STATE_FSM_FFd7)
+	OR (MemoryController/CURRENT_STATE_FSM_FFd3 AND NOT REFRESH AND 
+	MemoryController/SDRAMCMDOUT(3) AND ACAS(9)/ACAS(9)_CLKF)
+	OR (MemoryController/CURRENT_STATE_FSM_FFd3 AND NOT REFRESH AND 
+	MemoryController/SDRAMCMDOUT(3) AND C1 AND NOT MemoryController/DMACYCLE)
+	OR (MemoryController/CURRENT_STATE_FSM_FFd3 AND NOT REFRESH AND 
+	MemoryController/SDRAMCMDOUT(3) AND NOT MemoryController/DMACYCLE AND C3)
+	OR (REFRESET AND NOT MemoryController/CLOCK_COUNT_FSM_FFd1 AND 
+	NOT MemoryController/CLOCK_COUNT_FSM_FFd2)
+	OR (REFRESET AND MemoryController/CLOCK_COUNT_FSM_FFd2 AND 
+	MemoryController/SDRAMCMDOUT(3))
+	OR (REFRESET AND MemoryController/SDRAM_READY AND 
+	NOT MemoryController/STARTUP_REFRESH AND MemoryController/SDRAMCMDOUT(3)));
+
+FDCPE_MemoryController/SDRAM_READY: FDCPE port map (MemoryController/SDRAM_READY,'1',NOT BCLK,NOT nRESET,'0',MemoryController/CURRENT_STATE_FSM_FFd7);
+
+FDCPE_MemoryController/STARTUP_REFRESH: FDCPE port map (MemoryController/STARTUP_REFRESH,'0',NOT BCLK,'0',NOT nRESET,MemoryController/STARTUP_REFRESH_CE);
+MemoryController/STARTUP_REFRESH_CE <= (REFRESET AND MemoryController/CLOCK_COUNT_FSM_FFd1 AND 
+	MemoryController/STARTUP_REFRESH AND NOT MemoryController/CLOCK_COUNT_FSM_FFd2);
+
+FDCPE_REFRESET: FDCPE port map (REFRESET,REFRESET_D,NOT BCLK,NOT nRESET,'0');
+REFRESET_D <= ((NOT MemoryController/CURRENT_STATE_FSM_FFd3 AND 
+	NOT REFRESET AND NOT MemoryController/CURRENT_STATE_FSM_FFd5)
+	OR (NOT REFRESET AND NOT REFRESH AND 
+	NOT MemoryController/CURRENT_STATE_FSM_FFd5)
+	OR (NOT MemoryController/CURRENT_STATE_FSM_FFd3 AND 
+	MemoryController/CLOCK_COUNT_FSM_FFd1 AND NOT MemoryController/STARTUP_REFRESH AND 
+	NOT MemoryController/CURRENT_STATE_FSM_FFd5)
+	OR (NOT REFRESH AND MemoryController/CLOCK_COUNT_FSM_FFd1 AND 
+	NOT MemoryController/STARTUP_REFRESH AND NOT MemoryController/CURRENT_STATE_FSM_FFd5));
+
+FDCPE_REFRESH: FDCPE port map (REFRESH,REFRESH_D,BCLK,NOT nRESET,'0');
+REFRESH_D <= (RefreshCounter/REFRESH_COUNTER(2) AND 
+	RefreshCounter/REFRESH_COUNTER(3) AND RefreshCounter/REFRESH_COUNTER(4));
+
+FTCPE_RefreshCounter/REFRESH_COUNTER0: FTCPE port map (RefreshCounter/REFRESH_COUNTER(0),'1',C1,REFRESET,'0');
+
+FTCPE_RefreshCounter/REFRESH_COUNTER1: FTCPE port map (RefreshCounter/REFRESH_COUNTER(1),RefreshCounter/REFRESH_COUNTER(0),C1,REFRESET,'0');
+
+FTCPE_RefreshCounter/REFRESH_COUNTER2: FTCPE port map (RefreshCounter/REFRESH_COUNTER(2),RefreshCounter/REFRESH_COUNTER_T(2),C1,REFRESET,'0');
+RefreshCounter/REFRESH_COUNTER_T(2) <= (RefreshCounter/REFRESH_COUNTER(0) AND 
+	RefreshCounter/REFRESH_COUNTER(1));
+
+FTCPE_RefreshCounter/REFRESH_COUNTER3: FTCPE port map (RefreshCounter/REFRESH_COUNTER(3),RefreshCounter/REFRESH_COUNTER_T(3),C1,REFRESET,'0');
+RefreshCounter/REFRESH_COUNTER_T(3) <= (RefreshCounter/REFRESH_COUNTER(0) AND 
+	RefreshCounter/REFRESH_COUNTER(2) AND RefreshCounter/REFRESH_COUNTER(1));
+
+FTCPE_RefreshCounter/REFRESH_COUNTER4: FTCPE port map (RefreshCounter/REFRESH_COUNTER(4),RefreshCounter/REFRESH_COUNTER_T(4),C1,REFRESET,'0');
+RefreshCounter/REFRESH_COUNTER_T(4) <= (RefreshCounter/REFRESH_COUNTER(0) AND 
+	RefreshCounter/REFRESH_COUNTER(2) AND RefreshCounter/REFRESH_COUNTER(3) AND 
+	RefreshCounter/REFRESH_COUNTER(1));
+
+FDCPE_nCCAS: FDCPE port map (nCCAS,nCCAS_D,NOT BCLK,'0',NOT nRESET);
+nCCAS_D <= ((MemoryController/CURRENT_STATE_FSM_FFd1)
+	OR (MemoryController/CURRENT_STATE_FSM_FFd7)
+	OR (MemoryController/CURRENT_STATE_FSM_FFd6)
+	OR (nCCAS AND MemoryController/CURRENT_STATE_FSM_FFd3 AND 
+	NOT REFRESH)
+	OR (nCCAS AND REFRESET AND MemoryController/SDRAM_READY AND 
+	NOT MemoryController/STARTUP_REFRESH)
+	OR (MemoryController/CURRENT_STATE_FSM_FFd3 AND NOT REFRESH AND 
+	MemoryController/DMACYCLE AND NOT ACAS(9)/ACAS(9)_CLKF)
+	OR (MemoryController/CURRENT_STATE_FSM_FFd3 AND NOT REFRESH AND 
+	NOT C1 AND NOT C3 AND NOT ACAS(9)/ACAS(9)_CLKF)
+	OR (nCCAS AND REFRESET AND 
+	MemoryController/CLOCK_COUNT_FSM_FFd2)
+	OR (REFRESET AND NOT MemoryController/CLOCK_COUNT_FSM_FFd1 AND 
+	NOT MemoryController/CLOCK_COUNT_FSM_FFd2));
+
+
+nCLCS <= ((NOT nRESET)
+	OR (MemoryController/SDRAMCMDOUT(3))
+	OR (NOT REFRESET AND MemoryController/SDRAM_READY AND 
+	NOT ACAS(0) AND nRAMEN)
+	OR (NOT REFRESET AND MemoryController/SDRAM_READY AND 
+	NOT MemoryController/DMACYCLE AND nRAMEN));
+
+FDCPE_nCLLBE: FDCPE port map (nCLLBE,nCLLBE_D,NOT BCLK,'0',NOT nRESET);
+nCLLBE_D <= ((ACAS(0) AND NOT nCASL AND NOT nDBR)
+	OR (nDBR AND NOT nRAMEN AND NOT nLLBE));
+
+FDCPE_nCLMBE: FDCPE port map (nCLMBE,nCLMBE_D,NOT BCLK,'0',NOT nRESET);
+nCLMBE_D <= ((ACAS(0) AND NOT nCASU AND NOT nDBR)
+	OR (nDBR AND NOT nRAMEN AND NOT nLMBE));
+
+FDCPE_nCRAS: FDCPE port map (nCRAS,nCRAS_D,NOT BCLK,'0',NOT nRESET);
+nCRAS_D <= ((MemoryController/CURRENT_STATE_FSM_FFd1)
+	OR (MemoryController/CURRENT_STATE_FSM_FFd7)
+	OR (MemoryController/CURRENT_STATE_FSM_FFd2)
+	OR (nCRAS AND MemoryController/CURRENT_STATE_FSM_FFd3 AND 
+	NOT REFRESH AND ACAS(9)/ACAS(9)_CLKF)
+	OR (nCRAS AND REFRESET AND MemoryController/SDRAM_READY AND 
+	NOT MemoryController/STARTUP_REFRESH)
+	OR (nCRAS AND MemoryController/CURRENT_STATE_FSM_FFd3 AND 
+	NOT REFRESH AND C1 AND NOT MemoryController/DMACYCLE)
+	OR (nCRAS AND MemoryController/CURRENT_STATE_FSM_FFd3 AND 
+	NOT REFRESH AND NOT MemoryController/DMACYCLE AND C3)
+	OR (nCRAS AND REFRESET AND 
+	MemoryController/CLOCK_COUNT_FSM_FFd2)
+	OR (REFRESET AND NOT MemoryController/CLOCK_COUNT_FSM_FFd1 AND 
+	NOT MemoryController/CLOCK_COUNT_FSM_FFd2));
+
+
+nCUCS <= ((NOT nRESET)
+	OR (MemoryController/SDRAMCMDOUT(3))
+	OR (NOT REFRESET AND MemoryController/SDRAM_READY AND 
+	ACAS(0) AND nRAMEN)
+	OR (NOT REFRESET AND MemoryController/SDRAM_READY AND 
+	NOT MemoryController/DMACYCLE AND nRAMEN));
+
+FDCPE_nCUMBE: FDCPE port map (nCUMBE,nCUMBE_D,NOT BCLK,'0',NOT nRESET);
+nCUMBE_D <= ((NOT ACAS(0) AND NOT nCASL AND NOT nDBR)
+	OR (nDBR AND NOT nRAMEN AND NOT nUMBE));
+
+FDCPE_nCUUBE: FDCPE port map (nCUUBE,nCUUBE_D,NOT BCLK,'0',NOT nRESET);
+nCUUBE_D <= ((NOT ACAS(0) AND NOT nCASU AND NOT nDBR)
+	OR (nDBR AND NOT nRAMEN AND NOT nUUBE));
+
+FDCPE_nCWE: FDCPE port map (nCWE,nCWE_D,NOT BCLK,'0',NOT nRESET);
+nCWE_D <= ((MemoryController/CURRENT_STATE_FSM_FFd1)
+	OR (MemoryController/CURRENT_STATE_FSM_FFd7)
+	OR (MemoryController/CURRENT_STATE_FSM_FFd5)
+	OR (nCWE AND MemoryController/CURRENT_STATE_FSM_FFd3)
+	OR (MemoryController/CURRENT_STATE_FSM_FFd3 AND REFRESH)
+	OR (nCWE AND REFRESET AND 
+	NOT MemoryController/CLOCK_COUNT_FSM_FFd1)
+	OR (MemoryController/CURRENT_STATE_FSM_FFd3 AND 
+	MemoryController/DMACYCLE AND NOT ACAS(9)/ACAS(9)_CLKF)
+	OR (MemoryController/CURRENT_STATE_FSM_FFd3 AND NOT C1 AND 
+	NOT C3 AND NOT ACAS(9)/ACAS(9)_CLKF)
+	OR (nCWE AND REFRESET AND MemoryController/SDRAM_READY)
+	OR (nCWE AND REFRESET AND 
+	MemoryController/CLOCK_COUNT_FSM_FFd2)
+	OR (REFRESET AND MemoryController/CLOCK_COUNT_FSM_FFd1 AND 
+	MemoryController/STARTUP_REFRESH)
+	OR (MemoryController/CURRENT_STATE_FSM_FFd2 AND NOT DBDIR)
+	OR (REFRESET AND NOT MemoryController/CLOCK_COUNT_FSM_FFd1 AND 
+	NOT MemoryController/CLOCK_COUNT_FSM_FFd2));
+
+
+nDBEN <= NOT ((NOT ACAS(0) AND MemoryController/DMACYCLE AND 
+	MemoryController/DMACYCLE/MemoryController/DMACYCLE_RSTF));
+
+
+nDRDEN <= NOT (((nRESET AND NOT nREGEN)
+	OR (nRESET AND MemoryController/DMACYCLE AND 
+	MemoryController/DMACYCLE/MemoryController/DMACYCLE_RSTF)));
+
+Register Legend:
+ FDCPE (Q,D,C,CLR,PRE,CE); 
+ FTCPE (Q,D,C,CLR,PRE,CE); 
+ LDCP  (Q,D,G,CLR,PRE); 
+
+******************************  Device Pin Out *****************************
+
+Device : XC9572XL-10-VQ64
+
+
+   -----------------------------------------------  
+  /48 47 46 45 44 43 42 41 40 39 38 37 36 35 34 33 \
+ | 49                                           32 | 
+ | 50                                           31 | 
+ | 51                                           30 | 
+ | 52                                           29 | 
+ | 53                                           28 | 
+ | 54                                           27 | 
+ | 55                                           26 | 
+ | 56              XC9572XL-10-VQ64             25 | 
+ | 57                                           24 | 
+ | 58                                           23 | 
+ | 59                                           22 | 
+ | 60                                           21 | 
+ | 61                                           20 | 
+ | 62                                           19 | 
+ | 63                                           18 | 
+ | 64                                           17 | 
+ \ 1  2  3  4  5  6  7  8  9  10 11 12 13 14 15 16 /
+   -----------------------------------------------  
+
+
+Pin Signal                         Pin Signal                        
+No. Name                           No. Name                          
+  1 DRA<0>                           33 nCLMBE                        
+  2 DRA<1>                           34 nCUMBE                        
+  3 VCC                              35 nCUUBE                        
+  4 DRA<2>                           36 nCLCS                         
+  5 DRA<3>                           37 VCC                           
+  6 DRA<4>                           38 nCUCS                         
+  7 DRA<5>                           39 nUMBE                         
+  8 DRA<6>                           40 nUUBE                         
+  9 DRA<7>                           41 GND                           
+ 10 DRA<8>                           42 nLMBE                         
+ 11 DRA<9>                           43 nLLBE                         
+ 12 nDBR                             44 nCRAS                         
+ 13 nDBEN                            45 nCCAS                         
+ 14 GND                              46 nCWE                          
+ 15 C3                               47 CCLKE                         
+ 16 C1                               48 nRAMEN                        
+ 17 BCLK                             49 nREGEN                        
+ 18 nAS                              50 CMA<0>                        
+ 19 DRDDIR                           51 CMA<1>                        
+ 20 nDRDEN                           52 CMA<2>                        
+ 21 GND                              53 TDO                           
+ 22 nRAS0                            54 GND                           
+ 23 DBDIR                            55 VCC                           
+ 24 nRAS1                            56 CMA<3>                        
+ 25 nCASL                            57 CMA<4>                        
+ 26 VCC                              58 CMA<5>                        
+ 27 nCASU                            59 CMA<6>                        
+ 28 TDI                              60 CMA<7>                        
+ 29 TMS                              61 CMA<8>                        
+ 30 TCK                              62 CMA<9>                        
+ 31 nAWE                             63 CMA<10>                       
+ 32 nCLLBE                           64 nRESET                        
+
+
+Legend :  NC  = Not Connected, unbonded pin
+         PGND = Unused I/O configured as additional Ground pin
+         TIE  = Unused I/O floating -- must tie to VCC, GND or other signal
+         KPR  = Unused I/O with weak keeper (leave unconnected)
+         VCC  = Dedicated Power Pin
+         GND  = Dedicated Ground Pin
+         TDI  = Test Data In, JTAG pin
+         TDO  = Test Data Out, JTAG pin
+         TCK  = Test Clock, JTAG pin
+         TMS  = Test Mode Select, JTAG pin
+  PROHIBITED  = User reserved pin
+****************************  Compiler Options  ****************************
+
+Following is a list of all global compiler options used by the fitter run.
+
+Device(s) Specified                         : xc9572xl-10-VQ64
+Optimization Method                         : DENSITY
+Multi-Level Logic Optimization              : ON
+Ignore Timing Specifications                : OFF
+Default Register Power Up Value             : LOW
+Keep User Location Constraints              : ON
+What-You-See-Is-What-You-Get                : OFF
+Exhaustive Fitting                          : ON
+Keep Unused Inputs                          : OFF
+Slew Rate                                   : SLOW
+Power Mode                                  : STD
+Ground on Unused IOs                        : OFF
+Set I/O Pin Termination                     : KEEPER
+Global Clock Optimization                   : ON
+Global Set/Reset Optimization               : ON
+Global Ouput Enable Optimization            : ON
+Input Limit                                 : 54
+Pterm Limit                                 : 90
+</pre>
+<form><span class="pgRef"><table width="90%" align="center"><tr>
+<td align="left"><input type="button" onclick="javascript:parent.leftnav.showTop()" onmouseover="window.status='goto top of page'; return true;" onmouseout="window.status=''" value="back to top"></td>
+<td align="right"><input type="button" onclick="window.print()" onmouseover="window.status='print page'; return true;" onmouseout="window.status=''" value="print page"></td>
+</tr></table></span></form>
+</body></html>

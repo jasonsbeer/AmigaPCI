@@ -1,0 +1,5 @@
+vhdl work "RefreshCounter.vhd"
+vhdl work "MemoryController.vhd"
+vhdl work "ByteEnable.vhd"
+vhdl work "AgnusAddressStrobes.vhd"
+vhdl work "MAIN.vhd"

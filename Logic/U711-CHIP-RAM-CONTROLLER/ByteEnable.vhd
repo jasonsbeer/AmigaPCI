@@ -46,6 +46,7 @@ entity ByteEnable is
 		nDBR : IN STD_LOGIC;
 		nRAMEN : IN STD_LOGIC;
 		nRESET : IN STD_LOGIC;
+		ACAS0 : IN STD_LOGIC;
 		
       nCUUBE : OUT STD_LOGIC;
       nCUMBE : OUT STD_LOGIC;
@@ -94,11 +95,11 @@ begin
 		
 			IF nDBR = '0' THEN
 			
-				nCUUBE <= nCASU;
-				nCLMBE <= nCASU;
+				nCUUBE <= NOT (NOT nCASU AND NOT ACAS0);
+				nCUMBE <= NOT (NOT nCASL AND NOT ACAS0);
 				
-				nCUMBE <= nCASL;
-				nCLLBE <= nCASL;
+				nCLMBE <= NOT (NOT nCASU AND ACAS0);
+				nCLLBE <= NOT (NOT nCASL AND ACAS0);
 				
 			ELSIF nRAMEN = '0' THEN
 			

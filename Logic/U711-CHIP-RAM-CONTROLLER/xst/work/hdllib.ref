@@ -1,0 +1,12 @@
+EN byteenable NULL "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/ByteEnable.vhd" sub00/vhpl06 1683494101
+AR main behavioral "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/MAIN.vhd" sub00/vhpl11 1683494106
+EN addressstrobe NULL "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/AddressStrobe.vhd" sub00/vhpl02 1683492744
+EN refreshcounter NULL "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/RefreshCounter.vhd" sub00/vhpl00 1683494097
+EN memorycontroller NULL "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/MemoryController.vhd" sub00/vhpl08 1683494103
+AR memorycontroller behavioral "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/MemoryController.vhd" sub00/vhpl09 1683494104
+AR byteenable behavioral "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/ByteEnable.vhd" sub00/vhpl07 1683494102
+EN main NULL "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/MAIN.vhd" sub00/vhpl10 1683494105
+AR addressstrobe behavioral "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/AddressStrobe.vhd" sub00/vhpl03 1683492745
+AR agnusaddressstrobes behavioral "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/AgnusAddressStrobes.vhd" sub00/vhpl05 1683494100
+AR refreshcounter behavioral "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/RefreshCounter.vhd" sub00/vhpl01 1683494098
+EN agnusaddressstrobes NULL "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/AgnusAddressStrobes.vhd" sub00/vhpl04 1683494099
