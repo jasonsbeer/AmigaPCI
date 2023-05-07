@@ -1,0 +1,93 @@
+Release 8.1i - Fit P.20131013
+Copyright(c) 1995-2003 Xilinx Inc. All rights reserved
+
+ 5- 7-2023 10:41AM
+
+NOTE: This file is designed to be imported into a spreadsheet program
+such as Microsoft Excel for viewing, printing and sorting. The pipe '|'
+character is used as the data field separator.
+This file is also designed to support parsing.
+
+Input file:  MAIN.ngd
+output file: MAIN.pad
+Part type:   xc9572xl
+Speed grade: -10
+Package:     vq64
+
+Pinout by Pin Number:
+
+-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+Pin Number|Signal Name|Pin Usage|Pin Name|Direction|IO Standard|IO Bank Number|{blank}|Slew Rate|Termination|{blank}|Voltage|Constraint|
+P1|DRA<0>|I|I/O|INPUT|||||||||
+P2|DRA<1>|I|I/O/GTS2|INPUT|||||||||
+P3|VCC||VCCINT||||||||||
+P4|DRA<2>|I|I/O|INPUT|||||||||
+P5|DRA<3>|I|I/O/GTS1|INPUT|||||||||
+P6|DRA<4>|I|I/O|INPUT|||||||||
+P7|DRA<5>|I|I/O|INPUT|||||||||
+P8|DRA<6>|I|I/O|INPUT|||||||||
+P9|DRA<7>|I|I/O|INPUT|||||||||
+P10|DRA<8>|I|I/O|INPUT|||||||||
+P11|DRA<9>|I|I/O|INPUT|||||||||
+P12|nDBR|I|I/O|INPUT|||||||||
+P13|nDBEN|O|I/O|OUTPUT|||||||||
+P14|GND||GND||||||||||
+P15|C3|I|I/O/GCK1|INPUT|||||||||
+P16|C1|I|I/O/GCK2|INPUT|||||||||
+P17|BCLK|GCK|I/O/GCK3||||||||||
+P18|nAS|O|I/O|OUTPUT|||||||||
+P19|DRDDIR|O|I/O|OUTPUT|||||||||
+P20|nDRDEN|O|I/O|OUTPUT|||||||||
+P21|GND||GND||||||||||
+P22|nRAS0|I|I/O|INPUT|||||||||
+P23|DBDIR|O|I/O|OUTPUT|||||||||
+P24|nRAS1|I|I/O|INPUT|||||||||
+P25|nCASL|I|I/O|INPUT|||||||||
+P26|VCC||VCCIO||||||||||
+P27|nCASU|I|I/O|INPUT|||||||||
+P28|TDI||TDI||||||||||
+P29|TMS||TMS||||||||||
+P30|TCK||TCK||||||||||
+P31|nAWE|I|I/O|INPUT|||||||||
+P32|nCLLBE|O|I/O|OUTPUT|||||||||
+P33|nCLMBE|O|I/O|OUTPUT|||||||||
+P34|nCUMBE|O|I/O|OUTPUT|||||||||
+P35|nCUUBE|O|I/O|OUTPUT|||||||||
+P36|nCLCS|O|I/O|OUTPUT|||||||||
+P37|VCC||VCCINT||||||||||
+P38|nCUCS|O|I/O|OUTPUT|||||||||
+P39|nUMBE|I|I/O|INPUT|||||||||
+P40|nUUBE|I|I/O|INPUT|||||||||
+P41|GND||GND||||||||||
+P42|nLMBE|I|I/O|INPUT|||||||||
+P43|nLLBE|I|I/O|INPUT|||||||||
+P44|nCRAS|O|I/O|OUTPUT|||||||||
+P45|nCCAS|O|I/O|OUTPUT|||||||||
+P46|nCWE|O|I/O|OUTPUT|||||||||
+P47|CCLKE|O|I/O|OUTPUT|||||||||
+P48|nRAMEN|I|I/O|INPUT|||||||||
+P49|nREGEN|I|I/O|INPUT|||||||||
+P50|CMA<0>|O|I/O|OUTPUT|||||||||
+P51|CMA<1>|O|I/O|OUTPUT|||||||||
+P52|CMA<2>|O|I/O|OUTPUT|||||||||
+P53|TDO||TDO||||||||||
+P54|GND||GND||||||||||
+P55|VCC||VCCIO||||||||||
+P56|CMA<3>|O|I/O|OUTPUT|||||||||
+P57|CMA<4>|O|I/O|OUTPUT|||||||||
+P58|CMA<5>|O|I/O|OUTPUT|||||||||
+P59|CMA<6>|O|I/O|OUTPUT|||||||||
+P60|CMA<7>|O|I/O|OUTPUT|||||||||
+P61|CMA<8>|O|I/O|OUTPUT|||||||||
+P62|CMA<9>|O|I/O|OUTPUT|||||||||
+P63|CMA<10>|O|I/O|OUTPUT|||||||||
+P64|nRESET|GSR/I|I/O/GSR||||||||||
+
+To preserve the pinout above for future design iterations in
+Project Navigator simply execute the (Lock Pins) process
+located under the (Implement Design) process in a toolbox named
+(Optional Implementation Tools) or invoke PIN2UCF from the
+command line. The location constraints will be written into your
+specified UCF file
+
+
