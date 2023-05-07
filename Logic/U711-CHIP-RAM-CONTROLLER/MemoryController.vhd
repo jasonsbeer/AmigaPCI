@@ -51,8 +51,6 @@ entity MemoryController is
 		REFRESH : IN STD_LOGIC;
 		AGNUS_CAS : IN STD_LOGIC;
 		
-		REFRESET : INOUT STD_LOGIC;
-		
 		CRAM_ADDRESS : OUT STD_LOGIC_VECTOR(10 DOWNTO 0);
 		nCRAS : OUT STD_LOGIC;
 		nCCAS : OUT STD_LOGIC;
@@ -63,8 +61,9 @@ entity MemoryController is
 		nCLCS : OUT STD_LOGIC;
 		nCUCS : OUT STD_LOGIC;
 		nDBEN : OUT STD_LOGIC;
-		DBDIR : OUT STD_LOGIC
+		DBDIR : OUT STD_LOGIC;
 		
+		REFRESET : INOUT STD_LOGIC
 	
 	);
 
@@ -171,7 +170,7 @@ begin
 	-- DATA BRIDGE ENABLE --
 	------------------------
 	
-	nDBEN <= NOT (CYCLE AND (NOT nDBR AND NOT ACAS(0)));
+	nDBEN <= NOT (nRESET AND ((CYCLE AND (NOT nDBR AND NOT ACAS(0)))));
 	
 	---------------------------
 	-- DATA BRIDGE DIRECTION --
@@ -253,9 +252,11 @@ begin
 								SDRAMCMDOUT <= ramstate_AUTOREFRESH;
 								STARTUP_REFRESH <= '0';
 							
-							END IF;							
+							END IF;
+							
 						
-					END CASE;					
+					END CASE;
+					
 			
 				WHEN REG =>				
 					

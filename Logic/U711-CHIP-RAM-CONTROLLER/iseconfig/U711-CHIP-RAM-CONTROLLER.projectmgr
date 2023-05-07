@@ -90,13 +90,13 @@
          <ClosedNodesVersion>2</ClosedNodesVersion>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem>MAIN - Behavioral (/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/MAIN.vhd)</SelectedItem>
+         <SelectedItem>MemoryController - MemoryController - Behavioral (/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/MemoryController.vhd)</SelectedItem>
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
       <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000202000000010000000100000064000004ec000000020000000000000000000000000200000064ffffffff000000810000000300000002000004ec0000000100000003000000000000000100000003</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >true</UserChangedColumnWidths>
-      <CurrentItem>MAIN - Behavioral (/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/MAIN.vhd)</CurrentItem>
+      <CurrentItem>MemoryController - MemoryController - Behavioral (/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/MemoryController.vhd)</CurrentItem>
    </ItemView>
    <ItemView engineview="BehavioralSim" sourcetype="" guiview="Process" >
       <ClosedNodes>
@@ -104,26 +104,26 @@
          <ClosedNode>Design Utilities</ClosedNode>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem></SelectedItem>
+         <SelectedItem/>
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
       <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000000000000000002ac000000010000000100000000000000000000000064ffffffff000000810000000000000001000002ac0000000100000000</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
-      <CurrentItem></CurrentItem>
+      <CurrentItem/>
    </ItemView>
    <ItemView engineview="BehavioralSim" sourcetype="DESUT_VHDL_ARCHITECTURE" guiview="Process" >
       <ClosedNodes>
          <ClosedNodesVersion>1</ClosedNodesVersion>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem></SelectedItem>
+         <SelectedItem/>
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
       <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000000000000000002ac000000010000000100000000000000000000000064ffffffff000000810000000000000001000002ac0000000100000000</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
-      <CurrentItem></CurrentItem>
+      <CurrentItem/>
    </ItemView>
    <SourceProcessView>000000ff0000000000000002000002330000015301000000060100000002</SourceProcessView>
    <CurrentView>Implementation</CurrentView>
