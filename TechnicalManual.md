@@ -118,7 +118,7 @@ Chip RAM is supplied by SDRAM via the board controller.
 
 #### 1.11.1 Slow RAM
 
-The CPU can access the 32 bit chipset RAM through Agnus. Because this process is mediated through Agnus running on the 7MHz clock, this RAM is referred to as "Slow RAM". **In order to work correctly with the chipset timings, <ins>the RAM controller must adhear to MC68000 timings</ins>**. The process is as follows:
+The CPU can access the 32 bit chipset RAM through Agnus. Because this process is mediated through Agnus running on the 7MHz clock, this RAM is referred to as "Slow RAM". **In order to work correctly , <ins>the RAM controller must adhear to MC68000 timings</ins>**. The process is as follows:
 
 1) The CPU drives A1..20 in the chipset RAM address space and drives the data bus and R_W low for write cycles. The data bus bridge is tristate.
 2) The CPU asserts _TS for one clock and _TIP for the duration of the transfer to indicate the address and data (for write cycles) is valid.
@@ -126,28 +126,28 @@ The CPU can access the 32 bit chipset RAM through Agnus. Because this process is
 4) If _DBR is negated, Agnus proceeds with the CPU RAM cycle. If _DBR is asserted, wait states are inserted until _DBR is negated and the CPU RAM cycle can proceed.
 5) On the rising edge of C3, Agnus drives a valid row address on MA0 - MA9 (S2) and asserts _RAS0 or _RAS1. Because the CPU is a 32 bit port, DRA0 is ignored by the RAM controller. 
 6) On the rising edge of C1, Agnus drives a valid column address on MA0 - MA9 (S3), asserts _CASL or _CASU, and drives _AWE low for write cycles. DRA0 is used here as it represents a more signficant bit in the address.
-7) On the first falling edge of BCLK after entering MC68000 S6, the RAM controller drives the _RAS address to the SDRAM with a bank activate command.
+7) On the second falling edge of BCLK after entering MC68000 S5, the RAM controller drives the _RAS address to the SDRAM with a bank activate command.
 8) On the next falling edge of BCLK, the RAM controller drives the _CAS address to the SDRAM with a read or write command.
 9) For read cycles, after any latency requirements, data is driven to the data bus by the SDRAM. Write cycles are latched immediately with the _CAS command.
 10) On the next falling edge of BCLK, _TA and _TBI are asserted by the board controller to signal the MC68040 to complete the cycle and inhibit burst transfers.
 
-See [Timing Diagram](</DataSheets/TimingDiagrams/CPU Chip Register and Slow RAM.png>)
+See [Timing Diagram](</DataSheets/TimingDiagrams/CPU Chipset RAM Access.png>)
 
 NOTE: Agnus is RAS only refresh. SDRAM refresh is handled by the RAM controller and is independent of the Agnus refresh command. An Agnus refresh cycle can be recognized by the assertion of _RAS0 and _RAS1 simultaneously, which will only happen during refresh cycles.
 
 #### 1.11.2 Chipset DMA
 
-The Amiga chipset accesses the chipset RAM via direct memory access. The chipset accesses SDRAM as a 16 bit port. Because the chipset SDRAM is a 32 bit, the chipset data access is directed to either the low word or high word of the two words availalbe by considering the Agnus DRA0 address signal. The chipset DMA cycle is unique from the MC68000 states and uses 7MHz clock cycles for writes and three 7MHz clock cycles for reads. The process is as follows:
+The Amiga chipset accesses the chipset RAM via direct memory access. The chipset accesses SDRAM as a 16 bit port. Because the chipset SDRAM is a 32 bit, the chipset data access is directed to either the low word or high word of the two words availalbe by considering the Agnus DRA0 address signal. The chipset DMA cycle is unique from the MC68000 states and spans two 7MHz clock cycles for writes and three 7MHz clock cycles for reads. The process is as follows:
 
-1) The chipset asserts DMAL to request direct memory access (DMA).
-2) Agnus asserts _DBR to indicate a chipset DMA cycle is in progress.
-3) On the rising edge of C3, Agnus drives a valid row address on MA0 - MA9 (S2) and asserts _RAS0 or _RAS1. If MA0 = 1, the data bridge is tristate and the data goes to the lower word of the SDRAM.
-4) On the rising edge of C1, Agnus drives a valid column address on MA0 - MA9 (S3), asserts _CASL or _CASU, and drives _AWE low for write cycles. If MA0 = 0, the data bridge is enabled and the data goes to the upper word of the SDRAM. When enabled, the data bridge direction is driven as the inverse of _AWE.
-5) On the first falling edge of BCLK after entering MC68000 S6, the RAM controller drives the _RAS address to the SDRAM with a bank activate command.
+1) The chipset asserts DMAL on the rising edge of C3 to request direct memory access (DMA).
+2) Agnus asserts _DBR on the falling edge of C1 to indicate a chipset DMA cycle is in progress.
+3) On the rising edge of C3, Agnus drives a valid row address on MA0 - MA9 (S2) and asserts _RAS0 or _RAS1. 
+4) On the falling edge of C1, Agnus drives a valid column address on MA0 - MA9 (S3), asserts _CASL and _CASU, and drives _AWE low for write cycles. If MA0 = 1, the data bridge is enabled and the data goes to the lower word of the SDRAM. When enabled, the data bridge direction is driven as the inverse of _AWE.
+5) On the second falling edge of BCLK after Agnus asserts _CASU or _CASL, the RAM controller drives the _RAS address to the SDRAM with a bank activate command.
 6) On the next falling edge of BCLK, the RAM controller drives the _CAS address to the SDRAM with a read or write command.
 7) For read cycles, after any latency requirements, data is driven to the data bus by the SDRAM. Write cycles are latched immediately with the _CAS command.
 
-See [Timing Diagram](</DataSheets/TimingDiagrams/Chipset RAM Access.png>)
+See [Timing Diagram](</DataSheets/TimingDiagrams/Chipset DMA Cycle.png>)
 
 ### 1.12 Fast RAM
 
