@@ -136,6 +136,8 @@
     <transform xil_pn:end_ts="1683494099" xil_pn:in_ck="7504130266653476967" xil_pn:name="TRANEXT_xstsynthesize_xc9500xl" xil_pn:prop_ck="1684234118108095905" xil_pn:start_ts="1683494095">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="InputChanged"/>
       <outfile xil_pn:name="MAIN.lso"/>
       <outfile xil_pn:name="MAIN.ngc"/>
       <outfile xil_pn:name="MAIN.ngr"/>
@@ -156,6 +158,7 @@
     <transform xil_pn:end_ts="1683494101" xil_pn:in_ck="-1198254539497409879" xil_pn:name="TRAN_ngdbuild" xil_pn:prop_ck="-2081320714713457669" xil_pn:start_ts="1683494099">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
       <outfile xil_pn:name="MAIN.bld"/>
       <outfile xil_pn:name="MAIN.ngd"/>
       <outfile xil_pn:name="MAIN_ngdbuild.xrpt"/>
@@ -166,6 +169,7 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
       <outfile xil_pn:name="MAIN.gyd"/>
       <outfile xil_pn:name="MAIN.mfd"/>
       <outfile xil_pn:name="MAIN.nga"/>
@@ -185,6 +189,7 @@
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
       <status xil_pn:value="InputChanged"/>
     </transform>
   </transforms>
