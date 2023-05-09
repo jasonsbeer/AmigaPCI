@@ -145,7 +145,7 @@ The Amiga chipset accesses the chipset RAM via direct memory access. The chipset
 4) On the falling edge of C1, Agnus drives a valid column address on MA0 - MA9 (S3), asserts _CASL and _CASU, and drives _AWE low for write cycles. If MA0 = 1, the data bridge is enabled and the data goes to the lower word of the SDRAM. When enabled, the data bridge direction is driven as the inverse of _AWE.
 5) On the second falling edge of BCLK after Agnus asserts _CASU or _CASL, the RAM controller drives the _RAS address to the SDRAM with a bank activate command.
 6) On the next falling edge of BCLK, the RAM controller drives the _CAS address to the SDRAM with a read or write command.
-7) For read cycles, after any latency requirements, data is driven to the data bus by the SDRAM. Write cycles are latched immediately with the _CAS command.
+7) For read cycles, after any latency requirements, data is driven to the data bus by the SDRAM and latched by the chipset on the rising edge of C1. Write cycles are latched immediately with the _CAS command.
 
 See [Timing Diagram](</DataSheets/TimingDiagrams/Chipset DMA Cycle.png>)
 
