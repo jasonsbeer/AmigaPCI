@@ -129,7 +129,7 @@ The CPU can read and write data to the chipset registers through Agnus. Examinin
 6) On falling edge of C3 (rising edge of MC68000 State 6), the board controller latches the data bus on read cycles.
 7) On the second falling edge of BCLK after entering MC68000 State 7, _TA and _TBI are asserted by the board controller to signal the MC68040 to complete the cycle and inhibit burst transfers.
 
-See [Timing Diagram](</DataSheets/TimingDiagrams/CPU Chipset Regsiter Cycle.png>)
+See [Timing Diagram](</DataSheets/TimingDiagrams/Chipset Regsiter Cycle.png>)
 
 #### 1.11.2 Slow RAM Cycles
 
