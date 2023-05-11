@@ -146,7 +146,7 @@ The CPU can access the 32 bit chipset RAM through Agnus. Because this process is
 9) For read cycles, after any latency requirements, data is driven to the data bus by the SDRAM. Write cycles are latched immediately with the _CAS command.
 10) On the second falling edge of BCLK after entering MC68000 State 7, _TA and _TBI are asserted by the board controller to signal the MC68040 to complete the cycle and inhibit burst transfers.
 
-See [Timing Diagram](</DataSheets/TimingDiagrams/Chipset Register Cycle.png>)
+See [Timing Diagram](</DataSheets/TimingDiagrams/CPU Chipset RAM Cycle.png>)
 
 NOTE: Agnus is RAS only refresh. SDRAM refresh is handled by the RAM controller and is independent of the Agnus refresh command. An Agnus refresh cycle can be recognized by the assertion of _RAS0 and _RAS1 simultaneously, which will only happen during refresh cycles.
 
