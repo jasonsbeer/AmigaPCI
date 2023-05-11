@@ -183,6 +183,8 @@ The AmigaPCI is designed to comply with the PCI Local Bus Revision 2.3 specifici
 
 By definition, the PCI Local Bus is a processor independent, 32 bit expasion bus. The AmigaPCI PCI Bus is implemented via a MC68040 to PCI bridge using a PCI Controller ASIC concept. The PCI Controller Logic translates data requests from the Motorola MC68040 and PCI devices in order that they may communicate in an effective manner. 
 
+The PCI Bridge can operate in either AUTOCONFIG mode or software configuration mode. This is discussed further in 2.2.
+
 ### 2.1 Endianness
 
 Motorola MC68000 series processors are big endian devices. PCI devices, by contrast, are little endian devices. This means we must byte swap the data signals to provide compatability between devices with different endianness[[1]](#1). The AmigaPCI implements address (or byte) invariance to implement the endian conversion. Any devices created for the AmigaPCI must be designed as little endian, as defined in the PCI Local Bus Specifications[[2]](#2).
@@ -228,11 +230,31 @@ Table 2.1. AmigaPCI Endianness.
 
 **NOTE:** For the purposes of this project, a bus's most significant bit will be listed first and least significant last. For example, [31..0] indicates bit 31 as the most significant bit. Zero is the least. Thus, [31..0] indicates a little endian device. The opposite will be true for a big endian device.
 
-### 2.2 PCI Configuration
+### 2.2 Mode
+
+The PCI slots of the AmigaPCI can be set to run in either AUTOCONFIG mode or software configuration* mode. The mode of each PCI slot is set by jumpers J100 and J101. See table 2.2. Slot 0 may only operate in AUTOCONFIG mode.
+
+In AUTOCONFIG mode, the PCI target device will be configured on startup just like any other Amiga AUTOCONFIG device. This allows for Amiga specific hardware with auto boot ROMs. The advantage of AUTOCONFIG mode is the ability to use the PCI device immediately upon startup without the need to load drivers from disk. This could support such devices such as auto booting hard drives, SVGA video, sound cards, etc. Onced the PCI target device is configured by the AUTOCONFIG process, the target device may be directly accessed by its base address(es), just as any other Amiga expansion card. 
+
+Software configuration mode requires the PCI target device be configured in software with no option for configuration via the AUTOCONFIG process. This mode may be used to support PCI target devices designed for non-Amiga architecture. During startup, the PCI Bridge itself is configured via AUTOCONFIG, which will supply a base address for the PCI Bridge through which the slots in software configuration mode may be accessed. Driver software may then poll the PCI Bridge base address with each device selection bit for PCI target devices using that base address. See addition information in Section 2.3. Slots 1-3 may be set to software configuration mode.
+
+PCI devices in AUTOCONFIG slots must be addressed via their AUTOCONFIG assigned base address. The PCI bridge will return $FFFF FFFF if and AUTOCONFIG slot is polled. 
+
+Table 2.2
+AUTOCONFIG Slots|Software Config Slots|J100|J101
+-|-|-|-
+0-3|-|Open|Open
+0-2|3|Open|Short
+0-1|2-3|Short|Open
+0|1-3|Short|Short
+
+*Software configuration mode is compatable with Prometheus.
+
+### 2.3 PCI Configuration
 
 Each slot is capable of auto configuration via the Amiga OS AUTOCONFIG process. During configuration, each PCI slot, in turn, is polled to obtain the capabilities and address space needs of the target device. At startup, each PCI slot is polled by asserting the IDSEL signal. The IDSEL signal is approximately equivalent to the _CFGIN signal of the Zorro bus. However, unlike the _CFGIN signal, the IDSEL is asserted by a specific address bit during the address phase of a configuration command access[[2]](#2) (Table 2.2a). PCI configuration header Type 0 is supported by the PCI Controller logic.
 
-Table 2.2a
+Table 2.3
 PCI Slot|Address Bit
 -|-
 0|AD[15]
@@ -240,40 +262,40 @@ PCI Slot|Address Bit
 2|AD[17]
 3|AD[18]
 
-#### 2.2.1 AUTOCONFIG
+#### 2.3.1 AUTOCONFIG
 
 During configuration, specifications such as the device manufacturer, product number, device capabilities, etc, are read from the device. Each PCI device is capable of supporting up to six base address registers (BAR0 - BAR5, between 0x10 - 0x24). At this time, the required address space for each of the six possible registers are determined and presented to Amiga OS for assigning of base addresses in the 32 bit MC68040 address space. This is done through the normal Zorro 3 AUTOCONFIG procedure. However, the PCI Controller logic translates the needs of the PCI card and requests AUTOCONFIG resources in a manner that is understood by Amiga OS. As an example, if BAR0 requests 512k of configuration space, this request will be passed to Amiga OS as a Zorro 3 device requiring 512k of AUTOCONFIG space. Amiga OS will then assign a base address to this request. This assigned base address will then be programmed into BAR0 of the PCI device. This process repeats for BAR1 - BAR5 of the same PCI device. This procedure is then repeated for each PCI device installed further down the configuration chain. Once complete, each PCI device may be accessed by the assigned base address(es), just as any other AUTOCONFIG device.
 
 One drawback to this process is the PCI device manufacturer ID (assigned by the PCI Special Interest Group) is non-exclusive with the Amiga OS manfacturer ID (as was assigned by Commodore Applications and Technical Support). This may result in misinterpretation of the manufacturer by Amiga OS. It is unknown at this time if this may result in hardware or software failures.
 
-#### 2.2.2 ROM Vector
+#### 2.3.2 ROM Vector
 
 PCI devices may have onboard ROMs that contain additional information describing the device and may be used to enhance functionality, such as for auto booting. PCI ROMs may contain multiple images that support multiple architectures. During PCI configuration, the ROM address requirement is read from the PCI configuration header. This is then presented to the AUTOCONFIG process as a ROM Vector.
 
 MORE DETAIL...HOW DOES THIS WORK?
 
-### 2.3 Interrupt Handling
+### 2.4 Interrupt Handling
 
 Each PCI slot has four interrupt signals, identified as _INTA, _INTB, _INTC, and _INTD. Single function PCI devices are only allowed to use _INTA. The remaining signals are only used in the event of a multifunction PCI device, with one interrupt line per pci function. As a hyptothetical example, a multifunction I/O device may use _INTA for a floppy drive interface, _INTB for a hard drive interface, _INTC for a serial interface, etc. For the purposes of the AmigaPCI design, _INTA, _INTB, _INTC, and _INTD are OR'd together and connected to _INT2. Driver design should look for assertion of _INT2 to signal an interrupt request from devices on the PCI bus. When an interrupt is asserted, the driver needs to poll its device on the PCI bus to determine if its device is asserting the interrupt.
 
-### 2.4 Bus Mastering
+### 2.5 Bus Mastering
 
 Direct access activities are available to the MC68040 and PCI cards via bus mastering. When a device has mastered the bus, it has control of the entire AmigaPCI system and may directly access any valid address location. This is typically done for direct reading and writing of memory or direct control of chipset or other functions. The AmigaPCI bus arbiter accepts bus requests from the MC608040 and the PCI bus. Each slot on the PCI bus has a dedicated bus request signal. The bus arbiter will grant the bus to highest priority device when the current bus cycle is complete. See Table 2.4. In the event there is not pending bus request, the MC68040 is given explicit ownership until it begins a bus cycle or a bus request from one of the PCI devices is asserted.
 
 Table 2.4. Bus arbitration priority.
 Device|Priority
 -|-
-PCI Slot 0|0 (Greatest)
-PCI Slot 1|1
-PCI Slot 2|2
-PCI Slot 3|3
-MC68040|4 (Least)
+MC68040|0 (Greatest)
+PCI Slot 0|1
+PCI Slot 1|2
+PCI Slot 2|3
+PCI Slot 3|4 (Least)
 
-#### 2.4.1 MC68040 Bus Mastering
+#### 2.5.1 MC68040 as a Bus Master
 
 Unlike previous Motorola MC68000 series processors, the MC68040 does not preferentially own the bus. It is considered for bus access with all other bus mastering devices on the system. Thus, bus arbitration includes the MC68040 when assigning bus ownership. When it is ready to take ownership of the system bus, if there is no bus cycle in progress, the MC68040 will assert _BR to indicate its need to own the system bus. If appropriate, the bus arbiter will assert _BG in response so that the MC68040 may begin its bus activities. Once _BG is asserted by the arbiter, the MC68040 will assert _BB to indicate ownership of the bus. _BG is asserted until the MC68040 bus access is complete, indicated by negation of _BR. While posessing explicit ownership of the bus, the MC68040 may start a bus cycle at any time asserting _BR and _BB. Alternatively, the MC68040 may leave the bus idle when there are no bus operations necessary. In that case, _BR is negated and _BB is tri-state.
 
-#### 2.4.2 PCI Bus Mastering
+#### 2.5.2 PCI Device as a Bus Master
 
 When a PCI device is ready to take ownership of the system bus, it will assert _REQx, where x is the slot designation of the device (0-3). Once any current bus cycle has completed (_BB is negated) the arbiter will assert _BB to indicate a bus operation is in progress. It will simultaneously assert _GNTx, allowing the requesting PCI device to take ownership of the bus and begin its operation. _GNTx and _BB will remain asserted until _REQx is negated. At that time, _GNTx will be negated and _BB will be negated.
 
