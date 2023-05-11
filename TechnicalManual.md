@@ -59,7 +59,7 @@ In addition to supporting original Amiga floppy disk drives, the AmigaPCI also s
 Table 1.4.1. DF0/DF1 Configuration.
 Jumper|DF0 Only|DF1 Present
 -|-|-
-J200|Not Shorted|Shorted
+J200|Open|Shorted
 
 Table 1.4.2. Floppy Drive Configuration.
 Jumper|Amiga Drive|PC Drive
