@@ -261,6 +261,7 @@ PCI Slot|Address Bit
 1|AD[17]
 2|AD[18]
 3|AD[19]
+4|AD[20]
 
 #### 2.3.1 AUTOCONFIG
 
