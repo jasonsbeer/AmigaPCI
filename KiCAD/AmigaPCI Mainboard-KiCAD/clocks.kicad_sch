@@ -7684,13 +7684,13 @@
     (pin "7" (uuid e970be25-4a83-4667-80e6-899efc817f27))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/d671396a-959f-409b-8612-87cb620c51cb"
-          (reference "U108") (unit 6)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/62a07d55-3759-49a3-8a3f-631cb4902a24"
           (reference "U108") (unit 6)
         )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/4cb777ef-2899-49f4-b38f-a0c07d84fa7d"
+          (reference "U108") (unit 6)
+        )
+        (path "/72453515-27fe-4336-91f3-e3c8054f7767/d671396a-959f-409b-8612-87cb620c51cb"
           (reference "U108") (unit 6)
         )
       )

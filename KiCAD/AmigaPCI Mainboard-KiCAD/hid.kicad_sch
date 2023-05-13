@@ -5934,6 +5934,11 @@
     (uuid da3b2c30-4642-4774-9d44-6a8c41bd41b8)
   )
 
+  (text "THE MOUSE INPUT SUPPORTS ANALOG SIGNALLING.\nWE ARE USING ANALOG SWITCHES TO ENABLE AND\nDISABLE THE LEGACY MOUSE PORT WHEN THE\nHID MOUSE IS IN USE."
+    (at 44.323 172.085 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid 250cd8b5-5609-45b5-afff-e7f80360692c)
+  )
   (text "HID and USER PORTS" (at 314.452 246.38 0)
     (effects (font (size 6 6) (thickness 1.2) bold) (justify left bottom))
     (uuid 43d4859e-3656-46a5-8d69-00f03aa59694)

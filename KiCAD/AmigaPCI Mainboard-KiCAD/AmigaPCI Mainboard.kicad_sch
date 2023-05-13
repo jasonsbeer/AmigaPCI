@@ -10244,7 +10244,7 @@
     (property "Sheetname" "Clocks and PCI Buffers" (at 172.847 25.4504 0)
       (effects (font (size 1.27 1.27)) (justify left bottom))
     )
-    (property "Sheetfile" "gary.kicad_sch" (at 172.847 40.9706 0)
+    (property "Sheetfile" "clocks.kicad_sch" (at 172.847 40.9706 0)
       (effects (font (size 1.27 1.27)) (justify left top))
     )
     (instances
