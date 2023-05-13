@@ -116,12 +116,11 @@ The real time clock (RTC) of the AmigaPCI uses the RTC of the STM32F205 microcon
 
 ### 1.11 Chipset RAM
 
-Chip RAM is supplied by SDRAM via the board controller.
-
+Chip RAM is supplied by SDRAM and interfaces are provided for the chipset and MC68040 via the Chip RAM Controller. Functions that engage the chipset must consider the timings of the Motorolla MC68000 (MC68000 herein).
 
 #### 1.11.1 Chipset Register Cycles
 
-The CPU can read and write data to the chipset registers through Agnus. Examining the architecture of original OCS/ECS Amigas discloses the presence of data latches on the Agnus data bus (DRD). As an example, U104 and U106 on the Amiga 2000 and U253 - U256 on the Amiga 3000. These latches are only enabled on read cycles. This suggests the chipset registers do not adhear to MC68000 timing, resulting in the need to latch the data earlier in the cycle. Latching allows valid data to held on the bus until the falling edge of State 6, at which time the MC68000 latches data during read cycles. On the Amiga 2000, this latch is driven by signal C4, which is an inverted C3. This means the data is driven to the bus before the falling edge of State 6, when the MC68000 expects it. **In order to work correctly , <ins>the register controller must adhear to MC68000 timings</ins>**. The chipset register cycle is as follows:
+The CPU can read and write data to the chipset registers through Agnus. Examining the architecture of original OCS/ECS Amigas discloses the presence of data latches on the Agnus data bus (DRD). As an example, U104 and U106 on the Amiga 2000 and U253 - U256 on the Amiga 3000. These latches are only enabled on read cycles. This suggests the chipset registers do not adhear to MC68000 timing, resulting in the need to latch the data earlier in the cycle. Latching allows valid data to held on the bus until the falling edge of State 6, at which time the MC68000 latches data during read cycles. On the Amiga 2000, this latch is driven by signal C4, which is an inverted C3. This means the data is driven to the bus before the falling edge of State 6, when the MC68000 expects it. The chipset register cycle is as follows:
 
 1) The CPU drives A1..20 in the chipset RAM address space and drives the data bus and R_W low for write cycles. The data bus bridge is tristate.
 2) The CPU asserts _TS for one clock to indicate the start of a transfer. The RAM controller asserts _REGEN.
@@ -133,39 +132,39 @@ The CPU can read and write data to the chipset registers through Agnus. Examinin
 
 See [Timing Diagram](</DataSheets/TimingDiagrams/Chipset Register Cycle.png>)
 
-#### 1.11.2 Slow RAM Cycles
+#### 1.11.2 Chipset DMA Cycles
 
-The CPU can access the 32 bit chipset RAM through Agnus. Because this process is mediated by Agnus running on the 7MHz clock, this RAM is referred to as "Slow RAM". **In order to work correctly , <ins>the RAM controller must adhear to MC68000 timings</ins>**. CPU RAM cycles are given priority by Agnus. Oiginal Amiga OCS/ECS designs incorporate a data latch on read cycles, as described in 1.11.1. The AmigaPCI does not need these latches for RAM access due to the new architecture of the RAM interface. The process is as follows:
-
-1) The CPU drives A1..20 in the chipset RAM address space and drives the data bus and R_W low for write cycles. The data bus bridge is tristate.
-2) The CPU asserts _TS for one clock to indicate the start of a transfer. The RAM controller asserts _RAMEN.
-3) The RAM controller asserts _AS and _LDS, _UDS (for read cycles) during MC68000 State 2 (both C1 and C3 are low) and _LDS, _UDS during State 4 for write cycles.
-4) Agnus drives the _AWE signal low for write cycles approximately 60ns after the falling edge of C3 or approximately 40ns after assertion of CPU R_W.
-5) On the rising edge of C3, Agnus drives a valid row address on MA0 - MA9 (S2) and asserts _RAS0 or _RAS1. 
-6) On the falling edge of C1, Agnus drives a valid column address on MA0 - MA9 (S3) and asserts _CASL and/or _CASU. Because the MC68040 is always is a 32 bit port, DRA0 is ignored by the RAM controller
-7) On the second falling edge of BCLK after entering MC68000 S5, the RAM controller drives the _RAS address to the SDRAM with a bank activate command.
-8) On the next falling edge of BCLK, the RAM controller drives the _CAS address to the SDRAM with a read or write command.
-9) For read cycles, after any latency requirements, data is driven to the data bus by the SDRAM. Write cycles are latched immediately with the _CAS command.
-10) On the second falling edge of BCLK after entering MC68000 State 7, _TA and _TBI are asserted by the board controller to signal the MC68040 to complete the cycle and inhibit burst transfers.
-
-See [Timing Diagram](</DataSheets/TimingDiagrams/CPU Chipset RAM Cycle.png>)
-
-NOTE: Agnus is RAS only refresh. SDRAM refresh is handled by the RAM controller and is independent of the Agnus refresh command. An Agnus refresh cycle can be recognized by the assertion of _RAS0 and _RAS1 simultaneously, which will only happen during refresh cycles.
-
-
-#### 1.11.3 Chipset DMA Cycles
-
-The Amiga chipset accesses the chipset RAM via direct memory access. The chipset accesses SDRAM as a 16 bit port. Because the chipset SDRAM is a 32 bit, the chipset data access is directed to either the low word or high word of the two words availalbe by considering the Agnus DRA0 address signal. The chipset DMA cycle is unique from the MC68000 states and spans two 7MHz clock cycles for writes and three 7MHz clock cycles for reads. The process is as follows:
+The Amiga chipset accesses the chipset RAM via direct memory access (DMA). The chipset accesses SDRAM as a 16 bit port. Because the chipset SDRAM is a 32 bit port, the chipset data access is directed to either the low word or high word of the two words available by considering the Agnus column address DRA0 bit. The chipset DMA cycle does not adhear to the MC68000 bus transfer timing. The chipset DMA cycle spans two 7MHz clock cycles for writes and three 7MHz clock cycles for reads. The process is as follows:
 
 1) The chipset asserts DMAL on the rising edge of C3 to request direct memory access (DMA).
 2) Agnus asserts _DBR on the falling edge of C1 to indicate a chipset DMA cycle is in progress.
-3) On the rising edge of C3, Agnus drives a valid row address on MA0 - MA9 (S2) and asserts _RAS0 or _RAS1. 
-4) On the falling edge of C1, Agnus drives a valid column address on MA0 - MA9 (S3), asserts _CASL and _CASU, and drives _AWE low for write cycles. If MA0 = 1, the data bridge is enabled and the data goes to the lower word of the SDRAM. When enabled, the data bridge direction is driven as the inverse of _AWE.
+3) On the rising edge of C3, Agnus drives a valid row address on MA0 - MA9 and asserts _RAS0 or _RAS1. 
+4) On the falling edge of C1, Agnus drives a valid column address on MA0 - MA9, asserts _CASL and _CASU, and drives _AWE low for write cycles. If DRA0 = 1, the data bridge is enabled and the data goes to the lower word of the SDRAM. When enabled, the data bridge direction is driven as the inverse of _AWE.
 5) On the second falling edge of BCLK after Agnus asserts _CASU or _CASL, the RAM controller drives the _RAS address to the SDRAM with a bank activate command.
 6) On the next falling edge of BCLK, the RAM controller drives the _CAS address to the SDRAM with a read or write command.
 7) For read cycles, after any latency requirements, data is driven to the data bus by the SDRAM and latched by the chipset on the rising edge of C1. Write cycles are latched immediately with the _CAS command.
 
 See [Timing Diagram](</DataSheets/TimingDiagrams/Chipset DMA Cycle.png>)
+
+#### 1.11.3 Slow RAM Cycles
+
+The CPU can access the 32 bit chipset RAM through Agnus. Because this process is mediated by Agnus running on the 7MHz clock, this RAM is referred to as "Slow RAM". DMA RAM cycles are given priority by Agnus, which means we must insert additional wait states until the last DMA cycle is complete. Original Amiga OCS/ECS designs incorporate a data latch on read cycles, as described in 1.11.1. The AmigaPCI does not need these latches for CPU RAM access due to the new architecture of the RAM interface. The process is as follows:
+
+1) The CPU drives A1..20 in the chipset RAM address space and drives the data bus and R_W low for write cycles. The data bus bridge is tristate.
+2) The CPU asserts _TS for one clock to indicate the start of a transfer. The RAM controller asserts _RAMEN.
+3) The RAM controller asserts _AS and _LDS, _UDS (for read cycles) during MC68000 State 2 (both C1 and C3 are low) and _LDS, _UDS during State 4 for write cycles.
+4) If _DBR is asserted (DMA cycle in progress), Agnus inserts waits until the DMA cycle is complete.
+5) Agnus drives the _AWE signal low for write cycles approximately 60ns after the falling edge of C3.
+6) On the rising edge of C3, Agnus drives a valid row address on MA0 - MA9 (S2) and asserts _RAS0 or _RAS1. 
+7) On the falling edge of C1, Agnus drives a valid column address on MA0 - MA9 (S3) and asserts _CASL and/or _CASU. Because the MC68040 is always is a 32 bit port, DRA0 of the column address is ignored by the RAM controller.
+8) On the second falling edge of BCLK after entering MC68000 S5, the RAM controller drives the _RAS address to the SDRAM with a bank activate command.
+9) On the next falling edge of BCLK, the RAM controller drives the _CAS address to the SDRAM with a read or write command.
+10) For read cycles, after any latency requirements, data is driven to the data bus by the SDRAM. Write cycles are latched immediately with the _CAS command.
+11) On the second falling edge of BCLK after entering MC68000 State 7, _TA and _TBI are asserted by the board controller to signal the MC68040 to complete the cycle and inhibit burst transfers.
+
+See [Timing Diagram](</DataSheets/TimingDiagrams/CPU Chipset RAM Cycle.png>)
+
+NOTE: Agnus is RAS only refresh. SDRAM refresh is handled by the RAM controller and is independent of the Agnus refresh command. An Agnus refresh cycle can be recognized by the assertion of _RAS0, _RAS1, and _DBR simultaneously, which will only happen during refresh cycles.
 
 ### 1.12 Fast RAM
 
