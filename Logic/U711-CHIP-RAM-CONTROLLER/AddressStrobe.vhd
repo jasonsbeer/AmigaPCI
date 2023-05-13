@@ -75,33 +75,35 @@ begin
 			STATE68K <= 1;
 		
 		ELSIF RISING_EDGE (BCLK) THEN
+		
+			CASE STATE68K IS
 			
-			IF nAS = '1' THEN
-			
-				IF nRAMEN = '0' THEN		
+				WHEN 1 =>
 				
-					nAS <= NOT (NOT C1 AND NOT C3);
-					STATE68K <= 2;
-					LASTCLK7 <= CLK7;
+					IF nRAMEN = '0' AND C1 = '0' AND C3 = '0' THEN
 					
-				END IF;		
-				
-			ELSE
-			
-				IF STATE68K = 7 THEN
+						STATE68K <= 2;
+						LASTCLK7 <= '0';
+						nAS <= '0';
+						
+					END IF;	
+					
+				WHEN 7 =>
 				
 					nAS <= '1';
 					STATE68K <= 1;
 					
-				ELSIF LASTCLK7 /= CLK7 THEN
+				WHEN OTHERS =>
 				
-					STATE68K <= STATE68K + 1;
-					LASTCLK7 <= CLK7;
-					
-				END IF;
+					IF LASTCLK7 /= CLK7 THEN
 				
-			END IF;
+						STATE68K <= STATE68K + 1;
+						LASTCLK7 <= CLK7;
+						
+					END IF;
 				
+			END CASE;
+		
 		END IF;
 			
 	END PROCESS;	

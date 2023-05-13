@@ -78,7 +78,7 @@
     <property xil_pn:name="Enable Message Filtering" xil_pn:value="false" xil_pn:valueState="default"/>
     <property xil_pn:name="Equivalent Register Removal XST" xil_pn:value="true" xil_pn:valueState="default"/>
     <property xil_pn:name="Evaluation Development Board" xil_pn:value="None Specified" xil_pn:valueState="default"/>
-    <property xil_pn:name="Exhaustive Fit Mode" xil_pn:value="true" xil_pn:valueState="non-default"/>
+    <property xil_pn:name="Exhaustive Fit Mode" xil_pn:value="false" xil_pn:valueState="default"/>
     <property xil_pn:name="FSM Encoding Algorithm" xil_pn:value="Auto" xil_pn:valueState="default"/>
     <property xil_pn:name="Filter Files From Compile Order" xil_pn:value="true" xil_pn:valueState="default"/>
     <property xil_pn:name="Functional Model Target Language ArchWiz" xil_pn:value="VHDL" xil_pn:valueState="default"/>
@@ -86,7 +86,7 @@
     <property xil_pn:name="Functional Model Target Language Schematic" xil_pn:value="VHDL" xil_pn:valueState="default"/>
     <property xil_pn:name="Generate Architecture Only (No Entity Declaration)" xil_pn:value="false" xil_pn:valueState="default"/>
     <property xil_pn:name="Generate Multiple Hierarchical Netlist Files" xil_pn:value="false" xil_pn:valueState="default"/>
-    <property xil_pn:name="Generate Post-Fit Simulation Model" xil_pn:value="false" xil_pn:valueState="default"/>
+    <property xil_pn:name="Generate Post-Fit Simulation Model" xil_pn:value="true" xil_pn:valueState="non-default"/>
     <property xil_pn:name="Generate RTL Schematic" xil_pn:value="Yes" xil_pn:valueState="default"/>
     <property xil_pn:name="Generate SAIF File for Power Optimization/Estimation Par" xil_pn:value="false" xil_pn:valueState="default"/>
     <property xil_pn:name="Generate Testbench File" xil_pn:value="false" xil_pn:valueState="default"/>
@@ -210,7 +210,7 @@
     <property xil_pn:name="Use Custom Waveform Configuration File Par" xil_pn:value="false" xil_pn:valueState="default"/>
     <property xil_pn:name="Use Custom Waveform Configuration File Translate" xil_pn:value="false" xil_pn:valueState="default"/>
     <property xil_pn:name="Use Global Clocks" xil_pn:value="true" xil_pn:valueState="default"/>
-    <property xil_pn:name="Use Global Output Enables" xil_pn:value="true" xil_pn:valueState="default"/>
+    <property xil_pn:name="Use Global Output Enables" xil_pn:value="false" xil_pn:valueState="non-default"/>
     <property xil_pn:name="Use Global Set/Reset" xil_pn:value="true" xil_pn:valueState="default"/>
     <property xil_pn:name="Use Location Constraints" xil_pn:value="Always" xil_pn:valueState="default"/>
     <property xil_pn:name="Use Multi-level Logic Optimization" xil_pn:value="true" xil_pn:valueState="default"/>

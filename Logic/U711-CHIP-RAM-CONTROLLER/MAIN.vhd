@@ -63,9 +63,8 @@ entity MAIN is
       nLMBE : IN STD_LOGIC;
       nLLBE : IN STD_LOGIC;
 		nDBR : IN STD_LOGIC;
-		nAWE : IN STD_LOGIC;	 
-	 
-		nAS : INOUT STD_LOGIC;	
+		nAWE : IN STD_LOGIC;		 
+		RnW : IN STD_LOGIC;	
 		
 		nCUUBE : OUT STD_LOGIC;
       nCUMBE : OUT STD_LOGIC;
@@ -117,7 +116,6 @@ begin
 --		BCLK => BCLK,
 --		C1 => C1,
 --		C3 => C3,
---		CLK7 => CLK7,
 --		nRESET => nRESET,
 --		nRAMEN => nRAMEN,
 --		nAS => nAS
@@ -173,7 +171,7 @@ begin
 		ARAS => ARAS,
 		ACAS => ACAS,
 		nAWE => nAWE,
-		nAS => nAS,
+		RnW => RnW,
 		nDBR => nDBR,
 		nREGEN => nREGEN,
 		nRAMEN => nRAMEN,
