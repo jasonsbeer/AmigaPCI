@@ -19,6 +19,18 @@
 --No additional restrictions - You may not apply legal terms or technological measures that legally restrict others 
 --from doing anything the license permits.
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-- Engineer: Jason Neus
+-- 
+-- Design Name: U711
+-- Module Name: Chipset RAM Controller
+-- Project Name: AmigaPCI
+-- Target Devices: XC9572XL 64 PIN
+--
+-- Description: LOGIC FOR FAT RAM INTERFACE
+--
+-- Revision History:
+--     May 6 2023 : Initial Engineering Release
+----------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
@@ -31,84 +43,75 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity RefreshCounter is
-
-	Port
-	(
-	
+entity MAIN is
+   Port ( 
+	 
+		A : IN  STD_LOGIC_VECTOR (31 DOWNTO 2);
 		BCLK : IN STD_LOGIC;
 		C3 : IN STD_LOGIC;
 		nRESET : IN STD_LOGIC;
-		REFRESET : STD_LOGIC;
+		nTIP : IN STD_LOGIC;
+		nEMEN : IN STD_LOGIC;
+		RnW : IN STD_LOGIC;
 		
-		REFRESH : OUT STD_LOGIC
-	
+		EMA : OUT STD_LOGIC_VECTOR (12 DOWNTO 0);
+		BANK0 : OUT STD_LOGIC;
+		BANK1 : OUT STD_LOGIC;
+		EMCLKE : OUT STD_LOGIC;
+		nEMRAS : OUT STD_LOGIC;
+		nEMCAS : OUT STD_LOGIC;
+		nEMWE : OUT STD_LOGIC;
+		nEM0CS : OUT STD_LOGIC;
+		nEM1CS : OUT STD_LOGIC;
+		nTA : OUT STD_LOGIC
+		
 	);
+end MAIN;
 
-end RefreshCounter;
+architecture Behavioral of MAIN is
 
-architecture Behavioral of RefreshCounter is
-
-	SIGNAL REFRESH_COUNTER : INTEGER RANGE 0 TO 31 := 0;
-	CONSTANT REFRESH_DEFAULT : INTEGER := 28; --3.6MHz REFRESH COUNTER
+	SIGNAL REFRESH : STD_LOGIC; --SIGNALS WHEN TO REFRESH SDRAM
+	SIGNAL REFRESET : STD_LOGIC; --RESET THE SDRAM REFRESH COUNTER
 
 begin
 
 	---------------------------
 	-- SDRAM REFRESH COUNTER --
-	---------------------------
+	---------------------------	
 	
-	--THE REFRESH OPERATION MUST BE PERFORMED 8192 TIMES EACH 64ms.
-	--SO...8192 TIMES IN 64,000,000ns. THATS ONCE EVERY 7812.5ns.
-	--7812.5ns IS EQUAL TO APPROX...
+	RefreshCounter: ENTITY work.RefreshCounter PORT MAP(
+		BCLK => BCLK,
+		C3 => C3,
+		nRESET => nRESET,
+		REFRESET => REFRESET,
+		REFRESH => REFRESH
+	);
 	
-	--28 3.6MHz CLOCK CYCLES
-	--56 7.16MHz CLOCK CYCLES
-	--185 25MHz CLOCK CYCLES
-	--244 33MHz CLOCK CYCLES
-	--296 40MHz CLOCK CYCLES
-	--370 50MHz CLOCK CYCLES
+	----------------------------
+	-- FAST MEMORY CONTROLLER --
+	----------------------------
 	
-	--WE USE THE C1 TO DRIVE THE REFRESH COUNTER.
-	--SINCE WE ARE JUMPING BETWEEN CLOCK DOMAINS, WE NEED TO HAVE
-	--TWO PROCESSES TO ACCOMODATE THE JUMP.
-	
-	PROCESS (C3, REFRESET) BEGIN
-	
-		IF REFRESET = '1' THEN
-		
-			REFRESH_COUNTER <= 0;			
-			
-		ELSIF RISING_EDGE (C3) THEN
-		
-			REFRESH_COUNTER <= REFRESH_COUNTER + 1;
-			
-		END IF;
-		
-	END PROCESS;
-	
-	
-	PROCESS (BCLK, nRESET) BEGIN
-	
-		IF nRESET = '0' THEN
-		
-			REFRESH <= '0';
-			
-		ELSIF RISING_EDGE (BCLK) THEN
-		
-			IF REFRESH_COUNTER >= REFRESH_DEFAULT THEN
-			
-				REFRESH <= '1';
-				
-			ELSE
-			
-				REFRESH <= '0';
-				
-			END IF;
-			
-		END IF;
-		
-	END PROCESS;
+	MEMORY_CONTROLLER: ENTITY work.MEMORY_CONTROLLER PORT MAP(
+		A => A,
+		BCLK => BCLK,
+		nRESET => nRESET,
+		nTIP => nTIP,
+		nEMEN => nEMEN,
+		REFRESH => REFRESH,
+		RnW => RnW,
+		REFRESET => REFRESET,
+		EMA => EMA,
+		BANK0 => BANK0,
+		BANK1 => BANK1,
+		EMCLKE => EMCLKE,
+		nEMRAS => nEMRAS,
+		nEMCAS => nEMCAS,
+		nEMWE => nEMWE,
+		nEM0CS => nEM0CS,
+		nEM1CS => nEM1CS,
+		nTA => nTA
+	);
+
 
 end Behavioral;
 

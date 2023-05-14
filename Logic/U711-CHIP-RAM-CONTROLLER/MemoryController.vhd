@@ -191,7 +191,7 @@ begin
 				WHEN AUTO_REFRESH =>
 				
 					--A 40MHz CLOCK PERIOD IS 25ns. MIN REFRESH TIME IS 63ns.
-					--ADD WAITS FOR EXTRA CLOCK CYCLES TO CONFORM TO 63ns MIN REFRESH TIME.
+					--ADD WAITS FOR EXTRA CLOCK CYCLES TO CONFORM TO REFRESH TIME.
 					
 					CLOCK_COUNT <= CLOCK_COUNT + 1;
 				
@@ -243,7 +243,7 @@ begin
 						CURRENT_STATE <= AUTO_REFRESH;
 						SDRAMCMDOUT <= ramstate_AUTOREFRESH;						
 					
-					ELSIF AGNUS_CAS = '1' AND (nRAMEN = '0' OR nDBR = '0') THEN
+					ELSIF AGNUS_CAS = '1' AND ((nRAMEN = '0' AND nDBR = '1') OR nDBR = '0') THEN
 						
 						CURRENT_STATE <= ACTIVATE;
 						SDRAMCMDOUT <= ramstate_BANKACTIVATE;
@@ -272,7 +272,7 @@ begin
 				
 					SDRAMCMDOUT <= ramstate_NOP;					
 					
-					IF C1 = '1' AND C3 = '0' THEN --STATE 7
+					IF AGNUS_CAS = '0' THEN --END OF ALL CYCLES
 					
 						CURRENT_STATE <= IDLE;
 						DMACYCLE <= '0';

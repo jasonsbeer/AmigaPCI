@@ -1,0 +1,1 @@
+-intstyle "ise" -incremental -o "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U409-FAST-MEMORY-CONTROLLER/MEMORY_CONTROLLER_isim_beh.exe" -prj "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U409-FAST-MEMORY-CONTROLLER/MEMORY_CONTROLLER_beh.prj" "work.MEMORY_CONTROLLER" 
