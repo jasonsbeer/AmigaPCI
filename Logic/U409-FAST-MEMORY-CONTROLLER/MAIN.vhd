@@ -21,15 +21,15 @@
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 -- Engineer: Jason Neus
 -- 
--- Design Name: U711
--- Module Name: Chipset RAM Controller
+-- Design Name: U409
+-- Module Name: FAST CONTROLLER
 -- Project Name: AmigaPCI
 -- Target Devices: XC9572XL 64 PIN
 --
--- Description: LOGIC FOR FAT RAM INTERFACE
+-- Description: LOGIC FOR FAST RAM INTERFACE, AUTOCONFIG, AND ADDRESS DECODING
 --
 -- Revision History:
---     May 6 2023 : Initial Engineering Release
+--     May 14 2023 : Initial Engineering Release
 ----------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
@@ -73,6 +73,7 @@ entity MAIN is
 		nEM0CS : OUT STD_LOGIC;
 		nEM1CS : OUT STD_LOGIC;
 		nTA : OUT STD_LOGIC;
+		nTBI : OUT STD_LOGIC;
 		nROMEN : OUT STD_LOGIC;				
 		nVBEN : OUT STD_LOGIC;
 		nCIA0 : OUT STD_LOGIC;
@@ -92,11 +93,14 @@ architecture Behavioral of MAIN is
 
 	SIGNAL REFRESH : STD_LOGIC; --SIGNALS WHEN TO REFRESH SDRAM
 	SIGNAL REFRESET : STD_LOGIC; --RESET THE SDRAM REFRESH COUNTER
+	SIGNAL RAMCYCLE : STD_LOGIC;
+	SIGNAL BURST : STD_LOGIC;
 	
 	SIGNAL EMBA : STD_LOGIC_VECTOR (2 DOWNTO 0);
 	SIGNAL PCIBA : STD_LOGIC_VECTOR (2 DOWNTO 0);
 	
 	SIGNAL ACSpace : STD_LOGIC;
+	SIGNAL ACCycle : STD_LOGIC;
 
 begin
 
@@ -134,7 +138,9 @@ begin
 		nEMWE => nEMWE,
 		nEM0CS => nEM0CS,
 		nEM1CS => nEM1CS,
-		nTA => nTA
+		nTA => nTA,
+		CYCLE => RAMCYCLE,
+		BURST => BURST
 	);
 	
 	---------------------
@@ -150,6 +156,7 @@ begin
 		nRESET => nRESET,
 		EMBA => EMBA,
 		PCIBA => PCIBA,
+		CONFIGED => CONFIGED,
 		nRAMEN => nRAMEN,
 		nREGEN => nREGEN,
 		nROMEN => nROMEN,
@@ -172,7 +179,7 @@ begin
 	
 	AUTO_CONFIG: ENTITY work.AUTO_CONFIG PORT MAP(
 		BCLK => BCLK,
-		ALOW => A(8 DOWNTO 2),
+		A => A(8 DOWNTO 2),
 		nTIP => nTIP,
 		RnW => RnW,
 		ACSpace => ACSpace,
@@ -181,9 +188,27 @@ begin
 		D => D,
 		CONFIGED => CONFIGED,
 		EMBA => EMBA,
-		PCIBA => PCIBA
-		
+		PCIBA => PCIBA,
+		ACCycle => ACCycle		
 	);
+	
+	--------------------------
+	-- MC68040 TRANSFER ACK --
+	--------------------------
+	
+	nTA <= 
+			'Z' WHEN nEMEN = '1' AND RAMCYCLE = '0' AND (ACSpace = '0' AND ACCycle = '0') 
+		ELSE 
+			'1' WHEN ((nEMEN = '0' AND BURST = '0') OR (nEMEN = '1' AND RAMCYCLE = '1')) OR ((ACSpace = '1' AND ACCycle = '0') OR (ACSpace = '0' AND ACCycle = '1')) 
+		ELSE 
+			'0';
+		
+	nTBI <= 
+			'Z' WHEN ACSpace = '0' AND ACCycle = '0' 
+		ELSE 
+			'1' WHEN (ACSpace = '1' AND ACCycle = '0') OR (ACSpace = '0' AND ACCycle = '1') 
+		ELSE 
+			'0';
 
 end Behavioral;
 

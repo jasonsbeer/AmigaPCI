@@ -1,22 +1,24 @@
 ----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
--- 
--- Create Date:    16:19:40 05/13/2023 
--- Design Name: 
--- Module Name:    AUTO_CONFIG - Behavioral 
--- Project Name: 
--- Target Devices: 
--- Tool versions: 
--- Description: 
---
--- Dependencies: 
---
--- Revision: 
--- Revision 0.01 - File Created
--- Additional Comments: 
---
-----------------------------------------------------------------------------------
+--This work is shared under the Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) License
+--https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
+	
+--You are free to:
+--Share - copy and redistribute the material in any medium or format
+--Adapt - remix, transform, and build upon the material
+
+--Under the following terms:
+
+--Attribution - You must give appropriate credit, provide a link to the license, and indicate if changes were made. 
+--You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
+
+--NonCommercial - You may not use the material for commercial purposes.
+
+--ShareAlike - If you remix, transform, or build upon the material, you must distribute your contributions under the 
+--same license as the original.
+
+--No additional restrictions - You may not apply legal terms or technological measures that legally restrict others 
+--from doing anything the license permits.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
@@ -34,7 +36,7 @@ entity AUTO_CONFIG is
 	Port(
 	
 		BCLK : IN STD_LOGIC;
-		ALOW : IN STD_LOGIC_VECTOR (8 DOWNTO 2);
+		A : IN STD_LOGIC_VECTOR (8 DOWNTO 2);
 		nTIP : IN STD_LOGIC;
 		RnW : IN STD_LOGIC;
 		ACSpace: IN STD_LOGIC;
@@ -43,10 +45,11 @@ entity AUTO_CONFIG is
 		
 		D : INOUT STD_LOGIC_VECTOR (31 DOWNTO 28);
 		CONFIGED : INOUT STD_LOGIC;
+		ACCycle : INOUT STD_LOGIC;
 			
 		EMBA : OUT STD_LOGIC_VECTOR (2 DOWNTO 0);
 		PCIBA : OUT STD_LOGIC_VECTOR (2 DOWNTO 0)
-	
+		
 	);
 
 
@@ -72,7 +75,7 @@ begin
 	--SEND A SIGN TO THE WORLD THAT WE ARE DONE CONFIGURING THE ON-BOARD COMPONENTS.
 	--IN THE EVENT THERE ARE NO SOFTWARE CONFIG PCI CARDS, WE DO NOT AUTOCONFIG THE PCI BRIDGE.
 	
-	CONFIGED <= nRESET AND MEMConfiged AND (PCIBridgeConfiged OR NOT PCISoftMode);	
+	CONFIGED <= MEMConfiged AND (PCIBridgeConfiged OR NOT PCISoftMode);	
 	
 	--------------
 	-- DATA OUT --
@@ -97,17 +100,22 @@ begin
 		
 			MEMConfiged <= '0';
 			PCIBridgeConfiged <= '0';
+			ACCycle <= '0';
+			DOUTRAM <= "1111";
+			DOUTPCI <= "1111";
 			
 			PCIBA <= "111";
 			EMBA <= "111";
 		
-		ELSIF RISING_EDGE (BCLK) THEN
+		ELSIF FALLING_EDGE (BCLK) THEN
 		
 			IF ACSpace = '1' AND CONFIGED = '0' AND nTIP = '0' THEN
 			
+				ACCycle <= '1';
+			
 				IF RnW = '1' THEN
 				
-					CASE (ALOW(6 DOWNTO 2) & ALOW(8)) IS
+					CASE (A(6 DOWNTO 2) & A(8)) IS
 					
 						WHEN "000000" =>
 						
@@ -158,7 +166,7 @@ begin
 				
 				ELSE
 				
-					IF ALOW = "0010001" THEN
+					IF A = "0010001" THEN
 					
 						IF MEMConfiged = '0' THEN
 						
@@ -174,9 +182,13 @@ begin
 				
 					END IF;				
 				
-				END IF;			
+				END IF;	
+				
+			ELSE
 			
-			END IF;
+				ACCycle <= '0';
+			
+			END IF;	
 		
 		END IF;
 	

@@ -1,22 +1,24 @@
 ----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
--- 
--- Create Date:    19:47:05 04/05/2023 
--- Design Name: 
--- Module Name:    U601-MC6800 - Behavioral 
--- Project Name: 
--- Target Devices: 
--- Tool versions: 
--- Description: 
---
--- Dependencies: 
---
--- Revision: 
--- Revision 0.01 - File Created
--- Additional Comments: 
---
-----------------------------------------------------------------------------------
+--This work is shared under the Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) License
+--https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
+	
+--You are free to:
+--Share - copy and redistribute the material in any medium or format
+--Adapt - remix, transform, and build upon the material
+
+--Under the following terms:
+
+--Attribution - You must give appropriate credit, provide a link to the license, and indicate if changes were made. 
+--You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
+
+--NonCommercial - You may not use the material for commercial purposes.
+
+--ShareAlike - If you remix, transform, or build upon the material, you must distribute your contributions under the 
+--same license as the original.
+
+--No additional restrictions - You may not apply legal terms or technological measures that legally restrict others 
+--from doing anything the license permits.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
@@ -41,6 +43,7 @@ entity AddressDecoding is
 		nRESET : IN STD_LOGIC;
 		EMBA : IN STD_LOGIC_VECTOR (2 DOWNTO 0);
 		PCIBA : IN STD_LOGIC_VECTOR (2 DOWNTO 0);
+		CONFIGED : IN STD_LOGIC;
 		
 		nRAMEN : INOUT STD_LOGIC;
 		nREGEN : INOUT STD_LOGIC;
@@ -219,13 +222,13 @@ begin
 	-- ZORRO 3 FAST MEMORY SELECT --
 	--------------------------------
 	
-	nEMEN <= '0' WHEN A(31 DOWNTO 29) = EMBA ELSE '1';
+	nEMEN <= '0' WHEN A(31 DOWNTO 29) = EMBA AND CONFIGED = '1' ELSE '1';
 	
 	-----------------------
 	-- PCI BRIDGE SELECT --
 	-----------------------
 	
-	nPCIEN <= '0' WHEN A(31 DOWNTO 29) = PCIBA ELSE '1';
+	nPCIEN <= '0' WHEN A(31 DOWNTO 29) = PCIBA AND CONFIGED = '1' ELSE '1';
 
 end Behavioral;
 
