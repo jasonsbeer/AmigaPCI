@@ -33,26 +33,30 @@ entity AddressDecoding is
 
    Port ( 
      
-				A : IN STD_LOGIC_VECTOR (31 DOWNTO 12);
-				OVL : IN STD_LOGIC;
-				FC : IN STD_LOGIC_VECTOR (2 DOWNTO 0);
-				RnW : IN STD_LOGIC;
-				nRESET : IN STD_LOGIC;
-	   		nDBR : IN STD_LOGIC;
-				
-				CPUSpace : INOUT STD_LOGIC;
+		A : IN STD_LOGIC_VECTOR (31 DOWNTO 12);
+		OVL : IN STD_LOGIC;
+		TT : IN STD_LOGIC_VECTOR (1 DOWNTO 0);
+		TM: IN STD_LOGIC_VECTOR (2 DOWNTO 0);
+		RnW : IN STD_LOGIC;
+		nRESET : IN STD_LOGIC;
+		EMBA : IN STD_LOGIC_VECTOR (2 DOWNTO 0);
+		PCIBA : IN STD_LOGIC_VECTOR (2 DOWNTO 0);
+		
+		nRAMEN : INOUT STD_LOGIC;
+		nREGEN : INOUT STD_LOGIC;
 
-				nROMEN : OUT STD_LOGIC;
-				nRAMEN : OUT STD_LOGIC;
-				nREGEN : OUT STD_LOGIC;
-				nCIA0 : OUT STD_LOGIC;
-				nCIA1 : OUT STD_LOGIC;
-				nRTCRD : OUT STD_LOGIC;
-				nRTCWR : OUT STD_LOGIC;
-				IDESpace : OUT STD_LOGIC;
-				GayleSpace : INOUT STD_LOGIC;
-				ACSpace : OUT STD_LOGIC;
-	   		nTCI : OUT STD_LOGIC
+		nROMEN : OUT STD_LOGIC;				
+		nVBEN : OUT STD_LOGIC;
+		nCIA0 : OUT STD_LOGIC;
+		nCIA1 : OUT STD_LOGIC;
+		nRTCRD : OUT STD_LOGIC;
+		nRTCWR : OUT STD_LOGIC;
+		IDESpace : OUT STD_LOGIC;
+		GayleSpace : INOUT STD_LOGIC;
+		ACSpace : OUT STD_LOGIC;
+		nTCI : OUT STD_LOGIC;				
+		nEMEN : OUT STD_LOGIC;
+		nPCIEN : OUT STD_LOGIC	
      
 	);
 
@@ -73,8 +77,29 @@ architecture Behavioral of AddressDecoding is
 	SIGNAL GayleRegSpace : STD_LOGIC;
 	SIGNAL AutoconfigSpace : STD_LOGIC;
 	SIGNAL ZorroTwoSpace : STD_LOGIC;
+	SIGNAL NormalTransfer : STD_LOGIC;
+	SIGNAL CPUSpace : STD_LOGIC;
 
 begin
+
+	-------------------
+	-- TRANSFER TYPE --
+	-------------------
+	
+	--FOR DATA TRANSFERS TO/FROM THE CHIPSET SPACES, WE ONLY WANT TO 
+	--ACCEPT "NORMAL" TRANSFER TYPES FROM THE MC68040. MOVE16 OR OTHER
+	--CUSTOM TRANSFER TYPES ARE NOT ABLE TO BE HANDLED BY THE CHIPSET.
+	
+	NormalTransfer <= '0' WHEN TT /= "00" ELSE '1';
+	
+	-----------------------
+	-- TRANSFER MODIFIER --
+	-----------------------
+	
+	--WITHIN THE "NORMAL" TRANSFER TYPE, WE DO NOT WANT TO RESPOND 
+	--TO MMU FUNCTIONS OR THE RESERVED TRANSFER MODIFIER.
+	
+	CPUSpace <= '1' WHEN NormalTransfer = '0' OR TM = "111" OR TM = "011" OR TM = "100" ELSE '0';
 
 	----------------------------
 	-- TRANSFER CACHE INHIBIT --
@@ -84,18 +109,17 @@ begin
 	--CHIP RAM IS NOT CACHABLE BECAUSE THE CHIPSET CAN ALSO ACCESS THAT SPACE. WE DO NOT
 	--WANT TO CACHE CHIPSET REGISTER SPACES BUT ROM AND OTHER MEMORY SPACES ARE OK.
 	
-	nTCI <= NOT ( ChipRAMSPace OR ChipSpaceLow OR ChipSpaceHigh OR CIA0Space OR CIA1Space OR GayleSpace );	
+	nTCI <= NOT ( ChipRAMSpace OR ChipSpaceLow OR ChipSpaceHigh OR CIA0Space OR CIA1Space OR GayleSpace );	
 	
-	--------------------
-	-- COMMON SIGNALS --
-	--------------------
+	-------------------
+	-- ZORRO 2 SPACE --
+	-------------------
 	
-	--THESE SIGNALS ARE NEEDED IN MORE THAN ONE ADDRESS DECODE SECTION.
-	--THESE TELL US IF THE CPU IS OPERATING IN THE "CPU SPACE" OR IF
-	--WE ARE IN THE ZORRO 2 ADDRESS SPACE.
+	--THE CHIPSET FUNCTIONS ALL OCCURE IN THE MC68000 24-BIT
+	--ADDRESS SPACE. WE DO NOT WANT TO ERRONEOUSLY RESPOND TO A
+	--REQUEST IN THE 32 BIT SPACE, SO WE CHECK THAT HERE.
 	
 	ZorroTwoSpace <= '1' WHEN A(31 DOWNTO 24) = "00000000" ELSE '0';
-	CPUSpace <= '1' WHEN FC(2 DOWNTO 0) = "111" ELSE '0';
 
 	----------------------
 	-- ROM SELECT LOGIC --
@@ -119,7 +143,7 @@ begin
 	--WHEN OVL IS NEGATED (LOW). DO NOT SELECT THE CHIP RAM WHEN IN A CPU CYCLE.
 
 	ChipRAMSpace <= '1' WHEN A(23 DOWNTO 17) = "0000000" AND ZorroTwoSpace = '1' AND CPUSpace = '0' ELSE '0';
-	nRAMEN <= NOT ( ChipRAMSpace AND NOT OVL AND nRESET AND nDBR );  
+	nRAMEN <= NOT ( ChipRAMSpace AND NOT OVL AND nRESET );  
 
 	-----------------------------------
 	-- CHIPSET REGISTER SELECT LOGIC --
@@ -132,6 +156,16 @@ begin
 	ChipSpaceHigh <= '1' WHEN A (23 DOWNTO 14) = "1101111111" AND ZorroTwoSpace = '1' AND CPUSpace = '0' ELSE '0';
 
 	nREGEN <= NOT (nRESET AND (ChipSpaceLow OR ChipSpaceHigh));
+	
+	----------------------
+	-- VIDEO BUS ENABLE --
+	----------------------
+	
+	--THIS ENABLES THE CPU <-> CHIP SET BUFFERS. THIS IS CALLED THE VIDEO BUS ON
+	--MANY OCS/ECS REFERENCES. HENCE, VIDEO BUS ENABLE, OR _VBEN. WE ENABLE THIS
+	--ANY TIME WE ARE ACCESSING THE CHIPSET.
+	
+	nVBEN <= NOT (NOT nREGEN OR NOT nRAMEN);
 
 	----------------------
 	-- CIA SELECT LOGIC --
@@ -178,8 +212,20 @@ begin
 	-- AUTOCONFIG SELECT LOGIC --
 	-----------------------------
 	
-	AutoconfigSpace <= '1' WHEN A(31 DOWNTO 24) = "11111111" ELSE '0';
-	ACSpace <= AutoconfigSpace AND nRESET AND CPUSpace;
+	AutoconfigSpace <= '1' WHEN A(31 DOWNTO 24) = "11111111" AND CPUSpace = '0' ELSE '0';
+	ACSpace <= AutoconfigSpace AND nRESET;
+	
+	--------------------------------
+	-- ZORRO 3 FAST MEMORY SELECT --
+	--------------------------------
+	
+	nEMEN <= '0' WHEN A(31 DOWNTO 29) = EMBA ELSE '1';
+	
+	-----------------------
+	-- PCI BRIDGE SELECT --
+	-----------------------
+	
+	nPCIEN <= '0' WHEN A(31 DOWNTO 29) = PCIBA ELSE '1';
 
 end Behavioral;
 

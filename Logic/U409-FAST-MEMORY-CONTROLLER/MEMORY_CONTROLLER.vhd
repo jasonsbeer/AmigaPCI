@@ -54,7 +54,6 @@ entity MEMORY_CONTROLLER is
 		nEM1CS : OUT STD_LOGIC;
 		nTA : OUT STD_LOGIC
 		
-		
 	);
 
 

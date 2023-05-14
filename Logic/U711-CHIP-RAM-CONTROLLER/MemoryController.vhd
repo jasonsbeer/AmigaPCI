@@ -272,7 +272,7 @@ begin
 				
 					SDRAMCMDOUT <= ramstate_NOP;					
 					
-					IF AGNUS_CAS = '0' THEN --END OF ALL CYCLES
+					IF AGNUS_CAS = '0' THEN --END OF ALL RAM CYCLES
 					
 						CURRENT_STATE <= IDLE;
 						DMACYCLE <= '0';

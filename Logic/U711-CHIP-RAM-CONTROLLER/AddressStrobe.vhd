@@ -39,6 +39,7 @@ entity AddressStrobe is
       C3 : IN  STD_LOGIC;
 		nRESET : IN STD_LOGIC;
 		nRAMEN : IN STD_LOGIC;
+		nREGEN : IN STD_LOGIC;
 		
 		nAS : INOUT  STD_LOGIC
 			  
@@ -53,6 +54,9 @@ architecture Behavioral of AddressStrobe is
 	SIGNAL STATE68K : INTEGER RANGE 1 TO 7;
 
 begin
+
+
+	--PUT THE CHIPSET REGISTER CYCLE HERE TOO!
 
 
 	---------------------------------------

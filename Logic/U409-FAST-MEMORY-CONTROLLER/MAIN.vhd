@@ -50,9 +50,18 @@ entity MAIN is
 		BCLK : IN STD_LOGIC;
 		C3 : IN STD_LOGIC;
 		nRESET : IN STD_LOGIC;
-		nTIP : IN STD_LOGIC;
-		nEMEN : IN STD_LOGIC;
+		nTIP : IN STD_LOGIC;		
 		RnW : IN STD_LOGIC;
+		OVL : IN STD_LOGIC;
+		TT : IN STD_LOGIC_VECTOR (1 DOWNTO 0);
+		TM: IN STD_LOGIC_VECTOR (2 DOWNTO 0);
+		PCISOFTMODE : IN STD_LOGIC;
+		
+		nRAMEN : INOUT STD_LOGIC;
+		nREGEN : INOUT STD_LOGIC;
+		D : INOUT STD_LOGIC_VECTOR (31 DOWNTO 28);		
+		nEMEN : INOUT STD_LOGIC;
+		CONFIGED : INOUT STD_LOGIC;
 		
 		EMA : OUT STD_LOGIC_VECTOR (12 DOWNTO 0);
 		BANK0 : OUT STD_LOGIC;
@@ -63,15 +72,31 @@ entity MAIN is
 		nEMWE : OUT STD_LOGIC;
 		nEM0CS : OUT STD_LOGIC;
 		nEM1CS : OUT STD_LOGIC;
-		nTA : OUT STD_LOGIC
+		nTA : OUT STD_LOGIC;
+		nROMEN : OUT STD_LOGIC;				
+		nVBEN : OUT STD_LOGIC;
+		nCIA0 : OUT STD_LOGIC;
+		nCIA1 : OUT STD_LOGIC;
+		nRTCRD : OUT STD_LOGIC;
+		nRTCWR : OUT STD_LOGIC;
+		IDESpace : OUT STD_LOGIC;
+		GayleSpace : INOUT STD_LOGIC;		
+		nTCI : OUT STD_LOGIC;
+		nPCIEN : OUT STD_LOGIC		
 		
 	);
+	
 end MAIN;
 
 architecture Behavioral of MAIN is
 
 	SIGNAL REFRESH : STD_LOGIC; --SIGNALS WHEN TO REFRESH SDRAM
 	SIGNAL REFRESET : STD_LOGIC; --RESET THE SDRAM REFRESH COUNTER
+	
+	SIGNAL EMBA : STD_LOGIC_VECTOR (2 DOWNTO 0);
+	SIGNAL PCIBA : STD_LOGIC_VECTOR (2 DOWNTO 0);
+	
+	SIGNAL ACSpace : STD_LOGIC;
 
 begin
 
@@ -111,7 +136,54 @@ begin
 		nEM1CS => nEM1CS,
 		nTA => nTA
 	);
-
+	
+	---------------------
+	-- ADDRESS DECODER --
+	---------------------
+	
+	AddressDecoding: ENTITY work.AddressDecoding PORT MAP(
+		A => A(31 DOWNTO 12),
+		OVL => OVL,
+		TT => TT(1 DOWNTO 0),
+		TM => TM(2 DOWNTO 0),
+		RnW => RnW,
+		nRESET => nRESET,
+		EMBA => EMBA,
+		PCIBA => PCIBA,
+		nRAMEN => nRAMEN,
+		nREGEN => nREGEN,
+		nROMEN => nROMEN,
+		nVBEN => nVBEN,
+		nCIA0 => nCIA0,
+		nCIA1 => nCIA1,
+		nRTCRD => nRTCRD,
+		nRTCWR => nRTCWR,
+		IDESpace => IDESpace,
+		GayleSpace => GayleSpace,
+		ACSpace => ACSpace,
+		nTCI => nTCI,
+		nEMEN => nEMEN,
+		nPCIEN => nPCIEN
+	);
+	
+	----------------
+	-- AUTOCONFIG --
+	----------------
+	
+	AUTO_CONFIG: ENTITY work.AUTO_CONFIG PORT MAP(
+		BCLK => BCLK,
+		ALOW => A(8 DOWNTO 2),
+		nTIP => nTIP,
+		RnW => RnW,
+		ACSpace => ACSpace,
+		PCISoftMode => PCISOFTMODE,
+		nRESET => nRESET,
+		D => D,
+		CONFIGED => CONFIGED,
+		EMBA => EMBA,
+		PCIBA => PCIBA
+		
+	);
 
 end Behavioral;
 
