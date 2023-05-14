@@ -1878,7 +1878,7 @@
         (number "92" (effects (font (size 1.27 1.27))))
       )
       (pin input line (at -13.97 -13.97 0) (length 5.08)
-        (name "TMS" (effects (font (size 1.27 1.27))))
+        (name "TM2" (effects (font (size 1.27 1.27))))
         (number "95" (effects (font (size 1.27 1.27))))
       )
       (pin bidirectional line (at -13.97 77.47 0) (length 5.08)

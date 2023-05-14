@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2023-05-14T17:12:14</DateModified>
+  <DateModified>2023-05-14T17:01:31</DateModified>
   <ModuleName>MAIN</ModuleName>
   <SummaryTimeStamp>Unknown</SummaryTimeStamp>
-  <SavedFilePath>/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U409-FAST-MEMORY-CONTROLLER/iseconfig/MAIN.xreport</SavedFilePath>
-  <ImplementationReportsDirectory>/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U409-FAST-MEMORY-CONTROLLER/</ImplementationReportsDirectory>
-  <DateInitialized>2023-05-13T16:10:12</DateInitialized>
+  <SavedFilePath>/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U409-FAST-MEMORY-CONTROLLER/iseconfig/AUTO_CONFIG.xreport</SavedFilePath>
+  <ImplementationReportsDirectory>/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U409-FAST-MEMORY-CONTROLLER</ImplementationReportsDirectory>
+  <DateInitialized>2023-05-14T17:01:31</DateInitialized>
   <EnableMessageFiltering>false</EnableMessageFiltering>
  </header>
  <body>
