@@ -168,7 +168,12 @@ NOTE: Agnus is RAS only refresh. SDRAM refresh is handled by the RAM controller 
 
 ### 1.12 Fast RAM
 
-The AmigaPCI comes with 128MB of Fast RAM on the mother board in the form of four 16Mx16 SDRAM clocked by BCLK. The AmigaPCI Fast RAM controller supports the MC68040 burst mode of four long word transfers in both read and write mode. Write mode has no wait states. Read mode includes two wait states due to CAS latency.
+The AmigaPCI may be installed with 64 or 128MB of Fast RAM on the board using pairs of 16Mx16 SDRAM. The AmigaPCI Fast RAM controller supports the MC68040 burst mode of four long word transfers in both read and write mode. Write mode has no wait states. Read mode includes two wait states due to CAS latency.
+
+Installed RAM|Base Address|High Address
+-|-|-
+64MB|$4000 0000|$43FF FFFF
+128MB|$4000 0000|$47FF FFFF
 
 See [Timing Diagram](</DataSheets/TimingDiagrams/Fast RAM.png>)
 
@@ -280,7 +285,12 @@ MORE DETAIL...HOW DOES THIS WORK?
 
 #### 2.3.2 Software Configuration
 
-Each slot designated as a software configuration slot may be accessed through the base address of the PCI Bridge. PCI commands may be executed to a specific device by setting the PCI target device's IDSEL bit. As an example, assume the base address of the PCI Bridge is $F00 0000. The PCI target device in slot 1 may be accessed at address $F01 0000, slot 2 at $F02 0000, etc. With this method, each slot may be polled to determine if it is a software configuration slot and if there is a target device present. Polling an empty slot or AUTOCONFIG slot will return $FFFF FFFF on the data bus by the PCI Bridge.
+Each slot designated as a software configuration slot may be accessed through the base address of the PCI Bridge. PCI commands may be executed to a specific device by setting the PCI target device's IDSEL bit. As an example, assume the base address of the PCI Bridge is $F00 0000. The PCI target device in slot 1 may be accessed at address $F01 0000, slot 2 at $F02 0000, etc. With this method, each slot may be polled to determine if it is a software configuration slot and if there is a target device present. Polling an empty slot or AUTOCONFIG slot will return $FFFF FFFF on the data bus by the PCI Bridge. The PCI bridge is AUTOCONFIGured as a 512MB I/O device and is configured after the onboard fast RAM.
+
+Installed RAM|PCI Bridge Base Address|High Address
+-|-|-
+64MB|$4400 0000|$6AFF FFFF
+128MB|$4800 0000|$6CFF FFFF
 
 ### 2.4 Interrupt Handling
 
