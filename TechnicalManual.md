@@ -168,7 +168,9 @@ NOTE: Agnus is RAS only refresh. SDRAM refresh is handled by the RAM controller 
 
 ### 1.12 Fast RAM
 
-The AmigaPCI may be installed with 64 or 128MB of Fast RAM on the board using pairs of 16Mx16 SDRAM. The AmigaPCI Fast RAM controller supports the MC68040 burst mode of four long word transfers in both read and write mode. Write mode has no wait states. Read mode includes two wait states due to CAS latency.
+The AmigaPCI may be installed with 64 or 128MB of Fast RAM on the board using pairs of 16Mx16 SDRAM. The AmigaPCI Fast RAM controller supports the MC68040 line transfer and MOVE16 modes of four long word transfers in both read and write mode. Write mode has no wait states. Read mode includes two wait states due to CAS latency.
+
+The RAM must be installed in pairs. Bank 0 must always be installed and supplies the first 64MB. Bank 1 may optionally be installed and supplies the second 64MB. The installed RAM is automatically sized during the AUTOCONFIG process so no jumpers are needed.
 
 Installed RAM|Base Address|High Address
 -|-|-
