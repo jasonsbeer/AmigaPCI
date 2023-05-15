@@ -290,10 +290,10 @@ Table 2.3.2b. Address Offset of PCI Slots
 PCI Slot|Address Bit|Offset From Base Address
 -|-|-
 0|AD[16]|$01 0000
-1|AD[17]$02 0000
+1|AD[17]|$02 0000
 2|AD[18]|$04 0000
 3|AD[19]|$08 0000
-4|AD[20]$10 0000
+4|AD[20]|$10 0000
 
 ### 2.4 Interrupt Handling
 
