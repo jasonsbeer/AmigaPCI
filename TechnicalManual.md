@@ -168,7 +168,14 @@ NOTE: Agnus is RAS only refresh. SDRAM refresh is handled by the RAM controller 
 
 ### 1.12 Fast RAM
 
-The AmigaPCI comes with 128MB of Fast RAM on the mother board in the form of four 16Mx16 SDRAM clocked by BCLK. The AmigaPCI Fast RAM controller supports the MC68040 burst mode of four long word transfers in both read and write mode. Write mode has no wait states. Read mode includes two wait states due to CAS latency.
+The AmigaPCI may be installed with 64 or 128MB of Fast RAM on the board using pairs of 16Mx16 SDRAM. The AmigaPCI Fast RAM controller supports the MC68040 line transfer and MOVE16 modes of four long word transfers in both read and write mode. Write mode has no wait states. Read mode includes two wait states due to CAS latency.
+
+The RAM must be installed in pairs. Bank 0 must always be installed and supplies the first 64MB. Bank 1 may optionally be installed and supplies the second 64MB. The installed RAM is automatically sized during the AUTOCONFIG process so no jumpers are needed.
+
+Installed RAM|Base Address|High Address
+-|-|-
+64MB|$4000 0000|$43FF FFFF
+128MB|$4000 0000|$47FF FFFF
 
 See [Timing Diagram](</DataSheets/TimingDiagrams/Fast RAM.png>)
 
@@ -253,16 +260,7 @@ AUTOCONFIG Slots|Software Config Slots|J100|J101
 
 ### 2.3 PCI Configuration
 
-Each PCI target device may be configured by the Amiga AUTOCONFIG process or by software configuration. See Section 2.1. During configuration, each PCI slot, in turn, is polled to obtain the capabilities and address space needs of the target device. Each PCI slot is polled by asserting the IDSEL signal. The IDSEL signal is approximately equivalent to the _CFGIN signal of the Zorro bus. However, unlike the _CFGIN signal, the IDSEL is asserted by a specific address bit during the address phase of a configuration command access[[2]](#2) (Table 2.2a). PCI configuration header Type 0 is supported by the PCI Controller logic.
-
-Table 2.3
-PCI Slot|Address Bit
--|-
-0|AD[16]
-1|AD[17]
-2|AD[18]
-3|AD[19]
-4|AD[20]
+Each PCI target device may be configured by the Amiga AUTOCONFIG process or by software configuration. During configuration, each PCI slot, in turn, is polled to obtain the capabilities and address space needs of the target device. Each PCI slot is polled by asserting the IDSEL signal. The IDSEL signal is approximately equivalent to the _CFGIN signal of the Zorro bus. However, unlike the _CFGIN signal, the IDSEL is asserted by a specific address bit during the address phase of a configuration command access[[2]](#2). PCI configuration header Type 0 is supported by the PCI Controller logic.
 
 #### 2.3.1 AUTOCONFIG
 
@@ -280,7 +278,22 @@ MORE DETAIL...HOW DOES THIS WORK?
 
 #### 2.3.2 Software Configuration
 
-Each slot designated as a software configuration slot may be accessed through the base address of the PCI Bridge. PCI commands may be executed to a specific device by setting the PCI target device's IDSEL bit. As an example, assume the base address of the PCI Bridge is $F00 0000. The PCI target device in slot 1 may be accessed at address $F01 0000, slot 2 at $F02 0000, etc. With this method, each slot may be polled to determine if it is a software configuration slot and if there is a target device present. Polling an empty slot or AUTOCONFIG slot will return $FFFF FFFF on the data bus by the PCI Bridge.
+Each slot designated as a software configuration slot may be accessed through the base address of the PCI Bridge. PCI commands may be executed to a specific device by setting the PCI target device's IDSEL bit. As an example, assume the base address of the PCI Bridge is $4400 0000. The PCI target device in slot 1 may be accessed at address $4401 0000, slot 2 at $4402 0000, etc. With this method, each slot may be polled to determine if it is a software configuration slot and if there is a target device present. Polling an empty slot or AUTOCONFIG slot will return $FFFF FFFF on the data bus by the PCI Bridge. The PCI bridge is AUTOCONFIGured as a 512MB I/O device and is configured after the onboard fast RAM.
+
+Table 2.3.2a PCI Bridge Base Address for Software Configuration
+Installed RAM|PCI Bridge Base Address|High Address
+-|-|-
+64MB|$4400 0000|$6AFF FFFF
+128MB|$4800 0000|$6CFF FFFF
+
+Table 2.3.2b. Address Offset of PCI Slots
+PCI Slot|Address Bit|Offset From Base Address
+-|-|-
+0|AD[16]|$01 0000
+1|AD[17]|$02 0000
+2|AD[18]|$04 0000
+3|AD[19]|$08 0000
+4|AD[20]|$10 0000
 
 ### 2.4 Interrupt Handling
 
