@@ -2,7 +2,7 @@
 
 <p align="center">"If I have seen further, it is by standing on the shoulders of giants."<br>-Sir Isaac Newton</p>
 
-**THIS DOCUMENT IS A WORK IN PROGRESS.**
+**THIS DOCUMENT IS A WORK IN PROGRESS AND IS SUBJECT TO CHANGE WITHOUT NOTICE.**
 
 # AmigaPCI
 
@@ -78,9 +78,7 @@ In order to use the secondary port, IDEFix must be installed and can be obtained
 
 ### 1.6 Human Interface Devices (HID)
 
-The AmigaPCI support human interface devices (HID) via the two USB ports. Only keyboards and mice are supported. Support is supplied via the on-board STM32F205 microcontroller, which translates the HID inputs into Amiga compatable signals. The mouse HID signals are shared with the JOY1 port (see 1.8.4) via a 74LVC245 buffer. HID input to the shared port is only active when the HID mouse is actively being used. When the HID mouse is not actively being used, the buffer outputs are tristate and will not adversely affect input from a device on JOY1. HID keyboards are supported with no option for legacy Amiga keyboards. 
-
-**NOTE:** Using an HID mouse and a device on JOY1 at the same time will result in udersireable behavior.
+The AmigaPCI support human interface devices (HID) via the two USB ports. Only keyboards and mice are supported. Support is supplied via the on-board STM32F205 microcontroller, which translates the HID inputs into Amiga compatable signals. The mouse HID signals are shared with the JOY1 port (see 1.8.4) via a 74HCT245 buffer. HID input to the shared port is only active when the HID mouse is actively being used. When the HID mouse is not actively being used, the buffer outputs are tristate and will not adversely affect input from a device on JOY1. This allows both mouse HID and JOY1 devices be connected simultaneously without interfering with each other. Legacy Amiga keyboards may be used via an onboard header. The end user may build a cable interface to support attachment of an Amiga keyboard.
 
 ### 1.7 Audio
 
@@ -102,9 +100,7 @@ The serial port is a male DB25 connector, which is stacked with the parallel fem
 
 #### 1.8.4 Legacy Joystick and Mouse Ports
 
-There are two legacy joystick port headers on the board. JOY1 is shared with the HID mouse input. See 1.6.
-
-**NOTE:** Using an HID mouse and JOY1 at the same time will result in udersireable behavior.
+There are two legacy joystick port headers on the board. JOY1 is shared with the HID mouse input. In order to prevent signal contention with the HID mouse, the inputs from JOY1 are disconnected by a 74HCT4066 analog switch when the HID mouse is actively being used. This prevents undesired behavior and allows only one device to input signals at a time. See 1.6. The input for JOY2 is not shared with any other devices. 
 
 ### 1.9 15KHz Video
 
