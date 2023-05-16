@@ -240,7 +240,7 @@ The PCI slots of the AmigaPCI can be set to run in either AUTOCONFIG mode or sof
 
 In AUTOCONFIG mode, the PCI target device will be configured on startup just like any other Amiga AUTOCONFIG device. This allows for Amiga specific hardware with auto boot ROMs. The advantage of AUTOCONFIG mode is the ability to use the PCI device immediately upon startup without the need to load drivers from disk. This could support such devices such as auto booting hard drives, SVGA video, sound cards, etc. Onced the PCI target device is configured by the AUTOCONFIG process, the target device may be directly accessed by its base address(es), just as any other Amiga expansion card. 
 
-Software configuration mode requires the PCI target device be configured in software with no option for configuration via the AUTOCONFIG process. This mode may be used to support PCI target devices designed for non-Amiga architecture. During startup, the PCI Bridge itself is configured via AUTOCONFIG in the 32 bit Zorro 3 address space, which will supply a base address for the PCI Bridge through which the slots in software configuration mode may be accessed. Driver software may then poll the PCI Bridge base address with each device selection bit. See addition information in Section 2.3. Slots 1-3 may be set to software configuration mode.
+Software configuration mode requires the PCI target device be configured in software in order to function. This mode may be used to support PCI target devices designed for non-Amiga architecture. During startup, the PCI Bridge itself is configured via AUTOCONFIG in the 32 bit Zorro 3 address space, which will supply a base address for the PCI Bridge through which the slots in software configuration mode may be accessed. Driver software may then poll the PCI Bridge base address with each device selection bit. See additional information in Section 2.3. Slots 1-3 may be set to software configuration mode.
 
 PCI devices in AUTOCONFIG slots must be addressed via their AUTOCONFIG assigned base address. The PCI bridge will return $FFFF FFFF if and AUTOCONFIG slot is polled. 
 
@@ -256,7 +256,7 @@ AUTOCONFIG Slots|Software Config Slots|J100|J101
 
 ### 2.3 PCI Configuration
 
-Each PCI target device may be configured by the Amiga AUTOCONFIG process or by software configuration. During configuration, each PCI slot, in turn, is polled to obtain the capabilities and address space needs of the target device. Each PCI slot is polled by asserting the IDSEL signal. The IDSEL signal is approximately equivalent to the _CFGIN signal of the Zorro bus. However, unlike the _CFGIN signal, the IDSEL is asserted by a specific address bit during the address phase of a configuration command access[[2]](#2). PCI configuration header Type 0 is supported by the PCI Controller logic.
+Each PCI target device may be configured by the Amiga AUTOCONFIG process or by software configuration. During configuration, each PCI slot, in turn, is polled to obtain the capabilities and address space needs of the target device. Each PCI slot is polled by asserting the IDSEL signal. The IDSEL signal is approximately equivalent to the _CFGIN signal of the Zorro bus. However, unlike the _CFGIN signal, the IDSEL is asserted by a specific address bit during the address phase of a configuration command access[[2]](#2).
 
 #### 2.3.1 AUTOCONFIG
 
@@ -274,15 +274,9 @@ MORE DETAIL...HOW DOES THIS WORK?
 
 #### 2.3.2 Software Configuration
 
-Each slot designated as a software configuration slot may be accessed through the base address of the PCI Bridge. PCI commands may be executed to a specific device by setting the PCI target device's IDSEL bit. As an example, assume the base address of the PCI Bridge is $4400 0000. The PCI target device in slot 1 may be accessed at address $4401 0000, slot 2 at $4402 0000, etc. With this method, each slot may be polled to determine if it is a software configuration slot and if there is a target device present. Polling an empty slot or AUTOCONFIG slot will return $FFFF FFFF on the data bus by the PCI Bridge. The PCI bridge is AUTOCONFIGured as a 512MB I/O device and is configured after the onboard fast RAM.
+Each slot designated as a software configuration slot may be accessed through the base address of the PCI Bridge. PCI configuration commands may be executed to a specific device by setting the PCI target device's IDSEL bit. As an example, assume the base address of the PCI Bridge is $4400 0000. The PCI target device in slot 1 may be accessed at address $4401 0000, slot 2 at $4402 0000, etc. With this method, each slot may be polled to determine if it is a software configuration slot and if there is a target device present. Polling an empty or AUTOCONFIG slot will return $FFFF FFFF on the data bus by the PCI Bridge. The PCI bridge is AUTOCONFIGured as a 512MB I/O device.
 
-Table 2.3.2a PCI Bridge Base Address for Software Configuration
-Installed RAM|PCI Bridge Base Address|High Address
--|-|-
-64MB|$4400 0000|$6AFF FFFF
-128MB|$4800 0000|$6CFF FFFF
-
-Table 2.3.2b. Address Offset of PCI Slots
+Table 2.3.2. Address Offset of PCI Slots.
 PCI Slot|Address Bit|Offset From Base Address
 -|-|-
 0|AD[16]|$01 0000
@@ -297,7 +291,7 @@ Each PCI slot has four interrupt signals, identified as _INTA, _INTB, _INTC, and
 
 ### 2.5 Bus Mastering
 
-Direct bus access are available to the MC68040 and PCI cards via bus mastering. When a device has mastered the bus, it has control of the entire AmigaPCI system and may directly access any valid address location. This is typically done for direct reading and writing of memory or direct control of chipset or other functions. The AmigaPCI bus arbiter accepts bus requests from the MC608040 and each device on the PCI bus. Each slot on the PCI bus has a dedicated bus request signal. The bus arbiter is designed to not allow the same device multiple back-to-back requests unless no other device is requesting the bus. This prevents any one device from taking exclusive ownership of the bus for long periods of time, which can result in degredation in performance. When there is no pending bus request, the MC68040 is given explicit ownership until it begins a bus cycle or a bus request from one of the PCI devices is asserted.
+Direct bus access is available to the MC68040 and PCI cards via bus mastering. When a device has mastered the bus, it has control of the entire AmigaPCI system and may directly access any valid address location. This is typically done for direct reading and writing of memory or direct control of chipset or other functions. The AmigaPCI bus arbiter accepts bus requests from the MC608040 and each device on the PCI bus. Each slot on the PCI bus has a dedicated bus request signal. The bus arbiter is designed to not allow the same device multiple back-to-back requests unless no other device is requesting the bus. This prevents any one device from taking exclusive ownership of the bus for long periods of time, which can result in degredation in performance. When there is no pending bus request, the MC68040 is given explicit ownership until it begins a bus cycle or a bus request from one of the PCI devices is asserted.
 
 #### 2.5.1 MC68040 as a Bus Driver
 
