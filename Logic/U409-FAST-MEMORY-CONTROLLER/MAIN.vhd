@@ -48,6 +48,7 @@ entity MAIN is
 	 
 		A : IN  STD_LOGIC_VECTOR (31 DOWNTO 2);
 		BCLK : IN STD_LOGIC;
+		C1 : IN STD_LOGIC;
 		C3 : IN STD_LOGIC;
 		nRESET : IN STD_LOGIC;
 		nTIP : IN STD_LOGIC;		
@@ -56,12 +57,15 @@ entity MAIN is
 		TT : IN STD_LOGIC_VECTOR (1 DOWNTO 0);
 		TM: IN STD_LOGIC_VECTOR (2 DOWNTO 0);
 		PCISOFTMODE : IN STD_LOGIC;
+		nDBR : IN STD_LOGIC;
 		
 		nRAMEN : INOUT STD_LOGIC;
 		nREGEN : INOUT STD_LOGIC;
 		D : INOUT STD_LOGIC_VECTOR (31 DOWNTO 28);		
 		nEMEN : INOUT STD_LOGIC;
 		CONFIGED : INOUT STD_LOGIC;
+		nTA : INOUT STD_LOGIC;
+		nAS : INOUT STD_LOGIC;
 		
 		EMA : OUT STD_LOGIC_VECTOR (12 DOWNTO 0);
 		BANK0 : OUT STD_LOGIC;
@@ -71,8 +75,7 @@ entity MAIN is
 		nEMCAS : OUT STD_LOGIC;
 		nEMWE : OUT STD_LOGIC;
 		nEM0CS : OUT STD_LOGIC;
-		nEM1CS : OUT STD_LOGIC;
-		nTA : OUT STD_LOGIC;
+		nEM1CS : OUT STD_LOGIC;		
 		nTBI : OUT STD_LOGIC;
 		nROMEN : OUT STD_LOGIC;				
 		nVBEN : OUT STD_LOGIC;
@@ -83,7 +86,8 @@ entity MAIN is
 		IDESpace : OUT STD_LOGIC;
 		GayleSpace : INOUT STD_LOGIC;		
 		nTCI : OUT STD_LOGIC;
-		nPCIEN : OUT STD_LOGIC		
+		nPCIEN : OUT STD_LOGIC
+		
 		
 	);
 	
@@ -101,6 +105,9 @@ architecture Behavioral of MAIN is
 	
 	SIGNAL ACSpace : STD_LOGIC;
 	SIGNAL ACCycle : STD_LOGIC;
+	
+	SIGNAL EndAgnusCycle : STD_LOGIC;
+	SIGNAL AgnusCycle : STD_LOGIC;
 
 begin
 
@@ -192,21 +199,40 @@ begin
 		ACCycle => ACCycle		
 	);
 	
+	----------------------------
+	-- MC68000 ADDRESS STROBE --
+	----------------------------
+	
+	AddressStrobe: ENTITY work.AddressStrobe PORT MAP(
+		BCLK => BCLK,
+		C1 => C1,
+		C3 => C3,
+		nRESET => nRESET,
+		nRAMEN => nRAMEN,
+		nREGEN => nREGEN,
+		nTA => nTA,
+		nTIP => nTIP,
+		nDBR => nDBR,
+		nAS => nAS,
+		EndAgnusCycle => EndAgnusCycle,
+		AgnusCycle => AgnusCycle
+	);
+	
 	--------------------------
 	-- MC68040 TRANSFER ACK --
 	--------------------------
 	
 	nTA <= 
-			'Z' WHEN nEMEN = '1' AND RAMCYCLE = '0' AND (ACSpace = '0' AND ACCycle = '0') 
+			'Z' WHEN (nEMEN = '1' AND RAMCYCLE = '0') AND (ACSpace = '0' AND ACCycle = '0') AND (AgnusCycle = '0' AND EndAgnusCycle = '0')
 		ELSE 
-			'1' WHEN ((nEMEN = '0' AND BURST = '0') OR (nEMEN = '1' AND RAMCYCLE = '1')) OR ((ACSpace = '1' AND ACCycle = '0') OR (ACSpace = '0' AND ACCycle = '1')) 
+			'1' WHEN ((nEMEN = '0' AND BURST = '0') OR (nEMEN = '1' AND RAMCYCLE = '1')) OR ((ACSpace = '1' AND ACCycle = '0') OR (ACSpace = '0' AND ACCycle = '1')) OR (AgnusCycle = '1' AND EndAgnusCycle = '0')
 		ELSE 
 			'0';
 		
 	nTBI <= 
-			'Z' WHEN ACSpace = '0' AND ACCycle = '0' 
+			'Z' WHEN (nEMEN = '1' AND RAMCYCLE = '0') AND (ACSpace = '0' AND ACCycle = '0') AND (AgnusCycle = '0' AND EndAgnusCycle = '0')
 		ELSE 
-			'1' WHEN (ACSpace = '1' AND ACCycle = '0') OR (ACSpace = '0' AND ACCycle = '1') 
+			'1' WHEN ((ACSpace = '1' AND ACCycle = '0') OR (ACSpace = '0' AND ACCycle = '1')) OR (AgnusCycle = '1' AND EndAgnusCycle = '0')
 		ELSE 
 			'0';
 

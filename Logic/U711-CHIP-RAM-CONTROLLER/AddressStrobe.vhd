@@ -35,13 +35,19 @@ entity AddressStrobe is
     Port ( 		
 		
 		BCLK : IN STD_LOGIC;
-      C1 : IN  STD_LOGIC;
-      C3 : IN  STD_LOGIC;
+		C1 : IN STD_LOGIC;
+		C3 : IN STD_LOGIC;
 		nRESET : IN STD_LOGIC;
 		nRAMEN : IN STD_LOGIC;
 		nREGEN : IN STD_LOGIC;
+		nTA : IN STD_LOGIC;
+		nTIP : IN STD_LOGIC;
+		nDBR : IN STD_LOGIC;
 		
-		nAS : INOUT  STD_LOGIC
+		nAS : INOUT  STD_LOGIC;
+		
+		EndAgnusCycle : OUT STD_LOGIC;
+		AgnusCycle : OUT STD_LOGIC
 			  
 	);
 	
@@ -49,68 +55,98 @@ end AddressStrobe;
 
 architecture Behavioral of AddressStrobe is
 
+	SIGNAL STATE68K : INTEGER RANGE 1 TO 8;
+	SIGNAL LASTCLK : STD_LOGIC;
 	SIGNAL CLK7 : STD_LOGIC;
-	SIGNAL LASTCLK7 : STD_LOGIC;
-	SIGNAL STATE68K : INTEGER RANGE 1 TO 7;
 
 begin
-
-
-	--PUT THE CHIPSET REGISTER CYCLE HERE TOO!
-
 
 	---------------------------------------
 	-- MC68000 COMPATABLE ADDRESS STROBE --
 	---------------------------------------
-	
-	CLK7 <= C1 XNOR C3;
 			
 	--WE NEED TO GENERATE A MOTOROLA MC68000 COMPATABLE ADDRESS STROBE FOR AGNUS.
-	--AFTER THE ADDRESS DECODER HAS ASSERTED _RAMEN, WE ASSERT ADDRESS STROBE WHEN
-	--C1 AND C3 ARE ALL LOW, WHICH IS MC68000 STATE 2. WE THEN HOLD ADDRESS
-	--STROBE ASSERTED UNTIL MC68000 STATE 7, AT WHICH TIME IT IS NEGATED.
+	--THIS IS PRETTY SIMPLE. WE ASSERT _AS WHEN WE ARE IN THE RAM OR REGISTER ADDRESS
+	--SPACE WHEN C1 AND C3 ARE LOW. THIS IS STATE 2. WE THEN HOLD IT ASSERTED UNTIL 
+	--_TA IS ASSERTED OR _TIP IS NEGATED. THIS WILL HOLD ADDRESS STROBE FOR THE ENTIRE 
+	--CYCLE EVEN IF WE ARE DELAYED DUE TO CHIPSET DMA.
 			
-	PROCESS (BCLK, nRESET) BEGIN
+	PROCESS (BCLK, nRESET, nTA) BEGIN
 		
-		IF nRESET = '0' THEN
+		IF nRESET = '0' OR nTA = '0' THEN
 			
 			nAS <= '1';
-			LASTCLK7 <= '0';
-			STATE68K <= 1;
 		
 		ELSIF RISING_EDGE (BCLK) THEN
 		
-			CASE STATE68K IS
-			
-				WHEN 1 =>
-				
-					IF nRAMEN = '0' AND C1 = '0' AND C3 = '0' THEN
-					
-						STATE68K <= 2;
-						LASTCLK7 <= '0';
-						nAS <= '0';
-						
-					END IF;	
-					
-				WHEN 7 =>
-				
-					nAS <= '1';
-					STATE68K <= 1;
-					
-				WHEN OTHERS =>
-				
-					IF LASTCLK7 /= CLK7 THEN
-				
-						STATE68K <= STATE68K + 1;
-						LASTCLK7 <= CLK7;
-						
-					END IF;
-				
-			END CASE;
+			nAS <= NOT ( NOT nTIP AND ((( NOT nRAMEN OR NOT nREGEN ) AND NOT C1 AND NOT C3 ) OR NOT nAS ));
 		
 		END IF;
 			
 	END PROCESS;	
+	
+	--------------------------
+	-- MC68040 TRANSFER ACK --
+	--------------------------
+	
+	--WE WANT TO ASSERT _TA AND _TBI FOR AGNUS RAM AND REGISTER CYCLES DURING
+	--MC68000 STATE 7. WE WANT TO WAIT AND START COUNTING STATES AT THE FIRST
+	--INSTANCE WHEN C1 AND C3 ARE LOW AFTER _DBR IS NEGATED. THIS IS STATE 2 AND
+	--KEEPS EVERYTHING IN SYNC.
+	
+	CLK7 <= C1 XNOR C3;
+	
+	PROCESS (BCLK, nRESET) BEGIN
+	
+		IF nRESET = '0' THEN
+		
+			AgnusCycle <= '0';
+			EndAgnusCycle <= '0';
+			STATE68k <= 1;	
+			LASTCLK <= '0';
+			
+		ELSIF FALLING_EDGE (BCLK) THEN
+			
+			CASE STATE68K IS
+			
+				WHEN 1 =>
+		
+					IF C1 = '0' AND C3 = '0' AND nDBR = '1' AND nAS = '0' THEN					
+						
+						AgnusCycle <= '1';
+						STATE68k <= 2;
+						LASTCLK <= CLK7;
+						
+					ELSE
+					
+						AgnusCycle <= '0';
+					
+					END IF;
+					
+				WHEN 7 =>
+				
+					EndAgnusCycle <= '1';
+					STATE68k <= 8;
+					
+				WHEN 8 =>
+				
+					EndAgnusCycle <= '0';
+					STATE68k <= 1;
+					
+				WHEN OTHERS =>
+				
+					IF CLK7 /= LASTCLK THEN
+					
+						STATE68K <= STATE68K + 1;
+						LASTCLK <= CLK7;
+						
+					END IF;
+					
+			END CASE;
+		
+		END IF;
+		
+	END PROCESS;
 
 end Behavioral;
 
