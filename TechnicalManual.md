@@ -183,7 +183,7 @@ Ethernet 10/100 is provided via the KSZ8851-16MLL MAC controller and PHY. It is 
 
 ## 2. PCI Bus
 
-The AmigaPCI is designed to comply with the PCI Local Bus Revision 2.3 specificiation. Each slot supports Universal and 5V cards, as defined in the PCI Local Bus Revision 2.3 specification. Like Zorro 2 and Zorro 3, PCI supports auto configuration of devices on power up. This allows, via some translation, for the use of Amiga AUTOCONFIG to configure devices at start up. This fits well with Amiga OS as each device is configured as a Zorro 3 device, which function natively with Amiga OS. 
+The AmigaPCI is designed to comply with the PCI Local Bus Revision 2.3 specificiation. Each slot supports Universal and 5V cards, as defined in the PCI Local Bus Revision 2.3 specification. Like Zorro 2 and Zorro 3, PCI supports auto configuration of devices on power up. This allows, via some translation, for the use of Amiga AUTOCONFIG to configure devices at start up. This fits well with Amiga OS as PCI devices can be configured as Zorro 3 devices, which function natively with Amiga OS. 
 
 By definition, the PCI Local Bus is a processor independent, 32 bit expasion bus. The AmigaPCI PCI Bus is implemented via a MC68040 to PCI bridge using a PCI Controller ASIC concept. The PCI Controller Logic translates data requests from the Motorola MC68040 and PCI devices in order that they may communicate in an effective manner. 
 
