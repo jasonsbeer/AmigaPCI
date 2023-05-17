@@ -116,7 +116,9 @@ Chip RAM is supplied by SDRAM and interfaces are provided for the chipset and MC
 
 #### 1.11.1 Chipset Register Cycles
 
-The CPU can read and write data to the chipset registers through Agnus. Examining the architecture of original OCS/ECS Amigas discloses the presence of data latches on the Agnus data bus (DRD). As an example, U104 and U106 on the Amiga 2000 and U253 - U256 on the Amiga 3000. These latches are only enabled on read cycles. This suggests the chipset registers do not adhear to MC68000 timing, resulting in the need to latch the data earlier in the cycle. Latching allows valid data to held on the bus until the falling edge of State 6, at which time the MC68000 latches data during read cycles. On the Amiga 2000, this latch is driven by signal C4, which is an inverted C3. This means the data is driven to the bus before the falling edge of State 6, when the MC68000 expects it. The chipset register cycle is as follows:
+**THE PRESENCE OF LATCHES ON THE DRD BUS NEEDS TO BE INVESTIGATED. IF THE AGNUS AND DRAM TIMING SHEETS ARE ACCURATE, THESE LATCHES ARE NOT NECESSARY. SO, WHAT IS THEIR PURPOSE?
+
+The CPU accesses most chipset registers through Agnus. The chipset register cycle is as follows:
 
 1) The CPU drives A1..20 in the chipset RAM address space and drives the data bus and R_W low for write cycles. The data bus bridge is tristate.
 2) The CPU asserts _TS for one clock to indicate the start of a transfer. The RAM controller asserts _REGEN.
