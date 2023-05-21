@@ -6,7 +6,7 @@
 
   (title_block
     (title "AMIGA PCI")
-    (date "2023-05-16")
+    (date "2023-05-20")
     (rev "1")
   )
 
@@ -5743,10 +5743,10 @@
     (property "Value" "74LVC1G74" (at 225.806 139.827 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "" (at 225.679 139.065 0)
+    (property "Footprint" "Package_SO:TSSOP-8_3x3mm_P0.65mm" (at 225.679 139.065 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Datasheet" "http://www.ti.com/lit/sg/scyt129e/scyt129e.pdf" (at 225.679 139.065 0)
+    (property "Datasheet" "https://assets.nexperia.com/documents/data-sheet/74LVC1G74.pdf" (at 225.679 139.065 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (pin "1" (uuid 374a8a55-ec54-4982-b3b0-b5d1dddc7a19))
