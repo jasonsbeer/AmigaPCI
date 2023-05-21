@@ -177,7 +177,13 @@ Installed RAM|Base Address|High Address
 
 See [Timing Diagram](</DataSheets/TimingDiagrams/Fast RAM.png>)
 
-### 1.13 Ethernet
+### 1.13 CIA Cycles
+
+The AmigaPCI does not support MC6800/MOS6502 devices on the PCI bus with resources on the AmigaPCI main board. Such a PCI device must implement its own timing resources. This means we can break away from the E cycle as implemented in all original Amiga designs. While still relatively slow, we can cut the CIA access time by more than half by implementing the recommended timings from the 8502A data sheet.
+
+See [Timing Diagram](</DataSheets/TimingDiagrams/CIA Cycle.png>)
+
+### 1.14 Ethernet
 
 **THIS IS A STRETCH GOAL AND MAY NOT MAKE IT TO THE FINAL PROPOSAL**
 
