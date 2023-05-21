@@ -37,8 +37,8 @@ entity MemoryController is
 	(
 	
 		BCLK : IN STD_LOGIC;
-		C1 : IN STD_LOGIC;
-		C3 : IN STD_LOGIC;
+		--C1 : IN STD_LOGIC;
+		--C3 : IN STD_LOGIC;
 		nRESET : IN STD_LOGIC;
 		ARAS : IN STD_LOGIC_VECTOR (9 DOWNTO 0);
 		ACAS : IN STD_LOGIC_VECTOR (9 DOWNTO 0);

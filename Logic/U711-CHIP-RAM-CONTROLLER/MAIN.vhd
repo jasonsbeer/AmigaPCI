@@ -49,7 +49,7 @@ entity MAIN is
 	 
 		BCLK : IN STD_LOGIC;
 		C1 : IN STD_LOGIC;
-		C3 : IN STD_LOGIC;
+		--C3 : IN STD_LOGIC;
 		nRESET : IN STD_LOGIC;
 		nRAMEN : IN STD_LOGIC;
 		nREGEN : IN STD_LOGIC;
@@ -107,19 +107,6 @@ begin
 		REFRESET => REFRESET,
 		REFRESH => REFRESH
 	);
-	
-	---------------------------------------
-	-- MC68000 COMPATABLE ADDRESS STROBE --
-	---------------------------------------
-	
---	AddressStrobe: ENTITY work.AddressStrobe PORT MAP(
---		BCLK => BCLK,
---		C1 => C1,
---		C3 => C3,
---		nRESET => nRESET,
---		nRAMEN => nRAMEN,
---		nAS => nAS
---	);
 
 	--------------------------------
 	-- AGNUS DRAM ADDRESS STROBES --
@@ -165,8 +152,8 @@ begin
 	
 	MemoryController: ENTITY work.MemoryController PORT MAP(
 		BCLK => BCLK,
-		C1 => C1,
-		C3 => C3,
+		--C1 => C1,
+		--C3 => C3,
 		nRESET => nRESET,
 		ARAS => ARAS,
 		ACAS => ACAS,

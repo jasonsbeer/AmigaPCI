@@ -152,46 +152,6 @@ begin
 		
 	);
 	
-	--------------------------
-	-- MC6800 STATE MACHINE --
-	--------------------------
-	
-	MC6800: ENTITY work.MC6800 PORT MAP(
-	
-		CLK7 => CLK7,
-		CLK28 => CLK28,
-		nRESET => nRESET,
-		nVPA => nVPA,
-		nVMA => nVMA,
-		E => E
-		
-	);
-	
-	----------------------
-	-- ADDRESS DECODING --
-	----------------------
-	
-	AddressDecoding: ENTITY work.AddressDecoding PORT MAP(
-	
-		A => A(31 DOWNTO 12),
-		OVL => OVL,
-		FC => FC,
-		RnW => RnW,
-		nRESET => nRESET,
-		nDBR => nDBR,
-		nROMEN => nROMEN,
-		nRAMEN => nRAMEN,
-		nREGEN => nREGEN,
-		nCIA0 => nCIA0,
-		nCIA1 => nCIA1,
-		nRTCRD => nRTCRD,
-		nRTCWR => nRTCWR,
-		CPUSpace => cpu_space,
-		IDESpace => ide_space,
-		GayleSpace => gayle_space,
-		ACSpace => autoconfig_space
-		
-	);
 	
 	-------------------------------
 	-- DATA TRANSFER BYTE ENABLE --
@@ -231,36 +191,6 @@ begin
 		GayleSpace => gayle_space,
 		IDESpace => ide_space,
 		ACSpace => autoconfig_space
-	);
-	
-	-------------------------
-	-- CHIP RAM CONTROLLER --
-	-------------------------
-	
-	ChipRAMController: ENTITY work.ChipRAMController PORT MAP(
-		BCLK => BCLK,
-		CLK7 => CLK7,
-		C1 => C1,
-		C3 => C3,
-		nRESET => nRESET,
-		RnW => RnW,
-		nRAMEN => nRAMEN,
-		nTIP => nTIP,
-		nDBR => nDBR,
-		DRA => DRA,
-		nRAS0 => nRAS0,
-		nRAS1 => nRAS1,
-		nCASL => nCASL,
-		nCASU => nCASU,
-		CRAM_ADDRESS => CRAM_ADDRESS,
-		nCRAS => nCRAS,
-		nCCAS => nCCAS,
-		nCWE => nCWE,
-		nCCS => nCCS,
-		nCCLKE => nCCLKE,
-		nDBEN => nDBEN,
-		DATADIR => DATADIR,
-		nAS => nAS
 	);
 
 end Behavioral;

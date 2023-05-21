@@ -50,7 +50,6 @@ entity MAIN is
 		BCLK : IN STD_LOGIC;
 		C1 : IN STD_LOGIC;
 		C3 : IN STD_LOGIC;
-		CLK28 : IN STD_LOGIC;
 		nRESET : IN STD_LOGIC;
 		nTIP : IN STD_LOGIC;		
 		RnW : IN STD_LOGIC;
@@ -67,6 +66,7 @@ entity MAIN is
 		CONFIGED : INOUT STD_LOGIC;
 		nTA : INOUT STD_LOGIC;
 		nAS : INOUT STD_LOGIC;
+		PHI2 : INOUT STD_LOGIC;
 		
 		EMA : OUT STD_LOGIC_VECTOR (12 DOWNTO 0);
 		BANK0 : OUT STD_LOGIC;
@@ -87,8 +87,7 @@ entity MAIN is
 		IDESpace : OUT STD_LOGIC;
 		GayleSpace : INOUT STD_LOGIC;		
 		nTCI : OUT STD_LOGIC;
-		nPCIEN : OUT STD_LOGIC;
-		E : OUT STD_LOGIC
+		nPCIEN : OUT STD_LOGIC
 		
 		
 	);
@@ -113,8 +112,8 @@ architecture Behavioral of MAIN is
 	
 	SIGNAL CLK7 : STD_LOGIC;
 	
-	SIGNAL VMACycle : STD_LOGIC;
-	SIGNAL VMAEndCycle : STD_LOGIC;
+	SIGNAL CIACycle : STD_LOGIC;
+	SIGNAL CIAEndCycle : STD_LOGIC;
 	SIGNAL CIA0Space : STD_LOGIC;
 	SIGNAL CIA1Space : STD_LOGIC;
 
@@ -238,17 +237,16 @@ begin
 	-- MC6800 STATE MACHINE --
 	--------------------------
 	
-	MC6800: ENTITY work.MC6800 PORT MAP(
-		CLK28 => CLK28,
+	CIA: ENTITY work.CIACycle PORT MAP(
 		BCLK => BCLK,
 		nRESET => nRESET,
 		CIA0Space => CIA0Space,
 		CIA1Space => CIA1Space,
-		VMACycle => VMACycle,
-		VMAEndCycle => VMAEndCycle,
+		CIACycle => CIACycle,
+		CIAEndCycle => CIAEndCycle,
 		nCIA0 => nCIA0,
 		nCIA1 => nCIA1,
-		E => E
+		PHI2 => PHI2
 	);
 	
 	--------------------------
@@ -256,7 +254,7 @@ begin
 	--------------------------
 	
 	nTA <= 
-			'Z' WHEN (nEMEN = '1' AND RAMCYCLE = '0') AND (ACSpace = '0' AND ACCycle = '0') AND (AgnusCycle = '0' AND EndAgnusCycle = '0') AND (VMACycle = '0' AND VMAEndCycle = '0')
+			'Z' WHEN (nEMEN = '1' AND RAMCYCLE = '0') AND (ACSpace = '0' AND ACCycle = '0') AND (AgnusCycle = '0' AND EndAgnusCycle = '0') AND (CIACycle = '0' AND CIAEndCycle = '0')
 		ELSE 
 			'1' WHEN 
 			
@@ -265,15 +263,15 @@ begin
 				((ACSpace = '1' AND ACCycle = '0') OR 
 				(ACSpace = '0' AND ACCycle = '1')) OR 
 				(AgnusCycle = '1' AND EndAgnusCycle = '0') OR
-				(VMACycle = '1' AND VMAEndCycle = '0')
+				(CIACycle = '1' AND CIAEndCycle = '0')
 				
 		ELSE 
 			'0';
 		
 	nTBI <= 
-			'Z' WHEN (nEMEN = '1' AND RAMCYCLE = '0') AND (ACSpace = '0' AND ACCycle = '0') AND (AgnusCycle = '0' AND EndAgnusCycle = '0') AND (VMACycle = '0' AND VMAEndCycle = '0')
+			'Z' WHEN (nEMEN = '1' AND RAMCYCLE = '0') AND (ACSpace = '0' AND ACCycle = '0') AND (AgnusCycle = '0' AND EndAgnusCycle = '0') AND (CIACycle = '0' AND CIAEndCycle = '0')
 		ELSE 
-			'1' WHEN ((ACSpace = '1' AND ACCycle = '0') OR (ACSpace = '0' AND ACCycle = '1')) OR (AgnusCycle = '1' AND EndAgnusCycle = '0') OR (VMACycle = '1' AND VMAEndCycle = '0')
+			'1' WHEN ((ACSpace = '1' AND ACCycle = '0') OR (ACSpace = '0' AND ACCycle = '1')) OR (AgnusCycle = '1' AND EndAgnusCycle = '0') OR (CIACycle = '1' AND CIAEndCycle = '0')
 		ELSE 
 			'0';
 

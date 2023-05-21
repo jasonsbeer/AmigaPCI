@@ -11,8 +11,8 @@ NET "DRA<9>"	LOC = "P11" ;
 
 NET "nDBR"		LOC = "P12" ;
 NET "nDBEN"		LOC = "P13" ;
-NET "C3"			LOC = "P15" ;
-NET "C3"			BUFG = CLK ;
+//NET "C3"			LOC = "P15" ;
+//NET "C3"			BUFG = CLK ;
 NET "C1"			LOC = "P16" ;
 NET "C1"			BUFG = CLK ;
 NET "BCLK"		LOC = "P17" ;

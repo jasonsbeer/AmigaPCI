@@ -9,13 +9,13 @@
          <ClosedNodesVersion>2</ClosedNodesVersion>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem>MemoryController - MemoryController - Behavioral (/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/MemoryController.vhd)</SelectedItem>
+         <SelectedItem>AgnusAddressStrobes - AgnusAddressStrobes - Behavioral (/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/AgnusAddressStrobes.vhd)</SelectedItem>
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
       <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000202000000010000000100000064000004ec000000020000000000000000000000000200000064ffffffff000000810000000300000002000004ec0000000100000003000000000000000100000003</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >true</UserChangedColumnWidths>
-      <CurrentItem>MemoryController - MemoryController - Behavioral (/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/MemoryController.vhd)</CurrentItem>
+      <CurrentItem>AgnusAddressStrobes - AgnusAddressStrobes - Behavioral (/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U711-CHIP-RAM-CONTROLLER/AgnusAddressStrobes.vhd)</CurrentItem>
    </ItemView>
    <ItemView engineview="SynthesisOnly" sourcetype="" guiview="Process" >
       <ClosedNodes>
@@ -40,7 +40,7 @@
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
       <ViewHeaderState orientation="horizontal" >000000ff0000000000000001000000000000000001000000000000000000000000000000000000075f000000040101000100000000000000000000000064ffffffff0000008100000000000000040000008d00000001000000000000004e00000001000000000000010900000001000000000000057b0000000100000000</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
-      <CurrentItem>AddressStrobe.vhd</CurrentItem>
+      <CurrentItem>AgnusAddressStrobes.vhd</CurrentItem>
    </ItemView>
    <ItemView guiview="Library" >
       <ClosedNodes>
@@ -67,7 +67,7 @@
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
-      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000000000000000002ac000000010000000100000000000000000000000064ffffffff000000810000000000000001000002ac0000000100000000</ViewHeaderState>
+      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000000000000000002a2000000010000000100000000000000000000000064ffffffff000000810000000000000001000002a20000000100000000</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
       <CurrentItem></CurrentItem>
    </ItemView>
@@ -81,7 +81,7 @@
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
-      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000000000000000002ac000000010000000100000000000000000000000064ffffffff000000810000000000000001000002ac0000000100000000</ViewHeaderState>
+      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000000000000000002a2000000010000000100000000000000000000000064ffffffff000000810000000000000001000002a20000000100000000</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
       <CurrentItem/>
    </ItemView>
