@@ -46,8 +46,7 @@ entity CIACycle is
 			PHI2 : INOUT STD_LOGIC;
 			
 			nCIA0 : OUT STD_LOGIC;
-			nCIA1 : OUT STD_LOGIC
-			
+			nCIA1 : OUT STD_LOGIC			
 		
 	);
 

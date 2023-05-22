@@ -1308,12 +1308,6 @@
   (junction (at 349.758 134.366) (diameter 0) (color 0 0 0 0)
     (uuid 0723230c-b418-41bb-9344-5c8a355c4778)
   )
-  (junction (at 193.04 209.296) (diameter 0) (color 0 0 0 0)
-    (uuid 10ead25a-e5ca-4a9b-9f47-71b2486783ca)
-  )
-  (junction (at 193.04 234.696) (diameter 0) (color 0 0 0 0)
-    (uuid 15147dcf-edd0-4a43-8cab-bcc72e9efabc)
-  )
   (junction (at 202.438 209.296) (diameter 0) (color 0 0 0 0)
     (uuid 153a16fd-8f4d-4b1a-b145-dee1276d88ec)
   )
@@ -1343,9 +1337,6 @@
   )
   (junction (at 333.502 145.034) (diameter 0) (color 0 0 0 0)
     (uuid 4e4df3de-2e63-4f2e-81ac-6162d5c370c8)
-  )
-  (junction (at 173.228 209.296) (diameter 0) (color 0 0 0 0)
-    (uuid 51de840c-ec77-4c7e-a6e6-775df0c4a337)
   )
   (junction (at 363.347 41.148) (diameter 0) (color 0 0 0 0)
     (uuid 534509a8-f40d-4fe8-bdbc-e017a9df10f8)
@@ -2176,11 +2167,6 @@
     (stroke (width 0) (type default))
     (uuid 06ed12a5-f09e-4870-982a-7018137ce8c3)
   )
-
-  (wire (pts (xy 202.438 209.296) (xy 193.04 209.296))
-    (stroke (width 0) (type default))
-    (uuid 077ff469-a230-4f35-a61f-af8bb73380cb)
-  )
   (bus (pts (xy 68.834 217.678) (xy 68.834 220.218))
     (stroke (width 0) (type default))
     (uuid 07e97d5a-038f-4d0c-8949-035e77fcc9a4)
@@ -2640,7 +2626,7 @@
     (uuid 4896f62c-8ec3-4cbc-86db-93aa9fbb03ed)
   )
 
-  (wire (pts (xy 193.04 209.296) (xy 182.626 209.296))
+  (wire (pts (xy 182.626 209.296) (xy 202.438 209.296))
     (stroke (width 0) (type default))
     (uuid 493da2b3-d911-418b-9d5d-e8a4eb87e8fe)
   )
@@ -3443,10 +3429,6 @@
     (stroke (width 0) (type default))
     (uuid b4c91782-24a0-4e3a-b03e-c088a9cf959e)
   )
-  (wire (pts (xy 202.438 234.696) (xy 193.04 234.696))
-    (stroke (width 0) (type default))
-    (uuid b4daf5cf-6cdb-4c0f-9b4a-779c1f29c3ef)
-  )
   (wire (pts (xy 222.25 219.456) (xy 222.25 209.296))
     (stroke (width 0) (type default))
     (uuid b4df1918-c79a-42b8-af62-669fb7d187ca)
@@ -3804,7 +3786,7 @@
     (stroke (width 0) (type default))
     (uuid e0922e29-43b4-4bbc-a704-7ea5b8428e7a)
   )
-  (wire (pts (xy 193.04 234.696) (xy 182.626 234.696))
+  (wire (pts (xy 182.626 234.696) (xy 202.438 234.696))
     (stroke (width 0) (type default))
     (uuid e17e02d9-1f3c-4d24-a8cf-af9bf16280f2)
   )
@@ -5563,8 +5545,8 @@
     (pin "7" (uuid e790c0ad-c828-4c8b-99f5-627f7e2c520c))
     (pin "8" (uuid 08f69aab-0a17-4894-8940-bc6e5c4a5f65))
     (pin "9" (uuid 72f32a38-45ee-46d1-ac49-14788a117bf1))
-    (pin "10" (uuid 227edd28-c932-4c60-ad74-7c73e3564433))
-    (pin "20" (uuid edc7b751-2629-4a22-8a99-65598a8398ee))
+    (pin "10" (uuid 227edd28-c932-4c60-ad74-7c73e3564435))
+    (pin "20" (uuid edc7b751-2629-4a22-8a99-65598a8398f0))
     (instances
       (project "AmigaPCI Mainboard"
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
@@ -5642,8 +5624,8 @@
     (pin "7" (uuid e8cb4717-02a9-429a-8445-613a84fb85a7))
     (pin "8" (uuid ff09a150-e57b-478e-8f8d-cc5fecf87b21))
     (pin "9" (uuid 38468f1c-767a-4eba-8e7c-af1f1e6cff6f))
-    (pin "10" (uuid 227edd28-c932-4c60-ad74-7c73e3564433))
-    (pin "20" (uuid edc7b751-2629-4a22-8a99-65598a8398ee))
+    (pin "10" (uuid 227edd28-c932-4c60-ad74-7c73e3564436))
+    (pin "20" (uuid edc7b751-2629-4a22-8a99-65598a8398f1))
     (instances
       (project "AmigaPCI Mainboard"
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
@@ -5933,8 +5915,8 @@
     (pin "7" (uuid 8a2a11c0-fb0f-4784-a751-58c06949010c))
     (pin "8" (uuid 442e9ebb-de75-4002-ac29-52f2fcd8866b))
     (pin "9" (uuid 65b94e5e-9f26-4c4f-8156-8fee94e26e18))
-    (pin "10" (uuid 227edd28-c932-4c60-ad74-7c73e3564434))
-    (pin "20" (uuid edc7b751-2629-4a22-8a99-65598a8398ef))
+    (pin "10" (uuid 227edd28-c932-4c60-ad74-7c73e3564437))
+    (pin "20" (uuid edc7b751-2629-4a22-8a99-65598a8398f2))
     (instances
       (project "AmigaPCI Mainboard"
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
@@ -6069,8 +6051,8 @@
     (pin "7" (uuid e986fd17-cc2d-429d-80c9-3d6a9f5662e6))
     (pin "8" (uuid 96b3a844-65ac-4c58-8a6e-29fcf4d764ad))
     (pin "9" (uuid debcaf49-6d23-4e23-b490-f9bbe6abba4b))
-    (pin "10" (uuid 227edd28-c932-4c60-ad74-7c73e3564434))
-    (pin "20" (uuid edc7b751-2629-4a22-8a99-65598a8398ef))
+    (pin "10" (uuid 227edd28-c932-4c60-ad74-7c73e3564438))
+    (pin "20" (uuid edc7b751-2629-4a22-8a99-65598a8398f3))
     (instances
       (project "AmigaPCI Mainboard"
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"

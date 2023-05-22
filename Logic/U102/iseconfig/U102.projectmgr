@@ -9,13 +9,13 @@
          <ClosedNodesVersion>2</ClosedNodesVersion>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem>U102_MAIN - Behavioral (/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U102/U102-MAIN.vhd)</SelectedItem>
+         <SelectedItem>RESET - RESET - Behavioral (/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U102/RESET.vhd)</SelectedItem>
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
       <ViewHeaderState orientation="horizontal" >000000ff00000000000000010000000100000000000000000000000000000000020200000001000000010000006400000351000000020000000000000000000000000200000064ffffffff000000810000000300000002000003510000000100000003000000000000000100000003</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >true</UserChangedColumnWidths>
-      <CurrentItem>U102_MAIN - Behavioral (/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U102/U102-MAIN.vhd)</CurrentItem>
+      <CurrentItem>RESET - RESET - Behavioral (/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U102/RESET.vhd)</CurrentItem>
    </ItemView>
    <ItemView engineview="SynthesisOnly" sourcetype="" guiview="Process" >
       <ClosedNodes>
@@ -62,13 +62,13 @@
          <ClosedNode>User Constraints</ClosedNode>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem>Fit</SelectedItem>
+         <SelectedItem></SelectedItem>
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
-      <ViewHeaderState orientation="horizontal" >000000ff00000000000000010000000100000000000000000000000000000000000000000000000293000000010000000100000000000000000000000064ffffffff000000810000000000000001000002930000000100000000</ViewHeaderState>
+      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000000000000000002a2000000010000000100000000000000000000000064ffffffff000000810000000000000001000002a20000000100000000</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
-      <CurrentItem>Fit</CurrentItem>
+      <CurrentItem></CurrentItem>
    </ItemView>
    <ItemView engineview="BehavioralSim" guiview="Source" compilemode="AutoCompile" >
       <ClosedNodes>

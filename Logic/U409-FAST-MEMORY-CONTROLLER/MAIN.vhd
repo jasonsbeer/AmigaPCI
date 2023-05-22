@@ -58,6 +58,8 @@ entity MAIN is
 		TM: IN STD_LOGIC_VECTOR (2 DOWNTO 0);
 		PCISOFTMODE : IN STD_LOGIC;
 		nDBR : IN STD_LOGIC;
+		nBTNRST : IN STD_LOGIC;
+		nKBRST : IN STD_LOGIC;
 		
 		nRAMEN : INOUT STD_LOGIC;
 		nREGEN : INOUT STD_LOGIC;
@@ -87,8 +89,8 @@ entity MAIN is
 		IDESpace : OUT STD_LOGIC;
 		GayleSpace : INOUT STD_LOGIC;		
 		nTCI : OUT STD_LOGIC;
-		nPCIEN : OUT STD_LOGIC
-		
+		nPCIEN : OUT STD_LOGIC;
+		nCPURST : OUT STD_LOGIC		
 		
 	);
 	
@@ -247,6 +249,17 @@ begin
 		nCIA0 => nCIA0,
 		nCIA1 => nCIA1,
 		PHI2 => PHI2
+	);	
+	
+	-------------------
+	-- STARTUP RESET --
+	-------------------
+	
+	RESET: ENTITY work.RESET PORT MAP(
+		BCLK => BCLK,
+		nBTNRST => nBTNRST,
+		nKBRST => nKBRST,
+		nCPURST => NCPURST 
 	);
 	
 	--------------------------
