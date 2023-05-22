@@ -40,7 +40,7 @@ Name|Chip ID|Commodore Part Number(s)|Quantity
 Agnus|8372A or 8375||1
 Denise|8362 or 8373||1
 Paula|8364||1
-CIA|8520A||2
+CIA|8520A-1 or 8520PD|318029-03|2
 
 #### 1.3.2 Kickstart ROMs
 
