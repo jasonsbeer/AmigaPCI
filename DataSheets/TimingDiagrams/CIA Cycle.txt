@@ -41,3 +41,45 @@ config:{skin:'narrow'}}
   
 head:{text:'BEST CASE CIA READ CYCLE'},   
 config:{skin:'narrow'}}
+
+
+{signal: [
+  ['Clocks',  
+  {name: 'Φ2', wave: 'l.h.........l.',  "period": 2},
+  {name: 'BCLK', wave: 'p..............',  "period": 2, "phase":1}],
+  
+['MC68040',  
+  {name: 'CLOCK', wave: 'z................=.=.....=.z.',  "period": 1, data:['1', 'W', '2']},
+  {name: 'R_W', wave: '1.................0.......1..', "period": 1},
+  {name: 'A(0..31)', wave: 'x.................=.......x..', "period": 1},
+ {name: 'D(24..31)', wave: 'x.................=.......x..', "period": 1},],
+['Controller',
+  {name: '_CIAxCS', wave: '1.................0.......1..', "period": 1},
+  {name: '_TA', wave: 'z.................1.....0.1.z', "period": 1},
+  {name: '_TBI', wave: 'z.................1.....0.1.z', "period": 1}]
+
+], 
+  
+head:{text:'BEST CASE CIA WRITE CYCLE'},   
+config:{skin:'narrow'}}
+
+
+
+{signal: [
+  ['Clocks',  
+  {name: 'Φ2', wave: 'l.h.........l.........h.........l.',  "period": 2},
+  {name: 'BCLK', wave: 'p..................................',  "period": 2, "phase":1}],
+  
+['MC68040',  
+  {name: 'CLOCK', wave: 'z..................=.=...........................................=.z.',  "period": 1, data:['1', 'W', '2']},
+  {name: 'R_W', wave: '1....................................................................', "period": 1},
+  {name: 'A(0..31)', wave: 'x...................=.............................................x..', "period": 1},
+  {name: 'D(24..31)', wave: 'x...................=.............................................x..', "period": 1}],
+['Controller',
+  {name: '_CIAxCS', wave: '1.........................................................0.......1..', "period": 1},
+  {name: '_TA', wave: 'z.........................................................1.....0.1.z', "period": 1},
+  {name: '_TBI', wave: 'z.........................................................1.....0.1.z', "period": 1}]
+], 
+  
+head:{text:'WORST CASE CIA WRITE CYCLE'},   
+config:{skin:'narrow'}}
