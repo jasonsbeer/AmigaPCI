@@ -29,7 +29,7 @@
 -- Description: LOGIC FOR FAST RAM INTERFACE, AUTOCONFIG, AND ADDRESS DECODING
 --
 -- Revision History:
---     May 14 2023 : Initial Engineering Release
+--     May 27 2023 : Initial Engineering Release
 ----------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
@@ -235,15 +235,16 @@ begin
 		AgnusCycle => AgnusCycle
 	);
 	
-	--------------------------
-	-- MC6800 STATE MACHINE --
-	--------------------------
+	-----------------------
+	-- CIA STATE MACHINE --
+	-----------------------
 	
 	CIA: ENTITY work.CIACycle PORT MAP(
 		BCLK => BCLK,
 		nRESET => nRESET,
 		CIA0Space => CIA0Space,
 		CIA1Space => CIA1Space,
+		RnW => RnW,
 		CIACycle => CIACycle,
 		CIAEndCycle => CIAEndCycle,
 		nCIA0 => nCIA0,

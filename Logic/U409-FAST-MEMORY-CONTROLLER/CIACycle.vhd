@@ -40,6 +40,7 @@ entity CIACycle is
 			nRESET : IN STD_LOGIC;
 			CIA0Space : IN STD_LOGIC;
 			CIA1Space : IN STD_LOGIC;
+			RnW : IN STD_LOGIC;
 
 			CIACycle : INOUT STD_LOGIC;
 			CIAEndCycle : INOUT STD_LOGIC;
@@ -120,8 +121,12 @@ begin
 				
 					CIACycle <= '0';
 			
-				WHEN 8 =>
-			
+				WHEN 11 =>			
+					
+					CIACycle <= RnW AND (CIA0Space OR CIA1Space);
+					
+				WHEN 16 =>			
+					
 					CIACycle <= CIA0Space OR CIA1Space;	
 					
 				WHEN 19 =>
