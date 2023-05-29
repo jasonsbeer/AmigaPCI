@@ -6,7 +6,7 @@
 
   (title_block
     (title "AMIGA PCI")
-    (date "2023-05-20")
+    (date "2023-05-28")
     (rev "1")
   )
 
@@ -9691,7 +9691,7 @@
           (reference "R28") (unit 1)
         )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
-          (reference "R28") (unit 1)
+          (reference "R929") (unit 1)
         )
       )
     )

@@ -60,6 +60,7 @@ entity MAIN is
 		nDBR : IN STD_LOGIC;
 		nBTNRST : IN STD_LOGIC;
 		nKBRST : IN STD_LOGIC;
+		AUTOBOOT : IN STD_LOGIC;
 		
 		nRAMEN : INOUT STD_LOGIC;
 		nREGEN : INOUT STD_LOGIC;
@@ -87,7 +88,7 @@ entity MAIN is
 		nRTCRD : OUT STD_LOGIC;
 		nRTCWR : OUT STD_LOGIC;
 		IDESpace : OUT STD_LOGIC;
-		GayleSpace : INOUT STD_LOGIC;		
+		--GayleSpace : INOUT STD_LOGIC;		
 		nTCI : OUT STD_LOGIC;
 		nPCIEN : OUT STD_LOGIC;
 		nCPURST : OUT STD_LOGIC		
@@ -105,6 +106,7 @@ architecture Behavioral of MAIN is
 	
 	SIGNAL EMBA : STD_LOGIC_VECTOR (2 DOWNTO 0);
 	SIGNAL PCIBA : STD_LOGIC_VECTOR (2 DOWNTO 0);
+	SIGNAL IDEBA : STD_LOGIC_VECTOR (7 DOWNTO 0);
 	
 	SIGNAL ACSpace : STD_LOGIC;
 	SIGNAL ACCycle : STD_LOGIC;
@@ -179,21 +181,21 @@ begin
 		nRESET => nRESET,
 		EMBA => EMBA,
 		PCIBA => PCIBA,
+		IDEBA => IDEBA,
 		CONFIGED => CONFIGED,
 		nRAMEN => nRAMEN,
 		nREGEN => nREGEN,
+		CIA0Space => CIA0Space,
+		CIA1Space => CIA1Space,
 		nROMEN => nROMEN,
 		nVBEN => nVBEN,
 		nRTCRD => nRTCRD,
 		nRTCWR => nRTCWR,
 		IDESpace => IDESpace,
-		GayleSpace => GayleSpace,
 		ACSpace => ACSpace,
 		nTCI => nTCI,
 		nEMEN => nEMEN,
-		nPCIEN => nPCIEN,		
-		CIA0Space => CIA0Space,
-		CIA1Space => CIA1Space
+		nPCIEN => nPCIEN
 	);
 	
 	----------------
@@ -208,11 +210,13 @@ begin
 		ACSpace => ACSpace,
 		PCISoftMode => PCISOFTMODE,
 		nRESET => nRESET,
+		AUTOBOOT => AUTOBOOT,
 		D => D,
 		CONFIGED => CONFIGED,
+		ACCycle => ACCycle,
 		EMBA => EMBA,
 		PCIBA => PCIBA,
-		ACCycle => ACCycle		
+		IDEBA => IDEBA	
 	);
 	
 	----------------------------

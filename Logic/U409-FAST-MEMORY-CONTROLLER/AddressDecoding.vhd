@@ -43,6 +43,7 @@ entity AddressDecoding is
 		nRESET : IN STD_LOGIC;
 		EMBA : IN STD_LOGIC_VECTOR (2 DOWNTO 0);
 		PCIBA : IN STD_LOGIC_VECTOR (2 DOWNTO 0);
+		IDEBA : IN STD_LOGIC_VECTOR (7 DOWNTO 0);
 		CONFIGED : IN STD_LOGIC;
 		
 		nRAMEN : INOUT STD_LOGIC;
@@ -55,7 +56,7 @@ entity AddressDecoding is
 		nRTCRD : OUT STD_LOGIC;
 		nRTCWR : OUT STD_LOGIC;
 		IDESpace : OUT STD_LOGIC;
-		GayleSpace : INOUT STD_LOGIC;
+		--GayleSpace : INOUT STD_LOGIC;
 		ACSpace : OUT STD_LOGIC;
 		nTCI : OUT STD_LOGIC;				
 		nEMEN : OUT STD_LOGIC;
@@ -74,8 +75,8 @@ architecture Behavioral of AddressDecoding is
 	SIGNAL ChipSpaceHigh : STD_LOGIC;
 	SIGNAL RTCSpace : STD_LOGIC;
 	SIGNAL IDE_Space : STD_LOGIC;
-	SIGNAL GayleIDSpace : STD_LOGIC;
-	SIGNAL GayleRegSpace : STD_LOGIC;
+	--SIGNAL GayleIDSpace : STD_LOGIC;
+	--SIGNAL GayleRegSpace : STD_LOGIC;
 	SIGNAL AutoconfigSpace : STD_LOGIC;
 	SIGNAL ZorroTwoSpace : STD_LOGIC;
 	SIGNAL NormalTransfer : STD_LOGIC;
@@ -110,7 +111,7 @@ begin
 	--CHIP RAM IS NOT CACHABLE BECAUSE THE CHIPSET CAN ALSO ACCESS THAT SPACE. WE DO NOT
 	--WANT TO CACHE CHIPSET REGISTER SPACES BUT ROM AND OTHER MEMORY SPACES ARE OK.
 	
-	nTCI <= NOT ( ChipRAMSpace OR ChipSpaceLow OR ChipSpaceHigh OR CIA0Space OR CIA1Space OR GayleSpace );	
+	nTCI <= NOT ( ChipRAMSpace OR ChipSpaceLow OR ChipSpaceHigh OR CIA0Space OR CIA1Space );	
 	
 	-------------------
 	-- ZORRO 2 SPACE --
@@ -199,11 +200,18 @@ begin
 	--IDE REGISTERS ARE SELECTED AT $00DA 8000, $00DA 9000, AND $00DA A000
 	--IDE DRIVE SPACE IS SELECTED AT $00DA 0000 - $00DA 3FFF
 	
-	IDE_Space <= '1' WHEN A(23 DOWNTO 15) = "110110100" AND ZorroTwoSpace = '1' AND CPUSpace = '0' ELSE '0';	
-	GayleIDSpace <= '1' WHEN A(23 DOWNTO 15) = "110111100" AND ZorroTwoSpace = '1' AND CPUSpace = '0' ELSE '0';
-	GayleRegSpace <= '1' WHEN A(23 DOWNTO 15) = "110110101" AND ZorroTwoSpace = '1' AND CPUSpace = '0' ELSE '0';
+	--IDE_Space <= '1' WHEN A(23 DOWNTO 15) = "110110100" AND ZorroTwoSpace = '1' AND CPUSpace = '0' ELSE '0';	
+	--GayleIDSpace <= '1' WHEN A(23 DOWNTO 15) = "110111100" AND ZorroTwoSpace = '1' AND CPUSpace = '0' ELSE '0';
+	--GayleRegSpace <= '1' WHEN A(23 DOWNTO 15) = "110110101" AND ZorroTwoSpace = '1' AND CPUSpace = '0' ELSE '0';
 	
-	GayleSpace <= (GayleIDSpace OR GayleRegSpace) AND nRESET;
+	--GayleSpace <= (GayleIDSpace OR GayleRegSpace) AND nRESET;
+	--IDESpace <= IDE_Space AND nRESET;
+	
+	--------------------------------
+	-- AT-APOLLO IDE SELECT LOGIC --
+	--------------------------------
+	
+	IDE_Space <= '1' WHEN A(23 DOWNTO 16) = IDEBA AND ZorroTwoSpace = '1' AND CPUSpace = '0' ELSE '0';
 	IDESpace <= IDE_Space AND nRESET;
 	
 	-----------------------------
