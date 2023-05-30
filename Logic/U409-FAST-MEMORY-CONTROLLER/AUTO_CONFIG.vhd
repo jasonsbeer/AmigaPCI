@@ -191,10 +191,10 @@ begin
 							
 						WHEN "010100" => --$28
 						
-							--THE AT-APOLLO.device ROM VECTOR IS b0010 0000 0000 0000.
+							--THE AT-APOLLO.device ROM VECTOR IS b1000 0000 0000 0000 = $8000.
 							DOUTRAM <= NOT "0000";
 							DOUTPCI <= NOT "0000";
-							DOUTIDE <= NOT "0010";							
+							DOUTIDE <= NOT "1000";							
 					
 						WHEN OTHERS =>
 						

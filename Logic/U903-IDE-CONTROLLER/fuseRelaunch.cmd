@@ -1,0 +1,1 @@
+-intstyle "ise" -incremental -o "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U903-IDE-CONTROLLER/IDE_CONTROLLER_isim_beh.exe" -prj "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U903-IDE-CONTROLLER/IDE_CONTROLLER_beh.prj" "work.IDE_CONTROLLER" 
