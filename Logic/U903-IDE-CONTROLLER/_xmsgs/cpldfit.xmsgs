@@ -5,7 +5,7 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
-<msg type="warning" file="Cpld" num="0" delta="new" >Unable to retrieve the path to the iSE Project Repository. Will use the default filename of &apos;<arg fmt="%s" index="1">IDE_CONTROLLER.ise</arg>&apos;.
+<msg type="warning" file="Cpld" num="0" delta="new" >Unable to retrieve the path to the iSE Project Repository. Will use the default filename of &apos;<arg fmt="%s" index="1">MAIN.ise</arg>&apos;.
 </msg>
 
 </messages>

@@ -4046,7 +4046,7 @@
     (effects (font (size 2.5 2.5)) (justify left bottom))
     (uuid 744e3ba7-a5b0-4eb6-8f6b-1dab5689640d)
   )
-  (text "CPU ACCESS THEN TRISTATE\nDMA READ/WRITE UDB(0) = 0 THEN TRISTATE, SELECT U707\nDMA READ/WRITE UDB(0) = 1 THEN ENABLE, SELECT U708\nAGNUS READ THEN DIR = 0 (B>A)\nAGNUS WRITE THEN DIR = 1 (A>B)\n"
+  (text "CPU ACCESS THEN TRISTATE\nDMA READ/WRITE DRA(0) = 0 THEN TRISTATE, SELECT U707\nDMA READ/WRITE DRA(0) = 1 THEN ENABLE, SELECT U708\nAGNUS READ THEN DIR = 0 (B>A)\nAGNUS WRITE THEN DIR = 1 (A>B)\n"
     (at 208.534 37.719 0)
     (effects (font (size 2 2)) (justify left bottom))
     (uuid 8dce2ba8-62a4-4cc3-9c4d-ab68ff6b6373)

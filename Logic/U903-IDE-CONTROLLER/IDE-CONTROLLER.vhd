@@ -1,22 +1,24 @@
 ----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
--- 
--- Create Date:    14:47:38 05/29/2023 
--- Design Name: 
--- Module Name:    IDE-CONTROLLER - Behavioral 
--- Project Name: 
--- Target Devices: 
--- Tool versions: 
--- Description: 
---
--- Dependencies: 
---
--- Revision: 
--- Revision 0.01 - File Created
--- Additional Comments: 
---
-----------------------------------------------------------------------------------
+--This work is shared under the Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) License
+--https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
+	
+--You are free to:
+--Share - copy and redistribute the material in any medium or format
+--Adapt - remix, transform, and build upon the material
+
+--Under the following terms:
+
+--Attribution - You must give appropriate credit, provide a link to the license, and indicate if changes were made. 
+--You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
+
+--NonCommercial - You may not use the material for commercial purposes.
+
+--ShareAlike - If you remix, transform, or build upon the material, you must distribute your contributions under the 
+--same license as the original.
+
+--No additional restrictions - You may not apply legal terms or technological measures that legally restrict others 
+--from doing anything the license permits.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
@@ -53,7 +55,8 @@ entity IDE_CONTROLLER is
 			AIDE : OUT STD_LOGIC_VECTOR (2 DOWNTO 0);
 			nIDERESET : OUT STD_LOGIC;
 			nTA : OUT STD_LOGIC;
-			nTBI : OUT STD_LOGIC
+			nTBI : OUT STD_LOGIC;
+			nIDEROMEN : OUT STD_LOGIC
 		
 		);
 
@@ -109,7 +112,8 @@ begin
 	--nCS0B AND nCS1B ARE CHIP SELECTS FOR THE "SECONDARY" PORT.
 	--nIDEEN, WHEN ASSERTED, SIGNALS THAT WE ARE IN THE ADDRESS SPACE ASSIGNED TO THE IDE CONTROLLER.
 	--nCS0A RESPONDS IN THE $0000 - $1FFC OFFSET WHILE nCS1A RESPONDS IN THE $2000-$3FFC OFFSET.
-	--nCS1B RESPONDS IN THE $4000 - $5FFC OFFSET WHILE nCS1B RESPONDS IN THE $6000-$7FFC OFFSET.
+	--nCS0B RESPONDS IN THE $4000 - $5FFC OFFSET WHILE nCS1B RESPONDS IN THE $6000-$7FFC OFFSET.	
+	--nIDEROMEN IS THE AUTO BOOT ROM AND RESPONDS AT OFFSET $8000.
 	--THE IDE ADDRESS SIGNALS A2..A0 ARE CONNECTED TO THE MC68040 A12..A10.
 	
 	--$0000 = b0000000000000000
@@ -124,6 +128,8 @@ begin
 	--$6000 = b0110000000000000
 	--$7FFC = b0111111111111100
 	
+	--$8000 = b1000000000000000
+	
 	--HERE, WE ARE PASSING THE DEVICE ADDRESS SIGNALS TO THE SELECTED IDE PORT WHEN WE ARE IN THE 
 	--IDE ADDRESS SPACE, THE MC68040 IS IN A DATA TRANSFER CYCLE, AND WE ARE NOT IN RESET.
 	
@@ -131,6 +137,8 @@ begin
 	nCS1A <= '0' WHEN A(15 DOWNTO 13) = "001" AND nIDEEN = '0' AND nTIP = '0' AND nRESET = '1' ELSE '1';
 	nCS0B <= '0' WHEN A(15 DOWNTO 13) = "010" AND nIDEEN = '0' AND nTIP = '0' AND nRESET = '1' ELSE '1';
 	nCS1B <= '0' WHEN A(15 DOWNTO 13) = "011" AND nIDEEN = '0' AND nTIP = '0' AND nRESET = '1' ELSE '1';
+	nIDEROMEN <= '0' WHEN A(15 DOWNTO 13) = "100" AND nIDEEN = '0' AND nTIP = '0' AND nRESET = '1' ELSE '1';
+	
 	AIDE <= A(12 DOWNTO 10);
 	
 	------------------
