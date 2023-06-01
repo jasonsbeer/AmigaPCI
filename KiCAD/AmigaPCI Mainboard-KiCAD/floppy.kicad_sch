@@ -8759,7 +8759,7 @@
       (effects (font (size 1.27 1.27)) (justify right))
     )
   )
-  (global_label "R_W" (shape input) (at 26.67 124.206 180)
+  (global_label "AR_W" (shape input) (at 26.67 124.206 180)
     (effects (font (size 1.27 1.27)) (justify right))
     (uuid f79fb5f1-e996-4be8-9bbe-c1e17025163b)
     (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 30.988 121.793 0)

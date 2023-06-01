@@ -6570,7 +6570,7 @@
   (global_label "R_W" (shape output) (at 289.814 156.464 180)
     (effects (font (size 1.27 1.27)) (justify right))
     (uuid 141a4ddc-ad19-4d42-8716-e53127244c70)
-    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 297.434 153.67 0)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 283.591 156.464 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
   )

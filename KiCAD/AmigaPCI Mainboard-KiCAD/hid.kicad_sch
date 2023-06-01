@@ -7876,7 +7876,7 @@
   )
 
   (symbol (lib_id "Interface_Ethernet:KSZ8081MLX") (at 238.633 221.996 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (in_bom no) (on_board no) (dnp no) (fields_autoplaced)
     (uuid 7cdd9e59-09c8-4faa-b4ef-490996b84bea)
     (property "Reference" "U5" (at 240.5889 254.1985 0)
       (effects (font (size 1.27 1.27)) (justify left))
