@@ -10045,7 +10045,7 @@
     )
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767" (page "14"))
+        (path "/72453515-27fe-4336-91f3-e3c8054f7767" (page "13"))
       )
     )
   )
@@ -10062,7 +10062,7 @@
     )
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767" (page "7"))
+        (path "/72453515-27fe-4336-91f3-e3c8054f7767" (page "6"))
       )
     )
   )
@@ -10079,7 +10079,7 @@
     )
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767" (page "9"))
+        (path "/72453515-27fe-4336-91f3-e3c8054f7767" (page "8"))
       )
     )
   )
@@ -10147,7 +10147,7 @@
     )
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767" (page "6"))
+        (path "/72453515-27fe-4336-91f3-e3c8054f7767" (page "5"))
       )
     )
   )
@@ -10164,7 +10164,7 @@
     )
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767" (page "11"))
+        (path "/72453515-27fe-4336-91f3-e3c8054f7767" (page "10"))
       )
     )
   )
@@ -10181,7 +10181,7 @@
     )
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767" (page "12"))
+        (path "/72453515-27fe-4336-91f3-e3c8054f7767" (page "11"))
       )
     )
   )
@@ -10198,7 +10198,24 @@
     )
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767" (page "10"))
+        (path "/72453515-27fe-4336-91f3-e3c8054f7767" (page "9"))
+      )
+    )
+  )
+
+  (sheet (at 101.092 84.074) (size 26.162 15.113) (fields_autoplaced)
+    (stroke (width 0.1524) (type solid))
+    (fill (color 0 0 0 0.0000))
+    (uuid 7a35a97e-5686-44dd-976e-0306b0eb5ef2)
+    (property "Sheetname" "IDE Interface" (at 101.092 83.3624 0)
+      (effects (font (size 1.27 1.27)) (justify left bottom))
+    )
+    (property "Sheetfile" "IDE.kicad_sch" (at 101.092 99.7716 0)
+      (effects (font (size 1.27 1.27)) (justify left top))
+    )
+    (instances
+      (project "AmigaPCI Mainboard"
+        (path "/72453515-27fe-4336-91f3-e3c8054f7767" (page "12"))
       )
     )
   )
@@ -10249,7 +10266,7 @@
     )
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767" (page "8"))
+        (path "/72453515-27fe-4336-91f3-e3c8054f7767" (page "7"))
       )
     )
   )
