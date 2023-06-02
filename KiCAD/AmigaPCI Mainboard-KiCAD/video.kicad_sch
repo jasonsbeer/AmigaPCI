@@ -9331,7 +9331,7 @@
     (property "Reference" "J301" (at 185.674 224.155 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "PUSH_BUTTON" (at 181.483 232.664 90)
+    (property "Value" "PI_BUTTON" (at 181.483 232.664 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" (at 188.214 225.552 0)
