@@ -1821,7 +1821,7 @@
   (symbol (lib_id "CPLD_Xilinx:XC95144XL-TQ144") (at 265.303 127.127 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid f181a1f8-5b17-4aeb-8e71-920b3f98271b)
-    (property "Reference" "U6" (at 279.9589 40.2971 0)
+    (property "Reference" "U110" (at 279.9589 40.2971 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "XC95144XL-TQ144" (at 279.9589 42.2181 0)
@@ -1980,7 +1980,7 @@
     (instances
       (project "AmigaPCI Mainboard"
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/c71cba2c-aa10-44ea-a37d-abe4b67b6d89"
-          (reference "U6") (unit 1)
+          (reference "U110") (unit 1)
         )
       )
     )

@@ -19,6 +19,10 @@
     )
 
     (stroke (width 0.3) (type solid)) (fill none) (layer "F.SilkS") (tstamp d2c56cce-21dd-4107-ac2e-ced4ab9a076a))
+  (pad "" np_thru_hole circle (at -26.5 -26.5) (size 3.175 3.175) (drill 3.175) (layers "F&B.Cu" "*.Mask") (tstamp 8d2e2236-7b90-417f-870c-c06440fccc7c))
+  (pad "" np_thru_hole circle (at -26.5 26.5) (size 3.175 3.175) (drill 3.175) (layers "F&B.Cu" "*.Mask") (tstamp cef8e6f3-b4b2-4a15-acf1-c1c95afa05b1))
+  (pad "" np_thru_hole circle (at 26.5 -26.5) (size 3.175 3.175) (drill 3.175) (layers "F&B.Cu" "*.Mask") (tstamp 60946d42-7f98-46bb-9e18-79e01c4274bc))
+  (pad "" np_thru_hole circle (at 26.5 26.5) (size 3.175 3.175) (drill 3.175) (layers "F&B.Cu" "*.Mask") (tstamp 93c3d6c5-48c0-48a1-a3d1-f2629e16814e))
   (pad "1" thru_hole roundrect (at 21.59 21.59) (size 1.524 1.524) (drill 0.762) (layers "*.Cu" "*.Mask") (roundrect_rratio 0)
     (chamfer_ratio 0.2) (chamfer top_left top_right bottom_left bottom_right) (tstamp dd4e84a0-0578-4030-977c-c8f2eda9db7d))
   (pad "2" thru_hole circle (at 19.05 21.59) (size 1.524 1.524) (drill 0.762) (layers "*.Cu" "*.Mask") (tstamp 573335b1-ad6d-4f03-9615-bf6e565ea83a))

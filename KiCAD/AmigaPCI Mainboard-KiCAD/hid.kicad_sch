@@ -6477,7 +6477,7 @@
     (property "Value" "100pF" (at 161.798 186.9513 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
-    (property "Footprint" "" (at 147.701 185.674 90)
+    (property "Footprint" "AmigaPCI:C_ARRAY_0612x4 (1632)" (at 147.701 185.674 90)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 154.686 185.674 0)
@@ -6506,7 +6506,7 @@
   (symbol (lib_id "Device:C_Small") (at 327.914 105.791 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 0172276c-9de8-4891-9c22-19906511aa95)
-    (property "Reference" "C218" (at 321.818 107.68 0)
+    (property "Reference" "C259" (at 321.818 107.68 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "0.1uF" (at 321.818 109.601 0)
@@ -6523,7 +6523,7 @@
     (instances
       (project "AmigaPCI Mainboard"
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
-          (reference "C218") (unit 1)
+          (reference "C259") (unit 1)
         )
       )
     )
@@ -6538,7 +6538,7 @@
     (property "Value" "68uF" (at 367.665 98.9022 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "" (at 365.506 98.171 0)
+    (property "Footprint" "Capacitor_THT:CP_Radial_D5.0mm_P2.00mm" (at 365.506 98.171 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 365.506 98.171 0)
@@ -6614,12 +6614,12 @@
   )
 
   (symbol (lib_id "N2630:74LVC245") (at 114.173 237.744 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (in_bom yes) (on_board yes) (dnp no)
     (uuid 1867dd01-666b-4a59-83cd-7a53d2ee21e1)
-    (property "Reference" "U419" (at 118.745 237.1003 0)
+    (property "Reference" "U419" (at 111.633 240.919 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "74HCT245" (at 118.745 239.0213 0)
+    (property "Value" "74HCT245" (at 116.84 242.57 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Footprint" "Package_SO:TSSOP-20_4.4x6.5mm_P0.65mm" (at 114.173 237.744 0)
@@ -6657,7 +6657,7 @@
           (reference "U419") (unit 1)
         )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
-          (reference "U208") (unit 2)
+          (reference "U223") (unit 2)
         )
       )
     )
@@ -6716,7 +6716,7 @@
   (symbol (lib_id "Diode:BAT54C") (at 264.16 31.369 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 1be7f65f-158b-4d11-a17b-262622c3fd16)
-    (property "Reference" "D200" (at 264.16 25.654 0)
+    (property "Reference" "D203" (at 264.16 25.654 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "BAT54C" (at 264.16 27.9654 0)
@@ -6737,7 +6737,7 @@
     (instances
       (project "AmigaPCI Mainboard"
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
-          (reference "D200") (unit 1)
+          (reference "D203") (unit 1)
         )
       )
     )
@@ -6752,7 +6752,7 @@
     (property "Value" "74HCT157" (at 74.93 70.866 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "Package_SO:SOIC-16_3.9x9.9mm_P1.27mm" (at 69.342 92.71 0)
+    (property "Footprint" "Package_SO:TSSOP-16_4.4x5mm_P0.65mm" (at 69.342 92.71 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "http://www.ti.com/lit/gpn/sn74LS157" (at 69.342 92.71 0)
@@ -6780,7 +6780,7 @@
           (reference "U202") (unit 1)
         )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
-          (reference "U207") (unit 1)
+          (reference "U224") (unit 1)
         )
       )
       (project "2000ATX"
@@ -6800,7 +6800,7 @@
     (property "Value" "68" (at 51.562 110.49 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "Resistor_SMD:R_1206_3216Metric" (at 52.832 106.172 90)
+    (property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 52.832 106.172 90)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 52.832 107.95 0)
@@ -6855,7 +6855,7 @@
           (reference "RN200") (unit 1)
         )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
-          (reference "RN200") (unit 1)
+          (reference "RN213") (unit 1)
         )
       )
       (project "2000ATX"
@@ -6919,13 +6919,13 @@
   (symbol (lib_id "Device:C_Small") (at 104.775 237.744 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 276db7c4-7c4b-40ad-841f-56bfad1aa906)
-    (property "Reference" "C225" (at 103.759 236.728 90)
+    (property "Reference" "C253" (at 103.759 236.728 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "0.1uF" (at 103.759 243.967 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "Capacitor_SMD:C_1206_3216Metric" (at 104.775 237.744 0)
+    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 104.775 237.744 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 104.775 237.744 0)
@@ -6936,7 +6936,7 @@
     (instances
       (project "AmigaPCI Mainboard"
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
-          (reference "C225") (unit 1)
+          (reference "C253") (unit 1)
         )
       )
     )
@@ -7078,7 +7078,7 @@
     (property "Value" "68uF" (at 377.063 98.9022 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "" (at 374.904 98.171 0)
+    (property "Footprint" "Capacitor_THT:CP_Radial_D5.0mm_P2.00mm" (at 374.904 98.171 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 374.904 98.171 0)
@@ -7304,7 +7304,7 @@
     (property "Value" "0.1uF" (at 79.756 231.394 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "Capacitor_SMD:C_1206_3216Metric" (at 76.835 230.251 0)
+    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 76.835 230.251 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 76.835 230.251 0)
@@ -7318,7 +7318,7 @@
           (reference "C218") (unit 1)
         )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
-          (reference "C218") (unit 1)
+          (reference "C258") (unit 1)
         )
       )
       (project "2000ATX"
@@ -7338,7 +7338,7 @@
     (property "Value" "470" (at 255.27 27.559 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "Resistor_SMD:R_1206_3216Metric" (at 253.238 31.369 0)
+    (property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 253.238 31.369 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 253.238 31.369 0)
@@ -7364,7 +7364,7 @@
     (property "Value" "68" (at 51.562 95.25 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "Resistor_SMD:R_1206_3216Metric" (at 52.832 90.932 90)
+    (property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 52.832 90.932 90)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 52.832 92.71 0)
@@ -7392,13 +7392,13 @@
   (symbol (lib_id "Device:C_Small") (at 205.74 133.985 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 4f72ac1e-85d9-4852-81af-1427e5acab44)
-    (property "Reference" "C221" (at 208.661 132.8166 0)
+    (property "Reference" "C260" (at 208.661 132.8166 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "7pF" (at 208.661 135.128 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "Capacitor_SMD:C_1206_3216Metric" (at 205.74 133.985 0)
+    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 205.74 133.985 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 205.74 133.985 0)
@@ -7409,7 +7409,7 @@
     (instances
       (project "AmigaPCI Mainboard"
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
-          (reference "C221") (unit 1)
+          (reference "C260") (unit 1)
         )
       )
     )
@@ -7616,7 +7616,7 @@
     (property "Value" "0.1uF" (at 233.172 139.065 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "Capacitor_SMD:C_1206_3216Metric" (at 238.76 136.779 0)
+    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 238.76 136.779 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 238.76 136.779 0)
@@ -7642,7 +7642,7 @@
     (property "Value" "68" (at 51.562 102.87 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "Resistor_SMD:R_1206_3216Metric" (at 52.832 98.552 90)
+    (property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 52.832 98.552 90)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 52.832 100.33 0)
@@ -7703,7 +7703,7 @@
   (symbol (lib_id "Device:C_Small") (at 228.346 82.931 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 75488c67-1f18-439b-935e-a38fd226b4c3)
-    (property "Reference" "C220" (at 229.616 85.328 0)
+    (property "Reference" "C254" (at 229.616 85.328 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "13pF" (at 229.616 87.249 0)
@@ -7720,7 +7720,7 @@
     (instances
       (project "AmigaPCI Mainboard"
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
-          (reference "C220") (unit 1)
+          (reference "C254") (unit 1)
         )
       )
     )
@@ -7754,7 +7754,7 @@
   (symbol (lib_id "AmigaPCI-Symbols:AP2156SG-13") (at 334.264 91.059 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 7aa7e18e-6b89-42a5-b282-8c49aceb77df)
-    (property "Reference" "U204" (at 334.264 81.8261 0)
+    (property "Reference" "U228" (at 334.264 81.8261 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "~" (at 334.264 91.059 0)
@@ -7780,7 +7780,7 @@
     (instances
       (project "AmigaPCI Mainboard"
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
-          (reference "U204") (unit 1)
+          (reference "U228") (unit 1)
         )
       )
     )
@@ -7949,7 +7949,7 @@
   (symbol (lib_id "MCU_ST_STM32F2:STM32F205RETx") (at 269.24 99.949 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 7cf14e25-b621-413d-b9fc-07a2ff27fd39)
-    (property "Reference" "U203" (at 273.7359 144.8515 0)
+    (property "Reference" "U227" (at 273.7359 144.8515 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "STM32F205RET7" (at 273.7359 146.7725 0)
@@ -8028,7 +8028,7 @@
     (instances
       (project "AmigaPCI Mainboard"
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
-          (reference "U203") (unit 1)
+          (reference "U227") (unit 1)
         )
       )
     )
@@ -8066,7 +8066,7 @@
   (symbol (lib_id "Device:C_Small") (at 208.026 82.931 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 8175ff18-6480-47d4-ae32-cc2e55e9cf41)
-    (property "Reference" "C219" (at 201.93 84.82 0)
+    (property "Reference" "C255" (at 201.93 84.82 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "13pF" (at 201.93 86.741 0)
@@ -8083,7 +8083,7 @@
     (instances
       (project "AmigaPCI Mainboard"
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
-          (reference "C219") (unit 1)
+          (reference "C255") (unit 1)
         )
       )
     )
@@ -8098,7 +8098,7 @@
     (property "Value" "100pF" (at 151.1301 83.0653 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
-    (property "Footprint" "" (at 165.227 81.788 90)
+    (property "Footprint" "AmigaPCI:C_ARRAY_0612x4 (1632)" (at 165.227 81.788 90)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 158.242 81.788 0)
@@ -8159,7 +8159,7 @@
     (property "Value" "0.1uF" (at 130.81 244.094 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "Capacitor_SMD:C_1206_3216Metric" (at 131.826 237.871 0)
+    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 131.826 237.871 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 131.826 237.871 0)
@@ -8179,13 +8179,13 @@
   (symbol (lib_id "Device:R_Small") (at 234.696 61.849 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 8d37dea1-001a-4784-84ff-06220274ebcb)
-    (property "Reference" "R200" (at 237.236 60.071 90)
+    (property "Reference" "R227" (at 237.236 60.071 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "10k" (at 236.474 63.627 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "" (at 234.696 61.849 0)
+    (property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 234.696 61.849 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 234.696 61.849 0)
@@ -8196,7 +8196,7 @@
     (instances
       (project "AmigaPCI Mainboard"
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
-          (reference "R200") (unit 1)
+          (reference "R227") (unit 1)
         )
       )
     )
@@ -8312,7 +8312,7 @@
           (reference "U419") (unit 1)
         )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
-          (reference "U208") (unit 1)
+          (reference "U223") (unit 1)
         )
       )
     )
@@ -8341,7 +8341,7 @@
           (reference "D200") (unit 1)
         )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
-          (reference "D200") (unit 1)
+          (reference "D202") (unit 1)
         )
       )
       (project "2000ATX"
@@ -8449,7 +8449,7 @@
           (reference "CN200") (unit 1)
         )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
-          (reference "CN200") (unit 1)
+          (reference "CN202") (unit 1)
         )
       )
       (project "2000ATX"
@@ -8628,7 +8628,7 @@
     (property "Value" "0.1uF" (at 76.454 118.11 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "Capacitor_SMD:C_1206_3216Metric" (at 74.93 119.38 0)
+    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 74.93 119.38 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 74.93 119.38 0)
@@ -8642,7 +8642,7 @@
           (reference "C202") (unit 1)
         )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
-          (reference "C224") (unit 1)
+          (reference "C261") (unit 1)
         )
       )
       (project "2000ATX"
@@ -8662,7 +8662,7 @@
     (property "Value" "100pF" (at 162.814 120.7843 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
-    (property "Footprint" "" (at 148.717 119.507 90)
+    (property "Footprint" "AmigaPCI:C_ARRAY_0612x4 (1632)" (at 148.717 119.507 90)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 155.702 119.507 0)
@@ -8890,7 +8890,7 @@
   (symbol (lib_id "Power_Protection:USBLC6-2SC6") (at 369.824 136.779 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid c61b4699-c070-4d50-af39-78de6b50c59c)
-    (property "Reference" "U206" (at 372.4657 126.1491 0)
+    (property "Reference" "U226" (at 372.4657 126.1491 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "USBLC6-2SC6" (at 372.4657 128.0701 0)
@@ -8911,7 +8911,7 @@
     (instances
       (project "AmigaPCI Mainboard"
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
-          (reference "U206") (unit 1)
+          (reference "U226") (unit 1)
         )
       )
     )
@@ -9023,7 +9023,7 @@
     (property "Value" "470" (at 270.51 34.417 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "Resistor_SMD:R_1206_3216Metric" (at 274.32 35.687 0)
+    (property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 274.32 35.687 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 274.32 35.687 0)
@@ -9049,7 +9049,7 @@
     (property "Value" "0.1uF" (at 154.051 243.967 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "Capacitor_SMD:C_1206_3216Metric" (at 155.067 237.744 0)
+    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 155.067 237.744 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 155.067 237.744 0)
@@ -9069,7 +9069,7 @@
   (symbol (lib_id "Power_Protection:USBLC6-2SC6") (at 328.676 136.779 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid dce44a30-f232-4df8-9f97-b8b739da6dd3)
-    (property "Reference" "U205" (at 331.3177 126.1491 0)
+    (property "Reference" "U225" (at 331.3177 126.1491 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "USBLC6-2SC6" (at 331.3177 128.0701 0)
@@ -9090,7 +9090,7 @@
     (instances
       (project "AmigaPCI Mainboard"
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
-          (reference "U205") (unit 1)
+          (reference "U225") (unit 1)
         )
       )
     )
@@ -9156,7 +9156,7 @@
     (property "Value" "1k" (at 58.42 59.309 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "Resistor_SMD:R_1206_3216Metric" (at 54.864 58.166 90)
+    (property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 54.864 58.166 90)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 56.642 58.166 0)
@@ -9190,7 +9190,7 @@
     (property "Value" "68" (at 51.562 87.63 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "Resistor_SMD:R_1206_3216Metric" (at 52.832 83.312 90)
+    (property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 52.832 83.312 90)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 52.832 85.09 0)
@@ -9373,7 +9373,7 @@
     (property "Value" "100pF" (at 150.1141 149.2323 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
-    (property "Footprint" "" (at 164.211 147.955 90)
+    (property "Footprint" "AmigaPCI:C_ARRAY_0612x4 (1632)" (at 164.211 147.955 90)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 157.226 147.955 0)
@@ -9433,7 +9433,7 @@
     (property "Value" "0.1uF" (at 246.888 139.065 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "Capacitor_SMD:C_1206_3216Metric" (at 246.38 136.779 0)
+    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 246.38 136.779 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 246.38 136.779 0)

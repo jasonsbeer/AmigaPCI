@@ -6920,7 +6920,7 @@
           (reference "U418") (unit 2)
         )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/6050d85a-08ce-47d9-805f-b2a01ec2bdd9"
-          (reference "U418") (unit 2)
+          (reference "U406") (unit 2)
         )
       )
     )
@@ -7450,7 +7450,7 @@
           (reference "U420") (unit 2)
         )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/6050d85a-08ce-47d9-805f-b2a01ec2bdd9"
-          (reference "U420") (unit 2)
+          (reference "U408") (unit 2)
         )
       )
     )
@@ -7694,7 +7694,7 @@
           (reference "U419") (unit 2)
         )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/6050d85a-08ce-47d9-805f-b2a01ec2bdd9"
-          (reference "U419") (unit 2)
+          (reference "U407") (unit 2)
         )
       )
     )
@@ -7824,7 +7824,7 @@
     (property "Footprint" "Package_SO:TSSOP-20_4.4x6.5mm_P0.65mm" (at 305.816 176.022 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Datasheet" "http://www.ti.com/lit/gpn/sn74LS245" (at 305.816 176.022 0)
+    (property "Datasheet" "" (at 305.816 176.022 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (pin "1" (uuid fb12b3e6-3cc1-4128-bf64-cd04a0cbef90))
@@ -8137,7 +8137,7 @@
           (reference "U421") (unit 2)
         )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/6050d85a-08ce-47d9-805f-b2a01ec2bdd9"
-          (reference "U421") (unit 2)
+          (reference "U405") (unit 2)
         )
       )
     )
@@ -8263,7 +8263,7 @@
     (property "Footprint" "Package_SO:TSSOP-20_4.4x6.5mm_P0.65mm" (at 305.816 139.192 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Datasheet" "" (at 305.816 139.192 0)
+    (property "Datasheet" "http://www.ti.com/lit/gpn/sn74LS245" (at 305.816 139.192 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (pin "1" (uuid dab74a5c-7051-499f-af8b-e44e96560c51))
@@ -8292,7 +8292,7 @@
           (reference "U420") (unit 1)
         )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/6050d85a-08ce-47d9-805f-b2a01ec2bdd9"
-          (reference "U406") (unit 1)
+          (reference "U407") (unit 1)
         )
       )
     )
