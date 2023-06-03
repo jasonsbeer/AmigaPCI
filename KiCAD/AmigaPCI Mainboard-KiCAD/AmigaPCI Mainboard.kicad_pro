@@ -176,12 +176,17 @@
       ],
       "track_widths": [
         0.0,
-        0.15
+        0.15,
+        0.5
       ],
       "via_dimensions": [
         {
           "diameter": 0.0,
           "drill": 0.0
+        },
+        {
+          "diameter": 0.6,
+          "drill": 0.3
         }
       ],
       "zones_allow_external_fillets": false,
@@ -472,7 +477,12 @@
     },
     "net_colors": null,
     "netclass_assignments": null,
-    "netclass_patterns": []
+    "netclass_patterns": [
+      {
+        "netclass": "PWR",
+        "pattern": "+5MOUSE"
+      }
+    ]
   },
   "pcbnew": {
     "last_paths": {
