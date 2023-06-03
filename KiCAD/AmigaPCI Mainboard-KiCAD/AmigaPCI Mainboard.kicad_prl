@@ -40,7 +40,6 @@
       10,
       12,
       13,
-      14,
       15,
       16,
       17,
@@ -61,7 +60,8 @@
       33,
       34,
       35,
-      36
+      36,
+      40
     ],
     "visible_layers": "fffffff_fffffff9",
     "zone_display_mode": 0

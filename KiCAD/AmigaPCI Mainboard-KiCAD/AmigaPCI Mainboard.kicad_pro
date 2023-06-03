@@ -34,9 +34,9 @@
         "other_text_thickness": 0.15,
         "other_text_upright": false,
         "pads": {
-          "drill": 0.762,
-          "height": 1.524,
-          "width": 1.524
+          "drill": 1.016,
+          "height": 1.68,
+          "width": 1.68
         },
         "silk_line_width": 0.15,
         "silk_text_italic": false,
@@ -126,7 +126,7 @@
         "min_text_height": 0.7999999999999999,
         "min_text_thickness": 0.08,
         "min_through_hole_diameter": 0.3,
-        "min_track_width": 0.19999999999999998,
+        "min_track_width": 0.15,
         "min_via_annular_width": 0.049999999999999996,
         "min_via_diameter": 0.39999999999999997,
         "solder_mask_clearance": 0.0,
@@ -175,9 +175,7 @@
         }
       ],
       "track_widths": [
-        0.0,
-        0.15,
-        0.5
+        0.0
       ],
       "via_dimensions": [
         {
@@ -439,19 +437,19 @@
       },
       {
         "bus_width": 12,
-        "clearance": 0.2,
+        "clearance": 0.15,
         "diff_pair_gap": 0.25,
         "diff_pair_via_gap": 0.25,
         "diff_pair_width": 0.2,
         "line_style": 0,
         "microvia_diameter": 0.3,
         "microvia_drill": 0.1,
-        "name": "PCI",
+        "name": "Narrow",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "schematic_color": "rgba(0, 0, 0, 0.000)",
         "track_width": 0.15,
-        "via_diameter": 0.8,
-        "via_drill": 0.4,
+        "via_diameter": 0.6,
+        "via_drill": 0.3,
         "wire_width": 6
       },
       {
@@ -479,8 +477,156 @@
     "netclass_assignments": null,
     "netclass_patterns": [
       {
-        "netclass": "PWR",
-        "pattern": "+5MOUSE"
+        "netclass": "Narrow",
+        "pattern": "AD*"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_CBE*"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/PCI Bus/_ACK64"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_FRAME"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/PCI Bus/_PAR"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_PERR"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_SYSERR"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/PCI Bus/_REQ64"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/PCI Bus/SMBDAT4"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/PCI Bus/SMBCLK4"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_STOP"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_DEVSEL"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_TRDY"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_IRDY"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/PCI Bus/IDSEL4"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_BUSREQ4"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_BUSGRANT4"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_BUSREQ3"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_BUSGRANT3"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/PCI Bus/_RSTBUS"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_INTD"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_INTB"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_INTA"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_INTC"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/PCI Bus/TDI"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/PCI Bus/TMS"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/PCI Bus/_LOCK"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/PCI Bus/IDSEL3"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/PCI Bus/IDSEL0"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/PCI Bus/IDSEL1"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/PCI Bus/IDSEL2"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/HID and User Ports/_Forward"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/HID and User Ports/_Back"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/HID and User Ports/_Left"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/HID and User Ports/_Right"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/HID and User Ports/PotY"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/HID and User Ports/PotX"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/HID and User Ports/_Fire"
       }
     ]
   },
