@@ -175,7 +175,8 @@
         }
       ],
       "track_widths": [
-        0.0
+        0.0,
+        0.5
       ],
       "via_dimensions": [
         {
@@ -627,6 +628,182 @@
       {
         "netclass": "Narrow",
         "pattern": "/HID and User Ports/_Fire"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/HID and User Ports/LSCLKOUT"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/HID and User Ports/LSCLKIN"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/HID and User Ports/HSCLKOUT"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/HID and User Ports/HSCLKIN"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "D*"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "A*"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_RTCWR"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_RTCRD"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/HID and User Ports/_HIDEN"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "PotX0"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/HID and User Ports/_Fire0"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "PotY0"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/HID and User Ports/_Right0"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/HID and User Ports/_Left0"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/HID and User Ports/_Back0"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/HID and User Ports/_Forward0"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/HID and User Ports/R1"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/HID and User Ports/PX1"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/HID and User Ports/PY1"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/HID and User Ports/R0"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/HID and User Ports/B0"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/HID and User Ports/PX0"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/HID and User Ports/PY0"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/HID and User Ports/FIR0"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/HID and User Ports/F1"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/HID and User Ports/FIR1"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/HID and User Ports/FOR0"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/HID and User Ports/B1"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/HID and User Ports/L0"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "+5V"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/HID and User Ports/L1"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_FIR0"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/HID and User Ports/_Forward1"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_FIR1"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/HID and User Ports/_Back1"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/HID and User Ports/_Left1"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/HID and User Ports/_Right1"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "PotY1"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "PotX1"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "PBUSY"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "PPOUT"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "PSEL"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Serial/DSR"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Serial/CTS"
       }
     ]
   },
