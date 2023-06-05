@@ -804,6 +804,134 @@
       {
         "netclass": "Narrow",
         "pattern": "/Serial/CTS"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Serial/CD"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Serial/RTS"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Serial/DTR"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_STEP"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "DIR"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_SEL0"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_SEL1"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_SEL2"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_MTR"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_BHS"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/HID and User Ports/TMS"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/HID and User Ports/TCK"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/HID and User Ports/TDI"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "GND"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/HID and User Ports/TDO"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "KBData"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_KBCLK"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_KBRST"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/HID and User Ports/_EN1"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "A8"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "A9"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "A10"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_BRST"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_SIDE"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Floppy and Parallel/_RDY"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Floppy and Parallel/_DRDY"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Floppy and Parallel/_DCHNG"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Floppy and Parallel/_PCRDY"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_INDEX"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Floppy and Parallel/SEL0"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Floppy and Parallel/SEL1"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Floppy and Parallel/_INUSE1"
       }
     ]
   },
