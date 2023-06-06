@@ -932,6 +932,42 @@
       {
         "netclass": "Narrow",
         "pattern": "/Floppy and Parallel/_INUSE1"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Floppy and Parallel/_INUSE0"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Floppy and Parallel/_MTROD"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Floppy and Parallel/_CHNG"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Floppy and Parallel/_WPROT"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Floppy and Parallel/_TRK0"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_DKRD"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "OVL"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_LED"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Floppy and Parallel/_DKWEB"
       }
     ]
   },
