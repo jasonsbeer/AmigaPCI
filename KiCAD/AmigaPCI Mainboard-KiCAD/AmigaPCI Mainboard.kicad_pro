@@ -46,7 +46,7 @@
         "silk_text_upright": false,
         "zones": {
           "45_degree_only": false,
-          "min_clearance": 0.25
+          "min_clearance": 0.44999999999999996
         }
       },
       "diff_pair_dimensions": [
@@ -421,7 +421,7 @@
     "classes": [
       {
         "bus_width": 12,
-        "clearance": 0.2,
+        "clearance": 0.15,
         "diff_pair_gap": 0.25,
         "diff_pair_via_gap": 0.25,
         "diff_pair_width": 0.2,
@@ -968,6 +968,74 @@
       {
         "netclass": "Narrow",
         "pattern": "/Floppy and Parallel/_DKWEB"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_DKWD"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Floppy and Parallel/_DKWDB"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Floppy and Parallel/_DF1"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "PPD0"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "PPD1"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "PPD2"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "PPD3"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "PPD4"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "PPD5"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "PPD6"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "PPD7"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "PSTROBE"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "TBASE"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_INT2"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_CIA0"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_PACK"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "CLKCIA"
       }
     ]
   },
