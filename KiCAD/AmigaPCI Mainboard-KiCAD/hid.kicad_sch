@@ -9580,7 +9580,7 @@
     (property "Value" "25MHz" (at 220.472 83.185 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "Crystal:Crystal_SMD_5032-4Pin_5.0x3.2mm" (at 216.916 78.105 0)
+    (property "Footprint" "Oscillator:Oscillator_SMD_TXC_7C-4Pin_5.0x3.2mm_HandSoldering" (at 216.916 78.105 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 216.916 78.105 0)

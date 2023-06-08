@@ -117,7 +117,7 @@
         "min_clearance": 0.0,
         "min_connection": 0.0,
         "min_copper_edge_clearance": 0.0,
-        "min_hole_clearance": 0.25,
+        "min_hole_clearance": 0.254,
         "min_hole_to_hole": 0.25,
         "min_microvia_diameter": 0.19999999999999998,
         "min_microvia_drill": 0.09999999999999999,
@@ -176,6 +176,8 @@
       ],
       "track_widths": [
         0.0,
+        0.0,
+        0.15,
         0.5
       ],
       "via_dimensions": [
@@ -421,7 +423,7 @@
     "classes": [
       {
         "bus_width": 12,
-        "clearance": 0.15,
+        "clearance": 0.2,
         "diff_pair_gap": 0.25,
         "diff_pair_via_gap": 0.25,
         "diff_pair_width": 0.2,
@@ -455,7 +457,7 @@
       },
       {
         "bus_width": 12,
-        "clearance": 0.2,
+        "clearance": 0.15,
         "diff_pair_gap": 0.25,
         "diff_pair_via_gap": 0.25,
         "diff_pair_width": 0.2,
@@ -1036,6 +1038,134 @@
       {
         "netclass": "Narrow",
         "pattern": "CLKCIA"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Floppy and Parallel/SEL"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Floppy and Parallel/POUT"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Floppy and Parallel/BUSY"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Floppy and Parallel/ACK"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Floppy and Parallel/PD7"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Floppy and Parallel/PD6"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Floppy and Parallel/PD5"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Floppy and Parallel/INIT"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Floppy and Parallel/PD4"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Floppy and Parallel/PD3"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Floppy and Parallel/PD2"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Floppy and Parallel/PD1"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Floppy and Parallel/PD0"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Floppy and Parallel/STROBE"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Floppy and Parallel/LINEFEED"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Serial/CTS-IN"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Serial/_TxD-OUT"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Serial/RTS-OUT"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Serial/DTR-OUT"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Serial/_RxD-IN"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_TxD"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Serial/CD-IN"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Serial/DSR-IN"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_RxD"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Serial/RI-OUT"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Serial/SCD"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Serial/SDTR"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Serial/SDSR"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Serial/SCTS"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Serial/SRTS"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Serial/SRxD"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Serial/STxD"
       }
     ]
   },

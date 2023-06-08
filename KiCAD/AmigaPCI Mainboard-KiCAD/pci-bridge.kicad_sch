@@ -1600,7 +1600,7 @@
       (effects (font (size 1.27 1.27)) (justify left))
     )
   )
-  (global_label "CLKPCI4" (shape input) (at 52.959 83.82 180) (fields_autoplaced)
+  (global_label "CLKPCI1" (shape input) (at 52.959 83.82 180) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify right))
     (uuid 7dae76b8-ed41-4464-99b6-0ff00e8d070d)
     (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 42.1308 83.82 0)
