@@ -188,9 +188,11 @@ See [Worst Case Write Timing Diagram](</DataSheets/TimingDiagrams/CIA Cycle Wors
 
 ### 1.14 Ethernet
 
-**THIS IS A STRETCH GOAL AND MAY NOT MAKE IT TO THE FINAL PROPOSAL**
+**THIS WILL NOT BE INCLUDED DUE TO LACK OF BOARD SPACE.**
 
-Ethernet 10/100 is provided via the KSZ8851-16MLL MAC controller and PHY. It is a 16 bit device and responds in the address space $000D 8000 - 000D 8FFF. This is the address space defined as "spare" in the Gayle specification so it should be a safe address range to use. Drivers will need to be adapted or created to interface the MC68040 to this device.
+~~**THIS IS A STRETCH GOAL AND MAY NOT MAKE IT TO THE FINAL PROPOSAL**~~
+
+~~Ethernet 10/100 is provided via the KSZ8851-16MLL MAC controller and PHY. It is a 16 bit device and responds in the address space $000D 8000 - 000D 8FFF. This is the address space defined as "spare" in the Gayle specification so it should be a safe address range to use. Drivers will need to be adapted or created to interface the MC68040 to this device.~~
 
 ## 2. PCI Bus
 
