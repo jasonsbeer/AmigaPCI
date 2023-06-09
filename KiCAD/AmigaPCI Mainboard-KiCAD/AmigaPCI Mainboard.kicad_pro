@@ -1166,6 +1166,218 @@
       {
         "netclass": "Narrow",
         "pattern": "/Serial/STxD"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "TM2"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "TM1"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "TM0"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "TT1"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "TT0"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "R_W"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "SIZ0"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "SIZ1"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_TS"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_TIP"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_TA"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_TEA"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_TCI"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_TBI"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_AVEC"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_IPL2"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_IPL1"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_IPL0"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_RSTOUT"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_CPURST"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/CPU/_MDIS"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/CPU/_CDIS"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_BB"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_BG"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_BR"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/CPU/SC1"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/CPU/SC0"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_LOCK"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_LOCKE"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "DRD*"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "RGA*"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "BR_W"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "UDB*"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "CMA*"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/IDE Interface/_ACTIVITY"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/IDE Interface/_ACTB"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/IDE Interface/_ACTA"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_RESET"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_CIA1"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_INT6"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_INT3"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "AUDIO"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "C3"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "C1"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/HID and User Ports/MH0"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/HID and User Ports/MV1"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/HID and User Ports/MH1"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/HID and User Ports/MV0"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "M0V"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "M1H"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "M1V"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "M0H"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Video/BURST"
       }
     ]
   },
