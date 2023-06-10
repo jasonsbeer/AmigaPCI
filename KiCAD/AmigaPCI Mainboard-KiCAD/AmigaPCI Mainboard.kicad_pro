@@ -188,6 +188,14 @@
         {
           "diameter": 0.6,
           "drill": 0.3
+        },
+        {
+          "diameter": 0.8,
+          "drill": 0.4
+        },
+        {
+          "diameter": 0.9,
+          "drill": 0.6
         }
       ],
       "zones_allow_external_fillets": false,
@@ -1378,6 +1386,66 @@
       {
         "netclass": "Narrow",
         "pattern": "/Video/BURST"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "AUDOUT"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "AUDIN"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_VSYNC"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Video/BLU3"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Video/BLU0"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Video/RED3"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Video/RED2"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Video/RED1"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Video/RED0"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Video/BLU1"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Video/BLU2"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Video/GRN0"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Video/GRN1"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Video/GRN2"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Video/GRN3"
       }
     ]
   },
