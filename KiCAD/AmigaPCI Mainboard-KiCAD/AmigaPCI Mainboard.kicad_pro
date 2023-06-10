@@ -1396,7 +1396,7 @@
         "pattern": "AUDIN"
       },
       {
-        "netclass": "Narrow",
+        "netclass": "Default",
         "pattern": "_VSYNC"
       },
       {
@@ -1446,6 +1446,14 @@
       {
         "netclass": "Narrow",
         "pattern": "/Video/GRN3"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_CSYNC"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Video/PIXELSW"
       }
     ]
   },
