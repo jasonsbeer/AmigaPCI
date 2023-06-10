@@ -1396,7 +1396,7 @@
         "pattern": "AUDIN"
       },
       {
-        "netclass": "Default",
+        "netclass": "Narrow",
         "pattern": "_VSYNC"
       },
       {
@@ -1454,6 +1454,66 @@
       {
         "netclass": "Narrow",
         "pattern": "/Video/PIXELSW"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Video/G3"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Video/G2"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Video/G1"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Video/G0"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Video/B0"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Video/B1"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Video/B2"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Video/B3"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Video/_COMPSYNC"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Video/R0"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Video/R1"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Video/R2"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Video/R3"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_HSYNC"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Video/SYNC"
       }
     ]
   },
