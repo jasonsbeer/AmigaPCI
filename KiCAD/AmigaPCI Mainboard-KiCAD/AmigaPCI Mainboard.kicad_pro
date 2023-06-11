@@ -1514,6 +1514,22 @@
       {
         "netclass": "Narrow",
         "pattern": "/Video/SYNC"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Video/COMPVID"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "TICK"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Video/BUR"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Video/PSW"
       }
     ]
   },
