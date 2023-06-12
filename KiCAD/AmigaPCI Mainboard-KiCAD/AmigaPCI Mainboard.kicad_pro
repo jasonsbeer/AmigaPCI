@@ -1530,6 +1530,10 @@
       {
         "netclass": "Narrow",
         "pattern": "/Video/PSW"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "IORDY"
       }
     ]
   },
