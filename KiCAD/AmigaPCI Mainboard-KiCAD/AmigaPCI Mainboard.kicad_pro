@@ -178,6 +178,7 @@
         0.0,
         0.0,
         0.15,
+        0.2,
         0.5
       ],
       "via_dimensions": [
@@ -1534,6 +1535,14 @@
       {
         "netclass": "Narrow",
         "pattern": "IORDY"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_IDEHEN"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_IDELATCH"
       }
     ]
   },
