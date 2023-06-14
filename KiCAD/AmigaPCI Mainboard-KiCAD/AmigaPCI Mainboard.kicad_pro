@@ -1543,6 +1543,30 @@
       {
         "netclass": "Narrow",
         "pattern": "_IDELATCH"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_BLS"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_DBR"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_REGEN"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_AS"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_AWE"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_RAMEN"
       }
     ]
   },
