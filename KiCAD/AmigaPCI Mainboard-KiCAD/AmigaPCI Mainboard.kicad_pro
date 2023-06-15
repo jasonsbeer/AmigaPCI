@@ -1567,6 +1567,54 @@
       {
         "netclass": "Narrow",
         "pattern": "_RAMEN"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Agnus Multiadapter/A20_XCLK"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Agnus Multiadapter/CDAC_XCLKEN"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Agnus Multiadapter/7MHz_CDAC"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Agnus Multiadapter/CCKQ_7MHz"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Agnus Multiadapter/VBB_CCK"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Agnus Multiadapter/DRA8"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Agnus Multiadapter/CCK_CCKQ"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Agnus Multiadapter/LDS_DRA8"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Agnus Multiadapter/CASL_UDS"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Agnus Multiadapter/CASU_CASL"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Agnus Multiadapter/UDS_LDS"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Agnus Multiadapter/DRA9_CASU"
       }
     ]
   },
