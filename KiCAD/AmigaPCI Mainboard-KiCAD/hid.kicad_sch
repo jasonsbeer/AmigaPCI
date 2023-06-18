@@ -4315,11 +4315,11 @@
         )
       )
     )
-    (symbol "power:+3V3" (power) (pin_names (offset 0)) (in_bom yes) (on_board yes)
+    (symbol "power:+3.3V" (power) (pin_names (offset 0)) (in_bom yes) (on_board yes)
       (property "Reference" "#PWR" (at 0 -3.81 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (property "Value" "+3V3" (at 0 3.556 0)
+      (property "Value" "+3.3V" (at 0 3.556 0)
         (effects (font (size 1.27 1.27)))
       )
       (property "Footprint" "" (at 0 0 0)
@@ -4331,10 +4331,10 @@
       (property "ki_keywords" "global power" (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (property "ki_description" "Power symbol creates a global label with name \"+3V3\"" (at 0 0 0)
+      (property "ki_description" "Power symbol creates a global label with name \"+3.3V\"" (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (symbol "+3V3_0_1"
+      (symbol "+3.3V_0_1"
         (polyline
           (pts
             (xy -0.762 1.27)
@@ -4360,9 +4360,9 @@
           (fill (type none))
         )
       )
-      (symbol "+3V3_1_1"
+      (symbol "+3.3V_1_1"
         (pin power_in line (at 0 0 90) (length 0) hide
-          (name "+3V3" (effects (font (size 1.27 1.27))))
+          (name "+3.3V" (effects (font (size 1.27 1.27))))
           (number "1" (effects (font (size 1.27 1.27))))
         )
       )
@@ -6852,6 +6852,31 @@
     )
   )
 
+  (symbol (lib_id "power:+3.3V") (at 285.496 47.117 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid 018a73ce-a822-4b0c-b9d1-a5fd6fdf60f0)
+    (property "Reference" "#PWR0113" (at 285.496 50.927 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Value" "+3.3V" (at 285.496 43.6151 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "" (at 285.496 47.117 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "" (at 285.496 47.117 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid fcc51f5b-38c3-401d-90ac-04274689368e))
+    (instances
+      (project "AmigaPCI Mainboard"
+        (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
+          (reference "#PWR0113") (unit 1)
+        )
+      )
+    )
+  )
+
   (symbol (lib_id "Device:C_Polarized_Small") (at 365.506 98.171 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 058a6cfb-2266-4ae8-a079-7c76a5e23690)
@@ -6981,31 +7006,6 @@
         )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
           (reference "U223") (unit 2)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "power:+3V3") (at 285.496 47.117 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid 198f6e42-d528-46f4-8178-ac37e5aeeeb7)
-    (property "Reference" "#PWR0255" (at 285.496 50.927 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "+3V3" (at 285.496 43.6151 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "" (at 285.496 47.117 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 285.496 47.117 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 49e8c5c9-8b84-454d-9d10-99f32cdc561c))
-    (instances
-      (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
-          (reference "#PWR0255") (unit 1)
         )
       )
     )
@@ -7766,31 +7766,6 @@
     )
   )
 
-  (symbol (lib_id "power:+3V3") (at 332.486 38.227 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid 5c1b3ec0-bda2-4f7f-a998-039d6923b316)
-    (property "Reference" "#PWR0260" (at 332.486 42.037 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "+3V3" (at 332.486 34.7251 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "" (at 332.486 38.227 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 332.486 38.227 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid d4949086-64c3-48e5-b862-c3df3569c356))
-    (instances
-      (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
-          (reference "#PWR0260") (unit 1)
-        )
-      )
-    )
-  )
-
   (symbol (lib_name "GND_2") (lib_id "power:GND") (at 369.824 149.479 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 5dc2a853-1ef6-4882-8ca7-8c70818408be)
@@ -8021,6 +7996,31 @@
       (project "2000ATX"
         (path "/bb595301-1c72-49dc-ac6f-007419f3a7fd/00000000-0000-0000-0000-000060592f9f"
           (reference "#PWR0269") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "power:+3.3V") (at 295.402 156.845 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid 6a49696b-89cf-4ded-aba4-3dd400ab3440)
+    (property "Reference" "#PWR0114" (at 295.402 160.655 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Value" "+3.3V" (at 295.402 153.3431 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "" (at 295.402 156.845 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "" (at 295.402 156.845 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid bf942c1b-11c9-4098-aaee-2a7019db9a2a))
+    (instances
+      (project "AmigaPCI Mainboard"
+        (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
+          (reference "#PWR0114") (unit 1)
         )
       )
     )
@@ -8886,31 +8886,6 @@
     )
   )
 
-  (symbol (lib_id "power:+3V3") (at 295.402 156.845 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid a9c2f908-87e6-4d81-99f4-b229aed5dcab)
-    (property "Reference" "#PWR0256" (at 295.402 160.655 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "+3V3" (at 295.402 153.3431 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "" (at 295.402 156.845 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 295.402 156.845 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid ade2d0c8-f1fc-4e5d-bbaa-fd7d0e5196b8))
-    (instances
-      (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
-          (reference "#PWR0256") (unit 1)
-        )
-      )
-    )
-  )
-
   (symbol (lib_id "Device:C_Small") (at 74.93 119.38 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid ac359b6b-e1b0-442a-8276-93e6965f4efe)
@@ -9566,6 +9541,31 @@
       (project "AmigaPCI Mainboard"
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
           (reference "#PWR070") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "power:+3.3V") (at 332.486 38.227 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid eaca9953-d4ac-4bd2-82e0-4e9223afeda2)
+    (property "Reference" "#PWR05" (at 332.486 42.037 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Value" "+3.3V" (at 332.486 34.7251 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "" (at 332.486 38.227 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "" (at 332.486 38.227 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid 69b98426-a23f-4c13-9288-dad8116a682d))
+    (instances
+      (project "AmigaPCI Mainboard"
+        (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
+          (reference "#PWR05") (unit 1)
         )
       )
     )

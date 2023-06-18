@@ -46,7 +46,7 @@
         "silk_text_upright": false,
         "zones": {
           "45_degree_only": false,
-          "min_clearance": 0.44999999999999996
+          "min_clearance": 0.25
         }
       },
       "diff_pair_dimensions": [
@@ -1615,6 +1615,26 @@
       {
         "netclass": "Narrow",
         "pattern": "/Agnus Multiadapter/DRA9_CASU"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_RAS1"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_RAS0"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_CASU"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_CASL"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_CDAC"
       }
     ]
   },
