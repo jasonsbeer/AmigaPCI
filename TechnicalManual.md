@@ -251,9 +251,9 @@ Table 2.1. AmigaPCI Endianness.
 
 ### 2.2 Mode
 
-The PCI slots of the AmigaPCI can be set to run in either AUTOCONFIG mode or software configuration* mode. The mode of each PCI slot is set by jumpers J100 and J101. See table 2.2. Slot 0 may only operate in AUTOCONFIG mode.
+The PCI slots of the AmigaPCI can be set to run in either AUTOCONFIG mode or software configuration* mode. The mode of each PCI slot is set by jumpers J100, J101. and J102. See table 2.2.
 
-In AUTOCONFIG mode, the PCI target device will be configured on startup just like any other Amiga AUTOCONFIG device. This allows for Amiga specific hardware with auto boot ROMs. The advantage of AUTOCONFIG mode is the ability to use the PCI device immediately upon startup without the need to load drivers from disk. This could support such devices such as auto booting hard drives, SVGA video, sound cards, etc. Once the PCI target device is configured by the AUTOCONFIG process, the target device may be directly accessed by its base address(es), just as any other Amiga expansion card. 
+In AUTOCONFIG mode, the PCI target device will be configured on startup just like any other Amiga AUTOCONFIG device. This allows for Amiga specific hardware with auto boot ROMs. The advantage of AUTOCONFIG mode is the ability to use the PCI device immediately upon startup without the need to load drivers from disk. This could support devices such as auto booting hard drives, SVGA video, sound cards, etc. Once the PCI target device is configured by the AUTOCONFIG process, the target device may be directly accessed by its base address(es), just as any other Amiga expansion card. 
 
 Software configuration mode requires the PCI target device be configured in software in order to function. This mode may be used to support PCI target devices designed for non-Amiga architecture. During startup, the PCI Bridge itself is configured via AUTOCONFIG in the 32 bit Zorro 3 address space, which will supply a base address for the PCI Bridge through which the slots in software configuration mode may be accessed. Driver software may then poll the PCI Bridge base address with each device selection bit. See additional information in Section 2.3. 
 
