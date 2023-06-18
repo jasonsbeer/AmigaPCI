@@ -118,13 +118,13 @@ Chip RAM is supplied by SDRAM and interfaces are provided for the chipset and MC
 
 #### 1.11.1 Chipset Register Cycles
 
-**THE PRESENCE OF LATCHES ON THE DRD BUS NEEDS TO BE INVESTIGATED. IF THE AGNUS AND DRAM TIMING SHEETS ARE ACCURATE, THESE LATCHES ARE NOT NECESSARY. SO, WHAT IS THEIR PURPOSE?
+~~**THE PRESENCE OF LATCHES ON THE DRD BUS NEEDS TO BE INVESTIGATED. IF THE AGNUS AND DRAM TIMING SHEETS ARE ACCURATE, THESE LATCHES ARE NOT NECESSARY. SO, WHAT IS THEIR PURPOSE?~~
 
 The CPU accesses most chipset registers through Agnus. The chipset register cycle is as follows:
 
-1) The CPU drives A1..20 in the chipset RAM address space and drives the data bus and R_W low for write cycles. The data bus bridge is tristate.
-2) The CPU asserts _TS for one clock to indicate the start of a transfer. The RAM controller asserts _REGEN.
-3) The RAM controller asserts _AS and _LDS, _UDS (for read cycles) during MC68000 State 2 (both C1 and C3 are low) and _LDS, _UDS during State 4 for write cycles.
+1) The CPU drives A1..20 in the chipset register address space and drives the data bus and R_W low for write cycles. The data bus bridge is tristate.
+2) The CPU asserts _TS for one clock to indicate the start of a transfer. The register controller asserts _REGEN.
+3) The register controller asserts _AS and _LDS, _UDS (for read cycles) during MC68000 State 2 (both C1 and C3 are low) and _LDS, _UDS during State 4 for write cycles.
 4) On the rising edge of C1, Agnus drives a valid address on the chipset address (RGA) bus. 
 5) On the falling edge of C1, the chipset drives valid data on the data bus (DRD) for read cycles or latches the data for write cycles.
 6) On falling edge of C3 (rising edge of MC68000 State 6), the board controller latches the data bus on read cycles.
@@ -253,19 +253,21 @@ Table 2.1. AmigaPCI Endianness.
 
 The PCI slots of the AmigaPCI can be set to run in either AUTOCONFIG mode or software configuration* mode. The mode of each PCI slot is set by jumpers J100 and J101. See table 2.2. Slot 0 may only operate in AUTOCONFIG mode.
 
-In AUTOCONFIG mode, the PCI target device will be configured on startup just like any other Amiga AUTOCONFIG device. This allows for Amiga specific hardware with auto boot ROMs. The advantage of AUTOCONFIG mode is the ability to use the PCI device immediately upon startup without the need to load drivers from disk. This could support such devices such as auto booting hard drives, SVGA video, sound cards, etc. Onced the PCI target device is configured by the AUTOCONFIG process, the target device may be directly accessed by its base address(es), just as any other Amiga expansion card. 
+In AUTOCONFIG mode, the PCI target device will be configured on startup just like any other Amiga AUTOCONFIG device. This allows for Amiga specific hardware with auto boot ROMs. The advantage of AUTOCONFIG mode is the ability to use the PCI device immediately upon startup without the need to load drivers from disk. This could support such devices such as auto booting hard drives, SVGA video, sound cards, etc. Once the PCI target device is configured by the AUTOCONFIG process, the target device may be directly accessed by its base address(es), just as any other Amiga expansion card. 
 
-Software configuration mode requires the PCI target device be configured in software in order to function. This mode may be used to support PCI target devices designed for non-Amiga architecture. During startup, the PCI Bridge itself is configured via AUTOCONFIG in the 32 bit Zorro 3 address space, which will supply a base address for the PCI Bridge through which the slots in software configuration mode may be accessed. Driver software may then poll the PCI Bridge base address with each device selection bit. See additional information in Section 2.3. Slots 1-3 may be set to software configuration mode.
+Software configuration mode requires the PCI target device be configured in software in order to function. This mode may be used to support PCI target devices designed for non-Amiga architecture. During startup, the PCI Bridge itself is configured via AUTOCONFIG in the 32 bit Zorro 3 address space, which will supply a base address for the PCI Bridge through which the slots in software configuration mode may be accessed. Driver software may then poll the PCI Bridge base address with each device selection bit. See additional information in Section 2.3. 
 
 PCI devices in AUTOCONFIG slots must be addressed via their AUTOCONFIG assigned base address. The PCI bridge will return $FFFF FFFF if and AUTOCONFIG slot is polled. 
 
 Table 2.2
-AUTOCONFIG Slots|Software Config Slots|J100|J101
+Software Config Slots|AUTOCONFIG Slots|J100|J101|J102
 -|-|-|-
-0-3|-|Open|Open
-0-2|3|Open|Short
-0-1|2-3|Short|Open
-0|1-3|Short|Short
+All|None|Short|Short|Short
+0|1-4|Short|Short|Open
+0-1|2-4|Short|Open|Short
+0-2|3-4|Short|Open|Open
+0-3|4|Open|Short|Short
+None|All|Open|Open|Open
 
 *Software configuration mode is compatable with Prometheus.
 
@@ -283,9 +285,7 @@ During configuration, specifications such as the device manufacturer, product nu
 
 ##### 2.3.1.2 ROM Vector
 
-PCI devices may have onboard ROMs that contain additional information describing the device and may be used to enhance functionality, such as for auto booting. PCI ROMs may contain multiple images that support multiple architectures. During PCI configuration, the ROM address requirement is read from the PCI configuration header. This is then presented to the AUTOCONFIG process as a ROM Vector.
-
-MORE DETAIL...HOW DOES THIS WORK?
+PCI devices may have onboard ROMs that contain additional information describing the device and may be used to enhance functionality, such as for auto booting. PCI ROMs may contain multiple images that support multiple architectures. During PCI configuration, the ROM address requirement is read from the PCI configuration header. This is then presented to the AUTOCONFIG process as a ROM Vector, which is an offset from the base address used where the ROM will respond.
 
 #### 2.3.2 Software Configuration
 
