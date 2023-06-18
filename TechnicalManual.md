@@ -266,8 +266,8 @@ None|All|Open|Open|Open
 0-3|4|Open|Open|Short
 0-2|3-4|Open|Short|Open
 0-1|2-4|Open|Short|Short
-0|1-4|Open|Short|Short
-All|None|Short|Open|Open
+0|1-4|Short|Open|Open
+All|None|Short|Open|Short
 
 *Software configuration mode is compatable with Prometheus.
 
