@@ -6,7 +6,7 @@
 
 # AmigaPCI
 
-The AmigaPCI is a Motorola MC68040 based OCS/ECS* Amiga computer in the ATX form factor. It provides four AUTOCONFIG capable PCI slots for expansion purposes such as video, sound, etc. Amiga OS and Kickstart 2.0+ is required for operation. 
+The AmigaPCI is a Motorola MC68040 based OCS/ECS* Amiga computer in the ATX form factor. It provides five AUTOCONFIG capable PCI slots for expansion purposes such as video, sound, etc.
 
 *Original Chip Set and Enhanced Chip Set, respectively.
 
@@ -26,13 +26,13 @@ The PCI bus is based on the PCI Local Bus Revision 2.3 specifications[[2]](#2) a
 
 #### 1.2.2 Video Slot
 
-The AmigaPCI includes the Amiga 2000/3000 video bus. This allows for any OCS/ECS compatable video device to be used with the AmigaPCI.
+The AmigaPCI includes the Amiga 2000/3000 video bus. This allows for the use of OCS/ECS compatable video devices with the AmigaPCI.
 
 ### 1.3 Amiga Chipset
 
 #### 1.3.1 Amiga Custom Chips
 
-The AmigaPCI must be populated with the Amiga OCS/ECS chips shown in table 1.3 in order to function properly. Reproductions in FPGA/CPLD may be used as well as the original equipment from Commodore. The Amiga chipset is required to enable basic functioning of the Amiga computer.
+The AmigaPCI must be populated with the Amiga OCS/ECS chips shown in table 1.3. Reproductions in FPGA/CPLD may be used as well as the original equipment from Commodore. The Amiga chipset is required to enable basic functioning of the Amiga computer.
 
 Table 1.3. Amiga chipset.
 Name|Chip ID|Commodore Part Number(s)|Quantity
@@ -44,7 +44,7 @@ CIA|8520A-1 or 8520PD|318029-03|2
 
 #### 1.3.2 Kickstart ROMs
 
-Kickstart ROMs for the Amiga 3000 should be burned to 100ns or faster 27C4096 EPROMs for use by the AmigaPCI. Original 27C400 Amiga EPROMs are not supported. U210 is the "high" (D15..0) ROM and U211 is the "low" (D31..16) ROM. 
+Kickstart ROMs for the Amiga 3000 should be burned to 100ns or faster 27C4096 EPROMs for use by the AmigaPCI. Original 27C400 Amiga EPROMs are not supported. 
 
 See [Timing Diagram](</DataSheets/TimingDiagrams/ROM Cycle.png>)
 
@@ -69,26 +69,22 @@ J202|1-2|2-3
 
 ### 1.5 Integrated Device Electronics (IDE)
 
-The AmigaPCI includes two buffered, host terminated Gayle compatible AUTOBOOT* IDE ports for hard drives and ATAPI** devices. The IDE port complies with the ATA/ATAPI Revision 4[[1]](#1) standard. Each IDE port supports two devices (master and slave). For instructions on installing and partitioning hard drives on the Amiga, refer to the [Commodore Hard Drive User's Guide](DataSheets/Hard_Drive_Users_Guide.pdf). This includes the HDToolBox user guide and other useful information for setting up both IDE and SCSI devices.
+**REWORD THIS FOR THE AT-APOLLO INTERFACE**
+
+~~The AmigaPCI includes two buffered, host terminated Gayle compatible AUTOBOOT* IDE ports for hard drives and ATAPI** devices. The IDE port complies with the ATA/ATAPI Revision 4[[1]](#1) standard. Each IDE port supports two devices (master and slave). For instructions on installing and partitioning hard drives on the Amiga, refer to the [Commodore Hard Drive User's Guide](DataSheets/Hard_Drive_Users_Guide.pdf). This includes the HDToolBox user guide and other useful information for setting up both IDE and SCSI devices.
 
 In order to use the secondary port, IDEFix must be installed and can be obtained from AmiNET.
 
 *AUTOBOOT is only available on the primary port and requires Kickstart v37.300 or greater or compatible scsi.device in Kickstart.  
-**ATAPI support included in Kickstart 3.1.4+. Older versions of Kickstart may require installation of third party ATAPI drivers.  
+**ATAPI support included in Kickstart 3.1.4+. Older versions of Kickstart may require installation of third party ATAPI drivers.~~
 
 ### 1.6 Human Interface Devices (HID)
 
-The AmigaPCI support human interface devices (HID) via the two USB ports. Only keyboards and mice are supported. Support is supplied via the on-board STM32F205 microcontroller, which translates the HID inputs into Amiga compatable signals. The mouse HID signals are shared with the JOY1 port (see 1.8.4) via a 74HCT245 buffer. HID input to the shared port is only active when the HID mouse is actively being used. When the HID mouse is not actively being used, the buffer outputs are tristate and will not adversely affect input from a device on JOY1. This allows both mouse HID and JOY1 devices be connected simultaneously without interfering with each other. Legacy Amiga keyboards may be used via an onboard header. The end user may build a cable interface to support attachment of an Amiga keyboard.
+The AmigaPCI support human interface devices (HID) via the two USB ports. Only keyboards and mice are supported. Support is supplied via the on-board STM32F205 microcontroller, which translates the HID inputs into Amiga compatable signals. The mouse HID signals are shared with the JOY1 port (see 1.8.4) via buffers. When there is active input from the HID mouse, the buffers are switched to only allow input from the HID port. When the HID mouse is not in active use, the buffers switch to allow input from JOY1. With this method, input from only one device is allowed at any time, with the mouse HID having priority.
 
 ### 1.7 Audio
 
 The audio output is generated by Paula and run through the filter circuit as in the Amiga 4000. The audio output is supplied from a line level 3.5mm stereo jack. A CD audio header is included to support the input of analog line-level audio from optical drives or other devices. It is a 4-pin 2.54 pitch connector in the RGGL footprint, with pin 1 = R. This may be installed as a standard 4-pin male header or TE Connectivity part 5-103639-3, which is the MPC-2 locking header that has become ubiquitous. 
-
-### 1.8 HDMI Video
-
-**DROPPED DUE TO SPACE LIMITATIONS.**  
-
-~~HDMI video output is possible through the use of the RGB2HDMI Raspberry Pi Zero header on the board. The interface circuitry is incorporated on the AmigaPCI board. To provide HDMI video, install the RGB2HDMI software for the Amiga on a Raspberry Pi Zero and attach it to the Raspberry Pi Zero header. Connect a video cable to the Raspberyy Pi Zero and route it out of the case via card bracket or an opening in the case. The Raspberry Pi Zero  is installed "face down". Installing the Raspberry Pi incorrectly may damage to the Raspberry Pi and the AmigaPCI board.~~
 
 ### 1.8 Legacy User Ports
 
@@ -102,7 +98,7 @@ The serial port is a male DB25 connector, which is stacked with the parallel fem
 
 #### 1.8.4 Legacy Joystick and Mouse Ports
 
-There are two legacy joystick port headers on the board. JOY1 is shared with the HID mouse input. In order to prevent signal contention with the HID mouse, the inputs from JOY1 are disconnected by a 74HCT4066 analog switch when the HID mouse is actively being used. This prevents undesired behavior and allows only one device to input signals at a time. See 1.6. The input for JOY2 is not shared with any other devices. 
+There are two legacy joystick port headers on the board. JOY1 is shared with the HID mouse input. In order to prevent signal contention with the HID mouse, the inputs from JOY1 are disconnected by a 74HCT4066 analog switch when the HID mouse is actively used. This prevents undesired behavior and allows only one device to input signals at a time, with the HID device having priority. See 1.6. The input for JOY2 is not shared with other devices. 
 
 ### 1.9 15KHz Video
 
@@ -110,7 +106,7 @@ The 15KHz standard Amiga video is output via an HD15 connector. This allows easy
 
 ### 1.10 Real Time Clock
 
-The real time clock (RTC) of the AmigaPCI uses the RTC of the STM32F205 microcontroller. When the RTC address space is active, the board controller signals the microcontroller with the associated request. The microcontroller then either consumes or supplies the necessary data in the correct format. The microcontroller is connected to an external crystal to supply an accurate clock signal for the microcontroller. The crystal is adjustable via the trim capacitor VC200.
+The real time clock (RTC) of the AmigaPCI is supplied by the STM32F205 microcontroller. When the RTC address space is active, the board controller signals the microcontroller with the associated request. The microcontroller then consumes or supplies the necessary data. The microcontroller is connected to an external crystal to supply an accurate clock signal for the microcontroller. The crystal is adjustable via the trim capacitor VC200.
 
 ### 1.11 Chipset RAM
 
@@ -118,13 +114,13 @@ Chip RAM is supplied by SDRAM and interfaces are provided for the chipset and MC
 
 #### 1.11.1 Chipset Register Cycles
 
-**THE PRESENCE OF LATCHES ON THE DRD BUS NEEDS TO BE INVESTIGATED. IF THE AGNUS AND DRAM TIMING SHEETS ARE ACCURATE, THESE LATCHES ARE NOT NECESSARY. SO, WHAT IS THEIR PURPOSE?
+~~**THE PRESENCE OF LATCHES ON THE DRD BUS NEEDS TO BE INVESTIGATED. IF THE AGNUS AND DRAM TIMING SHEETS ARE ACCURATE, THESE LATCHES ARE NOT NECESSARY. SO, WHAT IS THEIR PURPOSE?~~
 
 The CPU accesses most chipset registers through Agnus. The chipset register cycle is as follows:
 
-1) The CPU drives A1..20 in the chipset RAM address space and drives the data bus and R_W low for write cycles. The data bus bridge is tristate.
-2) The CPU asserts _TS for one clock to indicate the start of a transfer. The RAM controller asserts _REGEN.
-3) The RAM controller asserts _AS and _LDS, _UDS (for read cycles) during MC68000 State 2 (both C1 and C3 are low) and _LDS, _UDS during State 4 for write cycles.
+1) The CPU drives A1..20 in the chipset register address space and drives the data bus and R_W low for write cycles. The data bus bridge is tristate.
+2) The CPU asserts _TS for one clock to indicate the start of a transfer. The register controller asserts _REGEN.
+3) The register controller asserts _AS and _LDS, _UDS (for read cycles) during MC68000 State 2 (both C1 and C3 are low) and _LDS, _UDS during State 4 for write cycles.
 4) On the rising edge of C1, Agnus drives a valid address on the chipset address (RGA) bus. 
 5) On the falling edge of C1, the chipset drives valid data on the data bus (DRD) for read cycles or latches the data for write cycles.
 6) On falling edge of C3 (rising edge of MC68000 State 6), the board controller latches the data bus on read cycles.
@@ -134,7 +130,7 @@ See [Timing Diagram](</DataSheets/TimingDiagrams/Chipset Register Cycle.png>)
 
 #### 1.11.2 Chipset DMA Cycles
 
-The Amiga chipset accesses the chipset RAM via direct memory access (DMA). The chipset accesses SDRAM as a 16 bit port. Because the chipset SDRAM is a 32 bit port, the chipset data access is directed to either the low word or high word of the two words available by considering the Agnus column address DRA0 bit. The chipset DMA cycle does not adhear to the MC68000 bus transfer timing. The chipset DMA cycle spans two 7MHz clock cycles for writes and three 7MHz clock cycles for reads. The process is as follows:
+The Amiga chipset accesses the chipset RAM via direct memory access (DMA). The chipset accesses SDRAM as a 16 bit port. Because the AmigaPCI chipset SDRAM is a 32 bit port, the chipset data access is directed to either the low word or high word of the two words available by considering the Agnus column address DRA0 bit. The chipset DMA cycle does not adhear to the MC68000 bus transfer timing. The chipset DMA cycle spans two 7MHz clock cycles for writes and three 7MHz clock cycles for reads. The process is as follows:
 
 1) The chipset asserts DMAL on the rising edge of C3 to request direct memory access (DMA).
 2) Agnus asserts _DBR on the falling edge of C1 to indicate a chipset DMA cycle is in progress.
@@ -153,7 +149,7 @@ The CPU can access the 32 bit chipset RAM through Agnus. Because this process is
 1) The CPU drives A1..20 in the chipset RAM address space and drives the data bus and R_W low for write cycles. The data bus bridge is tristate.
 2) The CPU asserts _TS for one clock to indicate the start of a transfer. The RAM controller asserts _RAMEN.
 3) The RAM controller asserts _AS and _LDS, _UDS (for read cycles) during MC68000 State 2 (both C1 and C3 are low) and _LDS, _UDS during State 4 for write cycles.
-4) If _DBR is asserted (DMA cycle in progress), Agnus inserts waits until the DMA cycle is complete.
+4) If _DBR is asserted (DMA cycle in progress), waits are inserted until the DMA cycle is complete, indicated by the negation of _DBR.
 5) Agnus drives the _AWE signal low for write cycles approximately 60ns after the falling edge of C3.
 6) On the rising edge of C3, Agnus drives a valid row address on MA0 - MA9 (S2) and asserts _RAS0 or _RAS1. 
 7) On the falling edge of C1, Agnus drives a valid column address on MA0 - MA9 (S3) and asserts _CASL and/or _CASU. Because the MC68040 is always is a 32 bit port, DRA0 of the column address is ignored by the RAM controller.
@@ -187,14 +183,6 @@ See [Best Case Read Timing Diagram](</DataSheets/TimingDiagrams/CIA Cycle Best C
 See [Worst Case Read Timing Diagram](</DataSheets/TimingDiagrams/CIA Cycle Worst Case Read.png>)  
 See [Best Case Write Timing Diagram](</DataSheets/TimingDiagrams/CIA Cycle Best Case Write.png>)  
 See [Worst Case Write Timing Diagram](</DataSheets/TimingDiagrams/CIA Cycle Worst Case Write.png>)
-
-### 1.14 Ethernet
-
-**THIS WILL NOT BE INCLUDED DUE TO LACK OF BOARD SPACE.**
-
-~~**THIS IS A STRETCH GOAL AND MAY NOT MAKE IT TO THE FINAL PROPOSAL**~~
-
-~~Ethernet 10/100 is provided via the KSZ8851-16MLL MAC controller and PHY. It is a 16 bit device and responds in the address space $000D 8000 - 000D 8FFF. This is the address space defined as "spare" in the Gayle specification so it should be a safe address range to use. Drivers will need to be adapted or created to interface the MC68040 to this device.~~
 
 ## 2. PCI Bus
 
@@ -251,21 +239,23 @@ Table 2.1. AmigaPCI Endianness.
 
 ### 2.2 Mode
 
-The PCI slots of the AmigaPCI can be set to run in either AUTOCONFIG mode or software configuration* mode. The mode of each PCI slot is set by jumpers J100 and J101. See table 2.2. Slot 0 may only operate in AUTOCONFIG mode.
+The PCI slots of the AmigaPCI can be set to run in either AUTOCONFIG mode or software configuration* mode. The mode of each PCI slot is set by jumpers J100, J101. and J102. See table 2.2.
 
-In AUTOCONFIG mode, the PCI target device will be configured on startup just like any other Amiga AUTOCONFIG device. This allows for Amiga specific hardware with auto boot ROMs. The advantage of AUTOCONFIG mode is the ability to use the PCI device immediately upon startup without the need to load drivers from disk. This could support such devices such as auto booting hard drives, SVGA video, sound cards, etc. Onced the PCI target device is configured by the AUTOCONFIG process, the target device may be directly accessed by its base address(es), just as any other Amiga expansion card. 
+In AUTOCONFIG mode, the PCI target device will be configured on startup just like any other Amiga AUTOCONFIG device. This allows for Amiga specific hardware with auto boot ROMs. The advantage of AUTOCONFIG mode is the ability to use the PCI device immediately upon startup without the need to load drivers from disk. This could support devices such as auto booting hard drives, SVGA video, sound cards, etc. Once the PCI target device is configured by the AUTOCONFIG process, the target device may be directly accessed by its base address(es), just as any other Amiga expansion card. 
 
-Software configuration mode requires the PCI target device be configured in software in order to function. This mode may be used to support PCI target devices designed for non-Amiga architecture. During startup, the PCI Bridge itself is configured via AUTOCONFIG in the 32 bit Zorro 3 address space, which will supply a base address for the PCI Bridge through which the slots in software configuration mode may be accessed. Driver software may then poll the PCI Bridge base address with each device selection bit. See additional information in Section 2.3. Slots 1-3 may be set to software configuration mode.
+Software configuration mode requires the PCI target device be configured in software in order to function. This mode may be used to support PCI target devices designed for non-Amiga architecture. During startup, the PCI Bridge itself is configured via AUTOCONFIG in the 32 bit Zorro 3 address space, which will supply a base address for the PCI Bridge through which the slots in software configuration mode may be accessed. Driver software may then poll the PCI Bridge base address with each device selection bit. See additional information in Section 2.3. 
 
 PCI devices in AUTOCONFIG slots must be addressed via their AUTOCONFIG assigned base address. The PCI bridge will return $FFFF FFFF if and AUTOCONFIG slot is polled. 
 
 Table 2.2
-AUTOCONFIG Slots|Software Config Slots|J100|J101
--|-|-|-
-0-3|-|Open|Open
-0-2|3|Open|Short
-0-1|2-3|Short|Open
-0|1-3|Short|Short
+Software Config Slots|AUTOCONFIG Slots|J100|J101|J102
+-|-|-|-|-
+None|All|Open|Open|Open
+0-3|4|Open|Open|Short
+0-2|3-4|Open|Short|Open
+0-1|2-4|Open|Short|Short
+0|1-4|Short|Open|Open
+All|None|Short|Open|Short
 
 *Software configuration mode is compatable with Prometheus.
 
@@ -279,13 +269,11 @@ Slots that are identified as AUTOCONFIG slots will be configured at startup in t
 
 ##### 2.3.1.1 AUTOCONFIG Process
 
-During configuration, specifications such as the device manufacturer, product number, device capabilities, etc, are read from the device. Each PCI device is capable of supporting up to six base address registers (BAR0 - BAR5, between 0x10 - 0x24). At this time, the required address space for each of the six possible registers are determined and presented to Amiga OS for assigning of base addresses in the 32 bit Zorro 3n address space. This is done through the normal Zorro 3 AUTOCONFIG procedure. However, the PCI Controller logic translates the needs of the PCI card and requests AUTOCONFIG resources in a manner that is understood by Amiga OS. As an example, if BAR0 requests 512k of configuration space, this request will be passed to Amiga OS as a Zorro 3 device requiring 512k of AUTOCONFIG space. Amiga OS will then assign a base address to this request. This assigned base address will then be programmed into BAR0 of the PCI device. This process repeats for BAR1 - BAR5 of the same PCI device. This procedure is then repeated for each PCI device installed further down the configuration chain. Once complete, each PCI device may be accessed by the assigned base address(es), just as any other AUTOCONFIG device.
+During configuration, specifications such as the device manufacturer, product number, device capabilities, etc, are read from the device. Each PCI device is capable of supporting up to six base address registers (BAR0 - BAR5, between 0x10 - 0x24). At this time, the required address space for each of the six possible registers are determined and presented to Amiga OS for assigning of base addresses in the 32 bit Zorro 3 address space. This is done through the normal Zorro 3 AUTOCONFIG procedure. However, the PCI Controller logic translates the needs of the PCI card and requests AUTOCONFIG resources in a manner that is understood by Amiga OS. As an example, if BAR0 requests 512k of configuration space, this request will be passed to Amiga OS as a Zorro 3 device requiring 512k of AUTOCONFIG space. Amiga OS will then assign a base address to this request. This assigned base address will then be programmed into BAR0 of the PCI device. This process repeats for BAR1 - BAR5 of the same PCI device. This procedure is then repeated for each PCI device installed further down the configuration chain. Once complete, each PCI device may be accessed by the assigned base address(es), just as any other AUTOCONFIG device.
 
-##### 2.3.1.2 ROM Vector
+##### 2.3.1.2 AUTOCONFIG ROM Vector
 
-PCI devices may have onboard ROMs that contain additional information describing the device and may be used to enhance functionality, such as for auto booting. PCI ROMs may contain multiple images that support multiple architectures. During PCI configuration, the ROM address requirement is read from the PCI configuration header. This is then presented to the AUTOCONFIG process as a ROM Vector.
-
-MORE DETAIL...HOW DOES THIS WORK?
+PCI devices may have onboard ROMs that contain additional information describing the device and may be used to enhance functionality, such as for auto booting. PCI ROMs may contain multiple images that support multiple architectures. During PCI configuration, the ROM address requirement is read from the PCI configuration header. This is then presented to the AUTOCONFIG process as a ROM Vector, which is an offset from the base address used where the ROM will respond.
 
 #### 2.3.2 Software Configuration
 
@@ -302,7 +290,7 @@ PCI Slot|Address Bit|Offset From Base Address
 
 ### 2.4 Interrupt Handling
 
-Each PCI slot has four interrupt signals, identified as _INTA, _INTB, _INTC, and _INTD. Single function PCI devices are only allowed to use _INTA. The remaining signals are only used in the event of a multifunction PCI device, with one interrupt line per pci function. As a hyptothetical example, a multifunction I/O device may use _INTA for a floppy drive interface, _INTB for a hard drive interface, _INTC for a serial interface, etc. For the purposes of the AmigaPCI design, _INTA, _INTB, _INTC, and _INTD are OR'd together and connected to _INT2. Driver design should look for assertion of _INT2 to signal an interrupt request from devices on the PCI bus. When an interrupt is asserted, the driver needs to poll its device on the PCI bus to determine if its device is asserting the interrupt.
+Each PCI slot has four interrupt signals, identified as _INTA, _INTB, _INTC, and _INTD. Single function PCI devices are only allowed to use _INTA. The remaining signals are used in the event of a multifunction PCI device, with one interrupt line per PCI function. As a hyptothetical example, a multifunction I/O device may use _INTA for a floppy drive interface, _INTB for a hard drive interface, _INTC for a serial interface, etc. For the purposes of the AmigaPCI design, _INTA, _INTB, _INTC, and _INTD are OR'd together and connected to _INT2. Driver design should look for assertion of _INT2 to signal an interrupt request from devices on the PCI bus. When an interrupt is asserted, the driver needs to poll its device on the PCI bus to determine if its device is asserting the interrupt.
 
 ### 2.5 Bus Mastering
 
