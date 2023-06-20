@@ -1635,6 +1635,38 @@
       {
         "netclass": "Narrow",
         "pattern": "_CDAC"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_CUUBE"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_CWE"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_CCAS"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_CRCS"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_CLMBE"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_CRAS"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Chip Memory/LDB15"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_VBEN"
       }
     ]
   },
