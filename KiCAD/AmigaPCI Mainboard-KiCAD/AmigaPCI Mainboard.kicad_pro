@@ -1667,6 +1667,42 @@
       {
         "netclass": "Narrow",
         "pattern": "_VBEN"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_DBEN"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_IDELEN"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_UDS"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_LDS"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "/IDE Interface/_RSTIDE"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_UMBE"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_UUBE"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_LMBE"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_LLBE"
       }
     ]
   },
