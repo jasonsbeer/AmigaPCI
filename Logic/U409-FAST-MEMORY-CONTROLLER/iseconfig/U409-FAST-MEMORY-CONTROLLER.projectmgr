@@ -10,13 +10,13 @@
          <ClosedNode>/MEMORY_CONTROLLER - Behavioral |mnt|work|amiga|Service|Replacement Boards|AmigaPCI|Logic|U409-FAST-MEMORY-CONTROLLER|MEMORY_CONTROLLER.vhd</ClosedNode>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem>AddressDecoding - AddressDecoding - Behavioral (/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U409-FAST-MEMORY-CONTROLLER/AddressDecoding.vhd)</SelectedItem>
+         <SelectedItem>FAST-MEM-CONT.ucf (/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U409-FAST-MEMORY-CONTROLLER/FAST-MEM-CONT.ucf)</SelectedItem>
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
       <ViewHeaderState orientation="horizontal" >000000ff0000000000000001000000010000000000000000000000000000000002020000000100000001000000640000052d000000020000000000000000000000000200000064ffffffff0000008100000003000000020000052d0000000100000003000000000000000100000003</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >true</UserChangedColumnWidths>
-      <CurrentItem>AddressDecoding - AddressDecoding - Behavioral (/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U409-FAST-MEMORY-CONTROLLER/AddressDecoding.vhd)</CurrentItem>
+      <CurrentItem>FAST-MEM-CONT.ucf (/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U409-FAST-MEMORY-CONTROLLER/FAST-MEM-CONT.ucf)</CurrentItem>
    </ItemView>
    <ItemView engineview="SynthesisOnly" sourcetype="" guiview="Process" >
       <ClosedNodes>
@@ -24,13 +24,13 @@
          <ClosedNode>Design Utilities</ClosedNode>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem/>
+         <SelectedItem></SelectedItem>
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
       <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000000000000000002a2000000010000000100000000000000000000000064ffffffff000000810000000000000001000002a20000000100000000</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
-      <CurrentItem/>
+      <CurrentItem></CurrentItem>
    </ItemView>
    <ItemView guiview="File" >
       <ClosedNodes>
@@ -134,12 +134,13 @@
          <ClosedNode>User Constraints</ClosedNode>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem/>
+         <SelectedItem></SelectedItem>
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
       <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000000000000000002a2000000010000000100000000000000000000000064ffffffff000000810000000000000001000002a20000000100000000</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
-      <CurrentItem/>
+      <CurrentItem></CurrentItem>
    </ItemView>
+   <CopyAdditionalFiles/>
 </Project>

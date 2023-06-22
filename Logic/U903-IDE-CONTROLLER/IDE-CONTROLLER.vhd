@@ -36,7 +36,7 @@ entity IDE_CONTROLLER is
 	Port ( 
 	 
 			BCLK : IN STD_LOGIC;
-			A : in  STD_LOGIC_VECTOR (15 downto 10);
+			A : in  STD_LOGIC_VECTOR (15 downto 13);
 			nIDEEN : IN STD_LOGIC;
 			nRESET : IN STD_LOGIC;
 			nTIP : IN STD_LOGIC;

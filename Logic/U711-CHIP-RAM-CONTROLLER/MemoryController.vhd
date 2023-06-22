@@ -114,6 +114,10 @@ begin
 	--REG READ = ENABLED, DIR = 1 (A>B) (nREGEN=1, DMACYCLE=0, AGNUSWRITE=x, RnW = 1)
 	--REG WRITE = ENABLED, DIR = 0 (B>A) (nREGEN=1, DMACYCLE=0, AGNUSWRITE=x, RnW = 0)
 	--CPU CHIP RAM ACCESS = TRISTATE
+	
+	--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	--THESE HAVE CHANGED! CHECK THE SCHEMATICS!!!
+	--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 		
 	nDRDEN <= NOT (nRESET AND (DMACYCLE OR NOT nREGEN));
 	
@@ -124,6 +128,10 @@ begin
 	-----------------------
 	-- SDRAM CHIP SELECT --
 	-----------------------
+	
+	--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	--THESE HAVE CHANGED! CHECK THE SCHEMATICS!!!
+	--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	
 	nCUCS <= NOT (
 						(NOT SDRAMCMDOUT(3) AND nRESET AND NOT SDRAM_READY) OR --startup PROGRAMMING

@@ -1045,7 +1045,7 @@
         "pattern": "_PACK"
       },
       {
-        "netclass": "Narrow",
+        "netclass": "Default",
         "pattern": "CLKCIA"
       },
       {
