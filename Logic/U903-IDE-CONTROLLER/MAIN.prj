@@ -1,0 +1,4 @@
+vhdl work "IDE-CONTROLLER.vhd"
+vhdl work "ByteEnable.vhd"
+vhdl work "AgnusClock.vhd"
+vhdl work "MAIN.vhd"

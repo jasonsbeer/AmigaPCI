@@ -1,0 +1,11 @@
+xst -intstyle ise -ifn "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U903-IDE-CONTROLLER/MAIN.xst" -ofn "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U903-IDE-CONTROLLER/MAIN.syr" 
+xst -intstyle ise -ifn "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U903-IDE-CONTROLLER/MAIN.xst" -ofn "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U903-IDE-CONTROLLER/MAIN.syr" 
+xst -intstyle ise -ifn "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U903-IDE-CONTROLLER/MAIN.xst" -ofn "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U903-IDE-CONTROLLER/MAIN.syr" 
+xst -intstyle ise -ifn "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U903-IDE-CONTROLLER/MAIN.xst" -ofn "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U903-IDE-CONTROLLER/MAIN.syr" 
+xst -intstyle ise -ifn "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U903-IDE-CONTROLLER/MAIN.xst" -ofn "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U903-IDE-CONTROLLER/MAIN.syr" 
+xst -intstyle ise -ifn "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U903-IDE-CONTROLLER/MAIN.xst" -ofn "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U903-IDE-CONTROLLER/MAIN.syr" 
+xst -intstyle ise -ifn "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U903-IDE-CONTROLLER/MAIN.xst" -ofn "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U903-IDE-CONTROLLER/MAIN.syr" 
+xst -intstyle ise -ifn "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U903-IDE-CONTROLLER/MAIN.xst" -ofn "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U903-IDE-CONTROLLER/MAIN.syr" 
+ngdbuild -intstyle ise -dd _ngo -i -p xc95144xl-TQ144-10 "MAIN.ngc" MAIN.ngd  
+xst -intstyle ise -ifn "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U903-IDE-CONTROLLER/MAIN.xst" -ofn "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U903-IDE-CONTROLLER/MAIN.syr" 
+xst -intstyle ise -ifn "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U903-IDE-CONTROLLER/MAIN.xst" -ofn "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U903-IDE-CONTROLLER/MAIN.syr" 

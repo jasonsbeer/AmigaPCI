@@ -53,14 +53,24 @@ entity MAIN is
     Port ( 
 	 
 			BCLK : IN STD_LOGIC;
-			A : in  STD_LOGIC_VECTOR (15 downto 13);
+			CLK28 : IN  STD_LOGIC;
+         XCLK : IN  STD_LOGIC;
+			ASIZ : IN STD_LOGIC_VECTOR (1 DOWNTO 0);
+			A : in  STD_LOGIC_VECTOR (15 downto 10);
+			SIZ : IN STD_LOGIC_VECTOR (1 DOWNTO 0);
 			nIDEEN : IN STD_LOGIC;
 			nRESET : IN STD_LOGIC;
 			nTIP : IN STD_LOGIC;
 			RnW : IN STD_LOGIC;
-			--IORDYA : IN STD_LOGIC;
-			--IORDYB : IN STD_LOGIC;
+			IORDY : IN STD_LOGIC;			
+         nXCLKEN : IN  STD_LOGIC;
 			
+			nUUBE : OUT STD_LOGIC;
+			nUMBE : OUT STD_LOGIC;
+			nLMBE : OUT STD_LOGIC;
+			nLLBE : OUT STD_LOGIC;
+			nUDS : OUT STD_LOGIC;
+			nLDS : OUT STD_LOGIC;
 			nCS0A : INOUT  STD_LOGIC;
 			nCS1A : INOUT  STD_LOGIC;
 			nCS0B : INOUT  STD_LOGIC;
@@ -69,11 +79,11 @@ entity MAIN is
 			nDIORA : OUT STD_LOGIC;
 			nDIOWB : OUT STD_LOGIC;
 			nDIORB : OUT STD_LOGIC;
-			AIDE : OUT STD_LOGIC_VECTOR (2 DOWNTO 0);
 			nIDERESET : OUT STD_LOGIC;
 			nTA : OUT STD_LOGIC;
 			nTBI : OUT STD_LOGIC;
-			nIDEROMEN : OUT STD_LOGIC
+			nIDEROMEN : OUT STD_LOGIC;
+			CLKAgnus : OUT STD_LOGIC
 		
 		);
 		
@@ -84,26 +94,49 @@ architecture Behavioral of MAIN is
 begin
 
 	IDE_CONTROLLER: ENTITY work.IDE_CONTROLLER PORT MAP(
-			BCLK => BCLK,
-			A => A,
-			nIDEEN => nIDEEN,
-			nRESET => nRESET,
-			nTIP => nTIP,
-			RnW => RnW,
-			nCS0A => nCS0A,
-			nCS1A => nCS1A,
-			nCS0B => nCS0B,
-			nCS1B => nCS1B,
-			nDIOWA => nDIOWA,
-			nDIORA => nDIORA,
-			nDIOWB => nDIOWB,
-			nDIORB => nDIORB,
-			AIDE => AIDE,
-			nIDERESET => nIDERESET,
-			nTA => nTA,
-			nTBI => nTBI,
-			nIDEROMEN => nIDEROMEN
-		);
+		BCLK => BCLK,
+		A => A,
+		nIDEEN => nIDEEN,
+		nRESET => nRESET,
+		nTIP => nTIP,
+		RnW => RnW,
+		IORDY => IORDY,
+		nCS0A => nCS0A,
+		nCS1A => nCS1A,
+		nCS0B => nCS0B,
+		nCS1B => nCS1B,
+		nDIOWA => nDIOWA,
+		nDIORA => nDIORA,
+		nDIOWB => nDIOWB,
+		nDIORB => nDIORB,
+		nIDERESET => nIDERESET,
+		nTA => nTA,
+		nTBI => nTBI,
+		nIDEROMEN => nIDEROMEN
+	);
+		
+		
+	ByteEnable: ENTITY work.ByteEnable PORT MAP(
+		BCLK => BCLK,
+		A => ASIZ,
+		SIZ => SIZ,
+		nRESET => nRESET,
+		RnW => RnW,
+		nUUBE => nUUBE,
+		nUMBE => nUMBE,
+		nLMBE => nLMBE,
+		nLLBE => nLLBE,
+		nUDS => nUDS,
+		nLDS => nLDS
+	);
+	
+	
+	AgnusClock: ENTITY work.AgnusClock PORT MAP(
+		CLK28 => CLK28,
+		XCLK => XCLK,
+		nXCLKEN => nXCLKEN,
+		CLKAgnus => CLKAgnus
+	);
 
 
 end Behavioral;
