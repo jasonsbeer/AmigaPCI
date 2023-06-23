@@ -1,5 +1,0 @@
-set -tmpdir "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U903-IDE-CONTROLLER/xst/projnav.tmp"
-set -xsthdpdir "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U903-IDE-CONTROLLER/xst"
-elaborate
--ifn AgnusClock.prj
--ifmt mixed

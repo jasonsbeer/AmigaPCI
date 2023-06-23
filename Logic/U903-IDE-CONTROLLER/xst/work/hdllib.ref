@@ -1,8 +1,0 @@
-EN byteenable NULL "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U903-IDE-CONTROLLER/ByteEnable.vhd" sub00/vhpl02 1687398703
-AR ide_controller behavioral "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U903-IDE-CONTROLLER/IDE-CONTROLLER.vhd" sub00/vhpl01 1687398702
-EN ide_controller NULL "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U903-IDE-CONTROLLER/IDE-CONTROLLER.vhd" sub00/vhpl00 1687398701
-EN agnusclock NULL "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U903-IDE-CONTROLLER/AgnusClock.vhd" sub00/vhpl06 1687398705
-AR main behavioral "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U903-IDE-CONTROLLER/MAIN.vhd" sub00/vhpl05 1687398708
-AR byteenable behavioral "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U903-IDE-CONTROLLER/ByteEnable.vhd" sub00/vhpl03 1687398704
-EN main NULL "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U903-IDE-CONTROLLER/MAIN.vhd" sub00/vhpl04 1687398707
-AR agnusclock behavioral "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U903-IDE-CONTROLLER/AgnusClock.vhd" sub00/vhpl07 1687398706

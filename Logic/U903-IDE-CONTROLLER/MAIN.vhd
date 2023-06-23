@@ -83,7 +83,10 @@ entity MAIN is
 			nTA : OUT STD_LOGIC;
 			nTBI : OUT STD_LOGIC;
 			nIDEROMEN : OUT STD_LOGIC;
-			CLKAgnus : OUT STD_LOGIC
+			CLKAgnus : OUT STD_LOGIC;
+			IDELATCH : INOUT STD_LOGIC;
+			nIDEHEN : OUT STD_LOGIC;
+			nIDELEN : OUT STD_LOGIC
 		
 		);
 		
@@ -112,7 +115,10 @@ begin
 		nIDERESET => nIDERESET,
 		nTA => nTA,
 		nTBI => nTBI,
-		nIDEROMEN => nIDEROMEN
+		nIDEROMEN => nIDEROMEN,
+		IDELATCH => IDELATCH,
+		nIDEHEN => nIDEHEN,
+		nIDELEN => nIDELEN
 	);
 		
 		
