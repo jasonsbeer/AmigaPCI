@@ -19,23 +19,17 @@
 --No additional restrictions - You may not apply legal terms or technological measures that legally restrict others 
 --from doing anything the license permits.
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
+-- Engineer: Jason Neus
 -- 
--- Create Date:    14:46:14 05/29/2023 
--- Design Name: 
--- Module Name:    MAIN - Behavioral 
--- Project Name: 
--- Target Devices: 
--- Tool versions: 
--- Description: 
+-- Design Name: U903
+-- Module Name: IDE Controller
+-- Project Name: AmigaPCI
+-- Target Devices: XC9572XL 64 PIN
 --
--- Dependencies: 
+-- Description: LOGIC FOR IDE CONTROLLER, 28MHz AND C4 CLOCKS, AND RAM BYTE ENABLE.
 --
--- Revision: 
--- Revision 0.01 - File Created
--- Additional Comments: 
---
+-- Revision History:
+--     June 24 2023 : Initial Engineering Release
 ----------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
@@ -56,14 +50,16 @@ entity MAIN is
 			CLK28 : IN  STD_LOGIC;
          XCLK : IN  STD_LOGIC;
 			ASIZ : IN STD_LOGIC_VECTOR (1 DOWNTO 0);
-			A : in  STD_LOGIC_VECTOR (15 downto 10);
+			A : in  STD_LOGIC_VECTOR (15 DOWNTO 10);
 			SIZ : IN STD_LOGIC_VECTOR (1 DOWNTO 0);
 			nIDEEN : IN STD_LOGIC;
 			nRESET : IN STD_LOGIC;
 			nTIP : IN STD_LOGIC;
 			RnW : IN STD_LOGIC;
 			IORDY : IN STD_LOGIC;			
-         nXCLKEN : IN  STD_LOGIC;			
+         nXCLKEN : IN  STD_LOGIC;	
+			VCDAC : IN  STD_LOGIC;
+			VC3 : IN  STD_LOGIC;	
 			
 			nCS0A : INOUT  STD_LOGIC;
 			nCS1A : INOUT  STD_LOGIC;
@@ -88,7 +84,8 @@ entity MAIN is
 			IDELATCH : INOUT STD_LOGIC;
 			nIDEHEN : OUT STD_LOGIC;
 			nIDELEN : OUT STD_LOGIC;
-			nRTSEL : OUT STD_LOGIC
+			nRTSEL : OUT STD_LOGIC;
+			C4 : OUT  STD_LOGIC
 		
 		);
 		
@@ -145,6 +142,12 @@ begin
 		XCLK => XCLK,
 		nXCLKEN => nXCLKEN,
 		CLKAgnus => CLKAgnus
+	);
+	
+	C4Clock: ENTITY work.C4Clock PORT MAP(
+		VCDAC => VCDAC,
+		VC3 => VC3,
+		C4 => C4
 	);
 
 

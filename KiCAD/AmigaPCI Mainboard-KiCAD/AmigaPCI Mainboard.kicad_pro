@@ -1703,6 +1703,78 @@
       {
         "netclass": "Narrow",
         "pattern": "_LLBE"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_DIOWB"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_DIORB"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_CS1B"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_CS0B"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_DIOWA"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_DIORA"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_CS1A"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_CS0A"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_RTSEL"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_VC3"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "VCDAC"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Video/_C4"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_MC1"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_VC1"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "C4"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Agnus Multiadapter/7MHz"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Floppy and Parallel/_DKRST"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Floppy and Parallel/_IORST"
       }
     ]
   },
