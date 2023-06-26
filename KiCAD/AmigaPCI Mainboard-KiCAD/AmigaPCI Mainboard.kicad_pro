@@ -1775,6 +1775,14 @@
       {
         "netclass": "Narrow",
         "pattern": "/Floppy and Parallel/_IORST"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_XCLKEN"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "XCLK"
       }
     ]
   },
