@@ -1783,6 +1783,14 @@
       {
         "netclass": "Narrow",
         "pattern": "XCLK"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_IDEROMEN"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_ROMEN"
       }
     ]
   },
