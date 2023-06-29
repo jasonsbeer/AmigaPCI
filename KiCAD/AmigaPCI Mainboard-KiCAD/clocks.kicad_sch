@@ -5430,7 +5430,7 @@
   (symbol (lib_id "Device:C_Small") (at 392.811 154.305 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 269a4706-b6a5-40d0-84e2-0aca24cf8862)
-    (property "Reference" "C130" (at 394.335 153.035 90)
+    (property "Reference" "C135" (at 394.335 153.035 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "0.1uF" (at 394.589 160.782 90)
@@ -5447,7 +5447,7 @@
     (instances
       (project "AmigaPCI Mainboard"
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/d671396a-959f-409b-8612-87cb620c51cb"
-          (reference "C130") (unit 1)
+          (reference "C135") (unit 1)
         )
       )
       (project "2000ATX"
@@ -7387,9 +7387,9 @@
     (pin "7" (uuid 17752f28-3ab7-467d-8932-b198eeb51c7b))
     (pin "8" (uuid c4a2226e-1d0a-45cd-a428-0a459dda7e9d))
     (pin "9" (uuid 20e6071a-f48d-4665-8d39-9ac9bb13bf52))
-    (pin "44" (uuid adac55ed-08f9-4c43-b8d3-26a35671f66e))
-    (pin "12" (uuid 64e1a9ce-4355-4f24-a6f8-0c2ee1d67b32))
-    (pin "34" (uuid 38faf7de-c961-41c5-bf8f-b80b09c6d7d2))
+    (pin "44" (uuid adac55ed-08f9-4c43-b8d3-26a35671f66f))
+    (pin "12" (uuid 64e1a9ce-4355-4f24-a6f8-0c2ee1d67b33))
+    (pin "34" (uuid 38faf7de-c961-41c5-bf8f-b80b09c6d7d3))
     (instances
       (project "AmigaPCI Mainboard"
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
@@ -7501,9 +7501,9 @@
     (pin "7" (uuid cc7fe820-aec3-4fd1-a91a-4b4254df6e46))
     (pin "8" (uuid 77d74f83-d070-47a6-bbbc-b60ab0b165fb))
     (pin "9" (uuid a7f85178-b24b-4dc9-b847-9913b63f7996))
-    (pin "44" (uuid adac55ed-08f9-4c43-b8d3-26a35671f66e))
-    (pin "12" (uuid 64e1a9ce-4355-4f24-a6f8-0c2ee1d67b32))
-    (pin "34" (uuid 38faf7de-c961-41c5-bf8f-b80b09c6d7d2))
+    (pin "44" (uuid adac55ed-08f9-4c43-b8d3-26a35671f670))
+    (pin "12" (uuid 64e1a9ce-4355-4f24-a6f8-0c2ee1d67b34))
+    (pin "34" (uuid 38faf7de-c961-41c5-bf8f-b80b09c6d7d4))
     (instances
       (project "AmigaPCI Mainboard"
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"

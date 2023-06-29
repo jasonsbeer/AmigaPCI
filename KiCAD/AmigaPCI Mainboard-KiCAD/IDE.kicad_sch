@@ -5963,6 +5963,31 @@
     )
   )
 
+  (symbol (lib_id "power:+3.3V") (at 36.957 236.982 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid 1552ac36-1c48-451c-9549-3fda15624eec)
+    (property "Reference" "#PWR0216" (at 36.957 240.792 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Value" "+3.3V" (at 36.957 233.4801 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "" (at 36.957 236.982 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "" (at 36.957 236.982 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid c372560a-e48b-4228-b0f0-58a85c78b900))
+    (instances
+      (project "AmigaPCI Mainboard"
+        (path "/72453515-27fe-4336-91f3-e3c8054f7767/7a35a97e-5686-44dd-976e-0306b0eb5ef2"
+          (reference "#PWR0216") (unit 1)
+        )
+      )
+    )
+  )
+
   (symbol (lib_id "Device:R") (at 75.438 242.062 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 1a99d115-7728-453b-9369-7df526b8c1d9)
@@ -6795,37 +6820,6 @@
         )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/7a35a97e-5686-44dd-976e-0306b0eb5ef2"
           (reference "J901") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "power:+5V") (at 36.957 236.982 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 665b3590-228d-4632-8445-d930507e5a90)
-    (property "Reference" "#PWR0283" (at 36.957 240.792 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "+5V" (at 37.338 232.5878 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "" (at 36.957 236.982 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 36.957 236.982 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 35e2133b-5ece-47ca-8768-4b0912c0d42a))
-    (instances
-      (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
-          (reference "#PWR0283") (unit 1)
-        )
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/d671396a-959f-409b-8612-87cb620c51cb"
-          (reference "#PWR0293") (unit 1)
-        )
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/7a35a97e-5686-44dd-976e-0306b0eb5ef2"
-          (reference "#PWR0283") (unit 1)
         )
       )
     )
