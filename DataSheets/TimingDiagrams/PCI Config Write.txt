@@ -23,6 +23,6 @@
   
 ], 
  config:{skin:'narrow'},
- head:{text:'PCI CONFIGURATION WIRTE CYCLE' }, 
+ head:{text:'PCI CONFIGURATION WRITE CYCLE' }, 
  foot:{text:'PCI COMMANDS ARE LATCHED ON THE RISING EDGE OF PCI33.'}
   }
