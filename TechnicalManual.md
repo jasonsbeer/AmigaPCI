@@ -186,9 +186,9 @@ See [Worst Case Write Timing Diagram](</DataSheets/TimingDiagrams/CIA Cycle Wors
 
 ## 2. PCI Bus
 
-The AmigaPCI is designed to comply with the PCI Local Bus Revision 2.3 specificiation. Each slot supports Universal and 5V cards, as defined in the PCI Local Bus Revision 2.3 specification. Like Zorro 2 and Zorro 3, PCI supports auto configuration of devices on power up. This allows, via some translation, for the use of Amiga AUTOCONFIG to configure devices at start up. This fits well with Amiga OS as PCI devices can be configured as Zorro 3 devices, which function natively with Amiga OS. 
+The PCI Local Bus (PCI herein) is a processor independent, 32 bit expasion bus. The AmigaPCI is designed to comply with the PCI Local Bus Revision 2.3 specificiation. Each slot supports Universal and +5V cards, as defined in the PCI Local Bus Revision 2.3 specification. Like Zorro 2 and Zorro 3, PCI supports auto configuration of devices on power up. This allows, via some translation, for the use of Amiga AUTOCONFIG to configure devices at start up. This fits well with Amiga OS as PCI devices can be configured as Zorro 3 devices, which function natively with Amiga OS. 
 
-By definition, the PCI Local Bus is a processor independent, 32 bit expasion bus. The AmigaPCI PCI Bus is implemented via a MC68040 to PCI bridge using a PCI Bridge ASIC concept. The PCI Bridge logic translates data requests from the Motorola MC68040 and PCI devices in order that they may communicate in an effective manner. 
+The AmigaPCI PCI Bus is implemented via a MC68040 to PCI bridge using a PCI Bridge ASIC concept. The PCI Bridge logic translates data requests from the Motorola MC68040 and PCI devices in order that they may communicate in an effective manner. 
 
 The PCI Bridge can operate in either AUTOCONFIG mode or software configuration mode. This is discussed further in 2.2.
 
@@ -259,6 +259,8 @@ All|None|Short|Open|Short
 
 *Software configuration mode is compatable with Prometheus.
 
+[PCI Configuration Cycle Timing Diagram]()  .
+
 ### 2.3 PCI Configuration
 
 Each PCI target device may be configured by the Amiga AUTOCONFIG process or by software configuration. During configuration each PCI slot, in turn, is polled to obtain the capabilities and address space needs of the target device. Each PCI slot is polled by asserting the IDSEL signal, which is approximately equivalent to the _CFGIN signal of the Zorro bus. However, unlike the _CFGIN signal, the IDSEL is asserted by a specific address bit during the address phase of a configuration command access[[2]](#2). There is no equivalent of the _CFGOUT signal, as the PCI Bridge addresses each slot directly.
@@ -301,6 +303,8 @@ Direct bus* access is available to the MC68040 and PCI devices via bus mastering
 
 *In this discussion, "bus" is a term for the data and address buses, collectively, of the AmigaPCI.
 
+[Bus Mastering Timing Diagram]()  
+
 #### 2.5.1 MC68040 as a Bus Driver
 
 Unlike previous Motorola MC68000 series processors, the MC68040 does not preferentially own the bus. It is considered for bus access with all other bus mastering devices on the system. Thus, bus arbitration includes the MC68040 when assigning bus ownership, which is given priority over other devices. When it is ready to take ownership of the system bus the MC68040 will assert _BR (bus request) to indicate its need to own the system bus. When there are no current bus cycles in progress, the arbiter will assert _BG (bus grant) in response so that the MC68040 may begin its bus activities. Once _BG is asserted by the arbiter, the MC68040 will assert _BB (bus busy) to indicate ownership of the bus. _BG is asserted until the MC68040 bus access is complete, indicated by negation of _BR. While posessing explicit ownership of the bus, the MC68040 may start a bus cycle at any time asserting _BR and _BB. The MC68040 is granted implicit ownership of the bus when no other device is requesting, or has been granted, bus ownership. In this state, the MC68040 leaves the bus in an undefined state. _BR is negated and _BB is tri-state.
@@ -310,6 +314,14 @@ Unlike previous Motorola MC68000 series processors, the MC68040 does not prefere
 When a PCI device is ready to take ownership of the system bus, it will assert _REQx, where x is the slot designation of the device (0-4). Once the current bus cycle has completed (_BB is negated) the arbiter will assert _BB to indicate a bus operation is in progress. It will simultaneously assert _GNTx, allowing the requesting PCI device to take ownership of the bus and begin its operation. _GNTx and _BB will remain asserted until _REQx is negated. At that time, _GNTx will be negated and _BB will be negated.
 
 Note: When _BB is asserted and _BG is negated, this allows for bus snooping operations supported by the MC68040.
+
+### 2.6 CPU Driven PCI Data Cycle
+
+[CPU Driven Data Cycle Timing Diagram]()  
+
+### 2.7 PCI Driven PCI Data Cycle (DMA)
+
+[PCI Driven Data Cycle Timing Diagram]()  
 
 ## References
 <a id="1">[1]</a>Data Movement Between Big-Endian and Little-Endian Devices. Freescale Semiconductor.  
