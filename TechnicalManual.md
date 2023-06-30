@@ -263,7 +263,9 @@ All|None|Short|Open|Short
 
 ### 2.3 PCI Configuration
 
-Each PCI target device may be configured by the Amiga AUTOCONFIG process or by software configuration. During configuration each PCI slot, in turn, is polled to obtain the capabilities and address space needs of the target device. Each PCI slot is polled by asserting the IDSEL signal, which is approximately equivalent to the _CFGIN signal of the Zorro bus. However, unlike the _CFGIN signal, the IDSEL is asserted by a specific address bit during the address phase of a configuration command access[[2]](#2). There is no equivalent of the _CFGOUT signal, as the PCI Bridge addresses each slot directly.
+Each PCI target device may be configured by the Amiga AUTOCONFIG process or by software configuration. During configuration each PCI slot, in turn, is polled to obtain the capabilities and address space needs of the target device. Each PCI slot is polled by asserting the IDSEL signal, which is approximately equivalent to the _CFGIN signal of the Zorro bus. However, unlike the _CFGIN signal, the IDSEL is asserted by a specific address bit during the address phase of a configuration command access[[2]](#2). There is no equivalent of the _CFGOUT signal, as the PCI Bridge addresses each slot directly. It is necessary to latch the AD bus on the rising edge of the PCI clock during the read cycle data phase, holding this data on the MC68040 data bus, to avoid missing the data presented by the target device.
+
+<p align="center"><img src="/DataSheets/TimingDiagrams/PCI Configuration Read Cycle.jpg"></p>
 
 #### 2.3.1 AUTOCONFIG
 
