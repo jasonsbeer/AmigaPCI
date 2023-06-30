@@ -1,0 +1,28 @@
+{signal: [
+['CLK',
+  {name: 'BCLK40', wave: 'p.......',  "period": 3},
+ {name: 'PCI33', wave: 'p.....',  "period": 3.5, "phase" : 1}],
+ 
+['MC68040', 
+  {name: 'STATE', wave: '=.=.=.....=.=...', "period": 1.5, data: ['', '1', 'W', '2' ]},   
+  {name: 'A[31..0]', wave: 'x..=.........x..', "period": 1.5},
+  {name: 'D[0..31]', wave: 'x..=.........x..', "period": 1.5},  
+  {name: '_TIP', wave: '1..0.........1..', "period": 1.5},
+  {name: 'R_W', wave: '1..0.........1..', "period": 1.5}],
+ ['PCI BRIDGE/TARGET', 
+  {name: 'IDSEL', wave: 'x....1...........x.....'},
+  {name: '_FRAME', wave:'1........0..1..........'},
+  {name: 'AD[31..0]', wave: 'x....=.......=...x.....', data: ['ADDRESS', 'DATA']},
+  {name: 'C/BE[3..0]', wave:'x........=...=...x.....', data: ['CFG-WR', '_BE']},  
+  {name: '_IRDY', wave:'z....1...0.......1...z.'},
+  {name: '_TRDY', wave:'z....1...0.......1...z.'},
+  {name: '_DEVSEL', wave: 'z....1...0.......1...z.'},
+  {name: '_TA', wave: 'z....1.....0.1.z', "period": 1.5},
+  {name: '_TBI', wave: 'z....1.....0.1.z', "period": 1.5}
+ ],
+  
+], 
+ config:{skin:'narrow'},
+ head:{text:'PCI CONFIGURATION WIRTE CYCLE' }, 
+ foot:{text:'PCI COMMANDS ARE LATCHED ON THE RISING EDGE OF PCI33.'}
+  }
