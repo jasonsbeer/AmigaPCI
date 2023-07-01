@@ -67,7 +67,7 @@ Jumper|Amiga Drive|PC Drive
 J201|1-2|2-3
 J202|1-2|2-3
 
-### 1.5 Integrated Device Electronics (IDE)
+### 1.5 ATA/ATAPI
 
 **REWORD THIS FOR THE AT-APOLLO INTERFACE**
 
@@ -76,7 +76,12 @@ J202|1-2|2-3
 In order to use the secondary port, IDEFix must be installed and can be obtained from AmiNET.
 
 *AUTOBOOT is only available on the primary port and requires Kickstart v37.300 or greater or compatible scsi.device in Kickstart.  
-**ATAPI support included in Kickstart 3.1.4+. Older versions of Kickstart may require installation of third party ATAPI drivers.~~
+**ATAPI support included in Kickstart 3.1.4+. Older versions of Kickstart may require installation of third party ATAPI drivers.~~  
+
+<p align="center"><img src="/DataSheets/TimingDiagrams/IDE Control Register Read.png"></p>
+<p align="center"><img src="/DataSheets/TimingDiagrams/IDE Control Register Write.png"></p>
+<p align="center"><img src="/DataSheets/TimingDiagrams/IDE Data Register Read.png"></p>
+<p align="center"><img src="/DataSheets/TimingDiagrams/IDE Data Register Write.png"></p>
 
 ### 1.6 Human Interface Devices (HID)
 
