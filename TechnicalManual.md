@@ -184,8 +184,6 @@ See [Timing Diagram](</DataSheets/TimingDiagrams/Fast RAM.png>)
 
 The AmigaPCI does not support MC6800 or MOS6502 devices on the PCI bus with resources from the AmigaPCI main board. Such a PCI device must implement its own timing resources. This means we can break away from the Enable cycle as implemented in all original Amiga designs. While still relatively slow, we can cut the CIA access time by more than half by implementing the recommended timings from the 8502A data sheet. During a read cycle, the CIA needs 180ns for data to become valid while the clock input (PHI2) is high and the chip select is asserted (low). For the best case, the CPU should start a cycle just after the rising edge of PHI2. This will allow enough time for the CIA to place data on the bus so the CPU can latch the data at the falling edge of PHI2. This cycle is approximately 237ns. The worst case scenario is when the CPU starts a cycle too late to meet the 180ns time before the falling edge of PHI2. This results in the need to wait until the next rising edge of PHI2 to interact with the CIA. This cycle is approximately 700ns. Write cycles are more forgiving, as the setup time is only 75ns.
 
-**CLOCK "2" IS ONE CLOCK CYCLE TOO LATE IN THE DIAGRAMS. FIX.**
-
 <p align="center"><img src="/DataSheets/TimingDiagrams/CIA Cycle Best Case Read.png" width="650"></p>
 <p align="center"><img src="/DataSheets/TimingDiagrams/CIA Cycle Best Case Write.png" width="650"></p>
 <p align="center"><img src="/DataSheets/TimingDiagrams/CIA Cycle Worst Case Read.png"></p>
