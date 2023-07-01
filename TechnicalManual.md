@@ -78,10 +78,10 @@ J202|1-2|2-3
 <del>*AUTOBOOT is only available on the primary port and requires Kickstart v37.300 or greater or compatible scsi.device in Kickstart.</del>
 <del>**ATAPI support included in Kickstart 3.1.4+. Older versions of Kickstart may require installation of third party ATAPI drivers.</del>
 
-<p align="center"><img src="/DataSheets/TimingDiagrams/IDE Control Register Read.png"></p>
-<p align="center"><img src="/DataSheets/TimingDiagrams/IDE Control Register Write.png"></p>
-<p align="center"><img src="/DataSheets/TimingDiagrams/IDE Data Register Read.png"></p>
-<p align="center"><img src="/DataSheets/TimingDiagrams/IDE Data Register Write.png"></p>
+<p align="center"><img src="/DataSheets/TimingDiagrams/IDE Control Register Read.png" width="650"></p>
+<p align="center"><img src="/DataSheets/TimingDiagrams/IDE Control Register Write.png" width="650"></p>
+<p align="center"><img src="/DataSheets/TimingDiagrams/IDE Data Register Read.png" width="650"></p>
+<p align="center"><img src="/DataSheets/TimingDiagrams/IDE Data Register Write.png" width="650"></p>
 
 ### 1.6 Human Interface Devices (HID)
 
@@ -186,9 +186,9 @@ The AmigaPCI does not support MC6800 or MOS6502 devices on the PCI bus with reso
 
 **CLOCK "2" IS ONE CLOCK CYCLE TOO LATE IN THE DIAGRAMS. FIX.**
 
-<p align="center"><img src="/DataSheets/TimingDiagrams/CIA Cycle Best Case Read.png"></p>
+<p align="center"><img src="/DataSheets/TimingDiagrams/CIA Cycle Best Case Read.png" width="650"></p>
+<p align="center"><img src="/DataSheets/TimingDiagrams/CIA Cycle Best Case Write.png" width="650"></p>
 <p align="center"><img src="/DataSheets/TimingDiagrams/CIA Cycle Worst Case Read.png"></p>
-<p align="center"><img src="/DataSheets/TimingDiagrams/CIA Cycle Best Case Write.png"></p>
 <p align="center"><img src="/DataSheets/TimingDiagrams/CIA Cycle Worst Case Write.png"></p>
 
 ## 2. PCI Bus
