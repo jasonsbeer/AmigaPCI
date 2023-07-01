@@ -44,9 +44,9 @@ CIA|8520A-1 or 8520PD|318029-03|2
 
 #### 1.3.2 Kickstart ROMs
 
-Kickstart ROMs for the Amiga 3000 should be burned to 100ns or faster 27C4096 EPROMs for use by the AmigaPCI. Original 27C400 Amiga EPROMs are not supported. 
+Kickstart ROMs for the Amiga 3000 should be burned to 100ns or faster 27C4096 EPROMs (PLCC-44 footprint) for use by the AmigaPCI. Original Amiga Kickstart Mask ROMs and EPROMs are not supported. 
 
-See [Timing Diagram](</DataSheets/TimingDiagrams/ROM Cycle.png>)
+<p align="center"><img src="/DataSheets/TimingDiagrams/ROM Cycle.png"></p>
 
 ### 1.4 Floppy Disk Drives
 
