@@ -347,6 +347,6 @@ During burst transfers, all four bytes are enabled. The PCI target device must i
 ## References
 <a id="1">[1]</a>Data Movement Between Big-Endian and Little-Endian Devices. Freescale Semiconductor.  
 <a id="2">[2]</a>PCI Local Bus Specification Revision 2.3. PCI Special Interest Group. Section 3.2.2.3.5. System Generation of IDSEL. pp. 36-37.  
-<a id="3">[3]</a>Floppy Adapter. Ian Steadman. https://github.com/istedman/Floppy_adaptor. Accessed May 4, 2023.
-<a id="4">[4]</a>Motorola MC68040 User Manual. Motorolla. Sections 7.4.2 Line Read Transfer and 7.4.4 Line Write Transfers.
+<a id="3">[3]</a>Floppy Adapter. Ian Steadman. https://github.com/istedman/Floppy_adaptor. Accessed May 4, 2023.  
+<a id="4">[4]</a>Motorola MC68040 User Manual. Motorolla. Sections 7.4.2 Line Read Transfer and 7.4.4 Line Write Transfers.  
 <a id="5">[5]</a>PCI Local Bus Specification Revision 2.3. PCI Special Interest Group. Table 3-2. Burst Ordering Encoding. pp. 29. 
