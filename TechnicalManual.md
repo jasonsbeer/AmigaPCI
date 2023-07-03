@@ -323,7 +323,9 @@ Note: When _BB is asserted and _BG is negated, this allows for bus snooping oper
 
 ### 2.6 CPU Driven PCI Data Cycle
 
-[CPU Driven Data Cycle Timing Diagram]()  
+CPU access to PCI target devices supports burst (MOVE16) and non-burst (normal) cycles in read and write modes. The PCI Bridge logic supports fast and slow burst modes. A slow burst mode is where one or more wait states are inserted by the PCI target device during the data transfer phase. Fast burst access has no wait states during the data transfer phase. The CPU and PCI busses operate in different clock domains. Thus, it is necessary to latch data on the AD bus during reads and to latch data on the D bus during writes, to reliably bring the data to the other clock domain during the data phase. This ensures setup and hold times are met while crossing the domains. This approach has little effect on the overall fast burst cycle time, but may have a greater negative effect during slow burst cycles.
+
+<p align="center"><img src="/DataSheets/TimingDiagrams/PCI Fast Burst Read Cycle.png" width="750"></p>
 
 ### 2.7 PCI Driven PCI Data Cycle (DMA)
 
