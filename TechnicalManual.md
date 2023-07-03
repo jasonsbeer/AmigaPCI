@@ -323,17 +323,28 @@ Note: When _BB is asserted and _BG is negated, this allows for bus snooping oper
 
 ### 2.6 CPU Driven PCI Data Cycle
 
-CPU access to PCI target devices supports burst (MOVE16) and non-burst (normal) cycles in read and write modes. The PCI Bridge logic supports fast and slow burst modes. A slow burst mode is where one or more wait states are inserted by the PCI target device during the data transfer phase. Fast burst access has no wait states during the data transfer phase. The CPU and PCI busses operate in different clock domains. Thus, it is necessary to latch data on the AD bus during reads and to latch data on the D bus during writes, to reliably bring the data to the other clock domain during the data phase. This ensures setup and hold times are met while crossing the domains. This approach has little effect on the overall fast burst cycle time, but may have a greater negative effect during slow burst cycles.
+CPU access to PCI target devices supports burst (MOVE16) and non-burst (normal) cycles in read and write modes. Because the CPU and PCI busses operate in different clock domains, metastability is a concern. To address this concern, the PCI Bridge latches data in the associated clock domain and later presents the data on the other bus in the associated clock domain. This ensures setup and hold times are met while crossing the domains.
+
+#### 2.6.1 Burst Mode Cycles
+
+A burst mode is defined as a line transfer by the MC68040 initiated with the MOVE16 instruction[[4]](#4). This results in the burst transfer of four long words to or from the target device. Each long word being aligned to a 16-byte memory boundary. The PCI Bridge logic supports fast and slow burst modes. A slow burst mode is identified as one or more wait states in the data phase inserted by the PCI target device. There are no data phase wait states during fast burst accesses. In the event of back to back write cycles, there is a turnaround time of approximately 75ns while the PCI target cycle completes.
+
+During burst transfers, all four bytes are enabled. The PCI target device must internally increment A3 and A2 of the supplied address for each transfer, causing the address to wrap around at the end of the block. This is consistent with the Cacheline Wrap Mode burst order defined in the PCI specifications[[5]](#5).
 
 <p align="center"><img src="/DataSheets/TimingDiagrams/PCI Fast Burst Read Cycle.png" width="750"></p>
 <p align="center"><img src="/DataSheets/TimingDiagrams/PCI Fast Burst Write Cycle.png" width="750"></p>
+
+### 2.6.2 Normal Mode Cycles
 
 ### 2.7 PCI Driven PCI Data Cycle (DMA)
 
 [PCI Driven Data Cycle Timing Diagram]()  
 
+### 2.8 Parity
+
 ## References
-<a id="1">[1]</a>Data Movement Between Big-Endian and Little-Endian Devices. Freescale Semiconductor.  
 <a id="1">[1]</a>Data Movement Between Big-Endian and Little-Endian Devices. Freescale Semiconductor.  
 <a id="2">[2]</a>PCI Local Bus Specification Revision 2.3. PCI Special Interest Group. Section 3.2.2.3.5. System Generation of IDSEL. pp. 36-37.  
 <a id="3">[3]</a>Floppy Adapter. Ian Steadman. https://github.com/istedman/Floppy_adaptor. Accessed May 4, 2023.
+<a id="4">[4]</a>Motorola MC68040 User Manual. Motorolla. Sections 7.4.2 Line Read Transfer and 7.4.4 Line Write Transfers.
+<a id="5">[5]</a>PCI Local Bus Specification Revision 2.3. PCI Special Interest Group. Table 3-2. Burst Ordering Encoding. pp. 29. 
