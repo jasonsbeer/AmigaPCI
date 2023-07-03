@@ -334,6 +334,8 @@ During burst transfers, all four bytes are enabled. The PCI target device must i
 <p align="center"><img src="/DataSheets/TimingDiagrams/PCI Fast Burst Read Cycle.png" width="750"></p>
 <p align="center"><img src="/DataSheets/TimingDiagrams/PCI Fast Burst Write Cycle.png" width="750"></p>
 
+<p align="center"><img src="/DataSheets/TimingDiagrams/PCI Slow Burst Write Cycle.png" width="750"></p>
+
 ### 2.6.2 Normal Mode Cycles
 
 ### 2.7 PCI Driven PCI Data Cycle (DMA)
