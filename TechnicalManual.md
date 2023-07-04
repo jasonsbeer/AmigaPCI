@@ -305,6 +305,7 @@ The addressing scheme of software configured target devices is compatable with P
 
 Table 2.3.2b. Address Offsets for Command Types
 Z3 Start|Z3 End|Command Type|Size|PCI Start|PCI End
+-|-|-|-|-|-
 $0000 0000|$1FBF FFFF|Memory Space|512MB|$0000 0000|$1FBF FFFF
 $01FC 0000|$1FCF FFFF|Config Type 0|1MB|$0000 0000|$000F FFFF
 $1FD0 0000|$1FDF FFFF|Config Type 1|1MB|$0000 0000|$000F FFFF
