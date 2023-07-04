@@ -290,7 +290,7 @@ PCI devices may have onboard ROMs that contain additional information describing
 
 #### 2.3.2 Software Configuration
 
-PCI devices not designed specifically for the Amiga should be installed in software configuration slots. Each slot designated as a software configuration slot may be accessed through the base address of the PCI Bridge. Each slot on the PCI bus may be addressed individually by its offset value.
+PCI devices not designed specifically for the Amiga should be installed in software configuration slots. Each slot designated as a software configuration slot may be accessed through the base address of the PCI Bridge. Each slot on the PCI bus may be addressed individually by its offset value. The addressing scheme of software configured target devices is compatable with Prometheus. The address offsets are used to drive specific PCI commands.
 
 Table 2.3.2a. Address Offset of PCI Slots For IDSEL.
 PCI Slot|Address Bit|Offset From Base Address
@@ -301,32 +301,31 @@ PCI Slot|Address Bit|Offset From Base Address
 3|AD[19]|$08 0000
 4|AD[20]|$10 0000
 
-The addressing scheme of software configured target devices is compatable with Prometheus.
 
-Table 2.3.2b. Address Offsets for Command Types
+Table 2.3.2b. Address Offsets for Command Types.
 Z3 Start|Z3 End|Command Type|Size|PCI Start|PCI End
 -|-|-|-|-|-
 $0000 0000|$1FBF FFFF|Memory Space|512MB|$0000 0000|$1FBF FFFF
-$01FC 0000|$1FCF FFFF|Config Type 0|1MB|$0000 0000|$000F FFFF
-$1FD0 0000|$1FDF FFFF|Config Type 1|1MB|$0000 0000|$000F FFFF
-$1FE0 0000|$1FFF FFFF|I/O Space|2MB|$0000 0000|001F FFFF
+$1FC0 0000|$1FCF FFFF|Config Type 0 Space|1MB|$0000 0000|$000F FFFF
+$1FD0 0000|$1FDF FFFF|Config Type 1 Space|1MB|$0000 0000|$000F FFFF
+$1FE0 0000|$1FFF FFFF|I/O Space|2MB|$0000 0000|$001F FFFF
 
-####2.3.2.1 PCI Configuration Command Examples
+#### 2.3.2.1 PCI Configuration Command Examples
 
 For these examples, assume the base address of the PCI Bridge is $8000 0000.
 
 PCI Configuration Read
 
-A[31..24] Reserved
-A[23..16] Bus Number (Slot Offset, see Table 2.3.2.a)
-A[15..11] Device Number (Always b00000)
-A[10..8] Function Number
-A[7..2] Register Number
-A[1..0] Configuration Register Type
+A[31..24] Reserved  
+A[23..16] Bus Number (Slot Offset, see Table 2.3.2.a)  
+A[15..11] Device Number (Always b00000)  
+A[10..8] Function Number  
+A[7..2] Register Number  
+A[1..0] Configuration Register Type  
 
-Reading address $8FC2 0000 will return the Device ID and Vendor ID of function 0 of the PCI device in slot 1.
-Reading address $8FD0 0000 will return the Device ID and Vendor ID of function 0 of the PCI device in slot 5.
-Reading address $8FC1 0010 will return the Base Address Register 0 of the PCI device in slot 0.
+Reading address $9FC2 0000 will return the Device ID and Vendor ID of function 0 of the PCI device in slot 1.  
+Reading address $9FD0 0000 will return the Device ID and Vendor ID of function 0 of the PCI device in slot 5.  
+Reading address $9FC1 0010 will return the Base Address Register 0 of the PCI device in slot 0.  
 
 ### 2.4 Interrupt Handling
 
