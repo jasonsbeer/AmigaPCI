@@ -290,7 +290,7 @@ PCI devices may have onboard ROMs that contain additional information describing
 
 #### 2.3.2 Software Configuration
 
-PCI devices not designed specifically for the Amiga should be installed in software configuration slots. Each slot designated as a software configuration slot may be accessed through the base address of the PCI Bridge. 
+PCI devices not designed specifically for the Amiga should be installed in software configuration slots. Each slot designated as a software configuration slot may be accessed through the base address of the PCI Bridge. Each slot on the PCI bus may be addressed individually by its offset value.
 
 Table 2.3.2a. Address Offset of PCI Slots For IDSEL.
 PCI Slot|Address Bit|Offset From Base Address
@@ -311,7 +311,7 @@ $01FC 0000|$1FCF FFFF|Config Type 0|1MB|$0000 0000|$000F FFFF
 $1FD0 0000|$1FDF FFFF|Config Type 1|1MB|$0000 0000|$000F FFFF
 $1FE0 0000|$1FFF FFFF|I/O Space|2MB|$0000 0000|001F FFFF
 
-####2.3.2.1 PCI Command Examples
+####2.3.2.1 PCI Configuration Command Examples
 
 For these examples, assume the base address of the PCI Bridge is $8000 0000.
 
@@ -324,11 +324,9 @@ A[10..8] Function Number
 A[7..2] Register Number
 A[1..0] Configuration Register Type
 
-Reading address $45FE 0000 will return the device ID of function 0 of the PCI device in slot 1.
-01000101111111100000000000000000
-
-
-PCI configuration commands may be executed to a specific device by setting the PCI target device's IDSEL bit. As an example, assume the base address of the PCI Bridge is $4400 0000. The PCI target device in slot 1 may be accessed at address $4401 0000, slot 2 at $4402 0000, etc. With this method, each slot may be polled to determine if it is a software configuration slot and if there is a target device present. Polling an empty or AUTOCONFIG slot will return $FFFF FFFF on the data bus by the PCI Bridge. The PCI bridge is AUTOCONFIGured as a 512MB I/O device.
+Reading address $8FC2 0000 will return the Device ID and Vendor ID of function 0 of the PCI device in slot 1.
+Reading address $8FD0 0000 will return the Device ID and Vendor ID of function 0 of the PCI device in slot 5.
+Reading address $8FC1 0010 will return the Base Address Register 0 of the PCI device in slot 0.
 
 ### 2.4 Interrupt Handling
 
