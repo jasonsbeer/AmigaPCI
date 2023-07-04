@@ -273,7 +273,7 @@ Each PCI target device may be configured by the Amiga AUTOCONFIG process or by s
 
 #### 2.3.1 AUTOCONFIG
 
-PCI cards designed specifically with support for the Amiga should be installed in an AUTOCONFIG slot. AUTOCONFIG slots will be configured at startup in the 32 bit Zorro 3 address space. There are two advantages to the AUTOCONFIG approach:
+PCI cards designed specifically with support for the Amiga should be installed in an AUTOCONFIG slot. AUTOCONFIG slots will be configured at startup in the 32 bit Zorro 3 address space. The AmigaPCI AUTOCONFIG process is compatable with configuration Type 0 and Type 1 devices. There are two advantages to the AUTOCONFIG approach:
 
 1. The process is transparent to the user and is "plug and play".
 2. Allows for inclusion of auto boot ROMs on the PCI device.
@@ -282,15 +282,17 @@ PCI cards designed specifically with support for the Amiga should be installed i
 
 During configuration, specifications such as the device manufacturer, product number, device capabilities, etc, are read from the device. Each PCI device is capable of supporting up to six base address registers (BAR0 - BAR5, between 0x10 - 0x24). The required address space for each of the six possible registers are determined and presented to Amiga OS for assigning of base addresses in the 32 bit Zorro 3 address space. This is done through the normal Zorro 3 AUTOCONFIG procedure. However, the PCI Bridge logic translates the needs of the PCI card and requests AUTOCONFIG resources in a manner that is understood by Amiga OS. As an example, if BAR0 requests 512k of configuration space, this request will be passed to Amiga OS as a Zorro 3 device requiring 512k of AUTOCONFIG space. Amiga OS will then assign a base address to this request. This assigned base address will be programmed into BAR0 of the target PCI device. This process repeats for BAR1 - BAR5 of the same PCI device. This procedure is then repeated for each PCI device installed. Once complete, each PCI device may be accessed by the assigned base address(es), just as any other AUTOCONFIG device.
 
+PCI target devices configured by the AUTOCONFIG process support only access to memory space. This is recommended for all new PCI devices and we will adhear to that recommendation[[6]](#6).
+
 ##### 2.3.1.2 AUTOCONFIG ROM Vector
 
 PCI devices may have onboard ROMs that contain additional information describing the device and may be used to enhance functionality, such as for auto booting. PCI ROMs may contain multiple images that support multiple architectures. During PCI configuration, the ROM address requirement is read from the PCI configuration header. This is then presented to the AUTOCONFIG process as a ROM Vector, which is an offset from the base address where the ROM will respond.
 
 #### 2.3.2 Software Configuration
 
-PCI devices not designed specifically for the Amiga should be installed in software configuration slots. Each slot designated as a software configuration slot may be accessed through the base address of the PCI Bridge. PCI configuration commands may be executed to a specific device by setting the PCI target device's IDSEL bit. As an example, assume the base address of the PCI Bridge is $4400 0000. The PCI target device in slot 1 may be accessed at address $4401 0000, slot 2 at $4402 0000, etc. With this method, each slot may be polled to determine if it is a software configuration slot and if there is a target device present. Polling an empty or AUTOCONFIG slot will return $FFFF FFFF on the data bus by the PCI Bridge. The PCI bridge is AUTOCONFIGured as a 512MB I/O device.
+PCI devices not designed specifically for the Amiga should be installed in software configuration slots. Each slot designated as a software configuration slot may be accessed through the base address of the PCI Bridge. 
 
-Table 2.3.2. Address Offset of PCI Slots.
+Table 2.3.2a. Address Offset of PCI Slots For IDSEL.
 PCI Slot|Address Bit|Offset From Base Address
 -|-|-
 0|AD[16]|$01 0000
@@ -298,6 +300,34 @@ PCI Slot|Address Bit|Offset From Base Address
 2|AD[18]|$04 0000
 3|AD[19]|$08 0000
 4|AD[20]|$10 0000
+
+The addressing scheme of software configured target devices is compatable with Prometheus.
+
+Table 2.3.2b. Address Offsets for Command Types
+Z3 Start|Z3 End|Command Type|Size|PCI Start|PCI End
+$0000 0000|$1FBF FFFF|Memory Space|512MB|$0000 0000|$1FBF FFFF
+$01FC 0000|$1FCF FFFF|Config Type 0|1MB|$0000 0000|$000F FFFF
+$1FD0 0000|$1FDF FFFF|Config Type 1|1MB|$0000 0000|$000F FFFF
+$1FE0 0000|$1FFF FFFF|I/O Space|2MB|$0000 0000|001F FFFF
+
+####2.3.2.1 PCI Command Examples
+
+For these examples, assume the base address of the PCI Bridge is $8000 0000.
+
+PCI Configuration Read
+
+A[31..24] Reserved
+A[23..16] Bus Number (Slot Offset, see Table 2.3.2.a)
+A[15..11] Device Number (Always b00000)
+A[10..8] Function Number
+A[7..2] Register Number
+A[1..0] Configuration Register Type
+
+Reading address $45FE 0000 will return the device ID of function 0 of the PCI device in slot 1.
+01000101111111100000000000000000
+
+
+PCI configuration commands may be executed to a specific device by setting the PCI target device's IDSEL bit. As an example, assume the base address of the PCI Bridge is $4400 0000. The PCI target device in slot 1 may be accessed at address $4401 0000, slot 2 at $4402 0000, etc. With this method, each slot may be polled to determine if it is a software configuration slot and if there is a target device present. Polling an empty or AUTOCONFIG slot will return $FFFF FFFF on the data bus by the PCI Bridge. The PCI bridge is AUTOCONFIGured as a 512MB I/O device.
 
 ### 2.4 Interrupt Handling
 
@@ -356,3 +386,4 @@ _STOP
 <a id="3">[3]</a>Floppy Adapter. Ian Steadman. https://github.com/istedman/Floppy_adaptor. Accessed May 4, 2023.  
 <a id="4">[4]</a>Motorola MC68040 User Manual. Motorolla. Sections 7.4.2 Line Read Transfer and 7.4.4 Line Write Transfers.  
 <a id="5">[5]</a>PCI Local Bus Specification Revision 2.3. PCI Special Interest Group. Table 3-2. Burst Ordering Encoding. pp. 29. 
+<a id="6">[6]</a>PCI Local Bus Specification Revision 2.3. PCI Special Interest Group. Section 3.2.2. Implementation Note: Device Address Space. pp. 27.  
