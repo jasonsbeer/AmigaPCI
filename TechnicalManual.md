@@ -275,45 +275,46 @@ Each PCI target device may be configured by the Amiga AUTOCONFIG process or by s
 
 The PCI Bridge is always AUTOCONFIGured at startup. This allows direct access of the PCI Bridge configuration registers and a means to access software configured PCI cards on the PCI bus (See 2.3.2).
 
-The following 16-bit registers and bits are supported by the PCI Bridge and can be set or read by software or drivers. This allows configuration or polling of the PCI Bridge status and settings. 
+The following 16-bit registers and bits are supported by the PCI Bridge device and can be set or read by software. This allows configuration or polling of the PCI Bridge status and settings. Reading a long word at offset $04 will return both registers. All PCI devices implement all or part of these registers individually.
 
 Table 2.3.1. Offset $04, Command Register.
-Bit|Description|Supported|MC68040 D Bus
--|-|-|-
-15|Detected Parity Error|Yes|D31
-14|Signalled System Error|Yes|D30
-13|Received Master Abort|Yes|D29
-12|Received Target Abort|Yes|D28
-11|Signaled Target Abort|Yes|D27
-10-9|DEVSEL Timing|No|D26-D25
-8|Master Data Parity Error|Yes|D24
-7|Fast Back-toBack Capable|No|D23
-6|Reserved|-|D22
-5|66 MHz Capable|Not|D21
-4|Capabilties|No|D20
-3|Interrupt Status|Yes|D19
-2|Reserved|-|D18
-1|Reserved|-|D17
-0|Reserved|-|D16
+Bit|Description|Supported
+-|-|-
+15|Reserved|-
+14|Reserved|-
+13|Reserved|-
+12|Reserved|-
+11|Reserved|-
+10|Interrupt Disable|Yes
+9|Fast Back-to-Back Enable|No
+8|_SERR Enable|Yes
+7|Reserved|-
+6|Parity Error Response|Yes
+5|VGA Pallette Snoop|No
+4|Memory Write and Invalidate Enable|No
+3|Special Cycles|No
+2|Bus Master|No
+1|Memory Space|No
+0|I/O Space|No
 
 Table 2.3.2. Offset $06, Status Register.
-Bit|Description|Supported|MC68040 D Bus
--|-|-|-
-15|Detected Parity Error|Yes|D31
-14|Signalled System Error|Yes|D30
-13|Received Master Abort|Yes|D29
-12|Received Target Abort|Yes|D28
-11|Signaled Target Abort|Yes|D27
-10-9|DEVSEL Timing|No|D26-D25
-8|Master Data Parity Error|Yes|D24
-7|Fast Back-to-Back Capable|No|D23
-6|Reserved|-|D22
-5|66 MHz Capable|Not|D21
-4|Capabilties|No|D20
-3|Interrupt Status|Yes|D19
-2|Reserved|-|D18
-1|Reserved|-|D17
-0|Reserved|-|D16
+Bit|Description|Supported
+-|-|-
+15|Detected Parity Error|Yes
+14|Signaled System Error|Yes
+13|Received Master Abort|No
+12|Received Target Abort|Yes
+11|Signaled Target Abort|Yes
+10-9|DEVSEL Timing|No
+8|Master Data Parity Error|Yes
+7|Fast Back-to-Back Capable|No
+6|Reserved|-
+5|66 MHz Capable|No
+4|Capabilties|No
+3|Interrupt Status|Yes
+2|Reserved|-
+1|Reserved|-
+0|Reserved|-
 
 #### 2.3.1 AUTOCONFIG
 
@@ -350,6 +351,8 @@ PCI Slot|Address Bit|Offset From Base Address
 4|AD[20]|$10 0000
 
 #### 2.3.2.1 PCI Command Examples
+
+PCI defines multiple address spaces that exist in parallel. PCI command encodings select a specific address space for the current cycle. In order to signal which address space is being targeted, the PCI Bridge recognizes address offsets from the PCI Bridge base address. 
 
 For these examples, assume the base address of the PCI Bridge is $8000 0000. When accessing the configuration registers of software configured PCI devices on the bus, A[31..24] will be converted to $00 by the PCI bridge. The address offsets in Table 2.3.2.1 show the command type associated with the address offset. For example, access in the "memory space" are interpreted by the PCI Bridge as PCI memory read or memory write commands. As such, Memory Read or Memory Write will be the command issued by the PCI Bridge. Accesses in the "Config Type 0 Space" will assert Configuration Read or Configuration Write commands, and so forth.
 
