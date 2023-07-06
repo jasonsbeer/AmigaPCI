@@ -273,9 +273,11 @@ Each PCI target device may be configured by the Amiga AUTOCONFIG process or by s
 
 ### 2.3.1 PCI Bridge
 
-The PCI Bridge is always AUTOCONFIGured at startup. This allows direct access of the PCI Bridge configuration registers and a means to access software configured PCI cards on the PCI bus (See 2.3.2).
+The PCI Bridge is always AUTOCONFIGured at startup before any other PCI devices. The PCI Bridge base address allows direct access of the PCI Bridge configuration registers and a means to access software configured PCI cards on the PCI bus (See 2.3.2). All PCI devices, whether AUTOCONFIG or software config, are assigned base addresses under the PCI Bridge base address.
 
-The following 16-bit registers and bits are supported by the PCI Bridge device and can be set or read by software. This allows configuration or polling of the PCI Bridge status and settings. Reading a long word at offset $04 will return both registers. All PCI devices implement all or part of these registers individually.
+**HOW????? I don't know...**
+
+The following 16-bit registers are supported by the PCI Bridge device and can be set or read by software. This allows configuration or polling of the PCI Bridge settings and status. Reading a long word at offset $04 will return both registers. All PCI devices implement all or part of these registers as individual devices. Assuming the PCI Bridge base address is $8000 0000, you would access the command register at $8000 0004. Reads from unsupported registers will always return $0. Writes to unsupported registers will have no effect.
 
 Table 2.3.1. Offset $04, Command Register.
 Bit|Description|Supported
@@ -290,7 +292,7 @@ Bit|Description|Supported
 8|_SERR Enable|Yes
 7|Reserved|-
 6|Parity Error Response|Yes
-5|VGA Pallette Snoop|No
+5|VGA Palette Snoop|No
 4|Memory Write and Invalidate Enable|No
 3|Special Cycles|No
 2|Bus Master|No
@@ -325,9 +327,9 @@ PCI cards designed specifically with support for the Amiga should be installed i
 
 ##### 2.3.1.1 AUTOCONFIG Process
 
-During configuration, specifications such as the device manufacturer, product number, device capabilities, etc, are read from the device. Each PCI device is capable of supporting up to six base address registers (BAR0 - BAR5, between 0x10 - 0x24 in the configuration register). The required address space for each of the six possible registers are determined and presented to Amiga OS for assigning of base addresses in the 32 bit Zorro 3 address space. This is done through the normal Zorro 3 AUTOCONFIG procedure. However, the PCI Bridge logic translates the needs of the PCI card and requests AUTOCONFIG resources in a manner that is understood by Amiga OS. As an example, if BAR0 requests 512k of configuration space, this request will be passed to Amiga OS as a Zorro 3 device requiring 512k of AUTOCONFIG space. Amiga OS will then assign a base address to this request. This assigned base address will be programmed into BAR0 of the target PCI device. This process repeats for BAR1 - BAR5 of the same PCI device. This procedure is then repeated for each PCI device installed. Once complete, each PCI device may be accessed by the assigned base address(es), just as any other AUTOCONFIG device.
+During configuration, specifications such as the device manufacturer, product number, device capabilities, etc, are read from the device. Each PCI device is capable of supporting up to six base address registers (BAR0 - BAR5, between $10 - $24 in the configuration register). The required address space for each of the six possible registers are determined and presented to Amiga OS for assigning of base addresses in the 32 bit Zorro 3 address space. This is done through the normal Zorro 3 AUTOCONFIG procedure. However, the PCI Bridge logic translates the needs of the PCI card and requests AUTOCONFIG resources in a manner that is understood by Amiga OS. As an example, if BAR0 requests 512k of configuration space, this request will be passed to Amiga OS as a Zorro 3 device requiring 512k of AUTOCONFIG space. Amiga OS will then assign a base address to this request. This assigned base address will be programmed into BAR0 of the target PCI device. This process repeats for BAR1 - BAR5 of the same PCI device. This procedure is then repeated for each PCI device installed. Once complete, each PCI device may be accessed by the assigned base address(es), just as any other AUTOCONFIG device.
 
-PCI target devices configured by the AUTOCONFIG process support only access to memory space. This is recommended for all new PCI devices and we will adhear to that recommendation[[6]](#6).
+PCI target devices configured by the AUTOCONFIG process support only access to memory and configuration space. Use of the I/O space is not recommended for new PCI designs[[6]](#6).
 
 ##### 2.3.1.2 AUTOCONFIG ROM Vector
 
