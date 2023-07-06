@@ -271,6 +271,50 @@ Each PCI target device may be configured by the Amiga AUTOCONFIG process or by s
 <p align="center"><img src="/DataSheets/TimingDiagrams/PCI Configuration Read Cycle.jpg" width="650"></p>
 <p align="center"><img src="/DataSheets/TimingDiagrams/PCI Configuration Write Cycle.png" width="650"></p>
 
+### 2.3.1 PCI Bridge
+
+The PCI Bridge is always AUTOCONFIGured at startup. This allows direct access of the PCI Bridge configuration registers and a means to access software configured PCI cards on the PCI bus (See 2.3.2).
+
+The following 16-bit registers and bits are supported by the PCI Bridge and can be set or read by software or drivers. This allows configuration or polling of the PCI Bridge status and settings. 
+
+Table 2.3.1. Offset $04, Command Register.
+Bit|Description|Supported|MC68040 D Bus
+-|-|-|-
+15|Detected Parity Error|Yes|D31
+14|Signalled System Error|Yes|D30
+13|Received Master Abort|Yes|D29
+12|Received Target Abort|Yes|D28
+11|Signaled Target Abort|Yes|D27
+10-9|DEVSEL Timing|No|D26-D25
+8|Master Data Parity Error|Yes|D24
+7|Fast Back-toBack Capable|No|D23
+6|Reserved|-|D22
+5|66 MHz Capable|Not|D21
+4|Capabilties|No|D20
+3|Interrupt Status|Yes|D19
+2|Reserved|-|D18
+1|Reserved|-|D17
+0|Reserved|-|D16
+
+Table 2.3.2. Offset $06, Status Register.
+Bit|Description|Supported|MC68040 D Bus
+-|-|-|-
+15|Detected Parity Error|Yes|D31
+14|Signalled System Error|Yes|D30
+13|Received Master Abort|Yes|D29
+12|Received Target Abort|Yes|D28
+11|Signaled Target Abort|Yes|D27
+10-9|DEVSEL Timing|No|D26-D25
+8|Master Data Parity Error|Yes|D24
+7|Fast Back-to-Back Capable|No|D23
+6|Reserved|-|D22
+5|66 MHz Capable|Not|D21
+4|Capabilties|No|D20
+3|Interrupt Status|Yes|D19
+2|Reserved|-|D18
+1|Reserved|-|D17
+0|Reserved|-|D16
+
 #### 2.3.1 AUTOCONFIG
 
 PCI cards designed specifically with support for the Amiga should be installed in an AUTOCONFIG slot. AUTOCONFIG slots will be configured at startup in the 32 bit Zorro 3 address space. The AmigaPCI AUTOCONFIG process is compatable with configuration Type 0 and Type 1 devices. There are two advantages to the AUTOCONFIG approach:
@@ -280,7 +324,7 @@ PCI cards designed specifically with support for the Amiga should be installed i
 
 ##### 2.3.1.1 AUTOCONFIG Process
 
-During configuration, specifications such as the device manufacturer, product number, device capabilities, etc, are read from the device. Each PCI device is capable of supporting up to six base address registers (BAR0 - BAR5, between 0x10 - 0x24). The required address space for each of the six possible registers are determined and presented to Amiga OS for assigning of base addresses in the 32 bit Zorro 3 address space. This is done through the normal Zorro 3 AUTOCONFIG procedure. However, the PCI Bridge logic translates the needs of the PCI card and requests AUTOCONFIG resources in a manner that is understood by Amiga OS. As an example, if BAR0 requests 512k of configuration space, this request will be passed to Amiga OS as a Zorro 3 device requiring 512k of AUTOCONFIG space. Amiga OS will then assign a base address to this request. This assigned base address will be programmed into BAR0 of the target PCI device. This process repeats for BAR1 - BAR5 of the same PCI device. This procedure is then repeated for each PCI device installed. Once complete, each PCI device may be accessed by the assigned base address(es), just as any other AUTOCONFIG device.
+During configuration, specifications such as the device manufacturer, product number, device capabilities, etc, are read from the device. Each PCI device is capable of supporting up to six base address registers (BAR0 - BAR5, between 0x10 - 0x24 in the configuration register). The required address space for each of the six possible registers are determined and presented to Amiga OS for assigning of base addresses in the 32 bit Zorro 3 address space. This is done through the normal Zorro 3 AUTOCONFIG procedure. However, the PCI Bridge logic translates the needs of the PCI card and requests AUTOCONFIG resources in a manner that is understood by Amiga OS. As an example, if BAR0 requests 512k of configuration space, this request will be passed to Amiga OS as a Zorro 3 device requiring 512k of AUTOCONFIG space. Amiga OS will then assign a base address to this request. This assigned base address will be programmed into BAR0 of the target PCI device. This process repeats for BAR1 - BAR5 of the same PCI device. This procedure is then repeated for each PCI device installed. Once complete, each PCI device may be accessed by the assigned base address(es), just as any other AUTOCONFIG device.
 
 PCI target devices configured by the AUTOCONFIG process support only access to memory space. This is recommended for all new PCI devices and we will adhear to that recommendation[[6]](#6).
 
@@ -288,9 +332,13 @@ PCI target devices configured by the AUTOCONFIG process support only access to m
 
 PCI devices may have onboard ROMs that contain additional information describing the device and may be used to enhance functionality, such as for auto booting. PCI ROMs may contain multiple images that support multiple architectures. During PCI configuration, the ROM address requirement is read from the PCI configuration header. This is then presented to the AUTOCONFIG process as a ROM Vector, which is an offset from the base address where the ROM will respond.
 
+##### 2.3.1.3 AUTOCONFIG PCI Device Register Access Examples
+
+DO SOMETHING!
+
 #### 2.3.2 Software Configuration
 
-PCI devices not designed specifically for the Amiga should be installed in software configuration slots. Each slot designated as a software configuration slot may be accessed through the base address of the PCI Bridge. Each slot on the PCI bus may be addressed individually by its offset value. The addressing scheme of software configured target devices is compatable with Prometheus. The address offsets are used to drive specific PCI commands.
+PCI devices not designed specifically for the Amiga should be installed in software configuration slots. Each slot designated as a software configuration slot may be accessed through the base address of the PCI Bridge, which is always AUTOCONFIGured at startup. Each slot on the PCI bus may be addressed individually by its offset value to read or write from that device's configuration register. The addressing scheme of software configured target devices is compatable with Prometheus. 
 
 Table 2.3.2a. Address Offset of PCI Slots For IDSEL.
 PCI Slot|Address Bit|Offset From Base Address
@@ -301,8 +349,11 @@ PCI Slot|Address Bit|Offset From Base Address
 3|AD[19]|$08 0000
 4|AD[20]|$10 0000
 
+#### 2.3.2.1 PCI Command Examples
 
-Table 2.3.2b. Address Offsets for Command Types.
+For these examples, assume the base address of the PCI Bridge is $8000 0000. When accessing the configuration registers of software configured PCI devices on the bus, A[31..24] will be converted to $00 by the PCI bridge. The address offsets in Table 2.3.2.1 show the command type associated with the address offset. For example, access in the "memory space" are interpreted by the PCI Bridge as PCI memory read or memory write commands. As such, Memory Read or Memory Write will be the command issued by the PCI Bridge. Accesses in the "Config Type 0 Space" will assert Configuration Read or Configuration Write commands, and so forth.
+
+Table 2.3.2.1. Address Offsets for Command Types[[6]](#6).
 Z3 Start|Z3 End|Command Type|Size|PCI Start|PCI End
 -|-|-|-|-|-
 $0000 0000|$1FBF FFFF|Memory Space|512MB|$0000 0000|$1FBF FFFF
@@ -310,11 +361,7 @@ $1FC0 0000|$1FCF FFFF|Config Type 0 Space|1MB|$0000 0000|$000F FFFF
 $1FD0 0000|$1FDF FFFF|Config Type 1 Space|1MB|$0000 0000|$000F FFFF
 $1FE0 0000|$1FFF FFFF|I/O Space|2MB|$0000 0000|$001F FFFF
 
-#### 2.3.2.1 PCI Configuration Command Examples
-
-For these examples, assume the base address of the PCI Bridge is $8000 0000.
-
-PCI Configuration Read
+##### 2.3.2.1.1 PCI Configuration Read
 
 A[31..24] Reserved  
 A[23..16] Bus Number (Slot Offset, see Table 2.3.2.a)  
@@ -327,6 +374,10 @@ Reading address $9FC2 0000 will return the Device ID and Vendor ID of function 0
 Reading address $9FD0 0000 will return the Device ID and Vendor ID of function 0 of the PCI device in slot 5.  
 Reading address $9FC1 0010 will return the Base Address Register 0 of the PCI device in slot 0.  
 
+##### 2.3.2.1.2 PCI Configuration Write
+
+DO SOMETHING!
+
 ### 2.4 Interrupt Handling
 
 Each PCI slot has four interrupt signals, identified as _INTA, _INTB, _INTC, and _INTD. Single function PCI devices are only allowed to use _INTA. The remaining signals are used in the event of a multifunction PCI device, with one interrupt line per PCI function. As a hyptothetical example, a multifunction I/O device may use _INTA for a floppy drive interface, _INTB for a hard drive interface, _INTC for a serial interface, etc. For the purposes of the AmigaPCI design, _INTA, _INTB, _INTC, and _INTD are OR'd together and connected to _INT2. Driver design should look for assertion of _INT2 to signal an interrupt request from devices on the PCI bus. When an interrupt is asserted, the driver needs to poll its device on the PCI bus to determine if its device is asserting the interrupt.
@@ -335,7 +386,7 @@ Each PCI slot has four interrupt signals, identified as _INTA, _INTB, _INTC, and
 
 Direct bus* access is available to the MC68040 and PCI devices via bus mastering. When a device has mastered the bus, it has control of the entire AmigaPCI system and may directly access any valid address location. This is typically done for direct reading and writing of memory or direct control of chipset or other functions. The AmigaPCI bus arbiter accepts bus requests from the MC608040 and each device on the PCI bus. Each slot on the PCI bus has a dedicated bus request signal. The bus arbiter is designed with a fairness protocol to prevent a single device from owning the bus for extended lengths of time, which can result in degredation in performance. When there is no pending bus request, the MC68040 is given implicit ownership of the bus until it begins a bus cycle or a bus request from one of the PCI devices is asserted. 
 
-*In this discussion, "bus" is a term for the data and address buses, collectively, of the AmigaPCI.
+*In this discussion, "bus" is a term for the data, address, and AD buses, collectively, of the AmigaPCI.
 
 [Bus Mastering Timing Diagram]()  
 
@@ -355,9 +406,9 @@ CPU access to PCI target devices supports burst (MOVE16) and non-burst (normal) 
 
 #### 2.6.1 Burst Mode Cycles
 
-A burst mode is defined as a line transfer by the MC68040 initiated with the MOVE16 instruction[[4]](#4). This results in the burst transfer of four long words to or from the target device. Each long word being aligned to a 16-byte memory boundary. The PCI Bridge logic supports fast and slow burst modes. A slow burst mode is identified as one or more wait states in the data phase inserted by the PCI target device. There are no data phase wait states during fast burst accesses. In the event of back to back write cycles, there is a turnaround time of approximately 75ns while the PCI target cycle completes.
+A burst mode is defined as a line transfer by the MC68040 initiated with the MOVE16 instruction[[4]](#4). This results in the burst transfer of four long words to or from the target device. Each long word being aligned to a 16-byte memory boundary. The PCI Bridge logic supports fast and slow burst modes. A slow burst mode is identified as one or more wait states inserted by the PCI target device during the data phase. There are no data phase wait states during fast burst accesses. In the event of back to back write cycles, there is a turnaround time of approximately 75ns while the PCI target cycle completes.
 
-During burst transfers, all four bytes are enabled. The PCI target device must internally increment A3 and A2 of the supplied address for each transfer, causing the address to wrap around at the end of the block. This is consistent with the Cacheline Wrap Mode burst order defined in the PCI specifications[[5]](#5).
+During MC68040 initiated burst transfers, all four bytes are enabled. The PCI target device must internally increment A3 and A2 of the supplied address for each transfer, causing the address to wrap around at the end of the block. This is consistent with the Cacheline Wrap Mode burst order defined in the PCI specifications[[5]](#5).
 
 <p align="center"><img src="/DataSheets/TimingDiagrams/PCI Fast Burst Read Cycle.png" width="750"></p>
 <p align="center"><img src="/DataSheets/TimingDiagrams/PCI Fast Burst Write Cycle.png" width="750"></p>
@@ -380,26 +431,35 @@ _STOP
 
 ### 2.9 Parity
 
-Data transfer errors are detected using an even parity system. Even parity is generated by the device driving the AD bus and is asserted one clock after the associated activity address or data block. The device receiving data on the AD bus determines even parity on the data received and compares it with the value on the PAR signal. The parity calculation is determined by XORing the individual bits of the  AD[31..0], _C/BE[3..0], and PAR signals. The PAR bit is set when the sum of bits set is equal to an even number.
+Data transfer errors are detected using an even parity system. Except for video and HID devices, all PCI devices are required to support parity[[7]](#7). Even parity is generated by the device driving the AD bus and is asserted one clock after the associated address or data block. The device receiving data on the AD bus determines even parity on the data received and compares it to the PAR. The parity is determined by XORing the individual bits of the AD[31..0], _C/BE[3..0], and PAR signals. The PAR bit is set when the sum of bits set is equal to an even number.
 
-When a parity mismatch is detected, and the device's parity error respose bit is set, the receiving device asserts _PERR on all cycles except special transactions.
+When a parity mismatch is detected, and the target device's parity error respose bit (Command Register, bit 6) is set, the target device asserts _PERR. The device reporting the error must set its Detected Parity Error Bit (Status Register, Bit 15), regardless of the status of the parity error response bit. 
+
+For MC68040 driven cycles, if the PCI Bridge detects a parity error and has its parity error response bit set (Command Register, bit 6), it will assert _INT2 and set its interrupt status bit (Status Register, Bit 3). PCI drivers are expected to respond to this interrupt and poll their device's Parity Error Bit. The driver should then clear the interrupt in the PCI Bridge (Status Register, Bit 3) and retry or cancel the cycle.
+
+IS THIS OVERKILL?
+
+add timing
 
 #### 2.9.1 Address Parity Errors
 
-When a parity mismatch occurs during the address phase, one of three things can happen.
+An address parity error is considered a fatal error when it occurs. When a parity mismatch occurs during the address phase, one of three things can happen.
 
-1) A device claims the transaction and proceeds as normal
-2) A target device claims the transaction and terminates with a Target-Abort
-3) No target device claims the transaction and the cycle will time out with a Master-Abort
+1) A device claims the transaction and proceeds as normal.
+2) A target device claims the transaction and terminates with a Target-Abort.
+3) No target device claims the transaction and the cycle will time out with a Master-Abort.
 
-During MC68040 driven cycles, in the event of cases 2 or 3, the PCI Bridge will initiate a Retry. If the Retry fails, the PCI Bridge will assert _TEA, signaling the MC68040 that there was an error during the transaction.
+Target devices will assert _PERR in all cases of an address parity error. Some devices may assert _SERR, which is typically interpreted as a fatal system error. A "crash" in any other words. In the event of case 1, the wrong target device may be replying to the address. This can cause a myriad of issues, likely causing instability. Case 2 is prefered when a target device respods to the address, but there is an address parity error. 
 
 #### 2.9.2 Data Parity Errors
+
+A data parity error occurs when there is a parity mismatch during the data phase of the cycle. Data parity is calculated on all data blocks except during special cycles. If a data parity error is detected, 
 
 ## References
 <a id="1">[1]</a>Data Movement Between Big-Endian and Little-Endian Devices. Freescale Semiconductor.  
 <a id="2">[2]</a>PCI Local Bus Specification Revision 2.3. PCI Special Interest Group. Section 3.2.2.3.5. System Generation of IDSEL. pp. 36-37.  
 <a id="3">[3]</a>Floppy Adapter. Ian Steadman. https://github.com/istedman/Floppy_adaptor. Accessed May 4, 2023.  
-<a id="4">[4]</a>Motorola MC68040 User Manual. Motorolla. Sections 7.4.2 Line Read Transfer and 7.4.4 Line Write Transfers.  
+<a id="4">[4]</a>Motorola MC68040 User Manual. Motorola. Sections 7.4.2 Line Read Transfer and 7.4.4 Line Write Transfers.  
 <a id="5">[5]</a>PCI Local Bus Specification Revision 2.3. PCI Special Interest Group. Table 3-2. Burst Ordering Encoding. pp. 29. 
-<a id="6">[6]</a>PCI Local Bus Specification Revision 2.3. PCI Special Interest Group. Section 3.2.2. Implementation Note: Device Address Space. pp. 27.  
+<a id="6">[6]</a>Prometheus Open Source. http://www.e3b.de/prometheus. Accessed July 6, 2023.
+<a id="5">[5]</a>PCI Local Bus Specification Revision 2.3. PCI Special Interest Group. Section 3.7.2. Parity Checking. pp. 95. 
