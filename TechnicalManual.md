@@ -361,7 +361,7 @@ For these examples, assume the base address of the PCI Bridge is $8000 0000. Whe
 Table 2.3.2.1. Address Offsets for Command Types[[6]](#6).
 Z3 Start|Z3 End|Command Type|Size|PCI Start|PCI End
 -|-|-|-|-|-
-$0000 0000|$1FBF FFFF|Memory Space|512MB|$0000 0000|$1FBF FFFF
+$0000 0000|$1FBF FFFF|Memory Space|508MB|$0000 0000|$1FBF FFFF
 $1FC0 0000|$1FCF FFFF|Config Type 0 Space|1MB|$0000 0000|$000F FFFF
 $1FD0 0000|$1FDF FFFF|Config Type 1 Space|1MB|$0000 0000|$000F FFFF
 $1FE0 0000|$1FFF FFFF|I/O Space|2MB|$0000 0000|$001F FFFF
