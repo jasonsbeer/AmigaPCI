@@ -273,9 +273,7 @@ Each PCI target device may be configured by the Amiga AUTOCONFIG process or by s
 
 ### 2.3.1 PCI Bridge
 
-The PCI Bridge is always AUTOCONFIGured at startup before any other PCI devices. The PCI Bridge base address allows direct access of the PCI Bridge configuration registers and a means to access software configured PCI cards on the PCI bus (See 2.3.2). All PCI devices, whether AUTOCONFIG or software config, are assigned base addresses under the PCI Bridge base address.
-
-**HOW????? I don't know...**
+The PCI Bridge is always AUTOCONFIGured at startup before any other PCI devices. The PCI Bridge base address allows direct access of the PCI Bridge configuration registers and a means to access software configured PCI cards on the PCI bus (See 2.3.2). All PCI devices are accessed through the PCI bridge, which acts as an interface between the MC68040 and PCI target devices. The PCI Bridge also handles bus arbitration.
 
 The following 16-bit registers are supported by the PCI Bridge device and can be set or read by software. This allows configuration or polling of the PCI Bridge settings and status. Reading a long word at offset $04 will return both registers. All PCI devices implement all or part of these registers as individual devices. Assuming the PCI Bridge base address is $8000 0000, you would access the command register at $8000 0004. Reads from unsupported registers will always return $0. Writes to unsupported registers will have no effect.
 
