@@ -278,13 +278,9 @@ The PCI Bridge is always AUTOCONFIGured at startup before any other PCI devices.
 The following 16-bit registers are supported by the PCI Bridge device and can be set or read by software. This allows configuration or polling of the PCI Bridge settings and status. Reading a long word at offset $04 will return both registers. All PCI devices implement all or part of these registers as individual devices. Assuming the PCI Bridge base address is $8000 0000, you would access the command register at $8000 0004. Reads from unsupported registers will always return $0. Writes to unsupported registers will have no effect.
 
 Table 2.3.1. Offset $04, Command Register.
-Bit|Description|Supported
+Bit|Description|Supported by PCI Bridge Device
 -|-|-
-15|Reserved|-
-14|Reserved|-
-13|Reserved|-
-12|Reserved|-
-11|Reserved|-
+15-11|Reserved|-
 10|Interrupt Disable|Yes
 9|Fast Back-to-Back Enable|No
 8|_SERR Enable|Yes
@@ -298,7 +294,7 @@ Bit|Description|Supported
 0|I/O Space|No
 
 Table 2.3.2. Offset $06, Status Register.
-Bit|Description|Supported
+Bit|Description|Supported by PCI Bridge Device
 -|-|-
 15|Detected Parity Error|Yes
 14|Signaled System Error|Yes
@@ -312,13 +308,11 @@ Bit|Description|Supported
 5|66 MHz Capable|No
 4|Capabilties|No
 3|Interrupt Status|Yes
-2|Reserved|-
-1|Reserved|-
-0|Reserved|-
+2-0|Reserved|-
 
-#### 2.3.1 AUTOCONFIG
+#### 2.3.1 AUTOCONFIG Mode
 
-PCI cards designed specifically with support for the Amiga should be installed in an AUTOCONFIG slot. AUTOCONFIG slots will be configured at startup in the 32 bit Zorro 3 address space. The AmigaPCI AUTOCONFIG process is compatable with configuration Type 0 and Type 1 devices. There are two advantages to the AUTOCONFIG approach:
+PCI cards designed specifically with support for the Amiga should be installed in an AUTOCONFIG slot. AUTOCONFIG slots will be configured by the PCI Bridge at startup in the 32-bit Zorro 3 address space. The AmigaPCI AUTOCONFIG process is compatable with configuration Type 0 and Type 1 devices. There are two advantages to the AUTOCONFIG approach:
 
 1. The process is transparent to the user and is "plug and play".
 2. Allows for inclusion of auto boot ROMs on the PCI device.
@@ -327,17 +321,28 @@ PCI cards designed specifically with support for the Amiga should be installed i
 
 During configuration, specifications such as the device manufacturer, product number, device capabilities, etc, are read from the device. Each PCI device is capable of supporting up to six base address registers (BAR0 - BAR5, between $10 - $24 in the configuration register). The required address space for each of the six possible registers are determined and presented to Amiga OS for assigning of base addresses in the 32 bit Zorro 3 address space. This is done through the normal Zorro 3 AUTOCONFIG procedure. However, the PCI Bridge logic translates the needs of the PCI card and requests AUTOCONFIG resources in a manner that is understood by Amiga OS. As an example, if BAR0 requests 512k of configuration space, this request will be passed to Amiga OS as a Zorro 3 device requiring 512k of AUTOCONFIG space. Amiga OS will then assign a base address to this request. This assigned base address will be programmed into BAR0 of the target PCI device. This process repeats for BAR1 - BAR5 of the same PCI device. This procedure is then repeated for each PCI device installed. Once complete, each PCI device may be accessed by the assigned base address(es), just as any other AUTOCONFIG device.
 
-PCI target devices configured by the AUTOCONFIG process support only access to memory and configuration space. Use of the I/O space is not recommended for new PCI designs[[6]](#6).
+The PCI Bridge will latch the assigned base address of each AUTOCONFIG PCI device. This is necessary so the PCI Bridge recognizes an access to the device and can interpret the cycle properly. PCI target devices configured by the AUTOCONFIG process may only access memory and configuration spaces. Use of the I/O space is not recommended for new PCI designs[[6]](#6) and is not supported.
 
 ##### 2.3.1.2 AUTOCONFIG ROM Vector
 
 PCI devices may have onboard ROMs that contain additional information describing the device and may be used to enhance functionality, such as for auto booting. PCI ROMs may contain multiple images that support multiple architectures. During PCI configuration, the ROM address requirement is read from the PCI configuration header. This is then presented to the AUTOCONFIG process as a ROM Vector, which is an offset from the base address where the ROM will respond.
 
-##### 2.3.1.3 AUTOCONFIG PCI Device Register Access Examples
+##### 2.3.1.3 AUTOCONFIG PCI Device Register Access
 
-DO SOMETHING!
+PCI devices added by the AUTOCONFIG process may be accessed in memory or configuration space. Each device is accessed via the Zorro 3 assigned base address with the command type determined by sampling the R_W, UPA0, and UPA1 sigals. For example, you can access the Configuration Type 0 space of an AUTOCONFIG PCI device by driving the base address on the MC68040 A bus and setting UAP0 = 0 and UAP1 = 0. The PCI Bridge will interpret this as a Configuration Type 0 command and set the C/_BE[3..0] bits accordingly. 
 
-#### 2.3.2 Software Configuration
+Table 2.3.1.3. PCI Commands for AUTOCONFIG Devices.
+R_W|UPA0|UPA1|PCI Command
+-|-|-|-
+1|0|0|Configuration Type 0 Space Read
+0|0|0|Configuration Type 0 Sace Write
+1|0|1|Configuration Type 1 Space Read
+0|0|1|Configuration Type 1 Space Write
+-|1|0|Reserved
+1|1|1|Memory Space Read
+0|1|1|Memory Space Write
+
+#### 2.3.2 Software Configuration Mode
 
 PCI devices not designed specifically for the Amiga should be installed in software configuration slots. Each slot designated as a software configuration slot may be accessed through the base address of the PCI Bridge, which is always AUTOCONFIGured at startup. Each slot on the PCI bus may be addressed individually by its offset value to read or write from that device's configuration register. The addressing scheme of software configured target devices is compatable with Prometheus. 
 
@@ -364,22 +369,18 @@ $1FC0 0000|$1FCF FFFF|Config Type 0 Space|1MB|$0000 0000|$000F FFFF
 $1FD0 0000|$1FDF FFFF|Config Type 1 Space|1MB|$0000 0000|$000F FFFF
 $1FE0 0000|$1FFF FFFF|I/O Space|2MB|$0000 0000|$001F FFFF
 
-##### 2.3.2.1.1 PCI Configuration Read
+##### 2.3.2.1.1 PCI Configuration Access
 
-A[31..24] Reserved  
-A[23..16] Bus Number (Slot Offset, see Table 2.3.2.a)  
-A[15..11] Device Number (Always b00000)  
-A[10..8] Function Number  
-A[7..2] Register Number  
-A[1..0] Configuration Register Type  
+A[31..24] Reserved  (Always b00000000)
+A[23..16] PCI Bus Number (Slot Offset, see Table 2.3.2.a)  
+A[15..11] PCI Device Number (Always b00000)  
+A[10..8] PCI Function Number  
+A[7..2] PCI Register Number.  
+A[1..0] Defined by MC68040 as byte offset from the base address. 
 
 Reading address $9FC2 0000 will return the Device ID and Vendor ID of function 0 of the PCI device in slot 1.  
 Reading address $9FD0 0000 will return the Device ID and Vendor ID of function 0 of the PCI device in slot 5.  
 Reading address $9FC1 0010 will return the Base Address Register 0 of the PCI device in slot 0.  
-
-##### 2.3.2.1.2 PCI Configuration Write
-
-DO SOMETHING!
 
 ### 2.4 Interrupt Handling
 
