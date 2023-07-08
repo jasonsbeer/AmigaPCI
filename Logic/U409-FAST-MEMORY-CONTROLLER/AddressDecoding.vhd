@@ -60,7 +60,7 @@ entity AddressDecoding is
 		ACSpace : OUT STD_LOGIC;
 		nTCI : OUT STD_LOGIC;				
 		nEMEN : OUT STD_LOGIC;
-		nPCIEN : OUT STD_LOGIC
+		nBEN : OUT STD_LOGIC
      
 	);
 
@@ -100,6 +100,8 @@ begin
 	
 	--WITHIN THE "NORMAL" TRANSFER TYPE, WE DO NOT WANT TO RESPOND 
 	--TO MMU FUNCTIONS OR THE RESERVED TRANSFER MODIFIER.
+	
+	--!!!!!!!!!!!ADD CPUSPACE OUTPUT SIGNAL!!!!!!!!!!!!!!!
 	
 	CPUSpace <= '1' WHEN NormalTransfer = '0' OR TM = "111" OR TM = "011" OR TM = "100" ELSE '0';
 
@@ -231,7 +233,7 @@ begin
 	-- PCI BRIDGE SELECT --
 	-----------------------
 	
-	nPCIEN <= '0' WHEN A(31 DOWNTO 29) = PCIBA AND CONFIGED = '1' ELSE '1';
+	nBEN <= '0' WHEN A(31 DOWNTO 29) = PCIBA AND CONFIGED = '1' ELSE '1';
 
 end Behavioral;
 
