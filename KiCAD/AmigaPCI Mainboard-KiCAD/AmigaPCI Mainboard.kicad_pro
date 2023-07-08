@@ -1791,6 +1791,30 @@
       {
         "netclass": "Narrow",
         "pattern": "_ROMEN"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_UPA1"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_UPA0"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_PARITY"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_PLOCK"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "UPA1"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "UPA0"
       }
     ]
   },
