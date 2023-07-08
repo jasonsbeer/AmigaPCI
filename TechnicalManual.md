@@ -336,9 +336,9 @@ R_W|UPA0|UPA1|PCI Command
 -|-|-|-
 1|0|0|Configuration Type 0 Space Read
 0|0|0|Configuration Type 0 Sace Write
-1|0|1|Configuration Type 1 Space Read
-0|0|1|Configuration Type 1 Space Write
--|1|0|Reserved
+1|1|0|Configuration Type 1 Space Read
+0|1|0|Configuration Type 1 Space Write
+-|0|1|Reserved
 1|1|1|Memory Space Read
 0|1|1|Memory Space Write
 
