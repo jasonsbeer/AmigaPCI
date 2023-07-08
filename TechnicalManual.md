@@ -310,28 +310,28 @@ Bit|Description|Supported by PCI Bridge Device
 3|Interrupt Status|Yes
 2-0|Reserved|-
 
-#### 2.3.1 AUTOCONFIG Mode
+#### 2.3.2 AUTOCONFIG Mode
 
 PCI cards designed specifically with support for the Amiga should be installed in an AUTOCONFIG slot. AUTOCONFIG slots will be configured by the PCI Bridge at startup in the 32-bit Zorro 3 address space. The AmigaPCI AUTOCONFIG process is compatable with configuration Type 0 and Type 1 devices. There are two advantages to the AUTOCONFIG approach:
 
 1. The process is transparent to the user and is "plug and play".
 2. Allows for inclusion of auto boot ROMs on the PCI device.
 
-##### 2.3.1.1 AUTOCONFIG Process
+##### 2.3.2.1 AUTOCONFIG Process
 
 During configuration, specifications such as the device manufacturer, product number, device capabilities, etc, are read from the device. Each PCI device is capable of supporting up to six base address registers (BAR0 - BAR5, between $10 - $24 in the configuration register). The required address space for each of the six possible registers are determined and presented to Amiga OS for assigning of base addresses in the 32 bit Zorro 3 address space. This is done through the normal Zorro 3 AUTOCONFIG procedure. However, the PCI Bridge logic translates the needs of the PCI card and requests AUTOCONFIG resources in a manner that is understood by Amiga OS. As an example, if BAR0 requests 512k of configuration space, this request will be passed to Amiga OS as a Zorro 3 device requiring 512k of AUTOCONFIG space. Amiga OS will then assign a base address to this request. This assigned base address will be programmed into BAR0 of the target PCI device. This process repeats for BAR1 - BAR5 of the same PCI device. This procedure is then repeated for each PCI device installed. Once complete, each PCI device may be accessed by the assigned base address(es), just as any other AUTOCONFIG device.
 
 The PCI Bridge will latch the assigned base address of each AUTOCONFIG PCI device. This is necessary so the PCI Bridge recognizes an access to the device and can interpret the cycle properly. PCI target devices configured by the AUTOCONFIG process may only access memory and configuration spaces. Use of the I/O space is not recommended for new PCI designs[[6]](#6) and is not supported.
 
-##### 2.3.1.2 AUTOCONFIG ROM Vector
+##### 2.3.2.2 AUTOCONFIG ROM Vector
 
 PCI devices may have onboard ROMs that contain additional information describing the device and may be used to enhance functionality, such as for auto booting. PCI ROMs may contain multiple images that support multiple architectures. During PCI configuration, the ROM address requirement is read from the PCI configuration header. This is then presented to the AUTOCONFIG process as a ROM Vector, which is an offset from the base address where the ROM will respond.
 
-##### 2.3.1.3 AUTOCONFIG PCI Device Register Access
+##### 2.3.2.3 AUTOCONFIG PCI Device Register Access
 
-PCI devices added by the AUTOCONFIG process may be accessed in memory or configuration space. Each device is accessed via the Zorro 3 assigned base address with the command type determined by sampling the R_W, UPA0, and UPA1 sigals. For example, you can access the Configuration Type 0 space of an AUTOCONFIG PCI device by driving the base address on the MC68040 A bus and setting UAP0 = 0 and UAP1 = 0. The PCI Bridge will interpret this as a Configuration Type 0 command and set the C/_BE[3..0] bits accordingly. 
+PCI devices added by the AUTOCONFIG process may be accessed in memory or configuration space. PCI defines multiple address spaces that exist in parallel. PCI command encodings select a specific address space for the current cycle. Each device is accessed via the Zorro 3 assigned base address with the command type determined by sampling the R_W, UPA0, and UPA1 sigals. For example, you can access the Configuration Type 0 space of an AUTOCONFIG PCI device by driving the base address on the MC68040 A bus and setting UAP0 = 0 and UAP1 = 0. The PCI Bridge will interpret this as a Configuration Type 0 command and set the C/_BE[3..0] bits accordingly. 
 
-Table 2.3.1.3. PCI Commands for AUTOCONFIG Devices.
+Table 2.3.2.3. PCI Commands for AUTOCONFIG Devices.
 R_W|UPA0|UPA1|PCI Command
 -|-|-|-
 1|0|0|Configuration Type 0 Space Read
@@ -342,11 +342,11 @@ R_W|UPA0|UPA1|PCI Command
 1|1|1|Memory Space Read
 0|1|1|Memory Space Write
 
-#### 2.3.2 Software Configuration Mode
+#### 2.3.3 Software Configuration Mode
 
 PCI devices not designed specifically for the Amiga should be installed in software configuration slots. Each slot designated as a software configuration slot may be accessed through the base address of the PCI Bridge, which is always AUTOCONFIGured at startup. Each slot on the PCI bus may be addressed individually by its offset value to read or write from that device's configuration register. The addressing scheme of software configured target devices is compatable with Prometheus. 
 
-Table 2.3.2a. Address Offset of PCI Slots For IDSEL.
+Table 2.3.3a. Address Offset of PCI Slots For IDSEL.
 PCI Slot|Address Bit|Offset From Base Address
 -|-|-
 0|AD[16]|$01 0000
@@ -355,13 +355,13 @@ PCI Slot|Address Bit|Offset From Base Address
 3|AD[19]|$08 0000
 4|AD[20]|$10 0000
 
-#### 2.3.2.1 PCI Command Examples
+#### 2.3.3.1 PCI Command Examples
 
 PCI defines multiple address spaces that exist in parallel. PCI command encodings select a specific address space for the current cycle. In order to signal which address space is being targeted, the PCI Bridge recognizes address offsets from the PCI Bridge base address. 
 
 For these examples, assume the base address of the PCI Bridge is $8000 0000. When accessing the configuration registers of software configured PCI devices on the bus, A[31..24] will be converted to $00 by the PCI bridge. The address offsets in Table 2.3.2.1 show the command type associated with the address offset. For example, access in the "memory space" are interpreted by the PCI Bridge as PCI memory read or memory write commands. As such, Memory Read or Memory Write will be the command issued by the PCI Bridge. Accesses in the "Config Type 0 Space" will assert Configuration Read or Configuration Write commands, and so forth.
 
-Table 2.3.2.1. Address Offsets for Command Types[[6]](#6).
+Table 2.3.3.1. Address Offsets for Command Types[[6]](#6).
 Z3 Start|Z3 End|Command Type|Size|PCI Start|PCI End
 -|-|-|-|-|-
 $0000 0000|$1FBF FFFF|Memory Space|508MB|$0000 0000|$1FBF FFFF
@@ -369,7 +369,7 @@ $1FC0 0000|$1FCF FFFF|Config Type 0 Space|1MB|$0000 0000|$000F FFFF
 $1FD0 0000|$1FDF FFFF|Config Type 1 Space|1MB|$0000 0000|$000F FFFF
 $1FE0 0000|$1FFF FFFF|I/O Space|2MB|$0000 0000|$001F FFFF
 
-##### 2.3.2.1.1 PCI Configuration Access
+##### 2.3.3.1.1 PCI Configuration Access
 
 A[31..24] Reserved  (Always b00000000)
 A[23..16] PCI Bus Number (Slot Offset, see Table 2.3.2.a)  
