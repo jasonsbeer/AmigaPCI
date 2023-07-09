@@ -41,18 +41,16 @@ entity PCIAUTOCONFIG is
 		CONFIGURED : IN STD_LOGIC;
 		RnW : IN STD_LOGIC;
 		nTIP : IN STD_LOGIC;
-		DLATCH0 : IN STD_LOGIC_VECTOR (31 DOWNTO 0);
-		ADLATCH0 : IN STD_LOGIC_VECTOR (31 DOWNTO 0);
-		ADLATCH0VALID : IN STD_LOGIC;
+		nTRDY : IN STD_LOGIC;
 		
-      D : INOUT  STD_LOGIC_VECTOR (31 DOWNTO 28);
-      AD : INOUT  STD_LOGIC_VECTOR (31 DOWNTO 0);
+      D : INOUT  STD_LOGIC_VECTOR (31 DOWNTO 16);
+      AD : INOUT  STD_LOGIC_VECTOR (31 DOWNTO 0);		
 		
-		nBEN : OUT STD_LOGIC; --SIGNAL U110 THE A BUS IS IN THE BRIDGE ADDRESS SPACE
+		BEN : OUT STD_LOGIC; --SIGNAL U110 THE A BUS IS IN THE BRIDGE ADDRESS SPACE
 		PCONFIGED : OUT STD_LOGIC; --SIGNAL U110 WE HAVE COMPLETED THE AUTOCONFIG PROCESS
 		nTA : OUT STD_LOGIC; --040 TRANSFER ACK
-		nACONF : OUT STD_LOGIC; --SIGNAL U110 TO SEND A CONFIGURATION REGISTER COMMAND
-		PCIR_W : OUT STD_LOGIC --READ WRITE SIGNAL TO U110
+		ACONF : OUT STD_LOGIC; --SIGNAL U110 TO SEND A CONFIGURATION REGISTER COMMAND
+		PCIRnW : OUT STD_LOGIC --READ WRITE SIGNAL TO U110		
 		
    );
 
@@ -60,29 +58,33 @@ end PCIAUTOCONFIG;
 
 architecture Behavioral of PCIAUTOCONFIG is
 
-	TYPE AC_STATE IS (IDLE, ID, BASEADDRESS, ROM);
+	TYPE AC_STATE IS (IDLE, ID_READ_ADDRESS_PHASE, ID_READ_DATA_PHASE, BASEADDRESS_WRITE_ADDRESS_PHASE, BASEADDRESS_WRITE_DATA_PHASE, BASEADDRESS_READ_ADDRESS_PHASE, BASEADDRESS_READ_DATA_PHASE, ROM_VECTOR_WRITE_ADDRESS_PHASE, ROM_VECTOR_WRITE_DATA_PHASE, ROM_VECTOR_READ_ADDRESS_PHASE, ROM_VECTOR_READ_DATA_PHASE, NEWBASEADDRESS_WRITE_ADDRESS_PHASE, NEWBASEADDRESS_WRITE_DATA_PHASE);
+	
 	SIGNAL CURRENT_STATE : AC_STATE;
-	SIGNAL REG_ID : STD_LOGIC_VECTOR(31 DOWNTO 0);
-	SIGNAL REG_BASEADDRESS : STD_LOGIC_VECTOR (31 DOWNTO 0);
-	SIGNAL REG_ROMVECTOR : STD_LOGIC_VECTOR (31 DOWNTO 0);
+	SIGNAL REG_ID : STD_LOGIC_VECTOR(23 DOWNTO 0);
+	SIGNAL REG_BASEADDRESS : STD_LOGIC_VECTOR (31 DOWNTO 16);
+	SIGNAL REG_ROMVECTOR : STD_LOGIC_VECTOR (15 DOWNTO 11);
 	
 	SIGNAL ac_ready : STD_LOGIC;
-
-   SIGNAL bridgeconfiged : STD_LOGIC;
+	SIGNAL vectorenabled : STD_LOGIC;
+	SIGNAL extendedregister : STD_LOGIC;
 	
-	SIGNAL pci0configed : STD_LOGIC;	
+	SIGNAL pci0configed : STD_LOGIC;
+	SIGNAL pci1configed : STD_LOGIC;
+	SIGNAL pci2configed : STD_LOGIC;
+	SIGNAL pci3configed : STD_LOGIC;
+	SIGNAL pci4configed : STD_LOGIC;	
+	SIGNAL pciconfigured : STD_LOGIC;
+	
+	SIGNAL PCI4BASE : STD_LOGIC_VECTOR (31 DOWNTO 16);
 	
 	SIGNAL acspace : STD_LOGIC;
 	SIGNAL acaddress : STD_LOGIC_VECTOR(7 DOWNTO 0);
-	SIGNAL bridgeout : STD_LOGIC_VECTOR (3 DOWNTO 0);
 	SIGNAL dout : STD_LOGIC_VECTOR (3 DOWNTO 0);
-	SIGNAL endcycle : STD_LOGIC;
-	
-	SIGNAL bridgebase : STD_LOGIC_VECTOR(3 DOWNTO 0);
+	SIGNAL endcycle : STD_LOGIC;	
 	
 	SIGNAL pcicount : INTEGER RANGE 0 TO 5;
 	
-	--SIGNAL adout : STD_LOGIC_VECTOR (31 DOWNTO 0);
 	SIGNAL pcirw : STD_LOGIC;
 
 begin
@@ -95,8 +97,7 @@ begin
 	--FIND ANY PCI CARDS THAT HAVE BEEN IDENTIFIED AS AUTOCONFIG DEVICES AND CONFIGURE
 	--THOSE, TOO. WE WAIT TO CONFIGURE THE BRIDGE AFTER THE ONBOARD RAM AND IDE CONTROLLER
 	--HAVE BEEN AUTOCONFIGURed. WHEN WE ARE DONE WITH AUTOCONFIG, WE SIGNAL U110 THAT
-	--IT CAN BEGIN NORMAL OPERATIONS.	
-	
+	--IT CAN BEGIN NORMAL OPERATIONS.		
 	
 	---------------------------------------
 	-- PCI AUTOCONFIG USER CONFIGURATION --
@@ -112,6 +113,8 @@ begin
 		4 WHEN ACCONF = "110" ELSE --SLOTS 1-4 ARE AUTOCONFIG
 		5 WHEN ACCONF = "111" ELSE --ALL SLOTS ARE AUTOCONFIG 
 		0; --NO SLOTS ARE AUTOCONFIG
+		
+	pciconfigured <= '1' WHEN (pci4configed = '1' OR pcicount = 0) AND (pci3configed = '1' OR pcicount = 1) AND (pci2configed = '1' OR pcicount = 2) AND (pci1configed = '1' OR pcicount = 3) AND (pci0configed = '1' OR pcicount = 4) ELSE '0';
 	
 	--------------------------------
 	-- 68040 AUTOCONFIG ADDRESSES --
@@ -129,8 +132,7 @@ begin
 		
 	END PROCESS; 
 	
-	acaddress <= "00" & A(6 DOWNTO 2) & A(8);
-	pciconfigured <= pci0configed;
+	acaddress <= "00" & A(6 DOWNTO 2) & A(8);	
 	
 	--------------------
 	-- PCI R/W SIGNAL --
@@ -140,7 +142,7 @@ begin
 	--NORMALLY, THIS IS THE SAME AS THE MC68040 R_W SIGNAL, BUT WE NEED
 	--TO INTERCEPT IT FOR AUTOCONFIG PURPOSES.
 	
-	PCIR_W <= pcirw WHEN acspace = '1' ELSE RnW;
+	PCIRnW <= pcirw WHEN acspace = '1' ELSE RnW;
 	
 	---------------------------------
 	-- PCI CONFIGURATION REGISTERS --
@@ -166,7 +168,8 @@ begin
 			AD <= (OTHERS => 'Z');
 			REG_ID <= (OTHERS => '0');
 			REG_BASEADDRESS <= (OTHERS => '0');
-			REV_ROMVECTOR <= (OTHERS => '0');
+			REG_ROMVECTOR <= (OTHERS => '0');
+			vectorenabled <= '0';
 			ac_ready <= '0';
 			
 		ELSIF FALLING_EDGE (PCICLK) THEN
@@ -175,7 +178,7 @@ begin
 			
 				WHEN IDLE =>
 				
-					IF acspace = '1' THEN 
+					IF acspace = '1' AND pciconfigured = '0' THEN 
 					
 						CURRENT_STATE <= ID_READ_ADDRESS_PHASE;	
 						
@@ -183,33 +186,34 @@ begin
 				
 				WHEN ID_READ_ADDRESS_PHASE =>	
 
-					nACONF <= '0'; --SEND THE CONFIGURE COMMAND SIGNAL (READ)
+					ACONF <= '1'; --SEND THE CONFIGURE COMMAND SIGNAL (READ)
 					pcirw <= '1';
-					AD <= x"00100000"; --00000000 00000001 00000000 00000000 READS VENDOR ID/DEVICE ID OF SLOT 0
+					AD <= x"00100000"; --00000000 00000001 00000000 00000000 READS VENDOR ID/DEVICE ID OF SLOT 4
 					CURRENT_STATE <= ID_READ_DATA_PHASE;
 				
 				WHEN ID_READ_DATA_PHASE =>	
 				
 					AD <= (OTHERS => 'Z');
-					nACONF <= '1';
+					ACONF <= '0';
 					
 					IF nTRDY = '0' THEN
 					
 						CURRENT_STATE <= BASEADDRESS_WRITE_ADDRESS_PHASE;
-						REG_ID <= AD;
+						REG_ID <= AD(23 DOWNTO 0);
 					
 					END IF;	
 				
 				WHEN BASEADDRESS_WRITE_ADDRESS_PHASE =>
 				
-					AD <= x"00100010"; --00000000 00000001 00000000 00010000 ACCESS BAR0 OF SLOT 0
-					nACONF <= '0'; --SEND THE CONFIGURE COMMAND SIGNAL (WRITE)	
+					AD <= x"00100010"; --00000000 00000001 00000000 00010000 ACCESS BAR0 OF SLOT 4
+					ACONF <= '1'; --SEND THE CONFIGURE COMMAND SIGNAL (WRITE)	
 					pcirw <= '0';
 					CURRENT_STATE <= BASEADDRESS_WRITE_DATA_PHASE;
 					
 				WHEN BASEADDRESS_WRITE_DATA_PHASE =>
 				
 					AD <= x"FFFFFFFF";
+					ACONF <= '0';
 				
 					IF nTRDY = '0' THEN					
 						
@@ -219,33 +223,34 @@ begin
 					
 				WHEN BASEADDRESS_READ_ADDRESS_PHASE =>
 				
-					AD <= x"00100010"; --00000000 00000001 00000000 00010000 ACCESS BAR0 OF SLOT 0
-					nACONF <= '0'; --SEND THE CONFIGURE COMMAND SIGNAL (READ)
+					AD <= x"00100010"; --00000000 00000001 00000000 00010000 ACCESS BAR0 OF SLOT 4
+					ACONF <= '1'; --SEND THE CONFIGURE COMMAND SIGNAL (READ)
 					pcirw <= '1';
 					CURRENT_STATE <= BASEADDRESS_READ_DATA_PHASE;
 					
 				WHEN BASEADDRESS_READ_DATA_PHASE =>
 				
-					nACONF <= '1';
+					ACONF <= '0';
 					AD <= (OTHERS => 'Z');	
 				
 					IF nTRDY = '0' THEN
 					
-						REG_BASEADDRESS <= AD;		
+						REG_BASEADDRESS <= NOT AD(31 DOWNTO 16);		
 						CURRENT_STATE <= ROM_VECTOR_WRITE_ADDRESS_PHASE;
 						
 					END IF;					
 					
 				WHEN ROM_VECTOR_WRITE_ADDRESS_PHASE =>
 				
-					AD <= x"00100030"; --00000000 00010000 00000000 00110000 ACCESS ROM BASE ADDRESS OF SLOT 0
-					nACONF <= '0'; --SEND THE CONFIGURE COMMAND SIGNAL (WRITE)	
+					AD <= x"00100030"; --00000000 00010000 00000000 00110000 ACCESS ROM BASE ADDRESS 0 OF SLOT 4
+					ACONF <= '1'; --SEND THE CONFIGURE COMMAND SIGNAL (WRITE)	
 					pcirw <= '0';
 					CURRENT_STATE <= ROM_VECTOR_WRITE_DATA_PHASE;
 					
 				WHEN ROM_VECTOR_WRITE_DATA_PHASE =>
 				
 					AD <= x"FFFFFFFF";
+					ACONF <= '0';
 				
 					IF nTRDY = '0' THEN					
 						
@@ -255,21 +260,45 @@ begin
 					
 				WHEN ROM_VECTOR_READ_ADDRESS_PHASE =>
 				
-					AD <= x"00100030"; --00000000 00010000 00000000 00110000 ACCESS ROM BASE ADDRESS OF SLOT 0
-					nACONF <= '0'; --SEND THE CONFIGURE COMMAND SIGNAL (READ)
+					AD <= x"00100030"; --00000000 00010000 00000000 00110000 ACCESS ROM BASE ADDRESS 0 OF SLOT 4
+					ACONF <= '1'; --SEND THE CONFIGURE COMMAND SIGNAL (READ)
 					pcirw <= '1';
 					CURRENT_STATE <= ROM_VECTOR_READ_DATA_PHASE;
 					
 				WHEN ROM_VECTOR_READ_DATA_PHASE =>
 				
-					nACONF <= '1';
+					ACONF <= '0';
 					AD <= (OTHERS => 'Z');	
 				
 					IF nTRDY = '0' THEN
 					
-						REG_ROMVECTOR <= AD;		
+						IF AD(0) = '1' THEN
+						
+							REG_ROMVECTOR <= NOT AD(15 DOWNTO 11);	
+							vectorenabled <= '1';
+							
+						END IF;
+						
 						CURRENT_STATE <= IDLE;
 						ac_ready <= '1'; --READY TO START THE AUTOCONFIG CYCLE
+						
+					END IF;
+					
+				WHEN NEWBASEADDRESS_WRITE_ADDRESS_PHASE =>
+				
+					AD <= x"00100010"; --00000000 00000001 00000000 00010000 ACCESS BAR0 OF SLOT 4
+					ACONF <= '1'; --SEND THE CONFIGURE COMMAND SIGNAL (WRITE)	
+					pcirw <= '0';
+					CURRENT_STATE <= BASEADDRESS_WRITE_DATA_PHASE;
+					
+				WHEN NEWBASEADDRESS_WRITE_DATA_PHASE =>
+				
+					AD <= PCI4BASE & x"0000";
+					ACONF <= '0';
+				
+					IF nTRDY = '0' THEN					
+						
+						CURRENT_STATE <= IDLE;
 						
 					END IF;
 					
@@ -283,14 +312,17 @@ begin
 	-- AUTOCONFIG PROCESS --
 	------------------------	
 	
-	D <= dout WHEN acspace = '1' ELSE (OTHERS => 'Z');	
+	D <= dout & x"000" WHEN acspace = '1' ELSE (OTHERS => 'Z');	
 	
 	PROCESS (BCLK, nRESET) BEGIN
 	
 		IF nRESET = '0' THEN
 		
-			bridgebase <= (OTHERS => '0');
-			bridgeconfiged <= '0';
+			pci0configed <= '0';
+			pci1configed <= '0';
+			pci2configed <= '0';
+			pci3configed <= '0';
+			pci4configed <= '0';
 			
 		ELSIF FALLING_EDGE (BCLK) THEN
 		
@@ -306,7 +338,7 @@ begin
 						
 							--ALL PCI CARDS ARE ZORRO 3 DEVICES.
 							
-							IF REG_ROMVECTOR = x"00000000" THEN
+							IF vectorenabled = '0' THEN
 						
 								dout <= "1000"; --NO ROM VECTOR
 								
@@ -320,46 +352,82 @@ begin
 						
 							--USE THE COLLECTED BASE ADDRESS REGISTER INFORMATION TO CLAIM THE NEEDED MEMORY SPACE.
 							
-							CASE REG_BASEADDRESS(31 DOWNTO 16) IS
+							CASE REG_BASEADDRESS IS
 							
-								WHEN x"0000" => dout <= "0001"; --64k								
-								WHEN x"0001" => dout <= "0010"; --128k								
-								WHEN x"0002" => dout <= "0011"; --256k								
-								WHEN x"0004" => dout <= "0100"; --512k								
-								WHEN x"0008" => dout <= "0101"; --1mb								
-								WHEN x"0010" => dout <= "0110"; --2mb								
-								WHEN x"0020" => dout <= "0111"; --4mb								
-								WHEN x"0040" => dout <= "0000"; --8mb								
-								WHEN x"0080" => dout <= "0000"; --16mb								
-								WHEN x"0100" => dout <= "0001"; --32mb								
-								WHEN x"0200" => dout <= "0010"; --64mb								
-								WHEN x"0400" => dout <= "0011"; --128mb								
-								WHEN x"0800" => dout <= "0100"; --256mb								
-								WHEN x"1000" => dout <= "0101"; --512mb
-								WHEN x"2000" => dout <= "0110"; --1gb
+								WHEN x"0000" => dout <= "0001"; extendedregister <= '0'; --64k								
+								WHEN x"0001" => dout <= "0010"; extendedregister <= '0'; --128k								
+								WHEN x"0003" => dout <= "0011"; extendedregister <= '0'; --256k								
+								WHEN x"0007" => dout <= "0100"; extendedregister <= '0'; --512k								
+								WHEN x"000F" => dout <= "0101"; extendedregister <= '0'; --1mb								
+								WHEN x"001F" => dout <= "0110"; extendedregister <= '0'; --2mb								
+								WHEN x"003F" => dout <= "0111"; extendedregister <= '0'; --4mb								
+								WHEN x"007F" => dout <= "0000"; extendedregister <= '0'; --8mb								
+								WHEN x"00FF" => dout <= "0000"; extendedregister <= '1'; --16mb								
+								WHEN x"01FF" => dout <= "0001"; extendedregister <= '1'; --32mb								
+								WHEN x"03FF" => dout <= "0010"; extendedregister <= '1'; --64mb								
+								WHEN x"07FF" => dout <= "0011"; extendedregister <= '1'; --128mb								
+								WHEN x"0FFF" => dout <= "0100"; extendedregister <= '1'; --256mb								
+								WHEN x"1FFF" => dout <= "0101"; extendedregister <= '1'; --512mb
+								WHEN x"3FFF" => dout <= "0110"; extendedregister <= '1'; --1gb
 								WHEN OTHERS =>
 							
 							END CASE;
 							
 						WHEN x"04" =>
 						
-							dout <= NOT REG_ID(16 TO 19); --PROD NUMBER HIGH NIBBLE. BYTE SWAPPED. BIT SWAPPED.
+							dout <= NOT (REG_ID(16) & REG_ID(17) & REG_ID(18) & REG_ID(19)); --PROD NUMBER HIGH NIBBLE. BYTE SWAPPED. BIT SWAPPED.
 							
 						WHEN x"06" =>
 						
-							dout <= NOT REG_ID(20 TO 23); --PROD NUMBER LOW NIBBLE. BYTE SWAPPED. BIT SWAPPED.
+							dout <= NOT (REG_ID(20) & REG_ID(21) & REG_ID(22) & REG_ID(23)); --PROD NUMBER LOW NIBBLE. BYTE SWAPPED. BIT SWAPPED.
 							
 						WHEN x"08" =>
 						
-							dout <= NOT "0111"; --I/O DEVICE, CANNOT BE SHUT UP
+							dout <= NOT "01" & extendedregister & "1"; --I/O DEVICE, CAN BE SHUT UP, ZORRO 2 OR 3 ADDRESS SPACE REGISTER, ZORRO 3 CARD.
 							
-						WHEN x"0A" =>
+						WHEN x"10" =>
 						
-							dout <= NOT "0000"; --LOGICAL AND PHYSICAL SIZE ARE EQUAL
+							dout <= NOT (REG_ID(0) & REG_ID(1) & REG_ID(2) & REG_ID(3)); --MANUFACTURER NUMBER, HIGH NIBBLE, HIGH BYTE. BYTE SWAPPED. BIT SWAPPED.
+							
+						WHEN x"12" =>
+						
+							dout <= NOT (REG_ID(4) & REG_ID(5) & REG_ID(6) & REG_ID(7)); --MANUFACTURER NUMBER, LOW NIBBLE, HIGH BYTE. BYTE SWAPPED. BIT SWAPPED.
 							
 						WHEN x"14" =>
 						
-							dout <= "0110"; --MNF NUMBER. I AM STILL USING 600.
+							dout <= NOT (REG_ID(8) & REG_ID(9) & REG_ID(10) & REG_ID(11)); --MANUFACTURER NUMBER, HIGH NIBBLE, LOW BYTE. BYTE SWAPPED. BIT SWAPPED.
+							
+						WHEN x"16" =>
+						
+							dout <= NOT (REG_ID(12) & REG_ID(13) & REG_ID(14) & REG_ID(15));--MANUFACTURER NUMBER, LOW NIBBLE, LOW BYTE. BYTE SWAPPED. BIT SWAPPED.
+							
+						WHEN x"28" =>
+						
+							IF vectorenabled = '0' THEN
+							
+								dout <= NOT "0000";
+								
+							ELSE
+							
+								--ROM VECTOR. HIGH BYTE, HIGH NIBBLE.
+							
+								dout <= NOT REG_ROMVECTOR(15 DOWNTO 12);
+								
+							END IF;
+							
+						WHEN x"2A" =>
+						
+							IF vectorenabled = '0' THEN
+							
+								dout <= NOT "0000";
+								
+							ELSE
+							
+								--ROM VECTOR. HIGH BYTE, HIGH NIBBLE. BIT SWAPPED.
+							
+								dout <= NOT (REG_ROMVECTOR(11) & "000");
+								
+							END IF;	
 							
 						WHEN OTHERS =>
 						
@@ -371,10 +439,19 @@ begin
 				
 					CASE acaddress IS
 					
-						WHEN x"44" => 
+						WHEN x"44" => --BASE ADDRESS REGISTER
 						
-							bridgebase <= D(31 DOWNTO 28);
-							bridgeconfiged <= '1';
+							PCI4BASE <= D(31 DOWNTO 16);
+							pci4configed <= '1';
+							
+						--WHEN x"48" => 
+						
+							--pci0base(23 DOWNTO 16) <= D(31 DOWNTO 24);
+							--pci0configed <= '1';
+							
+						WHEN x"4C" => --SHUT UP REGISTER
+						
+							pci4configed <= '1';
 							
 						WHEN OTHERS =>
 						
@@ -396,7 +473,7 @@ begin
 	-- 68040 TRANSFER ACK --
 	------------------------
 	
-	nTA <= '1' WHEN acspace = '1' ELSE '0' WHEN acspace = '1' AND endcycle = '1' ELSE 'Z';
+	nTA <= '1' WHEN acspace = '1' ELSE '0' WHEN (acspace = '1' AND endcycle = '1') OR (acspace = '1' AND pciconfigured = '1') ELSE 'Z';
 	
 	---------------------------
 	-- BASE ADDRESS RESPONSE --
@@ -406,7 +483,7 @@ begin
 	--ANY OTHER PCI TARGET DEVICES, WE NEED TO WAKE UP SO THE BRIDGE CAN
 	--DIRECT THE PCI CYCLE.
 	
-	nBEN <= '0' WHEN A(31 DOWNTO 28) = bridgebase ELSE '1';
+	--nBEN <= '0' WHEN A(31 DOWNTO 28) = bridgebase ELSE '1';
 
 
 end Behavioral;
