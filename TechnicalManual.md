@@ -323,7 +323,10 @@ During configuration, specifications such as the device manufacturer, product nu
 
 The PCI Bridge will latch the assigned base address of each AUTOCONFIG PCI device. This is necessary so the PCI Bridge recognizes an access to the device and can interpret the cycle properly. PCI target devices configured by the AUTOCONFIG process may only access memory and configuration spaces. Use of the I/O space is not recommended for new PCI designs[[6]](#6) and is not supported.
 
-**NOTE:** PCI allows for 16-bit Product ID's. Amiga OS only supports 8-bit Product ID's. The Product ID should be stored in the most significant bits of the least significant word of the Device ID field. Remember, PCI is little endian! So, this is bits 23 - 16 of register $00.
+**NOTES:** 
+
+1) PCI allows for 16-bit Product ID's. Amiga OS supports 8-bit Product ID's. The Product ID should be stored in the most significant bits of the least significant word of the Device ID field. Remember, PCI is little endian! So, this is bits 23 - 16 of register $00.  
+2) PCI allows for 32-bit ROM Vectors (ROM Base Address). Amiga OS supports 16-bit ROM Vectors. The ROM vector should be stored in the most significant bits of the Rom Base Address register. Remember, PCI is little endian! So, this is bits 15 - 0 of register $30.  
 
 ##### 2.3.2.2 AUTOCONFIG ROM Vector
 
