@@ -364,7 +364,7 @@ PCI Slot|Address Bit|Offset From Base Address
 
 PCI defines multiple address spaces that exist in parallel. PCI command encodings select a specific address space for the current cycle. In order to signal which address space is being targeted, the PCI Bridge recognizes address offsets from the PCI Bridge base address. 
 
-For these examples, assume the base address of the PCI Bridge is $8000 0000. When accessing the configuration registers of software configured PCI devices on the bus, A[31..24] will be converted to $00 by the PCI bridge. The address offsets in Table 2.3.2.1 show the command type associated with the address offset. For example, access in the "memory space" are interpreted by the PCI Bridge as PCI memory read or memory write commands. As such, Memory Read or Memory Write will be the command issued by the PCI Bridge. Accesses in the "Config Type 0 Space" will assert Configuration Read or Configuration Write commands, and so forth.
+The address offsets in Table 2.3.2.1 show the command type associated with the address offset. For example, access in the "memory space" are interpreted by the PCI Bridge as PCI memory read or memory write commands. As such, Memory Read or Memory Write will be the command issued by the PCI Bridge. Accesses in the "Config Type 0 Space" will assert Configuration Read or Configuration Write commands, and so forth.
 
 Table 2.3.3.1. Address Offsets for Command Types[[6]](#6).
 Z3 Start|Z3 End|Command Type|Size|PCI Start|PCI End
@@ -375,6 +375,8 @@ $1FD0 0000|$1FDF FFFF|Config Type 1 Space|1MB|$0000 0000|$000F FFFF
 $1FE0 0000|$1FFF FFFF|I/O Space|2MB|$0000 0000|$001F FFFF
 
 ##### 2.3.3.1.1 PCI Configuration Access
+
+For these examples, assume the base address of the PCI Bridge is $8000 0000. When accessing the configuration registers of software configured PCI devices on the bus, A[31..24] will be converted to $00 by the PCI bridge. 
 
 A[31..24] Reserved  (Always b00000000)
 A[23..16] PCI Bus Number (Slot Offset, see Table 2.3.2.a)  
@@ -446,7 +448,7 @@ When a parity mismatch is detected, and the target device's parity error respose
 
 For MC68040 driven cycles, if the PCI Bridge detects a parity error and has its parity error response bit set (Command Register, bit 6), it will assert _INT2 and set its interrupt status bit (Status Register, Bit 3). PCI drivers are expected to respond to this interrupt and poll their device's Parity Error Bit. The driver should then clear the interrupt in the PCI Bridge (Status Register, Bit 3) and retry or cancel the cycle.
 
-IS THIS OVERKILL?
+IS THIS OVERKILL? PROBABLY.
 
 add timing
 
