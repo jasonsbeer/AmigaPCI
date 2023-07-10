@@ -34,7 +34,6 @@ entity PCIAUTOCONFIG is
    Port ( 
 	 
 		A : IN  STD_LOGIC_VECTOR (31 DOWNTO 0);
-		ACCONF : IN STD_LOGIC_VECTOR (2 DOWNTO 0);
 		BCLK : IN STD_LOGIC;
 		PCICLK : IN STD_LOGIC;
 		nRESET : IN STD_LOGIC;
@@ -42,15 +41,25 @@ entity PCIAUTOCONFIG is
 		RnW : IN STD_LOGIC;
 		nTIP : IN STD_LOGIC;
 		nTRDY : IN STD_LOGIC;
+		AC_SLOT0 : IN STD_LOGIC;
+		AC_SLOT1 : IN STD_LOGIC;
+		AC_SLOT2 : IN STD_LOGIC;
+		AC_SLOT3 : IN STD_LOGIC;
+		AC_SLOT4 : IN STD_LOGIC;
 		
       D : INOUT  STD_LOGIC_VECTOR (31 DOWNTO 16);
       AD : INOUT  STD_LOGIC_VECTOR (31 DOWNTO 0);		
 		
-		BEN : OUT STD_LOGIC; --SIGNAL U110 THE A BUS IS IN THE BRIDGE ADDRESS SPACE
-		PCONFIGED : OUT STD_LOGIC; --SIGNAL U110 WE HAVE COMPLETED THE AUTOCONFIG PROCESS
+		PCONFIGED : INOUT STD_LOGIC; --SIGNAL U110 WE HAVE COMPLETED THE AUTOCONFIG PROCESS
 		nTA : OUT STD_LOGIC; --040 TRANSFER ACK
 		ACONF : OUT STD_LOGIC; --SIGNAL U110 TO SEND A CONFIGURATION REGISTER COMMAND
-		PCIRnW : OUT STD_LOGIC --READ WRITE SIGNAL TO U110		
+		PCIRnW : OUT STD_LOGIC; --READ WRITE SIGNAL TO U110	
+
+		PCI4BASE : INOUT STD_LOGIC_VECTOR (31 DOWNTO 16) --AUTCONFIG BASE ADDRESS SLOT 4
+		--PCI3BASE : OUT STD_LOGIC_VECTOR (31 DOWNTO 16) --AUTCONFIG BASE ADDRESS SLOT 4
+		--PCI2BASE : OUT STD_LOGIC_VECTOR (31 DOWNTO 16) --AUTCONFIG BASE ADDRESS SLOT 4
+		--PCI1BASE : OUT STD_LOGIC_VECTOR (31 DOWNTO 16) --AUTCONFIG BASE ADDRESS SLOT 4
+		--PCI0BASE : OUT STD_LOGIC_VECTOR (31 DOWNTO 16) --AUTCONFIG BASE ADDRESS SLOT 4
 		
    );
 
@@ -66,6 +75,8 @@ architecture Behavioral of PCIAUTOCONFIG is
 	SIGNAL REG_ROMVECTOR : STD_LOGIC_VECTOR (15 DOWNTO 11);
 	
 	SIGNAL ac_ready : STD_LOGIC;
+	SIGNAL pci_config_ready : STD_LOGIC;
+	SIGNAL shutup : STD_LOGIC;
 	SIGNAL vectorenabled : STD_LOGIC;
 	SIGNAL extendedregister : STD_LOGIC;
 	
@@ -74,16 +85,14 @@ architecture Behavioral of PCIAUTOCONFIG is
 	SIGNAL pci2configed : STD_LOGIC;
 	SIGNAL pci3configed : STD_LOGIC;
 	SIGNAL pci4configed : STD_LOGIC;	
-	SIGNAL pciconfigured : STD_LOGIC;
-	
-	SIGNAL PCI4BASE : STD_LOGIC_VECTOR (31 DOWNTO 16);
+	--SIGNAL pciconfigured : STD_LOGIC;
 	
 	SIGNAL acspace : STD_LOGIC;
 	SIGNAL acaddress : STD_LOGIC_VECTOR(7 DOWNTO 0);
 	SIGNAL dout : STD_LOGIC_VECTOR (3 DOWNTO 0);
 	SIGNAL endcycle : STD_LOGIC;	
 	
-	SIGNAL pcicount : INTEGER RANGE 0 TO 5;
+	--SIGNAL pcicount : INTEGER RANGE 0 TO 5;
 	
 	SIGNAL pcirw : STD_LOGIC;
 
@@ -93,28 +102,13 @@ begin
    -- PCI AUTOCONFIG --
 	--------------------
 	
-	--THE PCI BRIDGE IS ALWAYS AUTOCONFIGured IN U409. ONCE COMPLETE, WE POLL THE AD BUS TO 
+	--THE PCI BRIDGE IS ALWAYS AUTOCONFIGured BY U409. ONCE COMPLETE, WE POLL THE AD BUS TO 
 	--FIND ANY PCI CARDS THAT HAVE BEEN IDENTIFIED AS AUTOCONFIG DEVICES AND CONFIGURE
 	--THOSE, TOO. WE WAIT TO CONFIGURE THE BRIDGE AFTER THE ONBOARD RAM AND IDE CONTROLLER
 	--HAVE BEEN AUTOCONFIGURed. WHEN WE ARE DONE WITH AUTOCONFIG, WE SIGNAL U110 THAT
 	--IT CAN BEGIN NORMAL OPERATIONS.		
-	
-	---------------------------------------
-	-- PCI AUTOCONFIG USER CONFIGURATION --
-	---------------------------------------
-	
-	--THE USER IS EXPECTED TO SET JUMPERS J100-J102 TO HELP US UNDERSTAND WHICH SLOTS
-	--HAVE AUTOCONFIG DEVICES. ACCONF IS, IN THIS ORDER, J102, J101, J100
-	
-	pcicount <= 		
-		1 WHEN ACCONF = "011" ELSE --SLOT 4 IS AUTOCONFIG
-		2 WHEN ACCONF = "101" ELSE --SLOTS 3-4 ARE AUTOCONFIG
-		3 WHEN ACCONF = "001" ELSE --SLOTS 2-4 ARE AUTOCONFIG
-		4 WHEN ACCONF = "110" ELSE --SLOTS 1-4 ARE AUTOCONFIG
-		5 WHEN ACCONF = "111" ELSE --ALL SLOTS ARE AUTOCONFIG 
-		0; --NO SLOTS ARE AUTOCONFIG
 		
-	pciconfigured <= '1' WHEN (pci4configed = '1' OR pcicount = 0) AND (pci3configed = '1' OR pcicount = 1) AND (pci2configed = '1' OR pcicount = 2) AND (pci1configed = '1' OR pcicount = 3) AND (pci0configed = '1' OR pcicount = 4) ELSE '0';
+	PCONFIGED <= (pci4configed OR NOT AC_SLOT4) AND (pci3configed OR NOT AC_SLOT3) AND (pci2configed OR NOT AC_SLOT2) AND (pci1configed OR NOT AC_SLOT1) AND (pci0configed OR NOT AC_SLOT0);
 	
 	--------------------------------
 	-- 68040 AUTOCONFIG ADDRESSES --
@@ -126,7 +120,7 @@ begin
 	
 		IF RISING_EDGE (BCLK) THEN
 	
-			acspace <= A(31) AND A(30) AND A(29) AND A(28) AND A(27) AND A(26) AND A(25) AND A(24) AND NOT nTIP AND CONFIGURED AND NOT pciconfigured AND nRESET;
+			acspace <= A(31) AND A(30) AND A(29) AND A(28) AND A(27) AND A(26) AND A(25) AND A(24) AND NOT nTIP AND CONFIGURED AND NOT PCONFIGED AND nRESET;
 			
 		END IF;
 		
@@ -156,9 +150,7 @@ begin
 	--SLOT 1 IS AT OFFSET $0020 0000
 	--SLOT 2 IS AT OFFSET $0040 0000
 	--SLOT 3 IS AT OFFSET $0080 0000
-	--SLOT 4 IS AT OFFSET $0100 0000
-	
-	--AD <= adout WHEN acspace = '1' AND aphase = '1' ELSE (OTHERS => 'Z');
+	--SLOT 4 IS AT OFFSET $0100 0000	
 	
 	PROCESS (PCICLK, nRESET) BEGIN
 	
@@ -170,7 +162,7 @@ begin
 			REG_BASEADDRESS <= (OTHERS => '0');
 			REG_ROMVECTOR <= (OTHERS => '0');
 			vectorenabled <= '0';
-			ac_ready <= '0';
+			pci_config_ready <= '0';
 			
 		ELSIF FALLING_EDGE (PCICLK) THEN
 		
@@ -178,7 +170,7 @@ begin
 			
 				WHEN IDLE =>
 				
-					IF acspace = '1' AND pciconfigured = '0' THEN 
+					IF acspace = '1' THEN 
 					
 						CURRENT_STATE <= ID_READ_ADDRESS_PHASE;	
 						
@@ -271,25 +263,29 @@ begin
 					AD <= (OTHERS => 'Z');	
 				
 					IF nTRDY = '0' THEN
-					
-						IF AD(0) = '1' THEN
 						
-							REG_ROMVECTOR <= NOT AD(15 DOWNTO 11);	
-							vectorenabled <= '1';
-							
-						END IF;
+						REG_ROMVECTOR <= AD(15 DOWNTO 11);	
+						vectorenabled <= AD(0);
 						
-						CURRENT_STATE <= IDLE;
-						ac_ready <= '1'; --READY TO START THE AUTOCONFIG CYCLE
+						CURRENT_STATE <= NEWBASEADDRESS_WRITE_ADDRESS_PHASE;
+						pci_config_ready <= '1'; --READY TO START THE AUTOCONFIG CYCLE
 						
 					END IF;
 					
 				WHEN NEWBASEADDRESS_WRITE_ADDRESS_PHASE =>
 				
-					AD <= x"00100010"; --00000000 00000001 00000000 00010000 ACCESS BAR0 OF SLOT 4
-					ACONF <= '1'; --SEND THE CONFIGURE COMMAND SIGNAL (WRITE)	
-					pcirw <= '0';
-					CURRENT_STATE <= BASEADDRESS_WRITE_DATA_PHASE;
+					IF ac_ready = '1' THEN
+				
+						AD <= x"00100010"; --00000000 00000001 00000000 00010000 ACCESS BAR0 OF SLOT 4
+						ACONF <= '1'; --SEND THE CONFIGURE COMMAND SIGNAL (WRITE)	
+						pcirw <= '0';
+						CURRENT_STATE <= BASEADDRESS_WRITE_DATA_PHASE;
+						
+					ELSIF shutup = '1' THEN
+					
+						CURRENT_STATE <= IDLE;
+						
+					END IF;
 					
 				WHEN NEWBASEADDRESS_WRITE_DATA_PHASE =>
 				
@@ -299,6 +295,7 @@ begin
 					IF nTRDY = '0' THEN					
 						
 						CURRENT_STATE <= IDLE;
+						pci_config_ready <= '0';
 						
 					END IF;
 					
@@ -312,7 +309,7 @@ begin
 	-- AUTOCONFIG PROCESS --
 	------------------------	
 	
-	D <= dout & x"000" WHEN acspace = '1' ELSE (OTHERS => 'Z');	
+	D <= dout & x"000" WHEN acspace = '1' AND RnW = '1' ELSE (OTHERS => 'Z');	
 	
 	PROCESS (BCLK, nRESET) BEGIN
 	
@@ -323,10 +320,12 @@ begin
 			pci2configed <= '0';
 			pci3configed <= '0';
 			pci4configed <= '0';
+			ac_ready <= '0';
+			shutup <= '0';
 			
 		ELSIF FALLING_EDGE (BCLK) THEN
 		
-			IF acspace = '1' AND ac_ready = '1' THEN
+			IF acspace = '1' AND pci_config_ready = '1' THEN
 			
 				endcycle <= '1';
 			
@@ -336,7 +335,7 @@ begin
 					
 						WHEN x"00" => 
 						
-							--ALL PCI CARDS ARE ZORRO 3 DEVICES.
+							--ALL PCI CARDS ARE ZORRO 3 DEVICES.							
 							
 							IF vectorenabled = '0' THEN
 						
@@ -409,7 +408,7 @@ begin
 								
 							ELSE
 							
-								--ROM VECTOR. HIGH BYTE, HIGH NIBBLE.
+								--ROM VECTOR. HIGH NIBBLE.
 							
 								dout <= NOT REG_ROMVECTOR(15 DOWNTO 12);
 								
@@ -423,7 +422,7 @@ begin
 								
 							ELSE
 							
-								--ROM VECTOR. HIGH BYTE, HIGH NIBBLE. BIT SWAPPED.
+								--ROM VECTOR. LOW NIBBLE.
 							
 								dout <= NOT (REG_ROMVECTOR(11) & "000");
 								
@@ -435,7 +434,7 @@ begin
 							
 					END CASE;
 					
-				ELSE
+				ELSE 
 				
 					CASE acaddress IS
 					
@@ -443,6 +442,7 @@ begin
 						
 							PCI4BASE <= D(31 DOWNTO 16);
 							pci4configed <= '1';
+							ac_ready <= '1';
 							
 						--WHEN x"48" => 
 						
@@ -452,20 +452,23 @@ begin
 						WHEN x"4C" => --SHUT UP REGISTER
 						
 							pci4configed <= '1';
+							shutup <= '1';
 							
 						WHEN OTHERS =>
 						
 					END CASE;
 					
-				END IF;	
+				END IF;	--R_W
 
 			ELSE
 			
 				endcycle <= '0';
+				ac_ready <= '0';
+				shutup <= '0';
 			
-			END IF;
+			END IF; --AC_SPACE
 		
-		END IF;
+		END IF; --RESET/FALLINGEDGE
 		
 	END PROCESS;
 	
@@ -473,18 +476,7 @@ begin
 	-- 68040 TRANSFER ACK --
 	------------------------
 	
-	nTA <= '1' WHEN acspace = '1' ELSE '0' WHEN (acspace = '1' AND endcycle = '1') OR (acspace = '1' AND pciconfigured = '1') ELSE 'Z';
-	
-	---------------------------
-	-- BASE ADDRESS RESPONSE --
-	---------------------------
-	
-	--WHEN THE ADDRESS SPACE MATCHES THE BASE ADDRESS OF THE PCI BRIDGE OR 
-	--ANY OTHER PCI TARGET DEVICES, WE NEED TO WAKE UP SO THE BRIDGE CAN
-	--DIRECT THE PCI CYCLE.
-	
-	--nBEN <= '0' WHEN A(31 DOWNTO 28) = bridgebase ELSE '1';
-
+	nTA <= '0' WHEN acspace = '1' AND endcycle = '1' ELSE '1' WHEN acspace = '1' ELSE 'Z';
 
 end Behavioral;
 
