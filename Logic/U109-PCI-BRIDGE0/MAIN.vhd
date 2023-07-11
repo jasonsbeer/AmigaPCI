@@ -62,12 +62,22 @@ end MAIN;
 architecture Behavioral of MAIN is
 
 	SIGNAL pci4base : STD_LOGIC_VECTOR (31 DOWNTO 16);
+	SIGNAL pci3base : STD_LOGIC_VECTOR (31 DOWNTO 16);
+	SIGNAL pci2base : STD_LOGIC_VECTOR (31 DOWNTO 16);
+	SIGNAL pci1base : STD_LOGIC_VECTOR (31 DOWNTO 16);
+	SIGNAL pci0base : STD_LOGIC_VECTOR (31 DOWNTO 16);
 	
 	SIGNAL ac_slot4 : STD_LOGIC;
 	SIGNAL ac_slot3 : STD_LOGIC;
 	SIGNAL ac_slot2 : STD_LOGIC;
 	SIGNAL ac_slot1 : STD_LOGIC;
 	SIGNAL ac_slot0 : STD_LOGIC;
+	
+--	SIGNAL slot0en : STD_LOGIC;
+--	SIGNAL slot1en : STD_LOGIC;
+--	SIGNAL slot2en : STD_LOGIC;
+--	SIGNAL slot3en : STD_LOGIC;
+--	SIGNAL slot4en : STD_LOGIC;
 
 --	SIGNAL dlatch0 : STD_LOGIC_VECTOR (31 DOWNTO 0);
 --	SIGNAL dlatch1 : STD_LOGIC_VECTOR (31 DOWNTO 0);
@@ -108,8 +118,28 @@ begin
 		nTA => nTA,
 		ACONF => ACONF,
 		PCIRnW => PCIRnW,
-		PCI4BASE => pci4base
+		PCI4BASE => pci4base,
+		PCI3BASE => pci3base,
+		PCI2BASE => pci2base,
+		PCI1BASE => pci1base,
+		PCI0BASE => pci0base
 	);
+	
+	
+--	ADDRESSDECODE: ENTITY work.ADDRESSDECODE PORT MAP(
+--		A => A(31 DOWNTO 16),
+--		BEN => BEN,
+--		PCI0BASE => pci0base,
+--		PCI1BASE => pci1base,
+--		PCI2BASE => pci2base,
+--		PCI3BASE => pci3base,
+--		PCI4BASE => pci4base,
+--		SLOT0EN => slot0en,
+--		SLOT1EN => slot1en,
+--		SLOT2EN => slot2en,
+--		SLOT3EN => slot3en,
+--		SLOT4EN => slot4en
+--	);
 
 --	DATALATCH: ENTITY work.DATALATCH PORT MAP(
 --		A => A,
@@ -156,9 +186,7 @@ begin
 	ac_slot1 <= '1' WHEN ac_slot0 = '1' OR ACCONF = "110" ELSE '0';	
 	ac_slot2 <= '1' WHEN ac_slot1 = '1' OR ACCONF = "001" ELSE '0';	
 	ac_slot3 <= '1' WHEN ac_slot2 = '1' OR ACCONF = "101" ELSE '0';
-	ac_slot4 <= '1' WHEN ac_slot3 = '1' OR ACCONF = "011" ELSE '0';	
-	
-
+	ac_slot4 <= '1' WHEN ac_slot3 = '1' OR ACCONF = "011" ELSE '0';
 
 end Behavioral;
 

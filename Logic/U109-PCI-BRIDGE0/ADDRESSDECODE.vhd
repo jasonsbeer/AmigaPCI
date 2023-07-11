@@ -79,6 +79,8 @@ begin
 	SLOT2EN <= '1' WHEN (configspace = '1' AND A(18) = '1') OR A(31 DOWNTO 16) = PCI2BASE ELSE '0';
 	SLOT3EN <= '1' WHEN (configspace = '1' AND A(19) = '1') OR A(31 DOWNTO 16) = PCI3BASE ELSE '0';
 	SLOT4EN <= '1' WHEN (configspace = '1' AND A(20) = '1') OR A(31 DOWNTO 16) = PCI4BASE ELSE '0';
+	
+	--the base address does not work like this...
 
 
 end Behavioral;
