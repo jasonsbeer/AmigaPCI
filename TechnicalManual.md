@@ -145,7 +145,7 @@ The Amiga chipset accesses the chipset RAM via direct memory access (DMA). The c
 6) On the next falling edge of BCLK, the RAM controller drives the _CAS address to the SDRAM with a read or write command.
 7) For read cycles, after any latency requirements, data is driven to the data bus by the SDRAM and latched by the chipset on the rising edge of C1. Write cycles are latched immediately with the _CAS command.
 
-<p align="center"><img src="/DataSheets/TimingDiagrams/Chipset DMA Cycle.png>" width="650"></p>
+<p align="center"><img src="/DataSheets/TimingDiagrams/Chipset DMA Cycle.png" width="650"></p>
 
 #### 1.11.3 Slow RAM Cycles
 
@@ -174,11 +174,6 @@ The AmigaPCI may be installed with 64 or 128MB of Fast RAM on the board using pa
 The RAM must be installed in pairs. Bank 0 must always be installed and supplies the first 64MB. Bank 1 may optionally be installed and supplies the second 64MB. The installed RAM is automatically sized during the AUTOCONFIG process so no jumpers are needed.
 
 NEED TO ADD TIMING FOR "NORMAL" CYCLES!
-
-Installed RAM|Base Address|High Address
--|-|-
-64MB|$4000 0000|$43FF FFFF
-128MB|$4000 0000|$47FF FFFF
 
 <p align="center"><img src="/DataSheets/TimingDiagrams/Fast RAM.png" width="650"></p>
 
