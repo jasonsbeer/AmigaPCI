@@ -8,15 +8,6 @@
 <!-- Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.    -->
 
 <messages>
-<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U109-PCI-BRIDGE0/ADDRESSDECODE.vhd&quot; into library work</arg>
-</msg>
-
-<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U109-PCI-BRIDGE0/DATALATCH.vhd&quot; into library work</arg>
-</msg>
-
-<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U109-PCI-BRIDGE0/MAIN.vhd&quot; into library work</arg>
-</msg>
-
 <msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U109-PCI-BRIDGE0/PCI-AUTOCONFIG.vhd&quot; into library work</arg>
 </msg>
 

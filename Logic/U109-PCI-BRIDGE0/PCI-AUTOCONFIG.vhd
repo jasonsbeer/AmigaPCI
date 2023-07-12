@@ -55,11 +55,11 @@ entity PCIAUTOCONFIG is
 		ACONF : OUT STD_LOGIC; --SIGNAL U110 TO SEND A CONFIGURATION REGISTER COMMAND
 		PCIRnW : OUT STD_LOGIC; --READ WRITE SIGNAL TO U110	
 
-		PCI4BASE : INOUT STD_LOGIC_VECTOR (31 DOWNTO 16); --AUTCONFIG BASE ADDRESS SLOT 4
-		PCI3BASE : INOUT STD_LOGIC_VECTOR (31 DOWNTO 16); --AUTCONFIG BASE ADDRESS SLOT 4
-		PCI2BASE : INOUT STD_LOGIC_VECTOR (31 DOWNTO 16); --AUTCONFIG BASE ADDRESS SLOT 4
-		PCI1BASE : INOUT STD_LOGIC_VECTOR (31 DOWNTO 16); --AUTCONFIG BASE ADDRESS SLOT 4
-		PCI0BASE : INOUT STD_LOGIC_VECTOR (31 DOWNTO 16) --AUTCONFIG BASE ADDRESS SLOT 4
+		PCI4BASE : OUT STD_LOGIC_VECTOR (31 DOWNTO 16); --AUTCONFIG BASE ADDRESS SLOT 4
+		PCI3BASE : OUT STD_LOGIC_VECTOR (31 DOWNTO 16); --AUTCONFIG BASE ADDRESS SLOT 4
+		PCI2BASE : OUT STD_LOGIC_VECTOR (31 DOWNTO 16); --AUTCONFIG BASE ADDRESS SLOT 4
+		PCI1BASE : OUT STD_LOGIC_VECTOR (31 DOWNTO 16); --AUTCONFIG BASE ADDRESS SLOT 4
+		PCI0BASE : OUT STD_LOGIC_VECTOR (31 DOWNTO 16) --AUTCONFIG BASE ADDRESS SLOT 4
 		
    );
 
@@ -68,11 +68,12 @@ end PCIAUTOCONFIG;
 architecture Behavioral of PCIAUTOCONFIG is
 
 	TYPE AC_STATE IS 
-		(IDLE, ID_READ_ADDRESS_PHASE, ID_READ_DATA_PHASE, BASEADDRESS_WRITE_ADDRESS_PHASE, BASEADDRESS_WRITE_DATA_PHASE, 
-		BASEADDRESS_READ_ADDRESS_PHASE, BASEADDRESS_READ_DATA_PHASE, ROM_VECTOR_WRITE_ADDRESS_PHASE, ROM_VECTOR_WRITE_DATA_PHASE, 
-		ROM_VECTOR_READ_ADDRESS_PHASE, ROM_VECTOR_READ_DATA_PHASE, NEWBASEADDRESS_WRITE_ADDRESS_PHASE, NEWBASEADDRESS_WRITE_DATA_PHASE);
+		(ID, BASEADDRESS_WRITE, BASEADDRESS_READ, ROM_VECTOR_WRITE,	ROM_VECTOR_READ, NEW_BASEADDRESS_WRITE);
 	
 	SIGNAL CURRENT_STATE : AC_STATE;
+	
+	TYPE PCI_CYCLE IS (START, ADDRESS, DATA);
+	SIGNAL PCI_STATE : PCI_CYCLE;
 	
 	SIGNAL REG_ID : STD_LOGIC_VECTOR(23 DOWNTO 0);
 	SIGNAL REG_BASEADDRESS : STD_LOGIC_VECTOR (31 DOWNTO 16);
@@ -83,8 +84,7 @@ architecture Behavioral of PCIAUTOCONFIG is
 	SIGNAL shutup : STD_LOGIC;
 	SIGNAL vectorenabled : STD_LOGIC;
 	SIGNAL extendedregister : STD_LOGIC;
-	SIGNAL sig_bits : INTEGER RANGE 1 TO 15;
-	SIGNAL slotoffset : STD_LOGIC_VECTOR (23 DOWNTO 16);
+	SIGNAL slotoffset : STD_LOGIC_VECTOR (20 DOWNTO 16);
 	SIGNAL newbase : STD_LOGIC_VECTOR(31 DOWNTO 16);
 	SIGNAL latched : STD_LOGIC;
 	
@@ -152,7 +152,8 @@ begin
 	---------------------------------
 	
 	--WHEN WE ENTER THE AUTOCONFIG SPACE, POLL THE AUTOCONFIG PCI CARDS FOR INFORMATION BY
-	--ADDRESSING WITH THE IDESEL BIT, A REGISTER OFFSET, A CONFIG REGISTER COMMAND, AND A(1..0) = b00.
+	--ADDRESSING WITH THE IDESEL BIT, A REGISTER OFFSET, A CONFIG REGISTER COMMAND, 
+	--AND A(1..0) = b00 (TYPE 0 CONFIG SPACE.
 	--ONCE THE NEEDED DATA IS COLLECTED, WE PASS IT TO AMIGA OS AS AUTOCONFIG INFORMATION.
 	
 	--SLOT 0 IS AT OFFSET $0010 0000
@@ -167,167 +168,229 @@ begin
 	
 		IF nRESET = '0' THEN
 		
-			CURRENT_STATE <= IDLE;
+			CURRENT_STATE <= ID;
+			PCI_STATE <= START;
 			AD <= (OTHERS => 'Z');
-			--REG_ID <= (OTHERS => '0');
-			--REG_BASEADDRESS <= (OTHERS => '0');
-			--REG_ROMVECTOR <= (OTHERS => '0');
-			--vectorenabled <= '0';
 			pci_config_ready <= '0';
 			ACONF <= '0';
-			slotoffset <= x"00";
+			slotoffset <= "00000";
 			pcirw <= '1';
 			
-		ELSIF FALLING_EDGE (PCICLK) THEN
-		
-			IF AC_SLOT4 = '1' AND pci4configed = '0' THEN
-				slotoffset <= x"10";
-			ELSIF AC_SLOT3 = '1' AND pci3configed = '0' THEN
-				slotoffset <= x"08";
-			ELSIF AC_SLOT2 = '1' AND pci2configed = '0' THEN
-				slotoffset <= x"04";
-			ELSIF AC_SLOT1 = '1' AND pci1configed = '0' THEN
-				slotoffset <= x"02";
-			ELSIF AC_SLOT0 = '1' AND pci0configed = '0' THEN
-				slotoffset <= x"01";
-			END IF;
+			
+		ELSIF FALLING_EDGE (PCICLK) THEN	
 		
 			CASE CURRENT_STATE IS
 			
-				WHEN IDLE =>
-				
-					IF acspace = '1' THEN 
-					
-						AD <= x"00" & slotoffset & x"0000"; --00000000 00000001 00000000 00000000 READS VENDOR ID/DEVICE ID OF SLOT 4
-						ACONF <= '1'; --SEND THE CONFIGURE COMMAND SIGNAL (READ)
-						CURRENT_STATE <= ID_READ_ADDRESS_PHASE;	
+				WHEN ID =>	
 						
-					END IF;
+					CASE PCI_STATE IS
+					
+						WHEN START =>
+						
+							pcirw <= '1';						
+					
+							IF AC_SLOT4 = '1' AND pci4configed = '0' THEN
+								slotoffset <= "10000";
+							ELSIF AC_SLOT3 = '1' AND pci3configed = '0' THEN
+								slotoffset <= "01000";
+							ELSIF AC_SLOT2 = '1' AND pci2configed = '0' THEN
+								slotoffset <= "00100";
+							ELSIF AC_SLOT1 = '1' AND pci1configed = '0' THEN
+								slotoffset <= "00010";
+							ELSIF AC_SLOT0 = '1' AND pci0configed = '0' THEN
+								slotoffset <= "00001";
+							END IF;
+								
+							IF acspace = '1' THEN 
+								
+								PCI_STATE <= ADDRESS;
+								AD <= x"00" & "000" & slotoffset & x"0000"; --00000000 00000001 00000000 00000000 READS VENDOR ID/DEVICE ID							
+								ACONF <= '1'; --SEND THE CONFIGURE COMMAND SIGNAL (READ)
+								
+							END IF;
+					
+						WHEN ADDRESS =>
+							
+							PCI_STATE <= DATA;
+							ACONF <= '0';	
+							AD <= (OTHERS => 'Z');
+						
+						WHEN DATA =>
+						
+							IF latched = '1' THEN								
+								CURRENT_STATE <= BASEADDRESS_WRITE;
+								PCI_STATE <= START;
+							END IF;		
+						
+					END CASE;
+					
+				WHEN BASEADDRESS_WRITE =>
 				
-				WHEN ID_READ_ADDRESS_PHASE =>	
+					CASE PCI_STATE IS
+					
+						WHEN START =>	
+						
+							--TURNAROUND TIME.
+							PCI_STATE <= ADDRESS;
+							pcirw <= '0';
+							ACONF <= '1';
+							AD <= x"00" & "000" & slotoffset & x"0010"; --00000000 00000001 00000000 00010000 ACCESS BAR0	
+						
+						WHEN ADDRESS =>						
+							
+							PCI_STATE <= DATA;
+							ACONF <= '0';
+							AD <= x"FFFFFFFF";
+						
+						WHEN DATA =>
+						
+							IF latched = '1' THEN
+							
+								CURRENT_STATE <= BASEADDRESS_READ;
+								PCI_STATE <= START;
+								
+							END IF;
+						
+					END CASE;
+					
+				WHEN BASEADDRESS_READ =>
+				
+					CASE PCI_STATE IS
+					
+						WHEN START =>
+						
+							--TURNAROUND TIME.
+							PCI_STATE <= ADDRESS;
+							pcirw <= '1';
+							ACONF <= '0';	
+							AD <= x"00" & "000" & slotoffset & x"0010"; --00000000 00000001 00000000 00010000 ACCESS BAR0
+					
+						WHEN ADDRESS =>						
+							
+							PCI_STATE <= DATA;
+							ACONF <= '1'; 
+							AD <= (OTHERS => 'Z');
+						
+						WHEN DATA =>
+						
+							IF latched = '1' THEN
+								
+								CURRENT_STATE <= ROM_VECTOR_WRITE;
+								PCI_STATE <= START;
+								
+							END IF;	
+					
+					END CASE;
 
-					ACONF <= '0';
-					pcirw <= '1';
-					AD <= (OTHERS => 'Z');
-					CURRENT_STATE <= ID_READ_DATA_PHASE;
+				WHEN ROM_VECTOR_WRITE =>
 				
-				WHEN ID_READ_DATA_PHASE =>	
+					CASE PCI_STATE IS
 					
-					IF latched = '1' THEN						
+						WHEN START =>	
 						
-						--REG_ID <= AD(23 DOWNTO 0);
-						ACONF <= '1'; --SEND THE CONFIGURE COMMAND SIGNAL (WRITE)
-						AD <= x"00" & slotoffset & x"0010"; --00000000 00000001 00000000 00010000 ACCESS BAR0 OF SLOT 4
-						CURRENT_STATE <= BASEADDRESS_WRITE_ADDRESS_PHASE;						
-					
-					END IF;	
+							--TURNAROUND TIME.
+							PCI_STATE <= ADDRESS;
+							pcirw <= '0';
+							ACONF <= '1';
+							AD <= x"00" & "000" & slotoffset & x"0030"; --00000000 00010000 00000000 00110000 ACCESS ROM BASE ADDRESS 0
+						
+						WHEN ADDRESS =>
+						
+							ACONF <= '0';
+							AD <= x"FFFFFFFF";
+							PCI_STATE <= DATA;
+						
+						WHEN DATA =>
+						
+							IF latched = '1' THEN
+							
+								CURRENT_STATE <= ROM_VECTOR_READ;
+								PCI_STATE <= START;
+								
+							END IF;
+						
+					END CASE;		
+
+				WHEN ROM_VECTOR_READ =>
 				
-				WHEN BASEADDRESS_WRITE_ADDRESS_PHASE =>	
-						
-					pcirw <= '0';
-					ACONF <= '0';
-					AD <= x"FFFFFFFF";
-					CURRENT_STATE <= BASEADDRESS_WRITE_DATA_PHASE;
+					CASE PCI_STATE IS
 					
-				WHEN BASEADDRESS_WRITE_DATA_PHASE =>						
+						WHEN START =>
+						
+							--TURNAROUND TIME.
+							PCI_STATE <= ADDRESS;
+							pcirw <= '1';
+							ACONF <= '0';	
+							AD <= x"00" & "000" & slotoffset & x"0030"; --00000000 00010000 00000000 00110000 ACCESS ROM BASE ADDRESS 0
+					
+						WHEN ADDRESS =>
+							
+							PCI_STATE <= DATA;
+							ACONF <= '1'; 
+							AD <= (OTHERS => 'Z');
+						
+						WHEN DATA =>
+						
+							IF latched = '1' THEN
+								
+								CURRENT_STATE <= NEW_BASEADDRESS_WRITE;
+								PCI_STATE <= START;
+								pci_config_ready <= '1';
+								
+							END IF;	
+					
+					END CASE;
+
+				WHEN NEW_BASEADDRESS_WRITE =>
 				
-					IF nTRDY = '0' THEN					
-						
-						ACONF <= '1'; --SEND THE CONFIGURE COMMAND SIGNAL (READ)
-						AD <= x"00" & slotoffset & x"0010"; --00000000 00000001 00000000 00010000 ACCESS BAR0 OF SLOT 4
-						CURRENT_STATE <= BASEADDRESS_READ_ADDRESS_PHASE;
-						
-					END IF;
+					CASE PCI_STATE IS
 					
-				WHEN BASEADDRESS_READ_ADDRESS_PHASE =>
+						WHEN START =>	
+						
+							IF ac_ready = '1' THEN
+							
+								pci_config_ready <= '0';							
+								PCI_STATE <= ADDRESS;
+								pcirw <= '0';
+								ACONF <= '1';
+								AD <= x"00" & "000" & slotoffset & x"0010"; --00000000 00000001 00000000 00010000 ACCESS BAR0		
+								
+							ELSIF shutup = '1' THEN
+							
+								CURRENT_STATE <= ID;
+								
+							END IF;
+						
+						WHEN ADDRESS =>						
+							
+							PCI_STATE <= DATA;
+							ACONF <= '0';
+							AD <= newbase & x"0000";
+						
+						WHEN DATA =>
+						
+							IF latched = '1' THEN
+							
+								CURRENT_STATE <= BASEADDRESS_READ;
+								PCI_STATE <= START;
+								
+							END IF;
+						
+					END CASE;
 				
-					pcirw <= '1';
-					ACONF <= '0';	
-					AD <= (OTHERS => 'Z');
-					CURRENT_STATE <= BASEADDRESS_READ_DATA_PHASE;
-					
-				WHEN BASEADDRESS_READ_DATA_PHASE =>
-				
-					--!!!!!!!!!!!!!!!!!!!!on reads, we must latch on rising edge!!!!!!!!!!!!!!!!!!!!!1
-					
-				
-					IF latched = '1' THEN
-					
-						ACONF <= '1'; --SEND THE CONFIGURE COMMAND SIGNAL (WRITE)
-						--REG_BASEADDRESS <= NOT AD(31 DOWNTO 16);		
-						AD <= x"00" & slotoffset & x"0030"; --00000000 00010000 00000000 00110000 ACCESS ROM BASE ADDRESS 0 OF SLOT 4
-						CURRENT_STATE <= ROM_VECTOR_WRITE_ADDRESS_PHASE;
-						
-					END IF;					
-					
-				WHEN ROM_VECTOR_WRITE_ADDRESS_PHASE =>
-				
-					pcirw <= '0';
-					ACONF <= '0';
-					AD <= x"FFFFFFFF";					
-					CURRENT_STATE <= ROM_VECTOR_WRITE_DATA_PHASE;
-					
-				WHEN ROM_VECTOR_WRITE_DATA_PHASE =>	
-				
-					IF nTRDY = '0' THEN					
-						
-						ACONF <= '1'; --SEND THE CONFIGURE COMMAND SIGNAL (READ)
-						AD <= x"00" & slotoffset & x"0030"; --00000000 00010000 00000000 00110000 ACCESS ROM BASE ADDRESS 0 OF SLOT 4
-						CURRENT_STATE <= ROM_VECTOR_READ_ADDRESS_PHASE;
-						
-					END IF;
-					
-				WHEN ROM_VECTOR_READ_ADDRESS_PHASE =>
-				
-					pcirw <= '1';
-					AD <= (OTHERS => 'Z');
-					ACONF <= '0';						
-					CURRENT_STATE <= ROM_VECTOR_READ_DATA_PHASE;
-					
-				WHEN ROM_VECTOR_READ_DATA_PHASE =>
-				
-					IF latched = '1' THEN
-						
-						--REG_ROMVECTOR <= AD(15 DOWNTO 11);	
-						--vectorenabled <= AD(0);
-						
-						CURRENT_STATE <= NEWBASEADDRESS_WRITE_ADDRESS_PHASE;
-						pci_config_ready <= '1'; --READY TO START THE AUTOCONFIG CYCLE
-						
-					END IF;
-					
-				WHEN NEWBASEADDRESS_WRITE_ADDRESS_PHASE =>
-				
-					IF ac_ready = '1' THEN
-				
-						AD <= x"00" & slotoffset & x"0010"; --00000000 00000001 00000000 00010000 ACCESS BAR0 OF SLOT 4
-						ACONF <= '1'; --SEND THE CONFIGURE COMMAND SIGNAL (WRITE)	
-						pcirw <= '0';
-						CURRENT_STATE <= BASEADDRESS_WRITE_DATA_PHASE;
-						
-					ELSIF shutup = '1' THEN
-					
-						CURRENT_STATE <= IDLE;
-						
-					END IF;
-					
-				WHEN NEWBASEADDRESS_WRITE_DATA_PHASE =>
-				
-					AD <= newbase & x"0000";
-					ACONF <= '0';
-				
-					IF nTRDY = '0' THEN					
-						
-						CURRENT_STATE <= IDLE;
-						pci_config_ready <= '0';
-						
-					END IF;
-					
 				END CASE;
 		
 		END IF;
 		
 	END PROCESS;	
+	
+	-------------------
+	-- AD READ LATCH --
+	-------------------
+	
+	--DURING THE PCI AUTOCONFIG PROCESS, THE TARGET DEVICE PLACES DATA ON THE BUS FOR READ CYCLES.
+	--WE THEN LATCH ON THE RISING EDGE OF PCICLK WHEN _TRDY IS ASSERTED. THIS PROCESS INFORMS
+	--THE MAIN CYCLE WHEN THE DATA SHOULD BE LATCHED.
 	
 	PROCESS (PCICLK, nRESET) BEGIN
 	
@@ -341,41 +404,49 @@ begin
 		
 		ELSIF RISING_EDGE (PCICLK) THEN
 		
-			CASE CURRENT_STATE IS
+			IF PCI_STATE = DATA THEN
+		
+				CASE CURRENT_STATE IS
+				
+					WHEN ID =>	
+						
+						IF nTRDY = '0' THEN						
+							
+							REG_ID <= AD(23 DOWNTO 0);		
+							latched <= '1';
+						
+						END IF;	
+				
+					WHEN BASEADDRESS_READ =>
+					
+						IF nTRDY = '0' THEN			
+							
+							REG_BASEADDRESS <= NOT AD(31 DOWNTO 16);
+							latched <= '1';						
+							
+						END IF;	
+						
+					WHEN ROM_VECTOR_READ =>
+					
+						IF nTRDY = '0' THEN
+							
+							REG_ROMVECTOR <= AD(15 DOWNTO 11);	
+							vectorenabled <= AD(0);
+							latched <= '1';
+							
+						END IF;
+						
+					WHEN OTHERS =>
+					
+						latched <= NOT nTRDY;
+					
+				END CASE;
+
+			ELSE
 			
-				WHEN ID_READ_DATA_PHASE =>	
-					
-					IF nTRDY = '0' THEN						
-						
-						REG_ID <= AD(23 DOWNTO 0);		
-						latched <= '1';
-					
-					END IF;	
-			
-				WHEN BASEADDRESS_READ_DATA_PHASE =>
+				latched <= '0';
 				
-					IF nTRDY = '0' THEN			
-						
-						REG_BASEADDRESS <= NOT AD(31 DOWNTO 16);
-						latched <= '1';						
-						
-					END IF;	
-					
-				WHEN ROM_VECTOR_READ_DATA_PHASE =>
-				
-					IF nTRDY = '0' THEN
-						
-						REG_ROMVECTOR <= AD(15 DOWNTO 11);	
-						vectorenabled <= AD(0);
-						latched <= '1';
-						
-					END IF;
-					
-				WHEN OTHERS =>
-				
-					latched <= '0';
-				
-			END CASE;	
+			END IF;
 		
 		END IF;
 		
@@ -385,8 +456,12 @@ begin
 	-- AUTOCONFIG PROCESS --
 	------------------------	
 	
-	D <= dout & x"000" WHEN acspace = '1' AND RnW = '1' ELSE (OTHERS => 'Z');	
+	--figure out pci_config ready. Becuase the 040 and the PCI are asynchrounous, it is possible to start a new autoconfig cycle before the pci card has completed configuration!
+	--acready too...we want to prevent the next pci device from getting the previous base address.
 	
+	
+	D <= dout & x"000" WHEN acspace = '1' AND RnW = '1' ELSE (OTHERS => 'Z');	
+		
 	PROCESS (BCLK, nRESET) BEGIN
 	
 		IF nRESET = '0' THEN
@@ -397,17 +472,16 @@ begin
 			pci3configed <= '0';
 			pci4configed <= '0';
 			
-			newbase <= (OTHERS => '-');
-			PCI4BASE <= (OTHERS => '-'); -- "-" = DON'T CARE. CAN ALSO TRY "X". I WONDER IF "-" IS ONLY FOR SIMULATION? DOES IT EVEN WORK IN CPLDs?
-			PCI3BASE <= (OTHERS => '-');
-			PCI2BASE <= (OTHERS => '-');
-			PCI1BASE <= (OTHERS => '-');
-			PCI0BASE <= (OTHERS => '-');			
+			newbase <= (OTHERS => '0');
+			PCI4BASE <= (OTHERS => '0'); -- "-" = DON'T CARE. CAN ALSO TRY "X". I WONDER IF "-" IS ONLY FOR SIMULATION? DOES IT EVEN WORK IN CPLDs?
+			PCI3BASE <= (OTHERS => '0');
+			PCI2BASE <= (OTHERS => '0');
+			PCI1BASE <= (OTHERS => '0');
+			PCI0BASE <= (OTHERS => '0');			
 			
 			dout <= (OTHERS => '0');
 			extendedregister <= '0';
 			endcycle <= '0';
-			sig_bits <= 2;
 			ac_ready <= '0';
 			shutup <= '0';
 			
@@ -423,7 +497,7 @@ begin
 					
 						WHEN x"00" => 
 						
-							--ALL PCI CARDS ARE ZORRO 3 DEVICES.
+							--ALL PCI CARDS ARE CONFIGURED AS ZORRO 3 DEVICES.
 							
 							IF vectorenabled = '0' THEN
 						
@@ -435,8 +509,8 @@ begin
 								
 							END IF;
 							
-							newbase <= (OTHERS => '-');
 							shutup <= '0';
+							ac_ready <= '0';
 							
 						WHEN x"02" =>
 						
@@ -444,22 +518,22 @@ begin
 							
 							CASE REG_BASEADDRESS IS
 							
-								WHEN x"0000" => dout <= "0001"; extendedregister <= '0'; sig_bits <= 15; --64k								
-								WHEN x"0001" => dout <= "0010"; extendedregister <= '0'; sig_bits <= 14; --128k								
-								WHEN x"0003" => dout <= "0011"; extendedregister <= '0'; sig_bits <= 13; --256k								
-								WHEN x"0007" => dout <= "0100"; extendedregister <= '0'; sig_bits <= 12; --512k								
-								WHEN x"000F" => dout <= "0101"; extendedregister <= '0'; sig_bits <= 11; --1mb								
-								WHEN x"001F" => dout <= "0110"; extendedregister <= '0'; sig_bits <= 10; --2mb								
-								WHEN x"003F" => dout <= "0111"; extendedregister <= '0'; sig_bits <= 9; --4mb								
-								WHEN x"007F" => dout <= "0000"; extendedregister <= '0'; sig_bits <= 8; --8mb								
-								WHEN x"00FF" => dout <= "0000"; extendedregister <= '1'; sig_bits <= 7; --16mb								
-								WHEN x"01FF" => dout <= "0001"; extendedregister <= '1'; sig_bits <= 6; --32mb								
-								WHEN x"03FF" => dout <= "0010"; extendedregister <= '1'; sig_bits <= 5; --64mb								
-								WHEN x"07FF" => dout <= "0011"; extendedregister <= '1'; sig_bits <= 4; --128mb								
-								WHEN x"0FFF" => dout <= "0100"; extendedregister <= '1'; sig_bits <= 3; --256mb								
-								WHEN x"1FFF" => dout <= "0101"; extendedregister <= '1'; sig_bits <= 2; --512mb
-								WHEN x"3FFF" => dout <= "0110"; extendedregister <= '1'; sig_bits <= 1; --1gb
-								WHEN OTHERS =>
+								WHEN x"0000" => dout <= "0001"; extendedregister <= '0'; --sig_bits <= 15; --64k								
+								WHEN x"0001" => dout <= "0010"; extendedregister <= '0'; --sig_bits <= 14; --128k								
+								WHEN x"0003" => dout <= "0011"; extendedregister <= '0'; --sig_bits <= 13; --256k								
+								WHEN x"0007" => dout <= "0100"; extendedregister <= '0'; --sig_bits <= 12; --512k								
+								WHEN x"000F" => dout <= "0101"; extendedregister <= '0'; --sig_bits <= 11; --1mb								
+								WHEN x"001F" => dout <= "0110"; extendedregister <= '0'; --sig_bits <= 10; --2mb								
+								WHEN x"003F" => dout <= "0111"; extendedregister <= '0'; --sig_bits <= 9; --4mb								
+								WHEN x"007F" => dout <= "0000"; extendedregister <= '0'; --sig_bits <= 8; --8mb								
+								WHEN x"00FF" => dout <= "0000"; extendedregister <= '1'; --sig_bits <= 7; --16mb								
+								WHEN x"01FF" => dout <= "0001"; extendedregister <= '1'; --sig_bits <= 6; --32mb								
+								WHEN x"03FF" => dout <= "0010"; extendedregister <= '1'; --sig_bits <= 5; --64mb								
+								WHEN x"07FF" => dout <= "0011"; extendedregister <= '1'; --sig_bits <= 4; --128mb								
+								WHEN x"0FFF" => dout <= "0100"; extendedregister <= '1'; --sig_bits <= 3; --256mb								
+								WHEN x"1FFF" => dout <= "0101"; extendedregister <= '1'; --sig_bits <= 2; --512mb
+								WHEN x"3FFF" => dout <= "0110"; extendedregister <= '1'; --sig_bits <= 1; --1gb
+								WHEN OTHERS => dout <= "0001"; extendedregister <= '0';
 							
 							END CASE;
 							
@@ -531,24 +605,24 @@ begin
 					
 						WHEN x"44" => --BASE ADDRESS REGISTER
 
-							newbase <= D(31 DOWNTO 31 - sig_bits);
+							newbase <= D(31 DOWNTO 16);
 
 							CASE slotoffset IS
 							
-								WHEN x"10" =>							
-									PCI4BASE <= D(31 DOWNTO 31 - sig_bits);
+								WHEN "10000" =>							
+									PCI4BASE <= D(31 DOWNTO 16);
 									pci4configed <= '1';								
-								WHEN x"08" =>
-									PCI3BASE <= D(31 DOWNTO 31 - sig_bits);
+								WHEN "01000" =>
+									PCI3BASE <= D(31 DOWNTO 16);
 									pci3configed <= '1';								
-								WHEN x"04" =>
-									PCI2BASE <= D(31 DOWNTO 31 - sig_bits);
+								WHEN "00100" =>
+									PCI2BASE <= D(31 DOWNTO 16);
 									pci2configed <= '1';
-								WHEN x"02" =>
-									PCI1BASE <= D(31 DOWNTO 31 - sig_bits);
+								WHEN "00010" =>
+									PCI1BASE <= D(31 DOWNTO 16);
 									pci1configed <= '1';
-								WHEN x"01" =>
-									PCI0BASE <= D(31 DOWNTO 31 - sig_bits);
+								WHEN "00001" =>
+									PCI0BASE <= D(31 DOWNTO 16);
 									pci0configed <= '1';
 								WHEN OTHERS =>
 									shutup <= '1'; --SOMETHING WENT WRONG! CANCEL THIS CARD CONFIG.
@@ -568,15 +642,15 @@ begin
 							
 							CASE slotoffset IS
 							
-								WHEN x"10" =>							
+								WHEN "10000" =>							
 									pci4configed <= '1';								
-								WHEN x"08" =>
+								WHEN "01000" =>
 									pci3configed <= '1';								
-								WHEN x"04" =>
+								WHEN "00100" =>
 									pci2configed <= '1';
-								WHEN x"02" =>
+								WHEN "00010" =>
 									pci1configed <= '1';
-								WHEN x"01" =>
+								WHEN "00001" =>
 									pci0configed <= '1';
 								WHEN OTHERS =>
 									
@@ -591,7 +665,7 @@ begin
 			ELSE
 			
 				endcycle <= '0';
-				--ac_ready <= '0';
+				ac_ready <= '0';
 				--shutup <= '0';
 			
 			END IF; --AC_SPACE
