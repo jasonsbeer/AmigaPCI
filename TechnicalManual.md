@@ -131,7 +131,7 @@ The CPU accesses most chipset registers through Agnus. The chipset register cycl
 6) On falling edge of C3 (rising edge of MC68000 State 6), the board controller latches the data bus on read cycles.
 7) On the second falling edge of BCLK after entering MC68000 State 7, _TA and _TBI are asserted by the board controller to signal the MC68040 to complete the cycle and inhibit burst transfers.
 
-See [Timing Diagram](</DataSheets/TimingDiagrams/Chipset Register Cycle.png>)
+<p align="center"><img src="/DataSheets/TimingDiagrams/Chipset Register Cycle.png" width="650"></p>
 
 #### 1.11.2 Chipset DMA Cycles
 
@@ -145,7 +145,7 @@ The Amiga chipset accesses the chipset RAM via direct memory access (DMA). The c
 6) On the next falling edge of BCLK, the RAM controller drives the _CAS address to the SDRAM with a read or write command.
 7) For read cycles, after any latency requirements, data is driven to the data bus by the SDRAM and latched by the chipset on the rising edge of C1. Write cycles are latched immediately with the _CAS command.
 
-See [Timing Diagram](</DataSheets/TimingDiagrams/Chipset DMA Cycle.png>)
+<p align="center"><img src="/DataSheets/TimingDiagrams/Chipset DMA Cycle.png>" width="650"></p>
 
 #### 1.11.3 Slow RAM Cycles
 
@@ -163,7 +163,7 @@ The CPU can access the 32 bit chipset RAM through Agnus. Because this process is
 10) For read cycles, after any latency requirements, data is driven to the data bus by the SDRAM. Write cycles are latched immediately with the _CAS command.
 11) On the second falling edge of BCLK after entering MC68000 State 7, _TA and _TBI are asserted by the board controller to signal the MC68040 to complete the cycle and inhibit burst transfers.
 
-See [Timing Diagram](</DataSheets/TimingDiagrams/CPU Chipset RAM Cycle.png>)
+<p align="center"><img src="/DataSheets/TimingDiagrams/CPU Chipset RAM Cycle.png" width="650"></p>
 
 NOTE: Agnus is RAS only refresh. SDRAM refresh is handled by the RAM controller and is independent of the Agnus refresh command. An Agnus refresh cycle can be recognized by the assertion of _RAS0, _RAS1, and _DBR simultaneously, which will only happen during refresh cycles.
 
@@ -173,12 +173,14 @@ The AmigaPCI may be installed with 64 or 128MB of Fast RAM on the board using pa
 
 The RAM must be installed in pairs. Bank 0 must always be installed and supplies the first 64MB. Bank 1 may optionally be installed and supplies the second 64MB. The installed RAM is automatically sized during the AUTOCONFIG process so no jumpers are needed.
 
+NEED TO ADD TIMING FOR "NORMAL" CYCLES!
+
 Installed RAM|Base Address|High Address
 -|-|-
 64MB|$4000 0000|$43FF FFFF
 128MB|$4000 0000|$47FF FFFF
 
-See [Timing Diagram](</DataSheets/TimingDiagrams/Fast RAM.png>)
+<p align="center"><img src="/DataSheets/TimingDiagrams/Fast RAM.png" width="650"></p>
 
 ### 1.13 CIA Cycles
 
@@ -268,7 +270,7 @@ All|None|Short|Open|Short
 
 Each PCI target device may be configured by the Amiga AUTOCONFIG process or by software configuration. During configuration each PCI slot, in turn, is polled to obtain the capabilities and address space needs of the target device. Each PCI slot is polled by asserting the IDSEL signal, which is approximately equivalent to the _CFGIN signal of the Zorro bus. However, unlike the _CFGIN signal, the IDSEL is asserted by a specific address bit during the address phase of a configuration command access[[2]](#2). There is no equivalent of the _CFGOUT signal, as the PCI Bridge addresses each slot directly. It is necessary to latch the AD bus on the rising edge of the PCI clock during the read cycle data phase, holding this data on the MC68040 data bus, to avoid missing the data presented by the target device.
 
-<p align="center"><img src="/DataSheets/TimingDiagrams/PCI Configuration Read Cycle.jpg" width="650"></p>
+<p align="center"><img src="/DataSheets/TimingDiagrams/PCI Configuration Read Cycle.png" width="650"></p>
 <p align="center"><img src="/DataSheets/TimingDiagrams/PCI Configuration Write Cycle.png" width="650"></p>
 
 ### 2.3.1 PCI Bridge
