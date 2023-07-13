@@ -274,6 +274,8 @@ The PCI Bridge is always AUTOCONFIGured at startup before any other PCI devices.
 
 The following 16-bit registers are supported by the PCI Bridge device and can be set or read by software. This allows configuration or polling of the PCI Bridge settings and status. Reading a long word at offset $04 will return both registers. All PCI devices implement all or part of these registers as individual devices. Assuming the PCI Bridge base address is $8000 0000, you would access the command register at $8000 0004. Reads from unsupported registers will always return $0. Writes to unsupported registers will have no effect.
 
+**NOTE:** The registers in Tables 2.3.1 and 2.3.2 relate to the PCI Bridge only, and do not necessarily indicate overall capability of the AmigaPCI PCI bus implementation.
+
 Table 2.3.1. Offset $04, Command Register.
 Bit|Description|Supported by PCI Bridge Device
 -|-|-
@@ -283,7 +285,7 @@ Bit|Description|Supported by PCI Bridge Device
 8|_SERR Enable|Yes
 7|Reserved|-
 6|Parity Error Response|Yes
-5|VGA Palette Snoop|Yes
+5|VGA Palette Snoop|No
 4|Memory Write and Invalidate Enable|No
 3|Special Cycles|No
 2|Bus Master|No
