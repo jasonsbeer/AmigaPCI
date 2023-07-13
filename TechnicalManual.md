@@ -283,7 +283,7 @@ Bit|Description|Supported by PCI Bridge Device
 8|_SERR Enable|Yes
 7|Reserved|-
 6|Parity Error Response|Yes
-5|VGA Palette Snoop|No
+5|VGA Palette Snoop|Yes
 4|Memory Write and Invalidate Enable|No
 3|Special Cycles|No
 2|Bus Master|No
