@@ -119,7 +119,7 @@ begin
 	-- 68040 AUTOCONFIG ADDRESSES --
 	--------------------------------
 	
-	--WE CONFIGURING EVERYTHING IN THE ZORRO 3 SPACE.	
+	--WE CONFIGURE EVERYTHING IN THE ZORRO 3 SPACE.	
 	
 	PROCESS (BCLK, nRESET) BEGIN	
 	
@@ -151,9 +151,8 @@ begin
 	-- PCI CONFIGURATION REGISTERS --
 	---------------------------------
 	
-	--WHEN WE ENTER THE AUTOCONFIG SPACE, POLL THE AUTOCONFIG PCI CARDS FOR INFORMATION BY
-	--ADDRESSING WITH THE IDESEL BIT, A REGISTER OFFSET, A CONFIG REGISTER COMMAND, 
-	--AND A(1..0) = b00 (TYPE 0 CONFIG SPACE.
+	--WHEN WE ENTER THE AUTOCONFIG SPACE AS DEFINED ON THE A BUS, POLL THE AUTOCONFIG PCI CARDS FOR INFORMATION BY
+	--ADDRESSING WITH THE IDESEL BIT, A REGISTER OFFSET, A CONFIG REGISTER COMMAND, AND A(1..0) = b00 (TYPE 0 CONFIG SPACE).
 	--ONCE THE NEEDED DATA IS COLLECTED, WE PASS IT TO AMIGA OS AS AUTOCONFIG INFORMATION.
 	
 	--SLOT 0 IS AT OFFSET $0010 0000
@@ -204,7 +203,7 @@ begin
 							IF acspace = '1' THEN 
 								
 								PCI_STATE <= ADDRESS;
-								AD <= x"00" & "000" & slotoffset & x"0000"; --00000000 00000001 00000000 00000000 READS VENDOR ID/DEVICE ID							
+								AD <= x"00" & "000" & slotoffset & x"0000"; --VENDOR ID/DEVICE ID							
 								ACONF <= '1'; --SEND THE CONFIGURE COMMAND SIGNAL (READ)
 								
 							END IF;
@@ -234,7 +233,7 @@ begin
 							PCI_STATE <= ADDRESS;
 							pcirw <= '0';
 							ACONF <= '1';
-							AD <= x"00" & "000" & slotoffset & x"0010"; --00000000 00000001 00000000 00010000 ACCESS BAR0	
+							AD <= x"00" & "000" & slotoffset & x"0010"; --BAR0	
 						
 						WHEN ADDRESS =>						
 							
@@ -263,7 +262,7 @@ begin
 							PCI_STATE <= ADDRESS;
 							pcirw <= '1';
 							ACONF <= '0';	
-							AD <= x"00" & "000" & slotoffset & x"0010"; --00000000 00000001 00000000 00010000 ACCESS BAR0
+							AD <= x"00" & "000" & slotoffset & x"0010"; --BAR0
 					
 						WHEN ADDRESS =>						
 							
@@ -292,7 +291,7 @@ begin
 							PCI_STATE <= ADDRESS;
 							pcirw <= '0';
 							ACONF <= '1';
-							AD <= x"00" & "000" & slotoffset & x"0030"; --00000000 00010000 00000000 00110000 ACCESS ROM BASE ADDRESS 0
+							AD <= x"00" & "000" & slotoffset & x"0030"; --ROM BASE ADDRESS 0
 						
 						WHEN ADDRESS =>
 						
@@ -321,7 +320,7 @@ begin
 							PCI_STATE <= ADDRESS;
 							pcirw <= '1';
 							ACONF <= '0';	
-							AD <= x"00" & "000" & slotoffset & x"0030"; --00000000 00010000 00000000 00110000 ACCESS ROM BASE ADDRESS 0
+							AD <= x"00" & "000" & slotoffset & x"0030"; --ACCESS ROM BASE ADDRESS 0
 					
 						WHEN ADDRESS =>
 							
@@ -347,17 +346,17 @@ begin
 					
 						WHEN START =>	
 						
-							IF ac_ready = '1' THEN
-							
-								pci_config_ready <= '0';							
+							IF ac_ready = '1' THEN						
+															
 								PCI_STATE <= ADDRESS;
 								pcirw <= '0';
 								ACONF <= '1';
-								AD <= x"00" & "000" & slotoffset & x"0010"; --00000000 00000001 00000000 00010000 ACCESS BAR0		
+								AD <= x"00" & "000" & slotoffset & x"0010"; --BAR0		
 								
 							ELSIF shutup = '1' THEN
 							
 								CURRENT_STATE <= ID;
+								pci_config_ready <= '0';
 								
 							END IF;
 						
@@ -373,12 +372,13 @@ begin
 							
 								CURRENT_STATE <= BASEADDRESS_READ;
 								PCI_STATE <= START;
+								pci_config_ready <= '0';
 								
 							END IF;
 						
 					END CASE;
 				
-				END CASE;
+			END CASE;
 		
 		END IF;
 		
@@ -456,42 +456,28 @@ begin
 	-- AUTOCONFIG PROCESS --
 	------------------------	
 	
-	--figure out pci_config ready. Becuase the 040 and the PCI are asynchrounous, it is possible to start a new autoconfig cycle before the pci card has completed configuration!
-	--acready too...we want to prevent the next pci device from getting the previous base address.
-	
+	--THE AUTOCONFIG CYCLE FOR PCI CARDS ONLY PROCEEDS WHEN THE PCI CARD INFORMATION HAS BEEN READ AND LATCHED (pci_config_ready = 1)
+	--AND ANY PREVIOUS PCI AUTOCONFIG CYCLE HAS COMPLETED (ac_ready = 0). IN THE EVENT OF BACK-TO-BACK AUTOCONFIG CYCLES, THIS WILL
+	--INSERT WAIT STATES UNTIL THE NEXT PCI DEVICE HAS BEEN POLLED AND IS READY TO BE AUTOCONFIGURED, BUT ALLOWS THE CPU TO MOVE ON 
+	--TO SOMETHING ELSE WHEN THE PCI CYCLE IS STILL ACTIVE. 
 	
 	D <= dout & x"000" WHEN acspace = '1' AND RnW = '1' ELSE (OTHERS => 'Z');	
 		
 	PROCESS (BCLK, nRESET) BEGIN
 	
-		IF nRESET = '0' THEN
-		
-			pci0configed <= '0';
-			pci1configed <= '0';
-			pci2configed <= '0';
-			pci3configed <= '0';
-			pci4configed <= '0';
-			
-			newbase <= (OTHERS => '0');
-			PCI4BASE <= (OTHERS => '0'); -- "-" = DON'T CARE. CAN ALSO TRY "X". I WONDER IF "-" IS ONLY FOR SIMULATION? DOES IT EVEN WORK IN CPLDs?
-			PCI3BASE <= (OTHERS => '0');
-			PCI2BASE <= (OTHERS => '0');
-			PCI1BASE <= (OTHERS => '0');
-			PCI0BASE <= (OTHERS => '0');			
+		IF nRESET = '0' THEN		
 			
 			dout <= (OTHERS => '0');
 			extendedregister <= '0';
 			endcycle <= '0';
-			ac_ready <= '0';
-			shutup <= '0';
 			
 		ELSIF FALLING_EDGE (BCLK) THEN
 		
-			IF acspace = '1' AND pci_config_ready = '1' THEN
+			IF acspace = '1' AND pci_config_ready = '1' AND ac_ready ='0' THEN
 			
 				endcycle <= '1';
-			
-				IF RnW = '1' THEN
+
+				IF RnW = '1' THEN			
 			
 					CASE acaddress IS
 					
@@ -510,7 +496,6 @@ begin
 							END IF;
 							
 							shutup <= '0';
-							ac_ready <= '0';
 							
 						WHEN x"02" =>
 						
@@ -598,80 +583,112 @@ begin
 							dout <= NOT "0000";
 							
 					END CASE;
-					
-				ELSE 
-				
-					CASE acaddress IS
-					
-						WHEN x"44" => --BASE ADDRESS REGISTER
 
-							newbase <= D(31 DOWNTO 16);
-
-							CASE slotoffset IS
-							
-								WHEN "10000" =>							
-									PCI4BASE <= D(31 DOWNTO 16);
-									pci4configed <= '1';								
-								WHEN "01000" =>
-									PCI3BASE <= D(31 DOWNTO 16);
-									pci3configed <= '1';								
-								WHEN "00100" =>
-									PCI2BASE <= D(31 DOWNTO 16);
-									pci2configed <= '1';
-								WHEN "00010" =>
-									PCI1BASE <= D(31 DOWNTO 16);
-									pci1configed <= '1';
-								WHEN "00001" =>
-									PCI0BASE <= D(31 DOWNTO 16);
-									pci0configed <= '1';
-								WHEN OTHERS =>
-									shutup <= '1'; --SOMETHING WENT WRONG! CANCEL THIS CARD CONFIG.
-								
-							END CASE;
-							
-							ac_ready <= '1';
-							
-						--WHEN x"48" => 
-						
-							--pci0base(23 DOWNTO 16) <= D(31 DOWNTO 24);
-							--pci0configed <= '1';
-							
-						WHEN x"4C" => --SHUT UP REGISTER						
-							
-							shutup <= '1';
-							
-							CASE slotoffset IS
-							
-								WHEN "10000" =>							
-									pci4configed <= '1';								
-								WHEN "01000" =>
-									pci3configed <= '1';								
-								WHEN "00100" =>
-									pci2configed <= '1';
-								WHEN "00010" =>
-									pci1configed <= '1';
-								WHEN "00001" =>
-									pci0configed <= '1';
-								WHEN OTHERS =>
-									
-							END CASE;
-							
-						WHEN OTHERS =>
-						
-					END CASE;
-					
-				END IF;	--R_W
+				END IF;
 
 			ELSE
-			
+				
 				endcycle <= '0';
-				ac_ready <= '0';
-				--shutup <= '0';
 			
-			END IF; --AC_SPACE
+			END IF;
 		
 		END IF; --RESET/FALLINGEDGE
 		
+	END PROCESS;
+
+	--AUTOCONFIG DATA IN WRITE CYCLES IS LATCHED ON THE RISING EDGE OF BCLK.
+
+	PROCESS (BCLK, nRESET) BEGIN
+	
+		IF nRESET = '0' THEN
+		
+			pci0configed <= '0';
+			pci1configed <= '0';
+			pci2configed <= '0';
+			pci3configed <= '0';
+			pci4configed <= '0';
+			
+			newbase <= (OTHERS => '0');
+			PCI4BASE <= (OTHERS => '0');
+			PCI3BASE <= (OTHERS => '0');
+			PCI2BASE <= (OTHERS => '0');
+			PCI1BASE <= (OTHERS => '0');
+			PCI0BASE <= (OTHERS => '0');
+			
+			ac_ready <= '0';
+			shutup <= '0';
+			
+		ELSIF RISING_EDGE (BCLK) THEN
+
+			IF acspace = '1' AND pci_config_ready = '1' AND ac_ready ='0' AND RnW = '0' THEN
+
+				CASE acaddress IS
+					
+					WHEN x"44" => --BASE ADDRESS REGISTER
+
+						newbase <= D(31 DOWNTO 16);
+
+						CASE slotoffset IS
+						
+							WHEN "10000" =>							
+								PCI4BASE <= D(31 DOWNTO 16);
+								pci4configed <= '1';								
+							WHEN "01000" =>
+								PCI3BASE <= D(31 DOWNTO 16);
+								pci3configed <= '1';								
+							WHEN "00100" =>
+								PCI2BASE <= D(31 DOWNTO 16);
+								pci2configed <= '1';
+							WHEN "00010" =>
+								PCI1BASE <= D(31 DOWNTO 16);
+								pci1configed <= '1';
+							WHEN "00001" =>
+								PCI0BASE <= D(31 DOWNTO 16);
+								pci0configed <= '1';
+							WHEN OTHERS =>
+								shutup <= '1'; --SOMETHING WENT WRONG! CANCEL THIS CARD CONFIG.
+							
+						END CASE;
+						
+						ac_ready <= '1';
+						
+					--WHEN x"48" => 
+					
+						--pci0base(23 DOWNTO 16) <= D(31 DOWNTO 24);
+						--pci0configed <= '1';
+						
+					WHEN x"4C" => --SHUT UP REGISTER						
+						
+						shutup <= '1';
+						
+						CASE slotoffset IS
+						
+							WHEN "10000" =>							
+								pci4configed <= '1';								
+							WHEN "01000" =>
+								pci3configed <= '1';								
+							WHEN "00100" =>
+								pci2configed <= '1';
+							WHEN "00010" =>
+								pci1configed <= '1';
+							WHEN "00001" =>
+								pci0configed <= '1';
+							WHEN OTHERS =>
+								
+						END CASE;
+						
+					WHEN OTHERS =>
+					
+				END CASE;
+
+			END IF;
+
+		ELSIF pci_config_ready = '0' AND ac_ready = '1' THEN
+
+			ac_ready <= '0'; --RESET THE ac_ready SIGNAL SO THE NEXT AUTOCONFIG CYCLE CAN BEGIN.
+
+		END IF;
+				
 	END PROCESS;
 	
 	------------------------
