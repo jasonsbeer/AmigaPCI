@@ -49,7 +49,7 @@ entity MAIN is
 		D : INOUT  STD_LOGIC_VECTOR (31 DOWNTO 16);
       AD : INOUT  STD_LOGIC_VECTOR (31 DOWNTO 0);
 		
-		--BEN : IN STD_LOGIC; --THE A BUS IS IN THE BRIDGE ADDRESS SPACE
+		BEN : IN STD_LOGIC; --THE A BUS IS IN THE BRIDGE ADDRESS SPACE
 		PCONFIGED : INOUT STD_LOGIC; --SIGNAL U110 WE HAVE COMPLETED THE AUTOCONFIG PROCESS
 		ACONF : OUT STD_LOGIC; --SIGNAL U110 TO SEND A CONFIGURATION REGISTER COMMAND
 		PCIRnW : OUT STD_LOGIC; --READ WRITE SIGNAL TO U110	
@@ -60,6 +60,8 @@ entity MAIN is
 end MAIN;
 
 architecture Behavioral of MAIN is
+
+	SIGNAL pci_config_space : STD_LOGIC;
 
 	SIGNAL pci4base : STD_LOGIC_VECTOR (31 DOWNTO 16);
 	SIGNAL pci3base : STD_LOGIC_VECTOR (31 DOWNTO 16);
@@ -73,11 +75,11 @@ architecture Behavioral of MAIN is
 	SIGNAL ac_slot1 : STD_LOGIC;
 	SIGNAL ac_slot0 : STD_LOGIC;
 	
---	SIGNAL slot0en : STD_LOGIC;
---	SIGNAL slot1en : STD_LOGIC;
---	SIGNAL slot2en : STD_LOGIC;
---	SIGNAL slot3en : STD_LOGIC;
---	SIGNAL slot4en : STD_LOGIC;
+	SIGNAL slot0en : STD_LOGIC;
+	SIGNAL slot1en : STD_LOGIC;
+	SIGNAL slot2en : STD_LOGIC;
+	SIGNAL slot3en : STD_LOGIC;
+	SIGNAL slot4en : STD_LOGIC;
 
 --	SIGNAL dlatch0 : STD_LOGIC_VECTOR (31 DOWNTO 0);
 --	SIGNAL dlatch1 : STD_LOGIC_VECTOR (31 DOWNTO 0);
@@ -126,20 +128,23 @@ begin
 	);
 	
 	
---	ADDRESSDECODE: ENTITY work.ADDRESSDECODE PORT MAP(
---		A => A(31 DOWNTO 16),
---		BEN => BEN,
---		PCI0BASE => pci0base,
---		PCI1BASE => pci1base,
---		PCI2BASE => pci2base,
---		PCI3BASE => pci3base,
---		PCI4BASE => pci4base,
---		SLOT0EN => slot0en,
---		SLOT1EN => slot1en,
---		SLOT2EN => slot2en,
---		SLOT3EN => slot3en,
---		SLOT4EN => slot4en
---	);
+	ADDRESSDECODE: ENTITY work.ADDRESSDECODE PORT MAP(
+		BCLK => BCLK,
+		A => A(31 DOWNTO 16),
+		BEN => BEN,
+		nRESET => nRESET,
+		PCI0BASE => pci0base,
+		PCI1BASE => pci1base,
+		PCI2BASE => pci2base,
+		PCI3BASE => pci3base,
+		PCI4BASE => pci4base,
+		PCI_CONFIG_SPACE => pci_config_space,
+		SLOT0EN => slot0en,
+		SLOT1EN => slot1en,
+		SLOT2EN => slot2en,
+		SLOT3EN => slot3en,
+		SLOT4EN => slot4en
+	);
 
 --	DATALATCH: ENTITY work.DATALATCH PORT MAP(
 --		A => A,

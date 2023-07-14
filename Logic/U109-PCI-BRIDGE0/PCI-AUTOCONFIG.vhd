@@ -55,11 +55,11 @@ entity PCIAUTOCONFIG is
 		ACONF : OUT STD_LOGIC; --SIGNAL U110 TO SEND A CONFIGURATION REGISTER COMMAND
 		PCIRnW : OUT STD_LOGIC; --READ WRITE SIGNAL TO U110	
 
-		PCI4BASE : OUT STD_LOGIC_VECTOR (31 DOWNTO 16); --AUTCONFIG BASE ADDRESS SLOT 4
-		PCI3BASE : OUT STD_LOGIC_VECTOR (31 DOWNTO 16); --AUTCONFIG BASE ADDRESS SLOT 4
-		PCI2BASE : OUT STD_LOGIC_VECTOR (31 DOWNTO 16); --AUTCONFIG BASE ADDRESS SLOT 4
-		PCI1BASE : OUT STD_LOGIC_VECTOR (31 DOWNTO 16); --AUTCONFIG BASE ADDRESS SLOT 4
-		PCI0BASE : OUT STD_LOGIC_VECTOR (31 DOWNTO 16) --AUTCONFIG BASE ADDRESS SLOT 4
+		PCI4BASE : OUT STD_LOGIC_VECTOR (31 DOWNTO 16); --AUTOCONFIG BASE ADDRESS SLOT 4
+		PCI3BASE : OUT STD_LOGIC_VECTOR (31 DOWNTO 16); --AUTOCONFIG BASE ADDRESS SLOT 3
+		PCI2BASE : OUT STD_LOGIC_VECTOR (31 DOWNTO 16); --AUTOCONFIG BASE ADDRESS SLOT 2
+		PCI1BASE : OUT STD_LOGIC_VECTOR (31 DOWNTO 16); --AUTOCONFIG BASE ADDRESS SLOT 1
+		PCI0BASE : OUT STD_LOGIC_VECTOR (31 DOWNTO 16) --AUTOCONFIG BASE ADDRESS SLOT 0
 		
    );
 
@@ -473,7 +473,7 @@ begin
 			
 		ELSIF FALLING_EDGE (BCLK) THEN
 		
-			IF acspace = '1' AND pci_config_ready = '1' AND ac_ready ='0' THEN
+			IF acspace = '1' AND pci_config_ready = '1' AND ac_ready = '0' AND shutup = '0' THEN
 			
 				endcycle <= '1';
 
@@ -493,9 +493,7 @@ begin
 							
 								dout <= "1001"; --ROM VECTOR
 								
-							END IF;
-							
-							shutup <= '0';
+							END IF;	
 							
 						WHEN x"02" =>
 						
@@ -620,13 +618,15 @@ begin
 			
 		ELSIF RISING_EDGE (BCLK) THEN
 
-			IF acspace = '1' AND pci_config_ready = '1' AND ac_ready ='0' AND RnW = '0' THEN
+			IF acspace = '1' AND pci_config_ready = '1' AND ac_ready = '0' AND shutup = '0' AND RnW = '0' THEN
 
 				CASE acaddress IS
 					
 					WHEN x"44" => --BASE ADDRESS REGISTER
 
 						newbase <= D(31 DOWNTO 16);
+						ac_ready <= '1';
+						shutup <= '0';
 
 						CASE slotoffset IS
 						
@@ -648,9 +648,8 @@ begin
 							WHEN OTHERS =>
 								shutup <= '1'; --SOMETHING WENT WRONG! CANCEL THIS CARD CONFIG.
 							
-						END CASE;
+						END CASE;						
 						
-						ac_ready <= '1';
 						
 					--WHEN x"48" => 
 					
@@ -659,6 +658,7 @@ begin
 						
 					WHEN x"4C" => --SHUT UP REGISTER						
 						
+						ac_ready <= '0';
 						shutup <= '1';
 						
 						CASE slotoffset IS
@@ -681,11 +681,12 @@ begin
 					
 				END CASE;
 
-			END IF;
+			ELSIF pci_config_ready = '0' AND ac_ready = '1' THEN
 
-		ELSIF pci_config_ready = '0' AND ac_ready = '1' THEN
-
-			ac_ready <= '0'; --RESET THE ac_ready SIGNAL SO THE NEXT AUTOCONFIG CYCLE CAN BEGIN.
+				ac_ready <= '0'; --RESET THE ac_ready SIGNAL SO THE NEXT AUTOCONFIG CYCLE CAN BEGIN.
+				shutup <= '0';
+			
+			END IF;		
 
 		END IF;
 				
