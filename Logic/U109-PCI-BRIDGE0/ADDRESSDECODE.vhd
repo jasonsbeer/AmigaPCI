@@ -137,7 +137,12 @@ begin
 		IF nRESET = '0' THEN
 		
 			latch_address <= (OTHERS => 'X');
-		
+			slot0_latch_address <= (OTHERS => 'X');
+			slot1_latch_address <= (OTHERS => 'X');
+			slot2_latch_address <= (OTHERS => 'X');
+			slot3_latch_address <= (OTHERS => 'X');
+			slot4_latch_address <= (OTHERS => 'X');
+			
 		ELSIF FALLING_EDGE(BCLK) THEN
 		
 			latch_address <= A(31 DOWNTO latchbit), (OTHERS => 'X');
