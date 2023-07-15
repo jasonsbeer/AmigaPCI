@@ -376,7 +376,7 @@ $1FE0 0000|$1FFF FFFF|I/O Space|2MB|$0000 0000|$001F FFFF
 
 For these examples, assume the base address of the Local PCI Bridge is $8000 0000. When accessing the configuration registers of software configured PCI devices on the bus, A[31..24] will be converted to $00 by the Local PCI bridge. 
 
-A[31..24] Reserved  (Always b00000000)
+A[31..24] Reserved  (Always b00000000)  
 A[23..16] PCI Bus Number (Slot Offset, see Table 2.3.2.a)  
 A[15..11] PCI Device Number (Always b00000)  
 A[10..8] PCI Function Number  
