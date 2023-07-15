@@ -176,8 +176,7 @@ begin
 			pci_config_ready <= '0';
 			PCICMD <= "00";
 			slotoffset <= "00000";
-			pcirw <= '1';
-			
+			pcirw <= '1';			
 			
 		ELSIF FALLING_EDGE (PCICLK) THEN	
 		
@@ -206,16 +205,14 @@ begin
 							IF acspace = '1' THEN 
 								
 								PCI_STATE <= ADDRESS;
-								AD <= x"00" & "000" & slotoffset & x"0000"; --VENDOR ID/DEVICE ID							
-								--ACONF <= '1'; --SEND THE CONFIGURE COMMAND SIGNAL (READ)
+								AD <= x"00" & "000" & slotoffset & x"0000"; --VENDOR ID/DEVICE ID	
 								PCI_CYCLE_ACTVE <= '1';
 								
 							END IF;
 					
 						WHEN ADDRESS =>
 							
-							PCI_STATE <= DATA;
-							--ACONF <= '0';							
+							PCI_STATE <= DATA;						
 							AD <= (OTHERS => 'Z');
 						
 						WHEN DATA =>
@@ -237,14 +234,12 @@ begin
 							--TURNAROUND TIME.
 							PCI_STATE <= ADDRESS;
 							pcirw <= '0';
-							--ACONF <= '1';
 							PCI_CYCLE_ACTVE <= '1';
 							AD <= x"00" & "000" & slotoffset & x"0010"; --BAR0	
 						
 						WHEN ADDRESS =>						
 							
-							PCI_STATE <= DATA;
-							--ACONF <= '0';							
+							PCI_STATE <= DATA;						
 							AD <= x"FFFFFFFF";
 						
 						WHEN DATA =>
@@ -268,15 +263,12 @@ begin
 							--TURNAROUND TIME.
 							PCI_STATE <= ADDRESS;
 							pcirw <= '1';
-							--ACONF <= '0';
-							PCI_CYCLE_ACTVE <= '0';		
+							PCI_CYCLE_ACTVE <= '1';		
 							AD <= x"00" & "000" & slotoffset & x"0010"; --BAR0
 					
 						WHEN ADDRESS =>						
 							
 							PCI_STATE <= DATA;
-							--ACONF <= '1'; 
-							--PCI_CYCLE_ACTVE <= '1';
 							AD <= (OTHERS => 'Z');
 						
 						WHEN DATA =>
@@ -300,14 +292,12 @@ begin
 							--TURNAROUND TIME.
 							PCI_STATE <= ADDRESS;
 							pcirw <= '0';
-							--ACONF <= '1';
 							PCI_CYCLE_ACTVE <= '1';
 							AD <= x"00" & "000" & slotoffset & x"0030"; --ROM BASE ADDRESS 0
 						
 						WHEN ADDRESS =>
 						
 							--ACONF <= '0';
-							--PCI_CYCLE_ACTVE <= '0';
 							AD <= x"FFFFFFFF";
 							PCI_STATE <= DATA;
 						
@@ -331,16 +321,13 @@ begin
 						
 							--TURNAROUND TIME.
 							PCI_STATE <= ADDRESS;
-							pcirw <= '1';
-							--ACONF <= '0';	
+							pcirw <= '1';	
 							PCI_CYCLE_ACTVE <= '1';
 							AD <= x"00" & "000" & slotoffset & x"0030"; --ACCESS ROM BASE ADDRESS 0
 					
 						WHEN ADDRESS =>
 							
 							PCI_STATE <= DATA;
-							--ACONF <= '1'; 
-							--PCI_CYCLE_ACTVE <= '1';
 							AD <= (OTHERS => 'Z');
 						
 						WHEN DATA =>
@@ -366,7 +353,6 @@ begin
 															
 								PCI_STATE <= ADDRESS;
 								pcirw <= '0';
-								--ACONF <= '1';
 								PCI_CYCLE_ACTVE <= '1';
 								AD <= x"00" & "000" & slotoffset & x"0010"; --BAR0		
 								
@@ -380,8 +366,6 @@ begin
 						WHEN ADDRESS =>						
 							
 							PCI_STATE <= DATA;
-							--ACONF <= '0';
-							--PCI_CYCLE_ACTVE <= '0';
 							AD <= newbase & x"0000";
 						
 						WHEN DATA =>
