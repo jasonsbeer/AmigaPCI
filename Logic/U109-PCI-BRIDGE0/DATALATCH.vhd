@@ -34,14 +34,19 @@ entity DATALATCH is
    Port ( 
 	 
 		A : IN  STD_LOGIC_VECTOR (31 DOWNTO 0);
-      D : IN  STD_LOGIC_VECTOR (31 DOWNTO 0);
+      D : INOUT  STD_LOGIC_VECTOR (31 DOWNTO 0);
 		BCLK : IN STD_LOGIC;
 		PCICLK : IN STD_LOGIC;
 		nRESET : IN STD_LOGIC;
 		nTRDY : IN STD_LOGIC; --TARGET DEVICE READY
-		nIRDY : IN STD_LOGIC;
+		nIRDY : IN STD_LOGIC; --INITIATOR READY
 		RnW : IN STD_LOGIC;
 		nTA : IN STD_LOGIC;
+		nTIP : IN STD_LOGIC;
+		TT0 : IN STD_LOGIC;
+		TT1 : IN STD_LOGIC;
+		UPA0 : IN STD_LOGIC;
+		UPA1 : IN STD_LOGIC;
 		CPUSPACE : IN STD_LOGIC;
 		nPCIEN : IN STD_LOGIC;
 		PCI_CONFIG_SPACE : IN STD_LOGIC;
@@ -58,19 +63,21 @@ entity DATALATCH is
 		
       AD : INOUT  STD_LOGIC_VECTOR (31 DOWNTO 0);
 		
-		DLATCH0 : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
-		DLATCH1 : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
-		DLATCH2 : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
-		DLATCH3 : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
-		ADLATCH0 : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
-		ADLATCH1 : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
-		ADLATCH2 : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
-		ADLATCH3 : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
+		PCI_CYCLE_ACTIVE : OUT STD_LOGIC
 		
-		ADLATCH0VALID : OUT STD_LOGIC;
-		ADLATCH1VALID : OUT STD_LOGIC;
-		ADLATCH2VALID : OUT STD_LOGIC;
-		ADLATCH3VALID : OUT STD_LOGIC
+		--DLATCH0 : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
+		--DLATCH1 : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
+		--DLATCH2 : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
+		--DLATCH3 : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
+		--ADLATCH0 : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
+		--ADLATCH1 : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
+		--ADLATCH2 : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
+		--ADLATCH3 : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
+		
+		--ADLATCH0VALID : OUT STD_LOGIC;
+		--ADLATCH1VALID : OUT STD_LOGIC;
+		--ADLATCH2VALID : OUT STD_LOGIC;
+		--ADLATCH3VALID : OUT STD_LOGIC
 		
    );
 	
@@ -81,36 +88,80 @@ architecture Behavioral of DATALATCH is
 	SIGNAL adlatchcount : INTEGER RANGE 0 TO 3;
 	SIGNAL dlatchcount : INTEGER RANGE 0 TO 3;
 	
-	SIGNAL adout : STD_LOGIC_VECTOR(31 DOWNTO 16);
+	SIGNAL ac_slot_software_poll : STD_LOGIC;
+	SIGNAL config0_SPACE : STD_LOGIC;
+	SIGNAL config1_SPACE : STD_LOGIC;
+	SIGNAL memory_SPACE : STD_LOGIC;
+	SIGNAL burst_mode_040 : STD_LOGIC;
+	SIGNAL pci_ac_slot_write_cycle : STD_LOGIC;
+	SIGNAL pci_ac_slot_read_cycle : STD_LOGIC;
+	SIGNAL pci_ac_slot_start : STD_LOGIC;
+	SIGNAL a_mode : STD_LOGIC_VECTOR(1 DOWNTO 0);
+	--SIGNAL adout : STD_LOGIC_VECTOR(31 DOWNTO 16);
 	SIGNAL burst_cycle_040 : STD_LOGIC;
+	SIGNAL adout_ac : STD_LOGIC_VECTOR(31 DOWNTO 0);
+	SIGNAL dout_ac : STD_LOGIC_VECTOR(31 DOWNTO 0);
+	
+	SIGNAL dlatch0 : STD_LOGIC_VECTOR(31 DOWNTO 0);
+	SIGNAL dlatch1 : STD_LOGIC_VECTOR(31 DOWNTO 0);
+	SIGNAL dlatch2 : STD_LOGIC_VECTOR(31 DOWNTO 0);
+	SIGNAL dlatch3 : STD_LOGIC_VECTOR(31 DOWNTO 0);
+	
+	SIGNAL adlatch0 : STD_LOGIC_VECTOR(31 DOWNTO 0);
+	SIGNAL adlatch1 : STD_LOGIC_VECTOR(31 DOWNTO 0);
+	SIGNAL adlatch2 : STD_LOGIC_VECTOR(31 DOWNTO 0);
+	SIGNAL adlatch3 : STD_LOGIC_VECTOR(31 DOWNTO 0);
+	
+	SIGNAL adlatch0valid : STD_LOGIC;
+	SIGNAL adlatch1valid : STD_LOGIC;
+	SIGNAL adlatch2valid : STD_LOGIC;
+	SIGNAL adlatch3valid : STD_LOGIC;
 	
 	TYPE PCI_CYCLE IS (START, ADDRESS, DATA);
 	SIGNAL PCI_STATE : PCI_CYCLE;
+	SIGNAL PCI_WRITE_STATE : PCI_CYCLE;
 	
-	TYPE BURST_CYCLE IS (CYCLE1, CYCLE2, CYCLE3);
+	TYPE BURST_CYCLE IS (CYCLE0, CYCLE1, CYCLE2, CYCLE3);
 	SIGNAL BURST_STATE : BURST_CYCLE;
+	SIGNAL BURST_WRITE_STATE : BURST_CYCLE;
 
 begin
 
-	-------------------
-	-- MC68040 D BUS --
-	-------------------
+	--------------------------
+	-- MC68040 D BUS DRIVER --
+	--------------------------
 
 	D <= 
-		x"FFFFFFFF" WHEN ac_slot_software_poll ELSE 
+		x"FFFFFFFF" WHEN ac_slot_software_poll = '1' ELSE 
+		dout_ac WHEN PCI_STATE = DATA AND RnW = '1' ELSE
 		(OTHERS => 'Z');
+		
+	-----------------------
+	-- PCI AD BUS DRIVER --
+	-----------------------
+		
+	AD <= adout_ac WHEN PCI_STATE = ADDRESS OR (PCI_STATE = DATA AND RnW = '0') ELSE (OTHERS => 'Z');
+	
+	------------------------
+	-- U110 INTERCONNECTS --
+	------------------------
+	
+	--THESE SIGNALS DRIVE U110 TO ASSERT SIGNALS LIKE C/_BE[3..0], _FRAME, AND _IRDY.
+	
+	PCI_CYCLE_ACTIVE <= pci_ac_slot_write_cycle OR pci_ac_slot_read_cycle;
 		
 	---------------------
 	-- CONFIG RESPONSE --
 	---------------------	
 	
-	--WE ALWAYS RETURN $FFFFFFFF ON THE D BUS WHEN AUTOCONFIG PCI SLOTS ARE BEING POLLED THROUGH THE PCI BRIDGE BY PROMETHEUS.
+	--WE ALWAYS RETURN $FFFFFFFF ON THE D BUS WHEN AUTOCONFIG PCI SLOTS ARE BEING POLLED BY PROMETHEUS.
 	
-	ac_slot_software_poll <= (SLOT0EN AND AC_SLOT0 AND PCI_CONFIG_SPACE) OR
-	                         (SLOT1EN AND AC_SLOT1 AND PCI_CONFIG_SPACE) OR
-									 (SLOT2EN AND AC_SLOT2 AND PCI_CONFIG_SPACE) OR
-									 (SLOT3EN AND AC_SLOT3 AND PCI_CONFIG_SPACE) OR
-									 (SLOT4EN AND AC_SLOT4 AND PCI_CONFIG_SPACE);
+	ac_slot_software_poll <= PCI_CONFIG_SPACE AND
+									 ((SLOT0EN AND AC_SLOT0) OR
+	                          (SLOT1EN AND AC_SLOT1) OR
+									  (SLOT2EN AND AC_SLOT2) OR
+									  (SLOT3EN AND AC_SLOT3) OR
+									  (SLOT4EN AND AC_SLOT4));
 									
 	-------------------------
 	-- MC68040 BURST CYCLE --
@@ -139,101 +190,236 @@ begin
 	config0_space <= NOT UPA0 AND NOT UPA1;
 	config1_space <= UPA0 AND NOT UPA1;	
 	
+	a_mode <= "00" WHEN config0_space = '1' ELSE "01" WHEN config1_space = '1' ELSE "10" WHEN burst_mode_040 = '1' ELSE "11";
+	
 	----------------------------
 	-- AUTOCONFIG SLOT ENABLE --
 	----------------------------
 	
 	--IF ONE OF THE AUTOCONFIG SLOTS IS BEING ADDRESSED ON THE A BUS, WE SIGNAL TO START THE PCI CYCLE.
 	
-	pci_ac_start <= (SLOT0EN OR SLOT1EN OR SLOT2EN OR SLOT3EN OR SLOT4EN) AND NOT PCI_CONFIG_SPACE;
-									 
-	--------------------------------------
-	-- AUTOCONFIG SLOT PCI CYCLE ENABLE --
-	--------------------------------------
+	pci_ac_slot_start <= (SLOT0EN OR SLOT1EN OR SLOT2EN OR SLOT3EN OR SLOT4EN) AND NOT PCI_CONFIG_SPACE;
+
+	-------------------------------------
+	-- AUTOCONFIG SLOT PCI READ CYCLE  --
+	-------------------------------------
 	
 	--THIS PCI CYCLE IS DEFINED BY INITIATION BY THE ASSERTION OF THE AUTOCONFIG BASE ADDRESS ON THE A BUS.
 	
-	AD <= adout_ac WHEN PCI_STATE = ADDRESS OR (PCI_STATE = DATA AND RnW = '0') ELSE (OTHERS => 'Z');
+	PROCESS (BCLK, nRESET) BEGIN
+	
+		IF nRESET = '0' THEN
+		
+			pci_ac_slot_read_cycle <= '0';
+			BURST_STATE <= CYCLE0;
+			PCI_STATE <= START;
+		
+		ELSIF FALLING_EDGE(BCLK) THEN
+		
+			IF (pci_ac_slot_start = '1' AND nTIP = '0' AND RnW = '1') OR pci_ac_slot_read_cycle = '1' THEN
+			
+				CASE PCI_STATE IS
+				
+					WHEN START =>
+					
+						--TURNAROUND CLOCK
+						adout_ac <= A(31 DOWNTO 2) & a_mode;
+						pci_ac_slot_read_cycle <= '1';
+						PCI_STATE <= ADDRESS;
+						
+					WHEN ADDRESS =>		
+											
+						PCI_STATE <= DATA;
+						
+					WHEN DATA =>
+					
+						CASE BURST_STATE IS
+						
+							WHEN CYCLE0 =>
+					
+								IF ADLATCH0VALID <= '1' THEN
+							
+									dout_ac <= adlatch0(24) & adlatch0(25) & adlatch0(26) & adlatch0(27) & adlatch0(28) & adlatch0(29) & adlatch0(30) & adlatch0(31) & 
+													adlatch0(16) & adlatch0(17) & adlatch0(18) & adlatch0(19) & adlatch0(20) & adlatch0(21) & adlatch0(22) & adlatch0(23) & 
+													adlatch0(8)  & adlatch0(9)  & adlatch0(10) & adlatch0(11) & adlatch0(12) & adlatch0(13) & adlatch0(14) & adlatch0(15) & 
+													adlatch0(0)  & adlatch0(1)  & adlatch0(2)  & adlatch0(3)  & adlatch0(4)  & adlatch0(5)  & adlatch0(6)  & adlatch0(7);
+													
+									--!!!!!!!!!!!!!NEED TO ADD _TA IN HERE SOMEWHERE!!!!!!!!!!!!!!!
+								
+								END IF;
+								
+								IF nTRDY = '0' THEN
+									
+										IF burst_cycle_040 = '1' THEN	
+										
+											BURST_STATE <= CYCLE1;
+										
+										ELSE
+							
+											PCI_STATE <= START;
+											pci_ac_slot_read_cycle <= '0';
+										
+										END IF;	
+										
+									END IF;
+									
+							WHEN CYCLE1 =>
+							
+								IF ADLATCH1VALID <= '1' THEN
+									
+									dout_ac <= adlatch1(24) & adlatch1(25) & adlatch1(26) & adlatch1(27) & adlatch1(28) & adlatch1(29) & adlatch1(30) & adlatch1(31) & 
+													adlatch1(16) & adlatch1(17) & adlatch1(18) & adlatch1(19) & adlatch1(20) & adlatch1(21) & adlatch1(22) & adlatch1(23) & 
+													adlatch1(8)  & adlatch1(9)  & adlatch1(10) & adlatch1(11) & adlatch1(12) & adlatch1(13) & adlatch1(14) & adlatch1(15) & 
+													adlatch1(0)  & adlatch1(1)  & adlatch1(2)  & adlatch1(3)  & adlatch1(4)  & adlatch1(5)  & adlatch1(6)  & adlatch1(7);
+													
+									--!!!!!!!!!!!!!NEED TO ADD _TA IN HERE SOMEWHERE!!!!!!!!!!!!!!!
+								
+								END IF;
+								
+								IF nTRDY = '0' THEN BURST_STATE <= CYCLE2; END IF;
+							
+							WHEN CYCLE2 =>
+							
+								IF ADLATCH2VALID <= '1' THEN
+									
+									dout_ac <= adlatch2(24) & adlatch2(25) & adlatch2(26) & adlatch2(27) & adlatch2(28) & adlatch2(29) & adlatch2(30) & adlatch2(31) & 
+													adlatch2(16) & adlatch2(17) & adlatch2(18) & adlatch2(19) & adlatch2(20) & adlatch2(21) & adlatch2(22) & adlatch2(23) & 
+													adlatch2(8)  & adlatch2(9)  & adlatch2(10) & adlatch2(11) & adlatch2(12) & adlatch2(13) & adlatch2(14) & adlatch2(15) & 
+													adlatch2(0)  & adlatch2(1)  & adlatch2(2)  & adlatch2(3)  & adlatch2(4)  & adlatch2(5)  & adlatch2(6)  & adlatch2(7);
+													
+									--!!!!!!!!!!!!!NEED TO ADD _TA IN HERE SOMEWHERE!!!!!!!!!!!!!!!
+								
+								END IF;
+								
+								IF nTRDY = '0' THEN BURST_STATE <= CYCLE3; END IF;
+							
+							WHEN CYCLE3 =>
+							
+								IF ADLATCH3VALID <= '1' THEN
+										
+									dout_ac <= adlatch3(24) & adlatch3(25) & adlatch3(26) & adlatch3(27) & adlatch3(28) & adlatch3(29) & adlatch3(30) & adlatch3(31) & 
+													adlatch3(16) & adlatch3(17) & adlatch3(18) & adlatch3(19) & adlatch3(20) & adlatch3(21) & adlatch3(22) & adlatch3(23) & 
+													adlatch3(8)  & adlatch3(9)  & adlatch3(10) & adlatch3(11) & adlatch3(12) & adlatch3(13) & adlatch3(14) & adlatch3(15) & 
+													adlatch3(0)  & adlatch3(1)  & adlatch3(2)  & adlatch3(3)  & adlatch3(4)  & adlatch3(5)  & adlatch3(6)  & adlatch3(7);
+													
+									--!!!!!!!!!!!!!NEED TO ADD _TA IN HERE SOMEWHERE!!!!!!!!!!!!!!!
+								
+								END IF;
+								
+								IF nTRDY = '0' THEN 
+									
+										BURST_STATE <= CYCLE0;
+										PCI_STATE <= START;
+										pci_ac_slot_write_cycle <= '0';
+										
+								END IF;
+							
+						END CASE;	
+						
+				
+				END CASE;
+			
+			END IF;
+		
+		
+		END IF;
+	
+	END PROCESS;
+									 
+	--------------------------------------
+	-- AUTOCONFIG SLOT PCI WRITE CYCLE  --
+	--------------------------------------
+	
+	--THIS PCI CYCLE IS DEFINED BY INITIATION BY THE ASSERTION OF THE AUTOCONFIG BASE ADDRESS ON THE A BUS.
 	
 	PROCESS (PCICLK, nRESET) BEGIN
 	
 		IF nRESET = '0' THEN
 		
-			pci_cycle <= '0';
-			BURST_STATE <= CYCLE1;
+			pci_ac_slot_write_cycle <= '0';
+			BURST_WRITE_STATE <= CYCLE0;
+			PCI_WRITE_STATE <= START;
 		
 		ELSIF FALLING_EDGE(PCICLK) THEN
 		
-			IF pci_ac_start = '1' AND (nTIP = '0' OR pci_cycle = '1') THEN --_TIP STARTS THE PCI CYCLE, KEEP THE PCI CYCLE GOING UNTIL IT IS COMPLETE.
+			IF (pci_ac_slot_start = '1' AND nTIP = '0' AND RnW = '0') OR pci_ac_slot_write_cycle = '1' THEN
 			
 				CASE PCI_STATE IS 
 				
 					WHEN START =>
 					
 						--TURNAROUND CLOCK
-						adout_ac <= A; --THIS IS NOT EXACTLY CORRECT? A0-1 CHECK. THIS CAN BE DIFFERENT FOR CONFIG CYCLES VS REGULAR CYCLES.
-						pci_cycle_start; --SIGNALS U110 TO ASSERT C/_BE[3..0], _FRAME, AND _IRDY.
-						pci_cycle <= '1';
-						PCI_STATE <= ADDRESS;
+						adout_ac <= A(31 DOWNTO 2) & a_mode;
+						pci_ac_slot_write_cycle <= '1';
+						PCI_WRITE_STATE <= ADDRESS;
 					
-					WHEN ADDRESS =>
-					
-						adout_ac <= dlatch0(7)  & dlatch0(6)  & dlatch0(5)  & dlatch0(4)  & dlatch0(3)  & dlatch0(2)  & dlatch0(1)  & dlatch0(0) & 
-										dlatch0(15) & dlatch0(14) & dlatch0(13) & dlatch0(12) & dlatch0(11) & dlatch0(10) & dlatch0(9)  & dlatch0(8) &
-										dlatch0(23) & dlatch0(22) & dlatch0(21) & dlatch0(20) & dlatch0(19) & dlatch0(18) & dlatch0(17) & dlatch0(16) &	
-										dlatch0(31) & dlatch0(30) & dlatch0(29) & dlatch0(28) & dlatch0(27) & dlatch0(26) & dlatch0(25) & dlatch0(24);
-										
-						
-						IF nTRDY = '0' THEN PCI_STATE <= DATA; END IF;
+					WHEN ADDRESS =>		
+											
+						PCI_WRITE_STATE <= DATA;
 					
 					WHEN DATA =>
-					
-						IF burst_cycle_040 THEN
 							
-							CASE BURST_STATE IS 
+							CASE BURST_WRITE_STATE IS 
 							
-								WHEN CYCLE1 =>
+								WHEN CYCLE0 =>
+								
+								
+									adout_ac <= dlatch0(7)  & dlatch0(6)  & dlatch0(5)  & dlatch0(4)  & dlatch0(3)  & dlatch0(2)  & dlatch0(1)  & dlatch0(0) & 
+													dlatch0(15) & dlatch0(14) & dlatch0(13) & dlatch0(12) & dlatch0(11) & dlatch0(10) & dlatch0(9)  & dlatch0(8) &
+													dlatch0(23) & dlatch0(22) & dlatch0(21) & dlatch0(20) & dlatch0(19) & dlatch0(18) & dlatch0(17) & dlatch0(16) &	
+													dlatch0(31) & dlatch0(30) & dlatch0(29) & dlatch0(28) & dlatch0(27) & dlatch0(26) & dlatch0(25) & dlatch0(24);
+													
+									IF nTRDY = '0' THEN
+									
+										IF burst_cycle_040 = '1' THEN	
+										
+											BURST_WRITE_STATE <= CYCLE1;
+										
+										ELSE
+							
+											PCI_WRITE_STATE <= START;
+											pci_ac_slot_write_cycle <= '0';
+										
+										END IF;	
+										
+									END IF;
+							
+								WHEN CYCLE1 =>								
 								
 									adout_ac <= dlatch1(7)  & dlatch1(6)  & dlatch1(5)  & dlatch1(4)  & dlatch1(3)  & dlatch1(2)  & dlatch1(1)  & dlatch1(0) & 
 													dlatch1(15) & dlatch1(14) & dlatch1(13) & dlatch1(12) & dlatch1(11) & dlatch1(10) & dlatch1(9)  & dlatch1(8) &
 													dlatch1(23) & dlatch1(22) & dlatch1(21) & dlatch1(20) & dlatch1(19) & dlatch1(18) & dlatch1(17) & dlatch1(16) &	
 													dlatch1(31) & dlatch1(30) & dlatch1(29) & dlatch1(28) & dlatch1(27) & dlatch1(26) & dlatch1(25) & dlatch1(24);
 													
-									IF nTRDY = '0' THEN BURST_STATE <= CYCLE2; END IF;
+									IF nTRDY = '0' THEN BURST_WRITE_STATE <= CYCLE2; END IF;
 								
 								WHEN CYCLE2 =>
 								
-									adout_ac <= dlatch2(7)  & dlatch2(6)  & dlatch2(5)  & dlatch2(4)  & dlatch2(3)  & dlatch2(2)  & dlatch2(1)  & dlatch2(0) & 
-													dlatch2(15) & dlatch2(14) & dlatch2(13) & dlatch2(12) & dlatch2(11) & dlatch2(10) & dlatch2(9)  & dlatch2(8) &
-													dlatch2(23) & dlatch2(22) & dlatch2(21) & dlatch2(20) & dlatch2(19) & dlatch2(18) & dlatch2(17) & dlatch2(16) &	
-													dlatch2(31) & dlatch2(30) & dlatch2(29) & dlatch2(28) & dlatch2(27) & dlatch2(26) & dlatch2(25) & dlatch2(24);
+										adout_ac <= dlatch2(7)  & dlatch2(6)  & dlatch2(5)  & dlatch2(4)  & dlatch2(3)  & dlatch2(2)  & dlatch2(1)  & dlatch2(0) & 
+														dlatch2(15) & dlatch2(14) & dlatch2(13) & dlatch2(12) & dlatch2(11) & dlatch2(10) & dlatch2(9)  & dlatch2(8) &
+														dlatch2(23) & dlatch2(22) & dlatch2(21) & dlatch2(20) & dlatch2(19) & dlatch2(18) & dlatch2(17) & dlatch2(16) &	
+														dlatch2(31) & dlatch2(30) & dlatch2(29) & dlatch2(28) & dlatch2(27) & dlatch2(26) & dlatch2(25) & dlatch2(24);
+
 													
-									IF nTRDY = '0' THEN BURST_STATE <= CYCLE3; END IF;
-												
+									IF nTRDY = '0' THEN BURST_WRITE_STATE <= CYCLE3; END IF;												
 												
 								WHEN CYCLE3 =>
 												
-									adout_ac <= dlatch3(7)  & dlatch3(6)  & dlatch3(5)  & dlatch3(4)  & dlatch3(3)  & dlatch3(2)  & dlatch3(1)  & dlatch3(0) & 
-													dlatch3(15) & dlatch3(14) & dlatch3(13) & dlatch3(12) & dlatch3(11) & dlatch3(10) & dlatch3(9)  & dlatch3(8) &
-													dlatch3(23) & dlatch3(22) & dlatch3(21) & dlatch3(20) & dlatch3(19) & dlatch3(18) & dlatch3(17) & dlatch3(16) &	
-													dlatch3(31) & dlatch3(30) & dlatch3(29) & dlatch3(28) & dlatch3(27) & dlatch3(26) & dlatch3(25) & dlatch3(24);		
+										adout_ac <= dlatch3(7)  & dlatch3(6)  & dlatch3(5)  & dlatch3(4)  & dlatch3(3)  & dlatch3(2)  & dlatch3(1)  & dlatch3(0) & 
+														dlatch3(15) & dlatch3(14) & dlatch3(13) & dlatch3(12) & dlatch3(11) & dlatch3(10) & dlatch3(9)  & dlatch3(8) &
+														dlatch3(23) & dlatch3(22) & dlatch3(21) & dlatch3(20) & dlatch3(19) & dlatch3(18) & dlatch3(17) & dlatch3(16) &	
+														dlatch3(31) & dlatch3(30) & dlatch3(29) & dlatch3(28) & dlatch3(27) & dlatch3(26) & dlatch3(25) & dlatch3(24);
+
 
 									IF nTRDY = '0' THEN 
 									
-										BURST_STATE <= CYCLE1;
-										PCI_STATE <= START;
-										pci_cycle <= '0';
+										BURST_WRITE_STATE <= CYCLE0;
+										PCI_WRITE_STATE <= START;
+										pci_ac_slot_write_cycle <= '0';
 										
 									END IF;
 											
 							END CASE;	
-						
-						ELSE
-						
-							PCI_STATE <= START;
-							pci_cycle <= '0';
-						
-						END IF;					
 					
 					END CASE;			
 			
@@ -292,17 +478,14 @@ begin
 	--BECAUSE WE SUPPORT BURSTS OF FOUR LONG WORDS, WE LATCH UP TO 
 	--FOUR OF THE DATA BLOCKS.
 	
-	--!!!!!!!!!!!!!!!NEED TO INCORPORATE DMA!!!!!!!!!!!!!!!!!!1
+	--!!!!!!!!!!!!!!!NEED TO INCORPORATE DMA!!!!!!!!!!!!!!!!!!
 
 
-	PROCESS (PCICLK, nIRDY, nTA, nRESET) BEGIN
+	PROCESS (PCICLK, nTIP, nRESET) BEGIN
 	
-		IF nIRDY = '1' OR nRESET = '0' THEN
+		IF nRESET = '0' OR nTIP = '1' THEN
 		
 			adlatchcount <= 0;
-			
-		ELSIF nTA = '1' THEN
-		
 			ADLATCH0VALID <= '0';
 			ADLATCH1VALID <= '0';
 			ADLATCH2VALID <= '0';
@@ -325,7 +508,7 @@ begin
 							ADLATCH1 <= AD(31 DOWNTO 0);
 							ADLATCH1VALID <= '1';
 							adlatchcount <= 2;
-						
+							
 						WHEN 2 =>
 						
 							ADLATCH2 <= AD(31 DOWNTO 0);
@@ -371,21 +554,25 @@ begin
 						
 							DLATCH0 <= D(31 DOWNTO 0);
 							dlatchcount <= 1;
+							--!!!!!!!!!!!!!! ADD TA IN HERE !!!!!!
 						
 						WHEN 1 =>
 						
 							DLATCH1 <= D(31 DOWNTO 0);
 							dlatchcount <= 2;
+							--!!!!!!!!!!!!!! ADD TA IN HERE !!!!!!
 						
 						WHEN 2 =>
 						
 							DLATCH2 <= D(31 DOWNTO 0);
 							dlatchcount <= 3;
+							--!!!!!!!!!!!!!! ADD TA IN HERE !!!!!!
 						
 						WHEN 3 =>
 					
 							DLATCH3 <= D(31 DOWNTO 0);
 							dlatchcount <= 0;
+							--!!!!!!!!!!!!!! ADD TA IN HERE !!!!!!
 							
 						END CASE;
 				
