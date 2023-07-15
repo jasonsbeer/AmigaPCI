@@ -51,8 +51,10 @@ entity MAIN is
 		
 		BEN : IN STD_LOGIC; --THE A BUS IS IN THE BRIDGE ADDRESS SPACE
 		PCONFIGED : INOUT STD_LOGIC; --SIGNAL U110 WE HAVE COMPLETED THE AUTOCONFIG PROCESS
-		ACONF : OUT STD_LOGIC; --SIGNAL U110 TO SEND A CONFIGURATION REGISTER COMMAND
+		--ACONF : OUT STD_LOGIC; --SIGNAL U110 TO SEND A CONFIGURATION REGISTER COMMAND
+		PCICMD : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
 		PCIRnW : OUT STD_LOGIC; --READ WRITE SIGNAL TO U110	
+		PCI_CYCLE_ACTIVE : OUT STD_LOGIC; --SIGNAL U110 THERE IS A PCI CYCLE IN PROGRESS
 		nTA : OUT STD_LOGIC
 		
    );
@@ -80,19 +82,6 @@ architecture Behavioral of MAIN is
 	SIGNAL slot2en : STD_LOGIC;
 	SIGNAL slot3en : STD_LOGIC;
 	SIGNAL slot4en : STD_LOGIC;
-
---	SIGNAL dlatch0 : STD_LOGIC_VECTOR (31 DOWNTO 0);
---	SIGNAL dlatch1 : STD_LOGIC_VECTOR (31 DOWNTO 0);
---	SIGNAL dlatch2 : STD_LOGIC_VECTOR (31 DOWNTO 0);
---	SIGNAL dlatch3 : STD_LOGIC_VECTOR (31 DOWNTO 0);
---	SIGNAL adlatch0 : STD_LOGIC_VECTOR (31 DOWNTO 0);
---	SIGNAL adlatch1 : STD_LOGIC_VECTOR (31 DOWNTO 0);
---	SIGNAL adlatch2 : STD_LOGIC_VECTOR (31 DOWNTO 0);
---	SIGNAL adlatch3 : STD_LOGIC_VECTOR (31 DOWNTO 0);
---	SIGNAL adlatch0valid : STD_LOGIC;
---	SIGNAL adlatch1valid : STD_LOGIC;
---	SIGNAL adlatch2valid : STD_LOGIC;
---	SIGNAL adlatch3valid : STD_LOGIC;
 	
 begin
 
@@ -146,31 +135,39 @@ begin
 		SLOT4EN => slot4en
 	);
 
---	DATALATCH: ENTITY work.DATALATCH PORT MAP(
---		A => A,
---		D => D,
---		BCLK => BCLK,
---		PCICLK => PCICLK,
---		nRESET => nRESET,
---		nTRDY => nTRDY,
---		nIRDY => nIRDY,
---		RnW => RnW,
---		nTA => nTA,
---		nPCIEN => nPCIEN,
---		AD => AD,
---		DLATCH0 => dlatch0,
---		DLATCH1 => dlatch1,
---		DLATCH2 => dlatch2,
---		DLATCH3 => dlatch3,
---		ADLATCH0 => adlatch0,
---		ADLATCH1 => adlatch1,
---		ADLATCH2 => adlatch2,
---		ADLATCH3 => adlatch3,
---		ADLATCH0VALID  => adlatch0valid,
---		ADLATCH1VALID  => adlatch1valid,
---		ADLATCH2VALID  => adlatch2valid,
---		ADLATCH3VALID  => adlatch3valid
---	);
+	DATALATCH: ENTITY work.DATALATCH PORT MAP(
+		A => A,
+		BCLK => BCLK,
+		PCICLK => PCICLK,
+		nRESET => nRESET,
+		nTRDY => nTRDY,
+		--nIRDY => ,
+		RnW => RnW,
+		nTIP => nTIP,
+		TT0 => TTO,
+		TT1 => TT1,
+		UPA0 => UPA0,
+		UPA1 => UPA1,
+		CPUSPACE => CPUSPACE,
+		--nPCIEN => ,
+		BEN => BEN,
+		PCI_CONFIG_SPACE => pci_config_space,
+		AC_SLOT0 => ac_slot0,
+		AC_SLOT1 => ac_slot1,
+		AC_SLOT2 => ac_slot2,
+		AC_SLOT3 => ac_slot3,
+		AC_SLOT4 => ac_slot4,
+		SLOT0EN => slot0en,
+		SLOT1EN => slot1en,
+		SLOT2EN => slot2en,
+		SLOT3EN => slot3en,
+		SLOT4EN => slot4en,
+		D => D,
+		AD => AD,
+		PCI_CYCLE_ACTIVE => PCI_CYCLE_ACTIVE,
+		nTA => nTA,
+		PCICMD => PCICMD
+	);
 
 
 	---------------------------------------

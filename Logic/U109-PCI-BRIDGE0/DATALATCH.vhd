@@ -33,22 +33,21 @@ entity DATALATCH is
 
    Port ( 
 	 
-		A : IN  STD_LOGIC_VECTOR (31 DOWNTO 0);
-      D : INOUT  STD_LOGIC_VECTOR (31 DOWNTO 0);
+		A : IN  STD_LOGIC_VECTOR (31 DOWNTO 0);      
 		BCLK : IN STD_LOGIC;
 		PCICLK : IN STD_LOGIC;
 		nRESET : IN STD_LOGIC;
 		nTRDY : IN STD_LOGIC; --TARGET DEVICE READY
-		nIRDY : IN STD_LOGIC; --INITIATOR READY
-		RnW : IN STD_LOGIC;
-		nTA : IN STD_LOGIC;
+		--nIRDY : IN STD_LOGIC; --INITIATOR READY
+		RnW : IN STD_LOGIC;		
 		nTIP : IN STD_LOGIC;
 		TT0 : IN STD_LOGIC;
 		TT1 : IN STD_LOGIC;
 		UPA0 : IN STD_LOGIC;
 		UPA1 : IN STD_LOGIC;
 		CPUSPACE : IN STD_LOGIC;
-		nPCIEN : IN STD_LOGIC;
+		--nPCIEN : IN STD_LOGIC;
+		BEN : IN STD_LOGIC;
 		PCI_CONFIG_SPACE : IN STD_LOGIC;
 		AC_SLOT0 : IN STD_LOGIC;
 		AC_SLOT1 : IN STD_LOGIC;
@@ -61,23 +60,13 @@ entity DATALATCH is
 		SLOT3EN : IN  STD_LOGIC;
 		SLOT4EN : IN  STD_LOGIC;
 		
+		D : INOUT  STD_LOGIC_VECTOR (31 DOWNTO 0);
       AD : INOUT  STD_LOGIC_VECTOR (31 DOWNTO 0);
+		PCI_CYCLE_ACTIVE : INOUT STD_LOGIC;		
+		nTA : INOUT STD_LOGIC;
 		
-		PCI_CYCLE_ACTIVE : OUT STD_LOGIC
+		PCICMD : OUT STD_LOGIC_VECTOR(1 DOWNTO 0)
 		
-		--DLATCH0 : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
-		--DLATCH1 : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
-		--DLATCH2 : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
-		--DLATCH3 : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
-		--ADLATCH0 : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
-		--ADLATCH1 : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
-		--ADLATCH2 : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
-		--ADLATCH3 : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
-		
-		--ADLATCH0VALID : OUT STD_LOGIC;
-		--ADLATCH1VALID : OUT STD_LOGIC;
-		--ADLATCH2VALID : OUT STD_LOGIC;
-		--ADLATCH3VALID : OUT STD_LOGIC
 		
    );
 	
@@ -92,12 +81,13 @@ architecture Behavioral of DATALATCH is
 	SIGNAL config0_SPACE : STD_LOGIC;
 	SIGNAL config1_SPACE : STD_LOGIC;
 	SIGNAL memory_SPACE : STD_LOGIC;
+	SIGNAL io_space : STD_LOGIC;
 	SIGNAL burst_mode_040 : STD_LOGIC;
 	SIGNAL pci_ac_slot_write_cycle : STD_LOGIC;
 	SIGNAL pci_ac_slot_read_cycle : STD_LOGIC;
 	SIGNAL pci_ac_slot_start : STD_LOGIC;
+	SIGNAL end_pci_cycle : STD_LOGIC;
 	SIGNAL a_mode : STD_LOGIC_VECTOR(1 DOWNTO 0);
-	--SIGNAL adout : STD_LOGIC_VECTOR(31 DOWNTO 16);
 	SIGNAL burst_cycle_040 : STD_LOGIC;
 	SIGNAL adout_ac : STD_LOGIC_VECTOR(31 DOWNTO 0);
 	SIGNAL dout_ac : STD_LOGIC_VECTOR(31 DOWNTO 0);
@@ -142,6 +132,13 @@ begin
 		
 	AD <= adout_ac WHEN PCI_STATE = ADDRESS OR (PCI_STATE = DATA AND RnW = '0') ELSE (OTHERS => 'Z');
 	
+	
+	--------------------------
+	-- MC68040 TRANSFER ACK --
+	--------------------------
+	
+	nTA <= '1' WHEN PCI_CYCLE_ACTIVE = '1' ELSE '0' WHEN PCI_CYCLE_ACTIVE = '1' AND end_pci_cycle = '1' ELSE 'Z';
+	
 	------------------------
 	-- U110 INTERCONNECTS --
 	------------------------
@@ -149,6 +146,7 @@ begin
 	--THESE SIGNALS DRIVE U110 TO ASSERT SIGNALS LIKE C/_BE[3..0], _FRAME, AND _IRDY.
 	
 	PCI_CYCLE_ACTIVE <= pci_ac_slot_write_cycle OR pci_ac_slot_read_cycle;
+	PCI_CMD <= "01" WHEN config0_space = '1' ELSE "10" WHEN config1_space = '1' ELSE "11" WHEN io_space = '1' ELSE "00";
 		
 	---------------------
 	-- CONFIG RESPONSE --
@@ -172,11 +170,15 @@ begin
 	
 	burst_cycle_040 <= NOT TT1 AND TT0;
 	
-	-------------------------
-	-- MC68040 UPA SIGNALS --
-	-------------------------
+	-------------------------------
+	-- PCI ADDRESS SPACE ENABLES --
+	-------------------------------
 	
-	--THESE SIGNALS ARE USED TO DIFFERENTIATE THE PCI MEMORY SPACES WHEN
+	--THERE ARE TWO WAYS TO ACCESS THE PCI TARGET DEVICE MEMORY SPACES. THE FIRST IS THROUGH
+	--THE AUTOCONFIG BASE ADDRESS OF THE PCI TARGET DEVICE WITH THE UPAx SIGNALS OF THE MC68040. THE SECOND IS THROUGH
+	--THE AUTOCONFIG BASE ADDRESS OF THE BRIDGE (PROMETHEUS) WITH SPECIFIC ADDRESS OFFSETS.
+	
+	--THE MC68040 UPAx SIGNALS ARE USED TO DIFFERENTIATE THE PCI MEMORY SPACES WHEN
 	--ACCESSING AN AUTOCONFIG PCI DEVICE. THREE MEMORY SPACES ARE SUPPORTED:
 	--MEMORY SPACE, CONFIG 0 SPACE, AND CONFIG 1 SPACE.
 	
@@ -186,25 +188,35 @@ begin
 	--   0    1  CONFIG 1 SPACE
 	--   1    0  RESERVED
 	
-	memory_space <= UPA0 AND UPA1;
-	config0_space <= NOT UPA0 AND NOT UPA1;
-	config1_space <= UPA0 AND NOT UPA1;	
+	--PROMETHEUS ADDRESS OFFSETS FOR PCI TARGET DEVICE MEMORY SPACE ENABLE.
+	
+	-- ADDRESS OFFSET RANGE|ADDRESS SPACE
+	-------------------------------------
+	--$00000000 - $1FBFFFFF MEMORY SPACE
+	--$1FC00000 - $1FCFFFFF CONFIG TYPE 0 SPACE
+	--$1FD00000 - $1FDFFFFF CONFIG TYPE 1 SPACE
+	--$1FE00000 - $1FFFFFFF I/O SPACE
+	
+	memory_space <= (UPA0 AND UPA1) OR (NOT config0_space AND NOT config1_space AND NOT io_space);
+	config0_space <= (NOT UPA0 AND NOT UPA1) OR NOT A(20);
+	config1_space <= (UPA0 AND NOT UPA1) OR A(20);	
+	io_space <= A(22) AND A(21);
 	
 	a_mode <= "00" WHEN config0_space = '1' ELSE "01" WHEN config1_space = '1' ELSE "10" WHEN burst_mode_040 = '1' ELSE "11";
 	
-	----------------------------
-	-- AUTOCONFIG SLOT ENABLE --
+	-----------------------------
+	-- PCI CYCLE START ENABLE --
 	----------------------------
 	
-	--IF ONE OF THE AUTOCONFIG SLOTS IS BEING ADDRESSED ON THE A BUS, WE SIGNAL TO START THE PCI CYCLE.
+	--WE SIGNAL TO START THE PCI CYCLE WHEN A PCI TARGET DEVICE IS BEING ADDRESSED DIRECTLY OR THROUGH THE BRIDGE.	
+	pci_ac_slot_start <= ((SLOT0EN OR SLOT1EN OR SLOT2EN OR SLOT3EN OR SLOT4EN) AND NOT BEN) OR (BEN AND (memory_space OR config0_space OR config1_space OR io_space));
 	
-	pci_ac_slot_start <= (SLOT0EN OR SLOT1EN OR SLOT2EN OR SLOT3EN OR SLOT4EN) AND NOT PCI_CONFIG_SPACE;
-
 	-------------------------------------
 	-- AUTOCONFIG SLOT PCI READ CYCLE  --
 	-------------------------------------
 	
-	--THIS PCI CYCLE IS DEFINED BY INITIATION BY THE ASSERTION OF THE AUTOCONFIG BASE ADDRESS ON THE A BUS.
+	--THIS PCI CYCLE IS DEFINED BY THE ASSERTION OF THE AUTOCONFIG BASE ADDRESS ON THE A BUS.
+	--HERE, WE PLACE DATA ON THE D BUS THAT WAS LATCHED FROM THE AD BUS DURING A READ CYCLE INITIATED BY THE MC68040.
 	
 	PROCESS (BCLK, nRESET) BEGIN
 	
@@ -213,6 +225,7 @@ begin
 			pci_ac_slot_read_cycle <= '0';
 			BURST_STATE <= CYCLE0;
 			PCI_STATE <= START;
+			end_pci_cycle <= '0';
 		
 		ELSIF FALLING_EDGE(BCLK) THEN
 		
@@ -227,9 +240,19 @@ begin
 						pci_ac_slot_read_cycle <= '1';
 						PCI_STATE <= ADDRESS;
 						
-					WHEN ADDRESS =>		
+					WHEN ADDRESS =>	
+						
+						IF ADLATCH0VALID <= '1' THEN
+							
+							dout_ac <= adlatch0(24) & adlatch0(25) & adlatch0(26) & adlatch0(27) & adlatch0(28) & adlatch0(29) & adlatch0(30) & adlatch0(31) & 
+										  adlatch0(16) & adlatch0(17) & adlatch0(18) & adlatch0(19) & adlatch0(20) & adlatch0(21) & adlatch0(22) & adlatch0(23) & 
+										  adlatch0(8)  & adlatch0(9)  & adlatch0(10) & adlatch0(11) & adlatch0(12) & adlatch0(13) & adlatch0(14) & adlatch0(15) & 
+										  adlatch0(0)  & adlatch0(1)  & adlatch0(2)  & adlatch0(3)  & adlatch0(4)  & adlatch0(5)  & adlatch0(6)  & adlatch0(7);
 											
-						PCI_STATE <= DATA;
+							PCI_STATE <= DATA;
+							end_pci_cycle <= '1';
+						
+						END IF;
 						
 					WHEN DATA =>
 					
@@ -237,87 +260,86 @@ begin
 						
 							WHEN CYCLE0 =>
 					
-								IF ADLATCH0VALID <= '1' THEN
-							
-									dout_ac <= adlatch0(24) & adlatch0(25) & adlatch0(26) & adlatch0(27) & adlatch0(28) & adlatch0(29) & adlatch0(30) & adlatch0(31) & 
-													adlatch0(16) & adlatch0(17) & adlatch0(18) & adlatch0(19) & adlatch0(20) & adlatch0(21) & adlatch0(22) & adlatch0(23) & 
-													adlatch0(8)  & adlatch0(9)  & adlatch0(10) & adlatch0(11) & adlatch0(12) & adlatch0(13) & adlatch0(14) & adlatch0(15) & 
-													adlatch0(0)  & adlatch0(1)  & adlatch0(2)  & adlatch0(3)  & adlatch0(4)  & adlatch0(5)  & adlatch0(6)  & adlatch0(7);
-													
-									--!!!!!!!!!!!!!NEED TO ADD _TA IN HERE SOMEWHERE!!!!!!!!!!!!!!!
-								
-								END IF;
-								
-								IF nTRDY = '0' THEN
-									
-										IF burst_cycle_040 = '1' THEN	
-										
-											BURST_STATE <= CYCLE1;
-										
-										ELSE
-							
-											PCI_STATE <= START;
-											pci_ac_slot_read_cycle <= '0';
-										
-										END IF;	
-										
-									END IF;
-									
-							WHEN CYCLE1 =>
-							
-								IF ADLATCH1VALID <= '1' THEN
+								IF ADLATCH1VALID <= '1' THEN								
 									
 									dout_ac <= adlatch1(24) & adlatch1(25) & adlatch1(26) & adlatch1(27) & adlatch1(28) & adlatch1(29) & adlatch1(30) & adlatch1(31) & 
-													adlatch1(16) & adlatch1(17) & adlatch1(18) & adlatch1(19) & adlatch1(20) & adlatch1(21) & adlatch1(22) & adlatch1(23) & 
-													adlatch1(8)  & adlatch1(9)  & adlatch1(10) & adlatch1(11) & adlatch1(12) & adlatch1(13) & adlatch1(14) & adlatch1(15) & 
-													adlatch1(0)  & adlatch1(1)  & adlatch1(2)  & adlatch1(3)  & adlatch1(4)  & adlatch1(5)  & adlatch1(6)  & adlatch1(7);
+												  adlatch1(16) & adlatch1(17) & adlatch1(18) & adlatch1(19) & adlatch1(20) & adlatch1(21) & adlatch1(22) & adlatch1(23) & 
+												  adlatch1(8)  & adlatch1(9)  & adlatch1(10) & adlatch1(11) & adlatch1(12) & adlatch1(13) & adlatch1(14) & adlatch1(15) & 
+												  adlatch1(0)  & adlatch1(1)  & adlatch1(2)  & adlatch1(3)  & adlatch1(4)  & adlatch1(5)  & adlatch1(6)  & adlatch1(7);													
+									
+									end_pci_cycle <= '1';
 													
-									--!!!!!!!!!!!!!NEED TO ADD _TA IN HERE SOMEWHERE!!!!!!!!!!!!!!!
+									IF burst_cycle_040 = '1' THEN											
+											
+										BURST_STATE <= CYCLE1;
+									
+									ELSE											
+										
+										PCI_STATE <= START;
+										pci_ac_slot_read_cycle <= '0';
+										end_pci_cycle <= '0';											
+									
+									END IF;	
+													
+								ELSE 
+								
+									end_pci_cycle <= '0';
 								
 								END IF;
 								
-								IF nTRDY = '0' THEN BURST_STATE <= CYCLE2; END IF;
-							
-							WHEN CYCLE2 =>
+									
+							WHEN CYCLE1 =>
 							
 								IF ADLATCH2VALID <= '1' THEN
 									
 									dout_ac <= adlatch2(24) & adlatch2(25) & adlatch2(26) & adlatch2(27) & adlatch2(28) & adlatch2(29) & adlatch2(30) & adlatch2(31) & 
-													adlatch2(16) & adlatch2(17) & adlatch2(18) & adlatch2(19) & adlatch2(20) & adlatch2(21) & adlatch2(22) & adlatch2(23) & 
-													adlatch2(8)  & adlatch2(9)  & adlatch2(10) & adlatch2(11) & adlatch2(12) & adlatch2(13) & adlatch2(14) & adlatch2(15) & 
-													adlatch2(0)  & adlatch2(1)  & adlatch2(2)  & adlatch2(3)  & adlatch2(4)  & adlatch2(5)  & adlatch2(6)  & adlatch2(7);
+												  adlatch2(16) & adlatch2(17) & adlatch2(18) & adlatch2(19) & adlatch2(20) & adlatch2(21) & adlatch2(22) & adlatch2(23) & 
+												  adlatch2(8)  & adlatch2(9)  & adlatch2(10) & adlatch2(11) & adlatch2(12) & adlatch2(13) & adlatch2(14) & adlatch2(15) & 
+												  adlatch2(0)  & adlatch2(1)  & adlatch2(2)  & adlatch2(3)  & adlatch2(4)  & adlatch2(5)  & adlatch2(6)  & adlatch2(7);
 													
-									--!!!!!!!!!!!!!NEED TO ADD _TA IN HERE SOMEWHERE!!!!!!!!!!!!!!!
+									end_pci_cycle <= '1';
+									BURST_STATE <= CYCLE2;
+									
+								ELSE
+								
+									end_pci_cycle <= '0';
 								
 								END IF;
-								
-								IF nTRDY = '0' THEN BURST_STATE <= CYCLE3; END IF;
 							
-							WHEN CYCLE3 =>
+							WHEN CYCLE2 =>
 							
 								IF ADLATCH3VALID <= '1' THEN
 										
 									dout_ac <= adlatch3(24) & adlatch3(25) & adlatch3(26) & adlatch3(27) & adlatch3(28) & adlatch3(29) & adlatch3(30) & adlatch3(31) & 
-													adlatch3(16) & adlatch3(17) & adlatch3(18) & adlatch3(19) & adlatch3(20) & adlatch3(21) & adlatch3(22) & adlatch3(23) & 
-													adlatch3(8)  & adlatch3(9)  & adlatch3(10) & adlatch3(11) & adlatch3(12) & adlatch3(13) & adlatch3(14) & adlatch3(15) & 
-													adlatch3(0)  & adlatch3(1)  & adlatch3(2)  & adlatch3(3)  & adlatch3(4)  & adlatch3(5)  & adlatch3(6)  & adlatch3(7);
+												  adlatch3(16) & adlatch3(17) & adlatch3(18) & adlatch3(19) & adlatch3(20) & adlatch3(21) & adlatch3(22) & adlatch3(23) & 
+												  adlatch3(8)  & adlatch3(9)  & adlatch3(10) & adlatch3(11) & adlatch3(12) & adlatch3(13) & adlatch3(14) & adlatch3(15) & 
+												  adlatch3(0)  & adlatch3(1)  & adlatch3(2)  & adlatch3(3)  & adlatch3(4)  & adlatch3(5)  & adlatch3(6)  & adlatch3(7);
 													
-									--!!!!!!!!!!!!!NEED TO ADD _TA IN HERE SOMEWHERE!!!!!!!!!!!!!!!
-								
-								END IF;
-								
-								IF nTRDY = '0' THEN 
+									end_pci_cycle <= '1';
+									BURST_STATE <= CYCLE3;
 									
-										BURST_STATE <= CYCLE0;
-										PCI_STATE <= START;
-										pci_ac_slot_write_cycle <= '0';
-										
+								ELSE
+								
+									end_pci_cycle <= '0';
+								
 								END IF;
+							
+							WHEN CYCLE3 =>
+									
+								BURST_STATE <= CYCLE0;
+								PCI_STATE <= START;
+								pci_ac_slot_read_cycle <= '0';
+								end_pci_cycle <= '0';
 							
 						END CASE;	
 						
 				
 				END CASE;
+				
+			ELSE
+			
+				pci_ac_slot_read_cycle <= '0';
+				end_pci_cycle <= '0';
 			
 			END IF;
 		
@@ -331,6 +353,7 @@ begin
 	--------------------------------------
 	
 	--THIS PCI CYCLE IS DEFINED BY INITIATION BY THE ASSERTION OF THE AUTOCONFIG BASE ADDRESS ON THE A BUS.
+	--HERE, WE PLACE DATA ON THE AD BUS THAT WAS LATCHED FROM THE D BUS DURING A WRITE CYCLE INITIATED BY THE MC68040.
 	
 	PROCESS (PCICLK, nRESET) BEGIN
 	
@@ -354,6 +377,11 @@ begin
 						PCI_WRITE_STATE <= ADDRESS;
 					
 					WHEN ADDRESS =>		
+					
+						adout_ac <= dlatch0(7)  & dlatch0(6)  & dlatch0(5)  & dlatch0(4)  & dlatch0(3)  & dlatch0(2)  & dlatch0(1)  & dlatch0(0) & 
+													dlatch0(15) & dlatch0(14) & dlatch0(13) & dlatch0(12) & dlatch0(11) & dlatch0(10) & dlatch0(9)  & dlatch0(8) &
+													dlatch0(23) & dlatch0(22) & dlatch0(21) & dlatch0(20) & dlatch0(19) & dlatch0(18) & dlatch0(17) & dlatch0(16) &	
+													dlatch0(31) & dlatch0(30) & dlatch0(29) & dlatch0(28) & dlatch0(27) & dlatch0(26) & dlatch0(25) & dlatch0(24);
 											
 						PCI_WRITE_STATE <= DATA;
 					
@@ -363,11 +391,10 @@ begin
 							
 								WHEN CYCLE0 =>
 								
-								
-									adout_ac <= dlatch0(7)  & dlatch0(6)  & dlatch0(5)  & dlatch0(4)  & dlatch0(3)  & dlatch0(2)  & dlatch0(1)  & dlatch0(0) & 
-													dlatch0(15) & dlatch0(14) & dlatch0(13) & dlatch0(12) & dlatch0(11) & dlatch0(10) & dlatch0(9)  & dlatch0(8) &
-													dlatch0(23) & dlatch0(22) & dlatch0(21) & dlatch0(20) & dlatch0(19) & dlatch0(18) & dlatch0(17) & dlatch0(16) &	
-													dlatch0(31) & dlatch0(30) & dlatch0(29) & dlatch0(28) & dlatch0(27) & dlatch0(26) & dlatch0(25) & dlatch0(24);
+									adout_ac <= dlatch1(7)  & dlatch1(6)  & dlatch1(5)  & dlatch1(4)  & dlatch1(3)  & dlatch1(2)  & dlatch1(1)  & dlatch1(0) & 
+													dlatch1(15) & dlatch1(14) & dlatch1(13) & dlatch1(12) & dlatch1(11) & dlatch1(10) & dlatch1(9)  & dlatch1(8) &
+													dlatch1(23) & dlatch1(22) & dlatch1(21) & dlatch1(20) & dlatch1(19) & dlatch1(18) & dlatch1(17) & dlatch1(16) &	
+													dlatch1(31) & dlatch1(30) & dlatch1(29) & dlatch1(28) & dlatch1(27) & dlatch1(26) & dlatch1(25) & dlatch1(24);									
 													
 									IF nTRDY = '0' THEN
 									
@@ -386,30 +413,23 @@ begin
 							
 								WHEN CYCLE1 =>								
 								
-									adout_ac <= dlatch1(7)  & dlatch1(6)  & dlatch1(5)  & dlatch1(4)  & dlatch1(3)  & dlatch1(2)  & dlatch1(1)  & dlatch1(0) & 
-													dlatch1(15) & dlatch1(14) & dlatch1(13) & dlatch1(12) & dlatch1(11) & dlatch1(10) & dlatch1(9)  & dlatch1(8) &
-													dlatch1(23) & dlatch1(22) & dlatch1(21) & dlatch1(20) & dlatch1(19) & dlatch1(18) & dlatch1(17) & dlatch1(16) &	
-													dlatch1(31) & dlatch1(30) & dlatch1(29) & dlatch1(28) & dlatch1(27) & dlatch1(26) & dlatch1(25) & dlatch1(24);
+									adout_ac <= dlatch2(7)  & dlatch2(6)  & dlatch2(5)  & dlatch2(4)  & dlatch2(3)  & dlatch2(2)  & dlatch2(1)  & dlatch2(0) & 
+														dlatch2(15) & dlatch2(14) & dlatch2(13) & dlatch2(12) & dlatch2(11) & dlatch2(10) & dlatch2(9)  & dlatch2(8) &
+														dlatch2(23) & dlatch2(22) & dlatch2(21) & dlatch2(20) & dlatch2(19) & dlatch2(18) & dlatch2(17) & dlatch2(16) &	
+														dlatch2(31) & dlatch2(30) & dlatch2(29) & dlatch2(28) & dlatch2(27) & dlatch2(26) & dlatch2(25) & dlatch2(24);
 													
 									IF nTRDY = '0' THEN BURST_WRITE_STATE <= CYCLE2; END IF;
 								
 								WHEN CYCLE2 =>
 								
-										adout_ac <= dlatch2(7)  & dlatch2(6)  & dlatch2(5)  & dlatch2(4)  & dlatch2(3)  & dlatch2(2)  & dlatch2(1)  & dlatch2(0) & 
-														dlatch2(15) & dlatch2(14) & dlatch2(13) & dlatch2(12) & dlatch2(11) & dlatch2(10) & dlatch2(9)  & dlatch2(8) &
-														dlatch2(23) & dlatch2(22) & dlatch2(21) & dlatch2(20) & dlatch2(19) & dlatch2(18) & dlatch2(17) & dlatch2(16) &	
-														dlatch2(31) & dlatch2(30) & dlatch2(29) & dlatch2(28) & dlatch2(27) & dlatch2(26) & dlatch2(25) & dlatch2(24);
-
+									adout_ac <= dlatch3(7)  & dlatch3(6)  & dlatch3(5)  & dlatch3(4)  & dlatch3(3)  & dlatch3(2)  & dlatch3(1)  & dlatch3(0) & 
+														dlatch3(15) & dlatch3(14) & dlatch3(13) & dlatch3(12) & dlatch3(11) & dlatch3(10) & dlatch3(9)  & dlatch3(8) &
+														dlatch3(23) & dlatch3(22) & dlatch3(21) & dlatch3(20) & dlatch3(19) & dlatch3(18) & dlatch3(17) & dlatch3(16) &	
+														dlatch3(31) & dlatch3(30) & dlatch3(29) & dlatch3(28) & dlatch3(27) & dlatch3(26) & dlatch3(25) & dlatch3(24);
 													
 									IF nTRDY = '0' THEN BURST_WRITE_STATE <= CYCLE3; END IF;												
 												
 								WHEN CYCLE3 =>
-												
-										adout_ac <= dlatch3(7)  & dlatch3(6)  & dlatch3(5)  & dlatch3(4)  & dlatch3(3)  & dlatch3(2)  & dlatch3(1)  & dlatch3(0) & 
-														dlatch3(15) & dlatch3(14) & dlatch3(13) & dlatch3(12) & dlatch3(11) & dlatch3(10) & dlatch3(9)  & dlatch3(8) &
-														dlatch3(23) & dlatch3(22) & dlatch3(21) & dlatch3(20) & dlatch3(19) & dlatch3(18) & dlatch3(17) & dlatch3(16) &	
-														dlatch3(31) & dlatch3(30) & dlatch3(29) & dlatch3(28) & dlatch3(27) & dlatch3(26) & dlatch3(25) & dlatch3(24);
-
 
 									IF nTRDY = '0' THEN 
 									
@@ -439,21 +459,6 @@ begin
 	
 	--THIS PCI CYCLE IS DEFINED BY INITIATION THROUGH THE PCI BRIDGE. IF THE PCI BRIDGE IS ENABLED
 	--AND IN ONE OF THE ADDRESS SPACES BELOW, THEN THIS IS A PROMETHEUS CYCLE.
-	
-	--$00000000 - $1FBFFFFF MEMORY SPACE
-	--$1FC00000 - $1FCFFFFF CONFIG TYPE 0 SPACE
-	--$1FD00000 - $1FDFFFFF CONFIG TYPE 1 SPACE
-	--$1FE00000 - $1FFFFFFF I/O SPACE
-	
-	
-
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	
@@ -546,7 +551,7 @@ begin
 		
 		ELSIF RISING_EDGE(BCLK) THEN
 			
-				IF nPCIEN = '0' AND nTA = '0' AND RnW = '0' THEN
+				IF pci_ac_slot_start = '1' AND nTA = '0' AND RnW = '0' THEN
 				
 					CASE dlatchcount IS 
 					
