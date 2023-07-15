@@ -190,9 +190,9 @@ The AmigaPCI does not support MC6800 or MOS6502 devices on the PCI bus with reso
 
 The PCI Local Bus (PCI herein) is a processor independent, 32 bit expasion bus. The AmigaPCI is designed to comply with the PCI Local Bus Revision 2.3 specificiation. Each slot supports Universal and +5V cards, as defined in the PCI Local Bus Revision 2.3 specification. Like Zorro 2 and Zorro 3, PCI supports auto configuration of devices on power up. This allows, via some translation, for the use of Amiga AUTOCONFIG to configure devices at start up. This fits well with Amiga OS as PCI devices can be configured as Zorro 3 devices, which function natively with Amiga OS. 
 
-The AmigaPCI PCI Bus is implemented via a MC68040 to PCI bridge using a PCI Bridge ASIC concept. The PCI Bridge logic translates data requests from the Motorola MC68040 and PCI devices in order that they may communicate in an effective manner. 
+The AmigaPCI PCI Bus is implemented via a MC68040 to PCI Bridge (Local PCI Bridge, herein) using a PCI bridge ASIC concept. The Local PCI Bridge logic translates data requests from the Motorola MC68040 and PCI devices in order that they may communicate in an effective manner. 
 
-The PCI Bridge can operate in either AUTOCONFIG mode or software configuration mode. This is discussed further in 2.2.
+The MC68040 Bridge can operate in either AUTOCONFIG mode or software configuration mode. This is discussed further in 2.2.
 
 ### 2.1 Endianness
 
@@ -243,11 +243,11 @@ Table 2.1. AmigaPCI Endianness.
 
 The PCI slots of the AmigaPCI can run in either AUTOCONFIG mode or software configuration* mode. The mode of each PCI slot is set by jumpers J100, J101. and J102. See table 2.2.
 
-In AUTOCONFIG mode, the PCI target device will be configured on startup like any other Amiga AUTOCONFIG device. The advantage of AUTOCONFIG mode is the ability to use the PCI device immediately upon startup without the need to load drivers from disk. This could support devices such as auto booting hard drives, SVGA video, sound cards, etc. Once the PCI target device is configured by the AUTOCONFIG process, the target device may be directly accessed by its base address(es), just as any other Amiga expansion card. 
+In AUTOCONFIG mode, the PCI target device will be configured on startup like any other Amiga AUTOCONFIG device. The advantage of AUTOCONFIG mode is the ability to use the PCI device immediately upon startup without the need to load drivers from disk. This supports devices such as auto booting hard drives, SVGA video, sound cards, etc. Once the PCI target device is configured by the AUTOCONFIG process, the target device may be directly accessed by its base address(es), just as any other Amiga expansion card. 
 
-Software configuration mode requires the PCI target device be configured in software in order to function. This mode supports PCI target devices not designed for the Amiga. During startup, the PCI Bridge is configured via AUTOCONFIG in the 32 bit Zorro 3 address space, which will supply a base address for the PCI Bridge through which the slots in software configuration mode may be accessed. Driver software may then poll the PCI Bridge base address with each device selection bit. See additional information in Section 2.3. 
+Software configuration mode requires the PCI target device be configured in software in order to function. This mode supports PCI target devices not designed for the Amiga. During startup, the Local PCI Bridge is configured via AUTOCONFIG in the 32 bit Zorro 3 address space, which will supply a base address for the Local PCI Bridge through which the slots in software configuration mode may be accessed. Driver software may then poll the Local PCI Bridge base address with each device selection bit. See additional information in Section 2.3. 
 
-PCI devices in AUTOCONFIG slots must be addressed via their AUTOCONFIG assigned base address. The PCI bridge will return $FFFF FFFF if and AUTOCONFIG slot is polled. 
+PCI devices in AUTOCONFIG slots must be addressed via their AUTOCONFIG assigned base address. The Local PCI bridge will return $FFFF FFFF if and AUTOCONFIG slot is polled. 
 
 Table 2.2
 Software Config Slots|AUTOCONFIG Slots|J100|J101|J102
@@ -263,21 +263,21 @@ All|None|Short|Open|Short
 
 ### 2.3 PCI Configuration
 
-Each PCI target device may be configured by the Amiga AUTOCONFIG process or by software configuration. During configuration each PCI slot, in turn, is polled to obtain the capabilities and address space needs of the target device. Each PCI slot is polled by asserting the IDSEL signal, which is approximately equivalent to the _CFGIN signal of the Zorro bus. However, unlike the _CFGIN signal, the IDSEL is asserted by a specific address bit during the address phase of a configuration command access[[2]](#2). There is no equivalent of the _CFGOUT signal, as the PCI Bridge addresses each slot directly. It is necessary to latch the AD bus on the rising edge of the PCI clock during the read cycle data phase, holding this data on the MC68040 data bus, to avoid missing the data presented by the target device.
+Each PCI target device may be configured by the Amiga AUTOCONFIG process or by software configuration. During configuration each PCI slot, in turn, is polled to obtain the capabilities and address space needs of the target device. Each PCI slot is polled by asserting the IDSEL signal, which is approximately equivalent to the _CFGIN signal of the Zorro bus. However, unlike the _CFGIN signal, the IDSEL is asserted by a specific address bit during the address phase of a configuration command access[[2]](#2). There is no equivalent of the _CFGOUT signal, as the Local PCI Bridge addresses each slot directly. It is necessary to latch the AD bus on the rising edge of the PCI clock during the read cycle data phase, holding this data on the MC68040 data bus, to avoid missing the data presented by the target device.
 
 <p align="center"><img src="/DataSheets/TimingDiagrams/PCI Configuration Read Cycle.png" width="650"></p>
 <p align="center"><img src="/DataSheets/TimingDiagrams/PCI Configuration Write Cycle.png" width="650"></p>
 
-### 2.3.1 PCI Bridge
+### 2.3.1 Local PCI Bridge
 
-The PCI Bridge is always AUTOCONFIGured at startup before any other PCI devices. The PCI Bridge base address allows direct access of the PCI Bridge configuration registers and a means to access software configured PCI cards on the PCI bus (See 2.3.2). All PCI devices are accessed through the PCI bridge, which acts as an interface between the MC68040 and PCI target devices. The PCI Bridge also handles bus arbitration.
+The Local PCI Bridge is always AUTOCONFIGured at startup before any other PCI devices. The Local PCI Bridge base address allows direct access of the Local PCI Bridge configuration registers and a means to access software configured PCI cards on the PCI bus (See 2.3.2). All PCI devices are accessed through the Local PCI bridge, which acts as an interface between the MC68040 and PCI target devices. The Local PCI Bridge also handles bus arbitration.
 
-The following 16-bit registers are supported by the PCI Bridge device and can be set or read by software. This allows configuration or polling of the PCI Bridge settings and status. Reading a long word at offset $04 will return both registers. All PCI devices implement all or part of these registers as individual devices. Assuming the PCI Bridge base address is $8000 0000, you would access the command register at $8000 0004. Reads from unsupported registers will always return $0. Writes to unsupported registers will have no effect.
+The following 16-bit registers are supported by the Local PCI Bridge device and can be set or read by software. This allows configuration or polling of the Local PCI Bridge settings and status. Reading a long word at offset $04 will return both registers. All PCI devices implement all or part of these registers as individual devices. Assuming the Local PCI Bridge base address is $8000 0000, you would access the command register at $8000 0004. Reads from unsupported registers will return $0. Writes to unsupported registers will have no effect.
 
-**NOTE:** The registers in Tables 2.3.1 and 2.3.2 relate to the PCI Bridge only, and do not necessarily indicate overall capability of the AmigaPCI PCI bus implementation.
+**NOTE:** The registers in Tables 2.3.1 and 2.3.2 relate to the Local PCI Bridge only, and do not necessarily indicate overall capability of the AmigaPCI PCI bus implementation.
 
 Table 2.3.1. Offset $04, Command Register.
-Bit|Description|Supported by PCI Bridge Device
+Bit|Description|Supported by Local PCI Bridge Device
 -|-|-
 15-11|Reserved|-
 10|Interrupt Disable|Yes
@@ -293,7 +293,7 @@ Bit|Description|Supported by PCI Bridge Device
 0|I/O Space|No
 
 Table 2.3.2. Offset $06, Status Register.
-Bit|Description|Supported by PCI Bridge Device
+Bit|Description|Supported by Local PCI Bridge Device
 -|-|-
 15|Detected Parity Error|Yes
 14|Signaled System Error|Yes
@@ -311,16 +311,15 @@ Bit|Description|Supported by PCI Bridge Device
 
 #### 2.3.2 AUTOCONFIG Mode
 
-PCI cards designed specifically with support for the Amiga should be installed in an AUTOCONFIG slot. AUTOCONFIG slots will be configured by the PCI Bridge at startup in the 32-bit Zorro 3 address space. The AmigaPCI AUTOCONFIG process is compatable with configuration Type 0 and Type 1 devices. There are two advantages to the AUTOCONFIG approach:
+PCI cards designed specifically with support for the Amiga should be installed in an AUTOCONFIG slot. AUTOCONFIG slots will be configured by the Local PCI Bridge at startup in the 32-bit Zorro 3 address space. The AmigaPCI AUTOCONFIG process is compatable with configuration of Type 0 devices. 
 
-1. The process is transparent to the user and is "plug and play".
-2. Allows for inclusion of auto boot ROMs on the PCI device.
+**NOTE:** A Type 0 configuration transaction is used to access a device on the current bus segment and a Type 1 configuration transaction is used to access a device that resides behind a bridge. A Type 0 configuration transaction is not forwarded across a bridge but is used to configure a bridge or other PCI devices that are connected to the PCI bus on which the Type 0 configuration transaction is generated[[8]](#8).. This means it is possible to AUTOCONFIG a PCI bridge on the bus controlled by the Local PCI Bridge. However, it is not possible to AUTOCONFIG devices requiring a Type 1 configuration header, which are devices behind a PCI bridge on the Local PCI Bridge.
 
 ##### 2.3.2.1 AUTOCONFIG Process
 
-During configuration, specifications such as the device manufacturer, product number, device capabilities, etc, are read from the device. Each PCI device is capable of supporting up to six base address registers (BAR0 - BAR5, between $10 - $24 in the configuration register). The required address space for each of the six possible registers are determined and presented to Amiga OS for assigning of base addresses in the 32 bit Zorro 3 address space. This is done through the normal Zorro 3 AUTOCONFIG procedure. However, the PCI Bridge logic translates the needs of the PCI card and requests AUTOCONFIG resources in a manner that is understood by Amiga OS. As an example, if BAR0 requests 512k of configuration space, this request will be passed to Amiga OS as a Zorro 3 device requiring 512k of AUTOCONFIG space. Amiga OS will then assign a base address to this request. This assigned base address will be programmed into BAR0 of the target PCI device. This process repeats for BAR1 - BAR5 of the same PCI device. This procedure is then repeated for each PCI device installed. Once complete, each PCI device may be accessed by the assigned base address(es), just as any other AUTOCONFIG device.
+During configuration, specifications such as the device manufacturer, product number, device capabilities, etc, are read from the device. Each PCI device is capable of supporting up to six base address registers (BAR0 - BAR5, between $10 - $24 in the configuration register). The required address space for each of the six possible registers are determined and presented to Amiga OS for assigning of base addresses in the 32 bit Zorro 3 address space. This is done through the normal Zorro 3 AUTOCONFIG procedure. However, the Local PCI Bridge logic translates the needs of the PCI card and requests AUTOCONFIG resources in a manner that is understood by Amiga OS. As an example, if BAR0 requests 512k of configuration space, this request will be passed to Amiga OS as a Zorro 3 device requiring 512k of AUTOCONFIG space. Amiga OS will then assign a base address to this request. This assigned base address will be programmed into BAR0 of the target PCI device. This process repeats for BAR1 - BAR5 of the same PCI device. This procedure is then repeated for each PCI device installed. Once complete, each PCI device may be accessed by the assigned base address(es), just as any other AUTOCONFIG device.
 
-The PCI Bridge will latch the assigned base address of each AUTOCONFIG PCI device. This is necessary so the PCI Bridge recognizes an access to the device and can interpret the cycle properly. PCI target devices configured by the AUTOCONFIG process may only access memory and configuration spaces. Use of the I/O space is not recommended for new PCI designs[[6]](#6) and is not supported.
+The Local PCI Bridge will latch the assigned base address of each AUTOCONFIG PCI device. This is necessary so the Local PCI Bridge recognizes an access to the device and can interpret the cycle properly. PCI target devices configured by the AUTOCONFIG process may only access memory and configuration spaces. Use of the I/O space is not recommended for new PCI designs[[6]](#6) and is not supported.
 
 **NOTE:** PCI allows for 16-bit Product ID's. Amiga OS supports 8-bit Product ID's. The Product ID should be stored in the most significant bits of the least significant word of the Device ID field. Remember, PCI is little endian! So, this is bits 23 - 16 of register $00.  
 
@@ -333,7 +332,7 @@ PCI devices may have onboard ROMs that may be used to enhance functionality, suc
 
 ##### 2.3.2.3 AUTOCONFIG PCI Device Register Access
 
-PCI devices added by the AUTOCONFIG process may be accessed in memory or configuration space. PCI defines multiple address spaces that exist in parallel. PCI command encodings select a specific address space for the current cycle. Each device is accessed via the Zorro 3 assigned base address with the command type determined by sampling the R_W, UPA0, and UPA1 sigals. For example, you can access the Configuration Type 0 space of an AUTOCONFIG PCI device by driving the base address on the MC68040 A bus and setting UAP0 = 0 and UAP1 = 0. The PCI Bridge will interpret this as a Configuration Type 0 command and set the C/_BE[3..0] bits accordingly. 
+PCI devices added by the AUTOCONFIG process may be accessed in memory or configuration space. PCI defines multiple address spaces that exist in parallel. PCI command encodings select a specific address space for the current cycle. Each device is accessed via the Zorro 3 assigned base address with the command type determined by sampling the R_W, UPA0, and UPA1 sigals. For example, you can access the Configuration Type 0 space of an AUTOCONFIG PCI device by driving the base address on the MC68040 A bus and setting UAP0 = 0 and UAP1 = 0. The Local PCI Bridge will interpret this as a Configuration Type 0 command and set the C/_BE[3..0] bits accordingly. 
 
 Table 2.3.2.3. PCI Commands for AUTOCONFIG Devices.
 R_W|UPA0|UPA1|PCI Command
@@ -348,7 +347,7 @@ R_W|UPA0|UPA1|PCI Command
 
 #### 2.3.3 Software Configuration Mode
 
-PCI devices not designed specifically for the Amiga should be installed in software configuration slots. Each slot designated as a software configuration slot may be accessed through the base address of the PCI Bridge, which is always AUTOCONFIGured at startup. Each slot on the PCI bus may be addressed individually by its offset value to read or write from that device's configuration register. The addressing scheme of software configured target devices is compatable with Prometheus. 
+PCI devices not designed specifically for the Amiga should be installed in software configuration slots. Each slot designated as a software configuration slot may be accessed through the base address of the Local PCI Bridge, which is always AUTOCONFIGured at startup. Each slot on the PCI bus may be addressed individually by its offset value to read or write from that device's configuration register. The addressing scheme of software configured target devices is compatable with Prometheus. 
 
 Table 2.3.3a. Address Offset of PCI Slots For IDSEL.
 PCI Slot|Address Bit|Offset From Base Address
@@ -361,9 +360,9 @@ PCI Slot|Address Bit|Offset From Base Address
 
 #### 2.3.3.1 PCI Command Examples
 
-PCI defines multiple address spaces that exist in parallel. PCI command encodings select a specific address space for the current cycle. In order to signal which address space is being targeted, the PCI Bridge recognizes address offsets from the PCI Bridge base address. 
+PCI defines multiple address spaces that exist in parallel. PCI command encodings select a specific address space for the current cycle. In order to signal which address space is being targeted, the Local PCI Bridge recognizes address offsets from the Local PCI Bridge base address. 
 
-The address offsets in Table 2.3.2.1 show the command type associated with the address offset. For example, access in the "memory space" are interpreted by the PCI Bridge as PCI memory read or memory write commands. As such, Memory Read or Memory Write will be the command issued by the PCI Bridge. Accesses in the "Config Type 0 Space" will assert Configuration Read or Configuration Write commands, and so forth.
+The address offsets in Table 2.3.2.1 show the command type associated with the address offset. For example, access in the "memory space" are interpreted by the Local PCI Bridge as PCI memory read or memory write commands. As such, Memory Read or Memory Write will be the command issued by the Local PCI Bridge. Accesses in the "Config Type 0 Space" will assert Configuration Read or Configuration Write commands, and so forth.
 
 Table 2.3.3.1. Address Offsets for Command Types[[6]](#6).
 Z3 Start|Z3 End|Command Type|Size|PCI Start|PCI End
@@ -375,7 +374,7 @@ $1FE0 0000|$1FFF FFFF|I/O Space|2MB|$0000 0000|$001F FFFF
 
 ##### 2.3.3.1.1 PCI Configuration Access
 
-For these examples, assume the base address of the PCI Bridge is $8000 0000. When accessing the configuration registers of software configured PCI devices on the bus, A[31..24] will be converted to $00 by the PCI bridge. 
+For these examples, assume the base address of the Local PCI Bridge is $8000 0000. When accessing the configuration registers of software configured PCI devices on the bus, A[31..24] will be converted to $00 by the Local PCI bridge. 
 
 A[31..24] Reserved  (Always b00000000)
 A[23..16] PCI Bus Number (Slot Offset, see Table 2.3.2.a)  
@@ -412,11 +411,11 @@ Note: When _BB is asserted and _BG is negated, this allows for bus snooping oper
 
 ### 2.6 MC68040 Driven PCI Data Cycle
 
-CPU access to PCI target devices supports burst (MOVE16) and non-burst (normal) cycles in read and write modes. Because the CPU and PCI busses operate in different clock domains, metastability is a concern. To address this concern, the PCI Bridge latches data in the associated clock domain and later presents the data on the other bus in the associated clock domain. This ensures setup and hold times are met while crossing the domains.
+CPU access to PCI target devices supports burst (MOVE16) and non-burst (normal) cycles in read and write modes. Because the CPU and PCI busses operate in different clock domains, metastability is a concern. To address this concern, the Local PCI Bridge latches data in the associated clock domain and later presents the data on the other bus in the associated clock domain. This ensures setup and hold times are met while crossing the domains.
 
 #### 2.6.1 Burst Mode Cycles
 
-A burst mode is defined as a line transfer by the MC68040 initiated with the MOVE16 instruction[[4]](#4). This results in the burst transfer of four long words to or from the target device. Each long word being aligned to a 16-byte memory boundary. The PCI Bridge logic supports fast and slow burst modes. A slow burst mode is identified as one or more wait states inserted by the PCI target device during the data phase. There are no data phase wait states during fast burst accesses. In the event of back to back write cycles, there is a turnaround time of approximately 75ns while the PCI target cycle completes.
+A burst mode is defined as a line transfer by the MC68040 initiated with the MOVE16 instruction[[4]](#4). This results in the burst transfer of four long words to or from the target device. Each long word being aligned to a 16-byte memory boundary. The Local PCI Bridge logic supports fast and slow burst modes. A slow burst mode is identified as one or more wait states inserted by the PCI target device during the data phase. There are no data phase wait states during fast burst accesses. In the event of back to back write cycles, there is a turnaround time of approximately 75ns while the PCI target cycle completes.
 
 During MC68040 initiated burst transfers, all four bytes are enabled. The PCI target device must internally increment A3 and A2 of the supplied address for each transfer, causing the address to wrap around at the end of the block. This is consistent with the Cacheline Wrap Mode burst order defined in the PCI specifications[[5]](#5).
 
@@ -445,7 +444,7 @@ Data transfer errors are detected using an even parity system. Except for video 
 
 When a parity mismatch is detected, and the target device's parity error respose bit (Command Register, bit 6) is set, the target device asserts _PERR. The device reporting the error must set its Detected Parity Error Bit (Status Register, Bit 15), regardless of the status of the parity error response bit. 
 
-For MC68040 driven cycles, if the PCI Bridge detects a parity error and has its parity error response bit set (Command Register, bit 6), it will assert _INT2 and set its interrupt status bit (Status Register, Bit 3). PCI drivers are expected to respond to this interrupt and poll their device's Parity Error Bit. The driver should then clear the interrupt in the PCI Bridge (Status Register, Bit 3) and retry or cancel the cycle.
+For MC68040 driven cycles, if the Local PCI Bridge detects a parity error and has its parity error response bit set (Command Register, bit 6), it will assert _INT2 and set its interrupt status bit (Status Register, Bit 3). PCI drivers are expected to respond to this interrupt and poll their device's Parity Error Bit. The driver should then clear the interrupt in the Local PCI Bridge (Status Register, Bit 3) and retry or cancel the cycle.
 
 IS THIS OVERKILL? PROBABLY.
 
@@ -473,3 +472,4 @@ A data parity error occurs when there is a parity mismatch during the data phase
 <a id="5">[5]</a>PCI Local Bus Specification Revision 2.3. PCI Special Interest Group. Table 3-2. Burst Ordering Encoding. pp. 29.  
 <a id="6">[6]</a>Prometheus Open Source. Michael Boehmer. http://www.e3b.de/prometheus. Accessed July 6, 2023.  
 <a id="7">[7]</a>PCI Local Bus Specification Revision 2.3. PCI Special Interest Group. Section 3.7.2. Parity Checking. pp. 95. 
+<a id="8">[8]</a>PCI-to-PCI Bridge Architecture Specification Revision 1.1. PCI Special Interest Group. Section 3.1. Overview of Hierarchical Configuration. pp. 19. 
