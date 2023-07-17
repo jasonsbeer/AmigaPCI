@@ -58,7 +58,6 @@
          <ClosedNodesVersion>1</ClosedNodesVersion>
          <ClosedNode>Implement Design/Configure Target Device</ClosedNode>
          <ClosedNode>Implement Design/Optional Implementation Tools</ClosedNode>
-         <ClosedNode>Implement Design/Synthesize - XST</ClosedNode>
          <ClosedNode>User Constraints</ClosedNode>
       </ClosedNodes>
       <SelectedItems>

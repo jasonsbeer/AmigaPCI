@@ -33,7 +33,7 @@ entity PCIAUTOCONFIG is
 
    Port ( 
 	 
-		A : IN  STD_LOGIC_VECTOR (31 DOWNTO 0);
+		A : IN  STD_LOGIC_VECTOR (31 DOWNTO 2);
 		BCLK : IN STD_LOGIC;
 		PCICLK : IN STD_LOGIC;
 		nRESET : IN STD_LOGIC;
@@ -53,7 +53,7 @@ entity PCIAUTOCONFIG is
 		PCONFIGED : INOUT STD_LOGIC; --SIGNAL U110 WE HAVE COMPLETED THE AUTOCONFIG PROCESS
 		nTA : OUT STD_LOGIC; --040 TRANSFER ACK
 		--ACONF : OUT STD_LOGIC; --SIGNAL U110 TO SEND A CONFIGURATION REGISTER COMMAND
-		PCIRnW : OUT STD_LOGIC; --READ WRITE SIGNAL TO U110	
+		PCIRnW : INOUT STD_LOGIC; --READ WRITE SIGNAL TO U110	
 
 		PCI4BASE : OUT STD_LOGIC_VECTOR (31 DOWNTO 16); --AUTOCONFIG BASE ADDRESS SLOT 4
 		PCI3BASE : OUT STD_LOGIC_VECTOR (31 DOWNTO 16); --AUTOCONFIG BASE ADDRESS SLOT 3
@@ -61,8 +61,9 @@ entity PCIAUTOCONFIG is
 		PCI1BASE : OUT STD_LOGIC_VECTOR (31 DOWNTO 16); --AUTOCONFIG BASE ADDRESS SLOT 1
 		PCI0BASE : OUT STD_LOGIC_VECTOR (31 DOWNTO 16); --AUTOCONFIG BASE ADDRESS SLOT 0
 		
-		PCICMD : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
-		PCI_CYCLE_ACTIVE : OUT STD_LOGIC
+		--PCICMD : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
+		PCI_CYCLE_ACTIVE : OUT STD_LOGIC;
+		AD_BUS_ENABLE : OUT STD_LOGIC
 		
    );
 
@@ -150,6 +151,13 @@ begin
 	
 	PCIRnW <= pcirw WHEN acspace = '1' ELSE RnW;
 	
+	--------------------------
+	-- AD BUS ENABLE SIGNAL --
+	--------------------------
+	
+	--WE DRIVE THE AD BUS DURING THE ADDRESS PHASE AND WRITE CYCLE DATA PHASES.
+	AD_BUS_ENABLE <= '1' WHEN PCI_STATE = ADDRESS OR (PCI_STATE = DATA AND PCIRnW = '0') ELSE '0';
+	
 	---------------------------------
 	-- PCI CONFIGURATION REGISTERS --
 	---------------------------------
@@ -174,7 +182,7 @@ begin
 			PCI_STATE <= START;
 			AD <= (OTHERS => 'Z');
 			pci_config_ready <= '0';
-			PCICMD <= "00";
+			--PCICMD <= "00";
 			slotoffset <= "00000";
 			pcirw <= '1';			
 			
@@ -206,7 +214,7 @@ begin
 								
 								PCI_STATE <= ADDRESS;
 								AD <= x"00" & "000" & slotoffset & x"0000"; --VENDOR ID/DEVICE ID	
-								PCI_CYCLE_ACTVE <= '1';
+								PCI_CYCLE_ACTIVE <= '1';
 								
 							END IF;
 					
@@ -220,7 +228,7 @@ begin
 							IF latched = '1' THEN								
 								CURRENT_STATE <= BASEADDRESS_WRITE;
 								PCI_STATE <= START;
-								PCI_CYCLE_ACTVE <= '0';
+								PCI_CYCLE_ACTIVE <= '0';
 							END IF;		
 						
 					END CASE;
@@ -234,7 +242,7 @@ begin
 							--TURNAROUND TIME.
 							PCI_STATE <= ADDRESS;
 							pcirw <= '0';
-							PCI_CYCLE_ACTVE <= '1';
+							PCI_CYCLE_ACTIVE <= '1';
 							AD <= x"00" & "000" & slotoffset & x"0010"; --BAR0	
 						
 						WHEN ADDRESS =>						
@@ -248,7 +256,7 @@ begin
 							
 								CURRENT_STATE <= BASEADDRESS_READ;
 								PCI_STATE <= START;
-								PCI_CYCLE_ACTVE <= '0';
+								PCI_CYCLE_ACTIVE <= '0';
 								
 							END IF;
 						
@@ -263,7 +271,7 @@ begin
 							--TURNAROUND TIME.
 							PCI_STATE <= ADDRESS;
 							pcirw <= '1';
-							PCI_CYCLE_ACTVE <= '1';		
+							PCI_CYCLE_ACTIVE <= '1';		
 							AD <= x"00" & "000" & slotoffset & x"0010"; --BAR0
 					
 						WHEN ADDRESS =>						
@@ -277,7 +285,7 @@ begin
 								
 								CURRENT_STATE <= ROM_VECTOR_WRITE;
 								PCI_STATE <= START;
-								PCI_CYCLE_ACTVE <= '0';
+								PCI_CYCLE_ACTIVE <= '0';
 								
 							END IF;	
 					
@@ -292,7 +300,7 @@ begin
 							--TURNAROUND TIME.
 							PCI_STATE <= ADDRESS;
 							pcirw <= '0';
-							PCI_CYCLE_ACTVE <= '1';
+							PCI_CYCLE_ACTIVE <= '1';
 							AD <= x"00" & "000" & slotoffset & x"0030"; --ROM BASE ADDRESS 0
 						
 						WHEN ADDRESS =>
@@ -307,7 +315,7 @@ begin
 							
 								CURRENT_STATE <= ROM_VECTOR_READ;
 								PCI_STATE <= START;
-								PCI_CYCLE_ACTVE <= '0';
+								PCI_CYCLE_ACTIVE <= '0';
 								
 							END IF;
 						
@@ -322,7 +330,7 @@ begin
 							--TURNAROUND TIME.
 							PCI_STATE <= ADDRESS;
 							pcirw <= '1';	
-							PCI_CYCLE_ACTVE <= '1';
+							PCI_CYCLE_ACTIVE <= '1';
 							AD <= x"00" & "000" & slotoffset & x"0030"; --ACCESS ROM BASE ADDRESS 0
 					
 						WHEN ADDRESS =>
@@ -337,7 +345,7 @@ begin
 								CURRENT_STATE <= NEW_BASEADDRESS_WRITE;
 								PCI_STATE <= START;
 								pci_config_ready <= '1';
-								PCI_CYCLE_ACTVE <= '0';
+								PCI_CYCLE_ACTIVE <= '0';
 								
 							END IF;	
 					
@@ -353,7 +361,7 @@ begin
 															
 								PCI_STATE <= ADDRESS;
 								pcirw <= '0';
-								PCI_CYCLE_ACTVE <= '1';
+								PCI_CYCLE_ACTIVE <= '1';
 								AD <= x"00" & "000" & slotoffset & x"0010"; --BAR0		
 								
 							ELSIF shutup = '1' THEN
@@ -375,7 +383,7 @@ begin
 								CURRENT_STATE <= BASEADDRESS_READ;
 								PCI_STATE <= START;
 								pci_config_ready <= '0';
-								PCI_CYCLE_ACTVE <= '0';
+								PCI_CYCLE_ACTIVE <= '0';
 								
 							END IF;
 						

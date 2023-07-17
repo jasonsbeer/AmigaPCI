@@ -44,7 +44,7 @@ entity ADDRESSDECODE is
 			PCI3BASE : IN STD_LOGIC_VECTOR(31 DOWNTO 16);
 			PCI4BASE : IN STD_LOGIC_VECTOR(31 DOWNTO 16);
 			
-			PCI_CONFIG_SPACE : INOUT STD_LOGIC;
+			PROMETHEUS_CONFIG_SPACE : INOUT STD_LOGIC;
 			
 			SLOT0EN : out  STD_LOGIC;
 			SLOT1EN : out  STD_LOGIC;
@@ -130,7 +130,7 @@ begin
 	--IF SOFTWARE IS TRYING TO CONFIGURE AN AUTOCONFIG SLOT, WE RETURN $FFFF FFFF ON THE D BUS. IF THE AUTOCONFIG 
 	--BASE ADDRESS IS ASSERTED, WE START THE CYCLE.
 	
-	PCI_CONFIG_SPACE <= BEN AND A(22) AND NOT A(21);	--SELECTS TYPE 0 AND TYPE 1 CONFIG SPACES FOR PROMETHEUS DRIVERS.
+	PROMETHEUS_CONFIG_SPACE <= BEN AND A(22) AND NOT A(21);	--SELECTS TYPE 0 AND TYPE 1 CONFIG SPACES FOR PROMETHEUS DRIVERS.
 	
 	PROCESS (BCLK, nRESET) BEGIN
 	
@@ -156,11 +156,11 @@ begin
 		
 	END PROCESS;
 
-	SLOT0EN <= '1' WHEN (PCI_CONFIG_SPACE = '1' AND A(16) = '1') OR latch_address = slot0_latch_address ELSE '0';
-	SLOT1EN <= '1' WHEN (PCI_CONFIG_SPACE = '1' AND A(17) = '1') OR latch_address = slot1_latch_address ELSE '0';
-	SLOT2EN <= '1' WHEN (PCI_CONFIG_SPACE = '1' AND A(18) = '1') OR latch_address = slot2_latch_address ELSE '0';
-	SLOT3EN <= '1' WHEN (PCI_CONFIG_SPACE = '1' AND A(19) = '1') OR latch_address = slot3_latch_address ELSE '0';
-	SLOT4EN <= '1' WHEN (PCI_CONFIG_SPACE = '1' AND A(20) = '1') OR latch_address = slot4_latch_address ELSE '0';	
+	SLOT0EN <= '1' WHEN (PROMETHEUS_CONFIG_SPACE = '1' AND A(16) = '1') OR latch_address = slot0_latch_address ELSE '0';
+	SLOT1EN <= '1' WHEN (PROMETHEUS_CONFIG_SPACE = '1' AND A(17) = '1') OR latch_address = slot1_latch_address ELSE '0';
+	SLOT2EN <= '1' WHEN (PROMETHEUS_CONFIG_SPACE = '1' AND A(18) = '1') OR latch_address = slot2_latch_address ELSE '0';
+	SLOT3EN <= '1' WHEN (PROMETHEUS_CONFIG_SPACE = '1' AND A(19) = '1') OR latch_address = slot3_latch_address ELSE '0';
+	SLOT4EN <= '1' WHEN (PROMETHEUS_CONFIG_SPACE = '1' AND A(20) = '1') OR latch_address = slot4_latch_address ELSE '0';	
 
 end Behavioral;
 
