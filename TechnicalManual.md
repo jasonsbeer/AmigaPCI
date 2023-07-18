@@ -241,13 +241,13 @@ Table 2.1. AmigaPCI Endianness.
 
 ### 2.2 Mode
 
-The PCI slots of the AmigaPCI can run in either AUTOCONFIG mode or software configuration* mode. The mode of each PCI slot is set by jumpers J100, J101. and J102. See table 2.2.
+The PCI slots of the AmigaPCI can run in either AUTOCONFIG mode or Prometheus compatable mode. The mode of each PCI slot is set by jumpers J100, J101. and J102. See table 2.2.
 
-In AUTOCONFIG mode, the PCI target device will be configured on startup like any other Amiga AUTOCONFIG device. The advantage of AUTOCONFIG mode is the ability to use the PCI device immediately upon startup without the need to load drivers from disk. This supports devices such as auto booting hard drives, SVGA video, sound cards, etc. Once the PCI target device is configured by the AUTOCONFIG process, the target device may be directly accessed by its base address(es), just as any other Amiga expansion card. 
+In AUTOCONFIG mode, the PCI target device will be configured on startup like any Amiga AUTOCONFIG device. The advantage of AUTOCONFIG mode is the ability to use the PCI device immediately upon startup without the need to load drivers from disk. This supports devices such as auto booting hard drives, SVGA video, sound cards, etc. Once the PCI target device is configured by the AUTOCONFIG process, the target device may be directly accessed by its base address(es). 
 
-Software configuration mode requires the PCI target device be configured in software in order to function. This mode supports PCI target devices not designed for the Amiga. During startup, the Local PCI Bridge is configured via AUTOCONFIG in the 32 bit Zorro 3 address space, which will supply a base address for the Local PCI Bridge through which the slots in software configuration mode may be accessed. Driver software may then poll the Local PCI Bridge base address with each device selection bit. See additional information in Section 2.3. 
+Prometheus compatable mode requires the PCI target device be configured in software in order to function. This mode supports PCI target devices not designed for the Amiga. During startup, the Local PCI Bridge is configured via AUTOCONFIG in the 32-bit Zorro 3 address space, which will supply a base address for the Local PCI Bridge through which the slots in software configuration mode may be accessed. Driver software may then poll the Local PCI Bridge base address with each device selection bit. See additional information in Section 2.3. 
 
-PCI devices in AUTOCONFIG slots must be addressed via their AUTOCONFIG assigned base address. The Local PCI bridge will return $FFFF FFFF if and AUTOCONFIG slot is polled. 
+PCI devices in AUTOCONFIG slots must be addressed via their AUTOCONFIG assigned base address. The Local PCI bridge will return $FFFF FFFF if an AUTOCONFIG slot is polled. 
 
 Table 2.2
 Software Config Slots|AUTOCONFIG Slots|J100|J101|J102
@@ -258,8 +258,6 @@ None|All|Open|Open|Open
 0-1|2-4|Open|Short|Short
 0|1-4|Short|Open|Open
 All|None|Short|Open|Short
-
-*Software configuration mode is compatable with Prometheus.
 
 ### 2.3 PCI Configuration
 
@@ -313,7 +311,7 @@ Bit|Description|Supported by Local PCI Bridge Device
 
 PCI cards designed specifically with support for the Amiga should be installed in an AUTOCONFIG slot. AUTOCONFIG slots will be configured by the Local PCI Bridge at startup in the 32-bit Zorro 3 address space. The AmigaPCI AUTOCONFIG process is compatable with configuration of Type 0 devices. 
 
-**NOTE:** A Type 0 configuration transaction is used to access a device on the current bus segment and a Type 1 configuration transaction is used to access a device that resides behind a bridge. A Type 0 configuration transaction is not forwarded across a bridge but is used to configure a bridge or other PCI devices that are connected to the PCI bus on which the Type 0 configuration transaction is generated[[8]](#8).. This means it is possible to AUTOCONFIG a PCI bridge on the bus controlled by the Local PCI Bridge. However, it is not possible to AUTOCONFIG devices requiring a Type 1 configuration header, which are devices behind a PCI bridge on the Local PCI Bridge.
+**NOTE:** A Type 0 configuration transaction is used to access a device on the current bus segment and a Type 1 configuration transaction is used to access a device that resides behind a bridge. A Type 0 configuration transaction is not forwarded across a bridge but is used to configure a bridge or other PCI devices that are connected to the PCI bus on which the Type 0 configuration transaction is generated[[8]](#8). It is not possible to AUTOCONFIG devices requiring a Type 1 configuration header, which are devices behind a second PCI bridge on the bus controlled by the Local PCI Bridge.
 
 ##### 2.3.2.1 AUTOCONFIG Process
 
@@ -358,7 +356,7 @@ PCI Slot|Address Bit|Offset From Base Address
 3|AD[19]|$08 0000
 4|AD[20]|$10 0000
 
-**NOTE:** When a PCI Target device is configured under the Local PCI Bridge base address (Prometheus Mode), bits AD31 and AD30 of the address are set, forcing all Prometheus configured base addresses to start at $C000 0000. This prevents Prometheus configured devices from responding to addresses assigned to an AUTOCONFIG PCI device, which will never start with $C000 0000. This is implemented in the Local PCI Bridge hardware and is transparent to software. Thus, this approach will not affect existing drivers and new drivers need not do anything different from the Prometheus standard. This is noted here to explain the hardware implementation in better detail.
+**NOTE:** When a PCI Target device is configured under the Local PCI Bridge base address (Prometheus Mode), bits AD31 and AD30 of the address are set, forcing all Prometheus configured base addresses to start at $C000 0000. This prevents Prometheus configured devices from responding to addresses assigned to an AUTOCONFIG PCI device, which will never start with $C000 0000. This is implemented in the Local PCI Bridge hardware and is transparent to software. Thus, this approach does not affect how drivers are expected to behave to support the Prometheus standard. This is noted here to explain the hardware implementation in better detail.
 
 #### 2.3.3.1 PCI Command Examples
 
@@ -376,7 +374,7 @@ $1FE0 0000|$1FFF FFFF|I/O Space|2MB|$0000 0000|$001F FFFF
 
 ##### 2.3.3.1.1 PCI Configuration Access
 
-For these examples, assume the base address of the Local PCI Bridge is $8000 0000. When accessing the configuration registers of software configured PCI devices on the bus, A[31..24] will be converted to $00 by the Local PCI bridge. 
+For these examples, assume the base address of the Local PCI Bridge is $8000 0000. When accessing the configuration registers of software configured PCI devices on the bus, A[31..24] will be converted to $0 by the Local PCI bridge. 
 
 A[31..24] Reserved  (Always b00000000)  
 A[23..16] PCI Bus Number (Slot Offset, see Table 2.3.2.a)  
