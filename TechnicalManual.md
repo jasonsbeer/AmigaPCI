@@ -263,14 +263,14 @@ All|None|Short|Open|Short
 
 ### 2.3 PCI Configuration
 
-Each PCI target device may be configured by the Amiga AUTOCONFIG process or by software configuration. During configuration each PCI slot, in turn, is polled to obtain the capabilities and address space needs of the target device. Each PCI slot is polled by asserting the IDSEL signal, which is approximately equivalent to the _CFGIN signal of the Zorro bus. However, unlike the _CFGIN signal, the IDSEL is asserted by a specific address bit during the address phase of a configuration command access[[2]](#2). There is no equivalent of the _CFGOUT signal, as the Local PCI Bridge addresses each slot directly. It is necessary to latch the AD bus on the rising edge of the PCI clock during the read cycle data phase, holding this data on the MC68040 data bus, to avoid missing the data presented by the target device.
+Each PCI target device may be configured by the Amiga AUTOCONFIG process or by software configuration. During configuration each PCI slot, in turn, is polled to obtain the capabilities and address space needs of the target device. Each PCI slot is polled by asserting the IDSEL signal, which is approximately equivalent to the _CFGIN signal of the Zorro bus. However, unlike the _CFGIN signal, the IDSEL is asserted by a specific address bit during the address phase of a configuration command access[[2]](#2). There is no equivalent of the _CFGOUT signal, as the Local PCI Bridge addresses each slot directly.
 
 <p align="center"><img src="/DataSheets/TimingDiagrams/PCI Configuration Read Cycle.png" width="650"></p>
 <p align="center"><img src="/DataSheets/TimingDiagrams/PCI Configuration Write Cycle.png" width="650"></p>
 
 ### 2.3.1 Local PCI Bridge
 
-The Local PCI Bridge is always AUTOCONFIGured at startup before any other PCI devices. The Local PCI Bridge base address allows direct access of the Local PCI Bridge configuration registers and a means to access software configured PCI cards on the PCI bus (See 2.3.2). All PCI devices are accessed through the Local PCI bridge, which acts as an interface between the MC68040 and PCI target devices. The Local PCI Bridge also handles bus arbitration.
+The Local PCI Bridge is always AUTOCONFIGured at startup before any other PCI devices. The Local PCI Bridge base address allows direct access of the Local PCI Bridge configuration registers and a means to access software configured PCI cards on the PCI bus (See 2.3.2). All PCI devices are accessed through the Local PCI bridge, which acts as an interface between the MC68040 and PCI target devices. The Local PCI Bridge also handles bus arbitration. During each MC68040 data transfer cycle, the address information is broadcast by the Local PCI Bridge to the PCI bus. If any devices respond by asserting _DEVSEL, the Local PCI Bridge proceeds with the PCI cycle. Otherwise, the Local PCI Bridge remains idle.
 
 The following 16-bit registers are supported by the Local PCI Bridge device and can be set or read by software. This allows configuration or polling of the Local PCI Bridge settings and status. Reading a long word at offset $04 will return both registers. All PCI devices implement all or part of these registers as individual devices. Assuming the Local PCI Bridge base address is $8000 0000, you would access the command register at $8000 0004. Reads from unsupported registers will return $0. Writes to unsupported registers will have no effect.
 
@@ -358,6 +358,8 @@ PCI Slot|Address Bit|Offset From Base Address
 3|AD[19]|$08 0000
 4|AD[20]|$10 0000
 
+**NOTE:** When a PCI Target device is configured under the Local PCI Bridge base address (Prometheus Mode), bits AD31 and AD30 of the address are set, forcing all Prometheus configured base addresses to start at $C000 0000. This prevents Prometheus configured devices from responding to addresses assigned to an AUTOCONFIG PCI device, which will never start with $C000 0000. This is implemented in the Local PCI Bridge hardware and is transparent to software. Thus, this approach will not affect existing drivers and new drivers need not do anything different from the Prometheus standard. This is noted here to explain the hardware implementation in better detail.
+
 #### 2.3.3.1 PCI Command Examples
 
 PCI defines multiple address spaces that exist in parallel. PCI command encodings select a specific address space for the current cycle. In order to signal which address space is being targeted, the Local PCI Bridge recognizes address offsets from the Local PCI Bridge base address. 
@@ -419,7 +421,7 @@ A burst mode is defined as a line transfer by the MC68040 initiated with the MOV
 
 During MC68040 initiated burst transfers, all four bytes are enabled. The PCI target device must internally increment A3 and A2 of the supplied address for each transfer, causing the address to wrap around at the end of the block. This is consistent with the Cacheline Wrap Mode burst order defined in the PCI specifications[[5]](#5).
 
-<p align="center"><img src="/DataSheets/TimingDiagrams/PCI Fast Burst Read Cycle.png" width="750"></p>
+<p align="center"><img src="/DataSheets/TimingDiagrams/PCI Fast Burst Read Cycle33.png" width="750"></p>
 <p align="center"><img src="/DataSheets/TimingDiagrams/PCI Fast Burst Write Cycle.png" width="750"></p>
 <p align="center"><img src="/DataSheets/TimingDiagrams/PCI Slow Burst Read Cycle.png" width="750"></p>
 <p align="center"><img src="/DataSheets/TimingDiagrams/PCI Slow Burst Write Cycle.png" width="750"></p>
