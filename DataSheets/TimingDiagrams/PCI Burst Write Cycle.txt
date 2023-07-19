@@ -7,7 +7,8 @@
   {name: 'STATE', wave: '=.=.=.......=.=.=.=..........', "period": 1.5, data: ['', '1', 'W', '2', '3', '4', '5']},   
   {name: 'A[31..0]', wave: 'x..=...........................x..', "period": 1.5}, 
   {name: 'D[0..31]', wave: 'x..=.............=....=....=...x.', "period": 1.5, data: ['DATA0', 'DATA1', 'DATA2', 'DATA3']},
- {name: '_TA', wave: 'z..1...........0.1..0.1..0.1.0.1.z', "period": 1.5},
+  {name: '_TA', wave: 'z..1...........0.1..0.1..0.1.0.1.z', "period": 1.5},
+  {name: '_TS', wave: '1..0.1............................', "period": 1.5},
   {name: '_TIP', wave: '1..0.......................1......', "period": 1.5},
   {name: 'R_W', wave: '1..0.......................1......', "period": 1.5},
   {name: 'TT0', wave: '1.................................', "period": 1.5},
@@ -23,4 +24,4 @@
   
 ], 
  config:{skin:'narrow'},
- head:{text:'PCI BURST WRITE CYCLE' } }
+ head:{text:'CPU DRIVEN BURST WRITE CYCLE' } }
