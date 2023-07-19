@@ -1,1 +1,0 @@
--intstyle "ise" -incremental -o "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U109-PCI-BRIDGE0/PCIAUTOCONFIG_isim_beh.exe" -prj "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U109-PCI-BRIDGE0/PCIAUTOCONFIG_beh.prj" "work.PCIAUTOCONFIG" 

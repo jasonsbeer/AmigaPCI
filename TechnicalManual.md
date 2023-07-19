@@ -419,7 +419,7 @@ A burst mode is defined as a line transfer by the MC68040 initiated with the MOV
 
 During MC68040 initiated burst transfers, all four bytes are enabled. The PCI target device must internally increment A3 and A2 of the supplied address for each transfer, causing the address to wrap around at the end of the block. This is consistent with the Cacheline Wrap Mode burst order defined in the PCI specifications[[5]](#5).
 
-<p align="center"><img src="/DataSheets/TimingDiagrams/PCI Fast Burst Read Cycle33.png" width="750"></p>
+<p align="center"><img src="/DataSheets/TimingDiagrams/PCI Burst Read Cycle.png" width="750"></p>
 <p align="center"><img src="/DataSheets/TimingDiagrams/PCI Fast Burst Write Cycle.png" width="750"></p>
 <p align="center"><img src="/DataSheets/TimingDiagrams/PCI Slow Burst Read Cycle.png" width="750"></p>
 <p align="center"><img src="/DataSheets/TimingDiagrams/PCI Slow Burst Write Cycle.png" width="750"></p>
