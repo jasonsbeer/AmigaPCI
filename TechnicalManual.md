@@ -419,27 +419,28 @@ When a data transfer cycle is initiated by the MC68040, the Local PCI Bridge bro
 
 A burst mode is defined as a line transfer by the MC68040 initiated with the MOVE16 instruction[[4]](#4). This results in the burst transfer of four long words to or from the target device. Each long word being aligned to a 16-byte memory boundary. During MC68040 initiated burst transfers, all four bytes are enabled. The PCI target device must internally increment A3 and A2 of the supplied address for each transfer, causing the address to wrap around at the end of the block. This is consistent with the Cacheline Wrap Mode burst order defined in the PCI specifications[[5]](#5).
 
-Burst read cycle description:
+##### 2.6.1.1 Burst Read Cycle
 
 1) The MC68040 begin a data transfer cycle by asserting an address on the A bus and data on the D bus, along with related signals. 
-2) On the next falling PCI clock edge, the Local PCI Bridge broadcasts the address on the AD bus, a bus command on the C/_BE bus, and asserts _FRAME..
+2) On the next falling PCI clock edge, the Local PCI Bridge broadcasts the address on the AD bus, places a bus command on the C/_BE bus, and asserts _FRAME.
 3) If a PCI device on the bridge responds to the base address, it will assert _DEVSEL on the next falling PCI clock edge. If no device responds by asserting _DEVSEL, _FRAME is negated, and the AD and C/_BE buses are placed in a high-impedence state and the Local PCI Bridge returns to an idle state.
 4) The Local PCI Bridge continues the data transfer by connecting the D bus to the AD bus. Bit and byte swapping is accomplished in the Local PCI Bridge.
 5) On the next falling BCLK clock edge after data is asserted by the target device, if _TRDY is asserted, _TA is asserted for one BCLK cycle to signal the MC68040 the data is ready to be latched. If _TRDY is not asserted, repeat 5 until the target device asserts _TRDY or the cycle is aborted by the target or master.
 6) On the next falling PCI clock edge after asserting _TA, _IRDY is asserted for one PCI clock cyle to signal the target device the data has been latched.
-7) 5 and 6 are repeated until all four long words have been transfered.
+7) Steps 5 and 6 are repeated until all four long words have been transfered or the cycle is aborted by the target or master before four long words are transfered.
 
-Burst write cycle description:
+<p align="center"><img src="/DataSheets/TimingDiagrams/PCI Burst Read Cycle.png" width="750"></p>
+
+##### 2.6.1.2 Burst Write Cycle
 
 1) The MC68040 begins a data transfer cycle by asserting an address on the A bus and data on the D bus, along with related signals. 
-2) On the next falling PCI clock edge, the Local PCI Bridge broadcasts the address on the AD bus, a bus command on the C/_BE bus, and asserts _FRAME..
+2) On the next falling PCI clock edge, the Local PCI Bridge broadcasts the address on the AD bus, places a bus command on the C/_BE bus, and asserts _FRAME.
 3) If a PCI device on the bridge responds to the base address, it will assert _DEVSEL on the next falling PCI clock edge. If no device responds by asserting _DEVSEL within two PCI clock cycles, _FRAME is negated, and the AD and C/_BE buses are placed in a high-impedence state and the Local PCI Bridge returns to an idle state.
 4) The Local PCI Bridge continues the data transfer by connecting the AD bus to the D bus. Bit and byte swapping is accomplished in the Local PCI Bridge.
 5) On the next falling PCI clock edge after driving the AD bus, _IRDY is asserted for one PCI clock cyle to signal the target device data is ready to be latched.
 6) On the next falling BCLK clock edge after _IRDY is asserted, if _TRDY is asserted, _TA is asserted for one BCLK cycle to signal the MC68040 the data has been latched. If _TRDY is not asserted, repeat 6 until the cycle continues or is aborted by the target or master.
-7) 5 and 6 are repeated until all four long words have been transfered.
+7) Steps 5 and 6 are repeated until all four long words have been transfered or the cycle is aborted by the target or master before four long words are transfered.
 
-<p align="center"><img src="/DataSheets/TimingDiagrams/PCI Burst Read Cycle.png" width="750"></p>
 <p align="center"><img src="/DataSheets/TimingDiagrams/PCI Burst Write Cycle.png" width="750"></p>
 
 #### 2.6.2 Normal Mode Cycles
