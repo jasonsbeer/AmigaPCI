@@ -411,13 +411,13 @@ Note: When _BB is asserted and _BG is negated, this allows for bus snooping oper
 
 ### 2.6 MC68040 Driven PCI Data Cycle
 
-CPU access to PCI target devices supports burst (MOVE16) and non-burst (normal) cycles in read and write modes. The PCI and MC68040 busses operate at different clock rates. This raises concerns about metastability and honoring setup and hold times for data transfers. In order to account for these concerns, the PCI data transfer cycles are slowed down via wait states to honor setup and hold times, as well as ensuring clock edges are not missed. Any of these issues can result in errors in data transfers and even a system crash. As a result, the actual cycle time can be influenced by the relative edges of the two clocks.
+CPU access to PCI target devices supports burst (MOVE16) and non-burst (normal) cycles in read and write modes. The PCI and MC68040 busses operate at different clock rates. This raises concerns about metastability and honoring setup and hold times for data transfers. In order to account for these concerns, the PCI data transfer cycles are slowed down via wait states to honor setup and hold times, as well as ensuring clock edges are not missed. Any of these issues can result in errors in data transfers and even a system crash. As a result, the actual cycle time is influenced by the relative edges of the two clocks.
+
+When a data transfer cycle is initiated by the MC68040, the Local PCI Bridge broadcasts the address and related bus command to the PCI bus. If a target device responds by asserting _DEVSEL within two PCI clock cycles, the Local PCI Bridge completes the transfer. If no device asserts _DEVSEL by the second falling edge of the PCI clock, the Local PCI Bridge returns to an idle state.
 
 #### 2.6.1 Burst Mode Cycles
 
 A burst mode is defined as a line transfer by the MC68040 initiated with the MOVE16 instruction[[4]](#4). This results in the burst transfer of four long words to or from the target device. Each long word being aligned to a 16-byte memory boundary. During MC68040 initiated burst transfers, all four bytes are enabled. The PCI target device must internally increment A3 and A2 of the supplied address for each transfer, causing the address to wrap around at the end of the block. This is consistent with the Cacheline Wrap Mode burst order defined in the PCI specifications[[5]](#5).
-
-When a data transfer cycle is initiated by the MC68040, the Local PCI Bridge broadcasts the address and related bus command to the PCI bus. If a target device responds by asserting _DEVSEL within two PCI clock cycles, the Local PCI Bridge completes the transfer. If no device asserts _DEVSEL by the second falling edge of the PCI clock, the Local PCI Bridge returns to an idle state.
 
 Burst read cycle description:
 
