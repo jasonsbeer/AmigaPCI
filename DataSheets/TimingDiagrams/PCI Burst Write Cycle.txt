@@ -1,7 +1,7 @@
 {signal: [
 ['CLK',
-  {name: 'BCLK40', wave: 'P...............',  "period": 3},
- {name: 'PCI33', wave: 'P............',  "period": 3.5, "phase" : 1}],
+  {name: 'BCLK40', wave: 'p...............',  "period": 3},
+ {name: 'PCI33', wave: 'p............',  "period": 3.5, "phase" : 1}],
  
 ['MC68040', 
   {name: 'STATE', wave: '=.=.=.........=.=...=.=.=.=.=.=..', "period": 1.5, data: ['', '1', 'W', '2', 'W', '3', 'W', '4', 'W', '5']},   
