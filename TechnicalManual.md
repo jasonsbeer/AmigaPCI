@@ -411,9 +411,7 @@ Note: When _BB is asserted and _BG is negated, this allows for bus snooping oper
 
 ### 2.6 MC68040 Driven PCI Data Cycle
 
-CPU access to PCI target devices supports burst (MOVE16) and non-burst (normal) cycles in read and write modes. Because the CPU and PCI busses operate in different clock domains, metastability is a concern. To address this concern, the Local PCI Bridge latches data in the associated clock domain and later presents the data on the other bus in the associated clock domain. This ensures setup and hold times are met while crossing the domains.
-
-The PCI and MC68040 busses operate at different clock rates. This raises concerns around metastability and honoring setup and hold times for data transfers. In order to account for these concerns, the PCI data transfer cycles are slowed down via wait states so setup and hold times are honored, as well as ensuring clock edges are not missed. Any of these issues can result in errors in data transfers and even a system crash.
+CPU access to PCI target devices supports burst (MOVE16) and non-burst (normal) cycles in read and write modes. The PCI and MC68040 busses operate at different clock rates. This raises concerns around metastability and honoring setup and hold times for data transfers. In order to account for these concerns, the PCI data transfer cycles are slowed down via wait states to honor setup and hold times, as well as ensuring clock edges are not missed. Any of these issues can result in errors in data transfers and even a system crash. As a result, the actual cycle time can be influenced by the relative edges of the two clocks.
 
 #### 2.6.1 Burst Mode Cycles
 
