@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <!--This is an ISE project configuration file.-->
 <!--It holds project specific layout data for the projectmgr plugin.-->
 <!--Copyright (c) 1995-2009 Xilinx, Inc.  All rights reserved.-->
@@ -9,13 +9,13 @@
          <ClosedNodesVersion>2</ClosedNodesVersion>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem>xc95144xl-10TQ144</SelectedItem>
+         <SelectedItem>PCI_CYCLE - Behavioral (/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U109-PCI-BRIDGE0/PCI_CYCLE.vhd)</SelectedItem>
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
       <ViewHeaderState orientation="horizontal" >000000ff0000000000000001000000010000000000000000000000000000000002020000000100000001000000640000026b000000020000000000000000000000000200000064ffffffff0000008100000003000000020000026b0000000100000003000000000000000100000003</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >true</UserChangedColumnWidths>
-      <CurrentItem>xc95144xl-10TQ144</CurrentItem>
+      <CurrentItem>PCI_CYCLE - Behavioral (/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U109-PCI-BRIDGE0/PCI_CYCLE.vhd)</CurrentItem>
    </ItemView>
    <ItemView engineview="SynthesisOnly" sourcetype="" guiview="Process" >
       <ClosedNodes>
@@ -40,7 +40,7 @@
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
       <ViewHeaderState orientation="horizontal" >000000ff0000000000000001000000000000000001000000000000000000000000000000000000075f000000040101000100000000000000000000000064ffffffff0000008100000000000000040000008d00000001000000000000004e00000001000000000000010900000001000000000000057b0000000100000000</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
-      <CurrentItem></CurrentItem>
+      <CurrentItem>MAIN.vhd</CurrentItem>
    </ItemView>
    <ItemView guiview="Library" >
       <ClosedNodes>
