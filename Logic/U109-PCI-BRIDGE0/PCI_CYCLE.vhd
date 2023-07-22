@@ -47,13 +47,21 @@ entity PCI_CYCLE is
 		BEN : IN STD_LOGIC;
 		nDEVSEL : IN STD_LOGIC;
 		nTRDY : IN STD_LOGIC;
+		--nUUBE : IN STD_LOGIC;
+		--nUMBE : IN STD_LOGIC;
+		--nLMBE : IN STD_LOGIC;
+		--nLLBE : IN STD_LOGIC;
 		
       D : INOUT  STD_LOGIC_VECTOR (31 DOWNTO 0);      
 		AD : INOUT  STD_LOGIC_VECTOR (31 DOWNTO 0);		
 		nIRDY : INOUT STD_LOGIC;
+		nPCI_CYCLE_ACTIVE : INOUT STD_LOGIC;
 		
 		nTA : OUT STD_LOGIC;
-		CBE : OUT STD_LOGIC_VECTOR (3 DOWNTO 0)
+		--CBE : OUT STD_LOGIC_VECTOR (3 DOWNTO 0)
+		CBE_TYPE : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
+		nADDRESS_PHASE : OUT STD_LOGIC
+		
 			  
 	);
 
@@ -66,14 +74,13 @@ architecture Behavioral of PCI_CYCLE is
 	SIGNAL TRANSFER_START : STD_LOGIC; --LATCH THE START OF A NEW DATA TRANSFER CYCLE.
 	SIGNAL TRANSFER_START_ACK : STD_LOGIC; --ACK THE START OF A NEW DATA TRANSFER CYCLE.
 	SIGNAL BURST_CYCLE : STD_LOGIC; --ASSERT WHEN THE 68040 IS CALLING FOR A BURST TRANSFER.
-	SIGNAL AD_BUS_ACTIVE : STD_LOGIC; --ASSERT WHEN THE AD BUS IS BEING DRIVEN.
+	--SIGNAL AD_BUS_ACTIVE : STD_LOGIC; --ASSERT WHEN THE AD BUS IS BEING DRIVEN.
 	SIGNAL AD_OUT : STD_LOGIC_VECTOR (31 DOWNTO 0); --VECTOR TO MOVE AD BUS DATA FROM THE PROCESS TO THE PINS.
 	--SIGNAL PCI_COMMAND : STD_LOGIC_VECTOR (3 DOWNTO 0); --VECTOR FOR THE PCI BUS COMMAND.
-	SIGNAL PCI_RESPONSE_TIMEOUT : INTEGER := 1; --THE TIMEOUT FOR A DEVICE TO ASSERT _DEVSEL.
+	CONSTANT PCI_RESPONSE_TIMEOUT : INTEGER := 1; --THE TIMEOUT FOR A DEVICE TO ASSERT _DEVSEL.
 	SIGNAL PCI_RESPONSE_TIMEOUT_COUNT : INTEGER RANGE 0 TO PCI_RESPONSE_TIMEOUT; --THE COUNTDOWN FOR THE TIMEOUT OF _DEVSEL.
 	SIGNAL CPU_TRANSFER_ACK : STD_LOGIC;
 	SIGNAL CPU_TRANSFER_ACK_RESET : STD_LOGIC;
-	SIGNAL PCI_CYCLE_ACTIVE : STD_LOGIC;
 	
 	
 	TYPE PCI_STATE IS (IDLE, ADDRESS, DATA0, DATA1, DATA2, DATA3);
@@ -152,7 +159,7 @@ begin
 	-------------------------------
 	
 	nTA <= 
-				'Z' WHEN PCI_CYCLE_ACTIVE = '0'
+				'Z' WHEN nPCI_CYCLE_ACTIVE = '1'
 		ELSE
 				'0' WHEN CPU_TRANSFER_ACK = '1' AND CPU_TRANSFER_ACK_RESET = '0'
 		ELSE
@@ -211,28 +218,57 @@ begin
 	-- AD BUS DRIVER --
 	-------------------
 	
-	AD <= 
-				(OTHERS => 'Z') WHEN AD_BUS_ACTIVE = '0'
-		ELSE
+	--BIT AND BYTE SWAPPED!
+	
+--	AD <= 
+--				(OTHERS => 'Z') WHEN AD_BUS_ACTIVE = '0'
+--		ELSE
+--				AD_OUT WHEN CURRENT_PCI_STATE = ADDRESS AND AD_BUS_ACTIVE <= '1' 
+--		ELSE		
+--				D(7)  & D(6)  & D(5)  & D(4)  & D(3)  & D(2)  & D(1)  & D(0) & 
+--				D(15) & D(14) & D(13) & D(12) & D(11) & D(10) & D(9)  & D(8) &
+--				D(23) & D(22) & D(21) & D(20) & D(19) & D(18) & D(17) & D(16) &	
+--				D(31) & D(30) & D(29) & D(28) & D(27) & D(26) & D(25) & D(24) WHEN AD_BUS_ACTIVE <= '1' AND RnW = '0';
+		--ELSE WHEN DMA READ
+		
+	AD <=
 				AD_OUT WHEN CURRENT_PCI_STATE = ADDRESS
 		ELSE		
 				D(7)  & D(6)  & D(5)  & D(4)  & D(3)  & D(2)  & D(1)  & D(0) & 
 				D(15) & D(14) & D(13) & D(12) & D(11) & D(10) & D(9)  & D(8) &
 				D(23) & D(22) & D(21) & D(20) & D(19) & D(18) & D(17) & D(16) &	
-				D(31) & D(30) & D(29) & D(28) & D(27) & D(26) & D(25) & D(24) WHEN PCI_CYCLE_ACTIVE = '1' AND RnW = '0';
+				D(31) & D(30) & D(29) & D(28) & D(27) & D(26) & D(25) & D(24) 
+				WHEN (CURRENT_PCI_STATE = DATA0 OR CURRENT_PCI_STATE = DATA1 OR CURRENT_PCI_STATE = DATA2 OR CURRENT_PCI_STATE = DATA3) AND RnW = '0'
+		ELSE
+				(OTHERS => 'Z');
+		
 				
 			
 	------------------
 	-- D BUS DRIVER --
 	------------------
 	
-	D <= 
-				(OTHERS => 'Z') WHEN PCI_CYCLE_ACTIVE = '0' 
-		ELSE
+	--BIT AND BYTE SWAPPED!
+	
+--	D <= 
+--				(OTHERS => 'Z') WHEN PCI_CYCLE_ACTIVE = '0' 
+--		ELSE
+--				AD(24) & AD(25) & AD(26) & AD(27) & AD(28) & AD(29) & AD(30) & AD(31) & 
+--				AD(16) & AD(17) & AD(18) & AD(19) & AD(20) & AD(21) & AD(22) & AD(23) & 
+--				AD(8)  & AD(9)  & AD(10) & AD(11) & AD(12) & AD(13) & AD(14) & AD(15) & 
+--				AD(0)  & AD(1)  & AD(2)  & AD(3)  & AD(4)  & AD(5)  & AD(6)  & AD(7) WHEN PCI_CYCLE_ACTIVE = '1' AND RnW = '1';
+		--ELSE WHEN DMA WRITE
+		
+		
+	D <= 				
 				AD(24) & AD(25) & AD(26) & AD(27) & AD(28) & AD(29) & AD(30) & AD(31) & 
 				AD(16) & AD(17) & AD(18) & AD(19) & AD(20) & AD(21) & AD(22) & AD(23) & 
 				AD(8)  & AD(9)  & AD(10) & AD(11) & AD(12) & AD(13) & AD(14) & AD(15) & 
-				AD(0)  & AD(1)  & AD(2)  & AD(3)  & AD(4)  & AD(5)  & AD(6)  & AD(7) WHEN RnW = '1';
+				AD(0)  & AD(1)  & AD(2)  & AD(3)  & AD(4)  & AD(5)  & AD(6)  & AD(7)
+				WHEN (CURRENT_PCI_STATE = DATA0 OR CURRENT_PCI_STATE = DATA1 OR CURRENT_PCI_STATE = DATA2 OR CURRENT_PCI_STATE = DATA3) AND RnW = '1'
+		ELSE
+				(OTHERS => 'Z');
+		
 	
 	------------------------------
 	-- CPU DRIVEN PCICLK CYCLES --
@@ -250,8 +286,11 @@ begin
 			TRANSFER_START_ACK <= '0';
 			AD_OUT <= (OTHERS => '0');
 			PCI_RESPONSE_TIMEOUT_COUNT <= 0;
-			AD_BUS_ACTIVE <= '0';
+			--AD_BUS_ACTIVE <= '0';
 			nIRDY <= '1';
+			nADDRESS_PHASE <= '1';
+			CBE_TYPE <= "00";
+			nPCI_CYCLE_ACTIVE <= '1';
 		
 		ELSIF FALLING_EDGE (PCICLK) THEN
 		
@@ -265,30 +304,36 @@ begin
 					
 						CURRENT_PCI_STATE <= ADDRESS;	
 						PCI_RESPONSE_TIMEOUT_COUNT <= 0;
-						AD_BUS_ACTIVE <= '1';
+						--AD_BUS_ACTIVE <= '1';
 						TRANSFER_START_ACK <= '1';
+						nPCI_CYCLE_ACTIVE <= '0';
+						nADDRESS_PHASE <= '0';
 						
 						CASE CURRENT_PCI_COMMAND IS
 						
 							WHEN IO_SPACE =>
 							
 								AD_OUT <= A(31 DOWNTO 0);
-								PCI_COMMAND <= "001" & NOT RnW;
+								--CBE <= "001" & NOT RnW;
+								CBE_TYPE <= "11";
 
 							WHEN MEMORY_SPACE =>
 							
 								AD_OUT <= A(31 DOWNTO 2) & "1" & NOT BURST_CYCLE;
-								PCI_COMMAND <= "011" & NOT RnW;
+								--CBE <= "011" & NOT RnW;
+								CBE_TYPE <= "00";
 							
 							WHEN CONFIG0_SPACE =>
 							
 								AD_OUT <= A(31 DOWNTO 2) & "00";
-								PCI_COMMAND <= "101" & NOT RnW;
+								--CBE <= "101" & NOT RnW;
+								CBE_TYPE <= "01";
 							
 							WHEN CONFIG1_SPACE =>
 							
 								AD_OUT <= A(31 DOWNTO 2) & "01";
-								PCI_COMMAND <= "101" & NOT RnW;
+								--CBE <= "101" & NOT RnW;
+								CBE_TYPE <= "10";
 							
 						END CASE;						
 					
@@ -296,24 +341,26 @@ begin
 				
 				WHEN ADDRESS =>
 				
-					AD_BUS_ACTIVE <= '0';
+					--AD_BUS_ACTIVE <= '0';
 					TRANSFER_START_ACK <= '0';
+					nADDRESS_PHASE <= '1';
+					
+--					IF BURST_CYCLE = '1' THEN
+--						
+--							CBE <= (OTHERS => '0');
+--							
+--						ELSE
+--						
+--							--CONNECT TO UPPER/MIDDLE/MIDDLE/LOWER BYTE ENABLE.
+--							CBE <= nLLBE & nLMBE & nUMBE & nUUBE;
+--						
+--						END IF;
 				
 					IF nDEVSEL = '0' THEN
 							
 						CURRENT_PCI_STATE <= DATA0;
-						PCI_CYCLE_ACTIVE <= '1';
-						AD_BUS_ACTIVE <= '1';
-						
-						IF BURST_CYCLE = '1' THEN
-						
-							CBE <= (OTHERS => '0');
-							
-						ELSE
-						
-							--CONNECT TO UPPER/MIDDLE/MIDDLE/LOWER BYTE ENABLE.
-						
-						END IF;
+						--PCI_CYCLE_ACTIVE <= '1';
+						--AD_BUS_ACTIVE <= '1';
 					
 					ELSE
 					
@@ -324,6 +371,7 @@ begin
 						ELSE
 						
 							PCI_RESPONSE_TIMEOUT_COUNT <= PCI_RESPONSE_TIMEOUT_COUNT + 1;
+							nPCI_CYCLE_ACTIVE <= '1';
 						
 						END IF;
 					
@@ -340,7 +388,8 @@ begin
 						ELSE
 						
 							CURRENT_PCI_STATE <= IDLE;
-							AD_BUS_ACTIVE <= '0';
+							nPCI_CYCLE_ACTIVE <= '1';
+							--AD_BUS_ACTIVE <= '0';
 						
 						END IF;
 						
@@ -378,8 +427,9 @@ begin
 					
 						CURRENT_PCI_STATE <= IDLE;
 						nIRDY <= '0';
-						PCI_CYCLE_ACTIVE <= '0';
-						AD_BUS_ACTIVE <= '0';
+						nPCI_CYCLE_ACTIVE <= '1';
+						--AD_BUS_ACTIVE <= '0';
+						--CBE <= (OTHERS => 'Z');
 						
 					END IF;
 					
