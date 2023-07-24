@@ -179,12 +179,16 @@ NEED TO ADD TIMING FOR "NORMAL" CYCLES!
 
 ### 1.13 CIA Cycles
 
-The AmigaPCI does not support MC6800 or MOS6502 devices on the PCI bus with resources from the AmigaPCI main board. Such a PCI device must implement its own timing resources. This means we can break away from the Enable cycle as implemented in all original Amiga designs. While still relatively slow, we can cut the CIA access time by more than half by implementing the recommended timings from the 8502A data sheet. During a read cycle, the CIA needs 180ns for data to become valid while the clock input (PHI2) is high and the chip select is asserted (low). For the best case, the CPU should start a cycle just after the rising edge of PHI2. This will allow enough time for the CIA to place data on the bus so the CPU can latch the data at the falling edge of PHI2. This cycle is approximately 237ns. The worst case scenario is when the CPU starts a cycle too late to meet the 180ns time before the falling edge of PHI2. This results in the need to wait until the next rising edge of PHI2 to interact with the CIA. This cycle is approximately 700ns. Write cycles are more forgiving, as the setup time is only 75ns.
+The AmigaPCI does not support MC6800 or MOS6502 devices on the PCI bus with resources from the AmigaPCI main board. Such a PCI device must implement its own resources. This means we can break away from the Enable cycle as implemented in all original Amiga designs. While still relatively slow, we can cut the CIA access time significantly by implementing the recommended timings from the 8502A data sheet. During a read cycle, the CIA needs 180ns for data to become valid while the clock input (PHI2) is high and the chip select is asserted (low). For the best case, the CPU should start a cycle just after the rising edge of PHI2. This will allow enough time for the CIA to place data on the bus so the CPU can latch the data at the falling edge of PHI2. This cycle is approximately 237ns. The worst case scenario is when the CPU starts a cycle too late to meet the 180ns time before the falling edge of PHI2. This results in the need to wait until the next rising edge of PHI2 to interact with the CIA. This cycle is approximately 700ns. Write cycles are more forgiving, as the setup time is only 75ns.
 
 <p align="center"><img src="/DataSheets/TimingDiagrams/CIA Cycle Best Case Read.png" width="650"></p>
 <p align="center"><img src="/DataSheets/TimingDiagrams/CIA Cycle Best Case Write.png" width="650"></p>
 <p align="center"><img src="/DataSheets/TimingDiagrams/CIA Cycle Worst Case Read.png"></p>
 <p align="center"><img src="/DataSheets/TimingDiagrams/CIA Cycle Worst Case Write.png"></p>
+
+### 1.14 MC68040 Cycle Timeout
+
+Any time the MC68040 initiates a data transfer cycle, it expects the cycle to be acknowledged by assertion of the _TA signal. A fatal condition (crash) can occur when the MC68040 begins a cycle and does not receive acknowledgment from a target device. This would not normally happen, but can result from malfunctioning or poorly designed hardware. To prevent this situation, the board controller will assert _TEA (transfer error acknowledge) after 1400ns has passed from assertion of _TS (transfer start). This informs the MC68040 that no device has responded to the address provided and to begin error processing.
 
 ## 2. PCI Bus
 
