@@ -80,8 +80,9 @@ architecture Behavioral of PCI_CYCLE is
 	CONSTANT PCI_RESPONSE_TIMEOUT : INTEGER := 1; --THE TIMEOUT FOR A DEVICE TO ASSERT _DEVSEL.
 	SIGNAL PCI_RESPONSE_TIMEOUT_COUNT : INTEGER RANGE 0 TO PCI_RESPONSE_TIMEOUT; --THE COUNTDOWN FOR THE TIMEOUT OF _DEVSEL.
 	SIGNAL CPU_TRANSFER_ACK : STD_LOGIC; --READY TO ASSERT _TA.
-	SIGNAL CPU_TRANSFER_ACK_WAIT : STD_LOGIC; --HOLD OF ASSERTION OF _TA.
-	SIGNAL PCI_DATA_TRANSFER_PROCEED : STD_LOGIC; --LATCHES THE STATE OF _TRDY ON THE RISING EDGE OF PCICLK.
+	SIGNAL CPU_TRANSFER_ACK_WAIT : STD_LOGIC_VECTOR (3 DOWNTO 0); --HOLD OF ASSERTION OF _TA.
+	--SIGNAL PCI_DATA_TRANSFER_PROCEED : STD_LOGIC; --LATCHES THE STATE OF _TRDY ON THE RISING EDGE OF PCICLK.
+	SIGNAL READ_CYCLE_DATA_PHASE : STD_LOGIC; --IDENTIFIES WHEN WE ARE IN A READ CYCLE DURING THE DATA PHASE.
 	
 	TYPE PCI_STATE IS (IDLE, ADDRESS, DATA0, DATA1, DATA2, DATA3);
 	SIGNAL CURRENT_PCI_STATE : PCI_STATE;
@@ -127,64 +128,93 @@ begin
 		
 		END IF;	
 	
-	END PROCESS;	
-	
-	------------------------------
-	-- PCI DAT TRANSFER PROCEED --
-	------------------------------
-	
-	--WE LATCH THE VALUE OF _TRDY ON THE RISING EDGE OF THE PCI CLOCK. OUR LOGIC
-	--IS DRIVEN BY THE FALLING EDGE IN ORDER TO MEET SETUP AND HOLD REQUIREMENTS.
-	--THIS PRICESS ACCOUNTS FOR ANY CASES WHERE THE PCI TARGET DEVICE ASSERTS _TRDY BEFORE 
-	--THE FALLING EDGE OF PCICLK, WHICH WOULD CAUSE OUR LOGIC TO START PREMATURELY.
-	
-	PROCESS (PCICLK, nRESET) BEGIN
-	
-		IF nRESET = '0' THEN
-		
-			PCI_DATA_TRANSFER_PROCEED <= '0';
-		
-		ELSIF RISING_EDGE (PCICLK) THEN
-		
-			PCI_DATA_TRANSFER_PROCEED <= NOT nTRDY;
-		
-		END IF;
-		
-	END PROCESS;
-	
-	--------------------------------
-	-- RESET MC68040 TRANSFER ACK --
-	--------------------------------
-	
-	--WE ONLY WANT TO ASSERT _TA FOR ONE CLOCK. THIS RESET ALLOWS US TO ASSERT _TA
-	--AND THEN LOCKS IT OUT UNTIL AFTER WE HAVE NEGATED _IRDY.
-	
-	PROCESS (nRESET, nIRDY, BCLK) BEGIN
-	
-		IF nRESET = '0' OR nIRDY = '1' THEN
-		
-			CPU_TRANSFER_ACK_WAIT <= '0';
-			
-		ELSIF FALLING_EDGE (BCLK) THEN
-		
-			IF CPU_TRANSFER_ACK = '1' AND CPU_TRANSFER_ACK_WAIT = '0' THEN
-			
-				CPU_TRANSFER_ACK_WAIT <= '1';
-				
-			END IF;
-		
-		END IF;
-	
-	END PROCESS;
+	END PROCESS;		
 	
 	-------------------------------
 	-- MC68040 DATA TRANSFER ACK --
 	-------------------------------
 	
-	nTA <= 
-				'0' WHEN CPU_TRANSFER_ACK = '1' AND CPU_TRANSFER_ACK_WAIT = '0' AND nDEVSEL = '0'
+	READ_CYCLE_DATA_PHASE <= '1' WHEN RnW = '1' AND (CURRENT_PCI_STATE = DATA0 OR CURRENT_PCI_STATE = DATA1 OR CURRENT_PCI_STATE = DATA2 OR CURRENT_PCI_STATE = DATA3) ELSE '0';
+	
+	PROCESS (BCLK, nRESET) BEGIN
+	
+		IF nRESET = '0' THEN
+		
+			--nTA <= 'Z';
+			CPU_TRANSFER_ACK <= '0';
+			CPU_TRANSFER_ACK_WAIT <= (OTHERS => '0');
+		
+		ELSIF FALLING_EDGE(BCLK) THEN
+		
+			CASE CURRENT_PCI_STATE IS
+			
+				WHEN DATA0 =>
+					
+					IF CPU_TRANSFER_ACK_WAIT(0) = '0' AND nTRDY = '0' THEN
+			
+						CPU_TRANSFER_ACK <= '1';
+						CPU_TRANSFER_ACK_WAIT(0) <= '1';
+						
+					ELSE
+					
+						CPU_TRANSFER_ACK <= '0';
+
+					END IF;
+				
+				WHEN DATA1 =>
+					
+					IF CPU_TRANSFER_ACK_WAIT(1) = '0' AND nTRDY = '0' THEN
+			
+						CPU_TRANSFER_ACK <= '1';
+						CPU_TRANSFER_ACK_WAIT(1) <= '1';
+						
+					ELSE
+					
+						CPU_TRANSFER_ACK <= '0';
+
+					END IF;
+				
+				WHEN DATA2 =>
+					
+					IF CPU_TRANSFER_ACK_WAIT(2) = '0' AND nTRDY = '0' THEN
+			
+						CPU_TRANSFER_ACK <= '1';
+						CPU_TRANSFER_ACK_WAIT(2) <= '1';
+						
+					ELSE
+					
+						CPU_TRANSFER_ACK <= '0';
+
+					END IF;
+				
+				WHEN DATA3 =>
+					
+					IF CPU_TRANSFER_ACK_WAIT(3) = '0' AND nTRDY = '0' THEN
+			
+						CPU_TRANSFER_ACK <= '1';
+						CPU_TRANSFER_ACK_WAIT(3) <= '1';
+						
+					ELSE
+					
+						CPU_TRANSFER_ACK <= '0';
+
+					END IF;
+					
+				WHEN OTHERS =>
+				
+					CPU_TRANSFER_ACK_WAIT <= (OTHERS => '0');
+					
+				END CASE;
+		
+		END IF;
+	
+	END PROCESS;
+	
+	
+	nTA <=
+				'0' WHEN CPU_TRANSFER_ACK = '1' AND READ_CYCLE_DATA_PHASE = '1'
 		ELSE
-				'1' WHEN nPCI_CYCLE_ACTIVE = '0' AND nDEVSEL = '0'
+				'1' WHEN READ_CYCLE_DATA_PHASE = '1'
 		ELSE
 				'Z';
 	
@@ -192,69 +222,27 @@ begin
 	-- CPU DRIVEN BCLK CYCLES --
 	----------------------------
 
-	PROCESS (BCLK, nRESET) BEGIN
-	
-		IF nRESET = '0' THEN		
-
-			CPU_TRANSFER_ACK <= '0';
-		
-		ELSIF FALLING_EDGE (BCLK) THEN
-		
-			IF RnW = '1' THEN
-			
-				--READ CYCLE
-				CASE CURRENT_PCI_STATE IS
-				
-					WHEN IDLE =>
-					
-						CPU_TRANSFER_ACK <= '0';
-						
-					WHEN ADDRESS =>
-					
-						CPU_TRANSFER_ACK <= '0';
-				
-					WHEN DATA0 =>
-					
-						CPU_TRANSFER_ACK <= NOT nTRDY;
-					
-					WHEN DATA1 =>
-					
-						CPU_TRANSFER_ACK <= NOT nTRDY;
-					
-					WHEN DATA2 =>
-					
-						CPU_TRANSFER_ACK <= NOT nTRDY;
-					
-					WHEN DATA3 =>
-					
-						CPU_TRANSFER_ACK <= NOT nTRDY;
-					
-				END CASE;
-			
-			ELSE
-			
-			END IF;
-		
-		END IF;	
-	
-	END PROCESS;
+--	PROCESS (BCLK, nRESET) BEGIN
+--	
+--		IF nRESET = '0' THEN		
+--		
+--		ELSIF FALLING_EDGE (BCLK) THEN
+--		
+--			IF RnW = '1' THEN
+--			
+--			ELSE
+--			
+--			END IF;
+--		
+--		END IF;	
+--	
+--	END PROCESS;
 	
 	-------------------
 	-- AD BUS DRIVER --
 	-------------------
 	
 	--BIT AND BYTE SWAPPED!
-	
---	AD <= 
---				(OTHERS => 'Z') WHEN AD_BUS_ACTIVE = '0'
---		ELSE
---				AD_OUT WHEN CURRENT_PCI_STATE = ADDRESS AND AD_BUS_ACTIVE <= '1' 
---		ELSE		
---				D(7)  & D(6)  & D(5)  & D(4)  & D(3)  & D(2)  & D(1)  & D(0) & 
---				D(15) & D(14) & D(13) & D(12) & D(11) & D(10) & D(9)  & D(8) &
---				D(23) & D(22) & D(21) & D(20) & D(19) & D(18) & D(17) & D(16) &	
---				D(31) & D(30) & D(29) & D(28) & D(27) & D(26) & D(25) & D(24) WHEN AD_BUS_ACTIVE <= '1' AND RnW = '0';
-		--ELSE WHEN DMA READ
 		
 	AD <=
 				AD_OUT WHEN CURRENT_PCI_STATE = ADDRESS AND nPCI_CYCLE_ACTIVE = '0'
@@ -266,24 +254,13 @@ begin
 				WHEN (CURRENT_PCI_STATE = DATA0 OR CURRENT_PCI_STATE = DATA1 OR CURRENT_PCI_STATE = DATA2 OR CURRENT_PCI_STATE = DATA3) AND RnW = '0'
 		ELSE
 				(OTHERS => 'Z');
-		
-				
+		--ELSE WHEN DMA READ		
 			
 	------------------
 	-- D BUS DRIVER --
 	------------------
 	
-	--BIT AND BYTE SWAPPED!
-	
---	D <= 
---				(OTHERS => 'Z') WHEN PCI_CYCLE_ACTIVE = '0' 
---		ELSE
---				AD(24) & AD(25) & AD(26) & AD(27) & AD(28) & AD(29) & AD(30) & AD(31) & 
---				AD(16) & AD(17) & AD(18) & AD(19) & AD(20) & AD(21) & AD(22) & AD(23) & 
---				AD(8)  & AD(9)  & AD(10) & AD(11) & AD(12) & AD(13) & AD(14) & AD(15) & 
---				AD(0)  & AD(1)  & AD(2)  & AD(3)  & AD(4)  & AD(5)  & AD(6)  & AD(7) WHEN PCI_CYCLE_ACTIVE = '1' AND RnW = '1';
-		--ELSE WHEN DMA WRITE
-		
+	--BIT AND BYTE SWAPPED!		
 		
 	D <= 				
 				AD(24) & AD(25) & AD(26) & AD(27) & AD(28) & AD(29) & AD(30) & AD(31) & 
@@ -293,7 +270,7 @@ begin
 				WHEN (CURRENT_PCI_STATE = DATA0 OR CURRENT_PCI_STATE = DATA1 OR CURRENT_PCI_STATE = DATA2 OR CURRENT_PCI_STATE = DATA3) AND RnW = '1'
 		ELSE
 				(OTHERS => 'Z');
-		
+		--ELSE WHEN DMA READ
 	
 	------------------------------
 	-- CPU DRIVEN PCICLK CYCLES --
@@ -384,7 +361,7 @@ begin
 					IF nDEVSEL = '0' THEN
 							
 						CURRENT_PCI_STATE <= DATA0;
-						nPCI_CYCLE_ACTIVE <= '0';
+						--nPCI_CYCLE_ACTIVE <= '0';
 						--AD_BUS_ACTIVE <= '1';
 					
 					ELSE
@@ -392,11 +369,12 @@ begin
 						IF PCI_RESPONSE_TIMEOUT_COUNT = PCI_RESPONSE_TIMEOUT THEN
 					
 							CURRENT_PCI_STATE <= IDLE;	
+							nPCI_CYCLE_ACTIVE <= '1';
 							
 						ELSE
 						
 							PCI_RESPONSE_TIMEOUT_COUNT <= PCI_RESPONSE_TIMEOUT_COUNT + 1;
-							nPCI_CYCLE_ACTIVE <= '1';
+							--nPCI_CYCLE_ACTIVE <= '1';
 						
 						END IF;
 					
@@ -404,7 +382,8 @@ begin
 				
 				WHEN DATA0 =>
 				
-					IF PCI_DATA_TRANSFER_PROCEED = '1' THEN
+					--IF PCI_DATA_TRANSFER_PROCEED = '1' THEN
+					IF nTRDY = '0' THEN
 					
 						IF nIRDY = '0' THEN
 						
@@ -423,6 +402,9 @@ begin
 							END IF;
 							
 						ELSE
+						
+							--delay until _TA has asserted
+							--CPU_TRANSFER_ACK_WAIT(0) <= '1';???
 							
 							nIRDY <= '0';
 						
@@ -434,7 +416,8 @@ begin
 				
 					--nIRDY <= '1';
 					
-					IF PCI_DATA_TRANSFER_PROCEED = '1' THEN
+					--IF PCI_DATA_TRANSFER_PROCEED = '1' THEN
+					IF nTRDY = '0' THEN
 
 						IF nIRDY = '0' THEN
 					
@@ -451,7 +434,8 @@ begin
 				
 				WHEN DATA2 =>
 				
-					IF PCI_DATA_TRANSFER_PROCEED = '1' THEN
+					--IF PCI_DATA_TRANSFER_PROCEED = '1' THEN
+					IF nTRDY = '0' THEN
 
 						IF nIRDY = '0' THEN
 					
@@ -468,7 +452,8 @@ begin
 				
 				WHEN DATA3 =>
 				
-					IF PCI_DATA_TRANSFER_PROCEED = '1' THEN
+					--IF PCI_DATA_TRANSFER_PROCEED = '1' THEN
+					IF nTRDY = '0' THEN
 
 						IF nIRDY = '0' THEN
 					
