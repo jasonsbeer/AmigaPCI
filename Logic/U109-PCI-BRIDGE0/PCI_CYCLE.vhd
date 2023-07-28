@@ -1,21 +1,28 @@
 ----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
+--This work is shared under the Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) License
+--https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
+	
+--You are free to:
+--Share - copy and redistribute the material in any medium or format
+--Adapt - remix, transform, and build upon the material
+
+--Under the following terms:
+
+--Attribution - You must give appropriate credit, provide a link to the license, and indicate if changes were made. 
+--You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
+
+--NonCommercial - You may not use the material for commercial purposes.
+
+--ShareAlike - If you remix, transform, or build upon the material, you must distribute your contributions under the 
+--same license as the original.
+
+--No additional restrictions - You may not apply legal terms or technological measures that legally restrict others 
+--from doing anything the license permits.
+----------------------------------------------------------------------------------
+-- Engineer:       JASON NEUS
 -- 
--- Create Date:    21:26:53 07/18/2023 
--- Design Name: 
--- Module Name:    PCI_CYCLE - Behavioral 
--- Project Name: 
--- Target Devices: 
--- Tool versions: 
--- Description: 
---
--- Dependencies: 
---
--- Revision: 
--- Revision 0.01 - File Created
--- Additional Comments: 
---
+-- Design Name:    AMIGA PCI U109
+-- Project Name:   AMIGA PCI https://github.com/jasonsbeer/AmigaPCI
 ----------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
@@ -69,20 +76,16 @@ end PCI_CYCLE;
 
 architecture Behavioral of PCI_CYCLE is
 
-	--SIGNAL PCI_DATA_READY : STD_LOGIC; --ASSERT WHEN THE PCI TARGET DEVICE DATA IS READY. READ CYCLE.
-	--SIGNAL CPU_DATA_READY : STD_LOGIC; --ASSERT WHEN THE 68040 DATA IS READY. WRITE CYCLE.
 	SIGNAL TRANSFER_START : STD_LOGIC; --LATCH THE START OF A NEW DATA TRANSFER CYCLE.
 	SIGNAL TRANSFER_START_ACK : STD_LOGIC; --ACK THE START OF A NEW DATA TRANSFER CYCLE.
 	SIGNAL BURST_CYCLE : STD_LOGIC; --ASSERT WHEN THE 68040 IS CALLING FOR A BURST TRANSFER.
-	--SIGNAL AD_BUS_ACTIVE : STD_LOGIC; --ASSERT WHEN THE AD BUS IS BEING DRIVEN.
 	SIGNAL AD_OUT : STD_LOGIC_VECTOR (31 DOWNTO 0); --VECTOR TO MOVE AD BUS DATA FROM THE PROCESS TO THE PINS.
-	--SIGNAL PCI_COMMAND : STD_LOGIC_VECTOR (3 DOWNTO 0); --VECTOR FOR THE PCI BUS COMMAND.
 	CONSTANT PCI_RESPONSE_TIMEOUT : INTEGER := 1; --THE TIMEOUT FOR A DEVICE TO ASSERT _DEVSEL.
 	SIGNAL PCI_RESPONSE_TIMEOUT_COUNT : INTEGER RANGE 0 TO PCI_RESPONSE_TIMEOUT; --THE COUNTDOWN FOR THE TIMEOUT OF _DEVSEL.
 	SIGNAL CPU_TRANSFER_ACK : STD_LOGIC; --READY TO ASSERT _TA.
 	SIGNAL CPU_TRANSFER_ACK_WAIT : STD_LOGIC_VECTOR (3 DOWNTO 0); --HOLD OF ASSERTION OF _TA.
-	--SIGNAL PCI_DATA_TRANSFER_PROCEED : STD_LOGIC; --LATCHES THE STATE OF _TRDY ON THE RISING EDGE OF PCICLK.
-	SIGNAL READ_CYCLE_DATA_PHASE : STD_LOGIC; --IDENTIFIES WHEN WE ARE IN A READ CYCLE DURING THE DATA PHASE.
+	SIGNAL PCI_TRANSFER_ACK : STD_LOGIC_VECTOR (3 DOWNTO 0); --HOLD OF ASSERTION OF _TA.
+	SIGNAL CYCLE_DATA_PHASE : STD_LOGIC; --IDENTIFIES WHEN WE ARE IN A PCI CYCLE DATA PHASE.
 	
 	TYPE PCI_STATE IS (IDLE, ADDRESS, DATA0, DATA1, DATA2, DATA3);
 	SIGNAL CURRENT_PCI_STATE : PCI_STATE;
@@ -134,13 +137,12 @@ begin
 	-- MC68040 DATA TRANSFER ACK --
 	-------------------------------
 	
-	READ_CYCLE_DATA_PHASE <= '1' WHEN RnW = '1' AND (CURRENT_PCI_STATE = DATA0 OR CURRENT_PCI_STATE = DATA1 OR CURRENT_PCI_STATE = DATA2 OR CURRENT_PCI_STATE = DATA3) ELSE '0';
+	CYCLE_DATA_PHASE <= '1' WHEN CURRENT_PCI_STATE = DATA0 OR CURRENT_PCI_STATE = DATA1 OR CURRENT_PCI_STATE = DATA2 OR CURRENT_PCI_STATE = DATA3 ELSE '0';
 	
 	PROCESS (BCLK, nRESET) BEGIN
 	
 		IF nRESET = '0' THEN
 		
-			--nTA <= 'Z';
 			CPU_TRANSFER_ACK <= '0';
 			CPU_TRANSFER_ACK_WAIT <= (OTHERS => '0');
 		
@@ -149,9 +151,20 @@ begin
 			CASE CURRENT_PCI_STATE IS
 			
 				WHEN DATA0 =>
+				
+					IF (RnW = '1' AND CPU_TRANSFER_ACK_WAIT(0) = '0' AND nTRDY = '0') OR (RnW = '0' AND PCI_TRANSFER_ACK(0) = '1') THEN
 					
-					IF CPU_TRANSFER_ACK_WAIT(0) = '0' AND nTRDY = '0' THEN
-			
+--						IF CPU_TRANSFER_ACK_WAIT(0) = '0' AND nTRDY = '0' THEN
+--				
+--							CPU_TRANSFER_ACK <= '1';
+--							CPU_TRANSFER_ACK_WAIT(0) <= '1';
+--							
+--						ELSE
+--						
+--							CPU_TRANSFER_ACK <= '0';
+--
+--						END IF;			
+				
 						CPU_TRANSFER_ACK <= '1';
 						CPU_TRANSFER_ACK_WAIT(0) <= '1';
 						
@@ -159,7 +172,8 @@ begin
 					
 						CPU_TRANSFER_ACK <= '0';
 
-					END IF;
+					END IF;						
+							
 				
 				WHEN DATA1 =>
 					
@@ -212,9 +226,9 @@ begin
 	
 	
 	nTA <=
-				'0' WHEN CPU_TRANSFER_ACK = '1' AND READ_CYCLE_DATA_PHASE = '1'
+				'0' WHEN CPU_TRANSFER_ACK = '1' AND CYCLE_DATA_PHASE = '1'
 		ELSE
-				'1' WHEN READ_CYCLE_DATA_PHASE = '1'
+				'1' WHEN CYCLE_DATA_PHASE = '1'
 		ELSE
 				'Z';
 	
@@ -243,6 +257,9 @@ begin
 	-------------------
 	
 	--BIT AND BYTE SWAPPED!
+	
+	--DURING CPU DRIVEN CYCLES, WE DRIVE THE AD BUS FROM THE A BUS.
+	--DURING CPU WRITE OR DMA READ CYCLES, WE DRIVE THE AD BUS WITH THE D BUS DURING DATA PHASES.
 		
 	AD <=
 				AD_OUT WHEN CURRENT_PCI_STATE = ADDRESS AND nPCI_CYCLE_ACTIVE = '0'
@@ -251,7 +268,7 @@ begin
 				D(15) & D(14) & D(13) & D(12) & D(11) & D(10) & D(9)  & D(8) &
 				D(23) & D(22) & D(21) & D(20) & D(19) & D(18) & D(17) & D(16) &	
 				D(31) & D(30) & D(29) & D(28) & D(27) & D(26) & D(25) & D(24) 
-				WHEN (CURRENT_PCI_STATE = DATA0 OR CURRENT_PCI_STATE = DATA1 OR CURRENT_PCI_STATE = DATA2 OR CURRENT_PCI_STATE = DATA3) AND RnW = '0'
+				WHEN CYCLE_DATA_PHASE = '1' AND RnW = '0'
 		ELSE
 				(OTHERS => 'Z');
 		--ELSE WHEN DMA READ		
@@ -261,24 +278,29 @@ begin
 	------------------
 	
 	--BIT AND BYTE SWAPPED!		
+	
+	--DURING CPU READ CYCLES AND DMA WRITE CYCLES, WE DRIVE THE D BUS WITH THE AD BUS DURING DATA PHASES.
 		
 	D <= 				
 				AD(24) & AD(25) & AD(26) & AD(27) & AD(28) & AD(29) & AD(30) & AD(31) & 
 				AD(16) & AD(17) & AD(18) & AD(19) & AD(20) & AD(21) & AD(22) & AD(23) & 
 				AD(8)  & AD(9)  & AD(10) & AD(11) & AD(12) & AD(13) & AD(14) & AD(15) & 
 				AD(0)  & AD(1)  & AD(2)  & AD(3)  & AD(4)  & AD(5)  & AD(6)  & AD(7)
-				WHEN (CURRENT_PCI_STATE = DATA0 OR CURRENT_PCI_STATE = DATA1 OR CURRENT_PCI_STATE = DATA2 OR CURRENT_PCI_STATE = DATA3) AND RnW = '1'
+				WHEN CYCLE_DATA_PHASE = '1' AND RnW = '1'
 		ELSE
 				(OTHERS => 'Z');
-		--ELSE WHEN DMA READ
+		--ELSE WHEN DMA WRITE
 	
 	------------------------------
 	-- CPU DRIVEN PCICLK CYCLES --
 	------------------------------	
 	
-	--IN THIS PROCESS, WE START THE PCI CYCLE BY DRIVING AN ADDRESS AND COMMAND ON THE AD AND C/_BE BUSSES.
+	--IN THIS PROCESS, WE START THE PCI CYCLE BY DRIVING AN ADDRESS AND SIGNALLING U110 TO ASSERT C/_BE.
 	--IF A DEVICE ASSERTS _DEVSEL WITHIN THE DEFINED PCI CLOCKS, THE CYCLE PROCEEDS.
 	--IF NO DEVICE ASSERTS _DEVSEL WITHIN THE DEFINED PCI CLOCKS, WE RETURN TO THE IDLE STATE.
+	--DURING READ CYCLES, _IRDY IS NOT ASSERTED UNTIL _TRDY AND _TA ARE ASSERTED.
+	--IN THE EVENT OF A BURST CYCLE (MOVE16), THERE ARE FOUR TOTAL DATA TRANSFERS. THESE STATES ARE 
+	--IDENTIFIED AS "DATA0"-"DATA3". THE ADDRESS PHASE IS STATE "ADDRESS".
 	
 	PROCESS (PCICLK, nRESET) BEGIN
 	
@@ -288,11 +310,11 @@ begin
 			TRANSFER_START_ACK <= '0';
 			AD_OUT <= (OTHERS => '0');
 			PCI_RESPONSE_TIMEOUT_COUNT <= 0;
-			--AD_BUS_ACTIVE <= '0';
 			nIRDY <= '1';
 			nADDRESS_PHASE <= '1';
 			CBE_TYPE <= "00";
 			nPCI_CYCLE_ACTIVE <= '1';
+			PCI_TRANSFER_ACK <= (OTHERS => '0');
 		
 		ELSIF FALLING_EDGE (PCICLK) THEN
 		
@@ -306,7 +328,6 @@ begin
 					
 						CURRENT_PCI_STATE <= ADDRESS;	
 						PCI_RESPONSE_TIMEOUT_COUNT <= 0;
-						--AD_BUS_ACTIVE <= '1';
 						TRANSFER_START_ACK <= '1';
 						nPCI_CYCLE_ACTIVE <= '0';
 						nADDRESS_PHASE <= '0';
@@ -343,9 +364,9 @@ begin
 				
 				WHEN ADDRESS =>
 				
-					--AD_BUS_ACTIVE <= '0';
 					TRANSFER_START_ACK <= '0';
 					nADDRESS_PHASE <= '1';
+					PCI_TRANSFER_ACK <= (OTHERS => '0');
 					
 --					IF BURST_CYCLE = '1' THEN
 --						
@@ -361,8 +382,6 @@ begin
 					IF nDEVSEL = '0' THEN
 							
 						CURRENT_PCI_STATE <= DATA0;
-						--nPCI_CYCLE_ACTIVE <= '0';
-						--AD_BUS_ACTIVE <= '1';
 					
 					ELSE
 					
@@ -374,16 +393,12 @@ begin
 						ELSE
 						
 							PCI_RESPONSE_TIMEOUT_COUNT <= PCI_RESPONSE_TIMEOUT_COUNT + 1;
-							--nPCI_CYCLE_ACTIVE <= '1';
 						
 						END IF;
 					
 					END IF;
 				
 				WHEN DATA0 =>
-				
-					--IF PCI_DATA_TRANSFER_PROCEED = '1' THEN
-					IF nTRDY = '0' THEN
 					
 						IF nIRDY = '0' THEN
 						
@@ -397,27 +412,35 @@ begin
 							
 								CURRENT_PCI_STATE <= IDLE;
 								nPCI_CYCLE_ACTIVE <= '1';
-								--AD_BUS_ACTIVE <= '0';
 							
 							END IF;
 							
 						ELSE
-						
-							--delay until _TA has asserted
-							--CPU_TRANSFER_ACK_WAIT(0) <= '1';???
 							
-							nIRDY <= '0';
+							--nIRDY <= NOT (NOT nTRDY AND ((CPU_TRANSFER_ACK_WAIT(0) AND RnW) OR NOT RnW));
+							
+							--IF nTRDY = '0' THEN
+							
+								IF RnW = '1' THEN
+								
+									nIRDY <= NOT CPU_TRANSFER_ACK_WAIT(0); --DON'T NEED _TRDY HERE, ITS ALREADY CHECKED.
+									
+								ELSE
+								
+									IF nTRDY = '0' THEN
+								
+										nIRDY <= '0'; 
+										PCI_TRANSFER_ACK(0) <= '1'; --NEED _TRDY HERE.
+										
+									END IF;
+									
+								END IF;
+								
+							--END IF;
 						
 						END IF;
-						
-					END IF;
 				
 				WHEN DATA1 =>
-				
-					--nIRDY <= '1';
-					
-					--IF PCI_DATA_TRANSFER_PROCEED = '1' THEN
-					IF nTRDY = '0' THEN
 
 						IF nIRDY = '0' THEN
 					
@@ -426,16 +449,11 @@ begin
 							
 						ELSE
 						
-							 nIRDY <= '0'; 
+							nIRDY <= NOT (CPU_TRANSFER_ACK_WAIT(1) AND NOT nTRDY AND RnW);
 							 
 						END IF;
-						
-					END IF;
 				
 				WHEN DATA2 =>
-				
-					--IF PCI_DATA_TRANSFER_PROCEED = '1' THEN
-					IF nTRDY = '0' THEN
 
 						IF nIRDY = '0' THEN
 					
@@ -444,51 +462,29 @@ begin
 							
 						ELSE
 						
-							 nIRDY <= '0'; 
+							nIRDY <= NOT (CPU_TRANSFER_ACK_WAIT(2) AND NOT nTRDY AND RnW);
 							 
 						END IF;
-						
-					END IF;
 				
 				WHEN DATA3 =>
-				
-					--IF PCI_DATA_TRANSFER_PROCEED = '1' THEN
-					IF nTRDY = '0' THEN
 
 						IF nIRDY = '0' THEN
 					
 							CURRENT_PCI_STATE <= IDLE;
 							nIRDY <= '1';
 							nPCI_CYCLE_ACTIVE <= '1';
-							--AD_BUS_ACTIVE <= '0';
-							--CBE <= (OTHERS => 'Z');
 							
 						ELSE
 						
-							 nIRDY <= '0'; 
-							 
+							nIRDY <= NOT (CPU_TRANSFER_ACK_WAIT(3) AND NOT nTRDY AND RnW);
+							
 						END IF;
-						
-					END IF;
-					
---					IF PCI_DATA_TRANSFER_PROCEED = '1' THEN
---					
---						CURRENT_PCI_STATE <= IDLE;
---						nIRDY <= '0';
---						nPCI_CYCLE_ACTIVE <= '1';
---						--AD_BUS_ACTIVE <= '0';
---						--CBE <= (OTHERS => 'Z');
---						
---					END IF;
 					
 			END CASE;
 		
 		END IF;	
 	
 	END PROCESS;
-
-
-
 
 end Behavioral;
 
