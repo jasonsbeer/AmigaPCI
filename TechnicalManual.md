@@ -475,7 +475,27 @@ A burst mode is defined as a line transfer by the MC68040 initiated with the MOV
 
 #### 2.6.3 Cycle Termination
 
-_STOP
+The PCI cycle can end in several ways and may be terminated by the master or target device.
+
+##### 2.6.3.1 Master Terminated Complete Cycle
+
+This condition is asserted when the master device has completed the intended transaction. This terminiation condition is signaled by negating _FRAME while _IRDY is asserted.
+
+##### 2.6.3.2 Master Terminated Cycle Timeout
+
+timout during DMA situations
+
+##### 2.6.3.3 Target Terminated With Retry Request
+
+This condition is signaled when the target device asserts _STOP and _TRDY before any data has been transfered. When the target device asserts the retry condition, the Local PCI Bridge will assert _TA and _TEA together, which signals the MC68040 to immediately abort and retry the cycle. The Local PCI Bridge will assert retry 2 times, for a total of 3 attempts. If all 3 attempts result in a retry condition, the Local PCI Bridge will assert _TEA. This indicates to the MC68040 that an error condition exists and the cycle cannot continue. This prevents an infinite loop of retries when a target device is not well behaved.
+
+##### 2.6.3.4 Target Terminated With Disconnect
+
+This condition is signaled when the target device asserts _STOP while _TRDY is asserted. The Disconnect condition is different from the Retry condition in that Disconnect is asserted after some data has already been transfered, but the target device is unable to continue transferring the requested data. When this condition exists, the Local PCI Bridge will assert _TEA. This indicates to the MC68040 that an error condition exists and the cycle cannot continue.
+
+##### 2.6.3.5 Target Terminated With Abort
+
+This condition is signaled when the target device asserts _STOP and _DEVSEL. This is considered and abnormal termination in that the target device will never be able to supply to requested data. When this condition exists, the Local PCI Bridge will assert _TEA. This indicates to the MC68040 that an error condition exists and the cycle cannot continue.
 
 #### 2.6.4 Delayed Cycles
 
