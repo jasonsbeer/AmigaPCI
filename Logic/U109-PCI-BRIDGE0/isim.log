@@ -771,3 +771,4 @@ Finished circuit initialization process.
 # run .010us
 # run .010us
 # run .010us
+# exit 0

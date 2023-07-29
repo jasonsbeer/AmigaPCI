@@ -60,6 +60,7 @@ entity MAIN is
 		BEN : IN STD_LOGIC;
 		nDEVSEL : IN STD_LOGIC;
 		nTRDY : IN STD_LOGIC;
+		nSTOP : IN STD_LOGIC;
 		--nUUBE : IN STD_LOGIC;
 		--nUMBE : IN STD_LOGIC;
 		--nLMBE : IN STD_LOGIC;
@@ -71,6 +72,7 @@ entity MAIN is
 		nPCI_CYCLE_ACTIVE : INOUT STD_LOGIC;
 		
 		nTA : OUT STD_LOGIC;
+		nTEA : OUT STD_LOGIC;
 		--CBE : OUT STD_LOGIC_VECTOR (3 DOWNTO 0)
 		CBE_TYPE : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
 		nADDRESS_PHASE : OUT STD_LOGIC
@@ -99,6 +101,7 @@ begin
 			BEN => BEN,
 			nDEVSEL => nDEVSEL,
 			nTRDY => nTRDY,
+			nSTOP => nSTOP,
 			--nUUBE => nUUBE,
 			--nUMBE => nUMBE,
 			--nLMBE => nLMBE,
@@ -108,6 +111,7 @@ begin
 			nIRDY => nIRDY,
 			nPCI_CYCLE_ACTIVE => nPCI_CYCLE_ACTIVE,
 			nTA => nTA,
+			nTEA => nTEA,
 			--CBE => CBE
 			CBE_TYPE => CBE_TYPE,
 			nADDRESS_PHASE => nADDRESS_PHASE
