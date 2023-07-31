@@ -415,9 +415,9 @@ Note: When _BB is asserted and _BG is negated, this allows for bus snooping oper
 
 ### 2.6 MC68040 Driven PCI Data Cycle
 
-CPU access to PCI target devices supports burst (MOVE16) and non-burst (normal) cycles in read and write modes. The PCI and MC68040 busses operate at different clock rates. This raises concerns about metastability and honoring setup and hold times for data transfers. In order to account for these concerns, the PCI data transfer cycles are slowed down via wait states to honor setup and hold times, as well as ensuring clock edges are not missed. Any of these issues can result in errors in data transfers and even a system crash. As a result, the actual cycle time is influenced by the relative edges of the two clocks.
+CPU access to PCI target devices supports burst (MOVE16) and non-burst (normal) cycles in read and write modes. The PCI and MC68040 busses operate at different clock rates. This raises concerns about metastability and honoring setup and hold times for data transfers. In order to account for these concerns, the PCI data transfer cycles are slowed via wait states to honor setup and hold times, as well as ensuring clock edges are not missed. Any of these issues can result in errors in data transfers and even a system crash. As a result, the actual cycle time is influenced by the relative edges of the two clocks.
 
-When a data transfer cycle is initiated by the MC68040, the Local PCI Bridge broadcasts the address and related bus command to the PCI bus. If a target device responds by asserting _DEVSEL within two PCI clock cycles, the Local PCI Bridge completes the transfer. If no device asserts _DEVSEL by the second falling edge of the PCI clock, the Local PCI Bridge returns to an idle state.
+When a data transfer cycle is initiated by the MC68040, the Local PCI Bridge broadcasts the address and related bus command to the PCI bus. If a target device responds by asserting _DEVSEL within two PCI clock cycles, the Local PCI Bridge completes the transfer. If no device asserts _DEVSEL by the second falling edge of the PCI clock, the Local PCI Bridge returns to an idle state. See Master Abort, Section 2.6.3.3.
 
 #### 2.6.1 Normal Mode Cycles
 
@@ -475,27 +475,31 @@ A burst mode is defined as a line transfer by the MC68040 initiated with the MOV
 
 #### 2.6.3 Cycle Termination
 
-The PCI cycle can end in several ways and may be terminated by the master or target device.
+The PCI cycle can end in several ways and may be terminated by the Local PCI Bridge or target device.
 
-##### 2.6.3.1 Master Terminated Complete Cycle
+##### 2.6.3.1 Master Terminated - Completion
 
-This condition is asserted when the master device has completed the intended transaction. This terminiation condition is signaled by negating _FRAME while _IRDY is asserted.
+This condition is asserted when the master device has completed the intended transaction without error. This terminiation condition is signaled by negating _FRAME while _IRDY is asserted.
 
-##### 2.6.3.2 Master Terminated Cycle Timeout
+##### 2.6.3.2 Master Terminated - Timeout
 
 timout during DMA situations
 
-##### 2.6.3.3 Target Terminated With Retry Request
+##### 2.6.3.3 Master Terminated - Abort
 
-This condition is signaled when the target device asserts _STOP and _TRDY before any data has been transfered. When the target device asserts the retry condition, the Local PCI Bridge will assert _TA and _TEA together, which signals the MC68040 to immediately abort and retry the cycle. The Local PCI Bridge will assert retry 2 times, for a total of 3 attempts. If all 3 attempts result in a retry condition, the Local PCI Bridge will assert _TEA. This indicates to the MC68040 that an error condition exists and the cycle cannot continue. This prevents an infinite loop of retries when a target device is not well behaved.
+This condition exists when no target device responds to the address phase of a PCI cycle. The Local PCI Bridge will abort the PCI cycle when no target device responds by asserting _DEVSEL by the second falling edge of the PCI clock after the address phase. This is assumed to be caused by the absence of a target device with a matching base address, rather than a bus error. The Local PCI Bridge will return to an idle state and does not asserts no signals in response to this condition.
 
-##### 2.6.3.4 Target Terminated With Disconnect
+##### 2.6.3.4 Target Terminated - Retry
 
-This condition is signaled when the target device asserts _STOP while _TRDY is asserted. The Disconnect condition is different from the Retry condition in that Disconnect is asserted after some data has already been transfered, but the target device is unable to continue transferring the requested data. When this condition exists, the Local PCI Bridge will assert _TEA. This indicates to the MC68040 that an error condition exists and the cycle cannot continue.
+This condition is signaled when the target device asserts _STOP, while _TRDY is negated, before data has been transfered. When the target device asserts the retry condition, the Local PCI Bridge will assert _TA and _TEA together, which signals the MC68040 to immediately abort and retry the cycle. The Local PCI Bridge will assert retry 2 times, for a total of 3 attempts. If all 3 attempts result in a retry condition, the Local PCI Bridge will assert _TEA while _TA is negated. This indicates to the MC68040 that an error condition exists and the cycle cannot continue. This prevents an infinite loop of retries when a target device is not well behaved. This condition may occur for both burst and normal cycles.
 
-##### 2.6.3.5 Target Terminated With Abort
+##### 2.6.3.5 Target Terminated - Disconnect
 
-This condition is signaled when the target device asserts _STOP and _DEVSEL. This is considered and abnormal termination in that the target device will never be able to supply to requested data. When this condition exists, the Local PCI Bridge will assert _TEA. This indicates to the MC68040 that an error condition exists and the cycle cannot continue.
+This condition is signaled when the target device asserts _STOP while _TRDY is asserted. The Disconnect condition is different from the Retry condition in that Disconnect is asserted after some data has already been transfered, but the target device is unable to continue transferring the requested data. When this condition exists, the Local PCI Bridge will assert _TEA. This indicates to the MC68040 that an error condition exists and the cycle cannot continue. This condition can only exist for burst cycles.
+
+##### 2.6.3.6 Target Terminated - Abort
+
+This condition can exist any time after a target device has asserted _DEVSEL and is signaled when the target device asserts _STOP and negates _DEVSEL simultaneously. This is considered an abnormal termination in that the target device will never be able to supply to requested data. When this condition exists, the Local PCI Bridge will assert _TEA. This indicates to the MC68040 that an error condition exists and the cycle cannot continue. This condition may occur for both burst and normal cycles.
 
 #### 2.6.4 Delayed Cycles
 
@@ -525,7 +529,7 @@ An address parity error is considered a fatal error when it occurs. When a parit
 2) A target device claims the transaction and terminates with a Target-Abort.
 3) No target device claims the transaction and the cycle will time out with a Master-Abort.
 
-Target devices will assert _PERR in all cases of an address parity error. Some devices may assert _SERR, which is typically interpreted as a fatal system error. A "crash" in any other words. In the event of case 1, the wrong target device may be replying to the address. This can cause a myriad of issues, likely causing instability. Case 2 is prefered when a target device respods to the address, but there is an address parity error. 
+Target devices will assert _PERR in all cases of an address parity error. Some devices may assert _SERR, which is typically interpreted as a fatal system error. A "crash" in any other words. In the event of case 1, the wrong target device may be replying to the address. This can cause a plethora of issues, likely causing instability. Case 2 is prefered when a target device respods to the address, but there is an address parity error. 
 
 #### 2.9.2 Data Parity Errors
 
