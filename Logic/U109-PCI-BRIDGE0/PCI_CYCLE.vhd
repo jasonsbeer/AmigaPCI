@@ -55,6 +55,7 @@ entity PCI_CYCLE is
 		nDEVSEL : IN STD_LOGIC;
 		nTRDY : IN STD_LOGIC;
 		nSTOP : IN STD_LOGIC;
+		nGNT : IN STD_LOGIC;
 		--nUUBE : IN STD_LOGIC;
 		--nUMBE : IN STD_LOGIC;
 		--nLMBE : IN STD_LOGIC;
@@ -68,7 +69,7 @@ entity PCI_CYCLE is
 		nTA : OUT STD_LOGIC;
 		nTEA : OUT STD_LOGIC;
 		--CBE : OUT STD_LOGIC_VECTOR (3 DOWNTO 0)
-		CBE_TYPE : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
+		--CBE_TYPE : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
 		nADDRESS_PHASE : OUT STD_LOGIC
 		
 			  
@@ -84,7 +85,7 @@ architecture Behavioral of PCI_CYCLE is
 	SIGNAL AD_OUT : STD_LOGIC_VECTOR (31 DOWNTO 0); --VECTOR TO MOVE AD BUS DATA FROM THE PROCESS TO THE PINS.
 	CONSTANT PCI_RESPONSE_TIMEOUT : INTEGER := 1; --THE TIMEOUT FOR A DEVICE TO ASSERT _DEVSEL.
 	SIGNAL PCI_RESPONSE_TIMEOUT_COUNT : INTEGER RANGE 0 TO PCI_RESPONSE_TIMEOUT; --THE COUNTDOWN FOR THE TIMEOUT OF _DEVSEL.
-	CONSTANT PCI_RETRY_TIMEOUT : INTEGER := 1; --THE NUMBER OF RETRIES AFTER PCI DEVICE SIGNALS RETRY.
+	CONSTANT PCI_RETRY_TIMEOUT : INTEGER := 2; --THE NUMBER OF RETRIES AFTER PCI DEVICE SIGNALS RETRY.
 	SIGNAL PCI_RETRY_TIMEOUT_COUNTER : INTEGER RANGE 0 TO PCI_RETRY_TIMEOUT; --THE COUNTDOWN FOR THE NUMBER OF RETRIES BEFORE ABORTING.
 	SIGNAL CPU_TRANSFER_ACK : STD_LOGIC; --READY TO ASSERT _TA.
 	SIGNAL CPU_TRANSFER_EACK : STD_LOGIC; --READY TO ASSERT _TEA.
@@ -92,6 +93,7 @@ architecture Behavioral of PCI_CYCLE is
 	SIGNAL PCI_TRANSFER_ACK : STD_LOGIC_VECTOR (3 DOWNTO 0); --HOLD OF ASSERTION OF _TA OR _TEA.
 	SIGNAL PCI_RETRY_CYCLE : STD_LOGIC; --ASSERTS WHEN THE TARGET DEVICE ASKS FOR A RETRY.
 	SIGNAL CYCLE_DATA_PHASE : STD_LOGIC; --IDENTIFIES WHEN WE ARE IN A PCI CYCLE DATA PHASE.
+	--SIGNAL DMA_CYCLE_DATA_PHASE : STD_LOGIC; --IDENTIFIES WHEN WE ARE IN A PCI DMA CYCLE DATA PHASE.
 	
 	TYPE PCI_STATE IS (IDLE, ADDRESS, DATA0, DATA1, DATA2, DATA3);
 	SIGNAL CURRENT_PCI_STATE : PCI_STATE;
@@ -145,105 +147,108 @@ begin
 	-- MC68040 DATA TRANSFER ACK --
 	-------------------------------
 	
-	CYCLE_DATA_PHASE <= '1' WHEN CURRENT_PCI_STATE = DATA0 OR CURRENT_PCI_STATE = DATA1 OR CURRENT_PCI_STATE = DATA2 OR CURRENT_PCI_STATE = DATA3 ELSE '0';
+	CYCLE_DATA_PHASE <= '1' WHEN nGNT = '1' AND (CURRENT_PCI_STATE = DATA0 OR CURRENT_PCI_STATE = DATA1 OR CURRENT_PCI_STATE = DATA2 OR CURRENT_PCI_STATE = DATA3) ELSE '0';
 	
 	PROCESS (BCLK, nRESET) BEGIN
 	
 		IF nRESET = '0' THEN
 		
 			CPU_TRANSFER_ACK <= '0';
+			CPU_TRANSFER_EACK <= '0';
 			CPU_TRANSFER_ACK_WAIT <= (OTHERS => '0');
 		
 		ELSIF FALLING_EDGE(BCLK) THEN
 		
-			CASE CURRENT_PCI_STATE IS
+			IF PCI_RETRY_CYCLE = '1' THEN
 			
-				WHEN DATA0 =>
-				
-					IF (RnW = '1' AND CPU_TRANSFER_ACK_WAIT(0) = '0' AND nTRDY = '0') OR (RnW = '0' AND PCI_TRANSFER_ACK(0) = '1') THEN
+				IF CPU_TRANSFER_ACK_WAIT(4) = '0' THEN
 					
---						IF CPU_TRANSFER_ACK_WAIT(0) = '0' AND nTRDY = '0' THEN
---				
---							CPU_TRANSFER_ACK <= '1';
---							CPU_TRANSFER_ACK_WAIT(0) <= '1';
---							
---						ELSE
---						
---							CPU_TRANSFER_ACK <= '0';
---
---						END IF;			
-				
+					--RETRY CONDITION EXISTS. ASSERT _TEA.
+					CPU_TRANSFER_EACK <= '1';
+					CPU_TRANSFER_ACK_WAIT(4) <= '1';
+					
+					IF PCI_RETRY_TIMEOUT_COUNTER = 0 THEN
+					
+						CPU_TRANSFER_ACK <= '0'; --RETRIES HAVE COUNTED OUT (THE TIMER HAS RESET), ONLY ASSERT _TEA, WHICH WILL KILL THE CYCLE.
+						
+					ELSE
+					
 						CPU_TRANSFER_ACK <= '1';
-						CPU_TRANSFER_ACK_WAIT(0) <= '1'; --ONCE CPU_TRANSFER_ACK IS SET, WE CAN PROCEED WITH ASSERTING _IRDY.
-						
-					ELSIF PCI_RETRY_CYCLE = '1' AND CPU_TRANSFER_ACK_WAIT(4) = '0' THEN
+						CPU_TRANSFER_ACK_WAIT(0) <= '1';
 					
-						--RETRY CONDITION. ASSERT _TEA.
-						CPU_TRANSFER_EACK <= '1';
-						CPU_TRANSFER_ACK_WAIT(4) <= '1';
-						
-						IF PCI_RETRY_TIMEOUT = PCI_RETRY_TIMEOUT_COUNTER THEN
-						
-							CPU_TRANSFER_ACK <= '0'; --WHEN RETRIES HAVE COUNTED OUT, DO NOT ASSERT _TA, WHICH WILL KILL THE CYCLE.
+					END IF;	
+					
+				ELSE
+				
+					CPU_TRANSFER_EACK <= '0';
+					CPU_TRANSFER_ACK <= '0';
+					
+				END IF;
+					
+			ELSE
+		
+				CASE CURRENT_PCI_STATE IS	
+				
+					WHEN DATA0 =>				
+							
+						IF (RnW = '1' AND CPU_TRANSFER_ACK_WAIT(0) = '0' AND nTRDY = '0') OR (RnW = '0' AND PCI_TRANSFER_ACK(0) = '1') THEN	
+					
+							CPU_TRANSFER_ACK <= '1';
+							CPU_TRANSFER_ACK_WAIT(0) <= '1'; --ONCE CPU_TRANSFER_ACK IS SET, WE CAN PROCEED WITH ASSERTING _IRDY.			
 							
 						ELSE
 						
+							CPU_TRANSFER_ACK <= '0';
+							CPU_TRANSFER_EACK <= '0';
+
+						END IF;
+					
+					WHEN DATA1 =>
+						
+						IF CPU_TRANSFER_ACK_WAIT(1) = '0' AND nTRDY = '0' THEN
+				
 							CPU_TRANSFER_ACK <= '1';
-							CPU_TRANSFER_ACK_WAIT(0) <= '1';
+							CPU_TRANSFER_ACK_WAIT(1) <= '1';
+							
+						ELSE
 						
-						END IF;						
-						
-					ELSE
-					
-						CPU_TRANSFER_ACK <= '0';
-						CPU_TRANSFER_EACK <= '0';
+							CPU_TRANSFER_ACK <= '0';
 
-					END IF;
-				
-				WHEN DATA1 =>
+						END IF;
 					
-					IF CPU_TRANSFER_ACK_WAIT(1) = '0' AND nTRDY = '0' THEN
-			
-						CPU_TRANSFER_ACK <= '1';
-						CPU_TRANSFER_ACK_WAIT(1) <= '1';
+					WHEN DATA2 =>
 						
-					ELSE
-					
-						CPU_TRANSFER_ACK <= '0';
-
-					END IF;
+						IF CPU_TRANSFER_ACK_WAIT(2) = '0' AND nTRDY = '0' THEN
 				
-				WHEN DATA2 =>
-					
-					IF CPU_TRANSFER_ACK_WAIT(2) = '0' AND nTRDY = '0' THEN
-			
-						CPU_TRANSFER_ACK <= '1';
-						CPU_TRANSFER_ACK_WAIT(2) <= '1';
+							CPU_TRANSFER_ACK <= '1';
+							CPU_TRANSFER_ACK_WAIT(2) <= '1';
+							
+						ELSE
 						
-					ELSE
-					
-						CPU_TRANSFER_ACK <= '0';
+							CPU_TRANSFER_ACK <= '0';
 
-					END IF;
-				
-				WHEN DATA3 =>
+						END IF;
 					
-					IF CPU_TRANSFER_ACK_WAIT(3) = '0' AND nTRDY = '0' THEN
-			
-						CPU_TRANSFER_ACK <= '1';
-						CPU_TRANSFER_ACK_WAIT(3) <= '1';
+					WHEN DATA3 =>
 						
-					ELSE
-					
-						CPU_TRANSFER_ACK <= '0';
-
-					END IF;
-					
-				WHEN OTHERS =>
+						IF CPU_TRANSFER_ACK_WAIT(3) = '0' AND nTRDY = '0' THEN
 				
-					CPU_TRANSFER_ACK_WAIT <= (OTHERS => '0');
+							CPU_TRANSFER_ACK <= '1';
+							CPU_TRANSFER_ACK_WAIT(3) <= '1';
+							
+						ELSE
+						
+							CPU_TRANSFER_ACK <= '0';
+
+						END IF;
+						
+					WHEN OTHERS =>
 					
+						CPU_TRANSFER_ACK_WAIT <= (OTHERS => '0');
+						
 				END CASE;
+			
+			END IF;
 		
 		END IF;
 	
@@ -251,16 +256,16 @@ begin
 	
 	
 	nTA <=
-				'0' WHEN CPU_TRANSFER_ACK = '1' AND CYCLE_DATA_PHASE = '1'
+				'0' WHEN CPU_TRANSFER_ACK = '1' AND (CYCLE_DATA_PHASE = '1' OR PCI_RETRY_CYCLE = '1')
 		ELSE
-				'1' WHEN CYCLE_DATA_PHASE = '1'
+				'1' WHEN CYCLE_DATA_PHASE = '1' OR PCI_RETRY_CYCLE = '1'
 		ELSE
 				'Z';
 				
 	nTEA <=
-				'0' WHEN CPU_TRANSFER_EACK = '1' AND CYCLE_DATA_PHASE = '1'
+				'0' WHEN CPU_TRANSFER_EACK = '1' AND (CYCLE_DATA_PHASE = '1' OR PCI_RETRY_CYCLE = '1')
 		ELSE
-				'1' WHEN CYCLE_DATA_PHASE = '1'
+				'1' WHEN CYCLE_DATA_PHASE = '1' OR PCI_RETRY_CYCLE = '1'
 		ELSE
 				'Z';
 	
@@ -291,7 +296,7 @@ begin
 	--BIT AND BYTE SWAPPED!
 	
 	--DURING CPU DRIVEN CYCLES, WE DRIVE THE AD BUS FROM THE A BUS.
-	--DURING CPU WRITE OR DMA READ CYCLES, WE DRIVE THE AD BUS WITH THE D BUS DURING DATA PHASES.
+	--DURING CPU WRITE OR DMA READ CYCLES, WE DRIVE THE AD BUS FROM THE D BUS DURING DATA PHASES.
 		
 	AD <=
 				AD_OUT WHEN CURRENT_PCI_STATE = ADDRESS AND nPCI_CYCLE_ACTIVE = '0'
@@ -300,10 +305,9 @@ begin
 				D(15) & D(14) & D(13) & D(12) & D(11) & D(10) & D(9)  & D(8) &
 				D(23) & D(22) & D(21) & D(20) & D(19) & D(18) & D(17) & D(16) &	
 				D(31) & D(30) & D(29) & D(28) & D(27) & D(26) & D(25) & D(24) 
-				WHEN CYCLE_DATA_PHASE = '1' AND RnW = '0'
+				WHEN (CYCLE_DATA_PHASE = '1' AND nGNT = '1' AND RnW = '1') --OR (DMA_CYCLE_DATA_PHASE = '1' AND nGNT = '0' AND RnW = '0')
 		ELSE
 				(OTHERS => 'Z');
-		--ELSE WHEN DMA READ		
 			
 	------------------
 	-- D BUS DRIVER --
@@ -311,17 +315,24 @@ begin
 	
 	--BIT AND BYTE SWAPPED!		
 	
-	--DURING CPU READ CYCLES AND DMA WRITE CYCLES, WE DRIVE THE D BUS WITH THE AD BUS DURING DATA PHASES.
+	--DURING CPU READ CYCLES AND DMA WRITE CYCLES, WE DRIVE THE D BUS FROM THE AD BUS DURING DATA PHASES.
 		
 	D <= 				
 				AD(24) & AD(25) & AD(26) & AD(27) & AD(28) & AD(29) & AD(30) & AD(31) & 
 				AD(16) & AD(17) & AD(18) & AD(19) & AD(20) & AD(21) & AD(22) & AD(23) & 
 				AD(8)  & AD(9)  & AD(10) & AD(11) & AD(12) & AD(13) & AD(14) & AD(15) & 
 				AD(0)  & AD(1)  & AD(2)  & AD(3)  & AD(4)  & AD(5)  & AD(6)  & AD(7)
-				WHEN CYCLE_DATA_PHASE = '1' AND RnW = '1'
+				WHEN (CYCLE_DATA_PHASE = '1' AND nGNT = '1' AND RnW = '1') --OR (DMA_CYCLE_DATA_PHASE = '1' AND nGNT = '0' AND RnW = '0')
 		ELSE
 				(OTHERS => 'Z');
-		--ELSE WHEN DMA WRITE
+				
+	------------------
+	-- A BUS DRIVER --
+	------------------
+	
+	--THE CPU ADDRESS BUS IS ONLY DRIVEN BY THE BRIDGE DURING THE ADDRESS PHASE OF DMA CYCLES.
+	
+	--A <= AD(31 DOWNTO 0) WHEN nGNT = '0' AND DMA_CYCLE_DATA_PHASE = '0' ELSE (OTHERS => 'Z');
 	
 	------------------------------
 	-- CPU DRIVEN PCICLK CYCLES --
@@ -344,10 +355,11 @@ begin
 			PCI_RESPONSE_TIMEOUT_COUNT <= 0;
 			nIRDY <= '1';
 			nADDRESS_PHASE <= '1';
-			CBE_TYPE <= "00";
+			--CBE_TYPE <= "00";
 			nPCI_CYCLE_ACTIVE <= '1';
 			PCI_TRANSFER_ACK <= (OTHERS => '0');
 			PCI_RETRY_TIMEOUT_COUNTER <= 0;
+			PCI_RETRY_CYCLE <= '0';
 		
 		ELSIF FALLING_EDGE (PCICLK) THEN
 		
@@ -356,12 +368,12 @@ begin
 				WHEN IDLE =>
 				
 					nIRDY <= '1';
+					PCI_RETRY_CYCLE <= '0';
+					PCI_RESPONSE_TIMEOUT_COUNT <= 0;
 				
 					IF TRANSFER_START = '1' THEN
 					
-						CURRENT_PCI_STATE <= ADDRESS;	
-						PCI_RESPONSE_TIMEOUT_COUNT <= 0;
-						PCI_RETRY_CYCLE <= '0';
+						CURRENT_PCI_STATE <= ADDRESS;							
 						TRANSFER_START_ACK <= '1';
 						nPCI_CYCLE_ACTIVE <= '0';
 						nADDRESS_PHASE <= '0';
@@ -372,25 +384,25 @@ begin
 							
 								AD_OUT <= A(31 DOWNTO 0);
 								--CBE <= "001" & NOT RnW;
-								CBE_TYPE <= "11";
+								--CBE_TYPE <= "11";
 
 							WHEN MEMORY_SPACE =>
 							
 								AD_OUT <= A(31 DOWNTO 2) & "1" & NOT BURST_CYCLE;
 								--CBE <= "011" & NOT RnW;
-								CBE_TYPE <= "00";
+								--CBE_TYPE <= "00";
 							
 							WHEN CONFIG0_SPACE =>
 							
 								AD_OUT <= A(31 DOWNTO 2) & "00";
 								--CBE <= "101" & NOT RnW;
-								CBE_TYPE <= "01";
+								--CBE_TYPE <= "01";
 							
 							WHEN CONFIG1_SPACE =>
 							
 								AD_OUT <= A(31 DOWNTO 2) & "01";
 								--CBE <= "101" & NOT RnW;
-								CBE_TYPE <= "10";
+								--CBE_TYPE <= "10";
 							
 						END CASE;						
 					
@@ -416,6 +428,7 @@ begin
 					IF nDEVSEL = '0' THEN
 							
 						CURRENT_PCI_STATE <= DATA0;
+						nPCI_CYCLE_ACTIVE <= NOT BURST_CYCLE;
 					
 					ELSE
 					
@@ -432,15 +445,18 @@ begin
 					
 					END IF;
 				
-				WHEN DATA0 =>
+				WHEN DATA0 =>				
 				
-						--TRANSFER_START_ACK <= '0';
+					IF nIRDY = '0' THEN
 					
-						IF nIRDY = '0' THEN
+						nIRDY <= '1';
 						
-							nIRDY <= '1';
-							PCI_RETRY_TIMEOUT_COUNTER <= 0;
-					
+						IF PCI_RETRY_CYCLE = '1' THEN
+						
+							CURRENT_PCI_STATE <= IDLE;
+						
+						ELSE
+				
 							IF BURST_CYCLE = '1' THEN
 							
 								CURRENT_PCI_STATE <= DATA1;								
@@ -452,43 +468,46 @@ begin
 							
 							END IF;
 							
+						END IF;
+						
+					ELSE
+					
+						IF nSTOP = '0' THEN
+						
+							nIRDY <= '0';
+							PCI_RETRY_CYCLE <= '1';	
+							nPCI_CYCLE_ACTIVE <= '1';
+							
+							IF PCI_RETRY_TIMEOUT_COUNTER = PCI_RETRY_TIMEOUT THEN	
+								
+								PCI_RETRY_TIMEOUT_COUNTER  <= 0;
+								
+							ELSE
+							
+								PCI_RETRY_TIMEOUT_COUNTER <= PCI_RETRY_TIMEOUT_COUNTER + 1;	
+							
+							END IF;
+						
 						ELSE
 						
-							IF nSTOP = '0' THEN
-						
-								--THE DEVICE HAS ASSERTED _STOP BEFORE DATA HAS BEEN TRANSFERED, INDICATING A RETRY SITUATION.
-								--GO BACK TO IDLE AND START AGAIN. IF THE NUMBER OF RETRIES IS EXHAUSTED, ASSERT _TEA ONLY.
-								
-								CURRENT_PCI_STATE <= IDLE;	
-								PCI_RETRY_TIMEOUT_COUNTER <= PCI_RETRY_TIMEOUT_COUNTER + 1;
-								PCI_RETRY_CYCLE <= '1';						
-						
-							ELSE
-								
-								--nIRDY <= NOT (NOT nTRDY AND ((CPU_TRANSFER_ACK_WAIT(0) AND RnW) OR NOT RnW));
-								
-								--IF nTRDY = '0' THEN
-								
-									IF RnW = '1' THEN
-									
-										nIRDY <= NOT CPU_TRANSFER_ACK_WAIT(0); --DON'T NEED _TRDY HERE, ITS ALREADY CHECKED.
-										
-									ELSE
-									
-										IF nTRDY = '0' THEN
-									
-											nIRDY <= '0'; 
-											PCI_TRANSFER_ACK(0) <= '1'; --NEED _TRDY HERE. ONCE PCI_ACK IS SET, WE CAN PROCEED WITH ASSERTING _TA.
-											
-										END IF;
-										
-									END IF;
-									
-								--END IF;
+							IF RnW = '1' THEN
 							
+								nIRDY <= NOT CPU_TRANSFER_ACK_WAIT(0); --DON'T NEED _TRDY HERE, ITS ALREADY CHECKED.
+								
+							ELSE
+							
+								IF nTRDY = '0' THEN
+							
+									nIRDY <= '0'; 
+									PCI_TRANSFER_ACK(0) <= '1'; --NEED _TRDY HERE. ONCE PCI_ACK IS SET, WE CAN PROCEED WITH ASSERTING _TA.
+									
+								END IF;
+								
 							END IF;
 							
 						END IF;
+							
+					END IF;
 				
 				WHEN DATA1 =>
 

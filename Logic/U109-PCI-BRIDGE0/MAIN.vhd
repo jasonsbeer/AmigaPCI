@@ -29,7 +29,7 @@
 --
 -- Hardware Revision: 1.x
 -- Revision History:
---    v1.0.0 27-JUL-23 Initial engineering release. - JN
+--    v1.0.0 xx-xxx-23 Initial engineering release. - JN
 ----------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
@@ -61,6 +61,7 @@ entity MAIN is
 		nDEVSEL : IN STD_LOGIC;
 		nTRDY : IN STD_LOGIC;
 		nSTOP : IN STD_LOGIC;
+		nGNT : IN STD_LOGIC;
 		--nUUBE : IN STD_LOGIC;
 		--nUMBE : IN STD_LOGIC;
 		--nLMBE : IN STD_LOGIC;
@@ -74,7 +75,7 @@ entity MAIN is
 		nTA : OUT STD_LOGIC;
 		nTEA : OUT STD_LOGIC;
 		--CBE : OUT STD_LOGIC_VECTOR (3 DOWNTO 0)
-		CBE_TYPE : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
+		--CBE_TYPE : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
 		nADDRESS_PHASE : OUT STD_LOGIC
 			  
 	);
@@ -102,6 +103,7 @@ begin
 			nDEVSEL => nDEVSEL,
 			nTRDY => nTRDY,
 			nSTOP => nSTOP,
+			nGNT => nGNT,
 			--nUUBE => nUUBE,
 			--nUMBE => nUMBE,
 			--nLMBE => nLMBE,
@@ -113,7 +115,7 @@ begin
 			nTA => nTA,
 			nTEA => nTEA,
 			--CBE => CBE
-			CBE_TYPE => CBE_TYPE,
+			--CBE_TYPE => CBE_TYPE,
 			nADDRESS_PHASE => nADDRESS_PHASE
 		);
 
