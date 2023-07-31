@@ -487,7 +487,7 @@ timout during DMA situations
 
 ##### 2.6.3.3 Master Terminated - Abort
 
-This condition exists when no target device responds to the address phase of a PCI cycle. The Local PCI Bridge will abort the PCI cycle when no target device responds by asserting _DEVSEL by the second falling edge of the PCI clock after the address phase. This is assumed to be caused by the absence of a target device with a matching base address, rather than a bus error. The Local PCI Bridge will return to an idle state and does not asserts no signals in response to this condition.
+This condition exists when no target device responds to the address phase of a PCI cycle. The Local PCI Bridge will abort the PCI cycle when no target device responds by asserting _DEVSEL by the second falling edge of the PCI clock after the address phase. This is assumed to be the absence of a target device with a matching base address, rather than a bus error. The Local PCI Bridge will return to an idle state. No signals are asserted in response to this condition.
 
 ##### 2.6.3.4 Target Terminated - Retry
 
