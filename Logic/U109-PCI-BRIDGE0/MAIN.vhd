@@ -62,21 +62,16 @@ entity MAIN is
 		nTRDY : IN STD_LOGIC;
 		nSTOP : IN STD_LOGIC;
 		nGNT : IN STD_LOGIC;
-		--nUUBE : IN STD_LOGIC;
-		--nUMBE : IN STD_LOGIC;
-		--nLMBE : IN STD_LOGIC;
-		--nLLBE : IN STD_LOGIC;
 		
       D : INOUT  STD_LOGIC_VECTOR (31 DOWNTO 0);      
 		AD : INOUT  STD_LOGIC_VECTOR (31 DOWNTO 0);		
 		nIRDY : INOUT STD_LOGIC;
 		nPCI_CYCLE_ACTIVE : INOUT STD_LOGIC;
+		nADDRESS_PHASE : INOUT STD_LOGIC;
+		PAR : INOUT  STD_LOGIC;
 		
 		nTA : OUT STD_LOGIC;
-		nTEA : OUT STD_LOGIC;
-		--CBE : OUT STD_LOGIC_VECTOR (3 DOWNTO 0)
-		--CBE_TYPE : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
-		nADDRESS_PHASE : OUT STD_LOGIC
+		nTEA : OUT STD_LOGIC
 			  
 	);
 	
@@ -84,11 +79,21 @@ end MAIN;
 
 architecture Behavioral of MAIN is
 
+	SIGNAL CPU_TRANSFER_ACKm : STD_LOGIC;
+	SIGNAL CPU_TRANSFER_EACKm : STD_LOGIC;
+	SIGNAL PCI_TRANSFER_ACK_READYm  : STD_LOGIC;
+	SIGNAL CYCLE_DATA_PHASEm : STD_LOGIC;
+	SIGNAL AD_OUTm : STD_LOGIC_VECTOR (1 DOWNTO 0);
+
 begin
 
+	-------------------------------
+	-- MC68040 DRIVEN PCI CYCLES --
+	-------------------------------
 
 	PCI_CYCLE: ENTITY work.PCI_CYCLE PORT MAP(
-			A => A,
+			A_HIGH => A(22 DOWNTO 20),
+			A_LOW => A(1 DOWNTO 0),
 			BCLK => BCLK,
 			PCICLK => PCICLK,
 			nRESET => nRESET,
@@ -103,22 +108,83 @@ begin
 			nDEVSEL => nDEVSEL,
 			nTRDY => nTRDY,
 			nSTOP => nSTOP,
-			nGNT => nGNT,
-			--nUUBE => nUUBE,
-			--nUMBE => nUMBE,
-			--nLMBE => nLMBE,
-			--nLLBE => nLLBE,
-			D => D,
-			AD => AD,
 			nIRDY => nIRDY,
 			nPCI_CYCLE_ACTIVE => nPCI_CYCLE_ACTIVE,
-			nTA => nTA,
-			nTEA => nTEA,
-			--CBE => CBE
-			--CBE_TYPE => CBE_TYPE,
+			CYCLE_DATA_PHASE => CYCLE_DATA_PHASEm,
+			CPU_TRANSFER_ACK => CPU_TRANSFER_ACKm,
+			CPU_TRANSFER_EACK => CPU_TRANSFER_EACKm,
+			PCI_TRANSFER_ACK_READY => PCI_TRANSFER_ACK_READYm,			
+			AD_OUT => AD_OUTm,
 			nADDRESS_PHASE => nADDRESS_PHASE
 		);
+		
+	------------------------
+	-- PARITY CALCULATION --
+	------------------------
+	
+	PARITY: ENTITY work.PARITY PORT MAP(
+		AD => AD,
+		PCICLK => PCICLK,
+		nRESET => nRESET,
+		PAR => PAR 
+	);
+		
+	--------------------------
+	-- MC68040 TRANSFER ACK --
+	--------------------------
 
+	nTA <=
+				'0' WHEN CPU_TRANSFER_ACKm = '1' AND PCI_TRANSFER_ACK_READYm = '1'
+		ELSE
+				'1' WHEN CPU_TRANSFER_ACKm = '0' AND PCI_TRANSFER_ACK_READYm = '1'
+		ELSE
+				'Z';
+				
+	nTEA <=
+				'0' WHEN CPU_TRANSFER_EACKm = '1' AND PCI_TRANSFER_ACK_READYm = '1'
+		ELSE
+				'1' WHEN CPU_TRANSFER_EACKm = '0' AND PCI_TRANSFER_ACK_READYm = '1'
+		ELSE
+				'Z';
+				
+				
+	-------------------
+	-- AD BUS DRIVER --
+	-------------------
+	
+	--BIT AND BYTE SWAPPED!
+	
+	--DURING THE CPU DRIVEN ADDRESS PHASE, WE DRIVE THE AD BUS FROM THE A BUS.
+	--DURING CPU WRITE OR DMA READ DATA PHASES, WE DRIVE THE AD BUS FROM THE D BUS.
+		
+	AD <=
+				A(31 DOWNTO 2) & AD_OUTm WHEN nADDRESS_PHASE = '0' AND nPCI_CYCLE_ACTIVE = '0'
+		ELSE		
+				D(7)  & D(6)  & D(5)  & D(4)  & D(3)  & D(2)  & D(1)  & D(0) & 
+				D(15) & D(14) & D(13) & D(12) & D(11) & D(10) & D(9)  & D(8) &
+				D(23) & D(22) & D(21) & D(20) & D(19) & D(18) & D(17) & D(16) &	
+				D(31) & D(30) & D(29) & D(28) & D(27) & D(26) & D(25) & D(24) 
+				WHEN (CYCLE_DATA_PHASEm = '1' AND nGNT = '1' AND RnW = '0') --OR (DMA_CYCLE_DATA_PHASE = '1' AND nGNT = '0' AND RnW = '1')
+		ELSE
+				(OTHERS => 'Z');
+				
+				
+	------------------
+	-- D BUS DRIVER --
+	------------------
+	
+	--BIT AND BYTE SWAPPED!		
+	
+	--DURING CPU READ CYCLES AND DMA WRITE CYCLES, WE DRIVE THE D BUS FROM THE AD BUS DURING DATA PHASES.
+		
+	D <= 				
+				AD(24) & AD(25) & AD(26) & AD(27) & AD(28) & AD(29) & AD(30) & AD(31) & 
+				AD(16) & AD(17) & AD(18) & AD(19) & AD(20) & AD(21) & AD(22) & AD(23) & 
+				AD(8)  & AD(9)  & AD(10) & AD(11) & AD(12) & AD(13) & AD(14) & AD(15) & 
+				AD(0)  & AD(1)  & AD(2)  & AD(3)  & AD(4)  & AD(5)  & AD(6)  & AD(7)
+				WHEN (CYCLE_DATA_PHASEm = '1' AND nGNT = '1' AND RnW = '1') --OR (DMA_CYCLE_DATA_PHASE = '1' AND nGNT = '0' AND RnW = '0')
+		ELSE
+				(OTHERS => 'Z');
 
 end Behavioral;
 
