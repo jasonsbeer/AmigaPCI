@@ -228,6 +228,8 @@ begin
 					WHEN OTHERS =>
 					
 						CPU_TRANSFER_ACK_WAIT <= (OTHERS => '0');
+						CPU_TRANSFER_EACK <= '0';
+						CPU_TRANSFER_ACK <= '0';
 						
 				END CASE;
 			
@@ -236,43 +238,6 @@ begin
 		END IF;
 	
 	END PROCESS;
-	
-	-------------------
-	-- AD BUS DRIVER --
-	-------------------
-	
-	--BIT AND BYTE SWAPPED!
-	
-	--DURING THE CPU DRIVEN ADDRESS PHASE, WE DRIVE THE AD BUS FROM THE A BUS.
-	--DURING CPU WRITE OR DMA READ DATA PHASES, WE DRIVE THE AD BUS FROM THE D BUS.
---		
---	AD <=
---				A(31 DOWNTO 2) & AD_OUT WHEN CURRENT_PCI_STATE = ADDRESS AND nPCI_CYCLE_ACTIVE = '0'
---		ELSE		
---				D(7)  & D(6)  & D(5)  & D(4)  & D(3)  & D(2)  & D(1)  & D(0) & 
---				D(15) & D(14) & D(13) & D(12) & D(11) & D(10) & D(9)  & D(8) &
---				D(23) & D(22) & D(21) & D(20) & D(19) & D(18) & D(17) & D(16) &	
---				D(31) & D(30) & D(29) & D(28) & D(27) & D(26) & D(25) & D(24) 
---				WHEN (CYCLE_DATA_PHASE = '1' AND nGNT = '1' AND RnW = '0') --OR (DMA_CYCLE_DATA_PHASE = '1' AND nGNT = '0' AND RnW = '1')
---		ELSE
---				(OTHERS => 'Z');
-			
-	------------------
-	-- D BUS DRIVER --
-	------------------
-	
-	--BIT AND BYTE SWAPPED!		
-	
-	--DURING CPU READ CYCLES AND DMA WRITE CYCLES, WE DRIVE THE D BUS FROM THE AD BUS DURING DATA PHASES.
-		
---	D <= 				
---				AD(24) & AD(25) & AD(26) & AD(27) & AD(28) & AD(29) & AD(30) & AD(31) & 
---				AD(16) & AD(17) & AD(18) & AD(19) & AD(20) & AD(21) & AD(22) & AD(23) & 
---				AD(8)  & AD(9)  & AD(10) & AD(11) & AD(12) & AD(13) & AD(14) & AD(15) & 
---				AD(0)  & AD(1)  & AD(2)  & AD(3)  & AD(4)  & AD(5)  & AD(6)  & AD(7)
---				WHEN (CYCLE_DATA_PHASE = '1' AND nGNT = '1' AND RnW = '1') --OR (DMA_CYCLE_DATA_PHASE = '1' AND nGNT = '0' AND RnW = '0')
---		ELSE
---				(OTHERS => 'Z');
 				
 	------------------
 	-- A BUS DRIVER --
@@ -311,23 +276,22 @@ begin
 		
 			IF nSTOP = '0' THEN
 			
-				IF nIRDY = '0' THEN
+				--A RETRY IS IDENTIFIED AS _STOP AND _DEVSEL ASSERTED WITH _TRDY NEGATED DURING DATA0 PHASE.
+				--A TARGET DISCONECT IS IDENTIFIED BY ASSERTION OF _STOP AND _DEVSEL WITH IN DATA PHASES 1-3.
+				--A TARGET ABORT IS IDENTIFIED BY THE ASSERTION OF _STOP WHILE _DEVSEL IS NEGATED.
 				
-					CURRENT_PCI_STATE <= IDLE;
-					nIRDY <= '1'; 
+				--IF _TRDY, _DEVSEL, AND _STOP ARE ALL ASSERTED DURING A "NORMAL" TRANSFER (SINGLE DATA PHASE (DATA0)), THE
+				--TRANSFER SHOULD COMPLETE. THIS IS A "LEGAL" CYCLE TERMINATION (pp. 57 PCI SPECS), BECAUSE IT HAPPENS AFTER THE REQUESTED
+				--DATA WAS TRANSFERED!!!
 				
+				IF nDEVSEL = '0' AND ((RnW = '0' AND CURRENT_PCI_STATE = ADDRESS) OR (RnW = '1' AND CURRENT_PCI_STATE = DATA0)) THEN --RETRY CONDITION. WE NEVER GO TO THE DATA0 STATE IF _TRDY IS NOT ASSERTED.
+					PCI_RETRY_CYCLE <= '1';
 				ELSE
-			
-					IF CURRENT_PCI_STATE = ADDRESS OR CURRENT_PCI_STATE = DATA0 THEN
-						PCI_RETRY_CYCLE <= '1';
-					ELSE
-						PCI_DISCONNECT_ABORT_CYCLE <= '1';	
-					END IF;
-					
-					nPCI_CYCLE_ACTIVE <= '1';
-					nIRDY <= '0'; 
-				
+					PCI_DISCONNECT_ABORT_CYCLE <= '1'; --DISCONNECT OR ABORT CONDITION.
 				END IF;
+			
+				CURRENT_PCI_STATE <= IDLE;
+				nIRDY <= '0';
 			
 			ELSE
 		
@@ -369,7 +333,12 @@ begin
 									AD_OUT <= "01"; --A(31 DOWNTO 2) & "01";
 									--CBE <= "101" & NOT RnW;
 								
-							END CASE;						
+							END CASE;	
+
+						ELSE
+						
+							nPCI_CYCLE_ACTIVE <= '1';
+							TRANSFER_START_ACK <= '0';
 						
 						END IF;
 					

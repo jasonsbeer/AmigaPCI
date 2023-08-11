@@ -1,1 +1,3 @@
 vhdtdtfi -prj U109-PCI-BRIDGE0 -o "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U109-PCI-BRIDGE0/PARITY.vhi" -module PARITY -template /mnt/work/ISE/14.7/ISE_DS/ISE//data/vhdlinst.tft -deleteonerror -lib work PARITY.vhd 
+vhdtdtfi -lib work PARITY.vhd -prj U109-PCI-BRIDGE0 -o PARITY.spl -module PARITY -template /mnt/work/ISE/14.7/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+spl2sym -intstyle ise -family xc9500xl PARITY.spl {/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U109-PCI-BRIDGE0/PARITY.sym} 

@@ -68,7 +68,7 @@ entity MAIN is
 		nIRDY : INOUT STD_LOGIC;
 		nPCI_CYCLE_ACTIVE : INOUT STD_LOGIC;
 		nADDRESS_PHASE : INOUT STD_LOGIC;
-		PAR : INOUT  STD_LOGIC;
+		AD_PARITY : INOUT  STD_LOGIC;
 		
 		nTA : OUT STD_LOGIC;
 		nTEA : OUT STD_LOGIC
@@ -126,7 +126,7 @@ begin
 		AD => AD,
 		PCICLK => PCICLK,
 		nRESET => nRESET,
-		PAR => PAR 
+		AD_PARITY => AD_PARITY 
 	);
 		
 	--------------------------
