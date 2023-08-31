@@ -165,31 +165,29 @@ begin
 		
 		ELSIF FALLING_EDGE(BCLK) THEN
 		
-			--IF PCI_RETRY_CYCLE = '1' OR PCI_DISCONNECT_ABORT_CYCLE = '1' THEN
-			IF RETRY_STATE = '1' OR DISCONNECT_STATE = '1' OR ABORT_STATE = '1' THEN 
+			IF CURRENT_PCI_STATE = DATA THEN
 			
-				IF CPU_TRANSFER_ACK_WAIT(0) = '0' THEN
+				IF RETRY_STATE = '1' OR DISCONNECT_STATE = '1' OR ABORT_STATE = '1' THEN 
+				
+					IF CPU_TRANSFER_ACK_WAIT(0) = '0' THEN
+						
+						--ASSERT _TEA FOR ALL CONDITIONS.
+						CPU_TRANSFER_EACK <= '1';
+						CPU_TRANSFER_ACK_WAIT(0) <= '1';
+						
+						--ASSERT _TA FOR RETRY CONDITION ONLY.
+						CPU_TRANSFER_ACK <= RETRY_STATE;
+						
+						
+					ELSE
 					
-					--ASSERT _TEA FOR ALL CONDITIONS.
-					CPU_TRANSFER_EACK <= '1';
-					CPU_TRANSFER_ACK_WAIT(0) <= '1';
-					
-					--ASSERT _TA FOR RETRY CONDITION ONLY.
-					--CPU_TRANSFER_ACK <= NOT PCI_DISCONNECT_ABORT_CYCLE;
-					CPU_TRANSFER_ACK <= RETRY_STATE;
-					
-					
+						CPU_TRANSFER_EACK <= '0';
+						CPU_TRANSFER_ACK <= '0';
+						
+					END IF;
+						
 				ELSE
-				
-					CPU_TRANSFER_EACK <= '0';
-					CPU_TRANSFER_ACK <= '0';
 					
-				END IF;
-					
-			ELSE
-			
-				IF CURRENT_PCI_STATE = DATA THEN
-				
 					IF CPU_TRANSFER_ACK_WAIT(PCI_DATA_STATE) = '0' AND ((RnW = '1' AND TARGET_READY = '1') OR (RnW = '0' AND PCI_TRANSFER_ACK(PCI_DATA_STATE) = '1')) THEN	
 					
 						CPU_TRANSFER_ACK <= '1';
@@ -200,14 +198,14 @@ begin
 						CPU_TRANSFER_ACK <= '0';
 
 					END IF;
-					
-				ELSE
-				
-					CPU_TRANSFER_ACK_WAIT <= (OTHERS => '0');
-					CPU_TRANSFER_EACK <= '0';
-					CPU_TRANSFER_ACK <= '0';
-				
+						
 				END IF;
+						
+			ELSE
+			
+				CPU_TRANSFER_ACK_WAIT <= (OTHERS => '0');
+				CPU_TRANSFER_EACK <= '0';
+				CPU_TRANSFER_ACK <= '0';
 			
 			END IF;
 		
@@ -285,8 +283,6 @@ begin
 			nADDRESS_PHASE <= '1';
 			nPCI_CYCLE_ACTIVE <= '1';
 			PCI_TRANSFER_ACK <= (OTHERS => '0');
-			--PCI_RETRY_CYCLE <= '0';
-			--PCI_DISCONNECT_ABORT_CYCLE <= '0';
 		
 		ELSIF FALLING_EDGE (PCICLK) THEN
 		
@@ -295,9 +291,7 @@ begin
 				WHEN IDLE =>
 				
 					nIRDY <= '1';
-					--PCI_RETRY_CYCLE <= '0';
-					PCI_RESPONSE_TIMEOUT_COUNT <= 0;
-					--PCI_DISCONNECT_ABORT_CYCLE <= '0';						
+					PCI_RESPONSE_TIMEOUT_COUNT <= 0;					
 				
 					IF TRANSFER_START = '1' THEN
 					
@@ -393,21 +387,7 @@ begin
 										
 						CURRENT_PCI_STATE <= IDLE;
 						nIRDY <= NOT RnW;
-						PCI_DATA_STATE <= 0;
-				
---					IF RETRY_STATE = '1' THEN 
---					
---						PCI_RETRY_CYCLE <= '1';						
---						CURRENT_PCI_STATE <= IDLE;
---						nIRDY <= NOT RnW;
---						PCI_DATA_STATE <= 0;
---					
---					ELSIF DISCONNECT_STATE = '1' OR ABORT_STATE = '1' THEN 
---					
---						PCI_DISCONNECT_ABORT_CYCLE <= '1';
---						CURRENT_PCI_STATE <= IDLE;
---						nIRDY <= NOT RnW;
---						PCI_DATA_STATE <= 0;											
+						PCI_DATA_STATE <= 0;									
 					
 					ELSE
 					
