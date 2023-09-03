@@ -463,11 +463,11 @@ A burst mode is defined as a line transfer by the MC68040 initiated with the MOV
 6) On the next falling PCI clock edge after asserting _TA, _IRDY is asserted for one PCI clock cyle to signal the target device the data has been latched.
 7) Steps 5 and 6 are repeated until all four long words have been transfered or the cycle is aborted by the target or master before four long words are transfered.~~
 
-Table 2.6.2.1a Burst Cycle Read  
-<img src="/DataSheets/TimingDiagrams/PCI Burst Read Cycle.png" width="750"></p>
+Figure 2.6.2.1a. Burst Cycle Read.  
+<img src="/DataSheets/TimingDiagrams/PCI Burst Read Cycle.png" height="400"></p>
 
-Table 2.6.2.1b Burst Cycle Read With Target Wait State  
-<img src="/DataSheets/TimingDiagrams/PCI Burst Read Cycle Wait.png" width="750"></p>
+Figure 2.6.2.1b. Burst Cycle Read With Target Wait State.  
+<img src="/DataSheets/TimingDiagrams/PCI Burst Read Cycle Wait.png" height="400"></p>
 
 ##### 2.6.2.2 Burst Write Cycle
 
@@ -479,11 +479,11 @@ Table 2.6.2.1b Burst Cycle Read With Target Wait State
 6) On the next falling BCLK clock edge after _IRDY is asserted, if _TRDY is asserted, _TA is asserted for one BCLK cycle to signal the MC68040 the data has been latched. If _TRDY is not asserted, repeat 6 until the cycle continues or is aborted by the target or master.
 7) Steps 5 and 6 are repeated until all four long words have been transfered or the cycle is aborted by the target or master before four long words are transfered.
 
-Table 2.6.2.2a Burst Write Cycle  
-<img src="/DataSheets/TimingDiagrams/PCI Burst Write Cycle.png" width="750"></p>
+Figure 2.6.2.2a. Burst Write Cycle.  
+<img src="/DataSheets/TimingDiagrams/PCI Burst Write Cycle.png" height="400"></p>
 
-Table 2.6.2.2a Burst Write Cycle With Target Wait State  
-<img src="/DataSheets/TimingDiagrams/PCI Burst Write Cycle Wait.png" width="750"></p>
+Figure 2.6.2.2b. Burst Write Cycle With Target Wait State.  
+<img src="/DataSheets/TimingDiagrams/PCI Burst Write Cycle Wait.png" height="400"></p>
 
 #### 2.6.3 Cycle Termination
 
@@ -503,15 +503,21 @@ This condition exists when no target device responds to the address phase of a P
 
 ##### 2.6.3.4 Target Terminated - Retry
 
-This condition is signaled when the target device asserts _STOP, while _TRDY is negated, before data has been transfered. When the target device asserts the retry condition, the Local PCI Bridge will assert _TA and _TEA together, which signals the MC68040 to immediately abort and retry the cycle. The Local PCI Bridge will assert retry 2 times, for a total of 3 attempts. If all 3 attempts result in a retry condition, the Local PCI Bridge will assert _TEA while _TA is negated. This indicates to the MC68040 that an error condition exists and the cycle cannot continue. This prevents an infinite loop of retries when a target device is not well behaved. This condition may occur for both burst and normal cycles.
+This condition is signaled when the target device asserts _STOP after claiming the cycle, by asserting _DEVSEL, before data has been transfered. When the target device asserts the retry condition, the Local PCI Bridge will assert _TA and _TEA together, which signals the MC68040 to immediately abort and retry the cycle.
+
+Figure 2.6.3.4. PCI Cycle Retry.  
+<img src="/DataSheets/TimingDiagrams/PCI Cycle Retry.png" height="400"></p>
 
 ##### 2.6.3.5 Target Terminated - Disconnect
 
 This condition is signaled when the target device asserts _STOP while _TRDY is asserted. The Disconnect condition is different from the Retry condition in that Disconnect is asserted after some data has already been transfered, but the target device is unable to continue transferring the requested data. When this condition exists, the Local PCI Bridge will assert _TEA. This indicates to the MC68040 that an error condition exists and the cycle cannot continue. This condition can only exist for burst cycles.
 
+Figure 2.6.3.5. PCI Cycle Disconnect.  
+<img src="/DataSheets/TimingDiagrams/PCI Burst Cycle Disconnect.png" height="400"></p>
+
 ##### 2.6.3.6 Target Terminated - Abort
 
-This condition can exist any time after a target device has asserted _DEVSEL and is signaled when the target device asserts _STOP and negates _DEVSEL simultaneously. This is considered an abnormal termination in that the target device will never be able to supply to requested data. When this condition exists, the Local PCI Bridge will assert _TEA. This indicates to the MC68040 that an error condition exists and the cycle cannot continue. This condition may occur for both burst and normal cycles.
+This condition can exist any time after a target device has asserted _DEVSEL and is signaled when the target device asserts _STOP and negates _DEVSEL simultaneously. This is considered an abnormal termination in that the target device will never be able to supply to requested data. When this condition exists, the Local PCI Bridge will assert _TEA. This indicates to the MC68040 that an error condition exists and the cycle cannot continue. This condition may occur for both burst and normal cycles. This condition is treated the same as the Target Terminated - Disconnect condition by the MC68040 (Section 2.6.3.5). See Figure 2.6.3.5 for example timing.
 
 #### 2.6.4 Delayed Cycles
 
