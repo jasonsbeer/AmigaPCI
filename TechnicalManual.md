@@ -198,7 +198,9 @@ The PCI Local Bus (PCI herein) is a processor independent, 32 bit expasion bus. 
 
 The AmigaPCI PCI Bus is implemented via a MC68040 to PCI Bridge (Local PCI Bridge, herein) using a PCI bridge ASIC concept. The Local PCI Bridge logic translates data requests from the Motorola MC68040 and PCI devices in order that they may communicate in an effective manner. 
 
-The MC68040 Bridge can operate in either AUTOCONFIG mode or software configuration mode. This is discussed further in 2.2.
+The MC68040 Bridge can operate in either AUTOCONFIG mode or software configuration mode. This is discussed further in 2.2.  
+
+**NOTE: This document defines how the PCI 2.3 specification is implemented on the AmigaPCI. It is not a replacement or substitute for the PCI Local Bus Specification. It is expected the reader has reviewed and understands the tenants of the PCI Bus as defined in the PCI Local Bus Specification, Rev 2.3.**
 
 ### 2.1 Endianness
 
