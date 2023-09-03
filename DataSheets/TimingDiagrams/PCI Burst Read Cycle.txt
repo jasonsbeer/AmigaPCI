@@ -14,7 +14,7 @@
   
  ['PCI BRIDGE/TARGET', 
   {name: '_FRAME', wave:'1........0...............................1............'},
-  {name: 'LAT[31..0]', wave: 'x............x.....=.......=.......=.......=........x.', data: ['LATCH DATA0', 'LATCH DATA1', 'LATCH DATA2', 'LATCH DATA3']},
+  {name: 'LAT[31..0]', wave: 'x............x.....=.......=.......=.......=.......x..', data: ['LATCH DATA0', 'LATCH DATA1', 'LATCH DATA2', 'LATCH DATA3']},
   {name: 'AD[31..0]', wave: 'x........=...x...=...=.......=.......=.......x........', data: ['ADDRESS', 'DATA0', 'DATA1', 'DATA2', 'DATA3']},
   {name: 'C/_BE[3..0]', wave:'x........=...x...=...............................x....', data: ['CMD', 'Byte Enable (_BE)']},  
   {name: '_IRDY', wave:'z....1...........0...1...0...1...0...1...0...1...z....'},
