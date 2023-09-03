@@ -463,27 +463,27 @@ A burst mode is defined as a line transfer by the MC68040 initiated with the MOV
 6) On the next falling PCI clock edge after asserting _TA, _IRDY is asserted for one PCI clock cyle to signal the target device the data has been latched.
 7) Steps 5 and 6 are repeated until all four long words have been transfered or the cycle is aborted by the target or master before four long words are transfered.~~
 
-Table 2.6.2.1a Burst Cycle Read
-<p align="center"><img src="/DataSheets/TimingDiagrams/PCI Burst Read Cycle.png" width="750"></p>
+Table 2.6.2.1a Burst Cycle Read  
+<img src="/DataSheets/TimingDiagrams/PCI Burst Read Cycle.png" width="750"></p>
 
-Table 2.6.2.1b Burst Cycle Read With Target Wait State
-<p align="center"><img src="/DataSheets/TimingDiagrams/PCI Burst Read Cycle Wait.png" width="750"></p>
+Table 2.6.2.1b Burst Cycle Read With Target Wait State  
+<img src="/DataSheets/TimingDiagrams/PCI Burst Read Cycle Wait.png" width="750"></p>
 
 ##### 2.6.2.2 Burst Write Cycle
 
-~~1) The MC68040 begins a data transfer cycle by asserting an address on the A bus and data on the D bus, along with related signals. 
+1) The MC68040 begins a data transfer cycle by asserting an address on the A bus and data on the D bus, along with related signals. 
 2) On the next falling PCI clock edge, the Local PCI Bridge broadcasts the address on the AD bus, places a bus command on the C/_BE bus, and asserts _FRAME.
 3) If a PCI device on the bridge responds to the base address, it will assert _DEVSEL on the next falling PCI clock edge. If no device responds by asserting _DEVSEL within two PCI clock cycles, _FRAME is negated, and the AD and C/_BE buses are placed in a high-impedence state and the Local PCI Bridge returns to an idle state.
 4) The Local PCI Bridge continues the data transfer by connecting the AD bus to the D bus. Bit and byte swapping is accomplished in the Local PCI Bridge.
 5) On the next falling PCI clock edge after driving the AD bus, _IRDY is asserted for one PCI clock cyle to signal the target device data is ready to be latched.
 6) On the next falling BCLK clock edge after _IRDY is asserted, if _TRDY is asserted, _TA is asserted for one BCLK cycle to signal the MC68040 the data has been latched. If _TRDY is not asserted, repeat 6 until the cycle continues or is aborted by the target or master.
-7) Steps 5 and 6 are repeated until all four long words have been transfered or the cycle is aborted by the target or master before four long words are transfered.~~
+7) Steps 5 and 6 are repeated until all four long words have been transfered or the cycle is aborted by the target or master before four long words are transfered.
 
-Table 2.6.2.2a Burst Write Cycle
-<p align="center"><img src="/DataSheets/TimingDiagrams/PCI Burst Write Cycle.png" width="750"></p>
+Table 2.6.2.2a Burst Write Cycle  
+<img src="/DataSheets/TimingDiagrams/PCI Burst Write Cycle.png" width="750"></p>
 
-Table 2.6.2.2a Burst Write Cycle With Target Wait State
-<p align="center"><img src="/DataSheets/TimingDiagrams/PCI Burst Write Cycle Wait.png" width="750"></p>
+Table 2.6.2.2a Burst Write Cycle With Target Wait State  
+<img src="/DataSheets/TimingDiagrams/PCI Burst Write Cycle Wait.png" width="750"></p>
 
 #### 2.6.3 Cycle Termination
 
@@ -499,7 +499,7 @@ timout during DMA situations
 
 ##### 2.6.3.3 Master Terminated - Abort
 
-This condition exists when no target device responds to the address phase of a PCI cycle. The Local PCI Bridge will abort the PCI cycle when no target device responds by asserting _DEVSEL by the second falling edge of the PCI clock after the address phase. This is assumed to be the absence of a target device with a matching base address, rather than a bus error. The Local PCI Bridge will return to an idle state. No signals are asserted in response to this condition.
+This condition exists when no target device responds to the address phase of a PCI cycle. Normally, a PCI Target Device will claim the cycle by asserting the _DEVSEL signal in response to the address phase of the cycle. If no device claims the cycle, it is assumed to be the absence of a target device with a matching base address, rather than a bus error. The Local PCI Bridge will return to an idle state. No signals are asserted in response to this condition.
 
 ##### 2.6.3.4 Target Terminated - Retry
 
