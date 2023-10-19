@@ -525,7 +525,21 @@ This condition can exist any time after a target device has asserted _DEVSEL and
 
 ### 2.7 PCI Driven PCI Data Cycle (DMA)
 
-[PCI Driven Data Cycle Timing Diagram]()  
+This section relates only to direct memory access (DMA) actions agains AmigaPCI board resources. This can include memory, hard drive controller, or chipset memory spaces. All DMA accesses to AmigaPCI resources are handled as memory space access only. Other PCI command types are not accepted. DMA actions among the PCI devices themselves already adhear to the PCI specifications and require no special description or handling of data. When a PCI device requests the bus, the bus arbiter will grant access to the bus, as described in section X.X.X. No further action is necessary except to withdraw the bus grant when appropriate. 
+
+<B>CONCERN: WE NEED TO TELL THE DIFFERENCE BETWEEN AN ACCESS TO ANOTHER PCI DEVICE VS ACCESS TO THE AMIGA BOARD!!</B>
+
+#### 2.7.1. PCI DMA Normal Read Cycle
+
+1. ADD SOME TEXT DESCRIBING THE TIMING
+
+<img src="/DataSheets/TimingDiagrams/PCI DMA Normal Read Cycle.png" height="600"></p>
+
+#### 2.7.2. PCI DMA Normal Read Cycle
+
+1. ADD SOME TEXT DESCRIBING THE TIMING
+
+<img src="/DataSheets/TimingDiagrams/PCI DMA Burst Read Cycle.png" width="750"></p>
 
 ### 2.8 Parity
 
