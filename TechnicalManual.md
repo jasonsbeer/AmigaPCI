@@ -525,11 +525,11 @@ This condition can exist any time after a target device has asserted _DEVSEL and
 
 #### 2.6.4 Delayed Cycles
 
+Add something here.
+
 ### 2.7 PCI Driven PCI Data Cycle (DMA)
 
-This section relates only to direct memory access (DMA) actions agains AmigaPCI board resources. This can include memory, hard drive controller, or chipset memory spaces. All DMA accesses to AmigaPCI resources are handled as memory space access only. Other PCI command types are not accepted. DMA actions among the PCI devices themselves already adhear to the PCI specifications and require no special description or handling of data. When a PCI device requests the bus, the bus arbiter will grant access to the bus, as described in section X.X.X. No further action is necessary except to withdraw the bus grant when appropriate. 
-
-<B>CONCERN: WE NEED TO TELL THE DIFFERENCE BETWEEN AN ACCESS TO ANOTHER PCI DEVICE VS ACCESS TO THE AMIGA BOARD!!</B>
+This section relates only to direct memory access (DMA) actions against AmigaPCI board resources. All DMA accesses to AmigaPCI resources are handled as memory space access only. Other PCI command types are not accepted. When a PCI device requests the bus, the bus arbiter will grant access to the bus, as described in section X.X.X. Signaling must be provided so the Local PCI Bridge can respond properly to address space access of AmigaPCI resources, otherwise there would be no way for the Local PCI Bridge to know if the cycle is addressing another PCI device or memory space on the AmigaPCI. DMA actions among the PCI devices themselves adhear to PCI specifications and require no special description or handling on our part.
 
 #### 2.7.1. PCI DMA Normal Read Cycle
 
@@ -537,11 +537,27 @@ This section relates only to direct memory access (DMA) actions agains AmigaPCI 
 
 <img src="/DataSheets/TimingDiagrams/PCI DMA Normal Read Cycle.png" height="600"></p>
 
-#### 2.7.2. PCI DMA Normal Read Cycle
+#### 2.7.2. PCI DMA Burst Read Cycle
 
 1. ADD SOME TEXT DESCRIBING THE TIMING
 
+**NOTE:** There is no mechanism on the 68040 bus to ask the target device to pause the data transfer between words in a burst transfer. If the PCI intiator device negates _IRDY, it will be necessary for the PCI Bridge (or via other logic) to latch each word of the data burst from the AmigaPCI because the burst cannot be paused once started.
+
+**HOW PRACTICAL IS THIS? DO WE SUPPORT BURST MODE DMA? IT MAY BE DIFFICULT TO IMPLEMENT.**
+
 <img src="/DataSheets/TimingDiagrams/PCI DMA Burst Read Cycle.png" width="750"></p>
+
+#### 2.7.3. PCI DMA Normal Write Cycle
+
+1. ADD SOME TEXT DESCRIBING THE TIMING
+
+#### 2.7.4. PCI DMA Burst Write Cycle
+
+1. ADD SOME TEXT DESCRIBING THE TIMING
+
+#### 2.7.5 Master Terminated Cycle - Timeout
+
+Add something here. This is timeout during DMA situations.
 
 ### 2.8 Parity
 
