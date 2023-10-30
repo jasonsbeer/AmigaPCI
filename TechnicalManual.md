@@ -176,9 +176,9 @@ The AmigaPCI may be installed with 64 or 128MB of Fast RAM on the board using pa
 The RAM must be installed in pairs. Bank 0 must always be installed and supplies the first 64MB. Bank 1 may optionally be installed and supplies the second 64MB. The installed RAM is automatically sized during the AUTOCONFIG process so no jumpers are needed.
 
 **PCI DMA NOTEs:**  
-**1) The RAM controller must support bursts of 2-4 long words to support PCI DMA actions. See section 2.7.**  
-**2) The RAM controller must assert _DEVSEL to signal initiating PCI device. See section 2.7.**
-**3) The RAM controller must respond to negation of _IRDY to pause a data transfer. See section 2.7.**
+**1) The RAM controller must support bursts of 1-4 long words to support PCI DMA. See section 2.7.**  
+**2) The RAM controller must provide signaling to the PCI Local Bridge to drive _DEVSEL. See section 2.7.**  
+**3) The RAM controller must be able to pause a burst data transfer in the event _IRDY is negated. See section 2.7.**  
 
 NEED TO ADD TIMING FOR "NORMAL" CYCLES!
 
@@ -530,7 +530,7 @@ Add something here.
 
 ### 2.7 PCI Driven PCI Data Cycle (DMA)
 
-This section relates to direct memory access (DMA) against onboard AmigaPCI address spaces. The memory space PCI command is the only PCI command allowed. Other PCI commands are not supported. When a PCI device requests the bus, the bus arbiter will grant access to the bus, as described in section [2.5 Bus Mastering](#2.5-bus-mastering). The Amiga system being addressed must assert _DEVSEL in response to a PCI DMA cycle. This allows the target AmigaPCI device to properly signal the initating device. The Local PCI Bridge must leave the AD bus in a high impedence state unless it is actively driving the bus with data from the AmigaPCI during a DMA cycle.
+This section relates to direct memory access (DMA) against onboard AmigaPCI address spaces. The memory space PCI command is the only PCI command allowed. Other PCI commands are not supported. When a PCI device requests the bus, the bus arbiter will grant access to the bus, as described in section [2.5 Bus Mastering](#2.5-bus-mastering). The Amiga system being addressed must assert _DEVSEL in response to a PCI DMA cycle. This allows the target AmigaPCI device to properly signal the initating device. Unless actively driving signals in response to data from the AmigaPCI, the AD bus, _TRDY, _DEVSEL must be held in a high impedence state during DMA cycles.
 
 The Local PCI Bridge will assert TT0 and TT1, as required, in response to a normal or burst transfer request from the PCI initiating device. The assertion of transfer type (TT0 and TT1) is determined by whether _FRAME is held asserted for more than a single PCI clock cycle. If _FRAME is negated on the first rising PCI clock edge after the address phase, this is a normal cycle. If _FRAME is held asserted on the first rising PCI clock edge after the address phase, this is a burst cycle. 
 
@@ -539,7 +539,7 @@ The Local PCI Bridge will assert TT0 and TT1, as required, in response to a norm
 1. The initiating PCI device requests the bus by asserting _REQx (where x is the slot designation) on the falling edge of PCI clock.
 2. When the bus is available to the PCI device, the arbiter asserts _BB on the next falling edge of BCLK and asserts _GNT on the next falling edge of PCI clock.
 3. The PCI device will assert _FRAME, drive the AD bus with the requested address, and drive C/_BE with the PCI cycle command on the next falling edge of PCI clock.
-4. The target device asserts _DEVSEL on the next falling edge of the PCI clock and the initiator device asserts _IRDY.
+4. Upon the target device signaling its attention, the PCI Local Bridge asserts _DEVSEL on the next falling edge of the PCI clock.
 5. The Local PCI Bridge samples _FRAME on the next rising edge of the PCI clock. If _FRAME is negated, this is a normal cycle.
 6. On the next falling edge of BCLK, the Local PCI Bridge asserts the requested address on the A bus, asserts transer size requirements on the SIZ bus, sets TT0 and TT1 low, sets R_W high, asserts _TIP, and asserts _TS for one BCLK cycle.
 7. The target device drives data onto the D bus and asserts _TA on the falling edge of BCLK.
@@ -554,13 +554,13 @@ The Local PCI Bridge will assert TT0 and TT1, as required, in response to a norm
 1. The initiating PCI device requests the bus by asserting _REQx (where x is the slot designation) on the falling edge of PCI clock.
 2. When the bus is available to the PCI device, the arbiter asserts _BB on the next falling edge of BCLK and asserts _GNT on the next falling edge of PCI clock.
 3. The PCI device will assert _FRAME, drive the AD bus with the requested address, and drive C/_BE with the PCI cycle command on the next falling edge of PCI clock.
-4. The target device asserts _DEVSEL on the next falling edge of the PCI clock and the initiator device asserts _IRDY.
+4. Upon the target device signaling its attention, the PCI Local Bridge asserts _DEVSEL on the next falling edge of the PCI clock.
 5. The Local PCI Bridge samples _FRAME on the next rising edge of the PCI clock. If _FRAME is asserted, this is a burst cycle.
 6. On the next falling edge of BCLK, the Local PCI Bridge asserts the requested address on the A bus, asserts transer size requirements on the SIZ bus, sets TT1 low, sets TT0 and R_W high, asserts _TIP, and asserts _TS for one BCLK cycle.
 7. The target device drives data onto the D bus and asserts _TA on the falling edge of BCLK.
 8. The PCI local bus samples _TA and _IRDY on the falling edge of PCI clock. If _TA is asserted, data is driven on the AD bus and _TRDY is asserted. If _TA is not asserted, wait states are inserted until _TA is asserted, which is always sampled on the falling edge of PCI clock. If _IRDY is not asserted, the current data is held on the AD bus until _IRDY is asserted, at which time the data transfer is completed on the next rising edge of PCI clock.
-9. Steps 7 and 8 are repeated until all four long words are transfered or the cycle is terminated.
-10. Once four long words are transfered, or the cyclce is terminated early by negation of _FRAME,  _TIP and _BB are negated and R_W, TT0, and TT1 are set to high on the next falling edge of BCLK.
+9. Steps 7 and 8 are repeated until all four long words are transfered or the cycle is terminated by negation of _FRAME.
+10. _TIP and _BB are negated and R_W, TT0, and TT1 are set to high on the next falling edge of BCLK.
 12. _TRDY is negated on on the next falling edge of PCI clock and the AD bus is returned to a high impedence state.
 
 <img src="/DataSheets/TimingDiagrams/PCI DMA Burst Read Cycle.png" width="750"></p>
