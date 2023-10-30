@@ -171,9 +171,14 @@ NOTE: Agnus is RAS only refresh. SDRAM refresh is handled by the RAM controller 
 
 ### 1.12 Fast RAM
 
-The AmigaPCI may be installed with 64 or 128MB of Fast RAM on the board using pairs of 16Mx16 SDRAM. The AmigaPCI Fast RAM controller supports the MC68040 line transfer and MOVE16 modes of four long word transfers in both read and write mode. Write mode has no wait states. Read mode includes two wait states due to CAS latency.
+The AmigaPCI may be installed with 64 or 128MB of Fast RAM on the board using pairs of 16Mx16 SDRAM. The AmigaPCI Fast RAM controller supports the MC68040 line transfer and MOVE16 modes of four long word transfers in both read and write mode. Write mode has no wait states. Read mode CAS latency is two.
 
 The RAM must be installed in pairs. Bank 0 must always be installed and supplies the first 64MB. Bank 1 may optionally be installed and supplies the second 64MB. The installed RAM is automatically sized during the AUTOCONFIG process so no jumpers are needed.
+
+**PCI DMA NOTEs:**  
+**1) The RAM controller must support bursts of 2-4 long words to support PCI DMA actions. See section 2.7.**  
+**2) The RAM controller must assert _TRDY and _DEVSEL to signal initiating PCI device. See section 2.7.**
+**3) The RAM controller must respond to negation of _IRDY to pause a data transfer. See section 2.7.**
 
 NEED TO ADD TIMING FOR "NORMAL" CYCLES!
 
@@ -202,7 +207,7 @@ The AmigaPCI PCI Bus is implemented via a MC68040 to PCI Bridge (Local PCI Bridg
 
 The MC68040 Bridge can operate in either AUTOCONFIG mode or software configuration mode. This is discussed further in 2.2.  
 
-**NOTE: This document defines how the PCI 2.3 specification is implemented on the AmigaPCI. It is not a replacement or substitute for the PCI Local Bus Specification. It is expected the reader has reviewed and understands the tenants of the PCI Bus as defined in the PCI Local Bus Specification, Rev 2.3.**
+**NOTE: This document defines how the PCI 2.3 specification is implemented on the AmigaPCI. It is not a substitute for the PCI Local Bus Specification. It is expected the reader has reviewed and understands the tenants of the PCI Bus as defined in the PCI Local Bus Specification, Rev 2.3.**
 
 ### 2.1 Endianness
 
@@ -497,29 +502,25 @@ The PCI cycle can end in several ways and may be terminated by the Local PCI Bri
 
 This condition is asserted when the master device has completed the intended transaction without error. This terminiation condition is signaled by negating _FRAME while _IRDY is asserted.
 
-##### 2.6.3.2 Master Terminated - Timeout
-
-timout during DMA situations
-
-##### 2.6.3.3 Master Terminated - Abort
+##### 2.6.3.2 Master Terminated - Abort
 
 This condition exists when no target device responds to the address phase of a PCI cycle. Normally, a PCI Target Device will claim the cycle by asserting the _DEVSEL signal in response to the address phase of the cycle. If no device claims the cycle, it is assumed to be the absence of a target device with a matching base address, rather than a bus error. The Local PCI Bridge will return to an idle state. No signals are asserted in response to this condition.
 
-##### 2.6.3.4 Target Terminated - Retry
+##### 2.6.3.3 Target Terminated - Retry
 
 This condition is signaled when the target device asserts _STOP after claiming the cycle, by asserting _DEVSEL, before data has been transfered. When the target device asserts the retry condition, the Local PCI Bridge will assert _TA and _TEA together, which signals the MC68040 to immediately abort and retry the cycle.
 
-Figure 2.6.3.4. PCI Cycle Retry.  
+Figure 2.6.3.3. PCI Cycle Retry.  
 <img src="/DataSheets/TimingDiagrams/PCI Cycle Retry.png" height="400"></p>
 
-##### 2.6.3.5 Target Terminated - Disconnect
+##### 2.6.3.4 Target Terminated - Disconnect
 
 This condition is signaled when the target device asserts _STOP while _TRDY is asserted. The Disconnect condition is different from the Retry condition in that Disconnect is asserted after some data has already been transfered, but the target device is unable to continue transferring the requested data. When this condition exists, the Local PCI Bridge will assert _TEA. This indicates to the MC68040 that an error condition exists and the cycle cannot continue. This condition can only exist for burst cycles.
 
-Figure 2.6.3.5. PCI Cycle Disconnect.  
+Figure 2.6.3.4. PCI Cycle Disconnect.  
 <img src="/DataSheets/TimingDiagrams/PCI Burst Cycle Disconnect.png" height="400"></p>
 
-##### 2.6.3.6 Target Terminated - Abort
+##### 2.6.3.5 Target Terminated - Abort
 
 This condition can exist any time after a target device has asserted _DEVSEL and is signaled when the target device asserts _STOP and negates _DEVSEL simultaneously. This is considered an abnormal termination in that the target device will never be able to supply to requested data. When this condition exists, the Local PCI Bridge will assert _TEA. This indicates to the MC68040 that an error condition exists and the cycle cannot continue. This condition may occur for both burst and normal cycles. This condition is treated the same as the Target Terminated - Disconnect condition by the MC68040 (Section 2.6.3.5). See Figure 2.6.3.5 for example timing.
 
@@ -529,7 +530,9 @@ Add something here.
 
 ### 2.7 PCI Driven PCI Data Cycle (DMA)
 
-This section relates only to direct memory access (DMA) actions against AmigaPCI board resources. All DMA accesses to AmigaPCI resources are handled as memory space access only. Other PCI command types are not accepted. When a PCI device requests the bus, the bus arbiter will grant access to the bus, as described in section X.X.X. Signaling must be provided so the Local PCI Bridge can respond properly to address space access of AmigaPCI resources, otherwise there would be no way for the Local PCI Bridge to know if the cycle is addressing another PCI device or memory space on the AmigaPCI. DMA actions among the PCI devices themselves adhear to PCI specifications and require no special description or handling on our part.
+This section relates to direct memory access (DMA) against onboard AmigaPCI address spaces. The memory space PCI command is the only PCI command allowed. Other PCI commands are not supported. When a PCI device requests the bus, the bus arbiter will grant access to the bus, as described in section [2.5 Bus Mastering](#2.5-bus-mastering). The Amiga system being addressed must assert _TRDY AND _DEVSEL in response to a PCI DMA cycle. This allows the target AmigaPCI device to properly signal the initating device. 
+
+The Local PCI Bridge will assert TT0 and TT1, as required, in response to a normal or burst transfer request from the PCI initiating device. The assertion of transfer type (TT0 and TT1) is determined by whether _FRAME is held asserted for more than a single PCI clock cycle. If _FRAME is negated on the first rising PCI clock edge after the address phase, this is a normal cycle. If _FRAME is held asserted on the first rising PCI clock edge after the address phase, this is a burst cycle. 
 
 #### 2.7.1. PCI DMA Normal Read Cycle
 
@@ -541,9 +544,7 @@ This section relates only to direct memory access (DMA) actions against AmigaPCI
 
 1. ADD SOME TEXT DESCRIBING THE TIMING
 
-**NOTE:** There is no mechanism on the 68040 bus to ask the target device to pause the data transfer between words in a burst transfer. If the PCI intiator device negates _IRDY, it will be necessary for the PCI Bridge (or via other logic) to latch each word of the data burst from the AmigaPCI because the burst cannot be paused once started.
-
-**HOW PRACTICAL IS THIS? DO WE SUPPORT BURST MODE DMA? IT MAY BE DIFFICULT TO IMPLEMENT.**
+During a burst transfer, it is possible the PCI intiator may negate _IRDY. In this event, the RAM controller will insert wait states until _IRDY is re-asserted.
 
 <img src="/DataSheets/TimingDiagrams/PCI DMA Burst Read Cycle.png" width="750"></p>
 
