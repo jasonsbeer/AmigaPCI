@@ -349,7 +349,7 @@ PCI defines multiple address spaces that exist in parallel. PCI command encoding
 
 Both UPAx signals are pulled to ground in hardware. As a result, memory space access is the default bus command. This allows for the implementation of PCI devices that do not use drivers, such as memory cards.
 
-**NEED TO CONFIRM THE UPA BUS FLOATS WHEN NOT EXPLICITY SET, OTHERWISE THIS MAY NOT WORK**
+**NEED TO CONFIRM THE UPA BUS FLOATS OR IS SET TO 00 WHEN NOT EXPLICITY SET, OTHERWISE THIS MAY NOT WORK**
 
 Table 2.3.2.3. PCI Commands for AUTOCONFIG Devices.
 R_W|UPA0|UPA1|PCI Command
