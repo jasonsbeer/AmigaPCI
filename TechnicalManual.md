@@ -473,10 +473,10 @@ A burst mode is defined as a line transfer by the MC68040 initiated with the MOV
 7) Steps 5 and 6 are repeated until all four long words have been transfered or the cycle is aborted by the target or master before four long words are transfered.~~
 
 Figure 2.6.2.1a. Burst Cycle Read.  
-<img src="/DataSheets/TimingDiagrams/PCI Burst Read Cycle.png" height="400"></p>
+<img src="/DataSheets/TimingDiagrams/CPU Driven Burst Read Cycle Fast.png" height="400"></p>
 
 Figure 2.6.2.1b. Burst Cycle Read With Target Wait State.  
-<img src="/DataSheets/TimingDiagrams/PCI Burst Read Cycle Wait.png" height="400"></p>
+<img src="/DataSheets/TimingDiagrams/CPU Driven Burst Read Cycle Fast With PCI Wait.png" height="400"></p>
 
 ##### 2.6.2.2 Burst Write Cycle
 
