@@ -207,7 +207,7 @@ The AmigaPCI PCI Bus is implemented via a MC68040 to PCI Bridge (Local PCI Bridg
 
 The MC68040 Bridge can operate in either AUTOCONFIG mode or software configuration mode. This is discussed further in 2.2.  
 
-**NOTE: This document defines how the PCI 2.3 specification is implemented on the AmigaPCI. It is not a substitute for the PCI Local Bus Specification. It is expected the reader has reviewed and understands the tenants of the PCI Bus as defined in the PCI Local Bus Specification, Rev 2.3.**
+**NOTE: This document defines how the PCI 2.3 specification is implemented on the AmigaPCI. It is not a substitute for the PCI Local Bus Specification or the Motorola MC68040 user manual. It is expected the reader has reviewed and understands the tenants of the PCI Bus as defined in the PCI Local Bus Specification, Rev 2.3, and the Motorola MC68040 user manual.**
 
 ### 2.1 Endianness
 
@@ -466,13 +466,14 @@ A burst mode is defined as a line transfer by the MC68040 initiated with the MOV
 
 1) The MC68040 begins a data transfer cycle by asserting an address on the A bus and data on the D bus, along with related signals. 
 2) On the next falling PCI clock edge, the Local PCI Bridge broadcasts the address on the AD bus, places a bus command on the C/_BE bus, and asserts _FRAME.  
-3) If a PCI device on the bridge responds to the base address, it will assert _DEVSEL on the next falling PCI clock edge. If no device responds by asserting _DEVSEL, _FRAME is negated, and the AD and C/_BE buses are placed in a high-impedence state and the Local PCI Bridge returns to an idle state.
-4) The target device places data on the AD bus on the next falling edge of PCI clock and asserts _TRDY.
-5) Data is latched by a latching transceiver from the AD bus on the next rising edge of PCI clock.
-6) The latched data is placed onto the D bus at the next falling edge of BCLK and _TA is asserted. If data is not yet latched from the AD bus by the next falling BCLK edge, then _TA is negated to insert a wait state.
-7) Steps 4-6 are repeated until four long words have been transfered or the target device terminates the cycle by asserting _STOP and negating _FRAME.
-8) On the next falling PCI clock edge after _FRAME is negated, the Local PCI Bridge will place the AD and C/BE busses into a high impedence state. _IRDY is negated and held for one PCI clock cycle and then placed into a high impedence state.
-9) On the next falling edge of BCLK, _TA is negated and held for one BCLK cycle before being placed in a high impedence state.
+3) If a PCI device on the bridge responds to the base address, it will assert _DEVSEL on the next falling PCI clock edge.
+4) If no device responds by asserting _DEVSEL within two PCI clock cycles, _FRAME is negated, and the AD and C/BE buses are placed in a high-impedence state and the Local PCI Bridge returns to an idle state. 
+5) The target device places data on the AD bus on the next falling edge of PCI clock and asserts _TRDY.
+6) Data is latched by a latching transceiver from the AD bus on the next rising edge of PCI clock.
+7) The latched data is placed onto the D bus at the next falling edge of BCLK and _TA is asserted. If data is not yet latched from the AD bus by the next falling BCLK edge, then _TA is negated to insert a wait state.
+8) Steps 4-6 are repeated until four long words have been transfered or the target device terminates the cycle by asserting _STOP. The Local PCI Bridge will negate _FRAME on the falling clock edge leading into the fourth long word on the AD bus.
+9) On the next falling PCI clock edge after _FRAME is negated and the last long word has been transfered, the Local PCI Bridge will place the AD and C/BE busses into a high impedence state. _IRDY is negated and held for one PCI clock cycle and then placed into a high impedence state.
+10) On the next falling edge of BCLK, _TA is negated and held for one BCLK cycle before being placed in a high impedence state.
 
 **NOTE:** Due to the asynchronous nature of the BCLK and PCI bus clocks, wait states may need to be inserted until the data become available to place on the D bus. This can be observed in Figure 2.6.2.1a.
 
@@ -484,19 +485,21 @@ Figure 2.6.2.1b. Burst Cycle Read With Target Wait State.
 
 ##### 2.6.2.2 Burst Write Cycle
 
-1) The MC68040 begins a data transfer cycle by asserting an address on the A bus and data on the D bus, along with related signals. 
-2) On the next falling PCI clock edge, the Local PCI Bridge broadcasts the address on the AD bus, places a bus command on the C/_BE bus, and asserts _FRAME.
-3) If a PCI device on the bridge responds to the base address, it will assert _DEVSEL on the next falling PCI clock edge. If no device responds by asserting _DEVSEL within two PCI clock cycles, _FRAME is negated, and the AD and C/_BE buses are placed in a high-impedence state and the Local PCI Bridge returns to an idle state.
-4) The Local PCI Bridge continues the data transfer by connecting the AD bus to the D bus. Bit and byte swapping is accomplished in the Local PCI Bridge.
-5) On the next falling PCI clock edge after driving the AD bus, _IRDY is asserted for one PCI clock cyle to signal the target device data is ready to be latched.
-6) On the next falling BCLK clock edge after _IRDY is asserted, if _TRDY is asserted, _TA is asserted for one BCLK cycle to signal the MC68040 the data has been latched. If _TRDY is not asserted, repeat 6 until the cycle continues or is aborted by the target or master.
-7) Steps 5 and 6 are repeated until all four long words have been transfered or the cycle is aborted by the target or master before four long words are transfered.
+1) The MC68040 begins a data transfer cycle by asserting an address on the A bus and data on the D bus, along with related signals.  
+2) The Local PCI Bus asserts _TA and data is latched by a latching transceiver from the D bus on each rising edge of BCLK. Once the MC68040 cycle is complete, _TA is negated for one BCLK before being placed in a high impedence state.
+3) On the first PCI clock falling edge after the MC68040 cycle begins, the Local PCI Bridge places the address on the AD bus and the PCI command on the C/BE bus and asserts _FRAME.  
+4) If a PCI device responds to the base address, it will assert _DEVSEL on the next falling PCI clock edge.  
+5) If no device responds by asserting _DEVSEL within two PCI clock cycles, _FRAME is negated, and the AD and C/BE buses are placed in a high-impedence state and the Local PCI Bridge returns to an idle state.  
+6) On the next falling edge of PCI clock, the appropriate long word data latched from the D bus is placed on the AD bus.
+7) The target PCI device will latch the data on the AD bus on the next rising edge of PCI clock when _TRDY is asserted.
+8) Steps 6-7 are repeated until all four long words have been transfered or the target device terminates the cycle by asserting _STOP. The Local PCI Bridge will negate _FRAME on the falling clock edge leading into the fourth long word on the AD bus.
+9) On the next falling PCI clock edge after _FRAME is negated and the last long word has been transfered, the Local PCI Bridge will place the AD and C/BE busses into a high impedence state. _IRDY is negated and held for one PCI clock cycle and then placed into a high impedence state.
 
 Figure 2.6.2.2a. Burst Write Cycle.  
-<img src="/DataSheets/TimingDiagrams/PCI Burst Write Cycle.png" height="400"></p>
+<img src="/DataSheets/TimingDiagrams/PCI Burst Write Cycle Fast.png" height="400"></p>
 
 Figure 2.6.2.2b. Burst Write Cycle With Target Wait State.  
-<img src="/DataSheets/TimingDiagrams/PCI Burst Write Cycle Wait.png" height="400"></p>
+<img src="/DataSheets/TimingDiagrams/PCI Burst Write Cycle Wait Fast.png" height="400"></p>
 
 #### 2.6.3 Cycle Termination
 
