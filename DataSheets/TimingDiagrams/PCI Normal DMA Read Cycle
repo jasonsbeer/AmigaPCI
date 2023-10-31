@@ -1,33 +1,31 @@
 {signal: [
 
-  {name: 'BCLK40', wave: 'p........',  "period": 3},
-  {name: 'PCI33', wave: 'p......',  "period": 3.5, "phase" : 1},
+  {name: 'BCLK40', wave: 'p...........',  "period": 3},
+  {name: 'PCI33', wave: 'p........',  "period": 3.5, "phase" : 1},
   
-  {name: '_REQx', wave: '10...........1.............'},
-  {name: '_GNT', wave: '1....0.......1.............'},
-  {name: '_BB', wave: '1..0...........1..', "period": 1.5},
-  {name: '_BR', wave: '1..........................'},  
-  {name: '_BG', wave: '1..........................'},
-  {name: '_FRAME', wave:'1........0...1.............'},
-  {name: 'AD[31..0]', wave: 'x........=...x.......=...x.', data: ['ADDRESS', 'DATA']},
-  {name: 'C/BE[3..0]', wave:'x........=...=...........x.', data: ['CFG-RD', '_BE']},  
-  {name: '_TRDY', wave:'1....................0...1.'},
-  {name: '_IRDY', wave:'1............0...........1.'},
-  {name: '_DEVSEL', wave: '1............0...........1.'},
+  {name: '_REQx', wave: '10...........1......................'},
+  {name: '_GNT', wave: '1....0.......1......................'},
+  {name: '_BB', wave: '1..0...................1', "period": 1.5},
+  {name: '_FRAME', wave:'1........0...1......................'},
+  {name: 'AD[31..0]', wave: 'x........=...x...............=...x..', data: ['ADDRESS', 'DATA']},
+  {name: 'C/BE[3..0]', wave:'x........=...=...................x..', data: ['CFG-RD', '_BE']},  
+  {name: '_TRDY', wave:'1............................0...1..'},
+  {name: '_IRDY', wave:'1............0...................1..'},
+  {name: '_DEVSEL', wave: '1................0...............1..'},
   
   
-  {name: 'A[1..0]', wave: 'x..........=...x..', "period": 1.5}, 
-  {name: 'SIZx', wave: '1..........=...1..', "period": 1.5},
-  {name: 'A[31..2]', wave: 'x..........=...x..', "period": 1.5}, 
-  {name: 'D[31..0]', wave: 'x............=.x..', "period": 1.5}, 
-  {name: '_TS', wave: '1..........0.1....', "period": 1.5},
-  {name: '_TIP', wave: '1..........0...1..', "period": 1.5},
-  {name: 'R_W', wave: '1.................', "period": 1.5},
-  {name: 'TT0', wave: '1..........0...1..', "period": 1.5},
-  {name: 'TT1', wave: '1..........0...1..', "period": 1.5},
-  {name: '_TA', wave: 'z..........1.0.1.z', "period": 1.5}
+  {name: 'SIZx', wave: '1..........=.......1....', "period": 1.5},
+  {name: 'A[31..0]', wave: 'x..........=.......x....', "period": 1.5}, 
+  {name: '_DMASEL', wave: '1..........0.......1....', "period": 1.5}, 
+  {name: 'D[31..0]', wave: 'x................=.x....', "period": 1.5}, 
+  {name: '_TS', wave: '1..........0.1..........', "period": 1.5},
+  {name: '_TIP', wave: '1..........0.......1....', "period": 1.5},
+  {name: 'R_W', wave: '1.......................', "period": 1.5},
+  {name: 'TT0', wave: '1..........0.......1....', "period": 1.5},
+  {name: 'TT1', wave: '1..........0.......1....', "period": 1.5},
+  {name: '_TA', wave: 'z..........1.....0.1.z..', "period": 1.5}
   
 ], 
  config:{skin:'narrow'},
- head:{text:'PCI DMA NORMAL AMIGA READ CYCLE' }
+ head:{text:'DMA NORMAL READ CYCLE' }
   }
