@@ -345,9 +345,11 @@ PCI devices may have onboard ROMs that may be used to enhance functionality, suc
 
 ##### 2.3.2.3 AUTOCONFIG PCI Device Register Access
 
-PCI defines multiple address spaces that exist in parallel. PCI command encodings select a specific address space for the current cycle. PCI devices added by the AUTOCONFIG process may be accessed in memory or configuration spaces. Each device is accessed via the Zorro 3 assigned base address with the command type determined by sampling the R_W, UPA0, and UPA1 sigals. For example, you can access the Configuration Type 0 space of an AUTOCONFIG PCI device by driving the base address on the MC68040 address bus and setting UPA0 = 0 and UPA1 = 0. The Local PCI Bridge will interpret this as a Configuration Type 0 command and set the C/_BE[3..0] bits accordingly. 
+PCI defines multiple address spaces that exist in parallel. PCI command encodings select a specific address space for the current cycle. PCI devices added by the AUTOCONFIG process may be accessed in memory or configuration spaces. Each device is accessed via the Zorro 3 assigned base address with the command type determined by sampling the R_W, UPA0, and UPA1 sigals. For example, you can access the Configuration Type 0 space of an AUTOCONFIG PCI device by driving the base address on the MC68040 address bus and setting UPA0 = 1 and UPA1 = 0. The Local PCI Bridge will interpret this as a Configuration Type 0 command and set the C/BE[3..0] bits accordingly. 
 
 Both UPAx signals are pulled to ground in hardware. As a result, memory space access is the default bus command. This allows for the implementation of PCI devices that do not use drivers, such as memory cards.
+
+**NEED TO CONFIRM THE UPA BUS FLOATS WHEN NOT EXPLICITY SET, OTHERWISE THIS MAY NOT WORK**
 
 Table 2.3.2.3. PCI Commands for AUTOCONFIG Devices.
 R_W|UPA0|UPA1|PCI Command
