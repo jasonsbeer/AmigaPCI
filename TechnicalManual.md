@@ -547,11 +547,11 @@ The Local PCI Bridge will assert **TT0** and **TT1**, as required, in response t
 
 In regards to wait states, we must consider that the PCI bus clock and the MC68040 bus clocks are asynchronous. If not handled correctly, this can lead to a condition where the devices become out of sync, which will lead transfer errors. It is expected that target devices on the AmigaPCI will never insert wait states. While the PCI device may rarely, if ever, insert wait states, we must consider this possiblity as wait states are defined in the PCI specifications for all cycle types. Due to the asynchronous nature of the two bus clocks, great care must be taken to ensure the devices involved in the transaction remain in sync for the entire transaction. This can be easily addressed via the use of latches during read cycles. However, this becomes more difficult to accomodate during write cycles. For example, **CLKEN** (clock enabled ) may be used by an SDRAM controller to halt the SDRAM device during an active cycle. This allows us to account for waits inserted by the PCI device. Unfortunately, the **CLKEN** signal affects the action one rising clock edge after the rising clock edge **CLKEN** is latched. This means we must understand the condition of **_IRDY** at least one MC68040 bus clock ahead of where the data would actually be latched. This can result in slower cycles in which a wait inserted by the initiator (PCI) device results in a larger relative effect on the MC68040 bus, where we must wait for the signals get back in sync for the cycle to continue.
 
-#### 2.7.1 PCI DMA Normal Mode Cycles
+#### 2.7.1 PCI Fast RAM DMA Normal Mode Cycles
 
-A normal mode transfer is capable of moving byte, word, or long word data. The data size to be transfered is determined from **AD(0..1)** and PCI command driven on the **C/BE** bus during the address phase. That information is used to drive the correct cycle type on the MC68040 bus during the data transfer.
+A normal mode transfer is capable of moving byte, word, or long word data. The data size to be transfered is determined from **AD(1..0)** and PCI command driven on **C/BE[3..0]** during the address phase. That information is used to drive the correct cycle type on the MC68040 bus during the data transfer.
 
-##### 2.7.1.1 PCI DMA Normal Read Cycle
+##### 2.7.1.1 PCI Fast RAM DMA Normal Read Cycle
 
 1. The initiating PCI device requests the bus by asserting **_REQx** (where x is the slot designation) on the falling edge of PCI clock.
 2. When the bus is available to the PCI device, the arbiter asserts **_BB** on the next falling edge of BCLK and asserts **_GNTx** on the next falling edge of PCI clock.
@@ -566,15 +566,15 @@ A normal mode transfer is capable of moving byte, word, or long word data. The d
 
 <img src="/DataSheets/TimingDiagrams/PCI DMA Normal Read Cycle.png" height="600"></p>
 
-##### 2.7.1.2 PCI DMA Normal Write Cycle
+##### 2.7.1.2 PCI Fast RAM DMA Normal Write Cycle
 
 1. ADD SOME TEXT DESCRIBING THE TIMING
 
 <img src="/DataSheets/TimingDiagrams/PCI DMA Normal Write Cycle.png" height="600"></p>
 
-#### 2.7.2 PCI DMA Burst Cycles
+#### 2.7.2 PCI Fast RAM DMA Burst Cycles
 
-##### 2.7.2.1 PCI DMA Burst Read Cycle
+##### 2.7.2.1 PCI Fast RAM DMA Burst Read Cycle
 
 1. The initiating PCI device requests the bus by asserting _REQx (where x is the slot designation) on the falling edge of PCI clock.
 2. When the bus is available to the PCI device, the arbiter asserts _BB on the next falling edge of BCLK and asserts _GNT on the next falling edge of PCI clock.
@@ -590,25 +590,43 @@ A normal mode transfer is capable of moving byte, word, or long word data. The d
 
 <img src="/DataSheets/TimingDiagrams/PCI DMA Burst Read Cycle.png" width="750"></p>
 
-##### 2.7.2.2 PCI DMA Burst Read Cycle With Wait
+##### 2.7.2.2 PCI Fast RAM DMA Burst Read Cycle With Wait
 
 <img src="/DataSheets/TimingDiagrams/PCI DMA Burst Read Cycle With Wait.png" width="750"></p>
 
-##### 2.7.2.3 PCI DMA Burst Write Cycle
+##### 2.7.2.3 PCI Fast RAM DMA Burst Write Cycle
 
 1. ADD SOME TEXT DESCRIBING THE TIMING
 
 <img src="/DataSheets/TimingDiagrams/PCI DMA Burst Write Cycle.png" height="750"></p>
 
-##### 2.7.2.4 PCI DMA Burst Write Cycle
+##### 2.7.2.4 PCI Fast RAM DMA Burst Write Cycle
 
 <img src="/DataSheets/TimingDiagrams/PCI DMA Burst Write Cycle With Wait.png" width="750"></p>
+
+#### 2.7.3 PCI Chip RAM DMA Normal Mode Cycles
+
+Using the chip RAM space for DMA is discouraged when fast RAM is available. Chip RAM DMA does not support burst mode.
+
+##### 2.7.3.1 PCI OCS/ECS Chip RAM DMA Normal Read Cycle
+
+##### 2.7.3.2 PCI OCS/ECS Chip RAM DMA Normal Read Cycle
+
+##### 2.7.3.3 PCI AGA Chip RAM DMA Normal Read Cycle
+
+NEED INPUT.
+
+##### 2.7.3.4 PCI AGA Chip RAM DMA Normal Read Cycle
+
+NEED INPUT.
 
 #### 2.7.6 Master Terminated Cycle - Timeout
 
 Add something here. This is timeout during DMA situations.
 
-### 2.8 Parity
+
+
+### 2.9 Parity
 
 Data transfer errors are detected using an even parity system. Except for video and HID devices, all PCI devices are required to support parity[[7]](#7). Even parity is generated by the device driving the AD bus and is asserted one clock after the associated address or data block. The device receiving data on the AD bus determines even parity on the data received and compares it to the PAR. The parity is determined by XORing the individual bits of the AD[31..0], _C/BE[3..0], and PAR signals. The PAR bit is set when the sum of bits set is equal to an even number.
 
