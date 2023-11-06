@@ -541,17 +541,25 @@ Add something here.
 
 This section relates to direct memory access (DMA) against onboard AmigaPCI address spaces. Only the memory space PCI command is allowed. When a PCI device requests the bus, the bus arbiter will grant access to the bus, as described in section [2.5 Bus Mastering](#2.5-bus-mastering). The onboard system being addressed must alert the Local PCI Bridge it is responding to the current cycle by asserting the **_DMASEL** signal. The **_DMASEL** signal may be connected to multiple onboard devices. Thus, **_DMASEL** should be a sustained tristate signal, being driven by only one device at a time, and driving it high for at least one BCLK before allowing it to float. Notifying the Local PCI Bridge in such a way allows the Local PCI Bridge to properly drive the DMA cycle against devices on the MC68040 bus. Negation of **_DMASEL** during DMA cycles implies the cycle is among PCI devices on the PCI bus. The **_DMASEL** signal should be pulled up to the appropriate positive voltage with a 10k ohm resistor on the AmigaPCI main board.
 
-During DMA cycles, the cycle is driven by the initiating PCI device. The Local PCI Bridge is responsible for driving MC68040 compatable signals on the MC68040 bus. These signals are **_TS**, **_TIP**, **R_W**, **TT0**, **TT1**, **SIZ0**, **SIZ1**, **A[31..0]**, and **D[0.31]** (write cycle only). When not actively driving a DMA cycle on the MC68040 bus, these signals must be held in a high impedence state. The Local PCI Bridge must respond to the assertion of **_TA** in order to recognize when data is placed on **D[0.31]** for read cycles, or when data has been latched by the target device for write cycles.
+During DMA cycles, the cycle is directed by the initiating PCI device. The Local PCI Bridge is responsible for driving MC68040 compatable signals on the MC68040 bus. These signals are **_TS**, **_TIP**, **R_W**, **TT0**, **TT1**, **SIZ0**, **SIZ1**, **A[31..0]**, and **D[0.31]** (write cycle only). When not actively driving a DMA cycle on the MC68040 bus, these signals must be held in a high impedence state. The Local PCI Bridge must respond to the assertion of **_TA** in order to recognize when data is placed on **D[0.31]** for read cycles, or when data has been latched by the target device for write cycles. Unless actively driving a DMA cycle against AmigaPCI resources, **AD[31..0]**, **_TRDY**, **_DEVSEL** must be held in a high impedence state by the Local PCI Bridge during DMA cycles.
 
-The Local PCI Bridge will assert **TT0** and **TT1**, as required, in response to a normal or burst transfer request from the PCI initiating device. The assertion of transfer type (**TT0** and **TT1**) is determined by whether **_FRAME** is held asserted for more than a single PCI clock cycle. If **_FRAME** is negated on the first rising PCI clock edge after the address phase, this is a normal cycle. If **_FRAME** is held asserted on the first rising PCI clock edge after the address phase, this is a burst cycle. Unless actively driving signals in response to data from the AmigaPCI, the **AD bus**, **_TRDY**, **_DEVSEL** must be held in a high impedence state during DMA cycles.
+#### 2.7.1 Transfer Type
 
-In regards to wait states, we must consider that the PCI bus clock and the MC68040 bus clocks are asynchronous. If not handled correctly, this can lead to a condition where the devices become out of sync, which will lead transfer errors. It is expected that target devices on the AmigaPCI will never insert wait states. While the PCI device may rarely, if ever, insert wait states, we must consider this possiblity as wait states are defined in the PCI specifications for all cycle types. Due to the asynchronous nature of the two bus clocks, great care must be taken to ensure the devices involved in the transaction remain in sync for the entire transaction. This can be easily addressed via the use of latches during read cycles. However, this becomes more difficult to accomodate during write cycles. For example, **CLKEN** (clock enabled ) may be used by an SDRAM controller to halt the SDRAM device during an active cycle. This allows us to account for waits inserted by the PCI device. Unfortunately, the **CLKEN** signal affects the action one rising clock edge after the rising clock edge **CLKEN** is latched. This means we must understand the condition of **_IRDY** at least one MC68040 bus clock ahead of where the data would actually be latched. This can result in slower cycles in which a wait inserted by the initiator (PCI) device results in a larger relative effect on the MC68040 bus, where we must wait for the signals get back in sync for the cycle to continue.
+The Local PCI Bridge will assert **TT0** and **TT1**, as required, in response to a normal or burst transfer request from the PCI initiating device. The assertion of transfer type (**TT0** and **TT1**) is determined by whether **_FRAME** is held asserted after the address phase of the current cycle. If **_FRAME** is negated on the first rising PCI clock edge after the address phase, this is a normal cycle. If **_FRAME** is held asserted on the first rising PCI clock edge after the address phase, this is a burst cycle. This means the Local PCI Bridge cannot set **TT0** and **TT1** until the first falling BCLK edge after the first rising PCLK edge after the cycle address phase. Beginning a data transfer cycle after transfer type is determined will delay the start of the cycle at least one BCLK. It is recommended DMA target devices be designed in a way to support late asserted **TT0** and **TT1**. It is up to the system designer to determine the best method for their use case. The timings presented here assume late asserted **TT0** and **TT1**.
 
-#### 2.7.1 PCI Fast RAM DMA Normal Mode Cycles
+#### 2.7.2 Bus Synchronization
+
+It must be considered that the PCI bus clock and the MC68040 bus clocks are asynchronous. If not handled correctly, this can lead to a condition where the devices become out of sync, which will lead to data transfer errors. It is expected target devices on the AmigaPCI will never assert wait states. While PCI initiator devices may rarely insert wait states, we must consider this possiblity as wait states are defined in the PCI specification for all cycle types. The asynchronous nature of the two bus blocks can be addressed via the use of data latches for both read and write cycles. Moving data from the fast (BCLK) to the slow (PCICLK) domain is easier to implement, as the target device can supply the data at a faster rate than it is consumed by the PCI initiator device. However, moving data from the slow domain (PCICLK) to the fast domain (BCLK) during write cycles is more prone to losing sync. Because of this, the DMA target device must recognize and insert wait states during DMA write cycles. These waits resulting from the asynchronous nature of the two buses or inserted by the PCI device when negating **_IRDY**.
+
+For example, **CLKEN** (clock enabled ) may be used by an SDRAM controller to halt the SDRAM device during an active cycle. The **CLKEN** signal affects the action one rising clock edge after the rising clock edge **CLKEN** is latched. We must understand two things: 1) the condition of **_IRDY** and 2) the data to be transfered at least one MC68040 bus clock ahead of where the data will be latched. If the data *DATAn+1* is undefined or **_IRDY** is negated when data *DATAn* is placed on the bus, we must also negate **CLKEN** at this time to stop the SDRAM device until such time as *DATAn+1* is defined and **_IRDY** is asserted.
+
+#### 2.7.3 PCI Fast RAM DMA Normal Mode Cycles
 
 A normal mode transfer is capable of moving byte, word, or long word data. The data size to be transfered is determined from **AD(1..0)** and PCI command driven on **C/BE[3..0]** during the address phase. That information is used to drive the correct cycle type on the MC68040 bus during the data transfer.
 
-##### 2.7.1.1 PCI Fast RAM DMA Normal Read Cycle
+**NOTE:** The example timings under section 2.7.1 assume the DMA target device is an SDRAM device with burst mode = 4 and CAS latency = 2.
+
+##### 2.7.3.1 PCI Fast RAM DMA Normal Read Cycle
 
 1. The initiating PCI device requests the bus by asserting **_REQx** (where x is the slot designation) on the falling edge of PCI clock.
 2. When the bus is available to the PCI device, the arbiter asserts **_BB** on the next falling edge of BCLK and asserts **_GNTx** on the next falling edge of PCI clock.
@@ -566,15 +574,15 @@ A normal mode transfer is capable of moving byte, word, or long word data. The d
 
 <img src="/DataSheets/TimingDiagrams/PCI DMA Normal Read Cycle.png" height="600"></p>
 
-##### 2.7.1.2 PCI Fast RAM DMA Normal Write Cycle
+##### 2.7.3.2 PCI Fast RAM DMA Normal Write Cycle
 
 1. ADD SOME TEXT DESCRIBING THE TIMING
 
 <img src="/DataSheets/TimingDiagrams/PCI DMA Normal Write Cycle.png" height="600"></p>
 
-#### 2.7.2 PCI Fast RAM DMA Burst Cycles
+#### 2.7.4 PCI Fast RAM DMA Burst Cycles
 
-##### 2.7.2.1 PCI Fast RAM DMA Burst Read Cycle
+##### 2.7.4.1 PCI Fast RAM DMA Burst Read Cycle
 
 1. The initiating PCI device requests the bus by asserting _REQx (where x is the slot designation) on the falling edge of PCI clock.
 2. When the bus is available to the PCI device, the arbiter asserts _BB on the next falling edge of BCLK and asserts _GNT on the next falling edge of PCI clock.
@@ -590,33 +598,33 @@ A normal mode transfer is capable of moving byte, word, or long word data. The d
 
 <img src="/DataSheets/TimingDiagrams/PCI DMA Burst Read Cycle.png" width="750"></p>
 
-##### 2.7.2.2 PCI Fast RAM DMA Burst Read Cycle With Wait
+##### 2.7.4.2 PCI Fast RAM DMA Burst Read Cycle With Wait
 
 <img src="/DataSheets/TimingDiagrams/PCI DMA Burst Read Cycle With Wait.png" width="750"></p>
 
-##### 2.7.2.3 PCI Fast RAM DMA Burst Write Cycle
+##### 2.7.4.3 PCI Fast RAM DMA Burst Write Cycle
 
 1. ADD SOME TEXT DESCRIBING THE TIMING
 
 <img src="/DataSheets/TimingDiagrams/PCI DMA Burst Write Cycle.png" height="750"></p>
 
-##### 2.7.2.4 PCI Fast RAM DMA Burst Write Cycle
+##### 2.7.4.4 PCI Fast RAM DMA Burst Write Cycle
 
 <img src="/DataSheets/TimingDiagrams/PCI DMA Burst Write Cycle With Wait.png" width="750"></p>
 
-#### 2.7.3 PCI Chip RAM DMA Normal Mode Cycles
+#### 2.7.5 PCI Chip RAM DMA Normal Mode Cycles
 
 Using the chip RAM space for DMA is discouraged when fast RAM is available. Chip RAM DMA does not support burst mode.
 
-##### 2.7.3.1 PCI OCS/ECS Chip RAM DMA Normal Read Cycle
+##### 2.7.5.1 PCI OCS/ECS Chip RAM DMA Normal Read Cycle
 
-##### 2.7.3.2 PCI OCS/ECS Chip RAM DMA Normal Read Cycle
+##### 2.7.5.2 PCI OCS/ECS Chip RAM DMA Normal Read Cycle
 
-##### 2.7.3.3 PCI AGA Chip RAM DMA Normal Read Cycle
+##### 2.7.5.3 PCI AGA Chip RAM DMA Normal Read Cycle
 
 NEED INPUT.
 
-##### 2.7.3.4 PCI AGA Chip RAM DMA Normal Read Cycle
+##### 2.7.5.4 PCI AGA Chip RAM DMA Normal Read Cycle
 
 NEED INPUT.
 
