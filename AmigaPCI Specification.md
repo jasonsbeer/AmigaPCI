@@ -13,8 +13,9 @@ This document defines how the PCI 2.3 specification is implemented on the AmigaP
 1) Signals are presented as bold font, such as **_FRAME** or **_TA**.
 2) A leading underscore (_) is used to indicate a signal is active low.
 3) Examples of bus data are italicized, such as *DATA0* or *ADDRESS1*.  
-4) A bus's most significant bit will be listed first and least significant last. For example, [31..0] indicates bit 31 as the most significant bit. Zero is the least. Thus, [31..0] indicates a little endian device. The opposite will be true for a big endian device.  
-5) AmigaPCI refers to this specification or any implementation of this specification, in part or whole.  
+4) A bus's most significant bit will be listed first and least significant last. For example, [31..0] indicates bit 31 as the most significant bit. Zero is the least. Thus, [31..0] indicates a little endian device. The opposite will be true for a big endian device.
+5) Hex values are presented with a leading $ (dollar sign) and a space inserted every 4 characters for clarity.
+6) AmigaPCI refers to this specification or any implementation of this specification, in part or whole.  
 
 **Authors**
 
@@ -146,7 +147,7 @@ Bit|Description|Supported by Local PCI Bridge Device
 3|Interrupt Status|Yes
 2-0|Reserved|-
 
-## 2.0.2 AUTOCONFIG Mode
+## 2.0.2 AUTOCONFIG
 
 PCI cards designed specifically with support for the Amiga should be installed in an AUTOCONFIG slot. AUTOCONFIG slots will be configured by the Local PCI Bridge at startup in the 32-bit Zorro 3 address space. The AmigaPCI AUTOCONFIG process is compatable with configuration of Type 0 devices. 
 
@@ -185,20 +186,56 @@ R_W|UPA0|UPA1|PCI Command
 0|0|1|Configuration Type 1 Space Write
 -|1|1|Reserved
 
-## 2.0.3 Software Configuration (Prometheus) Mode
+### 2.0.2.3 PCI AUTOCONFIG Configuration Access
 
-PCI devices not specifically designed for the Amiga should be installed in software configuration slots. Each slot designated as a software configuration slot may be accessed through the base address of the Local PCI Bridge, which is always AUTOCONFIGured at startup. Each slot on the PCI bus may be addressed individually by its offset value to read or write from that device's configuration register. The addressing scheme of software configured target devices is compatable with Prometheus. 
+During the AUTOCONFIG process, up to 21 AUTOCONFIG capable PCI device slots may be addressed by the Local PCI Bridge. During the configuration access, the Local PCI Bridge asserts **IDSEL** with one of 21 address bits, **A[31..11]**. Once the device has been configured, the device may only be accessed through its AUTOCONFIG assigned base address.
+
+Examples, assuming the PCI Local Bridge base address is $6000 0000:
+
+1) Applying address $0200 0000 will enable **IDSEL** of the card in slot 9.  
+2) Applying address $8000 0000 will enable **IDSEL** of the card in slot 15.  
+
+Table 2.0.2.3a. AUTOCONFIG Capable Slots.
+PCI Slot|Address Bit|Offset|Prometheus Compatable
+-|-|-|-|-
+0|AD[16]|$0001 0000|Yes
+1|AD[17]|$0002 0000|Yes
+2|AD[18]|$0004 0000|Yes
+3|AD[19]|$0008 0000|Yes
+4|AD[20]|$0010 0000|No
+5|AD[21]|$0020 0000|No
+6|AD[22]|$0040 0000|No
+7|AD[23]|$0080 0000|No
+8|AD[24]|$0100 0000|No
+9|AD[25]|$0200 0000|No
+10|AD[26]|$0400 0000|No
+11|AD[27]|$0800 0000|No
+12|AD[28]|$1000 0000|No
+13|AD[29]|$2000 0000|No
+14|AD[30]|$4000 0000|No
+15|AD[31]|$8000 0000|No
+16|AD[11]|$0000 0800|No
+17|AD[12]|$0000 1000|No
+18|AD[13]|$0000 2000|No
+19|AD[14]|$0000 4000|No
+20|AD[15]|$0000 8000|No
+
+## 2.0.3 Software Configuration (Prometheus) Access
+
+PCI devices not specifically designed for Amiga AUTOCONFIG should be installed in a software configuration slot. Each slot designated as a software configuration slot may be accessed through the base address of the Local PCI Bridge, which is always configured by AUTOCONFIG at startup. Each slot on the PCI bus may be addressed individually by its offset value to read or write from that device's configuration register. To maintain compatability with existing Prometheus drivers, the system must support **IDSEL** on four slots driven by **A[19..16]**. Up to 17 additional slots may be added to support AUTOCONFIG only devices. See 2.0.2.3 AUTOCONFIG PCI Slots.
+
+Examples, assuming the PCI Local Bridge base address is $6000 0000:
+
+1) Applying address $6001 0000 will enable **IDSEL** of the card in slot 0.  
+2) Applying address $6008 0000 will enable **IDSEL** of the card in slot 3.   
 
 Table 2.0.3a. Address Offset of PCI Slots For **IDSEL**.
 PCI Slot|Address Bit|Offset From Base Address
--|-|-
-0|AD[16]|$01 0000
-1|AD[17]|$02 0000
-2|AD[18]|$04 0000
-3|AD[19]|$08 0000
-4|AD[20]|$10 0000
-
-~~**NOTE:** When a PCI Target device is configured under the Local PCI Bridge base address (Prometheus Mode), bits AD31 and AD30 of the address are set, forcing all Prometheus configured base addresses to start at $C000 0000. This prevents Prometheus configured devices from responding to addresses assigned to an AUTOCONFIG PCI device, which will never start with $C000 0000. This is implemented in the Local PCI Bridge hardware and is transparent to software. Thus, this approach does not affect how drivers are expected to behave to support the Prometheus standard. This is noted here to explain the hardware implementation in better detail.~~
+-|-|-|-|-
+0|AD[16]|$0001 0000
+1|AD[17]|$0002 0000
+2|AD[18]|$0004 0000
+3|AD[19]|$0008 0000
 
 ### 2.0.3.1 PCI Command Examples
 
@@ -214,20 +251,26 @@ $1FC0 0000|$1FCF FFFF|Config Type 0 Space|1MB|$0000 0000|$000F FFFF
 $1FD0 0000|$1FDF FFFF|Config Type 1 Space|1MB|$0000 0000|$000F FFFF
 $1FE0 0000|$1FFF FFFF|I/O Space|2MB|$0000 0000|$001F FFFF
 
-### 2.0.3.2 PCI Configuration Access
+### 2.0.3.2 PCI Software Configuration Type 0 Access
 
-For these examples, assume the base address of the Local PCI Bridge is $8000 0000. When accessing the configuration registers of software configured PCI devices on the bus, **A[31..24]** will be converted to $0 by the Local PCI bridge. 
+When accessing the configuration registers of software configured PCI devices on the bus. Prometheus allows selection of up to four devices via **IDSEL** using **A[15..11]**. Here, we have added flexability to support up to 21 PCI slots, as defined in the PCI Specification. In order to ensure compatability with exising Prometheus drivers, Prometheus (non-AUTOCONFIG) PCI cards must be placed in slots where **IDSEL** is driven by **A[19..16]**. AUTOCONFIG PCI slots may be driven by any bit in **A[31..11]**.
 
-A[31..24] Reserved  (Always b00000000)  
-A[23..16] PCI Bus Number (Slot Offset, see Table 1.3.2.a)  
-A[15..11] PCI Device Number (Always b00000)  
-A[10..8] PCI Function Number  
-A[7..2] PCI Register Number.  
-A[1..0] Defined by MC68040 as byte offset from the base address. 
+**A[31..20]** PCI Device Number (AmigaPCI Slot Offset, see Table 2.0.3.a)  
+**A[19..16]** PCI Device Number (Prometheus and AmigaPCI Slot Offsets, see Table 2.0.3.a)
+**A[15..11]** PCI Device Number (AmigaPCI Slot Offset, see Table 2.0.3.a) 
+**A[10..8]** PCI Function Number  
+**A[7..2]** PCI Register Number.  
+**A[1..0]** Defined by MC68040 as byte offset from the base address. 
 
-Reading address $9FC2 0000 will return the Device ID and Vendor ID of function 0 of the PCI device in slot 1.  
-Reading address $9FD0 0000 will return the Device ID and Vendor ID of function 0 of the PCI device in slot 5.  
-Reading address $9FC1 0010 will return the Base Address Register 0 of the PCI device in slot 0.  
+Examples, assuming the PCI Local Bridge base address is $6000 0000:
+
+1) Reading address $6FC2 0000 will return the Device ID and Vendor ID of function 0 of the PCI device in slot 1.  
+2) Reading address $6FD0 0000 will return the Device ID and Vendor ID of function 0 of the PCI device in slot 4.  
+3) Reading address $6FC1 0010 will return the Base Address Register 0 of the PCI device in slot 0.
+
+### 2.0.3.3 PCI Configuration Type 1 Access
+
+ADD SOME STUFF!!!!
 
 ## 3.0 Data Transfer Cycles and Bus Mastering
 
@@ -237,7 +280,7 @@ Direct bus* access is available to the MC68040 and PCI devices via bus mastering
 
 #### 3.1 MC68040 as a Bus Driver
 
-Unlike previous Motorola MC68000 series processors, the MC68040 does not preferentially own the bus. It is considered for bus access with all other bus mastering devices on the system. Thus, bus arbitration includes the MC68040 when assigning bus ownership, which is given priority over other devices. When it is ready to take ownership of the system bus the MC68040 will assert _BR (bus request) to indicate its need to own the system bus. When there are no current bus cycles in progress, the arbiter will assert _BG (bus grant) in response so that the MC68040 may begin its bus activities. Once _BG is asserted by the arbiter, the MC68040 will assert _BB (bus busy) to indicate ownership of the bus. _BG is asserted until the MC68040 bus access is complete, indicated by negation of _BR. While posessing explicit ownership of the bus, the MC68040 may start a bus cycle at any time asserting _BR and _BB. The MC68040 is granted implicit ownership of the bus when no other device is requesting, or has been granted, bus ownership. In this state, the MC68040 leaves the bus in an undefined state. _BR is negated and _BB is tri-state.
+Unlike previous Motorola MC68000 series processors, the MC68040 does not preferentially own the bus. It is considered for bus access with all other bus mastering devices on the system. Thus, bus arbitration includes the MC68040 when assigning bus ownership, which is given priority over other devices. When it is ready to take ownership of the system bus the MC68040 will assert **_BR** (bus request) to indicate its need to own the system bus. When there are no current bus cycles in progress, the arbiter will assert **_BG** (bus grant) in response so that the MC68040 may begin its bus activities. Once **_BG** is asserted by the arbiter, the MC68040 will assert **_BB** (bus busy) to indicate ownership of the bus. **_BG** is asserted until the MC68040 bus access is complete, indicated by negation of **_BR**. While posessing explicit ownership of the bus, the MC68040 may start a bus cycle at any time asserting **_BB**. The MC68040 is granted implicit ownership of the bus when no other device is requesting, or has been granted, bus ownership. During implicit ownership of the bus, the MC68040 leaves the bus in an undefined state, while **_BG** is asserted, **_BR** is negated, and **_BB** is tri-state.
 
 ### 3.1.1 MC68040 Driven PCI Data Cycle
 
@@ -322,9 +365,9 @@ Note: When **_BB** is asserted and **_BG** is negated, this allows for bus snoop
 
 ### 3.2.1 PCI Driven PCI Data Cycle (DMA)
 
-This section relates to direct memory access (DMA) against onboard AmigaPCI address spaces. Only the memory space PCI command is allowed. When a PCI device requests the bus, the bus arbiter will grant access to the bus, as described in section [2.5 Bus Mastering](#2.5-bus-mastering). The onboard system being addressed must alert the Local PCI Bridge it is responding to the current cycle by asserting the **_DMASEL** signal. The **_DMASEL** signal may be connected to multiple onboard devices. Thus, **_DMASEL** should be a sustained tristate signal, being driven by only one device at a time, and driving it high for at least one BCLK before allowing it to float. Notifying the Local PCI Bridge in such a way allows the Local PCI Bridge to properly drive the DMA cycle against devices on the MC68040 bus. Negation of **_DMASEL** during DMA cycles implies the cycle is among PCI devices on the PCI bus. The **_DMASEL** signal should be pulled up to the appropriate positive voltage with a 10k ohm resistor on the AmigaPCI main board.
+This section relates to direct memory access (DMA) against onboard AmigaPCI address spaces. Only the memory space PCI command is allowed. The onboard system being addressed must alert the Local PCI Bridge it is responding to the current cycle by asserting the **_DMASEL** signal. The **_DMASEL** signal may be connected to multiple onboard devices. Thus, **_DMASEL** should be a sustained tristate signal, being driven by only one device at a time, and driving it high for at least one BCLK before allowing it to float. Notifying the Local PCI Bridge in such a way allows the Local PCI Bridge to properly drive the DMA cycle against devices on the MC68040 bus. Lack of **_DMASEL** assertion during DMA cycles implies the cycle is among PCI devices on the PCI bus. The **_DMASEL** signal should be pulled up to the appropriate positive voltage with a 4.7 to 10k ohm resistor on the AmigaPCI main board.
 
-During DMA cycles, the cycle is directed by the initiating PCI device. The Local PCI Bridge is responsible for driving MC68040 compatable signals on the MC68040 bus. These signals are **_TS**, **_TIP**, **R_W**, **TT0**, **TT1**, **SIZ0**, **SIZ1**, **A[31..0]**, and **D[0.31]** (write cycle only). When not actively driving a DMA cycle on the MC68040 bus, these signals must be held in a high impedence state. The Local PCI Bridge must respond to the assertion of **_TA** in order to recognize when data is placed on **D[0.31]** for read cycles, or when data has been latched by the target device for write cycles. Unless actively driving a DMA cycle against AmigaPCI resources, **AD[31..0]**, **_TRDY**, **_DEVSEL** must be held in a high impedence state by the Local PCI Bridge during DMA cycles.
+During DMA cycles, the cycle is directed by the initiating PCI device. The Local PCI Bridge is responsible for driving MC68040 compatable signals on the MC68040 bus. These signals are **_TS**, **_TIP**, **R_W**, **TT0**, **TT1**, **SIZ0**, **SIZ1**, **A[31..0]**, and **D[0..31]** (write cycle only). When not actively driving a DMA cycle on the MC68040 bus, these signals must be held in a high impedence state. The Local PCI Bridge must respond to the assertion of **_TA** in order to recognize when data is placed on **D[0..31]** for read cycles, or when data has been latched by the target device for write cycles. Unless actively driving a DMA cycle against onboard Amiga resources, **AD[31..0]**, **_TRDY**, **_DEVSEL** must be held in a high impedence state by the Local PCI Bridge during DMA cycles.
 
 #### 3.2.1.1 Transfer Type
 
