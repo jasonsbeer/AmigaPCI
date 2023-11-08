@@ -182,7 +182,7 @@ R_W|UPA0|UPA1|PCI Command
 0|0|1|Configuration Type 1 Space Write
 -|1|1|Reserved
 
-## 2.0.3 Software Configuration Mode
+## 2.0.3 Software Configuration (Prometheus) Mode
 
 PCI devices not designed specifically for the Amiga should be installed in software configuration slots. Each slot designated as a software configuration slot may be accessed through the base address of the Local PCI Bridge, which is always AUTOCONFIGured at startup. Each slot on the PCI bus may be addressed individually by its offset value to read or write from that device's configuration register. The addressing scheme of software configured target devices is compatable with Prometheus. 
 
