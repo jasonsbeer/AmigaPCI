@@ -1,0 +1,15 @@
+Z3 AUTOCONFIG addresses start at $40000000.
+
+3322222222221111 1111110000000000  ADDRESS BIT x10
+1098765432109876 5432109876543210  ADDRESS BIT x1
+
+0100xxxxxxxxxxxx xxxxxxxxxxxxxxxx Device 1 - 256MB
+010100000xxxxxxx xxxxxxxxxxxxxxxx Device 2 - 8MB
+0101000010000001 xxxxxxxxxxxxxxxx Device 3 - 64K
+0101000010000010 xxxxxxxxxxxxxxxx Device 4 - 64K
+011xxxxxxxxxxxxx xxxxxxxxxxxxxxxx Device 5 - 512MB
+100xxxxxxxxxxxxx xxxxxxxxxxxxxxxx Device 6 - 512MB
+01010001xxxxxxxx xxxxxxxxxxxxxxxx Device 7 - 16MB
+
+x= Don't care.
+Configing everything as 16MB or greater will only require only the upper 8 bits.
