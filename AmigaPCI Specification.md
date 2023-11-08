@@ -197,7 +197,7 @@ Examples, assuming the PCI Local Bridge base address is $6000 0000:
 
 Table 2.0.2.3a. AUTOCONFIG Capable Slots.
 PCI Slot|Address Bit|Offset|Prometheus Compatable
--|-|-|-|-
+-|-|-|-
 0|AD[16]|$0001 0000|Yes
 1|AD[17]|$0002 0000|Yes
 2|AD[18]|$0004 0000|Yes
@@ -272,13 +272,13 @@ Examples, assuming the PCI Local Bridge base address is $6000 0000:
 
 ADD SOME STUFF!!!!
 
-## 3.0 Data Transfer Cycles and Bus Mastering
+# 3.0 Data Transfer Cycles and Bus Mastering
 
 Direct bus* access is available to the MC68040 and PCI devices via bus mastering. When a device has mastered the bus, it has control of the entire AmigaPCI system and may directly access any valid address location. This is typically done for direct reading and writing of memory or direct control of chipset or other functions. The AmigaPCI bus arbiter accepts bus requests from the MC608040 and each device on the PCI bus. Each slot on the PCI bus has a dedicated bus request signal. The bus arbiter is designed with a fairness protocol to prevent a single device from owning the bus for extended lengths of time, which can result in degredation in performance. When there is no pending bus request, the MC68040 is given implicit ownership of the bus until it begins a bus cycle or a bus request from one of the PCI devices is asserted. 
 
 *In this discussion, "bus" is a term for the data, address, and AD buses, collectively, of the AmigaPCI.
 
-#### 3.1 MC68040 as a Bus Driver
+## 3.1 MC68040 as a Bus Driver
 
 Unlike previous Motorola MC68000 series processors, the MC68040 does not preferentially own the bus. It is considered for bus access with all other bus mastering devices on the system. Thus, bus arbitration includes the MC68040 when assigning bus ownership, which is given priority over other devices. When it is ready to take ownership of the system bus the MC68040 will assert **_BR** (bus request) to indicate its need to own the system bus. When there are no current bus cycles in progress, the arbiter will assert **_BG** (bus grant) in response so that the MC68040 may begin its bus activities. Once **_BG** is asserted by the arbiter, the MC68040 will assert **_BB** (bus busy) to indicate ownership of the bus. **_BG** is asserted until the MC68040 bus access is complete, indicated by negation of **_BR**. While posessing explicit ownership of the bus, the MC68040 may start a bus cycle at any time asserting **_BB**. The MC68040 is granted implicit ownership of the bus when no other device is requesting, or has been granted, bus ownership. During implicit ownership of the bus, the MC68040 leaves the bus in an undefined state, while **_BG** is asserted, **_BR** is negated, and **_BB** is tri-state.
 
@@ -288,11 +288,11 @@ CPU access to PCI target devices supports burst (MOVE16) and non-burst (normal) 
 
 When a data transfer cycle is initiated by the MC68040, the Local PCI Bridge broadcasts the address and related bus command to the PCI bus. If a target device responds by asserting **_DEVSEL** within two PCI clock cycles, the Local PCI Bridge completes the transfer. If no device asserts **_DEVSEL** by the second falling edge of the PCI clock, the Local PCI Bridge returns to an idle state. See Master Terminated, Section 8.2.
 
-#### 3.1.2 Normal Mode Cycles
+### 3.1.2 Normal Mode Cycles
 
 A normal mode transfer is capable of moving byte, word, or long word data. The data size to be transfered is determined from **A[1..0]** and the **SIZ0** and **SIZ1** MC68040 signals. That information is used to drive the correct byte enables on **C/BE[3..0]** during the data transfer.
 
-##### 3.1.2.1 Normal Read Cycle
+#### 3.1.2.1 Normal Read Cycle
 
 ~~1) The MC68040 begin a data transfer cycle by asserting an address on the A bus and data on the D bus, along with related signals. 
 2) On the next falling PCI clock edge, the Local PCI Bridge broadcasts the address on the AD bus, places a bus command on the C/_BE bus, and asserts _FRAME.
@@ -303,7 +303,7 @@ A normal mode transfer is capable of moving byte, word, or long word data. The d
 
 <p align="center"><img src="/DataSheets/TimingDiagrams/PCI Normal Read Cycle.png" width="750"></p>
 
-##### 3.1.2.2 Normal Write Cycle
+#### 3.1.2.2 Normal Write Cycle
 
 ~~1) The MC68040 begins a data transfer cycle by asserting an address on the A bus and data on the D bus, along with related signals. 
 2) On the next falling PCI clock edge, the Local PCI Bridge broadcasts the address on the AD bus, places a bus command on the C/_BE bus, and asserts _FRAME.
@@ -314,11 +314,11 @@ A normal mode transfer is capable of moving byte, word, or long word data. The d
 
 <p align="center"><img src="/DataSheets/TimingDiagrams/PCI Normal Write Cycle.png" width="750"></p>
 
-#### 3.1.3 Burst Mode Cycles
+### 3.1.3 Burst Mode Cycles
 
 A burst mode is defined as a line transfer by the MC68040 initiated with the MOVE16 instruction[[4]](#4). This results in the burst transfer of four long words to or from the target device. Each long word being aligned to a 16-byte memory boundary. During MC68040 initiated burst transfers, all four bytes are enabled. The PCI target device must internally increment **A3** and **A2** of the supplied address for each transfer, causing the address to wrap around at the end of the block. This is consistent with the Cacheline Wrap Mode burst order defined in the PCI specifications[[5]](#5).
 
-##### 3.1.3.1 Burst Read Cycle
+#### 3.1.3.1 Burst Read Cycle
 
 ~~1) The MC68040 begins a data transfer cycle by asserting an address on the A bus and data on the D bus, along with related signals. 
 2) On the next falling PCI clock edge, the Local PCI Bridge broadcasts the address on the AD bus, places a bus command on the C/_BE bus, and asserts _FRAME.  
@@ -339,7 +339,7 @@ Figure 3.1.3.1a. Burst Cycle Read.
 Figure 3.1.3.1b. Burst Cycle Read With Target Wait State.  
 <img src="/DataSheets/TimingDiagrams/CPU Driven Burst Read Cycle Fast With PCI Wait.png" height="400"></p>
 
-##### 3.1.3.2 Burst Write Cycle
+#### 3.1.3.2 Burst Write Cycle
 
 ~~1) The MC68040 begins a data transfer cycle by asserting an address on the A bus and data on the D bus, along with related signals.  
 2) The Local PCI Bus asserts _TA and data is latched by a latching transceiver from the D bus on each rising edge of BCLK. Once the MC68040 cycle is complete, _TA is negated for one BCLK before being placed in a high impedence state.
@@ -357,7 +357,7 @@ Figure 3.1.3.2a. Burst Write Cycle.
 Figure 3.1.3.2b. Burst Write Cycle With Target Wait State.  
 <img src="/DataSheets/TimingDiagrams/PCI Burst Write Cycle Wait Fast.png" height="400"></p>
 
-#### 3.2 PCI Device as a Bus Driver (DMA)
+## 3.2 PCI Device as a Bus Driver (DMA)
 
 When a PCI device is ready to take ownership of the system bus, it will assert **_REQx**, where x is the slot designation of the device (0-4). Once the current bus cycle has completed (**_BB** is negated) the arbiter will assert **_BB** to indicate a bus operation is in progress. It will simultaneously assert **_GNTx**, allowing the requesting PCI device to take ownership of the bus and begin its operation. **_GNTx** and **_BB** will remain asserted until **_REQx** is negated. At that time, **_GNTx** will be negated and **_BB** will be negated.
 
