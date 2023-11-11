@@ -38,6 +38,9 @@ entity MAIN is
 		nRESET : IN STD_LOGIC;
 		nREQ : in  STD_LOGIC_VECTOR (4 downto 0); --PCI BUS REQUEST
 		nBR : in  STD_LOGIC; --MC68040 BUS REQUEST
+		nTIP : IN STD_LOGIC;
+		nFRAME : IN STD_LOGIC;
+		nIRDY : IN STD_LOGIC;
 		
 		nBB : INOUT  STD_LOGIC; --MC68040 BUS BUSY SIGNAL		
 		nGNT : INOUT  STD_LOGIC_VECTOR (4 downto 0); --PCI BUS GRANT
@@ -64,6 +67,9 @@ begin
 		nRESET => nRESET,
 		nREQ => nREQ,
 		nBR => nBR,
+		nTIP => nTIP,
+		nFRAME => nFRAME,
+		nIRDY => nIRDY,
 		nBB => nBB,
 		nGNT => nGNT,
 		nBG => nBG
