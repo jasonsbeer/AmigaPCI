@@ -33,7 +33,7 @@ The PCI Local Bus (PCI herein) is a processor independent, 32 bit expasion bus. 
 
 The Amiga PCI PCI Bridge is implemented via a MC68040 or MC68060 to PCI Bridge (Local PCI Bridge, herein). The Local PCI Bridge logic translates data requests from the Motorola processor and PCI devices in order that they may communicate in an effective manner. It is not possible to implement this specification with Motorola processors that pre-date the MC68040.
 
-The PCI Local Bridge can operate in either AUTOCONFIG mode or software configuration mode. This is discussed further in 1.2.  
+Each PCI slot on the PCI Local Bridge can operate in either AUTOCONFIG mode or Prometheus mode, but not both simultaneously. 
 
 ## 1.1 Endianness
 
@@ -88,18 +88,18 @@ Amiga PCI slots can run in AUTOCONFIG mode or Prometheus compatable mode. Each P
 
 In AUTOCONFIG mode, the PCI target device will be configured on startup like any Amiga AUTOCONFIG device. The advantage of AUTOCONFIG mode is the ability to use the PCI device immediately upon startup without the need to load drivers from disk. This supports devices such as auto booting hard drives, video, sound cards, etc. Once the PCI target device is configured by the AUTOCONFIG process, the target device may be directly accessed by its base address(es). 
 
-Prometheus compatable mode requires the PCI target device be configured in software in order to function. This mode can support PCI target devices not designed for the Amiga. During startup, the Local PCI Bridge is configured via AUTOCONFIG in the 32-bit Zorro 3 address space, which will supply a base address for the Local PCI Bridge through which the slots in software configuration mode may be accessed. Driver software may then poll the Local PCI Bridge base address with each device selection bit. The Local PCI bridge will return $FFFF FFFF if an AUTOCONFIG slot is polled. 
+Prometheus mode requires the PCI target device be configured in software in order to function. This mode can support PCI target devices not designed for the Amiga. During startup, the Local PCI Bridge is configured via AUTOCONFIG in the 32-bit Zorro 3 address space, which will supply a base address for the Local PCI Bridge through which the slots in Prometheus mode may be accessed. Driver software may then poll the Local PCI Bridge base address with each device selection bit. The Local PCI bridge will return $FFFF FFFF if an AUTOCONFIG slot is polled. 
 
 # 2.0 PCI Configuration
 
-Each PCI target device may be configured by the Amiga AUTOCONFIG process or by software configuration. During configuration each PCI slot, in turn, is polled to obtain the capabilities and address space needs of the target device. Each PCI slot is polled by asserting the **IDSEL** signal, which is approximately equivalent to the **_CFGIN** signal of the Zorro bus. However, unlike the **_CFGIN** signal, the **IDSEL** is asserted by a specific address bit during the address phase of a configuration command access[[2]](#2). There is no equivalent of the **_CFGOUT** signal, as the Local PCI Bridge addresses each slot directly.
+Each PCI target device may be configured by the Amiga AUTOCONFIG process or by software configuration (Prometheus). During configuration each PCI slot, in turn, is polled to obtain the capabilities and address space needs of the target device. Each PCI slot is polled by asserting the **IDSEL** signal, which is approximately equivalent to the **_CFGIN** signal of the Zorro bus. However, unlike the **_CFGIN** signal, the **IDSEL** is asserted by a specific address bit during the address phase of a configuration command access[[2]](#2). There is no equivalent of the **_CFGOUT** signal, as the Local PCI Bridge addresses each slot directly.
 
 <p align="center"><img src="/DataSheets/TimingDiagrams/PCI Configuration Read Cycle.png" width="650"></p>
 <p align="center"><img src="/DataSheets/TimingDiagrams/PCI Configuration Write Cycle.png" width="650"></p>
 
 ## 2.1 Local PCI Bridge
 
-The Local PCI Bridge is always AUTOCONFIGured at startup before any other PCI devices. The Local PCI Bridge base address allows direct access of the Local PCI Bridge configuration registers and a means to access software configured PCI cards on the PCI bus (See 1.3.2). All PCI devices are accessed through the Local PCI bridge, which acts as an interface between the CPU and PCI target devices. The Local PCI Bridge also handles bus arbitration. During each CPU data transfer cycle, the address information is broadcast by the Local PCI Bridge to the PCI bus. If any devices respond by asserting **_DEVSEL**, the Local PCI Bridge proceeds with the PCI cycle. Otherwise, the Local PCI Bridge remains idle.
+The Local PCI Bridge is always configured via the AUTOCONFIG process at startup before any other PCI devices. The Local PCI Bridge base address allows direct access of the Local PCI Bridge configuration registers and a means to access Prometheus configured PCI cards on the PCI bus (See 1.3.2). All PCI devices are accessed through the Local PCI bridge, which acts as an interface between the CPU and PCI target devices. The Local PCI Bridge also handles bus arbitration. During each CPU data transfer cycle, the address information is broadcast by the Local PCI Bridge to the PCI bus. If any devices respond by asserting **_DEVSEL**, the Local PCI Bridge proceeds with the PCI cycle. Otherwise, the Local PCI Bridge remains idle.
 
 The following 16-bit registers are supported by the Local PCI Bridge device and can be set or read by software. This allows configuration or polling of the Local PCI Bridge settings and status. Reading a long word at offset $04 will return both registers. All PCI devices implement all or part of these registers as individual devices. Assuming the Local PCI Bridge base address is $8000 0000, you would access the command register at $8000 0004. Reads from unsupported registers will return $0. Writes to unsupported registers will have no effect.
 
@@ -177,7 +177,7 @@ R_W|UPA0|UPA1|PCI Command
 0|0|1|Configuration Type 1 Space Write
 -|1|1|Reserved
 
-### 2.2.3 PCI AUTOCONFIG Configuration Access
+### 2.2.3 PCI AUTOCONFIG Configuration
 
 During the AUTOCONFIG process, up to 21 AUTOCONFIG capable PCI device slots may be addressed by the Local PCI Bridge. During the configuration access, the Local PCI Bridge asserts **IDSEL** with one of 21 address bits, **A[31..11]**. Once the device has been configured, the device may only be accessed through its AUTOCONFIG assigned base address.
 
@@ -209,9 +209,9 @@ PCI Slot|Address Bit|Offset|Prometheus Compatable
 19|AD[14]|$0000 4000|No
 20|AD[15]|$0000 8000|No
 
-## 2.3 Software Configuration (Prometheus) Access
+## 2.3 Prometheus Configuration
 
-PCI devices not specifically designed for Amiga AUTOCONFIG should be installed in a software configuration slot. Each slot designated as a software configuration slot may be accessed through the base address of the Local PCI Bridge, which is always configured by AUTOCONFIG at startup. Each slot on the PCI bus may be addressed individually by its offset value to read or write from that device's configuration register. To maintain compatability with existing Prometheus drivers, the system must support **IDSEL** on four slots driven by **A[19..16]**. These four slots also support AUTOCONFIG. Up to 17 additional slots may be added to support AUTOCONFIG only devices. See 2.0.2.3 AUTOCONFIG PCI Slots.
+PCI devices not specifically designed for Amiga AUTOCONFIG should be installed in a Prometheus configuration slot. Each slot designated as a Prometheus configuration slot may be accessed through the base address of the Local PCI Bridge, which is always configured by AUTOCONFIG at startup. Each slot on the PCI bus may be addressed individually by its offset value to read or write from that device's configuration register. To maintain compatability with Prometheus drivers, the system must support **IDSEL** on four slots driven by **A[19..16]**. These four slots also support AUTOCONFIG. Up to 17 additional slots may be added to support AUTOCONFIG only devices. See 2.0.2.3 AUTOCONFIG PCI Slots.
 
 Examples, assuming the PCI Local Bridge base address is $6000 0000:
 
@@ -240,9 +240,9 @@ $1FC0 0000|$1FCF FFFF|Config Type 0 Space|1MB|$0000 0000|$000F FFFF
 $1FD0 0000|$1FDF FFFF|Config Type 1 Space|1MB|$0000 0000|$000F FFFF
 $1FE0 0000|$1FFF FFFF|I/O Space|2MB|$0000 0000|$001F FFFF
 
-### 2.3.2 PCI Software Configuration Type 0 Access
+### 2.3.2 PCI Prometheus Configuration Type 0 Access
 
-When accessing the configuration registers of software configured PCI devices on the bus. Prometheus allows selection of up to four devices via **IDSEL** using **A[15..11]**. Here, we have added flexability to support up to 21 PCI slots, as defined in the PCI Specification. In order to ensure compatability with exising Prometheus drivers, Prometheus (non-AUTOCONFIG) PCI cards must be placed in slots where **IDSEL** is driven by **A[19..16]**. AUTOCONFIG PCI slots may be driven by any bit in **A[31..11]**.
+When accessing the configuration registers of Prometheus configured PCI devices on the bus. Prometheus allows selection of up to four devices via **IDSEL** using **A[15..11]**. Here, we have added flexability to support up to 21 PCI slots, as defined in the PCI Specification. In order to ensure compatability with exising Prometheus drivers, Prometheus (non-AUTOCONFIG) PCI cards must be placed in slots where **IDSEL** is driven by **A[19..16]**. AUTOCONFIG PCI slots may be driven by any bit in **A[31..11]**.
 
 **A[31..20]** PCI Device Number (Amiga PCI AUTOCONFIG Slot Offset, see Table 2.0.3.a)  
 **A[19..16]** PCI Device Number (Prometheus and Amiga PCI AUTOCONFIG Slot Offsets, see Table 2.0.3.a)
