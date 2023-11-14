@@ -6,7 +6,7 @@
 
 This document is presented "as-is" with no warantee expressed or implied.  
 
-This document defines how the PCI 2.3 specification is implemented on the AmigaPCI. It is not a substitute for the PCI Local Bus Specification or the Motorola MC68040 user manual. It is expected the reader has reviewed and understands the tenants of the PCI Bus as defined in the PCI Local Bus Specification, Rev 1.3, and the Motorola MC68040 user manual.
+This document defines how the PCI 2.3 specification is implemented on the Amiga PCI. It is not a substitute for the PCI Local Bus Specification or the Motorola MC68040 user manual. It is expected the reader has reviewed and understands the tenants of the PCI Bus as defined in the PCI Local Bus Specification, Rev 1.3, and the Motorola MC68040 user manual.
 
 **Conventions**
 
@@ -15,7 +15,7 @@ This document defines how the PCI 2.3 specification is implemented on the AmigaP
 3) Examples of bus data are italicized, such as *DATA0* or *ADDRESS1*.  
 4) A bus's most significant bit will be listed first and least significant last. For example, [31..0] indicates bit 31 as the most significant bit. Zero is the least. Thus, [31..0] indicates a little endian device. The opposite will be true for a big endian device.
 5) Hex values are presented with a leading $ (dollar sign) and a space inserted every 4 characters for clarity.
-6) AmigaPCI refers to this specification or any implementation of this specification, in part or whole.  
+6) Amiga PCI refers to this specification or any implementation of this specification, in part or whole.  
 
 **Authors**
 
@@ -26,17 +26,17 @@ FIRST DRAFT
 
 # 1.0 PCI Bus
 
-The PCI Local Bus (PCI herein) is a processor independent, 32 bit expasion bus. The AmigaPCI is designed to comply with the PCI Local Bus Revision 1.3 specificiation. Each slot supports Universal and +5V cards, as defined in the PCI Local Bus Revision 1.3 specification. Like Zorro 2 and Zorro 3, PCI supports auto configuration of devices on power up. This allows, via some translation, for the use of Amiga AUTOCONFIG to configure devices at start up. This fits well with Amiga OS as PCI devices can be configured as Zorro 3 devices, which function natively with Amiga OS. 
+The PCI Local Bus (PCI herein) is a processor independent, 32 bit expasion bus. The Amiga PCI specification is designed to comply with the PCI Local Bus Revision 2.3 specificiation. Each slot supports Universal and +5V cards, as defined in the PCI Local Bus Revision 2.3 specification. Like Zorro 2 and Zorro 3, PCI supports auto configuration of devices on power up. This allows, via some translation, for the use of Amiga AUTOCONFIG to configure devices at start up. This fits well with Amiga OS as PCI devices can be configured as Zorro 3 devices, which function natively with Amiga OS. 
 
-The AmigaPCI PCI Bus is implemented via a MC68040 to PCI Bridge (Local PCI Bridge, herein) using a PCI bridge ASIC concept. The Local PCI Bridge logic translates data requests from the Motorola MC68040 and PCI devices in order that they may communicate in an effective manner. 
+The Amiga PCI PCI Bridge is implemented via a MC68040 or MC68060 to PCI Bridge (Local PCI Bridge, herein). The Local PCI Bridge logic translates data requests from the Motorola processor and PCI devices in order that they may communicate in an effective manner. It is not possible to implement this specification with Motorola processors that pre-date the MC68040.
 
-The MC68040 Bridge can operate in either AUTOCONFIG mode or software configuration mode. This is discussed further in 1.2.  
+The PCI Local Bridge can operate in either AUTOCONFIG mode or software configuration mode. This is discussed further in 1.2.  
 
 ## 1.1 Endianness
 
-Motorola MC68000 series processors are big endian devices. PCI devices, by contrast, are little endian devices. This means we must byte swap the data signals to provide compatability between devices with different endianness[[1]](#1). The AmigaPCI implements address (or byte) invariance to implement the endian conversion. Any devices created for the AmigaPCI must be designed as little endian, as defined in the PCI Local Bus Specifications[[2]](#2).
+Motorola MC68000 series processors are big endian devices. PCI devices, by contrast, are little endian devices. This means we must byte swap the data signals to provide compatability between devices with different endianness[[1]](#1). The Amiga PCI implements address (or byte) invariance to implement the endian conversion. Any devices created for the Amiga PCI must be designed as little endian, as defined in the PCI Local Bus Specifications[[2]](#2).
 
-Table 1.1. AmigaPCI Endianness.
+Table 1.1. Amiga PCI Endianness.
 <table>
     <thead>
         <tr>
@@ -77,27 +77,15 @@ Table 1.1. AmigaPCI Endianness.
 
 ## 1.2 Interrupt Handling
 
-Each PCI slot has four interrupt signals, identified as **_INTA**, **_INTB**, **_INTC**, and **_INTD**. Single function PCI devices are only allowed to use **_INTA**. The remaining signals are used in the event of a multifunction PCI device, with one interrupt line per PCI function. As a hyptothetical example, a multifunction I/O device may use **_INTA** for a floppy drive interface, **_INTB** for a hard drive interface, _INTC for a serial interface, etc. For the purposes of the AmigaPCI design, **_INTA**, **_INTB**, **_INTC**, and **_INTD** are OR'd together and connected to **_INT2**. Drivers are expected to look for assertion of **_INT2** to signal an interrupt request from devices on the PCI bus. When an interrupt is asserted, the driver needs to poll its device on the PCI bus to determine if its device is asserting the interrupt.
+Each PCI slot has four interrupt signals, identified as **_INTA**, **_INTB**, **_INTC**, and **_INTD**. Single function PCI devices are only allowed to use **_INTA**. The remaining signals are used in the event of a multifunction PCI device, with one interrupt line per PCI function. As a hyptothetical example, a multifunction I/O device may use **_INTA** for a floppy drive interface, **_INTB** for a hard drive interface, _INTC for a serial interface, etc. For the purposes of the Amiga PCI design, **_INTA**, **_INTB**, **_INTC**, and **_INTD** are OR'd together and connected to **_INT2**. Drivers are expected to look for assertion of **_INT2** to signal an interrupt request from devices on the PCI bus. When an interrupt is asserted, the driver needs to poll its device on the PCI bus to determine if its device is asserting the interrupt.
 
 ## 1.3 Modes of Operation
 
-The PCI slots of the AmigaPCI can run in either AUTOCONFIG mode or Prometheus compatable mode. The mode of each PCI slot is set by jumpers J100, J101. and J102. See table 1.2.
+Amiga PCI slots can run in AUTOCONFIG mode or Prometheus compatable mode. Each PCI slot must be identified as an AUTOCONFIG or Prometheus slot, otherwise all slots will be configured at startup via AUTOCONFIG, which may not be the desired action.
 
-In AUTOCONFIG mode, the PCI target device will be configured on startup like any Amiga AUTOCONFIG device. The advantage of AUTOCONFIG mode is the ability to use the PCI device immediately upon startup without the need to load drivers from disk. This supports devices such as auto booting hard drives, SVGA video, sound cards, etc. Once the PCI target device is configured by the AUTOCONFIG process, the target device may be directly accessed by its base address(es). 
+In AUTOCONFIG mode, the PCI target device will be configured on startup like any Amiga AUTOCONFIG device. The advantage of AUTOCONFIG mode is the ability to use the PCI device immediately upon startup without the need to load drivers from disk. This supports devices such as auto booting hard drives, video, sound cards, etc. Once the PCI target device is configured by the AUTOCONFIG process, the target device may be directly accessed by its base address(es). 
 
-Prometheus compatable mode requires the PCI target device be configured in software in order to function. This mode supports PCI target devices not designed for the Amiga. During startup, the Local PCI Bridge is configured via AUTOCONFIG in the 32-bit Zorro 3 address space, which will supply a base address for the Local PCI Bridge through which the slots in software configuration mode may be accessed. Driver software may then poll the Local PCI Bridge base address with each device selection bit. See additional information in Section 1.3. 
-
-PCI devices in AUTOCONFIG slots must be addressed via their AUTOCONFIG assigned base address. The Local PCI bridge will return $FFFF FFFF if an AUTOCONFIG slot is polled. 
-
-Table 1.0.3a
-Software Config Slots|AUTOCONFIG Slots|J100|J101|J102
--|-|-|-|-
-None|All|Open|Open|Open
-0-3|4|Open|Open|Short
-0-2|3-4|Open|Short|Open
-0-1|2-4|Open|Short|Short
-0|1-4|Short|Open|Open
-All|None|Short|Open|Short
+Prometheus compatable mode requires the PCI target device be configured in software in order to function. This mode can support PCI target devices not designed for the Amiga. During startup, the Local PCI Bridge is configured via AUTOCONFIG in the 32-bit Zorro 3 address space, which will supply a base address for the Local PCI Bridge through which the slots in software configuration mode may be accessed. Driver software may then poll the Local PCI Bridge base address with each device selection bit. The Local PCI bridge will return $FFFF FFFF if an AUTOCONFIG slot is polled. 
 
 # 2.0 PCI Configuration
 
@@ -112,7 +100,7 @@ The Local PCI Bridge is always AUTOCONFIGured at startup before any other PCI de
 
 The following 16-bit registers are supported by the Local PCI Bridge device and can be set or read by software. This allows configuration or polling of the Local PCI Bridge settings and status. Reading a long word at offset $04 will return both registers. All PCI devices implement all or part of these registers as individual devices. Assuming the Local PCI Bridge base address is $8000 0000, you would access the command register at $8000 0004. Reads from unsupported registers will return $0. Writes to unsupported registers will have no effect.
 
-**NOTE:** The registers in Tables 3.0.1a and 3.0.1b relate to the Local PCI Bridge only, and do not necessarily indicate overall capability of the AmigaPCI PCI bus implementation.
+**NOTE:** The registers in Tables 3.0.1a and 3.0.1b relate to the Local PCI Bridge only, and do not necessarily indicate overall capability of the Amiga PCI PCI bus implementation.
 
 Table 2.1a. Offset $04, Command Register.
 Bit|Description|Supported by Local PCI Bridge Device
@@ -149,7 +137,7 @@ Bit|Description|Supported by Local PCI Bridge Device
 
 ## 2.2 AUTOCONFIG
 
-PCI cards designed specifically with support for the Amiga should be installed in an AUTOCONFIG slot. AUTOCONFIG slots will be configured by the Local PCI Bridge at startup in the 32-bit Zorro 3 address space. The AmigaPCI AUTOCONFIG process is compatable with configuration of Type 0 devices. 
+PCI cards designed specifically with support for the Amiga should be installed in an AUTOCONFIG slot. AUTOCONFIG slots will be configured by the Local PCI Bridge at startup in the 32-bit Zorro 3 address space. The Amiga PCI AUTOCONFIG process is compatable with configuration of Type 0 devices. 
 
 **NOTE:** A Type 0 configuration transaction is used to access a device on the current bus segment and a Type 1 configuration transaction is used to access a device that resides behind a bridge. A Type 0 configuration transaction is not forwarded across a bridge but is used to configure a bridge or other PCI devices that are connected to the PCI bus on which the Type 0 configuration transaction is generated[[8]](#8). It is not possible to AUTOCONFIG devices requiring a Type 1 configuration header, which are devices behind a second PCI bridge on the bus controlled by the Local PCI Bridge.
 
@@ -220,7 +208,7 @@ PCI Slot|Address Bit|Offset|Prometheus Compatable
 
 ## 2.3 Software Configuration (Prometheus) Access
 
-PCI devices not specifically designed for Amiga AUTOCONFIG should be installed in a software configuration slot. Each slot designated as a software configuration slot may be accessed through the base address of the Local PCI Bridge, which is always configured by AUTOCONFIG at startup. Each slot on the PCI bus may be addressed individually by its offset value to read or write from that device's configuration register. To maintain compatability with existing Prometheus drivers, the system must support **IDSEL** on four slots driven by **A[19..16]**. Up to 17 additional slots may be added to support AUTOCONFIG only devices. See 2.0.2.3 AUTOCONFIG PCI Slots.
+PCI devices not specifically designed for Amiga AUTOCONFIG should be installed in a software configuration slot. Each slot designated as a software configuration slot may be accessed through the base address of the Local PCI Bridge, which is always configured by AUTOCONFIG at startup. Each slot on the PCI bus may be addressed individually by its offset value to read or write from that device's configuration register. To maintain compatability with existing Prometheus drivers, the system must support **IDSEL** on four slots driven by **A[19..16]**. These four slots also support AUTOCONFIG. Up to 17 additional slots may be added to support AUTOCONFIG only devices. See 2.0.2.3 AUTOCONFIG PCI Slots.
 
 Examples, assuming the PCI Local Bridge base address is $6000 0000:
 
@@ -253,9 +241,9 @@ $1FE0 0000|$1FFF FFFF|I/O Space|2MB|$0000 0000|$001F FFFF
 
 When accessing the configuration registers of software configured PCI devices on the bus. Prometheus allows selection of up to four devices via **IDSEL** using **A[15..11]**. Here, we have added flexability to support up to 21 PCI slots, as defined in the PCI Specification. In order to ensure compatability with exising Prometheus drivers, Prometheus (non-AUTOCONFIG) PCI cards must be placed in slots where **IDSEL** is driven by **A[19..16]**. AUTOCONFIG PCI slots may be driven by any bit in **A[31..11]**.
 
-**A[31..20]** PCI Device Number (AmigaPCI Slot Offset, see Table 2.0.3.a)  
-**A[19..16]** PCI Device Number (Prometheus and AmigaPCI Slot Offsets, see Table 2.0.3.a)
-**A[15..11]** PCI Device Number (AmigaPCI Slot Offset, see Table 2.0.3.a) 
+**A[31..20]** PCI Device Number (Amiga PCI Slot Offset, see Table 2.0.3.a)  
+**A[19..16]** PCI Device Number (Prometheus and Amiga PCI Slot Offsets, see Table 2.0.3.a)
+**A[15..11]** PCI Device Number (Amiga PCI Slot Offset, see Table 2.0.3.a) 
 **A[10..8]** PCI Function Number  
 **A[7..2]** PCI Register Number.  
 **A[1..0]** Defined by MC68040 as byte offset from the base address. 
@@ -268,13 +256,15 @@ Examples, assuming the PCI Local Bridge base address is $6000 0000:
 
 ### 2.3.3 PCI Configuration Type 1 Access
 
-ADD SOME STUFF!!!!
+Type 1 configuration devices must be installed in a Prometheus slot, as AUTOCONFIG does not support the Type 1 configuration header.
+
+**ADD SOME STUFF!!!!**
 
 # 3.0 Data Transfer Cycles and Bus Mastering
 
-Direct bus* access is available to the MC68040 and PCI devices via bus mastering. When a device has mastered the bus, it has control of the entire AmigaPCI system and may directly access any valid address location. This is typically done for direct reading and writing of memory or direct control of chipset or other functions. The AmigaPCI bus arbiter accepts bus requests from the MC608040 and each device on the PCI bus. Each slot on the PCI bus has a dedicated bus request signal. The bus arbiter is designed with a fairness protocol to prevent a single device from owning the bus for extended lengths of time, which can result in degredation in performance. When there is no pending bus request, the MC68040 is given implicit ownership of the bus until it begins a bus cycle or a bus request from one of the PCI devices is asserted. 
+Direct bus* access is available to the MC68040 and PCI devices via bus mastering. When a device has mastered the bus, it has control of the entire Amiga PCI system and may directly access any valid address location. This is typically done for direct reading and writing of memory or direct control of chipset or other functions. The Amiga PCI bus arbiter accepts bus requests from the MC608040 and each device on the PCI bus. Each slot on the PCI bus has a dedicated bus request signal. The bus arbiter is designed with a fairness protocol to prevent a single device from owning the bus for extended lengths of time, which can result in degredation in performance. When there is no pending bus request, the MC68040 is given implicit ownership of the bus until it begins a bus cycle or a bus request from one of the PCI devices is asserted. 
 
-*In this discussion, "bus" is a term for the data, address, and AD buses, collectively, of the AmigaPCI.
+*In this discussion, "bus" is a term for the data, address, and AD buses, collectively, of the Amiga PCI.
 
 ## 3.1 MC68040 as a Bus Driver
 
@@ -363,7 +353,7 @@ Note: When **_BB** is asserted and **_BG** is negated, this allows for bus snoop
 
 ### 3.2.1 PCI Driven PCI Data Cycle (DMA)
 
-This section relates to direct memory access (DMA) against onboard AmigaPCI address spaces. Only the memory space PCI command is allowed. The onboard system being addressed must alert the Local PCI Bridge it is responding to the current cycle by asserting the **_DMASEL** signal. The **_DMASEL** signal may be connected to multiple onboard devices. Thus, **_DMASEL** should be a sustained tristate signal, being driven by only one device at a time, and driving it high for at least one BCLK before allowing it to float. Notifying the Local PCI Bridge in such a way allows the Local PCI Bridge to properly drive the DMA cycle against devices on the MC68040 bus. Lack of **_DMASEL** assertion during DMA cycles implies the cycle is among PCI devices on the PCI bus. The **_DMASEL** signal should be pulled up to the appropriate positive voltage with a 4.7 to 10k ohm resistor on the AmigaPCI main board.
+This section relates to direct memory access (DMA) against onboard Amiga PCI address spaces. Only the memory space PCI command is allowed. The onboard system being addressed must alert the Local PCI Bridge it is responding to the current cycle by asserting the **_DMASEL** signal. The **_DMASEL** signal may be connected to multiple onboard devices. Thus, **_DMASEL** should be a sustained tristate signal, being driven by only one device at a time, and driving it high for at least one BCLK before allowing it to float. Notifying the Local PCI Bridge in such a way allows the Local PCI Bridge to properly drive the DMA cycle against devices on the MC68040 bus. Lack of **_DMASEL** assertion during DMA cycles implies the cycle is among PCI devices on the PCI bus. The **_DMASEL** signal should be pulled up to the appropriate positive voltage with a 4.7 to 10k ohm resistor on the Amiga PCI main board.
 
 During DMA cycles, the cycle is directed by the initiating PCI device. The Local PCI Bridge is responsible for driving MC68040 compatable signals on the MC68040 bus. These signals are **_TS**, **_TIP**, **R_W**, **TT0**, **TT1**, **SIZ0**, **SIZ1**, **A[31..0]**, and **D[0..31]** (write cycle only). When not actively driving a DMA cycle on the MC68040 bus, these signals must be held in a high impedence state. The Local PCI Bridge must respond to the assertion of **_TA** in order to recognize when data is placed on **D[0..31]** for read cycles, or when data has been latched by the target device for write cycles. Unless actively driving a DMA cycle against onboard Amiga resources, **AD[31..0]**, **_TRDY**, **_DEVSEL** must be held in a high impedence state by the Local PCI Bridge during DMA cycles.
 
@@ -373,7 +363,7 @@ The Local PCI Bridge will assert **TT0** and **TT1**, as required, in response t
 
 #### 3.2.1.2 Bus Synchronization
 
-It must be considered that the PCI bus clock and the MC68040 bus clocks are asynchronous. If not handled correctly, this can lead to a condition where the devices become out of sync, which will lead to data transfer errors. It is expected target devices on the AmigaPCI will never assert wait states. While PCI initiator devices may rarely insert wait states, we must consider this possiblity as wait states are defined in the PCI specification for all cycle types. The asynchronous nature of the two bus blocks can be addressed via the use of data latches for both read and write cycles. Moving data from the fast (BCLK) to the slow (PCICLK) domain is easier to implement, as the target device can supply the data at a faster rate than it is consumed by the PCI initiator device. However, moving data from the slow domain (PCICLK) to the fast domain (BCLK) during write cycles is more prone to losing sync. Because of this, the DMA target device must recognize and insert wait states during DMA write cycles. These waits resulting from the asynchronous nature of the two buses or inserted by the PCI device when negating **_IRDY**.
+It must be considered that the PCI bus clock and the MC68040 bus clocks are asynchronous. If not handled correctly, this can lead to a condition where the devices become out of sync, which will lead to data transfer errors. It is expected target devices on the Amiga PCI will never assert wait states. While PCI initiator devices may rarely insert wait states, we must consider this possiblity as wait states are defined in the PCI specification for all cycle types. The asynchronous nature of the two bus blocks can be addressed via the use of data latches for both read and write cycles. Moving data from the fast (BCLK) to the slow (PCICLK) domain is easier to implement, as the target device can supply the data at a faster rate than it is consumed by the PCI initiator device. However, moving data from the slow domain (PCICLK) to the fast domain (BCLK) during write cycles is more prone to losing sync. Because of this, the DMA target device must recognize and insert wait states during DMA write cycles. These waits resulting from the asynchronous nature of the two buses or inserted by the PCI device when negating **_IRDY**.
 
 For example, **CLKEN** (clock enabled ) may be used by an SDRAM controller to halt the SDRAM device during an active cycle. The **CLKEN** signal affects the action one rising clock edge after the rising clock edge **CLKEN** is latched. We must understand two things: 1) the condition of **_IRDY** and 2) the data to be transfered at least one MC68040 bus clock ahead of where the data will be latched. If the data *DATAn+1* is undefined or **_IRDY** is negated when data *DATAn* is placed on the MC68040 bus, we must also negate **CLKEN** at this time to stop the SDRAM device until such time as *DATAn+1* is defined and **_IRDY** is asserted.
 
