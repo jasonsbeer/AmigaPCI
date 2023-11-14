@@ -6,16 +6,17 @@
 
 This document is presented "as-is" with no warantee expressed or implied.  
 
-This document defines how the PCI 2.3 specification is implemented on the Amiga PCI. It is not a substitute for the PCI Local Bus Specification or the Motorola MC68040 user manual. It is expected the reader has reviewed and understands the tenants of the PCI Bus as defined in the PCI Local Bus Specification, Rev 1.3, and the Motorola MC68040 user manual.
+This document defines how the PCI 2.3 specification may be implemented on a Motorola MC68040 or MC68060 based Amiga. It is not a substitute for the PCI Local Bus Specification or the relevant Motorola user manuals. It is expected the reader has reviewed and understands the tenants of the PCI Bus as defined in the PCI Local Bus Specification, Rev 2.3, and the relevant Motorola user manuals.
 
 **Conventions**
 
 1) Signals are presented as bold font, such as **_FRAME** or **_TA**.
-2) A leading underscore (_) is used to indicate a signal is active low.
+2) A leading underscore (**_**) is used to indicate a signal is active low.
 3) Examples of bus data are italicized, such as *DATA0* or *ADDRESS1*.  
 4) A bus's most significant bit will be listed first and least significant last. For example, [31..0] indicates bit 31 as the most significant bit. Zero is the least. Thus, [31..0] indicates a little endian device. The opposite will be true for a big endian device.
 5) Hex values are presented with a leading $ (dollar sign) and a space inserted every 4 characters for clarity.
-6) Amiga PCI refers to this specification or any implementation of this specification, in part or whole.  
+6) Amiga PCI refers to this specification or any implementation of this specification, in part or whole.
+7) CPU refers exclusively to the Motorola MC68040 or MC68060 processors, unless otherwise specified.
 
 **Authors**
 
@@ -96,7 +97,7 @@ Each PCI target device may be configured by the Amiga AUTOCONFIG process or by s
 
 ## 2.1 Local PCI Bridge
 
-The Local PCI Bridge is always AUTOCONFIGured at startup before any other PCI devices. The Local PCI Bridge base address allows direct access of the Local PCI Bridge configuration registers and a means to access software configured PCI cards on the PCI bus (See 1.3.2). All PCI devices are accessed through the Local PCI bridge, which acts as an interface between the MC68040 and PCI target devices. The Local PCI Bridge also handles bus arbitration. During each MC68040 data transfer cycle, the address information is broadcast by the Local PCI Bridge to the PCI bus. If any devices respond by asserting **_DEVSEL**, the Local PCI Bridge proceeds with the PCI cycle. Otherwise, the Local PCI Bridge remains idle.
+The Local PCI Bridge is always AUTOCONFIGured at startup before any other PCI devices. The Local PCI Bridge base address allows direct access of the Local PCI Bridge configuration registers and a means to access software configured PCI cards on the PCI bus (See 1.3.2). All PCI devices are accessed through the Local PCI bridge, which acts as an interface between the CPU and PCI target devices. The Local PCI Bridge also handles bus arbitration. During each CPU data transfer cycle, the address information is broadcast by the Local PCI Bridge to the PCI bus. If any devices respond by asserting **_DEVSEL**, the Local PCI Bridge proceeds with the PCI cycle. Otherwise, the Local PCI Bridge remains idle.
 
 The following 16-bit registers are supported by the Local PCI Bridge device and can be set or read by software. This allows configuration or polling of the Local PCI Bridge settings and status. Reading a long word at offset $04 will return both registers. All PCI devices implement all or part of these registers as individual devices. Assuming the Local PCI Bridge base address is $8000 0000, you would access the command register at $8000 0004. Reads from unsupported registers will return $0. Writes to unsupported registers will have no effect.
 
@@ -157,11 +158,11 @@ PCI devices may have onboard ROMs that may be used to enhance functionality, suc
 
 ### 2.2.3 AUTOCONFIG PCI Device Register Access
 
-PCI defines multiple address spaces that exist in parallel. PCI command encodings select a specific address space for the current cycle. PCI devices added by the AUTOCONFIG process may be accessed in memory or configuration spaces. Each device is accessed via the Zorro 3 assigned base address with the command type determined by sampling the R_W, UPA0, and UPA1 sigals. For example, you can access the Configuration Type 0 space of an AUTOCONFIG PCI device by driving the base address on the MC68040 address bus and setting UPA0 = 1 and UPA1 = 0. The Local PCI Bridge will interpret this as a Configuration Type 0 command and set the C/BE[3..0] bits accordingly. 
+PCI defines multiple address spaces that exist in parallel. PCI command encodings select a specific address space for the current cycle. PCI devices added by the AUTOCONFIG process may be accessed in memory or configuration spaces. Each device is accessed via the Zorro 3 assigned base address with the command type determined by sampling the R_W, UPA0, and UPA1 sigals. For example, you can access the Configuration Type 0 space of an AUTOCONFIG PCI device by driving the base address on the CPU address bus and setting UPA0 = 1 and UPA1 = 0. The Local PCI Bridge will interpret this as a Configuration Type 0 command and set the C/BE[3..0] bits accordingly. 
 
 Both UPAx signals are pulled to ground in hardware. As a result, memory space access is the default bus command. This allows for the implementation of PCI devices that do not use drivers, such as memory cards.
 
-**NEED TO CONFIRM THE UPA BUS FLOATS OR IS SET TO 00 WHEN NOT EXPLICITY SET, OTHERWISE THIS MAY NOT WORK**
+**NEED TO CONFIRM THE UPA BUS FLOATS OR IS SET TO 00 WHEN NOT EXPLICITY SET, OTHERWISE THIS MAY NOT WORK!**
 
 Table 2.2.3a. PCI Commands for AUTOCONFIG Devices.
 R_W|UPA0|UPA1|PCI Command
@@ -241,12 +242,12 @@ $1FE0 0000|$1FFF FFFF|I/O Space|2MB|$0000 0000|$001F FFFF
 
 When accessing the configuration registers of software configured PCI devices on the bus. Prometheus allows selection of up to four devices via **IDSEL** using **A[15..11]**. Here, we have added flexability to support up to 21 PCI slots, as defined in the PCI Specification. In order to ensure compatability with exising Prometheus drivers, Prometheus (non-AUTOCONFIG) PCI cards must be placed in slots where **IDSEL** is driven by **A[19..16]**. AUTOCONFIG PCI slots may be driven by any bit in **A[31..11]**.
 
-**A[31..20]** PCI Device Number (Amiga PCI Slot Offset, see Table 2.0.3.a)  
-**A[19..16]** PCI Device Number (Prometheus and Amiga PCI Slot Offsets, see Table 2.0.3.a)
-**A[15..11]** PCI Device Number (Amiga PCI Slot Offset, see Table 2.0.3.a) 
+**A[31..20]** PCI Device Number (Amiga PCI AUTOCONFIG Slot Offset, see Table 2.0.3.a)  
+**A[19..16]** PCI Device Number (Prometheus and Amiga PCI AUTOCONFIG Slot Offsets, see Table 2.0.3.a)
+**A[15..11]** PCI Device Number (Amiga PCI AUTOCONFIG Slot Offset, see Table 2.0.3.a) 
 **A[10..8]** PCI Function Number  
 **A[7..2]** PCI Register Number.  
-**A[1..0]** Defined by MC68040 as byte offset from the base address. 
+**A[1..0]** Defined by CPU as byte offset from the base address. 
 
 Examples, assuming the PCI Local Bridge base address is $6000 0000:
 
@@ -258,57 +259,58 @@ Examples, assuming the PCI Local Bridge base address is $6000 0000:
 
 Type 1 configuration devices must be installed in a Prometheus slot, as AUTOCONFIG does not support the Type 1 configuration header.
 
+**this is really to simplify the logic design...this is an edge case, at best.**
 **ADD SOME STUFF!!!!**
 
 # 3.0 Data Transfer Cycles and Bus Mastering
 
-Direct bus* access is available to the MC68040 and PCI devices via bus mastering. When a device has mastered the bus, it has control of the entire Amiga PCI system and may directly access any valid address location. This is typically done for direct reading and writing of memory or direct control of chipset or other functions. The Amiga PCI bus arbiter accepts bus requests from the MC608040 and each device on the PCI bus. Each slot on the PCI bus has a dedicated bus request signal. The bus arbiter is designed with a fairness protocol to prevent a single device from owning the bus for extended lengths of time, which can result in degredation in performance. When there is no pending bus request, the MC68040 is given implicit ownership of the bus until it begins a bus cycle or a bus request from one of the PCI devices is asserted. 
+Direct bus* access is available to the CPU and PCI devices via bus mastering. When a device has mastered the bus, it has control of the entire Amiga PCI system and may directly access any valid address location. This is typically done for direct reading and writing of memory or direct control of chipset or other functions. The Amiga PCI bus arbiter accepts bus requests from the MC608040 and each device on the PCI bus. Each slot on the PCI bus has a dedicated bus request signal. The bus arbiter should designed with a fairness protocol to prevent a single device from owning the bus for extended lengths of time, which can result in degredation in performance. When there is no pending bus request, the CPU is given implicit ownership of the bus (**_BG** is asserted with **_BB** held in a high impedence state) until it the CPU begins a bus cycle or a bus request from one of the PCI devices is granted. 
 
 *In this discussion, "bus" is a term for the data, address, and AD buses, collectively, of the Amiga PCI.
 
-## 3.1 MC68040 as a Bus Driver
+## 3.1 CPU as a Bus Driver
 
-Unlike previous Motorola MC68000 series processors, the MC68040 does not preferentially own the bus. It is considered for bus access with all other bus mastering devices on the system. Thus, bus arbitration includes the MC68040 when assigning bus ownership, which is given priority over other devices. When it is ready to take ownership of the system bus the MC68040 will assert **_BR** (bus request) to indicate its need to own the system bus. When there are no current bus cycles in progress, the arbiter will assert **_BG** (bus grant) in response so that the MC68040 may begin its bus activities. Once **_BG** is asserted by the arbiter, the MC68040 will assert **_BB** (bus busy) to indicate ownership of the bus. **_BG** is asserted until the MC68040 bus access is complete, indicated by negation of **_BR**. While posessing explicit ownership of the bus, the MC68040 may start a bus cycle at any time asserting **_BB**. The MC68040 is granted implicit ownership of the bus when no other device is requesting, or has been granted, bus ownership. During implicit ownership of the bus, the MC68040 leaves the bus in an undefined state, while **_BG** is asserted, **_BR** is negated, and **_BB** is tri-state.
+Unlike previous Motorola MC68000 series processors, the Motorola MC68040/MC68060 does not preferentially own the bus. It is considered for bus access with all other bus mastering devices on the system. Thus, bus arbitration includes the CPU when assigning bus ownership, which is given priority over other devices. When it is ready to take ownership of the system bus the CPU will assert **_BR** (bus request) to indicate its need to own the system bus. When there are no current bus cycles in progress, the arbiter will assert **_BG** (bus grant) in response so that the CPU may begin its bus activities. Once **_BG** is asserted by the arbiter, the CPU will assert **_BB** (bus busy) to indicate ownership of the bus. **_BG** is asserted until the CPU bus access is complete, indicated by negation of **_BR**. While posessing explicit ownership of the bus, the CPU may start a bus cycle at any time asserting **_BB**. The CPU is granted implicit ownership of the bus when no other device is requesting, or has been granted, bus ownership. During implicit ownership of the bus, the CPU leaves the bus in an undefined state, while **_BG** is asserted, **_BR** is negated, and **_BB** is tri-state.
 
-### 3.1.1 MC68040 Driven PCI Data Cycle
+### 3.1.1 CPU Driven Data Transfer Cycle
 
-CPU access to PCI target devices supports burst (MOVE16) and non-burst (normal) cycles in read and write modes. The PCI and MC68040 busses operate at different clock rates. This raises concerns about metastability and honoring setup and hold times for data transfers. In order to account for these concerns, the PCI data transfer cycles are slowed via wait states to honor setup and hold times, as well as ensuring clock edges are not missed. Any of these issues can result in errors in data transfers and even a system crash. As a result, the actual cycle time is influenced by the relative edges of the two clocks.
+CPU access to PCI target devices supports burst (MOVE16) and non-burst (normal) cycles in read and write modes. The PCI and CPU busses operate at different clock rates. This raises concerns about metastability and honoring setup and hold times for data transfers. In order to account for these concerns, the PCI data transfer cycles are slowed via wait states to honor setup and hold times, as well as ensuring clock edges are not missed. Any of these issues can result in errors in data transfers and even a system crash. As a result, the actual cycle time is influenced by the relative edges of the two clocks.
 
-When a data transfer cycle is initiated by the MC68040, the Local PCI Bridge broadcasts the address and related bus command to the PCI bus. If a target device responds by asserting **_DEVSEL** within two PCI clock cycles, the Local PCI Bridge completes the transfer. If no device asserts **_DEVSEL** by the second falling edge of the PCI clock, the Local PCI Bridge returns to an idle state. See Master Terminated, Section 8.2.
+When a data transfer cycle is initiated by the CPU, the Local PCI Bridge broadcasts the address and related bus command to the PCI bus. If a target device responds by asserting **_DEVSEL** within two PCI clock cycles, the Local PCI Bridge completes the transfer. If no device asserts **_DEVSEL** by the second falling edge of the PCI clock, the Local PCI Bridge returns to an idle state. See Master Terminated, Section 8.2.
 
 ### 3.1.2 Normal Mode Cycles
 
-A normal mode transfer is capable of moving byte, word, or long word data. The data size to be transfered is determined from **A[1..0]** and the **SIZ0** and **SIZ1** MC68040 signals. That information is used to drive the correct byte enables on **C/BE[3..0]** during the data transfer.
+A normal mode transfer is capable of moving byte, word, or long word data. The data size to be transfered is determined from **A[1..0]** and the **SIZ0** and **SIZ1** CPU signals. That information is used to drive the correct byte enables on **C/BE[3..0]** during the data transfer.
 
 #### 3.1.2.1 Normal Read Cycle
 
-~~1) The MC68040 begin a data transfer cycle by asserting an address on the A bus and data on the D bus, along with related signals. 
+~~1) The CPU begin a data transfer cycle by asserting an address on the A bus and data on the D bus, along with related signals. 
 2) On the next falling PCI clock edge, the Local PCI Bridge broadcasts the address on the AD bus, places a bus command on the C/_BE bus, and asserts _FRAME.
 3) If a PCI device on the bridge responds to the base address, it will assert _DEVSEL on the next falling PCI clock edge. If no device responds by asserting _DEVSEL, the AD and C/_BE buses are placed in a high-impedence state and the Local PCI Bridge returns to an idle state.
 4) The Local PCI Bridge continues the data transfer by connecting the D bus to the AD bus. Bit and byte swapping is accomplished in the Local PCI Bridge.
-5) On the next falling BCLK clock edge after data is asserted by the target device, if _TRDY is asserted, _TA is asserted for one BCLK cycle to signal the MC68040 the data is ready to be latched. If _TRDY is not asserted, repeat 5 until the target device asserts _TRDY or the cycle is aborted by the target or master.
+5) On the next falling BCLK clock edge after data is asserted by the target device, if _TRDY is asserted, _TA is asserted for one BCLK cycle to signal the CPU the data is ready to be latched. If _TRDY is not asserted, repeat 5 until the target device asserts _TRDY or the cycle is aborted by the target or master.
 6) On the next falling PCI clock edge after asserting _TA, _IRDY is asserted for one PCI clock cyle to signal the target device the data has been latched.~~
 
 <p align="center"><img src="/DataSheets/TimingDiagrams/PCI Normal Read Cycle.png" width="750"></p>
 
 #### 3.1.2.2 Normal Write Cycle
 
-~~1) The MC68040 begins a data transfer cycle by asserting an address on the A bus and data on the D bus, along with related signals. 
+~~1) The CPU begins a data transfer cycle by asserting an address on the A bus and data on the D bus, along with related signals. 
 2) On the next falling PCI clock edge, the Local PCI Bridge broadcasts the address on the AD bus, places a bus command on the C/_BE bus, and asserts _FRAME.
 3) If a PCI device on the bridge responds to the base address, it will assert _DEVSEL on the next falling PCI clock edge. If no device responds by asserting _DEVSEL within two PCI clock cycles, the AD and C/_BE buses are placed in a high-impedence state and the Local PCI Bridge returns to an idle state.
 4) The Local PCI Bridge continues the data transfer by connecting the AD bus to the D bus. Bit and byte swapping is accomplished in the Local PCI Bridge.
 5) On the next falling PCI clock edge after driving the AD bus, _IRDY is asserted for one PCI clock cyle to signal the target device data is ready to be latched.
-6) On the next falling BCLK clock edge after _IRDY is asserted, if _TRDY is asserted, _TA is asserted for one BCLK cycle to signal the MC68040 the data has been latched. If _TRDY is not asserted, repeat 6 until the cycle continues or is aborted by the target or master.~~
+6) On the next falling BCLK clock edge after _IRDY is asserted, if _TRDY is asserted, _TA is asserted for one BCLK cycle to signal the CPU the data has been latched. If _TRDY is not asserted, repeat 6 until the cycle continues or is aborted by the target or master.~~
 
 <p align="center"><img src="/DataSheets/TimingDiagrams/PCI Normal Write Cycle.png" width="750"></p>
 
 ### 3.1.3 Burst Mode Cycles
 
-A burst mode is defined as a line transfer by the MC68040 initiated with the MOVE16 instruction[[4]](#4). This results in the burst transfer of four long words to or from the target device. Each long word being aligned to a 16-byte memory boundary. During MC68040 initiated burst transfers, all four bytes are enabled. The PCI target device must internally increment **A3** and **A2** of the supplied address for each transfer, causing the address to wrap around at the end of the block. This is consistent with the Cacheline Wrap Mode burst order defined in the PCI specifications[[5]](#5).
+A burst mode is defined as a line transfer initiated by the CPU initiated with the MOVE16 instruction[[4]](#4). This results in the burst transfer of four long words to or from the target device. Each long word being aligned to a 16-byte memory boundary. During CPU initiated burst transfers, all four bytes are enabled. The PCI target device must internally increment **A3** and **A2** of the supplied address for each transfer, causing the address to wrap around at the end of the block. This is consistent with the Cacheline Wrap Mode burst order defined in the PCI specifications[[5]](#5).
 
 #### 3.1.3.1 Burst Read Cycle
 
-~~1) The MC68040 begins a data transfer cycle by asserting an address on the A bus and data on the D bus, along with related signals. 
+~~1) The CPU begins a data transfer cycle by asserting an address on the A bus and data on the D bus, along with related signals. 
 2) On the next falling PCI clock edge, the Local PCI Bridge broadcasts the address on the AD bus, places a bus command on the C/_BE bus, and asserts _FRAME.  
 3) If a PCI device on the bridge responds to the base address, it will assert _DEVSEL on the next falling PCI clock edge.
 4) If no device responds by asserting _DEVSEL within two PCI clock cycles, _FRAME is negated, and the AD and C/BE buses are placed in a high-impedence state and the Local PCI Bridge returns to an idle state. 
@@ -329,9 +331,9 @@ Figure 3.1.3.1b. Burst Cycle Read With Target Wait State.
 
 #### 3.1.3.2 Burst Write Cycle
 
-~~1) The MC68040 begins a data transfer cycle by asserting an address on the A bus and data on the D bus, along with related signals.  
-2) The Local PCI Bus asserts _TA and data is latched by a latching transceiver from the D bus on each rising edge of BCLK. Once the MC68040 cycle is complete, _TA is negated for one BCLK before being placed in a high impedence state.
-3) On the first PCI clock falling edge after the MC68040 cycle begins, the Local PCI Bridge places the address on the AD bus and the PCI command on the C/BE bus and asserts _FRAME.  
+~~1) The CPU begins a data transfer cycle by asserting an address on the A bus and data on the D bus, along with related signals.  
+2) The Local PCI Bus asserts _TA and data is latched by a latching transceiver from the D bus on each rising edge of BCLK. Once the CPU cycle is complete, _TA is negated for one BCLK before being placed in a high impedence state.
+3) On the first PCI clock falling edge after the CPU cycle begins, the Local PCI Bridge places the address on the AD bus and the PCI command on the C/BE bus and asserts _FRAME.  
 4) If a PCI device responds to the base address, it will assert _DEVSEL on the next falling PCI clock edge.  
 5) If no device responds by asserting _DEVSEL within two PCI clock cycles, _FRAME is negated, and the AD and C/BE buses are placed in a high-impedence state and the Local PCI Bridge returns to an idle state.  
 6) On the next falling edge of PCI clock, the appropriate long word data latched from the D bus is placed on the AD bus.
@@ -349,13 +351,13 @@ Figure 3.1.3.2b. Burst Write Cycle With Target Wait State.
 
 When a PCI device is ready to take ownership of the system bus, it will assert **_REQx**, where x is the slot designation of the device (0-4). Once the current bus cycle has completed (**_BB** is negated) the arbiter will assert **_BB** to indicate a bus operation is in progress. It will simultaneously assert **_GNTx**, allowing the requesting PCI device to take ownership of the bus and begin its operation. **_GNTx** and **_BB** will remain asserted until **_REQx** is negated. At that time, **_GNTx** will be negated and **_BB** will be negated.
 
-Note: When **_BB** is asserted and **_BG** is negated, this allows for bus snooping operations supported by the MC68040.
+Note: When **_BB** is asserted and **_BG** is negated, this allows for bus snooping operations supported by the CPU.
 
-### 3.2.1 PCI Driven PCI Data Cycle (DMA)
+### 3.2.1 PCI Driven Data Transfer Cycle (DMA)
 
-This section relates to direct memory access (DMA) against onboard Amiga PCI address spaces. Only the memory space PCI command is allowed. The onboard system being addressed must alert the Local PCI Bridge it is responding to the current cycle by asserting the **_DMASEL** signal. The **_DMASEL** signal may be connected to multiple onboard devices. Thus, **_DMASEL** should be a sustained tristate signal, being driven by only one device at a time, and driving it high for at least one BCLK before allowing it to float. Notifying the Local PCI Bridge in such a way allows the Local PCI Bridge to properly drive the DMA cycle against devices on the MC68040 bus. Lack of **_DMASEL** assertion during DMA cycles implies the cycle is among PCI devices on the PCI bus. The **_DMASEL** signal should be pulled up to the appropriate positive voltage with a 4.7 to 10k ohm resistor on the Amiga PCI main board.
+This section relates to direct memory access (DMA) against onboard Amiga PCI address spaces. Only the memory space PCI command is allowed. The onboard system being addressed must alert the Local PCI Bridge it is responding to the current cycle by asserting the **_DMASEL** signal. The **_DMASEL** signal may be connected to multiple onboard devices. Thus, **_DMASEL** should be a sustained tristate signal, being driven by only one device at a time, and driving it high for at least one BCLK before allowing it to float. Notifying the Local PCI Bridge in such a way allows the Local PCI Bridge to properly drive the DMA cycle against devices on the CPU bus. Lack of **_DMASEL** assertion during DMA cycles implies the cycle is among PCI devices on the PCI bus. The **_DMASEL** signal should be pulled up to the appropriate positive voltage with a 4.7 to 10k ohm resistor on the Amiga PCI main board.
 
-During DMA cycles, the cycle is directed by the initiating PCI device. The Local PCI Bridge is responsible for driving MC68040 compatable signals on the MC68040 bus. These signals are **_TS**, **_TIP**, **R_W**, **TT0**, **TT1**, **SIZ0**, **SIZ1**, **A[31..0]**, and **D[0..31]** (write cycle only). When not actively driving a DMA cycle on the MC68040 bus, these signals must be held in a high impedence state. The Local PCI Bridge must respond to the assertion of **_TA** in order to recognize when data is placed on **D[0..31]** for read cycles, or when data has been latched by the target device for write cycles. Unless actively driving a DMA cycle against onboard Amiga resources, **AD[31..0]**, **_TRDY**, **_DEVSEL** must be held in a high impedence state by the Local PCI Bridge during DMA cycles.
+During DMA cycles, the cycle is directed by the initiating PCI device. The Local PCI Bridge is responsible for driving CPU compatable signals on the CPU bus. These signals are **_TS**, **_TIP**, **R_W**, **TT0**, **TT1**, **SIZ0**, **SIZ1**, **A[31..0]**, and **D[0..31]** (write cycle only). When not actively driving a DMA cycle on the CPU bus, these signals must be held in a high impedence state. The Local PCI Bridge must respond to the assertion of **_TA** in order to recognize when data is placed on **D[0..31]** for read cycles, or when data has been latched by the target device for write cycles. Unless actively driving a DMA cycle against onboard Amiga resources, **AD[31..0]**, **_TRDY**, **_DEVSEL** must be held in a high impedence state by the Local PCI Bridge during DMA cycles.
 
 #### 3.2.1.1 Transfer Type
 
@@ -363,13 +365,13 @@ The Local PCI Bridge will assert **TT0** and **TT1**, as required, in response t
 
 #### 3.2.1.2 Bus Synchronization
 
-It must be considered that the PCI bus clock and the MC68040 bus clocks are asynchronous. If not handled correctly, this can lead to a condition where the devices become out of sync, which will lead to data transfer errors. It is expected target devices on the Amiga PCI will never assert wait states. While PCI initiator devices may rarely insert wait states, we must consider this possiblity as wait states are defined in the PCI specification for all cycle types. The asynchronous nature of the two bus blocks can be addressed via the use of data latches for both read and write cycles. Moving data from the fast (BCLK) to the slow (PCICLK) domain is easier to implement, as the target device can supply the data at a faster rate than it is consumed by the PCI initiator device. However, moving data from the slow domain (PCICLK) to the fast domain (BCLK) during write cycles is more prone to losing sync. Because of this, the DMA target device must recognize and insert wait states during DMA write cycles. These waits resulting from the asynchronous nature of the two buses or inserted by the PCI device when negating **_IRDY**.
+It must be considered that the PCI bus clock and the CPU bus clocks are asynchronous. If not handled correctly, this can lead to a condition where the devices become out of sync, which will lead to data transfer errors. It is expected target devices on the Amiga PCI will never assert wait states. While PCI initiator devices may rarely insert wait states, we must consider this possiblity as wait states are defined in the PCI specification for all cycle types. The asynchronous nature of the two bus blocks can be addressed via the use of data latches for both read and write cycles. Moving data from the fast (BCLK) to the slow (PCICLK) domain is easier to implement, as the target device can supply the data at a faster rate than it is consumed by the PCI initiator device. However, moving data from the slow domain (PCICLK) to the fast domain (BCLK) during write cycles is more prone to losing sync. Because of this, the DMA target device must recognize and insert wait states during DMA write cycles. These waits resulting from the asynchronous nature of the two buses or inserted by the PCI device when negating **_IRDY**.
 
-For example, **CLKEN** (clock enabled ) may be used by an SDRAM controller to halt the SDRAM device during an active cycle. The **CLKEN** signal affects the action one rising clock edge after the rising clock edge **CLKEN** is latched. We must understand two things: 1) the condition of **_IRDY** and 2) the data to be transfered at least one MC68040 bus clock ahead of where the data will be latched. If the data *DATAn+1* is undefined or **_IRDY** is negated when data *DATAn* is placed on the MC68040 bus, we must also negate **CLKEN** at this time to stop the SDRAM device until such time as *DATAn+1* is defined and **_IRDY** is asserted.
+For example, **CLKEN** (clock enabled ) may be used by an SDRAM controller to halt the SDRAM device during an active cycle. The **CLKEN** signal affects the action one rising clock edge after the rising clock edge **CLKEN** is latched. We must understand two things: 1) the condition of **_IRDY** and 2) the data to be transfered at least one CPU bus clock ahead of where the data will be latched. If the data *DATAn+1* is undefined or **_IRDY** is negated when data *DATAn* is placed on the CPU bus, we must also negate **CLKEN** at this time to stop the SDRAM device until such time as *DATAn+1* is defined and **_IRDY** is asserted.
 
 #### 3.2.1.3 PCI Fast RAM DMA Normal Mode Cycles
 
-A normal mode transfer is capable of moving byte, word, or long word data. The data size to be transfered is determined from **AD(1..0)** and PCI command driven on **C/BE[3..0]** during the address phase. That information is used to drive the correct cycle type on the MC68040 bus during the data transfer.
+A normal mode transfer is capable of transferring byte, word, or long word data. The data size to be transfered is determined from **AD(1..0)** and PCI command driven on **C/BE[3..0]** during the address phase. That information is used to drive the correct cycle type on the CPU bus during the data transfer.
 
 **NOTE:** The example timings under section 7.1.1 assume the DMA target device is an SDRAM device with a burst length of 4 and a CAS latency of 1.
 
@@ -395,6 +397,8 @@ A normal mode transfer is capable of moving byte, word, or long word data. The d
 <img src="/DataSheets/TimingDiagrams/PCI DMA Normal Write Cycle.png" height="600"></p>
 
 #### 3.2.1.4 PCI Fast RAM DMA Burst Cycles
+
+A normal mode transfer is capable of transfering long word data with a burst length of four.
 
 ##### 3.2.1.4.1 PCI Fast RAM DMA Burst Read Cycle
 
@@ -456,21 +460,21 @@ This condition exists when no target device responds to the address phase of a P
 
 ### 3.3.3 Target Terminated - Retry
 
-This condition is signaled when the target device asserts **_STOP** after claiming the cycle, by asserting **_DEVSEL**, before data has been transfered. When the target device asserts the retry condition, the Local PCI Bridge will assert **_TA** and **_TEA** together, which signals the MC68040 to immediately abort and retry the cycle.
+This condition is signaled when the target device asserts **_STOP** after claiming the cycle, by asserting **_DEVSEL**, before data has been transfered. When the target device asserts the retry condition, the Local PCI Bridge will assert **_TA** and **_TEA** together, which signals the CPU to immediately abort and retry the cycle.
 
 Figure 8.3a. PCI Cycle Retry.  
 <img src="/DataSheets/TimingDiagrams/PCI Cycle Retry.png" height="400"></p>
 
 ### 3.3.4 Target Terminated - Disconnect
 
-This condition is signaled when the target device asserts **_STOP** while **_TRDY** is asserted. The Disconnect condition is different from the Retry condition in that Disconnect is asserted after some data has already been transfered, but the target device is unable to continue transferring the requested data. When this condition exists, the Local PCI Bridge will assert **_TEA**. This indicates to the MC68040 that an error condition exists and the cycle cannot continue. This condition can only exist for burst cycles.
+This condition is signaled when the target device asserts **_STOP** while **_TRDY** is asserted. The Disconnect condition is different from the Retry condition in that Disconnect is asserted after some data has already been transfered, but the target device is unable to continue transferring the requested data. When this condition exists, the Local PCI Bridge will assert **_TEA**. This indicates to the CPU that an error condition exists and the cycle cannot continue. This condition can only exist for burst cycles.
 
 Figure 8.4a. PCI Cycle Disconnect.  
 <img src="/DataSheets/TimingDiagrams/PCI Burst Cycle Disconnect.png" height="400"></p>
 
 ### 3.3.5 Target Terminated - Abort
 
-This condition can exist any time after a target device has asserted **_DEVSEL** and is signaled when the target device asserts **_STOP** and negates **_DEVSEL** simultaneously. This is considered an abnormal termination in that the target device will never be able to supply to requested data. When this condition exists, the Local PCI Bridge will assert **_TEA**. This indicates to the MC68040 that an error condition exists and the cycle cannot continue. This condition may occur for both burst and normal cycles. This condition is treated the same as the Target Terminated - Disconnect condition by the MC68040 (Section X.X.X). See Figure X.X.X for example timing.
+This condition can exist any time after a target device has asserted **_DEVSEL** and is signaled when the target device asserts **_STOP** and negates **_DEVSEL** simultaneously. This is considered an abnormal termination in that the target device will never be able to supply to requested data. When this condition exists, the Local PCI Bridge will assert **_TEA**. This indicates to the CPU that an error condition exists and the cycle cannot continue. This condition may occur for both burst and normal cycles. This condition is treated the same as the Target Terminated - Disconnect condition by the CPU (Section X.X.X). See Figure X.X.X for example timing.
 
 ### 3.3.6 Master Terminated Cycle - Timeout
 
@@ -487,7 +491,7 @@ Data transfer errors are detected using an even parity system. Except for video 
 
 When a parity mismatch is detected, and the target device's parity error respose bit (Command Register, bit 6) is set, the target device asserts **_PERR**. The device reporting the error must set its Detected Parity Error Bit (Status Register, Bit 15), regardless of the status of the parity error response bit. 
 
-For MC68040 driven cycles, if the Local PCI Bridge detects a parity error and has its parity error response bit set (Command Register, bit 6), it will assert **_INT2** and set its interrupt status bit (Status Register, Bit 3). PCI drivers are expected to respond to this interrupt and poll their device's Parity Error Bit. The driver should then clear the interrupt in the Local PCI Bridge (Status Register, Bit 3) and retry or cancel the cycle.
+For CPU driven cycles, if the Local PCI Bridge detects a parity error and has its parity error response bit set (Command Register, bit 6), it will assert **_INT2** and set its interrupt status bit (Status Register, Bit 3). PCI drivers are expected to respond to this interrupt and poll their device's Parity Error Bit. The driver should then clear the interrupt in the Local PCI Bridge (Status Register, Bit 3) and retry or cancel the cycle.
 
 **IS THIS OVERKILL? PROBABLY. THINK ABOUT THIS AGAIN.**
 
