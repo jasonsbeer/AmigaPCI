@@ -99,36 +99,36 @@ Each PCI target device may be configured by the Amiga AUTOCONFIG process or by s
 
 ## 2.1 Local PCI Bridge
 
-The Local PCI Bridge is always configured via the AUTOCONFIG process at startup before any other PCI devices. The Local PCI Bridge base address allows direct access of the Local PCI Bridge configuration registers and a means to access Prometheus configured PCI cards on the PCI bus (See 1.3.2). All PCI devices are accessed through the Local PCI bridge, which acts as an interface between the CPU and PCI target devices. The Local PCI Bridge also handles bus arbitration. During each CPU data transfer cycle, the address information is broadcast by the Local PCI Bridge to the PCI bus. If any devices respond by asserting **_DEVSEL**, the Local PCI Bridge proceeds with the PCI cycle. Otherwise, the Local PCI Bridge remains idle.
+The Local PCI Bridge is always configured via the AUTOCONFIG process at startup before other PCI devices. The Local PCI Bridge base address allows direct access of the Local PCI Bridge configuration registers and a means to access Prometheus configured PCI cards on the PCI bus (See 2.3  Prometheus Configuration). All PCI devices are accessed through the Local PCI bridge, which acts as an interface between the devices on the CPU bus and devices on the PCI bus. The Local PCI Bridge also handles bus arbitration. During each CPU data transfer cycle, the address information is broadcast by the Local PCI Bridge to the PCI bus. If any devices respond by asserting **_DEVSEL**, the Local PCI Bridge proceeds with the PCI cycle. Otherwise, the Local PCI Bridge returns to an idle state.
 
-The following 16-bit registers are supported by the Local PCI Bridge device and can be set or read by software. This allows configuration or polling of the Local PCI Bridge settings and status. Reading a long word at offset $04 will return both registers. All PCI devices implement all or part of these registers as individual devices. Assuming the Local PCI Bridge base address is $8000 0000, you would access the command register at $8000 0004. Reads from unsupported registers will return $0. Writes to unsupported registers will have no effect.
+The following 16-bit registers are available on the Local PCI Bridge device and can be read by the system. This allows polling of the Local PCI Bridge settings and status. Reading a long word at offset $04 will return both registers. Assuming the Local PCI Bridge base address is $8000 0000, you would access the command register at $8000 0004. Reads from unsupported registers will return $0. Writes to any of these registers will have no effect. 
 
-**NOTE:** The registers in Tables 3.0.1a and 3.0.1b relate to the Local PCI Bridge only, and do not necessarily indicate overall capability of the Amiga PCI PCI bus implementation.
+**NOTE:** The registers in Tables 2.1a and 2.1b relate to the Local PCI Bridge only, and are not indicative of the capabilities of the Amiga PCI bus implementation.
 
 Table 2.1a. Offset $04, Command Register.
-Bit|Description|Supported by Local PCI Bridge Device
+Bit|Description|Default Value
 -|-|-
-15-11|Reserved|-
-10|Interrupt Disable|Yes
-9|Fast Back-to-Back Enable|No
-8|_SERR Enable|Yes
-7|Reserved|-
-6|Parity Error Response|Yes
-5|VGA Palette Snoop|No
-4|Memory Write and Invalidate Enable|No
-3|Special Cycles|No
-2|Bus Master|No
-1|Memory Space|No
-0|I/O Space|No
+15-11|Reserved|0
+10|Interrupt Disable|0
+9|Fast Back-to-Back Enable|0
+8|_SERR Enable|0
+7|Reserved|-|0
+6|Parity Error Response|1
+5|VGA Palette Snoop|0
+4|Memory Write and Invalidate Enable|0
+3|Special Cycles|0
+2|Bus Master|0
+1|Memory Space|1
+0|I/O Space|No|0
 
 Table 2.0.1b. Offset $06, Status Register.
 Bit|Description|Supported by Local PCI Bridge Device
 -|-|-
 15|Detected Parity Error|Yes
-14|Signaled System Error|Yes
-13|Received Master Abort|No
+14|Signaled System Error|No
+13|Received Master Abort|Yes
 12|Received Target Abort|Yes
-11|Signaled Target Abort|Yes
+11|Signaled Target Abort|No
 10-9|DEVSEL Timing|No
 8|Master Data Parity Error|Yes
 7|Fast Back-to-Back Capable|No
@@ -211,7 +211,7 @@ PCI Slot|Address Bit|Offset|Prometheus Compatable
 
 ## 2.3 Prometheus Configuration
 
-PCI devices not specifically designed for Amiga AUTOCONFIG should be installed in a Prometheus configuration slot. Each slot designated as a Prometheus configuration slot may be accessed through the base address of the Local PCI Bridge, which is always configured by AUTOCONFIG at startup. Each slot on the PCI bus may be addressed individually by its offset value to read or write from that device's configuration register. To maintain compatability with Prometheus drivers, the system must support **IDSEL** on four slots driven by **A[19..16]**. These four slots also support AUTOCONFIG. Up to 17 additional slots may be added to support AUTOCONFIG only devices. See 2.0.2.3 AUTOCONFIG PCI Slots.
+PCI devices not specifically designed for Amiga AUTOCONFIG should be installed in a Prometheus configuration slot. Each slot designated as a Prometheus configuration slot may be accessed through the base address of the Local PCI Bridge, which is always configured by AUTOCONFIG at startup. Each slot on the PCI bus may be addressed individually by its offset value to read or write from that device's configuration register. To maintain compatability with existing Prometheus drivers, the system must support **IDSEL** on four slots driven by **A[19..16]**. These four slots also support AUTOCONFIG. Up to 17 additional slots may be added to support AUTOCONFIG only devices. See 2.2 AUTOCONFIG PCI Slots.
 
 Examples, assuming the PCI Local Bridge base address is $6000 0000:
 
@@ -230,7 +230,7 @@ PCI Slot|Address Bit|Offset From Base Address
 
 PCI defines multiple address spaces that exist in parallel. PCI command encodings select a specific address space for the current cycle. In order to signal which address space is being targeted, the Local PCI Bridge recognizes address offsets from the Local PCI Bridge base address. 
 
-The address offsets in Table 1.3.2.1 show the command type associated with the address offset. For example, access in the "memory space" are interpreted by the Local PCI Bridge as PCI memory read or memory write commands. As such, Memory Read or Memory Write will be the command issued by the Local PCI Bridge. Accesses in the "Config Type 0 Space" will assert Configuration Read or Configuration Write commands, and so forth.
+The address offsets in Table 2.3.1a show the command type associated with the address offset. For example, access in the "memory space" are interpreted by the Local PCI Bridge as PCI memory read or memory write commands. As such, Memory Read or Memory Write will be the command issued by the Local PCI Bridge. Accesses in the "Config Type 0 Space" will assert Configuration Read or Configuration Write commands, and so forth.
 
 Table 2.3.1a. Address Offsets for Command Types[[6]](#6).
 Z3 Start|Z3 End|Command Type|Size|PCI Start|PCI End
@@ -242,7 +242,7 @@ $1FE0 0000|$1FFF FFFF|I/O Space|2MB|$0000 0000|$001F FFFF
 
 ### 2.3.2 PCI Prometheus Configuration Type 0 Access
 
-When accessing the configuration registers of Prometheus configured PCI devices on the bus. Prometheus allows selection of up to four devices via **IDSEL** using **A[15..11]**. Here, we have added flexability to support up to 21 PCI slots, as defined in the PCI Specification. In order to ensure compatability with exising Prometheus drivers, Prometheus (non-AUTOCONFIG) PCI cards must be placed in slots where **IDSEL** is driven by **A[19..16]**. AUTOCONFIG PCI slots may be driven by any bit in **A[31..11]**.
+Prometheus allows selection of up to four devices via **IDSEL** using **A[15..11]**. In order to ensure compatability with exising Prometheus drivers, Prometheus (non-AUTOCONFIG) PCI cards must be placed in slots where **IDSEL** is driven by **A[19..16]**. AUTOCONFIG PCI slots may be driven by any bit in **A[31..11]**.
 
 **A[31..20]** PCI Device Number (Amiga PCI AUTOCONFIG Slot Offset, see Table 2.0.3.a)  
 **A[19..16]** PCI Device Number (Prometheus and Amiga PCI AUTOCONFIG Slot Offsets, see Table 2.0.3.a)
@@ -351,7 +351,7 @@ Figure 3.1.3.2b. Burst Write Cycle With Target Wait State.
 
 ## 3.2 PCI Device as a Bus Driver (DMA)
 
-When a PCI device is ready to take ownership of the system bus, it will assert **_REQx**, where x is the slot designation of the device (0-4). Once the current bus cycle has completed (**_BB** is negated) the arbiter will assert **_BB** to indicate a bus operation is in progress. It will simultaneously assert **_GNTx**, allowing the requesting PCI device to take ownership of the bus and begin its operation. **_GNTx** and **_BB** will remain asserted until **_REQx** is negated. At that time, **_GNTx** will be negated and **_BB** will be negated.
+When a PCI device is wants to take ownership of the system bus, it will assert **_REQx**, where x is the slot designation of the device. Once the arbiter has granted the bus to the requesting PCI device, the arbiter will assert **_BB** to indicate a bus operation is in progress, and assert **_GNTx**, allowing the requesting PCI device to take ownership of the bus and begin the data transfer cycle. Due to the asynchronous nature of the PCI and CPU buses, **_BB** will be asserted while either the PCI bus or CPU bus remains active in the current cycle.
 
 Note: When **_BB** is asserted and **_BG** is negated, this allows for bus snooping operations supported by the CPU.
 
