@@ -6,7 +6,7 @@
 
 This document is presented "as-is" with no waranty expressed or implied.  
 
-This document defines how the PCI 2.3 specification may be implemented on a Motorola MC68040 or MC68060 based Amiga. It is not a substitute for the PCI Local Bus Specification or the relevant Motorola user manuals. It is expected the reader has reviewed and understands the tenants of the PCI Bus as defined in the PCI Local Bus Specification, Rev 2.3, and the relevant Motorola user manuals.
+This document defines how the PCI Local Bus Rev. 2.3 specification may be implemented on a Motorola MC68040 or MC68060 based Amiga. It is not a substitute for the PCI Local Bus Specification or the relevant Motorola user manuals. It is expected the reader has reviewed and understands the tenants of the PCI Bus as defined in the PCI Local Bus Specification, Rev 2.3, and the relevant Motorola user manuals.
 
 **Conventions**
 
