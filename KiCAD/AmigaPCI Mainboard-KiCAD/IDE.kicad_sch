@@ -4684,7 +4684,7 @@
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 28eda001-80a0-4f36-b8d0-6c9769f39ca3)
   )
-  (label "28M" (at 220.218 198.628 0) (fields_autoplaced)
+  (label "CLK28" (at 220.218 198.628 0) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 2b3ffeec-6e38-432b-a435-2de1d03b5a2d)
   )
