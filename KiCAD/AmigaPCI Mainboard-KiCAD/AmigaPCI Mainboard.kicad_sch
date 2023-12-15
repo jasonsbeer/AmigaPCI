@@ -10032,6 +10032,10 @@
     (effects (font (size 3 3) bold) (justify left bottom))
     (uuid 03d6913e-0783-4f08-bd37-f7010da4e748)
   )
+  (text "DESIGNED WITH KiCAD REV 7" (at 21.336 260.858 0)
+    (effects (font (size 2 2)) (justify left bottom))
+    (uuid 15edd3ae-2f36-4266-b83b-a51bfc978075)
+  )
 
   (sheet (at 45.466 121.412) (size 32.258 17.272) (fields_autoplaced)
     (stroke (width 0.1524) (type solid))
