@@ -4190,7 +4190,7 @@
   (symbol (lib_id "Connector:Conn_01x03_Pin") (at 127.254 122.428 90) (mirror x) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 76556193-4a76-4cc6-a9e6-2a75a30b908f)
-    (property "Reference" "J4011" (at 125.73 115.316 0)
+    (property "Reference" "J401" (at 125.73 115.316 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "INV RAM CLK" (at 127.762 115.443 0)
@@ -4208,7 +4208,7 @@
     (instances
       (project "AmigaPCI Mainboard"
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/d671396a-959f-409b-8612-87cb620c51cb"
-          (reference "J4011") (unit 1)
+          (reference "J401") (unit 1)
         )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/64185471-b9ae-4a50-a046-7157e86a04d0"
           (reference "J202") (unit 1)

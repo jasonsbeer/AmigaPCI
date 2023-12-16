@@ -35,8 +35,8 @@
         "other_text_upright": false,
         "pads": {
           "drill": 0.0,
-          "height": 2.7,
-          "width": 2.7
+          "height": 0.458,
+          "width": 1.51
         },
         "silk_line_width": 0.15,
         "silk_text_italic": false,
@@ -126,7 +126,7 @@
         "min_text_height": 0.7999999999999999,
         "min_text_thickness": 0.08,
         "min_through_hole_diameter": 0.3,
-        "min_track_width": 0.15,
+        "min_track_width": 0.09999999999999999,
         "min_via_annular_width": 0.049999999999999996,
         "min_via_diameter": 0.39999999999999997,
         "solder_mask_clearance": 0.0,
@@ -176,6 +176,7 @@
       ],
       "track_widths": [
         0.0,
+        0.11,
         0.15,
         0.2,
         0.5,
@@ -481,6 +482,23 @@
         "track_width": 0.5,
         "via_diameter": 0.8,
         "via_drill": 0.4,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.1,
+        "diff_pair_gap": 0.25,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.2,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "SDRAM",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "track_width": 0.11,
+        "via_diameter": 0.6,
+        "via_drill": 0.3,
         "wire_width": 6
       }
     ],
@@ -1691,19 +1709,19 @@
         "pattern": "/IDE Interface/_RSTIDE"
       },
       {
-        "netclass": "Narrow",
+        "netclass": "SDRAM",
         "pattern": "_UMBE"
       },
       {
-        "netclass": "Narrow",
+        "netclass": "SDRAM",
         "pattern": "_UUBE"
       },
       {
-        "netclass": "Narrow",
+        "netclass": "SDRAM",
         "pattern": "_LMBE"
       },
       {
-        "netclass": "Narrow",
+        "netclass": "SDRAM",
         "pattern": "_LLBE"
       },
       {
@@ -1817,6 +1835,50 @@
       {
         "netclass": "Narrow",
         "pattern": "UPA0"
+      },
+      {
+        "netclass": "SDRAM",
+        "pattern": "EMA*"
+      },
+      {
+        "netclass": "SDRAM",
+        "pattern": "EMD*"
+      },
+      {
+        "netclass": "SDRAM",
+        "pattern": "_EMRAS"
+      },
+      {
+        "netclass": "SDRAM",
+        "pattern": "_EM1CS"
+      },
+      {
+        "netclass": "SDRAM",
+        "pattern": "_EM0CS"
+      },
+      {
+        "netclass": "SDRAM",
+        "pattern": "_EMWE"
+      },
+      {
+        "netclass": "SDRAM",
+        "pattern": "_EMCAS"
+      },
+      {
+        "netclass": "SDRAM",
+        "pattern": "EMCLKE"
+      },
+      {
+        "netclass": "SDRAM",
+        "pattern": "CLK_RAM"
+      },
+      {
+        "netclass": "SDRAM",
+        "pattern": "BANK1"
+      },
+      {
+        "netclass": "SDRAM",
+        "pattern": "BANK0"
       }
     ]
   },
