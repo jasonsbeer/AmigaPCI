@@ -7336,7 +7336,7 @@
     (property "Reference" "C608" (at 160.4772 45.8216 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
-    (property "Value" "47uF" (at 160.4772 48.133 0)
+    (property "Value" "10uF" (at 160.4772 48.133 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Footprint" "Capacitor_THT:CP_Radial_D5.0mm_P2.00mm" (at 157.2768 43.18 0)

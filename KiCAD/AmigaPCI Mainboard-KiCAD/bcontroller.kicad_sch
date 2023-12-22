@@ -4145,32 +4145,6 @@
     )
   )
 
-  (symbol (lib_id "Device:C_Small") (at 195.834 53.34 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 1dcc7b9c-b9e0-4f75-beed-45826e028b8b)
-    (property "Reference" "C731" (at 197.104 59.309 90)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Value" "0.1uF" (at 197.104 52.578 90)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Footprint" "Capacitor_SMD:C_0603_1608Metric" (at 195.834 53.34 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "~" (at 195.834 53.34 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 124bb93f-b2fc-426d-b81f-4ff2e6346dfe))
-    (pin "2" (uuid 56dac968-fb4f-4d0f-a49a-8a5ee800578e))
-    (instances
-      (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/62a07d55-3759-49a3-8a3f-631cb4902a24"
-          (reference "C731") (unit 1)
-        )
-      )
-    )
-  )
-
   (symbol (lib_id "Device:C_Small") (at 168.402 53.34 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 24387559-1cb6-4efb-8149-c40628cfec24)
@@ -4244,32 +4218,6 @@
       (project "AmigaPCI Mainboard"
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/62a07d55-3759-49a3-8a3f-631cb4902a24"
           (reference "C728") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "Device:C_Small") (at 199.898 53.34 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 37fae672-8b9c-49f3-b98a-81f6cc51e93e)
-    (property "Reference" "C732" (at 201.168 59.309 90)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Value" "0.1uF" (at 201.168 52.578 90)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Footprint" "Capacitor_SMD:C_0603_1608Metric" (at 199.898 53.34 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "~" (at 199.898 53.34 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 9cacf9a3-4880-4222-8464-d136afb4ce27))
-    (pin "2" (uuid 183676a0-a3a1-4346-8757-c748aaff9ba8))
-    (instances
-      (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/62a07d55-3759-49a3-8a3f-631cb4902a24"
-          (reference "C732") (unit 1)
         )
       )
     )
@@ -4379,32 +4327,6 @@
         )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/62a07d55-3759-49a3-8a3f-631cb4902a24"
           (reference "#PWR0129") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "Device:C_Small") (at 192.024 53.34 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 4d2e82bc-0212-4d83-b01c-3d87547b2cbc)
-    (property "Reference" "C730" (at 193.294 59.309 90)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Value" "0.1uF" (at 193.294 52.578 90)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Footprint" "Capacitor_SMD:C_0603_1608Metric" (at 192.024 53.34 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "~" (at 192.024 53.34 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid e50e2c97-1837-49b3-9632-0942b51f9bf3))
-    (pin "2" (uuid 7cce879e-ec03-4cbb-a5c7-0f38c62d90fe))
-    (instances
-      (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/62a07d55-3759-49a3-8a3f-631cb4902a24"
-          (reference "C730") (unit 1)
         )
       )
     )
