@@ -6425,7 +6425,7 @@
   (symbol (lib_id "Device:R_Small") (at 128.016 105.664 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 3099097a-8b91-4ce2-9d07-b365d3e82657)
-    (property "Reference" "R1" (at 128.016 101.092 90)
+    (property "Reference" "R600" (at 128.016 101.092 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "150R" (at 128.016 103.632 90)
@@ -6442,7 +6442,7 @@
     (instances
       (project "AmigaPCI Mainboard"
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/4cb777ef-2899-49f4-b38f-a0c07d84fa7d"
-          (reference "R1") (unit 1)
+          (reference "R600") (unit 1)
         )
       )
     )
@@ -6889,7 +6889,7 @@
   (symbol (lib_id "Device:R_Small") (at 128.016 117.348 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 5b969a75-1268-4404-bea2-4a68b3143617)
-    (property "Reference" "R2" (at 128.016 112.522 90)
+    (property "Reference" "R601" (at 128.016 112.522 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "510R" (at 128.016 115.062 90)
@@ -6906,7 +6906,7 @@
     (instances
       (project "AmigaPCI Mainboard"
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/4cb777ef-2899-49f4-b38f-a0c07d84fa7d"
-          (reference "R2") (unit 1)
+          (reference "R601") (unit 1)
         )
       )
     )
@@ -7471,7 +7471,7 @@
   (symbol (lib_id "Device:LED") (at 149.86 94.742 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 86e0bc05-aebb-4792-986a-7f1384788724)
-    (property "Reference" "D4" (at 151.4475 88.9 0)
+    (property "Reference" "D603" (at 151.4475 88.9 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "LED" (at 151.4475 91.44 0)
@@ -7488,7 +7488,7 @@
     (instances
       (project "AmigaPCI Mainboard"
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/4cb777ef-2899-49f4-b38f-a0c07d84fa7d"
-          (reference "D4") (unit 1)
+          (reference "D603") (unit 1)
         )
       )
     )
@@ -8064,7 +8064,7 @@
   (symbol (lib_id "Device:R_Small") (at 128.016 94.742 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid d2c497c9-306e-45f0-b85d-0c50d46804be)
-    (property "Reference" "R3" (at 128.016 90.17 90)
+    (property "Reference" "R602" (at 128.016 90.17 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "68R" (at 128.016 92.71 90)
@@ -8081,7 +8081,7 @@
     (instances
       (project "AmigaPCI Mainboard"
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/4cb777ef-2899-49f4-b38f-a0c07d84fa7d"
-          (reference "R3") (unit 1)
+          (reference "R602") (unit 1)
         )
       )
     )
