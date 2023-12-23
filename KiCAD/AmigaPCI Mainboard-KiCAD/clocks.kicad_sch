@@ -3524,7 +3524,7 @@
     (property "Value" "Si5351A-B-GM" (at 66.7101 195.072 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "Package_DFN_QFN:QFN-20-1EP_4x4mm_P0.5mm_EP2.7x2.7mm_ThermalVias" (at 64.516 200.152 0)
+    (property "Footprint" "Package_DFN_QFN:QFN-20-1EP_4x4mm_P0.5mm_EP2.7x2.7mm" (at 64.516 200.152 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "https://www.silabs.com/documents/public/data-sheets/Si5351-B.pdf" (at 64.516 169.672 0)
