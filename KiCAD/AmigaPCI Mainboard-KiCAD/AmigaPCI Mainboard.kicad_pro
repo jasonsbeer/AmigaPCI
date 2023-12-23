@@ -470,6 +470,23 @@
       },
       {
         "bus_width": 12,
+        "clearance": 0.1,
+        "diff_pair_gap": 0.25,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.2,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "PCI",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "track_width": 0.13,
+        "via_diameter": 0.6,
+        "via_drill": 0.3,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
         "clearance": 0.15,
         "diff_pair_gap": 0.25,
         "diff_pair_via_gap": 0.25,
@@ -510,11 +527,11 @@
     "netclass_assignments": null,
     "netclass_patterns": [
       {
-        "netclass": "Narrow",
+        "netclass": "PCI",
         "pattern": "AD*"
       },
       {
-        "netclass": "Narrow",
+        "netclass": "PCI",
         "pattern": "_CBE*"
       },
       {
@@ -522,19 +539,19 @@
         "pattern": "/PCI Bus/_ACK64"
       },
       {
-        "netclass": "Narrow",
+        "netclass": "PCI",
         "pattern": "_FRAME"
       },
       {
-        "netclass": "Narrow",
+        "netclass": "PCI",
         "pattern": "/PCI Bus/_PAR"
       },
       {
-        "netclass": "Narrow",
+        "netclass": "PCI",
         "pattern": "_PERR"
       },
       {
-        "netclass": "Narrow",
+        "netclass": "PCI",
         "pattern": "_SYSERR"
       },
       {
@@ -542,95 +559,95 @@
         "pattern": "/PCI Bus/_REQ64"
       },
       {
-        "netclass": "Narrow",
+        "netclass": "PCI",
         "pattern": "/PCI Bus/SMBDAT4"
       },
       {
-        "netclass": "Narrow",
+        "netclass": "PCI",
         "pattern": "/PCI Bus/SMBCLK4"
       },
       {
-        "netclass": "Narrow",
+        "netclass": "PCI",
         "pattern": "_STOP"
       },
       {
-        "netclass": "Narrow",
+        "netclass": "PCI",
         "pattern": "_DEVSEL"
       },
       {
-        "netclass": "Narrow",
+        "netclass": "PCI",
         "pattern": "_TRDY"
       },
       {
-        "netclass": "Narrow",
+        "netclass": "PCI",
         "pattern": "_IRDY"
       },
       {
-        "netclass": "Narrow",
+        "netclass": "PCI",
         "pattern": "/PCI Bus/IDSEL4"
       },
       {
-        "netclass": "Narrow",
+        "netclass": "PCI",
         "pattern": "_BUSREQ4"
       },
       {
-        "netclass": "Narrow",
+        "netclass": "PCI",
         "pattern": "_BUSGRANT4"
       },
       {
-        "netclass": "Narrow",
+        "netclass": "PCI",
         "pattern": "_BUSREQ3"
       },
       {
-        "netclass": "Narrow",
+        "netclass": "PCI",
         "pattern": "_BUSGRANT3"
       },
       {
-        "netclass": "Narrow",
+        "netclass": "PCI",
         "pattern": "/PCI Bus/_RSTBUS"
       },
       {
-        "netclass": "Narrow",
+        "netclass": "PCI",
         "pattern": "_INTD"
       },
       {
-        "netclass": "Narrow",
+        "netclass": "PCI",
         "pattern": "_INTB"
       },
       {
-        "netclass": "Narrow",
+        "netclass": "PCI",
         "pattern": "_INTA"
       },
       {
-        "netclass": "Narrow",
+        "netclass": "PCI",
         "pattern": "_INTC"
       },
       {
-        "netclass": "Narrow",
+        "netclass": "PCI",
         "pattern": "/PCI Bus/TDI"
       },
       {
-        "netclass": "Narrow",
+        "netclass": "PCI",
         "pattern": "/PCI Bus/TMS"
       },
       {
-        "netclass": "Narrow",
+        "netclass": "PCI",
         "pattern": "/PCI Bus/_LOCK"
       },
       {
-        "netclass": "Narrow",
+        "netclass": "PCI",
         "pattern": "/PCI Bus/IDSEL3"
       },
       {
-        "netclass": "Narrow",
+        "netclass": "PCI",
         "pattern": "/PCI Bus/IDSEL0"
       },
       {
-        "netclass": "Narrow",
+        "netclass": "PCI",
         "pattern": "/PCI Bus/IDSEL1"
       },
       {
-        "netclass": "Narrow",
+        "netclass": "PCI",
         "pattern": "/PCI Bus/IDSEL2"
       },
       {
@@ -1826,7 +1843,7 @@
         "pattern": "_PARITY"
       },
       {
-        "netclass": "Narrow",
+        "netclass": "PCI",
         "pattern": "_PLOCK"
       },
       {
@@ -1882,8 +1899,28 @@
         "pattern": "BANK0"
       },
       {
-        "netclass": "Narrow",
+        "netclass": "PCI",
         "pattern": "_RSTPCI"
+      },
+      {
+        "netclass": "PCI",
+        "pattern": "_BUSGRANT1"
+      },
+      {
+        "netclass": "PCI",
+        "pattern": "_BUSGRANT2"
+      },
+      {
+        "netclass": "PCI",
+        "pattern": "_BUSGRANT0"
+      },
+      {
+        "netclass": "PCI",
+        "pattern": "_BUSREQ0"
+      },
+      {
+        "netclass": "PCI",
+        "pattern": "_BUSREQ1"
       }
     ]
   },
