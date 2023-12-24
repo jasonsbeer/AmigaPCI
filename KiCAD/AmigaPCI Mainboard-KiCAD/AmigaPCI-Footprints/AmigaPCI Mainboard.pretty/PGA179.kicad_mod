@@ -11,11 +11,11 @@
   )
   (fp_poly
     (pts
-      (xy 25.4 -25.4)
-      (xy -25.4 -25.4)
-      (xy -25.4 25.4)
+      (xy 25.08 -25.39)
+      (xy -25.01 -25.45)
+      (xy -25.01 25.35)
       (xy 21.59 25.4)
-      (xy 25.4 22.225)
+      (xy 25.08 22.235)
     )
 
     (stroke (width 0.3) (type solid)) (fill none) (layer "F.SilkS") (tstamp d2c56cce-21dd-4107-ac2e-ced4ab9a076a))
