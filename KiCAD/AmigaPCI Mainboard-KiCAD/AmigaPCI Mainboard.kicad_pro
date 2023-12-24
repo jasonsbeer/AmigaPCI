@@ -1921,6 +1921,10 @@
       {
         "netclass": "PCI",
         "pattern": "_BUSREQ1"
+      },
+      {
+        "netclass": "PCI",
+        "pattern": "_BUSREQ2"
       }
     ]
   },

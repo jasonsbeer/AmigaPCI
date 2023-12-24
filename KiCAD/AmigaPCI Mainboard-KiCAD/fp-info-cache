@@ -1,4 +1,4 @@
-22487329569544332
+22489040082284722
 AmigaPCI
 2x18_P2.54mm_Horizontal
 Samtec HLE .100" Tiger Beam Cost-effective Single Beam Socket Strip, HLE-150-02-xx-DV-TE, 50 Pins per row (http://suddendocs.samtec.com/prints/hle-1xx-02-xx-dv-xe-xx-mkt.pdf, http://suddendocs.samtec.com/prints/hle-thru.pdf), generated with kicad-footprint-generator
@@ -55,6 +55,13 @@ DSUB-25_Stack_Female_Bottom_Male_Top
 0
 54
 51
+AmigaPCI
+Floppy_PinHeader_2x17_P2.54mm
+Through hole straight pin header, 2x17, 2.54mm pitch, double rows
+Through hole pin header THT 2x17 2.54mm double row
+0
+33
+33
 AmigaPCI
 Jack_3.5mm_CUI_SJ1-3533NG_Horizontal_CircularHoles
 TRS 3.5mm, horizontal, through-hole, , circular holeshttps://www.cui.com/product/resource/sj1-353xng.pdf

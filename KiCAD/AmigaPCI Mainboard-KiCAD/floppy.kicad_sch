@@ -7503,7 +7503,7 @@
     (property "Value" "INTERNAL FLOPPY" (at 395.605 54.0766 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_2x17_P2.54mm_Vertical" (at 394.335 77.597 0)
+    (property "Footprint" "AmigaPCI:Floppy_PinHeader_2x17_P2.54mm" (at 394.335 77.597 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 394.335 77.597 0)
