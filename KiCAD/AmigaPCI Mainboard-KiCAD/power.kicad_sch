@@ -6566,7 +6566,7 @@
     (property "Value" "Case Fan" (at 170.3832 157.5562 0)
       (effects (font (size 1.27 1.27)) (justify right) hide)
     )
-    (property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical" (at 169.672 156.972 0)
+    (property "Footprint" "AmigaPCI:FanHeader_1x03_P2.54mm_Vertical" (at 169.672 156.972 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 169.672 156.972 0)
