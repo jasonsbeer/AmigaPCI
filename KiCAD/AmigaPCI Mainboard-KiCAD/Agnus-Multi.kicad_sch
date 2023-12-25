@@ -5309,7 +5309,7 @@
     (property "Reference" "R224" (at 291.592 151.4856 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "4.7k" (at 291.592 153.797 0)
+    (property "Value" "4k7" (at 291.592 153.797 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Footprint" "Resistor_SMD:R_0603_1608Metric" (at 288.036 152.654 90)

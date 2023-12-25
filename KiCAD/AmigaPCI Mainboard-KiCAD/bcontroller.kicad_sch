@@ -4406,7 +4406,7 @@
     (property "Reference" "R28" (at 208.788 189.8396 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "1K" (at 208.788 192.151 0)
+    (property "Value" "1k" (at 208.788 192.151 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Footprint" "Resistor_SMD:R_0603_1608Metric" (at 212.344 191.008 90)
