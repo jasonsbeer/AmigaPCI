@@ -67,6 +67,10 @@ In AUTOCONFIG mode, the PCI target device will be configured on startup like any
 
 Prometheus mode requires the PCI target device be configured in software in order to function. This mode can support PCI target devices not designed for the Amiga. During startup, the Local PCI Bridge is configured via AUTOCONFIG in the 32-bit Zorro 3 address space, which will supply a base address for the Local PCI Bridge through which the slots in Prometheus mode may be accessed. Driver software may then poll the Local PCI Bridge base address with each device selection bit. The Local PCI bridge will return $FFFF FFFF if an AUTOCONFIG slot is polled via the Local PCI Bridge base address. 
 
+## 1.4 Developing PCI Cards for the Amiga and Upgrade Path
+
+New PCI hardware developed specifically for the Amiga should be based on specifications for the Universal PCI card. Future upgrade options include the move to a +3.3V signaling environment running at 66MHz. Plug in hardware based on the Universal concept will permit cards to work in any signalling environment and may leverage faster speeds allowed in the +3.3V environment. In addition, any hardware developed for the Amiga must limit address spaces to Memory and Configuration only. Other address spaces such as I/O are not recommended for new hardware development**CITE** and are not supported in this specification.
+
 # 2.0 PCI Configuration
 
 Each PCI target device may be configured by the Amiga AUTOCONFIG process or by software configuration (Prometheus). During configuration each PCI slot, in turn, is polled to obtain the capabilities and address space needs of the target device. Each PCI slot is polled by asserting the **IDSEL** signal, which is approximately equivalent to the **_CFGIN** signal of the Zorro bus. However, unlike the **_CFGIN** signal, the **IDSEL** is asserted by a specific address bit during the address phase of a configuration command access[[2]](#2). There is no equivalent of the **_CFGOUT** signal, as the Local PCI Bridge addresses each slot directly.
