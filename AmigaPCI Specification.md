@@ -6,7 +6,7 @@
 
 This document is presented "as-is" with no waranty expressed or implied.  
 
-This document defines how the PCI Local Bus Rev. 2.3 specification may be implemented on a Motorola MC68040 or MC68060 based Amiga. It is not a substitute for the PCI Local Bus Specification or the relevant Motorola user manuals. It is expected the reader has reviewed and understands the tenants of the PCI Bus as defined in the PCI Local Bus Specification, Rev 2.3, and the relevant Motorola user manuals.
+This document defines how the PCI Local Bus Rev. 2.3 specification may be implemented on a Motorola based Amiga. It is not a substitute for the PCI Local Bus Specification or the relevant Motorola user manuals. It is expected the reader has reviewed and understands the tenants of the PCI Bus as defined in the PCI Local Bus Specification, Rev 2.3, and the relevant Motorola user manuals.
 
 **Conventions**
 
@@ -16,7 +16,7 @@ This document defines how the PCI Local Bus Rev. 2.3 specification may be implem
 4) A bus's most significant bit will be listed first and least significant last. For example, [31..0] indicates bit 31 as the most significant bit. Zero is the least. Thus, [31..0] indicates a little endian device. The opposite will be true for a big endian device.
 5) Hex values are presented with a leading $ (dollar sign) and a space inserted every 4 characters for clarity.
 6) Amiga PCI refers to this specification or any implementation of this specification, in part or whole.
-7) CPU refers exclusively to the Motorola MC68040 or MC68060 processors, unless otherwise specified.
+7) CPU refers to the Motorola MC68040 processor, unless otherwise specified.
 
 **Authors**
 
@@ -32,7 +32,7 @@ Revision|Date|Status
 
 The PCI Local Bus (PCI herein) is a processor independent, 32-bit expasion bus. The Amiga PCI specification is designed to comply with the PCI Local Bus Revision 2.3 specificiation. Each slot supports Universal and +5V cards, as defined in the PCI Local Bus Revision 2.3 specification. Like Zorro 2 and Zorro 3, PCI supports auto configuration of devices on power up. This allows, via some translation, for the use of Amiga AUTOCONFIG to configure devices at start up. This fits well with Amiga OS as PCI devices can be configured as Zorro 3 devices, which function natively with Amiga OS. 
 
-The Amiga PCI PCI Bridge is implemented via a MC68040 or MC68060 to PCI Bridge (Local PCI Bridge, herein). The Local PCI Bridge logic translates data requests from the Motorola processor and PCI devices in order that they may communicate in an effective manner. It is not possible to implement this specification with Motorola processors that pre-date the MC68040.
+The PCI Bridge is implemented via a Motorola MC68040 to PCI Bridge (Local PCI Bridge, herein). The Local PCI Bridge logic translates data requests from the Motorola processor and PCI devices in order that they may communicate in an effective manner. This specification is compatable with Motorola MC68040 and newer predecessors. While this document is written with the Motorola MC68040 in mind, the information can easily be applied to newer Motorola processors, such as the MC68060.
 
 Each PCI slot on the PCI Local Bridge can operate in either AUTOCONFIG mode or Prometheus mode, but not both simultaneously. 
 
@@ -40,12 +40,12 @@ Each PCI slot on the PCI Local Bridge can operate in either AUTOCONFIG mode or P
 
 Motorola MC68000 series processors are big endian devices. PCI devices, by contrast, are little endian devices. This means we must byte swap the data signals to provide compatability between devices with different endianness[[1]](#1). The Amiga PCI specification implements address invariance to achieve the endian conversion necessary for the CPU and PCI devices to communicate.
 
-Table 1.1a. Order of data consumption in big and little endian devices.
+Table 1.1a. Order of byte consumption in big and little endian devices.
 Endianess|Hex Value<br />Order of Consumption
 -|-
-&nbsp;|$00020804
-Big| <----START
-Little| START---->
+&nbsp;|$00 02 08 04
+Big| <------START
+Little| START------>
 
 The smallest unit of data considered by the PCI specification is one byte. With this consideration, data bytes are swapped to accomodate the conversion in endianess. This conversion applies only to the data values, never to address values.  In 32-bit devices, the first byte consumed is stored at address $03. The second at $02, the third at $01, and the fourth at $00. This byte swapping is to be implemented in hardware.
 
@@ -66,6 +66,10 @@ Amiga PCI slots can operate in AUTOCONFIG mode or Prometheus compatable mode. Ea
 In AUTOCONFIG mode, the PCI target device will be configured on startup like any Amiga AUTOCONFIG device. The advantage of AUTOCONFIG mode is the ability to use a PCI device immediately upon startup without the need to load drivers from disk. This supports devices such as auto booting hard drives, video, sound cards, etc. Once the PCI target device is configured by the AUTOCONFIG process, the target device may be directly accessed by its base address(es). 
 
 Prometheus mode requires the PCI target device be configured in software in order to function. This mode can support PCI target devices not designed for the Amiga. During startup, the Local PCI Bridge is configured via AUTOCONFIG in the 32-bit Zorro 3 address space, which will supply a base address for the Local PCI Bridge through which the slots in Prometheus mode may be accessed. Driver software may then poll the Local PCI Bridge base address with each device selection bit. The Local PCI bridge will return $FFFF FFFF if an AUTOCONFIG slot is polled via the Local PCI Bridge base address. 
+
+## 1.4 Developing PCI Cards for the Amiga and Upgrade Path
+
+New PCI hardware developed specifically for the Amiga should be based on specifications for the Universal PCI card. Future upgrade options include the move to a +3.3V signaling environment running at 66MHz. Plug in hardware based on the Universal concept will permit cards to work in any signalling environment and may leverage faster speeds allowed in the +3.3V environment. In addition, any hardware developed for the Amiga must limit address spaces to Memory and Configuration only. Other address spaces such as I/O are not recommended for new hardware development**CITE** and are not supported in this specification.
 
 # 2.0 PCI Configuration
 
