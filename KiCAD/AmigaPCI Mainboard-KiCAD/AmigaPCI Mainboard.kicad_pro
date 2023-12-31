@@ -34,9 +34,9 @@
         "other_text_thickness": 0.15,
         "other_text_upright": false,
         "pads": {
-          "drill": 0.0,
-          "height": 0.95,
-          "width": 0.9
+          "drill": 1.0,
+          "height": 1.7,
+          "width": 1.7
         },
         "silk_line_width": 0.15,
         "silk_text_italic": false,
@@ -1929,6 +1929,30 @@
       {
         "netclass": "Narrow",
         "pattern": "/IDE Interface/CLK28"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Board Controller/ULTRA_S"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Board Controller/ULTRA_P"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Board Controller/AUTOBOOT"
+      },
+      {
+        "netclass": "PCI",
+        "pattern": "PARITY"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Agnus Multiadapter/DRA9"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_IDEEN"
       }
     ]
   },
