@@ -6,7 +6,7 @@
 
   (title_block
     (title "AMIGA PCI")
-    (date "2023-12-30")
+    (date "2023-12-31")
     (rev "1")
   )
 
@@ -4719,10 +4719,6 @@
     (effects (font (size 1.27 1.27)) (justify right bottom))
     (uuid 8b36f475-d4ca-4582-8c5f-85c8bcdeaa6e)
   )
-  (label "A16" (at 97.282 129.54 180) (fields_autoplaced)
-    (effects (font (size 1.27 1.27)) (justify right bottom))
-    (uuid 8b4cd1f1-c8c5-465b-bc11-a2ea37e1f19f)
-  )
   (label "D10" (at 162.306 91.948 0) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 8c1cbc4b-bbef-4b9b-8e91-593007aafc3b)
@@ -6030,9 +6026,6 @@
     (pin "7" (uuid c3b8d300-76c0-40be-8cac-285f1869c581))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/62a07d55-3759-49a3-8a3f-631cb4902a24"
-          (reference "U220") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
           (reference "U220") (unit 1)
         )
@@ -6543,9 +6536,6 @@
     (pin "7" (uuid b84ccff9-ba5c-4945-87c4-5163c03e0d9a))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/62a07d55-3759-49a3-8a3f-631cb4902a24"
-          (reference "U220") (unit 5)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
           (reference "U220") (unit 5)
         )

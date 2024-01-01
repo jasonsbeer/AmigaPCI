@@ -6,7 +6,7 @@
 
   (title_block
     (title "AMIGA PCI")
-    (date "2023-12-30")
+    (date "2023-12-31")
     (rev "1")
   )
 
@@ -4841,7 +4841,7 @@
   (symbol (lib_id "Device:C_Small") (at 327.533 192.405 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 149bf77b-5a7b-41cb-8325-87b031156f72)
-    (property "Reference" "C701" (at 328.93 191.516 90)
+    (property "Reference" "C711" (at 328.93 191.516 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "0.1uF" (at 326.517 191.643 90)
@@ -4857,9 +4857,6 @@
     (pin "2" (uuid 22affe3e-e8de-4a08-9f2c-bebf3667f8d0))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
-          (reference "C701") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/f63de3eb-8614-4bac-88f2-650f5bad2338"
           (reference "C711") (unit 1)
         )
@@ -4870,7 +4867,7 @@
   (symbol (lib_id "Device:C_Small") (at 323.088 192.405 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 14b48f6e-f970-44c1-9fcb-3f3b42730f0a)
-    (property "Reference" "C701" (at 324.485 191.516 90)
+    (property "Reference" "C710" (at 324.485 191.516 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "0.1uF" (at 322.072 191.643 90)
@@ -4886,9 +4883,6 @@
     (pin "2" (uuid 529d6dc3-3232-458b-8b15-4c2c597baef0))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
-          (reference "C701") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/f63de3eb-8614-4bac-88f2-650f5bad2338"
           (reference "C710") (unit 1)
         )
@@ -4952,12 +4946,6 @@
     (pin "7" (uuid f0d04b4a-f603-4881-ab5a-3b1502a9edd4))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/62a07d55-3759-49a3-8a3f-631cb4902a24"
-          (reference "U220") (unit 2)
-        )
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/4cb777ef-2899-49f4-b38f-a0c07d84fa7d"
-          (reference "U220") (unit 2)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/f63de3eb-8614-4bac-88f2-650f5bad2338"
           (reference "U220") (unit 2)
         )
@@ -4993,7 +4981,7 @@
   (symbol (lib_id "AmigaPCI-Symbols:74LVC245") (at 91.694 165.608 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 2914aef5-04ca-453d-9b46-ce11ef796bb4)
-    (property "Reference" "U418" (at 91.694 146.6682 0)
+    (property "Reference" "U703" (at 91.694 146.6682 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "74LVC245" (at 91.694 149.2051 0)
@@ -5027,17 +5015,8 @@
     (pin "20" (uuid edc7b751-2629-4a22-8a99-65598a8398ee))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
-          (reference "U418") (unit 1)
-        )
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/6050d85a-08ce-47d9-805f-b2a01ec2bdd9"
-          (reference "U418") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/f63de3eb-8614-4bac-88f2-650f5bad2338"
           (reference "U703") (unit 1)
-        )
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/2b6a6f7b-f16f-448f-a082-ded618631c29"
-          (reference "U709") (unit 1)
         )
       )
     )
@@ -5046,7 +5025,7 @@
   (symbol (lib_id "Device:C_Small") (at 345.694 192.405 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 2c70de29-f63e-4632-b25c-82b6c903d2a0)
-    (property "Reference" "C701" (at 347.091 191.516 90)
+    (property "Reference" "C715" (at 347.091 191.516 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "0.1uF" (at 344.678 191.643 90)
@@ -5062,9 +5041,6 @@
     (pin "2" (uuid f53df114-53c8-4862-9baa-f3b74d6f57f2))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
-          (reference "C701") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/f63de3eb-8614-4bac-88f2-650f5bad2338"
           (reference "C715") (unit 1)
         )
@@ -5075,7 +5051,7 @@
   (symbol (lib_id "Device:C_Small") (at 341.376 192.405 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 314057d5-5b06-4604-93bc-0744d0d35ce5)
-    (property "Reference" "C701" (at 342.773 191.516 90)
+    (property "Reference" "C714" (at 342.773 191.516 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "0.1uF" (at 340.36 191.643 90)
@@ -5091,9 +5067,6 @@
     (pin "2" (uuid 79e46bda-d713-41ae-8f79-23d7bb9dee10))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
-          (reference "C701") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/f63de3eb-8614-4bac-88f2-650f5bad2338"
           (reference "C714") (unit 1)
         )
@@ -5173,7 +5146,7 @@
   (symbol (lib_id "Device:C_Small") (at 202.438 221.996 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 4d8e3f61-a752-49d1-ba7c-8fa7a8b99f61)
-    (property "Reference" "C701" (at 203.962 220.472 90)
+    (property "Reference" "C702" (at 203.962 220.472 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "0.1uF" (at 203.962 228.854 90)
@@ -5189,9 +5162,6 @@
     (pin "2" (uuid d19f49db-96df-4701-b8ce-ee561af77602))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
-          (reference "C701") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/f63de3eb-8614-4bac-88f2-650f5bad2338"
           (reference "C702") (unit 1)
         )
@@ -5270,9 +5240,6 @@
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/f63de3eb-8614-4bac-88f2-650f5bad2338"
           (reference "#PWR028") (unit 1)
         )
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/62a07d55-3759-49a3-8a3f-631cb4902a24"
-          (reference "#PWR032") (unit 1)
-        )
       )
     )
   )
@@ -5280,7 +5247,7 @@
   (symbol (lib_id "Device:C_Small") (at 359.029 192.405 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 5aeb800d-f3f0-4038-acf6-48aaf7b54902)
-    (property "Reference" "C701" (at 360.426 191.643 90)
+    (property "Reference" "C718" (at 360.426 191.643 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "0.1uF" (at 358.013 191.643 90)
@@ -5296,9 +5263,6 @@
     (pin "2" (uuid 70502a8c-070a-48b3-9632-ca73a270ccb8))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
-          (reference "C701") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/f63de3eb-8614-4bac-88f2-650f5bad2338"
           (reference "C718") (unit 1)
         )
@@ -5306,10 +5270,10 @@
     )
   )
 
-  (symbol (lib_id "AmigaPCI-Symbols:74LVC245") (at 213.868 221.996 0) (mirror y) (unit 1)
+  (symbol (lib_id "AmigaPCI-Symbols:74LVC245") (at 213.868 221.996 0) (mirror y) (unit 2)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 66c4c3c0-7fcc-4c58-8482-aeb77ad282a4)
-    (property "Reference" "U418" (at 211.5312 221.996 90)
+    (property "Reference" "U703" (at 211.5312 221.996 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "74LVC245" (at 216.3572 221.996 90)
@@ -5343,17 +5307,8 @@
     (pin "20" (uuid ea00ddb0-aa10-48a3-ae2f-1193a46f0b5c))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
-          (reference "U418") (unit 1)
-        )
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/6050d85a-08ce-47d9-805f-b2a01ec2bdd9"
-          (reference "U418") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/f63de3eb-8614-4bac-88f2-650f5bad2338"
           (reference "U703") (unit 2)
-        )
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/2b6a6f7b-f16f-448f-a082-ded618631c29"
-          (reference "U709") (unit 1)
         )
       )
     )
@@ -5362,7 +5317,7 @@
   (symbol (lib_id "AmigaPCI-Symbols:74LVC245") (at 92.202 112.268 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 66de012a-9690-4bf0-b590-8dc3c3223709)
-    (property "Reference" "U418" (at 92.202 93.3282 0)
+    (property "Reference" "U702" (at 92.202 93.3282 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "74LVC245" (at 92.202 95.8651 0)
@@ -5396,17 +5351,8 @@
     (pin "20" (uuid edc7b751-2629-4a22-8a99-65598a8398f0))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
-          (reference "U418") (unit 1)
-        )
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/6050d85a-08ce-47d9-805f-b2a01ec2bdd9"
-          (reference "U418") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/f63de3eb-8614-4bac-88f2-650f5bad2338"
           (reference "U702") (unit 1)
-        )
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/2b6a6f7b-f16f-448f-a082-ded618631c29"
-          (reference "U709") (unit 1)
         )
       )
     )
@@ -5441,7 +5387,7 @@
   (symbol (lib_id "AmigaPCI-Symbols:74LVC245") (at 91.694 54.61 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 693fcc37-f05c-4468-8cbf-fcb57ec14b95)
-    (property "Reference" "U418" (at 91.694 35.6702 0)
+    (property "Reference" "U701" (at 91.694 35.6702 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "74LVC245" (at 91.694 38.2071 0)
@@ -5475,17 +5421,8 @@
     (pin "20" (uuid edc7b751-2629-4a22-8a99-65598a8398f1))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
-          (reference "U418") (unit 1)
-        )
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/6050d85a-08ce-47d9-805f-b2a01ec2bdd9"
-          (reference "U418") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/f63de3eb-8614-4bac-88f2-650f5bad2338"
           (reference "U701") (unit 1)
-        )
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/2b6a6f7b-f16f-448f-a082-ded618631c29"
-          (reference "U709") (unit 1)
         )
       )
     )
@@ -5494,7 +5431,7 @@
   (symbol (lib_id "Device:C_Small") (at 242.062 221.996 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 711230a2-c590-4e61-9602-2ff2b18c2aab)
-    (property "Reference" "C701" (at 243.586 220.472 90)
+    (property "Reference" "C704" (at 243.586 220.472 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "0.1uF" (at 243.586 228.854 90)
@@ -5510,9 +5447,6 @@
     (pin "2" (uuid a98bd459-796c-4406-8b92-95bf4e2a6e99))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
-          (reference "C701") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/f63de3eb-8614-4bac-88f2-650f5bad2338"
           (reference "C704") (unit 1)
         )
@@ -5648,7 +5582,7 @@
   (symbol (lib_id "Device:C_Small") (at 354.457 192.405 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 84056762-aa9c-42d1-94f8-183d21747a1f)
-    (property "Reference" "C701" (at 355.854 191.516 90)
+    (property "Reference" "C717" (at 355.854 191.516 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "0.1uF" (at 353.441 191.643 90)
@@ -5664,9 +5598,6 @@
     (pin "2" (uuid 1bbe3c33-0ebd-4265-8595-3c5cc433a578))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
-          (reference "C701") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/f63de3eb-8614-4bac-88f2-650f5bad2338"
           (reference "C717") (unit 1)
         )
@@ -5702,7 +5633,7 @@
   (symbol (lib_id "AmigaPCI-Symbols:74LVC245") (at 92.202 222.758 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 8e24ecc3-b4be-485b-bfda-d304ebec681f)
-    (property "Reference" "U419" (at 92.202 203.8182 0)
+    (property "Reference" "U704" (at 92.202 203.8182 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "74LVC245" (at 92.202 206.3551 0)
@@ -5736,26 +5667,17 @@
     (pin "20" (uuid c29b49ff-bb5a-4ac3-88b4-eaf868827c44))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
-          (reference "U419") (unit 1)
-        )
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/6050d85a-08ce-47d9-805f-b2a01ec2bdd9"
-          (reference "U419") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/f63de3eb-8614-4bac-88f2-650f5bad2338"
           (reference "U704") (unit 1)
-        )
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/2b6a6f7b-f16f-448f-a082-ded618631c29"
-          (reference "U710") (unit 1)
         )
       )
     )
   )
 
-  (symbol (lib_id "AmigaPCI-Symbols:74LVC245") (at 193.802 221.996 0) (mirror y) (unit 1)
+  (symbol (lib_id "AmigaPCI-Symbols:74LVC245") (at 193.802 221.996 0) (mirror y) (unit 2)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 9c5e01ec-f61e-42ba-ac1b-b49bbe2d9416)
-    (property "Reference" "U418" (at 191.4652 221.996 90)
+    (property "Reference" "U702" (at 191.4652 221.996 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "74LVC245" (at 196.2912 221.996 90)
@@ -5789,17 +5711,8 @@
     (pin "20" (uuid edc7b751-2629-4a22-8a99-65598a8398f2))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
-          (reference "U418") (unit 1)
-        )
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/6050d85a-08ce-47d9-805f-b2a01ec2bdd9"
-          (reference "U418") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/f63de3eb-8614-4bac-88f2-650f5bad2338"
           (reference "U702") (unit 2)
-        )
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/2b6a6f7b-f16f-448f-a082-ded618631c29"
-          (reference "U709") (unit 1)
         )
       )
     )
@@ -5833,7 +5746,7 @@
   (symbol (lib_id "Device:C_Small") (at 350.012 192.405 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid a3449e3e-a007-4231-8be1-e16c1b904d21)
-    (property "Reference" "C701" (at 351.409 191.516 90)
+    (property "Reference" "C716" (at 351.409 191.516 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "0.1uF" (at 348.996 191.643 90)
@@ -5849,9 +5762,6 @@
     (pin "2" (uuid 69b829f9-cbbb-456c-ad01-fd733cacc3ba))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
-          (reference "C701") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/f63de3eb-8614-4bac-88f2-650f5bad2338"
           (reference "C716") (unit 1)
         )
@@ -5912,7 +5822,7 @@
   (symbol (lib_id "Device:C_Small") (at 318.77 192.405 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid aa90d8d6-1657-489c-8749-8552654b5b6e)
-    (property "Reference" "C701" (at 320.167 191.516 90)
+    (property "Reference" "C709" (at 320.167 191.516 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "0.1uF" (at 317.754 191.643 90)
@@ -5928,9 +5838,6 @@
     (pin "2" (uuid 9aad1109-9907-410f-b0a9-af0ca43d643a))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
-          (reference "C701") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/f63de3eb-8614-4bac-88f2-650f5bad2338"
           (reference "C709") (unit 1)
         )
@@ -5938,10 +5845,10 @@
     )
   )
 
-  (symbol (lib_id "AmigaPCI-Symbols:74LVC245") (at 173.228 221.996 0) (mirror y) (unit 1)
+  (symbol (lib_id "AmigaPCI-Symbols:74LVC245") (at 173.228 221.996 0) (mirror y) (unit 2)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid ae8a5b9d-c013-4d73-9641-72c92199c6dd)
-    (property "Reference" "U418" (at 170.8912 221.996 90)
+    (property "Reference" "U701" (at 170.8912 221.996 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "74LVC245" (at 175.7172 221.996 90)
@@ -5975,17 +5882,8 @@
     (pin "20" (uuid edc7b751-2629-4a22-8a99-65598a8398f3))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
-          (reference "U418") (unit 1)
-        )
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/6050d85a-08ce-47d9-805f-b2a01ec2bdd9"
-          (reference "U418") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/f63de3eb-8614-4bac-88f2-650f5bad2338"
           (reference "U701") (unit 2)
-        )
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/2b6a6f7b-f16f-448f-a082-ded618631c29"
-          (reference "U709") (unit 1)
         )
       )
     )
@@ -6020,7 +5918,7 @@
   (symbol (lib_id "Device:C_Small") (at 182.626 221.996 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid b76715a2-8333-4e79-9071-cf9a5b29ecd6)
-    (property "Reference" "C702" (at 184.404 220.472 90)
+    (property "Reference" "C701" (at 184.404 220.472 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "0.1uF" (at 184.404 228.854 90)
@@ -6036,9 +5934,6 @@
     (pin "2" (uuid 142ec35a-6919-4935-b38b-1b411502d46f))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
-          (reference "C702") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/f63de3eb-8614-4bac-88f2-650f5bad2338"
           (reference "C701") (unit 1)
         )
@@ -6099,7 +5994,7 @@
   (symbol (lib_id "Device:C_Small") (at 309.88 192.405 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid c8a88070-74ce-427c-bb46-41eedc2a800a)
-    (property "Reference" "C701" (at 311.277 191.516 90)
+    (property "Reference" "C707" (at 311.277 191.516 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "0.1uF" (at 308.737 191.643 90)
@@ -6115,9 +6010,6 @@
     (pin "2" (uuid 9def0222-d88d-4bf3-bc4c-49b63fbf4e67))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
-          (reference "C701") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/f63de3eb-8614-4bac-88f2-650f5bad2338"
           (reference "C707") (unit 1)
         )
@@ -6197,7 +6089,7 @@
   (symbol (lib_id "Device:C_Small") (at 336.804 192.405 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid e1e2a708-8e09-45c9-b75f-64072db7593a)
-    (property "Reference" "C701" (at 338.201 191.516 90)
+    (property "Reference" "C713" (at 338.201 191.516 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "0.1uF" (at 335.661 191.643 90)
@@ -6213,9 +6105,6 @@
     (pin "2" (uuid b54ce74c-09ca-4ecb-881b-6ac7d0aec1ec))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
-          (reference "C701") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/f63de3eb-8614-4bac-88f2-650f5bad2338"
           (reference "C713") (unit 1)
         )
@@ -6248,10 +6137,10 @@
     )
   )
 
-  (symbol (lib_id "AmigaPCI-Symbols:74LVC245") (at 233.934 221.996 0) (mirror y) (unit 1)
+  (symbol (lib_id "AmigaPCI-Symbols:74LVC245") (at 233.934 221.996 0) (mirror y) (unit 2)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid f0f5f9b1-62cb-45bc-984d-422c370808ea)
-    (property "Reference" "U419" (at 231.5972 221.9452 90)
+    (property "Reference" "U704" (at 231.5972 221.9452 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "74LVC245" (at 236.6772 222.0976 90)
@@ -6285,17 +6174,8 @@
     (pin "20" (uuid c29b49ff-bb5a-4ac3-88b4-eaf868827c45))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
-          (reference "U419") (unit 1)
-        )
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/6050d85a-08ce-47d9-805f-b2a01ec2bdd9"
-          (reference "U419") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/f63de3eb-8614-4bac-88f2-650f5bad2338"
           (reference "U704") (unit 2)
-        )
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/2b6a6f7b-f16f-448f-a082-ded618631c29"
-          (reference "U710") (unit 1)
         )
       )
     )
@@ -6304,7 +6184,7 @@
   (symbol (lib_id "AmigaPCI-Symbols:SDRAM(2Mx32)") (at 336.042 110.871 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid f6c2e56e-44db-4737-87aa-bcdc30323a8a)
-    (property "Reference" "U3" (at 353.2379 59.6011 0)
+    (property "Reference" "U707" (at 353.2379 59.6011 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "SDRAM(2Mx32)" (at 353.2379 61.5221 0)
@@ -6404,9 +6284,6 @@
     (pin "9" (uuid 77872b75-2cf1-4bd6-aa44-05abf949067f))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/6050d85a-08ce-47d9-805f-b2a01ec2bdd9"
-          (reference "U3") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/f63de3eb-8614-4bac-88f2-650f5bad2338"
           (reference "U707") (unit 1)
         )
@@ -6417,7 +6294,7 @@
   (symbol (lib_id "Device:C_Small") (at 332.105 192.405 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid f6edc406-1f48-46f0-b8b8-7c1242cd3b2a)
-    (property "Reference" "C701" (at 333.502 191.643 90)
+    (property "Reference" "C712" (at 333.502 191.643 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "0.1uF" (at 331.089 191.643 90)
@@ -6433,9 +6310,6 @@
     (pin "2" (uuid c832ed5c-c9af-4a3e-993a-5fe6a347b206))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
-          (reference "C701") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/f63de3eb-8614-4bac-88f2-650f5bad2338"
           (reference "C712") (unit 1)
         )
@@ -6446,7 +6320,7 @@
   (symbol (lib_id "Device:C_Small") (at 314.452 192.405 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid fc51e8bd-1ad1-42e4-8153-3d0116f6dd91)
-    (property "Reference" "C701" (at 315.849 191.516 90)
+    (property "Reference" "C708" (at 315.849 191.516 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "0.1uF" (at 313.436 191.643 90)
@@ -6462,9 +6336,6 @@
     (pin "2" (uuid 6d78ab4e-8c0a-4de1-80d9-03aa6fbd63cc))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
-          (reference "C701") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/f63de3eb-8614-4bac-88f2-650f5bad2338"
           (reference "C708") (unit 1)
         )
@@ -6475,7 +6346,7 @@
   (symbol (lib_id "Device:C_Small") (at 222.25 221.996 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid fe043360-0398-4255-9d1b-f262284d7688)
-    (property "Reference" "C701" (at 223.774 220.472 90)
+    (property "Reference" "C703" (at 223.774 220.472 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "0.1uF" (at 223.774 228.854 90)
@@ -6491,9 +6362,6 @@
     (pin "2" (uuid a6e2d693-2003-4117-9297-c64f65d9397e))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
-          (reference "C701") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/f63de3eb-8614-4bac-88f2-650f5bad2338"
           (reference "C703") (unit 1)
         )

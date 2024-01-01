@@ -6,7 +6,7 @@
 
   (title_block
     (title "AMIGA PCI")
-    (date "2023-12-30")
+    (date "2023-12-31")
     (rev "1")
   )
 
@@ -5692,7 +5692,7 @@
   (symbol (lib_id "Device:R_Pack04") (at 272.796 82.042 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 32e77409-45f0-420c-b6b0-a005a8d3274b)
-    (property "Reference" "RN3" (at 266.065 82.042 90)
+    (property "Reference" "RN304" (at 266.065 82.042 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "47R" (at 267.986 82.042 90)
@@ -5717,12 +5717,6 @@
     (pin "8" (uuid 6ce77912-f80a-4efe-9ed2-2cb62f9ae4ee))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/64185471-b9ae-4a50-a046-7157e86a04d0"
-          (reference "RN3") (unit 1)
-        )
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
-          (reference "RN12") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/34f2eda3-97b6-4f91-ad2d-01637d6f5405"
           (reference "RN304") (unit 1)
         )
@@ -5763,7 +5757,7 @@
   (symbol (lib_id "power:+5V") (at 240.538 76.454 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 342b1481-959f-4cfa-88c2-ce9644002edb)
-    (property "Reference" "#PWR0282" (at 240.538 80.264 0)
+    (property "Reference" "#PWR019" (at 240.538 80.264 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+5V" (at 240.538 72.771 0)
@@ -5778,12 +5772,6 @@
     (pin "1" (uuid c50a4ef6-9498-4e9a-812d-c69a1089eadb))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/d671396a-959f-409b-8612-87cb620c51cb"
-          (reference "#PWR0282") (unit 1)
-        )
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/62a07d55-3759-49a3-8a3f-631cb4902a24"
-          (reference "#PWR0282") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/34f2eda3-97b6-4f91-ad2d-01637d6f5405"
           (reference "#PWR019") (unit 1)
         )
@@ -7671,7 +7659,7 @@
   (symbol (lib_id "Device:R") (at 240.538 81.788 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid fb6b6804-f092-4a2a-8ebd-a596c3f99ee5)
-    (property "Reference" "R1" (at 243.078 81.788 90)
+    (property "Reference" "R308" (at 243.078 81.788 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "4k7" (at 240.792 81.788 90)
@@ -7687,12 +7675,6 @@
     (pin "2" (uuid 74ae1d78-a195-4836-ae31-7f831a6760ae))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/d671396a-959f-409b-8612-87cb620c51cb"
-          (reference "R1") (unit 1)
-        )
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/62a07d55-3759-49a3-8a3f-631cb4902a24"
-          (reference "R1") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/34f2eda3-97b6-4f91-ad2d-01637d6f5405"
           (reference "R308") (unit 1)
         )

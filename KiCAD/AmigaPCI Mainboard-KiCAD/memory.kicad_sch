@@ -6,7 +6,7 @@
 
   (title_block
     (title "AMIGA PCI")
-    (date "2023-12-30")
+    (date "2023-12-31")
     (rev "1")
   )
 
@@ -6697,7 +6697,7 @@
   (symbol (lib_id "AmigaPCI-Symbols:R_SM_Network08") (at 256.032 73.66 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 0c7027a0-5d40-46bc-8258-184fc8ad5d22)
-    (property "Reference" "RN201" (at 262.636 72.755 90)
+    (property "Reference" "RN402" (at 262.636 72.755 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "1k" (at 262.636 74.676 90)
@@ -6724,9 +6724,6 @@
     (pin "9" (uuid 034429ec-786a-42de-86bd-dc4b430fa723))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
-          (reference "RN201") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/6050d85a-08ce-47d9-805f-b2a01ec2bdd9"
           (reference "RN402") (unit 1)
         )
@@ -6871,7 +6868,7 @@
   (symbol (lib_id "AmigaPCI-Symbols:R_SM_Network08") (at 154.432 93.98 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 25618ec6-4ab5-4f1f-a534-7a5cf0927873)
-    (property "Reference" "RN202" (at 161.036 93.075 90)
+    (property "Reference" "RN401" (at 161.036 93.075 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "1k" (at 161.036 94.996 90)
@@ -6898,9 +6895,6 @@
     (pin "9" (uuid 04cbd987-1ad7-44a2-af4a-705096f67409))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
-          (reference "RN202") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/6050d85a-08ce-47d9-805f-b2a01ec2bdd9"
           (reference "RN401") (unit 1)
         )
@@ -7017,7 +7011,7 @@
   (symbol (lib_id "AmigaPCI-Symbols:74LVC245") (at 343.154 211.836 0) (unit 2)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 3a524a45-e268-4e9f-8b27-823943916118)
-    (property "Reference" "U418" (at 345.694 214.376 90)
+    (property "Reference" "U406" (at 345.694 214.376 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "74LVC245" (at 340.614 216.281 90)
@@ -7051,9 +7045,6 @@
     (pin "20" (uuid 94977ab2-e9b8-42a3-919c-8f25618ce048))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
-          (reference "U418") (unit 2)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/6050d85a-08ce-47d9-805f-b2a01ec2bdd9"
           (reference "U406") (unit 2)
         )
@@ -7110,9 +7101,6 @@
     (pin "2" (uuid 6c633fbf-ba1b-40f3-abcb-626f7e829b38))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
-          (reference "C421") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/6050d85a-08ce-47d9-805f-b2a01ec2bdd9"
           (reference "C421") (unit 1)
         )
@@ -7123,7 +7111,7 @@
   (symbol (lib_id "AmigaPCI-Symbols:74LVC245") (at 312.039 101.6 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 4ebaa147-aa8a-40cc-bfe3-1cb82741c219)
-    (property "Reference" "U419" (at 312.039 82.6602 0)
+    (property "Reference" "U406" (at 312.039 82.6602 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "74LVC245" (at 312.039 85.1971 0)
@@ -7157,9 +7145,6 @@
     (pin "20" (uuid 94ea0810-139c-44f5-a275-fbdc52f96124))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
-          (reference "U419") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/6050d85a-08ce-47d9-805f-b2a01ec2bdd9"
           (reference "U406") (unit 1)
         )
@@ -7170,7 +7155,7 @@
   (symbol (lib_id "AmigaPCI-Symbols:74LVC245") (at 312.039 64.77 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 59979730-af68-44b0-a711-1c67c4d84de9)
-    (property "Reference" "U418" (at 312.039 45.8302 0)
+    (property "Reference" "U405" (at 312.039 45.8302 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "74LVC245" (at 312.039 48.3671 0)
@@ -7204,9 +7189,6 @@
     (pin "20" (uuid edc7b751-2629-4a22-8a99-65598a8398ee))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
-          (reference "U418") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/6050d85a-08ce-47d9-805f-b2a01ec2bdd9"
           (reference "U405") (unit 1)
         )
@@ -7363,12 +7345,6 @@
     (pin "7" (uuid 05594314-7436-42e4-8b11-ff997e076ef0))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/62a07d55-3759-49a3-8a3f-631cb4902a24"
-          (reference "U220") (unit 4)
-        )
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/4cb777ef-2899-49f4-b38f-a0c07d84fa7d"
-          (reference "U220") (unit 4)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/6050d85a-08ce-47d9-805f-b2a01ec2bdd9"
           (reference "U220") (unit 4)
         )
@@ -7404,7 +7380,7 @@
   (symbol (lib_id "AmigaPCI-Symbols:R_SM_Network08") (at 154.432 73.66 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 8daa9291-155b-46dd-96d5-c82c15868207)
-    (property "Reference" "RN203" (at 161.036 72.755 90)
+    (property "Reference" "RN400" (at 161.036 72.755 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "1k" (at 161.036 74.676 90)
@@ -7431,9 +7407,6 @@
     (pin "9" (uuid 151d9a13-f008-4d38-abf1-dee7f4a35ac7))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
-          (reference "RN203") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/6050d85a-08ce-47d9-805f-b2a01ec2bdd9"
           (reference "RN400") (unit 1)
         )
@@ -7484,9 +7457,6 @@
     (pin "1" (uuid 06c8058d-ad0a-440e-8160-2ded09ccd5df))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
-          (reference "#PWR0151") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/6050d85a-08ce-47d9-805f-b2a01ec2bdd9"
           (reference "#PWR0151") (unit 1)
         )
@@ -7522,7 +7492,7 @@
   (symbol (lib_id "AmigaPCI-Symbols:74LVC245") (at 379.476 211.836 0) (unit 2)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 98bafe28-fe29-4e0a-a3fa-9b828715b86e)
-    (property "Reference" "U420" (at 382.016 214.376 90)
+    (property "Reference" "U408" (at 382.016 214.376 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "74LVC245" (at 376.936 216.281 90)
@@ -7556,9 +7526,6 @@
     (pin "20" (uuid 4a16a822-44cd-41fa-9a63-ba2b181d8790))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
-          (reference "U420") (unit 2)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/6050d85a-08ce-47d9-805f-b2a01ec2bdd9"
           (reference "U408") (unit 2)
         )
@@ -7718,9 +7685,6 @@
     (pin "1" (uuid 5e6d1b1c-bf60-4451-970c-98f9e267a91c))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
-          (reference "#PWR0150") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/6050d85a-08ce-47d9-805f-b2a01ec2bdd9"
           (reference "#PWR0150") (unit 1)
         )
@@ -7792,7 +7756,7 @@
   (symbol (lib_id "AmigaPCI-Symbols:74LVC245") (at 360.934 211.836 0) (unit 2)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid b573c337-e016-4895-826a-51bebb5e888e)
-    (property "Reference" "U419" (at 363.474 214.376 90)
+    (property "Reference" "U407" (at 363.474 214.376 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "74LVC245" (at 358.394 216.281 90)
@@ -7826,9 +7790,6 @@
     (pin "20" (uuid 5d31bcc9-7c25-4899-9669-e84b15716689))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
-          (reference "U419") (unit 2)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/6050d85a-08ce-47d9-805f-b2a01ec2bdd9"
           (reference "U407") (unit 2)
         )
@@ -7957,7 +7918,7 @@
   (symbol (lib_id "AmigaPCI-Symbols:74LVC245") (at 312.039 175.26 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid c79d7b0d-f83f-4a18-af20-7e6874deecf8)
-    (property "Reference" "U421" (at 312.039 156.3202 0)
+    (property "Reference" "U408" (at 312.039 156.3202 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "74LVC245" (at 312.039 158.8571 0)
@@ -7991,9 +7952,6 @@
     (pin "20" (uuid 37f212f6-89d3-4e74-a37a-48edf5fecb39))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
-          (reference "U421") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/6050d85a-08ce-47d9-805f-b2a01ec2bdd9"
           (reference "U408") (unit 1)
         )
@@ -8035,7 +7993,7 @@
   (symbol (lib_id "AmigaPCI-Symbols:R_SM_Network08") (at 256.032 93.98 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid cbe541be-9aee-4580-9066-bee70f086fa2)
-    (property "Reference" "RN200" (at 262.636 93.075 90)
+    (property "Reference" "RN403" (at 262.636 93.075 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "1k" (at 262.636 94.996 90)
@@ -8062,9 +8020,6 @@
     (pin "9" (uuid ef8ddc16-adc9-45b3-aa2f-579964856788))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
-          (reference "RN200") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/6050d85a-08ce-47d9-805f-b2a01ec2bdd9"
           (reference "RN403") (unit 1)
         )
@@ -8147,9 +8102,6 @@
     (pin "2" (uuid f5c5fda2-9146-41b4-a701-dd574d65f7ae))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
-          (reference "C420") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/6050d85a-08ce-47d9-805f-b2a01ec2bdd9"
           (reference "C420") (unit 1)
         )
@@ -8207,9 +8159,6 @@
     (pin "2" (uuid 085b42d2-8b39-4586-ad19-122918d35ce0))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
-          (reference "C419") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/6050d85a-08ce-47d9-805f-b2a01ec2bdd9"
           (reference "C419") (unit 1)
         )
@@ -8220,7 +8169,7 @@
   (symbol (lib_id "AmigaPCI-Symbols:74LVC245") (at 398.526 211.836 0) (unit 2)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid e8866f9f-47e8-4d59-9afd-d39fa72c97e4)
-    (property "Reference" "U421" (at 401.066 214.376 90)
+    (property "Reference" "U405" (at 401.066 214.376 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "74LVC245" (at 395.986 216.281 90)
@@ -8254,9 +8203,6 @@
     (pin "20" (uuid 4a2b538a-52ca-46ed-9364-7f8a4d4d11f7))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
-          (reference "U421") (unit 2)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/6050d85a-08ce-47d9-805f-b2a01ec2bdd9"
           (reference "U405") (unit 2)
         )
@@ -8376,7 +8322,7 @@
   (symbol (lib_id "AmigaPCI-Symbols:74LVC245") (at 312.039 138.43 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid f34a86f7-dc9c-4e72-8d85-3d70c160c4d7)
-    (property "Reference" "U420" (at 312.039 119.4902 0)
+    (property "Reference" "U407" (at 312.039 119.4902 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "74LVC245" (at 312.039 122.0271 0)
@@ -8410,9 +8356,6 @@
     (pin "20" (uuid 995a398c-64b7-4639-8e97-5685a9ff51e7))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
-          (reference "U420") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/6050d85a-08ce-47d9-805f-b2a01ec2bdd9"
           (reference "U407") (unit 1)
         )

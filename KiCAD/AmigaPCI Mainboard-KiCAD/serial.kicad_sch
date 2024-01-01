@@ -6,7 +6,7 @@
 
   (title_block
     (title "AMIGA PCI")
-    (date "2023-12-30")
+    (date "2023-12-31")
     (rev "1")
   )
 
@@ -3831,7 +3831,7 @@
   (symbol (lib_id "AmigaPCI-Symbols:Ferrite_Bead") (at 307.34 146.812 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 262485c9-1819-4179-965e-313380705783)
-    (property "Reference" "FB501" (at 311.531 148.209 90)
+    (property "Reference" "FB220" (at 311.531 148.209 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "80R" (at 310.261 150.1394 90)
@@ -3847,14 +3847,8 @@
     (pin "2" (uuid 664d9937-76fb-4c29-b2da-8d43a1215570))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/71ea5834-c2f1-44b0-9a09-0538600b01fd"
-          (reference "FB501") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/70231775-58c2-469a-996a-fc3c3a4a8de1"
           (reference "FB220") (unit 1)
-        )
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/64185471-b9ae-4a50-a046-7157e86a04d0"
-          (reference "FB206") (unit 1)
         )
       )
       (project "2000ATX"
@@ -4249,7 +4243,7 @@
   (symbol (lib_id "AmigaPCI-Symbols:Ferrite_Bead") (at 315.722 141.732 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 619abc8d-7bf8-4b56-93d7-9129c5b22c4c)
-    (property "Reference" "FB501" (at 319.913 143.129 90)
+    (property "Reference" "FB219" (at 319.913 143.129 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "80R" (at 318.643 145.0594 90)
@@ -4265,14 +4259,8 @@
     (pin "2" (uuid 1a088fae-771a-4fc4-91ea-910e6cddeadc))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/71ea5834-c2f1-44b0-9a09-0538600b01fd"
-          (reference "FB501") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/70231775-58c2-469a-996a-fc3c3a4a8de1"
           (reference "FB219") (unit 1)
-        )
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/64185471-b9ae-4a50-a046-7157e86a04d0"
-          (reference "FB203") (unit 1)
         )
       )
       (project "2000ATX"
@@ -4437,7 +4425,7 @@
   (symbol (lib_id "AmigaPCI-Symbols:Ferrite_Bead") (at 315.722 131.572 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 76d894ba-0f1a-4ae4-8a0b-aef3d3cea271)
-    (property "Reference" "FB501" (at 319.913 132.969 90)
+    (property "Reference" "FB217" (at 319.913 132.969 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "80R" (at 318.643 134.8994 90)
@@ -4453,14 +4441,8 @@
     (pin "2" (uuid 2b49d533-9a99-4d49-8877-4bf0c144b16f))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/71ea5834-c2f1-44b0-9a09-0538600b01fd"
-          (reference "FB501") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/70231775-58c2-469a-996a-fc3c3a4a8de1"
           (reference "FB217") (unit 1)
-        )
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/64185471-b9ae-4a50-a046-7157e86a04d0"
-          (reference "FB205") (unit 1)
         )
       )
       (project "2000ATX"
@@ -4716,7 +4698,7 @@
   (symbol (lib_id "AmigaPCI-Symbols:Ferrite_Bead") (at 315.722 156.972 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 958c8d8d-25a3-4640-8905-a1e78bc028b0)
-    (property "Reference" "FB501" (at 319.913 158.369 90)
+    (property "Reference" "FB221" (at 319.913 158.369 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "80R" (at 318.643 160.2994 90)
@@ -4732,14 +4714,8 @@
     (pin "2" (uuid bf7883d3-16fd-44f7-9706-4a30c44efb1a))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/71ea5834-c2f1-44b0-9a09-0538600b01fd"
-          (reference "FB501") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/70231775-58c2-469a-996a-fc3c3a4a8de1"
           (reference "FB221") (unit 1)
-        )
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/64185471-b9ae-4a50-a046-7157e86a04d0"
-          (reference "FB203") (unit 1)
         )
       )
       (project "2000ATX"
@@ -4922,7 +4898,7 @@
   (symbol (lib_id "AmigaPCI-Symbols:Ferrite_Bead") (at 307.34 126.492 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid b2288670-d1bd-491e-9d7a-934e8f3f37ec)
-    (property "Reference" "FB501" (at 311.531 127.889 90)
+    (property "Reference" "FB216" (at 311.531 127.889 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "80R" (at 310.261 129.8194 90)
@@ -4938,14 +4914,8 @@
     (pin "2" (uuid f06e2edc-91fb-4da5-8aae-3c61717cd25b))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/71ea5834-c2f1-44b0-9a09-0538600b01fd"
-          (reference "FB501") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/70231775-58c2-469a-996a-fc3c3a4a8de1"
           (reference "FB216") (unit 1)
-        )
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/64185471-b9ae-4a50-a046-7157e86a04d0"
-          (reference "FB204") (unit 1)
         )
       )
       (project "2000ATX"
@@ -5276,7 +5246,7 @@
   (symbol (lib_id "AmigaPCI-Symbols:Ferrite_Bead") (at 312.42 177.8 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid d8e616b5-5acf-4040-9f08-792da29d9ee7)
-    (property "Reference" "FB501" (at 318.008 175.006 90)
+    (property "Reference" "FB201" (at 318.008 175.006 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "80R" (at 316.738 176.9364 90)
@@ -5292,9 +5262,6 @@
     (pin "2" (uuid 9fb32142-c5b3-4564-9a04-199341306901))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/71ea5834-c2f1-44b0-9a09-0538600b01fd"
-          (reference "FB501") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/70231775-58c2-469a-996a-fc3c3a4a8de1"
           (reference "FB201") (unit 1)
         )
@@ -5430,7 +5397,7 @@
   (symbol (lib_id "AmigaPCI-Symbols:Ferrite_Bead") (at 307.34 136.652 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid ec952e55-d19b-41cf-8b51-1080e57e71b8)
-    (property "Reference" "FB501" (at 311.531 138.049 90)
+    (property "Reference" "FB218" (at 311.531 138.049 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "80R" (at 310.261 139.9794 90)
@@ -5446,14 +5413,8 @@
     (pin "2" (uuid c4088194-1eca-4ccd-8cba-a562e6d53028))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/71ea5834-c2f1-44b0-9a09-0538600b01fd"
-          (reference "FB501") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/70231775-58c2-469a-996a-fc3c3a4a8de1"
           (reference "FB218") (unit 1)
-        )
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/64185471-b9ae-4a50-a046-7157e86a04d0"
-          (reference "FB206") (unit 1)
         )
       )
       (project "2000ATX"
@@ -5500,7 +5461,7 @@
   (symbol (lib_id "AmigaPCI-Symbols:Ferrite_Bead") (at 312.42 168.402 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid f26d7233-1246-4c10-ba80-b377128f2c10)
-    (property "Reference" "FB501" (at 318.262 165.608 90)
+    (property "Reference" "FB200" (at 318.262 165.608 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "80R" (at 316.992 167.5384 90)
@@ -5516,9 +5477,6 @@
     (pin "2" (uuid 381cbb42-e50d-4695-8413-ac17a07c2a18))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/71ea5834-c2f1-44b0-9a09-0538600b01fd"
-          (reference "FB501") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/70231775-58c2-469a-996a-fc3c3a4a8de1"
           (reference "FB200") (unit 1)
         )

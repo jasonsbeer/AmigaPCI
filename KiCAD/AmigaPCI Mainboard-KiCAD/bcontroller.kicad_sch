@@ -6,7 +6,7 @@
 
   (title_block
     (title "AMIGA PCI")
-    (date "2023-12-30")
+    (date "2023-12-31")
     (rev "1")
   )
 
@@ -1822,7 +1822,7 @@
     (stroke (width 0) (type default))
     (uuid 1f6b2743-aa3d-488c-b065-eccda2078fa3)
   )
-  (wire (pts (xy 110.236 146.812) (xy 112.776 146.812))
+  (wire (pts (xy 104.14 146.812) (xy 112.776 146.812))
     (stroke (width 0) (type default))
     (uuid 1f8c67cf-ca5f-4584-8e39-2fa7d47c159c)
   )
@@ -2040,7 +2040,7 @@
     (stroke (width 0) (type default))
     (uuid 450d3c89-4b66-4074-9c2d-8df32145dec0)
   )
-  (wire (pts (xy 178.816 167.132) (xy 191.008 167.132))
+  (wire (pts (xy 178.816 167.132) (xy 187.452 167.132))
     (stroke (width 0) (type default))
     (uuid 455032b1-5f9d-43b3-9b6c-0d858b52f35b)
   )
@@ -2129,7 +2129,7 @@
     (stroke (width 0) (type default))
     (uuid 56daed37-de6b-4c1b-af8f-58a992f15dc3)
   )
-  (wire (pts (xy 181.61 146.812) (xy 178.816 146.812))
+  (wire (pts (xy 187.452 146.812) (xy 178.816 146.812))
     (stroke (width 0) (type default))
     (uuid 57d03915-098a-4949-a486-0496e18bba61)
   )
@@ -2276,7 +2276,7 @@
     (stroke (width 0) (type default))
     (uuid 6cfe2d61-7aaf-4987-b956-3d72121bd133)
   )
-  (wire (pts (xy 110.236 144.272) (xy 112.776 144.272))
+  (wire (pts (xy 104.14 144.272) (xy 112.776 144.272))
     (stroke (width 0) (type default))
     (uuid 6d673a51-4da6-47af-aed6-10a9741ada2c)
   )
@@ -2333,7 +2333,7 @@
     (stroke (width 0) (type default))
     (uuid 752d89a4-5355-4d03-9632-0d8fb63d9259)
   )
-  (wire (pts (xy 178.816 159.512) (xy 191.008 159.512))
+  (wire (pts (xy 178.816 159.512) (xy 187.452 159.512))
     (stroke (width 0) (type default))
     (uuid 7597e38e-5699-4a35-a03c-ee365fabeb66)
   )
@@ -2458,7 +2458,7 @@
     (stroke (width 0) (type default))
     (uuid 864c1013-ed39-4a20-8533-7f42dcf38bb7)
   )
-  (wire (pts (xy 109.982 151.892) (xy 112.776 151.892))
+  (wire (pts (xy 103.886 151.892) (xy 112.776 151.892))
     (stroke (width 0) (type default))
     (uuid 86f8f042-9d2a-458c-9161-860c84d4c2ca)
   )
@@ -2521,7 +2521,7 @@
     (stroke (width 0) (type default))
     (uuid 901f3f92-89a7-4570-aa95-4c40b1bd96ef)
   )
-  (wire (pts (xy 178.816 169.672) (xy 191.008 169.672))
+  (wire (pts (xy 178.816 169.672) (xy 187.452 169.672))
     (stroke (width 0) (type default))
     (uuid 90504580-1a28-4002-a7b3-7d0f06e20f2f)
   )
@@ -2706,7 +2706,7 @@
     (stroke (width 0) (type default))
     (uuid ac7b4d9d-4362-4d26-b7e9-cc3059c314a3)
   )
-  (wire (pts (xy 110.236 164.592) (xy 112.776 164.592))
+  (wire (pts (xy 104.14 164.592) (xy 112.776 164.592))
     (stroke (width 0) (type default))
     (uuid acbe7a5b-3731-4ee5-9710-ebc4599173cb)
   )
@@ -2731,7 +2731,7 @@
     (uuid b046e639-653b-4c23-8b39-8d311dd3a132)
   )
 
-  (wire (pts (xy 178.816 164.592) (xy 191.008 164.592))
+  (wire (pts (xy 178.816 164.592) (xy 187.452 164.592))
     (stroke (width 0) (type default))
     (uuid b0fafa0e-c941-4db5-a2de-94d9c710d940)
   )
@@ -2785,7 +2785,7 @@
     (stroke (width 0) (type default))
     (uuid ba102094-99eb-4d24-b791-a1e5db69a127)
   )
-  (wire (pts (xy 178.816 172.212) (xy 191.008 172.212))
+  (wire (pts (xy 178.816 172.212) (xy 187.452 172.212))
     (stroke (width 0) (type default))
     (uuid bb466ea7-ef52-42c9-9ed6-99cbb0c0c6a2)
   )
@@ -2851,7 +2851,7 @@
     (uuid c3b46ace-b5d4-4f69-97b0-fd8527fd3f91)
   )
 
-  (wire (pts (xy 178.816 162.052) (xy 191.008 162.052))
+  (wire (pts (xy 178.816 162.052) (xy 187.452 162.052))
     (stroke (width 0) (type default))
     (uuid c3c75fe1-57cc-4049-b2c9-b541bb5ae38f)
   )
@@ -3134,7 +3134,7 @@
     (stroke (width 0) (type default))
     (uuid f0baaaac-832d-4c7d-b994-b710aa4902f4)
   )
-  (wire (pts (xy 178.816 174.752) (xy 191.008 174.752))
+  (wire (pts (xy 178.816 174.752) (xy 187.452 174.752))
     (stroke (width 0) (type default))
     (uuid f19df4dc-cfc9-4fdf-b1ce-1dac0e88d02b)
   )
@@ -3223,8 +3223,8 @@
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid d32fd0bc-7cf4-49c9-9fb7-249702093075)
   )
-  (text "U409 PROVIDES RAM AND IDE AUTOCONFIG, ADDRESS DECODE,\nREPLACEMENT GARY FUNCTIONS, STARTUP AND KEYBOARD RESET, \nAND FAST RAM CONTROLLER."
-    (at 248.412 40.894 0)
+  (text "U409 PROVIDES RAM, IDE, AND PCI BRIDGE AUTOCONFIG, ADDRESS DECODE,\nREPLACEMENT GARY FUNCTIONS, STARTUP AND KEYBOARD RESET, \nAND FAST RAM CONTROLLER."
+    (at 241.3 37.084 0)
     (effects (font (size 3 3) (thickness 0.6) bold) (justify left bottom))
     (uuid eb6f7d32-62c0-4263-bc54-e2342b91855f)
   )
@@ -3488,10 +3488,10 @@
       (effects (font (size 1.27 1.27)) (justify right))
     )
   )
-  (global_label "PIO_S2" (shape output) (at 191.008 174.752 0) (fields_autoplaced)
+  (global_label "PIO_S2" (shape output) (at 187.452 174.752 0) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify left))
     (uuid 0bce3314-1974-4abd-9e2a-03aa5ed00d73)
-    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 200.5851 174.752 0)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 197.0291 174.752 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
   )
@@ -3530,10 +3530,10 @@
       (effects (font (size 1.27 1.27)) (justify right))
     )
   )
-  (global_label "_EMCAS" (shape output) (at 110.236 144.272 180) (fields_autoplaced)
+  (global_label "_EMCAS" (shape output) (at 104.14 144.272 180) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify right))
     (uuid 16610eb7-8115-4101-b75d-c93224c2e2c6)
-    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 100.1147 144.272 0)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 94.0187 144.272 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
   )
@@ -3628,17 +3628,17 @@
       (effects (font (size 1.27 1.27)) (justify left))
     )
   )
-  (global_label "PIO_S0" (shape output) (at 191.008 169.672 0) (fields_autoplaced)
+  (global_label "PIO_S0" (shape output) (at 187.452 169.672 0) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify left))
     (uuid 39b60b83-df6d-4d6f-a6a3-97699a4c66d8)
-    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 200.5851 169.672 0)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 197.0291 169.672 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
   )
-  (global_label "C3" (shape input) (at 181.61 146.812 0) (fields_autoplaced)
+  (global_label "C3" (shape input) (at 187.452 146.812 0) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify left))
     (uuid 3f682e57-af58-47df-9ea8-d4b38ef7b68c)
-    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 186.9953 146.812 0)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 192.8373 146.812 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
   )
@@ -3670,10 +3670,10 @@
       (effects (font (size 1.27 1.27)) (justify right))
     )
   )
-  (global_label "C1" (shape input) (at 110.236 164.592 180) (fields_autoplaced)
+  (global_label "C1" (shape input) (at 104.14 164.592 180) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify right))
     (uuid 448e78ec-7488-44c9-aa42-66c134773097)
-    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 104.8507 164.592 0)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 98.7547 164.592 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
   )
@@ -3691,10 +3691,10 @@
       (effects (font (size 1.27 1.27)) (justify right))
     )
   )
-  (global_label "PIO_P0" (shape output) (at 191.008 162.052 0) (fields_autoplaced)
+  (global_label "PIO_P0" (shape output) (at 187.452 162.052 0) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify left))
     (uuid 4c775ce8-98ba-48d3-93e1-789f1e630d59)
-    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 200.6456 162.052 0)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 197.0896 162.052 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
   )
@@ -3719,10 +3719,10 @@
       (effects (font (size 1.27 1.27)) (justify left))
     )
   )
-  (global_label "PIO_S1" (shape output) (at 191.008 172.212 0) (fields_autoplaced)
+  (global_label "PIO_S1" (shape output) (at 187.452 172.212 0) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify left))
     (uuid 59519b41-36ec-4dda-92e6-54c1baada50e)
-    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 200.5851 172.212 0)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 197.0291 172.212 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
   )
@@ -3747,10 +3747,10 @@
       (effects (font (size 1.27 1.27)) (justify left))
     )
   )
-  (global_label "CPUSPACE" (shape output) (at 191.008 159.512 0) (fields_autoplaced)
+  (global_label "CPUSPACE" (shape output) (at 187.452 159.512 0) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify left))
     (uuid 61cd06f2-2430-4466-9992-23356e871334)
-    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 203.7714 159.512 0)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 200.2154 159.512 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
   )
@@ -3894,10 +3894,10 @@
       (effects (font (size 1.27 1.27)) (justify right))
     )
   )
-  (global_label "PIO_P1" (shape output) (at 191.008 164.592 0) (fields_autoplaced)
+  (global_label "PIO_P1" (shape output) (at 187.452 164.592 0) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify left))
     (uuid a5c84bb1-6e47-40da-8513-177188710c32)
-    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 200.6456 164.592 0)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 197.0896 164.592 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
   )
@@ -3985,10 +3985,10 @@
       (effects (font (size 1.27 1.27)) (justify left))
     )
   )
-  (global_label "_EMWE" (shape output) (at 110.236 146.812 180) (fields_autoplaced)
+  (global_label "_EMWE" (shape output) (at 104.14 146.812 180) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify right))
     (uuid c4bb8798-1330-4ffa-b561-79329f197162)
-    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 101.0824 146.812 0)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 94.9864 146.812 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
   )
@@ -4118,10 +4118,10 @@
       (effects (font (size 1.27 1.27)) (justify left))
     )
   )
-  (global_label "CLK7" (shape input) (at 109.982 151.892 180) (fields_autoplaced)
+  (global_label "CLK7" (shape input) (at 103.886 151.892 180) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify right))
     (uuid f112fb6d-1e87-4257-8d86-dadf51731243)
-    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 102.2192 151.892 0)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 96.1232 151.892 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
   )
@@ -4139,10 +4139,10 @@
       (effects (font (size 1.27 1.27)) (justify right))
     )
   )
-  (global_label "PIO_P2" (shape output) (at 191.008 167.132 0) (fields_autoplaced)
+  (global_label "PIO_P2" (shape output) (at 187.452 167.132 0) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify left))
     (uuid f58d4c11-1db6-4ea0-85f6-e53080f71c1b)
-    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 200.6456 167.132 0)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 197.0896 167.132 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
   )
@@ -4190,7 +4190,7 @@
   (symbol (lib_id "power:+3.3V") (at 135.636 46.736 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 0ac0c2ac-5250-4369-b977-7415c349bddd)
-    (property "Reference" "#PWR05" (at 135.636 50.546 0)
+    (property "Reference" "#PWR033" (at 135.636 50.546 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+3.3V" (at 135.636 43.2341 0)
@@ -4205,9 +4205,6 @@
     (pin "1" (uuid 23a6abfd-ea59-44db-a273-ad13772fda25))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
-          (reference "#PWR05") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/62a07d55-3759-49a3-8a3f-631cb4902a24"
           (reference "#PWR033") (unit 1)
         )
@@ -4296,7 +4293,7 @@
   (symbol (lib_id "power:GND") (at 217.932 173.99 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 4623ee53-9989-410d-b5c8-88d1a727c1a2)
-    (property "Reference" "#PWR0257" (at 217.932 180.34 0)
+    (property "Reference" "#PWR06" (at 217.932 180.34 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 217.932 178.1255 0)
@@ -4311,14 +4308,8 @@
     (pin "1" (uuid afc131b8-f4f7-46bb-bf5a-1491db014ea5))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
-          (reference "#PWR0257") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/62a07d55-3759-49a3-8a3f-631cb4902a24"
           (reference "#PWR06") (unit 1)
-        )
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/7a35a97e-5686-44dd-976e-0306b0eb5ef2"
-          (reference "#PWR0119") (unit 1)
         )
       )
     )
@@ -4352,7 +4343,7 @@
   (symbol (lib_id "power:+3.3V") (at 314.706 75.946 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 4a102ce7-eb52-4c79-8004-2578d9b4deca)
-    (property "Reference" "#PWR05" (at 314.706 79.756 0)
+    (property "Reference" "#PWR027" (at 314.706 79.756 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+3.3V" (at 314.706 72.4441 0)
@@ -4367,9 +4358,6 @@
     (pin "1" (uuid cd8be701-0cd3-46d5-90ba-c50bdba22392))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
-          (reference "#PWR05") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/62a07d55-3759-49a3-8a3f-631cb4902a24"
           (reference "#PWR027") (unit 1)
         )
@@ -4380,7 +4368,7 @@
   (symbol (lib_id "power:GND") (at 374.65 178.562 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 4b336f7b-a9d8-4fc6-8a44-cd2731c4b5d4)
-    (property "Reference" "#PWR0257" (at 374.65 184.912 0)
+    (property "Reference" "#PWR0201" (at 374.65 184.912 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 374.65 182.6975 0)
@@ -4395,9 +4383,6 @@
     (pin "1" (uuid 33b34de6-6ace-496a-9e67-9f46907ba209))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
-          (reference "#PWR0257") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/62a07d55-3759-49a3-8a3f-631cb4902a24"
           (reference "#PWR0201") (unit 1)
         )
@@ -4408,7 +4393,7 @@
   (symbol (lib_id "power:GND") (at 215.9 235.712 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 4b6a68f5-624c-45a7-aa10-e7eaf979aefb)
-    (property "Reference" "#PWR0257" (at 215.9 242.062 0)
+    (property "Reference" "#PWR0129" (at 215.9 242.062 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 215.9 239.8475 0)
@@ -4423,9 +4408,6 @@
     (pin "1" (uuid 060af3d8-992f-42f0-b916-1d699d34b18c))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
-          (reference "#PWR0257") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/62a07d55-3759-49a3-8a3f-631cb4902a24"
           (reference "#PWR0129") (unit 1)
         )
@@ -4462,7 +4444,7 @@
   (symbol (lib_id "Device:R") (at 217.17 197.612 90) (mirror x) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 5d973a58-9df1-4834-bfda-d94a9f129da4)
-    (property "Reference" "R28" (at 225.298 196.596 90)
+    (property "Reference" "R930" (at 225.298 196.596 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "10k" (at 218.44 197.612 90)
@@ -4478,12 +4460,6 @@
     (pin "2" (uuid e3698b80-b98e-4b28-af27-6276a4924ae6))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/d671396a-959f-409b-8612-87cb620c51cb"
-          (reference "R28") (unit 1)
-        )
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
-          (reference "R28") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/62a07d55-3759-49a3-8a3f-631cb4902a24"
           (reference "R930") (unit 1)
         )
@@ -4520,7 +4496,7 @@
   (symbol (lib_id "power:+3.3V") (at 374.65 168.656 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 69cd9a6e-0649-40b9-89c6-27a3b7bbfa6e)
-    (property "Reference" "#PWR0114" (at 374.65 172.466 0)
+    (property "Reference" "#PWR0194" (at 374.65 172.466 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+3.3V" (at 374.65 165.1541 0)
@@ -4535,9 +4511,6 @@
     (pin "1" (uuid 7e08e81e-b367-478f-8b5c-18bf413f2cbf))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
-          (reference "#PWR0114") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/62a07d55-3759-49a3-8a3f-631cb4902a24"
           (reference "#PWR0194") (unit 1)
         )
@@ -4625,7 +4598,7 @@
   (symbol (lib_id "Device:R") (at 217.17 195.072 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 7435717f-47ad-4cd6-811f-f50ac3f4b104)
-    (property "Reference" "R950" (at 225.298 194.056 90)
+    (property "Reference" "R911" (at 225.298 194.056 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "10k" (at 218.44 195.072 90)
@@ -4641,15 +4614,6 @@
     (pin "2" (uuid 909f3010-5b9c-4501-8664-2d829e44aef1))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
-          (reference "R950") (unit 1)
-        )
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/d671396a-959f-409b-8612-87cb620c51cb"
-          (reference "R13") (unit 1)
-        )
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/7a35a97e-5686-44dd-976e-0306b0eb5ef2"
-          (reference "R911") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/62a07d55-3759-49a3-8a3f-631cb4902a24"
           (reference "R911") (unit 1)
         )
@@ -4748,7 +4712,7 @@
   (symbol (lib_id "Connector_Generic:Conn_02x03_Counter_Clockwise") (at 367.03 173.482 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 826e3107-d75f-49e5-baba-ffaebccf6639)
-    (property "Reference" "CN227" (at 365.76 166.116 0)
+    (property "Reference" "CN711" (at 365.76 166.116 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "JTAG/SWD" (at 365.76 168.037 0)
@@ -4768,9 +4732,6 @@
     (pin "6" (uuid bcc2cada-09c9-4644-a4a6-f11358a04ced))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
-          (reference "CN227") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/62a07d55-3759-49a3-8a3f-631cb4902a24"
           (reference "CN711") (unit 1)
         )
@@ -4857,7 +4818,7 @@
   (symbol (lib_id "Connector_Generic:Conn_02x03_Odd_Even") (at 207.772 182.88 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid be30fdab-4ab2-4717-b700-743e2dadb254)
-    (property "Reference" "J901" (at 212.09 181.61 90)
+    (property "Reference" "JIDE1" (at 212.09 181.61 90)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "IDE MODES" (at 212.09 184.15 90)
@@ -4877,9 +4838,6 @@
     (pin "6" (uuid 55be0cc9-3621-4fdf-91fe-64a155dec438))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/7a35a97e-5686-44dd-976e-0306b0eb5ef2"
-          (reference "J901") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/62a07d55-3759-49a3-8a3f-631cb4902a24"
           (reference "JIDE1") (unit 1)
         )
@@ -4890,7 +4848,7 @@
   (symbol (lib_id "Device:R") (at 217.17 192.532 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid bebe8a11-323d-4ca1-862c-92371eb1eec3)
-    (property "Reference" "R950" (at 225.298 191.516 90)
+    (property "Reference" "R912" (at 225.298 191.516 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "10k" (at 218.44 192.532 90)
@@ -4906,15 +4864,6 @@
     (pin "2" (uuid ce28d76b-7c82-47fd-b6de-638dbaa3a865))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
-          (reference "R950") (unit 1)
-        )
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/d671396a-959f-409b-8612-87cb620c51cb"
-          (reference "R13") (unit 1)
-        )
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/7a35a97e-5686-44dd-976e-0306b0eb5ef2"
-          (reference "R912") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/62a07d55-3759-49a3-8a3f-631cb4902a24"
           (reference "R912") (unit 1)
         )
@@ -4925,7 +4874,7 @@
   (symbol (lib_id "power:+3.3V") (at 215.9 225.806 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid c02ab376-9884-4ef8-9284-9d3bbea90deb)
-    (property "Reference" "#PWR0114" (at 215.9 229.616 0)
+    (property "Reference" "#PWR030" (at 215.9 229.616 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+3.3V" (at 215.9 222.3041 0)
@@ -4940,9 +4889,6 @@
     (pin "1" (uuid fca024fb-03be-491e-9377-517f1a548db4))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
-          (reference "#PWR0114") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/62a07d55-3759-49a3-8a3f-631cb4902a24"
           (reference "#PWR030") (unit 1)
         )
@@ -5005,7 +4951,7 @@
   (symbol (lib_id "power:+3.3V") (at 226.822 189.484 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid df8198e6-8d93-4014-bd56-6251db8fe312)
-    (property "Reference" "#PWR0114" (at 226.822 193.294 0)
+    (property "Reference" "#PWR096" (at 226.822 193.294 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+3.3V" (at 226.822 185.9821 0)
@@ -5020,13 +4966,7 @@
     (pin "1" (uuid c9415d86-c33b-4362-81ad-3a572e907078))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
-          (reference "#PWR0114") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/62a07d55-3759-49a3-8a3f-631cb4902a24"
-          (reference "#PWR096") (unit 1)
-        )
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/7a35a97e-5686-44dd-976e-0306b0eb5ef2"
           (reference "#PWR096") (unit 1)
         )
       )
@@ -5036,7 +4976,7 @@
   (symbol (lib_id "Connector_Generic:Conn_02x03_Counter_Clockwise") (at 208.28 230.632 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid e5e9903f-6312-49f7-abc6-b743b2d81d26)
-    (property "Reference" "CN227" (at 207.01 223.266 0)
+    (property "Reference" "CN409" (at 207.01 223.266 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "JTAG/SWD" (at 207.01 225.187 0)
@@ -5056,9 +4996,6 @@
     (pin "6" (uuid 40199c93-fa97-4aa2-8151-77f8ed905c19))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
-          (reference "CN227") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/62a07d55-3759-49a3-8a3f-631cb4902a24"
           (reference "CN409") (unit 1)
         )
@@ -5069,7 +5006,7 @@
   (symbol (lib_id "CPLD_Xilinx:XC95144XL-TQ144") (at 145.796 151.892 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid fa5c4fe5-33de-4384-87c0-d67e12d5f60d)
-    (property "Reference" "U6" (at 160.4519 65.0621 0)
+    (property "Reference" "U409" (at 160.4519 65.0621 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "XC95144XL-TQ144" (at 160.4519 66.9831 0)
@@ -5227,9 +5164,6 @@
     (pin "99" (uuid ba325a16-2ed1-431a-9cf3-7cf2073ae9d3))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/c71cba2c-aa10-44ea-a37d-abe4b67b6d89"
-          (reference "U6") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/62a07d55-3759-49a3-8a3f-631cb4902a24"
           (reference "U409") (unit 1)
         )

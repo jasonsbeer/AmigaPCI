@@ -6,7 +6,7 @@
 
   (title_block
     (title "AMIGA PCI")
-    (date "2023-12-30")
+    (date "2023-12-31")
     (rev "1")
   )
 
@@ -5339,7 +5339,7 @@
   (symbol (lib_id "AmigaPCI-Symbols:Ferrite_Bead") (at 140.97 80.772 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 08401dd2-3553-4d9f-97ba-7d898b657878)
-    (property "Reference" "FB501" (at 145.161 82.169 90)
+    (property "Reference" "FB223" (at 145.161 82.169 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "80R" (at 143.891 84.0994 90)
@@ -5355,15 +5355,6 @@
     (pin "2" (uuid 526e02c7-b84a-41a3-a32c-8bed3ccec2fb))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/71ea5834-c2f1-44b0-9a09-0538600b01fd"
-          (reference "FB501") (unit 1)
-        )
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/70231775-58c2-469a-996a-fc3c3a4a8de1"
-          (reference "FB216") (unit 1)
-        )
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/64185471-b9ae-4a50-a046-7157e86a04d0"
-          (reference "FB204") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
           (reference "FB223") (unit 1)
         )
@@ -5382,7 +5373,7 @@
   (symbol (lib_id "AmigaPCI-Symbols:Ferrite_Bead") (at 140.97 116.332 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 12698a13-ab03-40a3-bcea-ef34d71e56f5)
-    (property "Reference" "FB501" (at 135.128 119.888 90)
+    (property "Reference" "FB229" (at 135.128 119.888 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "80R" (at 136.398 117.9576 90)
@@ -5398,15 +5389,6 @@
     (pin "2" (uuid 6dc3b064-6daf-4ceb-ba8c-fac75051dccb))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/71ea5834-c2f1-44b0-9a09-0538600b01fd"
-          (reference "FB501") (unit 1)
-        )
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/70231775-58c2-469a-996a-fc3c3a4a8de1"
-          (reference "FB216") (unit 1)
-        )
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/64185471-b9ae-4a50-a046-7157e86a04d0"
-          (reference "FB204") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
           (reference "FB229") (unit 1)
         )
@@ -5425,7 +5407,7 @@
   (symbol (lib_id "power:+5V") (at 76.962 222.758 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 15530164-4ec0-4f14-b7da-9aee08abc471)
-    (property "Reference" "#PWR089" (at 76.962 226.568 0)
+    (property "Reference" "#PWR0280" (at 76.962 226.568 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+5V" (at 77.343 218.3638 0)
@@ -5440,9 +5422,6 @@
     (pin "1" (uuid eb33a8ac-d2c6-4d46-8b2c-94c0b7355054))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/71ea5834-c2f1-44b0-9a09-0538600b01fd"
-          (reference "#PWR089") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
           (reference "#PWR0280") (unit 1)
         )
@@ -5455,10 +5434,10 @@
     )
   )
 
-  (symbol (lib_id "AmigaPCI-Symbols:74LVC245") (at 114.3 237.744 0) (unit 1)
+  (symbol (lib_id "AmigaPCI-Symbols:74LVC245") (at 114.3 237.744 0) (unit 2)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 1867dd01-666b-4a59-83cd-7a53d2ee21e1)
-    (property "Reference" "U419" (at 111.76 240.919 90)
+    (property "Reference" "U223" (at 111.76 240.919 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "74HCT245" (at 116.967 242.57 90)
@@ -5492,12 +5471,6 @@
     (pin "20" (uuid c29b49ff-bb5a-4ac3-88b4-eaf868827c44))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
-          (reference "U419") (unit 1)
-        )
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/6050d85a-08ce-47d9-805f-b2a01ec2bdd9"
-          (reference "U419") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
           (reference "U223") (unit 2)
         )
@@ -5563,7 +5536,7 @@
   (symbol (lib_id "74xx:74LS157") (at 69.342 92.71 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 1e98a520-4a84-4887-95ab-5acf0f3b9817)
-    (property "Reference" "U202" (at 72.644 68.834 0)
+    (property "Reference" "U224" (at 72.644 68.834 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "74HCT157" (at 74.93 70.866 0)
@@ -5593,9 +5566,6 @@
     (pin "9" (uuid 14c01669-75a8-473e-9cac-eae2e6fb90d2))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/71ea5834-c2f1-44b0-9a09-0538600b01fd"
-          (reference "U202") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
           (reference "U224") (unit 1)
         )
@@ -5611,7 +5581,7 @@
   (symbol (lib_id "Device:R") (at 50.546 107.95 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 1ef4105f-e602-4ac7-a990-0628b8b05cb1)
-    (property "Reference" "RN204A1" (at 48.006 105.41 90)
+    (property "Reference" "R207" (at 48.006 105.41 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "68R" (at 49.276 110.49 90)
@@ -5627,9 +5597,6 @@
     (pin "2" (uuid de7c9bd6-90ab-4cda-9b82-01087b5fcdc7))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/71ea5834-c2f1-44b0-9a09-0538600b01fd"
-          (reference "RN204A1") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
           (reference "R207") (unit 1)
         )
@@ -5645,7 +5612,7 @@
   (symbol (lib_id "Device:R_Network08") (at 102.362 53.34 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 20a7df2d-330f-4d8e-9711-1eec9f11320b)
-    (property "Reference" "RN200" (at 99.187 49.149 0)
+    (property "Reference" "RN213" (at 99.187 49.149 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "4k7" (at 107.442 49.149 0)
@@ -5668,9 +5635,6 @@
     (pin "9" (uuid 6d929682-a147-4f96-b2d3-70353529705c))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/71ea5834-c2f1-44b0-9a09-0538600b01fd"
-          (reference "RN200") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
           (reference "RN213") (unit 1)
         )
@@ -5957,9 +5921,6 @@
     (pin "2" (uuid ccd33f72-c687-4bc8-9cbe-7763df96eb19))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/71ea5834-c2f1-44b0-9a09-0538600b01fd"
-          (reference "F1") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
           (reference "F1") (unit 1)
         )
@@ -6080,7 +6041,7 @@
   (symbol (lib_id "Device:C_Small") (at 76.962 230.378 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 4485d053-ab96-4c0f-ba8c-c97edd6a1b36)
-    (property "Reference" "C218" (at 79.883 229.2096 0)
+    (property "Reference" "C258" (at 79.883 229.2096 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "0.1uF" (at 79.883 231.521 0)
@@ -6096,9 +6057,6 @@
     (pin "2" (uuid a100d3ef-3848-4fb5-b9d6-2ca6144810c8))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/71ea5834-c2f1-44b0-9a09-0538600b01fd"
-          (reference "C218") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
           (reference "C258") (unit 1)
         )
@@ -6114,7 +6072,7 @@
   (symbol (lib_id "AmigaPCI-Symbols:Ferrite_Bead") (at 149.352 111.252 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 4617667f-de5a-4277-ae09-50905ce9dfa9)
-    (property "Reference" "FB501" (at 145.161 109.855 90)
+    (property "Reference" "FB228" (at 145.161 109.855 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "80R" (at 146.431 107.9246 90)
@@ -6130,15 +6088,6 @@
     (pin "2" (uuid 61ddd8f7-44f5-4185-bf5c-67bfc909a992))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/71ea5834-c2f1-44b0-9a09-0538600b01fd"
-          (reference "FB501") (unit 1)
-        )
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/70231775-58c2-469a-996a-fc3c3a4a8de1"
-          (reference "FB217") (unit 1)
-        )
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/64185471-b9ae-4a50-a046-7157e86a04d0"
-          (reference "FB205") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
           (reference "FB228") (unit 1)
         )
@@ -6183,7 +6132,7 @@
   (symbol (lib_id "AmigaPCI-Symbols:Ferrite_Bead") (at 140.97 106.172 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 4db0031c-9bad-4070-bc0e-b5033bd94bd6)
-    (property "Reference" "FB501" (at 136.779 104.775 90)
+    (property "Reference" "FB227" (at 136.779 104.775 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "80R" (at 138.049 102.8446 90)
@@ -6199,15 +6148,6 @@
     (pin "2" (uuid 8f249ca4-46b0-4d45-be52-7b85396c7f2a))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/71ea5834-c2f1-44b0-9a09-0538600b01fd"
-          (reference "FB501") (unit 1)
-        )
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/70231775-58c2-469a-996a-fc3c3a4a8de1"
-          (reference "FB218") (unit 1)
-        )
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/64185471-b9ae-4a50-a046-7157e86a04d0"
-          (reference "FB206") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
           (reference "FB227") (unit 1)
         )
@@ -6226,7 +6166,7 @@
   (symbol (lib_id "Device:R") (at 50.546 92.71 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 4db102f3-7eaf-473f-8356-45b08f7559d6)
-    (property "Reference" "RN204C1" (at 48.006 90.17 90)
+    (property "Reference" "R205" (at 48.006 90.17 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "68R" (at 49.276 95.25 90)
@@ -6242,9 +6182,6 @@
     (pin "2" (uuid d6ee2f05-adf2-48f8-bc21-dac266f208c9))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/71ea5834-c2f1-44b0-9a09-0538600b01fd"
-          (reference "RN204C1") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
           (reference "R205") (unit 1)
         )
@@ -6286,7 +6223,7 @@
   (symbol (lib_id "AmigaPCI-Symbols:Ferrite_Bead") (at 149.352 96.012 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 548e5a6a-a046-424a-b762-3bc442cad53a)
-    (property "Reference" "FB501" (at 143.764 97.282 90)
+    (property "Reference" "FB226" (at 143.764 97.282 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "80R" (at 144.78 99.06 90)
@@ -6302,15 +6239,6 @@
     (pin "2" (uuid faede08b-e25a-480a-92f1-4010a6a8ee52))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/71ea5834-c2f1-44b0-9a09-0538600b01fd"
-          (reference "FB501") (unit 1)
-        )
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/70231775-58c2-469a-996a-fc3c3a4a8de1"
-          (reference "FB219") (unit 1)
-        )
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/64185471-b9ae-4a50-a046-7157e86a04d0"
-          (reference "FB203") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
           (reference "FB226") (unit 1)
         )
@@ -6329,7 +6257,7 @@
   (symbol (lib_id "AmigaPCI-Symbols:Ferrite_Bead") (at 138.176 141.986 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 5886e6ed-3f6c-47b3-b40c-686cbbdde88d)
-    (property "Reference" "FB501" (at 142.367 143.383 90)
+    (property "Reference" "FB230" (at 142.367 143.383 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "80R" (at 141.097 145.3134 90)
@@ -6345,15 +6273,6 @@
     (pin "2" (uuid c32e3ee8-2865-453d-a35c-af502f932610))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/71ea5834-c2f1-44b0-9a09-0538600b01fd"
-          (reference "FB501") (unit 1)
-        )
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/70231775-58c2-469a-996a-fc3c3a4a8de1"
-          (reference "FB216") (unit 1)
-        )
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/64185471-b9ae-4a50-a046-7157e86a04d0"
-          (reference "FB204") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
           (reference "FB230") (unit 1)
         )
@@ -6422,7 +6341,7 @@
   (symbol (lib_id "power:GND") (at 52.07 67.056 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 5e2974ee-388d-484e-8663-b180bb38e9d8)
-    (property "Reference" "#PWR067" (at 52.07 73.406 0)
+    (property "Reference" "#PWR0266" (at 52.07 73.406 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 52.197 71.4502 0)
@@ -6437,9 +6356,6 @@
     (pin "1" (uuid 61533206-8599-40b3-ab71-d7c62f532e97))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/71ea5834-c2f1-44b0-9a09-0538600b01fd"
-          (reference "#PWR067") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
           (reference "#PWR0266") (unit 1)
         )
@@ -6455,7 +6371,7 @@
   (symbol (lib_id "power:GND") (at 82.042 124.206 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 637fbe71-e5dc-4da7-bbcb-a442efac16ae)
-    (property "Reference" "#PWR071" (at 82.042 130.556 0)
+    (property "Reference" "#PWR0269" (at 82.042 130.556 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 82.169 128.6002 0)
@@ -6470,9 +6386,6 @@
     (pin "1" (uuid 0e696281-0e12-4ecf-8c8d-b6a709006e22))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/71ea5834-c2f1-44b0-9a09-0538600b01fd"
-          (reference "#PWR071") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
           (reference "#PWR0269") (unit 1)
         )
@@ -6565,7 +6478,7 @@
   (symbol (lib_id "Device:R") (at 50.546 100.33 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 68433515-7d5a-481c-bf5b-396752dd723f)
-    (property "Reference" "RN204B1" (at 48.006 97.79 90)
+    (property "Reference" "R206" (at 48.006 97.79 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "68R" (at 49.276 102.87 90)
@@ -6581,9 +6494,6 @@
     (pin "2" (uuid 3849e306-ff3e-463b-b1e6-7f37b14133f0))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/71ea5834-c2f1-44b0-9a09-0538600b01fd"
-          (reference "RN204B1") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
           (reference "R206") (unit 1)
         )
@@ -6599,7 +6509,7 @@
   (symbol (lib_id "power:+5V") (at 58.42 116.84 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 69266b6b-7920-482d-909c-29ff58dcba94)
-    (property "Reference" "#PWR068" (at 58.42 120.65 0)
+    (property "Reference" "#PWR0267" (at 58.42 120.65 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+5V" (at 58.801 112.4458 0)
@@ -6614,9 +6524,6 @@
     (pin "1" (uuid 4a0999cf-d317-4a60-9b33-fff7e14aa923))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/71ea5834-c2f1-44b0-9a09-0538600b01fd"
-          (reference "#PWR068") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
           (reference "#PWR0267") (unit 1)
         )
@@ -6632,7 +6539,7 @@
   (symbol (lib_id "AmigaPCI-Symbols:Ferrite_Bead") (at 140.97 90.932 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 69bec908-25ef-4b36-8c0b-9b6c4d268da0)
-    (property "Reference" "FB501" (at 145.161 92.329 90)
+    (property "Reference" "FB225" (at 145.161 92.329 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "80R" (at 143.891 94.2594 90)
@@ -6648,15 +6555,6 @@
     (pin "2" (uuid c457dab0-bb91-4478-b093-aed6f084e0bd))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/71ea5834-c2f1-44b0-9a09-0538600b01fd"
-          (reference "FB501") (unit 1)
-        )
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/70231775-58c2-469a-996a-fc3c3a4a8de1"
-          (reference "FB218") (unit 1)
-        )
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/64185471-b9ae-4a50-a046-7157e86a04d0"
-          (reference "FB206") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
           (reference "FB225") (unit 1)
         )
@@ -6824,7 +6722,7 @@
   (symbol (lib_id "AmigaPCI-Symbols:Ferrite_Bead") (at 137.922 150.114 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 7c78605f-1be5-46b9-8e4b-8f463e8b47bb)
-    (property "Reference" "FB501" (at 142.113 151.511 90)
+    (property "Reference" "FB231" (at 142.113 151.511 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "80R" (at 140.843 153.4414 90)
@@ -6840,15 +6738,6 @@
     (pin "2" (uuid b11e7ef2-6b15-4547-9ef0-3693d2e1443e))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/71ea5834-c2f1-44b0-9a09-0538600b01fd"
-          (reference "FB501") (unit 1)
-        )
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/70231775-58c2-469a-996a-fc3c3a4a8de1"
-          (reference "FB217") (unit 1)
-        )
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/64185471-b9ae-4a50-a046-7157e86a04d0"
-          (reference "FB205") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
           (reference "FB231") (unit 1)
         )
@@ -7061,7 +6950,7 @@
   (symbol (lib_id "AmigaPCI-Symbols:Ferrite_Bead") (at 138.176 175.006 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 89166763-b44b-4528-bb56-11b85ebf08ab)
-    (property "Reference" "FB501" (at 142.367 176.403 90)
+    (property "Reference" "FB234" (at 142.367 176.403 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "80R" (at 141.097 178.3334 90)
@@ -7077,15 +6966,6 @@
     (pin "2" (uuid 1fb52b41-920e-4e3f-9b42-a8f4700d992e))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/71ea5834-c2f1-44b0-9a09-0538600b01fd"
-          (reference "FB501") (unit 1)
-        )
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/70231775-58c2-469a-996a-fc3c3a4a8de1"
-          (reference "FB218") (unit 1)
-        )
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/64185471-b9ae-4a50-a046-7157e86a04d0"
-          (reference "FB206") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
           (reference "FB234") (unit 1)
         )
@@ -7104,7 +6984,7 @@
   (symbol (lib_id "AmigaPCI-Symbols:Ferrite_Bead") (at 138.176 192.024 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 8b035e35-66d3-4c8b-958d-3cee1881490d)
-    (property "Reference" "FB501" (at 142.367 193.421 90)
+    (property "Reference" "FB236" (at 142.367 193.421 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "80R" (at 141.097 195.3514 90)
@@ -7120,15 +7000,6 @@
     (pin "2" (uuid fceefdbe-8176-4df0-83ab-44f6eab41eb3))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/71ea5834-c2f1-44b0-9a09-0538600b01fd"
-          (reference "FB501") (unit 1)
-        )
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/70231775-58c2-469a-996a-fc3c3a4a8de1"
-          (reference "FB218") (unit 1)
-        )
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/64185471-b9ae-4a50-a046-7157e86a04d0"
-          (reference "FB206") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
           (reference "FB236") (unit 1)
         )
@@ -7180,7 +7051,7 @@
   (symbol (lib_id "AmigaPCI-Symbols:74LVC245") (at 159.512 47.244 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 8dd813de-2064-42e7-ba47-e97a55e89ad0)
-    (property "Reference" "U419" (at 159.512 28.9941 0)
+    (property "Reference" "U223" (at 159.512 28.9941 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "74HCT245" (at 159.512 30.9151 0)
@@ -7214,12 +7085,6 @@
     (pin "20" (uuid c29b49ff-bb5a-4ac3-88b4-eaf868827c45))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
-          (reference "U419") (unit 1)
-        )
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/6050d85a-08ce-47d9-805f-b2a01ec2bdd9"
-          (reference "U419") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
           (reference "U223") (unit 1)
         )
@@ -7230,7 +7095,7 @@
   (symbol (lib_id "Diode:1N4001") (at 57.658 226.568 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 9134d3cd-677b-4381-96e0-2ff24b132396)
-    (property "Reference" "D200" (at 57.658 221.0562 0)
+    (property "Reference" "D202" (at 57.658 221.0562 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "S1MWF-7" (at 57.658 223.3676 0)
@@ -7246,9 +7111,6 @@
     (pin "2" (uuid 6286f073-3357-4c8f-9450-5ccad8320991))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/71ea5834-c2f1-44b0-9a09-0538600b01fd"
-          (reference "D200") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
           (reference "D202") (unit 1)
         )
@@ -7264,7 +7126,7 @@
   (symbol (lib_id "AmigaPCI-Symbols:Ferrite_Bead") (at 138.176 167.132 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 9485ae08-23df-4669-bfc3-ecf53b0ab5f2)
-    (property "Reference" "FB501" (at 141.986 168.5036 90)
+    (property "Reference" "FB233" (at 141.986 168.5036 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "80R" (at 141.732 170.434 90)
@@ -7280,15 +7142,6 @@
     (pin "2" (uuid 6cd56c09-8692-4902-bd51-7809f2fed4b8))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/71ea5834-c2f1-44b0-9a09-0538600b01fd"
-          (reference "FB501") (unit 1)
-        )
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/70231775-58c2-469a-996a-fc3c3a4a8de1"
-          (reference "FB219") (unit 1)
-        )
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/64185471-b9ae-4a50-a046-7157e86a04d0"
-          (reference "FB203") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
           (reference "FB233") (unit 1)
         )
@@ -7332,7 +7185,7 @@
   (symbol (lib_id "AmigaPCI-Symbols:DB9_Male_Stack") (at 166.624 163.83 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid a0da5fb4-93b9-44b7-be83-25b4b4d5bf97)
-    (property "Reference" "CN200" (at 171.196 162.6616 0)
+    (property "Reference" "CN202" (at 171.196 162.6616 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "DB9_Male_Stack" (at 171.196 164.973 0)
@@ -7365,9 +7218,6 @@
     (pin "18" (uuid 10bb75d8-553f-4f83-a8d7-c2b9df91ed61))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/71ea5834-c2f1-44b0-9a09-0538600b01fd"
-          (reference "CN200") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
           (reference "CN202") (unit 1)
         )
@@ -7408,7 +7258,7 @@
   (symbol (lib_id "power:GND") (at 161.798 96.012 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid a5308921-49f6-4374-a9a7-173685f42672)
-    (property "Reference" "#PWR075" (at 155.448 96.012 0)
+    (property "Reference" "#PWR0273" (at 155.448 96.012 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 157.4038 96.139 0)
@@ -7423,9 +7273,6 @@
     (pin "1" (uuid 80b918d2-433d-403d-a280-c2065f13789a))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/71ea5834-c2f1-44b0-9a09-0538600b01fd"
-          (reference "#PWR075") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
           (reference "#PWR0273") (unit 1)
         )
@@ -7517,7 +7364,7 @@
   (symbol (lib_id "AmigaPCI-Symbols:Ferrite_Bead") (at 138.176 158.75 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid ab251007-9240-429b-8bfb-37e5451e5f58)
-    (property "Reference" "FB501" (at 142.367 160.147 90)
+    (property "Reference" "FB232" (at 142.367 160.147 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "80R" (at 141.097 162.0774 90)
@@ -7533,15 +7380,6 @@
     (pin "2" (uuid a2bd0361-e7a4-46dc-9eff-26a93e38c66c))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/71ea5834-c2f1-44b0-9a09-0538600b01fd"
-          (reference "FB501") (unit 1)
-        )
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/70231775-58c2-469a-996a-fc3c3a4a8de1"
-          (reference "FB218") (unit 1)
-        )
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/64185471-b9ae-4a50-a046-7157e86a04d0"
-          (reference "FB206") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
           (reference "FB232") (unit 1)
         )
@@ -7560,7 +7398,7 @@
   (symbol (lib_id "Device:C_Small") (at 74.93 119.38 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid ac359b6b-e1b0-442a-8276-93e6965f4efe)
-    (property "Reference" "C202" (at 76.454 116.205 90)
+    (property "Reference" "C261" (at 76.454 116.205 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "0.1uF" (at 76.454 118.11 90)
@@ -7576,9 +7414,6 @@
     (pin "2" (uuid 752b9c3a-39a1-4f2b-bb21-ea282ea2a5f1))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/71ea5834-c2f1-44b0-9a09-0538600b01fd"
-          (reference "C202") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
           (reference "C261") (unit 1)
         )
@@ -7672,7 +7507,7 @@
   (symbol (lib_id "AmigaPCI-Symbols:Ferrite_Bead") (at 138.176 183.134 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid bfe7bac4-9a0e-41ba-90c4-fb9799f65b33)
-    (property "Reference" "FB501" (at 142.367 184.531 90)
+    (property "Reference" "FB235" (at 142.367 184.531 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "80R" (at 141.097 186.4614 90)
@@ -7688,15 +7523,6 @@
     (pin "2" (uuid 7baabd23-546c-4a8c-aecc-e477ac908115))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/71ea5834-c2f1-44b0-9a09-0538600b01fd"
-          (reference "FB501") (unit 1)
-        )
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/70231775-58c2-469a-996a-fc3c3a4a8de1"
-          (reference "FB218") (unit 1)
-        )
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/64185471-b9ae-4a50-a046-7157e86a04d0"
-          (reference "FB206") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
           (reference "FB235") (unit 1)
         )
@@ -7715,7 +7541,7 @@
   (symbol (lib_id "power:GND") (at 155.448 161.29 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid c3d4fb6d-5d7a-4728-a60c-4388d2fe0a4d)
-    (property "Reference" "#PWR075" (at 149.098 161.29 0)
+    (property "Reference" "#PWR0306" (at 149.098 161.29 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 151.0538 161.417 0)
@@ -7730,9 +7556,6 @@
     (pin "1" (uuid cfe1582d-8722-47f8-b316-ff591254500e))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/71ea5834-c2f1-44b0-9a09-0538600b01fd"
-          (reference "#PWR075") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
           (reference "#PWR0306") (unit 1)
         )
@@ -7748,7 +7571,7 @@
   (symbol (lib_id "AmigaPCI-Symbols:DB9_Male_Stack") (at 172.974 98.552 0) (unit 2)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid c5785442-74bd-4fcf-b5c1-583b6bd908c3)
-    (property "Reference" "CN200" (at 177.546 97.3836 0)
+    (property "Reference" "CN202" (at 177.546 97.3836 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "DB9_Male_Stack" (at 177.546 99.695 0)
@@ -7781,9 +7604,6 @@
     (pin "18" (uuid e351cbb1-41f1-4cfe-af1a-4a371e71e78b))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/71ea5834-c2f1-44b0-9a09-0538600b01fd"
-          (reference "CN200") (unit 2)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
           (reference "CN202") (unit 2)
         )
@@ -7855,7 +7675,7 @@
   (symbol (lib_id "power:GND") (at 76.962 234.188 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid d0e76d30-8810-4014-8f0c-ad70327fc5a2)
-    (property "Reference" "#PWR090" (at 76.962 240.538 0)
+    (property "Reference" "#PWR0281" (at 76.962 240.538 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 77.089 238.5822 0)
@@ -7870,9 +7690,6 @@
     (pin "1" (uuid c766bb66-8fb1-422b-92f9-da1ee8d52cf1))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/71ea5834-c2f1-44b0-9a09-0538600b01fd"
-          (reference "#PWR090") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
           (reference "#PWR0281") (unit 1)
         )
@@ -8059,7 +7876,7 @@
   (symbol (lib_id "Device:R") (at 56.642 58.166 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid e07df105-89e7-40db-a732-4972f5261ce9)
-    (property "Reference" "R900" (at 58.42 56.9976 0)
+    (property "Reference" "R203" (at 58.42 56.9976 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "1k" (at 58.42 59.309 0)
@@ -8075,9 +7892,6 @@
     (pin "2" (uuid 5054da95-df0c-46a0-91e7-6ba1ff46be3e))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/71ea5834-c2f1-44b0-9a09-0538600b01fd"
-          (reference "R900") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
           (reference "R203") (unit 1)
         )
@@ -8093,7 +7907,7 @@
   (symbol (lib_id "AmigaPCI-Symbols:Ferrite_Bead") (at 149.352 85.852 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid e17ccf1e-6a8d-48f1-a644-036f3c77f909)
-    (property "Reference" "FB501" (at 153.543 87.249 90)
+    (property "Reference" "FB224" (at 153.543 87.249 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "80R" (at 152.273 89.1794 90)
@@ -8109,15 +7923,6 @@
     (pin "2" (uuid 7f0ef89c-549e-4a9b-80c7-64604203098d))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/71ea5834-c2f1-44b0-9a09-0538600b01fd"
-          (reference "FB501") (unit 1)
-        )
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/70231775-58c2-469a-996a-fc3c3a4a8de1"
-          (reference "FB217") (unit 1)
-        )
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/64185471-b9ae-4a50-a046-7157e86a04d0"
-          (reference "FB205") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
           (reference "FB224") (unit 1)
         )
@@ -8136,7 +7941,7 @@
   (symbol (lib_id "Device:R") (at 50.546 85.09 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid e279dfae-6427-4295-98e5-aef9d00b5001)
-    (property "Reference" "RN204D1" (at 48.006 82.55 90)
+    (property "Reference" "R204" (at 48.006 82.55 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "68R" (at 49.276 87.63 90)
@@ -8152,9 +7957,6 @@
     (pin "2" (uuid 292829e1-bf92-43b6-b1b4-e4051d8ed9e1))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/71ea5834-c2f1-44b0-9a09-0538600b01fd"
-          (reference "RN204D1") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
           (reference "R204") (unit 1)
         )
@@ -8389,7 +8191,7 @@
   (symbol (lib_id "AmigaPCI-Symbols:Ferrite_Bead") (at 69.342 226.568 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid fc3c0b52-514f-418d-a1e8-859c80e8fbfc)
-    (property "Reference" "FB215" (at 69.342 219.6084 90)
+    (property "Reference" "FB222" (at 69.342 219.6084 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "80R" (at 69.342 221.9198 90)
@@ -8405,9 +8207,6 @@
     (pin "2" (uuid e53bff65-ffc6-46f1-bea8-ee846d158544))
     (instances
       (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/71ea5834-c2f1-44b0-9a09-0538600b01fd"
-          (reference "FB215") (unit 1)
-        )
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
           (reference "FB222") (unit 1)
         )
