@@ -2,5 +2,5 @@
 
 Motorola 68040 based Amiga with native PCI bus.
 
-This is an active project. I am currently finializing the features and schematics and routing the board. You can review the technical manual for additional details.
+This is an active project.
 
