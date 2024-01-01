@@ -10147,7 +10147,7 @@
     (stroke (width 0.1524) (type solid))
     (fill (color 0 0 0 0.0000))
     (uuid 62a07d55-3759-49a3-8a3f-631cb4902a24)
-    (property "Sheetname" "Board Controller" (at 106.172 50.5964 0)
+    (property "Sheetname" "Master Control" (at 106.172 50.5964 0)
       (effects (font (size 1.27 1.27)) (justify left bottom))
     )
     (property "Sheetfile" "bcontroller.kicad_sch" (at 106.172 69.1646 0)
