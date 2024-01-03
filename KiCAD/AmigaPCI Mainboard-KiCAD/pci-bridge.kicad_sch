@@ -6,8 +6,8 @@
 
   (title_block
     (title "AMIGA PCI")
-    (date "2023-12-31")
-    (rev "1")
+    (date "2024-01-02")
+    (rev "1.0")
   )
 
   (lib_symbols
@@ -4928,10 +4928,10 @@
       (effects (font (size 1.27 1.27)) (justify left))
     )
   )
-  (global_label "_TIP" (shape input) (at 283.21 82.042 0) (fields_autoplaced)
+  (global_label "_TIP" (shape bidirectional) (at 283.21 82.042 0) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify left))
     (uuid 2a9ebaab-6f49-447e-9153-3e51b9034c1f)
-    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 289.9258 82.042 0)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 291.1165 82.042 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
   )
@@ -5250,10 +5250,10 @@
       (effects (font (size 1.27 1.27)) (justify right))
     )
   )
-  (global_label "_TS" (shape input) (at 283.21 79.502 0) (fields_autoplaced)
+  (global_label "_TS" (shape bidirectional) (at 283.21 79.502 0) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify left))
     (uuid c3669b03-8837-44ef-8b35-90baeeeb9691)
-    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 289.2605 79.502 0)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 290.4512 79.502 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
   )
