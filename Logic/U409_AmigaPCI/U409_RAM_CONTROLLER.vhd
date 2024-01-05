@@ -180,8 +180,8 @@ begin
 
 				WHEN ramstate_PRECHARGE => EMA <= "0010000000000";
 				WHEN ramstate_MODEREGISTER => EMA <= "0001000100010";
-				WHEN ramstate_BANKACTIVATE => EMA <= A(25) & A(21 DOWNTO 10);
-				WHEN ramstate_READ | ramstate_WRITE => EMA <= "000" & A(26) & A(24) & A(9 downto 2);
+				WHEN ramstate_BANKACTIVATE => EMA <= A(26) & A(22 DOWNTO 11);
+				WHEN ramstate_READ | ramstate_WRITE => EMA <= "000" & A(27) & A(10 downto 2);
 				WHEN OTHERS => EMA <= (OTHERS => '0');
 
 			END CASE;
@@ -215,16 +215,10 @@ begin
 
 					WHEN 0 =>
 
-						CASE RAMSIZE IS
-							WHEN "010" => SDRAM_CS0 <= NOT A(24); SDRAM_CS1 <= A(24);
-							WHEN "100" => SDRAM_CS0 <= NOT A(25); SDRAM_CS1 <= A(25);
-							WHEN "000" => SDRAM_CS0 <= NOT A(26); SDRAM_CS1 <= A(26);
-							WHEN "110" => SDRAM_CS0 <= NOT A(27); SDRAM_CS1 <= A(27);
-							WHEN OTHERS => SDRAM_CS0 <= '1'; SDRAM_CS1 <= '0';
-						END CASE;
-
-						BANK0 <= A(22);
-						BANK1 <= A(23);
+						BANK0 <= A(23);
+						BANK1 <= A(24);
+						SDRAM_CS0 <= NOT A(25); 
+						SDRAM_CS1 <= A(25)
 
 						SDRAMCOM <= ramstate_BANKACTIVATE;
 						RAM_COUNTER <= 1;
