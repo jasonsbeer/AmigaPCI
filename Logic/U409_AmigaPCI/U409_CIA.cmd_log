@@ -1,0 +1,1 @@
+vhdtdtfi -prj U409_AmigaPCI -o "/home/jason/Documents/AmigaPCI Logic Work/U409_AmigaPCI/U409_CIA.vhi" -module U409_CIA -template /mnt/work/ISERUN/14.7/ISE_DS/ISE//data/vhdlinst.tft -deleteonerror -lib work U409_CIA.vhd 

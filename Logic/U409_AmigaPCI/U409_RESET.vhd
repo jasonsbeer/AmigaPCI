@@ -34,11 +34,8 @@ entity U409_RESET is
     Port 
 	 ( 
 	 
-		CLK7 : IN  STD_LOGIC
-		nSYSTEMRST : IN STD_LOGIC;
-      nBTNRESET : IN STD_LOGIC;
-		
-      nRESET : OUT STD_LOGIC      
+		nSYSTEMRST : OUT STD_LOGIC;
+      nBTNRESET : IN STD_LOGIC		     
 		
 	 );
 		
@@ -49,7 +46,8 @@ architecture Behavioral of U409_RESET is
 begin
 
 	--THIS IS THE RESET CIRCUIT FOR THE AMIGAPCI BOARD.
-
+	
+	nSYSTEMRST <= nBTNRESET;
 
 end Behavioral;
 
