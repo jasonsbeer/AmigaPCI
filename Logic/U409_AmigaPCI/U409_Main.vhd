@@ -184,10 +184,7 @@ begin
 		IF nRESET = '0' THEN
 			nTA <= 'Z';
 			CLKTA <= 0;
-			--TA_DELAY <= 0;
 		IF FALLING_EDGE(CLK40) THEN
-			
-			--IF TA_DELAY /= 0 THEN TA_DELAY <= TA_DELAY +1;
 			
 			CASE CLKTA IS
 				WHEN 0 =>
@@ -207,8 +204,21 @@ begin
 	PROCESS (CLK40, nRESET) BEGIN
 		IF nRESET = '0' THEN
 			TA_ENABLED <= '0';
+			TA_DELAY = 0;
 		ELSIF RISING_EDGE(CLK40) THEN
-			TA_ENABLED <= (NOT nTS AND NOT CIA_TAm) OR CIA_TAm;
+
+			IF TA_DELAY /= 0 THEN TA_DELAY <= TA_DELAY +1; END IF;
+			
+			IF nROMEN = '0' AND nTS = '0' THEN
+				--START DELAY TIMER
+				TA_DELAY <= 1;
+			ELSIF (nTS = '0' AND CIA_TAm = '0') OR CIA_TAm = '1' OR TA_DELAY = ROM_DELAY_VALUE THEN
+				TA_ENABLED <= '1';
+				TA_DELAY <= 0;
+			ELSE
+				TA_ENABLED <= '0';
+			END IF;
+				
 		END IF;
 	END PROCESS;
 
