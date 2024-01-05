@@ -77,7 +77,7 @@ architecture Behavioral of U409_RAM_CONTROLLER is
 	SIGNAL REF_RESET : STD_LOGIC;		
 	SIGNAL REFRESH_COUNTER : INTEGER RANGE 0 TO REFRESH_DEFAULT := 0;
 	SIGNAL SDRAMCOM : STD_LOGIC_VECTOR (3 DOWNTO 0);	
-	SIGNAL RAM_COUNTER : INTEGER RANGE 0 TO 12;
+	SIGNAL RAM_COUNTER : INTEGER RANGE 0 TO 8;
 	SIGNAL RAM_CONFIGURED : STD_LOGIC;
 	SIGNAL REFRESH_CYCLE : STD_LOGIC;
 	SIGNAL MEMORY_CYCLE : STD_LOGIC;
@@ -165,7 +165,7 @@ begin
 			SDRAM_CS0 <= '0';
 			SDRAM_CS1 <= '0';			
 
-		ELSIF RISING_EDGE(CPUCLK) THEN
+		ELSIF FALLING_EDGE(CPUCLK) THEN
 
 			IF RAM_COUNTER /= 0 THEN RAM_COUNTER <= RAM_COUNTER + 1; END IF;
 
@@ -185,7 +185,6 @@ begin
 				WHEN OTHERS => EMA <= (OTHERS => '0');
 
 			END CASE;
-			
 
 			IF RAM_CONFIGURED = '0' THEN
 
@@ -223,7 +222,7 @@ begin
 						SDRAMCOM <= ramstate_BANKACTIVATE;
 						RAM_COUNTER <= 1;
 						MEMORY_CYCLE <= '1';
-						BURST_CYCLE <= NOT nCBREQ;
+						BURST_CYCLE <= TT0 AND NOT TT1;
 
 					WHEN 1 =>
 						
@@ -231,74 +230,80 @@ begin
 							SDRAMCOM <= ramstate_READ;
 						ELSE
 							SDRAMCOM <= ramstate_WRITE;
-							DSACK <= '1';
 						END IF;
 						
-					WHEN 2 =>
-					
+					WHEN 2 =>					
+
 						IF BURST_CYCLE = '0' THEN SDRAMCOM <= ramstate_PRECHARGE; ELSE SDRAMCOM <= ramstate_NOP; END IF;
+						IF RnW = '0' THEN DSACK <= '1'; END IF;
 
 					WHEN 3 =>
-					
-						SDRAMCOM <= ramstate_NOP;
-						
-						IF RnW = '1' THEN
-							DSACK <= '1';
-							EMCLKE <= NOT BURST_CYCLE;
+
+						SDRAMCOM <= ramstate_NOP
+							
+						IF BURST_CYCLE = '0' AND RnW = '0' THEN 							
+							DSACK <= '0';
+							RAM_COUNTER <= 0;
+							MEMORY_CYCLE <= '0';
 						END IF;
+
+						--SDRAMCOM <= ramstate_NOP
+						
+						--IF RnW = '1' THEN
+						--	DSACK <= '1';
+						--	EMCLKE <= NOT BURST_CYCLE;
+						--END IF;
 						
 					WHEN 4 =>
 					
-						EMCLKE <= '1';						
+						--EMCLKE <= '1';						
 						
-						IF RnW = '0' THEN --END OF WRITE CYCLE
-							DSACK <= '0';
-							RAM_COUNTER <= 0;
-							MEMORY_CYCLE <= '0';			
-						END IF;
+						--IF RnW = '0' THEN --END OF WRITE CYCLE
+						--	DSACK <= '0';
+						--	RAM_COUNTER <= 0;
+						--	MEMORY_CYCLE <= '0';			
+						--END IF;
+
+						IF RnW = '1' THEN DSACK <= '1'; END IF;	--DSACK FOR READ CYCLES				
 						
 					WHEN 5 =>
 					
-						EMCLKE <= NOT BURST_CYCLE;
-						
-					WHEN 6 =>
-					
-						EMCLKE <= '1';
-						
-						IF BURST_CYCLE = '0' THEN --END A NON-BURST READ CYCLE.
+						IF BURST_CYCLE = '0' AND RnW = '1' THEN 
 							DSACK <= '0';
 							RAM_COUNTER <= 0;
 							MEMORY_CYCLE <= '0';
 						END IF;
 						
-					WHEN 7 =>
+					WHEN 6 =>
+
+						IF RnW = '0' THEN --END OF BURST WRITE CYCLE
+							SDRAMCOM <= ramstate_PRECHARGE; 
+							DSACK <= '0';
+							RAM_COUNTER <= 0;
+							MEMORY_CYCLE <= '0';
+						END IF;
+							
+						--EMCLKE <= '1';
+						
+						--IF BURST_CYCLE = '0' THEN --END A NON-BURST READ CYCLE.
+						--	DSACK <= '0';
+						--	RAM_COUNTER <= 0;
+						--	MEMORY_CYCLE <= '0';
+						--END IF;
+						
+					--WHEN 7 =>
 					
-						EMCLKE <= '0';
+						--EMCLKE <= '0';
 						
 					WHEN 8 =>
 					
-						EMCLKE <= '1';
-						
-					WHEN 9 =>
-					
-						EMCLKE <= '0';
-						
-					WHEN 10 =>
-					
-						EMCLKE <= '1';
-						SDRAMCOM <= ramstate_PRECHARGE;
-						
-					WHEN 11 =>
-						
-						SDRAMCOM <= ramstate_NOP;
-						
-					WHEN 12 => --9
-					
-						DSACK <= '0'; --END OF BURST CYCLE
+						--EMCLKE <= '1';
+						SDRAMCOM <= ramstate_PRECHARGE; 
+						DSACK <= '0';
 						RAM_COUNTER <= 0;
 						MEMORY_CYCLE <= '0';
-						BURST_CYCLE <= '0';
-
+					
+					WHEN OTHERS =>
 
 				END CASE;
 				
