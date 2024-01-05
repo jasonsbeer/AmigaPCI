@@ -171,6 +171,43 @@ begin
 	------------------
 	-- TRANSFER ACK --
 	------------------
+
+	nTA <= TA_OUT;
+
+	ONBOARD <= NOT nROMEN OR CIA_ENABLEm OR AUTOCONFIG_SPACEm;
+
+	PROCESS (CLK40, nRESET) BEGIN
+		IF nRESET = '0' THEN
+			nTA <= 'Z';
+			CLKTA <= 0;
+		IF FALLING_EDGE(CLK40) THEN
+			CASE CLKTA IS
+				WHEN 0 =>
+					IF TA_ENABLED = '1' AND ONBOARD THEN
+						nTA_OUT <= '0';
+						CLKTA <= 1;
+					ELSE 
+						nTA_OUT <= 'Z';
+					END IF;
+				WHEN 1 =>
+					nTA_OUT <= '1';
+					CLKTA <= 0;
+			END CASE;
+		END IF;
+	END PROCESS;
+	
+	PROCESS (CLK40, nRESET) BEGIN
+		IF nRESET = '0' THEN
+			TA_ENABLED <= '0';
+		ELSIF RISING_EDGE(CLK40) THEN
+			TA_ENABLED <= NOT nTS;
+		END IF;
+	END PROCESS;
+
+
+
+
+			
 	
 	--THIS IS THE TRANSFER ACK FOR MOST OF OUR ONBOARD RESOURCES.
 	
