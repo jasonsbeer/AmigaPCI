@@ -58,16 +58,17 @@ entity U409_Main is
 		 nTIP : IN STD_LOGIC;
 		 TT0 : IN STD_LOGIC;
 		 TT1 : IN STD_LOGIC;
+		 nDBR : IN STD_LOGIC;
 		 
 		 nRESET : INOUT STD_LOGIC;
 		 D : INOUT STD_LOGIC_VECTOR (31 DOWNTO 28);
 		 CONFIGED : INOUT STD_LOGIC;
 		 CLKCIA : INOUT STD_LOGIC;
-		 nEMEN : INOUT STD_LOGIC;
-       
-		 nREGEN : OUT STD_LOGIC;
-       nRAMEN : OUT STD_LOGIC;
+		 nEMEN : INOUT STD_LOGIC;       
+		 nREGEN : INOUT STD_LOGIC;
+       nRAMEN : INOUT STD_LOGIC;		 
 		 nROMEN : INOUT STD_LOGIC;
+		 
 		 nRTCWR : OUT STD_LOGIC;
 		 nRTCRD : OUT STD_LOGIC;
 		 nCIA0 : OUT STD_LOGIC;
@@ -85,8 +86,10 @@ entity U409_Main is
        nEMWE : OUT  STD_LOGIC;
        nEM0CS : OUT  STD_LOGIC;
        nEM1CS : OUT  STD_LOGIC;
-		 nTBI : OUT STD_LOGIC
-		 --nAVEC : OUT STD_LOGIC
+		 nTBI : OUT STD_LOGIC;
+		 nTCI : OUT STD_LOGIC;
+		 nVBEN : OUT STD_LOGIC;
+		 nAS : OUT STD_LOGIC
 	 
 	 );
 	 
@@ -104,13 +107,13 @@ architecture Behavioral of U409_Main is
 	SIGNAL CIA_TAm : STD_LOGIC;
 	SIGNAL MEMORY_CYCLEm : STD_LOGIC;
 	SIGNAL RAM_TAm : STD_LOGIC;
-	--SIGNAL AUTOCONFIG_CYCLEm : STD_LOGIC;
-	--SIGNAL AUTOCONFIG_TAm : STD_LOGIC;
 	SIGNAL INT_ACK_SPACEm : STD_LOGIC;
 	SIGNAL INT_CLK : INTEGER RANGE 0 TO 1;
 	SIGNAL INT_CYCLE_HOLD : STD_LOGIC;
 	SIGNAL nTS_DELAYm : STD_LOGIC;
 	SIGNAL INT_TA : STD_LOGIC;
+	SIGNAL MC68K_CYCLEm : STD_LOGIC;
+	SIGNAL TA_68Km : STD_LOGIC;
 
 begin
 
@@ -130,6 +133,7 @@ begin
 		CIA_ENABLE => CIA_ENABLEm,
 		TT0 => TT0,
 		TT1 => TT1,
+		nDBR => nDBR,
 		nREGEN => nREGEN,
 		nRAMEN => nRAMEN,
 		nROMEN => nROMEN,
@@ -142,7 +146,8 @@ begin
 		nIDEEN => nIDEEN,
 		nEMEN => nEMEN,
 		CIA_SPACE => CIA_SPACEm,
-		INT_ACK_SPACE => INT_ACK_SPACEm
+		INT_ACK_SPACE => INT_ACK_SPACEm,
+		nVBEN => nVBEN
 	);
 
 	---------------------------------
@@ -153,7 +158,6 @@ begin
 		CLK40 => CLK40,
 		A => A(23 DOWNTO 0),
 		nTS => nTS,
-		--nTS_DELAY => nTS_DELAYm,
 		AUTOCONFIG_SPACE => AUTOCONFIG_SPACEm,
 		AUTOBOOT => AUTOBOOT,
 		nRESET => nRESET,
@@ -164,8 +168,6 @@ begin
 		PCI_BRIDGE_BASE_ADDRESS => PCI_BRIDGE_BASE_ADDRESSm,
 		IDE_ACCESS => IDE_ACCESSm,
 		IDE_ENABLE => IDE_ENABLEm
-		--AUTOCONFIG_CYCLE=> AUTOCONFIG_CYCLEm
-		--AUTOCONFIG_TA => AUTOCONFIG_TAm
 	);
 	
 	-----------
@@ -217,7 +219,33 @@ begin
 		nEM0CS => nEM0CS,
 		nEM1CS => nEM1CS,
 		RAM_TA => RAM_TAm
+	);	
+	
+	-------------------
+	-- MC68000 CYCLE --
+	-------------------
+	
+	U409_MC68K_CYCLE: ENTITY work.U409_MC68K_CYCLE PORT MAP(
+		CLK40 => CLK40,
+		CLK7 => CLK7,
+		--nTS_DELAY => nTS_DELAYm,
+		nTIP => nTIP,
+		nRESET => nRESET,
+		nREGEN => nREGEN,
+		nRAMEN => nRAMEN,
+		nAS => nAS,
+		TA_68K => TA_68Km,
+		MC68K_CYCLE => MC68K_CYCLEm
 	);
+	
+	----------------------------
+	-- TRANSFER CACHE INHIBIT --
+	----------------------------
+	
+	--WE WANT TO ALLOW CACHINING FOR FAST RAM AND ROM CYCLES.
+	--WE DO NOT WANT TO CACHE CHIP RAM OR CHIPSET CYCLES.
+	
+	nTCI <= MEMORY_CYCLEm OR nROMEN;
 	
 	--------------------
 	-- TRANSFER START --
@@ -239,14 +267,14 @@ begin
 	------------------	
 	
 	nTA <= 
-		'0' WHEN CIA_TAm = '1' OR RAM_TAm = '1' OR INT_TA = '1' ELSE
+		'0' WHEN CIA_TAm = '1' OR RAM_TAm = '1' OR INT_TA = '1' OR TA_68Km = '1' ELSE
 
-		'1' WHEN CIA_ENABLEm = '1' OR MEMORY_CYCLEm = '1' OR INT_CYCLE_HOLD = '1' ELSE
+		'1' WHEN CIA_ENABLEm = '1' OR MEMORY_CYCLEm = '1' OR INT_CYCLE_HOLD = '1' OR MC68K_CYCLEm = '1' ELSE
 		
 		'Z';
 		
 	nTBI <= 
-		'0' WHEN CIA_TAm = '1' OR INT_TA = '1' ELSE
+		'0' WHEN CIA_TAm = '1' OR INT_TA = '1' OR TA_68Km = '1' ELSE --WE CAN BURST W/CHIP RAM!!!
 
 		'1' WHEN MEMORY_CYCLEm = '1' ELSE
 		
