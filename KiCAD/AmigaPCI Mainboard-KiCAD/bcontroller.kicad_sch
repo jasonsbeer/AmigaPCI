@@ -6,7 +6,7 @@
 
   (title_block
     (title "AMIGA PCI")
-    (date "2024-01-02")
+    (date "2024-01-06")
     (rev "1.0")
   )
 
@@ -1414,6 +1414,7 @@
   (no_connect (at 140.462 176.784) (uuid 650f9c48-7995-45f4-b73d-f7d607fe27f3))
   (no_connect (at 140.462 202.184) (uuid 758e49b8-5959-40a6-ae5f-ef6003340b6a))
   (no_connect (at 140.462 179.324) (uuid 7afcebf6-0b2b-4db9-ab0b-4b4c7abd46be))
+  (no_connect (at 140.462 75.184) (uuid 9337220d-918a-4a37-af1d-ba51db0aa713))
   (no_connect (at 140.462 189.484) (uuid 94833e5c-bbe6-4d57-848e-fd92e0452565))
   (no_connect (at 140.462 143.764) (uuid 9855b122-f392-4624-a719-9f1cfba4a8bd))
   (no_connect (at 140.462 103.124) (uuid bcd0c8a1-146f-4d9d-be6b-8f92ab5f9ae5))
@@ -1886,10 +1887,6 @@
     (uuid 2b5c6bb9-1f13-4af4-a2fa-b3dbe75495ff)
   )
 
-  (wire (pts (xy 140.462 75.184) (xy 149.098 75.184))
-    (stroke (width 0) (type default))
-    (uuid 2babf131-dfee-415a-a710-9936e20f8e48)
-  )
   (wire (pts (xy 307.848 150.114) (xy 299.212 150.114))
     (stroke (width 0) (type default))
     (uuid 2bbd296a-051c-4c7a-bd0c-70aadd1bd360)
@@ -3608,13 +3605,6 @@
     (effects (font (size 1.27 1.27)) (justify left))
     (uuid 2a669a9d-8a74-44de-b96e-025562d1d637)
     (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 158.5353 214.884 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-  )
-  (global_label "_AVEC" (shape output) (at 149.098 75.184 0) (fields_autoplaced)
-    (effects (font (size 1.27 1.27)) (justify left))
-    (uuid 2e25aaf9-acee-4ddd-ba85-c15c61ad0dba)
-    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 157.647 75.184 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
   )

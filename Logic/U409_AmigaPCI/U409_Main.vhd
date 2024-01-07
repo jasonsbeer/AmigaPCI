@@ -85,8 +85,8 @@ entity U409_Main is
        nEMWE : OUT  STD_LOGIC;
        nEM0CS : OUT  STD_LOGIC;
        nEM1CS : OUT  STD_LOGIC;
-		 nTBI : OUT STD_LOGIC;
-		 nAVEC : OUT STD_LOGIC
+		 nTBI : OUT STD_LOGIC
+		 --nAVEC : OUT STD_LOGIC
 	 
 	 );
 	 
@@ -104,8 +104,13 @@ architecture Behavioral of U409_Main is
 	SIGNAL CIA_TAm : STD_LOGIC;
 	SIGNAL MEMORY_CYCLEm : STD_LOGIC;
 	SIGNAL RAM_TAm : STD_LOGIC;
-	SIGNAL AUTOCONFIG_CYCLEm : STD_LOGIC;
-	SIGNAL AUTOCONFIG_TAm : STD_LOGIC;
+	--SIGNAL AUTOCONFIG_CYCLEm : STD_LOGIC;
+	--SIGNAL AUTOCONFIG_TAm : STD_LOGIC;
+	SIGNAL INT_ACK_SPACEm : STD_LOGIC;
+	SIGNAL INT_CLK : INTEGER RANGE 0 TO 1;
+	SIGNAL INT_CYCLE_HOLD : STD_LOGIC;
+	SIGNAL nTS_DELAYm : STD_LOGIC;
+	SIGNAL INT_TA : STD_LOGIC;
 
 begin
 
@@ -123,6 +128,8 @@ begin
 		IDE_ENABLE => IDE_ENABLEm,
 		CONFIGED => CONFIGED,
 		CIA_ENABLE => CIA_ENABLEm,
+		TT0 => TT0,
+		TT1 => TT1,
 		nREGEN => nREGEN,
 		nRAMEN => nRAMEN,
 		nROMEN => nROMEN,
@@ -134,7 +141,8 @@ begin
 		nBEN => nBEN,
 		nIDEEN => nIDEEN,
 		nEMEN => nEMEN,
-		CIA_SPACE => CIA_SPACEm
+		CIA_SPACE => CIA_SPACEm,
+		INT_ACK_SPACE => INT_ACK_SPACEm
 	);
 
 	---------------------------------
@@ -145,7 +153,7 @@ begin
 		CLK40 => CLK40,
 		A => A(23 DOWNTO 0),
 		nTS => nTS,
-		nTIP => nTIP,
+		--nTS_DELAY => nTS_DELAYm,
 		AUTOCONFIG_SPACE => AUTOCONFIG_SPACEm,
 		AUTOBOOT => AUTOBOOT,
 		nRESET => nRESET,
@@ -155,9 +163,9 @@ begin
 		RAM_BASE_ADDRESS => RAM_BASE_ADDRESSm,
 		PCI_BRIDGE_BASE_ADDRESS => PCI_BRIDGE_BASE_ADDRESSm,
 		IDE_ACCESS => IDE_ACCESSm,
-		IDE_ENABLE => IDE_ENABLEm,
-		AUTOCONFIG_CYCLE=> AUTOCONFIG_CYCLEm,
-		AUTOCONFIG_TA => AUTOCONFIG_TAm
+		IDE_ENABLE => IDE_ENABLEm
+		--AUTOCONFIG_CYCLE=> AUTOCONFIG_CYCLEm
+		--AUTOCONFIG_TA => AUTOCONFIG_TAm
 	);
 	
 	-----------
@@ -211,33 +219,78 @@ begin
 		RAM_TA => RAM_TAm
 	);
 	
+	--------------------
+	-- TRANSFER START --
+	--------------------
+	
+	--_TS IS ONLY ASSERTED FOR ONE CLOCK AND IS SAMPLED ON THE RISING EDGE.
+	--CAPTURE IT HERE SO WE CAN USE IT IN FALLING EDGE PROCESSES.
+	
+	PROCESS (CLK40, nRESET) BEGIN
+		IF nRESET = '0' THEN
+			nTS_DELAYm <= '1';
+		ELSIF RISING_EDGE(CLK40) THEN
+			nTS_DELAYm <= nTS;
+		END IF;
+	END PROCESS;		
+	
 	------------------
 	-- TRANSFER ACK --
 	------------------	
 	
 	nTA <= 
-		'0' WHEN CIA_TAm = '1' OR RAM_TAm = '1' OR AUTOCONFIG_TAm = '1' ELSE
+		'0' WHEN CIA_TAm = '1' OR RAM_TAm = '1' OR INT_TA = '1' ELSE
 
-		'1' WHEN CIA_ENABLEm = '1' OR MEMORY_CYCLEm = '1' OR AUTOCONFIG_CYCLEm = '1' ELSE
+		'1' WHEN CIA_ENABLEm = '1' OR MEMORY_CYCLEm = '1' OR INT_CYCLE_HOLD = '1' ELSE
 		
 		'Z';
 		
 	nTBI <= 
-		'0' WHEN CIA_TAm = '1' OR AUTOCONFIG_TAm = '1' ELSE
+		'0' WHEN CIA_TAm = '1' OR INT_TA = '1' ELSE
 
 		'1' WHEN MEMORY_CYCLEm = '1' ELSE
 		
 		'Z';
 		
-	--------------------
-	-- AUTO VECTORING --
-	--------------------
+	--------------------------
+	-- TRANSFER ACK PROCESS --
+	--------------------------
 	
-	--ALL INTERRUPTS SHOULD BE SERVICED BY AUTOVECTORING.
-	--AS PER 68040 MANUAL : _AVEC can be grounded if all interrupt requests are autovectored. pp7-33
-	--IF THIS HOLDS TRUE, WE CAN ADD A PULL DOWN RESISTOR TO THE PCB.
+	--SOME CYCLES PROVIDE THEIR OWN ASSERTION OF _TA. FOR THOSE THAT DON'T, WE DO IT HERE.
+	--THESE CYCLES INCLUDE: AUTOCONFIG, INTERRUPT ACK (AUTOVECTOR)
 	
-	nAVEC <= '0';
+	PROCESS (CLK40, nRESET) BEGIN
+	
+		IF nRESET = '0' THEN
+		
+			INT_TA <= '0';
+			INT_CLK <= 0;
+			INT_CYCLE_HOLD <= '0';
+			
+		ELSIF FALLING_EDGE(CLK40) THEN		
+		
+			IF (INT_ACK_SPACEm = '1' OR AUTOCONFIG_SPACEm = '1') AND nTS_DELAYm = '0' THEN
+				INT_TA <= '1';				
+				INT_CYCLE_HOLD <= '1';
+				INT_CLK <= 0;
+			ELSIF INT_CYCLE_HOLD = '1' THEN
+				IF INT_CLK = 0 THEN
+					INT_TA <= '0';
+					INT_CLK <= 1;
+				ELSE
+					INT_CLK <= 0;
+					INT_CYCLE_HOLD <= '0';
+				END IF;
+			ELSE
+				INT_TA <= '0';
+				INT_CYCLE_HOLD <= '0';
+				INT_CLK <= 0;
+			END IF;
+			
+		END IF;
+		
+	END PROCESS;
+			
 
 end Behavioral;
 

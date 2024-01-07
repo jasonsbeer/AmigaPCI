@@ -1965,6 +1965,22 @@
       {
         "netclass": "Narrow",
         "pattern": "CONFIGED"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/CPU/_AVEC"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Master Control/ULTRA_S"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Master Control/ULTRA_P"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Master Control/AUTOBOOT"
       }
     ]
   },

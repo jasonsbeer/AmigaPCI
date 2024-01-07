@@ -55,7 +55,9 @@ entity U409_AddressDecode is
 		 IDE_ACCESS : IN STD_LOGIC;
 		 IDE_ENABLE : IN STD_LOGIC;
 		 CONFIGED : IN STD_LOGIC;
-		 CIA_ENABLE : IN STD_LOGIC;
+		 CIA_ENABLE : IN STD_LOGIC;		 
+		 TT0 : IN STD_LOGIC;
+		 TT1 : IN STD_LOGIC;
        
 		 nREGEN : OUT STD_LOGIC;
        nRAMEN : OUT STD_LOGIC;
@@ -68,7 +70,8 @@ entity U409_AddressDecode is
 		 nBEN : OUT STD_LOGIC;
 		 nIDEEN : OUT STD_LOGIC;
 		 nEMEN : OUT STD_LOGIC;
-		 CIA_SPACE : INOUT STD_LOGIC
+		 CIA_SPACE : INOUT STD_LOGIC;
+		 INT_ACK_SPACE : OUT STD_LOGIC
 		 
 	);
 	
@@ -166,6 +169,13 @@ begin
 	----------------
 	
 	nIDEEN <= NOT (IDE_ACCESS AND IDE_ENABLE AND NOT Z3_SPACE);
+	
+	-------------------------
+	-- INTERRUPT ACK CYCLE --
+	-------------------------
+	
+	INT_ACK_SPACE <= '1' WHEN A(31 DOWNTO 24) = x"FF" AND TT0 = '1' AND TT1 = '1' ELSE '0';
+	
 
 end Behavioral;
 

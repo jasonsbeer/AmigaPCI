@@ -1,1 +1,1 @@
--intstyle "ise" -incremental -o "/home/jason/Documents/AmigaPCI Logic Work/U409_AmigaPCI/U409_CIA_isim_beh.exe" -prj "/home/jason/Documents/AmigaPCI Logic Work/U409_AmigaPCI/U409_CIA_beh.prj" "work.U409_CIA" 
+-intstyle "ise" -incremental -o "/home/jason/Documents/AmigaPCI Logic Work/U409_AmigaPCI/U409_Main_isim_beh.exe" -prj "/home/jason/Documents/AmigaPCI Logic Work/U409_AmigaPCI/U409_Main_beh.prj" "work.U409_Main" 
