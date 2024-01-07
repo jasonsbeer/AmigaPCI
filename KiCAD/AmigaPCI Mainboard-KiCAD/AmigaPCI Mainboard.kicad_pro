@@ -1981,6 +1981,34 @@
       {
         "netclass": "Narrow",
         "pattern": "/Master Control/AUTOBOOT"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "TRISTATE"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "PIO_P0"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "PIO_P1"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "PIO_P2"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "PIO_S0"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "PIO_S1"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "PIO_S2"
       }
     ]
   },

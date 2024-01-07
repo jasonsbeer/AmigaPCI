@@ -88,7 +88,6 @@ entity U409_Main is
        nEM1CS : OUT  STD_LOGIC;
 		 nTBI : OUT STD_LOGIC;
 		 nTCI : OUT STD_LOGIC;
-		 nVBEN : OUT STD_LOGIC;
 		 nAS : OUT STD_LOGIC
 	 
 	 );
@@ -146,8 +145,7 @@ begin
 		nIDEEN => nIDEEN,
 		nEMEN => nEMEN,
 		CIA_SPACE => CIA_SPACEm,
-		INT_ACK_SPACE => INT_ACK_SPACEm,
-		nVBEN => nVBEN
+		INT_ACK_SPACE => INT_ACK_SPACEm
 	);
 
 	---------------------------------
