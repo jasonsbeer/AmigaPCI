@@ -59,6 +59,7 @@ entity U409_Main is
 		 TT0 : IN STD_LOGIC;
 		 TT1 : IN STD_LOGIC;
 		 nDBR : IN STD_LOGIC;
+	    	 nVBEN : IN STD_LOGIC;
 		 
 		 nRESET : INOUT STD_LOGIC;
 		 D : INOUT STD_LOGIC_VECTOR (31 DOWNTO 28);
@@ -232,6 +233,7 @@ begin
 		nRESET => nRESET,
 		nREGEN => nREGEN,
 		nRAMEN => nRAMEN,
+		nVBEN => nVBEN,
 		nAS => nAS,
 		TA_68K => TA_68Km,
 		MC68K_CYCLE => MC68K_CYCLEm
