@@ -1,21 +1,35 @@
 ----------------------------------------------------------------------------------
--- Company: 
--- EngINeer: 
+--This work is shared under the Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) License
+--https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
+	
+--You are free to:
+--Share - copy and redistribute the material in any medium or format
+--Adapt - remix, transform, and build upon the material
+
+--Under the following terms:
+
+--Attribution - You must give appropriate credit, provide a link to the license, and indicate if changes were made. 
+--You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
+
+--NonCommercial - You may not use the material for commercial purposes.
+
+--ShareAlike - If you remix, transform, or build upon the material, you must distribute your contributions under the 
+--same license as the original.
+
+--No additional restrictions - You may not apply legal terms or technological measures that legally restrict others 
+--from doing anything the license permits.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-- Engineer: Jason Neus
 -- 
--- Create Date:    20:48:02 01/04/2024 
--- Design Name: 
--- Module Name:    U409_RAM_CONTROLLER - Behavioral 
--- Project Name: 
--- Target Devices: 
--- Tool versions: 
--- Description: 
+-- Design Name: U409
+-- Module Name: RAM_CONTROLLER
+-- Project Name: AmigaPCI
+-- Target Devices: XC95144XL 144 PIN
 --
--- Dependencies: 
+-- Description: LOGIC FOR FAST RAM CONTROLLER.
 --
--- Revision: 
--- Revision 0.01 - File Created
--- Additional Comments: 
---
+-- Revision History:
+--     07-JAN-2023 : Initial Engineering Release
 ----------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
@@ -85,6 +99,7 @@ architecture Behavioral of U409_RAM_CONTROLLER is
 	SIGNAL SDRAM_CS0 : STD_LOGIC;
 	SIGNAL SDRAM_CS1 : STD_LOGIC;
 	SIGNAL BURST_CYCLE : STD_LOGIC;
+	SIGNAL RnW_CYCLE : STD_LOGIC;
 
 begin
 
@@ -141,6 +156,21 @@ begin
 	-- SDRAM PROCESS --
 	-------------------
 	
+	--EMCLKE <= '1';
+	nEM0CS <= NOT ((SDRAM_CS0 OR NOT RAM_CONFIGURED OR REFRESH_CYCLE) AND NOT SDRAMCOM(3));
+	nEM1CS <= NOT ((SDRAM_CS1 OR NOT RAM_CONFIGURED OR REFRESH_CYCLE) AND NOT SDRAMCOM(3));
+	nEMRAS <= SDRAMCOM(2);
+	nEMCAS <= SDRAMCOM(1);	
+	nEMWE <= SDRAMCOM(0);
+	
+	
+	EMA <= 
+				"0010000000000" WHEN SDRAMCOM = ramstate_PRECHARGE ELSE
+				"0000000100010" WHEN SDRAMCOM = ramstate_MODEREGISTER ELSE
+				A(26) & A(22 DOWNTO 11) WHEN SDRAMCOM = ramstate_BANKACTIVATE ELSE				
+				"000" & A(27) & A(10 downto 2) WHEN SDRAMCOM = ramstate_READ OR SDRAMCOM = ramstate_WRITE ELSE
+				(OTHERS => '0');
+	
 	--THIS LOGIC SUPPORTS UP TO 256MB IN THE ZORRO 3 EXPANSION SPACE.	
 	--BOTH BANKS MUST BE POPULATED TO ACHIEVE 256MB.
 
@@ -148,15 +178,9 @@ begin
 
 		IF nRESET = '0' THEN
 
-			nEM0CS <= '1';
-			nEM1CS <= '1';
-			nEMRAS <= '1';
-			nEMCAS <= '1';	
-			nEMWE <= '1';
 			EMCLKE <= '0';
 			BANK0 <= '0';
 			BANK1 <= '0';
-			EMA <= (OTHERS => '0');
 			SDRAMCOM <= ramstate_NOP;
 
 			RAM_COUNTER <= 0;
@@ -165,28 +189,15 @@ begin
 			MEMORY_CYCLE <= '0';
 			BURST_CYCLE <= '0';
 			SDRAM_CS0 <= '0';
-			SDRAM_CS1 <= '0';			
+			SDRAM_CS1 <= '0';		
+			RAM_TA <= '0';
+			RnW_CYCLE <= '1';
 
 		ELSIF FALLING_EDGE(CLK40) THEN
 
 			IF RAM_COUNTER /= 0 THEN RAM_COUNTER <= RAM_COUNTER + 1; END IF;
 
 			EMCLKE <= '1';
-			nEM0CS <= NOT ((SDRAM_CS0 OR NOT RAM_CONFIGURED OR REFRESH_CYCLE) AND NOT SDRAMCOM(3));
-			nEM1CS <= NOT ((SDRAM_CS1 OR NOT RAM_CONFIGURED OR REFRESH_CYCLE) AND NOT SDRAMCOM(3));
-			nEMRAS <= SDRAMCOM(2);
-			nEMCAS <= SDRAMCOM(1);	
-			nEMWE <= SDRAMCOM(0);
-
-			CASE SDRAMCOM IS
-
-				WHEN ramstate_PRECHARGE => EMA <= "0010000000000";
-				WHEN ramstate_MODEREGISTER => EMA <= "0001000100010";
-				WHEN ramstate_BANKACTIVATE => EMA <= A(26) & A(22 DOWNTO 11);
-				WHEN ramstate_READ | ramstate_WRITE => EMA <= "000" & A(27) & A(10 downto 2);
-				WHEN OTHERS => EMA <= (OTHERS => '0');
-
-			END CASE;
 
 			IF RAM_CONFIGURED = '0' THEN
 
@@ -215,6 +226,8 @@ begin
 				CASE RAM_COUNTER IS
 
 					WHEN 0 =>
+					
+						RAM_TA <= '0';
 
 						IF nEMEN = '0' AND nTIP = '0' THEN
 							BANK0 <= A(23);
@@ -226,9 +239,10 @@ begin
 							RAM_COUNTER <= 1;
 							MEMORY_CYCLE <= '1';
 							BURST_CYCLE <= TT0 AND NOT TT1;
+							RnW_CYCLE <= RnW;
 						ELSE
-							MEMORY_CYCLE <= '0';
-							RAM_TA <= '0';
+							MEMORY_CYCLE <= '0';							
+							SDRAMCOM <= ramstate_NOP;
 						END IF;
 
 					WHEN 1 =>
@@ -237,45 +251,52 @@ begin
 							SDRAMCOM <= ramstate_READ;
 						ELSE
 							SDRAMCOM <= ramstate_WRITE;
+							RAM_TA <= '1';
 						END IF;
 						
 					WHEN 2 =>					
-
-						IF BURST_CYCLE = '0' THEN SDRAMCOM <= ramstate_PRECHARGE; ELSE SDRAMCOM <= ramstate_NOP; END IF;
-						IF RnW = '0' THEN RAM_TA <= '1'; END IF;
-
+					
+						
+						IF BURST_CYCLE = '0' THEN
+						
+							SDRAMCOM <= ramstate_PRECHARGE;
+							
+							IF RnW_CYCLE = '0' THEN --END IF NON-BURST WRITE CYCLE
+							
+								RAM_TA <= '0';
+								RAM_COUNTER <= 0;
+								
+							END IF;
+							
+						ELSE
+						
+							SDRAMCOM <= ramstate_NOP;
+							
+						END IF;
+						
 					WHEN 3 =>
 
 						SDRAMCOM <= ramstate_NOP;
-							
-						IF BURST_CYCLE = '0' AND RnW = '0' THEN --END OF NON-BURST WRITE CYCLE					
-							RAM_TA <= '1';
-							RAM_COUNTER <= 0;
-						END IF;
 						
-					WHEN 4 =>
-
-						IF RnW = '1' THEN RAM_TA <= '1'; END IF;			
+						IF RnW_CYCLE = '1' THEN 
+							
+							RAM_TA <= '1'; 							
+							IF BURST_CYCLE = '0' THEN RAM_COUNTER <= 0; END IF;							
+						
+						END IF;
 						
 					WHEN 5 =>
-					
-						IF BURST_CYCLE = '0' AND RnW = '1' THEN --END OF NON-BURST READ CYCLE
-							RAM_TA <= '1';
-							RAM_COUNTER <= 0;
-						END IF;
-						
-					WHEN 6 =>
 
-						IF RnW = '0' THEN --END OF BURST WRITE CYCLE
+						IF RnW_CYCLE = '0' THEN --END OF BURST WRITE CYCLE
 							SDRAMCOM <= ramstate_PRECHARGE; 
-							RAM_TA <= '1';
+							RAM_TA <= '0';
 							RAM_COUNTER <= 0;
 						END IF;
 						
-					WHEN 8 =>
+					WHEN 7 =>
 					
 						SDRAMCOM <= ramstate_PRECHARGE; --END OF BURST READ CYCLE
-						RAM_TA <= '1';
+						RAM_TA <= '0';
 						RAM_COUNTER <= 0;
 					
 					WHEN OTHERS =>
@@ -294,4 +315,3 @@ begin
 
 
 end Behavioral;
-

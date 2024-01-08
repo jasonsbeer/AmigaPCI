@@ -88,7 +88,8 @@ entity U409_Main is
        nEM1CS : OUT  STD_LOGIC;
 		 nTBI : OUT STD_LOGIC;
 		 nTCI : OUT STD_LOGIC;
-		 nAS : OUT STD_LOGIC
+		 nAS : OUT STD_LOGIC;
+		 nBLS: OUT STD_LOGIC
 	 
 	 );
 	 
@@ -236,6 +237,13 @@ begin
 		MC68K_CYCLE => MC68K_CYCLEm
 	);
 	
+	----------------------
+	-- BLITTER SLOWDOWN --
+	----------------------
+	
+	--WE SHOULD NOT NEED TO HALT THE BLITTER, BUT HERE IT IS. JUST IN CASE.
+	nBLS <= '1';
+	
 	----------------------------
 	-- TRANSFER CACHE INHIBIT --
 	----------------------------
@@ -243,7 +251,7 @@ begin
 	--WE WANT TO ALLOW CACHINING FOR FAST RAM AND ROM CYCLES.
 	--WE DO NOT WANT TO CACHE CHIP RAM OR CHIPSET CYCLES.
 	
-	nTCI <= MEMORY_CYCLEm OR nROMEN;
+	nTCI <= NOT (CIA_TAm OR INT_TA OR TA_68Km);
 	
 	--------------------
 	-- TRANSFER START --
@@ -253,11 +261,17 @@ begin
 	--CAPTURE IT HERE SO WE CAN USE IT IN FALLING EDGE PROCESSES.
 	
 	PROCESS (CLK40, nRESET) BEGIN
+	
 		IF nRESET = '0' THEN
+		
 			nTS_DELAYm <= '1';
+			
 		ELSIF RISING_EDGE(CLK40) THEN
+		
 			nTS_DELAYm <= nTS;
+			
 		END IF;
+		
 	END PROCESS;		
 	
 	------------------
@@ -296,21 +310,31 @@ begin
 		ELSIF FALLING_EDGE(CLK40) THEN		
 		
 			IF (INT_ACK_SPACEm = '1' OR AUTOCONFIG_SPACEm = '1') AND nTS_DELAYm = '0' THEN
+			
 				INT_TA <= '1';				
 				INT_CYCLE_HOLD <= '1';
 				INT_CLK <= 0;
+				
 			ELSIF INT_CYCLE_HOLD = '1' THEN
+			
 				IF INT_CLK = 0 THEN
+				
 					INT_TA <= '0';
 					INT_CLK <= 1;
+					
 				ELSE
+				
 					INT_CLK <= 0;
 					INT_CYCLE_HOLD <= '0';
+					
 				END IF;
+				
 			ELSE
+			
 				INT_TA <= '0';
 				INT_CYCLE_HOLD <= '0';
 				INT_CLK <= 0;
+				
 			END IF;
 			
 		END IF;
