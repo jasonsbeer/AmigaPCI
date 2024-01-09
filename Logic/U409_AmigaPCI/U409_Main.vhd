@@ -26,10 +26,10 @@
 -- Project Name: AmigaPCI
 -- Target Devices: XC95144XL 144 PIN
 --
--- Description: LOGIC FOR AUTOCONFIG, ADDRESS DECODING, , , ,
+-- Description: LOGIC FOR LOTS OF STUFF
 --
 -- Revision History:
---     XXX : Initial Engineering Release
+--     08-JAN-2023 : Initial Engineering Release
 ----------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
@@ -58,8 +58,8 @@ entity U409_Main is
 		 nTIP : IN STD_LOGIC;
 		 TT0 : IN STD_LOGIC;
 		 TT1 : IN STD_LOGIC;
-		 nDBR : IN STD_LOGIC;
-	    	 nVBEN : IN STD_LOGIC;
+	    nVBEN : IN STD_LOGIC;
+		 nKBRST : IN STD_LOGIC;
 		 
 		 nRESET : INOUT STD_LOGIC;
 		 D : INOUT STD_LOGIC_VECTOR (31 DOWNTO 28);
@@ -90,7 +90,13 @@ entity U409_Main is
 		 nTBI : OUT STD_LOGIC;
 		 nTCI : OUT STD_LOGIC;
 		 nAS : OUT STD_LOGIC;
-		 nBLS: OUT STD_LOGIC
+		 nBLS: OUT STD_LOGIC;
+		 PIO_P0 : OUT STD_LOGIC;
+		 PIO_P1 : OUT STD_LOGIC;
+		 PIO_P2 : OUT STD_LOGIC;
+		 PIO_S0 : OUT STD_LOGIC;
+		 PIO_S1 : OUT STD_LOGIC;
+		 PIO_S2 : OUT STD_LOGIC	
 	 
 	 );
 	 
@@ -134,7 +140,6 @@ begin
 		CIA_ENABLE => CIA_ENABLEm,
 		TT0 => TT0,
 		TT1 => TT1,
-		nDBR => nDBR,
 		nREGEN => nREGEN,
 		nRAMEN => nRAMEN,
 		nROMEN => nROMEN,
@@ -174,9 +179,10 @@ begin
 	-- RESET --
 	-----------
 	
-	U409_RESET: ENTITY work.U409_RESET PORT MAP(
-		nSYSTEMRST => nSYSTEMRST,
-		nBTNRESET => nBTNRESET
+	U409_RESET: ENTITY work.U409_RESET PORT MAP(		
+		nBTNRESET => nBTNRESET,
+		nKBRST => nKBRST,
+		nSYSTEMRST => nSYSTEMRST
 	);
 	
 	---------------
@@ -237,6 +243,23 @@ begin
 		nAS => nAS,
 		TA_68K => TA_68Km,
 		MC68K_CYCLE => MC68K_CYCLEm
+	);
+	
+	---------------------------
+	-- IDE PIO MODE REGISTER --
+	---------------------------
+	
+	U409_IDE_REGISTERS: ENTITY work.U409_IDE_REGISTERS PORT MAP(
+		--nIDEEN => nIDEEN,
+		--D => D,
+		--ULTRA_S => ULTRA_S,
+		--ULTRA_P => ULTRA_P,
+		PIO_P0 => PIO_P0,
+		PIO_P1 => PIO_P1,
+		PIO_P2 => PIO_P2,
+		PIO_S0 => PIO_S0,
+		PIO_S1 => PIO_S1,
+		PIO_S2 => PIO_S2
 	);
 	
 	----------------------

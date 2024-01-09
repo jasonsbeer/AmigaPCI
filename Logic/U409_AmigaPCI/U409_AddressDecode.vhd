@@ -58,7 +58,6 @@ entity U409_AddressDecode is
 		 CIA_ENABLE : IN STD_LOGIC;		 
 		 TT0 : IN STD_LOGIC;
 		 TT1 : IN STD_LOGIC;
-		 nDBR : IN STD_LOGIC;
        
 		 nREGEN : INOUT STD_LOGIC;
        nRAMEN : INOUT STD_LOGIC;
