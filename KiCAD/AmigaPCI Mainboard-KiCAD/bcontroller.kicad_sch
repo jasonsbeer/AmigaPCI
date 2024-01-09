@@ -6,7 +6,7 @@
 
   (title_block
     (title "AMIGA PCI")
-    (date "2024-01-07")
+    (date "2024-01-09")
     (rev "1.0")
   )
 
@@ -4714,7 +4714,7 @@
   )
 
   (symbol (lib_id "Connector_Generic:Conn_02x03_Counter_Clockwise") (at 328.676 172.974 0) (mirror y) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
+    (in_bom no) (on_board yes) (dnp no)
     (uuid 826e3107-d75f-49e5-baba-ffaebccf6639)
     (property "Reference" "CN711" (at 327.406 165.608 0)
       (effects (font (size 1.27 1.27)))
@@ -4978,7 +4978,7 @@
   )
 
   (symbol (lib_id "Connector_Generic:Conn_02x03_Counter_Clockwise") (at 169.926 230.124 0) (mirror y) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
+    (in_bom no) (on_board yes) (dnp no)
     (uuid e5e9903f-6312-49f7-abc6-b743b2d81d26)
     (property "Reference" "CN409" (at 168.656 222.758 0)
       (effects (font (size 1.27 1.27)))

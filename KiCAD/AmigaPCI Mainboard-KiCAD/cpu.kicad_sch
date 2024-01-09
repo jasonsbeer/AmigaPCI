@@ -6,7 +6,7 @@
 
   (title_block
     (title "AMIGA PCI")
-    (date "2024-01-07")
+    (date "2024-01-09")
     (rev "1.0")
   )
 
@@ -6777,7 +6777,7 @@
     (property "Reference" "R200" (at 167.386 188.214 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "10K" (at 165.608 188.214 90)
+    (property "Value" "10k" (at 165.608 188.214 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Footprint" "Resistor_SMD:R_0603_1608Metric" (at 169.418 190.246 0)

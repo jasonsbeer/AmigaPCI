@@ -1,0 +1,23 @@
+//AGNUS
+NET "CLK28" 		LOC = "P17";
+NET "nXCLKEN" 		LOC = "P50";
+NET "XCLK" 			LOC = "P16";
+NET "AGNUS_CLK" 	LOC = "P48";
+
+//BYTE ENABLE
+NET "nUUBE"			LOC="P8";
+NET "nUMBE"			LOC="P9";
+NET "nLMBE"			LOC="P10";
+NET "nLLBE"			LOC="P11";
+NET "nLDS"			LOC="P12";
+NET "nUDS"			LOC="P13";
+NET "SIZ0"			LOC="P18";
+NET "SIZ1"			LOC="P19";
+NET "A0"				LOC="P31";
+NET "A1"				LOC="P32";
+
+//C4 CLOCK
+NET "C3"				LOC="P46";
+NET "C4"				LOC="P49";
+NET "CDAC"			LOC="P1";
+

@@ -6,7 +6,7 @@
 
   (title_block
     (title "AMIGA PCI")
-    (date "2024-01-07")
+    (date "2024-01-09")
     (rev "1.0")
   )
 
@@ -5872,7 +5872,7 @@
   )
 
   (symbol (lib_id "Connector_Generic:Conn_02x03_Counter_Clockwise") (at 286.766 191.262 0) (mirror y) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
+    (in_bom no) (on_board yes) (dnp no)
     (uuid 569f2d71-fd1c-41d3-8755-78583850edde)
     (property "Reference" "CN110" (at 285.496 183.896 0)
       (effects (font (size 1.27 1.27)))
@@ -5933,7 +5933,7 @@
     (property "Reference" "R153" (at 33.147 46.101 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "10K" (at 34.925 45.72 90)
+    (property "Value" "10k" (at 34.925 45.72 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Footprint" "Resistor_SMD:R_0603_1608Metric" (at 32.004 48.006 0)
@@ -6041,7 +6041,7 @@
     (property "Reference" "R151" (at 20.066 45.974 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "10K" (at 18.288 45.339 90)
+    (property "Value" "10k" (at 18.288 45.339 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Footprint" "Resistor_SMD:R_0603_1608Metric" (at 21.082 48.006 0)
@@ -6113,7 +6113,7 @@
   )
 
   (symbol (lib_id "Connector_Generic:Conn_02x03_Counter_Clockwise") (at 156.972 213.36 0) (mirror y) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
+    (in_bom no) (on_board yes) (dnp no)
     (uuid bf04f99d-4d03-40f9-afef-9cafdcfc4c41)
     (property "Reference" "CN109" (at 155.702 205.994 0)
       (effects (font (size 1.27 1.27)))
@@ -6199,7 +6199,7 @@
     (property "Reference" "R152" (at 24.765 50.546 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "10K" (at 28.448 49.911 90)
+    (property "Value" "10k" (at 28.448 49.911 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Footprint" "Resistor_SMD:R_0603_1608Metric" (at 26.416 48.006 0)

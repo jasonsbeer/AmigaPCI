@@ -6,7 +6,7 @@
 
   (title_block
     (title "AMIGA PCI")
-    (date "2024-01-07")
+    (date "2024-01-09")
     (rev "1.0")
   )
 
@@ -4700,7 +4700,7 @@
   )
 
   (symbol (lib_id "Connector:TestPoint") (at 294.64 146.939 180) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
+    (in_bom no) (on_board yes) (dnp no)
     (uuid 046e919a-fb8c-40c4-bfb8-daffe5284062)
     (property "Reference" "TP1" (at 292.862 152.654 0)
       (effects (font (size 1.27 1.27)) (justify right))
@@ -5416,7 +5416,7 @@
   )
 
   (symbol (lib_id "Connector:TestPoint") (at 310.261 146.939 180) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
+    (in_bom no) (on_board yes) (dnp no)
     (uuid 77446ce3-205f-4eab-9676-1b2514b54b61)
     (property "Reference" "TP4" (at 308.483 152.654 0)
       (effects (font (size 1.27 1.27)) (justify right))
@@ -5491,7 +5491,7 @@
   )
 
   (symbol (lib_id "Connector:TestPoint") (at 299.974 146.939 180) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
+    (in_bom no) (on_board yes) (dnp no)
     (uuid 81763ca4-ac6f-4748-8754-61638d2ebea0)
     (property "Reference" "TP2" (at 298.196 152.654 0)
       (effects (font (size 1.27 1.27)) (justify right))
@@ -5706,7 +5706,7 @@
   )
 
   (symbol (lib_id "Connector:TestPoint") (at 305.054 146.939 180) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
+    (in_bom no) (on_board yes) (dnp no)
     (uuid a3528da4-fdcf-4194-8610-d46c3a8ee489)
     (property "Reference" "TP3" (at 303.276 152.654 0)
       (effects (font (size 1.27 1.27)) (justify right))
