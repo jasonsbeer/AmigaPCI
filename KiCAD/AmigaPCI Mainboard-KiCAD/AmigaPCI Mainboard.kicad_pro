@@ -2009,6 +2009,34 @@
       {
         "netclass": "Narrow",
         "pattern": "PIO_S2"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Agnus Multiadapter/_ARAMEN"
+      },
+      {
+        "netclass": "SDRAM",
+        "pattern": "CLK40"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "CCLKE"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_DRDEN"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "A20"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_CUMBE"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_CLLBE"
       }
     ]
   },
