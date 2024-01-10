@@ -411,19 +411,7 @@ A normal mode transfer is capable of transfering long word data with a burst len
 
 #### 3.2.1.5 PCI Chip RAM DMA Cycles
 
-Using the chip RAM space for DMA is discouraged when fast RAM is available. Chip RAM DMA does not support burst mode.
-
-##### 3.2.1.5.1 PCI OCS/ECS Chip RAM DMA Normal Read Cycle
-
-##### 3.2.1.5.2 PCI OCS/ECS Chip RAM DMA Normal Read Cycle
-
-##### 3.2.1.5.3 PCI AGA Chip RAM DMA Normal Read Cycle
-
-NEED INPUT.
-
-##### 3.2.1.5.4 PCI AGA Chip RAM DMA Normal Read Cycle
-
-NEED INPUT.
+Chip RAM space may be used for PCI driven DMA cycles. The exact implementation is determined by the Amiga chip set in use (OCS/ECS or AGA) and the memory type of the specific design case. Amiga chip set DMA cycles always take precendence over other accesses to the chip set RAM space. The interface design must allow the Amiga chip set RAM controller (Agnus or Alice) to access the chip set RAM space without interference from the PCI device or CPU. Any such implementation will likely require a seperate RAM controller to supply the needed address latching, RAM commands, and proper cycle termination signals. 
 
 ## 3.3 Cycle Termination
 
