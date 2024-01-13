@@ -2037,6 +2037,10 @@
       {
         "netclass": "Narrow",
         "pattern": "_CLLBE"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "CPUSPACE"
       }
     ]
   },
