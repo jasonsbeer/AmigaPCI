@@ -1,0 +1,1 @@
+-intstyle "ise" -incremental -o "/home/jason/Documents/AmigaPCI Logic Work/U908_AmigaPCI/U908_BYTE_ENABLE_isim_beh.exe" -prj "/home/jason/Documents/AmigaPCI Logic Work/U908_AmigaPCI/U908_BYTE_ENABLE_beh.prj" "work.U908_BYTE_ENABLE" 

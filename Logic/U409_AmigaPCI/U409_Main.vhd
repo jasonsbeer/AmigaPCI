@@ -29,7 +29,7 @@
 -- Description: LOGIC FOR LOTS OF STUFF
 --
 -- Revision History:
---     08-JAN-2023 : Initial Engineering Release
+--     14-JAN-2023 : Initial Engineering Release
 ----------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
@@ -58,7 +58,6 @@ entity U409_Main is
 		 nTIP : IN STD_LOGIC;
 		 TT0 : IN STD_LOGIC;
 		 TT1 : IN STD_LOGIC;
-	    nVBEN : IN STD_LOGIC;
 		 nKBRST : IN STD_LOGIC;
 		 
 		 nRESET : INOUT STD_LOGIC;
@@ -69,6 +68,7 @@ entity U409_Main is
 		 nREGEN : INOUT STD_LOGIC;
        nRAMEN : INOUT STD_LOGIC;		 
 		 nROMEN : INOUT STD_LOGIC;
+		 nTA : INOUT STD_LOGIC;
 		 
 		 nRTCWR : OUT STD_LOGIC;
 		 nRTCRD : OUT STD_LOGIC;
@@ -76,8 +76,7 @@ entity U409_Main is
 		 nCIA1 : OUT STD_LOGIC;
 		 nBEN : OUT STD_LOGIC;
 		 nIDEEN : OUT STD_LOGIC;		 
-		 nSYSTEMRST : OUT STD_LOGIC;
-		 nTA : OUT STD_LOGIC;
+		 nSYSTEMRST : OUT STD_LOGIC;		 
 		 EMA : OUT  STD_LOGIC_VECTOR (12 DOWNTO 0);
        BANK0 : OUT  STD_LOGIC;
        BANK1 : OUT  STD_LOGIC;
@@ -89,7 +88,6 @@ entity U409_Main is
        nEM1CS : OUT  STD_LOGIC;
 		 nTBI : OUT STD_LOGIC;
 		 nTCI : OUT STD_LOGIC;
-		 nAS : OUT STD_LOGIC;
 		 nBLS: OUT STD_LOGIC;
 		 PIO_P0 : OUT STD_LOGIC;
 		 PIO_P1 : OUT STD_LOGIC;
@@ -119,8 +117,6 @@ architecture Behavioral of U409_Main is
 	SIGNAL INT_CYCLE_HOLD : STD_LOGIC;
 	SIGNAL nTS_DELAYm : STD_LOGIC;
 	SIGNAL INT_TA : STD_LOGIC;
-	SIGNAL MC68K_CYCLEm : STD_LOGIC;
-	SIGNAL TA_68Km : STD_LOGIC;
 
 begin
 
@@ -129,6 +125,10 @@ begin
 	--------------------------------------
 
 	U409_AddressDecode: ENTITY work.U409_AddressDecode PORT MAP(
+		nRESET => nRESET,
+		CLK40 => CLK40,
+		CLK7 => CLK7,
+		nTA => nTA,
 		A => A(31 DOWNTO 12),
 		OVL => OVL,
 		RnW => RnW,
@@ -227,23 +227,6 @@ begin
 		RAM_TA => RAM_TAm
 	);	
 	
-	-------------------
-	-- MC68000 CYCLE --
-	-------------------
-	
-	U409_MC68K_CYCLE: ENTITY work.U409_MC68K_CYCLE PORT MAP(
-		CLK40 => CLK40,
-		CLK7 => CLK7,
-		--nTS_DELAY => nTS_DELAYm,
-		nTIP => nTIP,
-		nRESET => nRESET,
-		nREGEN => nREGEN,
-		nRAMEN => nRAMEN,
-		nVBEN => nVBEN,
-		nAS => nAS,
-		TA_68K => TA_68Km,
-		MC68K_CYCLE => MC68K_CYCLEm
-	);
 	
 	---------------------------
 	-- IDE PIO MODE REGISTER --
@@ -276,7 +259,7 @@ begin
 	--WE WANT TO ALLOW CACHINING FOR FAST RAM AND ROM CYCLES.
 	--WE DO NOT WANT TO CACHE CHIP RAM OR CHIPSET CYCLES.
 	
-	nTCI <= NOT (CIA_TAm OR INT_TA OR TA_68Km);
+	nTCI <= NOT (CIA_TAm OR INT_TA);
 	
 	--------------------
 	-- TRANSFER START --
@@ -304,14 +287,14 @@ begin
 	------------------	
 	
 	nTA <= 
-		'0' WHEN CIA_TAm = '1' OR RAM_TAm = '1' OR INT_TA = '1' OR TA_68Km = '1' ELSE
+		'0' WHEN CIA_TAm = '1' OR RAM_TAm = '1' OR INT_TA = '1' ELSE
 
-		'1' WHEN CIA_ENABLEm = '1' OR MEMORY_CYCLEm = '1' OR INT_CYCLE_HOLD = '1' OR MC68K_CYCLEm = '1' ELSE
+		'1' WHEN CIA_ENABLEm = '1' OR MEMORY_CYCLEm = '1' OR INT_CYCLE_HOLD = '1' ELSE
 		
 		'Z';
 		
 	nTBI <= 
-		'0' WHEN CIA_TAm = '1' OR INT_TA = '1' OR TA_68Km = '1' ELSE --WE CAN BURST W/CHIP RAM!!!
+		'0' WHEN MEMORY_CYCLEm = '0' AND (CIA_TAm = '1' OR INT_TA = '1' OR nREGEN = '0' OR nRAMEN = '0') ELSE --WE CAN BURST W/CHIP RAM!!!
 
 		'1' WHEN MEMORY_CYCLEm = '1' ELSE
 		

@@ -53,6 +53,10 @@ entity U908_MAIN is
 		AGNUS_CLK : OUT STD_LOGIC;
 		
 		--BYTE ENABLE
+		nRESET : IN STD_LOGIC;
+		CLK40 : IN STD_LOGIC;
+		CLK7 : IN STD_LOGIC;
+		nAS : IN STD_LOGIC;
 		A0 : IN STD_LOGIC;
       A1 : IN STD_LOGIC;
 		SIZ0 : IN STD_LOGIC;
@@ -98,6 +102,10 @@ begin
 	----------------------
 	
 	U908_BYTE_ENABLE: ENTITY work.U908_BYTE_ENABLE PORT MAP(
+		nRESET => nRESET,
+		CLK40 => CLK40,
+		CLK7 => CLK7,
+		nAS => nAS,
 		A0 => A0,
 		A1 => A1,
 		SIZ0 => SIZ0,

@@ -63,7 +63,7 @@ begin
 	-- C4 CLOCK --
 	--------------
 	
-	--C4 IS A CLOCK USED ON THE VIDEO PORT.
+	--C4 IS A CLOCK USED ON THE VIDEO SLOT.
 	
 	PROCESS (CDAC) BEGIN
 	

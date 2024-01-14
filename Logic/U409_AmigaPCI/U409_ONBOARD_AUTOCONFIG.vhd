@@ -29,7 +29,7 @@
 -- Description: LOGIC FOR CONFIGURATION OF ONBOARD RESOURCES.
 --
 -- Revision History:
---     10-JAN-2023 : Initial Engineering Release
+--     05-JAN-2023 : Initial Engineering Release
 ----------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
@@ -108,7 +108,7 @@ begin
 	
 	--ARE ALL THE ON-BOARD RESOURCES CONFIGURED?
 	
-	CONFIGED <= RAM_CONFIGURED AND IDE_CONFIGURED AND BRIDGE_CONFIGURED;
+	CONFIGED <= RAM_CONFIGURED AND (IDE_CONFIGURED OR NOT AUTOBOOT) AND BRIDGE_CONFIGURED;
 	
 	------------------
 	-- D-BUS DRIVER --
@@ -152,13 +152,8 @@ begin
 
 						WHEN x"00" =>
 							D_BRIDGE <= "1000"; --Z3 DEVICE, NO ROM, NO RAM.
-							D_ZORRO3RAM <= "1010"; --Z3 Board, LINK TO MEM POOL, NO ROM
-
-							IF AUTOBOOT = '1' THEN
-								D_IDE <= "1101"; --Z2 Device with AUTOBOOT ROM
-							ELSE
-								D_IDE <= "1100"; --Z2 Device. No AUTOBOOT.
-							END IF;
+							D_ZORRO3RAM <= "1010"; --Z3 Board, LINK TO MEM POOL, NO ROM							
+							D_IDE <= "1101"; --Z2 Board with AUTOBOOT ROM							
 
 						WHEN x"02" =>
 							D_BRIDGE <= "0101"; --512MB
