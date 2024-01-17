@@ -3,7 +3,7 @@ Overview
 
 Part:               Si5351A
 Created By:         ClockBuilder Pro v4.11.0.1 [2023-09-14]
-Timestamp:          2023-12-12 14:04:30 GMT-06:00
+Timestamp:          2024-01-17 09:40:53 GMT-06:00
 
 Design Rule Check
 =================
@@ -12,10 +12,8 @@ Errors:
 - No errors
 
 Warnings:
-- OUT0 [28.37516 MHz] and OUT1 [60 MHz] may have coupling [1]
-- OUT2 [50 MHz] and OUT3 [40 MHz] may have coupling [1]
-- OUT4 [33 MHz] and OUT5 [25 MHz] may have coupling [1]
-- OUT6 [28.636363 MHz] and OUT7 [80 MHz] may have coupling [1]
+- OUT2 [3.2768 MHz] and OUT3 [33 MHz] may have coupling [1]
+- OUT6 [28.63636 MHz] and OUT7 [28.37516 MHz] may have coupling [1]
 
 Footnotes:
 [1] To avoid coupling between outputs, Skyworks recommends the following:
@@ -43,28 +41,26 @@ Inputs:
     IN0: 25 MHz
 
 Outputs:
-   OUT0: 28.37516 MHz
+   OUT0: 80 MHz
          Enabled LVCMOS 8 mA
          Offset 0.000 s 
-   OUT1: 60 MHz
+   OUT1: 40 MHz
          Enabled LVCMOS 8 mA
          Offset 0.000 s 
-   OUT2: 50 MHz
+   OUT2: 3.2768 MHz
          Enabled LVCMOS 8 mA
          Offset 0.000 s 
-   OUT3: 40 MHz
+   OUT3: 33 MHz
          Enabled LVCMOS 8 mA
          Offset 0.000 s 
-   OUT4: 33 MHz
+   OUT4: Unused
+   OUT5: 3.93216 MHz
          Enabled LVCMOS 8 mA
          Offset 0.000 s 
-   OUT5: 25 MHz
+   OUT6: 28.63636 MHz
          Enabled LVCMOS 8 mA
          Offset 0.000 s 
-   OUT6: 28.636363 MHz
-         Enabled LVCMOS 8 mA
-         Offset 0.000 s 
-   OUT7: 80 MHz
+   OUT7: 28.37516 MHz
          Enabled LVCMOS 8 mA
          Offset 0.000 s 
 
@@ -73,8 +69,8 @@ Frequency Plan
 
 PLL_A:
    Enabled Features = None
-   Fvco             = 800 MHz
-   M                = 32
+   Fvco             = 859.0908 MHz
+   M                = 34.363632 [34 + 22727/62500] jn
    Input0:
       Source           = Crystal
       Source Frequency = 25 MHz
@@ -84,58 +80,52 @@ PLL_A:
       Features       = None
       Disabled State = StopLow
       R              = 1  (2^0)
-      Fout           = 28.37516 MHz
-      N              = 28.1936736215760545... [ 28 + 137388/709379 ]
+      Fout           = 80 MHz
+      N              = 10.738635 [10 + 147727/200000] jn
    Output1:
       Features       = None
       Disabled State = StopLow
       R              = 1  (2^0)
-      Fout           = 60 MHz
-      N              = 13.3333333333333333... [ 13 + 1/3 ]
+      Fout           = 40 MHz
+      N              = 21.47727 [21 + 47727/100000] jn
    Output2:
       Features       = None
       Disabled State = StopLow
       R              = 1  (2^0)
-      Fout           = 50 MHz
-      N              = 16
+      Fout           = 3.2768 MHz
+      N              = 262.1737060546875 [262 + 4342651367/25000000000] jn
    Output3:
       Features       = None
       Disabled State = StopLow
       R              = 1  (2^0)
-      Fout           = 40 MHz
-      N              = 20
-   Output4:
-      Features       = None
-      Disabled State = StopLow
-      R              = 1  (2^0)
       Fout           = 33 MHz
-      N              = 24.2424242424242424... [ 24 + 8/33 ]
+      N              = 26.0330545454545454... [ 26 + 909/27500 ]
    Output5:
       Features       = None
       Disabled State = StopLow
       R              = 1  (2^0)
-      Fout           = 25 MHz
-      N              = 32
-   Output7:
+      Fout           = 3.93216 MHz
+      N              = 218.47808837890625 [218 + 4780883789/10000000000] jn
+   Output6:
       Features       = None
       Disabled State = StopLow
       R              = 1  (2^0)
-      Fout           = 80 MHz
-      N              = 10
+      Fout           = 28.63636 MHz
+      N              = 30
 PLL_B:
    Enabled Features = None
-   Fvco             = 859.09089 MHz
-   M                = 34.3636352
+   Fvco             = 851.2548 MHz
+   M                = 34.050192 [34 + 3137/62500] jn
    Input0:
       Source           = Crystal
       Source Frequency = 25 MHz
       Fpfd             = 25 MHz
       Load Capacitance = Load_08pF
-   Output6:
+   Output7:
       Features       = None
       Disabled State = StopLow
       R              = 1  (2^0)
-      Fout           = 28.636363 MHz
+      Fout           = 28.37516 MHz
       N              = 30
 
 Settings
@@ -181,12 +171,12 @@ Location      Setting Name    Decimal Value      Hex Value
 0x0013[5]     MS3_SRC         0                  0x0              
 0x0013[6]     MS3_INT         0                  0x0              
 0x0013[7]     CLK3_PDN        0                  0x0              
-0x0014[1:0]   CLK4_IDRV       3                  0x3              
+0x0014[1:0]   CLK4_IDRV       0                  0x0              
 0x0014[3:2]   CLK4_SRC        3                  0x3              
 0x0014[4]     CLK4_INV        0                  0x0              
 0x0014[5]     MS4_SRC         0                  0x0              
 0x0014[6]     MS4_INT         0                  0x0              
-0x0014[7]     CLK4_PDN        0                  0x0              
+0x0014[7]     CLK4_PDN        1                  0x1              
 0x0015[1:0]   CLK5_IDRV       3                  0x3              
 0x0015[3:2]   CLK5_SRC        3                  0x3              
 0x0015[4]     CLK5_INV        0                  0x0              
@@ -196,41 +186,38 @@ Location      Setting Name    Decimal Value      Hex Value
 0x0016[1:0]   CLK6_IDRV       3                  0x3              
 0x0016[3:2]   CLK6_SRC        3                  0x3              
 0x0016[4]     CLK6_INV        0                  0x0              
-0x0016[5]     MS6_SRC         1                  0x1              
+0x0016[5]     MS6_SRC         0                  0x0              
 0x0016[6]     FBA_INT         0                  0x0              
 0x0016[7]     CLK6_PDN        0                  0x0              
 0x0017[1:0]   CLK7_IDRV       3                  0x3              
 0x0017[3:2]   CLK7_SRC        3                  0x3              
 0x0017[4]     CLK7_INV        0                  0x0              
-0x0017[5]     MS7_SRC         0                  0x0              
+0x0017[5]     MS7_SRC         1                  0x1              
 0x0017[6]     FBB_INT         0                  0x0              
 0x0017[7]     CLK7_PDN        0                  0x0              
-0x001C[17:0]  MSNA_P1         3584               0x00E00          
-0x001F[19:0]  MSNA_P2         0                  0x00000          
-0x001F[23:4]  MSNA_P3         1                  0x00001          
-0x0024[17:0]  MSNB_P1         3886               0x00F2E          
-0x0027[19:0]  MSNB_P2         42602              0x0A66A          
-0x0027[23:4]  MSNB_P3         78125              0x1312D          
-0x002C[17:0]  MS0_P1          3096               0x00C18          
-0x002F[19:0]  MS0_P2          560568             0x88DB8          
-0x002F[23:4]  MS0_P4          709379             0xAD303          
-0x0034[17:0]  MS1_P1          1194               0x004AA          
-0x0037[19:0]  MS1_P2          2                  0x00002          
-0x0037[23:4]  MS1_P4          3                  0x00003          
-0x003C[17:0]  MS2_P1          1536               0x00600          
-0x003F[19:0]  MS2_P2          0                  0x00000          
-0x003F[23:4]  MS2_P4          1                  0x00001          
-0x0044[17:0]  MS3_P1          2048               0x00800          
-0x0047[19:0]  MS3_P2          0                  0x00000          
-0x0047[23:4]  MS3_P4          1                  0x00001          
-0x004C[17:0]  MS4_P1          2591               0x00A1F          
-0x004F[19:0]  MS4_P2          1                  0x00001          
-0x004F[23:4]  MS4_P4          33                 0x00021          
-0x0054[17:0]  MS5_P1          3584               0x00E00          
-0x0057[19:0]  MS5_P2          0                  0x00000          
-0x0057[23:4]  MS5_P4          1                  0x00001          
+0x001C[17:0]  MSNA_P1         3886               0x00F2E          
+0x001F[19:0]  MSNA_P2         34056              0x08508          
+0x001F[23:4]  MSNA_P3         62500              0x0F424          
+0x0024[17:0]  MSNB_P1         3846               0x00F06          
+0x0027[19:0]  MSNB_P2         26536              0x067A8          
+0x0027[23:4]  MSNB_P3         62500              0x0F424          
+0x002C[17:0]  MS0_P1          862                0x0035E          
+0x002F[19:0]  MS0_P2          109056             0x1AA00          
+0x002F[23:4]  MS0_P4          200000             0x30D40          
+0x0034[17:0]  MS1_P1          2237               0x008BD          
+0x0037[19:0]  MS1_P2          9056               0x02360          
+0x0037[23:4]  MS1_P4          100000             0x186A0          
+0x003C[17:0]  MS2_P1          33046              0x08116          
+0x003F[19:0]  MS2_P2          1920               0x00780          
+0x003F[23:4]  MS2_P4          8192               0x02000          
+0x0044[17:0]  MS3_P1          2820               0x00B04          
+0x0047[19:0]  MS3_P2          6352               0x018D0          
+0x0047[23:4]  MS3_P4          27500              0x06B6C          
+0x0054[17:0]  MS5_P1          27453              0x06B3D          
+0x0057[19:0]  MS5_P2          3200               0x00C80          
+0x0057[23:4]  MS5_P4          16384              0x04000          
 0x005A[7:0]   MS6_P2          30                 0x1E             
-0x005B[7:0]   MS7_P2          10                 0x0A             
+0x005B[7:0]   MS7_P2          30                 0x1E             
 0x0095[14:0]  SSDN_P2         0                  0x0000           
 0x0095[7]     SSC_EN          0                  0x0              
 0x0097[14:0]  SSDN_P3         0                  0x0000           
@@ -242,6 +229,5 @@ Location      Setting Name    Decimal Value      Hex Value
 0x00A6[7:0]   CLK1_PHOFF      0                  0x00             
 0x00A7[7:0]   CLK2_PHOFF      0                  0x00             
 0x00A8[7:0]   CLK3_PHOFF      0                  0x00             
-0x00A9[7:0]   CLK4_PHOFF      0                  0x00             
 0x00AA[7:0]   CLK5_PHOFF      0                  0x00             
 0x00B7[7:6]   XTAL_CL         2                  0x2
