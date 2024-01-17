@@ -125,7 +125,7 @@
         "min_silk_clearance": 0.0,
         "min_text_height": 0.7999999999999999,
         "min_text_thickness": 0.08,
-        "min_through_hole_diameter": 0.3,
+        "min_through_hole_diameter": 0.19999999999999998,
         "min_track_width": 0.09999999999999999,
         "min_via_annular_width": 0.13,
         "min_via_diameter": 0.39999999999999997,
@@ -2041,6 +2041,14 @@
       {
         "netclass": "Narrow",
         "pattern": "CPUSPACE"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "SDA"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "SCL"
       }
     ]
   },

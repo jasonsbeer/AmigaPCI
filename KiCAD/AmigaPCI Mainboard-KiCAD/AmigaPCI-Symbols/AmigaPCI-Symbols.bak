@@ -9517,6 +9517,12 @@
         (fill (type background))
       )
     )
+    (symbol "SDRAM_256MB(16Mx16)_1_0"
+      (pin no_connect line (at 10.16 31.75 270) (length 2.54) hide
+        (name "NC" (effects (font (size 1.27 1.27))))
+        (number "40" (effects (font (size 1.27 1.27))))
+      )
+    )
     (symbol "SDRAM_256MB(16Mx16)_1_1"
       (pin power_in line (at -7.62 33.02 270) (length 3.81)
         (name "VDD" (effects (font (size 1.016 1.016))))
