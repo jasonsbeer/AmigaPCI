@@ -6,8 +6,8 @@
 
   (title_block
     (title "AMIGA PCI")
-    (date "2024-01-16")
-    (rev "1.0")
+    (date "2024-01-17")
+    (rev "2.0")
   )
 
   (lib_symbols
@@ -5597,7 +5597,7 @@
       (effects (font (size 1.27 1.27)) (justify left))
     )
   )
-  (global_label "_TS" (shape output) (at 241.808 159.258 180) (fields_autoplaced)
+  (global_label "_TS" (shape input) (at 241.808 159.258 180) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify right))
     (uuid d8bd8027-91af-4aa0-839d-ac07c0e0ab35)
     (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 235.6781 159.258 0)

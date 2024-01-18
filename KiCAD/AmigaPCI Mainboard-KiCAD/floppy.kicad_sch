@@ -6,8 +6,8 @@
 
   (title_block
     (title "AMIGA PCI")
-    (date "2024-01-16")
-    (rev "1.0")
+    (date "2024-01-17")
+    (rev "2.0")
   )
 
   (lib_symbols
