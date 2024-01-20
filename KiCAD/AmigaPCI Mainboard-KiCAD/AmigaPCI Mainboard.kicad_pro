@@ -2049,6 +2049,10 @@
       {
         "netclass": "Narrow",
         "pattern": "SCL"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_SYSTEMRST"
       }
     ]
   },

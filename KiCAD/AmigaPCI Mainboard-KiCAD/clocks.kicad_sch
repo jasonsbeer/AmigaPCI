@@ -6,7 +6,7 @@
 
   (title_block
     (title "AMIGA PCI")
-    (date "2024-01-17")
+    (date "2024-01-19")
     (rev "2.0")
   )
 
@@ -835,11 +835,11 @@
         )
       )
     )
-    (symbol "power:+3.3V" (power) (pin_names (offset 0)) (in_bom yes) (on_board yes)
+    (symbol "power:+3V3" (power) (pin_names (offset 0)) (in_bom yes) (on_board yes)
       (property "Reference" "#PWR" (at 0 -3.81 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (property "Value" "+3.3V" (at 0 3.556 0)
+      (property "Value" "+3V3" (at 0 3.556 0)
         (effects (font (size 1.27 1.27)))
       )
       (property "Footprint" "" (at 0 0 0)
@@ -851,10 +851,10 @@
       (property "ki_keywords" "global power" (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (property "ki_description" "Power symbol creates a global label with name \"+3.3V\"" (at 0 0 0)
+      (property "ki_description" "Power symbol creates a global label with name \"+3V3\"" (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (symbol "+3.3V_0_1"
+      (symbol "+3V3_0_1"
         (polyline
           (pts
             (xy -0.762 1.27)
@@ -880,9 +880,9 @@
           (fill (type none))
         )
       )
-      (symbol "+3.3V_1_1"
+      (symbol "+3V3_1_1"
         (pin power_in line (at 0 0 90) (length 0) hide
-          (name "+3.3V" (effects (font (size 1.27 1.27))))
+          (name "+3V3" (effects (font (size 1.27 1.27))))
           (number "1" (effects (font (size 1.27 1.27))))
         )
       )
@@ -4233,13 +4233,13 @@
     )
   )
 
-  (symbol (lib_id "power:+3.3V") (at 90.932 41.402 0) (unit 1)
+  (symbol (lib_id "power:+3V3") (at 90.932 41.402 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid a1eeb483-1d88-4038-80b2-b09afaaa3eb8)
+    (uuid 9ea75567-0833-4a2e-a21a-c77015a6e207)
     (property "Reference" "#PWR031" (at 90.932 45.212 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Value" "+3.3V" (at 90.932 37.9001 0)
+    (property "Value" "+3V3" (at 90.932 36.83 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Footprint" "" (at 90.932 41.402 0)
@@ -4248,7 +4248,7 @@
     (property "Datasheet" "" (at 90.932 41.402 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 7aa19044-b76b-4979-8045-d53b3a338f4c))
+    (pin "1" (uuid 54d7e010-da56-4e97-88b5-3e325cb0b416))
     (instances
       (project "AmigaPCI Mainboard"
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/d671396a-959f-409b-8612-87cb620c51cb"
