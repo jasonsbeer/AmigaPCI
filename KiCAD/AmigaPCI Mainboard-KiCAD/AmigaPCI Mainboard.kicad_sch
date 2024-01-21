@@ -6,7 +6,7 @@
 
   (title_block
     (title "AMIGA PCI")
-    (date "2024-01-19")
+    (date "2024-01-20")
     (rev "2.0")
   )
 
@@ -75,6 +75,23 @@
     (instances
       (project "AmigaPCI Mainboard"
         (path "/72453515-27fe-4336-91f3-e3c8054f7767" (page "8"))
+      )
+    )
+  )
+
+  (sheet (at 90.424 149.225) (size 33.528 15.113) (fields_autoplaced)
+    (stroke (width 0.1524) (type solid))
+    (fill (color 0 0 0 0.0000))
+    (uuid 3746f476-970c-4acb-b19d-33c43fff35fb)
+    (property "Sheetname" "Level Shift" (at 90.424 148.5134 0)
+      (effects (font (size 1.27 1.27)) (justify left bottom))
+    )
+    (property "Sheetfile" "level_shift.kicad_sch" (at 90.424 164.9226 0)
+      (effects (font (size 1.27 1.27)) (justify left top))
+    )
+    (instances
+      (project "AmigaPCI Mainboard"
+        (path "/72453515-27fe-4336-91f3-e3c8054f7767" (page "17"))
       )
     )
   )

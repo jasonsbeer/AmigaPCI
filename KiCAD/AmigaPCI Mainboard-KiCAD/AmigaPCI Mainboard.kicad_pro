@@ -2053,6 +2053,154 @@
       {
         "netclass": "Narrow",
         "pattern": "_SYSTEMRST"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "LVD*"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "LVR_W"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_LVDBR"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_LVAWE"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_LVCASU"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_LVCASL"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "LVDRA0-G"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "LVDRA1-0"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "LVDRA2-1"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "LVDRA3-2"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "LVDRA4-3"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "LVDRA5-4"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "LVDRA6-5"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "LVDRA7-6"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "LVDRA8-7"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_LVRAS0"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_LVRAS1"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Chip Memory/LDB14"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Chip Memory/LDB13"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Chip Memory/LDB12"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Chip Memory/LDB11"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Chip Memory/LDB10"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Chip Memory/LDB9"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Chip Memory/LDB8"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Chip Memory/LDB0"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Chip Memory/LDB1"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Chip Memory/LDB2"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Chip Memory/LDB3"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Chip Memory/LDB4"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Chip Memory/LDB5"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Chip Memory/LDB6"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Chip Memory/LDB7"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "UDB7"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "UDB4"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "UDB3"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "UDB2"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "UDB1"
       }
     ]
   },
@@ -2175,6 +2323,10 @@
     [
       "c71cba2c-aa10-44ea-a37d-abe4b67b6d89",
       "PCI Bridge"
+    ],
+    [
+      "3746f476-970c-4acb-b19d-33c43fff35fb",
+      "Level Shift"
     ]
   ],
   "text_variables": {}
