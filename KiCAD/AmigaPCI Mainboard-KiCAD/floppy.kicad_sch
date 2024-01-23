@@ -6,7 +6,7 @@
 
   (title_block
     (title "AMIGA PCI")
-    (date "2024-01-19")
+    (date "2024-01-22")
     (rev "2.0")
   )
 
@@ -5269,7 +5269,7 @@
       (effects (font (size 1.27 1.27)) (justify right))
     )
   )
-  (global_label "CLK50" (shape input) (at 38.1 142.24 180)
+  (global_label "TICK50" (shape input) (at 38.1 142.24 180)
     (effects (font (size 1.27 1.27)) (justify right))
     (uuid 28afb485-d1e6-4107-9903-b60b3ad7d56e)
     (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 30.48 142.24 0)
@@ -5409,7 +5409,7 @@
       (effects (font (size 1.27 1.27)) (justify left))
     )
   )
-  (global_label "CLK60" (shape input) (at 38.354 154.432 180)
+  (global_label "TICK60" (shape input) (at 38.354 154.432 180)
     (effects (font (size 1.27 1.27)) (justify right))
     (uuid b0384570-37dd-4281-b154-dcf0f8d73c0f)
     (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 30.988 154.432 0)
