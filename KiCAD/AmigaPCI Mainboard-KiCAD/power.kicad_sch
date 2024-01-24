@@ -6,7 +6,7 @@
 
   (title_block
     (title "AMIGA PCI")
-    (date "2024-01-22")
+    (date "2024-01-23")
     (rev "2.0")
   )
 
@@ -6865,10 +6865,10 @@
       (effects (font (size 1.27 1.27)) (justify left))
     )
   )
-  (global_label "_SYSTEMRST" (shape input) (at 264.922 154.051 180) (fields_autoplaced)
+  (global_label "_BTNRST" (shape input) (at 264.922 154.051 180) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify right))
     (uuid cc248459-ab73-4462-b785-89f5b22dd3f1)
-    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 250.4465 154.051 0)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 253.954 154.051 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
   )
