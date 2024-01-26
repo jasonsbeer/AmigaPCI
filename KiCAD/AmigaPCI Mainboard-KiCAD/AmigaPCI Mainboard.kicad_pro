@@ -2209,6 +2209,38 @@
       {
         "netclass": "Default",
         "pattern": "+3V3"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/CPU/U712_SCK"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/CPU/U712_SDO"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/CPU/U712_SS"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/CPU/U712_SDI"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/CPU/U712_CRESET"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_BTNRST"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "TICK50"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "TICK60"
       }
     ]
   },
