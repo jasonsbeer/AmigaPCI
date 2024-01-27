@@ -2241,6 +2241,42 @@
       {
         "netclass": "Narrow",
         "pattern": "TICK60"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "CLK6"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "CLK20"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "LVSIZ0"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_LVTIP"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_LVTS"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_LVBR"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_LVLOCK"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "LVUPA1"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "LVUPA0"
       }
     ]
   },
