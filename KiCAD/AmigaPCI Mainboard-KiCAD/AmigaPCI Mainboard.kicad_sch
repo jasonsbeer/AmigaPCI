@@ -6,7 +6,7 @@
 
   (title_block
     (title "AMIGA PCI")
-    (date "2024-01-26")
+    (date "2024-01-27")
     (rev "2.0")
   )
 
@@ -14,7 +14,7 @@
   )
 
 
-  (text "100 = PCI BUS\n200 = CPU AND CHIPSET\n300 = VIDEO\n400 = FAST RAM\n500 = AUDIO\n600 = POWER\n700 = CHIPSET RAM\n900 = IDE"
+  (text "100 = PCI BUS\n200 = CPU AND CHIPSET\n300 = VIDEO\n400 = FAST RAM\n500 = AUDIO\n600 = POWER\n700 = CHIPSET RAM\n800 = VOLTAGE SHIFTER\n900 = IDE"
     (at 162.052 152.908 0)
     (effects (font (size 3 3) bold) (justify left bottom))
     (uuid 03d6913e-0783-4f08-bd37-f7010da4e748)

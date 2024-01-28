@@ -34,9 +34,9 @@
         "other_text_thickness": 0.15,
         "other_text_upright": false,
         "pads": {
-          "drill": 1.0,
-          "height": 1.7,
-          "width": 1.7
+          "drill": 0.0,
+          "height": 0.3,
+          "width": 1.475
         },
         "silk_line_width": 0.15,
         "silk_text_italic": false,
@@ -2277,6 +2277,54 @@
       {
         "netclass": "Narrow",
         "pattern": "LVUPA0"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/CPU/LVA0"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/CPU/LVA12"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/CPU/LVA10"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/CPU/LVA2"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/CPU/LVA16"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/CPU/LVA11"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/CPU/LVA13"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/CPU/LVA1"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/CPU/LVA14"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/CPU/LVA3"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/CPU/LVA8"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "LVA*"
       }
     ]
   },
