@@ -2325,6 +2325,34 @@
       {
         "netclass": "Narrow",
         "pattern": "LVA*"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "LVAD*"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "IDSEL0"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "IDSEL1"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "IDSEL2"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "IDSEL3"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "IDSEL4"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "CONFIG_CYCLE"
       }
     ]
   },
@@ -2450,7 +2478,11 @@
     ],
     [
       "3746f476-970c-4acb-b19d-33c43fff35fb",
-      "Level Shift"
+      "MC68040 Level Shift"
+    ],
+    [
+      "ef92c99c-ab64-412b-bb4d-da92b597d4b5",
+      "PCI Level Shift"
     ]
   ],
   "text_variables": {}

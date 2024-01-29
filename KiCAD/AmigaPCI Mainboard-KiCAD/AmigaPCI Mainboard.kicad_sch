@@ -6,7 +6,7 @@
 
   (title_block
     (title "AMIGA PCI")
-    (date "2024-01-27")
+    (date "2024-01-28")
     (rev "2.0")
   )
 
@@ -83,10 +83,10 @@
     (stroke (width 0.1524) (type solid))
     (fill (color 0 0 0 0.0000))
     (uuid 3746f476-970c-4acb-b19d-33c43fff35fb)
-    (property "Sheetname" "Level Shift" (at 90.424 148.5134 0)
+    (property "Sheetname" "MC68040 Level Shift" (at 90.424 148.5134 0)
       (effects (font (size 1.27 1.27)) (justify left bottom))
     )
-    (property "Sheetfile" "level_shift.kicad_sch" (at 90.424 164.9226 0)
+    (property "Sheetfile" "mc68040_level_shift.kicad_sch" (at 90.424 164.9226 0)
       (effects (font (size 1.27 1.27)) (justify left top))
     )
     (instances
@@ -279,6 +279,23 @@
     (instances
       (project "AmigaPCI Mainboard"
         (path "/72453515-27fe-4336-91f3-e3c8054f7767" (page "7"))
+      )
+    )
+  )
+
+  (sheet (at 154.559 159.893) (size 31.242 15.494) (fields_autoplaced)
+    (stroke (width 0.1524) (type solid))
+    (fill (color 0 0 0 0.0000))
+    (uuid ef92c99c-ab64-412b-bb4d-da92b597d4b5)
+    (property "Sheetname" "PCI Level Shift" (at 154.559 159.1814 0)
+      (effects (font (size 1.27 1.27)) (justify left bottom))
+    )
+    (property "Sheetfile" "pci_level_shift.kicad_sch" (at 154.559 175.9716 0)
+      (effects (font (size 1.27 1.27)) (justify left top))
+    )
+    (instances
+      (project "AmigaPCI Mainboard"
+        (path "/72453515-27fe-4336-91f3-e3c8054f7767" (page "18"))
       )
     )
   )
