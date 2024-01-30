@@ -2353,6 +2353,30 @@
       {
         "netclass": "Narrow",
         "pattern": "CONFIG_CYCLE"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/PCI Bridge/U109_SDO"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/PCI Bridge/U109_SDI"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/PCI Bridge/U109_SCK"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/PCI Bridge/U109_SS"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/PCI Bridge/U109_CRESET"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "CLKPCI2"
       }
     ]
   },
