@@ -2377,6 +2377,26 @@
       {
         "netclass": "Narrow",
         "pattern": "CLKPCI2"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Master Control/U409_SDI"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Master Control/U409_SDO"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Master Control/U409_SCK"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Master Control/U409_SS"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Master Control/U409_CRESET"
       }
     ]
   },

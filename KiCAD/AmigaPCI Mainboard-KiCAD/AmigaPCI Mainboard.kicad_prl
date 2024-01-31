@@ -64,7 +64,7 @@
       40
     ],
     "visible_layers": "fffffff_ffffffed",
-    "zone_display_mode": 0
+    "zone_display_mode": 1
   },
   "meta": {
     "filename": "AmigaPCI Mainboard.kicad_prl",
