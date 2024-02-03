@@ -2429,6 +2429,10 @@
       {
         "netclass": "Narrow",
         "pattern": "_LVRESET"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_IDEHREN"
       }
     ]
   },
