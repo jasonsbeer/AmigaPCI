@@ -2433,6 +2433,118 @@
       {
         "netclass": "Narrow",
         "pattern": "_IDEHREN"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_IDEHWEN"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "IDEDIR"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "PAR_DA"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "PHASEA_D"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "CYCLE_ACTIVE"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "PCI_DATA_DIR"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_INT2B"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_INT2A"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_LVCBE0"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_LVCBE1"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_LVDEVSEL"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_LVCBE2"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_LVCBE3"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_LVIRDY"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_LVTRDY"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_LVFRAME"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_LVSTOP"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_LVPLOCK"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_LVPERR"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "LVPARITY"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_LVSYSERR"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_LVBB"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "LVSIZ1"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "LVTM0"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "LVTM1"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "LVTT0"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "LVTT1"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "LVTM2"
       }
     ]
   },

@@ -6,7 +6,7 @@
 
   (title_block
     (title "AMIGA PCI")
-    (date "2024-02-02")
+    (date "2024-02-03")
     (rev "2.0")
   )
 
@@ -3598,10 +3598,10 @@
       (effects (font (size 1.27 1.27)) (justify right))
     )
   )
-  (global_label "_CIA1" (shape input) (at 54.61 121.666 180) (fields_autoplaced)
+  (global_label "_CIACS1" (shape input) (at 54.61 121.666 180) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify right))
     (uuid e113c9ef-3488-4cd4-acee-4dbb5d2939f1)
-    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 46.5637 121.666 0)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 44.0048 121.666 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
   )
