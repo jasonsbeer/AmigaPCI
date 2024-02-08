@@ -6,7 +6,7 @@
 
   (title_block
     (title "AMIGA PCI")
-    (date "2024-02-06")
+    (date "2024-02-07")
     (rev "2.0")
   )
 
@@ -7102,7 +7102,7 @@
     (property "Reference" "J207" (at 30.48 146.812 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Value" "TICK CLK" (at 30.607 148.844 0)
+    (property "Value" "TICK" (at 30.607 148.844 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical" (at 35.814 148.336 0)

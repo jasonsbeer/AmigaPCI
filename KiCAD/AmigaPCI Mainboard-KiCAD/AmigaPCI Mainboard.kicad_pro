@@ -2545,6 +2545,22 @@
       {
         "netclass": "Narrow",
         "pattern": "LVTM2"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_CIACS0"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_CIACS1"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "RTCR_W"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_BEN"
       }
     ]
   },
