@@ -6,7 +6,7 @@
 
   (title_block
     (title "AMIGA PCI")
-    (date "2024-02-07")
+    (date "2024-02-08")
     (rev "2.0")
   )
 
@@ -1384,7 +1384,7 @@
   (no_connect (at 281.432 170.688) (uuid a3b444d8-9bd1-4db3-9826-189d50dc59f7))
   (no_connect (at 213.36 142.748) (uuid bae8995b-5b18-4eff-8265-1bf2296e3811))
   (no_connect (at 221.996 99.568) (uuid c851cf9e-ec5e-45e5-b944-f4f9610f52e8))
-  (no_connect (at 281.559 99.568) (uuid cf56fbc0-7ff2-449d-a7d3-a37d4b6dc6df))
+  (no_connect (at 281.559 86.868) (uuid cf56fbc0-7ff2-449d-a7d3-a37d4b6dc6df))
   (no_connect (at 281.432 165.608) (uuid fc9ccffc-89d7-42ba-8adf-45d3b3630b99))
 
   (bus_entry (at 387.223 117.983) (size 2.54 -2.54)
@@ -5328,6 +5328,10 @@
     (effects (font (size 1.27 1.27)) (justify right bottom))
     (uuid b4e758e5-d524-4f43-8232-215480cb7646)
   )
+  (label "U409_CRESET" (at 289.433 81.788 0) (fields_autoplaced)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid b7d67e9f-aad3-445c-a8ea-b0bb4b319b28)
+  )
   (label "LVA1" (at 281.305 198.628 180) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify right bottom))
     (uuid b8c0d75e-5daf-40c5-bc00-590b134d57be)
@@ -5907,10 +5911,10 @@
       (effects (font (size 1.27 1.27)) (justify left))
     )
   )
-  (global_label "CLKPCI2" (shape input) (at 281.559 86.868 0) (fields_autoplaced)
+  (global_label "CLKPCI2" (shape input) (at 281.559 99.568 0) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify left))
     (uuid 7dae76b8-ed41-4464-99b6-0ff00e8d070d)
-    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 292.3872 86.868 0)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 292.3872 99.568 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
   )
@@ -6313,7 +6317,7 @@
   (symbol (lib_id "Device:R") (at 196.215 91.948 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 0d43f6db-ff8f-4765-af64-04ef268f8e91)
-    (property "Reference" "R8" (at 198.755 89.662 90)
+    (property "Reference" "R161" (at 198.755 89.662 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "100R" (at 198.755 91.948 90)
@@ -6330,7 +6334,7 @@
     (instances
       (project "AmigaPCI Mainboard"
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/c71cba2c-aa10-44ea-a37d-abe4b67b6d89"
-          (reference "R8") (unit 1)
+          (reference "R161") (unit 1)
         )
       )
     )
@@ -6365,7 +6369,7 @@
   (symbol (lib_id "Device:R") (at 289.433 57.658 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 0dd9905a-0ee6-471b-a865-d6272eec126b)
-    (property "Reference" "R2" (at 286.766 60.198 90)
+    (property "Reference" "R159" (at 286.766 60.198 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "10k" (at 289.433 59.563 90)
@@ -6382,7 +6386,7 @@
     (instances
       (project "AmigaPCI Mainboard"
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/c71cba2c-aa10-44ea-a37d-abe4b67b6d89"
-          (reference "R2") (unit 1)
+          (reference "R159") (unit 1)
         )
       )
     )
@@ -7023,7 +7027,7 @@
   (symbol (lib_id "Device:R") (at 291.973 57.658 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 98251278-1f0c-42b7-be69-10e74d01aad3)
-    (property "Reference" "R1" (at 293.37 65.532 90)
+    (property "Reference" "R158" (at 293.37 65.532 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "10k" (at 291.973 59.563 90)
@@ -7040,7 +7044,7 @@
     (instances
       (project "AmigaPCI Mainboard"
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/c71cba2c-aa10-44ea-a37d-abe4b67b6d89"
-          (reference "R1") (unit 1)
+          (reference "R158") (unit 1)
         )
       )
     )
@@ -7849,7 +7853,7 @@
   (symbol (lib_id "Device:R") (at 205.867 94.488 90) (mirror x) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid ed2a128e-cbe5-4eaf-a361-9e0e8bcb2dd2)
-    (property "Reference" "R3" (at 208.407 96.774 90)
+    (property "Reference" "R160" (at 208.407 96.774 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "100R" (at 208.407 94.488 90)
@@ -7866,7 +7870,7 @@
     (instances
       (project "AmigaPCI Mainboard"
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/c71cba2c-aa10-44ea-a37d-abe4b67b6d89"
-          (reference "R3") (unit 1)
+          (reference "R160") (unit 1)
         )
       )
     )

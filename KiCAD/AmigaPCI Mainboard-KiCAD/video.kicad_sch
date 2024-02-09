@@ -6,7 +6,7 @@
 
   (title_block
     (title "AMIGA PCI")
-    (date "2024-02-07")
+    (date "2024-02-08")
     (rev "2.0")
   )
 
@@ -2684,9 +2684,6 @@
   (junction (at 331.47 177.546) (diameter 0) (color 0 0 0 0)
     (uuid 6b56683b-15ae-4a8d-b26f-4696c0802d6a)
   )
-  (junction (at 196.85 44.196) (diameter 0) (color 0 0 0 0)
-    (uuid 6f338d55-00a6-45e3-92b2-57830db8d8c7)
-  )
   (junction (at 300.228 48.006) (diameter 0) (color 0 0 0 0)
     (uuid 7722bf84-5ef4-4532-af7a-bc9f39ea27a6)
   )
@@ -3051,7 +3048,7 @@
     (stroke (width 0) (type default))
     (uuid 13524397-e41d-400b-9771-973cc1a75a72)
   )
-  (wire (pts (xy 193.548 44.196) (xy 196.85 44.196))
+  (wire (pts (xy 193.548 44.196) (xy 206.248 44.196))
     (stroke (width 0) (type default))
     (uuid 142a782c-6afa-4abe-8c9b-fd5e32a1328b)
   )
@@ -3820,10 +3817,6 @@
   (wire (pts (xy 316.23 147.32) (xy 303.022 147.32))
     (stroke (width 0) (type default))
     (uuid 9623cf25-b93d-499f-91e7-76789838ec2e)
-  )
-  (wire (pts (xy 196.85 44.196) (xy 206.248 44.196))
-    (stroke (width 0) (type default))
-    (uuid 973ea183-efc8-467c-8547-564a08ae0ca5)
   )
   (wire (pts (xy 331.47 190.246) (xy 339.09 190.246))
     (stroke (width 0) (type default))
@@ -6577,36 +6570,6 @@
     )
   )
 
-  (symbol (lib_id "power:GND") (at 196.85 49.276 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 8b4d8104-f1a1-40be-8579-0542458708a1)
-    (property "Reference" "#PWR037" (at 196.85 55.626 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "GND" (at 196.977 53.6702 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "" (at 196.85 49.276 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 196.85 49.276 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 4136c281-0aab-4d30-94c8-353422dd9fdf))
-    (instances
-      (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/34f2eda3-97b6-4f91-ad2d-01637d6f5405"
-          (reference "#PWR037") (unit 1)
-        )
-      )
-      (project "2000ATX"
-        (path "/bb595301-1c72-49dc-ac6f-007419f3a7fd/00000000-0000-0000-0000-0000607c1eb7"
-          (reference "#PWR0189") (unit 1)
-        )
-      )
-    )
-  )
-
   (symbol (lib_id "Device:R_Network04") (at 102.87 155.702 0) (mirror x) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 8df733dd-17b4-49d8-8d59-f2fa3b995576)
@@ -7277,32 +7240,6 @@
       (project "2000ATX"
         (path "/bb595301-1c72-49dc-ac6f-007419f3a7fd/00000000-0000-0000-0000-0000607c1eb7"
           (reference "#PWR0200") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "Device:C_Small") (at 196.85 46.736 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid d2a0e4ed-9393-4a98-ac75-ab618f579e96)
-    (property "Reference" "C310" (at 199.1741 46.0986 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Value" "0.1uF" (at 199.1741 48.0196 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Footprint" "Capacitor_SMD:C_0603_1608Metric" (at 196.85 46.736 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "~" (at 196.85 46.736 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 97d6c09b-e09c-45ed-bd83-2a78660085b7))
-    (pin "2" (uuid 4797c2d6-a217-4a2e-a582-ed5d25e8a278))
-    (instances
-      (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/34f2eda3-97b6-4f91-ad2d-01637d6f5405"
-          (reference "C310") (unit 1)
         )
       )
     )

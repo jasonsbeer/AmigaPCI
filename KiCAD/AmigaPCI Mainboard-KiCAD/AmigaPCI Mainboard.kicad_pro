@@ -2561,6 +2561,26 @@
       {
         "netclass": "Narrow",
         "pattern": "_BEN"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/PCI Bridge/U409_SDI"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/PCI Bridge/U409_SCK"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/PCI Bridge/U409_SDO"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/PCI Bridge/U409_CRESET"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/PCI Bridge/U409_SS"
       }
     ]
   },
