@@ -2581,6 +2581,18 @@
       {
         "netclass": "Narrow",
         "pattern": "/PCI Bridge/U409_SS"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/PCI Bridge/J102"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/PCI Bridge/J101"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/PCI Bridge/J100"
       }
     ]
   },
