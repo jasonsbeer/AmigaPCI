@@ -6,7 +6,7 @@
 
   (title_block
     (title "AMIGA PCI")
-    (date "2024-02-09")
+    (date "2024-02-11")
     (rev "2.0")
   )
 
@@ -2399,7 +2399,7 @@
     (uuid 41497dd6-44e1-4a5b-83a4-37307953a9c2)
   )
   (text "28.37516MHz FOR PAL" (at 266.065 218.44 0)
-    (effects (font (size 2 2)) (justify left bottom))
+    (effects (font (size 1.7 1.7)) (justify left bottom))
     (uuid 9c0ab2aa-111b-4b42-b2d2-2b1f6065a505)
   )
   (text "SYSTEM CLOCKS" (at 238.633 149.86 0)
