@@ -2593,6 +2593,30 @@
       {
         "netclass": "Narrow",
         "pattern": "/PCI Bridge/J100"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/HID and User Ports/DIO"
+      },
+      {
+        "netclass": "PCI",
+        "pattern": "/PCI Bus/_INTD"
+      },
+      {
+        "netclass": "PCI",
+        "pattern": "/PCI Bus/_INTB"
+      },
+      {
+        "netclass": "PCI",
+        "pattern": "/PCI Bus/_INTC"
+      },
+      {
+        "netclass": "PCI",
+        "pattern": "/PCI Bus/_INTA"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Floppy and Parallel/TICK"
       }
     ]
   },
