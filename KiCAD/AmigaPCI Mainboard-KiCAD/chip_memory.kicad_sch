@@ -6,7 +6,7 @@
 
   (title_block
     (title "AMIGA PCI")
-    (date "2024-02-13")
+    (date "2024-02-14")
     (rev "2.0")
   )
 
@@ -3409,6 +3409,11 @@
     (effects (font (size 2.5 2.5)) (justify left bottom))
     (uuid 5bbb71ec-296f-4575-ae81-d71c58793abb)
   )
+  (text "U701-U704 ISOLATE THE CHIP RAM\nFROM THE CPU DURING CHIP RAM \nDMA CYCLES."
+    (at 62.865 259.969 0)
+    (effects (font (size 2 2)) (justify left bottom))
+    (uuid 6ad2d102-221f-41d7-9b25-d1b619421397)
+  )
   (text "Agnus is RAS only refresh. Both _RAS0 and _RAS1 are\nasserted simultaneously with _DBR."
     (at 132.588 151.638 0)
     (effects (font (size 2.5 2.5)) (justify left bottom))
@@ -4072,10 +4077,10 @@
       (effects (font (size 1.27 1.27)) (justify right))
     )
   )
-  (global_label "CLK40" (shape input) (at 292.354 126.111 180) (fields_autoplaced)
+  (global_label "RAMCLK" (shape input) (at 292.354 126.111 180) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify right))
     (uuid b90c0702-98a1-40cd-be89-e0e3b8277cca)
-    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 283.3817 126.111 0)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 281.9907 126.111 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
   )

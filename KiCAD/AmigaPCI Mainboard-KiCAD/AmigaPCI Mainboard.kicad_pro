@@ -2617,6 +2617,30 @@
       {
         "netclass": "Narrow",
         "pattern": "/Floppy and Parallel/TICK"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "RAMCLK"
+      },
+      {
+        "netclass": "PCI",
+        "pattern": "_REQ4"
+      },
+      {
+        "netclass": "PCI",
+        "pattern": "_REQ3"
+      },
+      {
+        "netclass": "PCI",
+        "pattern": "_REQ1"
+      },
+      {
+        "netclass": "PCI",
+        "pattern": "_REQ2"
+      },
+      {
+        "netclass": "PCI",
+        "pattern": "_REQ0"
       }
     ]
   },
@@ -2743,10 +2767,6 @@
     [
       "3746f476-970c-4acb-b19d-33c43fff35fb",
       "MC68040 Level Shift"
-    ],
-    [
-      "ef92c99c-ab64-412b-bb4d-da92b597d4b5",
-      "PCI Level Shift"
     ]
   ],
   "text_variables": {}

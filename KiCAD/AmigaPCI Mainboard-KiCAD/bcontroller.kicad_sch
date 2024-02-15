@@ -6,7 +6,7 @@
 
   (title_block
     (title "AMIGA PCI")
-    (date "2024-02-13")
+    (date "2024-02-14")
     (rev "2.0")
   )
 
@@ -1217,7 +1217,6 @@
   (no_connect (at 87.376 55.88) (uuid 619d9623-6d4c-4572-a293-6ce72741c946))
   (no_connect (at 146.812 132.08) (uuid 81656352-3467-46a9-94c5-8b5d71dcb18a))
   (no_connect (at 147.066 208.28) (uuid 8207bd5e-daf3-4bae-b461-1948bff70faa))
-  (no_connect (at 78.613 88.9) (uuid 8d889105-6ddb-427d-8b25-1c209dae5005))
   (no_connect (at 147.066 205.74) (uuid a5ddc7c7-6a05-4701-b18e-3ccd1df6db3c))
   (no_connect (at 78.613 83.82) (uuid a6a672dd-d9e2-4025-9592-fbad76d969a7))
   (no_connect (at 78.486 99.06) (uuid b933fef2-e196-4d82-b691-2ea3d7b6b407))
@@ -3613,6 +3612,13 @@
     (effects (font (size 1.27 1.27)) (justify right))
     (uuid facfaf47-e380-4fc7-9edc-e749e9af3e76)
     (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 83.312 45.466 0)
+      (effects (font (size 1.27 1.27)) (justify right))
+    )
+  )
+  (global_label "CLK80" (shape input) (at 78.613 88.9 180) (fields_autoplaced)
+    (effects (font (size 1.27 1.27)) (justify right))
+    (uuid fcd1b73d-fbe2-4fc1-9e75-537ff04e01db)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 69.6407 88.9 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
   )
