@@ -6,7 +6,7 @@
 
   (title_block
     (title "AMIGA PCI")
-    (date "2024-02-14")
+    (date "2024-02-16")
     (rev "2.0")
   )
 
@@ -8488,7 +8488,7 @@
       (effects (font (size 1.27 1.27)) (justify left))
     )
   )
-  (global_label "_RESET" (shape input) (at 224.79 56.896 180)
+  (global_label "_BRST" (shape input) (at 224.79 56.896 180)
     (effects (font (size 1.27 1.27)) (justify right))
     (uuid 7f3ff07b-3e57-4a40-9b01-1557710c15e6)
     (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 219.964 53.848 0)
@@ -11034,7 +11034,7 @@
   )
 
   (symbol (lib_id "Connector_Generic:Conn_02x03_Counter_Clockwise") (at 303.022 161.798 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
+    (in_bom no) (on_board yes) (dnp no)
     (uuid ee28fe3b-7efe-4cb8-952b-63b986c7c404)
     (property "Reference" "CN227" (at 304.292 154.432 0)
       (effects (font (size 1.27 1.27)))

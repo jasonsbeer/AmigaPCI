@@ -6,7 +6,7 @@
 
   (title_block
     (title "AMIGA PCI")
-    (date "2024-02-14")
+    (date "2024-02-16")
     (rev "2.0")
   )
 
@@ -6124,10 +6124,10 @@
       (effects (font (size 1.27 1.27)) (justify left))
     )
   )
-  (global_label "_LVRESET" (shape input) (at 281.559 91.948 0) (fields_autoplaced)
+  (global_label "_RESET" (shape input) (at 281.559 91.948 0) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify left))
     (uuid c8ef63ef-8627-42b1-93c9-fd182e235c1b)
-    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 293.3736 91.948 0)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 291.2569 91.948 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
   )
@@ -7430,7 +7430,7 @@
   )
 
   (symbol (lib_id "Connector_Generic:Conn_01x06") (at 172.339 89.789 0) (mirror x) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
+    (in_bom no) (on_board yes) (dnp no)
     (uuid b568ce26-9740-4417-82b8-aae21959f90f)
     (property "Reference" "CN109" (at 175.006 86.36 90)
       (effects (font (size 1.27 1.27)))
@@ -8128,7 +8128,7 @@
   )
 
   (symbol (lib_id "Connector_Generic:Conn_01x06") (at 331.47 89.408 0) (mirror x) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
+    (in_bom no) (on_board yes) (dnp no)
     (uuid f8dbb372-783e-47f2-9fa2-9acba0b890a3)
     (property "Reference" "CN110" (at 334.137 85.979 90)
       (effects (font (size 1.27 1.27)))

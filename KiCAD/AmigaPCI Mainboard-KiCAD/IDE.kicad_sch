@@ -6,7 +6,7 @@
 
   (title_block
     (title "AMIGA PCI")
-    (date "2024-02-14")
+    (date "2024-02-16")
     (rev "2.0")
   )
 
@@ -6750,7 +6750,7 @@
     (property "Reference" "U220" (at 57.4123 253.9619 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Value" "74AHCT08" (at 57.4123 252.0409 0)
+    (property "Value" "74LVC08" (at 57.4123 252.0409 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Footprint" "Package_SO:TSSOP-14_4.4x5mm_P0.65mm" (at 57.404 247.142 0)

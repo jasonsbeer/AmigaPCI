@@ -6,7 +6,7 @@
 
   (title_block
     (title "AMIGA PCI")
-    (date "2024-02-14")
+    (date "2024-02-16")
     (rev "2.0")
   )
 
@@ -4743,7 +4743,7 @@
     (property "Reference" "R223" (at 234.188 233.2736 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "4k7" (at 234.188 235.585 0)
+    (property "Value" "10k" (at 234.188 235.585 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Footprint" "Resistor_SMD:R_0603_1608Metric" (at 230.632 234.442 90)
@@ -5850,7 +5850,7 @@
     (property "Reference" "R229" (at 146.812 233.5276 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "4k7" (at 146.812 235.839 0)
+    (property "Value" "10k" (at 146.812 235.839 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Footprint" "Resistor_SMD:R_0603_1608Metric" (at 143.256 234.696 90)
