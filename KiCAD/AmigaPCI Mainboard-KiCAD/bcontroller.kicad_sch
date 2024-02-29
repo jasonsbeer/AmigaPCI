@@ -6,7 +6,7 @@
 
   (title_block
     (title "AMIGA PCI")
-    (date "2024-02-16")
+    (date "2024-02-28")
     (rev "2.0")
   )
 
@@ -1207,7 +1207,6 @@
     (uuid e901c9c9-26f2-40c6-9394-1c30bbc3727f)
   )
 
-  (no_connect (at 78.613 81.28) (uuid 0069293e-bcaf-4078-98da-678ca25337b0))
   (no_connect (at 147.066 215.9) (uuid 080901b5-c9fc-46e7-8fac-fcec3373b56d))
   (no_connect (at 78.486 96.52) (uuid 0afbf30f-2224-4e07-a767-687bb930d138))
   (no_connect (at 147.066 210.82) (uuid 1ba72c1f-fd48-4f81-9e02-fb32a264d162))
@@ -3482,6 +3481,13 @@
       (effects (font (size 1.27 1.27)) (justify right))
     )
   )
+  (global_label "LVCLK7" (shape input) (at 78.613 81.28 180) (fields_autoplaced)
+    (effects (font (size 1.27 1.27)) (justify right))
+    (uuid 7d9a07c4-5a5f-46e9-9c4b-554c179a272d)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 68.7335 81.28 0)
+      (effects (font (size 1.27 1.27)) (justify right))
+    )
+  )
   (global_label "BANK0" (shape output) (at 78.486 132.08 180) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify right))
     (uuid 8940fa25-bfb7-42a8-b6a2-4e777930e322)
@@ -3510,10 +3516,10 @@
       (effects (font (size 1.27 1.27)) (justify left))
     )
   )
-  (global_label "RTCR_W" (shape output) (at 146.812 187.96 0) (fields_autoplaced)
+  (global_label "_RTCEN" (shape output) (at 146.812 187.96 0) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify left))
     (uuid a7dadc47-389d-4839-96c1-4f4f7ad9690f)
-    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 156.9938 187.96 0)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 156.7519 187.96 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
   )

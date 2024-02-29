@@ -136,7 +136,7 @@
       },
       "teardrop_options": [
         {
-          "td_allow_use_two_tracks": true,
+          "td_allow_use_two_tracks": false,
           "td_curve_segcount": 5,
           "td_on_pad_in_zone": false,
           "td_onpadsmd": true,
@@ -2641,6 +2641,14 @@
       {
         "netclass": "PCI",
         "pattern": "_REQ0"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_RTCEN"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "LVCLK7"
       }
     ]
   },

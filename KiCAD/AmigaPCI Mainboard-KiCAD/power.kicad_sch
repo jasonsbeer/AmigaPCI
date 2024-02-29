@@ -6,7 +6,7 @@
 
   (title_block
     (title "AMIGA PCI")
-    (date "2024-02-16")
+    (date "2024-02-28")
     (rev "2.0")
   )
 
@@ -8858,6 +8858,31 @@
     )
   )
 
+  (symbol (lib_id "power:+3V3") (at 230.251 150.114 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid 87a8c229-9832-475c-bbde-e02141f2ae8e)
+    (property "Reference" "#PWR0133" (at 230.251 153.924 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Value" "+3V3" (at 230.251 145.288 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "" (at 230.251 150.114 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "" (at 230.251 150.114 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid 680fca5d-6c0d-4866-b977-3c072a45e172))
+    (instances
+      (project "AmigaPCI Mainboard"
+        (path "/72453515-27fe-4336-91f3-e3c8054f7767/4cb777ef-2899-49f4-b38f-a0c07d84fa7d"
+          (reference "#PWR0133") (unit 1)
+        )
+      )
+    )
+  )
+
   (symbol (lib_id "Regulator_Linear:LM1117DT-1.8") (at 214.884 95.758 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 89814e3f-ae84-4db5-b6a9-c8f07b3ec382)
@@ -9376,31 +9401,6 @@
       (project "AmigaPCI Mainboard"
         (path "/72453515-27fe-4336-91f3-e3c8054f7767/4cb777ef-2899-49f4-b38f-a0c07d84fa7d"
           (reference "C602") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "power:+5V") (at 230.251 150.114 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid a9e1a259-67df-46bd-9685-88309e140840)
-    (property "Reference" "#PWR0133" (at 230.251 153.924 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "+5V" (at 230.251 146.6121 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "" (at 230.251 150.114 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 230.251 150.114 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 543bdb94-8cf3-4e97-8194-4dd8266f38e9))
-    (instances
-      (project "AmigaPCI Mainboard"
-        (path "/72453515-27fe-4336-91f3-e3c8054f7767/4cb777ef-2899-49f4-b38f-a0c07d84fa7d"
-          (reference "#PWR0133") (unit 1)
         )
       )
     )

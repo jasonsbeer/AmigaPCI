@@ -8,7 +8,25 @@
 <!-- Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.    -->
 
 <messages>
-<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;/home/jason/Documents/AmigaPCI Logic Work/U409_AmigaPCI/U409_Main.vhd&quot; into library work</arg>
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;/home/jason/Documents/GitHub/AmigaPCI/Logic/U409_AmigaPCI/U409_AddressDecode.vhd&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;/home/jason/Documents/GitHub/AmigaPCI/Logic/U409_AmigaPCI/U409_CIA.vhd&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;/home/jason/Documents/GitHub/AmigaPCI/Logic/U409_AmigaPCI/U409_IDE_REGISTERS.vhd&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;/home/jason/Documents/GitHub/AmigaPCI/Logic/U409_AmigaPCI/U409_Main.vhd&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;/home/jason/Documents/GitHub/AmigaPCI/Logic/U409_AmigaPCI/U409_ONBOARD_AUTOCONFIG.vhd&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;/home/jason/Documents/GitHub/AmigaPCI/Logic/U409_AmigaPCI/U409_RAM_CONTROLLER.vhd&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;/home/jason/Documents/GitHub/AmigaPCI/Logic/U409_AmigaPCI/U409_RESET.vhd&quot; into library work</arg>
 </msg>
 
 </messages>
