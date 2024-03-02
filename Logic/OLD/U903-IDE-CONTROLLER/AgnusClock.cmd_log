@@ -1,1 +1,0 @@
-vhdtdtfi -prj U903-IDE-CONTROLLER -o "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U903-IDE-CONTROLLER/AgnusClock.vhi" -module AgnusClock -template /mnt/work/ISE/14.7/ISE_DS/ISE//data/vhdlinst.tft -deleteonerror -lib work AgnusClock.vhd 

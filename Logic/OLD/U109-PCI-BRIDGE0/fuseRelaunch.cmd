@@ -1,1 +1,0 @@
--intstyle "ise" -incremental -o "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U109-PCI-BRIDGE0/PCI_CYCLE_isim_beh.exe" -prj "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U109-PCI-BRIDGE0/PCI_CYCLE_beh.prj" "work.PCI_CYCLE" 

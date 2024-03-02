@@ -1,1 +1,0 @@
-vhdtdtfi -prj AAC -o "/home/jason/Documents/GitHub/AmigaPCI/Logic/PCI Bridge/AAC/ARBITER.vhi" -module ARBITER -template /mnt/work/ISERUN/14.7/ISE_DS/ISE//data/vhdlinst.tft -deleteonerror -lib work ARBITER.vhd 

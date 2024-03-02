@@ -1,1 +1,0 @@
--intstyle "ise" -incremental -o "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U102/ChipRAMController_isim_beh.exe" -prj "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U102/ChipRAMController_beh.prj" "work.ChipRAMController" 

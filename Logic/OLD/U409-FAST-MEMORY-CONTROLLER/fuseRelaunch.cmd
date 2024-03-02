@@ -1,1 +1,0 @@
--intstyle "ise" -incremental -o "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U409-FAST-MEMORY-CONTROLLER/CIACycle_isim_beh.exe" -prj "/mnt/work/amiga/Service/Replacement Boards/AmigaPCI/Logic/U409-FAST-MEMORY-CONTROLLER/CIACycle_beh.prj" "work.CIACycle" 

@@ -1,1 +1,0 @@
--intstyle "ise" -incremental -o "/home/jason/Documents/GitHub/AmigaPCI/Logic/PCI Bridge/AAC/ARBITER_isim_beh.exe" -prj "/home/jason/Documents/GitHub/AmigaPCI/Logic/PCI Bridge/AAC/ARBITER_beh.prj" "work.ARBITER" 
