@@ -1,3 +1,4 @@
+set_io   -pullup yes   A[1]  136
 set_io   -pullup yes   A[2]  11
 set_io   -pullup yes   A[3]  15
 set_io   -pullup yes   A[4]  18  
