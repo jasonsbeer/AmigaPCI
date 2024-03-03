@@ -14,7 +14,8 @@ reg nTIP = 1;
 reg TT0 = 1;
 reg TT1 = 1;
 reg RnW = 1;
-reg nRESET = 0;	
+reg nRESET = 0;
+reg EMEN = 0;
 
 //wire outputs
 wire [12:0] EMA;
@@ -29,7 +30,7 @@ wire nEM1CS;
 wire RAM_TA;
 
 //Simulation time : 10000 * 1ns = 10us
-localparam DURATION = 10000;
+localparam DURATION = 50000;
 
 //Generate Clock(s)
 //7.16MHz = 139ns
@@ -42,8 +43,15 @@ always #6.25 CLK80 = ~CLK80;
 
 //THE TEST
 initial begin
-	#100 nRESET = 1;    
-    
+	#100 nRESET = 1;
+    #412.5 nTIP = 0; RnW = 0; EMEN = 1; A = 30'b000000000000000000000000000011;
+    #100 nTIP = 1; RnW = 1;
+    #48 nTIP = 0;
+    #100 nTIP = 1;
+    #48 nTIP = 0; RnW = 0; TT1 = 0; ; EMEN = 1; A = 30'b000000000000000000000000001100;
+    #254 nTIP = 1; RnW = 1;
+    #48 nTIP = 0;
+    #254 nTIP = 1;    
 end
 
 //Test Parameters
@@ -70,6 +78,7 @@ U409_RAM_CONTROLLER dut
     .TT1 (TT1),
     .RnW (RnW),
     .nRESET (nRESET),
+    .EMEN (EMEN),
 
     .EMA (EMA),
     .BANK0 (BANK0),
