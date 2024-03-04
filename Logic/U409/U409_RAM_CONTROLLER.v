@@ -172,7 +172,7 @@ always @(negedge CLK80, negedge nRESET) begin
                     TA_OUT <= 0;
                     EMCLK_OUT <= 1;
 
-                    if (EMEN && !nTIP & !CLK40) begin
+                    if (EMEN && !nTIP && !CLK40) begin
                         BANK0 <= A[23];
                         BANK1 <= A[24];
                         SDRAM_CS0 <= ~A[25]; 

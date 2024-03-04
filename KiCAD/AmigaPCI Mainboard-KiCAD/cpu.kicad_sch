@@ -6,7 +6,7 @@
 
   (title_block
     (title "AMIGA PCI")
-    (date "2024-03-02")
+    (date "2024-03-03")
     (rev "2.0")
   )
 
@@ -2466,6 +2466,7 @@
     (uuid fe01069c-f71a-4a97-b345-94bd6a1d7d1a)
   )
 
+  (no_connect (at 65.913 98.552) (uuid 00bff367-a676-48ab-a9d3-fe2c6408464a))
   (no_connect (at 300.99 210.439) (uuid 05395923-508f-4d63-95d8-a0333f078b34))
   (no_connect (at 248.412 129.159) (uuid 07849e25-bbd6-404c-88a9-a94088482b69))
   (no_connect (at 66.04 75.692) (uuid 087d424a-20ef-4c29-99e1-ec1e02206a20))
@@ -7138,13 +7139,6 @@
     (effects (font (size 1.27 1.27)) (justify right))
     (uuid 141a4ddc-ad19-4d42-8716-e53127244c70)
     (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 237.617 157.099 0)
-      (effects (font (size 1.27 1.27)) (justify right))
-    )
-  )
-  (global_label "CLKCIA" (shape output) (at 65.913 98.552 180) (fields_autoplaced)
-    (effects (font (size 1.27 1.27)) (justify right))
-    (uuid 1686a23c-f4b3-4514-bb99-7865a3e22973)
-    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 56.4757 98.552 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
   )
