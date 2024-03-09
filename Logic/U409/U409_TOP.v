@@ -31,7 +31,7 @@
 --
 -- Revision History:
 --     14-JAN-2023 : Initial Engineering Release
---     27-FEB-2024 : FPGA Rewrite
+--     09-MAR-2024 : FPGA Rewrite
 ----------------------------------------------------------------------------------
 
 TO BUILD WITH APIO: apio build --fpga iCE40-HX4K-TQ144
@@ -116,10 +116,12 @@ reg ROM_TA;
 //IN THE EVENT THE CYCLE LOGIC IS NOT PRESENT IN THIS FPGA, WE ASSERT _TA AT 
 //THE APPROPRIATE TIME TO END THAT CYCLE.
 
-assign TA = AC_TAm || RAM_TAm || CIA_TAm || REG_TAm || RTC_TA || ROM_TA;
-assign TA_SPACE = AUTOCONFIG_SPACEm || CIA_SPACEm || REGISTER_SPACEm || RAM_SPACEm || !nRTCEN || !nROMEN;
+assign TA = AC_TAm || RAM_TAm || CIA_TAm || RTC_TA || ROM_TA;
+assign TA_SPACE = AUTOCONFIG_SPACEm || CIA_SPACEm || RAM_SPACEm || !nRTCEN || !nROMEN;
 assign nTA = TA ? 1'b0 :  TA_SPACE || TA_HOLD ? 1'b1 : 1'bZ;
 
+//TA_HOLD FORCES _TA HIGH AFTER ASSERTION TO PREVENT IT INADVERTENTLY
+//ENDING THE NEXT CYCLE PREMATURELY.
 always @(posedge CLK40, negedge nRESET) begin
     if (!nRESET) begin
         TA_CYCLE <= 0;
@@ -194,6 +196,7 @@ U409_ADDRESS_DECODE U409_ADDRESS_DECODE
     .CONFIGED (CONFIGED),
     .CIA_ENABLE (CIA_ENABLEm),
     .RAM_BASE_ADDRESS (RAM_BASE_ADDRESSm),
+    .nTIP (nTIP),
     .nREGEN (nREGEN),
     .nRAMEN (nRAMEN),
     .nROMEN (nROMEN),
@@ -204,9 +207,7 @@ U409_ADDRESS_DECODE U409_ADDRESS_DECODE
     .nBEN (nBEN),
     .nIDEEN (nIDEEN),
     .CIA_SPACE (CIA_SPACEm),
-    .RAM_SPACE (RAM_SPACEm),
-    .REGISTER_SPACE (REGISTER_SPACEm),
-	.REG_TA (REG_TAm)
+    .RAM_SPACE (RAM_SPACEm)
 );
 
 // AUTOCONFIG TOP

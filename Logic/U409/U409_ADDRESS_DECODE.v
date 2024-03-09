@@ -1,5 +1,5 @@
 /*
-
+----------------------------------------------------------------------------------
 This work is shared under the Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) License
 https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
 	
@@ -31,8 +31,8 @@ from doing anything the license permits.
 
  Revision History:
      14-JAN-2024 : Initial Engineering Release
-     28-FEB-2024 : Rewrite for iCE FPGA
-
+     09-MAR-2024 : FPGA Rewrite
+----------------------------------------------------------------------------------
 */
 
 module U409_ADDRESS_DECODE 
@@ -49,7 +49,7 @@ module U409_ADDRESS_DECODE
     input CONFIGED,
     input CIA_ENABLE,
     input [3:0]RAM_BASE_ADDRESS,
-	//input nTS,
+	input nTIP,
     
     output nREGEN,
     output nRAMEN,   
@@ -61,10 +61,7 @@ module U409_ADDRESS_DECODE
     output nBEN,
     output nIDEEN,
     output CIA_SPACE,
-    output RAM_SPACE,
-	output reg REGISTER_SPACE,
-	output reg REG_TA
-	//output reg ROM_TA
+    output RAM_SPACE
 
 );
 
@@ -89,33 +86,7 @@ assign nCIACS1 = ~(CIA_SPACE && CIA_ENABLE && A[13]);
 
 //ROM IS ENABLED AT THE RESET VECTOR $0 WHEN OVL IS ASSERTED (HIGH) AND AT $F8 0000 - $FF FFFF WHEN OVL IS NEGATED (LOW).
 //BECAUSE OUR IDE AUTOBOOT DRIVER ALSO RESIDES ON THE ROM, IT IS ENABLED WHEN WE ENTER THE IDE SPACE UNTIL THE FIRST WRITE TO THE IDE SPACE.
-assign nROMEN = ~(nRESET && !Z3_SPACE && ((OVL && A[23:21] == 3'b000) || (!OVL && A[23:19] == 5'b11111) || (IDE_ACCESS && !IDE_ENABLE)));
-
-//ROM TRANSFER ACK IS HELD OFF FOR 100ns TO ALLOW THE ROM TIME TO PLACE DATA ON THE BUS.
-/*reg [2:0] ROM_COUNTER;
-reg TS;
-
-always @(negedge CLK40, negedge nRESET) begin
-	if (!nRESET) begin
-		ROM_TA <= 0;
-		ROM_COUNTER <= 3'b000;
-	end else if (!CLK40) begin
-		case (ROM_COUNTER)
-			3'h0: if (!nROMEN && TS) begin ROM_COUNTER <= 3'b001; end				
-			3'h3: begin ROM_TA <= 1; ROM_COUNTER <= 3'b100; end
-			3'h4: begin ROM_COUNTER <= 3'b000; ROM_TA <= 0; end
-			default : begin ROM_COUNTER <= ROM_COUNTER + 1'b1; end
-		endcase
-	end
-end
-
-always @(*) begin
-	if (!nRESET) begin
-		TS <= 0;
-	end else if (CLK40) begin
-		TS <= ~nTS;
-	end
-end*/
+assign nROMEN = ~(nRESET && !Z3_SPACE && ((OVL && A[23:21] == 3'b000) || (!OVL && A[23:20] == 4'b1111) || (IDE_ACCESS && !IDE_ENABLE)));
 
 ////////////////
 // IDE ENABLE //
@@ -123,70 +94,81 @@ end*/
 
 assign nIDEEN = ~(IDE_ACCESS && IDE_ENABLE && !Z3_SPACE);
 
-/////////////////////////
-// CHIP SET RAM ENABLE //
-/////////////////////////
+//////////////////
+// AGNUS SPACES //
+//////////////////
 
-//WHEN OVL IS NEGATED (LOW) THE CHIP RAM BECOMES ACCESSABLE AT $00 0000 - $01 FFFF.
-assign nRAMEN = ~(!Z3_SPACE && !OVL && A[23:21] == 3'b000);
-
-////////////////////////////
-// CHIPSET REGISTER SPACE //
-////////////////////////////
-
-/*THE CHIP SET REGISTERS RESIDE AT $DF 0000 - $DF FFFF
-IN ORDER TO MIMIC THE MC68000 CYCLE, WHICH AGNUS EXPECTS, WE CRATE A SIMPLE 
-MC68000 COMPATABLE CYCLE HERE.
-
-HOW THIS WORKS: 
-1) _REGEN IS ASSERTED DURING MC68000 STATE 2, AS EARLY AS POSSIBLE.
-2) _AS IS ASSERTED IMMEDIATELY BY U712 IN RESPONSE TO ASSERTION OF _REGEN.
-3) _LDS AND _UDS ARE ASSERTED BY U712 ON THE APPROPRIATE MC68000 CLOCK EDGE.*/
+//AGNUS CONTROLS ACCESS TO CHIPSET REGISTERS AND CHIPSET RAM.
+//CYCLES IN THE AGNUS ADDRESS SPACES FOLLOW THE MC68000 TIMINGS
+//FOR DATA TRANSFER CYCLES. TO ACHIEVE THIS, WE ASSERT
+//_RAMEN AND _REGEN DURING STATE 2 OF THE MC68000 CYCLE
+//BY WAITING FOR A RISING EDGE OF THE 7MHz CLOCK.
 
 reg nREGEN_OUT;
+reg nRAMEN_OUT;
 reg [1:0]EDGE7;
 reg [1:0]EDGE_COUNT;
-reg REGEN_SPACE;
+wire AGNUS_SPACE;
 
+assign AGNUS_SPACE = !Z3_SPACE && (A[23:16] == 8'hDF || (!OVL && A[23:21] == 3'b000));
 assign nREGEN = nREGEN_OUT;
+assign nRAMEN = nRAMEN_OUT;
 
 //7MHz CLOCK EDGE DETECTION
 always @(posedge CLK40 or negedge nRESET) begin
 	if (!nRESET) begin
 		EDGE7 <= 2'b11;
 	end else begin
-		EDGE7 <= EDGE7[0] & CLK7;
+		EDGE7 <= {EDGE7[0], CLK7};
+	end
+end
+
+//AGNUS SPACE ASSERTION
+always @(negedge CLK40, negedge nRESET) begin
+	if (!nRESET) begin
+		nREGEN_OUT <= 1;
+		nRAMEN_OUT <= 1;
+	end else begin
+		if (!nTIP && AGNUS_SPACE) begin
+			if (EDGE7 == 2'b01) begin
+				if (nREGEN_OUT) begin nREGEN_OUT <= ~(A[23:16] == 8'hDF); end
+				if (nRAMEN_OUT) begin nRAMEN_OUT <= ~(A[23:21] == 3'b000); end 
+			end
+		end else begin
+			nREGEN_OUT <= 1;
+			nRAMEN_OUT <= 1;
+		end		
 	end
 end
 
 //MC68000 COMPATABLE CYCLE
-always @(negedge CLK40, negedge nRESET) begin
+/*always @(negedge CLK40, negedge nRESET) begin
 	if (!nRESET) begin
 		nREGEN_OUT <= 1;
 		REGISTER_SPACE <= 0;
 		REG_TA <= 0;
 		EDGE_COUNT <= 2'b00;
 	end else begin
-		if (!REGEN_SPACE) begin
-			REG_TA <= 0;			
-			if (EDGE7 == 2'b01) begin
+		if (!REGISTER_SPACE && !nTIP) begin
+			if (REG_TA) begin REG_TA <= 0; end;
+			if (EDGE7 == 2'b01 && nREGEN_OUT) begin
 				nREGEN_OUT <= ~(!Z3_SPACE && A[23:16] == 8'hDF);
-				REGISTER_SPACE <= !Z3_SPACE && A[23:16] == 8'hDF;
-			end
-		end else begin
-			//COUNT OUT THE MC68000 FALLING CLOCK EDGES.
-			//WE WANT TO END THE CYCLE AS WE HIT THE 
-			//FALLING EDGE OF STATE 6.
-			if (EDGE7 == 2'b10) begin EDGE_COUNT <= EDGE_COUNT + 1; end
-			if (EDGE_COUNT == 2'h2) begin 
-				REG_TA <= 1;
-				nREGEN_OUT <= 1;
-				REGISTER_SPACE <= 0;
-				EDGE_COUNT <= 2'b00;
+				REGISTER_SPACE <= !Z3_SPACE && A[23:16] == 8'hDF;			
+			end else if (REGISTER_SPACE) begin
+				//COUNT OUT THE MC68000 FALLING CLOCK EDGES.
+				//WE WANT TO END THE CYCLE AS WE HIT THE 
+				//FALLING EDGE OF STATE 6.
+				if (EDGE7 == 2'b10) begin EDGE_COUNT <= EDGE_COUNT + 1; end
+				if (EDGE_COUNT == 2'b10) begin 
+					REG_TA <= 1;
+					nREGEN_OUT <= 1;
+					REGISTER_SPACE <= 0;
+					EDGE_COUNT <= 2'b00;
+				end
 			end
 		end
 	end
-end
+end*/
 
 ////////////////////////////
 // REAL TIME CLOCK ENABLE //

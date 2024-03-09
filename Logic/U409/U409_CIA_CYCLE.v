@@ -31,6 +31,7 @@
 --
 -- Revision History:
 --     05-JAN-2023 : Initial Engineering Release
+--     09-MAR-2024 : FPGA Rewrite
 ----------------------------------------------------------------------------------
 */
 

@@ -31,7 +31,7 @@
 --
 -- Revision History:
 --     05-JAN-2023 : Initial Engineering Release.
---     29-FEB-2024 : Rewrite for iCE FPGA.
+--     09-MAR-2024 : FPGA Rewrite
 ----------------------------------------------------------------------------------
 */
 
