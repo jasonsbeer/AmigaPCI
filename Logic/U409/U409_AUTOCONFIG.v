@@ -54,7 +54,7 @@ module U409_AUTOCONFIG
     output reg [2:0] PCI_BRIDGE_BASE_ADDRESS,	 
     output wire IDE_ACCESS,
     output reg IDE_ENABLE,
-    output reg nAC_TA
+    output reg AC_TA
 
 );
 
@@ -100,6 +100,7 @@ assign CONFIGED = RAM_CONFIGURED && (IDE_CONFIGURED || !AUTOBOOT) && BRIDGE_CONF
 
 wire [7:0] AC_ADDRESS;
 assign AC_ADDRESS = {A[7:1], 1'b0};
+reg AUTOCONFIG_CYCLE;
 
 always @(posedge CLK40 or negedge nRESET) begin
 
@@ -111,50 +112,55 @@ always @(posedge CLK40 or negedge nRESET) begin
         RAM_CONFIGURED <= 0;
         IDE_CONFIGURED <= 0;
         BRIDGE_CONFIGURED <= 0;
-        DOUT <= 4'h0;        
+        DOUT <= 4'h0;       
+        AUTOCONFIG_CYCLE <= 0; 
 
-    end else if (AUTOCONFIG_SPACE && !CONFIGED) begin
+    end else if (AUTOCONFIG_SPACE) begin
 
-        if (RnW && !nTS) begin
+        AUTOCONFIG_CYCLE <= ~nTS;
 
-            //REGISTER READ CYCLE            
+        if (!CONFIGED) begin
 
-            case (AC_ADDRESS)
+            if (RnW && !nTS) begin
 
-                8'h0 : if (!BRIDGE_CONFIGURED) begin DOUT <= 4'b1000; end else if (!RAM_CONFIGURED) begin DOUT <= 4'b1010; end else DOUT <= {4'b100, AUTOBOOT};
-                8'h2 : if (!BRIDGE_CONFIGURED) begin DOUT <= 4'b0101; end else if (!RAM_CONFIGURED) begin DOUT <= 4'b0100; end else DOUT <= 4'b0010;
-                8'h6 : if (!BRIDGE_CONFIGURED) begin DOUT <= ~4'b0011; end else if (!RAM_CONFIGURED) begin DOUT <= ~4'b0100; end else DOUT <= ~4'b0101;
-                8'h8 : if (!BRIDGE_CONFIGURED) begin DOUT <= ~4'b0011; end else if (!RAM_CONFIGURED) begin DOUT <= ~4'b1110; end else DOUT <= ~4'b0000;
-                8'hA : if (!BRIDGE_CONFIGURED) begin DOUT <= ~4'b0000; end else if (!RAM_CONFIGURED) begin DOUT <= ~4'b0001; end else DOUT <= ~4'b0000;
-                8'h12 : if (!BRIDGE_CONFIGURED) begin DOUT <= ~4'b0010; end else if (!RAM_CONFIGURED) begin DOUT <= ~4'b0010; end else DOUT <= ~4'b0010;
-                8'h14 : if (!BRIDGE_CONFIGURED) begin DOUT <= ~4'b0101; end else if (!RAM_CONFIGURED) begin DOUT <= ~4'b0101; end else DOUT <= ~4'b0101;
-                8'h16 : if (!BRIDGE_CONFIGURED) begin DOUT <= ~4'b1000; end else if (!RAM_CONFIGURED) begin DOUT <= ~4'b1000; end else DOUT <= ~4'b1000;
-                //8'h28 : if (!BRIDGE_CONFIGURED) begin DOUT <= ~4'b0000; end else if (!RAM_CONFIGURED) begin DOUT <= ~4'b0000; end else DOUT <= ~4'b1000;
-                //8'h2E : if (!BRIDGE_CONFIGURED) begin DOUT <= ~4'b0000; end else if (!RAM_CONFIGURED) begin DOUT <= ~4'b0000; end else DOUT <= ~4'b0100;
-                default : DOUT <= ~4'h0;
+                //REGISTER READ CYCLE            
 
-            endcase
-        
-        end else if (!RnW && nTS && !nTIP) begin
-        
-            //REGISTER WRITE CYCLE
-            //DATA IS NOT VALID UNTIL THE RISING EDGE OF CLOCK 2 OF A WRITE CYCLE.
-            //WAITING FOR _TS TO NEGATE WHILE _TIP IS ASSERTED GETS US TO THE SECOND CLOCK.
+                case (AC_ADDRESS)
 
-            if (AC_ADDRESS == 8'h44 && RAM_CONFIGURED && BRIDGE_CONFIGURED) begin
-                IDE_BASE_ADDRESS <= DIN[3:1];                
-            end else if (AC_ADDRESS == 8'h48) begin
-                if (!BRIDGE_CONFIGURED) begin
-                    PCI_BRIDGE_BASE_ADDRESS <= DIN[3:1];
-                    BRIDGE_CONFIGURED <= 1;
-                end else if (!RAM_CONFIGURED) begin
-                    RAM_BASE_ADDRESS <= DIN[3:0];
-                    RAM_CONFIGURED <= 1;
-                end else begin
-                    IDE_CONFIGURED <= 1;
-                end 
-            end
-        end
+                    8'h0 : if (!BRIDGE_CONFIGURED) begin DOUT <= 4'b1000; end else if (!RAM_CONFIGURED) begin DOUT <= 4'b1010; end else DOUT <= {4'b100, AUTOBOOT};
+                    8'h2 : if (!BRIDGE_CONFIGURED) begin DOUT <= 4'b0101; end else if (!RAM_CONFIGURED) begin DOUT <= 4'b0100; end else DOUT <= 4'b0010;
+                    8'h6 : if (!BRIDGE_CONFIGURED) begin DOUT <= ~4'b0011; end else if (!RAM_CONFIGURED) begin DOUT <= ~4'b0100; end else DOUT <= ~4'b0101;
+                    8'h8 : if (!BRIDGE_CONFIGURED) begin DOUT <= ~4'b0011; end else if (!RAM_CONFIGURED) begin DOUT <= ~4'b1110; end else DOUT <= ~4'b0000;
+                    8'hA : if (!BRIDGE_CONFIGURED) begin DOUT <= ~4'b0000; end else if (!RAM_CONFIGURED) begin DOUT <= ~4'b0001; end else DOUT <= ~4'b0000;
+                    8'h12 : if (!BRIDGE_CONFIGURED) begin DOUT <= ~4'b0010; end else if (!RAM_CONFIGURED) begin DOUT <= ~4'b0010; end else DOUT <= ~4'b0010;
+                    8'h14 : if (!BRIDGE_CONFIGURED) begin DOUT <= ~4'b0101; end else if (!RAM_CONFIGURED) begin DOUT <= ~4'b0101; end else DOUT <= ~4'b0101;
+                    8'h16 : if (!BRIDGE_CONFIGURED) begin DOUT <= ~4'b1000; end else if (!RAM_CONFIGURED) begin DOUT <= ~4'b1000; end else DOUT <= ~4'b1000;
+                    //8'h28 : if (!BRIDGE_CONFIGURED) begin DOUT <= ~4'b0000; end else if (!RAM_CONFIGURED) begin DOUT <= ~4'b0000; end else DOUT <= ~4'b1000;
+                    //8'h2E : if (!BRIDGE_CONFIGURED) begin DOUT <= ~4'b0000; end else if (!RAM_CONFIGURED) begin DOUT <= ~4'b0000; end else DOUT <= ~4'b0100;
+                    default : DOUT <= ~4'h0;
+
+                endcase
+            
+            end else if (nTS) begin
+            
+                //REGISTER WRITE CYCLE  
+                if (AC_ADDRESS == 8'h44 && RAM_CONFIGURED && BRIDGE_CONFIGURED) begin
+                    IDE_BASE_ADDRESS <= DIN[3:1];                
+                end else if (AC_ADDRESS == 8'h48) begin
+                    if (!BRIDGE_CONFIGURED) begin
+                        PCI_BRIDGE_BASE_ADDRESS <= DIN[3:1];
+                        BRIDGE_CONFIGURED <= 1;
+                    end else if (!RAM_CONFIGURED) begin
+                        RAM_BASE_ADDRESS <= DIN[3:0];
+                        RAM_CONFIGURED <= 1;
+                    end else begin
+                        IDE_CONFIGURED <= 1;
+                    end 
+                end
+            end            
+        end 
+    end else begin
+        AUTOCONFIG_CYCLE <= 0;
     end
 end
 
@@ -162,13 +168,15 @@ end
 // AUTOCONFIG ACK //
 ////////////////////
 
-always @(negedge CLK40 or negedge nRESET) begin
+always @(negedge CLK40, negedge nRESET) begin
     if (!nRESET) begin
-        nAC_TA <= 1;
-    end else if (AUTOCONFIG_SPACE && nTS && !nTIP) begin
-        nAC_TA <= ~nAC_TA;
-    end else begin
-        nAC_TA <= 1;
+        AC_TA <= 0;
+    end else if (!CLK40) begin
+        if (AUTOCONFIG_CYCLE && !AC_TA) begin
+            AC_TA <= 1;
+        end else begin
+            AC_TA <= 0;
+        end
     end
 end
 

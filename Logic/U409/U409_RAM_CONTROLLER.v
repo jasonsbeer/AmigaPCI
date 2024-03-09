@@ -46,7 +46,7 @@ module U409_RAM_CONTROLLER
     input TT1,
     input RnW,
     input nRESET,	
-    input EMEN,
+    input RAM_SPACE,
 
     output wire [12:0] EMA,
     output reg BANK0,
@@ -165,14 +165,14 @@ always @(negedge CLK80, negedge nRESET) begin
                 4'h4 : begin RAM_COUNTER <= 4'h0; REFRESH_CYCLE <= 0; end
                 default : SDRAMCOM <= ramstate_NOP;
             endcase
-        end else if ((EMEN && !nTIP) || MEMORY_CYCLE) begin
+        end else if ((RAM_SPACE && !nTIP) || MEMORY_CYCLE) begin
             case (RAM_COUNTER)
 
                 4'h0 : begin 
                     TA_OUT <= 0;
                     EMCLK_OUT <= 1;
 
-                    if (EMEN && !nTIP && !CLK40) begin
+                    if (RAM_SPACE && !nTIP && !CLK40) begin
                         BANK0 <= A[23];
                         BANK1 <= A[24];
                         SDRAM_CS0 <= ~A[25]; 
