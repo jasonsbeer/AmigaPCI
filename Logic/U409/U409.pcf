@@ -51,6 +51,8 @@ set_io   EMA[12] 32
 
 set_io   CLK80   93
 set_io   CLK40   94
+set_io   CLK7    49
+set_io   PHI2    135
   
 set_io   nREGEN      143
 set_io   nTCI        139 
