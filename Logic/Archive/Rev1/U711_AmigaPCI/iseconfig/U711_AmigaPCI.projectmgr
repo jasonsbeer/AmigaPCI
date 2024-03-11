@@ -9,13 +9,13 @@
          <ClosedNodesVersion>2</ClosedNodesVersion>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem>U711_MAIN - Behavioral (/home/jason/Documents/AmigaPCI Logic Work/U711_AmigaPCI/U711_MAIN.vhd)</SelectedItem>
+         <SelectedItem>U711_MAIN - Behavioral (/home/jason/Documents/GitHub/AmigaPCI/Logic/Archive/Rev1/U711_AmigaPCI/U711_MAIN.vhd)</SelectedItem>
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
       <ViewHeaderState orientation="horizontal" >000000ff00000000000000010000000100000000000000000000000000000000020200000001000000010000006400000267000000020000000000000000000000000200000064ffffffff000000810000000300000002000002670000000100000003000000000000000100000003</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >true</UserChangedColumnWidths>
-      <CurrentItem>U711_MAIN - Behavioral (/home/jason/Documents/AmigaPCI Logic Work/U711_AmigaPCI/U711_MAIN.vhd)</CurrentItem>
+      <CurrentItem>U711_MAIN - Behavioral (/home/jason/Documents/GitHub/AmigaPCI/Logic/Archive/Rev1/U711_AmigaPCI/U711_MAIN.vhd)</CurrentItem>
    </ItemView>
    <ItemView engineview="SynthesisOnly" sourcetype="" guiview="Process" >
       <ClosedNodes>
@@ -120,12 +120,12 @@
          <ClosedNode>User Constraints</ClosedNode>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem/>
+         <SelectedItem></SelectedItem>
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
       <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000000000000000001c6000000010000000100000000000000000000000064ffffffff000000810000000000000001000001c60000000100000000</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
-      <CurrentItem/>
+      <CurrentItem></CurrentItem>
    </ItemView>
 </Project>
