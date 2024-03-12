@@ -38,6 +38,8 @@ module U711_TOP (
 
     input CLK7,
     input CLK40, 
+    input C1,
+    input C3,
     input nRESET,
     input nREGEN,
     input RnW,
@@ -110,6 +112,8 @@ U711_CHIPSET_REGISTER U711_CHIPSET_REGISTER
 (
     .CLK7 (CLK7),
     .CLK40 (CLK40), 
+    .C1 (C1),
+    .C3 (C3),
     .nRESET (nRESET),
     .nREGEN (nREGEN),
     .RnW (RnW),

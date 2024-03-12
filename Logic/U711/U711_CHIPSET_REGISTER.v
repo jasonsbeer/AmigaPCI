@@ -37,6 +37,8 @@
 module U711_CHIPSET_REGISTER (
     input CLK7,
     input CLK40, 
+    input C1,
+    input C3,
     input nRESET,
     input nREGEN,
     input RnW,
@@ -69,7 +71,8 @@ end
 //THE CHIPSET REGISTER CYCLE CANNOT PROCEED UNTIL _DBR IS NEGATED,
 //INDICATING THERE IS NOT A CHIPSET DMA CYCLE IN PROGRESS.
 //IN THE EVENT _DBR IS ASSERTED, WE WAIT AT STATE 4 UNTIL
-//_DBR IS NEGATED. THIS IS WHEN _DTACK WOULD NORMALLY BE ASSERTED.
+//_DBR IS NEGATED AND C1 AND C3 ARE HIGH. THIS IS WHEN 
+//_DTACK WOULD NORMALLY BE ASSERTED.
 
 always @(negedge CLK40, negedge nRESET) begin
     if (!nRESET) begin
@@ -94,10 +97,12 @@ always @(negedge CLK40, negedge nRESET) begin
                 if (EDGE7 == 2'b01) begin EDGE_COUNT <= 3'b010; end
 
             3'b010: //STATE 4
-                if (EDGE7 == 2'b10 && nDBR) begin 
+                begin
                     LDS_EN <= 1;
                     UDS_EN <= 1;
-                    EDGE_COUNT <= 3'b011;
+                    if (EDGE7 == 2'b01 && nDBR && C1 && C3) begin                     
+                        EDGE_COUNT <= 3'b011;
+                    end
                 end
 
             3'b011:  //STATE 5

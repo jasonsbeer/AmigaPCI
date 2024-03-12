@@ -2649,6 +2649,14 @@
       {
         "netclass": "Narrow",
         "pattern": "LVCLK7"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "LVC3"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "LVC1"
       }
     ]
   },

@@ -37,7 +37,6 @@ from doing anything the license permits.
 
 module U409_ADDRESS_DECODE 
 (
-
 	input CLK7,
 	input CLK40,	
 	input nRESET,
@@ -49,7 +48,7 @@ module U409_ADDRESS_DECODE
     input CONFIGED,
     input CIA_ENABLE,
     input [3:0]RAM_BASE_ADDRESS,
-	input nTIP,
+	input nTS,
     
     output nREGEN,
     output nRAMEN,   
@@ -62,7 +61,6 @@ module U409_ADDRESS_DECODE
     output nIDEEN,
     output CIA_SPACE,
     output RAM_SPACE
-
 );
 
 ///////////////////////////
@@ -101,8 +99,7 @@ assign nIDEEN = ~(IDE_ACCESS && IDE_ENABLE && !Z3_SPACE);
 //AGNUS CONTROLS ACCESS TO CHIPSET REGISTERS AND CHIPSET RAM.
 //CYCLES IN THE AGNUS ADDRESS SPACES FOLLOW THE MC68000 TIMINGS
 //FOR DATA TRANSFER CYCLES. TO ACHIEVE THIS, WE ASSERT
-//_RAMEN AND _REGEN DURING STATE 2 OF THE MC68000 CYCLE
-//BY WAITING FOR A RISING EDGE OF THE 7MHz CLOCK.
+//_RAMEN AND _REGEN DURING STATE 2 OF THE MC68000 CYCLE.
 
 reg nREGEN_OUT;
 reg nRAMEN_OUT;
@@ -115,7 +112,7 @@ assign nREGEN = nREGEN_OUT;
 assign nRAMEN = nRAMEN_OUT;
 
 //7MHz CLOCK EDGE DETECTION
-always @(posedge CLK40 or negedge nRESET) begin
+always @(negedge CLK40 or negedge nRESET) begin
 	if (!nRESET) begin
 		EDGE7 <= 2'b11;
 	end else begin
@@ -124,19 +121,29 @@ always @(posedge CLK40 or negedge nRESET) begin
 end
 
 //AGNUS SPACE ASSERTION
-always @(negedge CLK40, negedge nRESET) begin
+reg [1:0]STATE;
+
+always @(posedge CLK40, negedge nRESET) begin
 	if (!nRESET) begin
 		nREGEN_OUT <= 1;
 		nRAMEN_OUT <= 1;
+		STATE <= 2'b00;
 	end else begin
-		if (!nTIP && AGNUS_SPACE) begin
-			if (EDGE7 == 2'b01) begin
-				if (nREGEN_OUT) begin nREGEN_OUT <= ~(A[23:16] == 8'hDF); end
-				if (nRAMEN_OUT) begin nRAMEN_OUT <= ~(A[23:21] == 3'b000); end 
-			end
+		if (AGNUS_SPACE) begin
+			case (STATE)
+				2'b00 : if (!nTS) begin STATE <= 2'b01; end
+				2'b01: if (EDGE7 == 2'b10) begin STATE <= 2'b10; end 
+				2'b10: 
+					if (EDGE7 == 2'b01) begin 
+						if (nREGEN_OUT) begin nREGEN_OUT <= ~(A[23:16] == 8'hDF); end
+						if (nRAMEN_OUT) begin nRAMEN_OUT <= ~(A[23:21] == 3'b000); end 
+						STATE <= 2'b00;
+					end
+			endcase
 		end else begin
 			nREGEN_OUT <= 1;
 			nRAMEN_OUT <= 1;
+			STATE <= 2'b00;
 		end		
 	end
 end
