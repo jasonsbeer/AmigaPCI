@@ -65,13 +65,9 @@ module U711_CHIPSET_REGISTER (
 //ONCE A CYCLE STARTS, WE WAIT FOR C1 AND C3 TO BE HIGH, WHICH IS EQUIVALENT
 //TO MC68000 STATE 4. IF _DBR IS NEGATED, WE CAN PROCEED, OTHERWISE 
 //WAIT STATES ARE INSERTED UNTIL SUCH TIME AS _DBR IS HIGH (NEGATED).
+//BEWARE OF REFRESH CYCLES WHERE _DBR, _RAS0, AND _RAS1 ARE ALL ASSERTED.
 
 reg [1:0]STATE_COUNT;
-//reg REGEN;
-//reg RAMEN;
-
-//assign nREGEN = ~REGEN;
-//assign nRAMEN = ~RAMEN;
 
 always @(negedge CLK40, negedge nRESET) begin
     if (!nRESET) begin
@@ -101,7 +97,7 @@ always @(negedge CLK40, negedge nRESET) begin
                 if (C1 && C3) begin
                     LDS_EN <= 1;
                     UDS_EN <= 1;
-                    if (nDBR) begin                     
+			if (nDBR || (!nDBR && !nRAS0 && !nRAS1) begin                     
                         STATE_COUNT <= 2'b10;
                     end
                 end
