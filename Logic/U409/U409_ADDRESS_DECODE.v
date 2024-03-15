@@ -37,7 +37,7 @@ from doing anything the license permits.
 
 module U409_ADDRESS_DECODE 
 (
-	input CLK7,
+	//input CLK7,
 	input CLK40,	
 	input nRESET,
     input [31:12] A,  
@@ -48,10 +48,12 @@ module U409_ADDRESS_DECODE
     input CONFIGED,
     input CIA_ENABLE,
     input [3:0]RAM_BASE_ADDRESS,
-	input nTS,
+	//input nTS,
     
-    output nREGEN,
-    output nRAMEN,   
+    //output nREGEN,
+    //output nRAMEN,   
+	output nREGSPACE,
+	output nRAMSPACE,
     output nROMEN,
     output nRTCEN,
     output nCIACS0,
@@ -101,7 +103,10 @@ assign nIDEEN = ~(IDE_ACCESS && IDE_ENABLE && !Z3_SPACE);
 //FOR DATA TRANSFER CYCLES. TO ACHIEVE THIS, WE ASSERT
 //_RAMEN AND _REGEN DURING STATE 2 OF THE MC68000 CYCLE.
 
-reg nREGEN_OUT;
+assign nRAMSPACE = !Z3_SPACE && !OVL && A[23:21] == 3'b000;
+assign nREGSPACE = !Z3_SPACE && A[23:16] == 8'hDF;
+
+/*reg nREGEN_OUT;
 reg nRAMEN_OUT;
 reg [1:0]EDGE7;
 reg [1:0]EDGE_COUNT;
@@ -118,10 +123,10 @@ always @(negedge CLK40 or negedge nRESET) begin
 	end else begin
 		EDGE7 <= {EDGE7[0], CLK7};
 	end
-end
+end*/
 
-//AGNUS SPACE ASSERTION
-reg [1:0]STATE;
+//AGNUS SPACES ASSERTION
+/*reg [1:0]STATE;
 
 always @(posedge CLK40, negedge nRESET) begin
 	if (!nRESET) begin
@@ -146,7 +151,7 @@ always @(posedge CLK40, negedge nRESET) begin
 			STATE <= 2'b00;
 		end		
 	end
-end
+end*/
 
 //MC68000 COMPATABLE CYCLE
 /*always @(negedge CLK40, negedge nRESET) begin

@@ -54,11 +54,11 @@ set_io   CLK40   94
 set_io   CLK7    49
 set_io   PHI2    135
   
-set_io   nREGEN      143
+set_io   nREGSPACE   143
 set_io   nTCI        139 
 set_io   nTBI        137
 set_io   nTA         138
-set_io   nRAMEN      142
+set_io   nRAMSPACE   142
 set_io   CONFIGED    110
 set_io   nCIACS0     116   
 set_io   nCIACS1     115

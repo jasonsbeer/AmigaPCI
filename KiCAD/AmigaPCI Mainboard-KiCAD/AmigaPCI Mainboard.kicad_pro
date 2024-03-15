@@ -2657,6 +2657,14 @@
       {
         "netclass": "Narrow",
         "pattern": "LVC1"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_RAMSPACE"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_REGSPACE"
       }
     ]
   },

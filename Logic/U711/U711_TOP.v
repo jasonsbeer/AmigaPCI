@@ -41,11 +41,13 @@ module U711_TOP (
     input C1,
     input C3,
     input nRESET,
-    input nREGEN,
+    input nREGSPACE,
+    input nRAMSPACE,
     input RnW,
     input [1:0]A,
     input nDBR,
     //input nBG,
+    input nTIP,
 
     input SIZ0,
     input SIZ1,
@@ -55,7 +57,9 @@ module U711_TOP (
     output nLDS,
     output nUDS,
     output nAS,
-    output nTA
+    output nTA,
+    output wire nREGEN,
+    output wire nRAMEN
     
 );
 
@@ -68,7 +72,7 @@ reg TA_HOLD;
 reg TA_CYCLE;
 
 assign TA = REG_TAm;
-assign TA_SPACE = !nREGEN;
+assign TA_SPACE = !nREGSPACE;
 assign nTA = TA ? 1'b0 : TA_SPACE || TA_HOLD ? 1'b1 : 1'bZ;
 
 //TA_HOLD FORCES _TA HIGH AFTER ASSERTION TO PREVENT IT INADVERTENTLY
@@ -115,13 +119,17 @@ U711_CHIPSET_REGISTER U711_CHIPSET_REGISTER
     .C1 (C1),
     .C3 (C3),
     .nRESET (nRESET),
-    .nREGEN (nREGEN),
+    .nREGSPACE (nREGSPACE),
+    .nRAMSPACE (nRAMSPACE),
     .RnW (RnW),
     .nDBR (nDBR),
+    .nTIP (nTIP),
     .AS_EN (AS_ENm),
     .LDS_EN (LDS_ENm),
     .UDS_EN (UDS_ENm),
-    .REG_TA (REG_TAm)
+    .REG_TA (REG_TAm),
+    .nREGEN (nREGEN),
+    .nRAMEN (nRAMEN)
 );
 
 endmodule

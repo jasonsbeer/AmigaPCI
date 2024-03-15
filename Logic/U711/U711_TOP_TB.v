@@ -11,18 +11,22 @@ reg CLK40 = 1;
 reg C1 = 1;
 reg C3 = 1;
 reg nRESET = 0;
-reg nREGEN = 1;
+reg nREGSPACE = 1;
+reg nRAMSPACE = 1;
 reg RnW = 1;
 reg [1:0]A = 2'b11;
 reg SIZ0 = 1;
 reg SIZ1 = 1;
 reg nDBR = 1;
+reg nTIP = 1;
 
 //outputs
 wire nUDS;
 wire nLDS;
 wire nAS;
 wire nTA;
+wire nREGEN;
+wire nRAMEN;
 
 //Simulation time : 10000 * 1ns = 10us
 localparam DURATION = 10000;
@@ -49,14 +53,15 @@ end
 
 initial begin
 	#100 nRESET = 1;
-    #235 nDBR = 0;
-    #190.5 nREGEN = 0;
-    #555 nDBR = 1;
+    #335 nDBR = 0;
+    #78 nTIP = 0; nREGSPACE = 0;
+    #485 nDBR = 1;
     #280 nDBR = 0; 
-    #75 nREGEN = 1;
-    #200 nREGEN = 0; RnW = 0;
-    #700 nDBR = 1;
-    #500 RnW = 1; nREGEN = 1;
+    #155 nREGSPACE = 1;
+    #25 nREGSPACE = 0; RnW = 0;
+    #945 nDBR = 1;
+    #409 RnW = 1; 
+    #550 nREGSPACE = 1; nTIP = 1;
     
 
 end
@@ -81,17 +86,21 @@ U711_TOP dut (
     .C1 (C1),
     .C3 (C3),
     .nRESET (nRESET),
-    .nREGEN (nREGEN),
+    .nREGSPACE (nREGSPACE),
+    .nRAMSPACE (nRAMSPACE),
     .RnW (RnW),
     .A (A),
     .nDBR (nDBR),
     .SIZ0 (SIZ0),
-    .SIZ1 (SIZ1),    
+    .SIZ1 (SIZ1),
+    .nTIP (nTIP), 
 
     .nAS (nAS),
     .nLDS (nLDS),
     .nUDS (nUDS),
-    .nTA (nTA)    
+    .nTA (nTA),
+    .nREGEN (nREGEN),
+    .nRAMEN (nRAMEN)
 );
 
 endmodule

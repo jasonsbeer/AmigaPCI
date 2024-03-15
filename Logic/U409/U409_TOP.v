@@ -57,8 +57,8 @@ module U409_TOP (
     inout wire [31:28] D,
 
     output CONFIGED,
-    output nREGEN,
-    output nRAMEN,
+    output nREGSPACE,
+    output nRAMSPACE,
     output nROMEN,
     output nTA,
     output nRTCEN,
@@ -185,7 +185,7 @@ end
 // ADDRESS DECODE TOP
 U409_ADDRESS_DECODE U409_ADDRESS_DECODE 
 (
-    .CLK7 (CLK7),
+    //.CLK7 (CLK7),
     .CLK40 (CLK40),
     .nRESET (nRESET),
     .A (A[31:12]),
@@ -196,9 +196,11 @@ U409_ADDRESS_DECODE U409_ADDRESS_DECODE
     .CONFIGED (CONFIGED),
     .CIA_ENABLE (CIA_ENABLEm),
     .RAM_BASE_ADDRESS (RAM_BASE_ADDRESSm),
-    .nTS (nTS),
-    .nREGEN (nREGEN),
-    .nRAMEN (nRAMEN),
+    //.nTS (nTS),
+    //nREGEN (nREGEN),
+    //.nRAMEN (nRAMEN),
+    .nREGSPACE (nREGSPACE),
+    .nRAMSPACE (nRAMSPACE),
     .nROMEN (nROMEN),
     .nRTCEN (nRTCEN),
     .nCIACS0 (nCIACS0),

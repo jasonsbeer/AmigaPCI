@@ -25,8 +25,8 @@ wire [31:28] D;
 //wire outputs
 wire nTA;
 wire CONFIGED;
-wire nREGEN;
-wire nRAMEN;
+wire nREGSPACE;
+wire nRAMSPACE;
 wire nROMEN;
 wire nRTCEN;
 wire nCIACS0;
@@ -192,8 +192,8 @@ U409_TOP dut
     .D (D),
 
     .CONFIGED(CONFIGED),
-    .nREGEN(nREGEN),
-    .nRAMEN(nRAMEN),
+    .nREGSPACE(nREGSPACE),
+    .nRAMSPACE(nRAMSPACE),
     .nROMEN(nROMEN),
     .nTA(nTA),
     .nRTCEN(nRTCEN),
