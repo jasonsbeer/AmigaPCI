@@ -2665,6 +2665,14 @@
       {
         "netclass": "Narrow",
         "pattern": "_REGSPACE"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "CBANK0"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "CBANK1"
       }
     ]
   },
