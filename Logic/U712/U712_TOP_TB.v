@@ -51,15 +51,16 @@ wire DBDIR;
 wire nVBEN;
 wire DRDDIR;
 wire nDRDEN;
-wire [10:0]MA;
+wire [10:0]CMA;
 wire BANK0;
 wire BANK1;
 wire nSDRAM_CS;
 wire nWE;
 wire nTBI;
+wire nDBEN;
 
 //Simulation time : 10000 * 1ns = 10us
-localparam DURATION = 10000;
+localparam DURATION = 20000;
 
 //Generate Clock(s)
 //7.16MHz = 139ns
@@ -82,6 +83,9 @@ initial begin
 end
 
 initial begin
+
+    //register space tests
+
 	#100 nRESET = 1;
     #350 nDBR = 0;
     #93 nTIP = 0; nREGSPACE = 0;
@@ -129,12 +133,12 @@ initial begin
     #20 nDBR = 1; 
     #70 nRAS0 = 1;     
     #50 nCASU = 1;
-    #335 nREGSPACE = 1;
+    #305 nREGSPACE = 1;
 
-    #31 nREGSPACE = 0; RnW = 0;
+    #61 nREGSPACE = 0; RnW = 0;
     #488.5 nREGSPACE = 1; nTIP = 1; RnW = 1; 
 
-
+    //ram read tests
 
     #110 nDBR = 0;
     #210 DRA = 10'b0101010101; nRAS0 = 0;
@@ -156,19 +160,19 @@ initial begin
     #10 nTIP = 1;
     #60 nRAS0 = 1; 
     #70 nCASU = 1;  nCASL = 1;
-    #45 nTIP = 0;
-    #25 nRAS0 = 0;
-    #70 nCASU = 0; nCASL = 0;    
-    #49 nTIP = 1;
-    #21 nRAS0 = 1;
-    #70 nCASU = 1;  nCASL = 1;
+    #32 nTIP = 0;
+    #38 nRAS0 = 0;    
+    #57 nTIP = 1;     
+    #13 nCASU = 0; nCASL = 0; 
+    #70 nRAS0 = 1;
+    #19 nRAMSPACE = 1;
+    #51 nCASU = 1;  nCASL = 1;
     #70 nRAS0 = 0;
     #70 nCASU = 0;
     #70 nRAS0 = 1;
     #70 nCASU = 1;
     #59 nRAS0 = 0;
-    #59 nRAMSPACE = 1;
-    #11 nCASU = 0;
+    #70 nCASU = 0;
     #70 nRAS0 = 1;
     #70 nCASU = 1;
     #70 nRAS0 = 0;
@@ -176,7 +180,42 @@ initial begin
     #70 nRAS0 = 1; 
     #15 nDBR = 1;    
     #50 nCASU = 1;
-    
+
+    //write tests
+
+    #460 nDBR = 0;
+    #160 nRAS0 = 0;
+    #70 nCASU = 0; AWE = 0;
+    #70 nRAS0 = 1;
+    #70 nCASU = 1; AWE = 1;
+
+    #20 nTIP = 0; nRAMSPACE = 0;
+
+    #50 nRAS0 = 0;
+    #70 nCASU = 0; AWE = 0;
+    #70 nRAS0 = 1;
+    #70 nCASU = 1; AWE = 1;
+    #70 nRAS0 = 0;
+    #70 nCASU = 0; AWE = 0;
+    #70 nRAS0 = 1;
+    #70 nCASU = 1; AWE = 1;
+    #70 nRAS0 = 0;
+    #70 nCASU = 0; AWE = 0; RnW = 0;
+    #70 nRAS0 = 1;
+    #70 nCASU = 1; AWE = 1;
+    #70 nRAS0 = 0;
+    #70 nCASU = 0;
+    #40 nTIP = 1; RnW = 1; nRAMSPACE = 1;
+    #30 nRAS0 = 1;
+    #70 nCASU = 1;
+    #70 nRAS0 = 0;
+    #70 nCASU = 0; AWE = 0;    
+    #70 nRAS0 = 1;
+    #70 nCASU = 1; AWE = 1;
+    #70 nRAS0 = 0;
+    #70 nCASU = 0; AWE = 0;
+    #70 nRAS0 = 1; nDBR = 1;
+    #70 nCASU = 1; AWE = 1;     
 
 end
 
@@ -222,7 +261,7 @@ U712_TOP dut (
     .nLMBE (nLMBE),
     .nLLBE (nLLBE),
 
-    .MA (MA),
+    .CMA (CMA),
     .BANK0 (BANK0),
     .BANK1 (BANK1),
     .nRAS (nRAS),
@@ -244,7 +283,8 @@ U712_TOP dut (
     .nTA (nTA),
     .nREGEN (nREGEN),
     .nRAMEN (nRAMEN),
-    .nTBI (nTBI)
+    .nTBI (nTBI),
+    .nDBEN (nDBEN)
 );
 
 endmodule

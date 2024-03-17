@@ -3,22 +3,22 @@
 //https://creativecommons.org/licenses/by/nc/sa/4.0/legalcode
 	
 //You are free to:
-//Share / copy and redistribute the material in any medium or format
-//Adapt / remix, transform, and build upon the material
+//Share - copy and redistribute the material in any medium or format
+//Adapt - remix, transform, and build upon the material
 
 //Under the following terms:
 
-//Attribution / You must give appropriate credit, provide a link to the license, and indicate if changes were made. 
+//Attribution - You must give appropriate credit, provide a link to the license, and indicate if changes were made. 
 //You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
 
-//NonCommercial / You may not use the material for commercial purposes.
+//NonCommercial - You may not use the material for commercial purposes.
 
-//ShareAlike / If you remix, transform, or build upon the material, you must distribute your contributions under the 
+//ShareAlike - If you remix, transform, or build upon the material, you must distribute your contributions under the 
 //same license as the original.
 
-//No additional restrictions / You may not apply legal terms or technological measures that legally restrict others 
+//No additional restrictions - You may not apply legal terms or technological measures that legally restrict others 
 //from doing anything the license permits.
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////
 // Engineer: Jason Neus
 // 
 // Design Name: U712
@@ -70,7 +70,7 @@ module U712_TOP (
     output wire nUMBE,
     output wire nLMBE,
     output wire nLLBE,
-    output wire [10:0] MA,
+    output wire [10:0] CMA,
     output wire BANK0,
     output wire BANK1,
     output wire nRAS,
@@ -86,7 +86,8 @@ module U712_TOP (
     output wire nVBEN,
     output wire DRDDIR,
     output wire nDRDEN,
-    output wire nTBI
+    output wire nTBI,
+    output wire nDBEN
     
 );
 
@@ -99,15 +100,17 @@ module U712_TOP (
 wire REG_TAm;
 wire RAM_TAm;
 wire BURST_CYCLEm;
+wire TA;
+wire TA_SPACE;
 reg TA_HOLD;
 reg TA_CYCLE;
 
 assign TA = REG_TAm || RAM_TAm;
 assign TA_SPACE = !nREGSPACE || !nRAMSPACE;
-assign nTA = TA ? 1'b0 : TA_SPACE || TA_HOLD ? 1'b1 : 1'bZ;
+assign nTA = TA ? 1'b0 : TA_SPACE || TA_CYCLE ? 1'b1 : 1'bZ;
 assign nTBI = BURST_CYCLEm ? 1 : nTA;
 
-//TA_HOLD FORCES _TA HIGH AFTER ASSERTION TO PREVENT IT INADVERTENTLY
+//TA_CYCLE FORCES _TA HIGH AFTER NEGATION TO PREVENT IT INADVERTENTLY
 //ENDING THE NEXT CYCLE PREMATURELY.
 always @(posedge CLK40, negedge nRESET) begin
     if (!nRESET) begin
@@ -118,14 +121,6 @@ always @(posedge CLK40, negedge nRESET) begin
         else begin
             TA_CYCLE <= 0; 
         end
-    end
-end
-
-always @(negedge CLK40, negedge nRESET) begin
-    if (!nRESET) begin
-        TA_HOLD <= 0;
-    end else begin
-        TA_HOLD <= TA_CYCLE;
     end
 end
 
@@ -204,7 +199,7 @@ U712_CHIPSET_RAM U712_CHIPSET_RAM (
     .nLMBE (nLMBE),
     .nLLBE (nLLBE),
 
-    .MA (MA),
+    .CMA (CMA),
     .BANK0 (BANK0),
     .BANK1 (BANK1),
     .nRAS (nRAS),
@@ -221,7 +216,8 @@ U712_CHIPSET_RAM U712_CHIPSET_RAM (
     .nVBEN (nVBEN),
     .DRDDIR (DRDDIR),
     .nDRDEN (nDRDEN),
-    .BURST_CYCLE (BURST_CYCLEm)
+    .BURST_CYCLE (BURST_CYCLEm),
+    .nDBEN (nDBEN)
 );
 
 endmodule

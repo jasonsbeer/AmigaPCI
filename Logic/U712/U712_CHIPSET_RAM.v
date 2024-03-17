@@ -3,22 +3,22 @@
 //https://creativecommons.org/licenses/by/nc/sa/4.0/legalcode
 	
 //You are free to:
-//Share / copy and redistribute the material in any medium or format
-//Adapt / remix, transform, and build upon the material
+//Share - copy and redistribute the material in any medium or format
+//Adapt - remix, transform, and build upon the material
 
 //Under the following terms:
 
-//Attribution / You must give appropriate credit, provide a link to the license, and indicate if changes were made. 
+//Attribution - You must give appropriate credit, provide a link to the license, and indicate if changes were made. 
 //You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
 
-//NonCommercial / You may not use the material for commercial purposes.
+//NonCommercial - You may not use the material for commercial purposes.
 
-//ShareAlike / If you remix, transform, or build upon the material, you must distribute your contributions under the 
+//ShareAlike - If you remix, transform, or build upon the material, you must distribute your contributions under the 
 //same license as the original.
 
-//No additional restrictions / You may not apply legal terms or technological measures that legally restrict others 
+//No additional restrictions - You may not apply legal terms or technological measures that legally restrict others 
 //from doing anything the license permits.
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////
 // Engineer: Jason Neus
 // 
 // Design Name: U712
@@ -30,6 +30,7 @@
 //
 // Revision History:
 //     13-JAN-2024 : Initial Engineering Release
+//     17-MAR-2024 : FPGA Rewrite
 //////////////////////////////////////////////////////////////////////////////////
 
 module U712_CHIPSET_RAM (
@@ -58,7 +59,7 @@ module U712_CHIPSET_RAM (
     input nLMBE,
     input nLLBE,
 
-    output wire [10:0] MA,
+    output wire [10:0] CMA,
     output wire BANK0,
     output wire BANK1,
     output wire nRAS,
@@ -75,7 +76,8 @@ module U712_CHIPSET_RAM (
     output wire nVBEN,
     output wire DRDDIR,
     output wire nDRDEN,
-    output reg BURST_CYCLE
+    output reg BURST_CYCLE,
+    output wire nDBEN
 );
 
 localparam [3:0] ramstate_NOP = 4'b1111;
@@ -126,7 +128,7 @@ wire RAS_AGNUS;
 wire CAS_AGNUS;
 reg DMA_READY;
 reg [9:0] DMA_ROW_ADDRESS;
-reg [9:0] DMA_COL_ADDRESS;
+reg [9:0] DMA_COL_ADDRESS = 10'b0000000000;;
 
 assign RAS_AGNUS = (!nRAS0 || !nRAS1);
 assign CAS_AGNUS = (!nCASL || !nCASU);
@@ -139,11 +141,8 @@ always @(posedge RAS_AGNUS, negedge nRESET) begin
     end
 end
 
-always @(posedge CAS_AGNUS, negedge nRESET, posedge DMA_CYCLE) begin
-    if (!nRESET) begin
-        DMA_COL_ADDRESS <= 10'b0000000000;
-        DMA_READY <= 0;
-    end else if (DMA_CYCLE) begin
+always @(posedge CAS_AGNUS, posedge DMA_CYCLE) begin
+    if (DMA_CYCLE) begin
         DMA_READY <= 0;
     end else begin
         DMA_COL_ADDRESS <= DRA;
@@ -170,10 +169,10 @@ reg RAM_CONFIGURED;
 reg REFRESH_CYCLE;
 reg CPU_CYCLE;
 reg DMA_CYCLE;
-//reg BURST_CYCLE;
 reg RnW_CYCLE;
 reg TA_EN;
 reg nDBEN_OUT;
+reg WAIT;
 
 assign nSDRAM_CS = SDRAMCOM[3];
 assign nRAS = SDRAMCOM[2];
@@ -187,9 +186,9 @@ assign nVBEN = ~(!nREGSPACE || CPU_CYCLE);
 assign nDRDEN = ~DMA_CYCLE;
 assign DRDDIR = RnW_CYCLE;
 assign BANK0 = 0; //THE SDRAM BANKS ARE ALWAYS SET TO GROUND. 
-assign BANK1 = 0; //MAYBE THERE IS A CLEVER WAY TO ADDRESS MORE THAN 2MB OF CHIP RAM?
+assign BANK1 = 0; //THE CHIP RAM SPACE RESIDES AT $0000 0000 - 001F FFFF.
 
-assign EMA = 
+assign CMA = 
     SDRAMCOM == ramstate_PRECHARGE ? 11'b10000000000 : 
     SDRAMCOM == ramstate_MODEREGISTER ? 11'b00000100010 : 
     SDRAMCOM == ramstate_BANKACTIVATE && CPU_CYCLE ? {A[20:10]} :
@@ -210,10 +209,11 @@ always @(negedge CLK80, negedge nRESET) begin
         RnW_CYCLE <= 1;
         TA_EN <= 0;
         nDBEN_OUT <= 1;
+        WAIT <= 0;
     end else begin
 
         //INCREMENT COUNTER DURING A CYCLE
-        if (RAM_COUNTER != 4'h0) begin RAM_COUNTER <= RAM_COUNTER + 1; end
+        if (RAM_COUNTER != 4'h0 && !WAIT) begin RAM_COUNTER <= RAM_COUNTER + 1; end
 
         //CONFIGURE THE RAM AT STARTUP OR RESET
         if (!RAM_CONFIGURED) begin
@@ -225,7 +225,7 @@ always @(negedge CLK80, negedge nRESET) begin
                 4'hD : begin RAM_CONFIGURED <= 1; RAM_COUNTER <= 4'h0; end
 				default : SDRAMCOM <= ramstate_NOP;
             endcase
-        end else if (!DMA_CYCLE && !CPU_CYCLE && (REFRESH_CYCLE || REFRESH)) begin
+        end else if (!CAS_AGNUS && !DMA_CYCLE && !CPU_CYCLE && SDRAMCOM != ramstate_PRECHARGE && (REFRESH_CYCLE || REFRESH)) begin
             case (RAM_COUNTER)
                 4'h0 : begin RAM_COUNTER <= 4'h1; SDRAMCOM <= ramstate_AUTOREFRESH; REFRESH_CYCLE <= 1; end
                 4'h4 : begin RAM_COUNTER <= 4'h0; REFRESH_CYCLE <= 0; end
@@ -235,15 +235,9 @@ always @(negedge CLK80, negedge nRESET) begin
             case (RAM_COUNTER)
 
                 4'h0 : begin 
-                    TA_EN <= 0;                    
+                    TA_EN <= 0;                 
 
-                    if (DMA_CYCLE) begin //END THE PREVIOUS DMA CYCLE AFTER FALLING EDGE OF STATE 6
-                        if (!CLK7) begin 
-                            EMCLK_OUT <= 1;
-                            DMA_CYCLE <= 0;
-                            nDBEN_OUT <= 1;
-                        end
-                    end else if (DMA_READY && CLK7) begin //DMA CYCLE
+                    if (DMA_READY && CLK7 && SDRAMCOM != ramstate_PRECHARGE) begin //DMA CYCLE
                         SDRAMCOM <= ramstate_BANKACTIVATE;
                         RAM_COUNTER <= 4'h1;
                         DMA_CYCLE <= 1; 
@@ -251,7 +245,7 @@ always @(negedge CLK80, negedge nRESET) begin
                         BURST_CYCLE <= 0;
                         RnW_CYCLE <= AWE;
                         nDBEN_OUT <= DMA_ROW_ADDRESS[9];
-                    end else if (!nRAMSPACE && !nTIP && !CLK40 && ((nRAS0 && nRAS1) || (!nRAS0 && !nRAS1))) begin //CPU CYCLE
+                    end else if (!nRAMSPACE && !nTIP && !CLK40 && SDRAMCOM != ramstate_PRECHARGE && ((nRAS0 && nRAS1) || (!nRAS0 && !nRAS1))) begin //CPU CYCLE
                         SDRAMCOM <= ramstate_BANKACTIVATE;
                         RAM_COUNTER <= 4'h1;
                         CPU_CYCLE <= 1; 
@@ -262,7 +256,7 @@ always @(negedge CLK80, negedge nRESET) begin
                     end else begin //NO CYCLE
                         DMA_CYCLE <= 0;
                         CPU_CYCLE <= 0;
-                        EMCLK_OUT <= 1; 
+                        BURST_CYCLE <= 0; 
                         nDBEN_OUT <= 1;
                         SDRAMCOM <= ramstate_NOP;
                     end
@@ -285,37 +279,76 @@ always @(negedge CLK80, negedge nRESET) begin
                     if (RnW_CYCLE) begin
                         SDRAMCOM <= ramstate_READ;
                     end else begin
-                        SDRAMCOM <= ramstate_WRITE;
+                        if (DMA_CYCLE) begin
+                            WAIT <= 1; //STOP THE COUNTER
+                            SDRAMCOM <= ramstate_NOP; //WE NEED TO WAIT FOR THE FALLING EDGE OF STATE 6 DURING DMA WRITE CYCLES
+                        end else begin
+                            SDRAMCOM <= ramstate_WRITE;
+                        end
                     end	
                 end
 
                 4'h3 : begin
-                    EMCLK_OUT <= 1;
-                    if (RnW_CYCLE && CPU_CYCLE) begin
-                        TA_EN <= 1;
+
+                    if (DMA_CYCLE && !RnW_CYCLE) begin
+
+                        if (!CLK7) begin
+                            SDRAMCOM <= ramstate_WRITE;
+                            WAIT <= 0;
+                            RAM_COUNTER <= 4'h4;
+                        end
+
                     end else begin
-                        if (!BURST_CYCLE && CPU_CYCLE) begin TA_EN <= 0; end
+
+                        EMCLK_OUT <= 1;
+
+                        if (RnW_CYCLE && CPU_CYCLE) begin
+                            TA_EN <= 1;
+                        end else begin
+                            if (!BURST_CYCLE && CPU_CYCLE) begin TA_EN <= 0; end
+                        end
+
+                        if (!BURST_CYCLE) begin
+                            SDRAMCOM <= ramstate_PRECHARGE; //CPU AND DMA CYCLE
+                        end else begin
+                            SDRAMCOM <= ramstate_NOP; //CPU BURST CYCLE
+                        end
+
                     end
 
-                    if (!BURST_CYCLE) begin
-                        SDRAMCOM <= ramstate_PRECHARGE;
-                    end else begin
-                        SDRAMCOM <= ramstate_NOP;
-                    end
                 end
 
                 4'h4 : begin
-                    if (!BURST_CYCLE) begin
+
+                    if (DMA_CYCLE && !RnW_CYCLE) begin
+                        SDRAMCOM <= ramstate_PRECHARGE; //END DMA WRITE CYCLE
+                        RAM_COUNTER <= 0;
+                    end else if (!BURST_CYCLE) begin
                         SDRAMCOM <= ramstate_NOP;
-                        RAM_COUNTER <= 0; 
-                        if (DMA_CYCLE) begin EMCLK_OUT <= 0; end //HOLD DATA UNTIL FALLING EDGE OF STATE 6
+                        if (DMA_CYCLE) begin
+                            EMCLK_OUT <= 0;
+                            WAIT <= 1;  
+                        end else begin
+                            RAM_COUNTER <= 0; //END OF A NON-BURST CPU CYCLE
+                        end 
                     end else begin
                         EMCLK_OUT <= 0;
                     end
+
                 end    
 
-                5'h5 : begin //IF WE GET THIS FAR, WE ARE CERTAINLY IN A BURST CYCLE.
-                    EMCLK_OUT <= 1;
+                5'h5 : begin
+
+                    if (DMA_CYCLE) begin
+                        if (!CLK7) begin //END OF DMA READ CYCLE
+                            EMCLK_OUT <= 1;
+                            nDBEN_OUT <= 1;
+                            WAIT <= 0;
+                            RAM_COUNTER <= 0;
+                        end 
+                    end else begin                            
+                        EMCLK_OUT <= 1; 
+                    end
                 end
 
                 5'h6 : begin 
