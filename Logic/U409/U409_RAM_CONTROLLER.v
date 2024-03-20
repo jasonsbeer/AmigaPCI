@@ -57,7 +57,8 @@ module U409_RAM_CONTROLLER
     output wire nEMWE,
     output wire nEM0CS,
     output wire nEM1CS,
-    output wire RAM_TA
+    output wire RAM_TA,
+    output reg BURST_CYCLE
 );
 
 localparam [3:0] ramstate_NOP = 4'b1111;
@@ -111,7 +112,6 @@ reg SDRAM_CS1;
 reg RAM_CONFIGURED;
 reg REFRESH_CYCLE;
 reg MEMORY_CYCLE;
-reg BURST_CYCLE;
 reg RnW_CYCLE;
 reg TA_OUT;
 
@@ -253,6 +253,7 @@ always @(negedge CLK80, negedge nRESET) begin
                     if (!RnW_CYCLE) begin
                         SDRAMCOM <= ramstate_PRECHARGE; //END OF A BURST WRITE CYCLE
                         RAM_COUNTER <= 0;
+                        BURST_CYCLE <= 0;
                     end
                 end
 
@@ -260,6 +261,7 @@ always @(negedge CLK80, negedge nRESET) begin
                     TA_OUT <= 0;
                     SDRAMCOM <= ramstate_PRECHARGE; //END OF A BURST READ CYCLE
                     RAM_COUNTER <= 0;
+                    BURST_CYCLE <= 0;
                 end
 
             endcase

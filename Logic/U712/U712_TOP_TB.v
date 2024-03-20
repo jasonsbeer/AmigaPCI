@@ -16,8 +16,8 @@ reg nREGSPACE = 1;
 reg nRAMSPACE = 1;
 reg RnW = 1;
 reg [31:0]A = 32'h00000000;
-reg SIZ0 = 1;
-reg SIZ1 = 1;
+wire SIZ0 = 1'bz;
+wire SIZ1 = 1'bZ;
 reg nDBR = 1;
 reg nTIP = 1;
 reg TT0 = 1;
@@ -28,6 +28,7 @@ reg nRAS0 = 1;
 reg nRAS1 = 1;
 reg nCASU = 1;
 reg nCASL = 1;
+reg nBG = 0;
 
 //outputs
 wire nUDS;
@@ -58,6 +59,15 @@ wire nSDRAM_CS;
 wire nWE;
 wire nTBI;
 wire nDBEN;
+
+reg myUUBE = 1'bz;
+reg myUMBE = 1'bz;
+reg myLMBE = 1'bz;
+reg myLLBE = 1'bz;
+assign nUUBE = myUUBE;
+assign nUMBE = myUMBE;
+assign nLMBE = myLMBE;
+assign nLLBE = myLLBE;
 
 //Simulation time : 10000 * 1ns = 10us
 localparam DURATION = 20000;
@@ -217,6 +227,16 @@ initial begin
     #70 nRAS0 = 1; nDBR = 1;
     #70 nCASU = 1; AWE = 1;     
 
+    //DMA SIZ BITS
+    #100 nBG = 1; TT0 = 0; TT1 = 0; myUUBE = 0; myUMBE = 0; myLMBE = 0; myLLBE = 1;
+    #100 myUUBE = 0; myUMBE = 0; myLMBE = 1; myLLBE = 0;
+    #100 myUUBE = 0; myUMBE = 0; myLMBE = 1; myLLBE = 1;
+    #100 myUUBE = 0; myUMBE = 1; myLMBE = 0; myLLBE = 0;
+    #100 myUUBE = 1; myUMBE = 1; myLMBE = 0; myLLBE = 0;
+    #100 myUUBE = 1; myUMBE = 0; myLMBE = 0; myLLBE = 0;
+    #100 TT0 = 1; myUUBE = 1; myUMBE = 1; myLMBE = 1; myLLBE = 1;
+    #100 TT0 = 0;
+
 end
 
 
@@ -260,6 +280,7 @@ U712_TOP dut (
     .nUMBE (nUMBE),
     .nLMBE (nLMBE),
     .nLLBE (nLLBE),
+    .nBG (nBG),
 
     .CMA (CMA),
     .BANK0 (BANK0),

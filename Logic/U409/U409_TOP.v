@@ -1,41 +1,39 @@
-/*
-----------------------------------------------------------------------------------
---This work is shared under the Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) License
---https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
-	
---You are free to:
---Share - copy and redistribute the material in any medium or format
---Adapt - remix, transform, and build upon the material
+//////////////////////////////////////////////////////////////////////////////////
+//This work is shared under the Attribution/NonCommercial/ShareAlike 4.0 International (CC BY/NC/SA 4.0) License
+//https://creativecommons.org/licenses/by/nc/sa/4.0/legalcode
+//	
+//You are free to:
+//Share - copy and redistribute the material in any medium or format
+//Adapt - remix, transform, and build upon the material
+//
+//Under the following terms:
+//
+//Attribution - You must give appropriate credit, provide a link to the license, and indicate if changes were made. 
+//You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
+//
+//NonCommercial - You may not use the material for commercial purposes.
+//
+//ShareAlike - If you remix, transform, or build upon the material, you must distribute your contributions under the 
+//same license as the original.
+//
+//No additional restrictions - You may not apply legal terms or technological measures that legally restrict others 
+//from doing anything the license permits.
+///////////////////////////////////////////////////////////////////////////////////
+// Engineer: Jason Neus
+// 
+// Design Name: U409
+// Module Name: U409_TOP
+// Project Name: AmigaPCI
+// Target Devices: iCE40-HX4K-TQ144
+//
+// Description: LOGIC FOR CHIP SET RAM CONTROLLER AND CHIPSET REGISTER CYCLES.
+//
+// Revision History:
+//     13-JAN-2024 : Initial Engineering Release
+//     09-MAR-2024 : FPGA Rewrite
+///////////////////////////////////////////////////////////////////////////////////
 
---Under the following terms:
-
---Attribution - You must give appropriate credit, provide a link to the license, and indicate if changes were made. 
---You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
-
---NonCommercial - You may not use the material for commercial purposes.
-
---ShareAlike - If you remix, transform, or build upon the material, you must distribute your contributions under the 
---same license as the original.
-
---No additional restrictions - You may not apply legal terms or technological measures that legally restrict others 
---from doing anything the license permits.
---------------------------------------------------------------------------------------------------------------------------------------------------------------------
--- Engineer: Jason Neus
--- 
--- Design Name: U409
--- Module Name: Main
--- Project Name: AmigaPCI
--- Target Devices: iCE40-HX4K-TQ144
---
--- Description: LOGIC FOR LOTS OF STUFF
---
--- Revision History:
---     14-JAN-2023 : Initial Engineering Release
---     09-MAR-2024 : FPGA Rewrite
-----------------------------------------------------------------------------------
-
-TO BUILD WITH APIO: apio build --fpga iCE40-HX4K-TQ144
-*/
+//TO BUILD WITH APIO: apio build --fpga iCE40-HX4K-TQ144
 
 module U409_TOP (
 
@@ -57,8 +55,8 @@ module U409_TOP (
     inout wire [31:28] D,
 
     output CONFIGED,
-    output nREGSPACE,
-    output nRAMSPACE,
+    output nREGEN,
+    output nRAMEN,
     output nROMEN,
     output nTA,
     output nRTCEN,
@@ -115,12 +113,14 @@ reg ROM_TA;
 //FOR MOST CYCLES, TRANSFER ACK IS HANDLED IN THE LOGIC CONTROLLING THOSE CYCLES. 
 //IN THE EVENT THE CYCLE LOGIC IS NOT PRESENT IN THIS FPGA, WE ASSERT _TA AT 
 //THE APPROPRIATE TIME TO END THAT CYCLE.
+wire BURST_CYCLEm;
 
 assign TA = AC_TAm || RAM_TAm || CIA_TAm || RTC_TA || ROM_TA;
 assign TA_SPACE = AUTOCONFIG_SPACEm || CIA_SPACEm || RAM_SPACEm || !nRTCEN || !nROMEN;
-assign nTA = TA ? 1'b0 :  TA_SPACE || TA_HOLD ? 1'b1 : 1'bZ;
+assign nTA = TA ? 1'b0 : TA_SPACE || TA_CYCLE ? 1'b1 : 1'bZ;
+assign nTBI = BURST_CYCLEm ? 1'b1 : nTA;
 
-//TA_HOLD FORCES _TA HIGH AFTER ASSERTION TO PREVENT IT INADVERTENTLY
+//TA_CYCLE FORCES _TA HIGH AFTER NEGATION TO PREVENT IT INADVERTENTLY
 //ENDING THE NEXT CYCLE PREMATURELY.
 always @(posedge CLK40, negedge nRESET) begin
     if (!nRESET) begin
@@ -131,14 +131,6 @@ always @(posedge CLK40, negedge nRESET) begin
         else begin
             TA_CYCLE <= 0; 
         end
-    end
-end
-
-always @(negedge CLK40, negedge nRESET) begin
-    if (!nRESET) begin
-        TA_HOLD <= 0;
-    end else begin
-        TA_HOLD <= TA_CYCLE;
     end
 end
 
@@ -183,9 +175,8 @@ always @(posedge CLK40, negedge nRESET) begin
 end
 
 // ADDRESS DECODE TOP
-U409_ADDRESS_DECODE U409_ADDRESS_DECODE 
-(
-    //.CLK7 (CLK7),
+U409_ADDRESS_DECODE U409_ADDRESS_DECODE (
+    .CLK7 (CLK7),
     .CLK40 (CLK40),
     .nRESET (nRESET),
     .A (A[31:12]),
@@ -196,11 +187,9 @@ U409_ADDRESS_DECODE U409_ADDRESS_DECODE
     .CONFIGED (CONFIGED),
     .CIA_ENABLE (CIA_ENABLEm),
     .RAM_BASE_ADDRESS (RAM_BASE_ADDRESSm),
-    //.nTS (nTS),
-    //nREGEN (nREGEN),
-    //.nRAMEN (nRAMEN),
-    .nREGSPACE (nREGSPACE),
-    .nRAMSPACE (nRAMSPACE),
+    .nTIP (nTIP),
+    .nREGEN (nREGEN),
+    .nRAMEN (nRAMEN),
     .nROMEN (nROMEN),
     .nRTCEN (nRTCEN),
     .nCIACS0 (nCIACS0),
@@ -215,8 +204,7 @@ U409_ADDRESS_DECODE U409_ADDRESS_DECODE
 // AUTOCONFIG TOP
 assign D = AUTOCONFIG_SPACEm && RnW && nRESET ? DOUTm : 4'bZ;
 
-U409_AUTOCONFIG U409_AUTOCONFIG
-(
+U409_AUTOCONFIG U409_AUTOCONFIG (
     .CLK40 (CLK40),
     .A (A),
     .nTS (nTS),
@@ -236,8 +224,7 @@ U409_AUTOCONFIG U409_AUTOCONFIG
 );
 
 // ZORRO 3 RAM CONTROLLER TOP
-U409_RAM_CONTROLLER U409_RAM_CONTROLLER
-(
+U409_RAM_CONTROLLER U409_RAM_CONTROLLER (
     .CLK7 (CLK7),
     .CLK40 (CLK40),
     .CLK80 (CLK80),
@@ -257,12 +244,12 @@ U409_RAM_CONTROLLER U409_RAM_CONTROLLER
     .nEMWE (nEMWE),
     .nEM0CS (nEM0CS),
     .nEM1CS (nEM1CS),
-    .RAM_TA (RAM_TAm)
+    .RAM_TA (RAM_TAm),
+    .BURST_CYCLE (BURST_CYCLEm)
 );
 
 // CIA CYCLES TOP
-U409_CIA_CYCLE U409_CIA_CYCLE
-(
+U409_CIA_CYCLE U409_CIA_CYCLE (
     .CLK40 (CLK40),
     .nRESET (nRESET),
     .CIA_SPACE (CIA_SPACEm),
