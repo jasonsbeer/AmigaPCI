@@ -1,21 +1,21 @@
 //////////////////////////////////////////////////////////////////////////////////
 //This work is shared under the Attribution/NonCommercial/ShareAlike 4.0 International (CC BY/NC/SA 4.0) License
 //https://creativecommons.org/licenses/by/nc/sa/4.0/legalcode
-	
+//	
 //You are free to:
 //Share - copy and redistribute the material in any medium or format
 //Adapt - remix, transform, and build upon the material
-
+//
 //Under the following terms:
-
+//
 //Attribution - You must give appropriate credit, provide a link to the license, and indicate if changes were made. 
 //You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
-
+//
 //NonCommercial - You may not use the material for commercial purposes.
-
+//
 //ShareAlike - If you remix, transform, or build upon the material, you must distribute your contributions under the 
 //same license as the original.
-
+//
 //No additional restrictions - You may not apply legal terms or technological measures that legally restrict others 
 //from doing anything the license permits.
 ///////////////////////////////////////////////////////////////////////////////////
@@ -59,14 +59,13 @@ module U712_TOP (
     input nRAS1,
     input nCASL,
     input nCASU,
-
-    inout wire SIZ0,
-    inout wire SIZ1,
-    inout wire nUUBE,
-    inout wire nUMBE,
-    inout wire nLMBE,
-    inout wire nLLBE,
-
+    input wire SIZ0,
+    input wire SIZ1,
+	
+    output wire nUUBE,
+    output wire nUMBE,
+    output wire nLMBE,
+    output wire nLLBE,
     output wire nLDS,
     output wire nUDS,
     output wire nAS,
@@ -103,20 +102,20 @@ module U712_TOP (
 
 //WHEN _BG IS NEGATED, WE SET THE SIZx BITS TO HANDLE PCI DRIVEN DMA CYCLES.
 //SEE PAGE 7-4 OF THE MC68040 USER MANUAL.
-wire BYTE_TRANSFER;
+/*wire BYTE_TRANSFER;
 assign BYTE_TRANSFER = (nUUBE && !nUMBE && !nLMBE && !nLLBE) || 
                        (!nUUBE && nUMBE && !nLMBE && !nLLBE) ||
                        (!nUUBE && !nUMBE && nLMBE && !nLLBE) ||
                        (!nUUBE && !nUMBE && !nLMBE && nLLBE);
 
 assign SIZ0 = nBG ? (BYTE_TRANSFER || (TT0 && !TT1)) : 1'bz;
-assign SIZ1 = nBG ? ((nUUBE && nUMBE && !nLMBE && !nLLBE) || (!nUUBE && !nUMBE && nLMBE && nLLBE) || (TT0 && !TT1)) : 1'bz;
+assign SIZ1 = nBG ? ((nUUBE && nUMBE && !nLMBE && !nLLBE) || (!nUUBE && !nUMBE && nLMBE && nLLBE) || (TT0 && !TT1)) : 1'bz;*/
 
 /////////////////
 // IDE ADDRESS //
 /////////////////
 
-//WE PASS THROUGH ADDRESS BITS FOR THE IDE INTERFACE. IT IS HERE SIMPLY FOR CONVIENIENCE.
+//WE PASS THROUGH ADDRESS BITS FOR THE IDE INTERFACE. IT IS HERE FOR CONVIENIENCE.
 assign DA0 = A[9];
 assign DA1 = A[10];
 assign DA2 = A[11];
@@ -173,11 +172,16 @@ assign nLDS = ~((SIZ1 || !SIZ0 || A[0]) && LDS_ENm);
 //ON WHAT THE ACCESSING DEVICE IS REQUESTING. FOR CPU READS, WE ENABLE
 //ALL BYTES. THE DATA BYTE ENABLE SIGNALS ARE USED BY THE SDRAM AND PCI BUS.
 //DURING PCI DMA CYCLES, THESE ARE SET BY THE PCI BRIDGE.
+
+assign nUUBE = RnW || (!RnW && !A[1] && !A[0]);
+assign nUMBE = RnW || (!RnW && ((!A[1] && A[0]) || (!A[1] && !SIZ0) || (!A[1] && SIZ1)));
+assign nLMBE = RnW || (!RnW && ((A[1] && !A[0]) || (!A[1] && !SIZ0 && !SIZ1) || (!A[1] && SIZ0 && SIZ1) || (A[0] && !A[1] && !SIZ0)));
+assign nLLBE = RnW || (!RnW && ((A[1] && A[0]) || (A[0] && SIZ0 && SIZ1) || (!SIZ0 && !SIZ1) || (A[1] && SIZ1)));
     
-assign nUUBE = !nBG ? RnW || (!RnW && !A[1] && !A[0]) : 1'bz;
-assign nUMBE = !nBG ? RnW || (!RnW && ((!A[1] && A[0]) || (!A[1] && !SIZ0) || (!A[1] && SIZ1))) : 1'bz;
-assign nLMBE = !nBG ? RnW || (!RnW && ((A[1] && !A[0]) || (!A[1] && !SIZ0 && !SIZ1) || (!A[1] && SIZ0 && SIZ1) || (A[0] && !A[1] && !SIZ0))) : 1'bz;
-assign nLLBE = !nBG ? RnW || (!RnW && ((A[1] && A[0]) || (A[0] && SIZ0 && SIZ1) || (!SIZ0 && !SIZ1) || (A[1] && SIZ1))) : 1'bz;
+//assign nUUBE = !nBG ? RnW || (!RnW && !A[1] && !A[0]) : 1'bz;
+//assign nUMBE = !nBG ? RnW || (!RnW && ((!A[1] && A[0]) || (!A[1] && !SIZ0) || (!A[1] && SIZ1))) : 1'bz;
+//assign nLMBE = !nBG ? RnW || (!RnW && ((A[1] && !A[0]) || (!A[1] && !SIZ0 && !SIZ1) || (!A[1] && SIZ0 && SIZ1) || (A[0] && !A[1] && !SIZ0))) : 1'bz;
+//assign nLLBE = !nBG ? RnW || (!RnW && ((A[1] && A[0]) || (A[0] && SIZ0 && SIZ1) || (!SIZ0 && !SIZ1) || (A[1] && SIZ1))) : 1'bz;
 
 // REGISTER CYCLE TOP
 
@@ -226,7 +230,6 @@ U712_CHIPSET_RAM U712_CHIPSET_RAM (
     .nUMBE (nUMBE),
     .nLMBE (nLMBE),
     .nLLBE (nLLBE),
-
     .CMA (CMA),
     .BANK0 (BANK0),
     .BANK1 (BANK1),
