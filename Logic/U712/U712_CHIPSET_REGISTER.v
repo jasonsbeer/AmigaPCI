@@ -29,7 +29,8 @@
 // Description: LOGIC FOR CHIP SET REGISTER CYCLES.
 //
 // Revision History:
-//     13/JAN/2023 : Initial Engineering Release
+//     13-JAN-2024 : Initial Engineering Release
+//     10-MAR-2023 : FPGA Rewrite
 //////////////////////////////////////////////////////////////////////////////////
 
 module U712_CHIPSET_REGISTER (
