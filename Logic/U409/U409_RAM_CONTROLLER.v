@@ -1,39 +1,37 @@
-/*
-----------------------------------------------------------------------------------
---This work is shared under the Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) License
---https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
-	
---You are free to:
---Share - copy and redistribute the material in any medium or format
---Adapt - remix, transform, and build upon the material
-
---Under the following terms:
-
---Attribution - You must give appropriate credit, provide a link to the license, and indicate if changes were made. 
---You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
-
---NonCommercial - You may not use the material for commercial purposes.
-
---ShareAlike - If you remix, transform, or build upon the material, you must distribute your contributions under the 
---same license as the original.
-
---No additional restrictions - You may not apply legal terms or technological measures that legally restrict others 
---from doing anything the license permits.
---------------------------------------------------------------------------------------------------------------------------------------------------------------------
--- Engineer: Jason Neus
--- 
--- Design Name: U409
--- Module Name: RAM_CONTROLLER
--- Project Name: AmigaPCI
--- Target Devices: iCE40-HX4K-TQ144
---
--- Description: LOGIC FOR FAST RAM CONTROLLER.
---
--- Revision History:
---     07-JAN-2023 : Initial Engineering Release
---     09-MAR-2024 : FPGA Rewrite
-----------------------------------------------------------------------------------
-*/
+//////////////////////////////////////////////////////////////////////////////////
+//This work is shared under the Attribution/NonCommercial/ShareAlike 4.0 International (CC BY/NC/SA 4.0) License
+//https://creativecommons.org/licenses/by/nc/sa/4.0/legalcode
+//	
+//You are free to:
+//Share - copy and redistribute the material in any medium or format
+//Adapt - remix, transform, and build upon the material
+//
+//Under the following terms:
+//
+//Attribution - You must give appropriate credit, provide a link to the license, and indicate if changes were made. 
+//You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
+//
+//NonCommercial - You may not use the material for commercial purposes.
+//
+//ShareAlike - If you remix, transform, or build upon the material, you must distribute your contributions under the 
+//same license as the original.
+//
+//No additional restrictions - You may not apply legal terms or technological measures that legally restrict others 
+//from doing anything the license permits.
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Engineer: Jason Neus
+// 
+// Design Name: U409
+// Module Name: RAM_CONTROLLER
+// Project Name: AmigaPCI
+// Target Devices: iCE40-HX4K-TQ144
+//
+// Description: LOGIC FOR FAST RAM CONTROLLER.
+//
+// Revision History:
+//     07-JAN-2023 : Initial Engineering Release
+//     09-MAR-2024 : FPGA Rewrite
+//////////////////////////////////////////////////////////////////////////////////
 
 module U409_RAM_CONTROLLER
 (
@@ -220,7 +218,7 @@ always @(negedge CLK80, negedge nRESET) begin
                 4'h4 : begin
                     if (!BURST_CYCLE) begin
                         SDRAMCOM <= ramstate_NOP;
-                        RAM_COUNTER <= 0; //IN THE CASE OF A NON-BURST WRITE, WE ADD AN EXTRA CLOCK TO MEET MIN CYCLE TIME FOR SDRAM                      
+                        RAM_COUNTER <= 0; //IN THE CASE OF A NON/BURST WRITE, WE ADD AN EXTRA CLOCK TO MEET MIN CYCLE TIME FOR SDRAM                      
                     end else begin
                         //TA_OUT <= 0;
                         EMCLK_OUT <= 0;

@@ -42,7 +42,7 @@ module U712_CHIPSET_RAM (
     input SIZ1,
     input TT0,
     input TT1,
-    input [31:2] A,
+    input [20:2] A,
     input nTIP,
     input RnW,	
     input nRAMSPACE,

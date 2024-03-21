@@ -1,39 +1,37 @@
-/*
-----------------------------------------------------------------------------------
---This work is shared under the Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) License
---https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
-	
---You are free to:
---Share - copy and redistribute the material in any medium or format
---Adapt - remix, transform, and build upon the material
-
---Under the following terms:
-
---Attribution - You must give appropriate credit, provide a link to the license, and indicate if changes were made. 
---You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
-
---NonCommercial - You may not use the material for commercial purposes.
-
---ShareAlike - If you remix, transform, or build upon the material, you must distribute your contributions under the 
---same license as the original.
-
---No additional restrictions - You may not apply legal terms or technological measures that legally restrict others 
---from doing anything the license permits.
---------------------------------------------------------------------------------------------------------------------------------------------------------------------
--- Engineer: Jason Neus
--- 
--- Design Name: U409
--- Module Name: CIA
--- Project Name: AmigaPCI
--- Target Devices: XC95144XL 144 PIN
---
--- Description: LOGIC FOR CIA CYCLES.
---
--- Revision History:
---     05-JAN-2023 : Initial Engineering Release
---     09-MAR-2024 : FPGA Rewrite
-----------------------------------------------------------------------------------
-*/
+//////////////////////////////////////////////////////////////////////////////////
+//This work is shared under the Attribution/NonCommercial/ShareAlike 4.0 International (CC BY/NC/SA 4.0) License
+//https://creativecommons.org/licenses/by/nc/sa/4.0/legalcode
+//	
+//You are free to:
+//Share - copy and redistribute the material in any medium or format
+//Adapt - remix, transform, and build upon the material
+//
+//Under the following terms:
+//
+//Attribution - You must give appropriate credit, provide a link to the license, and indicate if changes were made. 
+//You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
+//
+//NonCommercial - You may not use the material for commercial purposes.
+//
+//ShareAlike - If you remix, transform, or build upon the material, you must distribute your contributions under the 
+//same license as the original.
+//
+//No additional restrictions - You may not apply legal terms or technological measures that legally restrict others 
+//from doing anything the license permits.
+///////////////////////////////////////////////////////////////////////////////////
+// Engineer: Jason Neus
+// 
+// Design Name: U409
+// Module Name: CIA
+// Project Name: AmigaPCI
+// Target Devices: iCE40-HX4K-TQ144
+//
+// Description: LOGIC FOR CIA CYCLES.
+//
+// Revision History:
+//     05-JAN-2023 : Initial Engineering Release
+//     09-MAR-2024 : FPGA Rewrite
+//////////////////////////////////////////////////////////////////////////////////
 
 module U409_CIA_CYCLE 
 (
@@ -54,7 +52,7 @@ module U409_CIA_CYCLE
 // PHI2 CLOCK //
 ////////////////
 
-//WE DISPOSE OF THE LEGACY E-CYCLE AS IMPLEMENTED IN ALL ORIGINAL 
+//WE DISPOSE OF THE LEGACY E/CYCLE AS IMPLEMENTED IN ALL ORIGINAL 
 //AMIGAS. INSTEAD, WE ARE USING THE TIMING FROM THE CIA DATA SHEET.
 //ONE COMPLETE CIA CLOCK CYCLE IS 500ns AT 50% DUTY CYCLE.
 //40MHz CLOCK = 25ns PERIOD
