@@ -7,8 +7,7 @@ module top_tb();
 
 //inputs
 reg CLK7 = 0;
-reg CLK40 = 1;
-reg CLK80 = 1;
+reg CLK20 = 1;
 reg C1 = 1;
 reg C3 = 1;
 reg nRESET = 0;
@@ -31,6 +30,8 @@ reg nCASL = 1;
 reg nBG = 0;
 
 //outputs
+wire CLK40;
+wire CLK80;
 wire nUDS;
 wire nLDS;
 wire nAS;
@@ -64,14 +65,10 @@ wire myUMBE;
 wire myLMBE;
 wire myLLBE;
 
-/*reg myUUBE = 1'bz;
-reg myUMBE = 1'bz;
-reg myLMBE = 1'bz;
-reg myLLBE = 1'bz;
-assign nUUBE = myUUBE;
-assign nUMBE = myUMBE;
-assign nLMBE = myLMBE;
-assign nLLBE = myLLBE;*/
+reg myCLK40 = 1;
+reg myCLK80 = 1;
+assign CLK40 = myCLK40;
+assign CLK80 = myCLK80;
 
 //Simulation time : 10000 * 1ns = 10us
 localparam DURATION = 20000;
@@ -84,8 +81,9 @@ localparam DURATION = 20000;
 reg C1temp = 1;
 
 always #69.5 CLK7 = ~CLK7;
-always #12.5 CLK40 = ~CLK40;
-always #6.25 CLK80 = ~CLK80;
+always #25 CLK20 = ~CLK20;
+always #12.5 myCLK40 = ~myCLK40;
+always #6.25 myCLK80 = ~myCLK80;
 always #139 C1 = ~C1;
 
 //THE TEST
@@ -259,6 +257,7 @@ end
 U712_TOP dut (
 
     .CLK7 (CLK7),
+    .CLK20 (CLK20),
     .CLK40 (CLK40), 
     .CLK80 (CLK80),
     .C1 (C1),

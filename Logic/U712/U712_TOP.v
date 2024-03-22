@@ -37,9 +37,7 @@
 
 module U712_TOP (
 
-    input CLK7,
-    input CLK40,
-    input CLK80, 
+    input CLK7,     
     input CLK20,
     input C1,
     input C3,
@@ -61,6 +59,9 @@ module U712_TOP (
     input nCASU,
     input wire SIZ0,
     input wire SIZ1,
+
+    inout CLK40,
+    inout CLK80,
 	
     output wire nUUBE,
     output wire nUMBE,
@@ -95,6 +96,42 @@ module U712_TOP (
     output wire DA2
     
 );
+
+///////////////////
+// SYSTEM CLOCKS //
+///////////////////
+
+//WE GENERATE THE 40MHz AND 80MHz CLOCKS HERE
+
+SB_PLL40_CORE # (
+    .FEEDBACK_PATH("SIMPLE"),
+    .PLLOUT_SELECT("GENCLK"),
+    .DIVR(4'b0000),
+    .DIVF(7'b0011111),
+    .DIVQ(3'b100),
+    .FILTER_RANGE()
+    ) PLL40 (
+        .REFERENCECLK(CLK20),
+        .PLLOUTGLOBAL(CLK40),
+        .LOCK(),
+        .RESETB(1'b1),
+        .BYPASS(1'b0)
+    );
+
+SB_PLL40_CORE # (
+    .FEEDBACK_PATH("SIMPLE"),
+    .PLLOUT_SELECT("GENCLK"),
+    .DIVR(4'b0000),
+    .DIVF(7'b0011111),
+    .DIVQ(3'b011),
+    .FILTER_RANGE()
+    ) PLL80 (
+        .REFERENCECLK(CLK20),
+        .PLLOUTGLOBAL(CLK80),
+        .LOCK(),
+        .RESETB(1'b1),
+        .BYPASS(1'b0)
+    );
 
 ///////////////
 // SIZE BITS //
