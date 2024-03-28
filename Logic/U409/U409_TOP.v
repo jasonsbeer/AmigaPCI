@@ -30,10 +30,10 @@
 //
 // Revision History:
 //     13-JAN-2024 : Initial Engineering Release
-//     09-MAR-2024 : FPGA Rewrite
+//     27-MAR-2024 : FPGA Rewrite
 ///////////////////////////////////////////////////////////////////////////////////
 
-//TO BUILD WITH APIO: apio build --fpga iCE40-HX4K-TQ144
+//TO BUILD WITH APIO: apio build --top-module U409_TOP --fpga iCE40-HX4K-TQ144
 
 module U409_TOP (
 
@@ -55,8 +55,10 @@ module U409_TOP (
     inout wire [31:28] D,
 
     output CONFIGED,
-    output nREGEN,
-    output nRAMEN,
+    //output nREGEN,
+    //output nRAMEN,
+    output nREGSPACE,
+    output nRAMSPACE,
     output nROMEN,
     output nTA,
     output nRTCEN,
@@ -118,7 +120,8 @@ wire BURST_CYCLEm;
 assign TA = AC_TAm || RAM_TAm || CIA_TAm || RTC_TA || ROM_TA;
 assign TA_SPACE = AUTOCONFIG_SPACEm || CIA_SPACEm || RAM_SPACEm || !nRTCEN || !nROMEN;
 assign nTA = TA ? 1'b0 : TA_SPACE || TA_CYCLE ? 1'b1 : 1'bZ;
-assign nTBI = BURST_CYCLEm ? 1'b1 : nTA;
+assign nTCI = !RAM_SPACEm ? 1'b1 : nTA; //INHIBIT CACHING IN THE CHIP RAM SPACE
+assign nTBI = BURST_CYCLEm ? 1'b1 : nTA; //BURST INHIBIT ANY TIME WE DO NOT ACCEPT THE BURST REQUEST
 
 //TA_CYCLE FORCES _TA HIGH AFTER NEGATION TO PREVENT IT INADVERTENTLY
 //ENDING THE NEXT CYCLE PREMATURELY.
@@ -176,8 +179,8 @@ end
 
 // ADDRESS DECODE TOP
 U409_ADDRESS_DECODE U409_ADDRESS_DECODE (
-    .CLK7 (CLK7),
-    .CLK40 (CLK40),
+    //.CLK7 (CLK7),
+    //.CLK40 (CLK40),
     .nRESET (nRESET),
     .A (A[31:12]),
     .OVL (OVL),
@@ -187,9 +190,11 @@ U409_ADDRESS_DECODE U409_ADDRESS_DECODE (
     .CONFIGED (CONFIGED),
     .CIA_ENABLE (CIA_ENABLEm),
     .RAM_BASE_ADDRESS (RAM_BASE_ADDRESSm),
-    .nTIP (nTIP),
-    .nREGEN (nREGEN),
-    .nRAMEN (nRAMEN),
+    //.nTIP (nTIP),
+    //.nREGEN (nREGEN),
+    //.nRAMEN (nRAMEN),
+    .nRAMSPACE (nRAMSPACE),
+    .nREGSPACE (nREGSPACE),
     .nROMEN (nROMEN),
     .nRTCEN (nRTCEN),
     .nCIACS0 (nCIACS0),

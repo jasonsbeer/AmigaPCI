@@ -36,7 +36,7 @@
 module U409_ADDRESS_DECODE 
 (
 	//input CLK7,
-	input CLK40,	
+	//input CLK40,	
 	input nRESET,
     input [31:12] A,  
     input OVL,
@@ -101,8 +101,8 @@ assign nIDEEN = ~(IDE_ACCESS && IDE_ENABLE && !Z3_SPACE);
 //FOR DATA TRANSFER CYCLES. TO ACHIEVE THIS, WE ASSERT
 //_RAMEN AND _REGEN DURING STATE 2 OF THE MC68000 CYCLE.
 
-assign nRAMSPACE = !Z3_SPACE && !OVL && A[23:21] == 3'b000;
-assign nREGSPACE = !Z3_SPACE && A[23:16] == 8'hDF;
+assign nRAMSPACE = ~(!Z3_SPACE && !OVL && A[23:21] == 3'b000); //nRAMSPACE
+assign nREGSPACE = ~(!Z3_SPACE && A[23:16] == 8'hDF);
 
 /*reg nREGEN_OUT;
 reg nRAMEN_OUT;
