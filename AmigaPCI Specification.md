@@ -6,7 +6,7 @@
 
 This document is presented "as-is" with no waranty expressed or implied.  
 
-This document defines how the PCI Local Bus Rev. 2.3 specification may be implemented on a Motorola based Amiga. It is not a substitute for the PCI Local Bus Specification or the relevant Motorola user manuals. It is expected the reader has reviewed and understands the tenants of the PCI Bus as defined in the PCI Local Bus Specification, Rev 2.3, and the relevant Motorola user manuals.
+This document defines how the PCI Local Bus Rev. 2.3 specification is implemented in the AmigaPCI. It is not a substitute for the PCI Local Bus Specification or relevant Motorola user manuals. It is expected the reader has reviewed and understands the tenants of the PCI Bus as defined in the PCI Local Bus Specification, Rev 2.3, and the relevant Motorola user manuals.
 
 **Conventions**
 
@@ -73,10 +73,7 @@ New PCI hardware developed specifically for the Amiga should be based on specifi
 
 # 2.0 PCI Configuration
 
-Each PCI target device may be configured by the Amiga AUTOCONFIG process or by software configuration (Prometheus). During configuration each PCI slot, in turn, is polled to obtain the capabilities and address space needs of the target device. Each PCI slot is polled by asserting the **IDSEL** signal, which is approximately equivalent to the **_CFGIN** signal of the Zorro bus. However, unlike the **_CFGIN** signal, the **IDSEL** is asserted by a specific address bit during the address phase of a configuration command access[[2]](#2). There is no equivalent of the **_CFGOUT** signal, as the Local PCI Bridge addresses each slot directly.
-
-<p align="center"><img src="/DataSheets/TimingDiagrams/PCI Configuration Read Cycle.png" width="650"></p>
-<p align="center"><img src="/DataSheets/TimingDiagrams/PCI Configuration Write Cycle.png" width="650"></p>
+Each PCI target device may be configured by the Amiga AUTOCONFIG process or by software configuration (Prometheus). During configuration, each PCI slot in turn, is polled to obtain the capabilities and address space needs of the target device. Each PCI slot is polled by asserting the **IDSEL** signal, which is approximately equivalent to the **_CFGIN** signal of the Zorro bus. However, unlike the **_CFGIN** signal, the **IDSEL** is asserted by a specific address bit during the address phase of a configuration command access[[2]](#2). There is no equivalent of the **_CFGOUT** signal, as the Local PCI Bridge addresses each slot directly.
 
 ## 2.1 Local PCI Bridge
 
@@ -84,7 +81,7 @@ The Local PCI Bridge is always configured via the AUTOCONFIG process at startup 
 
 The following 16-bit registers are available on the Local PCI Bridge device and can be read by the system. This allows polling of the Local PCI Bridge settings and status. Reading a long word at offset $04 will return both registers. Assuming the Local PCI Bridge base address is $8000 0000, you would access the command register at $8000 0004. Reads from unsupported registers will return 0. Writes to these registers will have no effect. 
 
-**NOTE:** The registers in Tables 2.1a and 2.1b relate to the Local PCI Bridge only, and are not indicative of the capabilities of the Amiga PCI bus implementation.
+**NOTE:** The registers in Tables 2.1a and 2.1b relate to the Local PCI Bridge only, and are not indicative of the capabilities of the AmigaPCI PCI bus implementation.
 
 Table 2.1a. Offset $04, Command Register.
 Bit|Description|Default Value
@@ -121,7 +118,7 @@ Bit|Description|Supported by Local PCI Bridge Device
 
 ## 2.2 AUTOCONFIG
 
-PCI cards designed specifically with support for the Amiga should be installed in an AUTOCONFIG slot. AUTOCONFIG slots will be configured by the Local PCI Bridge at startup in the 32-bit Zorro 3 address space. The Amiga PCI AUTOCONFIG process is compatable with configuration of Type 0 devices. 
+PCI cards designed specifically with support for the Amiga will be configured via the AUTOCONFIG process at startup. AUTOCONFIG slots will be configured by the Local PCI Bridge in the 32-bit Zorro 3 address space. The AmigaPCI AUTOCONFIG process is compatable with configuration of Type 0 devices. 
 
 **NOTE:** A Type 0 configuration transaction is used to access a device on the current bus segment and a Type 1 configuration transaction is used to access a device that resides behind a bridge. A Type 0 configuration transaction is not forwarded across a bridge but is used to configure a bridge or other PCI devices that are connected to the PCI bus on which the Type 0 configuration transaction is generated[[8]](#8). It is not possible to AUTOCONFIG devices requiring a Type 1 configuration header, which are devices behind a second PCI bridge on the bus controlled by the Local PCI Bridge.
 
@@ -263,25 +260,7 @@ A normal mode transfer is capable of moving byte, word, or long word data. The d
 
 #### 3.1.2.1 Normal Read Cycle
 
-~~1) The CPU begin a data transfer cycle by asserting an address on the A bus and data on the D bus, along with related signals. 
-2) On the next falling PCI clock edge, the Local PCI Bridge broadcasts the address on the AD bus, places a bus command on the C/_BE bus, and asserts _FRAME.
-3) If a PCI device on the bridge responds to the base address, it will assert _DEVSEL on the next falling PCI clock edge. If no device responds by asserting _DEVSEL, the AD and C/_BE buses are placed in a high-impedence state and the Local PCI Bridge returns to an idle state.
-4) The Local PCI Bridge continues the data transfer by connecting the D bus to the AD bus. Bit and byte swapping is accomplished in the Local PCI Bridge.
-5) On the next falling BCLK clock edge after data is asserted by the target device, if _TRDY is asserted, _TA is asserted for one BCLK cycle to signal the CPU the data is ready to be latched. If _TRDY is not asserted, repeat 5 until the target device asserts _TRDY or the cycle is aborted by the target or master.
-6) On the next falling PCI clock edge after asserting _TA, _IRDY is asserted for one PCI clock cyle to signal the target device the data has been latched.~~
-
-<p align="center"><img src="/DataSheets/TimingDiagrams/PCI Normal Read Cycle.png" width="750"></p>
-
 #### 3.1.2.2 Normal Write Cycle
-
-~~1) The CPU begins a data transfer cycle by asserting an address on the A bus and data on the D bus, along with related signals. 
-2) On the next falling PCI clock edge, the Local PCI Bridge broadcasts the address on the AD bus, places a bus command on the C/_BE bus, and asserts _FRAME.
-3) If a PCI device on the bridge responds to the base address, it will assert _DEVSEL on the next falling PCI clock edge. If no device responds by asserting _DEVSEL within two PCI clock cycles, the AD and C/_BE buses are placed in a high-impedence state and the Local PCI Bridge returns to an idle state.
-4) The Local PCI Bridge continues the data transfer by connecting the AD bus to the D bus. Bit and byte swapping is accomplished in the Local PCI Bridge.
-5) On the next falling PCI clock edge after driving the AD bus, _IRDY is asserted for one PCI clock cyle to signal the target device data is ready to be latched.
-6) On the next falling BCLK clock edge after _IRDY is asserted, if _TRDY is asserted, _TA is asserted for one BCLK cycle to signal the CPU the data has been latched. If _TRDY is not asserted, repeat 6 until the cycle continues or is aborted by the target or master.~~
-
-<p align="center"><img src="/DataSheets/TimingDiagrams/PCI Normal Write Cycle.png" width="750"></p>
 
 ### 3.1.3 Burst Mode Cycles
 
@@ -289,42 +268,7 @@ A burst mode is defined as a line transfer initiated by the CPU initiated with t
 
 #### 3.1.3.1 Burst Read Cycle
 
-~~1) The CPU begins a data transfer cycle by asserting an address on the A bus and data on the D bus, along with related signals. 
-2) On the next falling PCI clock edge, the Local PCI Bridge broadcasts the address on the AD bus, places a bus command on the C/_BE bus, and asserts _FRAME.  
-3) If a PCI device on the bridge responds to the base address, it will assert _DEVSEL on the next falling PCI clock edge.
-4) If no device responds by asserting _DEVSEL within two PCI clock cycles, _FRAME is negated, and the AD and C/BE buses are placed in a high-impedence state and the Local PCI Bridge returns to an idle state. 
-5) The target device places data on the AD bus on the next falling edge of PCI clock and asserts _TRDY.
-6) Data is latched by a latching transceiver from the AD bus on the next rising edge of PCI clock.
-7) The latched data is placed onto the D bus at the next falling edge of BCLK and _TA is asserted. If data is not yet latched from the AD bus by the next falling BCLK edge, then _TA is negated to insert a wait state.
-8) Steps 4-6 are repeated until four long words have been transfered or the target device terminates the cycle by asserting _STOP. The Local PCI Bridge will negate _FRAME on the falling clock edge leading into the fourth long word on the AD bus.
-9) On the next falling PCI clock edge after _FRAME is negated and the last long word has been transfered, the Local PCI Bridge will place the AD and C/BE busses into a high impedence state. _IRDY is negated and held for one PCI clock cycle and then placed into a high impedence state.
-10) On the next falling edge of BCLK, _TA is negated and held for one BCLK cycle before being placed in a high impedence state.~~
-
-**NOTE:** Due to the asynchronous nature of the BCLK and PCI bus clocks, wait states may need to be inserted until the data become available to place on the D bus. This can be observed in Figure 1.6.2.1a.
-
-Figure 3.1.3.1a. Burst Cycle Read.  
-<img src="/DataSheets/TimingDiagrams/CPU Driven Burst Read Cycle Fast.png" height="400"></p>
-
-Figure 3.1.3.1b. Burst Cycle Read With Target Wait State.  
-<img src="/DataSheets/TimingDiagrams/CPU Driven Burst Read Cycle Fast With PCI Wait.png" height="400"></p>
-
 #### 3.1.3.2 Burst Write Cycle
-
-~~1) The CPU begins a data transfer cycle by asserting an address on the A bus and data on the D bus, along with related signals.  
-2) The Local PCI Bus asserts _TA and data is latched by a latching transceiver from the D bus on each rising edge of BCLK. Once the CPU cycle is complete, _TA is negated for one BCLK before being placed in a high impedence state.
-3) On the first PCI clock falling edge after the CPU cycle begins, the Local PCI Bridge places the address on the AD bus and the PCI command on the C/BE bus and asserts _FRAME.  
-4) If a PCI device responds to the base address, it will assert _DEVSEL on the next falling PCI clock edge.  
-5) If no device responds by asserting _DEVSEL within two PCI clock cycles, _FRAME is negated, and the AD and C/BE buses are placed in a high-impedence state and the Local PCI Bridge returns to an idle state.  
-6) On the next falling edge of PCI clock, the appropriate long word data latched from the D bus is placed on the AD bus.
-7) The target PCI device will latch the data on the AD bus on the next rising edge of PCI clock when _TRDY is asserted.
-8) Steps 6-7 are repeated until all four long words have been transfered or the target device terminates the cycle by asserting _STOP. The Local PCI Bridge will negate _FRAME on the falling clock edge leading into the fourth long word on the AD bus.
-9) On the next falling PCI clock edge after _FRAME is negated and the last long word has been transfered, the Local PCI Bridge will place the AD and C/BE busses into a high impedence state. _IRDY is negated and held for one PCI clock cycle and then placed into a high impedence state.~~
-
-Figure 3.1.3.2a. Burst Write Cycle.  
-<img src="/DataSheets/TimingDiagrams/PCI Burst Write Cycle Fast.png" height="400"></p>
-
-Figure 3.1.3.2b. Burst Write Cycle With Target Wait State.  
-<img src="/DataSheets/TimingDiagrams/PCI Burst Write Cycle Wait Fast.png" height="400"></p>
 
 ## 3.2 PCI Device as a Bus Driver (DMA)
 
@@ -356,58 +300,17 @@ A normal mode transfer is capable of transferring byte, word, or long word data.
 
 ##### 3.2.1.3.1 PCI Fast RAM DMA Normal Read Cycle
 
-1. The initiating PCI device requests the bus by asserting **_REQx** (where x is the slot designation) on the falling edge of PCI clock.
-2. When the bus is available to the PCI device, the arbiter asserts **_BB** on the next falling edge of BCLK and asserts **_GNTx** on the next falling edge of PCI clock.
-3. The PCI device will assert **_FRAME**, drive the **AD bus** with the requested address, and drive **C/BE** with the PCI cycle command on the next falling edge of PCI clock.
-4. Upon the target device signaling its attention, the PCI Local Bridge asserts **_DEVSEL** on the next falling edge of the PCI clock.
-5. The Local PCI Bridge samples **_FRAME** on the next rising edge of the PCI clock. If **_FRAME** is negated, this is a normal cycle.
-6. On the next falling edge of BCLK, the Local PCI Bridge asserts the requested address on **A[31..0]**, asserts transer size requirements on the **SIZ0** and **SIZ1**, sets **TT0** and **TT1** low, sets **R_W** high, asserts **_TIP**, and asserts **_TS** for one BCLK cycle.
-7. The target device drives data onto the D bus and asserts _TA on the falling edge of BCLK.
-8. The PCI local bus samples **_TA** on the rising edge of BCLK. If **_TA** is asserted, data is placed on **AD[31..0]** and **_TRDY** is asserted. If **_TA** is not asserted, wait states are inserted until **_TA** is asserted, which is always sampled on the rising edge of BCLK.
-9. If **_IRDY** is asserted, **_TIP**, and **_BB** are negated and **R_W**, **TT0**, and **TT1** are set to high on the next falling edge of BCLK. If **_IRDY** is not asserted, data is held on **AD[31..0]** until **_IRDY** is asserted.
-10. **_TRDY** is negated on on the next falling edge of PCI clock and the AD bus is returned to a high impedence state.
-
-<img src="/DataSheets/TimingDiagrams/PCI DMA Normal Read Cycle.png" height="600"></p>
-
 ##### 3.2.1.3.1 PCI Fast RAM DMA Normal Write Cycle
-
-1. ADD SOME TEXT DESCRIBING THE TIMING
-
-<img src="/DataSheets/TimingDiagrams/PCI DMA Normal Write Cycle.png" height="600"></p>
 
 #### 3.2.1.4 PCI Fast RAM DMA Burst Cycles
 
-A normal mode transfer is capable of transfering long word data with a burst length of four.
-
 ##### 3.2.1.4.1 PCI Fast RAM DMA Burst Read Cycle
-
-1. The initiating PCI device requests the bus by asserting **_REQx** (where x is the slot designation) on the falling edge of PCI clock.
-2. When the bus is available to the PCI device, the arbiter asserts **_BB** on the next falling edge of BCLK and asserts **_GNT** on the next falling edge of PCI clock.
-3. The PCI device will assert **_FRAME**, drive **AD[31..0]** with the requested address, and drive **C/_BE[3..0]** with the PCI cycle command on the next falling edge of PCI clock.
-4. Upon the target device signaling its attention, the PCI Local Bridge asserts **_DEVSEL** on the next falling edge of the PCI clock.
-5. The Local PCI Bridge samples **_FRAME** on the next rising edge of the PCI clock. If **_FRAME** is asserted, this is a burst cycle.
-6. On the next falling edge of BCLK, the Local PCI Bridge asserts the requested address on **A[31..0]**, asserts transer size requirements on **SIZ0** and **SIZ1** bus, sets **TT1** low, sets **TT0** and **R_W** high, asserts **_TIP**, and asserts **_TS** for one BCLK cycle.
-7. The target device drives data onto **D[0..31] and asserts **_TA** on the falling edge of BCLK.
-8. The PCI local bus samples **_TA** and **_IRDY** on the falling edge of PCI clock. If **_TA** is asserted, data is driven on **AD[31..0]** bus and **_TRDY** is asserted. If **_TA** is not asserted, wait states are inserted until **_TA** is asserted, which is always sampled on the falling edge of PCI clock. If **_IRDY** is not asserted, the current data is held on **AD[31..0]** bus until **_IRDY** is asserted, at which time the data transfer is completed on the next rising edge of PCI clock.
-9. Steps 7 and 8 are repeated until all four long words are transfered or the cycle is terminated by assertion of **_STOP**.
-10. **_TIP** and **_BB** are negated and **R_W**, **TT0**, and **TT1** are set to high on the next falling edge of BCLK.
-12. **_TRDY** is negated on on the next falling edge of PCI clock and **AD[31..0]** bus is returned to a high impedence state.
-
-<img src="/DataSheets/TimingDiagrams/PCI DMA Burst Read Cycle.png" width="750"></p>
 
 ##### 3.2.1.4.2 PCI Fast RAM DMA Burst Read Cycle With Wait
 
-<img src="/DataSheets/TimingDiagrams/PCI DMA Burst Read Cycle With Wait.png" width="750"></p>
-
 ##### 3.2.1.4.3 PCI Fast RAM DMA Burst Write Cycle
 
-1. ADD SOME TEXT DESCRIBING THE TIMING
-
-<img src="/DataSheets/TimingDiagrams/PCI DMA Burst Write Cycle.png" width="750"></p>
-
 ##### 3.2.1.4.4 PCI Fast RAM DMA Burst Write Cycle Waith Wait
-
-<img src="/DataSheets/TimingDiagrams/PCI DMA Burst Write Cycle With Wait.png" width="750"></p>
 
 #### 3.2.1.5 PCI Chip RAM DMA Cycles
 
@@ -429,15 +332,9 @@ This condition exists when no target device responds to the address phase of a P
 
 This condition is signaled when the target device asserts **_STOP** after claiming the cycle, by asserting **_DEVSEL**, before data has been transfered. When the target device asserts the retry condition, the Local PCI Bridge will assert **_TA** and **_TEA** together, which signals the CPU to immediately abort and retry the cycle.
 
-Figure 8.3a. PCI Cycle Retry.  
-<img src="/DataSheets/TimingDiagrams/PCI Cycle Retry.png" height="400"></p>
-
 ### 3.3.4 Target Terminated - Disconnect
 
 This condition is signaled when the target device asserts **_STOP** while **_TRDY** is asserted. The Disconnect condition is different from the Retry condition in that Disconnect is asserted after some data has already been transfered, but the target device is unable to continue transferring the requested data. When this condition exists, the Local PCI Bridge will assert **_TEA**. This indicates to the CPU that an error condition exists and the cycle cannot continue. This condition can only exist for burst cycles.
-
-Figure 8.4a. PCI Cycle Disconnect.  
-<img src="/DataSheets/TimingDiagrams/PCI Burst Cycle Disconnect.png" height="400"></p>
 
 ### 3.3.5 Target Terminated - Abort
 
@@ -452,8 +349,6 @@ Add something here. This is timeout during DMA situations.
 Data transfer errors are detected using an even parity system. Except for video and HID devices, all PCI devices are required to support parity[[7]](#7). Even parity is generated by the initiating device and **PAR** is asserted one clock after the associated address or data block. The target device determines even parity on the data received and compares the calculated value to **PAR**. Even parity is set when the number of set bits on **AD[31..0]**, **C/BE[3..0]**, and **PAR** is an even number. Parity error conditions are expected to be reported through the device driver whenever possible. (**CITE #9**). The reporting chain of target to bus master to driver to operating system enables recovery options at every level.
 
 When the target device detects a parity error, and the Parity Error Response bit is set (Command Register, bit 6), it will assert **_PERR**. The target device will set its Detected Parity Error bit (Status register, bit 15) regardless of the state of the Parity Error Response bit. In response to the assertion of **_PERR**, the Local PCI Bridge will assert **_INT2** and set the Interrupt Status bit (Status Register, Bit 3), indicating the interrupt is generated from a device on the PCI bus. PCI drivers are expected to respond to this interrupt and poll their device's Parity Error Bit. The driver should then clear the interrupt in the target device (Status Register, Bit 3) and retry or cancel the cycle.
-
-**NEED TIMING?**
 
 ### 3.4.1 Address Parity Errors
 
