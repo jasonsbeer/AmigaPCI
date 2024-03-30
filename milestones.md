@@ -49,3 +49,5 @@ Verify CIA Cycles|||
 ## Goal 3: AUTOCONFIG Devices on PCI Bus
 
 ## Goal 4: Use PCI Devices
+
+## Goal 5: HID for USB mice and keyboards
