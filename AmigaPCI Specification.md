@@ -136,9 +136,11 @@ PCI devices may have onboard ROMs that may be used to enhance functionality, suc
 
 ### 2.2.3 AUTOCONFIG PCI Device Register Access
 
-PCI defines multiple address spaces that exist in parallel. PCI command encodings select a specific address space for the current cycle. PCI devices added by the AUTOCONFIG process may be accessed in memory or configuration spaces. Each device is accessed via the Zorro 3 assigned base address with the command type determined by sampling the R_W, UPA0, and UPA1 sigals. For example, you can access the Configuration Type 0 space of an AUTOCONFIG PCI device by driving the base address on the CPU address bus and setting UPA0 = 1 and UPA1 = 0. The Local PCI Bridge will interpret this as a Configuration Type 0 command and set the C/BE[3..0] bits accordingly. 
+PCI defines multiple address spaces that exist in parallel. PCI command encodings select a specific address space for the current cycle. PCI devices added by the AUTOCONFIG process may be accessed in memory or configuration spaces. Each device is accessed via the Zorro 3 assigned base address with the command type determined by sampling the **R_W**, **UPA0**, and **UPA1** sigals. For example, you can access the Configuration Type 0 space of an AUTOCONFIG PCI device by driving the base address on the CPU address bus and setting **UPA0** = 1 and **UPA1** = 0. The Local PCI Bridge will interpret this as a Configuration Type 0 command and set the **C/BE[3..0]** bits accordingly. 
 
-Both UPAx signals are to be pulled to ground with appropriate pull down resistors in hardware. As a result, memory space access is the default bus command. This allows for the implementation of PCI devices that do not use drivers, such as memory cards. **THIS IS DONE WITH PULL DOWNS, BUT NEED TO CONFIRM THE UPA BUS FLOATS OR IS SET TO 00 WHEN NOT EXPLICITY SET, OTHERWISE THIS MAY NOT WORK!**
+Both UPAx signals are to be pulled to ground with appropriate pull down resistors in hardware. As a result, memory space access is the default bus command. This allows for the implementation of PCI devices that do not use drivers, such as memory cards. 
+
+**WHAT IS NOT CURRENTLY UNDERSTOOD IS HOW THE UPA BUS BEHAVES WHEN NOT EXPLICITLY SET. ONCE THIS BEHAVIOR IS UNDERSTOOD, THIS TABLE MAY CHANGE**
 
 Table 2.2.3a. PCI Commands for AUTOCONFIG Devices.
 R_W|UPA0|UPA1|PCI Command
@@ -294,25 +296,7 @@ For example, **CLKEN** (clock enabled ) may be used by an SDRAM controller to ha
 
 #### 3.2.1.3 PCI Fast RAM DMA Normal Mode Cycles
 
-A normal mode transfer is capable of transferring byte, word, or long word data. The data size to be transfered is determined from **AD(1..0)** and PCI command driven on **C/BE[3..0]** during the address phase. That information is used to drive the correct cycle type on the CPU bus during the data transfer.
-
-**NOTE:** The example timings under section 7.1.1 assume the DMA target device is an SDRAM device with a burst length of 4 and a CAS latency of 1.
-
-##### 3.2.1.3.1 PCI Fast RAM DMA Normal Read Cycle
-
-##### 3.2.1.3.1 PCI Fast RAM DMA Normal Write Cycle
-
-#### 3.2.1.4 PCI Fast RAM DMA Burst Cycles
-
-##### 3.2.1.4.1 PCI Fast RAM DMA Burst Read Cycle
-
-##### 3.2.1.4.2 PCI Fast RAM DMA Burst Read Cycle With Wait
-
-##### 3.2.1.4.3 PCI Fast RAM DMA Burst Write Cycle
-
-##### 3.2.1.4.4 PCI Fast RAM DMA Burst Write Cycle Waith Wait
-
-#### 3.2.1.5 PCI Chip RAM DMA Cycles
+A normal mode transfer is capable of transferring a single byte, word, or long word. The data size to be transfered is determined from **AD(1..0)** and PCI command driven on **C/BE[3..0]** during the address phase. That information is used to drive the correct cycle type on the CPU bus during the data transfer.
 
 Chip RAM space may be used for PCI driven DMA cycles. The exact implementation is determined by the Amiga chip set in use (OCS/ECS or AGA) and the memory type of the specific design case. Amiga chip set DMA cycles always take precendence over other accesses to the chip set RAM space. The interface design must allow the Amiga chip set RAM controller (Agnus or Alice) to access the chip set RAM space without interference from the PCI device or CPU. Any such implementation will likely require a seperate RAM controller to supply the needed address latching, RAM commands, and proper cycle termination signals. 
 
