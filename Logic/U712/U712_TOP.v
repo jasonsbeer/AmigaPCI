@@ -33,7 +33,7 @@
 //     19-MAR-2024 : FPGA Rewrite
 //////////////////////////////////////////////////////////////////////////////////
 
-//TO BUILD WITH APIO: apio build --fpga iCE40-HX4K-TQ144
+//TO BUILD WITH APIO: apio build --top-module U109_TOP --fpga iCE40-HX4K-TQ1444
 
 module U712_TOP (
 
