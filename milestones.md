@@ -50,6 +50,12 @@ Verify CIA Cycles|||
 
 ## Goal 3: AUTOCONFIG Onboard Resources  
 
+Milestone|Action|Completed|Comments
+-|-|-|-
+Confirm real time clock|||Not ATUOCONFIG
+Confirm fast RAM function|||
+Confirm IDE function|||
+
 ## Goal 4: AUTOCONFIG Devices on PCI Bus
 
 ## Goal 5: Use PCI Devices
