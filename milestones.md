@@ -52,9 +52,10 @@ Verify CIA Cycles|||
 
 Milestone|Action|Completed|Comments
 -|-|-|-
-Confirm real time clock|||Not ATUOCONFIG
+Confirm real time clock|||Not AUTOCONFIG
 Confirm fast RAM function|||
 Confirm IDE function|||
+Confrim PCI bridge function|||
 
 ## Goal 4: AUTOCONFIG Devices on PCI Bus
 
