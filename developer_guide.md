@@ -120,7 +120,7 @@ Bit|Description|Supported by Local PCI Bridge Device
 
 PCI cards designed specifically with support for the Amiga will be configured via the AUTOCONFIG process at startup. AUTOCONFIG slots will be configured by the Local PCI Bridge in the 32-bit Zorro 3 address space. The AmigaPCI AUTOCONFIG process is compatable with configuration of Type 0 devices. 
 
-**NOTE:** A Type 0 configuration transaction is used to access a device on the current bus segment and a Type 1 configuration transaction is used to access a device that resides behind a bridge. A Type 0 configuration transaction is not forwarded across a bridge but is used to configure a bridge or other PCI devices that are connected to the PCI bus on which the Type 0 configuration transaction is generated[[8]](#8). It is not possible to AUTOCONFIG devices requiring a Type 1 configuration header, which are devices behind a second PCI bridge on the bus controlled by the Local PCI Bridge.
+**NOTE:** A Type 0 configuration transaction is used to access a device on the current bus segment and a Type 1 configuration transaction is used to access a device that resides behind another bridge on the bus. For example, a daughter card plugged into a PCI slot can supply additional PCI slots via a bridge on the daughter card. A Type 0 configuration transaction is not forwarded across a bridge but is used to configure a bridge or other PCI devices that are connected to the PCI bus on which the Type 0 configuration transaction is generated[[8]](#8).
 
 ### 2.2.1 AUTOCONFIG Process
 
@@ -140,7 +140,7 @@ PCI defines multiple address spaces that exist in parallel. PCI command encoding
 
 Both UPAx signals are to be pulled to ground with appropriate pull down resistors in hardware. As a result, memory space access is the default bus command. This allows for the implementation of PCI devices that do not use drivers, such as memory cards. 
 
-**WHAT IS NOT CURRENTLY UNDERSTOOD IS HOW THE UPA BUS BEHAVES WHEN NOT EXPLICITLY SET. ONCE THIS BEHAVIOR IS UNDERSTOOD, THIS TABLE MAY CHANGE**
+**WHAT IS NOT CURRENTLY UNDERSTOOD IS HOW THE UPA BUS BEHAVES WHEN NOT EXPLICITLY SET. ONCE THIS BEHAVIOR IS UNDERSTOOD, THIS TABLE MAY CHANGE. ALTERNATIVELY, WE MAY CONSIDER A REGISTER TO SET THE CYCLE TYPE. THIS WOULD BE SIMPLE TO IMPLEMENT, BUT COST AN ADDITIONAL TWO CLOCKS PER CYCLE. IMPLEMENTING THE UPA BUS HAS NO CLOCK PENALTY.**
 
 Table 2.2.3a. PCI Commands for AUTOCONFIG Devices.
 R_W|UPA0|UPA1|PCI Command
