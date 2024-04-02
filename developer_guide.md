@@ -47,7 +47,7 @@ Endianess|Hex Value<br />Order of Consumption
 Big| <------START
 Little| START------>
 
-The smallest unit of data considered by the PCI specification is one byte. With this consideration, data bytes are swapped to accomodate the conversion in endianess. This conversion applies only to the data values, never to address values.  In 32-bit devices, the first byte consumed is stored at address $03. The second at $02, the third at $01, and the fourth at $00. This byte swapping is to be implemented in hardware.
+The smallest unit of data considered by the PCI specification is one byte. With this consideration, data bytes are swapped to accomodate the conversion in endianess. This conversion applies only to the data values, never to address values.  In 32-bit devices, the first byte consumed is stored at address $03. The second at $02, the third at $01, and the fourth at $00. This byte swapping is implemented in the AmigaPCI bridge hardware.
 
 Table 1.1b. Byte swapping between big and little endian devices.
 Endianess|Hex Value|Address $03<br />Bytes 31..24|Address $02<br />Bytes 23..16|Address $01<br />Bytes 15..8|Address $00<br />Bytes 7..0
@@ -69,7 +69,9 @@ Prometheus mode requires the PCI target device be configured in software in orde
 
 ## 1.4 Developing PCI Cards for the Amiga and Upgrade Path
 
-New PCI hardware developed specifically for the Amiga should be based on specifications for the Universal PCI card. Future upgrade options include the move to a +3.3V signaling environment running at 66MHz. Plug in hardware based on the Universal concept will permit cards to work in any signalling environment and may leverage faster speeds allowed in the +3.3V environment. In addition, any hardware developed for the Amiga must limit address spaces to Memory and Configuration only. Other address spaces such as I/O are not recommended for new hardware development**CITE** and are not supported in this specification.
+New PCI hardware developed specifically for the Amiga should be based on specifications for the Universal PCI card. Should demand justify it, future upgrade options may include the move to a +3.3V signaling environment capable of running at 66MHz. Plug in hardware based on the Universal concept will permit cards to work in either 5V or 3.3V signaling environments. In addition, any hardware developed for the Amiga must limit address spaces to Memory and Configuration only. The I/O address space is not recommended for new hardware development* and is not supported by the AmigaPCI with AUTOCONFIG devices.  
+
+*PCI Local Bus Specification Revision 2.3. PCI Special Interest Group. Section 3.2.2. Addressing. pp. 27.
 
 # 2.0 PCI Configuration
 
