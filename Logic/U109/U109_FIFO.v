@@ -42,9 +42,10 @@ module U109_FIFO (
     input REGCYCLE,
     input nBEN,
     input nTA, nTRDY, nIRDY, nBG,
+    input PCICYCLE,
 
-    output [31:0] DATA_OUT,
-    output EMPTY
+    output [31:0] DATA_OUT
+    //output EMPTY
 
 );
 
@@ -56,9 +57,10 @@ module U109_FIFO (
 
 parameter DEPTH = 16; //FIFO DEPTH. 16 WILL HOLD TWO BURST CYCLES, 24 HOLDS 3 BURST CYCLES, ETC. AT 4 WORDS PER BURST
 parameter DATA_WIDTH = 16; //DATA BUS WIDTH
-parameter PTR_SIZE = 4; //ADDRESS BUS IS 5 BITS
+parameter PTR_SIZE = 6; //ADDRESS BUS SIZE
 
-reg [DEPTH-1:0] MEMORY [0:DATA_WIDTH-1]; //2D ARRAY. 16 ADDRESS DEEP x 2 BYTES WIDE
+reg [DEPTH-1:0] WORDHIGH [0:DATA_WIDTH-1]; //2D ARRAY. 16 ADDRESS DEEP x 2 BYTES WIDE
+reg [DEPTH-1:0] WORDLOW [0:DATA_WIDTH-1];
 reg [PTR_SIZE-1:0] WR_POINTER;
 reg [PTR_SIZE-1:0] RD_POINTER;
 
@@ -66,7 +68,7 @@ reg [PTR_SIZE-1:0] RD_POINTER;
 // SYNCHRONIZER //
 //////////////////
 
-reg [1:0] PCICLK_SAMP;
+/*reg [1:0] PCICLK_SAMP;
 reg [1:0] BCLK_SAMP;
 
 always @(posedge PCLK, negedge nRESET) begin
@@ -77,7 +79,7 @@ always @(posedge PCLK, negedge nRESET) begin
         PCICLK_SAMP <= {PCICLK_SAMP[0] , PCICLK}; 
         BCLK_SAMP <= {BCLK_SAMP[0] , BCLK}; 
     end
-end
+end*/
 
 ///////////////////////
 // FIFO FILL PROCESS //
@@ -92,43 +94,78 @@ end
 integer i;
 wire WRITE_EN;
 wire [31:0] DATA_IN;
+reg TA;
 
 assign WRITE_EN = !REGCYCLE && !nBEN && ((PCIDIR && !nTA) || (!PCIDIR && ((!nBG && !nTRDY) || (nBG && !nIRDY))));
 assign DATA_IN = PCIDIR ? D : AD;
 
 //WRITE DATA TO THE FIFO
-always @(negedge PCLK, negedge nRESET) begin
+always @(posedge BCLK, negedge nRESET) begin
     if (!nRESET) begin
-        for (i=0; i<DEPTH-1; i=i+1) MEMORY[i] <= 16'h0;
-        WR_POINTER <= 0;
+        for (i=0; i<DEPTH-1; i=i+1) begin WORDHIGH[i] <= 16'h0; WORDLOW[i] <= 16'h0; end
+        TA <= 0;
     end else if (WRITE_EN) begin
-        if ((PCIDIR && BCLK_SAMP == 2'b01) || (!PCIDIR && PCICLK_SAMP == 2'b01)) begin
-            MEMORY[WR_POINTER] <= DATA_IN[31:16];
-            MEMORY[WR_POINTER + 1] <= DATA_IN[15:0];
-            WR_POINTER <= WR_POINTER + 2;
+        if (PCIDIR) begin 
+            WORDHIGH[WR_POINTER] <= DATA_IN[31:16];
+            WORDLOW[WR_POINTER] <= DATA_IN[15:0];
+            TA <= ~nTA;
         end
+    end else begin
+        TA <= 0;
     end
 end
 
-////////////////////
-// READ FROM FIFO //
-////////////////////
+always @(negedge BCLK, negedge nRESET) begin
+    if (!nRESET) begin
+        WR_POINTER <= 0;
+    end else begin
+        if (TA) begin WR_POINTER <= WR_POINTER + 1; end
+    end
+end
 
-wire READ_EN;
-assign READ_EN = !REGCYCLE && (PCIDIR && !nTRDY); //&& !nBEN 
-assign EMPTY = RD_POINTER == WR_POINTER ? 1 : 0;
 
-always @(negedge PCLK, negedge nRESET) begin
+/////////////////////////
+// DRIVE PCI FROM FIFO //
+/////////////////////////
+
+reg TRDY;
+reg [1:0]FIFO_READ_COUNTER;
+reg READCYCLE;
+
+always @(posedge PCICLK, negedge nRESET) begin
+    if (!nRESET)
+        TRDY <= 0;
+    else
+        TRDY <= ~nTRDY;
+end
+
+always @(negedge PCICLK, negedge nRESET) begin
     if (!nRESET) begin
         RD_POINTER <= 0;
-    end else if (READ_EN || !EMPTY) begin
-        if ((!PCIDIR && BCLK_SAMP == 2'b10) || (PCIDIR && PCICLK_SAMP == 2'b01)) begin
-            RD_POINTER = RD_POINTER + 2;
-        end 
-    end
+        FIFO_READ_COUNTER <= 2'b00;
+        READCYCLE <= 0;
+    end else if ((!REGCYCLE && PCIDIR) || READCYCLE) begin
+
+        if (PCICYCLE) begin
+
+            case (FIFO_READ_COUNTER)
+
+                2'b00: begin if (TRDY) begin RD_POINTER = RD_POINTER + 1; FIFO_READ_COUNTER <= 2'b01; READCYCLE <= 1; end end
+                2'b01: begin if (TRDY) begin RD_POINTER = RD_POINTER + 1; FIFO_READ_COUNTER <= 2'b10; end end
+                2'b10: begin if (TRDY) begin RD_POINTER = RD_POINTER + 1; FIFO_READ_COUNTER <= 2'b11; end end
+                2'b11: begin if (TRDY) begin RD_POINTER = RD_POINTER + 1; FIFO_READ_COUNTER <= 2'b00; READCYCLE <= 0; end end
+
+            endcase
+        end else if (!PCICYCLE && READCYCLE) begin
+            //THE PCI CYCLE ENDED BEFORE EXPECTED DUE TO HOST OR TARGET TERMINATION
+            RD_POINTER = RD_POINTER + (4 - FIFO_READ_COUNTER); 
+            FIFO_READ_COUNTER <= 2'b00; 
+            READCYCLE <= 0;
+        end
+    end 
 end
 
-assign DATA_OUT = !EMPTY ? {MEMORY[RD_POINTER], MEMORY[RD_POINTER + 1]} : 32'h0;
+assign DATA_OUT = PCICYCLE ? {WORDHIGH[RD_POINTER], WORDLOW[RD_POINTER]} : 32'h0;
 
 ///////////////
 // FULL FIFO //

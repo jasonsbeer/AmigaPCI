@@ -40,7 +40,7 @@ module U109_TOP (
     input nRESET, TT0, TT1,
     inout [31:0]AD,
     inout [31:0]D,
-    input PCIDIR,
+    input PCIDIR, PCICYCLE,
     input nBEN,
     input nTRDY, nIRDY, nBG, nTS,
 
@@ -106,10 +106,10 @@ end
 // DATA OUTPUT //
 /////////////////
 
-wire PCICYCLE;
+//wire PCICYCLE;
 wire [31:0]DATA_OUTm;
 assign D = !nBEN && !PCIDIR ? DATA_OUTm : 'bz;
-assign AD = (!nBEN || !EMPTY) && PCIDIR ? DATA_OUTm : 'bz; //IF THE FIFO IS NOT EMPTY, KEEP THE CYCLE GOING UNTIL IT IS.
+assign AD = PCICYCLE && PCIDIR ? DATA_OUTm : 'bz; //IF THE FIFO IS NOT EMPTY, KEEP THE CYCLE GOING UNTIL IT IS.
 
 //////////
 // FIFO //
@@ -131,7 +131,8 @@ U109_FIFO U109_FIFO (
     .nIRDY (nIRDY),
     .nBG (nBG),
     .DATA_OUT (DATA_OUTm),
-    .EMPTY (EMPTY)
+    //.EMPTY (EMPTY),
+    .PCICYCLE (PCICYCLE)
 
 );
 

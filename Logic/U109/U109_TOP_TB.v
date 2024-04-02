@@ -21,6 +21,7 @@ reg TT1 = 0;
 wire [31:0] D = 'bz;
 wire [31:0] AD = 'bz;
 reg REGCYCLE = 0;
+reg PCICYCLE = 0;
 
 //wire outputs
 wire [31:0] DATA_OUT;
@@ -55,21 +56,26 @@ initial begin
 
     #137.5 nBEN = 0; PCIDIR = 1; nTS = 0; DData = 32'hffff0000; //set cpu signals
     #25    nTS = 1;
-    #21.5  nTRDY = 0; //wait for pci target ready
+    #21.5  PCICYCLE = 1; nTRDY = 0; //wait for pci target ready
     #3.5   DData = 32'heeee1111;    
     #25    DData = 32'hdddd2222;
     #25    DData = 32'hcccc3333;
     #25    DData = 'bz; nBEN = 1;
-    #53    nTRDY = 1;
 
-    #22 nBEN = 0; PCIDIR = 1; nTS = 0; DData = 32'hffff0000; //set cpu signals
+    #25    nBEN = 0; PCIDIR = 1; nTS = 0; DData = 32'hffff0000; //set cpu signals
     #25    nTS = 1;
-    #21.5  nTRDY = 0; //wait for pci target ready
-    #3.5   DData = 32'heeee1111;    
-    #25    DData = 32'hdddd2222;
-    #25    DData = 32'hcccc3333;
+    #3     nTRDY = 1; PCICYCLE = 0;     
+    #22    DData = 32'heeee1111;  
+    #13    nTRDY = 0; PCICYCLE = 1; //wait for pci target ready
+    #12    DData = 32'hdddd2222;
+
+    #20    nTRDY = 1;
+    #5     DData = 32'hcccc3333;
     #25    DData = 'bz; nBEN = 1;
-    #53    nTRDY = 1;
+    #3     nTRDY = 0;
+
+    
+    #101    nTRDY = 1; PCICYCLE = 0;
     
 
 end
@@ -102,7 +108,8 @@ U109_TOP dut
     .nIRDY (nIRDY),
     .nBG (nBG),
     .TT0 (TT0),
-    .TT1 (TT1)
+    .TT1 (TT1),
+    .PCICYCLE (PCICYCLE)
 
 );
 
