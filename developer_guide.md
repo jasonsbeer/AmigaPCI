@@ -43,7 +43,7 @@ Motorola MC68000 series processors are big endian devices. PCI devices, by contr
 Table 1.1a. Order of byte consumption in big and little endian devices.
 Endianess|Hex Value<br />Order of Consumption
 -|-
-&nbsp;|$00 02 08 04
+&nbsp;|$0002 0804
 Big| <------START
 Little| START------>
 
