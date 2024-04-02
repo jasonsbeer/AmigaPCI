@@ -1,6 +1,10 @@
 # AmigaPCI Milestones to Release and Testing Plan
 
-## Goal 1: POST to Kickstart 3.x
+## Goal 1: Place and route boards.
+
+01-APR-2024: Achieved. Revision 2.0 prototype boards in-hand.
+
+## Goal 2: POST to Kickstart 3.x
 
 Milestone|Action|Completed|Comments
 -|-|-|-
@@ -44,10 +48,17 @@ Verify CIA Cycles|||
 ||Assertion (low) of _TA should occur just after the CLKCIA falling edge when chip select is asserted
 ||Negations of chip select should occur just after negation (high) of _TA
 
-## Goal 2: AUTOCONFIG Onboard Resources  
+## Goal 3: AUTOCONFIG Onboard Resources  
 
-## Goal 3: AUTOCONFIG Devices on PCI Bus
+Milestone|Action|Completed|Comments
+-|-|-|-
+Confirm real time clock|||Not AUTOCONFIG
+Confirm fast RAM function|||
+Confirm IDE function|||
+Confrim PCI bridge function|||
 
-## Goal 4: Use PCI Devices
+## Goal 4: AUTOCONFIG Devices on PCI Bus
 
-## Goal 5: HID for USB mice and keyboards
+## Goal 5: Use PCI Devices
+
+## Goal 6: HID for USB mice and keyboards
