@@ -30,15 +30,15 @@ Revision|Date|Status
 
 # 1.0 PCI Bus
 
-The PCI Local Bus (PCI herein) is a processor independent, 32-bit expasion bus. The Amiga PCI specification is designed to comply with the PCI Local Bus Revision 2.3 specificiation. Each slot supports Universal and +5V cards, as defined in the PCI Local Bus Revision 2.3 specification. Like Zorro 2 and Zorro 3, PCI supports auto configuration of devices on power up. This allows, via some translation, for the use of Amiga AUTOCONFIG to configure devices at start up. This fits well with Amiga OS as PCI devices can be configured as Zorro 3 devices, which function natively with Amiga OS. 
+The PCI Local Bus (PCI, herein) is a processor independent, 32-bit expasion bus. The Amiga PCI specification is designed to comply with the PCI Local Bus Revision 2.3 specificiation. Each slot supports Universal and 5V cards, as defined in the PCI Local Bus Revision 2.3 specification. Like Zorro 2 and Zorro 3, PCI supports auto configuration of devices on power up. This allows for the use of Amiga AUTOCONFIG to configure devices at start up. This fits well with Amiga OS as PCI devices can be configured as Zorro 3 devices, which function natively with Amiga OS. 
 
-The PCI Bridge is implemented via a Motorola MC68040 to PCI Bridge (Local PCI Bridge, herein). The Local PCI Bridge logic translates data requests from the Motorola processor and PCI devices in order that they may communicate in an effective manner. This specification is compatable with Motorola MC68040 and newer predecessors. While this document is written with the Motorola MC68040 in mind, the information can easily be applied to newer Motorola processors, such as the MC68060.
+The PCI Bridge is implemented via a Motorola MC68040 to PCI Bridge (Local PCI Bridge, herein). The Local PCI Bridge logic translates data requests from the Motorola processor and PCI devices in order that they may communicate. This specification is compatable with Motorola MC68040 and newer predecessors. While this document is written with the Motorola MC68040 in mind, the information can be applied to newer Motorola processors, such as the MC68060.
 
 Each PCI slot on the PCI Local Bridge can operate in either AUTOCONFIG mode or Prometheus mode, but not both simultaneously. 
 
 ## 1.1 Endianness
 
-Motorola MC68000 series processors are big endian devices. PCI devices, by contrast, are little endian devices. This means we must byte swap the data signals to provide compatability between devices with different endianness[[1]](#1). The Amiga PCI specification implements address invariance to achieve the endian conversion necessary for the CPU and PCI devices to communicate.
+Motorola MC68000 series processors are big endian devices. PCI devices, by contrast, are little endian devices. This means we must byte swap the data signals to provide compatability between devices with different endianness*. The AmigaPCI specification implements address invariance to achieve the endian conversion necessary for the CPU and PCI devices to communicate.
 
 Table 1.1a. Order of byte consumption in big and little endian devices.
 Endianess|Hex Value<br />Order of Consumption
@@ -47,7 +47,7 @@ Endianess|Hex Value<br />Order of Consumption
 Big| <------START
 Little| START------>
 
-The smallest unit of data considered by the PCI specification is one byte. With this consideration, data bytes are swapped to accomodate the conversion in endianess. This conversion applies only to the data values, never to address values.  In 32-bit devices, the first byte consumed is stored at address $03. The second at $02, the third at $01, and the fourth at $00. This byte swapping is implemented in the AmigaPCI bridge hardware.
+The smallest unit of data considered by the PCI specification is one byte. With this consideration, data bytes are swapped to accomodate the conversion in endianess. This byte swapping is implemented in the AmigaPCI Local PCI Bridge hardware.
 
 Table 1.1b. Byte swapping between big and little endian devices.
 Endianess|Hex Value|Address $03<br />Bytes 31..24|Address $02<br />Bytes 23..16|Address $01<br />Bytes 15..8|Address $00<br />Bytes 7..0
@@ -55,15 +55,17 @@ Endianess|Hex Value|Address $03<br />Bytes 31..24|Address $02<br />Bytes 23..16|
 Big|$0002 0804|$04|$08|$02|$00
 Little|$0408 0200|$00|$02|$08|$04
 
+*Application Note AN2285. Data Movement Between Big-Endian and Little-Endian Devices. Rev 2.2. Freescale Semiconductor. 2008
+
 ## 1.2 Interrupt Handling
 
-Each PCI slot has four interrupt signals, identified as **_INTA**, **_INTB**, **_INTC**, and **_INTD**. Single function PCI devices are only allowed to use **_INTA**. The remaining signals are used in the event of a multifunction PCI device, with one interrupt line per PCI function. As a hyptothetical example, a multifunction I/O device may use **_INTA** for a floppy drive interface, **_INTB** for a hard drive interface, **_INTC** for a serial interface, etc. For the purposes of the Amiga PCI design, **_INTA**, **_INTB**, **_INTC**, and **_INTD** are OR'd together and connected to **_INT2**. Drivers are expected to look for assertion of **_INT2** to signal an interrupt request from devices on the PCI bus. When an interrupt is asserted, the driver needs to poll its device on the PCI bus to determine if its device is asserting the interrupt. The Local PCI Bridge will continue to assert **_INT2** until all PCI devices have negated their interrupt requests. 
+Each PCI slot has four interrupt signals, identified as **_INTA**, **_INTB**, **_INTC**, and **_INTD**. Single function PCI devices are only allowed to use **_INTA**. The remaining signals are used in the event of a multifunction PCI device, with one interrupt line per PCI function. As a hyptothetical example, a multifunction I/O device may use **_INTA** for a floppy drive interface, **_INTB** for a hard drive interface, **_INTC** for a serial interface, etc. For the purposes of the AmigaPCI design, **_INTA**, **_INTB**, **_INTC**, and **_INTD** are OR'd together and connected to **_INT2**. Drivers are expected to look for assertion of **_INT2** to signal an interrupt request from devices on the PCI bus. When an interrupt is asserted, the driver needs to poll its device on the PCI bus to determine if its device is asserting the interrupt. The Local PCI Bridge will continue to assert **_INT2** until all PCI devices have negated their interrupt requests. 
 
 ## 1.3 Modes of Operation
 
 Amiga PCI slots can operate in AUTOCONFIG mode or Prometheus compatable mode. Each individual PCI slot may operate in one of these modes, but never both simultaneously.
 
-In AUTOCONFIG mode, the PCI target device will be configured on startup like any Amiga AUTOCONFIG device. The advantage of AUTOCONFIG mode is the ability to use a PCI device immediately upon startup without the need to load drivers from disk. This supports devices such as auto booting hard drives, video, sound cards, etc. Once the PCI target device is configured by the AUTOCONFIG process, the target device may be directly accessed by its base address(es). 
+In AUTOCONFIG mode, the PCI target device will be configured on startup like any Amiga AUTOCONFIG device. The advantage of AUTOCONFIG mode is the ability to use a PCI device upon startup without the need to load drivers from disk. This supports devices such as auto booting hard drives, video, sound cards, etc. Once the PCI target device is configured by the AUTOCONFIG process, the target device may be directly accessed by its base address(es). 
 
 Prometheus mode requires the PCI target device be configured in software in order to function. This mode can support PCI target devices not designed for the Amiga. During startup, the Local PCI Bridge is configured via AUTOCONFIG in the 32-bit Zorro 3 address space, which will supply a base address for the Local PCI Bridge through which the slots in Prometheus mode may be accessed. Driver software may then poll the Local PCI Bridge base address with each device selection bit. The Local PCI bridge will return $FFFF FFFF if an AUTOCONFIG slot is polled via the Local PCI Bridge base address. 
 
@@ -75,11 +77,13 @@ New PCI hardware developed specifically for the Amiga should be based on specifi
 
 # 2.0 PCI Configuration
 
-Each PCI target device may be configured by the Amiga AUTOCONFIG process or by software configuration (Prometheus). During configuration, each PCI slot in turn, is polled to obtain the capabilities and address space needs of the target device. Each PCI slot is polled by asserting the **IDSEL** signal, which is approximately equivalent to the **_CFGIN** signal of the Zorro bus. However, unlike the **_CFGIN** signal, the **IDSEL** is asserted by a specific address bit during the address phase of a configuration command access[[2]](#2). Because the Local PCI Bridge addresses each slot directly, as opposed to the fall through system of Zorro, there is no equivalent of the **_CFGOUT** signal.
+Each PCI target device may be configured by the Amiga AUTOCONFIG process or by software configuration (Prometheus). During configuration, each PCI slot in turn, is polled to obtain the capabilities and address space needs of the target device. Each PCI slot is polled by asserting the **IDSEL** signal, which is approximately equivalent to the **_CFGIN** signal of the Zorro bus. However, unlike the **_CFGIN** signal, the **IDSEL** is asserted by a specific address bit during the address phase of a configuration command access*. Because the Local PCI Bridge addresses each slot directly, as opposed to the fall through system of Zorro, there is no equivalent, or need, of a **_CFGOUT** signal.
+
+*PCI Local Bus Specification Revision 2.3. PCI Special Interest Group. Section 3.2.2.3.5. System Generation of IDSEL. pp. 36-37.
 
 ## 2.1 Local PCI Bridge
 
-The Local PCI Bridge is always configured via the AUTOCONFIG process at startup before other PCI devices. The Local PCI Bridge base address allows direct access of the Local PCI Bridge configuration registers and a means to access Prometheus configured PCI cards on the PCI bus (See 2.3  Prometheus Configuration). All PCI devices are accessed through the Local PCI bridge, which acts as an interface between the devices on the CPU bus and devices on the PCI bus. The Local PCI Bridge also handles bus arbitration. During each CPU data transfer cycle, the address information is broadcast by the Local PCI Bridge to the PCI bus. If any devices respond by asserting **_DEVSEL**, the Local PCI Bridge proceeds with the PCI cycle. Otherwise, the Local PCI Bridge returns to an idle state.
+The Local PCI Bridge is always configured via the AUTOCONFIG process at startup before other PCI devices. The Local PCI Bridge base address allows direct access of the Local PCI Bridge configuration registers and a means to access Prometheus configured PCI cards on the PCI bus (See 2.3  Prometheus Configuration). All PCI devices are accessed through the Local PCI Bridge, which acts as an interface between the devices on the CPU bus and devices on the PCI bus. The Local PCI Bridge also handles bus arbitration. During each CPU data transfer cycle, the address information is broadcast by the Local PCI Bridge to the PCI bus. If any devices respond by asserting **_DEVSEL**, the Local PCI Bridge proceeds with the PCI cycle. Otherwise, the Local PCI Bridge returns to an idle state.
 
 The following 16-bit registers are available on the Local PCI Bridge device and can be read by the system. This allows polling of the Local PCI Bridge settings and status. Reading a long word at offset $04 will return both registers. Assuming the Local PCI Bridge base address is $8000 0000, you would access the command register at $8000 0004. Reads from unsupported registers will return 0. Writes to these registers will have no effect. 
 
@@ -120,27 +124,29 @@ Bit|Description|Supported by Local PCI Bridge Device
 
 ## 2.2 AUTOCONFIG
 
-PCI cards designed specifically with support for the Amiga will be configured via the AUTOCONFIG process at startup. AUTOCONFIG slots will be configured by the Local PCI Bridge in the 32-bit Zorro 3 address space. The AmigaPCI AUTOCONFIG process is compatable with configuration of Type 0 devices. 
+PCI cards designed specifically with support for the AmigaPCI will be configured via the AUTOCONFIG process at startup. AUTOCONFIG slots will be configured by the Local PCI Bridge in the 32-bit Zorro 3 address space.
 
-**NOTE:** A Type 0 configuration transaction is used to access a device on the current bus segment and a Type 1 configuration transaction is used to access a device that resides behind another bridge on the bus. For example, a daughter card plugged into a PCI slot can supply additional PCI slots via a bridge on the daughter card. A Type 0 configuration transaction is not forwarded across a bridge but is used to configure a bridge or other PCI devices that are connected to the PCI bus on which the Type 0 configuration transaction is generated[[8]](#8).
+**NOTE:** A Type 0 configuration transaction is used to access a device on the current bus segment and a Type 1 configuration transaction is used to access a device that resides behind another bridge on the bus. For example, a daughter card plugged into a PCI slot can supply additional PCI slots via a bridge on the daughter card. A Type 0 configuration transaction is not forwarded across a bridge but is used to configure a bridge or other PCI devices that are connected to the PCI bus on which the Type 0 configuration transaction is generated*.
+
+*PCI-to-PCI Bridge Architecture Specification Revision 1.1. PCI Special Interest Group. Section 3.1. Overview of Hierarchical Configuration. pp. 19.
 
 ### 2.2.1 AUTOCONFIG Process
 
-During configuration, specifications such as the device manufacturer, product number, device capabilities, etc, are read from the device. Each PCI device is capable of supporting up to six base address registers (BAR0 - BAR5, between $10 - $24 in the configuration register). The required address space for each of the six possible registers are determined and presented to Amiga OS for assigning of base addresses in the 32-bit Zorro 3 address space. This is done through the normal Zorro 3 AUTOCONFIG procedure. However, the Local PCI Bridge logic translates the needs of the PCI card and requests AUTOCONFIG resources in a manner that is understood by Amiga OS. As an example, if BAR0 requests 512k of configuration space, this request will be passed to Amiga OS as a Zorro 3 device requiring 512k of AUTOCONFIG space. Amiga OS will then assign a base address to this request. This assigned base address will be programmed into BAR0 of the target PCI device. This process repeats for BAR1 - BAR5 of the same PCI device. This procedure is then repeated for each PCI device installed. Once complete, each PCI device may be accessed by the assigned base address(es), just as any other AUTOCONFIG device. PCI target devices configured by the AUTOCONFIG process may only access memory and configuration spaces. Use of the I/O space is not recommended for new PCI designs[[6]](#6) and is not supported.
+During configuration, specifications such as the device manufacturer, product number, device capabilities, etc, are read from the device. Each PCI device is capable of supporting up to six base address registers (BAR0 - BAR5, between $10 - $24 in the configuration register). The required address space for each of the six possible registers are determined and presented to Amiga OS for assigning of base addresses in the 32-bit Zorro 3 address space. This is done through the normal Zorro 3 AUTOCONFIG procedure. As an example, if BAR0 requests 512k of configuration space, this request will be passed to Amiga OS as a Zorro 3 device requiring 512k of AUTOCONFIG space. Amiga OS will then assign a base address to this request. This assigned base address will be programmed into BAR0 of the target PCI device. This process repeats for BAR1 - BAR5 of the same PCI device. This procedure is then repeated for each PCI device installed. Once complete, each PCI device may be accessed by the assigned base address(es), just as any other AUTOCONFIG device. PCI target devices configured by the AUTOCONFIG process may only access memory and configuration spaces. Use of the I/O space is not recommended for new PCI designs* and is not supported.
 
-**NOTE:** PCI allows for 16-bit Product ID's. Amiga OS supports 8-bit Product ID's. The Product ID should be stored in the most significant bits of the least significant word of the Device ID field. Remember, PCI is little endian! So, this is bits 23 - 16 of register $00.  
+**NOTE:** PCI allows for 16-bit Product ID's. Amiga OS supports 8-bit Product ID's. The Product ID should be stored in the most significant byte of the least significant word of the Device ID field. Remember, PCI is little endian! So, this is bits 23 - 16 of register $00.  
+
+*PCI Local Bus Specification Revision 2.3. PCI Special Interest Group. Section 3.2.2. Addressing. pp. 27.
 
 ### 2.2.2 AUTOCONFIG ROM Vector
 
-PCI devices may have onboard ROMs that may be used to enhance functionality, such as for auto booting. PCI ROMs may contain multiple images that support multiple architectures. During PCI configuration, the ROM address requirement is read from the PCI configuration header. This is then presented to the AUTOCONFIG process as a 16-bit ROM Vector, which is an offset from the base address where the ROM will respond. The Expansion ROM Base Address register is a 32-bit long word. Of these 32 bits, 10-0 are reserved. Of the remaining bits, Amiga OS can access bits 15-11. This allows ROM Vectors in the range of $0800 to $8000.
+PCI devices may have onboard ROMs that enhance functionality, such as for auto booting. PCI ROMs may contain multiple images that support multiple architectures. During PCI configuration, the ROM address requirement is read from the PCI configuration header. This is then presented to the AUTOCONFIG process as a 16-bit ROM Vector, which is an offset from the base address where the ROM will respond. The Expansion ROM Base Address register is a 32-bit long word. Of these 32 bits, 10-0 are reserved. Of the remaining bits, Amiga OS can access bits 15-11. This allows ROM Vectors in the range of $0800 to $8000.
 
 **NOTE:** PCI allows for 32-bit ROM Vectors (ROM Base Address). Amiga OS supports 16-bit ROM Vectors. The ROM vector should be stored in the most significant bits of the Rom Base Address register. Remember, PCI is little endian! So, this is bits 15 - 0 of register $30.  
 
 ### 2.2.3 AUTOCONFIG PCI Device Register Access
 
-PCI defines multiple address spaces that exist in parallel. PCI command encodings select a specific address space for the current cycle. PCI devices added by the AUTOCONFIG process may be accessed in memory or configuration spaces. Each device is accessed via the Zorro 3 assigned base address with the command type determined by sampling the **R_W**, **UPA0**, and **UPA1** sigals. For example, you can access the Configuration Type 0 space of an AUTOCONFIG PCI device by driving the base address on the CPU address bus and setting **UPA0** = 1 and **UPA1** = 0. The Local PCI Bridge will interpret this as a Configuration Type 0 command and set the **C/BE[3..0]** bits accordingly. 
-
-Both UPAx signals are to be pulled to ground with appropriate pull down resistors in hardware. As a result, memory space access is the default bus command. This allows for the implementation of PCI devices that do not use drivers, such as memory cards. 
+PCI defines multiple address spaces that exist in parallel. PCI command encodings select a specific address space for the current cycle. PCI devices added by the AUTOCONFIG process may be accessed in memory or configuration spaces. Each device is accessed via the assigned base address with the command type determined by sampling the **R_W**, **UPA0**, and **UPA1** signals. For example, you can access the Configuration Type 0 space of an AUTOCONFIG PCI device by driving the base address on the CPU address bus and setting **UPA0** = 1 and **UPA1** = 0. The Local PCI Bridge will interpret this as a Configuration Type 0 command and set the **C/BE[3..0]** bits accordingly. **UPA0** and **UPA1** are driven by the user defined U0 and U1 user page attributes when an external bus transfer occurs. These signals are not implemented in other Amiga architectures and users may not be familiar with them. The Motorola MC68040 user manual should be reviewed for better understanding of these signals.
 
 **WHAT IS NOT CURRENTLY UNDERSTOOD IS HOW THE UPA BUS BEHAVES WHEN NOT EXPLICITLY SET. ONCE THIS BEHAVIOR IS UNDERSTOOD, THIS TABLE MAY CHANGE. ALTERNATIVELY, WE MAY CONSIDER A REGISTER TO SET THE CYCLE TYPE. THIS WOULD BE SIMPLE TO IMPLEMENT, BUT COST AN ADDITIONAL TWO CLOCKS PER CYCLE. IMPLEMENTING THE UPA BUS HAS NO CLOCK PENALTY.**
 
@@ -157,8 +163,9 @@ R_W|UPA0|UPA1|PCI Command
 
 ### 2.2.3 PCI AUTOCONFIG Configuration
 
-During the AUTOCONFIG process, up to 21 AUTOCONFIG capable PCI device slots may be addressed by the Local PCI Bridge. During the configuration access, the Local PCI Bridge asserts **IDSEL** with one of 21 address bits, **A[31..11]**. Once the device has been configured, the device may only be accessed through its AUTOCONFIG assigned base address.
+During the AUTOCONFIG process, up to 21 AUTOCONFIG capable PCI device slots may be addressed by the Local PCI Bridge, although the AmigaPCI has only five PCI slots. During the configuration access, the Local PCI Bridge asserts **IDSEL** with one of 21 address bits, **A[31..11]**. Once the device has been configured, the device should only be accessed through its AUTOCONFIG assigned base address. Shown below is the list of possible AmigaPCI slot **IDSEL** addresses. This list maintains compatability with Prometheus* **IDSEL** addresses while allowing for expansion in the number of slots in new system designs.
 
+Examples:
 1) Applying address $0200 0000 will enable **IDSEL** of the card in slot 9.  
 2) Applying address $8000 0000 will enable **IDSEL** of the card in slot 15.  
 
@@ -186,6 +193,8 @@ PCI Slot|Address Bit|Offset|Prometheus Compatable
 18|AD[13]|$0000 2000|No
 19|AD[14]|$0000 4000|No
 20|AD[15]|$0000 8000|No
+
+*Prometheus daughter cards historically have 4 PCI Local Bus slots. It is assumed drivers designed for Promtheus will not search for devices at offsets greater than $0008 0000.
 
 ## 2.3 Prometheus Configuration
 
@@ -353,12 +362,12 @@ In the event of case 1, the wrong target device may be replying to the address. 
 A data parity error occurs when there is a parity mismatch during the data phase of the cycle. Data parity is calculated on all data blocks except during special cycles. 
 
 ## References
-<a id="1">[1]</a>Data Movement Between Big-Endian and Little-Endian Devices. Freescale Semiconductor.  
-<a id="2">[2]</a>PCI Local Bus Specification Revision 2.3. PCI Special Interest Group. Section 3.2.2.3.5. System Generation of IDSEL. pp. 36-37.  
+<a id="1">[1]</a>Data Movement Between Big-Endian and Little-Endian Devices. Freescale Semiconductor.  OK
+<a id="2">[2]</a>PCI Local Bus Specification Revision 2.3. PCI Special Interest Group. Section 3.2.2.3.5. System Generation of IDSEL. pp. 36-37.  OK
 <a id="3">[3]</a>Floppy Adapter. Ian Steadman. https://github.com/istedman/Floppy_adaptor. Accessed May 4, 2023.  
 <a id="4">[4]</a>Motorola MC68040 User Manual. Motorola. Sections 7.4.2 Line Read Transfer and 7.4.4 Line Write Transfers.  
 <a id="5">[5]</a>PCI Local Bus Specification Revision 2.3. PCI Special Interest Group. Table 3-2. Burst Ordering Encoding. pp. 29.  
 <a id="6">[6]</a>Prometheus Open Source. Michael Boehmer. http://www.e3b.de/prometheus. Accessed July 6, 2023.  
 <a id="7">[7]</a>PCI Local Bus Specification Revision 2.3. PCI Special Interest Group. Section 3.7.2. Parity Checking. pp. 95. 
-<a id="8">[8]</a>PCI-to-PCI Bridge Architecture Specification Revision 1.1. PCI Special Interest Group. Section 3.1. Overview of Hierarchical Configuration. pp. 19. 
+<a id="8">[8]</a>PCI-to-PCI Bridge Architecture Specification Revision 1.1. PCI Special Interest Group. Section 3.1. Overview of Hierarchical Configuration. pp. 19. OK 
 <a id="9">[9]</a>PCI Local Bus Specification Revision 2.3. PCI Special Interest Group. Section 3.7.4. Error Reporting. pp. 95. 
