@@ -107,7 +107,7 @@ The real time clock (RTC) of the AmigaPCI is supplied by the STM32F205 microcont
 **Rev 2.0**  First prototype.
 
 # Acknowledgements  
-Ian Steadman for his Amiga PC floppy interface design.
+Ian Steadman for his [Amiga PC floppy interface](https://github.com/istedman/Floppy_adaptor) design.
 
 # License
 Floppy interface modifications from Ian Steadman released under the GNU GENERAL PUBLIC LICENSE, Version 3.
