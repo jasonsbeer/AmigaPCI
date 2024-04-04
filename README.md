@@ -18,7 +18,7 @@ The AmigaPCI is a Motorola MC68040 based OCS/ECS Amiga computer in the ATX form 
 </list>
 
 ## Project Status  
-This is an active project and is currently in the prototype stage. [Milestones and progress](milestones.md). Because this project is in the prototype stage, it is not recommended for use at this time. There are likely errors that need to be corrected. You should not build a copy of this project at this time.
+This is an active project and is currently in the prototype stage. See [Milestones and progress](milestones.md) for current status. Because this project is in the prototype stage, it is not recommended for general release at this time. There are likely errors that need to be corrected. You should not build a copy of this project at this time.
 
 **THIS IS A WORK IN PROGRESS AND IS SUBJECT TO CHANGE WITHOUT NOTICE.**
 
