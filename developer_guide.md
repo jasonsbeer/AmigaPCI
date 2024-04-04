@@ -44,8 +44,8 @@ Table 1.1a. Order of byte consumption in big and little endian devices.
 Endianess|Hex Value<br />Order of Consumption
 -|-
 &nbsp;|$0002 0804
-Big| <------START
-Little| START------>
+Big| <----START
+Little| START---->
 
 The smallest unit of data considered by the PCI specification is one byte. With this consideration, data bytes are swapped to accomodate the conversion in endianess. This byte swapping is implemented in the AmigaPCI Local PCI Bridge hardware.
 
