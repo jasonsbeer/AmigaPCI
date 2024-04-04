@@ -11,7 +11,7 @@ The AmigaPCI is a Motorola MC68040 based OCS/ECS Amiga computer in the ATX form 
   <li>Up to 256MB fast RAM on-board</li>
   <li>Agnus 8372A or 8375 selectable by jumper</li>
   <li>2MB "Fast Chip" RAM available to CPU regardless of Agnus revision</li>
-  <li>PHI2 clock driven short CIA cycles</li>
+  <li>Fast CIA cycles</li>
   <li>Amiga Video Slot</li>  
   <li>Floppy disk interface supports Amiga and PC drives in DD mode</li>  
   <li>Onboard Ethernet connectivity (future revision)</li>
