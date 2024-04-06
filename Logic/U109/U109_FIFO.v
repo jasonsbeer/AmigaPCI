@@ -34,7 +34,7 @@
 
 module U109_FIFO (
 
-    input PCLK, PCICLK, BCLK,
+    input PCICLK, BCLK,
     input nRESET,
     input [31:0]AD,
     input [31:0]D,
@@ -44,8 +44,9 @@ module U109_FIFO (
     input nTA, nTRDY, nIRDY, nBG,
     input PCICYCLE,
 
-    output [31:0] DATA_OUT
-    //output EMPTY
+    output reg EMPTY,
+    output [31:0] DATA_OUT,
+    output reg READCYCLE    
 
 );
 
@@ -82,40 +83,36 @@ always @(posedge PCLK, negedge nRESET) begin
 end*/
 
 ///////////////////////
-// FIFO FILL PROCESS //
+// FILL THE FIFO RAM //
 ///////////////////////
-
-//WE FILL THE FIFO FROM THE AMIGA DURING CPU WRITE CYCLES OR DMA READ CYCLES.
-//WE FILL THE FIFO FROM THE PCI BUS DURING CPU READ CYCLES OR DMA WRITE CYCLES.
-//BRIDGE REGISTER CYCLES DO NOT USE FIFO.
-
-//BOTH THE PCI AND AMIGA (MOTOROLA) BUSSES LATCH DATA ON THE RISING CLOCK EDGE.
 
 integer i;
 wire WRITE_EN;
 wire [31:0] DATA_IN;
+wire WRITE_CLOCK;
 reg TA;
 
-assign WRITE_EN = !REGCYCLE && !nBEN && ((PCIDIR && !nTA) || (!PCIDIR && ((!nBG && !nTRDY) || (nBG && !nIRDY))));
+//                                                CPU DRIVEN WRITE     CPU DRIVEN READ
+assign WRITE_EN = !REGCYCLE && (!nBG && !nBEN && ((PCIDIR && !nTA) || (!PCIDIR && !nTRDY))); //|| (nBG && !nIRDY))));
 assign DATA_IN = PCIDIR ? D : AD;
+assign WRITE_CLOCK = PCIDIR ? BCLK : PCICLK;
 
 //WRITE DATA TO THE FIFO
-always @(posedge BCLK, negedge nRESET) begin
+always @(posedge WRITE_CLOCK, negedge nRESET) begin
     if (!nRESET) begin
         for (i=0; i<DEPTH-1; i=i+1) begin WORDHIGH[i] <= 16'h0; WORDLOW[i] <= 16'h0; end
         TA <= 0;
     end else if (WRITE_EN) begin
-        if (PCIDIR) begin 
-            WORDHIGH[WR_POINTER] <= DATA_IN[31:16];
-            WORDLOW[WR_POINTER] <= DATA_IN[15:0];
-            TA <= ~nTA;
-        end
+        WORDHIGH[WR_POINTER] <= DATA_IN[31:16];
+        WORDLOW[WR_POINTER] <= DATA_IN[15:0];
+        TA <= ((!nTA && PCIDIR) || (!nTRDY && !PCIDIR));
     end else begin
         TA <= 0;
     end
 end
 
-always @(negedge BCLK, negedge nRESET) begin
+//INCREMENT THE WRITE COUNTER
+always @(negedge WRITE_CLOCK, negedge nRESET) begin
     if (!nRESET) begin
         WR_POINTER <= 0;
     end else begin
@@ -124,22 +121,26 @@ always @(negedge BCLK, negedge nRESET) begin
 end
 
 
-/////////////////////////
-// DRIVE PCI FROM FIFO //
-/////////////////////////
+///////////////////////
+// READ THE FIFO RAM //
+///////////////////////
 
+wire READ_CLOCK;
 reg TRDY;
 reg [1:0]FIFO_READ_COUNTER;
-reg READCYCLE;
+//reg READCYCLE;
 
-always @(posedge PCICLK, negedge nRESET) begin
+assign READ_CLOCK = !PCIDIR ? BCLK : PCICLK;
+
+//HAS DATA BEEN LATCHED?
+always @(posedge READ_CLOCK, negedge nRESET) begin
     if (!nRESET)
         TRDY <= 0;
-    else
-        TRDY <= ~nTRDY;
+    else //       CPU WRITE             CPU READ
+        TRDY <= ((PCIDIR && !nTRDY) || (!nBEN && !PCIDIR && !nTA));
 end
 
-always @(negedge PCICLK, negedge nRESET) begin
+always @(negedge READ_CLOCK, negedge nRESET) begin
     if (!nRESET) begin
         RD_POINTER <= 0;
         FIFO_READ_COUNTER <= 2'b00;
@@ -166,6 +167,16 @@ always @(negedge PCICLK, negedge nRESET) begin
 end
 
 assign DATA_OUT = PCICYCLE ? {WORDHIGH[RD_POINTER], WORDLOW[RD_POINTER]} : 32'h0;
+
+////////////////
+// FIFO EMPTY //
+////////////////
+
+always @(negedge READ_CLOCK, negedge nRESET)
+begin
+    if (!nRESET) EMPTY <= 1;
+    else if (RD_POINTER == WR_POINTER) EMPTY <= 1; else EMPTY <= 0;
+end
 
 ///////////////
 // FULL FIFO //

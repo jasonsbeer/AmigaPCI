@@ -42,7 +42,7 @@ module U109_TOP (
     inout [31:0]D,
     input PCIDIR, PCICYCLE,
     input nBEN,
-    input nTRDY, nIRDY, nBG, nTS,
+    input nTRDY, nIRDY, nBG, nTS, RnW,
 
     output nTA
 
@@ -71,9 +71,10 @@ assign nTA = TA ? 1'b0 : TA_SPACE || TA_CYCLE ? 1'b1 : 1'bZ;
 always @(posedge BCLK, negedge nRESET) begin
     if (!nRESET) begin
         TA_CYCLE <= 0;
+        TS <= 0;
     end else begin
 
-        TS <= ~nTS;
+        //TS <= ~nTS;        
 
         if (!nTA && TA_SPACE) begin
             TA_CYCLE <= 1; end 
@@ -83,8 +84,21 @@ always @(posedge BCLK, negedge nRESET) begin
     end
 end
 
+//LATCH TRANSFER START SIGNAL
+wire TS_RESET;
+assign TS_RESET = !nTA || !nRESET;
+
+always @(posedge BCLK, posedge TS_RESET) begin
+    if (TS_RESET) 
+        TS <= 0;
+    else
+        if (!TS) TS <= ~nTS;
+end
+
 //ASSERT _TA ON CPU DRIVEN CYCLES
 reg [1:0]TA_COUNT;
+wire EMPTYm;
+wire READCYCLEm;
 wire BURST_CYCLE;
 assign BURST_CYCLE = TT0 && !TT1;
 
@@ -94,7 +108,9 @@ always @(negedge BCLK, negedge nRESET) begin
         TA_COUNT <= 2'b00;
     end else begin
         case (TA_COUNT) 
-            2'b00: if (TS && !nBG) begin FIFO_TA <= 1; TA_COUNT <= 2'b01; end else begin FIFO_TA <= 0; end
+            //CPU WRITE CYCLES WE CAN FILL THE FIFO, BUT
+            //WHEN A READ CYCLE FOLLOWS A WRITE CYCLE, WE MUST WAIT FOR THE FIFO TO EMPTY!!!!
+            2'b00: if (TS && !nBG && ((PCIDIR && !RnW) || (!PCIDIR && EMPTYm && RnW))) begin FIFO_TA <= 1; TA_COUNT <= 2'b01; end else begin FIFO_TA <= 0; end
             2'b01: if (!BURST_CYCLE) begin FIFO_TA <= 0; TA_COUNT <= 2'b00; end else begin TA_COUNT <= 2'b10; end
             2'b10: TA_COUNT <= 2'b11;
             2'b11: TA_COUNT <= 2'b00;
@@ -108,7 +124,7 @@ end
 
 //wire PCICYCLE;
 wire [31:0]DATA_OUTm;
-assign D = !nBEN && !PCIDIR ? DATA_OUTm : 'bz;
+assign D = PCICYCLE && !nBEN && !PCIDIR ? DATA_OUTm : 'bz;
 assign AD = PCICYCLE && PCIDIR ? DATA_OUTm : 'bz; //IF THE FIFO IS NOT EMPTY, KEEP THE CYCLE GOING UNTIL IT IS.
 
 //////////
@@ -117,7 +133,7 @@ assign AD = PCICYCLE && PCIDIR ? DATA_OUTm : 'bz; //IF THE FIFO IS NOT EMPTY, KE
 
 U109_FIFO U109_FIFO (
 
-    .PCLK (PCLK),
+    //.PCLK (PCLK),
     .PCICLK (PCICLK),
     .BCLK (BCLK),
     .nRESET (nRESET),
@@ -131,8 +147,9 @@ U109_FIFO U109_FIFO (
     .nIRDY (nIRDY),
     .nBG (nBG),
     .DATA_OUT (DATA_OUTm),
-    //.EMPTY (EMPTY),
-    .PCICYCLE (PCICYCLE)
+    .EMPTY (EMPTYm),
+    .PCICYCLE (PCICYCLE),
+    .READCYCLE (READCYCLEm)
 
 );
 
