@@ -26,6 +26,7 @@ reg RnW = 1;
 
 //wire outputs
 wire [31:0] DATA_OUT;
+wire nTA;
 //reg EMPTY;
 //reg READCYCLE;
 //reg [1:0] i;
@@ -73,15 +74,32 @@ initial begin
     #20    nTRDY = 1;
     #5     DData = 32'hcccc3333;
     #25    DData = 'bz; nBEN = 1;
-    #3     nTRDY = 0;   
-
+    #3     nTRDY = 0; 
     #22    nBEN = 0; nTS = 0; RnW = 1; //START CPU READ CYCLE BEFORE LAST WRITE CYCLE ENDS
     #25    nTS = 1;
-
     #54    nTRDY = 1; PCICYCLE = 0;
-
-    //CPU READY CYCLE
     #21    PCIDIR = 0; PCICYCLE = 1;
+
+    //pci device puts data on the bus for a cpu read
+    #13    ADData = 32'h0000aaaa; nTRDY = 0;
+    #33.34 ADData = 32'h1111bbbb;
+    #33.34 ADData = 32'h2222cccc;
+    #33.34 ADData = 32'h3333dddd;
+    #33.34 ADData = 32'bz; nTRDY = 1;
+    #53    nBEN = 1; PCICYCLE = 0; //28
+
+
+    #26    nBEN = 0; nTS = 0; RnW = 1; PCICYCLE = 1;
+    #13    ADData = 32'h7777aaaa; nTRDY = 0;
+
+    #12    nTS = 1;
+
+    #21.34 ADData = 32'h4444bbbb;
+    #33.34 nTRDY = 1;
+    #33.34 ADData = 32'h5555cccc; nTRDY = 0;
+    #33.34 ADData = 32'h6666dddd;
+    #33.34 ADData = 32'bz; nTRDY = 1;
+    #69    nBEN = 1; PCICYCLE = 0;
 
 end
 
@@ -116,8 +134,9 @@ U109_TOP dut
     .TT1 (TT1),
     .RnW (RnW),
     //.EMPTY (EMPTY),
-    .PCICYCLE (PCICYCLE)
+    .PCICYCLE (PCICYCLE),
     //.READCYCLEm (READCYCLEm)
+    .nTA (nTA)
 
 );
 

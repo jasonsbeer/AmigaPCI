@@ -44,7 +44,8 @@ module U109_FIFO (
     input nTA, nTRDY, nIRDY, nBG,
     input PCICYCLE,
 
-    output reg EMPTY,
+    //output reg EMPTY,
+    output reg [5:0] WR_SYNC,
     output [31:0] DATA_OUT,
     output reg READCYCLE    
 
@@ -69,18 +70,14 @@ reg [PTR_SIZE-1:0] RD_POINTER;
 // SYNCHRONIZER //
 //////////////////
 
-/*reg [1:0] PCICLK_SAMP;
-reg [1:0] BCLK_SAMP;
-
-always @(posedge PCLK, negedge nRESET) begin
+//WRITE COUNTER SYNCRONIZER
+always @(posedge READ_CLOCK, negedge nRESET) begin
     if (!nRESET) begin
-        PCICLK_SAMP <= 2'b11;
-        BCLK_SAMP <= 2'b11;
+        WR_SYNC <= 0;
     end else begin
-        PCICLK_SAMP <= {PCICLK_SAMP[0] , PCICLK}; 
-        BCLK_SAMP <= {BCLK_SAMP[0] , BCLK}; 
+        WR_SYNC <= WR_POINTER;
     end
-end*/
+end    
 
 ///////////////////////
 // FILL THE FIFO RAM //
@@ -120,7 +117,6 @@ always @(negedge WRITE_CLOCK, negedge nRESET) begin
     end
 end
 
-
 ///////////////////////
 // READ THE FIFO RAM //
 ///////////////////////
@@ -145,7 +141,7 @@ always @(negedge READ_CLOCK, negedge nRESET) begin
         RD_POINTER <= 0;
         FIFO_READ_COUNTER <= 2'b00;
         READCYCLE <= 0;
-    end else if ((!REGCYCLE && PCIDIR) || READCYCLE) begin
+    end else if ((!REGCYCLE) || READCYCLE) begin
 
         if (PCICYCLE) begin
 
@@ -157,6 +153,7 @@ always @(negedge READ_CLOCK, negedge nRESET) begin
                 2'b11: begin if (TRDY) begin RD_POINTER = RD_POINTER + 1; FIFO_READ_COUNTER <= 2'b00; READCYCLE <= 0; end end
 
             endcase
+
         end else if (!PCICYCLE && READCYCLE) begin
             //THE PCI CYCLE ENDED BEFORE EXPECTED DUE TO HOST OR TARGET TERMINATION
             RD_POINTER = RD_POINTER + (4 - FIFO_READ_COUNTER); 
@@ -172,11 +169,13 @@ assign DATA_OUT = PCICYCLE ? {WORDHIGH[RD_POINTER], WORDLOW[RD_POINTER]} : 32'h0
 // FIFO EMPTY //
 ////////////////
 
-always @(negedge READ_CLOCK, negedge nRESET)
+//assign EMPTY = RD_POINTER == WR_POINTER ? 1 : 0 ;
+
+/*always @(posedge READ_CLOCK, negedge nRESET)
 begin
     if (!nRESET) EMPTY <= 1;
     else if (RD_POINTER == WR_POINTER) EMPTY <= 1; else EMPTY <= 0;
-end
+end*/
 
 ///////////////
 // FULL FIFO //
