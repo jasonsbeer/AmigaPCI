@@ -44,10 +44,9 @@ module U109_FIFO (
     input nTA, nTRDY, nIRDY, nBG,
     input PCICYCLE,
 
-    //output reg EMPTY,
     output reg [5:0] WR_SYNC,
     output [31:0] DATA_OUT,
-    output reg READCYCLE    
+    output reg READCYCLE
 
 );
 
@@ -59,7 +58,7 @@ module U109_FIFO (
 
 parameter DEPTH = 16; //FIFO DEPTH. 16 WILL HOLD TWO BURST CYCLES, 24 HOLDS 3 BURST CYCLES, ETC. AT 4 WORDS PER BURST
 parameter DATA_WIDTH = 16; //DATA BUS WIDTH
-parameter PTR_SIZE = 6; //ADDRESS BUS SIZE
+parameter PTR_SIZE = 4; //ADDRESS BUS SIZE
 
 reg [DEPTH-1:0] WORDHIGH [0:DATA_WIDTH-1]; //2D ARRAY. 16 ADDRESS DEEP x 2 BYTES WIDE
 reg [DEPTH-1:0] WORDLOW [0:DATA_WIDTH-1];
@@ -124,9 +123,9 @@ end
 wire READ_CLOCK;
 reg TRDY;
 reg [1:0]FIFO_READ_COUNTER;
-//reg READCYCLE;
 
 assign READ_CLOCK = !PCIDIR ? BCLK : PCICLK;
+//assign PCICYCLE = (!nBEN && !nBG) || nBG || READCYCLE;
 
 //HAS DATA BEEN LATCHED?
 always @(posedge READ_CLOCK, negedge nRESET) begin
@@ -164,35 +163,5 @@ always @(negedge READ_CLOCK, negedge nRESET) begin
 end
 
 assign DATA_OUT = PCICYCLE ? {WORDHIGH[RD_POINTER], WORDLOW[RD_POINTER]} : 32'h0;
-
-////////////////
-// FIFO EMPTY //
-////////////////
-
-//assign EMPTY = RD_POINTER == WR_POINTER ? 1 : 0 ;
-
-/*always @(posedge READ_CLOCK, negedge nRESET)
-begin
-    if (!nRESET) EMPTY <= 1;
-    else if (RD_POINTER == WR_POINTER) EMPTY <= 1; else EMPTY <= 0;
-end*/
-
-///////////////
-// FULL FIFO //
-///////////////
-
-//SET THE FULL REGISTER SIGNAL
-
-/*reg FULL;
-
-always @(negedge PCLK, negedge nRESET)
-begin
-	if (!nRESET)
-		FULL <= 0;
-	else if (WRITE_EN && WR_POINTER == RD_POINTER)
-		FULL <= 1;
-	else if (READ_EN && !EMPTY)
-		FULL <= 0;
-end*/
 
 endmodule

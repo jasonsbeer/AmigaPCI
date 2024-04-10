@@ -38,9 +38,10 @@ module U109_TOP (
 
     input PCLK, PCICLK, BCLK,
     input nRESET, TT0, TT1,
+    input [31:2]A,
     inout [31:0]AD,
     inout [31:0]D,
-    input PCIDIR, PCICYCLE,
+    input PCICYCLE, //PCIDIR, 
     input nBEN,
     input nTRDY, nIRDY, nBG, nTS, RnW,
 
@@ -48,10 +49,13 @@ module U109_TOP (
 
 );
 
+///////////////////////////
 // BRIDGE REGISTER CYCLE //
+///////////////////////////
 
+//IS THE INITIATING DEVICE ACCESSING THE PCI BRIDGE REGISTERS?
 wire REGCYCLE; 
-assign REGCYCLE = 0; //.fix this later
+assign REGCYCLE = !nBEN && A[28:2] == 1'h1;
 
 //////////////////////////
 // MC68040 TRANSFER ACK //
@@ -93,38 +97,45 @@ always @(posedge BCLK, posedge TS_RESET) begin
 end
 
 //ASSERT _TA ON CPU DRIVEN CYCLES
-reg [1:0]TA_COUNT;
+
 wire READCYCLEm;
 wire BURST_CYCLE;
-assign BURST_CYCLE = TT0 && !TT1;
-reg CPU_READ_CYCLE;
 wire [5:0] WR_SYNCm;
-reg [5:0] WR_LAST;
+wire DATA_LATCHED;
+wire CPU_CYCLE;
+reg CPU_READ_CYCLE;
+reg [1:0]TA_COUNT;
+reg [3:0] WR_LAST_0;
+reg [3:0] WR_LAST_1;
+
+assign BURST_CYCLE = TT0 && !TT1;
+assign DATA_LATCHED = WR_LAST_1 != WR_SYNCm;
+assign CPU_CYCLE = TS && !nBG;
+
+always @(posedge BCLK, negedge nRESET) begin 
+    if (!nRESET) 
+        WR_LAST_1 <= 4'b0000;
+    else
+        WR_LAST_1 <= WR_LAST_0; 
+end
 
 always @(negedge BCLK, negedge nRESET) begin
     if (!nRESET) begin
         FIFO_TA <= 0;
         TA_COUNT <= 2'b00;
         CPU_READ_CYCLE <= 0;
-        WR_LAST <= 5'b00000;
+        WR_LAST_0 <= 4'b0000;
     end else begin
 
-        WR_LAST <= WR_SYNCm;
+        WR_LAST_0 <= WR_SYNCm;
 
         case (TA_COUNT) 
-            //CPU WRITE CYCLES WE CAN FILL THE FIFO, BUT
-            //WHEN A READ CYCLE FOLLOWS A WRITE CYCLE, WE MUST WAIT FOR THE FIFO TO EMPTY!!!!
-
-            /*2'b00: if (TS && !nBG && ((PCIDIR && !RnW) || (!PCIDIR && !EMPTYm && RnW))) begin FIFO_TA <= 1; TA_COUNT <= 2'b01; end else begin FIFO_TA <= 0; end
-            2'b01: if (!BURST_CYCLE) begin FIFO_TA <= 0; TA_COUNT <= 2'b00; end else begin TA_COUNT <= 2'b10; end
-            2'b10: TA_COUNT <= 2'b11;
-            2'b11: TA_COUNT <= 2'b00;*/
 
             2'b00: 
             
-            if (TS && !nBG && PCIDIR && !RnW) begin FIFO_TA <= 1; TA_COUNT <= 2'b01; end
+            if (CPU_CYCLE && !RnW) begin FIFO_TA <= 1; TA_COUNT <= 2'b01; end
             
-            else if (TS && !nBG && !PCIDIR && RnW && WR_LAST != WR_SYNCm) begin FIFO_TA <= 1; TA_COUNT <= 2'b01; CPU_READ_CYCLE <= 1; end 
+            else if (CPU_CYCLE && RnW && DATA_LATCHED) begin FIFO_TA <= 1; TA_COUNT <= 2'b01; CPU_READ_CYCLE <= 1; end
             
             else begin FIFO_TA <= 0; end
 
@@ -133,21 +144,21 @@ always @(negedge BCLK, negedge nRESET) begin
             
             if (!BURST_CYCLE) begin FIFO_TA <= 0; TA_COUNT <= 2'b00; end 
 
-            else if (CPU_READ_CYCLE) begin if (WR_LAST != WR_SYNCm) begin FIFO_TA <= 1; TA_COUNT <= 2'b10; end else begin FIFO_TA <= 0; end end
+            else if (CPU_READ_CYCLE) begin if (DATA_LATCHED) begin FIFO_TA <= 1; TA_COUNT <= 2'b10; end else begin FIFO_TA <= 0; end end
 
             else begin TA_COUNT <= 2'b10; end
 
 
             2'b10: 
             
-            if (CPU_READ_CYCLE) begin if (WR_LAST != WR_SYNCm) begin FIFO_TA <= 1; TA_COUNT <= 2'b11; end else begin FIFO_TA <= 0; end end
+            if (CPU_READ_CYCLE) begin if (DATA_LATCHED) begin FIFO_TA <= 1; TA_COUNT <= 2'b11; end else begin FIFO_TA <= 0; end end
 
             else begin TA_COUNT <= 2'b11; end
 
 
             2'b11: 
             
-            if (CPU_READ_CYCLE) begin if (WR_LAST != WR_SYNCm) begin FIFO_TA <= 1; TA_COUNT <= 2'b00; CPU_READ_CYCLE <= 0; end else begin FIFO_TA <= 0; end end
+            if (CPU_READ_CYCLE) begin if (DATA_LATCHED) begin FIFO_TA <= 1; TA_COUNT <= 2'b00; CPU_READ_CYCLE <= 0; end else begin FIFO_TA <= 0; end end
 
             else begin TA_COUNT <= 2'b00; CPU_READ_CYCLE <= 0; end        
 
@@ -159,8 +170,21 @@ end
 // DATA OUTPUT //
 /////////////////
 
-//wire PCICYCLE;
 wire [31:0]DATA_OUTm;
+reg PCIDIR;
+
+always @(posedge PCICYCLE, negedge nRESET) begin
+    if (!nRESET) begin
+        PCIDIR <= 1;
+    end else begin 
+        if ((!nBG && !RnW) || (nBG && RnW)) begin 
+            PCIDIR <= 1;
+        end else begin
+            PCIDIR <= 0;
+        end
+    end
+end
+
 assign D = PCICYCLE && !nBEN && !PCIDIR ? DATA_OUTm : 'bz;
 assign AD = PCICYCLE && PCIDIR ? DATA_OUTm : 'bz;
 

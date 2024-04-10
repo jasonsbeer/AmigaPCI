@@ -10,7 +10,7 @@ reg BCLK = 1;
 reg PCLK = 1;
 reg PCICLK = 1;
 reg nRESET = 0;
-reg PCIDIR = 0;
+//reg PCIDIR = 0;
 reg nBEN = 1;
 reg nTS = 1;
 reg nTRDY = 1;
@@ -58,14 +58,14 @@ initial begin
     #25    DData = 'bz; nBEN = 1;
     #53    nTRDY = 1;*/
 
-    #137.5 nBEN = 0; PCIDIR = 1; nTS = 0; DData = 32'hffff0000; RnW = 0; //set cpu signals
+    #137.5 nBEN = 0; nTS = 0; DData = 32'hffff0000; RnW = 0; //PCIDIR = 1; //set cpu signals
     #25    nTS = 1;
-    #21.5  PCICYCLE = 1; nTRDY = 0; //wait for pci target ready
+    #21.5  nTRDY = 0; PCICYCLE = 1; //wait for pci target ready
     #3.5   DData = 32'heeee1111;    
     #25    DData = 32'hdddd2222;
     #25    DData = 32'hcccc3333;
     #25    DData = 'bz; nBEN = 1;
-    #25    nBEN = 0; PCIDIR = 1; nTS = 0; DData = 32'hffff0000; //set cpu signals
+    #25    nBEN = 0; nTS = 0; DData = 32'hffff0000; //PCIDIR = 1;  //set cpu signals
     #25    nTS = 1;
     #3     nTRDY = 1; PCICYCLE = 0;     
     #22    DData = 32'heeee1111;  
@@ -78,7 +78,7 @@ initial begin
     #22    nBEN = 0; nTS = 0; RnW = 1; //START CPU READ CYCLE BEFORE LAST WRITE CYCLE ENDS
     #25    nTS = 1;
     #54    nTRDY = 1; PCICYCLE = 0;
-    #21    PCIDIR = 0; PCICYCLE = 1;
+    #21    PCICYCLE = 1; //PCIDIR = 0; 
 
     //pci device puts data on the bus for a cpu read
     #13    ADData = 32'h0000aaaa; nTRDY = 0;
@@ -124,7 +124,7 @@ U109_TOP dut
     .nRESET (nRESET),
     .AD (AD),
     .D (D),
-    .PCIDIR (PCIDIR),
+    //.PCIDIR (PCIDIR),
     .nBEN (nBEN),
     .nTS (nTS),
     .nTRDY (nTRDY),
