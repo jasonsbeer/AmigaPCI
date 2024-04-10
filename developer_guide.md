@@ -88,9 +88,24 @@ The Local PCI Bridge is always configured via the AUTOCONFIG process at startup 
 
 The following 16-bit registers are available on the Local PCI Bridge device and can be read by the system. This allows polling of the Local PCI Bridge settings and status. Reading a long word at offset $04 will return both registers. Assuming the Local PCI Bridge base address is $8000 0000, you would access the command register at $8000 0004. Reads from unsupported registers will return 0. Writes to these registers will have no effect. 
 
-**NOTE:** The registers in Tables 2.1a and 2.1b relate to the Local PCI Bridge only, and are not indicative of the capabilities of the AmigaPCI PCI bus implementation.
+Table 2.1a. Local PCI Bridge Status Register.
+Bit|Description|Supported by Local PCI Bridge Device
+-|-|-
+31|Detected Parity Error|Yes
+30|Signaled System Error|Yes
+29|Received Master Abort|Yes
+28|Received Target Abort|Yes
+27|Signaled Target Abort|No
+26-25|DEVSEL Timing|No
+24|Master Data Parity Error|Yes
+23|Fast Back-to-Back Capable|No
+22|Reserved|No
+21|66 MHz Capable|No
+20|Capabilties|No
+19|Interrupt Status|Yes
+18-16|Reserved|No
 
-Table 2.1a. Offset $04, Command Register.
+Table 2.1b. Local PCI Bridge Command Register.
 Bit|Description|Default Value
 -|-|-
 15-11|Reserved|0
@@ -105,23 +120,6 @@ Bit|Description|Default Value
 2|Bus Master|0
 1|Memory Space|1
 0|I/O Space|0
-
-Table 2.0.1b. Offset $06, Status Register.
-Bit|Description|Supported by Local PCI Bridge Device
--|-|-
-15|Detected Parity Error|Yes
-14|Signaled System Error|Yes
-13|Received Master Abort|Yes
-12|Received Target Abort|Yes
-11|Signaled Target Abort|No
-10-9|DEVSEL Timing|No
-8|Master Data Parity Error|Yes
-7|Fast Back-to-Back Capable|No
-6|Reserved|No
-5|66 MHz Capable|No
-4|Capabilties|No
-3|Interrupt Status|Yes
-2-0|Reserved|No
 
 ## 2.2 AUTOCONFIG
 
