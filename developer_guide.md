@@ -86,10 +86,10 @@ Each PCI target device may be configured by the Amiga AUTOCONFIG process or by s
 
 The Local PCI Bridge is always configured via the AUTOCONFIG process at startup before other PCI devices. The Local PCI Bridge base address allows direct access of the Local PCI Bridge configuration registers and a means to access Prometheus configured PCI cards on the PCI bus (See 2.3  Prometheus Configuration). All PCI devices are accessed through the Local PCI Bridge, which acts as an interface between the devices on the CPU bus and devices on the PCI bus. The Local PCI Bridge also handles bus arbitration. During each CPU data transfer cycle, the address information is broadcast by the Local PCI Bridge to the PCI bus. If any devices respond by asserting **_DEVSEL**, the Local PCI Bridge proceeds with the PCI cycle. Otherwise, the Local PCI Bridge returns to an idle state.
 
-The following 16-bit registers are available on the Local PCI Bridge device and can be read by the system. This allows polling of the Local PCI Bridge settings and status. Reading a long word at offset $04 will return both registers. Assuming the Local PCI Bridge base address is $8000 0000, you would access the registers at $8000 0004. Reads from unsupported registers will return 0. Writes to these registers will have no effect. 
+The following 16-bit registers are available on the Local PCI Bridge device. All registers can be read. This allows polling of the Local PCI Bridge settings and status. Reading a long word at offset $04 will return both registers. Assuming the Local PCI Bridge base address is $8000 0000, you would access the registers at $8000 0004. Reads from unsupported registers will return $0. Writes to these registers will have no effect. Registers are not user configurable.
 
 Table 2.1a. Local PCI Bridge Status Register.
-Bit|Description|Supported by Local PCI Bridge Device
+Litte Endian Bit|Description|Supported by Local<br /> PCI Bridge Device
 -|-|-
 31|Detected Parity Error|Yes
 30|Signaled System Error|Yes
@@ -106,7 +106,7 @@ Bit|Description|Supported by Local PCI Bridge Device
 18-16|Reserved|No
 
 Table 2.1b. Local PCI Bridge Command Register.
-Bit|Description|Default Value
+Litte Endian Bit|Description|Default Value
 -|-|-
 15-11|Reserved|0
 10|Interrupt Disable|0
