@@ -72,9 +72,11 @@ Prometheus mode requires the PCI target device be configured in software in orde
 
 ## 1.4 Developing PCI Cards for the AmigaPCI and Upgrade Path
 
-New PCI hardware developed specifically for the Amiga should be based on specifications for the Universal PCI card. Should demand justify it, future upgrade options may include the move to a +3.3V signaling environment capable of running at 66MHz. Plug in hardware based on the Universal concept will permit cards to work in either 5V or 3.3V signaling environments. In addition, any hardware developed for the Amiga must limit address spaces to Memory and Configuration only. The I/O address space is not recommended for new hardware development* and is not supported by the AmigaPCI with AUTOCONFIG devices.  
+New PCI hardware developed specifically for the AmigaPCI should be based on specifications for the Universal* PCI card. Should demand justify it, future upgrade options may include the move to a 3.3V signaling environment capable of running at 66MHz**. Plug in hardware based on the Universal concept will permit cards to work in either 5V or 3.3V signaling environments. In addition, any hardware developed for the AmigaPCI must limit address spaces to Memory and Configuration only. The I/O address space is not recommended for new hardware development*** and is not supported by the AmigaPCI with AUTOCONFIG devices.  
 
-*PCI Local Bus Specification Revision 2.3. PCI Special Interest Group. Section 3.2.2. Addressing. pp. 27.
+*PCI Local Bus Specification Revision 2.3. PCI Special Interest Group. Section 4.1.1. Transition Road Map. pp. 113.  
+**PCI Local Bus Specification Revision 2.3. PCI Special Interest Group. Section 7.6.3. Signaling Environment. pp. 230.  
+***PCI Local Bus Specification Revision 2.3. PCI Special Interest Group. Section 3.2.2. Addressing. pp. 27.  
 
 # 2.0 PCI Configuration
 
