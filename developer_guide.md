@@ -89,37 +89,37 @@ The Local PCI Bridge is always configured via the AUTOCONFIG process at startup 
 The following 16-bit registers are available on the Local PCI Bridge device. All registers can be read. This allows polling of the Local PCI Bridge settings and status. Reading a long word at offset $04 will return both registers. Assuming the Local PCI Bridge base address is $8000 0000, you would access the registers at $8000 0004. Reads from unsupported registers will return $0. Writes to these registers will have no effect. Registers are not user configurable.
 
 Table 2.1a. Local PCI Bridge Status Register.
-Litte Endian Bit|Description|Supported by Local<br /> PCI Bridge Device
--|-|-
-31|Detected Parity Error|Yes
-30|Signaled System Error|Yes
-29|Received Master Abort|Yes
-28|Received Target Abort|Yes
-27|Signaled Target Abort|No
-26-25|DEVSEL Timing|No
-24|Master Data Parity Error|Yes
-23|Fast Back-to-Back Capable|No
-22|Reserved|No
-21|66 MHz Capable|No
-20|Capabilties|No
-19|Interrupt Status|Yes
-18-16|Reserved|No
+Little Endian Bit|Big Endian Bit|Description|Supported by Local<br /> PCI Bridge Device
+-|-|-|-
+31|23|Detected Parity Error|Yes
+30|22|Signaled System Error|Yes
+29|21|Received Master Abort|Yes
+28|20|Received Target Abort|Yes
+27|19|Signaled Target Abort|No
+26-25|17-18|DEVSEL Timing|No
+24|16|Master Data Parity Error|Yes
+23|31|Fast Back-to-Back Capable|No
+22|30|Reserved|No
+21|29|66 MHz Capable|No
+20|28|Capabilties|No
+19|27|Interrupt Status|Yes
+18-16|24-26|Reserved|No
 
 Table 2.1b. Local PCI Bridge Command Register.
-Litte Endian Bit|Description|Default Value
--|-|-
-15-11|Reserved|0
-10|Interrupt Disable|0
-9|Fast Back-to-Back Enable|0
-8|_SERR Enable|1
-7|Reserved|0
-6|Parity Error Response|1
-5|VGA Palette Snoop|0
-4|Memory Write and Invalidate Enable|0
-3|Special Cycles|0
-2|Bus Master|0
-1|Memory Space|1
-0|I/O Space|0
+Little Endian Bit|Big Endian Bit|Description|Default Value
+-|-|-|-
+15-11|3-7|Reserved|0
+10|2|Interrupt Disable|0
+9|1|Fast Back-to-Back Enable|0
+8|0|_SERR Enable|1
+7|15|Reserved|0
+6|14|Parity Error Response|1
+5|13|VGA Palette Snoop|0
+4|12|Memory Write and Invalidate Enable|0
+3|11|Special Cycles|0
+2|10|Bus Master|0
+1|9|Memory Space|1
+0|8|I/O Space|0
 
 ## 2.2 AUTOCONFIG
 
