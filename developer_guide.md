@@ -199,14 +199,14 @@ PCI Slot|Address Bit|Offset|Prometheus Compatable
 
 ## 2.3 Prometheus Enabled Device Configuration
 
-The AmigaPCI aims to maintain a high level of compatabitly with Prometheus drivers. Prometheus implements undocumented PCI commands, meaning some drivers may work with the AmigaPCI without modification. PCI devices not supporting AUTOCONFIG should be installed in a Prometheus configuration slot. Each slot designated as a Prometheus configuration slot may be accessed through the base address of the Local PCI Bridge, which is always configured by AUTOCONFIG at startup. Each slot on the PCI bus may be addressed individually by its offset value to read or write from that device's configuration register. To maintain compatability with existing Prometheus drivers, the system must support **IDSEL** on four slots driven by **A[19..16]**. These four slots also support AUTOCONFIG. Up to 17 additional slots may be added to support AUTOCONFIG only devices. See 2.2 AUTOCONFIG PCI Slots.
+The AmigaPCI aims to maintain a high level of compatabitly with Prometheus drivers. However, Prometheus implements non-standard PCI bridge registers. This means some drivers may need modification to work with the AmigaPCI. PCI devices not supporting AUTOCONFIG should be installed in a Prometheus configuration slot. Each slot designated as a Prometheus configuration slot may be accessed through the base address of the Local PCI Bridge, which is always configured by AUTOCONFIG at startup. Each slot on the PCI bus may be addressed individually by its offset value to read or write from that device's configuration register. To maintain compatability with existing Prometheus drivers, the system must support **IDSEL** on four slots driven by **A[19..16]**. These four slots also support AUTOCONFIG. Up to 17 additional slots may be added to support AUTOCONFIG only devices. See 2.2 AUTOCONFIG PCI Slots.
 
 For a full understanding of intefacing Prometheus enabled devices, documentation of the Prometheus firmware should be reviewed.
 
 Examples, assuming the PCI Local Bridge base address is $6000 0000:
 
 1) Applying address $6001 0000 will enable **IDSEL** of the card in slot 0.  
-2) Applying address $6008 0000 will enable **IDSEL** of the card in slot 3.   
+2) Applying address $6008 0000 will enable **IDSEL** of the card in slot 3.  
 
 Table 2.3a. Address Offset of PCI Slots For **IDSEL**.
 PCI Slot|Address Bit|Offset From Base Address
