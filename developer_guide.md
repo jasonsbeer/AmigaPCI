@@ -96,19 +96,19 @@ Little Endian Bit|Big Endian Bit|Description|Supported by Local<br /> PCI Bridge
 29|5|Received Master Abort|Yes
 28|4|Received Target Abort|Yes
 27|3|Signaled Target Abort|No
-26-25|1-2|DEVSEL Timing|No
+26-25|2-1|DEVSEL Timing|No
 24|0|Master Data Parity Error|Yes
 23|15|Fast Back-to-Back Capable|No
 22|14|Reserved|No
 21|13|66 MHz Capable|No
 20|12|Capabilties|No
 19|11|Interrupt Status|Yes
-18-16|8-10|Reserved|No
+18-16|10-8|Reserved|No
 
 Table 2.1b. Local PCI Bridge Command Register.
 Little Endian Bit|Big Endian Bit|Description|Default Value
 -|-|-|-
-15-11|19-23|Reserved|0
+15-11|23-19|Reserved|0
 10|18|Interrupt Disable|0
 9|17|Fast Back-to-Back Enable|0
 8|16|_SERR Enable|1
