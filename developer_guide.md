@@ -91,35 +91,35 @@ The following 16-bit registers are available on the Local PCI Bridge device. All
 Table 2.1a. Local PCI Bridge Status Register.
 Little Endian Bit|Big Endian Bit|Description|Supported by Local<br /> PCI Bridge Device
 -|-|-|-
-31|23|Detected Parity Error|Yes
-30|22|Signaled System Error|Yes
-29|21|Received Master Abort|Yes
-28|20|Received Target Abort|Yes
-27|19|Signaled Target Abort|No
-26-25|17-18|DEVSEL Timing|No
-24|16|Master Data Parity Error|Yes
-23|31|Fast Back-to-Back Capable|No
-22|30|Reserved|No
-21|29|66 MHz Capable|No
-20|28|Capabilties|No
-19|27|Interrupt Status|Yes
-18-16|24-26|Reserved|No
+31|7|Detected Parity Error|Yes
+30|6|Signaled System Error|Yes
+29|5|Received Master Abort|Yes
+28|4|Received Target Abort|Yes
+27|3|Signaled Target Abort|No
+26-25|1-2|DEVSEL Timing|No
+24|0|Master Data Parity Error|Yes
+23|15|Fast Back-to-Back Capable|No
+22|14|Reserved|No
+21|13|66 MHz Capable|No
+20|12|Capabilties|No
+19|11|Interrupt Status|Yes
+18-16|8-10|Reserved|No
 
 Table 2.1b. Local PCI Bridge Command Register.
 Little Endian Bit|Big Endian Bit|Description|Default Value
 -|-|-|-
-15-11|3-7|Reserved|0
-10|2|Interrupt Disable|0
-9|1|Fast Back-to-Back Enable|0
-8|0|_SERR Enable|1
-7|15|Reserved|0
-6|14|Parity Error Response|1
-5|13|VGA Palette Snoop|0
-4|12|Memory Write and Invalidate Enable|0
-3|11|Special Cycles|0
-2|10|Bus Master|0
-1|9|Memory Space|1
-0|8|I/O Space|0
+15-11|19-23|Reserved|0
+10|18|Interrupt Disable|0
+9|17|Fast Back-to-Back Enable|0
+8|16|_SERR Enable|1
+7|31|Reserved|0
+6|30|Parity Error Response|1
+5|29|VGA Palette Snoop|0
+4|28|Memory Write and Invalidate Enable|0
+3|27|Special Cycles|0
+2|26|Bus Master|0
+1|25|Memory Space|1
+0|24|I/O Space|0
 
 ## 2.2 AUTOCONFIG
 
