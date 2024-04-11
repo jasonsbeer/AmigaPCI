@@ -80,7 +80,6 @@ assign nTA = TA ? 1'b0 : TA_SPACE || TA_CYCLE ? 1'b1 : 1'bZ;
 always @(posedge BCLK, negedge nRESET) begin
     if (!nRESET) begin
         TA_CYCLE <= 0;
-        TS <= 0;
     end else begin  
         if (!nTA && TA_SPACE) begin
             TA_CYCLE <= 1; end 
@@ -121,7 +120,7 @@ always @(posedge BCLK, negedge nRESET) begin
         BURST_CYCLE <= 0;
     end else begin
         WR_LAST_1 <= WR_LAST_0; 
-        BURST_CYCLE <= TT0 && !TT1;
+        if (!nTS) BURST_CYCLE <= TT0 && !TT1;
     end
 end
 
