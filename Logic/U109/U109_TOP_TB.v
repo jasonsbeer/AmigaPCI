@@ -20,6 +20,7 @@ reg TT0 = 1;
 reg TT1 = 0;
 wire [31:0] D = 'bz;
 wire [31:0] AD = 'bz;
+wire [31:2] A = 'b0;
 reg REGCYCLE = 0;
 reg PCICYCLE = 0;
 reg RnW = 1;
@@ -61,7 +62,7 @@ initial begin
     #137.5 nBEN = 0; nTS = 0; DData = 32'hffff0000; RnW = 0; //PCIDIR = 1; //set cpu signals
     #25    nTS = 1;
     #21.5  nTRDY = 0; PCICYCLE = 1; //wait for pci target ready
-    #3.5   DData = 32'heeee1111;    
+    #3.5   DData = 32'h1ABCDEF2;    
     #25    DData = 32'hdddd2222;
     #25    DData = 32'hcccc3333;
     #25    DData = 'bz; nBEN = 1;
@@ -81,25 +82,40 @@ initial begin
     #21    PCICYCLE = 1; //PCIDIR = 0; 
 
     //pci device puts data on the bus for a cpu read
-    #13    ADData = 32'h0000aaaa; nTRDY = 0;
+    #13    ADData = 32'h8ABCDEF9; nTRDY = 0;
     #33.34 ADData = 32'h1111bbbb;
     #33.34 ADData = 32'h2222cccc;
     #33.34 ADData = 32'h3333dddd;
     #33.34 ADData = 32'bz; nTRDY = 1;
     #53    nBEN = 1; PCICYCLE = 0; //28
-
-
     #26    nBEN = 0; nTS = 0; RnW = 1; PCICYCLE = 1;
     #13    ADData = 32'h7777aaaa; nTRDY = 0;
-
     #12    nTS = 1;
-
     #21.34 ADData = 32'h4444bbbb;
     #33.34 nTRDY = 1;
     #33.34 ADData = 32'h5555cccc; nTRDY = 0;
     #33.34 ADData = 32'h6666dddd;
     #33.34 ADData = 32'bz; nTRDY = 1;
     #69    nBEN = 1; PCICYCLE = 0;
+
+
+    //NON_BURST READ
+    #25    TT1 = 1; nBEN = 0; nTS = 0; PCICYCLE = 1;
+    #13    ADData = 32'h12345678; nTRDY = 0;
+    #12    nTS = 1;
+    #21.34 nTRDY = 1; ADData = 32'bz;
+    #53.66 nBEN = 1; PCICYCLE = 0;
+
+    //WRITE
+    #26    nBEN = 0; nTS = 0; PCICYCLE = 1; RnW = 0; DData = 32'h9ABCDEF0;
+    #25    nTS = 1;
+    #25    nBEN = 1; DData = 32'bz;
+    #4.2  nTRDY = 0;
+    //#6     nBEN = 1; DData = 32'bz;
+    #33.34 nTRDY = 1; PCICYCLE = 0;
+
+
+    //#50    nBEN = 1; PCICYCLE = 0; DData = 32'bz;
 
 end
 
@@ -132,6 +148,7 @@ U109_TOP dut
     .nBG (nBG),
     .TT0 (TT0),
     .TT1 (TT1),
+    .A (A),
     .RnW (RnW),
     //.EMPTY (EMPTY),
     .PCICYCLE (PCICYCLE),

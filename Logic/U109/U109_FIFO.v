@@ -43,6 +43,7 @@ module U109_FIFO (
     input nBEN,
     input nTA, nTRDY, nIRDY, nBG,
     input PCICYCLE,
+    input BURST_CYCLE,
 
     output reg [5:0] WR_SYNC,
     output [31:0] DATA_OUT,
@@ -142,23 +143,48 @@ always @(negedge READ_CLOCK, negedge nRESET) begin
         READCYCLE <= 0;
     end else if ((!REGCYCLE) || READCYCLE) begin
 
-        if (PCICYCLE) begin
+        //if (PCICYCLE) begin
 
-            case (FIFO_READ_COUNTER)
-
-                2'b00: begin if (TRDY) begin RD_POINTER = RD_POINTER + 1; FIFO_READ_COUNTER <= 2'b01; READCYCLE <= 1; end end
-                2'b01: begin if (TRDY) begin RD_POINTER = RD_POINTER + 1; FIFO_READ_COUNTER <= 2'b10; end end
-                2'b10: begin if (TRDY) begin RD_POINTER = RD_POINTER + 1; FIFO_READ_COUNTER <= 2'b11; end end
-                2'b11: begin if (TRDY) begin RD_POINTER = RD_POINTER + 1; FIFO_READ_COUNTER <= 2'b00; READCYCLE <= 0; end end
-
-            endcase
-
-        end else if (!PCICYCLE && READCYCLE) begin
+        if (!PCICYCLE && READCYCLE) begin
             //THE PCI CYCLE ENDED BEFORE EXPECTED DUE TO HOST OR TARGET TERMINATION
             RD_POINTER = RD_POINTER + (4 - FIFO_READ_COUNTER); 
             FIFO_READ_COUNTER <= 2'b00; 
             READCYCLE <= 0;
+        end else begin
+
+            case (FIFO_READ_COUNTER)
+
+                2'b00: 
+                
+                begin 
+
+                    if (TRDY) begin 
+
+                        RD_POINTER <= RD_POINTER + 1;                     
+
+                        if (BURST_CYCLE) begin
+                            FIFO_READ_COUNTER <= 2'b01;
+                            READCYCLE <= 1; 
+                        end
+
+                    end
+                
+                end
+
+                2'b01: begin if (TRDY) begin RD_POINTER <= RD_POINTER + 1; FIFO_READ_COUNTER <= 2'b10; end end
+                2'b10: begin if (TRDY) begin RD_POINTER <= RD_POINTER + 1; FIFO_READ_COUNTER <= 2'b11; end end
+                2'b11: begin if (TRDY) begin RD_POINTER <= RD_POINTER + 1; FIFO_READ_COUNTER <= 2'b00; READCYCLE <= 0; end end
+
+            endcase
+
         end
+
+        /*end else if (!PCICYCLE && READCYCLE) begin
+            //THE PCI CYCLE ENDED BEFORE EXPECTED DUE TO HOST OR TARGET TERMINATION
+            RD_POINTER = RD_POINTER + (4 - FIFO_READ_COUNTER); 
+            FIFO_READ_COUNTER <= 2'b00; 
+            READCYCLE <= 0;
+        end*/
     end 
 end
 

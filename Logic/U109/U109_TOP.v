@@ -49,6 +49,10 @@ module U109_TOP (
 
 );
 
+//NOTE: PCICYCLE MUST STAY ASSERTED FOR THE ENTIRE CYCLE WHEN DATA IS BEING TRANSFERED, 
+//EVEN IF THE CPU MOVES TO THE NEXT THING WHILE THE BRIDGE IS STILL MOVING DATA.
+
+
 ///////////////////////////
 // BRIDGE REGISTER CYCLE //
 ///////////////////////////
@@ -99,24 +103,26 @@ end
 //ASSERT _TA ON CPU DRIVEN CYCLES
 
 wire READCYCLEm;
-wire BURST_CYCLE;
 wire [5:0] WR_SYNCm;
 wire DATA_LATCHED;
 wire CPU_CYCLE;
+reg BURST_CYCLE;
 reg CPU_READ_CYCLE;
 reg [1:0]TA_COUNT;
 reg [3:0] WR_LAST_0;
 reg [3:0] WR_LAST_1;
 
-assign BURST_CYCLE = TT0 && !TT1;
 assign DATA_LATCHED = WR_LAST_1 != WR_SYNCm;
 assign CPU_CYCLE = TS && !nBG;
 
 always @(posedge BCLK, negedge nRESET) begin 
-    if (!nRESET) 
+    if (!nRESET) begin
         WR_LAST_1 <= 4'b0000;
-    else
+        BURST_CYCLE <= 0;
+    end else begin
         WR_LAST_1 <= WR_LAST_0; 
+        BURST_CYCLE <= TT0 && !TT1;
+    end
 end
 
 always @(negedge BCLK, negedge nRESET) begin
@@ -132,12 +138,16 @@ always @(negedge BCLK, negedge nRESET) begin
         case (TA_COUNT) 
 
             2'b00: 
+
+            begin
             
             if (CPU_CYCLE && !RnW) begin FIFO_TA <= 1; TA_COUNT <= 2'b01; end
             
             else if (CPU_CYCLE && RnW && DATA_LATCHED) begin FIFO_TA <= 1; TA_COUNT <= 2'b01; CPU_READ_CYCLE <= 1; end
             
             else begin FIFO_TA <= 0; end
+
+            end
 
 
             2'b01: 
@@ -170,6 +180,8 @@ end
 // DATA OUTPUT //
 /////////////////
 
+//THE DATA IS BYTE SWAPPED IN BOTH DIRECTIONS
+
 wire [31:0]DATA_OUTm;
 reg PCIDIR;
 
@@ -185,8 +197,8 @@ always @(posedge PCICYCLE, negedge nRESET) begin
     end
 end
 
-assign D = PCICYCLE && !nBEN && !PCIDIR ? DATA_OUTm : 'bz;
-assign AD = PCICYCLE && PCIDIR ? DATA_OUTm : 'bz;
+assign D = PCICYCLE && !nBEN && !PCIDIR ? {DATA_OUTm[7:0], DATA_OUTm[15:8], DATA_OUTm[23:16], DATA_OUTm[31:24]} : 'bz;
+assign AD = PCICYCLE && PCIDIR ? {DATA_OUTm[7:0], DATA_OUTm[15:8], DATA_OUTm[23:16], DATA_OUTm[31:24]} : 'bz;
 
 //////////
 // FIFO //
@@ -209,7 +221,8 @@ U109_FIFO U109_FIFO (
     .DATA_OUT (DATA_OUTm),
     .WR_SYNC (WR_SYNCm),
     .PCICYCLE (PCICYCLE),
-    .READCYCLE (READCYCLEm)
+    .READCYCLE (READCYCLEm),
+    .BURST_CYCLE (BURST_CYCLE)
 
 );
 
