@@ -11,7 +11,7 @@ We will discuss programming the flash memory modules using iceprog with cheap FT
    ```
 
 2. If it is on, turn off the AmigaPCI.
-3. Connect the FT232H board to the desired AmigaPCI programming port.
+3. Connect the FT232H board to the desired FPGA programming port.
    
    FT232H|AmigaPCI
    -|-
@@ -22,10 +22,10 @@ We will discuss programming the flash memory modules using iceprog with cheap FT
    D4|SS
    D7|CRST
    
-4. Apply power to the AmigaPCI.
+4. Turn the AmigaPCI on.  
 5. Execute iceprog with the correct BIN file.  
 
    ```
    iceprog U712.bin
    ```
-6. Repeat steps 2 through 5 for each FPGA. Power cycle the AmigaPCI once complete.
+6. Repeat steps 2 through 5 for each FPGA. Power cycle the AmigaPCI once complete.  
