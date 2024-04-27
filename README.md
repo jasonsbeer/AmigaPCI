@@ -36,7 +36,8 @@ Add stuff.
 
 # Building the AmigaPCI
 
-Add stuff.
+[Hardware Information](hardware_info.md)  
+[Programming the FPGAs](program_fpga.md)
 
 # Amiga Custom Chips  
 The AmigaPCI must be populated with the Amiga OCS/ECS chips shown in Table 1. Reproductions in FPGA/CPLD may be used as well as the original equipment from Commodore. The Amiga chipset is required to enable critical functions of the Amiga computer.
@@ -113,3 +114,5 @@ Ian Steadman for his [Amiga PC floppy interface](https://github.com/istedman/Flo
 Floppy interface modifications from Ian Steadman released under the GNU GENERAL PUBLIC LICENSE, Version 3.
 
 <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://github.com/jasonsbeer/AmigaPCI">AmigaPCI</a> ©2024 by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://github.com/jasonsbeer">Jason Neus</a> is licensed under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">Attribution 4.0 International<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"></a></p>
+
+**Last Update: 23-APRIL-2024**
