@@ -33,7 +33,7 @@
 //     19-MAR-2024 : FPGA Rewrite
 //////////////////////////////////////////////////////////////////////////////////
 
-//TO BUILD WITH APIO: apio build --top-module U109_TOP --fpga iCE40-HX4K-TQ1444
+//TO BUILD WITH APIO: apio build --top-module U712_TOP --fpga iCE40-HX4K-TQ144
 
 module U712_TOP (
 
@@ -60,8 +60,8 @@ module U712_TOP (
     input wire SIZ0,
     input wire SIZ1,
 
-    inout CLK40,
-    inout CLK80,
+    output CLK40,
+    output CLK80,
 	
     output wire nUUBE,
     output wire nUMBE,
@@ -102,6 +102,8 @@ module U712_TOP (
 ///////////////////
 
 //WE GENERATE THE 40MHz AND 80MHz CLOCKS HERE
+wire CLK40m;
+wire CLK80m;
 
 SB_PLL40_CORE # (
     .FEEDBACK_PATH("SIMPLE"),
@@ -109,10 +111,11 @@ SB_PLL40_CORE # (
     .DIVR(4'b0000),
     .DIVF(7'b0011111),
     .DIVQ(3'b100),
-    .FILTER_RANGE()
+    .FILTER_RANGE(3'b010)
     ) PLL40 (
         .REFERENCECLK(CLK20),
-        .PLLOUTGLOBAL(CLK40),
+        .PLLOUTGLOBAL(CLK40m),
+        .PLLOUTCORE(CLK40),
         .LOCK(),
         .RESETB(1'b1),
         .BYPASS(1'b0)
@@ -124,10 +127,11 @@ SB_PLL40_CORE # (
     .DIVR(4'b0000),
     .DIVF(7'b0011111),
     .DIVQ(3'b011),
-    .FILTER_RANGE()
+    .FILTER_RANGE(3'b010)
     ) PLL80 (
         .REFERENCECLK(CLK20),
-        .PLLOUTGLOBAL(CLK80),
+        .PLLOUTGLOBAL(CLK80m),
+        .PLLOUTCORE(CLK80),
         .LOCK(),
         .RESETB(1'b1),
         .BYPASS(1'b0)
@@ -176,7 +180,7 @@ assign nTBI = BURST_CYCLEm ? 1'b1 : nTA;
 
 //TA_CYCLE FORCES _TA HIGH AFTER NEGATION TO PREVENT IT INADVERTENTLY
 //ENDING THE NEXT CYCLE PREMATURELY.
-always @(posedge CLK40, negedge nRESET) begin
+always @(posedge CLK40m, negedge nRESET) begin
     if (!nRESET) begin
         TA_CYCLE <= 0;
     end else begin
@@ -224,7 +228,7 @@ assign nLLBE = RnW || (!RnW && ((A[1] && A[0]) || (A[0] && SIZ0 && SIZ1) || (!SI
 
 U712_CHIPSET_REGISTER U712_CHIPSET_REGISTER (
     .CLK7 (CLK7),
-    .CLK40 (CLK40), 
+    .CLK40 (CLK40m), 
     .C1 (C1),
     .C3 (C3),
     .nRESET (nRESET),
@@ -244,8 +248,8 @@ U712_CHIPSET_REGISTER U712_CHIPSET_REGISTER (
 
 U712_CHIPSET_RAM U712_CHIPSET_RAM (
     .CLK7 (CLK7),
-    .CLK40 (CLK40),
-    .CLK80 (CLK80), 
+    .CLK40 (CLK40m),
+    .CLK80 (CLK80m), 
     .nRESET (nRESET),
     .SIZ0 (SIZ0),
     .SIZ1 (SIZ1),
