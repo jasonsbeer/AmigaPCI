@@ -9,14 +9,14 @@
 Milestone|Action|Completed|Comments
 -|-|-|-
 Verify Startup Critical Signals|||
-||80MHz||
-||40MHz||
-||28MHz||
+||80MHz|27-APR-2024|
+||40MHz|27-APR-2024|
+||28MHz|27-APR-2024|
 ||7MHz||
 ||60Hz||
 ||50Hz||
-||CLKCIA||Should be 2MHz with 50% duty cycle
-||_RESET||Startup reset asserted by FPGAs
+||CLKCIA|27-APR-2024|Should be 2MHz with 50% duty cycle
+||_RESET|27-APR-2024|Startup reset asserted by FPGAs
 ||OVL||Asserts HIGH after CIA registers set
 
 Milestone|Action|Completed|Comments
