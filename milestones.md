@@ -2,7 +2,7 @@
 
 ## Goal 1: Place and route boards.
 
-01-APR-2024: Achieved. Revision 2.0 prototype boards in-hand.
+01-APR-2024: Revision 2.0 prototype boards in-hand and partially assembled to begin testing.
 
 ## Goal 2: POST to Kickstart 3.x
 
