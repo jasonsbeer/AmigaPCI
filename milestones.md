@@ -2,21 +2,21 @@
 
 ## Goal 1: Place and route boards.
 
-01-APR-2024: Achieved. Revision 2.0 prototype boards in-hand.
+01-APR-2024: Revision 2.0 prototype boards in-hand and partially assembled to begin testing.
 
 ## Goal 2: POST to Kickstart 3.x
 
 Milestone|Action|Completed|Comments
 -|-|-|-
 Verify Startup Critical Signals|||
-||80MHz||
-||40MHz||
-||28MHz||
+||80MHz|27-APR-2024|
+||40MHz|27-APR-2024|
+||28MHz|27-APR-2024|
 ||7MHz||
 ||60Hz||
 ||50Hz||
-||CLKCIA||Should be 2MHz with 50% duty cycle
-||_RESET||Startup reset asserted by FPGAs
+||CLKCIA|27-APR-2024|Should be 2MHz with 50% duty cycle
+||_RESET|27-APR-2024|Startup reset asserted by FPGAs
 ||OVL||Asserts HIGH after CIA registers set
 
 Milestone|Action|Completed|Comments
