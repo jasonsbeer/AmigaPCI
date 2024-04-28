@@ -99,7 +99,6 @@ wire RAM_TAm;
 wire RAM_SPACEm;
 wire CIA_SPACEm;
 wire CIA_TAm;
-wire REGISTER_SPACEm;
 wire REG_TAm;
 reg TA_HOLD;
 wire TA;
@@ -154,28 +153,39 @@ end
 //ROM TRANSFER ACK IS HELD OFF FOR 100ns TO ADHEAR TO SETUP TIME OF THE ROM.
 reg [2:0] ROM_COUNTER;
 reg TS;
+wire nROMENm;
+assign nROMEN = nROMENm;
 
-always @(negedge CLK40, negedge nRESET) begin
+always @(posedge CLK40, negedge nRESET) begin
 	if (!nRESET) begin
 		ROM_TA <= 0;
-		ROM_COUNTER <= 3'b000;
+		ROM_COUNTER <= 2'b00;
 	end else begin
 		case (ROM_COUNTER)
-			3'h0: if (!nROMEN && TS) begin ROM_COUNTER <= 3'b001; end				
-			3'h3: begin ROM_TA <= 1; ROM_COUNTER <= 3'b100; end
-			3'h4: begin ROM_COUNTER <= 3'b000; ROM_TA <= 0; end
-			default : begin ROM_COUNTER <= ROM_COUNTER + 1'b1; end
+			2'b00: begin ROM_TA <= 0; if (!nROMENm && TS) begin ROM_COUNTER <= 2'b01; end end		
+			2'b11: begin ROM_TA <= 1; ROM_COUNTER <= 2'b00; end
+			default : begin ROM_COUNTER <= ROM_COUNTER + 1; end
 		endcase
 	end
 end
 
-always @(posedge CLK40, negedge nRESET) begin
+//LATCH TRANSFER START SIGNAL
+wire TS_RESET;
+assign TS_RESET = !nTA || !nRESET;
+always @(posedge CLK40, posedge TS_RESET) begin
+    if (TS_RESET) 
+        TS <= 0;
+    else
+        if (!TS) TS <= ~nTS;
+end
+
+/*always @(posedge CLK40, negedge nRESET) begin
 	if (!nRESET) begin
 		TS <= 0;
 	end else begin
 		TS <= ~nTS;
 	end
-end
+end*/
 
 // ADDRESS DECODE TOP
 U409_ADDRESS_DECODE U409_ADDRESS_DECODE (
@@ -195,7 +205,7 @@ U409_ADDRESS_DECODE U409_ADDRESS_DECODE (
     //.nRAMEN (nRAMEN),
     .nRAMSPACE (nRAMSPACE),
     .nREGSPACE (nREGSPACE),
-    .nROMEN (nROMEN),
+    .nROMEN (nROMENm),
     .nRTCEN (nRTCEN),
     .nCIACS0 (nCIACS0),
     .nCIACS1 (nCIACS1),
