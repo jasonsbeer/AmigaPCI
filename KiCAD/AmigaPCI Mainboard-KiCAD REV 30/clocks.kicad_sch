@@ -15311,27 +15311,6 @@
 			)
 		)
 	)
-	(global_label "CLK33"
-		(shape output)
-		(at 166.37 82.55 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "50702f20-463a-4b48-b541-f3d7e26812f6")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 175.3423 82.55 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-	)
 	(global_label "CLKPCI2"
 		(shape output)
 		(at 102.87 129.54 0)
@@ -20753,7 +20732,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Package_TO_SOT_SMD:SOT-363_SC-70-6"
+		(property "Footprint" "Package_SO:TSOP-6_1.65x3.05mm_P0.95mm"
 			(at 237.49 93.98 0)
 			(effects
 				(font
