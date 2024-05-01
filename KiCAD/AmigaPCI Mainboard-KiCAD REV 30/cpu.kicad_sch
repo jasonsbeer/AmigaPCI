@@ -6,7 +6,7 @@
 	(paper "B")
 	(title_block
 		(title "AMIGA PCI")
-		(date "2024-04-28")
+		(date "2024-04-30")
 		(rev "3.0")
 	)
 	(lib_symbols
@@ -12819,7 +12819,7 @@
 	)
 	(wire
 		(pts
-			(xy 66.04 101.6) (xy 74.93 101.6)
+			(xy 59.69 101.6) (xy 63.5 101.6)
 		)
 		(stroke
 			(width 0)
@@ -13667,6 +13667,16 @@
 		)
 		(uuid "7e0e2609-c9f3-44b7-959f-8797e493bdc4")
 	)
+	(wire
+		(pts
+			(xy 71.12 101.6) (xy 74.93 101.6)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7ecc0373-e0a3-46fb-b2bc-50974e6a17ce")
+	)
 	(bus
 		(pts
 			(xy 267.97 78.74) (xy 267.97 81.28)
@@ -13676,6 +13686,16 @@
 			(type default)
 		)
 		(uuid "7edc78dd-45e4-4c9c-884e-aa5bad19efb5")
+	)
+	(wire
+		(pts
+			(xy 63.5 71.12) (xy 59.69 71.12)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7f97f793-faad-4fdf-8d97-ee5d28a9ac54")
 	)
 	(wire
 		(pts
@@ -13979,7 +13999,7 @@
 	)
 	(wire
 		(pts
-			(xy 74.93 104.14) (xy 66.04 104.14)
+			(xy 74.93 104.14) (xy 59.69 104.14)
 		)
 		(stroke
 			(width 0)
@@ -15909,7 +15929,7 @@
 	)
 	(wire
 		(pts
-			(xy 66.04 99.06) (xy 74.93 99.06)
+			(xy 59.69 99.06) (xy 74.93 99.06)
 		)
 		(stroke
 			(width 0)
@@ -20274,7 +20294,7 @@
 	)
 	(global_label "_BG"
 		(shape input)
-		(at 66.04 99.06 180)
+		(at 59.69 99.06 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -20284,7 +20304,7 @@
 		)
 		(uuid "2f5677fb-e4bd-493c-9afc-142952e17d76")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 59.5472 99.06 0)
+			(at 53.1972 99.06 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21050,7 +21070,7 @@
 	)
 	(global_label "_TBI"
 		(shape output)
-		(at 66.04 104.14 180)
+		(at 59.69 104.14 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -21060,7 +21080,7 @@
 		)
 		(uuid "8d724ca1-9bef-4ae1-adec-f3ebdad9ed2c")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 59.3242 104.14 0)
+			(at 52.9742 104.14 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21236,7 +21256,7 @@
 	)
 	(global_label "CLK40"
 		(shape output)
-		(at 71.12 71.12 180)
+		(at 59.69 71.12 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -21246,7 +21266,7 @@
 		)
 		(uuid "abe8428d-1394-41d2-951e-f7b810d3f2cb")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 62.1477 71.12 0)
+			(at 50.7177 71.12 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21949,7 +21969,7 @@
 	)
 	(global_label "CLK80"
 		(shape output)
-		(at 66.04 101.6 180)
+		(at 59.69 101.6 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -21959,7 +21979,7 @@
 		)
 		(uuid "f7ed07f4-1229-40a5-bed7-19ea82dadbdf")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 57.0677 101.6 0)
+			(at 50.7177 101.6 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23471,6 +23491,75 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R")
+		(at 67.31 101.6 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "278ad9bb-8842-4eba-a03c-0dc1338afa60")
+		(property "Reference" "R219"
+			(at 69.85 100.33 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "22R"
+			(at 65.278 101.6 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 67.31 99.822 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 67.31 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 67.31 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "9083b6c5-fe9e-4c8c-9517-03c77d126028")
+		)
+		(pin "2"
+			(uuid "c997e84a-622d-4827-8ef1-59ee40523ea4")
+		)
+		(instances
+			(project "AmigaPCI Mainboard"
+				(path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
+					(reference "R219")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:+3V3")
 		(at 27.94 52.07 0)
 		(unit 1)
@@ -23814,7 +23903,7 @@
 		(dnp no)
 		(uuid "39d82106-7031-4085-94f0-509b7a73bd0d")
 		(property "Reference" "RN208"
-			(at 370.459 37.719 0)
+			(at 368.935 40.767 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23822,8 +23911,8 @@
 				(justify right)
 			)
 		)
-		(property "Value" "1k"
-			(at 373.507 46.355 0)
+		(property "Value" "4k7"
+			(at 371.602 42.672 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23840,7 +23929,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.ctscorp.com/wp-content/uploads/74x.pdf"
+		(property "Datasheet" "https://www.yageo.com/upload/media/product/app/datasheet/rchip/pyu-yc_tc_group_51_rohs_l.pdf"
 			(at 384.81 41.91 0)
 			(effects
 				(font
@@ -23858,7 +23947,7 @@
 				(hide yes)
 			)
 		)
-		(property "Part" "746X101102JP"
+		(property "Part" "YC358TJK-074K7L"
 			(at 384.81 41.91 0)
 			(effects
 				(font
@@ -23992,7 +24081,7 @@
 				)
 			)
 		)
-		(property "Value" "1k"
+		(property "Value" "4k7"
 			(at 325.374 61.976 90)
 			(effects
 				(font
@@ -24009,7 +24098,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.ctscorp.com/wp-content/uploads/74x.pdf"
+		(property "Datasheet" "https://www.yageo.com/upload/media/product/app/datasheet/rchip/pyu-yc_tc_group_51_rohs_l.pdf"
 			(at 318.77 60.96 0)
 			(effects
 				(font
@@ -24027,7 +24116,7 @@
 				(hide yes)
 			)
 		)
-		(property "Part" "746X101102JP"
+		(property "Part" "YC358TJK-074K7L"
 			(at 318.77 60.96 0)
 			(effects
 				(font
@@ -24092,7 +24181,7 @@
 				)
 			)
 		)
-		(property "Value" "1k"
+		(property "Value" "4k7"
 			(at 325.374 122.936 90)
 			(effects
 				(font
@@ -24109,7 +24198,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.ctscorp.com/wp-content/uploads/74x.pdf"
+		(property "Datasheet" "https://www.yageo.com/upload/media/product/app/datasheet/rchip/pyu-yc_tc_group_51_rohs_l.pdf"
 			(at 318.77 121.92 0)
 			(effects
 				(font
@@ -24127,7 +24216,7 @@
 				(hide yes)
 			)
 		)
-		(property "Part" "746X101102JP"
+		(property "Part" "YC358TJK-074K7L"
 			(at 318.77 121.92 0)
 			(effects
 				(font
@@ -24250,7 +24339,7 @@
 		(dnp no)
 		(uuid "4870574f-5d9d-4ff8-ae9e-487e8c4c6871")
 		(property "Reference" "RN210"
-			(at 370.332 93.472 0)
+			(at 368.808 97.028 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24258,8 +24347,8 @@
 				(justify right)
 			)
 		)
-		(property "Value" "1k"
-			(at 373.507 102.235 0)
+		(property "Value" "4k7"
+			(at 371.348 98.806 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24276,7 +24365,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.ctscorp.com/wp-content/uploads/74x.pdf"
+		(property "Datasheet" "https://www.yageo.com/upload/media/product/app/datasheet/rchip/pyu-yc_tc_group_51_rohs_l.pdf"
 			(at 384.81 97.79 0)
 			(effects
 				(font
@@ -24286,6 +24375,15 @@
 			)
 		)
 		(property "Description" ""
+			(at 384.81 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part" "YC358TJK-074K7L"
 			(at 384.81 97.79 0)
 			(effects
 				(font
@@ -24975,7 +25073,7 @@
 				)
 			)
 		)
-		(property "Value" "1k"
+		(property "Value" "4k7"
 			(at 248.666 122.936 90)
 			(effects
 				(font
@@ -24992,7 +25090,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.ctscorp.com/wp-content/uploads/74x.pdf"
+		(property "Datasheet" "https://www.yageo.com/upload/media/product/app/datasheet/rchip/pyu-yc_tc_group_51_rohs_l.pdf"
 			(at 255.27 121.92 0)
 			(effects
 				(font
@@ -25010,7 +25108,7 @@
 				(hide yes)
 			)
 		)
-		(property "Part" "746X101102JP"
+		(property "Part" "YC358TJK-074K7L"
 			(at 255.27 121.92 0)
 			(effects
 				(font
@@ -25076,7 +25174,7 @@
 				)
 			)
 		)
-		(property "Value" "1k"
+		(property "Value" "4k7"
 			(at 248.666 102.616 90)
 			(effects
 				(font
@@ -25093,7 +25191,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.ctscorp.com/wp-content/uploads/74x.pdf"
+		(property "Datasheet" "https://www.yageo.com/upload/media/product/app/datasheet/rchip/pyu-yc_tc_group_51_rohs_l.pdf"
 			(at 255.27 101.6 0)
 			(effects
 				(font
@@ -25111,7 +25209,7 @@
 				(hide yes)
 			)
 		)
-		(property "Part" "746X101102JP"
+		(property "Part" "YC358TJK-074K7L"
 			(at 255.27 101.6 0)
 			(effects
 				(font
@@ -26801,7 +26899,7 @@
 		(dnp no)
 		(uuid "ccf66e20-83a1-4494-876a-1a6b5e6b5681")
 		(property "Reference" "RN209"
-			(at 376.174 66.802 0)
+			(at 375.412 70.104 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26809,8 +26907,8 @@
 				(justify right)
 			)
 		)
-		(property "Value" "1k"
-			(at 375.412 75.946 0)
+		(property "Value" "4k7"
+			(at 375.158 71.882 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26827,7 +26925,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.ctscorp.com/wp-content/uploads/74x.pdf"
+		(property "Datasheet" "https://www.yageo.com/upload/media/product/app/datasheet/rchip/pyu-yc_tc_group_51_rohs_l.pdf"
 			(at 387.35 71.12 0)
 			(effects
 				(font
@@ -26845,7 +26943,7 @@
 				(hide yes)
 			)
 		)
-		(property "Part" "746X101102JP"
+		(property "Part" "YC358TJK-074K7L"
 			(at 387.35 71.12 0)
 			(effects
 				(font
@@ -26888,6 +26986,75 @@
 			(project "AmigaPCI Mainboard"
 				(path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
 					(reference "RN209")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 67.31 71.12 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "ce263464-43e5-4bdf-a9ed-a9da7a89ad84")
+		(property "Reference" "R218"
+			(at 64.77 73.406 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "22R"
+			(at 65.278 71.12 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 67.31 69.342 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 67.31 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 67.31 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "9ecec381-1116-47e3-9352-bfb72202da78")
+		)
+		(pin "2"
+			(uuid "b0b8f214-d114-4df7-b688-e8d4ea85ad6d")
+		)
+		(instances
+			(project "AmigaPCI Mainboard"
+				(path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
+					(reference "R218")
 					(unit 1)
 				)
 			)
@@ -27118,7 +27285,7 @@
 				)
 			)
 		)
-		(property "Value" "1k"
+		(property "Value" "4k7"
 			(at 325.374 82.296 90)
 			(effects
 				(font
@@ -27135,7 +27302,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.ctscorp.com/wp-content/uploads/74x.pdf"
+		(property "Datasheet" "https://www.yageo.com/upload/media/product/app/datasheet/rchip/pyu-yc_tc_group_51_rohs_l.pdf"
 			(at 318.77 81.28 0)
 			(effects
 				(font
@@ -27153,7 +27320,7 @@
 				(hide yes)
 			)
 		)
-		(property "Part" "746X101102JP"
+		(property "Part" "YC358TJK-074K7L"
 			(at 318.77 81.28 0)
 			(effects
 				(font
@@ -27419,7 +27586,7 @@
 				)
 			)
 		)
-		(property "Value" "1k"
+		(property "Value" "4k7"
 			(at 248.666 61.976 90)
 			(effects
 				(font
@@ -27436,7 +27603,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.ctscorp.com/wp-content/uploads/74x.pdf"
+		(property "Datasheet" "https://www.yageo.com/upload/media/product/app/datasheet/rchip/pyu-yc_tc_group_51_rohs_l.pdf"
 			(at 255.27 60.96 0)
 			(effects
 				(font
@@ -27454,7 +27621,7 @@
 				(hide yes)
 			)
 		)
-		(property "Part" "746X101102JP"
+		(property "Part" "YC358TJK-074K7L"
 			(at 255.27 60.96 0)
 			(effects
 				(font
@@ -27520,7 +27687,7 @@
 				)
 			)
 		)
-		(property "Value" "1k"
+		(property "Value" "4k7"
 			(at 248.666 82.296 90)
 			(effects
 				(font
@@ -27537,7 +27704,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.ctscorp.com/wp-content/uploads/74x.pdf"
+		(property "Datasheet" "https://www.yageo.com/upload/media/product/app/datasheet/rchip/pyu-yc_tc_group_51_rohs_l.pdf"
 			(at 255.27 81.28 0)
 			(effects
 				(font
@@ -27555,7 +27722,7 @@
 				(hide yes)
 			)
 		)
-		(property "Part" "746X101102JP"
+		(property "Part" "YC358TJK-074K7L"
 			(at 255.27 81.28 0)
 			(effects
 				(font
@@ -28174,7 +28341,7 @@
 				)
 			)
 		)
-		(property "Value" "1k"
+		(property "Value" "4k7"
 			(at 325.374 102.616 90)
 			(effects
 				(font
@@ -28191,7 +28358,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.ctscorp.com/wp-content/uploads/74x.pdf"
+		(property "Datasheet" "https://www.yageo.com/upload/media/product/app/datasheet/rchip/pyu-yc_tc_group_51_rohs_l.pdf"
 			(at 318.77 101.6 0)
 			(effects
 				(font
@@ -28209,7 +28376,7 @@
 				(hide yes)
 			)
 		)
-		(property "Part" "746X101102JP"
+		(property "Part" "YC358TJK-074K7L"
 			(at 318.77 101.6 0)
 			(effects
 				(font

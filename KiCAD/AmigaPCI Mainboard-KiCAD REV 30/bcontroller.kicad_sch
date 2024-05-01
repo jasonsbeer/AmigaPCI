@@ -6,7 +6,7 @@
 	(paper "B")
 	(title_block
 		(title "AMIGA PCI")
-		(date "2024-04-28")
+		(date "2024-04-30")
 		(rev "3.0")
 	)
 	(lib_symbols
@@ -5914,7 +5914,7 @@
 	)
 	(wire
 		(pts
-			(xy 138.43 215.9) (xy 147.32 215.9)
+			(xy 138.43 215.9) (xy 146.05 215.9)
 		)
 		(stroke
 			(width 0)
@@ -7554,6 +7554,16 @@
 	)
 	(wire
 		(pts
+			(xy 152.4 213.36) (xy 153.67 213.36)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bee5417d-6ede-40af-b879-24ae176516aa")
+	)
+	(wire
+		(pts
 			(xy 138.43 55.88) (xy 142.24 55.88)
 		)
 		(stroke
@@ -7944,7 +7954,7 @@
 	)
 	(wire
 		(pts
-			(xy 138.43 213.36) (xy 147.32 213.36)
+			(xy 138.43 213.36) (xy 144.78 213.36)
 		)
 		(stroke
 			(width 0)
@@ -8857,7 +8867,7 @@
 		(uuid "5879c2ee-369e-4735-8da7-8b8f694b8359")
 	)
 	(label "LVA1"
-		(at 147.32 215.9 180)
+		(at 146.05 215.9 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -9729,7 +9739,7 @@
 	)
 	(global_label "CLKCIA"
 		(shape output)
-		(at 147.32 213.36 0)
+		(at 153.67 213.36 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -9739,7 +9749,7 @@
 		)
 		(uuid "22f3ee39-cd06-4406-8748-85c6cb988dbf")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 156.7573 213.36 0)
+			(at 163.1073 213.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10908,6 +10918,76 @@
 			(project "AmigaPCI Mainboard"
 				(path "/72453515-27fe-4336-91f3-e3c8054f7767/62a07d55-3759-49a3-8a3f-631cb4902a24"
 					(reference "#PWR0226")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 148.59 213.36 90)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "1c89765a-047c-4e6e-8eb5-30fe9be13324")
+		(property "Reference" "R220"
+			(at 153.67 211.328 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "22R"
+			(at 149.86 213.36 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 148.59 211.582 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 148.59 213.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 148.59 213.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "6589e72b-8e2e-4ea8-ad74-e8ac96e2ef14")
+		)
+		(pin "2"
+			(uuid "50ca3fa8-a506-4edd-9e88-ff4147ba5e1f")
+		)
+		(instances
+			(project "AmigaPCI Mainboard"
+				(path "/72453515-27fe-4336-91f3-e3c8054f7767/62a07d55-3759-49a3-8a3f-631cb4902a24"
+					(reference "R220")
 					(unit 1)
 				)
 			)

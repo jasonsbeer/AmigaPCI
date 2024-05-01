@@ -6,7 +6,7 @@
 	(paper "B")
 	(title_block
 		(title "AMIGA PCI")
-		(date "2024-04-28")
+		(date "2024-04-30")
 		(rev "3.0")
 	)
 	(lib_symbols
@@ -15004,7 +15004,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Package_SO:TSSOP-20_4.4x5mm_P0.5mm"
+		(property "Footprint" "Package_SO:TSSOP-20_4.4x6.5mm_P0.65mm"
 			(at 135.382 137.414 0)
 			(effects
 				(font
@@ -17645,7 +17645,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Package_SO:TSSOP-20_4.4x5mm_P0.5mm"
+		(property "Footprint" "Package_SO:TSSOP-20_4.4x6.5mm_P0.65mm"
 			(at 135.382 61.214 0)
 			(effects
 				(font
@@ -21012,15 +21012,15 @@
 		(fields_autoplaced yes)
 		(uuid "fcac7bb6-d0e6-43c5-9877-d1601f7e665e")
 		(property "Reference" "C302"
-			(at 146.8183 36.322 90)
+			(at 146.8183 34.29 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "0.1uf"
-			(at 146.8183 38.243 90)
+		(property "Value" "0.1uF"
+			(at 146.8183 36.83 90)
 			(effects
 				(font
 					(size 1.27 1.27)

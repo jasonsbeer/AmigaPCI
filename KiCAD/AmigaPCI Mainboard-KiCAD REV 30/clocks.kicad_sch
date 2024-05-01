@@ -6,7 +6,7 @@
 	(paper "B")
 	(title_block
 		(title "AMIGA PCI")
-		(date "2024-04-28")
+		(date "2024-04-30")
 		(rev "3.0")
 	)
 	(lib_symbols
@@ -6321,6 +6321,12 @@
 		(uuid "05591494-c45e-4815-a2f4-13d3b1771558")
 	)
 	(junction
+		(at 237.49 68.58)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "0b2ec008-f507-4a13-94a5-338ad724d381")
+	)
+	(junction
 		(at 179.07 217.17)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -6421,12 +6427,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "3d836046-b1f5-460c-bac1-93abe215fafc")
-	)
-	(junction
-		(at 237.49 97.79)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "3d906360-a5b9-4f31-b82e-5f6c5852990b")
 	)
 	(junction
 		(at 295.91 232.41)
@@ -6535,12 +6535,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "8dab465f-1e67-4dd8-a8cf-38b491e86bcb")
-	)
-	(junction
-		(at 237.49 67.31)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "8de44ef3-6469-46d4-a49c-787e3e2daa76")
 	)
 	(junction
 		(at 146.05 54.61)
@@ -8472,16 +8466,6 @@
 	)
 	(wire
 		(pts
-			(xy 266.7 97.79) (xy 266.7 90.17)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "1fe88aa6-1fa7-4390-862d-6fae11aa1b8f")
-	)
-	(wire
-		(pts
 			(xy 80.01 209.55) (xy 83.82 209.55)
 		)
 		(stroke
@@ -10040,6 +10024,16 @@
 		)
 		(uuid "6de2bfde-c356-42a7-af67-6140dd8f7983")
 	)
+	(wire
+		(pts
+			(xy 252.73 68.58) (xy 259.08 68.58)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6e706163-7589-4945-9d36-502c610e7aaf")
+	)
 	(bus
 		(pts
 			(xy 49.53 186.69) (xy 49.53 189.23)
@@ -10049,16 +10043,6 @@
 			(type default)
 		)
 		(uuid "6ecabe7e-5689-407b-8a63-2b43a14ea558")
-	)
-	(wire
-		(pts
-			(xy 266.7 67.31) (xy 237.49 67.31)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "6f5b55f7-cb9d-4323-8aea-171125edf3a1")
 	)
 	(wire
 		(pts
@@ -10149,6 +10133,16 @@
 			(type default)
 		)
 		(uuid "7736a29b-ebab-4bae-9f04-e6d94b0a72bd")
+	)
+	(wire
+		(pts
+			(xy 237.49 68.58) (xy 247.65 68.58)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "79149593-db3f-4015-9a45-52ee0135a704")
 	)
 	(wire
 		(pts
@@ -10520,16 +10514,6 @@
 		)
 		(uuid "8cd9627b-658d-45f5-98ee-e1b7a7ffe158")
 	)
-	(wire
-		(pts
-			(xy 237.49 97.79) (xy 266.7 97.79)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "8d17a630-0cbf-4fff-a511-d92e39a64088")
-	)
 	(bus
 		(pts
 			(xy 323.85 124.46) (xy 323.85 121.92)
@@ -10869,16 +10853,6 @@
 			(type default)
 		)
 		(uuid "9c1ffd0a-91e8-433d-a970-7a16dba0ba4f")
-	)
-	(wire
-		(pts
-			(xy 266.7 85.09) (xy 266.7 67.31)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "9d7d4ad4-bfc3-4176-b9e7-da9348d8b19d")
 	)
 	(wire
 		(pts
@@ -11642,6 +11616,16 @@
 	)
 	(wire
 		(pts
+			(xy 252.73 80.01) (xy 250.19 80.01)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c7faa711-852c-4f83-91fc-990fc8857687")
+	)
+	(wire
+		(pts
 			(xy 134.62 43.18) (xy 134.62 45.72)
 		)
 		(stroke
@@ -11722,6 +11706,16 @@
 	)
 	(wire
 		(pts
+			(xy 266.7 80.01) (xy 260.35 80.01)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cce35369-cc8b-4c9e-9312-4b920c5ef9a0")
+	)
+	(wire
+		(pts
 			(xy 307.34 232.41) (xy 295.91 232.41)
 		)
 		(stroke
@@ -11799,6 +11793,16 @@
 			(type default)
 		)
 		(uuid "d3ab18fd-46ee-4f14-8d2c-2e7f93798027")
+	)
+	(wire
+		(pts
+			(xy 259.08 68.58) (xy 259.08 69.85)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d416496c-248a-46d4-b7c1-fca7b05c35ad")
 	)
 	(bus
 		(pts
@@ -12262,7 +12266,7 @@
 	)
 	(wire
 		(pts
-			(xy 237.49 67.31) (xy 237.49 71.12)
+			(xy 237.49 67.31) (xy 237.49 68.58)
 		)
 		(stroke
 			(width 0)
@@ -12459,6 +12463,16 @@
 			(type default)
 		)
 		(uuid "f2d3f5a8-6f8f-4967-9b43-3a46d8674115")
+	)
+	(wire
+		(pts
+			(xy 237.49 68.58) (xy 237.49 71.12)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f344ae12-5fd0-4eed-8a6e-b16fd53f5403")
 	)
 	(wire
 		(pts
@@ -12822,7 +12836,7 @@
 	)
 	(rectangle
 		(start 127.254 18.034)
-		(end 273.304 105.156)
+		(end 282.3 105.156)
 		(stroke
 			(width 0)
 			(type default)
@@ -15523,7 +15537,7 @@
 	)
 	(global_label "AgnusCLK"
 		(shape output)
-		(at 250.19 80.01 0)
+		(at 266.7 80.01 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -15533,7 +15547,7 @@
 		)
 		(uuid "8762c263-8069-482c-8062-265e5d4d1e8d")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 262.4679 80.01 0)
+			(at 278.9779 80.01 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16496,7 +16510,7 @@
 	)
 	(symbol
 		(lib_id "Device:C_Small")
-		(at 266.7 87.63 0)
+		(at 250.19 68.58 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -16504,7 +16518,7 @@
 		(dnp no)
 		(uuid "0d260c00-585a-4d79-9cdc-e873bd533077")
 		(property "Reference" "C245"
-			(at 267.97 93.599 90)
+			(at 256.159 67.31 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16513,7 +16527,7 @@
 			)
 		)
 		(property "Value" "0.1uF"
-			(at 267.97 86.868 90)
+			(at 249.428 67.31 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16522,7 +16536,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
-			(at 266.7 87.63 0)
+			(at 250.19 68.58 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16531,7 +16545,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 266.7 87.63 0)
+			(at 250.19 68.58 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16540,7 +16554,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 266.7 87.63 0)
+			(at 250.19 68.58 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18282,6 +18296,74 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R")
+		(at 256.54 80.01 270)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "5d2863da-3f13-4e6d-8d42-a7a940a0f3df")
+		(property "Reference" "R217"
+			(at 256.54 81.915 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "22R"
+			(at 256.54 80.01 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 256.54 81.788 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 256.54 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 256.54 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "6bd14058-27c6-40a1-ad91-835408f991df")
+		)
+		(pin "2"
+			(uuid "678e49f4-aab5-43a7-a38b-48520b8e3e83")
+		)
+		(instances
+			(project "AmigaPCI Mainboard"
+				(path "/72453515-27fe-4336-91f3-e3c8054f7767/d671396a-959f-409b-8612-87cb620c51cb"
+					(reference "R217")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "74xx:74LS04")
 		(at 189.23 245.11 0)
 		(unit 7)
@@ -19867,6 +19949,72 @@
 			(project "AmigaPCI Mainboard"
 				(path "/72453515-27fe-4336-91f3-e3c8054f7767/d671396a-959f-409b-8612-87cb620c51cb"
 					(reference "#PWR089")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 259.08 69.85 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "80eb54e9-1a94-4df7-915b-d9717f5c7155")
+		(property "Reference" "#PWR037"
+			(at 259.08 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 259.08 74.422 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 259.08 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 259.08 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 259.08 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e5d90b72-8e89-4f08-92ab-e1cb72161b99")
+		)
+		(instances
+			(project "AmigaPCI Mainboard"
+				(path "/72453515-27fe-4336-91f3-e3c8054f7767/d671396a-959f-409b-8612-87cb620c51cb"
+					(reference "#PWR037")
 					(unit 1)
 				)
 			)
