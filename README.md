@@ -4,7 +4,7 @@ The AmigaPCI is a Motorola MC68040 based OCS/ECS Amiga computer in the ATX form 
 
 ## Features  
 <list>
-  <li>Motorola MC68040 CPU running at 40MHz (MC68060 version available shortly after production release)</li>
+  <li>Motorola MC68040 CPU running at 40MHz</li>
   <li>Five AUTOCONFIG PCI 5V/Univeral slots</li>
   <li>HID mouse and keyboard inputs</li>
   <li>Dual port IDE interface supporting up to 4 total devices</li>
@@ -14,13 +14,18 @@ The AmigaPCI is a Motorola MC68040 based OCS/ECS Amiga computer in the ATX form 
   <li>Fast CIA cycles</li>
   <li>Amiga Video Slot</li>  
   <li>Floppy disk interface supports Amiga and PC drives in DD mode</li>  
-  <li>Onboard Ethernet connectivity (future revision)</li>
+  <li>Onboard Ethernet</li>
+</list>  
+
+### Future Considerations  
+<list>
+<li>MC68060</li>
 </list>
 
 ## Project Status  
-This is an active project and is currently in the prototype stage. See [Milestones and progress](milestones.md) for current status. Because this project is in the prototype stage, it is not recommended for general release at this time. There are likely errors that need to be corrected.
-
 **THIS IS A WORK IN PROGRESS AND IS SUBJECT TO CHANGE WITHOUT NOTICE.**
+
+This is an active project and is currently in the prototype stage. See [Milestones and progress](milestones.md) for current status. Because this project is in the prototype stage, it is not recommended for general release at this time. There may be errors that will adversely affect performance and the logic equations are not complete. If you choose to build this, you accept all cost and risk associated with the decision.
 
 # Hardware Developer Guide
 
@@ -105,7 +110,9 @@ The AmigaPCI includes the Amiga OCS/ECS video bus. This allows for the use of OC
 The real time clock (RTC) of the AmigaPCI is supplied by the STM32F205 microcontroller. When the RTC address space is active, the board controller signals the microcontroller with the associated request. The microcontroller then consumes or supplies the necessary data. The microcontroller is connected to an external crystal to supply an accurate clock signal for the microcontroller. The crystal is adjustable via the trim capacitor VC200.
 
 # Revision History  
-**Rev 2.0**  First prototype.
+**Rev 1.0**  Shelved.
+**Rev 2.0**  First engineering prototype.  
+**Rev 3.0**  Second engineering prototype.  
 
 # Acknowledgements  
 Ian Steadman for his [Amiga PC floppy interface](https://github.com/istedman/Floppy_adaptor) design.
