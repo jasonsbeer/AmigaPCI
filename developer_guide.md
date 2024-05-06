@@ -1,6 +1,6 @@
 <p align="center"><img src="/Images/AmigaPCI-logo-dark.png"></p>
 
-<h1 align="center">Hardware Developer Reference</h1>
+<h1 align="center">PCI Hardware Developer Reference</h1>
 
 <p align="center">"If I have seen further, it is by standing on the shoulders of giants."<br>-Sir Isaac Newton</p>
 
