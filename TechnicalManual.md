@@ -186,9 +186,13 @@ The AmigaPCI does not supply an E-clock on the PCI bus. This means we can break 
 <p align="center"><img src="/DataSheets/TimingDiagrams/CIA Cycle Worst Case Read.png"></p>
 <p align="center"><img src="/DataSheets/TimingDiagrams/CIA Cycle Worst Case Write.png"></p>
 
-# 3.0 CPU Local Bus Connector
+# 3.0 CPU Local Bus Card
 
 The AmigaPCI utilizes a CPU Local Bus connector to attach CPU devices to the AmigaPCI main board. The AmigaPCI has no CPU on the main board. Instead, the CPU is contained on it's own daughter card. This approach enables easier CPU upgrades and allows for inclusion of AUTOCONFIG devices on the CPU Local Bus card. The AmigaPCI main board has no Fast RAM. Fast Ram is included on the CPU Local Bus Card. The RAM can then be optimized for the clock speed and capabilities of the CPU device implemented, rather than be limited by the 40MHz bus clock speed and logic design of the AmigaPCI main board itself. This enables an upgrade path for increased performance while minimizing resources needed on the AmigaPCI main board.
+
+## 3.1 Footprint
+
+The CPU Local Bus connector of the AmigaPCI is a DIN 41612 120 pin socket in 3 rows by 40 columns. The female (receptical) portion is on the AmigaPCI main board. The male (plug) portion is on the CPU Local Bus card. Examples of these connectors are part numbers 5535098-5 and 5650910-5 from TE Connectivity AMP Connectors. All measurements are from the upper left mounting hole in the Local Bus Card. While a specific size limitation is not defined, a designer may make the card as large as they wish, within practical limits. The card must clear the ATX and IDE connectors and must not interfere with video cards or full size PCI plug in cards.
 
 ## 3.1 Signaling Environments
 
