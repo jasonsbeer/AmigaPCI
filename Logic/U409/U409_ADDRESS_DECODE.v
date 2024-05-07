@@ -47,6 +47,7 @@ module U409_ADDRESS_DECODE
     input CIA_ENABLE,
     input [3:0]RAM_BASE_ADDRESS,
 	//input nTS,
+	input TT0, TT1,
     
     //output nREGEN,
     //output nRAMEN,   
@@ -95,7 +96,7 @@ assign nROMEN = ~(nRESET && !Z3_SPACE && ((OVL && A[23:21] == 3'b000) || A[23:19
 //IN THE EVENT OF A INTERRUPT CYCLE, WE NEED TO TERMINATE THE CYCLE BY ASSERTING _TA.
 //ALL INTERRUPT REQUESTS ARE SERVICED BY AUTOVECTORING.
 
-assign AUTOVECTOR = (nRESET && A[31:16] == 16'hFFFF);
+assign AUTOVECTOR = nRESET && TT0 && TT1 && A[31:16] == 16'hFFFF;
 
 ////////////////
 // DIAG SPACE //
