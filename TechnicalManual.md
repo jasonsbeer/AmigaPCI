@@ -188,30 +188,28 @@ The AmigaPCI does not supply an E-clock on the PCI bus. This means we can break 
 
 # 3.0 CPU Local Bus Card
 
-The AmigaPCI utilizes a CPU Local Bus connector to attach CPU devices to the AmigaPCI main board. The AmigaPCI has no CPU on the main board. Instead, the CPU is contained on it's own daughter card. This approach enables easier CPU upgrades and allows for inclusion of AUTOCONFIG devices on the CPU Local Bus card. The AmigaPCI main board has no Fast RAM. Fast Ram is included on the CPU Local Bus Card. The RAM can then be optimized for the clock speed and capabilities of the CPU device implemented, rather than be limited by the 40MHz bus clock speed and logic design of the AmigaPCI main board itself. This enables an upgrade path for increased performance while minimizing resources needed on the AmigaPCI main board.
+The AmigaPCI utilizes a CPU Local Bus connector to attach CPU devices to the AmigaPCI main board. The AmigaPCI has no CPU on the main board. Instead, the CPU is contained on a daughter card attached to this bus. This approach enables easier CPU upgrades and allows for inclusion of AUTOCONFIG devices on the CPU Local Bus card. The AmigaPCI main board has no Fast RAM. Fast Ram must be included on the CPU Local Bus Card. RAM can then be optimized for the clock speed and capabilities of the CPU device implemented. This enables an upgrade path for increased performance while minimizing resources needed on the AmigaPCI main board.
 
 ## 3.1 Footprint
 
-The CPU Local Bus connector of the AmigaPCI is a DIN 41612 120 pin socket in 3 rows by 40 columns. The female (receptical) portion is on the AmigaPCI main board. The male (plug) portion is on the CPU Local Bus card. Examples of these connectors are part numbers 5535098-5 and 5650910-5 from TE Connectivity AMP Connectors. All measurements are from the upper left mounting hole in the Local Bus Card. While a specific size limitation is not defined, a designer may make the card as large as they wish, within practical limits. The card must clear the ATX and IDE connectors and must not interfere with video cards or full size PCI plug in cards.
+The CPU Local Bus connector of the AmigaPCI is a DIN 41612 120 pin socket, 3 rows by 40 columns. The female (receptical) portion is on the AmigaPCI main board. The male (plug) portion is on the CPU Local Bus card. Examples of these connectors are part numbers 5535098-5 and 5650910-5 from TE Connectivity AMP Connectors. All measurements are from the upper left mounting hole in the Local Bus Card. While a specific size limitation is not defined, a designer may make the card as large as they wish, within practical limits. The card must fit in an ATX case. It must not interfere with the ATX power and IDE connectors and must not interfere with video cards or full size PCI plug in cards. As a reference, the AmigaPCI-040 CPU Local Bus Card is 180mm x 400mm. **CHECK THAT!**
+
+ADD THE MEASUREMENTS IMAGE
 
 ## 3.1 Signaling Environments
 
-The CPU Local Bus Card may be either a +5V TTL or +3.3V LVTTL signaling environment*. The CPU Local Bus signaling voltage must be set by Jumper xxx on the AmigaPCI mainboard. This ensures the buffers implement the expected voltage level at the CPU Local Bus connector, +5V TTL or +3.3V LVTTL. In the event of a +5V TTL environment on the CPU Local Bus Card, buffers on the AmigaPCI main board convert +5V TTL signals from the CPU Local Bus Card to the +3.3V LVTTL signals used on the AmigaPCI main board, and vice-versa. When a +3.3V LVTTL envrironment is implemented, the buffers use +3.3V LVTTL on both sides. 
-
-**NOTE:** Failure to set Jumper xxx correctly may result in malfunction of the AmigaPCI or even damage to the CPU Local Bus Card.  
-
-*Specific exceptions exist. Review Section 3.2 Cpu Local Bus Signals.
+The AmigaPCI implements two distinct signaling regions on the main board. The CPU Local Bus, Amiga chipset, and PCI Local Bus utilize +5V TTL signaling. The chipset SDRAM and FPGA's operate at +3.3V LVTTL. Buffer transceivers on the AmigaPCI main board translate logic levels between these two regions. Hardware designers may choose whether their CPU Local Bus Card implements +5V TTL or +3.3V LVTTL to communicate with the AmigaPCI main board. However, CPU Local Bus Card logic must be tolerant of +5V TTL or provide any necessary logic level shifting on the CPU Local Bus Card.
 
 ## 3.2 CPU Local Bus Signals
 
 These signals are discussed in the context of the Motorola MC68040 and MC68060 only.
 
-Pin|Signal|Active State|Level|Description
--|-|-|-|-
-?|D31|-|+5V/+3.3V|Data bit 31
-?|D30|-|+5V/+3.3V|Data bit 30
-?|_TA|Low|3.3V|Transfer Acknowledge. This unbuffered signal is driven by open drain logic. Applying +5V to this signal may damage the FPGAs on the Amiga PCI main board.
-?|_TS|Low|+5V/+3.3V|Transfer Start
+Pin|Signal|Active State|Description
+-|-|-|-
+?|D31|-|Data bit 31
+?|D30|-|Data bit 30
+?|_TA|Low|Transfer Acknowledge. This unbuffered +3.3V LVTTL signal is open drain. **Applying +5V to this signal may damage the FPGAs on the Amiga PCI main board.**
+?|_TS|Low|Transfer Start
 
 ### 1.14 MC68040 Cycle Timeout
 
