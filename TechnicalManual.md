@@ -196,17 +196,22 @@ The CPU Local Bus connector of the AmigaPCI is a DIN 41612 120 pin socket in 3 r
 
 ## 3.1 Signaling Environments
 
-The CPU Local Bus Card may be either a +5V TTL or +3.3V LVTTL signaling environment. The CPU Local Bus signaling voltage must be set by Jumper xxx on the AmigaPCI mainboard. This ensures the buffers implement the expected voltage level at the CPU Local Bus connector, +5V TTL or +3.3V LVTTL. In the event of a +5V TTL environment on the CPU Local Bus Card, buffers on the AmigaPCI main board convert +5V TTL signals from the CPU Local Bus Card to the +3.3V LVTTL signals used on the AmigaPCI main board, and vice-versa. When a +3.3V LVTTL envrironment is implemented, the buffers use +3.3V LVTTL on both sides. 
+The CPU Local Bus Card may be either a +5V TTL or +3.3V LVTTL signaling environment*. The CPU Local Bus signaling voltage must be set by Jumper xxx on the AmigaPCI mainboard. This ensures the buffers implement the expected voltage level at the CPU Local Bus connector, +5V TTL or +3.3V LVTTL. In the event of a +5V TTL environment on the CPU Local Bus Card, buffers on the AmigaPCI main board convert +5V TTL signals from the CPU Local Bus Card to the +3.3V LVTTL signals used on the AmigaPCI main board, and vice-versa. When a +3.3V LVTTL envrironment is implemented, the buffers use +3.3V LVTTL on both sides. 
 
-**NOTE:** Failure to set Jumper xxx correctly may result in malfunction of the AmigaPCI or even damage to the CPU Local Bus Card.
+**NOTE:** Failure to set Jumper xxx correctly may result in malfunction of the AmigaPCI or even damage to the CPU Local Bus Card.  
+
+*Specific exceptions exist. Review Section 3.2 Cpu Local Bus Signals.
 
 ## 3.2 CPU Local Bus Signals
 
-Pin|Signal|Active State|Description
--|-|-|-
-?|D31|<p align="center">-</p>|Data bit 31
-?|D30|-|Data bit 30
+These signals are discussed in the context of the Motorola MC68040 and MC68060 only.
 
+Pin|Signal|Active State|Level|Description
+-|-|-|-|-
+?|D31|-|+5V/+3.3V|Data bit 31
+?|D30|-|+5V/+3.3V|Data bit 30
+?|_TA|Low|3.3V|Transfer Acknowledge. This unbuffered signal is driven by open drain logic. Applying +5V to this signal may damage the FPGAs on the Amiga PCI main board.
+?|_TS|Low|+5V/+3.3V|Transfer Start
 
 ### 1.14 MC68040 Cycle Timeout
 
