@@ -18,7 +18,7 @@ This document is presented "as-is" with no waranty expressed or implied.
 4) A bus's most significant bit will be listed first and least significant last. For example, [31..0] indicates bit 31 as the most significant bit. Zero is the least. Thus, [31..0] indicates a little endian device. The opposite will be true for a big endian device.
 5) Hex values are presented with a leading $ (dollar sign) and a space inserted every 4 characters for clarity.
 6) AmigaPCI refers to this specification or any implementation of this specification, in part or whole.
-7) CPU refers to the Motorola MC68040 processor, unless otherwise specified.
+7) CPU refers to the Motorola MC68040 or MC68060 processor, unless otherwise specified.
 
 **Revision History**  
 Revision|Date|Status
