@@ -204,9 +204,12 @@ The AmigaPCI utilizes a CPU Local Bus connector to attach CPU devices to the Ami
 
 ## 3.1 Footprint
 
-The CPU Local Bus connector of the AmigaPCI is a DIN 41612 120 pin socket, 3 rows by 40 columns. The female (receptical) portion is on the AmigaPCI main board. The male (plug) portion is on the CPU Local Bus card. Examples of these connectors are part numbers 5535098-5 and 5650910-5 from TE Connectivity AMP Connectors. All measurements are from the upper left mounting hole in the Local Bus Card. While a specific size limitation is not defined, a designer may make the card as large as they wish, within practical limits. The card must fit in an ATX case. It must not interfere with the ATX power and IDE connectors and must not interfere with video cards or full size PCI plug in cards. As a reference, the AmigaPCI-040 CPU Local Bus Card is 180mm x 400mm. **CHECK THAT!**
+The CPU Local Bus connector of the AmigaPCI is a DIN 41612 120 pin socket, 3 rows by 40 columns. The female (receptical) portion is on the AmigaPCI main board. The male (plug) portion is on the CPU Local Bus card. Examples of these connectors are part numbers 5535098-5 and 5650910-5 from TE Connectivity AMP Connectors. While a specific size limitation is not defined, a designer may make the card as large as they wish, within practical limits. The card physical size must not extend outside the ATX specifications. It must not interfere with the ATX power and IDE connectors and must not interfere with video cards or full size PCI plug in cards. 
 
-ADD THE MEASUREMENTS IMAGE
+The origin datum and component points can be seen in Image 3.1. The origin of all measurements is the upper left hole (datum = 0,0). The image is looking down on the top of the card. The DIN connector is attached to the back of the card. As a reference, the AmigaPCI-040 CPU Local Bus Card is 140mm x 95mm.
+
+Image 3.1. Points from Datum 0,0 for the CPU Local Bus Card.
+<img src="/Images/CPULocalBusCardDim.jpg" width="650">
 
 ## 3.1 Signaling Environments
 
