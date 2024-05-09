@@ -4,9 +4,9 @@
 
 <p align="center">"If I have seen further, it is by standing on the shoulders of giants."<br>-Sir Isaac Newton</p>
 
-<p align="center">**THIS DOCUMENT IS A WORK IN PROGRESS AND IS SUBJECT TO CHANGE WITHOUT NOTICE.**</p>
+<p align="center"><b>**THIS DOCUMENT IS A WORK IN PROGRESS AND IS SUBJECT TO CHANGE WITHOUT NOTICE.**</b></p>
 
-<p align="center">For information on developing PCI hardware, see the **AmigaPCI PCI Hardware Developer Reference** guide.</p>
+<p align="center">For information on developing PCI hardware, see the <b>AmigaPCI PCI Hardware Developer Reference</b> guide.</p>
 
 **Conventions**
 
@@ -204,9 +204,12 @@ The AmigaPCI utilizes a CPU Local Bus connector to attach CPU devices to the Ami
 
 ## 3.1 Footprint
 
-The CPU Local Bus connector of the AmigaPCI is a DIN 41612 120 pin socket, 3 rows by 40 columns. The female (receptical) portion is on the AmigaPCI main board. The male (plug) portion is on the CPU Local Bus card. Examples of these connectors are part numbers 5535098-5 and 5650910-5 from TE Connectivity AMP Connectors. All measurements are from the upper left mounting hole in the Local Bus Card. While a specific size limitation is not defined, a designer may make the card as large as they wish, within practical limits. The card must fit in an ATX case. It must not interfere with the ATX power and IDE connectors and must not interfere with video cards or full size PCI plug in cards. As a reference, the AmigaPCI-040 CPU Local Bus Card is 180mm x 400mm. **CHECK THAT!**
+The CPU Local Bus connector of the AmigaPCI is a DIN 41612 120 pin socket, 3 rows by 40 columns. The female (receptical) portion is on the AmigaPCI main board. The male (plug) portion is on the CPU Local Bus card. Examples of these connectors are part numbers 5535098-5 and 5650910-5 from TE Connectivity AMP Connectors. Specific size parameters are not defined. The engineer may make the card any size they wish, within practical limits. The physical size must not extend outside the ATX specifications from the mounting point. It must not interfere with the ATX power and IDE connectors and must not interfere with video cards or full size PCI plug in cards. 
 
-ADD THE MEASUREMENTS IMAGE
+The origin datum and component points can be seen in Image 3.1. The origin of all measurements is the upper left hole (datum = 0,0). The image is looking down on top of the card. The DIN connector is attached to the back of the card. As a reference, the AmigaPCI-040 CPU Local Bus Card is 140mm x 95mm.
+
+**Image 3.1**. Points from Datum 0,0 for the CPU Local Bus Card.
+<img src="/Images/CPULocalBusCardDim.jpg" width="650">
 
 ## 3.1 Signaling Environments
 
@@ -246,8 +249,8 @@ _TIP|TTL|BI|CPU transfer in progress.
 _TS|TTL|BI|CPU transfer start.
 TT0|TTL|BI|CPU transfer type 0.
 TT1|TTL|BI|CPU transfer type 1.
-UPA0|TTL|O|User-programmable attribute 0. Required for PCI addressing of AUTOCONFIG devices.
-UPA1|TTL|O|User-programmable attribute 1. Required for PCI addressing of AUTOCONFIG devices.
+UPA0|TTL|O|User-programmable attribute 0.
+UPA1|TTL|O|User-programmable attribute 1.
 
 > [!NOTE]
 > I=Input, O=Output, BI=Bidirectional
