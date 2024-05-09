@@ -27,7 +27,7 @@
 			)
 		)
 	)
-	(property "Footprint" ""
+	(property "Footprint" "DIN41612_C_3x40_Female_Vertical_THT"
 		(at 0 99.06 0)
 		(unlocked yes)
 		(layer "F.Fab")
@@ -65,8 +65,8 @@
 	)
 	(attr through_hole)
 	(fp_line
-		(start -3.99 -0.3)
-		(end -3.99 0.3)
+		(start -4 98.73)
+		(end -4 99.33)
 		(stroke
 			(width 0.12)
 			(type solid)
@@ -75,8 +75,8 @@
 		(uuid "7acfa351-00d6-492f-bbd7-00de5192e178")
 	)
 	(fp_line
-		(start -3.99 0.3)
-		(end -3.31 0)
+		(start -4 99.33)
+		(end -3.32 99.03)
 		(stroke
 			(width 0.12)
 			(type solid)
@@ -85,8 +85,8 @@
 		(uuid "95992472-9cd6-4c0a-a37f-1d425814f64b")
 	)
 	(fp_line
-		(start -3.31 0)
-		(end -3.99 -0.3)
+		(start -3.32 99.03)
+		(end -4 98.73)
 		(stroke
 			(width 0.12)
 			(type solid)
@@ -125,7 +125,7 @@
 		(uuid "0db8dfd8-464e-49e6-be8f-d0e244507c7e")
 	)
 	(fp_line
-		(start -1.81 81.87)
+		(start -1.81 102.19)
 		(end -1.81 -3.131)
 		(stroke
 			(width 0.12)
@@ -255,6 +255,16 @@
 		(uuid "d900be43-1b2a-449d-a991-cb03c838d06b")
 	)
 	(fp_line
+		(start -3.02 98.53)
+		(end -2.32 99.03)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "ec269448-66a6-4801-a9c1-846d1d4d463a")
+	)
+	(fp_line
 		(start -3.01 -8.13)
 		(end 8.09 -8.13)
 		(stroke
@@ -273,16 +283,6 @@
 		)
 		(layer "F.Fab")
 		(uuid "b794cd16-1d6b-487a-b185-cccebcc454a7")
-	)
-	(fp_line
-		(start -3.01 -0.5)
-		(end -2.31 0)
-		(stroke
-			(width 0.1)
-			(type solid)
-		)
-		(layer "F.Fab")
-		(uuid "ec269448-66a6-4801-a9c1-846d1d4d463a")
 	)
 	(fp_line
 		(start -3.01 103.69)
@@ -305,8 +305,8 @@
 		(uuid "5f656a86-81a9-4744-8bcd-bfff7544987e")
 	)
 	(fp_line
-		(start -2.31 0)
-		(end -3.01 0.5)
+		(start -2.32 99.03)
+		(end -3.02 99.53)
 		(stroke
 			(width 0.1)
 			(type solid)
