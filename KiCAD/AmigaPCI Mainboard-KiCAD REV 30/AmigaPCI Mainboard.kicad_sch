@@ -237,44 +237,6 @@
 		)
 	)
 	(sheet
-		(at 105.283 24.257)
-		(size 35.56 16.002)
-		(fields_autoplaced yes)
-		(stroke
-			(width 0.1524)
-			(type solid)
-		)
-		(fill
-			(color 0 0 0 0.0000)
-		)
-		(uuid "6050d85a-08ce-47d9-805f-b2a01ec2bdd9")
-		(property "Sheetname" "Fast Memory"
-			(at 105.283 23.5454 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-			)
-		)
-		(property "Sheetfile" "memory.kicad_sch"
-			(at 105.283 40.8436 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-			)
-		)
-		(instances
-			(project "AmigaPCI Mainboard"
-				(path "/72453515-27fe-4336-91f3-e3c8054f7767"
-					(page "4")
-				)
-			)
-		)
-	)
-	(sheet
 		(at 91.44 121.666)
 		(size 33.02 16.764)
 		(fields_autoplaced yes)

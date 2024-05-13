@@ -739,7 +739,7 @@
         "pattern": "D*"
       },
       {
-        "netclass": "PCI",
+        "netclass": "Narrow",
         "pattern": "A*"
       },
       {
@@ -2095,7 +2095,7 @@
         "pattern": "_SYSTEMRST"
       },
       {
-        "netclass": "SDRAM",
+        "netclass": "Narrow",
         "pattern": "LVD*"
       },
       {
@@ -2729,6 +2729,26 @@
       {
         "netclass": "Narrow",
         "pattern": "/Power and Spares/RSTBTN"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "A2"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "A3"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "BUFDIS"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_CPUCONF"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "LVD31"
       }
     ]
   },
@@ -2944,10 +2964,6 @@
     [
       "4cb777ef-2899-49f4-b38f-a0c07d84fa7d",
       "Power and Spares"
-    ],
-    [
-      "6050d85a-08ce-47d9-805f-b2a01ec2bdd9",
-      "Fast Memory"
     ],
     [
       "62a07d55-3759-49a3-8a3f-631cb4902a24",

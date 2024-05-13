@@ -8981,6 +8981,28 @@
 		)
 		(uuid "8fff0dc1-3c35-455b-b89e-f929ac49bea2")
 	)
+	(text "Ramsey ID register is at $00DE0043\n-04 = $0D\n-07 = $0F"
+		(exclude_from_sim no)
+		(at 164.211 264.287 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "b1a392be-5580-45b9-aad2-07fb287d2907")
+	)
+	(text "FYI-64MB ONBOARD MEMORY LOCATED AT $0400 0000-$07FF FFFF.\nDO WE NEED A RAMSEY FOR THIS TO WORK?"
+		(exclude_from_sim no)
+		(at 160.02 256.286 0)
+		(effects
+			(font
+				(size 1.3 1.3)
+			)
+			(justify left bottom)
+		)
+		(uuid "f7bdb240-c931-4c91-b5d8-72eb422f1e87")
+	)
 	(label "LDB10"
 		(at 379.222 146.431 180)
 		(fields_autoplaced yes)

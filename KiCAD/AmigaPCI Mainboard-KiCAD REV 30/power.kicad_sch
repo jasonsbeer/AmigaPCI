@@ -9644,6 +9644,12 @@
 		(uuid "0552db23-5874-4aab-8d6b-e4e06671664d")
 	)
 	(junction
+		(at 337.82 177.8)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "103089f6-d269-4840-87cf-3edac2e6f521")
+	)
+	(junction
 		(at 66.04 176.53)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -9734,12 +9740,6 @@
 		(uuid "34e10b35-94d8-4ca0-8c4e-8f7ab99d6474")
 	)
 	(junction
-		(at 347.98 173.99)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "36de1048-affb-4a21-b833-c680f410298d")
-	)
-	(junction
 		(at 140.97 95.25)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -9828,6 +9828,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "5076d8fb-91e9-497c-afac-6453c3af9aa1")
+	)
+	(junction
+		(at 337.82 173.99)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "574bd6c9-5b39-46e5-a050-3a35a8571fae")
 	)
 	(junction
 		(at 92.71 39.37)
@@ -10028,6 +10034,12 @@
 		(uuid "b289ca22-9387-4fea-8e4c-b9e7392b3918")
 	)
 	(junction
+		(at 347.98 173.99)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "b9259a66-bbbc-444c-a17c-b85cd5b2358c")
+	)
+	(junction
 		(at 111.76 55.88)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -10082,6 +10094,12 @@
 		(uuid "ce7eab19-e2f9-4cc5-bd11-2a4185246af0")
 	)
 	(junction
+		(at 327.66 173.99)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "d1cf7597-2403-4079-9e6a-5da873cfd2e3")
+	)
+	(junction
 		(at 86.36 156.21)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -10098,12 +10116,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "dacbd119-70fa-476b-b060-47155d96862c")
-	)
-	(junction
-		(at 337.82 173.99)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "dfbd1eef-8cf8-46c4-850d-a319368cb802")
 	)
 	(junction
 		(at 83.82 212.09)
@@ -10679,7 +10691,7 @@
 	)
 	(polyline
 		(pts
-			(xy 322.58 180.34) (xy 359.41 180.34)
+			(xy 322.47 185) (xy 359.3 185)
 		)
 		(stroke
 			(width 0)
@@ -10849,6 +10861,16 @@
 	)
 	(wire
 		(pts
+			(xy 347.98 173.99) (xy 347.98 177.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3b425440-96ce-45b9-883f-0b0695afe897")
+	)
+	(wire
+		(pts
 			(xy 86.36 161.29) (xy 86.36 156.21)
 		)
 		(stroke
@@ -10856,16 +10878,6 @@
 			(type default)
 		)
 		(uuid "3b903b25-8e78-46fd-8bf0-9a239d38aaa3")
-	)
-	(wire
-		(pts
-			(xy 337.82 168.91) (xy 337.82 173.99)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3dc076f0-5dce-4db8-aa31-04bc577e94da")
 	)
 	(wire
 		(pts
@@ -11099,16 +11111,6 @@
 	)
 	(wire
 		(pts
-			(xy 347.98 173.99) (xy 347.98 168.91)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "5cfc4fa6-7924-48e6-a32f-a425418dd2bb")
-	)
-	(wire
-		(pts
 			(xy 83.82 204.47) (xy 97.79 204.47)
 		)
 		(stroke
@@ -11226,6 +11228,16 @@
 			(type default)
 		)
 		(uuid "6b2de16f-2658-424a-8dc2-c840f548696c")
+	)
+	(wire
+		(pts
+			(xy 327.66 173.99) (xy 327.66 177.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6b9fb07b-b242-4a49-85f5-9a4d306fb330")
 	)
 	(wire
 		(pts
@@ -11489,7 +11501,7 @@
 	)
 	(polyline
 		(pts
-			(xy 322.58 140.97) (xy 322.58 180.34)
+			(xy 322.47 140.97) (xy 322.47 185)
 		)
 		(stroke
 			(width 0)
@@ -11589,7 +11601,7 @@
 	)
 	(wire
 		(pts
-			(xy 327.66 173.99) (xy 337.82 173.99)
+			(xy 327.66 177.8) (xy 337.82 177.8)
 		)
 		(stroke
 			(width 0)
@@ -11809,6 +11821,16 @@
 	)
 	(wire
 		(pts
+			(xy 337.82 173.99) (xy 337.82 177.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b4c8c586-bd4d-4453-ad6d-45fb3992e588")
+	)
+	(wire
+		(pts
 			(xy 132.08 44.45) (xy 140.97 44.45)
 		)
 		(stroke
@@ -12009,6 +12031,16 @@
 	)
 	(wire
 		(pts
+			(xy 337.82 168.91) (xy 337.82 173.99)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d120050b-6105-4f36-af36-3d4d3dfa785e")
+	)
+	(wire
+		(pts
 			(xy 31.75 39.37) (xy 34.29 39.37)
 		)
 		(stroke
@@ -12036,6 +12068,16 @@
 			(type default)
 		)
 		(uuid "d49e2172-6c01-44c6-a971-73828d608921")
+	)
+	(wire
+		(pts
+			(xy 347.98 168.91) (xy 347.98 173.99)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d64be818-0fa1-4922-b303-439f2f43e302")
 	)
 	(wire
 		(pts
@@ -12179,7 +12221,7 @@
 	)
 	(polyline
 		(pts
-			(xy 359.41 180.34) (xy 359.41 140.97)
+			(xy 359.3 185) (xy 359.3 140.97)
 		)
 		(stroke
 			(width 0)
@@ -12329,7 +12371,7 @@
 	)
 	(wire
 		(pts
-			(xy 337.82 173.99) (xy 347.98 173.99)
+			(xy 337.82 177.8) (xy 347.98 177.8)
 		)
 		(stroke
 			(width 0)
@@ -16718,6 +16760,73 @@
 		)
 	)
 	(symbol
+		(lib_id "Mechanical:MountingHole_Pad")
+		(at 350.52 173.99 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(uuid "2b6a1e70-4049-4614-9945-c9246f36bb8c")
+		(property "Reference" "H12"
+			(at 354.33 173.99 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "MountingHole_Pad"
+			(at 354.33 175.133 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_2.2mm_M2_DIN965_Pad"
+			(at 350.52 173.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 350.52 173.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 350.52 173.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "635db427-8e17-48c2-bc24-67edf9ae87d5")
+		)
+		(instances
+			(project "AmigaPCI Mainboard"
+				(path "/72453515-27fe-4336-91f3-e3c8054f7767/4cb777ef-2899-49f4-b38f-a0c07d84fa7d"
+					(reference "H12")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:R_Small")
 		(at 128.27 105.41 90)
 		(unit 1)
@@ -19150,7 +19259,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 337.82 173.99 0)
+		(at 337.82 177.8 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -19158,7 +19267,7 @@
 		(dnp no)
 		(uuid "7bf0e3c3-633b-49df-8658-48c56bda46f2")
 		(property "Reference" "#PWR0357"
-			(at 337.82 180.34 0)
+			(at 337.82 184.15 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19167,7 +19276,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 337.947 178.3842 0)
+			(at 337.947 182.1942 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19175,7 +19284,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 337.82 173.99 0)
+			(at 337.82 177.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19184,7 +19293,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 337.82 173.99 0)
+			(at 337.82 177.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19193,7 +19302,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 337.82 173.99 0)
+			(at 337.82 177.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21091,6 +21200,73 @@
 			(project "AmigaPCI Mainboard"
 				(path "/72453515-27fe-4336-91f3-e3c8054f7767/4cb777ef-2899-49f4-b38f-a0c07d84fa7d"
 					(reference "#PWR0108")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Mechanical:MountingHole_Pad")
+		(at 340.36 173.99 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(uuid "9e12b32f-e159-42d9-96b3-ac22f3d95982")
+		(property "Reference" "H11"
+			(at 344.17 173.99 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "MountingHole_Pad"
+			(at 344.17 175.133 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_2.2mm_M2_DIN965_Pad"
+			(at 340.36 173.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 340.36 173.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 340.36 173.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e6129ea4-88f5-4523-93cf-28dd4b79f2ae")
+		)
+		(instances
+			(project "AmigaPCI Mainboard"
+				(path "/72453515-27fe-4336-91f3-e3c8054f7767/4cb777ef-2899-49f4-b38f-a0c07d84fa7d"
+					(reference "H11")
 					(unit 1)
 				)
 			)
@@ -23247,7 +23423,7 @@
 	)
 	(symbol
 		(lib_id "Mechanical:MountingHole_Pad")
-		(at 350.52 173.99 270)
+		(at 330.2 173.99 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -23255,7 +23431,7 @@
 		(dnp no)
 		(uuid "e505f106-01f3-4465-8cf6-602178ef9f2b")
 		(property "Reference" "H10"
-			(at 354.33 173.99 90)
+			(at 334.01 173.99 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23264,7 +23440,7 @@
 			)
 		)
 		(property "Value" "MountingHole_Pad"
-			(at 354.33 175.133 90)
+			(at 334.01 175.133 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23274,7 +23450,7 @@
 			)
 		)
 		(property "Footprint" "MountingHole:MountingHole_4mm_Pad_Via"
-			(at 350.52 173.99 0)
+			(at 330.2 173.99 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23283,7 +23459,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 350.52 173.99 0)
+			(at 330.2 173.99 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23292,7 +23468,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 350.52 173.99 0)
+			(at 330.2 173.99 0)
 			(effects
 				(font
 					(size 1.27 1.27)
