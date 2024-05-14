@@ -200,11 +200,11 @@ The AmigaPCI does not supply an E-clock on the PCI bus. This means we can break 
 
 # 3.0 CPU Local Bus Card
 
-The AmigaPCI utilizes a CPU Local Bus connector to attach CPU devices to the AmigaPCI main board. The AmigaPCI has no CPU on the main board. Instead, the CPU is contained on a daughter card attached to this bus. This approach enables easier CPU upgrades and allows for inclusion of AUTOCONFIG devices on the CPU Local Bus card. The AmigaPCI main board has no Fast RAM. Fast Ram must be included on the CPU Local Bus Card. RAM can then be optimized for the clock speed and capabilities of the CPU device implemented. This enables an upgrade path for increased performance while minimizing resources needed on the AmigaPCI main board. A reference design can be found with the [AmigaPCI project](https://github.com/jasonsbeer/AmigaPCI/tree/main).
+The AmigaPCI utilizes a CPU Local Bus port to attach CPU devices to the AmigaPCI main board. The AmigaPCI has no CPU on the main board. Instead, the CPU is contained on the CPU Local Bus card attached to this bus. This approach enables easier CPU upgrades and allows for inclusion of AUTOCONFIG devices on the CPU Local Bus card. The AmigaPCI main board has no Fast RAM. Fast Ram must be included on the CPU Local Bus Card. RAM can then be optimized for the clock speed and capabilities of the CPU device implemented. This enables an upgrade path for increased performance while minimizing resources needed on the AmigaPCI main board. A reference design can be found with the [AmigaPCI project](https://github.com/jasonsbeer/AmigaPCI/tree/main). The AmigaPCI main board uses a 40MHz bus clock. The CPU Local Bus card must interface the AmigaPCI main board at that clock speed for reliable function.
 
 ## 3.1 Footprint
 
-The CPU Local Bus connector of the AmigaPCI is a DIN 41612 120 pin socket, 3 rows by 40 columns. The female (receptical) portion is on the AmigaPCI main board. The male (plug) portion is on the CPU Local Bus card. Examples of these connectors are part numbers 5535098-5 and 5650910-5 from TE Connectivity AMP Connectors. Specific size parameters are not defined. The engineer may make the card any size they wish, within practical limits. The physical size must not extend outside the ATX specifications from the mounting point. It must not interfere with the ATX power and IDE connectors and must not interfere with video cards or full size PCI plug in cards. 
+The CPU Local Bus physical connector of the AmigaPCI is a DIN 41612 120 pin socket, 3 rows by 40 columns. The female (receptical) portion is on the AmigaPCI main board. The male (plug) portion is on the CPU Local Bus card. Examples of these connectors are part numbers 5535098-5 and 5650910-5 from TE Connectivity AMP Connectors. Specific footprint dimensions are not defined. The engineer may make the card any size they wish, within practical limits. The physical size must not extend outside the ATX specifications from the mounting point. It must not interfere with the ATX power and IDE connectors and must not interfere with video cards or full size PCI plug in cards. In addition to the connector itself, there are two additional mounting points to accomodate the CPU Local Bus card.
 
 The origin datum and component points can be seen in Image 3.1. The origin of all measurements is the upper left hole (datum = 0,0). The image is looking down on top of the card. The DIN connector is attached to the back of the card. As a reference, the AmigaPCI-040 CPU Local Bus Card is 140mm x 95mm.
 
@@ -213,95 +213,92 @@ The origin datum and component points can be seen in Image 3.1. The origin of al
 
 ## 3.1 Signaling Environments
 
-The AmigaPCI implements two distinct signaling regions on the main board. The CPU Local Bus, Amiga chipset, and PCI Local Bus utilize +5V TTL signaling. The chipset SDRAM and FPGA's operate at +3.3V LVTTL. Buffer transceivers on the AmigaPCI main board translate logic levels between these two regions. Hardware designers may choose whether their CPU Local Bus Card implements +5V TTL or +3.3V LVTTL to communicate with the AmigaPCI main board. However, CPU Local Bus Card logic must be tolerant of +5V TTL or provide any necessary logic level shifting on the CPU Local Bus Card.
+The AmigaPCI implements two distinct signaling regions on the main board. The Amiga chipset utilizes +5V TTL signaling. The chipset SDRAM and FPGA's operate at +3.3V LVTTL. The CPU Local Bus and PCI Local Bus operate with a mixture of the two. Buffer transceivers on the AmigaPCI main board translate logic levels between these two regions. Hardware designers may choose whether their CPU Local Bus Card implements +5V TTL or +3.3V LVTTL to communicate with the AmigaPCI main board. However, CPU Local Bus Card logic must be tolerant of +5V TTL or provide any necessary logic level shifting on the CPU Local Bus Card.
 
 ## 3.2 CPU Local Bus Signals
 
-These signals are discussed in the context of the Motorola MC68040 and MC68060 only.
+These signals are discussed in the context of the Motorola MC68040 and MC68060 only. Appropriate pull resistors are supplied on the AmigaPCI board.
 
 **Table 3.2.1** CPU Local Bus Signal Description.
 Signal|Logic Voltage|I/O/BI|Description
 -|-|-|-
 A31-0|TTL|BI|CPU address Bus.
 _BB|TTL|BI|Bus busy.
-BCLK|LVTTL*|I|40MHz bus clock generated by the AmigaPCI.
+BCLK|LVTTL|I|40MHz bus clock generated by the AmigaPCI.
 _BG|LVTTL|I|CPU bus grant.
 _BR|TTL|O|CPU bus request.
-BUFDIS|LVTTL|O|Disable buffers on AmigaPCI main board. When the CPU Local Bus Card is addressed, bus contention will occur if the AmigaPCI main board buffers are not disabled.
+BUFDIS|LVTTL*|O|Disable buffers on AmigaPCI main board. When the CPU Local Bus Card is addressed, bus contention will occur if the AmigaPCI main board buffers are not disabled. Needed when AUTOCONFIG devices are implemented on the CPU Local Bus card. In the absence of an AUTOCONFIG device, this may be left unconnected.
+_CPUCONF|LVTTL|O|Indicates AUTOCONFIG devices on the CPU Local Bus card have been configured. AUTOCONFIG devices on the CPU Local Bus card are configured first. Once configured, asserting this signal allows devices on the AmigaPCI main board to be configured. In the absence of an AUTOCONFIG device, this may be left unconnected.
 D31-0|TTL|BI|CPU data Bus.
-_INT2|TTL|O|Interrupt 2. Open drain.
-_INT6|TTL|O|Interrupt 6. Open drain.
-IPL0|TTL|I|Interrupt level 0.
-IPL1|TTL|I|Interrupt level 1.
-IPL2|TTL|I|Interrupt level 2.
+_INT2|TTL|O|Amiga interrupt 2. Open drain.
+_INT6|TTL|O|Amiga interrupt 6. Open drain.
+IPL2-0|TTL|I|Interrupt level 2, 1, and 0.
 _LOCK|TTL|O|CPU bus lock.
 _LOCKE|TTL|O|CPU bus lock end.
 PCLK|LVTTL|I|80MHz processor clock generated by the AmigaPCI.
 R_W|TTL|BI|CPU read/write.
 _RESET|TTL|I|System reset.
-_RSTOUT|TTL|O|Reset system request.
-SIZ0|TTL|BI|CPU transfer size 0.
-SIZ1|TTL|BI|CPU transfer size 1.
+_RSTOUT|TTL|O|CPU reset system request.
+SIZ1-0|TTL|BI|CPU transfer size 1 and 0.
 _TA|LVTTL|BI|CPU transfer acknowledge. Open drain.
 _TBI|LVTTL|I|Transfer burst inhibit. Open drain.
 _TCI|LVTTL|I|CPU transfer cache inhibit. Open drain.
 _TEA|LVTTL|I|CPU transfer error acknowledge. Open drain.
 _TIP|TTL|BI|CPU transfer in progress.
+TM2-0|TTL|BI|CPU transfer modifier 2, 1, and 0.
 _TS|TTL|BI|CPU transfer start.
-TT0|TTL|BI|CPU transfer type 0.
-TT1|TTL|BI|CPU transfer type 1.
-UPA0|TTL|O|User-programmable attribute 0.
-UPA1|TTL|O|User-programmable attribute 1.
+TT1-0|TTL|BI|CPU transfer type 1 and 0.
+UPA1-0|TTL|O|User-programmable attribute 1 and 0.
 
 > [!NOTE]
 > I=Input, O=Output, BI=Bidirectional
 
 > [!WARNING] 
-> ***Applying +5V to LVTTL signals may damage logic on the Amiga PCI main board.**
+> **Applying +5V to LVTTL signals may damage logic on the Amiga PCI main board.**
 
 **Table 3.2.2**. CPU Local Bus Pinout.
 Pin|Signal|Pin|Signal|Pin|Signal
 -|-|-|-|-|-
-A1|_TIP|B1|_BB|C1|GND
-A2|A12|B2|A13|C2|GND
-A3|A14|B3|A0|C3|A15
-A4|A1|B4|A2|C4|A3
-A5|A4|B5|+3.3V|C5|+5V
-A6|+1.2V|B6|+3.3V|C6|_INT2
-A7|+5V|B7|GND|C7|_CPUCONF
-A8|A6|B8|A5|C8|A9
-A9|A8|B9|A7|C9|GND
-A10|A11|B10|A10|C10|GND
-A11|_BR|B11|_LOCK|C11|_LOCKE
-A12|TM0|B12|R_W|C12|TM1
-A13|TM2|B13|D28|C13|+3.3V
-A14|D26|B14|D24|C14|+3.3V
-A15|D31|B15|D30|C15|D21
-A16|D29|B16|D27|C16|SIZ0
-A17|SIZ1|B17|_TS|C17|GND
-A18|D20|B18|D22|C18|GND
-A19|D25|B19|D19|C19|D23
-A20|D17|B20|D15|C20|D14
-A21|+3.3V|B21|_TA|C21|_TEA
-A22|+5V|B22|BUFDIS|C22|_BG
-A23|_TBI|B23|_INT6|C23|_TCI
-A24|PCLK|B24|D18|C24|D13
-A25|+5V|B25|D16|C25|D12
-A26|+5V|B26|D11|C26|D10
-A27|D8|B27|D9|C27|_IPL0
-A28|BCLK|B28|_RESET|C28|_IPL1
-A29|GND|B29|_IPL2|C29|D7
-A30|GND|B30|D6|C30|D5
-A31|D2|B31|D4|C31|D1
-A32|D0|B32|D30|C32|TT0
-A33|+5V|B33|TT1|C33|UPA0
-A34|+3.3V|B34|UPA1|C34|_RSTOUT
-A35|A22|B35|A26|C35|A28
-A36|A24|B36|A30|C36|A29
-A37|GND|B37|A31|C37|A27
-A38|GND|B38|A25|C38|A21
-A39|A23|B39|A20|C39|A19
-A40|A18|B40|A17|C40|A16
+**A1**|_TIP|**B1**|_BB|**C1**|GND
+**A2**|A12|**B2**|A13|**C2**|GND
+**A3**|A14|**B3**|A0|**C3**|A15
+**A4**|A1|**B4**|A2|**C4**|A3
+**A5**|A4|**B5**|+3.3V|**C5**|+5V
+**A6**|+1.2V|**B6**|+3.3V|**C6**|_INT2
+**A7**|+5V|**B7**|GND|**C7**|_CPUCONF
+**A8**|A6|**B8**|A5|**C8**|A9
+**A9**|A8|**B9**|A7|**C9**|GND
+**A10**|A11|**B10**|A10|**C10**|GND
+**A11**|_BR|**B11**|_LOCK|**C11**|_LOCKE
+**A12**|TM0|**B12**|R_W|**C12**|TM1
+**A13**|TM2|**B13**|D28|**C13**|+3.3V
+**A14**|D26|**B14**|D24|**C14**|+3.3V
+**A15**|D31|**B15**|D30|**C15**|D21
+**A16**|D29|**B16**|D27|**C16**|SIZ0
+**A17**|SIZ1|**B17**|_TS|**C17**|GND
+**A18**|D20|**B18**|D22|**C18**|GND
+**A19**|D25|**B19**|D19|**C19**|D23
+**A20**|D17|**B20**|D15|**C20**|D14
+**A21**|+3.3V|**B21**|_TA|**C21**|_TEA
+**A22**|+5V|**B22**|BUFDIS|**C22**|_BG
+**A23**|_TBI|**B23**|_INT6|**C23**|_TCI
+**A24**|PCLK|**B24**|D18|**C24**|D13
+**A25**|+5V|**B25**|D16|**C25**|D12
+**A26**|+5V|**B26**|D11|**C26**|D10
+**A27**|D8|**B27**|D9|**C27**|_IPL0
+**A28**|BCLK|**B28**|_RESET|**C28**|_IPL1
+**A29**|GND|**B29**|_IPL2|**C29**|D7
+**A30**|GND|**B30**|D6|**C30**|D5
+**A31**|D2|**B31**|D4|**C31**|D1
+**A32**|D0|**B32**|D30|**C32**|TT0
+**A33**|+5V|**B33**|TT1|**C33**|UPA0
+**A34**|+3.3V|**B34**|UPA1|**C34**|_RSTOUT
+**A35**|A22|**B35**|A26|**C35**|A28
+**A36**|A24|**B36**|A30|**C36**|A29
+**A37**|GND|**B37**|A31|**C37**|A27
+**A38**|GND|**B38**|A25|**C38**|A21
+**A39**|A23|**B39**|A20|**C39**|A19
+**A40**|A18|**B40**|A17|**C40**|A16
 
 ### 1.14 MC68040 Cycle Timeout
 
