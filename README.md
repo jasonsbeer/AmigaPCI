@@ -44,8 +44,14 @@ Add stuff.
 [Hardware Information](hardware_info.md)  
 [Programming the FPGAs](program_fpga.md)
 
+# PCI Local Bus  
+The PCI bus is based on the [PCI Local Bus Revision 2.3 specifications](/DataSheets/PCI/pci_23.pdf). The PCI Bridge implements a bidirectional asynchronous FIFO to facilitate data movements between the buses. Each slot is compatable with Universal and 5V PCI devices. All efforts are made to align implemented PCI features completely with the PCI Local Bus Revision 2.3. There are no undocumented PCI commands. Each slot is capable of supporting AUTOCONFIG for Amiga specific devices. Software configuration (Prometheus mode) is also available for non-Amiga specific hardware. The AmigaPCI supports true DMA, with each PCI device having total access to all PCI and Amiga address spaces.
+
+# CPU Local Bus
+The AmigaPCI main board has no CPU or fast ram. Instead, the CPU Local Bus connector supports CPUs and AUTOCONFIG devices. The CPU Local Bus is a DIN 41612 connector with 120 pins in 3 rows by 40 columns. The CPU local bus is discussed in the [AmigaPCI Technical Reference](/TechnicalManual.md). This approach allows AUTOCONFIG devices be optimized for the clock speed and capabilities of the CPU device implemented.
+
 # Amiga Custom Chips  
-The AmigaPCI must be populated with the Amiga OCS/ECS chips shown in Table 1. Reproductions in FPGA/CPLD may be used as well as the original equipment from Commodore. The Amiga chipset is required to enable critical functions of the Amiga computer.
+The AmigaPCI must be populated with the Amiga OCS/ECS chips shown in Table 1. The Amiga chipset is required to enable critical functions of the Amiga computer.
 
 Table 1. Amiga chipset.
 Name|Chip ID|Commodore Part Number(s)|Quantity
@@ -57,9 +63,6 @@ CIA|8520A-1 or 8520PD|318029-03|2
 
 # Kickstart ROM  
 Kickstart ROM version 3.2 or greater for the Amiga 3000 should be burned to 100ns or faster 27C4096 EPROMs (DIP-40 footprint) for use by the AmigaPCI. Original Amiga Kickstart ROM footprints are not supported. 
-
-# PCI Local Bus  
-The PCI bus is based on the [PCI Local Bus Revision 2.3 specifications](/DataSheets/PCI/pci_23.pdf). The PCI Bridge implements a bidirectional asynchronous FIFO to facilitate data movements between the buses. Each slot is compatable with Universal and 5V PCI devices. All efforts are made to align implemented PCI features completely with the PCI Local Bus Revision 2.3. There are no undocumented PCI commands. Each slot is capable of supporting AUTOCONFIG for Amiga specific devices. Software configuration (Prometheus mode) is also available for non-Amiga specific hardware. The AmigaPCI supports true DMA, with each PCI device having total access to all PCI and Amiga address spaces.
 
 # <a id="hid"></a>HID #  
 The AmigaPCI support human interface devices (HID) via the two USB ports. Only keyboards and mice are supported at this time. Support is supplied via the on-board STM32F205 microcontroller, which translates the HID inputs into Amiga compatable signals. The mouse HID signals are shared with the JOY1 port (see [Mouse and Joystick](#mousejoystick)) via buffers. When there is active input from the HID mouse, the buffers are switched to only allow input from the HID port. When the HID mouse is not in active use, the buffers switch to allow input from JOY1. With this method, input from only one device is allowed at any time, with the mouse HID having priority.
@@ -122,4 +125,4 @@ Floppy interface modifications from Ian Steadman released under the GNU GENERAL 
 
 <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://github.com/jasonsbeer/AmigaPCI">AmigaPCI</a> ©2024 by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://github.com/jasonsbeer">Jason Neus</a> is licensed under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">Attribution 4.0 International<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"></a></p>
 
-**Last Update: 23-APRIL-2024**
+**Last Update: 14-MAY-2024**
