@@ -6,7 +6,7 @@
 	(paper "B")
 	(title_block
 		(title "AMIGA PCI")
-		(date "2024-04-30")
+		(date "2024-05-14")
 		(rev "3.0")
 	)
 	(lib_symbols
@@ -20765,7 +20765,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "8d5b2802-3c68-401c-b8ec-a5fc9900a149")
-		(property "Reference" "CN200"
+		(property "Reference" "CN201"
 			(at 386.08 84.2899 0)
 			(effects
 				(font
@@ -20839,7 +20839,7 @@
 		(instances
 			(project "AmigaPCI Mainboard"
 				(path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
-					(reference "CN200")
+					(reference "CN201")
 					(unit 1)
 				)
 			)

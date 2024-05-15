@@ -6,7 +6,7 @@
 	(paper "B")
 	(title_block
 		(title "AMIGA PCI")
-		(date "2024-04-30")
+		(date "2024-05-14")
 		(rev "3.0")
 	)
 	(lib_symbols
@@ -16787,7 +16787,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "MountingHole:MountingHole_2.2mm_M2_DIN965_Pad"
+		(property "Footprint" "MountingHole:MountingHole_3.5mm_Pad"
 			(at 350.52 173.99 0)
 			(effects
 				(font
@@ -21233,7 +21233,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "MountingHole:MountingHole_2.2mm_M2_DIN965_Pad"
+		(property "Footprint" "MountingHole:MountingHole_3.5mm_Pad"
 			(at 340.36 173.99 0)
 			(effects
 				(font
