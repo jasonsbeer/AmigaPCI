@@ -6,7 +6,7 @@
 	(paper "B")
 	(title_block
 		(title "AMIGA PCI")
-		(date "2024-05-14")
+		(date "2024-05-18")
 		(rev "3.0")
 	)
 	(lib_symbols
@@ -19917,7 +19917,7 @@
 	)
 	(global_label "LVDRA1-0"
 		(shape input)
-		(at 134.62 147.32 0)
+		(at 134.62 144.78 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -19927,7 +19927,7 @@
 		)
 		(uuid "10123a0d-7fcc-44fe-8eb6-b98cf4867147")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 147.5957 147.32 0)
+			(at 147.5957 144.78 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19980,7 +19980,7 @@
 	)
 	(global_label "DRDDIR"
 		(shape output)
-		(at 134.62 121.92 0)
+		(at 134.62 157.48 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -19990,7 +19990,7 @@
 		)
 		(uuid "1780edba-e262-4f62-87ff-43a66da9c821")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 144.56 121.92 0)
+			(at 144.56 157.48 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20064,7 +20064,7 @@
 	)
 	(global_label "LVDRA9-8"
 		(shape input)
-		(at 134.62 157.48 0)
+		(at 134.62 154.94 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -20074,7 +20074,7 @@
 		)
 		(uuid "2d7595fb-1acc-4a7c-8790-bcbfe43a58be")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 147.5957 157.48 0)
+			(at 147.5957 154.94 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20168,7 +20168,7 @@
 	)
 	(global_label "_LVCASL"
 		(shape input)
-		(at 134.62 152.4 0)
+		(at 134.62 149.86 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -20178,7 +20178,7 @@
 		)
 		(uuid "33c1f2ae-d8c8-44ff-b4eb-2d88a744df6c")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 145.4985 152.4 0)
+			(at 145.4985 149.86 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20189,7 +20189,7 @@
 	)
 	(global_label "LVDRA7-6"
 		(shape input)
-		(at 134.62 132.08 0)
+		(at 134.62 129.54 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -20199,7 +20199,7 @@
 		)
 		(uuid "356ad7f9-9c1b-4b73-b7cf-c42c15a08722")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 147.5957 132.08 0)
+			(at 147.5957 129.54 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20231,7 +20231,7 @@
 	)
 	(global_label "_LVCASU"
 		(shape input)
-		(at 134.62 154.94 0)
+		(at 134.62 152.4 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -20241,7 +20241,7 @@
 		)
 		(uuid "3851a2ae-a8f6-4095-bb57-e60c5c0980d1")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 145.8069 154.94 0)
+			(at 145.8069 152.4 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20441,7 +20441,7 @@
 	)
 	(global_label "LVDRA3-2"
 		(shape input)
-		(at 134.62 142.24 0)
+		(at 134.62 139.7 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -20451,7 +20451,7 @@
 		)
 		(uuid "4bd99f2b-7725-4a29-a214-f81660e7eb14")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 147.5957 142.24 0)
+			(at 147.5957 139.7 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20525,7 +20525,7 @@
 	)
 	(global_label "LVDRA5-4"
 		(shape input)
-		(at 134.62 137.16 0)
+		(at 134.62 134.62 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -20535,7 +20535,7 @@
 		)
 		(uuid "55bae5cc-3ea3-4e54-ad8b-5ff29c60a316")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 147.5957 137.16 0)
+			(at 147.5957 134.62 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20650,7 +20650,7 @@
 	)
 	(global_label "LVDRA8-7"
 		(shape input)
-		(at 134.62 129.54 0)
+		(at 134.62 127 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -20660,7 +20660,7 @@
 		)
 		(uuid "638f067c-008e-43e1-96ef-4c8319eb9f41")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 147.5957 129.54 0)
+			(at 147.5957 127 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20818,7 +20818,7 @@
 	)
 	(global_label "LVDRA2-1"
 		(shape input)
-		(at 134.62 144.78 0)
+		(at 134.62 142.24 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -20828,7 +20828,7 @@
 		)
 		(uuid "720d60c0-93a8-4349-9a01-6154901bd611")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 147.5957 144.78 0)
+			(at 147.5957 142.24 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20902,7 +20902,7 @@
 	)
 	(global_label "LVDRA6-5"
 		(shape input)
-		(at 134.62 134.62 0)
+		(at 134.62 132.08 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -20912,7 +20912,7 @@
 		)
 		(uuid "84d8b7c3-a115-42fd-9e09-cc6c45d94a88")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 147.5957 134.62 0)
+			(at 147.5957 132.08 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21551,7 +21551,7 @@
 	)
 	(global_label "LVDRA4-3"
 		(shape input)
-		(at 134.62 139.7 0)
+		(at 134.62 137.16 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -21561,7 +21561,7 @@
 		)
 		(uuid "d0c4dc31-23df-481e-b674-98541a8183d7")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 147.5957 139.7 0)
+			(at 147.5957 137.16 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21719,7 +21719,7 @@
 	)
 	(global_label "_LVRAS1"
 		(shape input)
-		(at 134.62 124.46 0)
+		(at 134.62 121.92 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -21729,7 +21729,7 @@
 		)
 		(uuid "e4200136-020b-412f-88b3-597931fc4e7e")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 145.6835 124.46 0)
+			(at 145.6835 121.92 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21740,7 +21740,7 @@
 	)
 	(global_label "LVDRA0-G"
 		(shape input)
-		(at 134.62 149.86 0)
+		(at 134.62 147.32 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -21750,7 +21750,7 @@
 		)
 		(uuid "e60188b3-051a-40bf-8ce0-7c8d54d9ed8d")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 147.6574 149.86 0)
+			(at 147.6574 147.32 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21947,7 +21947,7 @@
 	)
 	(global_label "_LVRAS0"
 		(shape input)
-		(at 134.62 127 0)
+		(at 134.62 124.46 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -21957,7 +21957,7 @@
 		)
 		(uuid "fd493c16-2267-4669-b61a-14f8fbd66b03")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 145.6835 127 0)
+			(at 145.6835 124.46 0)
 			(effects
 				(font
 					(size 1.27 1.27)

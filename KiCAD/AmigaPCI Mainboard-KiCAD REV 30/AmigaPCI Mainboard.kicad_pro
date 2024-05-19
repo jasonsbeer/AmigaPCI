@@ -2749,6 +2749,10 @@
       {
         "netclass": "Narrow",
         "pattern": "LVD31"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_BUFEN"
       }
     ]
   },

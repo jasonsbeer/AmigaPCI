@@ -6,7 +6,7 @@
 	(paper "B")
 	(title_block
 		(title "AMIGA PCI")
-		(date "2024-05-14")
+		(date "2024-05-18")
 		(rev "3.0")
 	)
 	(lib_symbols
@@ -12662,7 +12662,7 @@
 		(uuid "07e78d1c-ae90-487d-a518-5782085334aa")
 	)
 	(label "LVD29"
-		(at 54.61 146.05 0)
+		(at 54.61 168.91 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -12717,7 +12717,7 @@
 		(uuid "09cbcbe9-3e79-4281-886a-7377e7079769")
 	)
 	(label "LVD22"
-		(at 54.61 148.59 0)
+		(at 54.61 151.13 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -12739,7 +12739,7 @@
 		(uuid "0c18b9ab-9f1e-4382-a873-9b82445e935c")
 	)
 	(label "LVD17"
-		(at 54.61 158.75 0)
+		(at 54.61 143.51 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -12750,7 +12750,7 @@
 		(uuid "0cf01034-5ffc-4dc9-b687-a258e19a76ef")
 	)
 	(label "LVD18"
-		(at 54.61 163.83 0)
+		(at 54.61 146.05 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -12893,7 +12893,7 @@
 		(uuid "1cc85d03-9ec6-4a3f-aee0-3d46da4b1359")
 	)
 	(label "LVD13"
-		(at 54.61 168.91 0)
+		(at 54.61 133.35 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -12959,7 +12959,7 @@
 		(uuid "200b7255-88d2-404f-981d-17809c452780")
 	)
 	(label "LVD14"
-		(at 54.61 166.37 0)
+		(at 54.61 135.89 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -13135,7 +13135,7 @@
 		(uuid "31de7f3b-1009-4e6c-9e56-f3739905259d")
 	)
 	(label "LVD23"
-		(at 54.61 156.21 0)
+		(at 54.61 153.67 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -13201,7 +13201,7 @@
 		(uuid "37271d42-973b-4ff7-92ca-07101b46ba6b")
 	)
 	(label "LVD31"
-		(at 54.61 138.43 0)
+		(at 54.61 173.99 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -13223,7 +13223,7 @@
 		(uuid "3af08878-dd53-461b-9c8c-ebc2dc9b1300")
 	)
 	(label "LVD2"
-		(at 121.92 217.17 180)
+		(at 121.92 69.85 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -13234,7 +13234,7 @@
 		(uuid "3cec0464-3ddf-4073-9e1a-a4cd27ddcee1")
 	)
 	(label "LVD7"
-		(at 54.61 120.65 0)
+		(at 54.61 118.11 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -13333,7 +13333,7 @@
 		(uuid "4e4a7f45-430d-43e2-808f-e7915dd0b515")
 	)
 	(label "LVD12"
-		(at 54.61 173.99 0)
+		(at 54.61 130.81 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -13399,7 +13399,7 @@
 		(uuid "5414d8ea-a300-416a-88d5-958b683c2b5b")
 	)
 	(label "LVD26"
-		(at 54.61 133.35 0)
+		(at 54.61 161.29 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -13498,7 +13498,7 @@
 		(uuid "61de3880-6273-4fe8-a46c-ce009bc3fb40")
 	)
 	(label "LVD28"
-		(at 54.61 130.81 0)
+		(at 54.61 166.37 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -13564,13 +13564,13 @@
 		(uuid "699617ac-9af4-43d9-aaf8-7d90b3ca4105")
 	)
 	(label "LVD1"
-		(at 54.61 107.95 0)
+		(at 121.92 67.31 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left bottom)
+			(justify right bottom)
 		)
 		(uuid "69e17754-ae7a-46ff-837b-88f7965b8315")
 	)
@@ -13674,18 +13674,18 @@
 		(uuid "748730fc-d31c-4fd7-95e3-bb8704c5396d")
 	)
 	(label "LVD0"
-		(at 121.92 214.63 180)
+		(at 54.61 105.41 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify right bottom)
+			(justify left bottom)
 		)
 		(uuid "76bb204a-3c07-44c6-83e0-3637ea38f393")
 	)
 	(label "LVA24"
-		(at 121.92 69.85 180)
+		(at 121.92 214.63 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -13762,13 +13762,13 @@
 		(uuid "81c09206-a1e2-4769-bff1-d7d63f5ca0e5")
 	)
 	(label "LVD8"
-		(at 121.92 212.09 180)
+		(at 54.61 120.65 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify right bottom)
+			(justify left bottom)
 		)
 		(uuid "828f2294-b7b8-46c5-9e89-fdec3807d209")
 	)
@@ -13982,13 +13982,13 @@
 		(uuid "949d5ec7-7734-4fcd-9328-f90ed23a440d")
 	)
 	(label "LVA8"
-		(at 54.61 105.41 0)
+		(at 121.92 212.09 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left bottom)
+			(justify right bottom)
 		)
 		(uuid "951fc199-c2ce-43b6-bcf0-00c063ba59fb")
 	)
@@ -14048,13 +14048,13 @@
 		(uuid "9a9dadac-f34b-4054-a161-f88320b9da97")
 	)
 	(label "LVD19"
-		(at 54.61 153.67 0)
+		(at 121.92 100.33 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left bottom)
+			(justify right bottom)
 		)
 		(uuid "9d2b2956-ae0e-42f7-ae0e-05ee8dbede70")
 	)
@@ -14081,7 +14081,7 @@
 		(uuid "9f213c32-b328-4b12-8c74-91fee624fe00")
 	)
 	(label "LVD5"
-		(at 54.61 115.57 0)
+		(at 54.61 113.03 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -14103,7 +14103,7 @@
 		(uuid "a128673f-97ad-4086-96ec-fc76091da25b")
 	)
 	(label "LVD15"
-		(at 54.61 161.29 0)
+		(at 54.61 138.43 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -14180,13 +14180,13 @@
 		(uuid "ad736d81-e0ce-4b45-8932-30259b246c34")
 	)
 	(label "LVD27"
-		(at 121.92 100.33 180)
+		(at 54.61 163.83 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify right bottom)
+			(justify left bottom)
 		)
 		(uuid "af44ba65-5493-4b6d-b8bf-670d7840e66a")
 	)
@@ -14202,7 +14202,7 @@
 		(uuid "af54f936-14e5-4b5d-b410-e1965c60f8b0")
 	)
 	(label "LVD21"
-		(at 54.61 143.51 0)
+		(at 54.61 148.59 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -14268,7 +14268,7 @@
 		(uuid "b9f00304-c09d-4374-a7c2-6a188caccf76")
 	)
 	(label "LVD30"
-		(at 54.61 140.97 0)
+		(at 54.61 171.45 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -14455,7 +14455,7 @@
 		(uuid "c7f592ff-77a4-4b1c-b3cd-83502616ced3")
 	)
 	(label "LVD24"
-		(at 54.61 135.89 0)
+		(at 54.61 156.21 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -14477,7 +14477,7 @@
 		(uuid "ca252f90-36b0-4b9d-b4ea-0c26127294d5")
 	)
 	(label "LVD16"
-		(at 54.61 171.45 0)
+		(at 54.61 140.97 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -14631,7 +14631,7 @@
 		(uuid "dc7ac7af-fd46-4f42-a534-65010b76497d")
 	)
 	(label "LVA30"
-		(at 121.92 67.31 180)
+		(at 121.92 217.17 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -14664,7 +14664,7 @@
 		(uuid "de51f76c-ebc3-4c01-85d0-5abf46e48845")
 	)
 	(label "LVD3"
-		(at 54.61 113.03 0)
+		(at 54.61 107.95 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -14730,7 +14730,7 @@
 		(uuid "e5ca7531-9cdf-4149-b66e-54a1277d5e57")
 	)
 	(label "LVD25"
-		(at 54.61 151.13 0)
+		(at 54.61 158.75 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -14862,7 +14862,7 @@
 		(uuid "fb3397f0-2dcf-4c6d-97e4-5e8da5841dcb")
 	)
 	(label "LVD6"
-		(at 54.61 118.11 0)
+		(at 54.61 115.57 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
