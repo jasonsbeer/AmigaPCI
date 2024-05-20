@@ -9119,10 +9119,6 @@
 		(uuid "fe1545ad-c1e8-44eb-b2d6-7e24bc05018f")
 	)
 	(no_connect
-		(at 134.62 170.18)
-		(uuid "440746f6-e571-4447-aec8-296bfcee93a4")
-	)
-	(no_connect
 		(at 134.62 210.82)
 		(uuid "4e6f4130-6dd2-4b9f-a0d6-34ddae190935")
 	)
@@ -9135,7 +9131,7 @@
 		(uuid "5dab01d1-c0a1-4762-8413-b2bd31d86bdb")
 	)
 	(no_connect
-		(at 134.62 177.8)
+		(at 134.62 170.18)
 		(uuid "5f26dc95-9d53-4795-8bac-321abd26d8e2")
 	)
 	(no_connect
@@ -9147,16 +9143,12 @@
 		(uuid "84e2a821-d6c1-4f5c-8d96-aee3e77f0b9b")
 	)
 	(no_connect
-		(at 134.62 175.26)
+		(at 134.62 172.72)
 		(uuid "a7501079-070c-4415-9e2f-f1e1256cda2e")
 	)
 	(no_connect
 		(at 364.49 138.43)
 		(uuid "ab258241-da00-4c75-ba7d-417b5a07f6cd")
-	)
-	(no_connect
-		(at 134.62 172.72)
-		(uuid "c98ef63f-54dc-4f15-ae50-0a497e9e8d5f")
 	)
 	(no_connect
 		(at 125.73 83.82)
@@ -17092,7 +17084,7 @@
 		)
 		(uuid d7ecde8d-9fa3-4e38-b8d2-4d3f4082eb69)
 	)
-	(text "CPU LOCAL BUS CONNECTOR"
+	(text "CPU LOCAL BUS PORT"
 		(exclude_from_sim no)
 		(at 211.582 28.194 0)
 		(effects
@@ -17233,7 +17225,7 @@
 		(uuid "06f2ce65-f831-491c-bed2-6ee4c15f3a34")
 	)
 	(label "LVA9"
-		(at 66.04 157.48 0)
+		(at 66.04 175.26 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -17354,7 +17346,7 @@
 		(uuid "135ac594-8715-4966-89e5-2386731909b7")
 	)
 	(label "LVA18"
-		(at 66.04 160.02 0)
+		(at 66.04 198.12 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -17420,7 +17412,7 @@
 		(uuid "18bbf28a-1777-4270-8617-404d55f4a4b6")
 	)
 	(label "LVA20"
-		(at 66.04 152.4 0)
+		(at 66.04 157.48 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -17475,7 +17467,7 @@
 		(uuid "1bf8808d-4197-4ea1-b1c8-949482d9ec2f")
 	)
 	(label "LVA8"
-		(at 66.04 149.86 0)
+		(at 66.04 172.72 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -17662,7 +17654,7 @@
 		(uuid "2bca7ad6-be13-4357-8240-0a7beae94560")
 	)
 	(label "LVA3"
-		(at 66.04 180.34 0)
+		(at 66.04 152.4 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -17783,7 +17775,7 @@
 		(uuid "334c1694-cbf8-426e-9541-68671cf1fb85")
 	)
 	(label "LVA12"
-		(at 66.04 198.12 0)
+		(at 66.04 182.88 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -17860,7 +17852,7 @@
 		(uuid "3dcf7161-9bd9-43bc-8334-d3008f5f34e6")
 	)
 	(label "LVA13"
-		(at 66.04 190.5 0)
+		(at 66.04 185.42 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -17926,7 +17918,7 @@
 		(uuid "441a4ed2-4e8b-428b-8889-2b9f3e5c5774")
 	)
 	(label "LVA4"
-		(at 66.04 172.72 0)
+		(at 66.04 162.56 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -18003,7 +17995,7 @@
 		(uuid "527e450b-6e5b-4171-a388-541bff118e96")
 	)
 	(label "LVA17"
-		(at 66.04 167.64 0)
+		(at 66.04 195.58 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -18267,7 +18259,7 @@
 		(uuid "71683991-1446-43a1-9432-6b06e102757e")
 	)
 	(label "LVA14"
-		(at 66.04 182.88 0)
+		(at 66.04 187.96 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -18377,7 +18369,7 @@
 		(uuid "79037676-b4ca-4af3-80e9-00767f0a118d")
 	)
 	(label "LVA0"
-		(at 66.04 200.66 0)
+		(at 66.04 160.02 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -18443,7 +18435,7 @@
 		(uuid "7f6f15b8-4b78-4d95-a7fe-80f1c9dd5891")
 	)
 	(label "LVA1"
-		(at 66.04 187.96 0)
+		(at 66.04 154.94 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -18575,7 +18567,7 @@
 		(uuid "8e7795a3-3701-4dea-8bfd-08d600a0483e")
 	)
 	(label "LVA15"
-		(at 66.04 175.26 0)
+		(at 66.04 190.5 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -18938,7 +18930,7 @@
 		(uuid "ac6ea640-4f16-445b-842f-833512d754af")
 	)
 	(label "LVA19"
-		(at 66.04 170.18 0)
+		(at 66.04 200.66 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -19125,7 +19117,7 @@
 		(uuid "b85bb434-ddba-4cd9-8083-c696536da474")
 	)
 	(label "LVA2"
-		(at 66.04 185.42 0)
+		(at 66.04 149.86 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -19389,7 +19381,7 @@
 		(uuid "cf8f243b-b21d-420f-a2e3-4c5a636dfcc6")
 	)
 	(label "LVA11"
-		(at 66.04 193.04 0)
+		(at 66.04 180.34 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -19433,7 +19425,7 @@
 		(uuid "d1bc1e32-81d8-43d7-a755-7c155912c31e")
 	)
 	(label "LVA6"
-		(at 66.04 162.56 0)
+		(at 66.04 167.64 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -19620,7 +19612,7 @@
 		(uuid "e49fab62-b505-4611-a344-d8929d404783")
 	)
 	(label "LVA16"
-		(at 66.04 177.8 0)
+		(at 66.04 193.04 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -19763,7 +19755,7 @@
 		(uuid "f6ef5509-05a9-472b-8380-db4ad6b497f2")
 	)
 	(label "LVA7"
-		(at 66.04 154.94 0)
+		(at 66.04 170.18 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -19807,7 +19799,7 @@
 		(uuid "f9317914-175c-4ebb-b2ca-9c28e90a36a2")
 	)
 	(label "LVA10"
-		(at 66.04 195.58 0)
+		(at 66.04 177.8 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -20226,6 +20218,26 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
+			)
+		)
+	)
+	(global_label "TICK50"
+		(shape output)
+		(at 134.62 177.8 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "383bca10-12bc-452f-9dd5-c7009a10eab2")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 143.383 177.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
 			)
 		)
 	)
@@ -21131,6 +21143,26 @@
 			)
 		)
 	)
+	(global_label "TICK60"
+		(shape output)
+		(at 134.62 175.26 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "9c16355b-f66f-430e-b44c-ce9a401584d3")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 143.383 175.387 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
 	(global_label "TT0"
 		(shape bidirectional)
 		(at 264.16 138.43 0)
@@ -21820,7 +21852,7 @@
 			)
 		)
 	)
-	(global_label "_BTNRST"
+	(global_label "_FRST"
 		(shape output)
 		(at 73.66 43.18 180)
 		(effects

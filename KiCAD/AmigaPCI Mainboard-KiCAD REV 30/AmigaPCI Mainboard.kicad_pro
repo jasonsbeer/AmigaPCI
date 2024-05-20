@@ -2753,6 +2753,10 @@
       {
         "netclass": "Narrow",
         "pattern": "_BUFEN"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_FRST"
       }
     ]
   },
