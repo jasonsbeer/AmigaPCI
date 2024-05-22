@@ -6,7 +6,7 @@
 	(paper "B")
 	(title_block
 		(title "AMIGA PCI")
-		(date "2024-05-18")
+		(date "2024-05-22")
 		(rev "3.0")
 	)
 	(lib_symbols
@@ -8724,7 +8724,7 @@
 	)
 	(rectangle
 		(start 267.7668 194.564)
-		(end 320.7512 221.8944)
+		(end 325.7 221.8944)
 		(stroke
 			(width 0)
 			(type default)
@@ -10042,7 +10042,7 @@
 	(symbol
 		(lib_id "74xx:74LS08")
 		(at 298.3484 213.2584 0)
-		(unit 4)
+		(unit 3)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
@@ -10138,7 +10138,7 @@
 			(project "AmigaPCI Mainboard"
 				(path "/72453515-27fe-4336-91f3-e3c8054f7767/71ea5834-c2f1-44b0-9a09-0538600b01fd"
 					(reference "U220")
-					(unit 4)
+					(unit 3)
 				)
 			)
 		)

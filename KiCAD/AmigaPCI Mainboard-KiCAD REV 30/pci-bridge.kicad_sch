@@ -6,7 +6,7 @@
 	(paper "B")
 	(title_block
 		(title "AMIGA PCI")
-		(date "2024-05-18")
+		(date "2024-05-22")
 		(rev "3.0")
 	)
 	(lib_symbols
@@ -4643,6 +4643,10 @@
 	(no_connect
 		(at 281.94 210.82)
 		(uuid "00cefb27-e2aa-41a3-85ca-2148f019a138")
+	)
+	(no_connect
+		(at 281.94 86.36)
+		(uuid "18c18a0d-886f-4124-8268-1144f5c1250c")
 	)
 	(no_connect
 		(at 281.94 167.64)
@@ -16388,7 +16392,7 @@
 			)
 		)
 	)
-	(global_label "_FRST"
+	(global_label "_BTNRST"
 		(shape output)
 		(at 274.32 58.42 0)
 		(effects
@@ -16595,7 +16599,7 @@
 			)
 		)
 	)
-	(global_label "_FRST"
+	(global_label "_BTNRST"
 		(shape output)
 		(at 115.57 59.69 0)
 		(effects
@@ -16654,27 +16658,6 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
-			)
-		)
-	)
-	(global_label "CLK6"
-		(shape input)
-		(at 281.94 86.36 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "e141a09e-a011-43a7-b4b7-a0c66556cb04")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 289.7028 86.36 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
 			)
 		)
 	)

@@ -6,7 +6,7 @@
 	(paper "B")
 	(title_block
 		(title "AMIGA PCI")
-		(date "2024-05-18")
+		(date "2024-05-22")
 		(rev "3.0")
 	)
 	(lib_symbols
@@ -9139,8 +9139,16 @@
 		(uuid "66208fc6-4629-435d-9e25-c4bdcc01494d")
 	)
 	(no_connect
+		(at 134.62 175.26)
+		(uuid "8393ad77-7c71-4330-8c70-e46d82ab7b83")
+	)
+	(no_connect
 		(at 74.93 53.34)
 		(uuid "84e2a821-d6c1-4f5c-8d96-aee3e77f0b9b")
+	)
+	(no_connect
+		(at 134.62 177.8)
+		(uuid "8bb23d5b-3b60-4f70-99e7-cd856a25fcea")
 	)
 	(no_connect
 		(at 134.62 172.72)
@@ -20221,26 +20229,6 @@
 			)
 		)
 	)
-	(global_label "TICK50"
-		(shape output)
-		(at 134.62 177.8 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "383bca10-12bc-452f-9dd5-c7009a10eab2")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 143.383 177.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-	)
 	(global_label "_LVCASU"
 		(shape input)
 		(at 134.62 152.4 0)
@@ -21143,26 +21131,6 @@
 			)
 		)
 	)
-	(global_label "TICK60"
-		(shape output)
-		(at 134.62 175.26 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "9c16355b-f66f-430e-b44c-ce9a401584d3")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 143.383 175.387 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-	)
 	(global_label "TT0"
 		(shape bidirectional)
 		(at 264.16 138.43 0)
@@ -21852,7 +21820,7 @@
 			)
 		)
 	)
-	(global_label "_FRST"
+	(global_label "_BTNRST"
 		(shape output)
 		(at 73.66 43.18 180)
 		(effects

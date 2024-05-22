@@ -2055,7 +2055,7 @@
         "pattern": "/Agnus Multiadapter/_ARAMEN"
       },
       {
-        "netclass": "SDRAM",
+        "netclass": "Narrow",
         "pattern": "CLK40"
       },
       {
@@ -2659,7 +2659,7 @@
         "pattern": "/Floppy and Parallel/TICK"
       },
       {
-        "netclass": "SDRAM",
+        "netclass": "Narrow",
         "pattern": "RAMCLK"
       },
       {
