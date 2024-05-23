@@ -4673,7 +4673,7 @@
 		(uuid "9103df85-0f71-4e39-9a79-e9707e3497c6")
 	)
 	(no_connect
-		(at 281.94 187.96)
+		(at 281.94 162.56)
 		(uuid "9b36e77a-6080-43c7-8382-3039699a508b")
 	)
 	(no_connect
@@ -16268,7 +16268,7 @@
 	)
 	(global_label "_LVLOCKE"
 		(shape bidirectional)
-		(at 281.94 162.56 0)
+		(at 281.94 187.96 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -16278,7 +16278,7 @@
 		)
 		(uuid "b0fd22c8-bea9-4526-9349-ad6e01e5c6a0")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 295.1684 162.56 0)
+			(at 295.1684 187.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)

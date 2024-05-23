@@ -2757,6 +2757,10 @@
       {
         "netclass": "Narrow",
         "pattern": "_FRST"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_LVLOCKE"
       }
     ]
   },
