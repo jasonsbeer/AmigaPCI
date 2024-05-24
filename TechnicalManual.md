@@ -10,17 +10,16 @@
 
 **Conventions**
 
-1) Signals are presented as bold font, such as **_FRAME** or **_TA**.
-2) A leading underscore (**_**) is used to indicate a signal is active low.
+1) Signals are presented as bold font, such as **_TS** or **TM2**.
+2) A leading underscore (**_**) is indicates a signal is active low.
 3) Examples of bus data are italicized, such as *DATA0* or *ADDRESS1*.  
-4) A bus's most significant bit will be listed first and least significant last. For example, [31..0] indicates bit 31 as the most significant bit. Zero is the least. Thus, [31..0] indicates a little endian device. The opposite will be true for a big endian device.
-5) Hex values are presented with a leading $ (dollar sign) and a space inserted every 4 characters for clarity.
-6) AmigaPCI refers to this specification or any implementation of this specification, in part or whole.
-7) CPU refers to the Motorola MC68040 or MC68060 processor, unless otherwise specified.
+4) Hex values are presented with a leading $ (dollar sign) and a space inserted every 4 characters for clarity.
+5) AmigaPCI refers to this specification or any implementation of this specification, in part or whole.
+6) CPU refers to the Motorola MC68040 or MC68060 processor, unless otherwise specified.
 
 # AmigaPCI
 
-The AmigaPCI is a Motorola MC68040 based OCS/ECS* Amiga computer in the ATX form factor. It provides five AUTOCONFIG capable PCI slots for expansion purposes such as video, sound, etc.
+The AmigaPCI is a Motorola MC68040/MC68060 based OCS/ECS* Amiga computer in the ATX form factor. It provides five AUTOCONFIG capable PCI slots for expansion purposes such as video, sound, etc.
 
 *Original Chip Set and Enhanced Chip Set, respectively.
 
@@ -30,7 +29,7 @@ This document is an in-depth description of the architecture of the AmigaPCI sys
 
 ### 1.1 Processor
 
-The AmigaPCI is based on the Motorola MC68040 processor (MC68040 herein). The MC68040 has many advantages over previous generation Motorola processors. It includes an integrated floating point unit (FPU) as well as more efficient instruction execution, making it several times faster than the Motorola MC68030 processor at similar clock speeds. The MC68040 can be obtained for about the same price as the MC68030 + FPU.
+The AmigaPCI is intended to operate with the Motorola MC68040 or MC68060 processors. The processor is attached via the CPU Local Bus port. See Sections 1.2.1 and 3.0.
 
 ### 1.2 Expansion Busses
 
@@ -38,7 +37,7 @@ The AmigaPCI includes expansion busses that allow for the user to expand the mac
 
 #### 1.2.1 CPU Local Bus Connector
 
-The AmigaPCI utilizes a CPU Local Bus connector to attach CPU devices to the AmigaPCI main board. The AmigaPCI has no CPU on the main board. Instead, the CPU is contained on it's own daughter card. This approach enables easier CPU upgrades and allows for inclusion of AUTOCONFIG devices on the CPU Local Bus card.
+The AmigaPCI utilizes a CPU Local Bus port to attach CPU devices to the AmigaPCI main board. The AmigaPCI has no CPU or fast RAM on the main board. Instead, the CPU and fast RAM is contained on a daughter card. This approach enables easier CPU upgrades with RAM logic suited to the specific processor and allows for inclusion of AUTOCONFIG devices on the CPU Local Bus card. See Section 2.0.
 
 #### 1.2.2 PCI
 
@@ -156,7 +155,7 @@ The CPU accesses most chipset registers through Agnus. The chipset register cycl
 
 #### 2.2 Chipset DMA Cycles
 
-The Amiga chipset accesses the chipset RAM via direct memory access (DMA). The chipset accesses SDRAM as a 16 bit port. Because the AmigaPCI chipset SDRAM is a 32 bit port, the chipset data access is directed to either the low word or high word of the two words available by considering the Agnus column address DRA0 bit. The chipset DMA cycle does not adhear to the MC68000 bus transfer timing. The chipset DMA cycle spans two 7MHz clock cycles for writes and three 7MHz clock cycles for reads. The process is as follows:
+The Amiga chipset accesses the chipset RAM via direct memory access (DMA). The chipset accesses SDRAM as a 16-bit port. Because the AmigaPCI chipset SDRAM is a 32 bit port, the chipset data access is directed to either the low word or high word of the two words available by considering the Agnus column address DRA0 bit. The chipset DMA cycle does not adhear to the MC68000 bus transfer timing. The chipset DMA cycle spans two 7MHz clock cycles for writes and three 7MHz clock cycles for reads. The process is as follows:
 
 1) The chipset asserts DMAL on the rising edge of C3 to request direct memory access (DMA).
 2) Agnus asserts _DBR on the falling edge of C1 to indicate a chipset DMA cycle is in progress.
@@ -168,39 +167,26 @@ The Amiga chipset accesses the chipset RAM via direct memory access (DMA). The c
 
 <p align="center"><img src="/DataSheets/TimingDiagrams/Chipset DMA Cycle.png" width="650"></p>
 
-#### 2.3 Slow RAM Cycles
+#### 2.3 CPU Chipset RAM Cycles
 
-The CPU can access the 32 bit chipset RAM through Agnus. Because this process is mediated by Agnus running on the 7MHz clock, this RAM is referred to as "Slow RAM". DMA RAM cycles are given priority by Agnus, which means we must insert additional wait states until the last DMA cycle is complete. Original Amiga OCS/ECS designs incorporate a data latch on read cycles, as described in 1.11.1. The AmigaPCI does not need these latches for CPU RAM access due to the new architecture of the RAM interface. The process is as follows:
-
-1) The CPU drives A1..20 in the chipset RAM address space and drives the data bus and R_W low for write cycles. The data bus bridge is tristate.
-2) The CPU asserts _TS for one clock to indicate the start of a transfer. The RAM controller asserts _RAMEN.
-3) The RAM controller asserts _AS and _LDS, _UDS (for read cycles) during MC68000 State 2 (both C1 and C3 are low) and _LDS, _UDS during State 4 for write cycles.
-4) If _DBR is asserted (DMA cycle in progress), waits are inserted until the DMA cycle is complete, indicated by the negation of _DBR.
-5) Agnus drives the _AWE signal low for write cycles approximately 60ns after the falling edge of C3.
-6) On the rising edge of C3, Agnus drives a valid row address on MA0 - MA9 (S2) and asserts _RAS0 or _RAS1. 
-7) On the falling edge of C1, Agnus drives a valid column address on MA0 - MA9 (S3) and asserts _CASL and/or _CASU. Because the MC68040 is always is a 32 bit port, DRA0 of the column address is ignored by the RAM controller.
-8) On the second falling edge of BCLK after entering MC68000 S5, the RAM controller drives the _RAS address to the SDRAM with a bank activate command.
-9) On the next falling edge of BCLK, the RAM controller drives the _CAS address to the SDRAM with a read or write command.
-10) For read cycles, after any latency requirements, data is driven to the data bus by the SDRAM. Write cycles are latched immediately with the _CAS command.
-11) On the second falling edge of BCLK after entering MC68000 State 7, _TA and _TBI are asserted by the board controller to signal the MC68040 to complete the cycle and inhibit burst transfers.
-
-<p align="center"><img src="/DataSheets/TimingDiagrams/CPU Chipset RAM Cycle.png" width="650"></p>
-
-> [!NOTE]
-> Agnus is RAS only refresh. SDRAM refresh is handled by the RAM controller and is independent of the Agnus refresh command. An Agnus refresh cycle can be recognized by the assertion of _RAS0, _RAS1, and _DBR simultaneously, which will only happen during refresh cycles.
+The CPU accesses the 32-bit chipset RAM independently of Agnus, which is a performance increase over original Amiga architecture. Chipset DMA transactions are given priority with the CPU capable of accessing the chipset RAM in between each DMA transfer cycle. Burst modes are supported depending on when the CPU access cycle begins.
 
 #### 2.4 CIA Cycles
 
-The AmigaPCI does not supply an E-clock on the PCI bus. This means we can break away from the Enable cycle as implemented in all original Amiga designs. While still relatively slow, we can cut the CIA access time significantly by implementing the recommended timings from the 8502A data sheet. During a read cycle, the CIA needs 180ns for data to become valid while the clock input (PHI2) is high and the chip select is asserted (low). For the best case, the CPU should start a cycle just after the rising edge of PHI2. This will allow enough time for the CIA to place data on the bus so the CPU can latch the data at the falling edge of PHI2. This cycle is approximately 237ns. The worst case scenario is when the CPU starts a cycle too late to meet the 180ns time before the falling edge of PHI2. This results in the need to wait until the next rising edge of PHI2 to interact with the CIA. This cycle is approximately 700ns. Write cycles are more forgiving, as the setup time is only 75ns.
+We have eliminated the Enable cycle as implemented in all original Amiga designs. The E-Cycle operates at 1/10 the CPU clock speed, which is approximately 0.71MHz in the original Amiga architecture. While still relatively slow, we can cut the CIA access time significantly by implementing the 2MHz timings from the 8502A data sheet. During a read cycle, the CIA needs 180ns for data to become valid while the clock input (PHI2) is high and the chip select is asserted (low). For the best case, the CPU should start a cycle just after the rising edge of PHI2. This will allow enough time for the CIA to place data on the bus so the CPU can latch the data at the falling edge of PHI2. This cycle is approximately 237ns. The worst case scenario is when the CPU starts a cycle too late to meet the 180ns time before the falling edge of PHI2. This results in the need to wait until the next rising edge of PHI2 to interact with the CIA. This cycle is approximately 700ns. Write cycles are more forgiving, as the setup time is only 75ns.
 
 <p align="center"><img src="/DataSheets/TimingDiagrams/CIA Cycle Best Case Read.png" width="650"></p>
 <p align="center"><img src="/DataSheets/TimingDiagrams/CIA Cycle Best Case Write.png" width="650"></p>
 <p align="center"><img src="/DataSheets/TimingDiagrams/CIA Cycle Worst Case Read.png"></p>
 <p align="center"><img src="/DataSheets/TimingDiagrams/CIA Cycle Worst Case Write.png"></p>
 
-# 3.0 CPU Local Bus Card
+#### 2.5 Cycle Timeout
 
-The AmigaPCI utilizes a CPU Local Bus port to attach CPU devices to the AmigaPCI main board. The AmigaPCI has no CPU on the main board. Instead, the CPU is contained on the CPU Local Bus card attached to this bus. This approach enables easier CPU upgrades and allows for inclusion of AUTOCONFIG devices on the CPU Local Bus card. The AmigaPCI main board has no Fast RAM. Fast Ram must be included on the CPU Local Bus Card. RAM can then be optimized for the clock speed and capabilities of the CPU device implemented. This enables an upgrade path for increased performance while minimizing resources needed on the AmigaPCI main board. A reference design can be found with the [AmigaPCI project](https://github.com/jasonsbeer/AmigaPCI/tree/main). The AmigaPCI main board uses a 40MHz bus clock. The CPU Local Bus card must interface the AmigaPCI main board at that clock speed for reliable function.
+Any time the CPU initiates a data transfer cycle by assertin _TS, it expects the cycle to be acknowledged by assertion of the _TA signal. A fatal condition (crash) can occur when the CPU begins a cycle and does not receive acknowledgment from a target device. This would not normally happen, but can result from malfunctioning or poorly designed hardware. To prevent this situation, the board controller will assert _TEA (transfer error acknowledge) after 1400ns has passed from assertion of _TS (transfer start). This informs the CPU that no device has responded to the address provided and to begin error processing.
+
+# 3.0 CPU Local Bus Port
+
+The AmigaPCI utilizes the CPU Local Bus port to attach CPU devices to the AmigaPCI main board. The AmigaPCI has no CPU on the main board. Instead, the CPU is contained on the CPU Local Bus card attached to this bus. This approach enables easier CPU upgrades and allows for inclusion of AUTOCONFIG devices on the CPU Local Bus card. The AmigaPCI main board has no Fast RAM. Fast Ram must be included on the CPU Local Bus Card. RAM can then be optimized for the clock speed and capabilities of the CPU device implemented. This enables an upgrade path for increased performance while minimizing resources needed on the AmigaPCI main board. A reference design can be found with the [AmigaPCI project](https://github.com/jasonsbeer/AmigaPCI/tree/main). The AmigaPCI main board uses a 40MHz bus clock. The CPU Local Bus card must interface the AmigaPCI main board at that clock speed for reliable function.
 
 ## 3.1 Footprint
 
@@ -299,8 +285,4 @@ Pin|Signal|Pin|Signal|Pin|Signal
 **A38**|GND|**B38**|A25|**C38**|A21
 **A39**|A23|**B39**|A20|**C39**|A19
 **A40**|A18|**B40**|A17|**C40**|A16
-
-### 1.14 MC68040 Cycle Timeout
-
-Any time the MC68040 initiates a data transfer cycle, it expects the cycle to be acknowledged by assertion of the _TA signal. A fatal condition (crash) can occur when the CPU begins a cycle and does not receive acknowledgment from a target device. This would not normally happen, but can result from malfunctioning or poorly designed hardware. To prevent this situation, the board controller will assert _TEA (transfer error acknowledge) after 1400ns has passed from assertion of _TS (transfer start). This informs the CPU that no device has responded to the address provided and to begin error processing.
 
