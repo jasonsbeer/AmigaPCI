@@ -10,6 +10,126 @@
 		(rev "3.0")
 	)
 	(lib_symbols
+		(symbol "+5V_1"
+			(power)
+			(pin_numbers hide)
+			(pin_names
+				(offset 0) hide)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "#PWR"
+				(at 0 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Value" "+5V"
+				(at 0 3.556 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Power symbol creates a global label with name \"+5V\""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "global power"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "+5V_1_0_1"
+				(polyline
+					(pts
+						(xy -0.762 1.27) (xy 0 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 2.54) (xy 0.762 1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "+5V_1_1_1"
+				(pin power_in line
+					(at 0 0 90)
+					(length 0)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
 		(symbol "74xx:74LS08"
 			(pin_names
 				(offset 1.016)
@@ -5373,6 +5493,12 @@
 		(uuid "a81ca26a-8bc2-44ef-aec5-10ad8b2407f5")
 	)
 	(junction
+		(at 288.29 210.82)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "a8e0509e-c6bc-4517-aeb2-2de3ad6d079d")
+	)
+	(junction
 		(at 184.023 92.075)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -6060,7 +6186,7 @@
 	)
 	(wire
 		(pts
-			(xy 284.2768 215.7984) (xy 290.7284 215.7984)
+			(xy 284.48 215.9) (xy 290.83 215.9)
 		)
 		(stroke
 			(width 0)
@@ -6900,6 +7026,16 @@
 	)
 	(wire
 		(pts
+			(xy 288.29 210.82) (xy 290.83 210.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6c818118-fdbe-4ffe-9a25-be47839c01e4")
+	)
+	(wire
+		(pts
 			(xy 232.41 135.509) (xy 251.587 135.509)
 		)
 		(stroke
@@ -7720,7 +7856,7 @@
 	)
 	(wire
 		(pts
-			(xy 284.2768 210.7184) (xy 290.7284 210.7184)
+			(xy 284.48 210.82) (xy 288.29 210.82)
 		)
 		(stroke
 			(width 0)
@@ -8030,7 +8166,7 @@
 	)
 	(wire
 		(pts
-			(xy 305.9684 213.2584) (xy 312.42 213.2584)
+			(xy 306.07 213.36) (xy 312.42 213.36)
 		)
 		(stroke
 			(width 0)
@@ -8784,7 +8920,7 @@
 	)
 	(text "_INT2"
 		(exclude_from_sim no)
-		(at 284.734 200.7616 0)
+		(at 297.18 200.66 0)
 		(effects
 			(font
 				(size 3 3)
@@ -9180,7 +9316,7 @@
 	)
 	(global_label "_INT2A"
 		(shape input)
-		(at 284.2768 210.7184 180)
+		(at 284.48 210.82 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -9190,7 +9326,7 @@
 		)
 		(uuid "2ccd662e-6486-4fe2-b44c-e19c5b66fec4")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 275.123 210.7184 0)
+			(at 275.3262 210.82 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9285,7 +9421,7 @@
 	)
 	(global_label "_INT2"
 		(shape output)
-		(at 312.42 213.2584 0)
+		(at 312.42 213.36 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -9295,7 +9431,7 @@
 		)
 		(uuid "556dafca-e199-4e21-8cb2-56ce47b047a4")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 320.4852 213.2584 0)
+			(at 320.4852 213.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9621,7 +9757,7 @@
 	)
 	(global_label "_INT2B"
 		(shape input)
-		(at 284.2768 215.7984 180)
+		(at 284.48 215.9 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -9631,7 +9767,7 @@
 		)
 		(uuid "d0e9ff92-0f4e-4260-9383-173e8d1ff90c")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 274.9416 215.7984 0)
+			(at 275.1448 215.9 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10041,7 +10177,7 @@
 	)
 	(symbol
 		(lib_id "74xx:74LS08")
-		(at 298.3484 213.2584 0)
+		(at 298.45 213.36 0)
 		(unit 3)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -10050,7 +10186,7 @@
 		(fields_autoplaced yes)
 		(uuid "058995b4-aa37-4576-8321-7da9882997b7")
 		(property "Reference" "U220"
-			(at 298.3401 204.6224 0)
+			(at 298.4417 204.724 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10058,7 +10194,7 @@
 			)
 		)
 		(property "Value" "74LVC08"
-			(at 298.3401 207.1624 0)
+			(at 298.4417 207.264 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10066,7 +10202,7 @@
 			)
 		)
 		(property "Footprint" "Package_SO:TSSOP-14_4.4x5mm_P0.65mm"
-			(at 298.3484 213.2584 0)
+			(at 298.45 213.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10075,7 +10211,7 @@
 			)
 		)
 		(property "Datasheet" "http://www.ti.com/lit/gpn/sn74LS08"
-			(at 298.3484 213.2584 0)
+			(at 298.45 213.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10084,7 +10220,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 298.3484 213.2584 0)
+			(at 298.45 213.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10928,6 +11064,72 @@
 				(path "/bb595301-1c72-49dc-ac6f-007419f3a7fd/00000000-0000-0000-0000-000060592f9f"
 					(reference "U204")
 					(unit 3)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_name "+5V_1")
+		(lib_id "power:+5V")
+		(at 288.29 203.2 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "2ca5b1d7-3781-4c15-b91c-c2524b8beeae")
+		(property "Reference" "#PWR0136"
+			(at 288.29 207.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+5V"
+			(at 288.29 199.136 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 288.29 203.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 288.29 203.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+5V\""
+			(at 288.29 203.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e17b95a0-0791-489e-b653-8586278235e4")
+		)
+		(instances
+			(project "AmigaPCI Mainboard"
+				(path "/72453515-27fe-4336-91f3-e3c8054f7767/71ea5834-c2f1-44b0-9a09-0538600b01fd"
+					(reference "#PWR0136")
+					(unit 1)
 				)
 			)
 		)
@@ -16515,6 +16717,75 @@
 			(project "2000ATX"
 				(path "/bb595301-1c72-49dc-ac6f-007419f3a7fd/00000000-0000-0000-0000-000060592f9f"
 					(reference "R213")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 288.29 207.01 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "ef9cd809-eaa6-45ba-9ad5-dcb77173d301")
+		(property "Reference" "R249"
+			(at 286.258 209.55 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1k"
+			(at 288.29 208.28 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 286.512 207.01 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 288.29 207.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 288.29 207.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "237cf90f-fbd6-4467-93b0-43a29c99b130")
+		)
+		(pin "2"
+			(uuid "7c5ebcc7-768a-4123-b936-50b548292962")
+		)
+		(instances
+			(project "AmigaPCI Mainboard"
+				(path "/72453515-27fe-4336-91f3-e3c8054f7767/71ea5834-c2f1-44b0-9a09-0538600b01fd"
+					(reference "R249")
 					(unit 1)
 				)
 			)

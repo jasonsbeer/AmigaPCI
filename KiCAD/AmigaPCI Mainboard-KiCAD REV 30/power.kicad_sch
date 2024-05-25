@@ -14446,6 +14446,16 @@
 		)
 		(uuid "843bf159-328a-4bb8-a844-13fc8fd1f299")
 	)
+	(text "R601, R603 = 1/4 WATT"
+		(exclude_from_sim no)
+		(at 156.21 102.616 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "a057ef99-3da6-4f3b-a8f0-036a75b6746d")
+	)
 	(text "POWER RAIL INDICATORS"
 		(exclude_from_sim no)
 		(at 113.03 82.55 0)
@@ -17914,7 +17924,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
 			(at 128.27 116.84 0)
 			(effects
 				(font
@@ -19898,7 +19908,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
 			(at 153.67 95.25 0)
 			(effects
 				(font

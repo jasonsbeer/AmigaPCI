@@ -9268,17 +9268,6 @@
 		)
 		(uuid "cda7c64d-e47f-4239-b4c2-450ed5599eaf")
 	)
-	(text "SIGNALS ARE TERMINATED VIA SERIES RESISTORS AS DEFINED\nFOR DUAL PORT SYSTEMS IN THE ATAPA/ATA-4 SPECIFICATION."
-		(exclude_from_sim no)
-		(at 87.63 247.65 0)
-		(effects
-			(font
-				(size 2 2)
-			)
-			(justify left bottom)
-		)
-		(uuid "ead9ae42-29b9-4671-9413-e0ad45ae44c3")
-	)
 	(label "DD8A"
 		(at 346.71 33.02 0)
 		(fields_autoplaced yes)
