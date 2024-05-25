@@ -6,7 +6,7 @@
 	(paper "B")
 	(title_block
 		(title "AmigaPCI 68040")
-		(date "2024-05-09")
+		(date "2024-05-24")
 		(rev "1.0")
 	)
 	(lib_symbols
@@ -6435,17 +6435,6 @@
 		)
 		(uuid 5ce0a1ee-a38e-4ec1-b6a7-620d0270d14f)
 	)
-	(text "BANK 0 ONLY\n32MB = 8Mx16\n64MB = 16Mx16\n128MB = 32MX16\n\nBOTH BANKS INSATALLED\n64MB = 8Mx16\n128MB = 16Mx16\n256MB = 32Mx16"
-		(exclude_from_sim no)
-		(at 250.952 258.064 0)
-		(effects
-			(font
-				(size 3 3)
-			)
-			(justify left bottom)
-		)
-		(uuid "1aea9aab-efd1-418f-845e-f8f2eb8cf4d2")
-	)
 	(text "RAM CLOCK SPEED"
 		(exclude_from_sim no)
 		(at 330.2 105.41 0)
@@ -6470,12 +6459,12 @@
 		)
 		(uuid "72c34967-8964-4cd7-ada7-f615c6f0731d")
 	)
-	(text "64MB ONBOARD MEMORY LOCATED AT $0400 0000-$07FF FFFF.\nDO WE NEED A RAMSEY FOR THIS TO WORK?"
+	(text "16MB RAMSEY MEMORY LOCATED AT $0700 0000-$07FF FFFF."
 		(exclude_from_sim no)
-		(at 257.937 202.565 0)
+		(at 237.49 209.042 0)
 		(effects
 			(font
-				(size 1.3 1.3)
+				(size 3 3)
 			)
 			(justify left bottom)
 		)
@@ -6494,10 +6483,10 @@
 	)
 	(text "Ramsey ID register is at $00DE0043\n-04 = $0D\n-07 = $0F"
 		(exclude_from_sim no)
-		(at 262.128 210.566 0)
+		(at 237.236 224.79 0)
 		(effects
 			(font
-				(size 1.27 1.27)
+				(size 3 3)
 			)
 			(justify left bottom)
 		)
