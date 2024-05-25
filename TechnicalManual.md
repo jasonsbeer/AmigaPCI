@@ -195,7 +195,7 @@ The CPU Local Bus physical connector of the AmigaPCI is a DIN 41612 120 pin sock
 The origin datum and component points can be seen in Image 3.1. The origin of all measurements is the upper left hole (datum = 0,0). The image is looking down on top of the card. The DIN connector is attached to the back of the card. As a reference, the AmigaPCI-040 CPU Local Bus Card is 140mm x 95mm.
 
 **Image 3.1**. Points from Datum 0,0 for the CPU Local Bus Card.
-<img src="/Images/CPULocalBusCardDim.jpg" width="650">
+<img src="/Images/CPULocalBusCardDim.jpg" width="675">
 
 ## 3.1 Signaling Environments
 
