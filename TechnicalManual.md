@@ -203,7 +203,7 @@ The AmigaPCI implements two distinct signaling regions on the main board. The Am
 
 ## 3.2 CPU Local Bus Signals
 
-These signals are discussed in the context of the Motorola MC68040 and MC68060 only. Appropriate pull resistors are supplied on the AmigaPCI board.
+These signals are discussed in the context of the Motorola MC68040 and MC68060 only. Appropriate pull resistors are supplied on the AmigaPCI board for the connected signals.
 
 **Table 3.2.1** CPU Local Bus Signal Description.
 Signal|Logic Voltage|I/O/BI|Description
