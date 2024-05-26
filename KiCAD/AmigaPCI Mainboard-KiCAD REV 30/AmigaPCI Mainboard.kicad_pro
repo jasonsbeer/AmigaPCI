@@ -2761,6 +2761,42 @@
       {
         "netclass": "Narrow",
         "pattern": "_LVLOCKE"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Master Control/PCIR_W"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_CONFIGEN"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "PCIR_W"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "ADLATCH"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "ALATCH"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_PCICYCLE"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/PCI Bridge/EXTRA0"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_BURST"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_BREG"
       }
     ]
   },
