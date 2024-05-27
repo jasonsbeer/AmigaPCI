@@ -10,6 +10,126 @@
 		(rev "3.0")
 	)
 	(lib_symbols
+		(symbol "+3V3_1"
+			(power)
+			(pin_numbers hide)
+			(pin_names
+				(offset 0) hide)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "#PWR"
+				(at 0 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Value" "+3V3"
+				(at 0 3.556 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Power symbol creates a global label with name \"+3V3\""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "global power"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "+3V3_1_0_1"
+				(polyline
+					(pts
+						(xy -0.762 1.27) (xy 0 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 2.54) (xy 0.762 1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "+3V3_1_1_1"
+				(pin power_in line
+					(at 0 0 90)
+					(length 0)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
 		(symbol "74xx:74LS04"
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -5826,12 +5946,6 @@
 		(uuid "ad1f4911-b588-4781-9765-aa8b665412b0")
 	)
 	(junction
-		(at 266.7 154.94)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "b7074f9c-3ad1-4977-aa53-aaadec41209b")
-	)
-	(junction
 		(at 86.36 165.1)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -7273,6 +7387,16 @@
 		)
 		(uuid "09bbdef8-b214-4d7a-9979-b7450fac3fd5")
 	)
+	(wire
+		(pts
+			(xy 222.25 148.59) (xy 222.25 152.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0b228502-802a-4f1c-93a1-56acb61b6991")
+	)
 	(bus
 		(pts
 			(xy 378.46 172.72) (xy 378.46 167.64)
@@ -7785,16 +7909,6 @@
 	)
 	(wire
 		(pts
-			(xy 266.7 154.94) (xy 261.62 154.94)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "25968bcd-b6ee-479b-8d9f-903e8e23d26f")
-	)
-	(wire
-		(pts
 			(xy 218.44 232.41) (xy 229.87 232.41)
 		)
 		(stroke
@@ -7922,6 +8036,16 @@
 			(type default)
 		)
 		(uuid "29a4f50e-06e8-4c89-9e28-d3a4bfb0959a")
+	)
+	(wire
+		(pts
+			(xy 236.22 152.4) (xy 222.25 152.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2a3e93bb-9c4a-4b7b-a594-2df2fdf07f0a")
 	)
 	(bus
 		(pts
@@ -8192,16 +8316,6 @@
 			(type default)
 		)
 		(uuid "37a5b456-ef4d-4d9c-b7ab-e0709e60829b")
-	)
-	(wire
-		(pts
-			(xy 266.7 152.4) (xy 266.7 154.94)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "385119a9-09a0-4d22-b9de-d4ceab805690")
 	)
 	(wire
 		(pts
@@ -9963,16 +10077,6 @@
 		)
 		(uuid "9f276927-13b3-459d-b9b0-63e56dc8148d")
 	)
-	(wire
-		(pts
-			(xy 266.7 154.94) (xy 266.7 161.29)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a01eb584-330d-4e56-9c01-ec29c9bcc5d1")
-	)
 	(bus
 		(pts
 			(xy 49.53 204.47) (xy 49.53 207.01)
@@ -9982,16 +10086,6 @@
 			(type default)
 		)
 		(uuid "a02a60f0-eb5c-4d81-acee-505645f3fad7")
-	)
-	(wire
-		(pts
-			(xy 261.62 152.4) (xy 266.7 152.4)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a18d9439-2d87-4f0a-9b5c-665d8577c7ae")
 	)
 	(bus
 		(pts
@@ -10082,6 +10176,16 @@
 			(type default)
 		)
 		(uuid "a77360ef-9b05-44be-bdaa-b737ce4303f3")
+	)
+	(wire
+		(pts
+			(xy 236.22 154.94) (xy 236.22 161.29)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a896e50c-f815-42f1-b1db-e542a441c96f")
 	)
 	(wire
 		(pts
@@ -16388,7 +16492,6 @@
 	(symbol
 		(lib_id "AmigaPCI-Symbols:74LVC245")
 		(at 248.92 142.24 0)
-		(mirror y)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -19137,6 +19240,72 @@
 		)
 	)
 	(symbol
+		(lib_name "+3V3_1")
+		(lib_id "power:+3V3")
+		(at 222.25 148.59 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "9b4547e4-ad46-42f2-b16c-900f2f6ea686")
+		(property "Reference" "#PWR0156"
+			(at 222.25 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 222.25 144.526 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 222.25 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 222.25 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3V3\""
+			(at 222.25 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "77e371e7-5313-4c5b-a6bf-0cf187f73fa5")
+		)
+		(instances
+			(project "AmigaPCI Mainboard"
+				(path "/72453515-27fe-4336-91f3-e3c8054f7767/d671396a-959f-409b-8612-87cb620c51cb"
+					(reference "#PWR0156")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "74xx:74LS04")
 		(at 86.36 90.17 0)
 		(unit 6)
@@ -20371,7 +20540,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 266.7 161.29 0)
+		(at 236.22 161.29 0)
 		(mirror y)
 		(unit 1)
 		(exclude_from_sim no)
@@ -20381,7 +20550,7 @@
 		(fields_autoplaced yes)
 		(uuid "cec2f8f2-1ae0-4a53-b058-44c3cfa87557")
 		(property "Reference" "#PWR0345"
-			(at 266.7 167.64 0)
+			(at 236.22 167.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20390,7 +20559,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 266.7 166.116 0)
+			(at 236.22 166.116 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20398,7 +20567,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 266.7 161.29 0)
+			(at 236.22 161.29 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20407,7 +20576,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 266.7 161.29 0)
+			(at 236.22 161.29 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20416,7 +20585,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 266.7 161.29 0)
+			(at 236.22 161.29 0)
 			(effects
 				(font
 					(size 1.27 1.27)
