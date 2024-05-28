@@ -2555,7 +2555,7 @@
         "pattern": "LVPARITY"
       },
       {
-        "netclass": "Narrow",
+        "netclass": "PCI",
         "pattern": "_LVSYSERR"
       },
       {
@@ -2797,6 +2797,54 @@
       {
         "netclass": "Narrow",
         "pattern": "_BREG"
+      },
+      {
+        "netclass": "PCI",
+        "pattern": "/PCI Bus/PAR"
+      },
+      {
+        "netclass": "PCI",
+        "pattern": "/PCI Bus/_DEVSEL"
+      },
+      {
+        "netclass": "PCI",
+        "pattern": "/PCI Bus/_TRDY"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/PCI Bus/_STOP"
+      },
+      {
+        "netclass": "PCI",
+        "pattern": "/PCI Bus/_PERR"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "PCIDIR"
+      },
+      {
+        "netclass": "PCI",
+        "pattern": "/PCI Bus/_IRDY"
+      },
+      {
+        "netclass": "PCI",
+        "pattern": "/PCI Bus/_FRAME"
+      },
+      {
+        "netclass": "PCI",
+        "pattern": "_CBE3"
+      },
+      {
+        "netclass": "PCI",
+        "pattern": "_CBE2"
+      },
+      {
+        "netclass": "PCI",
+        "pattern": "_CBE1"
+      },
+      {
+        "netclass": "PCI",
+        "pattern": "_CBE0"
       }
     ]
   },

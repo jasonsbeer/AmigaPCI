@@ -6,7 +6,7 @@
 	(paper "B")
 	(title_block
 		(title "AMIGA PCI")
-		(date "2024-05-26")
+		(date "2024-05-27")
 		(rev "3.0")
 	)
 	(lib_symbols
@@ -20781,7 +20781,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Connector_USB:USB_A_Wuerth_61400826021_Horizontal_Stacked"
+		(property "Footprint" "AmigaPCI:USB_A_Wuerth_61400826021_Horizontal_Stacked"
 			(at 382.27 54.61 0)
 			(effects
 				(font

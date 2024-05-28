@@ -6,7 +6,7 @@
 	(paper "B")
 	(title_block
 		(title "AMIGA PCI")
-		(date "2024-05-26")
+		(date "2024-05-27")
 		(rev "3.0")
 	)
 	(lib_symbols
@@ -16095,7 +16095,7 @@
 			)
 		)
 	)
-	(global_label "PCIR_W"
+	(global_label "PCIDIR"
 		(shape output)
 		(at 123.19 118.11 0)
 		(fields_autoplaced yes)
@@ -16107,7 +16107,7 @@
 		)
 		(uuid "b8423bc9-4bd6-4067-b71b-8695f4284011")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 133.009 118.11 0)
+			(at 132.4648 118.11 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16200,7 +16200,7 @@
 			)
 		)
 	)
-	(global_label "_LVPLOCK"
+	(global_label "_PLOCK"
 		(shape bidirectional)
 		(at 213.36 238.76 180)
 		(fields_autoplaced yes)
@@ -16212,7 +16212,7 @@
 		)
 		(uuid "bdbb5a40-2d99-46a2-a1a5-ff70715aa5f8")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 200.0106 238.76 0)
+			(at 202.1273 238.76 0)
 			(effects
 				(font
 					(size 1.27 1.27)

@@ -6,7 +6,7 @@
 	(paper "B")
 	(title_block
 		(title "AMIGA PCI")
-		(date "2024-05-26")
+		(date "2024-05-27")
 		(rev "3.0")
 	)
 	(lib_symbols
@@ -6888,16 +6888,6 @@
 	)
 	(wire
 		(pts
-			(xy 289.56 142.24) (xy 299.72 142.24)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "21053426-4719-4b13-8f1b-d96b1b3010f1")
-	)
-	(wire
-		(pts
 			(xy 87.63 48.26) (xy 86.36 48.26)
 		)
 		(stroke
@@ -10883,7 +10873,7 @@
 		)
 		(uuid "1d28f9af-705a-4a61-be82-222e081499ae")
 	)
-	(label "PCIR_W"
+	(label "PCIDIR"
 		(at 299.72 119.38 180)
 		(fields_autoplaced yes)
 		(effects
@@ -11136,7 +11126,7 @@
 		)
 		(uuid "35dbffa8-7b01-4409-aca7-4af028f4a1ba")
 	)
-	(label "PCIR_W"
+	(label "PCIDIR"
 		(at 299.72 50.8 180)
 		(fields_autoplaced yes)
 		(effects
@@ -12632,7 +12622,7 @@
 		)
 		(uuid "cdf139cc-857a-4903-a5e1-f1e819daa5e9")
 	)
-	(label "PCIR_W"
+	(label "PCIDIR"
 		(at 299.72 210.82 180)
 		(fields_autoplaced yes)
 		(effects
@@ -12665,7 +12655,7 @@
 		)
 		(uuid "d004cbb3-2118-4a80-9158-c97aaf54f842")
 	)
-	(label "PCIR_W"
+	(label "PCIDIR"
 		(at 299.72 142.24 180)
 		(fields_autoplaced yes)
 		(effects
@@ -13171,27 +13161,6 @@
 		)
 		(uuid "ff32185e-57e9-42ef-9b03-aa7ccc397c39")
 	)
-	(global_label "PCIR_W"
-		(shape input)
-		(at 289.56 142.24 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "017b14a6-5d4b-4a88-b345-8ce286546fe8")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 279.741 142.24 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-	)
 	(global_label "BUFDIS"
 		(shape input)
 		(at 147.32 205.74 0)
@@ -13275,7 +13244,7 @@
 			)
 		)
 	)
-	(global_label "PCIR_W"
+	(global_label "PCIDIR"
 		(shape input)
 		(at 289.56 119.38 180)
 		(fields_autoplaced yes)
@@ -13287,7 +13256,7 @@
 		)
 		(uuid "0d668c42-b563-48c2-bea8-337f0b6d8dd9")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 279.741 119.38 0)
+			(at 280.2852 119.38 0)
 			(effects
 				(font
 					(size 1.27 1.27)

@@ -1,4 +1,4 @@
-23381501659223803
+23383314316228500
 AmigaPCI
 2x18_P2.54mm_Horizontal
 Samtec HLE .100" Tiger Beam Cost-effective Single Beam Socket Strip, HLE-150-02-xx-DV-TE, 50 Pins per row (http://suddendocs.samtec.com/prints/hle-1xx-02-xx-dv-xe-xx-mkt.pdf, http://suddendocs.samtec.com/prints/hle-thru.pdf), generated with kicad-footprint-generator
@@ -195,6 +195,13 @@ TrimmerCap
 0
 2
 2
+AmigaPCI
+USB_A_Wuerth_61400826021_Horizontal_Stacked
+Stacked USB A connector http://katalog.we-online.de/em/datasheet/61400826021.pdf
+Wuerth stacked USB_A
+0
+12
+9
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
