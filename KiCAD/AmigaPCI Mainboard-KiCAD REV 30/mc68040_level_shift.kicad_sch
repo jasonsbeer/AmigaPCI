@@ -6,7 +6,7 @@
 	(paper "B")
 	(title_block
 		(title "AMIGA PCI")
-		(date "2024-05-27")
+		(date "2024-05-28")
 		(rev "3.0")
 	)
 	(lib_symbols
@@ -12116,17 +12116,6 @@
 			(type none)
 		)
 		(uuid d4795c1f-9d81-44ba-8643-50d2cd519ebb)
-	)
-	(text "R_W AND _BB ARE CONSUMED \nON THE +5V SIDE"
-		(exclude_from_sim no)
-		(at 266.7 180.34 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "28c17b27-a532-4e5e-af24-b68bee84a5b2")
 	)
 	(text "LOW VOLTAGE CHIPSET RAM\nDATA BUS BUFFERS"
 		(exclude_from_sim no)

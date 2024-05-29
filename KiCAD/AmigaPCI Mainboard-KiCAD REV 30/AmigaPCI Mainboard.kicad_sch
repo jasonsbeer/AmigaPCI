@@ -6,7 +6,7 @@
 	(paper "USLedger")
 	(title_block
 		(title "AMIGA PCI")
-		(date "2024-05-27")
+		(date "2024-05-28")
 		(rev "3.0")
 	)
 	(lib_symbols)
@@ -35,10 +35,10 @@
 	)
 	(text "BUDDY"
 		(exclude_from_sim no)
-		(at 314.198 248.158 0)
+		(at 156.718 209.296 0)
 		(effects
 			(font
-				(size 8 8)
+				(size 15 15)
 				(thickness 1.6)
 				(bold yes)
 			)
@@ -58,7 +58,7 @@
 			(color 0 0 0 0.0000)
 		)
 		(uuid "14024e2c-eaac-4547-8875-4a8ac58b1720")
-		(property "Sheetname" "CPU"
+		(property "Sheetname" "Chip RAM Controller"
 			(at 45.466 120.7004 0)
 			(effects
 				(font

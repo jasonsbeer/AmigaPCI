@@ -1480,15 +1480,4 @@
 		(remove_unused_layers no)
 		(uuid "a00b2c8d-d335-4262-b397-de1f049bc26a")
 	)
-	(model "${KICAD8_3DMODEL_DIR}/Connector_DIN.3dshapes/DIN41612_R_3x32_Male_Vertical_THT.wrl"
-		(offset
-			(xyz 0 0 0)
-		)
-		(scale
-			(xyz 1 1 1)
-		)
-		(rotate
-			(xyz 0 0 0)
-		)
-	)
 )

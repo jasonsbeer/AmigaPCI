@@ -27,7 +27,7 @@
 			)
 		)
 	)
-	(property "Footprint" ""
+	(property "Footprint" "DIN41612_R_3x40_Male_Vertical_THT"
 		(at 0 0 0)
 		(unlocked yes)
 		(layer "F.Fab")
@@ -1480,15 +1480,15 @@
 		(remove_unused_layers no)
 		(uuid "9b02c530-3480-4f9f-a0b1-83dbd901a967")
 	)
-	(model "${KICAD8_3DMODEL_DIR}/Connector_DIN.3dshapes/DIN41612_R_3x32_Male_Vertical_THT.wrl"
+	(model "${KIPRJMOD}/AmigaPCI-Footprints/5650910-5.stp"
 		(offset
-			(xyz 0 0 0)
+			(xyz 2.5 -49.5 11.5)
 		)
 		(scale
 			(xyz 1 1 1)
 		)
 		(rotate
-			(xyz 0 0 0)
+			(xyz 0 0 -90)
 		)
 	)
 )

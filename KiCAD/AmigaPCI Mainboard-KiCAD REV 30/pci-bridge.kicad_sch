@@ -6,7 +6,7 @@
 	(paper "B")
 	(title_block
 		(title "AMIGA PCI")
-		(date "2024-05-27")
+		(date "2024-05-28")
 		(rev "3.0")
 	)
 	(lib_symbols
@@ -4685,8 +4685,16 @@
 		(uuid "52611174-b2e0-41d5-b091-495f6b9ebc4e")
 	)
 	(no_connect
+		(at 213.36 162.56)
+		(uuid "529e2cc9-f4e7-49e0-9a45-f5dfd6852ec8")
+	)
+	(no_connect
 		(at 63.5 100.33)
 		(uuid "5fdc34e0-ed59-41b0-9252-7a912fb27fe5")
+	)
+	(no_connect
+		(at 213.36 170.18)
+		(uuid "6d343044-08d3-4fba-a9c9-fd10cafdda30")
 	)
 	(no_connect
 		(at 273.05 66.04)
@@ -4709,6 +4717,10 @@
 		(uuid "9103df85-0f71-4e39-9a79-e9707e3497c6")
 	)
 	(no_connect
+		(at 213.36 165.1)
+		(uuid "912f0157-9242-419c-b9c2-2d09a2b696bc")
+	)
+	(no_connect
 		(at 213.36 231.14)
 		(uuid "96296f2e-b2d4-48c4-9f1c-a147a553954c")
 	)
@@ -4723,6 +4735,10 @@
 	(no_connect
 		(at 281.94 215.9)
 		(uuid "9eaba541-eefd-43d1-873f-f03150334ddd")
+	)
+	(no_connect
+		(at 213.36 172.72)
+		(uuid "9ec63671-d8e3-4a91-92d6-2ad51788908d")
 	)
 	(no_connect
 		(at 281.94 83.82)
@@ -4751,6 +4767,10 @@
 	(no_connect
 		(at 222.25 99.06)
 		(uuid "c851cf9e-ec5e-45e5-b944-f4f9610f52e8")
+	)
+	(no_connect
+		(at 213.36 167.64)
+		(uuid "d69e763e-5eb4-4524-be88-cecfce8a2da5")
 	)
 	(no_connect
 		(at 213.36 233.68)
@@ -16742,22 +16762,22 @@
 	)
 	(global_label "_TA"
 		(shape output)
-		(at 213.36 109.22 0)
+		(at 213.36 109.22 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "fba94e93-9fe8-4e8d-bcb8-2721784a0551")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 219.369 109.22 0)
+			(at 207.351 109.22 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
 			)
 		)
 	)

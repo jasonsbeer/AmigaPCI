@@ -6,7 +6,7 @@
 	(paper "B")
 	(title_block
 		(title "AMIGA PCI")
-		(date "2024-05-27")
+		(date "2024-05-28")
 		(rev "3.0")
 	)
 	(lib_symbols
@@ -8603,12 +8603,6 @@
 		(uuid "d74739f4-cbf2-4aa6-9e42-e2df9e10b639")
 	)
 	(junction
-		(at 250.19 110.49)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "db899979-2136-445c-accf-ac7a40f54f3a")
-	)
-	(junction
 		(at 35.56 53.34)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -8643,6 +8637,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "ea60ab7e-aa45-4346-9a01-2d18677eae07")
+	)
+	(junction
+		(at 260.35 91.44)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "ec0bd11b-da15-4243-82fc-dd2462407967")
 	)
 	(junction
 		(at 389.89 78.74)
@@ -12510,6 +12510,16 @@
 	)
 	(wire
 		(pts
+			(xy 260.35 91.44) (xy 260.35 148.59)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5cde9b57-e597-40d7-822b-78b5051ec137")
+	)
+	(wire
+		(pts
 			(xy 320.04 152.4) (xy 314.96 152.4)
 		)
 		(stroke
@@ -12938,16 +12948,6 @@
 		)
 		(uuid "680220c8-5491-4705-b122-c9cd0ea7d326")
 	)
-	(wire
-		(pts
-			(xy 250.19 91.44) (xy 262.89 91.44)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "685619da-4bbb-423d-9ced-b39f3fc7a936")
-	)
 	(bus
 		(pts
 			(xy 312.42 87.63) (xy 312.42 85.09)
@@ -13107,6 +13107,16 @@
 			(type default)
 		)
 		(uuid "6fc7f0de-a691-4b54-acaa-c1b67d0b6713")
+	)
+	(wire
+		(pts
+			(xy 260.35 91.44) (xy 262.89 91.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "70029681-7acc-499c-8a24-3cc2757f3a42")
 	)
 	(wire
 		(pts
@@ -14780,7 +14790,7 @@
 	)
 	(wire
 		(pts
-			(xy 260.35 49.53) (xy 260.35 148.59)
+			(xy 260.35 49.53) (xy 260.35 91.44)
 		)
 		(stroke
 			(width 0)
@@ -15037,16 +15047,6 @@
 			(type default)
 		)
 		(uuid "b56d0422-1e70-4454-91d5-5e4670b2ee1a")
-	)
-	(wire
-		(pts
-			(xy 250.19 110.49) (xy 250.19 91.44)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b56eb796-febd-4c53-a263-6ad9fc9334d0")
 	)
 	(wire
 		(pts
@@ -17191,9 +17191,9 @@
 		)
 		(uuid "b5501630-620e-41fd-b25f-43d0b4511173")
 	)
-	(text "CPU/CHIP RAM CONT"
+	(text "CHIP RAM CONTROLLER"
 		(exclude_from_sim no)
-		(at 314.96 243.84 0)
+		(at 312.674 245.618 0)
 		(effects
 			(font
 				(size 6 6)
@@ -21343,7 +21343,7 @@
 			)
 		)
 	)
-	(global_label "BUFDIS"
+	(global_label "_LBEN"
 		(shape output)
 		(at 267.97 59.69 0)
 		(fields_autoplaced yes)
@@ -21355,7 +21355,7 @@
 		)
 		(uuid "a852459c-56c2-45ad-9e7c-189f9298c882")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 277.7286 59.69 0)
+			(at 276.7004 59.69 0)
 			(effects
 				(font
 					(size 1.27 1.27)

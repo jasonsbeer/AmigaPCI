@@ -6,7 +6,7 @@
 	(paper "B")
 	(title_block
 		(title "AMIGA PCI")
-		(date "2024-05-27")
+		(date "2024-05-28")
 		(rev "3.0")
 	)
 	(lib_symbols
@@ -10651,7 +10651,7 @@
 		)
 		(uuid "d32fd0bc-7cf4-49c9-9fb7-249702093075")
 	)
-	(text "U409 PROVIDES ONBOARD DEVIC3 AUTOCONFIG, ADDRESS DECODE,\nAND REPLACEMENT GARY FUNCTIONS"
+	(text "U409 PROVIDES ONBOARD DEVICE AUTOCONFIG, ADDRESS DECODE,\nAND REPLACEMENT GARY FUNCTIONS"
 		(exclude_from_sim no)
 		(at 47.752 260.858 0)
 		(effects
@@ -13161,7 +13161,7 @@
 		)
 		(uuid "ff32185e-57e9-42ef-9b03-aa7ccc397c39")
 	)
-	(global_label "BUFDIS"
+	(global_label "_LBEN"
 		(shape input)
 		(at 147.32 205.74 0)
 		(fields_autoplaced yes)
@@ -13173,7 +13173,7 @@
 		)
 		(uuid "01da9013-95ff-42f4-a82c-0ed222b694a9")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 157.0786 205.74 0)
+			(at 156.0504 205.74 0)
 			(effects
 				(font
 					(size 1.27 1.27)

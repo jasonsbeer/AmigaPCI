@@ -9593,6 +9593,12 @@
 		)
 	)
 	(junction
+		(at 313.69 115.57)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "00e46e10-4ba3-4b32-b8bd-b83eae1e17d9")
+	)
+	(junction
 		(at 49.53 88.9)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -9641,12 +9647,6 @@
 		(uuid "2896ce42-a088-434d-a714-4832f20152f9")
 	)
 	(junction
-		(at 313.69 120.65)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "2aa5c45d-3cc2-4a68-966c-639a6c25c796")
-	)
-	(junction
 		(at 59.69 60.96)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -9693,12 +9693,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "3ae51f1d-98af-407d-9314-81c27f464baf")
-	)
-	(junction
-		(at 313.69 115.57)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "3b1b8d13-2b99-411d-bf05-7e58ba983d0a")
 	)
 	(junction
 		(at 275.59 52.07)
@@ -9933,6 +9927,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "bf299ff2-f7e2-4525-83dd-d59ba3b37b60")
+	)
+	(junction
+		(at 313.69 120.65)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "c2293871-5ea2-43e2-ab93-ad95a24c0789")
 	)
 	(junction
 		(at 196.85 67.31)
@@ -11447,16 +11447,6 @@
 	)
 	(wire
 		(pts
-			(xy 313.69 120.65) (xy 313.69 125.73)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "0c6fd319-b3d8-4af8-86cd-8a48ec979824")
-	)
-	(wire
-		(pts
 			(xy 54.61 41.91) (xy 54.61 83.82)
 		)
 		(stroke
@@ -12307,7 +12297,7 @@
 	)
 	(wire
 		(pts
-			(xy 313.69 115.57) (xy 313.69 120.65)
+			(xy 313.69 105.41) (xy 313.69 115.57)
 		)
 		(stroke
 			(width 0)
@@ -13357,16 +13347,6 @@
 	)
 	(wire
 		(pts
-			(xy 358.14 209.55) (xy 358.14 207.01)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "618853b4-2831-491c-ad82-72d8c41433fa")
-	)
-	(wire
-		(pts
 			(xy 281.94 217.17) (xy 281.94 219.71)
 		)
 		(stroke
@@ -13644,6 +13624,16 @@
 			(type default)
 		)
 		(uuid "68a34259-d9b5-41d2-aa52-8fb340e70128")
+	)
+	(wire
+		(pts
+			(xy 313.69 115.57) (xy 313.69 120.65)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6a68cde9-0f42-4c58-af5f-1aa927949e16")
 	)
 	(wire
 		(pts
@@ -14627,16 +14617,6 @@
 	)
 	(wire
 		(pts
-			(xy 358.14 201.93) (xy 365.76 201.93)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "8f884344-65f9-4385-b988-65194acfb350")
-	)
-	(wire
-		(pts
 			(xy 62.23 73.66) (xy 67.31 73.66)
 		)
 		(stroke
@@ -14704,16 +14684,6 @@
 			(type default)
 		)
 		(uuid "90f98833-b0db-4c21-9f91-e8b27e918c34")
-	)
-	(wire
-		(pts
-			(xy 313.69 105.41) (xy 313.69 115.57)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "92725f8a-6bb6-497b-8252-f51ca0cc1f90")
 	)
 	(wire
 		(pts
@@ -15154,6 +15124,16 @@
 			(type default)
 		)
 		(uuid "9f0d1d30-670d-4e37-ba8e-eb0b9820e008")
+	)
+	(wire
+		(pts
+			(xy 313.69 120.65) (xy 313.69 125.73)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a005afef-2c32-4291-a2d0-200f45d25681")
 	)
 	(wire
 		(pts
@@ -15604,6 +15584,16 @@
 			(type default)
 		)
 		(uuid "af6f7b39-ff76-4251-a16e-94c32c7f12ea")
+	)
+	(wire
+		(pts
+			(xy 358.14 201.93) (xy 365.76 201.93)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "afc9ee35-ff44-474d-9cbd-2991b7acdf63")
 	)
 	(wire
 		(pts
@@ -16514,6 +16504,16 @@
 			(type default)
 		)
 		(uuid "da4eaf11-2903-4ada-bc58-80a85b57ed46")
+	)
+	(wire
+		(pts
+			(xy 358.14 200.66) (xy 358.14 201.93)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "da92d1ac-4de5-4aaf-8c60-588843927489")
 	)
 	(bus
 		(pts
@@ -20701,7 +20701,7 @@
 			)
 		)
 	)
-	(global_label "BUFDIS"
+	(global_label "_LBEN"
 		(shape output)
 		(at 387.35 204.47 0)
 		(fields_autoplaced yes)
@@ -20713,7 +20713,7 @@
 		)
 		(uuid "68831517-c3e1-4736-af80-75ebed5b8d96")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 397.1086 204.47 0)
+			(at 396.0804 204.47 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21220,7 +21220,7 @@
 			)
 		)
 	)
-	(global_label "BUFDIS"
+	(global_label "_LBEN"
 		(shape output)
 		(at 101.6 58.42 0)
 		(fields_autoplaced yes)
@@ -21232,7 +21232,7 @@
 		)
 		(uuid "c2ca36e9-a7cf-4aee-b1b0-c232dc8a5b39")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 111.3586 58.42 0)
+			(at 110.3304 58.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21451,7 +21451,7 @@
 	)
 	(global_label "_RAMEN"
 		(shape input)
-		(at 358.14 201.93 180)
+		(at 358.14 207.01 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -21460,7 +21460,7 @@
 		)
 		(uuid "ea3452cb-d88d-4490-94be-af9305a7bf09")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 348.234 201.93 0)
+			(at 348.234 207.01 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22395,71 +22395,6 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
-		(at 358.14 209.55 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "276e0441-a7bc-4b1f-97a6-b8b9b01662ad")
-		(property "Reference" "#PWR040"
-			(at 358.14 215.9 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 358.14 213.614 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 358.14 209.55 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 358.14 209.55 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 358.14 209.55 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "3052ac3b-3ab1-4c2d-a7fd-4e03f68c4b0f")
-		)
-		(instances
-			(project "AmigaPCI 68040"
-				(path "/e4eb271a-56d6-4281-ada6-40852f202c68/e434a9c9-dc49-4b97-aed3-c8d4620b07ee"
-					(reference "#PWR040")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:+3V3")
 		(at 325.12 27.94 0)
 		(unit 1)
@@ -22918,7 +22853,7 @@
 				)
 			)
 		)
-		(property "Value" "74AHCT08"
+		(property "Value" "74LVC08"
 			(at 321.3017 96.52 0)
 			(effects
 				(font
@@ -23089,7 +23024,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "74AHCT08"
+		(property "Value" "74LVC08"
 			(at 331.47 41.9099 0)
 			(effects
 				(font
@@ -23380,7 +23315,7 @@
 	)
 	(symbol
 		(lib_id "74xx:74LS08")
-		(at 321.31 118.11 0)
+		(at 368.3 40.64 0)
 		(unit 2)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -23389,15 +23324,15 @@
 		(fields_autoplaced yes)
 		(uuid "53c8b4bb-9689-461d-992f-c8ebc5e8b655")
 		(property "Reference" "U201"
-			(at 321.3017 109.22 0)
+			(at 368.2917 31.75 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "74AHCT08"
-			(at 321.3017 111.76 0)
+		(property "Value" "74LVC08"
+			(at 368.2917 34.29 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23405,7 +23340,7 @@
 			)
 		)
 		(property "Footprint" "Package_SO:TSSOP-14_4.4x5mm_P0.65mm"
-			(at 321.31 118.11 0)
+			(at 368.3 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23414,7 +23349,7 @@
 			)
 		)
 		(property "Datasheet" "http://www.ti.com/lit/gpn/sn74LS08"
-			(at 321.31 118.11 0)
+			(at 368.3 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23423,7 +23358,7 @@
 			)
 		)
 		(property "Description" "Quad And2"
-			(at 321.31 118.11 0)
+			(at 368.3 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -25095,7 +25030,7 @@
 	)
 	(symbol
 		(lib_id "74xx:74HC02")
-		(at 373.38 204.47 0)
+		(at 321.31 118.11 0)
 		(unit 4)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -25104,7 +25039,7 @@
 		(fields_autoplaced yes)
 		(uuid "90920b53-f7b9-4eac-90b4-3969d255d7f1")
 		(property "Reference" "U202"
-			(at 373.38 195.58 0)
+			(at 321.31 109.22 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -25112,7 +25047,7 @@
 			)
 		)
 		(property "Value" "74LVC02"
-			(at 373.38 198.12 0)
+			(at 321.31 111.76 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -25120,7 +25055,7 @@
 			)
 		)
 		(property "Footprint" "Package_SO:TSSOP-14_4.4x5mm_P0.65mm"
-			(at 373.38 204.47 0)
+			(at 321.31 118.11 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -25129,7 +25064,7 @@
 			)
 		)
 		(property "Datasheet" "http://www.ti.com/lit/gpn/sn74hc02"
-			(at 373.38 204.47 0)
+			(at 321.31 118.11 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -25138,7 +25073,7 @@
 			)
 		)
 		(property "Description" "quad 2-input NOR gate"
-			(at 373.38 204.47 0)
+			(at 321.31 118.11 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26275,8 +26210,73 @@
 		)
 	)
 	(symbol
+		(lib_id "power:+3V3")
+		(at 358.14 200.66 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "d28ef883-a671-4de0-9a5f-eabeffc82605")
+		(property "Reference" "#PWR033"
+			(at 358.14 204.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 358.14 196.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 358.14 200.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 358.14 200.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3V3\""
+			(at 358.14 200.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "41beff32-3d06-499c-9e38-19a9ccdb848a")
+		)
+		(instances
+			(project "AmigaPCI 68040"
+				(path "/e4eb271a-56d6-4281-ada6-40852f202c68/e434a9c9-dc49-4b97-aed3-c8d4620b07ee"
+					(reference "#PWR033")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "74xx:74LS08")
-		(at 368.3 40.64 0)
+		(at 373.38 204.47 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -26285,15 +26285,15 @@
 		(fields_autoplaced yes)
 		(uuid "d44da8d8-fff5-4d57-81f8-f5fd4d894ba1")
 		(property "Reference" "U201"
-			(at 368.2917 31.75 0)
+			(at 373.3717 195.58 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "74AHCT08"
-			(at 368.2917 34.29 0)
+		(property "Value" "74LVC08"
+			(at 373.3717 198.12 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26301,7 +26301,7 @@
 			)
 		)
 		(property "Footprint" "Package_SO:TSSOP-14_4.4x5mm_P0.65mm"
-			(at 368.3 40.64 0)
+			(at 373.38 204.47 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26310,7 +26310,7 @@
 			)
 		)
 		(property "Datasheet" "http://www.ti.com/lit/gpn/sn74LS08"
-			(at 368.3 40.64 0)
+			(at 373.38 204.47 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26319,7 +26319,7 @@
 			)
 		)
 		(property "Description" "Quad And2"
-			(at 368.3 40.64 0)
+			(at 373.38 204.47 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -27324,7 +27324,7 @@
 				)
 			)
 		)
-		(property "Value" "74AHCT08"
+		(property "Value" "74LVC08"
 			(at 321.3017 81.28 0)
 			(effects
 				(font
