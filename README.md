@@ -15,6 +15,8 @@ The AmigaPCI is an OCS/ECS Amiga computer in the ATX form factor. It provides a 
   <li>Floppy disk interface supports Amiga and PC drives in DD mode</li>  
 </list>  
 
+<p align="center"><img src="/Images/AmigaPCIMainboard-30.jpg"></p>
+
 ## Project Status  
 **THIS IS A WORK IN PROGRESS AND IS SUBJECT TO CHANGE WITHOUT NOTICE.**
 
@@ -104,6 +106,7 @@ The real time clock (RTC) of the AmigaPCI is supplied by the STM32F205 microcont
 **Rev 3.0**  Second engineering prototype.  
 
 # Acknowledgements  
+Frédéric Requin for helping me better understand the ATA protocol.
 Ian Steadman for his [Amiga PC floppy interface](https://github.com/istedman/Floppy_adaptor) design.
 
 # License
@@ -111,4 +114,4 @@ Floppy interface modifications from Ian Steadman released under the GNU GENERAL 
 
 <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://github.com/jasonsbeer/AmigaPCI">AmigaPCI</a> ©2024 by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://github.com/jasonsbeer">Jason Neus</a> is licensed under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">Attribution 4.0 International<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"></a></p>
 
-**Last Update: 14-MAY-2024**
+**Last Update: 28-MAY-2024**
