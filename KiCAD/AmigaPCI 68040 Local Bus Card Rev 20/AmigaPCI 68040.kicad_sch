@@ -1,0 +1,144 @@
+(kicad_sch
+	(version 20231120)
+	(generator "eeschema")
+	(generator_version "8.0")
+	(uuid "e4eb271a-56d6-4281-ada6-40852f202c68")
+	(paper "A")
+	(title_block
+		(title "AmigaPCI 68040")
+		(date "2024-05-31")
+		(rev "2.0")
+	)
+	(lib_symbols)
+	(text "AmigaPCI CPU LOCAL BUS CARD\nMC68040 + 128MB FAAAST RAM\n\n\"THE BRAIN\""
+		(exclude_from_sim no)
+		(at 136.398 108.204 0)
+		(effects
+			(font
+				(size 6 6)
+				(thickness 1.2)
+				(bold yes)
+			)
+		)
+		(uuid "e4719dee-c6fa-4357-bdd5-3e23855fa21d")
+	)
+	(sheet
+		(at 33.33 32.13)
+		(size 19.1 13.5)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "0949e450-9e28-4a27-951c-3961f6039256")
+		(property "Sheetname" "CPU"
+			(at 33.33 31.4184 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "CPU.kicad_sch"
+			(at 33.33 46.2146 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "AmigaPCI 68040"
+				(path "/e4eb271a-56d6-4281-ada6-40852f202c68"
+					(page "2")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 56.65 32.23)
+		(size 18.85 13.27)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "bb4ae098-973b-46ca-b387-f2229a81b6e3")
+		(property "Sheetname" "Fast Memory"
+			(at 56.65 31.5184 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "FastMem.kicad_sch"
+			(at 56.65 46.0846 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "AmigaPCI 68040"
+				(path "/e4eb271a-56d6-4281-ada6-40852f202c68"
+					(page "3")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 33.4 53.82)
+		(size 19.1 12.3)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "e434a9c9-dc49-4b97-aed3-c8d4620b07ee")
+		(property "Sheetname" "Card Connector"
+			(at 33.4 53.1084 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "CardConnector.kicad_sch"
+			(at 33.4 66.7046 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "AmigaPCI 68040"
+				(path "/e4eb271a-56d6-4281-ada6-40852f202c68"
+					(page "4")
+				)
+			)
+		)
+	)
+	(sheet_instances
+		(path "/"
+			(page "1")
+		)
+	)
+)
