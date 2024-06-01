@@ -10,6 +10,8 @@ This document defines how the PCI Local Bus Rev. 2.3 specification is implemente
 
 This document is a work in progress and is presented "as-is" with no waranty expressed or implied.
 
+<p align="center"><b>**THIS DOCUMENT IS A WORK IN PROGRESS AND IS SUBJECT TO CHANGE WITHOUT NOTICE. IT IS INCOMPLETE AT THIS TIME AND NEEDS REVIEW.**</b></p>
+
 **Conventions**
 
 1) Signals are presented as bold font, such as **_FRAME** or **_TA**.
