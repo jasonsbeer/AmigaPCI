@@ -4,7 +4,7 @@
 
 <p align="center">"If I have seen further, it is by standing on the shoulders of giants."<br>-Sir Isaac Newton</p>
 
-<p align="center"><b>**THIS DOCUMENT IS A WORK IN PROGRESS AND IS SUBJECT TO CHANGE WITHOUT NOTICE.**</b></p>
+<p align="center"><b>**THIS DOCUMENT IS A WORK IN PROGRESS AND IS SUBJECT TO CHANGE WITHOUT NOTICE. IT IS INCOMPLETE AT THIS TIME AND NEEDS REVIEW.**</b></p>
 
 <p align="center">For information on developing PCI hardware, see the <b>AmigaPCI PCI Hardware Developer Reference</b> guide.</p>
 
@@ -17,9 +17,18 @@
 5) AmigaPCI refers to this specification or any implementation of this specification, in part or whole.
 6) CPU refers to the Motorola MC68040 or MC68060 processor, unless otherwise specified.
 
+**Revision History**  
+Revision|Date|Status
+-|-|-
+0.0|June 1, 2024|FIRST DRAFT
+
+<p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://github.com/jasonsbeer/AmigaPCI">AmigaPCI PCI Hardware Developer Reference</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://github.com/jasonsbeer">Jason Neus</a> is licensed under <a href="https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">Creative Commons Attribution-NonCommercial 4.0 International<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt=""></a></p>
+
+---
+
 # AmigaPCI
 
-The AmigaPCI is a Motorola MC68040/MC68060 based OCS/ECS* Amiga computer in the ATX form factor. It provides five AUTOCONFIG capable PCI slots for expansion purposes such as video, sound, etc.
+The AmigaPCI is a Motorola MC68040/MC68060 based OCS/ECS* Amiga computer in the ATX form factor. It provides a flexible CPU Local Bus port, five AUTOCONFIG PCI slots for expansion purposes such as video and sound, an on-board dual port ATA controller, and offers performance improvements over legacy Amiga designs.
 
 *Original Chip Set and Enhanced Chip Set, respectively.
 
@@ -138,8 +147,6 @@ The real time clock (RTC) of the AmigaPCI is supplied by the STM32F205 microcont
 Functions that engage the chipset must follow the 7.16MHz timings of the timings of the Motorolla MC68000 (MC68000 herein) as implimented in the OCS/ECS Amiga designs.
 
 #### 2.1 Chipset Register Cycles
-
-~~**THE PRESENCE OF LATCHES ON THE DRD BUS NEEDS TO BE INVESTIGATED. IF THE AGNUS AND DRAM TIMING SHEETS ARE ACCURATE, THESE LATCHES ARE NOT NECESSARY. SO, WHAT IS THEIR PURPOSE?~~
 
 The CPU accesses most chipset registers through Agnus. The chipset register cycle is as follows:
 
