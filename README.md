@@ -23,9 +23,13 @@ The AmigaPCI is an OCS/ECS Amiga computer in the ATX form factor. It provides a 
 
 This is an active project and is currently in the prototype stage. See [Milestones and progress](milestones.md) for current status. Because this project is in the prototype stage, it is not recommended for general use at this time. There will be errors that adversely affect performance and the logic equations are not complete. If you choose to build this before final release, you accept all cost and risk associated with the decision.
 
+For the technically minded, I would appreciate a review of the [AmigaPCI Hardware Reference](/AmigaPCI_Technical_Manual.md) and [AmigaPCI PCI Hardware Developer Reference](/AmigaPCI_PCI_Dev_Guide.md) references.  
+
+I am not seeking hardware enhancement requests at this time, but feel free to post these in the issues section. Discussions can be found at Discord: https://discord.gg/NU7SPYfNFj.
+
 # Building the AmigaPCI
 
-[Ordering PCB](pcb_order.md)  
+[Ordering PCBs](pcb_order.md)  
 [Assembly Notes](assembly.md)
 [Hardware Information](hardware_info.md)  
 [Programming the FPGAs](program_fpga.md)  
@@ -94,8 +98,8 @@ The real time clock (RTC) of the AmigaPCI is supplied by the STM32F205 microcont
 
 # References
 
-[AmigaPCI Hardware Developer Guide](/AmigaPCI_PCI_Dev_Guide.md)  
-[AmigaPCI Technical Reference](/AmigaPCI_Technical_Manual.md)  
+[AmigaPCI PCI Hardware Developer Reference](/AmigaPCI_PCI_Dev_Guide.md)  
+[AmigaPCI Hardware Reference](/AmigaPCI_Technical_Manual.md)  
 [PCI Local Bus Revision 2.3 specifications](/DataSheets/PCI/pci_23.pdf)  
 
 # Revision History   
