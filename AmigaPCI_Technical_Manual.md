@@ -98,14 +98,7 @@ J202|1-2|2-3
 
 ### 1.5 ATA/ATAPI
 
-**REWORD THIS FOR WHATEVER DRIVER WE USE**
-
-<del>The AmigaPCI includes two buffered, host terminated Gayle compatible AUTOBOOT* IDE ports for hard drives and ATAPI** devices. The IDE port complies with the ATA/ATAPI Revision 4[[1]](#1) standard. Each IDE port supports two devices (master and slave). For instructions on installing and partitioning hard drives on the Amiga, refer to the [Commodore Hard Drive User's Guide](DataSheets/Hard_Drive_Users_Guide.pdf). This includes the HDToolBox user guide and other useful information for setting up both IDE and SCSI devices.</del>
-
-<del>In order to use the secondary port, IDEFix must be installed and can be obtained from AmiNET.</del>
-
-<del>*AUTOBOOT is only available on the primary port and requires Kickstart v37.300 or greater or compatible scsi.device in Kickstart.</del>
-<del>**ATAPI support included in Kickstart 3.1.4+. Older versions of Kickstart may require installation of third party ATAPI drivers.</del>
+The AmigaPCI includes two buffered, host terminated AUTOBOOT IDE ports for hard drives and ATAPI devices. Each IDE port supports two devices (master and slave) and is capable of 32-bit data transfer cycles. For instructions on installing and partitioning hard drives on the Amiga, refer to the [Commodore Hard Drive User's Guide](DataSheets/Hard_Drive_Users_Guide.pdf). This includes the HDToolBox user guide and other useful information for setting up both IDE and SCSI devices.
 
 <p align="center"><img src="/DataSheets/TimingDiagrams/IDE Control Register Read.png" width="650"></p>
 <p align="center"><img src="/DataSheets/TimingDiagrams/IDE Control Register Write.png" width="650"></p>
