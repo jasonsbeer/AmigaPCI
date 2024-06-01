@@ -98,7 +98,7 @@ J202|1-2|2-3
 
 ### 1.5 ATA/ATAPI
 
-The AmigaPCI includes two buffered, host terminated AUTOBOOT IDE ports for hard drives and ATAPI devices. Each IDE port supports two devices (master and slave) and is capable of 32-bit data transfer cycles. For instructions on installing and partitioning hard drives on the Amiga, refer to the [Commodore Hard Drive User's Guide](DataSheets/Hard_Drive_Users_Guide.pdf). This includes the HDToolBox user guide and other useful information for setting up both IDE and SCSI devices.
+The AmigaPCI includes two buffered, host terminated AUTOBOOT ATA ports for hard drives and ATAPI devices. Each ATA port supports two devices (master and slave) and is capable of 32-bit data transfer cycles. For instructions on installing and partitioning hard drives on the Amiga, refer to the [Commodore Hard Drive User's Guide](DataSheets/Hard_Drive_Users_Guide.pdf). This includes the HDToolBox user guide and other useful information for setting up both ATA and SCSI devices.
 
 <p align="center"><img src="/DataSheets/TimingDiagrams/IDE Control Register Read.png" width="650"></p>
 <p align="center"><img src="/DataSheets/TimingDiagrams/IDE Control Register Write.png" width="650"></p>
@@ -190,7 +190,7 @@ The AmigaPCI utilizes the CPU Local Bus port to attach CPU devices to the AmigaP
 
 ## 3.1 Footprint
 
-The CPU Local Bus physical connector of the AmigaPCI is a DIN 41612 120 pin socket, 3 rows by 40 columns. The female (receptical) portion is on the AmigaPCI main board. The male (plug) portion is on the CPU Local Bus card. Examples of these connectors are part numbers 5535098-5 and 5650910-5 from TE Connectivity AMP Connectors. Specific footprint dimensions are not defined. The engineer may make the card any size they wish, within practical limits. The physical size must not extend outside the ATX specifications from the mounting point. It must not interfere with the ATX power and IDE connectors and must not interfere with video cards or full size PCI plug in cards. In addition to the connector itself, there are two additional mounting points to accomodate the CPU Local Bus card.
+The CPU Local Bus physical connector of the AmigaPCI is a DIN 41612 120 pin socket, 3 rows by 40 columns. The female (receptical) portion is on the AmigaPCI main board. The male (plug) portion is on the CPU Local Bus card. Examples of these connectors are part numbers 5535098-5 and 5650910-5 from TE Connectivity AMP Connectors. Specific footprint dimensions are not defined. The engineer may make the card any size they wish, within practical limits. The physical size must not extend outside the ATX specifications from the mounting point. It must not interfere with the ATX power and ATA connectors and must not interfere with video cards or full size PCI plug in cards. In addition to the connector itself, there are two additional mounting points to accomodate the CPU Local Bus card.
 
 The origin datum and component points can be seen in Image 3.1. The origin of all measurements is the upper left hole (datum = 0,0). The image is looking down on top of the card. The DIN connector is attached to the back of the card. As a reference, the AmigaPCI-040 CPU Local Bus Card is 140mm x 95mm.
 
