@@ -1,1 +1,0 @@
--intstyle "ise" -incremental -o "/home/jason/Documents/AmigaPCI Logic Work/U409_AmigaPCI/U409_AddressDecode_isim_beh.exe" -prj "/home/jason/Documents/AmigaPCI Logic Work/U409_AmigaPCI/U409_AddressDecode_beh.prj" "work.U409_AddressDecode" 

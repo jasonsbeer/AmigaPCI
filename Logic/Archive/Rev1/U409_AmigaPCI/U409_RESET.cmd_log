@@ -1,1 +1,0 @@
-vhdtdtfi -prj U409_AmigaPCI -o "/home/jason/Documents/AmigaPCI Logic Work/U409_AmigaPCI/U409_RESET.vhi" -module U409_RESET -template /mnt/work/ISERUN/14.7/ISE_DS/ISE//data/vhdlinst.tft -deleteonerror -lib work U409_RESET.vhd 

@@ -1,1 +1,0 @@
--intstyle "ise" -incremental -o "/home/jason/Documents/AmigaPCI Logic Work/U711_AmigaPCI/U711_MAIN_isim_beh.exe" -prj "/home/jason/Documents/AmigaPCI Logic Work/U711_AmigaPCI/U711_MAIN_beh.prj" "work.U711_MAIN" 

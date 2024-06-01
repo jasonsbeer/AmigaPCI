@@ -1,1 +1,0 @@
-vhdtdtfi -prj U908_AmigaPCI -o "/home/jason/Documents/AmigaPCI Logic Work/U908_AmigaPCI/U908_BYTE_ENABLE.vhi" -module U908_BYTE_ENABLE -template /mnt/work/ISERUN/14.7/ISE_DS/ISE//data/vhdlinst.tft -deleteonerror -lib work U908_BYTE_ENABLE.vhd 

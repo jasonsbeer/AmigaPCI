@@ -6,25 +6,27 @@ The AmigaPCI is an OCS/ECS Amiga computer in the ATX form factor. It provides a 
 <list>
   <li>CPU Local Bus supports multiple CPU and fast RAM options</li>
   <li>Five AUTOCONFIG PCI 5V/Univeral slots</li>
+  <li>"True" PCI DMA allowing access to all Amiga and PCI address spaces</li>  
   <li>HID mouse and keyboard inputs</li>
   <li>Dual port IDE interface supporting up to 4 total devices</li>
   <li>Agnus 8372A or 8375 selectable by jumper</li>
   <li>2MB "Fast Chip" RAM available regardless of Agnus revision</li>
   <li>Fast CIA cycles</li>
-  <li>Amiga Video Slot</li>  
-  <li>Floppy disk interface supports Amiga and PC drives in DD mode</li>  
-</list>  
+  <li>Amiga Video Slot</li>
+  <li>Floppy disk interface supports Amiga and PC drives in DD mode</li>
+</list></br>
 
 <p align="center"><img src="/Images/AmigaPCIMainboard-30.jpg"></p>
 
 ## Project Status  
 **THIS IS A WORK IN PROGRESS AND IS SUBJECT TO CHANGE WITHOUT NOTICE.**
 
-This is an active project and is currently in the prototype stage. See [Milestones and progress](milestones.md) for current status. Because this project is in the prototype stage, it is not recommended for general release at this time. There may be errors that will adversely affect performance and the logic equations are not complete. If you choose to build this, you accept all cost and risk associated with the decision.
+This is an active project and is currently in the prototype stage. See [Milestones and progress](milestones.md) for current status. Because this project is in the prototype stage, it is not recommended for general use at this time. There will be errors that adversely affect performance and the logic equations are not complete. If you choose to build this before final release, you accept all cost and risk associated with the decision.
 
 # Building the AmigaPCI
 
 [Ordering PCB](pcb_order.md)  
+[Assembly Notes](assembly.md)
 [Hardware Information](hardware_info.md)  
 [Programming the FPGAs](program_fpga.md)  
 
@@ -34,18 +36,10 @@ This is an active project and is currently in the prototype stage. See [Mileston
 The PCI bus is based on the [PCI Local Bus Revision 2.3 specifications](/DataSheets/PCI/pci_23.pdf). The PCI Bridge implements a bidirectional asynchronous FIFO to facilitate data movements between the buses. Each slot is compatable with Universal and 5V PCI devices. All efforts are made to align implemented PCI features completely with the PCI Local Bus Revision 2.3. There are no undocumented PCI commands. Each slot is capable of supporting AUTOCONFIG for Amiga specific devices. Software configuration (Prometheus mode) is also available for non-Amiga specific hardware. The AmigaPCI supports true DMA, with each PCI device having total access to all PCI and Amiga address spaces.
 
 ## CPU Local Bus
-The AmigaPCI main board has no CPU or fast ram. Instead, the CPU Local Bus port supports CPUs and AUTOCONFIG devices. The CPU Local Bus is a DIN 41612 connector with 120 pins in 3 rows by 40 columns. The CPU local bus is discussed in the [AmigaPCI Technical Reference](/TechnicalManual.md). This approach allows AUTOCONFIG devices be optimized for the clock speed and capabilities of the CPU device implemented.
+The AmigaPCI main board has no CPU or fast ram. Instead, the CPU Local Bus port supports CPUs and AUTOCONFIG devices. The CPU Local Bus is a DIN 41612 connector with 120 pins in 3 rows by 40 columns. The CPU local bus is discussed in the [AmigaPCI Technical Reference Manual](/AmigaPCI_Technical_Manual.md). This approach allows fast RAM and other AUTOCONFIG devices be optimized for the clock speed and capabilities of the CPU device implemented.
 
 ## Amiga Custom Chips  
-The AmigaPCI must be populated with the Amiga OCS/ECS chips shown in Table 1. The Amiga chipset is required to enable critical functions of the Amiga computer.
-
-Table 1. Amiga chipset.
-Name|Chip ID|Commodore Part Number(s)|Quantity
--|-|-|-
-Agnus|8372A or 8375||1
-Denise|8362 or 8373||1
-Paula|8364||1
-CIA|8520A-1 or 8520PD|318029-03|2
+The AmigaPCI must be populated with the Amiga OCS/ECS custom chips. See The Amiga chipset is required to enable critical functions of the Amiga computer. See [Assembly Notes](assembly.md) for more information.
 
 ## Kickstart ROM  
 Kickstart ROM version 3.2 or greater for the Amiga 3000 should be burned to 100ns or faster 27C4096 EPROMs (DIP-40 footprint) for use by the AmigaPCI. Original Amiga Kickstart ROM footprints are not supported. 
@@ -98,8 +92,8 @@ The real time clock (RTC) of the AmigaPCI is supplied by the STM32F205 microcont
 
 # References
 
-[AmigaPCI Hardware Developer Guide](/developer_guide.md)  
-[AmigaPCI Technical Reference](/TechnicalManual.md)  
+[AmigaPCI Hardware Developer Guide](/AmigaPCI_PCI_Dev_Guide.md)  
+[AmigaPCI Technical Reference](/AmigaPCI_Technical_Manual.md)  
 [PCI Local Bus Revision 2.3 specifications](/DataSheets/PCI/pci_23.pdf)  
 
 # Revision History   
@@ -110,8 +104,8 @@ Frédéric Requin for helping me better understand the ATA protocol.
 Ian Steadman for his [Amiga PC floppy interface](https://github.com/istedman/Floppy_adaptor) design.
 
 # License
-Floppy interface modifications from Ian Steadman released under the GNU GENERAL PUBLIC LICENSE, Version 3.
+Floppy interface modifications from Ian Steadman (noted in schematic) released under the GNU GENERAL PUBLIC LICENSE, Version 3.
 
-<p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://github.com/jasonsbeer/AmigaPCI">AmigaPCI</a> ©2024 by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://github.com/jasonsbeer">Jason Neus</a> is licensed under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">Attribution 4.0 International<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"></a></p>
+<p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://github.com/jasonsbeer/AmigaPCI">AmigaPCI</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://github.com/jasonsbeer">Jason Neus</a> is licensed under <a href="https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">Creative Commons Attribution-NonCommercial 4.0 International<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt=""></a></p>
 
-**Last Update: 28-MAY-2024**
+**Last Update: 01-JUN-2024**

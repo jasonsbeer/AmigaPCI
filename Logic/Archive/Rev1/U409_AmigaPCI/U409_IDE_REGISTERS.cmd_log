@@ -1,2 +1,0 @@
-vhdtdtfi -prj U409_AmigaPCI -o "/home/jason/Documents/AmigaPCI Logic Work/U409_AmigaPCI/U409_IDE_REGISTERS.vhi" -module U409_IDE_REGISTERS -template /mnt/work/ISERUN/14.7/ISE_DS/ISE//data/vhdlinst.tft -deleteonerror -lib work U409_IDE_REGISTERS.vhd 
-vhdtdtfi -prj U409_AmigaPCI -o "/home/jason/Documents/AmigaPCI Logic Work/U409_AmigaPCI/U409_IDE_REGISTERS.vhi" -module U409_IDE_REGISTERS -template /mnt/work/ISERUN/14.7/ISE_DS/ISE//data/vhdlinst.tft -deleteonerror -lib work U409_IDE_REGISTERS.vhd 
