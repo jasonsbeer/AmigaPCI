@@ -6,7 +6,7 @@ The AmigaPCI is an OCS/ECS Amiga computer in the ATX form factor. It provides a 
 <list>
   <li>CPU Local Bus supports multiple CPU and fast RAM options</li>
   <li>Five AUTOCONFIG PCI 5V/Univeral slots</li>
-  <li>"True" PCI DMA allowing access to all Amiga and PCI address spaces</li>  
+  <li>PCI DMA allowing access to all Amiga and PCI address spaces</li>  
   <li>HID mouse and keyboard inputs</li>
   <li>Dual port IDE interface supporting up to 4 total devices</li>
   <li>Agnus 8372A or 8375 selectable by jumper</li>
