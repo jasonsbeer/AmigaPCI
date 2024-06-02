@@ -2,7 +2,7 @@
 
 ## Goal 1: Place and route boards.
 
-01-APR-2024: Revision 2.0 prototype boards in-hand and partially assembled to begin testing.
+01-APR-2024: Revision 2.0 prototype boards in-hand and partially assembled to begin testing.  
 30-MAY-2024: Revision 3.0 prototype boards ordered from JLCPCB.
 
 ## Goal 2: POST to Kickstart 3.x
