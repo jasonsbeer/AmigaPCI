@@ -40,12 +40,12 @@ I am not seeking hardware enhancement requests at this time, but feel free to po
 The PCI bus is based on the [PCI Local Bus Revision 2.3 specifications](/DataSheets/PCI/pci_23.pdf). The PCI Bridge implements a bidirectional asynchronous FIFO to facilitate data movements between the buses. Each slot is compatable with Universal and 5V PCI devices. All efforts are made to align implemented PCI features completely with the PCI Local Bus Revision 2.3. There are no undocumented PCI commands. Each slot is capable of supporting AUTOCONFIG for Amiga specific devices. Software configuration (Prometheus mode) is also available for non-Amiga specific hardware. The AmigaPCI supports true DMA, with each PCI device having total access to all PCI and Amiga address spaces.
 
 ## CPU Local Bus
-The AmigaPCI main board has no CPU or fast ram. Instead, the CPU Local Bus port supports CPUs and AUTOCONFIG devices. The CPU Local Bus is a DIN 41612 connector with 120 pins in 3 rows by 40 columns. The CPU local bus is discussed in the [AmigaPCI Technical Reference Manual](/AmigaPCI_Technical_Manual.md). This approach allows fast RAM and other AUTOCONFIG devices be optimized for the clock speed and capabilities of the CPU device implemented.
+The AmigaPCI main board has no CPU or fast ram. Instead, the CPU Local Bus port supports CPUs and AUTOCONFIG devices. The CPU Local Bus port is a DIN 41612 connector with 120 pins in 3 rows by 40 columns. The CPU local bus is discussed further in the [AmigaPCI Technical Reference Manual](/AmigaPCI_Technical_Manual.md). This approach allows fast RAM and other AUTOCONFIG devices be optimized for the clock speed and capabilities of the CPU device implemented.
 
 <p align="center"><img src="/Images/CPULocalBus-20.jpg" width="400"></p>
 
 ## Amiga Custom Chips  
-The AmigaPCI must be populated with the Amiga OCS/ECS custom chips. See The Amiga chipset is required to enable critical functions of the Amiga computer. See [Assembly Notes](assembly.md) for more information.
+The AmigaPCI must be populated with the Amiga OCS/ECS custom chips. The Amiga chipset is required to enable critical functions of the Amiga computer. See [Assembly Notes](assembly.md) for more information.
 
 ## Kickstart ROM  
 Kickstart ROM version 3.2 or greater for the Amiga 3000 should be burned to 100ns or faster 27C4096 EPROMs (DIP-40 footprint) for use by the AmigaPCI. Original Amiga Kickstart ROM footprints are not supported. 
