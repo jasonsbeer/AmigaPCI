@@ -3,6 +3,7 @@
 ## Goal 1: Place and route boards.
 
 01-APR-2024: Revision 2.0 prototype boards in-hand and partially assembled to begin testing.
+30-MAY-2024: Revision 3.0 prototype boards ordered from JLCPCB.
 
 ## Goal 2: POST to Kickstart 3.x
 
@@ -12,7 +13,7 @@ Verify Startup Critical Signals|||
 ||80MHz|27-APR-2024|
 ||40MHz|27-APR-2024|
 ||28MHz|27-APR-2024|
-||7MHz||
+||7MHz|27-APR-2024|
 ||60Hz||
 ||50Hz||
 ||CLKCIA|27-APR-2024|Should be 2MHz with 50% duty cycle
@@ -22,8 +23,8 @@ Verify Startup Critical Signals|||
 Milestone|Action|Completed|Comments
 -|-|-|-
 Verify ROM is read correctly|||
-||_ROMEN||
-||_TA is asserted correctly||_TA to assert ~100ns after _ROMEN
+||_ROMEN|28-APR-2024|
+||_TA is asserted correctly|28-APR-2024|_TA to assert ~100ns after _ROMEN
 
 Milestone|Action|Completed|Comments
 -|-|-|-
