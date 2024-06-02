@@ -226,10 +226,10 @@ R_W|TTL|BI|CPU read/write.
 _RESET|TTL|I|System reset.
 _RSTOUT|TTL|O|CPU reset system request.
 SIZ1-0|TTL|BI|CPU transfer size 1 and 0.
-_TA|LVTTL|BI|CPU transfer acknowledge. Open drain.
-_TBI|LVTTL|I|Transfer burst inhibit. Open drain.
-_TCI|LVTTL|I|CPU transfer cache inhibit. Open drain.
-_TEA|LVTTL|I|CPU transfer error acknowledge. Open drain.
+_TA|LVTTL|BI|CPU transfer acknowledge. Tristate.
+_TBI|LVTTL|I|Transfer burst inhibit. Tristate.
+_TCI|LVTTL|I|CPU transfer cache inhibit. Tristate.
+_TEA|LVTTL|I|CPU transfer error acknowledge. Tristate.
 _TIP|TTL|BI|CPU transfer in progress.
 TM2-0|TTL|BI|CPU transfer modifier 2, 1, and 0.
 _TS|TTL|BI|CPU transfer start.
