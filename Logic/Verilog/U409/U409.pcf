@@ -34,8 +34,12 @@ set_io   -pullup yes   nTCI  115
 set_io   -pullup yes   nTBI  116
 set_io   -pullup yes   nTA   117
 
+set_io   CLK6        52
+set_io   TICK60      55
+set_io   TICK50      56
 set_io   nRESET      62
 set_io   OVL         81
+set_io   nBUFEN      119
 set_io   nROMEN      124
 set_io   CLK40       129
 set_io   nTS         134

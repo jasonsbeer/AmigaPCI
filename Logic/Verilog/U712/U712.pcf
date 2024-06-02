@@ -1,0 +1,9 @@
+set_io CLK20   20
+set_io CLK40   21
+set_io CLK80   38
+set_io nDBEN   42
+set_io nVBEN   44
+set_io nCRCS   60
+set_io nDRDEN  110
+set_io nAS     116
+set_io nREGEN  141
