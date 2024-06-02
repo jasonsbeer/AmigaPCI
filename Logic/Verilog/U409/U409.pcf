@@ -1,0 +1,41 @@
+set_io   -pullup yes   A[1]  144
+set_io   -pullup yes   A[2]  143
+set_io   -pullup yes   A[3]  1
+set_io   -pullup yes   A[4]  18  
+set_io   -pullup yes   A[5]  19
+set_io   -pullup yes   A[6]  20
+set_io   -pullup yes   A[7]  21
+set_io   -pullup yes   A[8]  22  
+set_io   -pullup yes   A[9]  23
+set_io   -pullup yes   A[10] 24
+set_io   -pullup yes   A[11] 25
+set_io   -pullup yes   A[12] 26
+set_io   -pullup yes   A[13] 28
+set_io   -pullup yes   A[14] 29
+set_io   -pullup yes   A[15] 31
+set_io   -pullup yes   A[16] 32
+set_io   -pullup yes   A[17] 33
+set_io   -pullup yes   A[18] 34
+set_io   -pullup yes   A[19] 37
+set_io   -pullup yes   A[20] 17
+set_io   -pullup yes   A[21] 15
+set_io   -pullup yes   A[22] 3
+set_io   -pullup yes   A[23] 16
+set_io   -pullup yes   A[24] 8
+set_io   -pullup yes   A[25] 12 
+set_io   -pullup yes   A[26] 4 
+set_io   -pullup yes   A[27] 11 
+set_io   -pullup yes   A[28] 2 
+set_io   -pullup yes   A[29] 7
+set_io   -pullup yes   A[30] 9
+set_io   -pullup yes   A[31] 10
+
+set_io   -pullup yes   nTCI  115 
+set_io   -pullup yes   nTBI  116
+set_io   -pullup yes   nTA   117
+
+set_io   nRESET      62
+set_io   OVL         81
+set_io   nROMEN      124
+set_io   CLK40       129
+set_io   nTS         134
