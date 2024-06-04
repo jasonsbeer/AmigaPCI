@@ -44,7 +44,7 @@ The AmigaPCI is intended to operate with the Motorola MC68040 or MC68060 process
 
 The AmigaPCI includes expansion busses that allow for the user to expand the machine beyond its original capabilities.
 
-#### 1.2.1 CPU Local Bus Connector
+#### 1.2.1 CPU Local Bus Port
 
 The AmigaPCI utilizes a CPU Local Bus port to attach CPU devices to the AmigaPCI main board. The AmigaPCI has no CPU or fast RAM on the main board. Instead, the CPU and fast RAM is contained on a daughter card. This approach enables easier CPU upgrades with RAM logic suited to the specific processor and allows for inclusion of AUTOCONFIG devices on the CPU Local Bus card. See Section 2.0.
 
