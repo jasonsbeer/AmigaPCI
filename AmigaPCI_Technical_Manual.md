@@ -50,7 +50,7 @@ The AmigaPCI utilizes a CPU Local Bus port to attach CPU devices to the AmigaPCI
 
 #### 1.2.2 PCI
 
-The PCI bus is based on the PCI Local Bus Revision 2.3 specifications[[2]](#2) and is discussed in detail in Section 2. All efforts are made to align implemented PCI features completely with the PCI Local Bus Revision 2.3. There are no shortcuts, workarounds, or "tricks". Discussion of implemented features will work exactly as detailed in the PCI Local Bus Revision 2.3 specifications.
+The PCI bus is based on the PCI Local Bus Revision 2.3 specifications and is discussed in detail in the AmigaPCI PCI Hardware Developer Reference. All efforts are made to align implemented PCI features completely with the PCI Local Bus Revision 2.3. Discussion of implemented features will work exactly as detailed in the PCI Local Bus Revision 2.3 specifications.
 
 #### 1.2.3 Video Slot
 
@@ -80,7 +80,7 @@ Kickstart ROMs for the Amiga 3000 should be burned to 100ns or faster 27C4096 EP
 
 The floppy disk interface is the primary way Amiga based computers store and retrieve external data. The AmigaPCI includes a header that supports two internal double density floppy disk drives. In the event two floppy disk drives (DF0 and DF1) are installed on the floppy disk drive header, J200 must have a jumper placed. When only one floppy disk drive is installed (DF0), there should be no jumper. See Table 1.4.1.
 
-In addition to supporting original Amiga floppy disk drives, the AmigaPCI also supports floppy disk drives designed for the PC. An adaptation of Ian Steadman's PC floppy interface[[3]](#3) is implemented. Set the jumpers as shown in Table 1.4.2 depending on the type of floppy disk drives you are using. When using high density disk drives with high density floppy disks, it may be necessary to cover the high density hole with tape to prevent the disk drive from attempting to use the disk as high density, which is not supported by the Amiga chipset. This may not be necessary for all high density floppy disk drive mechanisms.
+In addition to supporting original Amiga floppy disk drives, the AmigaPCI supports floppy disk drives designed for the PC. An adaptation of Ian Steadman's PC floppy interface is implemented. Set the jumpers as shown in Table 1.4.2 depending on the type of floppy disk drives you are using. When using high density disk drives with high density floppy disks, it may be necessary to cover the high density hole with tape to prevent the disk drive from attempting to use the disk as high density, which is not supported by the Amiga chipset. This may not be necessary for all high density floppy disk drive mechanisms.
 
 > [!NOTE]
 > **You must use either Amiga disk drives or PC disk drives. Do not mix the two types.** 
@@ -173,7 +173,7 @@ The CPU accesses the 32-bit chipset RAM independently of Agnus, which is a perfo
 
 #### 2.4 CIA Cycles
 
-We have eliminated the Enable cycle as implemented in all original Amiga designs. The E-Cycle operates at 1/10 the CPU clock speed, which is approximately 0.71MHz in the original Amiga architecture. While still relatively slow, we can cut the CIA access time significantly by implementing the 2MHz timings from the 8502A data sheet. During a read cycle, the CIA needs 180ns for data to become valid while the clock input (PHI2) is high and the chip select is asserted (low). For the best case, the CPU should start a cycle just after the rising edge of PHI2. This will allow enough time for the CIA to place data on the bus so the CPU can latch the data at the falling edge of PHI2. This cycle is approximately 237ns. The worst case scenario is when the CPU starts a cycle too late to meet the 180ns time before the falling edge of PHI2. This results in the need to wait until the next rising edge of PHI2 to interact with the CIA. This cycle is approximately 700ns. Write cycles are more forgiving, as the setup time is only 75ns.
+The Enable cycle as implemented in all original Amiga designs has been eliminated. The E-Cycle operates at 1/10 the CPU clock speed, which is approximately 0.71MHz in the original Amiga architecture. We can cut the CIA access time significantly by implementing the 2MHz timings from the 8502A data sheet. During a read cycle, the CIA needs 180ns for data to become valid while the clock input (PHI2) is high and the chip select is asserted (low). For the best case, the CPU should start a cycle just after the rising edge of PHI2. This will allow enough time for the CIA to place data on the bus so the CPU can latch the data at the falling edge of PHI2. This cycle is approximately 237ns. The worst case scenario is when the CPU starts a cycle too late to meet the 180ns time before the falling edge of PHI2. This results in the need to wait until the next rising edge of PHI2 to interact with the CIA. This cycle is approximately 700ns. Write cycles are more forgiving, as the setup time is only 75ns.
 
 <p align="center"><img src="/DataSheets/TimingDiagrams/CIA Cycle Best Case Read.png" width="650"></p>
 <p align="center"><img src="/DataSheets/TimingDiagrams/CIA Cycle Best Case Write.png" width="650"></p>
@@ -290,4 +290,4 @@ Pin|Signal|Pin|Signal|Pin|Signal
 
 The required data, address, and supporting signal buffering is included on the AmigaPCI main board. It is not required on the CPU Local Bus device. When an AUTOCONFIG device is present and actively being addressed on the CPU Local Bus card, _LBEN is asserted. When the CPU Local Bus AUTOCONFIG device is addressed during CPU cycles, the buffers are disabled. When the CPU Local Bus AUTOCONFIG device is addressed during DMA cycles, the buffers are enabled. 
 
-
+**END**
