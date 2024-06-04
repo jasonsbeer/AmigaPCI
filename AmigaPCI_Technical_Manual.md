@@ -4,7 +4,7 @@
 
 <p align="center">"If I have seen further, it is by standing on the shoulders of giants."<br>-Sir Isaac Newton</p>
 
-<p align="center"><b>**THIS DOCUMENT IS A WORK IN PROGRESS AND IS SUBJECT TO CHANGE WITHOUT NOTICE. IT IS INCOMPLETE AT THIS TIME AND NEEDS REVIEW.**</b></p>
+<p align="center"><b>**THIS DOCUMENT IS A WORK IN PROGRESS AND IS SUBJECT TO CHANGE WITHOUT NOTICE.**</b></p>
 
 <p align="center">For information on developing PCI hardware, see the <b>AmigaPCI PCI Hardware Developer Reference</b> guide.</p>
 
