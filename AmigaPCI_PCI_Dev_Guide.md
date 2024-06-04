@@ -10,7 +10,7 @@ This document defines how the PCI Local Bus Rev. 2.3 specification is implemente
 
 This document is a work in progress and is presented "as-is" with no waranty expressed or implied.
 
-<p align="center"><b>**THIS DOCUMENT IS A WORK IN PROGRESS AND IS SUBJECT TO CHANGE WITHOUT NOTICE. IT IS INCOMPLETE AT THIS TIME AND NEEDS REVIEW.**</b></p>
+<p align="center"><b>**THIS DOCUMENT IS A WORK IN PROGRESS AND IS SUBJECT TO CHANGE WITHOUT NOTICE.**</b></p>
 
 **Conventions**
 
@@ -21,12 +21,14 @@ This document is a work in progress and is presented "as-is" with no waranty exp
 5) Hex values are presented with a leading $ (dollar sign) and a space inserted every 4 characters for clarity.
 6) AmigaPCI refers to this specification or any implementation of this specification, in part or whole.
 7) CPU refers to the Motorola MC68040 or MC68060 processor, unless otherwise specified.
+</br>
 
 **Revision History**  
 Revision|Date|Status
 -|-|-
 0.0|June 1, 2024|FIRST DRAFT
-
+0.1|June 3, 2024|Fixed(?) Endianness Discussion
+</br>
 <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://github.com/jasonsbeer/AmigaPCI">AmigaPCI PCI Hardware Developer Reference</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://github.com/jasonsbeer">Jason Neus</a> is licensed under <a href="https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">Creative Commons Attribution-NonCommercial 4.0 International<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt=""></a></p>
 
 ---
@@ -35,7 +37,7 @@ Revision|Date|Status
 
 The PCI Local Bus (PCI, herein) is a processor independent, 32-bit expasion bus. The AmigaPCI specification is designed to comply with the PCI Local Bus Revision 2.3 specificiation. Each slot supports Universal and 5V cards, as defined in the PCI Local Bus Revision 2.3 specification. Like Zorro 2 and Zorro 3, PCI supports auto configuration of devices on power up. This allows for the use of Amiga AUTOCONFIG to configure devices at start up. This fits well with Amiga OS as PCI devices can be configured as Zorro 3 devices, which function natively with Amiga OS. 
 
-The PCI Bridge is implemented via a Motorola MC68040 to PCI Bridge (Local PCI Bridge, herein). The Local PCI Bridge logic translates data requests from the Motorola processor and PCI devices in order that they may communicate. This specification is compatable with Motorola MC68040 and newer predecessors. While this document is written with the Motorola MC68040 in mind, the information can be applied to newer Motorola processors, such as the MC68060.
+The PCI Bridge is implemented via a Motorola MC68040/MC68060 to PCI Bridge (Local PCI Bridge, herein). The Local PCI Bridge logic translates data requests from the Motorola processor and PCI devices in order that they may communicate. This specification is compatable with Motorola MC68040 and newer predecessors. While this document is written with the Motorola MC68040 in mind, the information can be applied to newer Motorola processors, such as the MC68060.
 
 Each PCI slot on the PCI Local Bridge can operate in either AUTOCONFIG mode or Prometheus mode, but not both simultaneously. 
 
@@ -47,16 +49,16 @@ Table 1.1a. Order of byte consumption in big and little endian devices.
 Endianess|Hex Value<br />Order of Consumption
 -|-
 &nbsp;|$0002 0804
-Big| <----START
-Little| START---->
+Big| START---->
+Little| <----START
 
 The smallest unit of data considered by the PCI specification is one byte. With this consideration, data bytes are swapped to accomodate the conversion in endianess. This byte swapping is implemented in the AmigaPCI Local PCI Bridge hardware.
 
 Table 1.1b. Byte swapping between big and little endian devices.
-Endianess|Hex Value|Address $03<br />Bytes 31..24|Address $02<br />Bytes 23..16|Address $01<br />Bytes 15..8|Address $00<br />Bytes 7..0
+Endianess|Hex Value|Address $00|Address $01|Address $02|Address $03
 -|-|-|-|-|-
-Big|$0002 0804|$04|$08|$02|$00
-Little|$0408 0200|$00|$02|$08|$04
+Big|$0002 0804|$00|$02|$08|$04
+Little|$0408 0200|$04|$08|$02|$00
 
 *Application Note AN2285. Data Movement Between Big-Endian and Little-Endian Devices. Rev 2.2. Freescale Semiconductor. 2008
 
