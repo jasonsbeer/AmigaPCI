@@ -21,11 +21,15 @@ The AmigaPCI is an OCS/ECS Amiga computer in the ATX form factor. It provides a 
 ## Project Status  
 **THIS IS A WORK IN PROGRESS AND IS SUBJECT TO CHANGE WITHOUT NOTICE.**
 
-This is an active project and is currently in the prototype stage. See [Milestones and progress](milestones.md) for current status. Because this project is in the prototype stage, it is not recommended for general use at this time. There will be errors that adversely affect performance and the logic equations are not complete. If you choose to build this before final release, you accept all cost and risk associated with the decision.
+This is an active project and is currently in the prototype stage. Specifications are subject to change. See [Milestones and progress](milestones.md) for current status. Because this project is in the prototype stage, it is not recommended for general use at this time. There will be errors that adversely affect performance and the logic equations are not complete. If you choose to build this before final release, you accept all cost and risk associated with the decision.
 
 For the technically minded, I would appreciate a review of the [AmigaPCI Hardware Reference](/AmigaPCI_Technical_Manual.md) and [AmigaPCI PCI Hardware Developer Reference](/AmigaPCI_PCI_Dev_Guide.md) references.  
 
 I am not seeking hardware enhancement requests at this time, but feel free to post these in the issues section. Discussions can be found at Discord: https://discord.gg/NU7SPYfNFj.
+
+## About Me and the AmigaPCI Project
+
+This is a hobby project for me. To me, the Amiga has a personality that PCs of any era cannot hope to replicate. I got my first Amiga, an A500, in 1992. In 1995, despite Commodore having gone out of business, I upgraded to a used A2000 with a GVP 030/SCSI card and flicker fixer. Even at this time we had a few Amiga shops hanging on. Around 1998 I relented and built a PC. The writing was on the wall for the Amiga and it was time to move on. The Amigas went into the closet, rarely to see the light. Sadly, like so many, I ended up selling my original machines. The purpose of my Amiga projects are to learn and hopefully share something of value with fellow Amigans by providing options for machines using modern components, whenever possible. This gave rise to the A2000 EATX, the N2630, and now, the AmigaPCI.
 
 # Building the AmigaPCI
 
@@ -114,4 +118,4 @@ Floppy interface modifications from Ian Steadman (noted in schematic) released u
 
 <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://github.com/jasonsbeer/AmigaPCI">AmigaPCI</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://github.com/jasonsbeer">Jason Neus</a> is licensed under <a href="https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">Creative Commons Attribution-NonCommercial 4.0 International<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt=""></a></p>
 
-**Last Update: 01-JUN-2024**
+**Last Update: 05-JUN-2024**
