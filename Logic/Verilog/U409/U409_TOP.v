@@ -33,11 +33,9 @@ TO BUILD WITH APIO: apio build --top-module U409_TOP --fpga iCE40-HX4K-TQ144
 
 module U409_TOP (
 
-    input CLK40, CLK6, nRESET, nTS, OVL,
+    input CLK40, CLK6, CLK7, nRESET, nTS, OVL,
     input [31:1] A,
-    output nROMEN, nBUFEN, 
-    output reg TICK60 = 0,
-    output reg TICK50 = 0,
+    output nROMEN, nBUFEN, TICK60, TICK50, CLKCIA, nTCI, nTBI,
 
     inout nTA
 
@@ -61,6 +59,8 @@ assign TA_SPACE = ROMENm;
 assign nTA = TA ? 1'b0 : TA_SPACE || TA_CYCLE ? 1'b1 : 1'bZ;
 //assign nTCI = !RAM_SPACEm ? 1'b1 : nTA;
 //assign nTBI = BURST_CYCLEm ? 1'b1 : nTA;
+assign nTCI = 1;
+assign nTBI = ~TA;
 
 always @(posedge CLK40, negedge nRESET) begin
     if (!nRESET) begin
@@ -136,49 +136,6 @@ end
 
 assign nBUFEN = 1;
 
-/////////////////
-// TICK CLOCKS //
-/////////////////
-
-//WE GENERATE 50 AND 60Hz TICK SIGNALS BY DIVIDING DOWN THE 6MHz CLOCK.
-
-parameter integer TICK60_COUNT_VALUE = 3125; //$0C35
-parameter integer TICK50_COUNT_VALUE = 3750; //$0EA6
-
-reg CLK3 = 0;
-reg CLK1p5 = 0;
-reg CLKp75 = 0;
-reg CLKp375 = 0;
-reg CLKp1875 = 0;
-reg [0:12] TICK60_COUNT = 0;
-reg [0:12] TICK50_COUNT = 0;
-
-always @(posedge CLK6) begin
-    CLK3 <= ~CLK3;
-end
-
-always @(posedge CLK3) begin
-    CLK1p5 <= ~CLK1p5;
-end
-
-always @(posedge CLK1p5) begin
-    CLKp75 <= ~CLKp75;
-end
-
-always @(posedge CLKp75) begin
-    CLKp375 <= ~CLKp375;
-end
-
-always @(posedge CLKp375) begin
-    CLKp1875 <= ~CLKp1875;
-end
-
-always @(posedge CLKp1875) begin    
-    if (TICK60_COUNT == TICK60_COUNT_VALUE) begin TICK60 <= ~TICK60; TICK60_COUNT <= 0; end else TICK60_COUNT <= TICK60_COUNT + 1;
-    if (TICK50_COUNT == TICK50_COUNT_VALUE) begin TICK50 <= ~TICK50; TICK50_COUNT <= 0; end else TICK50_COUNT <= TICK50_COUNT + 1;
-end
-
-
 ////////////////////////
 // ADDRESS DECODE TOP //
 ////////////////////////
@@ -188,6 +145,25 @@ U409_ADDRESS_DECODE U409_ADDRESS_DECODE (
     .A (A[31:20]),
     .OVL (OVL),
     .ROMEN (ROMENm)
+);
+
+////////////////////
+// TICK CLOCK TOP //
+////////////////////
+
+U409_TICK U409_TICK (
+    .CLK6 (CLK6),
+    .TICK60 (TICK60),
+    .TICK50 (TICK50)
+);
+
+///////////////////
+// CIA CLOCK TOP //
+///////////////////
+
+U409_CIA U409_CIA (
+    .CLK7 (CLK7),
+    .CLKCIA (CLKCIA)
 );
 
 endmodule
