@@ -10,7 +10,7 @@ The AmigaPCI is an OCS/ECS Amiga computer in the ATX form factor. It provides a 
   <li>HID mouse and keyboard inputs</li>
   <li>Dual port IDE interface supporting up to 4 total devices</li>
   <li>Agnus 8372A or 8375 selectable by jumper</li>
-  <li>2MB "Fast Chip" RAM available regardless of Agnus revision</li>
+  <li>Fast Chip RAM Cycles</li>
   <li>Fast CIA cycles</li>
   <li>Amiga Video Slot</li>
   <li>Floppy disk interface supports Amiga and PC drives in DD mode</li>
@@ -118,4 +118,4 @@ Floppy interface modifications from Ian Steadman (noted in schematic) released u
 
 <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://github.com/jasonsbeer/AmigaPCI">AmigaPCI</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://github.com/jasonsbeer">Jason Neus</a> is licensed under <a href="https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">Creative Commons Attribution-NonCommercial 4.0 International<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt=""></a></p>
 
-**Last Update: 05-JUN-2024**
+**Last Update: 07-JUN-2024**
