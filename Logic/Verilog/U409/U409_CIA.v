@@ -33,30 +33,40 @@ TO BUILD WITH APIO: apio build --top-module U409_TOP --fpga iCE40-HX4K-TQ144
 
 module U409_CIA
 (
-    input CLK7,
-    output CLKCIA
+    input CLK7, CLK40,
+    output CLKCIA, CIA_ENABLE
 );
 
-///////////////
-// CIA CLOCK //
-///////////////
+///////////////////////////////
+// CIA CLOCK AND CHIP SELECT //
+///////////////////////////////
 
 //THE CIA CLOCK IS BASED ON THE MC68000 ENABLE SIGNAL, WHICH IS 1/10 THE SPEED OF THE 7MHZ SYSTEM CLOCK WITH 40% DUTY CYCLE.
 //I HAD HOPED TO USE A 2MHZ CLOCK FOR THE CIA CYCLES, BUT IT WAS POINTED OUT SOME HARDWARE AND/OR SOFTWARE USES THE CIA
 //CLOCK TICKS FOR TIMING PURPOSES. FOR NOW, WE WILL USE E BUT WE CAN TRY A 2MHZ CLOCK IN FUTURE TESTING.
 
-assign CLKCIA = CIA_CLK_HIGH;
+//IF WE STICK WITH THE ORIGINAL E TIMINGS, WE CAN SHORTEN WRITE CYCLES LIKE IS DONE IN THE A4000, BUT THE TOTAL E CLOCK 
+//COUNT MUST ALWAYS BE 10.
+
 reg [3:0] CIA_CLK_COUNT = 0;
 reg CIA_CLK_HIGH = 0;
+reg CIA_ENABLE_OUT;
+
+assign CLKCIA = CIA_CLK_HIGH;
+assign CIA_ENABLE = CIA_ENABLE_OUT;
 
 always @(posedge CLK7) begin
     CIA_CLK_COUNT <= CIA_CLK_COUNT + 1;
-    if (CIA_CLK_COUNT == 5) begin
-        CIA_CLK_HIGH = 1;
-    end else if (CIA_CLK_COUNT == 9) begin
-        CIA_CLK_HIGH <= 0;
-        CIA_CLK_COUNT <= 0;
-    end
+
+    case (CIA_CLK_COUNT)
+
+        0 : CIA_ENABLE_OUT <= 0;
+        4 : CIA_ENABLE_OUT <= 1;
+        5 : CIA_CLK_HIGH <= 1;
+        9 : begin CIA_CLK_HIGH <= 0; CIA_CLK_COUNT <= 0; end
+
+    endcase
+
 end
 
 endmodule

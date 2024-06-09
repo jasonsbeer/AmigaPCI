@@ -35,79 +35,18 @@ module U409_TOP (
 
     input CLK40, CLK6, CLK7, nRESET, nTS, OVL,
     input [31:1] A,
-    output nROMEN, nBUFEN, TICK60, TICK50, CLKCIA, nTCI, nTBI,
+    output nROMEN, nBUFEN, TICK60, TICK50, CLKCIA, nTCI, nTBI, nCIACS0, nCIACS1,
 
     inout nTA
 
 );
 
-//////////////////////////
-// MC68040 TRANSFER ACK //
-//////////////////////////
-
-//ASSERT _TA WHEN DATA IS READY AND THE CYCLE CAN END. WE ASSERT BURST INHIBIT FOR ALL CYCLES EXCEPT RAM CYCLES.
-//CACHING IS ALLOWED FOR ALL SPACES EXCEPT CHIP RAM, SINCE AGNUS CAN WRITE THERE, TOO.
-//WE FORCE _TA HIGH AFTER THE CYCLE TO PREVENT THE NEXT CYCLE FROM ENDING PREMATURELY.
-
-//wire BURST_CYCLEm;
-wire TA;
-wire TA_SPACE;
-reg TA_CYCLE;
-
-assign TA = ROM_TA ;
-assign TA_SPACE = ROMENm;
-assign nTA = TA ? 1'b0 : TA_SPACE || TA_CYCLE ? 1'b1 : 1'bZ;
-//assign nTCI = !RAM_SPACEm ? 1'b1 : nTA;
-//assign nTBI = BURST_CYCLEm ? 1'b1 : nTA;
-assign nTCI = 1;
-assign nTBI = ~TA;
-
-always @(posedge CLK40, negedge nRESET) begin
-    if (!nRESET) begin
-        TA_CYCLE <= 0;
-    end else begin
-        if (TA && TA_SPACE) begin
-            TA_CYCLE <= 1; end 
-        else begin
-            TA_CYCLE <= 0; 
-        end
-    end
-end
-
-////////////////////////////
-// ROM TRANSFER ACK DELAY //
-////////////////////////////
-
-//ROM TRANSFER ACK IS HELD OFF TO ADHEAR TO SETUP TIME OF THE ROM.
-
-parameter integer ROM_DELAY_VALUE = 3;
-
-wire ROMENm;
-reg [0:1] ROM_DELAY;
-reg ROM_TA;
-
-assign nROMEN = ~ROMENm;
-
-always @(negedge CLK40, negedge nRESET) begin
-	if (!nRESET) begin
-		ROM_TA <= 0;
-		ROM_DELAY <= 0;
-	end else begin
-		case (ROM_DELAY)
-            0               : begin ROM_TA <= 0; if (ROMENm && TS) begin ROM_DELAY <= 1; end end
-            ROM_DELAY_VALUE : begin ROM_TA <= 1; ROM_DELAY <= 0; end
-            default         : begin ROM_DELAY <= ROM_DELAY + 1; end
-		endcase
-	end
-end
-
 /////////////////////////////////
 // LATCH TRANSFER START SIGNAL //
 /////////////////////////////////
 
-//THE TRANSFER START SIGNAL IS ONLY ASSERTED FOR A SINGLE CLOCK.
-//WE NEED TO SAMPLE IT SO WE KNOW WHEN A NEW CYCLE HAS STARTED, AS _TIP WILL STAY ASSERTED AMONG MULTIPLE CYCLES.
-//WE CAPTURE IT HERE BECAUSE WE MAY MISS IT IF WE ARE DOING OTHER THINGS.
+//WE NEED TO SAMPLE _TS SO WE KNOW WHEN A NEW CYCLE HAS STARTED, AS _TIP WILL STAY ASSERTED AMONG MULTIPLE CYCLES.
+//THE TRANSFER START SIGNAL IS ONLY ASSERTED FOR A SINGLE CLOCK. WE MAY MISS IT IF WE ARE DOING OTHER THINGS.
 
 wire TS_RESET;
 reg TS;
@@ -121,30 +60,47 @@ always @(posedge CLK40, posedge TS_RESET) begin
         if (!TS && !nTS) TS <= 1'b1;
 end
 
-////////////////////////
-// DATA BUFFER ENABLE //
-////////////////////////
+//////////////////////
+// TRANSFER ACK TOP //
+//////////////////////
 
-//NON-DMA ACCESS:
-//WE ENABLE THE BUFFERS (U802 AND U803) ANY TIME WE ACCESS AN ADDRESS SPACE ON THE LOW VOLTAGE (LVTTL) DATA BUS.
-//THIS INCLUDES AUTOCONFIG, PCI, CHIP RAM, ATA, OR CHIP REGISTERS.
+U409_TRANSFER_ACK U409_TRANSFER_ACK (
+    .TS (TS),  
+    .ROMEN (ROMENm),
+    .CIA_SPACE (CIA_SPACEm),
+    .CLK40 (CLK40), 
+    .nRESET (nRESET),
+    .CLKCIA (CLKCIA),
+    .nTA (nTA), 
+    .nROMEN (nROMEN), 
+    .nTCI (nTCI), 
+    .nTBI (nTBI)
+);
 
-//TTL LEVEL ACCESSES INCLUDE ROM, CIA, HID, AND RTC, WHICH DISABLE THE DATA BUFFERS.
+////////////////////////////
+// DATA BUFFER ENABLE TOP //
+////////////////////////////
 
-//DMA ACCESS
-//IN THE EVENT OF DMA, THE OPPOSITE IS TRUE OF THE ABOVE.
-
-assign nBUFEN = 1;
+U409_DATA_BUFFERS U409_DATA_BUFFERS (
+    .nBUFEN (nBUFEN)
+);
 
 ////////////////////////
 // ADDRESS DECODE TOP //
 ////////////////////////
 
+wire ROMENm;
+wire CIA_SPACEm;
+
 U409_ADDRESS_DECODE U409_ADDRESS_DECODE (
     .nRESET (nRESET),
-    .A (A[31:20]),
     .OVL (OVL),
-    .ROMEN (ROMENm)
+    .CIA_ENABLE (CIA_ENABLEm),
+    .A (A[31:12]),   
+    .ROMEN (ROMENm),
+    .CIA_SPACE (CIA_SPACEm),
+    .nCIACS0 (nCIACS0),
+    .nCIACS1 (nCIACS1)
 );
 
 ////////////////////
@@ -161,9 +117,13 @@ U409_TICK U409_TICK (
 // CIA CLOCK TOP //
 ///////////////////
 
+wire CIA_ENABLEm;
+
 U409_CIA U409_CIA (
     .CLK7 (CLK7),
-    .CLKCIA (CLKCIA)
+    .CLK40 (CLK40),
+    .CLKCIA (CLKCIA),
+    .CIA_ENABLE (CIA_ENABLEm)
 );
 
 endmodule

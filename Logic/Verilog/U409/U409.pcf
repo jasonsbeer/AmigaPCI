@@ -39,6 +39,8 @@ set_io   CLK6        52
 set_io   TICK60      55
 set_io   TICK50      56
 set_io   nRESET      62
+set_io   nCIACS0     78
+set_io   nCIACS1     79
 set_io   OVL         81
 set_io   nBUFEN      119
 set_io   CLKCIA      122

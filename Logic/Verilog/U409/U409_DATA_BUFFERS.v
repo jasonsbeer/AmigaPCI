@@ -18,52 +18,38 @@ RTL MODULE:
 
 Engineer: Jason Neus
 Design Name: U409
-Module Name: U409_ADDRESS_DECODE
+Module Name: U409_DATA_BUFFERS
 Project Name: AmigaPCI
 Target Devices: iCE40-HX4K-TQ144
 
-Description: ADDRESS DECODE
+Description: ENABLE DATA BUFFERS
 
 Revision History:
-    XXXX
+    08-JUN-2024 : INITIAL CODE
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 TO BUILD WITH APIO: apio build --top-module U409_TOP --fpga iCE40-HX4K-TQ144
 */
 
-module U409_ADDRESS_DECODE 
-(
+module U409_DATA_BUFFERS (
 
-    input nRESET, OVL, CIA_ENABLE,
-    input [31:12] A,
-    output ROMEN, CIA_SPACE, nCIACS0, nCIACS1
+    output nBUFEN
 
 );
 
-///////////////////////////
-// ZORRO 2 ADDRESS SPACE //
-///////////////////////////
+////////////////////////
+// DATA BUFFER ENABLE //
+////////////////////////
 
-//WE NEED TO KNOW WHICH ADDRESS SPACE WE ARE IN SO WE DON'T RESPOND INCORRECTLY.
+//NON-DMA ACCESS:
+//WE ENABLE THE BUFFERS (U802 AND U803) ANY TIME WE ACCESS AN ADDRESS SPACE ON THE LOW VOLTAGE (LVTTL) DATA BUS.
+//THIS INCLUDES AUTOCONFIG, PCI, CHIP RAM, ATA, OR CHIP REGISTERS.
 
-wire Z2_SPACE;
-assign Z2_SPACE = A[31:24] == 8'h00;
+//TTL LEVEL ACCESSES INCLUDE ROM, CIA, HID, AND RTC, WHICH DISABLE THE DATA BUFFERS.
 
-////////////////
-// ROM ENABLE //
-////////////////
+//DMA ACCESS
+//IN THE EVENT OF DMA, THE OPPOSITE IS TRUE OF THE ABOVE.
 
-//ROM IS ENABLED AT THE RESET VECTOR $0000 0000 WHEN OVL IS ASSERTED (HIGH) AND AT $00F8 0000 - $00FF FFFF WHEN OVL IS NEGATED (LOW).
-//BECAUSE OUR IDE AUTOBOOT DRIVER ALSO RESIDES ON THE ROM, IT IS ENABLED WHEN WE ENTER THE IDE SPACE UNTIL THE FIRST WRITE TO THE IDE SPACE.
-
-assign ROMEN = (nRESET && Z2_SPACE && ((OVL && A[23:21] == 3'b000) || (!OVL && A[23:20] == 4'b1111))); // || (IDE_ACCESS && !IDE_ENABLE)));
-
-///////////////////////
-// CIA ADDRESS SPACE //
-///////////////////////
-
-assign CIA_SPACE = Z2_SPACE && A[23:16] == 8'b10111111; // 8'hBF;
-assign nCIACS0 = ~(CIA_SPACE && CIA_ENABLE && A[12]);
-assign nCIACS1 = ~(CIA_SPACE && CIA_ENABLE && A[13]);
+assign nBUFEN = 1;
 
 endmodule

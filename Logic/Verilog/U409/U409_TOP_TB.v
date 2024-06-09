@@ -9,10 +9,11 @@ module top_tb();
 reg CLK6 = 1;
 reg CLK40 = 1;
 reg CLK7 = 1;
-reg [31:1] A = 31'b00000000_00000000_00000000_0000000;
+reg [31:1] A = 31'b10000000_00000000_00000000_0000000;
 reg OVL = 1;
 reg nRESET = 0;
 reg nTS = 1;
+
 
 //OUTPUTS
 wire nTA;
@@ -21,8 +22,10 @@ wire nBUFEN;
 wire TICK60;
 wire TICK50;
 wire CLKCIA;
+wire nCIACS0;
+wire nCIACS1;
 
-localparam DURATION = 50000000;
+localparam DURATION = 10000;
 
 //Generate Clock(s)
 //6MHz = 166.666667ns
@@ -40,7 +43,7 @@ initial begin
 	#100 nRESET = 1;
 
     //ROM ENABLE
-    /*#12.5 nTS = 0;
+    /*#12.5 nTS = 0; A = 31'b00000000_00000000_00000000_0000000;
     #25 nTS = 1;
     #125 nTS = 0;
     #25 nTS = 1;
@@ -53,6 +56,14 @@ initial begin
     #125 nTS = 0;
     #25 nTS = 1;
     #100 A = 31'b10000000_01111100_00000000_0000000;*/
+
+    //CIA CYCLE
+    #12.5 nTS = 0; A = 31'b00000000_10111111_00010000_0000000;
+    #25 nTS = 1;
+    #1200 A = 31'b10000000_00000000_00000000_0000000;
+    #100 nTS = 0; A = 31'b00000000_10111111_00100000_0000000;
+    #25 nTS = 1;
+    #1275 A = 31'b10000000_00000000_00000000_0000000;
 
 end
 
@@ -85,7 +96,9 @@ U409_TOP dut
     .TICK60 (TICK60),
     .nTA(nTA),
     .nROMEN(nROMEN),
-    .CLKCIA(CLKCIA)
+    .CLKCIA(CLKCIA),
+    .nCIACS0(nCIACS0),
+    .nCIACS1(nCIACS1)
 );
 
 endmodule
