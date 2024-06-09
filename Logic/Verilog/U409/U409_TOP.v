@@ -33,7 +33,7 @@ TO BUILD WITH APIO: apio build --top-module U409_TOP --fpga iCE40-HX4K-TQ144
 
 module U409_TOP (
 
-    input CLK40, CLK6, CLK7, nRESET, nTS, OVL,
+    input CLK40, CLK6, CLK7, nRESET, nTS, OVL, RnW,
     input [31:1] A,
     output nROMEN, nBUFEN, TICK60, TICK50, CLKCIA, nTCI, nTBI, nCIACS0, nCIACS1,
 
@@ -67,9 +67,10 @@ end
 U409_TRANSFER_ACK U409_TRANSFER_ACK (
     .TS (TS),  
     .ROMEN (ROMENm),
-    .CIA_SPACE (CIA_SPACEm),
+    .CIA_ENABLE (CIA_ENABLEm),
     .CLK40 (CLK40), 
     .nRESET (nRESET),
+    .CIA_SPACE (CIA_SPACEm),
     .CLKCIA (CLKCIA),
     .nTA (nTA), 
     .nROMEN (nROMEN), 
@@ -122,6 +123,8 @@ wire CIA_ENABLEm;
 U409_CIA U409_CIA (
     .CLK7 (CLK7),
     .CLK40 (CLK40),
+    .RnW (RnW),
+    .CIA_SPACE (CIA_SPACEm),
     .CLKCIA (CLKCIA),
     .CIA_ENABLE (CIA_ENABLEm)
 );

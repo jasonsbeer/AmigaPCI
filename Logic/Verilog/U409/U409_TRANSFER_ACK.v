@@ -26,6 +26,7 @@ Description: MC68040/MC68060 TRANSFER ACK
 
 Revision History:
     08-JUN-2024 : INITIAL CODE
+    09-JUN-2024 : FIX CIA CYCLE TERMINATION
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 TO BUILD WITH APIO: apio build --top-module U409_TOP --fpga iCE40-HX4K-TQ144
@@ -33,7 +34,7 @@ TO BUILD WITH APIO: apio build --top-module U409_TOP --fpga iCE40-HX4K-TQ144
 
 module U409_TRANSFER_ACK (
 
-    input TS, ROMEN, CIA_SPACE, CLK40, nRESET, CLKCIA,
+    input TS, ROMEN, CIA_SPACE, CIA_ENABLE, CLK40, nRESET, CLKCIA,
     output nROMEN, nTA, nTCI, nTBI
 
 );
@@ -101,6 +102,10 @@ end
 // CIA TRANSFER ACK //
 //////////////////////
 
+//CYCLE TERMINATION FOR CIA CYCLES MUST OCCUR AT OR AFTER THE
+//FALLING EDGE OF THE CIA CLOCK WHILE THE CHIP SELECT IS ENABLED.
+//I INCLUDED A SYNCHRONIZER TO MAKE SURE THE CIA CLOCK IS LOW.
+
 reg [1:0] LASTCLK;
 reg TA_ENABLE;
 reg CIA_TA;
@@ -115,7 +120,7 @@ always @(negedge CLK40, negedge nRESET) begin
 
         LASTCLK <= { LASTCLK[0] , CLKCIA };
 
-        if (LASTCLK == 2'b11 && CIA_SPACE == 1 && TS == 1) begin
+        if (LASTCLK == 2'b11 && CIA_ENABLE == 1 && TS == 1) begin
             TA_ENABLE <= 1;
         end else if (LASTCLK == 2'b00 && TA_ENABLE == 1 ) begin 
             CIA_TA <= 1; 

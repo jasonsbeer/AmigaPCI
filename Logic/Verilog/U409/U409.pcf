@@ -47,3 +47,4 @@ set_io   CLKCIA      122
 set_io   nROMEN      124
 set_io   CLK40       129
 set_io   nTS         134
+set_io   RnW         142

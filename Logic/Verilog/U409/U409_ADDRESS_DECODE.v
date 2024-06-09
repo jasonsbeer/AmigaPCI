@@ -25,7 +25,7 @@ Target Devices: iCE40-HX4K-TQ144
 Description: ADDRESS DECODE
 
 Revision History:
-    XXXX
+    08-JUN-2024 : ADDED CIA ADDRESS SPACE
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 TO BUILD WITH APIO: apio build --top-module U409_TOP --fpga iCE40-HX4K-TQ144
@@ -62,7 +62,7 @@ assign ROMEN = (nRESET && Z2_SPACE && ((OVL && A[23:21] == 3'b000) || (!OVL && A
 // CIA ADDRESS SPACE //
 ///////////////////////
 
-assign CIA_SPACE = Z2_SPACE && A[23:16] == 8'b10111111; // 8'hBF;
+assign CIA_SPACE = Z2_SPACE && A[23:16] == 8'hBF;
 assign nCIACS0 = ~(CIA_SPACE && CIA_ENABLE && A[12]);
 assign nCIACS1 = ~(CIA_SPACE && CIA_ENABLE && A[13]);
 
