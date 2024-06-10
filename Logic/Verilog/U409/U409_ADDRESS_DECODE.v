@@ -26,6 +26,8 @@ Description: ADDRESS DECODE
 
 Revision History:
     08-JUN-2024 : ADDED CIA ADDRESS SPACE
+    09-JUN-2024 : ADD AGNUS ADDRESS SPACES
+                  FIXED ROM ADDRESS SPACE TO LIMIT ONLY $00F8 0000 - $00FF 0000
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 TO BUILD WITH APIO: apio build --top-module U409_TOP --fpga iCE40-HX4K-TQ144
@@ -34,9 +36,9 @@ TO BUILD WITH APIO: apio build --top-module U409_TOP --fpga iCE40-HX4K-TQ144
 module U409_ADDRESS_DECODE 
 (
 
-    input nRESET, OVL, CIA_ENABLE,
+    input nRESET, OVL, CIA_ENABLE, TS,
     input [31:12] A,
-    output ROMEN, CIA_SPACE, nCIACS0, nCIACS1
+    output ROMEN, CIA_SPACE, nCIACS0, nCIACS1, nRAMSPACE, nREGSPACE
 
 );
 
@@ -56,7 +58,7 @@ assign Z2_SPACE = A[31:24] == 8'h00;
 //ROM IS ENABLED AT THE RESET VECTOR $0000 0000 WHEN OVL IS ASSERTED (HIGH) AND AT $00F8 0000 - $00FF FFFF WHEN OVL IS NEGATED (LOW).
 //BECAUSE OUR IDE AUTOBOOT DRIVER ALSO RESIDES ON THE ROM, IT IS ENABLED WHEN WE ENTER THE IDE SPACE UNTIL THE FIRST WRITE TO THE IDE SPACE.
 
-assign ROMEN = (nRESET && Z2_SPACE && ((OVL && A[23:21] == 3'b000) || (!OVL && A[23:20] == 4'b1111))); // || (IDE_ACCESS && !IDE_ENABLE)));
+assign ROMEN = (nRESET && Z2_SPACE && ((OVL && A[23:21] == 3'b000) || (!OVL && A[23:19] == 5'b11111))); // || (IDE_ACCESS && !IDE_ENABLE)));
 
 ///////////////////////
 // CIA ADDRESS SPACE //
@@ -65,5 +67,15 @@ assign ROMEN = (nRESET && Z2_SPACE && ((OVL && A[23:21] == 3'b000) || (!OVL && A
 assign CIA_SPACE = Z2_SPACE && A[23:16] == 8'hBF;
 assign nCIACS0 = ~(CIA_SPACE && CIA_ENABLE && A[12]);
 assign nCIACS1 = ~(CIA_SPACE && CIA_ENABLE && A[13]);
+
+//////////////////
+// AGNUS SPACES //
+//////////////////
+
+//AGNUS CONTROLS ACCESS TO CHIPSET REGISTERS.
+//THESE SIGNALS ARE CONSUMED BY U712.
+
+assign nRAMSPACE = ~(Z2_SPACE && !OVL && A[23:21] == 3'b000 && TS);
+assign nREGSPACE = ~(Z2_SPACE && A[23:16] == 8'hDF && TS);
 
 endmodule

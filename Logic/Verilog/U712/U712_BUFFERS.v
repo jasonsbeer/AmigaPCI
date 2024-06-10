@@ -11,47 +11,43 @@ The licensor cannot revoke these freedoms as long as you follow the license term
 
 Under the following terms:
 Attribution — You must give appropriate credit , provide a link to the license, and indicate if changes were made . You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
-NonCommercial — You may not use the material for commercial purposes .
+NonCommercial — You may not use the material for commercial purposes.
 No additional restrictions — You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.
 
 RTL MODULE:
 
 Engineer: Jason Neus
-Design Name: U409
-Module Name: U409_DATA_BUFFERS
+Design Name: U712
+Module Name: U712_BUFFERS
 Project Name: AmigaPCI
 Target Devices: iCE40-HX4K-TQ144
 
-Description: ENABLE DATA BUFFERS
+Description: CHIP SET BUFFERS
 
 Revision History:
-    08-JUN-2024 : INITIAL CODE
-    09-JUN-2024 : ADD AGNUS SPACES
+    09-JUN-2024 : INITIAL CODE
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
-TO BUILD WITH APIO: apio build --top-module U409_TOP --fpga iCE40-HX4K-TQ144
+TO BUILD WITH APIO: apio build --top-module U712_TOP --fpga iCE40-HX4K-TQ144
 */
 
-module U409_DATA_BUFFERS (
+module U712_BUFFERS (
 
-    input AGNUS_SPACE,
-    output nBUFEN
+    input nREGEN, nDBR, nAWE, RnW,
+    output nVBEN, nDRDEN, DRDDIR
 
 );
 
-////////////////////////
-// DATA BUFFER ENABLE //
-////////////////////////
+/////////////////////////////////////////////////////
+// CHIPSET CYCLE DATA BUFFER ENABLES AND DIRECTION //
+/////////////////////////////////////////////////////
 
-//NON-DMA ACCESS:
-//WE ENABLE THE BUFFERS (U802 AND U803) ANY TIME WE ACCESS AN ADDRESS SPACE ON THE LOW VOLTAGE (LVTTL) DATA BUS.
-//THIS INCLUDES AUTOCONFIG, PCI, CHIP RAM, ATA, OR CHIP REGISTERS.
+//WE HAVE BUFFER TRANSCEIVERS WE NEED TO SET DURING CHIP REGISTER AND RAM CYCLES.
 
-//TTL LEVEL ACCESSES INCLUDE ROM, CIA, HID, AND RTC, WHICH DISABLE THE DATA BUFFERS.
+assign nVBEN = ~(!nREGEN && nDBR); //ENABLED DURING CHIP SET REGISTER ACCESS AND DURING CHIP RAM ACCESSES
 
-//DMA ACCESS
-//IN THE EVENT OF DMA, THE OPPOSITE IS TRUE OF THE ABOVE.
+assign nDRDEN = ~((!nREGEN && nDBR) || !nDBR); //ENABLED DURING CPU CHIP SET REGISTER ACCESS AND DMA ACCESSES
 
-assign nBUFEN = ~AGNUS_SPACE;
+assign DRDDIR = (!nREGEN && nDBR && !RnW) || (!nDBR && nAWE); //SET WHEN DATA FLOWS TOWARDS CHIPSET.
 
 endmodule

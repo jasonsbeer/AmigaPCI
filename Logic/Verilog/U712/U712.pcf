@@ -1,9 +1,31 @@
-set_io CLK20   20
-set_io CLK40   21
-set_io CLK80   38
-set_io nDBEN   42
-set_io nVBEN   44
-set_io nCRCS   60
-set_io nDRDEN  110
-set_io nAS     116
-set_io nREGEN  141
+set_io -pullup yes A[0] 12
+
+set_io A[1]       10
+
+set_io SIZ1       1
+set_io SIZ0       2
+set_io nTA        7
+set_io CLK20      20
+set_io CLK40      21
+set_io nBG        37
+set_io CLK80      38
+set_io nREGSPACE  41
+set_io nDBEN      42
+set_io nVBEN      44
+set_io nCRCS      60
+set_io nRESET     94
+set_io DRDDIR     107
+set_io nDRDEN     110
+set_io nAS        116
+set_io nLDS       117
+set_io nUDS       118
+set_io nUMBE      121
+set_io nLMBE      122
+set_io nLLBE      124
+set_io nUUBE      125
+set_io nAWE       136
+set_io nDBR       138
+set_io nREGEN     141
+set_io C1         142
+set_io C3         143
+set_io RnW        144

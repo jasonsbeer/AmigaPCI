@@ -58,7 +58,7 @@ assign nTA = TA ? 1'b0 : TA_SPACE || TA_CYCLE ? 1'b1 : 1'bZ;
 //assign nTCI = !RAM_SPACEm ? 1'b1 : nTA;
 //assign nTBI = BURST_CYCLEm ? 1'b1 : nTA;
 assign nTCI = 1;
-assign nTBI = ~TA;
+assign nTBI = TA ? 1'b0 : TA_SPACE || TA_CYCLE ? 1'b1 : 1'bZ;
 
 always @(posedge CLK40, negedge nRESET) begin
     if (!nRESET) begin
