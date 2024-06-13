@@ -1,0 +1,382 @@
+/*
+LICENSE:
+
+This work is released under the Creative Commons Attribution-NonCommercial 4.0 International
+https://creativecommons.org/licenses/by-nc/4.0/
+
+You are free to:
+Share — copy and redistribute the material in any medium or format
+Adapt — remix, transform, and build upon the material
+The licensor cannot revoke these freedoms as long as you follow the license terms.
+
+Under the following terms:
+Attribution — You must give appropriate credit , provide a link to the license, and indicate if changes were made . You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
+NonCommercial — You may not use the material for commercial purposes.
+No additional restrictions — You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.
+
+RTL MODULE:
+
+Engineer: Jason Neus
+Design Name: U712
+Module Name: U712_CHIPSET_RAM
+Project Name: AmigaPCI
+Target Devices: iCE40-HX4K-TQ144
+
+Description: CHIP RAM CYCLES
+
+Revision History:
+    XXXX
+
+GitHub: https://github.com/jasonsbeer/AmigaPCI
+TO BUILD WITH APIO: apio build --top-module U712_TOP --fpga iCE40-HX4K-TQ144
+*/
+
+module U712_CHIPSET_RAM (
+
+    input CLK7, CLK40, CLK80, nRESET, nRAS0, nRAS1, nCASL, nCASU, nRAMSPACE, nAWE, TT0, TT1, RnW,
+    input [20:1] A,
+
+    output nDBEN, nCRCS, nRAS, nCAS, nWE, CLKE, RAM_TA, DBDIR, BANK0, BANK1, CAS_AGNUS,
+
+    output reg DMA_CYCLE, BURST_CYCLE,
+    output [9:0] DRA, 
+    output [10:0] CMA
+
+);
+
+///////////////////////////
+// SDRAM REFRESH COUNTER //
+///////////////////////////
+
+//WE USE THE 7MHz CLOCK TO DRIVE THE REFRESH COUNTER BECAUSE THAT 
+//WILL ALWAYS BE AVAILABLE NO MATTER OUR CPU SPEED OR CONFIGURATION.
+//SINCE WE ARE JUMPING BETWEEN CLOCK DOMAINS, WE NEED TO HAVE
+//TWO PROCESSES TO ACCOMODATE THE JUMP.
+
+localparam REFRESH_DEFAULT = 54;
+
+wire REF_RESET;
+reg REFRESH;
+reg [5:0] REFRESH_COUNTER = 0; //6-BIT NUMBER MAX 63
+
+assign REF_RESET = SDRAMCOM == ramstate_AUTOREFRESH;
+
+always @(posedge CLK7 or posedge REF_RESET) begin
+    if (REF_RESET) begin 
+        REFRESH_COUNTER <= 0; 
+    end else begin 
+        REFRESH_COUNTER <= REFRESH_COUNTER + 1; 
+    end
+end
+
+always @(negedge CLK80 or negedge nRESET) begin
+    if (!nRESET) begin 
+        REFRESH <= 0; 
+    end else if (REFRESH_COUNTER >= REFRESH_DEFAULT) begin
+        REFRESH <= 1;
+    end else begin
+        REFRESH <= 0;
+    end
+end
+
+////////////////////////////////////
+// AGNUS ROW AND COLUMN ADDRESSES //
+////////////////////////////////////
+
+//CAPTURE THE AGNUS ROW AND COLUMN ADDRESS WHEN RASx OR CASx IS ASSERTED.
+//THIS IS TO FACILITATE DMA CYCLES.
+
+wire RAS_AGNUS;
+//wire CAS_AGNUS;
+wire DMA_RESET;
+reg DMA_READY;
+reg [9:0] DMA_ROW_ADDRESS;
+reg [9:0] DMA_COL_ADDRESS;
+
+assign DMA_RESET = DMA_CYCLE || !nRESET;
+assign RAS_AGNUS = (!nRAS0 || !nRAS1);
+assign CAS_AGNUS = (!nCASL || !nCASU);
+
+always @(posedge RAS_AGNUS, negedge nRESET) begin
+    if (!nRESET) begin
+        DMA_ROW_ADDRESS <= 10'b0000000000;
+    end else begin
+        DMA_ROW_ADDRESS <= DRA;
+    end
+end
+
+always @(posedge CAS_AGNUS, negedge nRESET) begin
+    if (!nRESET) begin
+        DMA_COL_ADDRESS <= 10'b0000000000;
+    end else begin
+        DMA_COL_ADDRESS <= DRA;
+    end
+end
+
+always @(posedge CAS_AGNUS, posedge DMA_RESET) begin
+    if (DMA_RESET) begin
+        DMA_READY <= 0;
+    end else begin
+        DMA_READY <= 1;
+    end
+end
+
+///////////////////////
+// CLK7 SYNCHRONIZER //
+///////////////////////
+
+reg [1:0] CLK7SYNC;
+
+always @(posedge CLK80, negedge nRESET) begin
+    if (!nRESET) begin
+        CLK7SYNC <= 2'b00;
+    end else begin
+        CLK7SYNC <= { CLK7SYNC[0] , CLK7 };
+    end
+end
+
+/////////////////////////
+// CHIP RAM CONTROLLER //
+/////////////////////////
+
+//SDRAM IS USED TO IMPLEMENT THE CHIP RAM SPACE.
+
+localparam [3:0] ramstate_NOP = 4'b1111;
+localparam [3:0] ramstate_PRECHARGE = 4'b0010;
+localparam [3:0] ramstate_BANKACTIVATE = 4'b0011;
+localparam [3:0] ramstate_READ = 4'b0101;
+localparam [3:0] ramstate_WRITE = 4'b0100;
+localparam [3:0] ramstate_AUTOREFRESH = 4'b0001;
+localparam [3:0] ramstate_MODEREGISTER = 4'b0000;
+
+reg [3:0] SDRAMCOM;
+reg [3:0] RAM_COUNTER;
+reg EMCLK_OUT;
+reg RAM_CONFIGURED;
+reg REFRESH_CYCLE;
+reg RAM_CYCLE;
+reg RnW_CYCLE;
+reg TA_EN;
+reg nDBEN_OUT;
+reg WAIT;
+
+assign nCRCS = SDRAMCOM[3];
+assign nRAS = SDRAMCOM[2];
+assign nCAS = SDRAMCOM[1];	
+assign nWE = SDRAMCOM[0];
+assign CLKE = EMCLK_OUT;
+assign RAM_TA = TA_EN;
+assign nDBEN = nDBEN_OUT;
+assign DBDIR = ~RnW_CYCLE;
+assign BANK0 = 0;
+assign BANK1 = 0;
+
+assign CMA = 
+    SDRAMCOM == ramstate_PRECHARGE ? 11'b10000000000 : 
+    SDRAMCOM == ramstate_MODEREGISTER ? 11'b00000100010 : 
+    SDRAMCOM == ramstate_BANKACTIVATE && !DMA_CYCLE ? {A[20:10]} :
+    SDRAMCOM == ramstate_BANKACTIVATE && DMA_CYCLE ? {DMA_ROW_ADDRESS[8:0], DMA_COL_ADDRESS[9:8]} : 
+    (SDRAMCOM == ramstate_READ || SDRAMCOM == ramstate_WRITE) && !DMA_CYCLE ? {3'b000, A[9:2]} :
+    (SDRAMCOM == ramstate_READ || SDRAMCOM == ramstate_WRITE) && DMA_CYCLE ? {3'b000, DMA_COL_ADDRESS[7:0]} : 11'b00000000000;
+
+always @(negedge CLK80, negedge nRESET) begin
+    if (!nRESET) begin
+        SDRAMCOM = ramstate_NOP;
+        EMCLK_OUT <= 0;
+        RAM_COUNTER <= 4'h0;
+        RAM_CONFIGURED <= 0;
+        DMA_CYCLE <= 0;
+        RAM_CYCLE <= 0;
+        REFRESH_CYCLE <= 0;
+        BURST_CYCLE <= 0;
+        RnW_CYCLE <= 1;
+        TA_EN <= 0;
+        nDBEN_OUT <= 1;
+        WAIT <= 0;
+    end else begin
+
+        //INCREMENT COUNTER DURING A CYCLE
+        if (RAM_COUNTER != 4'h0 && !WAIT) begin RAM_COUNTER <= RAM_COUNTER + 1; end
+
+        //CONFIGURE THE RAM AT STARTUP OR RESET
+        if (!RAM_CONFIGURED) begin
+            case (RAM_COUNTER)
+                4'h0 : begin EMCLK_OUT <= 1; RAM_COUNTER <= 4'h1; end
+                4'h1 : SDRAMCOM <= ramstate_PRECHARGE;
+                4'h3 : SDRAMCOM <= ramstate_MODEREGISTER;
+                4'h4, 4'h9 : SDRAMCOM <= ramstate_AUTOREFRESH;
+                4'hD : begin RAM_CONFIGURED <= 1; RAM_COUNTER <= 4'h0; end
+				default : SDRAMCOM <= ramstate_NOP;
+            endcase
+        //REFRESH CYCLE
+        //WE DON'T WANT TO INITIATE A REFRESH WHEN A DMA CYCLE IS ABOUT TO BEGIN OR DURING AN ACTIVE RAM CYCLE.
+        end else if ((!CAS_AGNUS && !RAM_CYCLE && SDRAMCOM != ramstate_PRECHARGE && REFRESH) || REFRESH_CYCLE) begin
+            case (RAM_COUNTER)
+                4'h0 : begin RAM_COUNTER <= 4'h1; SDRAMCOM <= ramstate_AUTOREFRESH; REFRESH_CYCLE <= 1; end
+                4'h4 : begin RAM_COUNTER <= 4'h0; REFRESH_CYCLE <= 0; end
+                default : SDRAMCOM <= ramstate_NOP;
+            endcase
+        //RAM CYCLES
+        end else if (!nRAMSPACE || DMA_READY || RAM_CYCLE) begin
+            case (RAM_COUNTER)
+
+                4'h0 : begin 
+                    TA_EN <= 0;                 
+
+                    if (DMA_READY && SDRAMCOM != ramstate_PRECHARGE) begin //DMA CYCLE
+                        //AGNUS ASSERTS ONE OF THE _CASx SIGNALS IN STATE 5 SIGNIFYING A DMA CYCLE IS READY TO COMMIT.
+                        //WE WAIT UNTIL STATE 6 TO START THE CYCLE.
+                        SDRAMCOM <= ramstate_BANKACTIVATE;
+                        RAM_COUNTER <= 4'h1;
+                        DMA_CYCLE <= 1; 
+                        RAM_CYCLE <= 1;
+                        BURST_CYCLE <= 0;
+                        RnW_CYCLE <= nAWE;
+                        nDBEN_OUT <= DMA_ROW_ADDRESS[9];                    
+                    end else if (!nRAMSPACE && !CLK40 && SDRAMCOM != ramstate_PRECHARGE && ((nRAS0 && nRAS1) || (!nRAS0 && !nRAS1))) begin //CPU CYCLE
+                        //DON'T START A CPU RAM CYCLE IF AGNUS HAS ASSERTED ONE OF THE _RASx SIGNALS. THIS INDICATES A
+                        //PENDING DMA CYCLE. WE IGNORE IF BOTH _RASx SIGNALS ARE ASSERTED BECAUSE THAT IS A DRAM REFRESH SIGNAL.
+                        SDRAMCOM <= ramstate_BANKACTIVATE;
+                        RAM_COUNTER <= 4'h1;
+                        RAM_CYCLE <= 1; 
+                        DMA_CYCLE <= 0;
+                        BURST_CYCLE <= TT0 && !TT1;
+                        RnW_CYCLE <= RnW;
+                        nDBEN_OUT <= 1;
+                    end else begin //NO CYCLE
+                        DMA_CYCLE <= 0;
+                        RAM_CYCLE <= 0;
+                        BURST_CYCLE <= 0; 
+                        nDBEN_OUT <= 1;
+                        SDRAMCOM <= ramstate_NOP;
+                    end
+                end
+
+                4'h1 : begin
+                    SDRAMCOM <= ramstate_NOP;
+                    TA_EN <= (!RnW_CYCLE && !DMA_CYCLE);
+                end
+
+                4'h2 : begin
+                    if (BURST_CYCLE) begin
+                        if (!DMA_CYCLE && (!nRAS0 && nRAS1) || (nRAS0 && !nRAS1)) begin //BURST CYCLE CANCELLED BY DMA START
+                            BURST_CYCLE <= 0;
+                        end else begin
+                            if (!RnW_CYCLE) begin EMCLK_OUT <= 0; end
+                        end
+                    end
+
+                    if (RnW_CYCLE) begin
+                        SDRAMCOM <= ramstate_READ;
+                    end else begin
+                        if (DMA_CYCLE) begin
+                            WAIT <= 1; //STOP THE COUNTER
+                            SDRAMCOM <= ramstate_NOP; //WE NEED TO WAIT FOR THE FALLING EDGE OF STATE 6 DURING DMA WRITE CYCLES. NO!!! SHOULD WRITE AT ASSERTION OF CAS.
+                        end else begin
+                            SDRAMCOM <= ramstate_WRITE;
+                        end
+                    end	
+                end
+
+                4'h3 : begin
+
+                    if (DMA_CYCLE && !RnW_CYCLE) begin
+
+                        if (CLK7SYNC == 2'b00) begin
+                            SDRAMCOM <= ramstate_WRITE;
+                            WAIT <= 0;
+                            RAM_COUNTER <= 4'h4;
+                        end
+
+                    end else begin
+
+                        EMCLK_OUT <= 1;
+
+                        if (RnW_CYCLE && !DMA_CYCLE) begin
+                            TA_EN <= 1;
+                        end else begin
+                            if (!BURST_CYCLE && !DMA_CYCLE) begin TA_EN <= 0; end
+                        end
+
+                        if (!BURST_CYCLE) begin
+                            SDRAMCOM <= ramstate_PRECHARGE; //CPU AND DMA CYCLE
+                        end else begin
+                            SDRAMCOM <= ramstate_NOP; //CPU BURST CYCLE
+                        end
+
+                    end
+
+                end
+
+                4'h4 : begin
+
+                    if (DMA_CYCLE && !RnW_CYCLE) begin
+                        SDRAMCOM <= ramstate_PRECHARGE; //END DMA WRITE CYCLE
+                        RAM_COUNTER <= 0;
+                    end else if (!BURST_CYCLE) begin
+                        SDRAMCOM <= ramstate_NOP;
+                        if (DMA_CYCLE) begin
+                            EMCLK_OUT <= 0;
+                            WAIT <= 1;  
+                        end else begin
+                            RAM_COUNTER <= 0; //END OF A NON-BURST CPU CYCLE
+                        end 
+                    end else begin
+                        EMCLK_OUT <= 0;
+                    end
+
+                end    
+
+                5'h5 : begin
+
+                    if (DMA_CYCLE) begin
+                        if (CLK7SYNC == 2'b10) begin //END OF DMA READ CYCLE
+                            EMCLK_OUT <= 1;
+                            nDBEN_OUT <= 1;
+                            WAIT <= 0;
+                            RAM_COUNTER <= 0;
+                        end 
+                    end else begin                            
+                        EMCLK_OUT <= 1; 
+                    end
+                end
+
+                5'h6 : begin 
+                    EMCLK_OUT <= 0;
+                end
+
+                5'h7 : begin
+                    EMCLK_OUT <= 1;
+                end
+
+                5'h8 : begin
+                    if (!RnW_CYCLE) begin 
+                        TA_EN <= 1; 
+                    end else begin
+                        EMCLK_OUT <= 0;
+                    end
+                end
+
+                5'h9 : begin
+                    EMCLK_OUT <= 1;
+
+                    if (!RnW_CYCLE) begin
+                        SDRAMCOM <= ramstate_PRECHARGE; //END OF A BURST WRITE CYCLE
+                        RAM_COUNTER <= 0;
+                    end
+                end
+
+                5'hB : begin
+                    TA_EN <= 0;
+                    SDRAMCOM <= ramstate_PRECHARGE; //END OF A BURST READ CYCLE
+                    RAM_COUNTER <= 0;
+                end
+
+            endcase
+        end
+
+    end
+end        
+
+
+endmodule

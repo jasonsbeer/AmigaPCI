@@ -33,9 +33,9 @@ TO BUILD WITH APIO: apio build --top-module U712_TOP --fpga iCE40-HX4K-TQ144
 
 module U712_BYTE_ENABLE (
 
-    input RnW, SIZ0, SIZ1,
+    input RnW, SIZ0, SIZ1, DMA_CYCLE, nCASL, nCASU, nDBEN,
     input [1:0] A,
-    output nUUBE, nUMBE, nLMBE, nLLBE
+    output nUUBE, nUMBE, nLMBE, nLLBE, nCUUBE, nCUMBE, nCLMBE, nCLLBE
 
 );
 
@@ -48,9 +48,22 @@ module U712_BYTE_ENABLE (
 //ALL BYTES. THE DATA BYTE ENABLE SIGNALS ARE USED BY THE SDRAM AND PCI BUS.
 //DURING PCI DMA CYCLES, RnW, A, SIZ0, AND SIZ1 ARE SET BY THE BRIDGE.
    
-assign nUUBE = RnW || (!RnW && !A[1] && !A[0]);
-assign nUMBE = RnW || (!RnW && ((!A[1] && A[0]) || (!A[1] && !SIZ0) || (!A[1] && SIZ1)));
-assign nLMBE = RnW || (!RnW && ((A[1] && !A[0]) || (!A[1] && !SIZ0 && !SIZ1) || (!A[1] && SIZ0 && SIZ1) || (A[0] && !A[1] && !SIZ0)));
-assign nLLBE = RnW || (!RnW && ((A[1] && A[0]) || (A[0] && SIZ0 && SIZ1) || (!SIZ0 && !SIZ1) || (A[1] && SIZ1)));
+assign nUUBE = ~(RnW || (!RnW && !A[1] && !A[0]));
+assign nUMBE = ~(RnW || (!RnW && ((!A[1] && A[0]) || (!A[1] && !SIZ0) || (!A[1] && SIZ1))));
+assign nLMBE = ~(RnW || (!RnW && ((A[1] && !A[0]) || (!A[1] && !SIZ0 && !SIZ1) || (!A[1] && SIZ0 && SIZ1) || (A[0] && !A[1] && !SIZ0))));
+assign nLLBE = ~(RnW || (!RnW && ((A[1] && A[0]) || (A[0] && SIZ0 && SIZ1) || (!SIZ0 && !SIZ1) || (A[1] && SIZ1))));
+
+//////////////////////////
+// CHIP RAM BYTE ENABLE //
+//////////////////////////
+
+//FOR CPU DRIVEN CYCLES, WE PASS THROUGH THE SIGNALS ABOVE. FOR DMA, WE 
+//CONSIDER WHICH AGNUS _CASx SIGNAL IS ASSERTED AND WHETHER WE ARE ADDRESSED
+//TO THE HIGH WORD OR LOW WORD OF THE SDRAM.
+
+assign nCUUBE = ~((!DMA_CYCLE && !nUUBE) || (DMA_CYCLE && !nCASU && !nDBEN)); 
+assign nCUMBE = ~((!DMA_CYCLE && !nUMBE) || (DMA_CYCLE && !nCASL && !nDBEN)); 
+assign nCLMBE = ~((!DMA_CYCLE && !nLMBE) || (DMA_CYCLE && !nCASU && nDBEN)); 
+assign nCLLBE = ~((!DMA_CYCLE && !nLLBE) || (DMA_CYCLE && !nCASL && nDBEN)); 
 
 endmodule

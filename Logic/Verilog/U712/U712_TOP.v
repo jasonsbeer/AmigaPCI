@@ -33,18 +33,16 @@ TO BUILD WITH APIO: apio build --top-module U712_TOP --fpga iCE40-HX4K-TQ144
 
 module U712_TOP
 (
-    input CLK20, C1, C3, RnW, SIZ0, SIZ1, nBG, nRESET, nREGSPACE, nDBR, nAWE,
-    input [1:0]A,
-    output nVBEN, nDRDEN, DRDDIR, nDBEN, nCRCS, nREGEN, nAS, CLK80, CLK40, nUUBE, nUMBE, nLMBE, nLLBE, nTA, nLDS, nUDS
+    input CLK7, CLK20, C1, C3, RnW, SIZ0, SIZ1, nBG, nRESET, nREGSPACE, nDBR, nAWE, nRAS0, nRAS1, nCASL, nCASU, nRAMSPACE, TT0, TT1,
+    input [20:0]A,
+    output nVBEN, nDRDEN, DRDDIR, nDBEN, nCRCS, nREGEN, nAS, CLK80, CLK40, nUUBE, nUMBE, nLMBE, nLLBE, nTA, nLDS, nUDS, nCUUBE, nCUMBE, nCLMBE, nCLLBE,
+    output nRAS, nCAS, nWE, CLKE, RAM_TA, DBDIR, BANK0, BANK1,
+    output [9:0] DRA, 
+    output [10:0] CMA,
 
-    //input CLK40m, CLK80m //<--THIS IS THE FOR THE TESTBENCH ONLY!!!
+    input CLK40m, CLK80m //<--THIS IS THE FOR THE TESTBENCH ONLY!!! 
+
 );
-
-//THESE ARE SET FOR ROM TESTING AT THE MOMENT.
-//THIS DISABLES AGNUS, AGNUS BUFFERS, AND CHIP RAM STUFF.
-
-assign nDBEN = 1;
-assign nCRCS = 1;
 
 ////////////////////
 // BUS/CPU CLOCKS //
@@ -52,8 +50,8 @@ assign nCRCS = 1;
 
 //WE GENERATE THE 40MHz AND 80MHz CLOCKS HERE
 
-wire CLK40m;
-wire CLK80m;
+//wire CLK40m;
+//wire CLK80m;
 
 SB_PLL40_CORE # (
     .FEEDBACK_PATH("SIMPLE"),
@@ -95,16 +93,24 @@ U712_BYTE_ENABLE U712_BYTE_ENABLE (
     .RnW (RnW), 
     .SIZ0 (SIZ0), 
     .SIZ1 (SIZ1), 
+    .DMA_CYCLE (DMA_CYCLEm),
+    .nCASL (nCASL), 
+    .nCASU (nCASU),
+    .nDBEN (nDBENm),
     .A (A[1:0]),
     .nUUBE (nUUBE), 
     .nUMBE (nUMBE), 
     .nLMBE (nLMBE), 
-    .nLLBE (nLLBE)
+    .nLLBE (nLLBE),
+    .nCUUBE (nCUUBE), 
+    .nCUMBE (nCUMBE), 
+    .nCLMBE (nCLMBE), 
+    .nCLLBE (nCLLBE)
 );
 
-//////////////////////////
-// AGNUS MC68000 CYCLES //
-//////////////////////////
+//////////////////////////////////
+// AGNUS MC68000 REGISTER CYCLE //
+//////////////////////////////////
 
 wire REG_TAm;
 
@@ -118,12 +124,13 @@ U712_CHIPSET_REGISTER U712_CHIPSET_REGISTER (
     .nDBR(nDBR),
     .SIZ0 (SIZ0), 
     .SIZ1 (SIZ1),
-    .A (A),
-    .AS(nAS),
-    .nLDS(nLDS),
-    .nUDS(nUDS),
-    .REG_TA(REG_TAm),
-    .nREGEN(nREGEN)
+    .CAS_AGNUS (CAS_AGNUSm),
+    .A (A[1:0]),
+    .nAS (nAS),
+    .nLDS (nLDS),
+    .nUDS (nUDS),
+    .REG_TA (REG_TAm),
+    .nREGEN (nREGEN)
 );
 
 //////////////////////////
@@ -133,8 +140,11 @@ U712_CHIPSET_REGISTER U712_CHIPSET_REGISTER (
 U712_TRANSFER_ACK U712_TRANSFER_ACK (
     .CLK40 (CLK40m),
     .REG_TA (REG_TAm),
+    .RAM_TA (RAM_TA), 
     .nREGSPACE (nREGSPACE),
+    .nRAMSPACE (nRAMSPACE),
     .nRESET (nRESET),
+    .BURST_CYCLE (BURST_CYCLEm),
     .nTA (nTA)
 );
 
@@ -144,12 +154,59 @@ U712_TRANSFER_ACK U712_TRANSFER_ACK (
 
 U712_BUFFERS U712_BUFFERS (
     .nREGEN (nREGEN), 
-    .nDBR (nDBR), 
+    .nRAMSPACE (nRAMSPACE),
     .nAWE (nAWE),
     .RnW (RnW),
+    .DMA_CYCLE (DMA_CYCLEm),
     .nVBEN (nVBEN), 
     .nDRDEN (nDRDEN), 
     .DRDDIR (DRDDIR)
+);
+
+/////////////////////
+// CHIP RAM CYCLES //
+/////////////////////
+
+wire DMA_CYCLEm;
+wire nDBENm;
+wire BURST_CYCLEm;
+wire CAS_AGNUSm;
+
+assign nDBEN = nDBENm;
+
+U712_CHIPSET_RAM U712_CHIPSET_RAM (
+
+    .CLK7 (CLK7), 
+    .CLK40 (CLK40m),
+    .CLK80 (CLK80m), 
+    .nRESET (nRESET),
+    .nRAS0 (nRAS0), 
+    .nRAS1 (nRAS1), 
+    .nCASL (nCASL), 
+    .nCASU (nCASU), 
+    .nRAMSPACE (nRAMSPACE),
+    .nAWE (nAWE), 
+    .TT0 (TT0), 
+    .TT1 (TT1), 
+    .RnW (RnW),
+    .A (A[20:1]),
+    
+    .nDBEN (nDBENm),
+    .nCRCS (nCRCS), 
+    .nRAS (nRAS), 
+    .nCAS (nCAS), 
+    .nWE (nWE), 
+    .CLKE (CLKE), 
+    .RAM_TA (RAM_TA),  
+    .DBDIR (DBDIR), 
+    .BANK0 (BANK0), 
+    .BANK1 (BANK1),
+    .CAS_AGNUS (CAS_AGNUSm),
+    .DMA_CYCLE (DMA_CYCLEm),
+    .BURST_CYCLE (BURST_CYCLEm),
+    .DRA (DRA),
+    .CMA (CMA)
+
 );
 
 endmodule

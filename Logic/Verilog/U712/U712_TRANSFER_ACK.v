@@ -33,7 +33,7 @@ TO BUILD WITH APIO: apio build --top-module U712_TOP --fpga iCE40-HX4K-TQ144
 
 module U712_TRANSFER_ACK (
 
-    input CLK40, REG_TA, nREGSPACE, nRESET,
+    input CLK40, REG_TA, RAM_TA, nREGSPACE, nRAMSPACE, nRESET, BURST_CYCLE,
     output nTBI, nTA
 
 );
@@ -50,10 +50,12 @@ wire TA;
 wire TA_SPACE;
 reg TA_CYCLE;
 
-assign TA = REG_TA;
-assign TA_SPACE = ~nREGSPACE;
+assign TA = REG_TA || RAM_TA;
+assign TA_SPACE = !nREGSPACE || !nRAMSPACE;
 assign nTA = TA ? 1'b0 : TA_SPACE || TA_CYCLE ? 1'b1 : 1'bZ;
-assign nTBI = TA ? 1'b0 : TA_SPACE || TA_CYCLE ? 1'b1 : 1'bZ;
+
+//TRANSFER BURST IS INHIBITED FOR REGISTER CYCLES OR WHEN A CPU RAM CYCLE IS INTERRUPTED BY A DMA CYCLE.
+assign nTBI = REG_TA || (RAM_TA && !BURST_CYCLE) ? 1'b0 : TA_SPACE || TA_CYCLE ? 1'b1 : 1'bZ;
 
 always @(posedge CLK40, negedge nRESET) begin
     if (!nRESET) begin

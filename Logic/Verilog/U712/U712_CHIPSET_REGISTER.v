@@ -25,17 +25,17 @@ Target Devices: iCE40-HX4K-TQ144
 Description: CHIP REGISTER (MC68000) CYCLES
 
 Revision History:
-    09-JUN-2024 : Initial Code
+    12-JUN-2024 : Initial Code
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 TO BUILD WITH APIO: apio build --top-module U712_TOP --fpga iCE40-HX4K-TQ144
 */
 
 module U712_CHIPSET_REGISTER (
-    input CLK40, C1, C3, nRESET, nREGSPACE, RnW, nDBR, SIZ0, SIZ1,
+    input CLK40, C1, C3, nRESET, nREGSPACE, RnW, nDBR, SIZ0, SIZ1, CAS_AGNUS,
     input [1:0] A,
 
-    output AS, nLDS, nUDS, REG_TA, nREGEN
+    output nAS, nLDS, nUDS, REG_TA, nREGEN
 );
 
 //////////////////
@@ -46,8 +46,8 @@ module U712_CHIPSET_REGISTER (
 //REGISTER AND RAM CYCLES ALWAYS START WHEN C1 AND C3 ARE LOW. 
 //THIS IS EQUIVALENT TO MC68000 STATE 2. ONCE A CYCLE STARTS, WE 
 //WAIT FOR C1 AND C3 TO BE HIGH, WHICH IS EQUIVALENT
-//TO MC68000 STATE 4. IF _DBR IS NEGATED, WE CAN PROCEED, OTHERWISE 
-//WAIT STATES ARE INSERTED UNTIL SUCH TIME AS _DBR IS HIGH (NEGATED).
+//TO MC68000 STATE 4. IF _DBR AND AGNUS _CASx IS NEGATED, WE CAN PROCEED, OTHERWISE 
+//WAIT STATES ARE INSERTED UNTIL SUCH TIME AS THIS CONDITION IS TRUE.
 
 //AGNUS ASSERTS _DBR DURING CHIPSET DMA CYCLES. THESE ALWAYS TAKE PRECEDENCE.
 //AGNUS GETS WHAT AGNUS WANTS. AGNUS ASSERTS _DBR IN STATE 1 AND NEGATES IN STATE 5.
@@ -56,17 +56,16 @@ module U712_CHIPSET_REGISTER (
 
 reg [1:0]STATE_COUNT;
 reg AS_EN;
-reg LDS_EN;
-reg UDS_EN;
+reg DS_EN;
 reg REG_EN;
 reg REGTA_EN;
 reg [1:0] CLKC1;
 reg [1:0] CLKC3;
 
 assign nREGEN = ~REG_EN;
-assign AS = ~AS_EN;
-assign nLDS = ~((SIZ1 || !SIZ0 || A[0]) && LDS_EN);
-assign nUDS = ~(!A[0] && UDS_EN);
+assign nAS = ~AS_EN;
+assign nLDS = ~((SIZ1 || !SIZ0 || A[0]) && DS_EN);
+assign nUDS = ~(!A[0] && DS_EN);
 assign REG_TA = REGTA_EN;
 
 //MC68000 STATE MACHINE
@@ -76,8 +75,7 @@ always @(negedge CLK40, negedge nRESET) begin
 
         REG_EN <= 0;
         AS_EN <= 0;
-        LDS_EN <= 0;
-        UDS_EN <= 0;
+        DS_EN <= 0;
         REGTA_EN <= 0;
         STATE_COUNT <= 2'b00;  
 
@@ -90,17 +88,15 @@ always @(negedge CLK40, negedge nRESET) begin
                     AS_EN <= 1;
                     REG_EN <= 1;                  
                     if (RnW == 1) begin
-                        LDS_EN <= 1;
-                        UDS_EN <= 1;
+                        DS_EN <= 1;
                     end        
                     STATE_COUNT <= 2'b01;            
                 end
             
             2'b01: //STATE 4
                 if (CLKC1 == 2'b11 && CLKC3 == 2'b01) begin
-                    LDS_EN <= 1;
-                    UDS_EN <= 1;
-                    if (nDBR == 1) begin                     
+                    DS_EN <= 1;
+                    if (nDBR  && !CAS_AGNUS) begin                     
                         STATE_COUNT <= 2'b10;
                     end
                 end
@@ -115,8 +111,7 @@ always @(negedge CLK40, negedge nRESET) begin
                 begin  
                     REGTA_EN <= 0;                     
                     AS_EN <= 0;
-                    LDS_EN <= 0;
-                    UDS_EN <= 0;
+                    DS_EN <= 0;
                     REG_EN <= 0;
                     if (CLKC1 == 2'b11 && CLKC3 == 2'b01) begin STATE_COUNT <= 2'b00; end
                 end
@@ -131,7 +126,6 @@ always @(posedge CLK40, negedge nRESET) begin
         CLKC1 <= 2'b11;
         CLKC3 <= 2'b11;
     end else begin
-
         CLKC1 <= { CLKC1[0] , C1 };
         CLKC3 <= { CLKC3[0] , C3 };
     end
