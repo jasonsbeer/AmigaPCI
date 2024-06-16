@@ -35,7 +35,7 @@ module U712_CHIPSET_REGISTER (
     input CLK40, C1, C3, nRESET, nREGSPACE, RnW, nDBR, SIZ0, SIZ1, CAS_AGNUS,
     input [1:0] A,
 
-    output nAS, nLDS, nUDS, REG_TA, nREGEN
+    output nAS, nLDS, nUDS, REG_TA, nREGEN, REG_CYCLE
 );
 
 //////////////////
@@ -61,12 +61,14 @@ reg REG_EN;
 reg REGTA_EN;
 reg [1:0] CLKC1;
 reg [1:0] CLKC3;
+reg REG_CYCLE_OUT;
 
 assign nREGEN = ~REG_EN;
 assign nAS = ~AS_EN;
 assign nLDS = ~((SIZ1 || !SIZ0 || A[0]) && DS_EN);
 assign nUDS = ~(!A[0] && DS_EN);
 assign REG_TA = REGTA_EN;
+assign REG_CYCLE = REG_CYCLE_OUT;
 
 //MC68000 STATE MACHINE
 
@@ -78,6 +80,7 @@ always @(negedge CLK40, negedge nRESET) begin
         DS_EN <= 0;
         REGTA_EN <= 0;
         STATE_COUNT <= 2'b00;  
+        REG_CYCLE_OUT <= 0;
 
     end else begin
 
@@ -98,6 +101,7 @@ always @(negedge CLK40, negedge nRESET) begin
                     DS_EN <= 1;
                     if (nDBR  && !CAS_AGNUS) begin                     
                         STATE_COUNT <= 2'b10;
+                        REG_CYCLE_OUT <= 1;
                     end
                 end
 
@@ -113,6 +117,7 @@ always @(negedge CLK40, negedge nRESET) begin
                     AS_EN <= 0;
                     DS_EN <= 0;
                     REG_EN <= 0;
+                    REG_CYCLE_OUT <= 0;
                     if (CLKC1 == 2'b11 && CLKC3 == 2'b01) begin STATE_COUNT <= 2'b00; end
                 end
         endcase

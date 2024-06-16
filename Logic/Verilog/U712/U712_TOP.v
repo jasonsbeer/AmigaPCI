@@ -25,7 +25,7 @@ Target Devices: iCE40-HX4K-TQ144
 Description: CHIP REGISTER (MC68000) CYCLES, CHIP RAM CYCLES, BUS AND CPU CLOCKS
 
 Revision History:
-    XXXX
+    16-JUN-2024 : INITIAL RELEASE
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 TO BUILD WITH APIO: apio build --top-module U712_TOP --fpga iCE40-HX4K-TQ144
@@ -35,12 +35,12 @@ module U712_TOP
 (
     input CLK7, CLK20, C1, C3, RnW, SIZ0, SIZ1, nBG, nRESET, nREGSPACE, nDBR, nAWE, nRAS0, nRAS1, nCASL, nCASU, nRAMSPACE, TT0, TT1,
     input [20:0]A,
-    output nVBEN, nDRDEN, DRDDIR, nDBEN, nCRCS, nREGEN, nAS, CLK80, CLK40, nUUBE, nUMBE, nLMBE, nLLBE, nTA, nLDS, nUDS, nCUUBE, nCUMBE, nCLMBE, nCLLBE,
-    output nRAS, nCAS, nWE, CLKE, RAM_TA, DBDIR, BANK0, BANK1,
-    output [9:0] DRA, 
-    output [10:0] CMA,
+    output nVBEN, nDRDEN, DRDDIR, nDBEN, nCRCS, nREGEN, nAS, CLK80, CLK40, nUUBE, nUMBE, nLMBE, nLLBE, nTA, nTBI, nLDS, nUDS, nCUUBE, nCUMBE, nCLMBE, nCLLBE,
+    output nRAS, nCAS, nWE, CLKE, DBDIR, BANK0, BANK1,
+    input [9:0] DRA, 
+    output [10:0] CMA
 
-    input CLK40m, CLK80m //<--THIS IS THE FOR THE TESTBENCH ONLY!!! 
+    //input CLK40m, CLK80m //<--THIS IS THE FOR THE TESTBENCH ONLY!!! 
 
 );
 
@@ -50,8 +50,8 @@ module U712_TOP
 
 //WE GENERATE THE 40MHz AND 80MHz CLOCKS HERE
 
-//wire CLK40m;
-//wire CLK80m;
+wire CLK40m;
+wire CLK80m;
 
 SB_PLL40_CORE # (
     .FEEDBACK_PATH("SIMPLE"),
@@ -130,7 +130,8 @@ U712_CHIPSET_REGISTER U712_CHIPSET_REGISTER (
     .nLDS (nLDS),
     .nUDS (nUDS),
     .REG_TA (REG_TAm),
-    .nREGEN (nREGEN)
+    .nREGEN (nREGEN),
+    .REG_CYCLE (REG_CYCLEm)
 );
 
 //////////////////////////
@@ -140,22 +141,24 @@ U712_CHIPSET_REGISTER U712_CHIPSET_REGISTER (
 U712_TRANSFER_ACK U712_TRANSFER_ACK (
     .CLK40 (CLK40m),
     .REG_TA (REG_TAm),
-    .RAM_TA (RAM_TA), 
+    .RAM_TA (RAM_TAm), 
     .nREGSPACE (nREGSPACE),
     .nRAMSPACE (nRAMSPACE),
     .nRESET (nRESET),
     .BURST_CYCLE (BURST_CYCLEm),
-    .nTA (nTA)
+    .nTA (nTA),
+    .nTBI (nTBI)
 );
 
 //////////////////////////
 // CHIPSET DATA BUFFERS //
 //////////////////////////
 
-U712_BUFFERS U712_BUFFERS (
-    .nREGEN (nREGEN), 
-    .nRAMSPACE (nRAMSPACE),
-    .nAWE (nAWE),
+wire REG_CYCLEm;
+
+U712_BUFFERS U712_BUFFERS ( 
+    .DBDIR (DBDIR),
+    .REG_CYCLE (REG_CYCLEm),
     .RnW (RnW),
     .DMA_CYCLE (DMA_CYCLEm),
     .nVBEN (nVBEN), 
@@ -171,6 +174,7 @@ wire DMA_CYCLEm;
 wire nDBENm;
 wire BURST_CYCLEm;
 wire CAS_AGNUSm;
+wire RAM_TAm;
 
 assign nDBEN = nDBENm;
 
@@ -197,7 +201,7 @@ U712_CHIPSET_RAM U712_CHIPSET_RAM (
     .nCAS (nCAS), 
     .nWE (nWE), 
     .CLKE (CLKE), 
-    .RAM_TA (RAM_TA),  
+    .RAM_TA (RAM_TAm),  
     .DBDIR (DBDIR), 
     .BANK0 (BANK0), 
     .BANK1 (BANK1),

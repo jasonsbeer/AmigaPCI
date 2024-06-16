@@ -13,17 +13,19 @@ reg C3 = 0;
 reg nRESET = 0;
 reg nREGSPACE = 1;
 reg nRAMSPACE = 1;
-reg RnW = 0;
+reg RnW = 1;
 reg [20:0]A = 21'b00000_00000000_00000000;
 wire SIZ0 = 1;
 wire SIZ1 = 1;
 reg nDBR = 1;
-wire nAWE = 1;
+reg nAWE = 1;
 reg nRAS0 = 1;
 reg nRAS1 = 1;
 reg nCASU = 1;
 reg nCASL = 1;
 reg [9:0]DRA = 10'b0000000000;
+reg TT1 = 1;
+reg TT0 = 1;
 
 //outputs
 wire CLK40m;
@@ -41,6 +43,7 @@ wire nLLBE;
 wire nVBEN;
 wire nDRDEN;
 wire DRDDIR;
+wire nCRCS; wire nRAS; wire nCAS; wire nWE; wire CLKE; wire nTBI; wire nDBEN; wire [10:0]CMA;
 
 reg myCLK40 = 1;
 reg myCLK80 = 1;
@@ -81,25 +84,28 @@ initial begin
     #1124 nREGSPACE = 1;*/
 
     //REGISTER VS DMA TESTS
-    #350 nDBR = 0;
+    /*#350 nDBR = 0;
     #93 nREGSPACE = 0;
-    #90 DRA = 10'b1010101010; nRAS0 = 0;
-    #70 DRA = 10'b0101010100; nCASU = 0; nDBR = 1; 
+    #90 nRAS0 = 0;
+    #70 nCASU = 0; nCASL = 0; nDBR = 1; 
     #70 nRAS0 = 1;
-    #70 nCASU = 1;
-
+    #70 nCASU = 1; nCASL = 1;
     #410 nDBR = 0;
-    #210 DRA = 10'b0101010101; nRAS0 = 0;
-    #70 DRA = 10'b1010101010; nCASU = 0;
-    #70 nRAS0 = 1;
-    #70 nCASU = 1;
-    #70 nRAS0 = 0;
+    #210 nRAS0 = 0;
     #70 nCASU = 0; nCASL = 0;
     #70 nRAS0 = 1;
     #70 nCASU = 1; nCASL = 1;
     #70 nRAS0 = 0;
-    #70 nCASU = 0;
-    #70 nRAS0 = 1;
+    #50 nAWE = 0;
+    #20 nCASU = 0; nCASL = 0;
+    #45 nAWE = 1;
+    #25 nRAS0 = 1;
+    #70 nCASU = 1; nCASL = 1;
+    #70 nRAS0 = 0;
+    #50 nAWE = 0;
+    #20 nCASU = 0; nCASL = 0;
+    #45 nAWE = 1;
+    #25 nRAS0 = 1;
     #70 nCASU = 1;  nCASL = 1;
     #70 nRAS0 = 0;
     #70 nCASU = 0; nCASL = 0;
@@ -110,21 +116,72 @@ initial begin
     #70 nRAS0 = 1;
     #70 nCASU = 1;  nCASL = 1;
     #70 nRAS0 = 0;
-    #70 nCASU = 0;
-    #70 nRAS0 = 1;
-    #70 nCASU = 1;
+    #50 nAWE = 0;
+    #20 nCASU = 0; nCASL = 0;
+    #45 nAWE = 1;
+    #25 nRAS0 = 1;
+    #70 nCASU = 1;  nCASL = 1;
     #70 nRAS0 = 0;
-    #70 nCASU = 0;
+    #70 nCASU = 0; nCASL = 0;
     #70 nRAS0 = 1;
-    #70 nCASU = 1;
+    #70 nCASU = 1;  nCASL = 1;
     #70 nRAS0 = 0;
-    #70 nCASU = 0;
+    #50 nAWE = 0;
+    #20 nCASU = 0; nCASL = 0;
+    #45 nAWE = 1;
+    #25 nRAS0 = 1;
     #20 nDBR = 1; 
     #70 nRAS0 = 1;     
-    #50 nCASU = 1;
-
+    #50 nCASU = 1;  nCASL = 1; 
     #365 nREGSPACE = 0; RnW = 0;
-    #493 nREGSPACE = 1; RnW = 1; 
+    #493 nREGSPACE = 1; RnW = 1;*/
+
+    //CPU VS DMA CHIP RAM ACCESS
+    #40 nDBR = 0; nAWE = 0;
+    #210 DRA = 10'b0101010101; nRAS0 = 0;
+    #70 DRA = 10'b1010101010; nCASU = 0; nCASL = 0;
+    #70 nRAS0 = 1;
+    #70 nCASU = 1; nCASL = 1;
+    #70 nRAS0 = 0;
+    #10 nRAMSPACE = 0; RnW = 1;
+    #60 nCASU = 0; nCASL = 0;
+    #70 nRAS0 = 1;
+    #70 nCASU = 1; nCASL = 1;
+    #70 nRAS0 = 0;
+    #10 TT1 = 0;   
+    #60 nCASU = 0; nCASL = 0;
+    #70 nRAS0 = 1;
+    #70 nCASU = 1;  nCASL = 1;
+    #70 nRAS0 = 0;
+    #70 nCASU = 0; nCASL = 0;
+    #70 nRAS0 = 1; 
+    #70 nCASU = 1;  nCASL = 1;
+    #70 nRAS0 = 0;      
+    #70 nCASU = 0; nCASL = 0; 
+    #70 nRAS0 = 1;    
+    #70 nCASU = 1;  nCASL = 1;
+    #70 nRAS0 = 0; 
+    #70 nCASU = 0; nCASL = 0;
+    #17 nRAMSPACE = 1;
+    #53 nRAS0 = 1;    
+    #60 nCASU = 1; nCASL = 1;
+
+    //THIS TRANSFER "CRASHES" INTO A DMA START, SO IT ENDS EARLY BY ASSERTING _TBI.
+    #60 nRAMSPACE = 0;
+    #10 nRAS0 = 0;
+    #70 nCASU = 0; nCASL = 0;
+    #30 nRAMSPACE = 1;
+    #40 nRAS0 = 1;
+    #70 nCASU = 1; nCASL = 1;
+
+    //THIS TRANSFER STARTS JUST EARLY ENOUGH TO AVOID BEING CANCELLED BY THE DMA START  
+    #23 nRAMSPACE = 0;  
+    #47 nRAS0 = 0;
+    #70 nCASU = 0; nCASL = 0;
+    #50 nRAMSPACE = 1;
+    #20 nRAS0 = 1; 
+    #15 nDBR = 1;    
+    #55 nCASU = 1; nCASL = 1;   
 
 
 end
@@ -153,7 +210,7 @@ U712_TOP dut (
     .RnW (RnW),
     .nDBR (nDBR),
     .nAWE (nAWE),
-    //.DRA (DRA),
+    .DRA (DRA),
     .nRAS0 (nRAS0),
     .nRAS1 (nRAS1),
     .nCASL (nCASL),
@@ -161,6 +218,8 @@ U712_TOP dut (
     .SIZ0 (SIZ0),
     .SIZ1 (SIZ1),
     .A (A),
+    .TT1 (TT1),
+    .TT0 (TT0),
 
     .nREGEN (nREGEN),
     .nTA(nTA),
@@ -169,7 +228,15 @@ U712_TOP dut (
     .DRDDIR(DRDDIR),
     .nLDS (nLDS),
     .nUDS (nUDS),
-    .nAS (nAS)
+    .nAS (nAS),
+    .nCRCS (nCRCS), 
+    .nRAS (nRAS), 
+    .nCAS (nCAS), 
+    .nWE (nWE), 
+    .CLKE (CLKE),
+    .nTBI (nTBI),
+    .nDBEN (nDBEN),
+    .CMA (CMA)
 );
 
 endmodule

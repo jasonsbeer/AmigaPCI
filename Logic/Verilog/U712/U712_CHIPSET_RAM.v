@@ -25,7 +25,7 @@ Target Devices: iCE40-HX4K-TQ144
 Description: CHIP RAM CYCLES
 
 Revision History:
-    XXXX
+    16-JUN-2024 : INITIAL RELEASE
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 TO BUILD WITH APIO: apio build --top-module U712_TOP --fpga iCE40-HX4K-TQ144
@@ -213,8 +213,9 @@ always @(negedge CLK80, negedge nRESET) begin
         end else if ((!CAS_AGNUS && !RAM_CYCLE && SDRAMCOM != ramstate_PRECHARGE && REFRESH) || REFRESH_CYCLE) begin
             case (RAM_COUNTER)
                 4'h0 : begin RAM_COUNTER <= 4'h1; SDRAMCOM <= ramstate_AUTOREFRESH; REFRESH_CYCLE <= 1; end
+                4'h1 : SDRAMCOM <= ramstate_NOP;
                 4'h4 : begin RAM_COUNTER <= 4'h0; REFRESH_CYCLE <= 0; end
-                default : SDRAMCOM <= ramstate_NOP;
+                //default : SDRAMCOM <= ramstate_NOP;
             endcase
         //RAM CYCLES
         end else if (!nRAMSPACE || DMA_READY || RAM_CYCLE) begin
@@ -224,7 +225,7 @@ always @(negedge CLK80, negedge nRESET) begin
                     TA_EN <= 0;                 
 
                     if (DMA_READY && SDRAMCOM != ramstate_PRECHARGE) begin //DMA CYCLE
-                        //AGNUS ASSERTS ONE OF THE _CASx SIGNALS IN STATE 5 SIGNIFYING A DMA CYCLE IS READY TO COMMIT.
+                        //AGNUS ASSERTS THE _CASx SIGNALS IN STATE 5 SIGNIFYING A DMA CYCLE IS STARTING.
                         //WE WAIT UNTIL STATE 6 TO START THE CYCLE.
                         SDRAMCOM <= ramstate_BANKACTIVATE;
                         RAM_COUNTER <= 4'h1;
@@ -269,12 +270,12 @@ always @(negedge CLK80, negedge nRESET) begin
                     if (RnW_CYCLE) begin
                         SDRAMCOM <= ramstate_READ;
                     end else begin
-                        if (DMA_CYCLE) begin
-                            WAIT <= 1; //STOP THE COUNTER
-                            SDRAMCOM <= ramstate_NOP; //WE NEED TO WAIT FOR THE FALLING EDGE OF STATE 6 DURING DMA WRITE CYCLES. NO!!! SHOULD WRITE AT ASSERTION OF CAS.
-                        end else begin
+                        //if (DMA_CYCLE) begin
+                            //WAIT <= 1; //STOP THE COUNTER
+                            //SDRAMCOM <= ramstate_NOP;
+                        //end else begin
                             SDRAMCOM <= ramstate_WRITE;
-                        end
+                        //end
                     end	
                 end
 
@@ -282,11 +283,13 @@ always @(negedge CLK80, negedge nRESET) begin
 
                     if (DMA_CYCLE && !RnW_CYCLE) begin
 
-                        if (CLK7SYNC == 2'b00) begin
-                            SDRAMCOM <= ramstate_WRITE;
-                            WAIT <= 0;
-                            RAM_COUNTER <= 4'h4;
-                        end
+                        //if (CLK7SYNC == 2'b00) begin //C1 AND C3 HIGH = STATE 4
+                            //SDRAMCOM <= ramstate_WRITE;
+                            //WAIT <= 0;
+                            SDRAMCOM <= ramstate_PRECHARGE; //new //END DMA WRITE CYCLE
+                            //RAM_COUNTER <= 4'h4;
+                            RAM_COUNTER <= 0; //new
+                        //end
 
                     end else begin
 
@@ -310,10 +313,10 @@ always @(negedge CLK80, negedge nRESET) begin
 
                 4'h4 : begin
 
-                    if (DMA_CYCLE && !RnW_CYCLE) begin
+                    /*if (DMA_CYCLE && !RnW_CYCLE) begin
                         SDRAMCOM <= ramstate_PRECHARGE; //END DMA WRITE CYCLE
                         RAM_COUNTER <= 0;
-                    end else if (!BURST_CYCLE) begin
+                    end else*/ if (!BURST_CYCLE) begin
                         SDRAMCOM <= ramstate_NOP;
                         if (DMA_CYCLE) begin
                             EMCLK_OUT <= 0;
