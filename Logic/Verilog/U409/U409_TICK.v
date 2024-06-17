@@ -26,6 +26,7 @@ Description: 50 AND 60Hz TICK CLOCKS
 
 Revision History:
     06-JUN-2024 : INITIAL CODE
+    16-JUN-2024 : FIX TICK FREQUENCY
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 TO BUILD WITH APIO: apio build --top-module U409_TOP --fpga iCE40-HX4K-TQ144
@@ -53,7 +54,6 @@ reg CLK3 = 0;
 reg CLK1p5 = 0;
 reg CLKp75 = 0;
 reg CLKp375 = 0;
-reg CLKp1875 = 0;
 reg [0:12] TICK60_COUNT = 0;
 reg [0:12] TICK50_COUNT = 0;
 reg TICK60_OUT = 0;
@@ -75,11 +75,7 @@ always @(posedge CLKp75) begin
     CLKp375 <= ~CLKp375;
 end
 
-always @(posedge CLKp375) begin
-    CLKp1875 <= ~CLKp1875;
-end
-
-always @(posedge CLKp1875) begin    
+always @(posedge CLKp375) begin    
     if (TICK60_COUNT == TICK60_COUNT_VALUE) begin TICK60_OUT <= ~TICK60_OUT; TICK60_COUNT <= 0; end else TICK60_COUNT <= TICK60_COUNT + 1;
     if (TICK50_COUNT == TICK50_COUNT_VALUE) begin TICK50_OUT <= ~TICK50_OUT; TICK50_COUNT <= 0; end else TICK50_COUNT <= TICK50_COUNT + 1;
 end
