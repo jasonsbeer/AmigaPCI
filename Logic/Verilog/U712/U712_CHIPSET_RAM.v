@@ -26,6 +26,7 @@ Description: CHIP RAM CYCLES
 
 Revision History:
     16-JUN-2024 : INITIAL RELEASE
+    17-JUN-2024 : SET BRIDGE ENABLE WITH COLUMN MA0 (A1)
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 TO BUILD WITH APIO: apio build --top-module U712_TOP --fpga iCE40-HX4K-TQ144
@@ -141,6 +142,17 @@ end
 
 //SDRAM IS USED TO IMPLEMENT THE CHIP RAM SPACE.
 
+/*
+
+THIS IS THE AGNUS DRAM MULTIPLEXING.
+
+     MA9 MA8 MA7 MA6 MA5 MA4 MA3 MA2 MA1 MA0
+    ----------------------------------------
+ROW: A19 A18 A17 A16 A15 A14 A13 A12 A11 A10
+COL: A20 A9  A8  A7  A6  A5  A4  A3  A2  A1
+
+*/
+
 localparam [3:0] ramstate_NOP = 4'b1111;
 localparam [3:0] ramstate_PRECHARGE = 4'b0010;
 localparam [3:0] ramstate_BANKACTIVATE = 4'b0011;
@@ -166,7 +178,7 @@ assign nCAS = SDRAMCOM[1];
 assign nWE = SDRAMCOM[0];
 assign CLKE = EMCLK_OUT;
 assign RAM_TA = TA_EN;
-assign nDBEN = nDBEN_OUT;
+assign nDBEN = ~nDBEN_OUT;
 assign DBDIR = ~RnW_CYCLE;
 assign BANK0 = 0;
 assign BANK1 = 0;
@@ -233,7 +245,7 @@ always @(negedge CLK80, negedge nRESET) begin
                         RAM_CYCLE <= 1;
                         BURST_CYCLE <= 0;
                         RnW_CYCLE <= nAWE;
-                        nDBEN_OUT <= DMA_ROW_ADDRESS[9];                    
+			nDBEN_OUT <= DMA_CAS_ADDRESS[0];                    
                     end else if (!nRAMSPACE && !CLK40 && SDRAMCOM != ramstate_PRECHARGE && ((nRAS0 && nRAS1) || (!nRAS0 && !nRAS1))) begin //CPU CYCLE
                         //DON'T START A CPU RAM CYCLE IF AGNUS HAS ASSERTED ONE OF THE _RASx SIGNALS. THIS INDICATES A
                         //PENDING DMA CYCLE. WE IGNORE IF BOTH _RASx SIGNALS ARE ASSERTED BECAUSE THAT IS A DRAM REFRESH SIGNAL.
