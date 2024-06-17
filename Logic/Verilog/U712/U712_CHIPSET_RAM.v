@@ -186,10 +186,10 @@ assign BANK1 = 0;
 assign CMA = 
     SDRAMCOM == ramstate_PRECHARGE ? 11'b10000000000 : 
     SDRAMCOM == ramstate_MODEREGISTER ? 11'b00000100010 : 
-    SDRAMCOM == ramstate_BANKACTIVATE && !DMA_CYCLE ? {A[20:10]} :
-    SDRAMCOM == ramstate_BANKACTIVATE && DMA_CYCLE ? {DMA_ROW_ADDRESS[8:0], DMA_COL_ADDRESS[9:8]} : 
-    (SDRAMCOM == ramstate_READ || SDRAMCOM == ramstate_WRITE) && !DMA_CYCLE ? {3'b000, A[9:2]} :
-    (SDRAMCOM == ramstate_READ || SDRAMCOM == ramstate_WRITE) && DMA_CYCLE ? {3'b000, DMA_COL_ADDRESS[7:0]} : 11'b00000000000;
+	SDRAMCOM == ramstate_BANKACTIVATE && !DMA_CYCLE ? {1'b0, A[19:10]} :
+	SDRAMCOM == ramstate_BANKACTIVATE && DMA_CYCLE ? {1'b0, DMA_ROW_ADDRESS[9:0]} : 
+	(SDRAMCOM == ramstate_READ || SDRAMCOM == ramstate_WRITE) && !DMA_CYCLE ? {3'b00, A[20], A[9:2]} :
+	(SDRAMCOM == ramstate_READ || SDRAMCOM == ramstate_WRITE) && DMA_CYCLE ? {3'b00, DMA_COL_ADDRESS[9:1]} : 11'b00000000000;
 
 always @(negedge CLK80, negedge nRESET) begin
     if (!nRESET) begin
@@ -245,7 +245,7 @@ always @(negedge CLK80, negedge nRESET) begin
                         RAM_CYCLE <= 1;
                         BURST_CYCLE <= 0;
                         RnW_CYCLE <= nAWE;
-			nDBEN_OUT <= DMA_CAS_ADDRESS[0];                    
+			nDBEN_OUT <= DMA_COL_ADDRESS[0];                    
                     end else if (!nRAMSPACE && !CLK40 && SDRAMCOM != ramstate_PRECHARGE && ((nRAS0 && nRAS1) || (!nRAS0 && !nRAS1))) begin //CPU CYCLE
                         //DON'T START A CPU RAM CYCLE IF AGNUS HAS ASSERTED ONE OF THE _RASx SIGNALS. THIS INDICATES A
                         //PENDING DMA CYCLE. WE IGNORE IF BOTH _RASx SIGNALS ARE ASSERTED BECAUSE THAT IS A DRAM REFRESH SIGNAL.
