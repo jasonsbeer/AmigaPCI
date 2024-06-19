@@ -49,7 +49,8 @@ set_io TT1        3
 set_io TT0        4
 set_io nTA        7
 set_io CLK20      20
-set_io CLK40      21
+set_io CLK40A     21
+set_io CLK40B     112
 set_io nBG        37
 set_io CLK80      38
 set_io nTBI       39

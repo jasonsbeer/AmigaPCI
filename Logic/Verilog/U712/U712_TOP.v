@@ -26,6 +26,7 @@ Description: CHIP REGISTER (MC68000) CYCLES, CHIP RAM CYCLES, BUS AND CPU CLOCKS
 
 Revision History:
     16-JUN-2024 : INITIAL RELEASE
+    18-JUN-2024 : ADDED 40MHz FANOUT
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 TO BUILD WITH APIO: apio build --top-module U712_TOP --fpga iCE40-HX4K-TQ144
@@ -35,7 +36,7 @@ module U712_TOP
 (
     input CLK7, CLK20, C1, C3, RnW, SIZ0, SIZ1, nBG, nRESET, nREGSPACE, nDBR, nAWE, nRAS0, nRAS1, nCASL, nCASU, nRAMSPACE, TT0, TT1,
     input [20:0]A,
-    output nVBEN, nDRDEN, DRDDIR, nDBEN, nCRCS, nREGEN, nAS, CLK80, CLK40, nUUBE, nUMBE, nLMBE, nLLBE, nTA, nTBI, nLDS, nUDS, nCUUBE, nCUMBE, nCLMBE, nCLLBE,
+    output nVBEN, nDRDEN, DRDDIR, nDBEN, nCRCS, nREGEN, nAS, CLK80, CLK40A, CLK40B , nUUBE, nUMBE, nLMBE, nLLBE, nTA, nTBI, nLDS, nUDS, nCUUBE, nCUMBE, nCLMBE, nCLLBE,
     output nRAS, nCAS, nWE, CLKE, DBDIR, BANK0, BANK1,
     input [9:0] DRA, 
     output [10:0] CMA
@@ -52,6 +53,10 @@ module U712_TOP
 
 wire CLK40m;
 wire CLK80m;
+wire CLK40out;
+
+assign CLK40A = CLK40out;
+assign CLK40B = CLK40out;
 
 SB_PLL40_CORE # (
     .FEEDBACK_PATH("SIMPLE"),
@@ -63,7 +68,7 @@ SB_PLL40_CORE # (
     ) PLL40 (
         .REFERENCECLK(CLK20),
         .PLLOUTGLOBAL(CLK40m),
-        .PLLOUTCORE(CLK40),
+        .PLLOUTCORE(CLK40out),
         .LOCK(),
         .RESETB(1'b1),
         .BYPASS(1'b0)
