@@ -161,13 +161,13 @@ end
 
 /*
 
-THIS IS THE AGNUS DRAM MULTIPLEXING.
+THIS IS THE AGNUS DRAM MULTIPLEXING. 1MB AGNUS DROPS A20.
 AGNUS _RAS0 = A19. _RAS1 = A19 INVERSE.
 
      MA9 MA8 MA7 MA6 MA5 MA4 MA3 MA2 MA1 MA0
     ----------------------------------------
-ROW: A19 A18 A16 A15 A14 A13 A12 A11 A10  A9
-COL: A20 A17  A8  A7  A6  A5  A4  A3  A2  A1
+ROW: A19 A17 A16 A15 A14 A13 A12 A11 A10  A9
+COL: A20 A18  A8  A7  A6  A5  A4  A3  A2  A1
 
 */
 
@@ -204,10 +204,12 @@ assign BANK1 = 0;
 assign CMA = 
     SDRAMCOM == ramstate_PRECHARGE ? 11'b10000000000 : 
     SDRAMCOM == ramstate_MODEREGISTER ? 11'b00000100010 : 
-	SDRAMCOM == ramstate_BANKACTIVATE && !DMA_CYCLE ? {1'b0, A[19:10]} :
+	
+	SDRAMCOM == ramstate_BANKACTIVATE && !DMA_CYCLE ? {1'b0, A[19], A[17:9]} :
 	SDRAMCOM == ramstate_BANKACTIVATE && DMA_CYCLE ? {1'b0, DMA_ROW_ADDRESS[9:0]} : 
-	//(SDRAMCOM == ramstate_READ || SDRAMCOM == ramstate_WRITE) && !DMA_CYCLE ? {2'b00, A[20], A[9:2]} :
-    (SDRAMCOM == ramstate_READ || SDRAMCOM == ramstate_WRITE) && !DMA_CYCLE ? {3'b000, A[9:2]} :
+	
+	//(SDRAMCOM == ramstate_READ || SDRAMCOM == ramstate_WRITE) && !DMA_CYCLE ? {2'b00, A[20], A[18], A[8:2]} : //2MB CPU ACCESS
+	(SDRAMCOM == ramstate_READ || SDRAMCOM == ramstate_WRITE) && !DMA_CYCLE ? {3'b000, A[18], A[8:2]} : //1MB CPU ACCESS
 	(SDRAMCOM == ramstate_READ || SDRAMCOM == ramstate_WRITE) && DMA_CYCLE ? {3'b00, DMA_COL_ADDRESS[9:1]} : 11'b00000000000;
 
 always @(negedge CLK80, negedge nRESET) begin
