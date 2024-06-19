@@ -87,17 +87,34 @@ end
 //CAPTURE THE AGNUS ROW AND COLUMN ADDRESS WHEN RASx OR CASx IS ASSERTED.
 //THIS IS TO FACILITATE DMA CYCLES.
 
-wire RAS_AGNUS;
-//wire CAS_AGNUS;
+wire CAS_AGNUS;
 wire DMA_RESET;
 reg DMA_READY;
 reg [9:0] DMA_ROW_ADDRESS;
 reg [9:0] DMA_COL_ADDRESS;
+reg RAS_AGNUS;
+reg [1:0] RAS0;
+reg [1:0] RAS1;
 
 assign DMA_RESET = DMA_CYCLE || !nRESET;
-assign RAS_AGNUS = (!nRAS0 || !nRAS1);
 assign CAS_AGNUS = (!nCASL || !nCASU);
 
+always @(posedge CLK80, negedge nRESET) begin
+    if (!nRESET) begin
+        RAS_AGNUS <= 0;
+	RAS0 <= 2'b11;
+	RAS1 <= 2'b11;
+    end else begin 
+        RAS0 <= { RAS0[0], nRAS0 };
+	RAS1 <= { RAS1[0], nRAS1 };
+	if ((RAS0 == 2'b00 && RAS1 = 2'b11) || (RAS0 == 2'b11 && RAS1 = 2'b00)) begin	    
+            RAS_AGNUS <= 1;	    
+        end else begin
+	    RAS_AGNUS <= 0;
+	end
+    end
+end
+	
 always @(posedge RAS_AGNUS, negedge nRESET) begin
     if (!nRESET) begin
         DMA_ROW_ADDRESS <= 10'b0000000000;
@@ -145,11 +162,12 @@ end
 /*
 
 THIS IS THE AGNUS DRAM MULTIPLEXING.
+AGNUS _RAS0 = A19. _RAS1 = A19 INVERSE.
 
      MA9 MA8 MA7 MA6 MA5 MA4 MA3 MA2 MA1 MA0
     ----------------------------------------
-ROW: A19 A18 A17 A16 A15 A14 A13 A12 A11 A10
-COL: A20 A9  A8  A7  A6  A5  A4  A3  A2  A1
+ROW: A19 A18 A16 A15 A14 A13 A12 A11 A10  A9
+COL: A20 A17  A8  A7  A6  A5  A4  A3  A2  A1
 
 */
 
@@ -247,7 +265,7 @@ always @(negedge CLK80, negedge nRESET) begin
                         BURST_CYCLE <= 0;
                         RnW_CYCLE <= nAWE;
 			            nDBEN_OUT <= DMA_COL_ADDRESS[0];                    
-                    end else if (!nRAMSPACE && !CLK40 && SDRAMCOM != ramstate_PRECHARGE && ((nRAS0 && nRAS1) || (!nRAS0 && !nRAS1))) begin //CPU CYCLE
+		    end else if (!nRAMSPACE && !CLK40 && SDRAMCOM != ramstate_PRECHARGE && RAS_AGNUS == 0) begin //CPU CYCLE
                         //DON'T START A CPU RAM CYCLE IF AGNUS HAS ASSERTED ONE OF THE _RASx SIGNALS. THIS INDICATES A
                         //PENDING DMA CYCLE. WE IGNORE IF BOTH _RASx SIGNALS ARE ASSERTED BECAUSE THAT IS A DRAM REFRESH SIGNAL.
                         SDRAMCOM <= ramstate_BANKACTIVATE;
