@@ -119,7 +119,8 @@ always @(posedge RAS_AGNUS, negedge nRESET) begin
     if (!nRESET) begin
         DMA_ROW_ADDRESS <= 10'b0000000000;
     end else begin
-        DMA_ROW_ADDRESS <= DRA;
+	    //DMA_ROW_ADDRESS <= DRA; //2MB Agnus
+	    DMA_ROW_ADDRESS <= { nRAS0, DRA[8:0] }; //1MB Agnus
     end
 end
 
@@ -259,7 +260,6 @@ always @(negedge CLK80, negedge nRESET) begin
 
                     if (DMA_READY && SDRAMCOM != ramstate_PRECHARGE) begin //DMA CYCLE
                         //AGNUS ASSERTS THE _CASx SIGNALS IN STATE 5 SIGNIFYING A DMA CYCLE IS STARTING.
-                        //WE WAIT UNTIL STATE 6 TO START THE CYCLE.
                         SDRAMCOM <= ramstate_BANKACTIVATE;
                         RAM_COUNTER <= 4'h1;
                         DMA_CYCLE <= 1; 
