@@ -27,6 +27,8 @@ Description: CHIP RAM CYCLES
 Revision History:
     16-JUN-2024 : INITIAL RELEASE
     17-JUN-2024 : SET BRIDGE ENABLE WITH COLUMN MA0 (A1)
+    19-JUN-2024 : ALIGNED CPU ADDRESS TO AGNUS MULTIPLEX ADDRESS FOR SDRAM ACCESS 
+                  ADDED 1MB AND 2MB AGNUS OPTIONS
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 TO BUILD WITH APIO: apio build --top-module U712_TOP --fpga iCE40-HX4K-TQ144
@@ -102,16 +104,16 @@ assign CAS_AGNUS = (!nCASL || !nCASU);
 always @(posedge CLK80, negedge nRESET) begin
     if (!nRESET) begin
         RAS_AGNUS <= 0;
-	RAS0 <= 2'b11;
-	RAS1 <= 2'b11;
+        RAS0 <= 2'b11;
+        RAS1 <= 2'b11;
     end else begin 
         RAS0 <= { RAS0[0], nRAS0 };
-	RAS1 <= { RAS1[0], nRAS1 };
-	if ((RAS0 == 2'b00 && RAS1 = 2'b11) || (RAS0 == 2'b11 && RAS1 = 2'b00)) begin	    
+        RAS1 <= { RAS1[0], nRAS1 };
+        if ((RAS0 == 2'b00 && RAS1 == 2'b11) || (RAS0 == 2'b11 && RAS1 == 2'b00)) begin	    
             RAS_AGNUS <= 1;	    
         end else begin
-	    RAS_AGNUS <= 0;
-	end
+            RAS_AGNUS <= 0;
+        end
     end
 end
 	

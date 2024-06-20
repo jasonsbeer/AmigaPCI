@@ -78,22 +78,23 @@ end
 
 //ROM TRANSFER ACK IS HELD OFF TO ADHEAR TO SETUP TIME OF THE ROM.
 
-parameter integer ROM_DELAY_VALUE = 3;
+//parameter integer ROM_DELAY_VALUE = 2'b10; //3;
 
 reg [0:1] ROM_DELAY;
 reg ROM_TA;
 
 assign nROMEN = ~ROMEN;
 
-always @(negedge CLK40, negedge nRESET) begin
-	if (!nRESET) begin
-		ROM_TA <= 0;
-		ROM_DELAY <= 0;
+always @(posedge CLK40, negedge nRESET) begin
+	if (nRESET == 1'b0) begin
+		ROM_TA <= 1'b0;
+		ROM_DELAY <= 2'b00;
 	end else begin
 		case (ROM_DELAY)
-            0               : begin ROM_TA <= 0; if (ROMEN && TS) begin ROM_DELAY <= 1; end end
-            ROM_DELAY_VALUE : begin ROM_TA <= 1; ROM_DELAY <= 0; end
-            default         : begin ROM_DELAY <= ROM_DELAY + 1; end
+            2'b00 : begin ROM_TA <= 1'b0; if (ROMEN == 1 && TS == 1) begin ROM_DELAY <= 2'b01; end end
+            2'b01 : ROM_DELAY <= 2'b10;
+            2'b10 : ROM_DELAY <= 2'b11;
+            2'b11 : begin ROM_TA <= 1'b1; ROM_DELAY <= 2'b00; end
 		endcase
 	end
 end

@@ -54,10 +54,13 @@ reg TS;
 assign TS_RESET = !nTA || !nRESET;
 
 always @(posedge CLK40, posedge TS_RESET) begin
-    if (TS_RESET) 
+    if (TS_RESET == 1'b1) begin
         TS <= 1'b0;
-    else
-        if (!TS && !nTS) TS <= 1'b1;
+    end else begin
+        if (nTS == 1'b0) begin
+            TS <= 1'b1;
+        end
+    end
 end
 
 //////////////////////
