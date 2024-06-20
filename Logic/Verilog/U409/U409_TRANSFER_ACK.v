@@ -27,6 +27,7 @@ Description: MC68040/MC68060 TRANSFER ACK
 Revision History:
     08-JUN-2024 : INITIAL CODE
     09-JUN-2024 : FIX CIA CYCLE TERMINATION
+    19-JUN-2024 : FIX CIA TRANSFER ACK TIMING
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 TO BUILD WITH APIO: apio build --top-module U409_TOP --fpga iCE40-HX4K-TQ144
@@ -111,7 +112,7 @@ reg [1:0] LASTCLK;
 reg TA_ENABLE;
 reg CIA_TA;
 
-always @(negedge CLK40, negedge nRESET) begin
+always @(posedge CLK40, negedge nRESET) begin
 
     if (nRESET == 0) begin
         LASTCLK <= 2'b00;
