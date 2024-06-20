@@ -52,7 +52,8 @@ set_io CLK20      20
 set_io CLK40A     21
 set_io CLK40B     112
 set_io nBG        37
-set_io CLK80      38
+set_io CLK80A     38
+set_io CLK80B     115
 set_io nTBI       39
 set_io nREGSPACE  41
 set_io nDBEN      42
