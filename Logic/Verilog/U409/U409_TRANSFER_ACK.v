@@ -48,18 +48,19 @@ module U409_TRANSFER_ACK (
 //CACHING IS ALLOWED FOR ALL SPACES EXCEPT CHIP RAM, SINCE AGNUS CAN WRITE THERE, TOO.
 //WE FORCE _TA HIGH AFTER THE CYCLE TO PREVENT THE NEXT CYCLE FROM ENDING PREMATURELY.
 
-//wire BURST_CYCLEm;
 wire TA;
 wire TA_SPACE;
+wire NOCACHE_SPACE;
 reg TA_CYCLE;
 
-assign TA = ROM_TA || CIA_TA;
-assign TA_SPACE = ROMEN || CIA_SPACE;
-assign nTA = TA ? 1'b0 : TA_SPACE || TA_CYCLE ? 1'b1 : 1'bZ;
-//assign nTCI = !RAM_SPACEm ? 1'b1 : nTA;
-//assign nTBI = BURST_CYCLEm ? 1'b1 : nTA;
-assign nTCI = 1;
-assign nTBI = TA ? 1'b0 : TA_SPACE || TA_CYCLE ? 1'b1 : 1'bZ;
+assign TA = ROM_TA || CIA_TA; //|| END_TA;
+assign TA_SPACE = ROMEN || CIA_SPACE || TA_CYCLE; //|| END_TA;
+assign nTA = TA_SPACE ? ~TA : 1'bz;
+
+assign NOCACHE_SPACE = CIA_SPACE;
+assign nTCI = NOCACHE_SPACE ? ~TA : 1'bz;
+
+assign nTBI = 1'bz; //TA ? 1'b0 : TA_SPACE || TA_CYCLE ? 1'b1 : 1'bZ;
 
 always @(posedge CLK40, negedge nRESET) begin
     if (!nRESET) begin
@@ -81,7 +82,7 @@ end
 
 //parameter integer ROM_DELAY_VALUE = 2'b10; //3;
 
-reg [0:1] ROM_DELAY;
+reg [2:0] ROM_DELAY;
 reg ROM_TA;
 
 assign nROMEN = ~ROMEN;
@@ -89,13 +90,14 @@ assign nROMEN = ~ROMEN;
 always @(posedge CLK40, negedge nRESET) begin
 	if (nRESET == 1'b0) begin
 		ROM_TA <= 1'b0;
-		ROM_DELAY <= 2'b00;
+		ROM_DELAY <= 3'b000;
 	end else begin
 		case (ROM_DELAY)
-            2'b00 : begin ROM_TA <= 1'b0; if (ROMEN == 1 && TS == 1) begin ROM_DELAY <= 2'b01; end end
-            2'b01 : ROM_DELAY <= 2'b10;
-            2'b10 : ROM_DELAY <= 2'b11;
-            2'b11 : begin ROM_TA <= 1'b1; ROM_DELAY <= 2'b00; end
+            3'b000 : begin ROM_TA <= 1'b0; if (ROMEN == 1 && TS == 1) begin ROM_DELAY <= 2'b01; end end
+            //2'b001 : ROM_DELAY <= 2'b10;
+            //2'b010 : ROM_DELAY <= 2'b11;
+            3'b101 : begin ROM_TA <= 1'b1; ROM_DELAY <= 3'b000; end
+            default : ROM_DELAY <= ROM_DELAY + 1;
 		endcase
 	end
 end
@@ -134,5 +136,34 @@ always @(posedge CLK40, negedge nRESET) begin
     end
 
 end
+
+//////////////////////////////
+// END NON-RESPONSIVE CYCLE //
+//////////////////////////////
+
+//IF NOTHING RESPONDS, WE ASSERT _TA. WE IGNORE THE CIA SPACES.
+
+/*reg END_TA;
+reg [5:0] END_COUNTER;
+
+always @(posedge CLK40, negedge nRESET) begin
+    if (!nRESET) begin
+        END_TA <= 0;
+        END_COUNTER <= 5'b00000;
+    end else begin
+        if (TS && !TA_SPACE) begin         
+            END_COUNTER <= END_COUNTER + 1;            
+            if (END_COUNTER == 5'b11111) begin
+                END_TA <= 1;
+                END_COUNTER <= 5'b00000;
+            //end else begin
+            //    END_TA <= 0;
+            end
+        end else begin
+            END_TA <= 0;
+            END_COUNTER <= 5'b00000;
+        end
+    end
+end*/
 
 endmodule

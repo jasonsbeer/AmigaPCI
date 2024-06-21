@@ -63,9 +63,9 @@ always @(posedge CLK7) begin
     case (CIA_CLK_COUNT)
 
         0 : CIA_ENABLE_OUT <= 0;
-        4 : if (CIA_SPACE == 1) begin CIA_ENABLE_OUT <= 1; end
+        2 : if (CIA_SPACE == 1) begin CIA_ENABLE_OUT <= 1; end
         5 : CIA_CLK_HIGH <= 1;
-        7 : if (RnW == 0) begin CIA_CLK_HIGH <= 0; end
+        //7 : if (RnW == 0) begin CIA_CLK_HIGH <= 0; end
         9 : begin CIA_CLK_HIGH <= 0; CIA_CLK_COUNT <= 0; end
 
     endcase

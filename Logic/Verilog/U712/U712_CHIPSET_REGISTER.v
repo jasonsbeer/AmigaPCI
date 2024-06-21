@@ -87,7 +87,7 @@ always @(negedge CLK40, negedge nRESET) begin
         case (STATE_COUNT)
 
             3'b00: //STATE 2
-                if (CLKC1 == 2'b00 && CLKC3 == 2'b10 && !nREGSPACE) begin 
+                if (CLKC1 == 2'b00 && CLKC3 == 2'b10 && nREGSPACE == 1'b0) begin 
                     AS_EN <= 1;
                     REG_EN <= 1;                  
                     if (RnW == 1) begin
@@ -107,13 +107,13 @@ always @(negedge CLK40, negedge nRESET) begin
 
             2'b10: //STATE 6
                 if (CLKC1 == 2'b01 && CLKC3 == 2'b00) begin 
-                    REGTA_EN <= 1;                     
+                    REGTA_EN <= 1;                    
                     STATE_COUNT <= 2'b11; 
                 end
 
             2'b11 : //STATE 7
                 begin  
-                    REGTA_EN <= 0;                     
+                    REGTA_EN <= 1'b0;
                     AS_EN <= 0;
                     DS_EN <= 0;
                     REG_EN <= 0;

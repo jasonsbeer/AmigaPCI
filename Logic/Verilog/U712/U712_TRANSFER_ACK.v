@@ -51,8 +51,8 @@ wire TA_SPACE;
 reg TA_CYCLE;
 
 assign TA = REG_TA || RAM_TA;
-assign TA_SPACE = !nREGSPACE || !nRAMSPACE;
-assign nTA = 1'bz; //TA ? 1'b0 : TA_SPACE || TA_CYCLE ? 1'b1 : 1'bZ;
+assign TA_SPACE = !nREGSPACE || !nRAMSPACE || TA_CYCLE;
+assign nTA = TA_SPACE ? ~TA : 1'bz;
 
 //TRANSFER BURST IS INHIBITED FOR REGISTER CYCLES OR WHEN A CPU RAM CYCLE IS INTERRUPTED BY A DMA CYCLE.
 assign nTBI = 1'bz; //REG_TA || (RAM_TA && !BURST_CYCLE) ? 1'b0 : TA_SPACE || TA_CYCLE ? 1'b1 : 1'bZ;
