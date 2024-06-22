@@ -80,9 +80,7 @@ end
 
 //ROM TRANSFER ACK IS HELD OFF TO ADHEAR TO SETUP TIME OF THE ROM.
 
-//parameter integer ROM_DELAY_VALUE = 2'b10; //3;
-
-reg [2:0] ROM_DELAY;
+reg [1:0] ROM_DELAY;
 reg ROM_TA;
 
 assign nROMEN = ~ROMEN;
@@ -90,13 +88,11 @@ assign nROMEN = ~ROMEN;
 always @(posedge CLK40, negedge nRESET) begin
 	if (nRESET == 1'b0) begin
 		ROM_TA <= 1'b0;
-		ROM_DELAY <= 3'b000;
+		ROM_DELAY <= 2'b00;
 	end else begin
 		case (ROM_DELAY)
-            3'b000 : begin ROM_TA <= 1'b0; if (ROMEN == 1 && TS == 1) begin ROM_DELAY <= 2'b01; end end
-            //2'b001 : ROM_DELAY <= 2'b10;
-            //2'b010 : ROM_DELAY <= 2'b11;
-            3'b101 : begin ROM_TA <= 1'b1; ROM_DELAY <= 3'b000; end
+            2'b00 : begin ROM_TA <= 1'b0; if (ROMEN && TS) begin ROM_DELAY <= 2'b01; end end
+            2'b10 : begin ROM_TA <= 1'b1; ROM_DELAY <= 2'b00; end
             default : ROM_DELAY <= ROM_DELAY + 1;
 		endcase
 	end
@@ -122,17 +118,16 @@ always @(posedge CLK40, negedge nRESET) begin
         TA_ENABLE <= 0;
     end else begin
 
-        LASTCLK <= { LASTCLK[0] , CLKCIA };
+        LASTCLK <= { LASTCLK[0] , CLKCIA};
 
-        if (LASTCLK == 2'b11 && CIA_ENABLE == 1 && TS == 1) begin
+        if (LASTCLK == 2'b11 && CIA_ENABLE && TS) begin
             TA_ENABLE <= 1;
-        end else if (LASTCLK == 2'b00 && TA_ENABLE == 1 ) begin 
+        end else if (LASTCLK == 2'b00 && TA_ENABLE) begin 
             CIA_TA <= 1; 
             TA_ENABLE <= 0;
         end else begin
             CIA_TA <= 0; 
         end
-
     end
 
 end

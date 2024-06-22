@@ -65,9 +65,9 @@ assign ROMEN = (nRESET && Z2_SPACE && ((OVL && A[23:21] == 3'b000) || (A[23:19] 
 // CIA ADDRESS SPACE //
 ///////////////////////
 
-assign CIA_SPACE = Z2_SPACE && A[23:16] == 8'hBF;
-assign nCIACS0 = ~(CIA_SPACE && CIA_ENABLE && A[12]);
-assign nCIACS1 = ~(CIA_SPACE && CIA_ENABLE && A[13]);
+assign CIA_SPACE = nRESET && Z2_SPACE && A[23:16] == 8'hBF;
+assign nCIACS0 = ~(CIA_ENABLE && A[12]);
+assign nCIACS1 = ~(CIA_ENABLE && A[13]);
 
 //////////////////
 // AGNUS SPACES //
@@ -77,6 +77,6 @@ assign nCIACS1 = ~(CIA_SPACE && CIA_ENABLE && A[13]);
 //THESE SIGNALS ARE CONSUMED BY U712.
 
 assign nRAMSPACE = ~(Z2_SPACE && !OVL && A[23:21] == 3'b000 && TS);
-assign nREGSPACE = ~(Z2_SPACE && A[23:16] == 8'hDF && TS);
+assign nREGSPACE = ~(Z2_SPACE && A[23:16] == 8'hDF && TS); //ADD RANGER SPACE HERE, AS PER A3000 GARY
 
 endmodule

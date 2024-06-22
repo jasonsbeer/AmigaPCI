@@ -52,18 +52,19 @@ module U409_CIA
 
 reg [3:0] CIA_CLK_COUNT = 0;
 reg CIA_CLK_HIGH = 0;
-reg CIA_ENABLE_OUT;
+reg CIA_ENABLE_OUT = 0;
 
 assign CLKCIA = CIA_CLK_HIGH;
 assign CIA_ENABLE = CIA_ENABLE_OUT;
 
 always @(posedge CLK7) begin
+
     CIA_CLK_COUNT <= CIA_CLK_COUNT + 1;
 
     case (CIA_CLK_COUNT)
 
         0 : CIA_ENABLE_OUT <= 0;
-        2 : if (CIA_SPACE == 1) begin CIA_ENABLE_OUT <= 1; end
+        3 : CIA_ENABLE_OUT <= CIA_SPACE;
         5 : CIA_CLK_HIGH <= 1;
         //7 : if (RnW == 0) begin CIA_CLK_HIGH <= 0; end
         9 : begin CIA_CLK_HIGH <= 0; CIA_CLK_COUNT <= 0; end
