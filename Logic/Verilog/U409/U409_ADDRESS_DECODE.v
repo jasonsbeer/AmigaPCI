@@ -29,6 +29,7 @@ Revision History:
     09-JUN-2024 : ADD AGNUS ADDRESS SPACES
                   FIXED ROM ADDRESS SPACE TO LIMIT ONLY $00F8 0000 - $00FF 0000
     19-JUN-2024 : REMOVE OVL TEST FOR HIGH ROM SPACE
+    22-JUN-2024 : FIXED CIA CHIP SELECTS
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 TO BUILD WITH APIO: apio build --top-module U409_TOP --fpga iCE40-HX4K-TQ144
@@ -66,8 +67,8 @@ assign ROMEN = (nRESET && Z2_SPACE && ((OVL && A[23:21] == 3'b000) || (A[23:19] 
 ///////////////////////
 
 assign CIA_SPACE = nRESET && Z2_SPACE && A[23:16] == 8'hBF;
-assign nCIACS0 = ~(CIA_ENABLE && A[12]);
-assign nCIACS1 = ~(CIA_ENABLE && A[13]);
+assign nCIACS0 = ~(CIA_ENABLE && !A[12]);
+assign nCIACS1 = ~(CIA_ENABLE && !A[13]);
 
 //////////////////
 // AGNUS SPACES //
