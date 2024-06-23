@@ -46,7 +46,7 @@ module U409_TOP (
 // LATCH TRANSFER START SIGNAL //
 /////////////////////////////////
 
-//WE NEED TO SAMPLE _TS SO WE KNOW WHEN A NEW CYCLE HAS STARTED, AS _TIP WILL STAY ASSERTED AMONG MULTIPLE CYCLES.
+//WE NEED TO SAMPLE _TS SO WE KNOW WHEN A NEW CYCLE HAS STARTED.
 
 wire TS_RESET;
 reg TS;
@@ -58,7 +58,7 @@ always @(posedge CLK40, posedge TS_RESET) begin
         TS <= 1'b0;
     end else begin
         if (nTS == 1'b0) begin
-            TS <= 1'b1;
+            TS <= 1'b1;      
         end
     end
 end

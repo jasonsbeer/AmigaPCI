@@ -290,7 +290,7 @@ always @(negedge CLK80, negedge nRESET) begin
 
                 4'h1 : begin
                     SDRAMCOM <= ramstate_NOP;
-                    TA_EN <= (!RnW_CYCLE && !DMA_CYCLE);
+                    //TA_EN <= (!RnW_CYCLE && !DMA_CYCLE);
                 end
 
                 4'h2 : begin
@@ -305,27 +305,16 @@ always @(negedge CLK80, negedge nRESET) begin
                     if (RnW_CYCLE) begin
                         SDRAMCOM <= ramstate_READ;
                     end else begin
-                        //if (DMA_CYCLE) begin
-                            //WAIT <= 1; //STOP THE COUNTER
-                            //SDRAMCOM <= ramstate_NOP;
-                        //end else begin
-                            SDRAMCOM <= ramstate_WRITE;
-                        //end
+                        SDRAMCOM <= ramstate_WRITE;
+                        TA_EN <= !DMA_CYCLE; //THIS IS NEW
                     end	
                 end
 
                 4'h3 : begin
 
                     if (DMA_CYCLE && !RnW_CYCLE) begin
-
-                        //if (CLK7SYNC == 2'b00) begin //C1 AND C3 HIGH = STATE 4
-                            //SDRAMCOM <= ramstate_WRITE;
-                            //WAIT <= 0;
-                            SDRAMCOM <= ramstate_PRECHARGE; //new //END DMA WRITE CYCLE
-                            //RAM_COUNTER <= 4'h4;
-                            RAM_COUNTER <= 0; //new
-                        //end
-
+                        SDRAMCOM <= ramstate_PRECHARGE; //new //END DMA WRITE CYCLE
+                        RAM_COUNTER <= 0; //new
                     end else begin
 
                         EMCLK_OUT <= 1;
@@ -338,6 +327,7 @@ always @(negedge CLK80, negedge nRESET) begin
 
                         if (!BURST_CYCLE) begin
                             SDRAMCOM <= ramstate_PRECHARGE; //CPU AND DMA CYCLE
+                            //TA_EN <= 0; //THIS IS NEW!!!!
                         end else begin
                             SDRAMCOM <= ramstate_NOP; //CPU BURST CYCLE
                         end
@@ -348,16 +338,14 @@ always @(negedge CLK80, negedge nRESET) begin
 
                 4'h4 : begin
 
-                    /*if (DMA_CYCLE && !RnW_CYCLE) begin
-                        SDRAMCOM <= ramstate_PRECHARGE; //END DMA WRITE CYCLE
-                        RAM_COUNTER <= 0;
-                    end else*/ if (!BURST_CYCLE) begin
+                    if (!BURST_CYCLE) begin
                         SDRAMCOM <= ramstate_NOP;
                         if (DMA_CYCLE) begin
                             EMCLK_OUT <= 0;
                             WAIT <= 1;  
                         end else begin
                             RAM_COUNTER <= 0; //END OF A NON-BURST CPU CYCLE
+                            //TA_EN <= 0; //THIS IS NEW!!!!
                         end 
                     end else begin
                         EMCLK_OUT <= 0;
@@ -414,7 +402,28 @@ always @(negedge CLK80, negedge nRESET) begin
         end
 
     end
-end        
+end  
 
+
+/*reg [1:0] TA_COUNT;
+reg TA_OUT;
+assign RAM_TA = TA_OUT;
+
+always @(posedge CLK80, negedge nRESET) begin
+    if (!nRESET) begin
+        TA_OUT <= 0;
+        TA_COUNT <= 2'b00;
+    end else begin
+
+        case (TA_COUNT)
+
+            2'b00 : begin if (TA_EN) begin TA_OUT <= 1'b1; TA_COUNT <= 2'b01; end end
+            2'b01 : begin TA_OUT <= 1'b0; TA_COUNT <= 2'b00; end
+            //2'b01 : TA_COUNT <= 2'b10;
+            //2'b10 : begin TA_OUT <= 1'b0; TA_COUNT <= 2'b00; end
+
+        endcase
+    end
+end*/
 
 endmodule
