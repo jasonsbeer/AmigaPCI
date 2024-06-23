@@ -39,11 +39,33 @@ TO BUILD WITH APIO: apio build --top-module U409_TOP --fpga iCE40-HX4K-TQ144
 module U409_ADDRESS_DECODE 
 (
 
-    input nRESET, OVL, CIA_ENABLE, TS, TT0, TT1,
+    input nRESET, OVL, CIA_ENABLE, TS, TT0, TT1, nLBEN,
     input [31:12] A,
-    output ROMEN, CIA_SPACE, nCIACS0, nCIACS1, nRAMSPACE, nREGSPACE, AUTOVECTOR
+    output ROMEN, CIA_SPACE, nCIACS0, nCIACS1, nRAMSPACE, nREGSPACE, AUTOVECTOR, KNOWN_AD
 
 );
+
+///////////////////////
+// UNKNOWN ADDRESSES //
+///////////////////////
+
+//IF THE SYSTEM CHECKS ADDRESS SPACES WE DO NOT SUPPORT, END THE CYCLE.
+//WE MUST TAKE INTO ACCOUNT 
+
+assign KNOWN_AD = //= !nLBEN || ROMEN || CIA_SPACE || !nRAMSPACE || !nREGSPACE || AUTOVECTOR;
+
+ ~(
+    (Z2_SPACE && A[23:19] == 5'b11110) || //diagnostic rom area. 2 hits
+    (Z2_SPACE && A[23:21] == 3'b001 || A[23:21] == 3'b010 || A[23:21] == 3'b100) || //zorro 2 ram areas, 3 hits, 1 per
+    A[31:24] == 8'b00000001 ||
+    A[31:24] == 8'b00000010 ||
+    A[31:24] == 8'b00000100 ||
+    A[31:24] == 8'b00001000 ||
+    A[31:24] == 8'b00010000 ||
+    A[31:24] == 8'b00100000 ||
+    A[31:24] == 8'b01000000 ||
+    A[31:24] == 8'b10000000 
+ );
 
 ///////////////////////////
 // ZORRO 2 ADDRESS SPACE //

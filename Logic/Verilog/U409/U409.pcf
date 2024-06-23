@@ -47,6 +47,7 @@ set_io   nREGSPACE   118
 set_io   nBUFEN      119
 set_io   CLKCIA      122
 set_io   nROMEN      124
+set_io   nLBEN       125
 set_io   CLK40       129
 set_io   nTS         134
 set_io   TT0         138

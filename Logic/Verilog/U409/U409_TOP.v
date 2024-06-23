@@ -33,7 +33,7 @@ TO BUILD WITH APIO: apio build --top-module U409_TOP --fpga iCE40-HX4K-TQ144
 
 module U409_TOP (
 
-    input CLK40, CLK6, CLK7, nRESET, nTS, OVL, RnW, TT0, TT1,
+    input CLK40, CLK6, CLK7, nRESET, nTS, OVL, RnW, TT0, TT1, nLBEN,
     input [31:1] A,
 
     output nROMEN, nBUFEN, TICK60, TICK50, CLKCIA, nTCI, nTBI, nCIACS0, nCIACS1, nRAMSPACE, nREGSPACE,
@@ -76,6 +76,7 @@ U409_TRANSFER_ACK U409_TRANSFER_ACK (
     .CIA_SPACE (CIA_SPACEm),
     .CLKCIA (CLKCIA),
     .AUTOVECTOR (AUTOVECTORm),
+    .KNOWN_AD (KNOWN_ADm),
     .nTA (nTA), 
     .nROMEN (nROMEN), 
     .nTCI (nTCI), 
@@ -99,6 +100,7 @@ wire ROMENm;
 wire CIA_SPACEm;
 wire AGNUS_SPACE;
 wire AUTOVECTORm;
+wire KNOWN_ADm;
 
 assign AGNUS_SPACE = !nRAMSPACE || !nREGSPACE;
 
@@ -109,6 +111,7 @@ U409_ADDRESS_DECODE U409_ADDRESS_DECODE (
     .TS (TS),
     .TT0 (TT0),
     .TT1 (TT1),
+    .nLBEN (nLBEN),
     .A (A[31:12]),   
     .ROMEN (ROMENm),
     .CIA_SPACE (CIA_SPACEm),
@@ -116,7 +119,8 @@ U409_ADDRESS_DECODE U409_ADDRESS_DECODE (
     .nCIACS1 (nCIACS1),
     .nRAMSPACE (nRAMSPACE),
     .nREGSPACE (nREGSPACE),
-    .AUTOVECTOR (AUTOVECTORm)
+    .AUTOVECTOR (AUTOVECTORm),
+    .KNOWN_AD (KNOWN_ADm)
 );
 
 ////////////////////

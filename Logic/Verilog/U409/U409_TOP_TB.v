@@ -14,6 +14,7 @@ reg OVL = 1;
 reg nRESET = 0;
 reg nTS = 1;
 reg RnW = 1;
+reg nLBEN = 1;
 
 
 //OUTPUTS
@@ -49,8 +50,12 @@ initial begin
 
 	#100 nRESET = 1;
 
+    //UNKNOWN ADDRESS
+    #12.5 nTS = 0; A = 31'b10000000_00000000_00000000_0000000;
+    #25 nTS = 1;
+
     //ROM ENABLE
-    #12.5 nTS = 0; A = 31'b00000000_00000000_00000000_0000000;
+    /*#12.5 nTS = 0; A = 31'b00000000_00000000_00000000_0000000;
     #25 nTS = 1;
     #125 nTS = 0;
     #25 nTS = 1;
@@ -62,7 +67,7 @@ initial begin
     #25 nTS = 1;
     #125 nTS = 0;
     #25 nTS = 1;
-    #100 A = 31'b10000000_01111100_00000000_0000000;
+    #100 A = 31'b10000000_01111100_00000000_0000000;*/
 
     //CIA CYCLE
     /*#12.5 nTS = 0; A = 31'b00000000_10111111_00010000_0000000; RnW = 1;
@@ -103,6 +108,7 @@ U409_TOP dut
     .nRESET (nRESET),
     .nTS (nTS),
     .RnW (RnW),
+    .nLBEN (nLBEN),
 
     //OUTPUTS
     .TICK50 (TICK50),

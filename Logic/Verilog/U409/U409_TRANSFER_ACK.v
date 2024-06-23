@@ -29,6 +29,7 @@ Revision History:
     09-JUN-2024 : FIX CIA CYCLE TERMINATION
     19-JUN-2024 : FIX CIA TRANSFER ACK TIMING
     23-JUN-2024 : ADDED AUTOVECTOR TERMINATION
+                  CYCLE TERMINATION FOR UNIMPLEMENTED ADDRESSES
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 TO BUILD WITH APIO: apio build --top-module U409_TOP --fpga iCE40-HX4K-TQ144
@@ -36,7 +37,7 @@ TO BUILD WITH APIO: apio build --top-module U409_TOP --fpga iCE40-HX4K-TQ144
 
 module U409_TRANSFER_ACK (
 
-    input TS, ROMEN, CIA_SPACE, CIA_ENABLE, CLK40, nRESET, CLKCIA, AUTOVECTOR,
+    input TS, ROMEN, CIA_SPACE, CIA_ENABLE, CLK40, nRESET, CLKCIA, AUTOVECTOR, KNOWN_AD,
     output nROMEN, nTA, nTCI, nTBI
 
 );
@@ -55,7 +56,7 @@ wire NOCACHE_SPACE;
 reg TA_CYCLE;
 
 assign TA = ROM_TA || CIA_TA || SC_TA; //|| END_TA;
-assign TA_SPACE = ROMEN || CIA_SPACE || TA_CYCLE || AUTOVECTOR; //|| END_TA;
+assign TA_SPACE = ROMEN || CIA_SPACE || TA_CYCLE || AUTOVECTOR || !KNOWN_AD; //|| END_TA;
 assign nTA = TA_SPACE ? ~TA : 1'bz;
 
 assign NOCACHE_SPACE = CIA_SPACE;
@@ -114,7 +115,7 @@ always @(posedge CLK40, negedge nRESET) begin
     if (!nRESET) begin
         SC_TA <= 0;
     end else begin
-        if (AUTOVECTOR && TS) begin
+        if ((AUTOVECTOR || !KNOWN_AD) && TS) begin
             SC_TA <= 1;
         end else begin
             SC_TA <= 0;
