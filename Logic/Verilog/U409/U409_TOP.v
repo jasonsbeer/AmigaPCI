@@ -33,7 +33,7 @@ TO BUILD WITH APIO: apio build --top-module U409_TOP --fpga iCE40-HX4K-TQ144
 
 module U409_TOP (
 
-    input CLK40, CLK6, CLK7, nRESET, nTS, OVL, RnW,
+    input CLK40, CLK6, CLK7, nRESET, nTS, OVL, RnW, TT0, TT1,
     input [31:1] A,
 
     output nROMEN, nBUFEN, TICK60, TICK50, CLKCIA, nTCI, nTBI, nCIACS0, nCIACS1, nRAMSPACE, nREGSPACE,
@@ -75,6 +75,7 @@ U409_TRANSFER_ACK U409_TRANSFER_ACK (
     .nRESET (nRESET),
     .CIA_SPACE (CIA_SPACEm),
     .CLKCIA (CLKCIA),
+    .AUTOVECTOR (AUTOVECTORm),
     .nTA (nTA), 
     .nROMEN (nROMEN), 
     .nTCI (nTCI), 
@@ -97,6 +98,7 @@ U409_DATA_BUFFERS U409_DATA_BUFFERS (
 wire ROMENm;
 wire CIA_SPACEm;
 wire AGNUS_SPACE;
+wire AUTOVECTORm;
 
 assign AGNUS_SPACE = !nRAMSPACE || !nREGSPACE;
 
@@ -105,13 +107,16 @@ U409_ADDRESS_DECODE U409_ADDRESS_DECODE (
     .OVL (OVL),
     .CIA_ENABLE (CIA_ENABLEm),
     .TS (TS),
+    .TT0 (TT0),
+    .TT1 (TT1),
     .A (A[31:12]),   
     .ROMEN (ROMENm),
     .CIA_SPACE (CIA_SPACEm),
     .nCIACS0 (nCIACS0),
     .nCIACS1 (nCIACS1),
     .nRAMSPACE (nRAMSPACE),
-    .nREGSPACE (nREGSPACE)
+    .nREGSPACE (nREGSPACE),
+    .AUTOVECTOR (AUTOVECTORm)
 );
 
 ////////////////////

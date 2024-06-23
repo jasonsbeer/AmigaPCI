@@ -28,6 +28,7 @@ Revision History:
     08-JUN-2024 : INITIAL CODE
     09-JUN-2024 : FIX CIA CYCLE TERMINATION
     19-JUN-2024 : FIX CIA TRANSFER ACK TIMING
+    23-JUN-2024 : ADDED AUTOVECTOR TERMINATION
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 TO BUILD WITH APIO: apio build --top-module U409_TOP --fpga iCE40-HX4K-TQ144
@@ -35,7 +36,7 @@ TO BUILD WITH APIO: apio build --top-module U409_TOP --fpga iCE40-HX4K-TQ144
 
 module U409_TRANSFER_ACK (
 
-    input TS, ROMEN, CIA_SPACE, CIA_ENABLE, CLK40, nRESET, CLKCIA,
+    input TS, ROMEN, CIA_SPACE, CIA_ENABLE, CLK40, nRESET, CLKCIA, AUTOVECTOR,
     output nROMEN, nTA, nTCI, nTBI
 
 );
@@ -53,14 +54,16 @@ wire TA_SPACE;
 wire NOCACHE_SPACE;
 reg TA_CYCLE;
 
-assign TA = ROM_TA || CIA_TA; //|| END_TA;
-assign TA_SPACE = ROMEN || CIA_SPACE || TA_CYCLE; //|| END_TA;
+assign TA = ROM_TA || CIA_TA || SC_TA; //|| END_TA;
+assign TA_SPACE = ROMEN || CIA_SPACE || TA_CYCLE || AUTOVECTOR; //|| END_TA;
 assign nTA = TA_SPACE ? ~TA : 1'bz;
 
 assign NOCACHE_SPACE = CIA_SPACE;
 assign nTCI = NOCACHE_SPACE ? ~TA : 1'bz;
 
 assign nTBI = 1'bz; //TA ? 1'b0 : TA_SPACE || TA_CYCLE ? 1'b1 : 1'bZ;
+
+//FORCE _TA HIGH WITH THIS PROCESS
 
 always @(posedge CLK40, negedge nRESET) begin
     if (!nRESET) begin
@@ -97,6 +100,26 @@ always @(posedge CLK40, negedge nRESET) begin
             default : ROM_DELAY <= ROM_DELAY + 1;
 		endcase
 	end
+end
+
+/////////////////////
+// SHORT CYCLE ACK //
+/////////////////////
+
+//SHORT CYCLES REQUIRING ONLY TWO TOTAL CLOCKS ARE HANDLED HERE.
+
+reg SC_TA;
+
+always @(posedge CLK40, negedge nRESET) begin
+    if (!nRESET) begin
+        SC_TA <= 0;
+    end else begin
+        if (AUTOVECTOR && TS) begin
+            SC_TA <= 1;
+        end else begin
+            SC_TA <= 0;
+        end
+    end
 end
 
 //////////////////////
