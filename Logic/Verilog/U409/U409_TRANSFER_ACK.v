@@ -96,8 +96,7 @@ always @(posedge CLK40, negedge nRESET) begin
 	end else begin
 		case (ROM_DELAY)
             2'b00 : begin ROM_TA <= 1'b0; if (ROMEN && TS) begin ROM_DELAY <= 2'b01; end end
-            2'b10 : begin ROM_TA <= 1'b1; ROM_DELAY <= 2'b00; end
-            //2'b11 : begin ROM_DELAY <= 2'b00; ROM_TA <= 1'b0; end
+            2'b11 : begin ROM_TA <= 1'b1; ROM_DELAY <= 2'b00; end
             default : ROM_DELAY <= ROM_DELAY + 1;
 		endcase
 	end

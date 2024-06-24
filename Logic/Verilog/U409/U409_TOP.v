@@ -50,16 +50,23 @@ module U409_TOP (
 
 wire TS_RESET;
 reg TS;
+reg TA_RST;
 
-assign TS_RESET = !nTA || !nRESET;
+assign TS_RESET = TA_RST || !nRESET;
 
-always @(posedge CLK40, posedge TS_RESET) begin
-    if (TS_RESET == 1'b1) begin
-        TS <= 1'b0;
+always @(negedge CLK40, negedge nRESET) begin
+    if (!nRESET) begin
+        TA_RST <= 0;
     end else begin
-        if (nTS == 1'b0) begin
-            TS <= 1'b1;      
-        end
+        TA_RST <= ~nTA;
+    end
+end
+
+always @(negedge nTS, posedge TS_RESET) begin  
+    if (!nTS) begin
+        TS <= 1'b1; 
+    end else begin
+        TS <= 1'b0; 
     end
 end
 

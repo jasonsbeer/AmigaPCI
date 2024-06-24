@@ -164,8 +164,11 @@ end
 
 /*
 
-THIS IS THE AGNUS DRAM MULTIPLEXING. 1MB AGNUS DROPS A20.
-AGNUS _RAS0 = A19. _RAS1 = A19 INVERSE.
+THIS IS THE AGNUS DRAM MULTIPLEXING. 
+MA9 ONLY EXISTS ON 8375 VARIANTS.
+8372A USES A19 TO DRIVE RAS.
+
+IN AGNUS _RAS0 = A19. _RAS1 = A19 INVERSE.
 
      MA9 MA8 MA7 MA6 MA5 MA4 MA3 MA2 MA1 MA0
     ----------------------------------------
@@ -183,7 +186,7 @@ localparam [3:0] ramstate_AUTOREFRESH = 4'b0001;
 localparam [3:0] ramstate_MODEREGISTER = 4'b0000;
 
 reg [3:0] SDRAMCOM;
-reg [3:0] RAM_COUNTER;
+reg [4:0] RAM_COUNTER;
 reg EMCLK_OUT;
 reg RAM_CONFIGURED;
 reg REFRESH_CYCLE;
@@ -219,7 +222,7 @@ always @(negedge CLK80, negedge nRESET) begin
     if (!nRESET) begin
         SDRAMCOM = ramstate_NOP;
         EMCLK_OUT <= 0;
-        RAM_COUNTER <= 4'h0;
+        RAM_COUNTER <= 5'h0;
         RAM_CONFIGURED <= 0;
         DMA_CYCLE <= 0;
         RAM_CYCLE <= 0;
@@ -237,27 +240,26 @@ always @(negedge CLK80, negedge nRESET) begin
         //CONFIGURE THE RAM AT STARTUP OR RESET
         if (!RAM_CONFIGURED) begin
             case (RAM_COUNTER)
-                4'h0 : begin EMCLK_OUT <= 1; RAM_COUNTER <= 4'h1; end
-                4'h1 : SDRAMCOM <= ramstate_PRECHARGE;
-                4'h3 : SDRAMCOM <= ramstate_MODEREGISTER;
-                4'h4, 4'h9 : SDRAMCOM <= ramstate_AUTOREFRESH;
-                4'hD : begin RAM_CONFIGURED <= 1; RAM_COUNTER <= 4'h0; end
+                5'h0 : begin EMCLK_OUT <= 1; RAM_COUNTER <= 4'h1; end
+                5'h1 : SDRAMCOM <= ramstate_PRECHARGE;
+                5'h3 : SDRAMCOM <= ramstate_MODEREGISTER;
+                5'h4, 5'h9 : SDRAMCOM <= ramstate_AUTOREFRESH;
+                5'hD : begin RAM_CONFIGURED <= 1; RAM_COUNTER <= 4'h0; end
 				default : SDRAMCOM <= ramstate_NOP;
             endcase
         //REFRESH CYCLE
-        //WE DON'T WANT TO INITIATE A REFRESH WHEN A DMA CYCLE IS ABOUT TO BEGIN OR DURING AN ACTIVE RAM CYCLE.
+        //WE DON'T INITIATE A REFRESH CYCLE WHEN A DMA CYCLE IS ABOUT TO BEGIN OR DURING AN ACTIVE RAM CYCLE.
         end else if ((!CAS_AGNUS && !RAM_CYCLE && SDRAMCOM != ramstate_PRECHARGE && REFRESH) || REFRESH_CYCLE) begin
             case (RAM_COUNTER)
-                4'h0 : begin RAM_COUNTER <= 4'h1; SDRAMCOM <= ramstate_AUTOREFRESH; REFRESH_CYCLE <= 1; end
-                4'h1 : SDRAMCOM <= ramstate_NOP;
-                4'h4 : begin RAM_COUNTER <= 4'h0; REFRESH_CYCLE <= 0; end
-                //default : SDRAMCOM <= ramstate_NOP;
+                5'h0 : begin RAM_COUNTER <= 4'h1; SDRAMCOM <= ramstate_AUTOREFRESH; REFRESH_CYCLE <= 1; end
+                5'h1 : SDRAMCOM <= ramstate_NOP;
+                5'h4 : begin RAM_COUNTER <= 4'h0; REFRESH_CYCLE <= 0; end
             endcase
         //RAM CYCLES
         end else if (!nRAMSPACE || DMA_READY || RAM_CYCLE) begin
             case (RAM_COUNTER)
 
-                4'h0 : begin 
+                5'h0 : begin 
                     TA_EN <= 0;                 
 
                     if (DMA_READY && SDRAMCOM != ramstate_PRECHARGE) begin //DMA CYCLE
@@ -270,8 +272,7 @@ always @(negedge CLK80, negedge nRESET) begin
                         RnW_CYCLE <= nAWE;
 			            nDBEN_OUT <= DMA_COL_ADDRESS[0];                    
 		    end else if (!nRAMSPACE && !CLK40 && SDRAMCOM != ramstate_PRECHARGE && RAS_AGNUS == 0) begin //CPU CYCLE
-                        //DON'T START A CPU RAM CYCLE IF AGNUS HAS ASSERTED ONE OF THE _RASx SIGNALS. THIS INDICATES A
-                        //PENDING DMA CYCLE. WE IGNORE IF BOTH _RASx SIGNALS ARE ASSERTED BECAUSE THAT IS A DRAM REFRESH SIGNAL.
+                        //DON'T START A CPU RAM CYCLE IF AGNUS HAS ASSERTED ONE OF THE _RASx SIGNALS. THIS INDICATES A PENDING DMA CYCLE.
                         SDRAMCOM <= ramstate_BANKACTIVATE;
                         RAM_COUNTER <= 4'h1;
                         RAM_CYCLE <= 1; 
@@ -288,12 +289,12 @@ always @(negedge CLK80, negedge nRESET) begin
                     end
                 end
 
-                4'h1 : begin
+                5'h1 : begin
                     SDRAMCOM <= ramstate_NOP;
-                    //TA_EN <= (!RnW_CYCLE && !DMA_CYCLE);
+                    TA_EN <= (!RnW_CYCLE && !DMA_CYCLE); //ASSERT _TA FOR CPU WRITE CYCLES
                 end
 
-                4'h2 : begin
+                5'h2 : begin
                     if (BURST_CYCLE) begin
                         if (!DMA_CYCLE && (!nRAS0 && nRAS1) || (nRAS0 && !nRAS1)) begin //BURST CYCLE CANCELLED BY DMA START
                             BURST_CYCLE <= 0;
@@ -306,15 +307,14 @@ always @(negedge CLK80, negedge nRESET) begin
                         SDRAMCOM <= ramstate_READ;
                     end else begin
                         SDRAMCOM <= ramstate_WRITE;
-                        TA_EN <= !DMA_CYCLE; //THIS IS NEW
                     end	
                 end
 
-                4'h3 : begin
+                5'h3 : begin
 
                     if (DMA_CYCLE && !RnW_CYCLE) begin
-                        SDRAMCOM <= ramstate_PRECHARGE; //new //END DMA WRITE CYCLE
-                        RAM_COUNTER <= 0; //new
+                        SDRAMCOM <= ramstate_PRECHARGE; //END DMA WRITE CYCLE
+                        RAM_COUNTER <= 0; 
                     end else begin
 
                         EMCLK_OUT <= 1;
@@ -327,7 +327,6 @@ always @(negedge CLK80, negedge nRESET) begin
 
                         if (!BURST_CYCLE) begin
                             SDRAMCOM <= ramstate_PRECHARGE; //CPU AND DMA CYCLE
-                            //TA_EN <= 0; //THIS IS NEW!!!!
                         end else begin
                             SDRAMCOM <= ramstate_NOP; //CPU BURST CYCLE
                         end
@@ -336,7 +335,7 @@ always @(negedge CLK80, negedge nRESET) begin
 
                 end
 
-                4'h4 : begin
+                5'h4 : begin
 
                     if (!BURST_CYCLE) begin
                         SDRAMCOM <= ramstate_NOP;
@@ -345,7 +344,6 @@ always @(negedge CLK80, negedge nRESET) begin
                             WAIT <= 1;  
                         end else begin
                             RAM_COUNTER <= 0; //END OF A NON-BURST CPU CYCLE
-                            //TA_EN <= 0; //THIS IS NEW!!!!
                         end 
                     end else begin
                         EMCLK_OUT <= 0;
@@ -362,8 +360,8 @@ always @(negedge CLK80, negedge nRESET) begin
                             WAIT <= 0;
                             RAM_COUNTER <= 0;
                         end 
-                    end else begin                            
-                        EMCLK_OUT <= 1; 
+                    end else begin
+                        EMCLK_OUT <= 1;
                     end
                 end
 
