@@ -193,7 +193,7 @@ reg REFRESH_CYCLE;
 reg RAM_CYCLE;
 reg RnW_CYCLE;
 reg TA_EN;
-reg nDBEN_OUT;
+reg DBEN;
 reg WAIT;
 
 assign nCRCS = SDRAMCOM[3];
@@ -202,7 +202,7 @@ assign nCAS = SDRAMCOM[1];
 assign nWE = SDRAMCOM[0];
 assign CLKE = EMCLK_OUT;
 assign RAM_TA = TA_EN;
-assign nDBEN = ~nDBEN_OUT;
+assign nDBEN = ~DBEN;
 assign DBDIR = ~RnW_CYCLE;
 assign BANK0 = 0;
 assign BANK1 = 0;
@@ -230,7 +230,7 @@ always @(negedge CLK80, negedge nRESET) begin
         BURST_CYCLE <= 0;
         RnW_CYCLE <= 1;
         TA_EN <= 0;
-        nDBEN_OUT <= 1;
+        DBEN <= 0;
         WAIT <= 0;
     end else begin
 
@@ -270,7 +270,7 @@ always @(negedge CLK80, negedge nRESET) begin
                         RAM_CYCLE <= 1;
                         BURST_CYCLE <= 0;
                         RnW_CYCLE <= nAWE;
-			            nDBEN_OUT <= DMA_COL_ADDRESS[0];                    
+			            DBEN <= DMA_COL_ADDRESS[0];                    
 		    end else if (!nRAMSPACE && !CLK40 && SDRAMCOM != ramstate_PRECHARGE && RAS_AGNUS == 0) begin //CPU CYCLE
                         //DON'T START A CPU RAM CYCLE IF AGNUS HAS ASSERTED ONE OF THE _RASx SIGNALS. THIS INDICATES A PENDING DMA CYCLE.
                         SDRAMCOM <= ramstate_BANKACTIVATE;
@@ -279,12 +279,12 @@ always @(negedge CLK80, negedge nRESET) begin
                         DMA_CYCLE <= 0;
                         BURST_CYCLE <= TT0 && !TT1;
                         RnW_CYCLE <= RnW;
-                        nDBEN_OUT <= 1;
+                        DBEN <= 0;
                     end else begin //NO CYCLE
                         DMA_CYCLE <= 0;
                         RAM_CYCLE <= 0;
                         BURST_CYCLE <= 0; 
-                        nDBEN_OUT <= 1;
+                        DBEN <= 0;
                         SDRAMCOM <= ramstate_NOP;
                     end
                 end
@@ -354,9 +354,9 @@ always @(negedge CLK80, negedge nRESET) begin
                 5'h5 : begin
 
                     if (DMA_CYCLE) begin
-                        if (CLK7SYNC == 2'b10) begin //END OF DMA READ CYCLE
+                        if (CLK7SYNC == 2'b10) begin //END OF DMA CYCLE
                             EMCLK_OUT <= 1;
-                            nDBEN_OUT <= 1;
+                            DBEN <= 0;
                             WAIT <= 0;
                             RAM_COUNTER <= 0;
                         end 

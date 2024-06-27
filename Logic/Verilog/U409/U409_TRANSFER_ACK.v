@@ -60,8 +60,8 @@ assign TA_SPACE = ROMEN || CIA_SPACE || TA_CYCLE || AUTOVECTOR || !KNOWN_AD; //|
 assign nTA = TA_SPACE ? ~TA : 1'bz;
 
 assign NOCACHE_SPACE = CIA_SPACE;
-assign nTCI = NOCACHE_SPACE ? ~TA : 1'bz;
-
+//assign nTCI = NOCACHE_SPACE ? ~TA : 1'bz;
+assign nTCI = 1;
 assign nTBI = 1'bz; //TA ? 1'b0 : TA_SPACE || TA_CYCLE ? 1'b1 : 1'bZ;
 
 //FORCE _TA HIGH WITH THIS PROCESS

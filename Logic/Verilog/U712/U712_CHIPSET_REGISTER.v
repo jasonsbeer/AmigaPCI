@@ -100,10 +100,13 @@ always @(negedge CLK40, negedge nRESET) begin
                         REG_EN <= 1;     
                         LDS_OUT <= SIZ1 || !SIZ0 || A[0];
                         UDS_OUT <= !A[0];
+                        REG_CYCLE_OUT <= 1;
                         if (RnW == 1) begin
                             DS_EN <= 1;
                         end        
-                        STATE_COUNT <= 2'b01;            
+                        STATE_COUNT <= 2'b01;    
+                    end else begin
+                        REG_CYCLE_OUT <= 0;        
                     end
                 end
             
@@ -112,7 +115,6 @@ always @(negedge CLK40, negedge nRESET) begin
                     DS_EN <= 1;
                     if (nDBR  && !CAS_AGNUS) begin                     
                         STATE_COUNT <= 2'b10;
-                        REG_CYCLE_OUT <= 1;
                     end
                 end
 
@@ -130,7 +132,6 @@ always @(negedge CLK40, negedge nRESET) begin
                         AS_EN <= 0;
                         DS_EN <= 0;
                         REG_EN <= 0;
-                        REG_CYCLE_OUT <= 0;
                         STATE_COUNT <= 2'b00;
                         if (!RnW) begin REGTA_EN <= 1'b1; end
                     end
