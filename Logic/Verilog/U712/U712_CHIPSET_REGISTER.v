@@ -27,6 +27,7 @@ Description: CHIP REGISTER (MC68000) CYCLES
 Revision History:
     12-JUN-2024 : Initial Code
     25-JUN-2024 : Clean Up End Of Cycle Timing
+    27-JUN-2024 : Early read cycle termination.
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 TO BUILD WITH APIO: apio build --top-module U712_TOP --fpga iCE40-HX4K-TQ144
@@ -49,19 +50,20 @@ module U712_CHIPSET_REGISTER (
 //WAIT FOR C1 AND C3 TO BE HIGH, WHICH IS EQUIVALENT
 //TO MC68000 STATE 4. IF _DBR AND AGNUS _CASx IS NEGATED, WE CAN PROCEED, OTHERWISE 
 //WAIT STATES ARE INSERTED UNTIL SUCH TIME AS THIS CONDITION IS TRUE.
+//READ CYCLES OF ORIGINAL AMIGAS ARE LATCHED EARLY, IN STATE 5. WE DO THE SAME.
 
 //AGNUS ASSERTS _DBR DURING CHIPSET DMA CYCLES. THESE ALWAYS TAKE PRECEDENCE.
 //AGNUS GETS WHAT AGNUS WANTS. AGNUS ASSERTS _DBR IN STATE 1 AND NEGATES IN STATE 5.
 
 //SYNCHRONIZERS PRESENT FOR C1 AND C3.
 
-reg [1:0]STATE_COUNT;
+reg [2:0]STATE_COUNT;
 reg AS_EN;
 reg DS_EN;
 reg REG_EN;
 reg REGTA_EN;
-reg [1:0] CLKC1;
-reg [1:0] CLKC3;
+reg [2:0] CLKC1;
+reg [2:0] CLKC3;
 reg REG_CYCLE_OUT;
 reg LDS_OUT;
 reg UDS_OUT;
@@ -82,7 +84,7 @@ always @(negedge CLK40, negedge nRESET) begin
         AS_EN <= 0;
         DS_EN <= 0;
         REGTA_EN <= 0;
-        STATE_COUNT <= 2'b00;  
+        STATE_COUNT <= 3'b000;  
         REG_CYCLE_OUT <= 0;
         LDS_OUT <= 0;
         UDS_OUT <= 0;
@@ -91,11 +93,11 @@ always @(negedge CLK40, negedge nRESET) begin
 
         case (STATE_COUNT)
 
-            3'b00: //STATE 2
+            3'b000: //STATE 2
                 begin
                     REGTA_EN <= 1'b0;
 
-                    if (CLKC1 == 2'b00 && CLKC3 == 2'b10 && nREGSPACE == 1'b0) begin 
+                    if (CLKC1 == 3'b000 && CLKC3 == 3'b110 && !nREGSPACE) begin
                         AS_EN <= 1;
                         REG_EN <= 1;     
                         LDS_OUT <= SIZ1 || !SIZ0 || A[0];
@@ -104,35 +106,44 @@ always @(negedge CLK40, negedge nRESET) begin
                         if (RnW == 1) begin
                             DS_EN <= 1;
                         end        
-                        STATE_COUNT <= 2'b01;    
+                        STATE_COUNT <= 3'b001;    
                     end else begin
                         REG_CYCLE_OUT <= 0;        
                     end
                 end
             
-            2'b01: //STATE 4
-                if (CLKC1 == 2'b11 && CLKC3 == 2'b01) begin
+            3'b001: //STATE 4
+                if (CLKC1 == 3'b111 && CLKC3 == 3'b001) begin
                     DS_EN <= 1;
                     if (nDBR  && !CAS_AGNUS) begin                     
-                        STATE_COUNT <= 2'b10;
+                        STATE_COUNT <= 3'b010;
                     end
                 end
 
-            2'b10: //STATE 6
-                if (CLKC1 == 2'b00 && CLKC3 == 2'b10) begin 
+            3'b010: //STATE 5
+                if (CLKC1 == 3'b110 && CLKC3 == 3'b111) begin
                     REGTA_EN <= RnW;                    
-                    STATE_COUNT <= 2'b11; 
+                    STATE_COUNT <= 3'b011; 
                 end
 
-            2'b11 : //STATE 7
-                begin  
-                    if (RnW) begin REGTA_EN <= 1'b0; end
+            3'b011: //STATE 6
+                begin 
+                
+                    REGTA_EN <= 1'b0;
 
-                    if (CLKC1 == 2'b01 && CLKC3 == 2'b00) begin
+                    if (CLKC1 == 3'b000 && CLKC3 == 3'b110) begin           
+                        STATE_COUNT <= 3'b100; 
+                    end
+
+                end
+
+            3'b100 : //STATE 7
+                begin  
+                    if (CLKC1 == 3'b001 && CLKC3 == 3'b000) begin
                         AS_EN <= 0;
                         DS_EN <= 0;
                         REG_EN <= 0;
-                        STATE_COUNT <= 2'b00;
+                        STATE_COUNT <= 3'b000;
                         if (!RnW) begin REGTA_EN <= 1'b1; end
                     end
 
@@ -143,13 +154,13 @@ end
 
 //C1 AND C3 SYNCHRONIZER
 
-always @(posedge CLK40, negedge nRESET) begin
+always @(posedge CLK40) begin
     if (!nRESET) begin 
-        CLKC1 <= 2'b11;
-        CLKC3 <= 2'b11;
+        CLKC1 <= 3'b111;
+        CLKC3 <= 3'b111;
     end else begin
-        CLKC1 <= { CLKC1[0] , C1 };
-        CLKC3 <= { CLKC3[0] , C3 };
+        CLKC1 <= { CLKC1[1:0] , C1 };
+        CLKC3 <= { CLKC3[1:0] , C3 };
     end
 end
 
