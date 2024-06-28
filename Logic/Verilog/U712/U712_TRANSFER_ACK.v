@@ -26,6 +26,7 @@ Description: MC68040/MC68060 TRANSFER ACK
 
 Revision History:
     09-JUN-2024 : INITIAL CODE
+    28-JUN-2024 : Enable transfer burst inhibit on all register cycles.
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 TO BUILD WITH APIO: apio build --top-module U712_TOP --fpga iCE40-HX4K-TQ144
@@ -42,13 +43,15 @@ module U712_TRANSFER_ACK (
 // MC68040 TRANSFER ACK //
 //////////////////////////
 
-//ASSERT _TA WHEN DATA IS READY AND THE CYCLE CAN END. WE ASSERT BURST INHIBIT FOR ALL CYCLES EXCEPT RAM CYCLES.
+//ASSERT _TA WHEN DATA IS READY AND THE CYCLE CAN END. WE ASSERT BURST INHIBIT FOR ALL CYCLES EXCEPT UNINTERUPTED RAM CYCLES.
 //CACHING IS ALLOWED FOR ALL SPACES EXCEPT CHIP RAM, SINCE AGNUS CAN WRITE THERE, TOO.
-//WE FORCE _TA HIGH AFTER THE CYCLE TO PREVENT THE NEXT CYCLE FROM ENDING PREMATURELY.
+//WE FORCE _TA AND _tbi HIGH AFTER THE CYCLE TO PREVENT THE NEXT CYCLE FROM CATCHING THOSE ASSERTIONS.
 
 wire TA;
 wire TA_SPACE;
 wire TB_SPACE;
+wire TBI;
+reg TBI_CYCLE;
 reg TA_CYCLE;
 
 assign TA = REG_TA || RAM_TA;
@@ -56,7 +59,7 @@ assign TA_SPACE = !nREGSPACE || !nRAMSPACE || TA_CYCLE;
 assign nTA = TA_SPACE ? ~TA : 1'bz;
 
 //TRANSFER BURST IS INHIBITED FOR WHEN A CPU RAM CYCLE IS INTERRUPTED BY A DMA CYCLE.
-assign TBI = !nRAMSPACE && !BURST_CYCLE;
+assign TBI = (!nRAMSPACE && !BURST_CYCLE) || !nREGSPACE || TBI_CYCLE;
 assign nTBI = TBI ? ~TA : 1'bz;
 
 always @(posedge CLK40, negedge nRESET) begin
@@ -67,6 +70,18 @@ always @(posedge CLK40, negedge nRESET) begin
             TA_CYCLE <= 1; end 
         else begin
             TA_CYCLE <= 0; 
+        end
+    end
+end
+
+always @(posedge CLK40, negedge nRESET) begin
+    if (!nRESET) begin
+        TBI_CYCLE <= 0;
+    end else begin
+        if (TA && TBI) begin
+            TBI_CYCLE <= 1; end 
+        else begin
+            TBI_CYCLE <= 0; 
         end
     end
 end

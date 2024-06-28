@@ -99,13 +99,14 @@ always @(negedge CLK40, negedge nRESET) begin
             3'b000: //STATE 2
                 begin
                     REGTA_EN <= 1'b0;
+
                     if (CLKC1 == 3'b000 && CLKC3 == 3'b110 && !nREGSPACE) begin
                         AS_EN <= 1;
                         REG_EN <= 1;     
                         LDS_OUT <= RnW || SIZ1 || !SIZ0 || A[0];
                         UDS_OUT <= RnW || !A[0];
                         REG_CYCLE_OUT <= 1;
-                        DS_EN <= RnW;
+                        DS_EN <= RnW;        
                         READ_CYCLE <= RnW;
                         STATE_COUNT <= 3'b001;    
                     end else begin
@@ -122,17 +123,20 @@ always @(negedge CLK40, negedge nRESET) begin
                 end
 
             3'b010: //STATE 5
-                if (CLKC1 == 3'b110 && CLKC3 == 3'b111) begin
-                    REGTA_EN <= READ_CYCLE;                    
+                if (CLKC1 == 3'b110 && CLKC3 == 3'b111) begin                 
+                    REGTA_EN <= READ_CYCLE;
                     STATE_COUNT <= 3'b011; 
                 end
 
             3'b011: //STATE 6
-                begin                 
+                begin 
+                
                     REGTA_EN <= 1'b0;
+
                     if (CLKC1 == 3'b000 && CLKC3 == 3'b110) begin           
                         STATE_COUNT <= 3'b100; 
                     end
+
                 end
 
             3'b100 : //STATE 7
@@ -142,8 +146,9 @@ always @(negedge CLK40, negedge nRESET) begin
                         DS_EN <= 0;
                         REG_EN <= 0;
                         STATE_COUNT <= 3'b000;
-                        REGTA_EN <= ~READ_CYCLE;
+                        REGTA_EN <= !READ_CYCLE;
                     end
+
                 end
         endcase
     end
@@ -151,7 +156,7 @@ end
 
 //C1 AND C3 SYNCHRONIZER
 
-always @(posedge CLK40) begin
+always @(negedge CLK40, negedge nRESET) begin
     if (!nRESET) begin 
         CLKC1 <= 3'b111;
         CLKC3 <= 3'b111;
