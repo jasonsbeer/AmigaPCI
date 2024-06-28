@@ -26,6 +26,7 @@ Description: SUPPLY BYTE ENABLE SIGNALS FOR CPU CYCLES
 
 Revision History:
     09-JUN-2024 : INITIAL CODE
+    27-JUN-2024 : CHIP RAM DMA BYTE ENABLES WERE REVERSED.
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 TO BUILD WITH APIO: apio build --top-module U712_TOP --fpga iCE40-HX4K-TQ144
@@ -57,13 +58,12 @@ assign nLLBE = ~(RnW || (!RnW && ((A[1] && A[0]) || (A[0] && SIZ0 && SIZ1) || (!
 // CHIP RAM BYTE ENABLE //
 //////////////////////////
 
-//FOR CPU DRIVEN CYCLES, WE PASS THROUGH THE SIGNALS ABOVE. FOR DMA, WE 
-//CONSIDER WHICH AGNUS _CASx SIGNAL IS ASSERTED AND WHETHER WE ARE ADDRESSED
+//FOR DMA, WE CONSIDER WHICH AGNUS _CASx SIGNAL IS ASSERTED AND WHETHER WE ARE ADDRESSED
 //TO THE HIGH WORD OR LOW WORD OF THE SDRAM.
 
-assign nCUUBE = ~((!DMA_CYCLE && !nUUBE) || (DMA_CYCLE && !nCASU && !nDBEN)); 
-assign nCUMBE = ~((!DMA_CYCLE && !nUMBE) || (DMA_CYCLE && !nCASL && !nDBEN)); 
-assign nCLMBE = ~((!DMA_CYCLE && !nLMBE) || (DMA_CYCLE && !nCASU && nDBEN)); 
-assign nCLLBE = ~((!DMA_CYCLE && !nLLBE) || (DMA_CYCLE && !nCASL && nDBEN)); 
+assign nCUUBE = ~((!DMA_CYCLE && !nUUBE) || (DMA_CYCLE && !nCASU && nDBEN)); 
+assign nCUMBE = ~((!DMA_CYCLE && !nUMBE) || (DMA_CYCLE && !nCASL && nDBEN)); 
+assign nCLMBE = ~((!DMA_CYCLE && !nLMBE) || (DMA_CYCLE && !nCASU && !nDBEN)); 
+assign nCLLBE = ~((!DMA_CYCLE && !nLLBE) || (DMA_CYCLE && !nCASL && !nDBEN)); 
 
 endmodule
