@@ -28,6 +28,7 @@ Revision History:
     12-JUN-2024 : Initial Code
     25-JUN-2024 : Clean Up End Of Cycle Timing
     27-JUN-2024 : Early read cycle termination.
+    28-JUN-2024 : Latch R_W at start of cycle to prevent late assertion of _TA during read cycles.
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 TO BUILD WITH APIO: apio build --top-module U712_TOP --fpga iCE40-HX4K-TQ144
@@ -67,6 +68,7 @@ reg [2:0] CLKC3;
 reg REG_CYCLE_OUT;
 reg LDS_OUT;
 reg UDS_OUT;
+reg READ_CYCLE;
 
 assign nREGEN = ~REG_EN;
 assign nAS = ~AS_EN;
@@ -88,6 +90,7 @@ always @(negedge CLK40, negedge nRESET) begin
         REG_CYCLE_OUT <= 0;
         LDS_OUT <= 0;
         UDS_OUT <= 0;
+        READ_CYCLE <= 1;
 
     end else begin
 
@@ -96,16 +99,14 @@ always @(negedge CLK40, negedge nRESET) begin
             3'b000: //STATE 2
                 begin
                     REGTA_EN <= 1'b0;
-
                     if (CLKC1 == 3'b000 && CLKC3 == 3'b110 && !nREGSPACE) begin
                         AS_EN <= 1;
                         REG_EN <= 1;     
-                        LDS_OUT <= SIZ1 || !SIZ0 || A[0];
-                        UDS_OUT <= !A[0];
+                        LDS_OUT <= RnW || SIZ1 || !SIZ0 || A[0];
+                        UDS_OUT <= RnW || !A[0];
                         REG_CYCLE_OUT <= 1;
-                        if (RnW == 1) begin
-                            DS_EN <= 1;
-                        end        
+                        DS_EN <= RnW;
+                        READ_CYCLE <= RnW;
                         STATE_COUNT <= 3'b001;    
                     end else begin
                         REG_CYCLE_OUT <= 0;        
@@ -122,19 +123,16 @@ always @(negedge CLK40, negedge nRESET) begin
 
             3'b010: //STATE 5
                 if (CLKC1 == 3'b110 && CLKC3 == 3'b111) begin
-                    REGTA_EN <= RnW;                    
+                    REGTA_EN <= READ_CYCLE;                    
                     STATE_COUNT <= 3'b011; 
                 end
 
             3'b011: //STATE 6
-                begin 
-                
+                begin                 
                     REGTA_EN <= 1'b0;
-
                     if (CLKC1 == 3'b000 && CLKC3 == 3'b110) begin           
                         STATE_COUNT <= 3'b100; 
                     end
-
                 end
 
             3'b100 : //STATE 7
@@ -144,9 +142,8 @@ always @(negedge CLK40, negedge nRESET) begin
                         DS_EN <= 0;
                         REG_EN <= 0;
                         STATE_COUNT <= 3'b000;
-                        if (!RnW) begin REGTA_EN <= 1'b1; end
+                        REGTA_EN <= ~READ_CYCLE;
                     end
-
                 end
         endcase
     end
