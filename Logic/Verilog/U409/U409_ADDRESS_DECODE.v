@@ -52,8 +52,8 @@ module U409_ADDRESS_DECODE
 //IF THE SYSTEM CHECKS ADDRESS SPACES WE DO NOT SUPPORT, END THE CYCLE.
 //WE MUST TAKE INTO ACCOUNT 
 
-assign KNOWN_AD = //= !nLBEN || ROMEN || CIA_SPACE || !nRAMSPACE || !nREGSPACE || AUTOVECTOR;
-
+assign KNOWN_AD = !nLBEN || ROMEN || CIA_SPACE || !nRAMSPACE || !nREGSPACE || AUTOVECTOR;
+/*
  ~(
     (Z2_SPACE && A[23:19] == 5'b11110) || //diagnostic rom area. 2 hits
     (Z2_SPACE && A[23:21] == 3'b001 || A[23:21] == 3'b010 || A[23:21] == 3'b100) || //zorro 2 ram areas, 3 hits, 1 per
@@ -64,8 +64,14 @@ assign KNOWN_AD = //= !nLBEN || ROMEN || CIA_SPACE || !nRAMSPACE || !nREGSPACE |
     A[31:24] == 8'b00010000 ||
     A[31:24] == 8'b00100000 ||
     A[31:24] == 8'b01000000 ||
-    A[31:24] == 8'b10000000 
- );
+    A[31:24] == 8'b10000000 ||
+    A[31:27] == 5'b00001 || //A3000 CPU SLOT
+    //A[31:24] == 8'b01000001 || //Z3 EXPANSION
+    //A[31:24] == 8'b01000010 ||
+    //A[31:24] == 8'b01000011
+    A[31:30] == 2'b01 ||
+    A[31] == 1'b1
+ );*/
 
 ///////////////////////////
 // ZORRO 2 ADDRESS SPACE //

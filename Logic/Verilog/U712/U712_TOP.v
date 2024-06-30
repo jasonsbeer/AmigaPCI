@@ -71,8 +71,8 @@ SB_PLL40_CORE # (
     .FILTER_RANGE(3'b010)
     ) PLL40 (
         .REFERENCECLK(CLK20),
-        .PLLOUTGLOBAL(CLK40m),
-        .PLLOUTCORE(CLK40out),
+        .PLLOUTGLOBAL(CLK40out),
+        .PLLOUTCORE(CLK40m),
         .LOCK(),
         .RESETB(1'b1),
         .BYPASS(1'b0)
@@ -87,8 +87,8 @@ SB_PLL40_CORE # (
     .FILTER_RANGE(3'b010)
     ) PLL80 (
         .REFERENCECLK(CLK20),
-        .PLLOUTGLOBAL(CLK80m),
-        .PLLOUTCORE(CLK80out),
+        .PLLOUTGLOBAL(CLK80out),
+        .PLLOUTCORE(CLK80m),
         .LOCK(),
         .RESETB(1'b1),
         .BYPASS(1'b0)

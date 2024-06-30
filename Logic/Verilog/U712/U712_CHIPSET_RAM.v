@@ -39,9 +39,9 @@ module U712_CHIPSET_RAM (
     input CLK7, CLK40, CLK80, nRESET, nRAS0, nRAS1, nCASL, nCASU, nRAMSPACE, nAWE, TT0, TT1, RnW,
     input [20:1] A,
 
-    output nDBEN, nCRCS, nRAS, nCAS, nWE, CLKE, RAM_TA, DBDIR, BANK0, BANK1, CAS_AGNUS,
+    output nDBEN, /*nCRCS, nRAS, nCAS, nWE, CLKE,*/ RAM_TA, DBDIR, BANK0, BANK1, CAS_AGNUS,
 
-    output reg DMA_CYCLE, BURST_CYCLE,
+    output reg DMA_CYCLE, BURST_CYCLE, nCRCS, nRAS, nCAS, nWE, CLKE,
     output [9:0] DRA, 
     output [10:0] CMA
 
@@ -101,7 +101,7 @@ reg [1:0] RAS1;
 assign DMA_RESET = DMA_CYCLE || !nRESET;
 assign CAS_AGNUS = (!nCASL || !nCASU);
 
-always @(posedge CLK80, negedge nRESET) begin
+always @(negedge CLK80, negedge nRESET) begin
     if (!nRESET) begin
         RAS_AGNUS <= 0;
         RAS0 <= 2'b11;
@@ -148,7 +148,7 @@ end
 
 reg [1:0] CLK7SYNC;
 
-always @(posedge CLK80, negedge nRESET) begin
+always @(negedge CLK80, negedge nRESET) begin
     if (!nRESET) begin
         CLK7SYNC <= 2'b00;
     end else begin
@@ -177,15 +177,25 @@ COL: A20 A18  A8  A7  A6  A5  A4  A3  A2  A1
 
 */
 
-localparam [3:0] ramstate_NOP = 4'b1111;
+/*localparam [3:0] ramstate_NOP = 4'b1111;
 localparam [3:0] ramstate_PRECHARGE = 4'b0010;
 localparam [3:0] ramstate_BANKACTIVATE = 4'b0011;
 localparam [3:0] ramstate_READ = 4'b0101;
 localparam [3:0] ramstate_WRITE = 4'b0100;
 localparam [3:0] ramstate_AUTOREFRESH = 4'b0001;
-localparam [3:0] ramstate_MODEREGISTER = 4'b0000;
+localparam [3:0] ramstate_MODEREGISTER = 4'b0000;*/
 
-reg [3:0] SDRAMCOM;
+localparam [2:0] ramstate_NOP = 3'b000;
+localparam [2:0] ramstate_PRECHARGE = 3'b001;
+localparam [2:0] ramstate_MODEREGISTER = 3'b010;
+localparam [2:0] ramstate_AUTOREFRESH = 3'b011;
+localparam [2:0] ramstate_BANKACTIVATE = 3'b100;
+localparam [2:0] ramstate_READ = 3'b101;
+localparam [2:0] ramstate_WRITE = 3'b110;
+
+
+//reg [3:0] SDRAMCOM;
+reg [2:0] SDRAMCOM;
 reg [4:0] RAM_COUNTER;
 reg EMCLK_OUT;
 reg RAM_CONFIGURED;
@@ -196,11 +206,12 @@ reg TA_EN;
 reg DBEN;
 reg WAIT;
 
-assign nCRCS = SDRAMCOM[3];
+/*assign nCRCS = SDRAMCOM[3];
 assign nRAS = SDRAMCOM[2];
 assign nCAS = SDRAMCOM[1];	
 assign nWE = SDRAMCOM[0];
-assign CLKE = EMCLK_OUT;
+assign CLKE = EMCLK_OUT;*/
+
 assign RAM_TA = TA_EN;
 assign nDBEN = ~DBEN;
 assign DBDIR = ~RnW_CYCLE;
@@ -216,9 +227,52 @@ assign CMA =
 	
 	//(SDRAMCOM == ramstate_READ || SDRAMCOM == ramstate_WRITE) && !DMA_CYCLE ? {2'b00, A[20], A[18], A[8:2]} : //2MB CPU ACCESS
 	(SDRAMCOM == ramstate_READ || SDRAMCOM == ramstate_WRITE) && !DMA_CYCLE ? {3'b000, A[18], A[8:2]} : //1MB CPU ACCESS
-	(SDRAMCOM == ramstate_READ || SDRAMCOM == ramstate_WRITE) && DMA_CYCLE ? {3'b00, DMA_COL_ADDRESS[9:1]} : 11'b00000000000;
+	(SDRAMCOM == ramstate_READ || SDRAMCOM == ramstate_WRITE) && DMA_CYCLE ? {3'b00, DMA_COL_ADDRESS[9:1]} : 
+    11'b00000000000;
 
+
+
+//LATCH THE SDRAM COMMANDS
 always @(negedge CLK80, negedge nRESET) begin
+    if (!nRESET) begin
+        nCRCS <= 1;
+        nRAS <= 1;
+        nCAS <= 1;	
+        nWE <= 1;
+    end else begin
+
+        CLKE <= EMCLK_OUT;
+
+        case (SDRAMCOM)
+
+            ramstate_NOP:
+                begin nCRCS <= 1; nRAS <= 1; nCAS <= 1; nWE <= 1; end
+
+            ramstate_PRECHARGE:
+                begin nCRCS <= 0; nRAS <= 0; nCAS <= 1; nWE <= 0; end
+
+            ramstate_MODEREGISTER :
+                begin nCRCS <= 0; nRAS <= 0; nCAS <= 0;	nWE <= 0; end
+
+            ramstate_AUTOREFRESH :
+                begin nCRCS <= 0; nRAS <= 0; nCAS <= 0;	nWE <= 1; end
+
+            ramstate_BANKACTIVATE :
+                begin nCRCS <= 0; nRAS <= 0; nCAS <= 1;	nWE <= 1; end
+
+            ramstate_READ :
+                begin nCRCS <= 0; nRAS <= 1; nCAS <= 0;	nWE <= 1; end
+
+            ramstate_WRITE :
+                begin nCRCS <= 0; nRAS <= 1; nCAS <= 0;	nWE <= 0; end
+
+        endcase
+    end
+end
+
+//SDRAM PROCESS
+
+always @(posedge CLK80, negedge nRESET) begin
     if (!nRESET) begin
         SDRAMCOM = ramstate_NOP;
         EMCLK_OUT <= 0;
@@ -240,20 +294,20 @@ always @(negedge CLK80, negedge nRESET) begin
         //CONFIGURE THE RAM AT STARTUP OR RESET
         if (!RAM_CONFIGURED) begin
             case (RAM_COUNTER)
-                5'h0 : begin EMCLK_OUT <= 1; RAM_COUNTER <= 4'h1; end
+                5'h0 : begin EMCLK_OUT <= 1; RAM_COUNTER <= 5'h1; end
                 5'h1 : SDRAMCOM <= ramstate_PRECHARGE;
-                5'h3 : SDRAMCOM <= ramstate_MODEREGISTER;
+                5'h2 : SDRAMCOM <= ramstate_MODEREGISTER;
                 5'h4, 5'h9 : SDRAMCOM <= ramstate_AUTOREFRESH;
-                5'hD : begin RAM_CONFIGURED <= 1; RAM_COUNTER <= 4'h0; end
+                5'hD : begin RAM_CONFIGURED <= 1; RAM_COUNTER <= 5'h0; end
 				default : SDRAMCOM <= ramstate_NOP;
             endcase
         //REFRESH CYCLE
         //WE DON'T INITIATE A REFRESH CYCLE WHEN A DMA CYCLE IS ABOUT TO BEGIN OR DURING AN ACTIVE RAM CYCLE.
         end else if ((!CAS_AGNUS && !RAM_CYCLE && SDRAMCOM != ramstate_PRECHARGE && REFRESH) || REFRESH_CYCLE) begin
             case (RAM_COUNTER)
-                5'h0 : begin RAM_COUNTER <= 4'h1; SDRAMCOM <= ramstate_AUTOREFRESH; REFRESH_CYCLE <= 1; end
+                5'h0 : begin RAM_COUNTER <= 5'h1; SDRAMCOM <= ramstate_AUTOREFRESH; REFRESH_CYCLE <= 1; end
                 5'h1 : SDRAMCOM <= ramstate_NOP;
-                5'h4 : begin RAM_COUNTER <= 4'h0; REFRESH_CYCLE <= 0; end
+                5'h4 : begin RAM_COUNTER <= 5'h0; REFRESH_CYCLE <= 0; end
             endcase
         //RAM CYCLES
         end else if (!nRAMSPACE || DMA_READY || RAM_CYCLE) begin
@@ -401,27 +455,5 @@ always @(negedge CLK80, negedge nRESET) begin
 
     end
 end  
-
-
-/*reg [1:0] TA_COUNT;
-reg TA_OUT;
-assign RAM_TA = TA_OUT;
-
-always @(posedge CLK80, negedge nRESET) begin
-    if (!nRESET) begin
-        TA_OUT <= 0;
-        TA_COUNT <= 2'b00;
-    end else begin
-
-        case (TA_COUNT)
-
-            2'b00 : begin if (TA_EN) begin TA_OUT <= 1'b1; TA_COUNT <= 2'b01; end end
-            2'b01 : begin TA_OUT <= 1'b0; TA_COUNT <= 2'b00; end
-            //2'b01 : TA_COUNT <= 2'b10;
-            //2'b10 : begin TA_OUT <= 1'b0; TA_COUNT <= 2'b00; end
-
-        endcase
-    end
-end*/
 
 endmodule

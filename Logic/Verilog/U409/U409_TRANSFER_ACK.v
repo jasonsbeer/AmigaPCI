@@ -37,7 +37,7 @@ TO BUILD WITH APIO: apio build --top-module U409_TOP --fpga iCE40-HX4K-TQ144
 
 module U409_TRANSFER_ACK (
 
-    input TS, ROMEN, CIA_SPACE, CIA_ENABLE, CLK40, nRESET, CLKCIA, AUTOVECTOR, KNOWN_AD,
+    input TS, ROMEN, CIA_SPACE, CIA_ENABLE, CLK40, nRESET, CLKCIA, AUTOVECTOR, KNOWN_AD, nRAMSPACE,
     output nROMEN, nTA, nTCI, nTBI
 
 );
@@ -59,9 +59,9 @@ assign TA = ROM_TA || CIA_TA || SC_TA; //|| END_TA;
 assign TA_SPACE = ROMEN || CIA_SPACE || TA_CYCLE || AUTOVECTOR || !KNOWN_AD; //|| END_TA;
 assign nTA = TA_SPACE ? ~TA : 1'bz;
 
-assign NOCACHE_SPACE = CIA_SPACE;
-//assign nTCI = NOCACHE_SPACE ? ~TA : 1'bz;
-assign nTCI = 1;
+assign NOCACHE_SPACE = CIA_SPACE || !nRAMSPACE;
+assign nTCI = NOCACHE_SPACE ? ~TA : 1'bz;
+//assign nTCI = 1;
 assign nTBI = 1'bz; //TA ? 1'b0 : TA_SPACE || TA_CYCLE ? 1'b1 : 1'bZ;
 
 //FORCE _TA HIGH WITH THIS PROCESS
