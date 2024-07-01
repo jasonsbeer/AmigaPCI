@@ -37,14 +37,18 @@ module U712_TOP
 (
     input CLK7, CLK20, C1, C3, RnW, SIZ0, SIZ1, nBG, nRESET, nREGSPACE, nDBR, nAWE, nRAS0, nRAS1, nCASL, nCASU, nRAMSPACE, TT0, TT1,
     input [20:0]A,
-    output nVBEN, nDRDEN, DRDDIR, nDBEN, nCRCS, nREGEN, nAS, CLK80A, CLK80B, CLK40A, CLK40B , nUUBE, nUMBE, nLMBE, nLLBE, nTA, nTBI, nLDS, nUDS, nCUUBE, nCUMBE, nCLMBE, nCLLBE,
-    output nRAS, nCAS, nWE, CLKE, DBDIR, BANK0, BANK1,
+    output nVBEN, nDRDEN, DRDDIR, nDBEN, nCRCS, nREGEN, nAS, CLK80A, CLK80B, CLK40A, CLK40B , nUUBE, nUMBE, nLMBE, nLLBE, nTA, nTBI, 
+    output nLDS, nUDS, nCUUBE, nCUMBE, nCLMBE, nCLLBE, nRAS, nCAS, nWE, CLKE, DBDIR, BANK0, BANK1, nRAMEN,
     input [9:0] DRA, 
     output [10:0] CMA
 
     //input CLK40m, CLK80m //<--THIS IS THE FOR THE TESTBENCH ONLY!!! 
 
 );
+
+//FOR TESTING
+
+assign nRAMEN = nRAMSPACE;
 
 ////////////////////
 // BUS/CPU CLOCKS //

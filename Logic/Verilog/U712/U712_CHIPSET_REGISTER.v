@@ -98,8 +98,7 @@ always @(negedge CLK40, negedge nRESET) begin
                 begin
                     REGTA_EN <= 1'b0;
                     
-                    //if (!CLKC1[1] && !CLKC3[1] && !nREGSPACE) begin
-                    if (!CLKC1 && !CLKC3 && !nREGSPACE) begin
+                    if (!CLKC1[1] && !CLKC3[1] && !nREGSPACE) begin
                         AS_EN <= 1;
                         REG_EN <= 1;     
                         LDS_OUT <= RnW || SIZ1 || !SIZ0 || A[0];
@@ -114,8 +113,7 @@ always @(negedge CLK40, negedge nRESET) begin
                 end
             
             3'b001: //STATE 4
-                //if (CLKC1[1] && CLKC3[1]) begin
-                if (CLKC1 && CLKC3) begin
+                if (CLKC1[1] && CLKC3[1]) begin
                     DS_EN <= 1;
                     if (nDBR  && !CAS_AGNUS) begin                     
                         STATE_COUNT <= 3'b010;
@@ -123,8 +121,7 @@ always @(negedge CLK40, negedge nRESET) begin
                 end
 
             3'b010: //STATE 5
-                //if (!CLKC1[1] && CLKC3[1]) begin
-                if (!CLKC1 && CLKC3) begin
+                if (!CLKC1[1] && CLKC3[1]) begin
                     REGTA_EN <= READ_CYCLE;
                     STATE_COUNT <= 3'b011; 
                 end
@@ -134,8 +131,7 @@ always @(negedge CLK40, negedge nRESET) begin
                 
                     REGTA_EN <= 1'b0;
                     
-                    //if (!CLKC1[1] && !CLKC3[1]) begin
-                    if (!CLKC1 && !CLKC3) begin
+                    if (!CLKC1[1] && !CLKC3[1]) begin
                         STATE_COUNT <= 3'b100; 
                     end
 
@@ -143,8 +139,7 @@ always @(negedge CLK40, negedge nRESET) begin
 
             3'b100 : //STATE 7
                 begin  
-                    //if (CLKC1[1] && !CLKC3[1]) begin
-                    if (CLKC1 && !CLKC3) begin
+                    if (CLKC1[1] && !CLKC3[1]) begin
                         AS_EN <= 0;
                         DS_EN <= 0;
                         REG_EN <= 0;
@@ -159,28 +154,7 @@ end
 
 //C1 AND C3 SYNCHRONIZER
 
-reg CLKC1a;
-reg CLKC3a;
-reg CLKC1;
-reg CLKC3;
-
-always @(posedge CLK40, negedge nRESET) begin
-    if (!nRESET) begin 
-        CLKC1 <= 1;
-        CLKC1a <= 1;
-        CLKC3 <= 1;
-        CLKC3a <= 1;
-    end else begin
-        CLKC1a <= C1;
-        CLKC1 <= CLKC1a;
-        CLKC3a <= C3;
-        CLKC3 <= CLKC3a;
-    end
-end
-
-//THE ABOVE WORKS, BUT THE BELOW DOES NOT?
-
-/*reg [1:0] CLKC1;
+reg [1:0] CLKC1;
 reg [1:0] CLKC3;
 
 always @(posedge CLK40, negedge nRESET) begin
@@ -188,9 +162,12 @@ always @(posedge CLK40, negedge nRESET) begin
         CLKC1 <= 2'b11;
         CLKC3 <= 2'b11;
     end else begin
-        CLKC1 <= { CLKC1[0] , C1 };
-        CLKC3 <= { CLKC3[0] , C3 };
+        CLKC1 <= CLKC1 << 1;
+        CLKC1[0] <= C1;
+
+        CLKC3 <= CLKC3 << 1;
+        CLKC3[0] <= C3;
     end
-end*/
+end
 
 endmodule
