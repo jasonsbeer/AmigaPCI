@@ -35,7 +35,7 @@ TO BUILD WITH APIO: apio build --top-module U712_TOP --fpga iCE40-HX4K-TQ144
 module U712_TRANSFER_ACK (
 
     input CLK40, REG_TA, RAM_TA, nREGSPACE, nRAMSPACE, nRESET, BURST_CYCLE,
-    output nTBI, nTA
+    output nTBI, nTA, TA
 
 );
 

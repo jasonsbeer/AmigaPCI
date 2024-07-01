@@ -35,7 +35,7 @@ TO BUILD WITH APIO: apio build --top-module U712_TOP --fpga iCE40-HX4K-TQ144
 
 module U712_TOP
 (
-    input CLK7, CLK20, C1, C3, RnW, SIZ0, SIZ1, nBG, nRESET, nREGSPACE, nDBR, nAWE, nRAS0, nRAS1, nCASL, nCASU, nRAMSPACE, TT0, TT1,
+    input CLK7, CLK20, C1, C3, RnW, SIZ0, SIZ1, nBG, nRESET, nREGSPACE, nDBR, nAWE, nRAS0, nRAS1, nCASL, nCASU, nRAMSPACE, TT0, TT1, nTS,
     input [20:0]A,
     output nVBEN, nDRDEN, DRDDIR, nDBEN, nCRCS, nREGEN, nAS, CLK80A, CLK80B, CLK40A, CLK40B , nUUBE, nUMBE, nLMBE, nLLBE, nTA, nTBI, 
     output nLDS, nUDS, nCUUBE, nCUMBE, nCLMBE, nCLLBE, nRAS, nCAS, nWE, CLKE, DBDIR, BANK0, BANK1, nRAMEN,
@@ -98,6 +98,21 @@ SB_PLL40_CORE # (
         .BYPASS(1'b0)
     );
 
+
+//LATCH _TS
+reg TS;
+wire TS_RST;
+wire TAm;
+assign TS_RST = !nRESET || TAm;
+
+always @(posedge nTS, posedge TS_RST) begin
+    if (TS_RST) begin
+        TS <= 0;
+    end else begin
+        TS <= 1;
+    end
+end
+
 ////////////////////////////////
 // CPU CYCLE BYTE ENABLES TOP //
 ////////////////////////////////
@@ -159,8 +174,10 @@ U712_TRANSFER_ACK U712_TRANSFER_ACK (
     .nRAMSPACE (nRAMSPACE),
     .nRESET (nRESET),
     .BURST_CYCLE (BURST_CYCLEm),
+    .nTBI (nTBI),
     .nTA (nTA),
-    .nTBI (nTBI)
+    .TA (TAm)
+    
 );
 
 //////////////////////////
@@ -206,6 +223,7 @@ U712_CHIPSET_RAM U712_CHIPSET_RAM (
     .TT0 (TT0), 
     .TT1 (TT1), 
     .RnW (RnW),
+    .TS (TS),
     .A (A[20:1]),
     
     .nDBEN (nDBENm),

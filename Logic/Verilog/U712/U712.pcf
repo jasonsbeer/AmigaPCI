@@ -87,6 +87,7 @@ set_io nLLBE      124
 set_io nUUBE      125
 set_io nRAMSPACE  130
 set_io nAWE       135
+set_io nTS        137
 set_io nDBR       138
 set_io nRAMEN     139
 set_io nREGEN     141

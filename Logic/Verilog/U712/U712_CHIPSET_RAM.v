@@ -36,7 +36,7 @@ TO BUILD WITH APIO: apio build --top-module U712_TOP --fpga iCE40-HX4K-TQ144
 
 module U712_CHIPSET_RAM (
 
-    input CLK7, CLK40, CLK80, nRESET, nRAS0, nRAS1, nCASL, nCASU, nRAMSPACE, nAWE, TT0, TT1, RnW,
+    input CLK7, CLK40, CLK80, nRESET, nRAS0, nRAS1, nCASL, nCASU, nRAMSPACE, nAWE, TT0, TT1, RnW, TS,
     input [20:1] A,
 
     output nDBEN, DBDIR, BANK0, BANK1, CAS_AGNUS,
@@ -192,8 +192,6 @@ localparam [2:0] ramstate_BANKACTIVATE = 3'b100;
 localparam [2:0] ramstate_READ = 3'b101;
 localparam [2:0] ramstate_WRITE = 3'b110;
 
-
-//reg [3:0] SDRAMCOM;
 reg [2:0] SDRAMCOM;
 reg [3:0] RAM_COUNTER;
 reg EMCLK_OUT;
@@ -205,13 +203,6 @@ reg TA_EN;
 reg DBEN;
 reg WAIT;
 
-/*assign nCRCS = SDRAMCOM[3];
-assign nRAS = SDRAMCOM[2];
-assign nCAS = SDRAMCOM[1];	
-assign nWE = SDRAMCOM[0];
-assign CLKE = EMCLK_OUT;*/
-
-//assign RAM_TA = TA_EN;
 assign nDBEN = ~DBEN;
 assign DBDIR = ~RnW_CYCLE;
 assign BANK0 = 0;
@@ -230,11 +221,23 @@ assign CMA =
     11'b00000000000;
 
 //ASSERT _TA
+reg TA_OUT;
+wire TA_RST;
+assign TA_RST = !nRESET || RAM_TA;
+
+always @(posedge TA_EN, posedge TA_RST) begin
+    if (TA_RST) begin
+        TA_OUT <= 0;
+    end else begin
+        TA_OUT <= 1;
+    end
+end
+
 always @(negedge CLK40, negedge nRESET) begin
     if (!nRESET) begin
         RAM_TA <= 0;
     end else begin
-        RAM_TA <= TA_EN;
+        RAM_TA <= TA_OUT;
     end
 end
 
@@ -278,7 +281,7 @@ end
 
 //SDRAM PROCESS
 
-always @(posedge CLK80, negedge nRESET) begin
+always @(negedge CLK80, negedge nRESET) begin
     if (!nRESET) begin
         SDRAMCOM = ramstate_NOP;
         EMCLK_OUT <= 0;
@@ -307,6 +310,7 @@ always @(posedge CLK80, negedge nRESET) begin
                 4'hD : begin RAM_CONFIGURED <= 1; RAM_COUNTER <= 4'h0; end
 				default : SDRAMCOM <= ramstate_NOP;
             endcase
+
         //REFRESH CYCLE
         //WE DON'T INITIATE A REFRESH CYCLE WHEN A DMA CYCLE IS ABOUT TO BEGIN OR DURING AN ACTIVE RAM CYCLE.
         end else if ((!CAS_AGNUS && !RAM_CYCLE && SDRAMCOM != ramstate_PRECHARGE && REFRESH) || REFRESH_CYCLE) begin
@@ -315,6 +319,7 @@ always @(posedge CLK80, negedge nRESET) begin
                 4'h1 : SDRAMCOM <= ramstate_NOP;
                 4'h4 : begin RAM_COUNTER <= 4'h0; REFRESH_CYCLE <= 0; end
             endcase
+
         //RAM CYCLES
         end else if (!nRAMSPACE || DMA_READY || RAM_CYCLE) begin
             case (RAM_COUNTER)
@@ -323,38 +328,36 @@ always @(posedge CLK80, negedge nRESET) begin
 
                     TA_EN <= 0;                 
 
-                    if (SDRAMCOM == ramstate_PRECHARGE) begin
+                    if (DMA_READY && SDRAMCOM != ramstate_PRECHARGE) begin //DMA CYCLE
+                        //AGNUS ASSERTS THE _CASx SIGNALS IN STATE 5 SIGNIFYING A DMA CYCLE IS STARTING.
+                        SDRAMCOM <= ramstate_BANKACTIVATE;
+                        RAM_COUNTER <= 4'h1;
+                        DMA_CYCLE <= 1; 
+                        RAM_CYCLE <= 1;
+                        BURST_CYCLE <= 0;
+                        RnW_CYCLE <= nAWE;
+                        DBEN <= DMA_COL_ADDRESS[0];                    
+                    end else if (TS && !nRAMSPACE && !CLK40 && RAS_AGNUS == 0 && SDRAMCOM != ramstate_PRECHARGE) begin //CPU CYCLE
+                        //DON'T START A CPU RAM CYCLE IF AGNUS HAS ASSERTED ONE OF THE _RASx SIGNALS. THIS INDICATES A PENDING DMA CYCLE.
+                        SDRAMCOM <= ramstate_BANKACTIVATE;
+                        RAM_COUNTER <= 4'h1;
+                        RAM_CYCLE <= 1; 
+                        DMA_CYCLE <= 0;
+                        BURST_CYCLE <= TT0 && !TT1;
+                        RnW_CYCLE <= RnW;
+                        DBEN <= 0;
+                    end else begin
                         DMA_CYCLE <= 0;
                         RAM_CYCLE <= 0;
                         BURST_CYCLE <= 0; 
                         DBEN <= 0;
                         SDRAMCOM <= ramstate_NOP;
-                    end else begin
-                        if (DMA_READY) begin //DMA CYCLE
-                            //AGNUS ASSERTS THE _CASx SIGNALS IN STATE 5 SIGNIFYING A DMA CYCLE IS STARTING.
-                            SDRAMCOM <= ramstate_BANKACTIVATE;
-                            RAM_COUNTER <= 4'h1;
-                            DMA_CYCLE <= 1; 
-                            RAM_CYCLE <= 1;
-                            BURST_CYCLE <= 0;
-                            RnW_CYCLE <= nAWE;
-                            DBEN <= DMA_COL_ADDRESS[0];                    
-                        end else if (!nRAMSPACE && !CLK40 && RAS_AGNUS == 0) begin //CPU CYCLE
-                            //DON'T START A CPU RAM CYCLE IF AGNUS HAS ASSERTED ONE OF THE _RASx SIGNALS. THIS INDICATES A PENDING DMA CYCLE.
-                            SDRAMCOM <= ramstate_BANKACTIVATE;
-                            RAM_COUNTER <= 4'h1;
-                            RAM_CYCLE <= 1; 
-                            DMA_CYCLE <= 0;
-                            BURST_CYCLE <= TT0 && !TT1;
-                            RnW_CYCLE <= RnW;
-                            DBEN <= 0;
-                        end
                     end 
+
                 end
 
                 4'h1 : begin
                     SDRAMCOM <= ramstate_NOP;
-                    //TA_EN <= (!RnW_CYCLE && !DMA_CYCLE); //ASSERT _TA FOR CPU WRITE CYCLES
                 end
 
                 4'h2 : begin
@@ -383,17 +386,11 @@ always @(posedge CLK80, negedge nRESET) begin
                     end else begin
 
                         EMCLK_OUT <= 1;
-                        //TA_EN <= 1; //(RnW_CYCLE && !DMA_CYCLE) || !DMA_CYCLE;
-
-                        //if (RnW_CYCLE && !DMA_CYCLE) begin
-                        //    TA_EN <= 1;
-                        //end else begin
-                        //    if (!BURST_CYCLE && !DMA_CYCLE) begin TA_EN <= 0; end
-                        //end
 
                         if (!BURST_CYCLE) begin
                             SDRAMCOM <= ramstate_PRECHARGE; //CPU AND DMA CYCLE
-                            if (!RnW_CYCLE) begin RAM_COUNTER <= 0; end;
+                            TA_EN <= 0;
+                            if (!RnW_CYCLE) begin RAM_COUNTER <= 0; end; //END NON-BURST CPU WRITE CYCLE
                         end else begin
                             SDRAMCOM <= ramstate_NOP; //CPU BURST CYCLE
                         end
@@ -412,12 +409,7 @@ always @(posedge CLK80, negedge nRESET) begin
                             EMCLK_OUT <= 0;
                             WAIT <= 1;  
                         end else begin
-                            //if (!RnW_CYCLE) begin
-                            //    RAM_COUNTER <= 0; //END OF A NON-BURST CPU WRITE CYCLE
-                            //end else begin
-                            //    TA_EN <= 1;
-                            //end
-                            TA_EN <= RnW_CYCLE;
+                            TA_EN <= RnW_CYCLE; //ASSERT _TA FOR NON-BURST CPU READ CYCLE
                         end 
 
                     end else begin
@@ -436,22 +428,22 @@ always @(posedge CLK80, negedge nRESET) begin
                             RAM_COUNTER <= 0;
                         end 
                     end else begin
-                        //if (!BURST_CYCLE) begin
-                        //    RAM_COUNTER <= 0; //END NON-BURST CPU CYCLE
-                        //end else begin
+                        if (!BURST_CYCLE) begin
+                            RAM_COUNTER <= 0; //END NON-BURST CPU CYCLE
+                        end else begin
                             EMCLK_OUT <= 1;
-                        //end
+                        end
                     end
 
                 end
 
                 4'h6 : begin 
-                    if (!BURST_CYCLE) begin
+                    /*if (!BURST_CYCLE) begin
                         RAM_COUNTER <= 0; //END NON-BURST CPU READ CYCLE
                     end else begin
                         EMCLK_OUT <= 0;
-                    end
-                    //EMCLK_OUT <= 0;
+                    end*/
+                    EMCLK_OUT <= 0;
                 end
 
                 4'h7 : begin

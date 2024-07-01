@@ -29,6 +29,7 @@ Revision History:
     25-JUN-2024 : Clean Up End Of Cycle Timing
     27-JUN-2024 : Early read cycle termination.
     28-JUN-2024 : Latch R_W at start of cycle to prevent late assertion of _TA during read cycles.
+    01-JUL-2024 : Added _DBR synchronizer.
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 TO BUILD WITH APIO: apio build --top-module U712_TOP --fpga iCE40-HX4K-TQ144
@@ -67,6 +68,7 @@ reg REG_CYCLE_OUT;
 reg LDS_OUT;
 reg UDS_OUT;
 reg READ_CYCLE;
+reg [1:0] DBR_SYNC;
 
 assign nREGEN = ~REG_EN;
 assign nAS = ~AS_EN;
@@ -89,8 +91,12 @@ always @(negedge CLK40, negedge nRESET) begin
         LDS_OUT <= 0;
         UDS_OUT <= 0;
         READ_CYCLE <= 1;
+        DBR_SYNC <= 2'b00;
 
     end else begin
+
+        DBR_SYNC <= DBR_SYNC << 1;
+        DBR_SYNC[0] <= nDBR;
 
         case (STATE_COUNT)
 
@@ -115,7 +121,8 @@ always @(negedge CLK40, negedge nRESET) begin
             3'b001: //STATE 4
                 if (CLKC1[1] && CLKC3[1]) begin
                     DS_EN <= 1;
-                    if (nDBR  && !CAS_AGNUS) begin                     
+                    //THE LOGIC OUTPUT FROM AGNUS SUGGESTS EVERYTHING WAITS FOR DBR, EVEN REFRESH CYCLE DBR. 
+                    if (DBR_SYNC == 2'b11  && !CAS_AGNUS) begin
                         STATE_COUNT <= 3'b010;
                     end
                 end
