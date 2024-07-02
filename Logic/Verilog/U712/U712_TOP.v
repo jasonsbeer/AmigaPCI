@@ -48,7 +48,8 @@ module U712_TOP
 
 //FOR TESTING
 
-assign nRAMEN = nRAMSPACE;
+//assign nRAMEN = nRAMSPACE;
+assign nRAMEN = CLKE;
 
 ////////////////////
 // BUS/CPU CLOCKS //
@@ -100,7 +101,7 @@ SB_PLL40_CORE # (
 
 
 //LATCH _TS
-reg TS;
+/*reg TS;
 wire TS_RST;
 wire TAm;
 assign TS_RST = !nRESET || TAm;
@@ -111,7 +112,7 @@ always @(posedge nTS, posedge TS_RST) begin
     end else begin
         TS <= 1;
     end
-end
+end*/
 
 ////////////////////////////////
 // CPU CYCLE BYTE ENABLES TOP //
@@ -165,6 +166,8 @@ U712_CHIPSET_REGISTER U712_CHIPSET_REGISTER (
 //////////////////////////
 // MC68040 TRANSFER ACK //
 //////////////////////////
+
+wire TAm;
 
 U712_TRANSFER_ACK U712_TRANSFER_ACK (
     .CLK40 (CLK40m),
@@ -223,7 +226,8 @@ U712_CHIPSET_RAM U712_CHIPSET_RAM (
     .TT0 (TT0), 
     .TT1 (TT1), 
     .RnW (RnW),
-    .TS (TS),
+    .nTS (nTS),
+    .TA (TAm),
     .A (A[20:1]),
     
     .nDBEN (nDBENm),

@@ -36,7 +36,7 @@ TO BUILD WITH APIO: apio build --top-module U712_TOP --fpga iCE40-HX4K-TQ144
 
 module U712_CHIPSET_RAM (
 
-    input CLK7, CLK40, CLK80, nRESET, nRAS0, nRAS1, nCASL, nCASU, nRAMSPACE, nAWE, TT0, TT1, RnW, TS,
+    input CLK7, CLK40, CLK80, nRESET, nRAS0, nRAS1, nCASL, nCASU, nRAMSPACE, nAWE, TT0, TT1, RnW, nTS, TA,
     input [20:1] A,
 
     output nDBEN, DBDIR, BANK0, BANK1, CAS_AGNUS,
@@ -220,6 +220,19 @@ assign CMA =
 	(SDRAMCOM == ramstate_READ || SDRAMCOM == ramstate_WRITE) && DMA_CYCLE ? {3'b00, DMA_COL_ADDRESS[9:1]} : 
     11'b00000000000;
 
+//LATCH nTS
+reg TS;
+wire TS_RST;
+assign TS_RST = !nRESET || TA || SDRAMCOM == ramstate_BANKACTIVATE;
+
+always @(posedge nTS, posedge TS_RST) begin
+    if (TS_RST) begin
+        TS <= 0;
+    end else begin
+        TS <= 1;
+    end
+end
+
 //ASSERT _TA
 reg TA_OUT;
 wire TA_RST;
@@ -248,6 +261,7 @@ always @(negedge CLK80, negedge nRESET) begin
         nRAS <= 1;
         nCAS <= 1;	
         nWE <= 1;
+        CLKE <= 0;
     end else begin
 
         CLKE <= EMCLK_OUT;
@@ -281,7 +295,7 @@ end
 
 //SDRAM PROCESS
 
-always @(negedge CLK80, negedge nRESET) begin
+always @(posedge CLK80, negedge nRESET) begin
     if (!nRESET) begin
         SDRAMCOM = ramstate_NOP;
         EMCLK_OUT <= 0;
@@ -326,7 +340,8 @@ always @(negedge CLK80, negedge nRESET) begin
 
                 4'h0 : begin 
 
-                    TA_EN <= 0;                 
+                    TA_EN <= 0;
+                    EMCLK_OUT <= 1;             
 
                     if (DMA_READY && SDRAMCOM != ramstate_PRECHARGE) begin //DMA CYCLE
                         //AGNUS ASSERTS THE _CASx SIGNALS IN STATE 5 SIGNIFYING A DMA CYCLE IS STARTING.
@@ -388,9 +403,16 @@ always @(negedge CLK80, negedge nRESET) begin
                         EMCLK_OUT <= 1;
 
                         if (!BURST_CYCLE) begin
+                            
                             SDRAMCOM <= ramstate_PRECHARGE; //CPU AND DMA CYCLE
                             TA_EN <= 0;
-                            if (!RnW_CYCLE) begin RAM_COUNTER <= 0; end; //END NON-BURST CPU WRITE CYCLE
+
+                            if (!RnW_CYCLE) begin 
+                                RAM_COUNTER <= 0; //END NON-BURST CPU WRITE CYCLE
+                            end else begin
+                                EMCLK_OUT <= 0;
+                            end
+
                         end else begin
                             SDRAMCOM <= ramstate_NOP; //CPU BURST CYCLE
                         end
@@ -410,6 +432,7 @@ always @(negedge CLK80, negedge nRESET) begin
                             WAIT <= 1;  
                         end else begin
                             TA_EN <= RnW_CYCLE; //ASSERT _TA FOR NON-BURST CPU READ CYCLE
+                            //EMCLK_OUT <= 0;
                         end 
 
                     end else begin
