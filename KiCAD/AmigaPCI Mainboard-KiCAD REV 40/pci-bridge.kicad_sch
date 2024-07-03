@@ -6,7 +6,7 @@
 	(paper "B")
 	(title_block
 		(title "AMIGA PCI")
-		(date "2024-06-29")
+		(date "2024-07-03")
 		(rev "4.0")
 	)
 	(lib_symbols
@@ -4659,6 +4659,10 @@
 	(no_connect
 		(at 213.36 111.76)
 		(uuid "22ac2060-eb59-40d7-a48d-fad27ef48724")
+	)
+	(no_connect
+		(at 281.94 132.08)
+		(uuid "27716787-d03e-483b-af17-04201a9d2e7e")
 	)
 	(no_connect
 		(at 121.92 191.77)
@@ -15002,27 +15006,6 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
-			)
-		)
-	)
-	(global_label "_LVTIP"
-		(shape bidirectional)
-		(at 281.94 132.08 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "2a9ebaab-6f49-447e-9153-3e51b9034c1f")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 291.9632 132.08 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
 			)
 		)
 	)

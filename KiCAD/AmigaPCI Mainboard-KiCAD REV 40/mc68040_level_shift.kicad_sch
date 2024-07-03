@@ -6,7 +6,7 @@
 	(paper "B")
 	(title_block
 		(title "AMIGA PCI")
-		(date "2024-06-29")
+		(date "2024-07-03")
 		(rev "4.0")
 	)
 	(lib_symbols
@@ -13813,6 +13813,17 @@
 		)
 		(uuid "a589ed3c-66c2-4446-abe4-918a08630424")
 	)
+	(label "GND"
+		(at 274.32 228.6 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "a5b5759b-c3e4-4826-b410-9545699fca37")
+	)
 	(label "A7"
 		(at 170.18 63.5 180)
 		(fields_autoplaced yes)
@@ -14340,6 +14351,17 @@
 			(justify right bottom)
 		)
 		(uuid "d6c51b00-4be6-4dfe-b868-9e2eed6bfb88")
+	)
+	(label "GND"
+		(at 234.95 228.6 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "d9d54d46-0746-4ede-9db5-1367697fd68d")
 	)
 	(label "LVD11"
 		(at 31.75 91.44 0)
@@ -15363,27 +15385,6 @@
 			)
 		)
 	)
-	(global_label "_TIP"
-		(shape bidirectional)
-		(at 274.32 228.6 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "56b7e67a-4dfb-4dda-ab12-a433d3144eb6")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 282.2265 228.6 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-	)
 	(global_label "LVDRA4-3"
 		(shape output)
 		(at 234.95 73.66 180)
@@ -15675,27 +15676,6 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
-			)
-		)
-	)
-	(global_label "_LVTIP"
-		(shape bidirectional)
-		(at 234.95 228.6 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "82310713-55a3-43d0-9da4-77fad00a7431")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 224.9268 228.6 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
 			)
 		)
 	)

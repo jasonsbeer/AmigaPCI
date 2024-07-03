@@ -6,7 +6,7 @@
 	(paper "B")
 	(title_block
 		(title "AMIGA PCI")
-		(date "2024-06-29")
+		(date "2024-07-03")
 		(rev "4.0")
 	)
 	(lib_symbols
@@ -5603,6 +5603,10 @@
 		(uuid "0767d4e3-d1df-45e1-9942-4395755d77ac")
 	)
 	(no_connect
+		(at 147.32 185.42)
+		(uuid "0d0d535c-8278-427a-90db-db9c8a3d64f2")
+	)
+	(no_connect
 		(at 147.32 152.4)
 		(uuid "1ba72c1f-fd48-4f81-9e02-fb32a264d162")
 	)
@@ -5629,6 +5633,10 @@
 	(no_connect
 		(at 87.63 55.88)
 		(uuid "619d9623-6d4c-4572-a293-6ce72741c946")
+	)
+	(no_connect
+		(at 147.32 182.88)
+		(uuid "70aa2ce0-afc4-43f5-a5cc-de60177d3fc3")
 	)
 	(no_connect
 		(at 147.32 142.24)
@@ -5681,6 +5689,10 @@
 	(no_connect
 		(at 147.32 154.94)
 		(uuid "da55086b-f6b9-4760-8c8b-c15f58671641")
+	)
+	(no_connect
+		(at 147.32 213.36)
+		(uuid "e3a406ed-1a5a-452c-a3d9-33866e8ddc27")
 	)
 	(no_connect
 		(at 87.63 58.42)
@@ -13441,27 +13453,6 @@
 			)
 		)
 	)
-	(global_label "_LVTIP"
-		(shape input)
-		(at 147.32 213.36 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "24835cac-603a-4db9-9aac-9cc4adafed09")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 156.2319 213.36 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-	)
 	(global_label "_ROMEN"
 		(shape output)
 		(at 147.32 203.2 0)
@@ -13475,27 +13466,6 @@
 		(uuid "25acfe3b-940b-4a62-b7fa-21b9d9ccedda")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 157.8042 203.2 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-	)
-	(global_label "_TBI"
-		(shape output)
-		(at 147.32 185.42 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "28d8b3a2-3dc0-4254-a526-6b1150ab47fb")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 154.0358 185.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14081,27 +14051,6 @@
 		(uuid "e53db20d-af05-4b59-97d9-0f20e0959116")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 158.242 137.16 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-	)
-	(global_label "_TCI"
-		(shape output)
-		(at 147.32 182.88 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.2954 1.2954)
-			)
-			(justify left)
-		)
-		(uuid "ee15641f-f705-4e5a-9363-814fc3b9872e")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 154.2507 182.88 0)
 			(effects
 				(font
 					(size 1.27 1.27)

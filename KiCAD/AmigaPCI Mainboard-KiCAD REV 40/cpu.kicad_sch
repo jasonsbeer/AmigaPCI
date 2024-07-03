@@ -6,7 +6,7 @@
 	(paper "B")
 	(title_block
 		(title "AMIGA PCI")
-		(date "2024-06-29")
+		(date "2024-07-03")
 		(rev "4.0")
 	)
 	(lib_symbols
@@ -8651,6 +8651,12 @@
 		(uuid "ed2e4503-7abe-4335-97c2-7a259bb0ba21")
 	)
 	(junction
+		(at 222.25 54.61)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "efa29c74-c184-4c2f-a4ab-7451b9bd3abe")
+	)
+	(junction
 		(at 129.54 30.48)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -10385,6 +10391,16 @@
 			(type default)
 		)
 		(uuid "073fb70d-1aec-472b-b0aa-dd7949dd9eb2")
+	)
+	(wire
+		(pts
+			(xy 222.25 49.53) (xy 222.25 54.61)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "077e7d5c-65e5-41e8-8f47-91069552893f")
 	)
 	(wire
 		(pts
@@ -13035,16 +13051,6 @@
 			(type default)
 		)
 		(uuid "6d007c1a-d970-4d26-a164-f1d6a50181ab")
-	)
-	(wire
-		(pts
-			(xy 200.66 49.53) (xy 229.87 49.53)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "6d091d2b-6aa8-490a-9cf3-6c8414df43aa")
 	)
 	(wire
 		(pts
@@ -16675,6 +16681,16 @@
 			(type default)
 		)
 		(uuid "ed81ec2b-f7e3-40b6-84a2-21923d73a132")
+	)
+	(wire
+		(pts
+			(xy 229.87 49.53) (xy 222.25 49.53)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "edc26f6e-221c-46f3-afe2-f2b2e04894a0")
 	)
 	(wire
 		(pts
@@ -21225,27 +21241,6 @@
 			)
 		)
 	)
-	(global_label "_TIP"
-		(shape bidirectional)
-		(at 200.66 49.53 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "93b374c7-93d5-4501-87b8-50076b06285a")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 192.7535 49.53 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-	)
 	(global_label "LVR_W"
 		(shape input)
 		(at 134.62 228.6 0)
@@ -21473,7 +21468,7 @@
 		)
 	)
 	(global_label "_TCI"
-		(shape input)
+		(shape output)
 		(at 134.62 205.74 0)
 		(fields_autoplaced yes)
 		(effects
@@ -21913,7 +21908,7 @@
 			)
 		)
 	)
-	(global_label "_LVTIP"
+	(global_label "_LVTS"
 		(shape input)
 		(at 134.62 213.36 0)
 		(fields_autoplaced yes)
@@ -21925,7 +21920,7 @@
 		)
 		(uuid "e18c10b3-0488-468d-a383-c6cffddf7629")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 143.7097 213.36 0)
+			(at 143.0311 213.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
