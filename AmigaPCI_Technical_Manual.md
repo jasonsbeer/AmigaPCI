@@ -21,6 +21,7 @@
 Revision|Date|Status
 -|-|-
 0.0|June 1, 2024|FIRST DRAFT
+0.1|July 3, 2024|Removed _TIP from CPU local bus connector.
 
 <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://github.com/jasonsbeer/AmigaPCI">AmigaPCI Hardware Reference</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://github.com/jasonsbeer">Jason Neus</a> is licensed under <a href="https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">Creative Commons Attribution-NonCommercial 4.0 International<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt=""></a></p>
 
@@ -232,7 +233,6 @@ _TA|LVTTL|BI|CPU transfer acknowledge. Tristate.
 _TBI|LVTTL|I|CPU transfer burst inhibit.
 _TCI|LVTTL|I|CPU transfer cache inhibit.
 _TEA|LVTTL|I|CPU transfer error acknowledge.
-_TIP|TTL|BI|CPU transfer in progress. Tristate.
 TM2-0|TTL|BI|CPU transfer modifier 2, 1, and 0. Tristate.
 _TS|TTL|BI|CPU transfer start. Tristate.
 TT1-0|TTL|BI|CPU transfer type 1 and 0. Tristate.
@@ -247,7 +247,7 @@ UPA1-0|TTL|O|User-programmable attribute 1 and 0. Tristate.
 **Table 3.2.2**. CPU Local Bus Pinout.
 Pin|Signal|Pin|Signal|Pin|Signal
 -|-|-|-|-|-
-**A1**|_TIP|**B1**|_BB|**C1**|GND
+**A1**|GND|**B1**|_BB|**C1**|GND
 **A2**|A12|**B2**|A13|**C2**|GND
 **A3**|A14|**B3**|A0|**C3**|A15
 **A4**|A1|**B4**|A2|**C4**|A3
