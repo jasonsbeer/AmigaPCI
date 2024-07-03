@@ -50,19 +50,19 @@ module U712_TRANSFER_ACK (
 wire TA;
 wire TA_SPACE;
 wire TB_SPACE;
-wire TBI;
-reg TBI_CYCLE;
-reg TA_CYCLE;
+//wire TBI;
+//reg TBI_CYCLE;
+//reg TA_CYCLE;
 
 assign TA = REG_TA || RAM_TA;
-assign TA_SPACE = !nREGSPACE || !nRAMSPACE || TA_CYCLE;
+assign TA_SPACE = !nREGSPACE || !nRAMSPACE; // || TA_CYCLE;
 assign nTA = TA_SPACE ? ~TA : 1'bz;
 
 //TRANSFER BURST IS INHIBITED FOR WHEN A CPU RAM CYCLE IS INTERRUPTED BY A DMA CYCLE.
-assign TBI = (!nRAMSPACE && !BURST_CYCLE) || !nREGSPACE || TBI_CYCLE;
-assign nTBI = TBI ? ~TA : 1'bz;
+assign TB_SPACE = (!nRAMSPACE && !BURST_CYCLE) || !nREGSPACE; // || TBI_CYCLE;
+assign nTBI = TB_SPACE ? ~TA : 1'bz;
 
-always @(posedge CLK40, negedge nRESET) begin
+/*always @(posedge CLK40, negedge nRESET) begin
     if (!nRESET) begin
         TA_CYCLE <= 0;
     end else begin
@@ -72,9 +72,9 @@ always @(posedge CLK40, negedge nRESET) begin
             TA_CYCLE <= 0; 
         end
     end
-end
+end*/
 
-always @(posedge CLK40, negedge nRESET) begin
+/*always @(posedge CLK40, negedge nRESET) begin
     if (!nRESET) begin
         TBI_CYCLE <= 0;
     end else begin
@@ -84,6 +84,6 @@ always @(posedge CLK40, negedge nRESET) begin
             TBI_CYCLE <= 0; 
         end
     end
-end
+end*/
 
 endmodule

@@ -31,7 +31,7 @@ set_io   -pullup yes   A[30] 9
 set_io   -pullup yes   A[31] 10
 
 set_io   -pullup yes   nTCI  115 
-set_io   -pullup yes   nTBI  116
+#set_io   -pullup yes   nTBI  116
 set_io   -pullup yes   nTA   117
 
 set_io   nRAMSPACE   48

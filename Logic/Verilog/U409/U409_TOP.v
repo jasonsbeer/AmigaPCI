@@ -22,7 +22,7 @@ Module Name: U409_TOP
 Project Name: AmigaPCI
 Target Devices: iCE40-HX4K-TQ144
 
-Description: ADDRESS DECODE, TRANSFER ACK
+Description: ADDRESS DECODE, ROM, TRANSFER ACK, AUTOCONFIG
 
 Revision History:
     XXXX
@@ -36,9 +36,7 @@ module U409_TOP (
     input CLK40, CLK6, CLK7, nRESET, nTS, OVL, RnW, TT0, TT1, nLBEN,
     input [31:1] A,
 
-    output nROMEN, nBUFEN, TICK60, TICK50, CLKCIA, nTCI, nTBI, nCIACS0, nCIACS1, nRAMSPACE, nREGSPACE,
-
-    inout nTA
+    output nROMEN, nBUFEN, TICK60, TICK50, CLKCIA, nTCI, nCIACS0, nCIACS1, nRAMSPACE, nREGSPACE, nTA
 
 );
 
@@ -58,7 +56,7 @@ always @(negedge CLK40, negedge nRESET) begin
     if (!nRESET) begin
         TA_RST <= 0;
     end else begin
-        TA_RST <= ~nTA;
+        TA_RST <= TAm;
     end
 end
 
@@ -74,6 +72,8 @@ end
 // TRANSFER ACK TOP //
 //////////////////////
 
+wire TAm;
+
 U409_TRANSFER_ACK U409_TRANSFER_ACK (
     .TS (TS),  
     .ROMEN (ROMENm),
@@ -85,10 +85,11 @@ U409_TRANSFER_ACK U409_TRANSFER_ACK (
     .AUTOVECTOR (AUTOVECTORm),
     .KNOWN_AD (KNOWN_ADm),
     .nRAMSPACE (nRAMSPACE),
+    .nREGSPACE (nREGSPACE),
     .nTA (nTA), 
+    .TA (TAm),
     .nROMEN (nROMEN), 
-    .nTCI (nTCI), 
-    .nTBI (nTBI)
+    .nTCI (nTCI)
 );
 
 ////////////////////////////

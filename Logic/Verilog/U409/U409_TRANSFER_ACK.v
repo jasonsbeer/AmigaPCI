@@ -30,6 +30,7 @@ Revision History:
     19-JUN-2024 : FIX CIA TRANSFER ACK TIMING
     23-JUN-2024 : ADDED AUTOVECTOR TERMINATION
                   CYCLE TERMINATION FOR UNIMPLEMENTED ADDRESSES
+    02-JUL-2024 : FIXED SHORT CYCLE _TA
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 TO BUILD WITH APIO: apio build --top-module U409_TOP --fpga iCE40-HX4K-TQ144
@@ -37,8 +38,8 @@ TO BUILD WITH APIO: apio build --top-module U409_TOP --fpga iCE40-HX4K-TQ144
 
 module U409_TRANSFER_ACK (
 
-    input TS, ROMEN, CIA_SPACE, CIA_ENABLE, CLK40, nRESET, CLKCIA, AUTOVECTOR, KNOWN_AD, nRAMSPACE,
-    output nROMEN, nTA, nTCI, nTBI
+    input TS, ROMEN, CIA_SPACE, CIA_ENABLE, CLK40, nRESET, CLKCIA, AUTOVECTOR, KNOWN_AD, nRAMSPACE, nREGSPACE,
+    output nROMEN, nTA, TA, nTCI
 
 );
 
@@ -50,33 +51,21 @@ module U409_TRANSFER_ACK (
 //CACHING IS ALLOWED FOR ALL SPACES EXCEPT CHIP RAM, SINCE AGNUS CAN WRITE THERE, TOO.
 //WE FORCE _TA HIGH AFTER THE CYCLE TO PREVENT THE NEXT CYCLE FROM ENDING PREMATURELY.
 
+//ONLY BURST TRANSFERS ARE ELIGIABLE TO BE CACHED, SO WE DON'T WORRY ABOUT DISABLING THE TRANSFER CACHE.
+
 wire TA;
 wire TA_SPACE;
 wire NOCACHE_SPACE;
-reg TA_CYCLE;
 
-assign TA = ROM_TA || CIA_TA || SC_TA; //|| END_TA;
-assign TA_SPACE = ROMEN || CIA_SPACE || TA_CYCLE || AUTOVECTOR || !KNOWN_AD; //|| END_TA;
+assign TA = ROM_TA || CIA_TA || SC_TA[1]; //|| END_TA;
+assign TA_SPACE = ROMEN || CIA_SPACE || AUTOVECTOR || !KNOWN_AD; //|| END_TA;
 assign nTA = TA_SPACE ? ~TA : 1'bz;
 
-assign NOCACHE_SPACE = CIA_SPACE || !nRAMSPACE;
-assign nTCI = NOCACHE_SPACE ? ~TA : 1'bz;
-//assign nTCI = 1;
-assign nTBI = 1'bz; //TA ? 1'b0 : TA_SPACE || TA_CYCLE ? 1'b1 : 1'bZ;
+//assign NOCACHE_SPACE = CIA_SPACE;
+//assign nTCI = NOCACHE_SPACE ? ~TA : 1'bz;
 
-//FORCE _TA HIGH WITH THIS PROCESS
-
-always @(posedge CLK40, negedge nRESET) begin
-    if (!nRESET) begin
-        TA_CYCLE <= 0;
-    end else begin
-        if (TA && TA_SPACE) begin
-            TA_CYCLE <= 1; end 
-        else begin
-            TA_CYCLE <= 0; 
-        end
-    end
-end
+assign nTCI = 1'bz;
+//assign nTBI = 1'bz; //TA ? 1'b0 : TA_SPACE || TA_CYCLE ? 1'b1 : 1'bZ;
 
 ////////////////////////////
 // ROM TRANSFER ACK DELAY //
@@ -108,16 +97,16 @@ end
 
 //SHORT CYCLES REQUIRING ONLY TWO TOTAL CLOCKS ARE HANDLED HERE.
 
-reg SC_TA;
+reg [1:0] SC_TA;
 
 always @(posedge CLK40, negedge nRESET) begin
     if (!nRESET) begin
-        SC_TA <= 0;
+        SC_TA <= 2'b01;
     end else begin
         if ((AUTOVECTOR || !KNOWN_AD) && TS) begin
-            SC_TA <= 1;
+            SC_TA <= SC_TA << 1;
         end else begin
-            SC_TA <= 0;
+            SC_TA <= 2'b01;
         end
     end
 end
@@ -142,7 +131,8 @@ always @(posedge CLK40, negedge nRESET) begin
         TA_ENABLE <= 0;
     end else begin
 
-        LASTCLK <= { LASTCLK[0] , CLKCIA};
+        LASTCLK <= LASTCLK << 1;
+        LASTCLK[0] <= CLKCIA;
 
         if (LASTCLK == 2'b11 && CIA_ENABLE && TS) begin
             TA_ENABLE <= 1;

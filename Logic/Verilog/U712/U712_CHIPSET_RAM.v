@@ -40,9 +40,9 @@ module U712_CHIPSET_RAM (
     input [20:1] A,
 
     output nDBEN, DBDIR, BANK0, BANK1, CAS_AGNUS,
-    output reg DMA_CYCLE, BURST_CYCLE, nCRCS, nRAS, nCAS, nWE, CLKE, RAM_TA, 
+    output reg DMA_CYCLE, BURST_CYCLE, nCRCS, nRAS, nCAS, nWE, CLKE, RAM_TA,
     output [9:0] DRA, 
-    output [10:0] CMA
+    output reg [10:0] CMA
 
 );
 
@@ -176,14 +176,6 @@ COL: A20 A18  A8  A7  A6  A5  A4  A3  A2  A1
 
 */
 
-/*localparam [3:0] ramstate_NOP = 4'b1111;
-localparam [3:0] ramstate_PRECHARGE = 4'b0010;
-localparam [3:0] ramstate_BANKACTIVATE = 4'b0011;
-localparam [3:0] ramstate_READ = 4'b0101;
-localparam [3:0] ramstate_WRITE = 4'b0100;
-localparam [3:0] ramstate_AUTOREFRESH = 4'b0001;
-localparam [3:0] ramstate_MODEREGISTER = 4'b0000;*/
-
 localparam [2:0] ramstate_NOP = 3'b000;
 localparam [2:0] ramstate_PRECHARGE = 3'b001;
 localparam [2:0] ramstate_MODEREGISTER = 3'b010;
@@ -207,18 +199,6 @@ assign nDBEN = ~DBEN;
 assign DBDIR = ~RnW_CYCLE;
 assign BANK0 = 0;
 assign BANK1 = 0;
-
-assign CMA = 
-    SDRAMCOM == ramstate_PRECHARGE ? 11'b10000000000 : 
-    SDRAMCOM == ramstate_MODEREGISTER ? 11'b00000100010 : 
-	
-	SDRAMCOM == ramstate_BANKACTIVATE && !DMA_CYCLE ? {1'b0, A[19], A[17:9]} :
-	SDRAMCOM == ramstate_BANKACTIVATE && DMA_CYCLE ? {1'b0, DMA_ROW_ADDRESS[9:0]} : 
-	
-	//(SDRAMCOM == ramstate_READ || SDRAMCOM == ramstate_WRITE) && !DMA_CYCLE ? {2'b00, A[20], A[18], A[8:2]} : //2MB CPU ACCESS
-	(SDRAMCOM == ramstate_READ || SDRAMCOM == ramstate_WRITE) && !DMA_CYCLE ? {3'b000, A[18], A[8:2]} : //1MB CPU ACCESS
-	(SDRAMCOM == ramstate_READ || SDRAMCOM == ramstate_WRITE) && DMA_CYCLE ? {3'b00, DMA_COL_ADDRESS[9:1]} : 
-    11'b00000000000;
 
 //LATCH nTS
 reg TS;
@@ -262,6 +242,7 @@ always @(negedge CLK80, negedge nRESET) begin
         nCAS <= 1;	
         nWE <= 1;
         CLKE <= 0;
+        CMA <= 11'b00000000000;
     end else begin
 
         CLKE <= EMCLK_OUT;
@@ -272,22 +253,58 @@ always @(negedge CLK80, negedge nRESET) begin
                 begin nCRCS <= 1; nRAS <= 1; nCAS <= 1; nWE <= 1; end
 
             ramstate_PRECHARGE:
-                begin nCRCS <= 0; nRAS <= 0; nCAS <= 1; nWE <= 0; end
+                begin 
+                    nCRCS <= 0; nRAS <= 0; nCAS <= 1; nWE <= 0;
+                    CMA <= 11'b10000000000;                    
+                end
 
             ramstate_MODEREGISTER :
-                begin nCRCS <= 0; nRAS <= 0; nCAS <= 0;	nWE <= 0; end
+                begin 
+                    nCRCS <= 0; nRAS <= 0; nCAS <= 0;	nWE <= 0; 
+                    CMA <= 11'b00000100010; 
+                end
 
             ramstate_AUTOREFRESH :
                 begin nCRCS <= 0; nRAS <= 0; nCAS <= 0;	nWE <= 1; end
 
             ramstate_BANKACTIVATE :
-                begin nCRCS <= 0; nRAS <= 0; nCAS <= 1;	nWE <= 1; end
+                begin 
+                    nCRCS <= 0; nRAS <= 0; nCAS <= 1;	nWE <= 1; 
+
+                    case (DMA_CYCLE)
+
+                        1'b0 : CMA <= {1'b0, A[19], A[17:9]};
+                        1'b1 : CMA <= {1'b0, DMA_ROW_ADDRESS[9:0]};
+
+                    endcase
+
+                end
 
             ramstate_READ :
-                begin nCRCS <= 0; nRAS <= 1; nCAS <= 0;	nWE <= 1; end
+                begin 
+                    nCRCS <= 0; nRAS <= 1; nCAS <= 0;	nWE <= 1; 
+
+                    case (DMA_CYCLE)
+
+                        1'b0 : CMA <= {3'b000, A[18], A[8:2]}; //1MB CPU ACCESS
+                        1'b1 : CMA <= {3'b00, DMA_COL_ADDRESS[9:1]};
+
+                    endcase
+
+                end
 
             ramstate_WRITE :
-                begin nCRCS <= 0; nRAS <= 1; nCAS <= 0;	nWE <= 0; end
+                begin 
+                    nCRCS <= 0; nRAS <= 1; nCAS <= 0;	nWE <= 0; 
+
+                    case (DMA_CYCLE)
+
+                        1'b0 : CMA <= {3'b000, A[18], A[8:2]}; //1MB CPU ACCESS
+                        1'b1 : CMA <= {3'b00, DMA_COL_ADDRESS[9:1]};
+
+                    endcase
+                    
+                end
 
         endcase
     end
@@ -460,18 +477,9 @@ always @(posedge CLK80, negedge nRESET) begin
 
                 end
 
-                4'h6 : begin 
-                    /*if (!BURST_CYCLE) begin
-                        RAM_COUNTER <= 0; //END NON-BURST CPU READ CYCLE
-                    end else begin
-                        EMCLK_OUT <= 0;
-                    end*/
-                    EMCLK_OUT <= 0;
-                end
+                4'h6 : begin EMCLK_OUT <= 0; end
 
-                4'h7 : begin
-                    EMCLK_OUT <= 1;
-                end
+                4'h7 : begin EMCLK_OUT <= 1; end
 
                 4'h8 : begin
                     if (!RnW_CYCLE) begin 
