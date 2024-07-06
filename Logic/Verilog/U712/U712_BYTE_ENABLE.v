@@ -25,8 +25,9 @@ Target Devices: iCE40-HX4K-TQ144
 Description: SUPPLY BYTE ENABLE SIGNALS FOR CPU CYCLES
 
 Revision History:
-    09-JUN-2024 : INITIAL CODE
+    09-JUN-2024 : INITIAL CODE.
     27-JUN-2024 : CHIP RAM DMA BYTE ENABLES WERE REVERSED.
+    05-JUL-2024 : CORRECTED BYTE ENABLE LOGIC.
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 TO BUILD WITH APIO: apio build --top-module U712_TOP --fpga iCE40-HX4K-TQ144
@@ -48,11 +49,11 @@ module U712_BYTE_ENABLE (
 //ON WHAT THE ACCESSING DEVICE IS REQUESTING. FOR CPU READS, WE ENABLE
 //ALL BYTES. THE DATA BYTE ENABLE SIGNALS ARE USED BY THE SDRAM AND PCI BUS.
 //DURING PCI DMA CYCLES, RnW, A, SIZ0, AND SIZ1 ARE SET BY THE BRIDGE.
-   
-assign nUUBE = ~(RnW || (!RnW && !A[1] && !A[0]));
-assign nUMBE = ~(RnW || (!RnW && ((!A[1] && A[0]) || (!A[1] && !SIZ0) || (!A[1] && SIZ1))));
-assign nLMBE = ~(RnW || (!RnW && ((A[1] && !A[0]) || (!A[1] && !SIZ0 && !SIZ1) || (!A[1] && SIZ0 && SIZ1) || (A[0] && !A[1] && !SIZ0))));
-assign nLLBE = ~(RnW || (!RnW && ((A[1] && A[0]) || (A[0] && SIZ0 && SIZ1) || (!SIZ0 && !SIZ1) || (A[1] && SIZ1))));
+
+assign nUUBE = ~(RnW || (!A[1] && !A[0]) || (!SIZ1 && !SIZ0) || (SIZ1 && SIZ0));
+assign nUMBE = ~(RnW || (!A[1] && A[0]) || (!A[1] && SIZ1) || (SIZ1 || SIZ0) || (!SIZ1 && !SIZ0));
+assign nLMBE = ~(RnW || (A[1] && !A[0]) || (!SIZ1 && !SIZ0) || (SIZ1 && SIZ0));
+assign nLLBE = ~(RnW || (A[1] && A[0]) || (A[1] && SIZ1) || (SIZ1 || SIZ0) || (!SIZ1 && !SIZ0));
 
 //////////////////////////
 // CHIP RAM BYTE ENABLE //
