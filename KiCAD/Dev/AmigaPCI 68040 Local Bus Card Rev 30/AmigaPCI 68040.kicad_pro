@@ -79,6 +79,7 @@
         "footprint_type_mismatch": "ignore",
         "hole_clearance": "error",
         "hole_near_hole": "error",
+        "holes_co_located": "warning",
         "invalid_outline": "error",
         "isolated_copper": "warning",
         "item_on_disabled_layer": "error",
@@ -664,6 +665,7 @@
   },
   "schematic": {
     "annotate_start_num": 0,
+    "bom_export_filename": "",
     "bom_fmt_presets": [],
     "bom_fmt_settings": {
       "field_delimiter": ",",
@@ -812,6 +814,10 @@
     [
       "e434a9c9-dc49-4b97-aed3-c8d4620b07ee",
       "Card Connector"
+    ],
+    [
+      "0cc1516b-fda9-43ef-9f2b-aa36a87bb630",
+      "Level Shifting"
     ]
   ],
   "text_variables": {}
