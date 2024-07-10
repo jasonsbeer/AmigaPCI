@@ -6,7 +6,7 @@
 	(paper "USLedger")
 	(title_block
 		(title "AmigaPCI 68040")
-		(date "2024-07-08")
+		(date "2024-07-09")
 		(rev "3.0")
 	)
 	(lib_symbols

@@ -6,7 +6,7 @@
 	(paper "B")
 	(title_block
 		(title "AmigaPCI 68040")
-		(date "2024-07-08")
+		(date "2024-07-09")
 		(rev "3.0")
 	)
 	(lib_symbols
@@ -3579,207 +3579,6 @@
 				)
 			)
 		)
-		(symbol "Connector:Conn_01x03_Pin"
-			(pin_names
-				(offset 1.016) hide)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "J"
-				(at 0 5.08 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "Conn_01x03_Pin"
-				(at 0 -5.08 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "~"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Generic connector, single row, 01x03, script generated"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_locked" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_keywords" "connector"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "Connector*:*_1x??_*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "Conn_01x03_Pin_1_1"
-				(polyline
-					(pts
-						(xy 1.27 -2.54) (xy 0.8636 -2.54)
-					)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.27 0) (xy 0.8636 0)
-					)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.27 2.54) (xy 0.8636 2.54)
-					)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start 0.8636 -2.413)
-					(end 0 -2.667)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(rectangle
-					(start 0.8636 0.127)
-					(end 0 -0.127)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(rectangle
-					(start 0.8636 2.667)
-					(end 0 2.413)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(pin passive line
-					(at 5.08 2.54 180)
-					(length 3.81)
-					(name "Pin_1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 5.08 0 180)
-					(length 3.81)
-					(name "Pin_2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 5.08 -2.54 180)
-					(length 3.81)
-					(name "Pin_3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-		)
 		(symbol "Connector_Generic:Conn_01x06"
 			(pin_names
 				(offset 1.016) hide)
@@ -5516,8 +5315,36 @@
 		(uuid "ff811690-7c18-428b-bd84-799a6b98b896")
 	)
 	(no_connect
+		(at 383.54 158.75)
+		(uuid "1373a101-043e-403d-86e0-907c1529e1f1")
+	)
+	(no_connect
+		(at 316.23 115.57)
+		(uuid "162c951c-6aac-491c-a0d5-641e965c44da")
+	)
+	(no_connect
 		(at 377.19 80.01)
 		(uuid "2e0cd5c0-9636-4fca-8c88-7e5189a6108d")
+	)
+	(no_connect
+		(at 316.23 95.25)
+		(uuid "55f5cd8c-0724-486f-8305-73817878a8fd")
+	)
+	(no_connect
+		(at 316.23 100.33)
+		(uuid "96d4749e-3302-4953-8763-a438ce15e3d0")
+	)
+	(no_connect
+		(at 316.23 113.03)
+		(uuid "97d87025-7384-4f80-8c55-415ceab4662c")
+	)
+	(no_connect
+		(at 316.23 97.79)
+		(uuid "c158092d-68d5-41cb-a498-4631c52e91ee")
+	)
+	(no_connect
+		(at 383.54 153.67)
+		(uuid "e8c69cbb-725d-47db-b4ba-96cc75ebc0cd")
 	)
 	(bus_entry
 		(at 129.54 140.97)
@@ -7702,16 +7529,6 @@
 	)
 	(wire
 		(pts
-			(xy 210.439 252.73) (xy 224.79 252.73)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "28d6245f-7c54-489e-b2d4-78187996e662")
-	)
-	(wire
-		(pts
 			(xy 269.24 49.53) (xy 269.24 55.88)
 		)
 		(stroke
@@ -9609,16 +9426,6 @@
 			(type default)
 		)
 		(uuid "79f64912-16da-452f-a930-3c939bc17868")
-	)
-	(wire
-		(pts
-			(xy 210.439 250.19) (xy 224.79 250.19)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "7a94d341-286e-48d6-b089-81939fb7e61e")
 	)
 	(wire
 		(pts
@@ -12412,16 +12219,6 @@
 	)
 	(wire
 		(pts
-			(xy 210.439 247.65) (xy 224.79 247.65)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "fdb602e0-5e41-49cd-90a2-a57d079693bc")
-	)
-	(wire
-		(pts
 			(xy 55.88 148.59) (xy 73.66 148.59)
 		)
 		(stroke
@@ -12483,18 +12280,6 @@
 		(uuid 071d8c1e-9ed1-413c-9e48-a62fc112c06c)
 	)
 	(rectangle
-		(start 193.167 234.442)
-		(end 249.555 257.556)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(fill
-			(type none)
-		)
-		(uuid 5ce0a1ee-a38e-4ec1-b6a7-620d0270d14f)
-	)
-	(rectangle
 		(start 17.6 17.22)
 		(end 252.2 218.02)
 		(stroke
@@ -12518,17 +12303,6 @@
 			(justify left bottom)
 		)
 		(uuid "0119f811-98d1-475d-a52d-be5897565161")
-	)
-	(text "RAM CLOCK SPEED"
-		(exclude_from_sim no)
-		(at 200.66 241.935 0)
-		(effects
-			(font
-				(size 3 3)
-			)
-			(justify left bottom)
-		)
-		(uuid "4b7b2380-3f2c-466e-bbfb-416446270423")
 	)
 	(text "FAST MEMORY"
 		(exclude_from_sim no)
@@ -14622,7 +14396,7 @@
 			)
 		)
 	)
-	(global_label "PCLKA"
+	(global_label "PCLKB"
 		(shape input)
 		(at 384.81 171.45 0)
 		(fields_autoplaced yes)
@@ -14634,7 +14408,7 @@
 		)
 		(uuid "16359168-7bd2-4d16-8300-c87904cbb467")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 393.7219 171.45 0)
+			(at 393.9033 171.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14643,8 +14417,8 @@
 			)
 		)
 	)
-	(global_label "CPUCONF_RST"
-		(shape bidirectional)
+	(global_label "_CPUCONF"
+		(shape output)
 		(at 325.12 52.07 180)
 		(fields_autoplaced yes)
 		(effects
@@ -14655,7 +14429,7 @@
 		)
 		(uuid "178490c6-d325-4002-ba6a-c4f73e2fe853")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 307.7187 52.07 0)
+			(at 312.2771 52.07 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14740,27 +14514,6 @@
 		(uuid "28e554cf-e459-439a-9cc1-c8edf68e3fe2")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 408.1757 91.44 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-	)
-	(global_label "RAMCLK"
-		(shape output)
-		(at 224.79 250.19 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "2b26e700-93f3-4069-8a64-25718a033fe2")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 235.1533 250.19 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14870,27 +14623,6 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
-			)
-		)
-	)
-	(global_label "PCLK"
-		(shape input)
-		(at 224.79 252.73 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "4bcc1548-93c0-4893-bdda-f314210fee3c")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 232.6133 252.73 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
 			)
 		)
 	)
@@ -15062,7 +14794,7 @@
 			)
 		)
 	)
-	(global_label "BCLKA"
+	(global_label "BCLKB"
 		(shape input)
 		(at 384.81 173.99 0)
 		(fields_autoplaced yes)
@@ -15074,7 +14806,7 @@
 		)
 		(uuid "8000a5a7-da0b-4cf6-aee7-f88d7c4ad0bf")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 393.7219 173.99 0)
+			(at 393.9033 173.99 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15204,27 +14936,6 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
-			)
-		)
-	)
-	(global_label "BCLK"
-		(shape input)
-		(at 224.79 247.65 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "9e2bed33-4d4d-428e-bd94-9b55469cdc99")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 232.6133 247.65 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
 			)
 		)
 	)
@@ -18355,82 +18066,6 @@
 			(project "AmigaPCI 68040"
 				(path "/e4eb271a-56d6-4281-ada6-40852f202c68/bb4ae098-973b-46ca-b387-f2229a81b6e3"
 					(reference "#PWR056")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector:Conn_01x03_Pin")
-		(at 205.359 250.19 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "cdb34ac8-db02-489c-85d2-d5ab12f3fa6b")
-		(property "Reference" "J400"
-			(at 200.025 248.666 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "RAMCLK"
-			(at 200.152 250.698 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical"
-			(at 205.359 250.19 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 205.359 250.19 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 205.359 250.19 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "5e7d2e51-4fd6-43c5-8a4f-9385669c6d38")
-		)
-		(pin "2"
-			(uuid "7ffe59d5-5a29-4fc8-bf58-9e953ba261df")
-		)
-		(pin "3"
-			(uuid "eeb534c1-b875-4284-82e9-204916c85c64")
-		)
-		(instances
-			(project "AmigaPCI Mainboard"
-				(path "/72453515-27fe-4336-91f3-e3c8054f7767/6050d85a-08ce-47d9-805f-b2a01ec2bdd9"
-					(reference "J400")
-					(unit 1)
-				)
-			)
-			(project "AmigaPCI 68040"
-				(path "/e4eb271a-56d6-4281-ada6-40852f202c68/bb4ae098-973b-46ca-b387-f2229a81b6e3"
-					(reference "J400")
 					(unit 1)
 				)
 			)

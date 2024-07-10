@@ -179,8 +179,7 @@
       ],
       "track_widths": [
         0.0,
-        0.2,
-        0.25,
+        0.15,
         0.5,
         1.5
       ],
@@ -476,7 +475,7 @@
       },
       {
         "bus_width": 12,
-        "clearance": 0.1,
+        "clearance": 0.15,
         "diff_pair_gap": 0.25,
         "diff_pair_via_gap": 0.25,
         "diff_pair_width": 0.2,
@@ -646,6 +645,14 @@
       {
         "netclass": "Narrow",
         "pattern": "_LBEN"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "D*"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "DA*"
       }
     ]
   },
@@ -751,9 +758,39 @@
           "label": "MANUFACTURER",
           "name": "MANUFACTURER",
           "show": false
+        },
+        {
+          "group_by": false,
+          "label": "MF",
+          "name": "MF",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Package",
+          "name": "Package",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Price",
+          "name": "Price",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "MP",
+          "name": "MP",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Availability",
+          "name": "Availability",
+          "show": false
         }
       ],
-      "filter_string": "r*",
+      "filter_string": "r1*",
       "group_symbols": true,
       "name": "",
       "sort_asc": true,
