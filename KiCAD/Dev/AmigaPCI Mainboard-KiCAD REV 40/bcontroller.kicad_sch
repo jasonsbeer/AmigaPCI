@@ -6,7 +6,7 @@
 	(paper "B")
 	(title_block
 		(title "AMIGA PCI")
-		(date "2024-07-03")
+		(date "2024-07-09")
 		(rev "4.0")
 	)
 	(lib_symbols
@@ -10691,7 +10691,7 @@
 		)
 		(uuid "43ca3fbc-f6a9-4293-8fd8-9ba1c26c367c")
 	)
-	(text "ADDRESS LATCH"
+	(text "PCI ADDRESS LATCH"
 		(exclude_from_sim no)
 		(at 314.96 33.528 0)
 		(effects
@@ -13329,7 +13329,7 @@
 			)
 		)
 	)
-	(global_label "CLK40A"
+	(global_label "CLK40B"
 		(shape input)
 		(at 78.74 99.06 180)
 		(fields_autoplaced yes)
@@ -13341,7 +13341,7 @@
 		)
 		(uuid "104b1b42-f171-4719-8163-23c2930ad0cf")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 68.6791 99.06 0)
+			(at 68.4977 99.06 0)
 			(effects
 				(font
 					(size 1.27 1.27)

@@ -6,7 +6,7 @@
 	(paper "B")
 	(title_block
 		(title "AMIGA PCI")
-		(date "2024-07-03")
+		(date "2024-07-09")
 		(rev "4.0")
 	)
 	(lib_symbols
@@ -15804,7 +15804,7 @@
 			)
 		)
 	)
-	(global_label "CLK40A"
+	(global_label "CLK40D"
 		(shape input)
 		(at 121.92 95.25 0)
 		(fields_autoplaced yes)
@@ -15816,7 +15816,7 @@
 		)
 		(uuid "868f421b-22ee-409f-9b98-102c58e2b1f4")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 131.9809 95.25 0)
+			(at 132.1623 95.25 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16035,7 +16035,7 @@
 			)
 		)
 	)
-	(global_label "CLK40A"
+	(global_label "CLK40C"
 		(shape input)
 		(at 281.94 93.98 0)
 		(fields_autoplaced yes)
@@ -16047,7 +16047,7 @@
 		)
 		(uuid "ad9ddfa8-92f1-4afb-98b5-9bae88f2e9ad")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 292.0009 93.98 0)
+			(at 292.1823 93.98 0)
 			(effects
 				(font
 					(size 1.27 1.27)
