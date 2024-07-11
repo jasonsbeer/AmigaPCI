@@ -23,6 +23,7 @@ Revision|Date|Status
 0.0|June 1, 2024|FIRST DRAFT
 0.1|July 3, 2024|Removed _TIP from CPU local bus connector.
 0.2|July 9, 2024|Changed clocks on CPU local bus connector.
+0.3|July 11, 2024|Added dynamic bus sizing to section 3. Modified CPU Local Bus signals.
 
 <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://github.com/jasonsbeer/AmigaPCI">AmigaPCI Hardware Reference</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://github.com/jasonsbeer">Jason Neus</a> is licensed under <a href="https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">Creative Commons Attribution-NonCommercial 4.0 International<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt=""></a></p>
 
@@ -219,6 +220,8 @@ _BB|TTL|BI|Bus busy. Tristate.
 CLK40|LVTTL|O|40MHz bus clock used by AmigaPCI logic.
 _BG|LVTTL|I|CPU bus grant.
 _BR|TTL|O|CPU bus request.
+_DSACK0|LVTTL|I|Cycle termination and bus size. Tristate.
+_DSACK1|LVTTL|I|Cycle termination and bus size. Tristate.
 _LBEN|LVTTL*|O|Local Bus enabled. When the CPU Local Bus Card is addressed, this signal is asserted so the onboard signal buffers may be set correctly to avoid bus contention. Needed when AUTOCONFIG devices are implemented on the CPU Local Bus card. In the absence of an AUTOCONFIG device, this may be left unconnected.
 _CPUCONF|LVTTL|O|Indicates AUTOCONFIG devices on the CPU Local Bus card have been configured. AUTOCONFIG devices on the CPU Local Bus card are configured first. Once configured, asserting this signal allows devices on the AmigaPCI main board to be configured. In the absence of an AUTOCONFIG device, this may be left unconnected.
 D31-0|TTL|BI|CPU data Bus. Tristate.
@@ -237,7 +240,6 @@ _TBI|LVTTL|I|CPU transfer burst inhibit.
 _TCI|LVTTL|I|CPU transfer cache inhibit.
 _TEA|LVTTL|I|CPU transfer error acknowledge.
 TM2-0|TTL|BI|CPU transfer modifier 2, 1, and 0. Tristate.
-_TS|TTL|BI|CPU transfer start. Tristate.
 TT1-0|TTL|BI|CPU transfer type 1 and 0. Tristate.
 UPA1-0|TTL|O|User-programmable attribute 1 and 0. Tristate.
 
@@ -250,7 +252,7 @@ UPA1-0|TTL|O|User-programmable attribute 1 and 0. Tristate.
 **Table 3.2.2**. CPU Local Bus Pinout.
 Pin|Signal|Pin|Signal|Pin|Signal
 -|-|-|-|-|-
-**A1**|GND|**B1**|_BB|**C1**|GND
+**A1**|_DSACK0|**B1**|_BB|**C1**|GND
 **A2**|A12|**B2**|A13|**C2**|GND
 **A3**|A14|**B3**|A0|**C3**|A15
 **A4**|A1|**B4**|A2|**C4**|A3
@@ -270,7 +272,7 @@ Pin|Signal|Pin|Signal|Pin|Signal
 **A18**|D20|**B18**|D22|**C18**|GND
 **A19**|D25|**B19**|D19|**C19**|D23
 **A20**|D17|**B20**|D15|**C20**|D14
-**A21**|+3.3V|**B21**|_TA|**C21**|_TEA
+**A21**|+3.3V|**B21**|_DSACK1|**C21**|_TEA
 **A22**|+5V|**B22**|_LBEN|**C22**|_BG
 **A23**|_TBI|**B23**|_INT6|**C23**|_TCI
 **A24**|CLK80|**B24**|D18|**C24**|D13
@@ -293,12 +295,43 @@ Pin|Signal|Pin|Signal|Pin|Signal
 
 ## 3.3 Signal Buffering
 
-The required data, address, and supporting signal buffering is included on the AmigaPCI main board. It is not required on the CPU Local Bus device. When an AUTOCONFIG device is present and actively being addressed on the CPU Local Bus card, _LBEN is asserted. When the CPU Local Bus AUTOCONFIG device is addressed during CPU cycles, the buffers are disabled. When the CPU Local Bus AUTOCONFIG device is addressed during DMA cycles, the buffers are enabled. 
+It is possible to include AUTOCONFIG devices on the CPU Local Bus card. When an AUTOCONFIG device is present and actively addressed, _LBEN must be asserted. Assertion of this signal ensure proper enabling and direction of buffers on the AmigaPCI board. Failure to assert this signal properly will result in bus contention issues.
 
 ## 3.4 Clocks
 
 All system clocks are generated on the CPU Local Bus card. This minimizes issues with clock skew where the CPU Local Bus Card may have high-speed RAM or other timing sensitive AUTOCONFIG devices. LVTTL clocks must be generated on the CPU Local Bus card and connected to the correct pins to provide clocks to logic on the AmigaPCI board. The 40MHz clock is the bus clock (BCLK), which is used to correctly time data transer cycle responses to the CPU Local Bus card. The 80MHz clock (PCLK) is used to generate the SDRAM clock for chip ram cycles. Both BCLK and PCLK clocks are unbuffered and routed to U712. These clocks are then distributed to other components with an FPGA clock fanout. It is possible to drive the AmigaPCI logic clocks at other frequencies, but it is the designer's responsibility to ensure logic cycles are not adversely effected. In MC68040/MC68060 architecture, PCLK and BCLK are synchronous and PCLK is always 2x the BCLK. It is recommended designers observe this timing restriction when supplying clocks to the AmigaPCI. Failure to do so will likely result in unstable operation.
 
-Correct clock distribution is critical to ensure stable operation of the CPU Local Bus card and AmigaPCI. Each clocked device should have a dedicated clock signal by using fanouts from a singal clock source. Traces should be kept as short as possible and small value series resistors should be implemented.
+Correct clock distribution is critical to ensure stable operation of the CPU Local Bus card and AmigaPCI. Each clocked device should have a dedicated clock signal by using fanouts from a singal clock source. Traces should be kept as short as possible and small value series resistors should be implemented at the clock signal source.
+
+## 3.5 Cycle Termination
+
+The CPU Local Bus card must support dynamic bus sizing to enable the 16-bit data ports of the Amiga chipset. The AmigaPCI supplies two data cycle termination signals, **_DSACK1** and **_DSACK0**, which are latched on the rising edge of **BCLK**. These signals are used together to signal not only the end of a cycle, but also the data port size of the target device, essentially implementing the MC68030 dynamic bus sizer in logic. These two signals are used by the dynamic bus sizer to determine whether the CPU cycle is complete or if additional data transfer cycles are required to complete the requested data transfer. The AmigaPCI implements 16-bit and 32-bit ports, so support of 8-bit target devices is not necessary.
+
+If the data to be transfered is longer than the data port of the target device, multiple transfer cycles are required to move the data. For example, if the MC68040/MC68060 initiates a long-word transfer and the target device responds as a 16-bit port, the dynamic bus sizer will latch the 16 bits of the first cycle and run a second cycle to latch the next 16 bits. These two cycles are driven by the dynamic bus sizer and are transparent to the MC68040/MC68060. Once the dynamic bus sizer latches all the requested data on a read cycle, or completes the necessary cycles on a write, it asserts **_TA** to signal the MC68040/MC68060 to complete the cycle. The dynamic bus sizer places the most significant byte of the transfer at D31-24. The next most significant at D23-16. Misaligned operands are treated the same, with the byte enable signals identifying the particular byte(s) to be latched.
+
+Dynamic bus sizing is described in great detail in the Motorola MC68030 user manual, Sections 7.2.1-7.2.3, and the MC68040 Designer's Handbook, Section 7. It is strongly advised to review these documents, as significant reproduction here is not attempted. A reference project can be found with the MC68040 Local Bus card with the [AmigaPCI project Github repo](https://github.com/jasonsbeer/AmigaPCI).
+
+Table 3.5.2. DSACK results.
+_DSACK1|_DSACK0|Result
+-|-|-
+H|H|Wait
+H|L|Transfer complete. 8-bit data port.
+L|H|Transfer complete. 16-bit data port
+L|L|Transfer complete. 32-bit data port
+
+Figure 3.5 shows a state machine for enabling dynamic bus sizing. This state machine is adapted from the one presented Section 7 of the MC68040 Designer's Handbook from Motorola. 
+
+Figure 3.5.  
+<img src="/Images/dynamic_bus_states.png">
+
+State 0 : Idle  
+State 1 : A long word or line transfer is in progress. Pass all bytes through and wait for assertion of _DSACKx.  
+State 2 : A long word or line transfer is in progress. State 1 returned a word sized port. Transfer the second word and wait for assertion of _DSACKx.  
+State 3 : A word transfer is in progress at address 0. Transfer the word at address 0 and wait for assertion of _DSACKx.  
+State 4 : A word transfer is in progress at address 1. Transfer the word at address 1 and wait for assertion of _DSACKx.  
+State 5 : A byte transfer is in progress at address 0. Transfer the byte at address 0 and wait for assertion of _DSACKx.  
+State 6 : A byte transfer is in progress at address 1. Transfer the byte at address 1 and wait for assertion of _DSACKx.  
+State 7 : A byte transfer is in progress at address 2. Transfer the byte at address 2 and wait for assertion of _DSACKx.  
+State 8 : A byte transfer is in progress at address 3. Transfer the byte at address 3 and wait for assertion of _DSACKx.  
 
 **END**
