@@ -647,12 +647,24 @@
         "pattern": "_LBEN"
       },
       {
-        "netclass": "Narrow",
-        "pattern": "D*"
+        "netclass": "Default",
+        "pattern": "DA*"
       },
       {
         "netclass": "Default",
-        "pattern": "DA*"
+        "pattern": "A*"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "D3V3A*"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "D3V3B*"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "D*"
       }
     ]
   },

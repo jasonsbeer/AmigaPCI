@@ -6,7 +6,7 @@
 	(paper "B")
 	(title_block
 		(title "AmigaPCI 68040")
-		(date "2024-07-09")
+		(date "2024-07-10")
 		(rev "3.0")
 	)
 	(lib_symbols
@@ -13574,10 +13574,10 @@
 			(uuid "07141f23-a767-4336-9166-99ded6af38d9")
 		)
 		(pin "10"
-			(uuid "5efbc418-fad9-4677-825e-da12ffbf7fd4")
+			(uuid "5efbc418-fad9-4677-825e-da12ffbf7fd5")
 		)
 		(pin "20"
-			(uuid "9964bd65-36aa-46a3-8154-3354ce0a5e56")
+			(uuid "9964bd65-36aa-46a3-8154-3354ce0a5e57")
 		)
 		(pin "3"
 			(uuid "b36c37d1-abd2-403e-b439-f80632a1abb2")
