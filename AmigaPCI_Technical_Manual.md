@@ -319,19 +319,9 @@ H|L|Transfer complete. 8-bit data port.
 L|H|Transfer complete. 16-bit data port
 L|L|Transfer complete. 32-bit data port
 
-Figure 3.5 shows a state machine for enabling dynamic bus sizing. This state machine is adapted from the one presented Section 7 of the MC68040 Designer's Handbook from Motorola. 
+Figure 3.5 shows a state machine for enabling dynamic bus sizing. This state machine is adapted from Section 7 of the MC68040 Designer's Handbook from Motorola. 
 
 Figure 3.5.  
 <img src="/Images/dynamic_bus_states.png">
-
-State 0 : Idle  
-State 1 : A long word or line transfer is in progress. Pass all bytes through and wait for assertion of _DSACKx.  
-State 2 : A long word or line transfer is in progress. State 1 returned a word sized port. Transfer the second word and wait for assertion of _DSACKx.  
-State 3 : A word transfer is in progress at address 0. Transfer the word at address 0 and wait for assertion of _DSACKx.  
-State 4 : A word transfer is in progress at address 1. Transfer the word at address 1 and wait for assertion of _DSACKx.  
-State 5 : A byte transfer is in progress at address 0. Transfer the byte at address 0 and wait for assertion of _DSACKx.  
-State 6 : A byte transfer is in progress at address 1. Transfer the byte at address 1 and wait for assertion of _DSACKx.  
-State 7 : A byte transfer is in progress at address 2. Transfer the byte at address 2 and wait for assertion of _DSACKx.  
-State 8 : A byte transfer is in progress at address 3. Transfer the byte at address 3 and wait for assertion of _DSACKx.  
 
 **END**
