@@ -78,7 +78,7 @@ SB_PLL40_PAD # (
     .DIVQ(3'b100),		    // DIVQ =  4
     .FILTER_RANGE(3'b011)	// FILTER_RANGE = 3
     ) PLL40 (
-        .REFERENCECLK(CLK40),
+        .PACKAGEPIN(CLK40),
         .PLLOUTGLOBAL(CLK40out),
         .PLLOUTCORE(BCLK),
         .LOCK(),
@@ -95,7 +95,7 @@ SB_PLL40_PAD # (
     .FILTER_RANGE(3'b011)	// FILTER_RANGE = 3
 
     ) PLL80 (
-        .REFERENCECLK(CLK40),
+        .PACKAGEPIN(CLK40),
         .PLLOUTGLOBAL(CLK80out),
         .LOCK(),
         .RESETB(1'b1),

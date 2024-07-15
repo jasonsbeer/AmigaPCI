@@ -6,7 +6,7 @@
 module top_tb();
 
 //inputs
-reg BCLK = 0;
+reg CLK40 = 0;
 reg RnW = 1;
 reg [1:0]SIZ = 2'b11;
 reg [1:0]TT = 2'b11;
@@ -63,7 +63,7 @@ localparam DURATION = 10000;
 //40MHz = 25ns
 //80MHz = 12.5ns
 
-always #12.5 BCLK = ~BCLK; //40MHz
+always #12.5 CLK40 = ~CLK40; //40MHz
 
 initial begin
 
@@ -192,7 +192,7 @@ end
 
 U111_TOP dut (
 
-    .BCLK (BCLK),
+    .CLK40 (CLK40),
     .RnW (RnW),
     .SIZ (SIZ),
     .TT (TT),
