@@ -37,9 +37,9 @@ input [1:0] A,
 input [1:0] DSACK,
 input [1:0] SIZ,
 input [1:0] TT,
-input BCLK, nTS_CPU, nTBI, RnW, nBG, nRESET, 
+input nTS_CPU, nTBI, RnW, nBG, nRESET, CLK40,
 
-output nTS, nTA,
+output nTS, nTA, CLK40A, CLK40B, CLK40C, CLK80A, CLK80B, CLK80C, RAMCLK,
 
 inout [31:24] D3V3A_BYTE0,
 inout [23:16] D3V3A_BYTE1,
@@ -51,6 +51,56 @@ inout [15:8] D3V3B_BYTE2,
 inout [7:0] D3V3B_BYTE3
 
 );
+
+//////////////////////////////
+// BUS AND PROCESSOR CLOCKS //
+//////////////////////////////
+
+//WE GENERATE THE 40MHz AND 80MHz CLOCKS HERE
+
+wire BCLK;
+wire CLK80m;
+wire CLK40out;
+
+assign CLK40A = CLK40out;
+assign CLK40B = CLK40out;
+assign CLK40C = CLK40out;
+assign CLK80A = CLK80out;
+assign CLK80B = CLK80out;
+assign CLK80C = CLK80out;
+assign RAMCLK = CLK80out;
+
+SB_PLL40_PAD # (
+    .FEEDBACK_PATH("SIMPLE"),
+    .PLLOUT_SELECT("GENCLK"),
+    .DIVR(4'b0000),		    // DIVR =  0
+    .DIVF(7'b0001111),  	// DIVF = 15
+    .DIVQ(3'b100),		    // DIVQ =  4
+    .FILTER_RANGE(3'b011)	// FILTER_RANGE = 3
+    ) PLL40 (
+        .REFERENCECLK(CLK40),
+        .PLLOUTGLOBAL(CLK40out),
+        .PLLOUTCORE(BCLK),
+        .LOCK(),
+        .RESETB(1'b1),
+        .BYPASS(1'b0)
+    );
+
+SB_PLL40_PAD # (
+    .FEEDBACK_PATH("SIMPLE"),
+    .PLLOUT_SELECT("GENCLK"),
+    .DIVR(4'b0000),	    	// DIVR =  0
+	.DIVF(7'b0001111),  	// DIVF = 15
+    .DIVQ(3'b011),		    // DIVQ =  3
+    .FILTER_RANGE(3'b011)	// FILTER_RANGE = 3
+
+    ) PLL80 (
+        .REFERENCECLK(CLK40),
+        .PLLOUTGLOBAL(CLK80out),
+        .LOCK(),
+        .RESETB(1'b1),
+        .BYPASS(1'b0)
+    );
 
 //THIS IS AN IMPLEMENTATION OF THE DYNAMIC BUS SIZING STATE MACHINE PRESENTED IN
 //THE "MC68040 DESIGNER'S HANDBOOK". SUPPORT FOR BYTE PORT TERMINATION IS NOT INCLUDED
