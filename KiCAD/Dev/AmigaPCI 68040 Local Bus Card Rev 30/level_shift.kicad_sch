@@ -6,7 +6,7 @@
 	(paper "USLedger")
 	(title_block
 		(title "AmigaPCI 68040")
-		(date "2024-07-14")
+		(date "2024-07-15")
 		(rev "3.0")
 	)
 	(lib_symbols
@@ -11978,7 +11978,7 @@
 			)
 		)
 	)
-	(global_label "_BG"
+	(global_label "_BG-3V"
 		(shape input)
 		(at 33.02 170.18 180)
 		(effects
@@ -11989,7 +11989,7 @@
 		)
 		(uuid "e11fe621-e769-4b68-adb8-034f96aaf647")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 26.797 170.18 0)
+			(at 23.368 170.18 0)
 			(effects
 				(font
 					(size 1.27 1.27)
