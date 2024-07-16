@@ -285,13 +285,13 @@ This bus is driven by the target device. This bus indicates the data port width 
 Driven by the bus master and tristated by inactive bus masters. The CPU Local Bus devices may drive this signal with either TTL or LVTTL level logic.
 
 **_TBI** (Tranfer Burst Inhibit)  
-Driven by the target device. Inhibits a burst cycle in favor of individual data transfers. LVTTL.
+Driven by the target device and tristated by inactive target devices. Inhibits a burst cycle in favor of individual data transfers. LVTTL.
 
 **_TCI** (Tranfer Cache Inhibit)  
-Driven by the target device. Inhibits caching of data from a data transfer burst cycle. LVTTL.
+Driven by the target device and tristated by inactive target devices. Inhibits caching of data from a data transfer burst cycle. LVTTL.
 
 **_TEA** (Tranfer Error Acknowledge)  
-Driven by the target device. Asserted with **_DSACKx** to indicate a retry condition exists or asserted alone to indicate a cycle request cannot be completed. LVTTL.
+Driven by the target device and tristated by inactive target devices. Asserted with **_DSACKx** to indicate a retry condition exists or asserted alone to indicate a cycle request cannot be completed. LVTTL.
 
 **TT(1..0)** (Transfer Type)  
 These are the MC68040/MC68060 transfer type signals. Driven by the bus master and tristated by inactive bus masters. CPU Local Bus devices may drive these signals with either TTL or LVTTL level logic.
