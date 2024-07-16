@@ -268,7 +268,7 @@ These signals are used to initialize the system. The CPU Local Bus device should
 This LVTTL level signal is driven by the system reset logic and initiates a complete system reset.
 
 **_RSTOUT**  (Reset Out)  
-This TTL/LVTTL signal is driven by the CPU to initiate a system reset. When driven, the IC Supervisor will assert **_RESET** for at least 250ms, causing the CPU to also be reset.
+This TTL tolerant signal is driven by the CPU to initiate a system reset. When driven, the IC Supervisor will assert **_RESET** for at least 250ms. All systems on the AmigaPCI except the CPU are reset when _RSTOUT is asserted.
 
 ### 3.4.3 Data Transfer Signals
 
