@@ -247,12 +247,12 @@ CLK80|LVTTL|O|80MHz clock used by AmigaPCI logic.
 R_W|TTL|BI|CPU read/write. Tristate.
 _RESET|LVTTL|I|System reset.
 _RSTOUT|TTL|O|CPU reset system request. Open drain.
-SIZ1-0|TTL|BI|CPU transfer size 1 and 0. Tristate.
-_TA|LVTTL|BI|CPU transfer acknowledge. Tristate.
+SIZ1-0|TTL|BI|Transfer size 1 and 0. Tristate.
 _TBI|LVTTL|I|CPU transfer burst inhibit.
 _TCI|LVTTL|I|CPU transfer cache inhibit.
 _TEA|LVTTL|I|CPU transfer error acknowledge.
-TM2-0|TTL|BI|CPU transfer modifier 2, 1, and 0. Tristate.
+TM2-0|TTL|BI|Transfer modifier 2, 1, and 0. Tristate.
+_TS|TTL|BI|Transfer start. Tristate.
 TT1-0|TTL|BI|CPU transfer type 1 and 0. Tristate.
 UPA1-0|TTL|O|User-programmable attribute 1 and 0. Tristate.
 
