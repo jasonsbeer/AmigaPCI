@@ -245,7 +245,7 @@ _LOCK|TTL|O|CPU bus lock. Tristate.
 _LOCKE|TTL|O|CPU bus lock end. Tristate.
 CLK80|LVTTL|O|80MHz clock used by AmigaPCI logic.
 R_W|TTL|BI|CPU read/write. Tristate.
-_RESET|TTL|I|System reset.
+_RESET|LVTTL|I|System reset.
 _RSTOUT|TTL|O|CPU reset system request. Open drain.
 SIZ1-0|TTL|BI|CPU transfer size 1 and 0. Tristate.
 _TA|LVTTL|BI|CPU transfer acknowledge. Tristate.
