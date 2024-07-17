@@ -6,7 +6,7 @@
 	(paper "B")
 	(title_block
 		(title "AMIGA PCI")
-		(date "2024-07-09")
+		(date "2024-07-17")
 		(rev "4.0")
 	)
 	(lib_symbols
@@ -14058,7 +14058,7 @@
 			)
 		)
 	)
-	(global_label "_RESET"
+	(global_label "_RESETB"
 		(shape input)
 		(at 65.532 243.586 180)
 		(fields_autoplaced yes)
@@ -14070,7 +14070,7 @@
 		)
 		(uuid "3ae65153-8b84-4f47-909c-65de769c4837")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 55.9135 243.586 0)
+			(at 54.5641 243.586 0)
 			(effects
 				(font
 					(size 1.27 1.27)

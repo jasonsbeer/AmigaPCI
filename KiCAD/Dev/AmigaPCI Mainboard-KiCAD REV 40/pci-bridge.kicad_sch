@@ -6,7 +6,7 @@
 	(paper "B")
 	(title_block
 		(title "AMIGA PCI")
-		(date "2024-07-09")
+		(date "2024-07-17")
 		(rev "4.0")
 	)
 	(lib_symbols
@@ -4655,18 +4655,6 @@
 	(no_connect
 		(at 281.94 86.36)
 		(uuid "18c18a0d-886f-4124-8268-1144f5c1250c")
-	)
-	(no_connect
-		(at 213.36 111.76)
-		(uuid "22ac2060-eb59-40d7-a48d-fad27ef48724")
-	)
-	(no_connect
-		(at 281.94 132.08)
-		(uuid "27716787-d03e-483b-af17-04201a9d2e7e")
-	)
-	(no_connect
-		(at 121.92 191.77)
-		(uuid "27d7fa70-ba52-4b94-aad9-cd1d449f2ec9")
 	)
 	(no_connect
 		(at 281.94 167.64)
@@ -14758,8 +14746,8 @@
 			)
 		)
 	)
-	(global_label "_TA"
-		(shape bidirectional)
+	(global_label "_DSACK1"
+		(shape output)
 		(at 121.92 194.31 0)
 		(fields_autoplaced yes)
 		(effects
@@ -14770,7 +14758,7 @@
 		)
 		(uuid "06889af0-51d3-488e-881d-ddc16c34e4c3")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 129.0403 194.31 0)
+			(at 133.1904 194.31 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14862,6 +14850,27 @@
 			)
 		)
 	)
+	(global_label "_DSACK0"
+		(shape output)
+		(at 213.36 111.76 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "1228981e-2e86-41d6-8347-cf068fb3f918")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 202.0896 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+	)
 	(global_label "CLKPCI2"
 		(shape input)
 		(at 123.19 110.49 0)
@@ -14904,7 +14913,7 @@
 			)
 		)
 	)
-	(global_label "_RESET"
+	(global_label "_RESETB"
 		(shape input)
 		(at 121.92 92.71 0)
 		(fields_autoplaced yes)
@@ -14916,7 +14925,7 @@
 		)
 		(uuid "1b1dae18-7291-4025-8281-41d01804f255")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 131.6179 92.71 0)
+			(at 132.8879 92.71 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16224,7 +16233,7 @@
 			)
 		)
 	)
-	(global_label "_BTNRST"
+	(global_label "_RSTBTN"
 		(shape output)
 		(at 274.32 58.42 0)
 		(effects
@@ -16328,7 +16337,7 @@
 			)
 		)
 	)
-	(global_label "_RESET"
+	(global_label "_RESETB"
 		(shape input)
 		(at 281.94 91.44 0)
 		(effects
@@ -16452,7 +16461,7 @@
 			)
 		)
 	)
-	(global_label "_BTNRST"
+	(global_label "_RSTBTN"
 		(shape output)
 		(at 115.57 59.69 0)
 		(effects
@@ -16743,7 +16752,7 @@
 			)
 		)
 	)
-	(global_label "_TA"
+	(global_label "_DSACK1"
 		(shape output)
 		(at 213.36 109.22 180)
 		(fields_autoplaced yes)
@@ -16755,12 +16764,54 @@
 		)
 		(uuid "fba94e93-9fe8-4e8d-bcb8-2721784a0551")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 207.351 109.22 0)
+			(at 202.0896 109.22 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
+			)
+		)
+	)
+	(global_label "_DSACK0"
+		(shape output)
+		(at 121.92 191.77 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "fc276ff0-5260-4aae-910b-b221fbb78842")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 133.1904 191.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "_DSACK0"
+		(shape output)
+		(at 281.94 132.08 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "fe33ab3e-559e-4838-becc-f6fd55c91768")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 293.2104 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
 			)
 		)
 	)

@@ -6,7 +6,7 @@
 	(paper "B")
 	(title_block
 		(title "AMIGA PCI")
-		(date "2024-07-09")
+		(date "2024-07-17")
 		(rev "4.0")
 	)
 	(lib_symbols
@@ -8219,12 +8219,6 @@
 		(uuid "1266b11e-100a-4642-b60a-4e4454cb0c52")
 	)
 	(junction
-		(at 387.35 91.44)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "171be26f-3ab0-46f2-80dd-0a960cf614ba")
-	)
-	(junction
 		(at 207.01 100.33)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -8651,12 +8645,6 @@
 		(uuid "ed2e4503-7abe-4335-97c2-7a259bb0ba21")
 	)
 	(junction
-		(at 222.25 54.61)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "efa29c74-c184-4c2f-a4ab-7451b9bd3abe")
-	)
-	(junction
 		(at 129.54 30.48)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -8705,16 +8693,8 @@
 		(uuid "fe1545ad-c1e8-44eb-b2d6-7e24bc05018f")
 	)
 	(no_connect
-		(at 134.62 210.82)
-		(uuid "4e6f4130-6dd2-4b9f-a0d6-34ddae190935")
-	)
-	(no_connect
 		(at 74.93 50.8)
 		(uuid "569a7208-dad6-450c-92c3-8807240b226e")
-	)
-	(no_connect
-		(at 134.62 187.96)
-		(uuid "66208fc6-4629-435d-9e25-c4bdcc01494d")
 	)
 	(no_connect
 		(at 134.62 175.26)
@@ -10394,16 +10374,6 @@
 	)
 	(wire
 		(pts
-			(xy 222.25 49.53) (xy 222.25 54.61)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "077e7d5c-65e5-41e8-8f47-91069552893f")
-	)
-	(wire
-		(pts
 			(xy 55.88 26.67) (xy 53.34 26.67)
 		)
 		(stroke
@@ -11561,16 +11531,6 @@
 			(type default)
 		)
 		(uuid "32b26b64-58b6-4324-a176-d4dc604b8034")
-	)
-	(wire
-		(pts
-			(xy 387.35 91.44) (xy 389.89 91.44)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "32f9f69d-03df-4889-8f8e-0fe45e9c8d81")
 	)
 	(wire
 		(pts
@@ -15042,16 +15002,6 @@
 		)
 		(uuid "b3f03db0-f9cf-4015-8696-f720273a6ef7")
 	)
-	(wire
-		(pts
-			(xy 389.89 91.44) (xy 389.89 97.79)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b4cfbe76-7c24-42a0-a2b2-7d97b9b7a3e9")
-	)
 	(bus
 		(pts
 			(xy 46.99 193.04) (xy 46.99 190.5)
@@ -15381,16 +15331,6 @@
 			(type default)
 		)
 		(uuid "bc503e4f-97be-412a-8411-874ef53d94c3")
-	)
-	(wire
-		(pts
-			(xy 389.89 111.76) (xy 389.89 105.41)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "bc9949f1-1ce3-485f-aa6d-5be5bc5357a0")
 	)
 	(bus
 		(pts
@@ -16684,7 +16624,7 @@
 	)
 	(wire
 		(pts
-			(xy 229.87 49.53) (xy 222.25 49.53)
+			(xy 229.87 49.53) (xy 200.66 49.53)
 		)
 		(stroke
 			(width 0)
@@ -19208,17 +19148,6 @@
 		)
 		(uuid "b3f6174c-9541-4496-9631-4c0e86882141")
 	)
-	(label "_TIP"
-		(at 389.89 111.76 90)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "b3fdb79f-a507-4490-ad3d-01a61371168c")
-	)
 	(label "D9"
 		(at 314.96 62.23 0)
 		(fields_autoplaced yes)
@@ -20381,6 +20310,27 @@
 			)
 		)
 	)
+	(global_label "_DSACK0"
+		(shape output)
+		(at 134.62 213.36 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.2954 1.2954)
+			)
+			(justify left)
+		)
+		(uuid "34346e1d-1587-4256-8f28-5458ab968571")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 146.1153 213.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
 	(global_label "LVDRA7-6"
 		(shape input)
 		(at 134.62 129.54 0)
@@ -20863,7 +20813,7 @@
 			)
 		)
 	)
-	(global_label "_RESET"
+	(global_label "_RESETA"
 		(shape input)
 		(at 264.16 105.41 0)
 		(fields_autoplaced yes)
@@ -20875,7 +20825,7 @@
 		)
 		(uuid "683add9c-a3f7-46e3-a6a7-394031e29f26")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 273.8579 105.41 0)
+			(at 274.9465 105.41 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20947,6 +20897,27 @@
 			)
 		)
 	)
+	(global_label "CLK80"
+		(shape input)
+		(at 134.62 187.96 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "6caa4e21-a2ff-4cb0-beea-e0fc9756dc0c")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 143.5923 187.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
 	(global_label "LVC3"
 		(shape input)
 		(at 134.62 226.06 0)
@@ -21007,6 +20978,27 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+			)
+		)
+	)
+	(global_label "_DSACK0"
+		(shape input)
+		(at 200.66 49.53 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "6fe274c6-7afe-4773-a466-fafa5e56ca15")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 189.3896 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
 			)
 		)
 	)
@@ -21303,8 +21295,8 @@
 			)
 		)
 	)
-	(global_label "_LOCKE"
-		(shape output)
+	(global_label "_CPURST"
+		(shape input)
 		(at 208.28 130.81 180)
 		(fields_autoplaced yes)
 		(effects
@@ -21315,7 +21307,7 @@
 		)
 		(uuid "9922ba15-9dc7-4b16-8091-3e6e153a573a")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 198.2796 130.81 0)
+			(at 197.0096 130.81 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21635,7 +21627,7 @@
 			)
 		)
 	)
-	(global_label "_RESET"
+	(global_label "_RESETA"
 		(shape input)
 		(at 66.04 86.36 180)
 		(fields_autoplaced yes)
@@ -21647,7 +21639,7 @@
 		)
 		(uuid "bab99a55-a530-4032-9489-d215b10315a6")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 56.3421 86.36 0)
+			(at 55.2535 86.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21761,7 +21753,7 @@
 			)
 		)
 	)
-	(global_label "_TA"
+	(global_label "_DSACK1"
 		(shape output)
 		(at 66.04 147.32 180)
 		(fields_autoplaced yes)
@@ -21773,7 +21765,7 @@
 		)
 		(uuid "c9e8633d-1a03-4f36-b397-54ef6bbaabbf")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 60.031 147.32 0)
+			(at 54.7696 147.32 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21887,7 +21879,7 @@
 			)
 		)
 	)
-	(global_label "_TA"
+	(global_label "_DSACK1"
 		(shape input)
 		(at 264.16 52.07 0)
 		(fields_autoplaced yes)
@@ -21899,7 +21891,7 @@
 		)
 		(uuid "dec96425-5037-41e2-90d7-725323238a41")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 270.169 52.07 0)
+			(at 275.4304 52.07 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21910,7 +21902,7 @@
 	)
 	(global_label "_LVTS"
 		(shape input)
-		(at 134.62 213.36 0)
+		(at 134.62 210.82 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -21920,7 +21912,7 @@
 		)
 		(uuid "e18c10b3-0488-468d-a383-c6cffddf7629")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 143.0311 213.36 0)
+			(at 143.0311 210.82 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22053,7 +22045,7 @@
 			)
 		)
 	)
-	(global_label "_BTNRST"
+	(global_label "_RSTBTN"
 		(shape output)
 		(at 73.66 43.18 180)
 		(effects
@@ -22073,7 +22065,7 @@
 			)
 		)
 	)
-	(global_label "CLK80A"
+	(global_label "CLK80"
 		(shape output)
 		(at 267.97 72.39 0)
 		(fields_autoplaced yes)
@@ -22085,7 +22077,7 @@
 		)
 		(uuid "f0f34582-f49a-4513-987b-a34a36ed2234")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 278.0309 72.39 0)
+			(at 276.9423 72.39 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22420,76 +22412,6 @@
 			(project "AmigaPCI Mainboard"
 				(path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
 					(reference "RN202")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R")
-		(at 389.89 101.6 0)
-		(mirror y)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "0ef09b88-9ec2-404c-ada8-bb1689729c24")
-		(property "Reference" "R247"
-			(at 388.62 98.552 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "2k7"
-			(at 389.89 103.632 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 391.668 101.6 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 389.89 101.6 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 389.89 101.6 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "348054a0-9a3e-48b0-ad83-8d8a1b5c2522")
-		)
-		(pin "2"
-			(uuid "3c2b6af2-bb6b-4a1f-808d-50f984921223")
-		)
-		(instances
-			(project "AmigaPCI Mainboard"
-				(path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
-					(reference "R247")
 					(unit 1)
 				)
 			)
