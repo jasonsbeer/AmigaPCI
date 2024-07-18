@@ -6,7 +6,7 @@
 	(paper "B")
 	(title_block
 		(title "AmigaPCI 68040")
-		(date "2024-07-15")
+		(date "2024-07-18")
 		(rev "3.0")
 	)
 	(lib_symbols
@@ -5315,8 +5315,36 @@
 		(uuid "ff811690-7c18-428b-bd84-799a6b98b896")
 	)
 	(no_connect
+		(at 316.23 82.55)
+		(uuid "23a35a2f-3661-4c55-b5ed-ad2ff3ca70ce")
+	)
+	(no_connect
 		(at 377.19 80.01)
 		(uuid "2e0cd5c0-9636-4fca-8c88-7e5189a6108d")
+	)
+	(no_connect
+		(at 325.12 52.07)
+		(uuid "36f0fbb9-2401-4d85-9a3c-4d6ac6fd29f4")
+	)
+	(no_connect
+		(at 325.12 54.61)
+		(uuid "7515a98d-0594-44d2-a1a7-687826b91e18")
+	)
+	(no_connect
+		(at 316.23 77.47)
+		(uuid "7b017aa0-1791-47c4-8eab-55bb972c4502")
+	)
+	(no_connect
+		(at 316.23 151.13)
+		(uuid "c3bdeff5-09b4-4e1d-a887-d0bd50c6af38")
+	)
+	(no_connect
+		(at 316.23 85.09)
+		(uuid "cd66a2a1-cca2-41ab-85d9-01f1020d8525")
+	)
+	(no_connect
+		(at 316.23 148.59)
+		(uuid "d554eca4-90cb-47f5-bbd6-14c0eb9a64af")
 	)
 	(bus_entry
 		(at 129.54 140.97)

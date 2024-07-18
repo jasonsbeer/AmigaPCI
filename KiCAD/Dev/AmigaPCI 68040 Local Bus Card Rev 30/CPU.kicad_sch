@@ -6,7 +6,7 @@
 	(paper "B")
 	(title_block
 		(title "AmigaPCI 68040")
-		(date "2024-07-15")
+		(date "2024-07-18")
 		(rev "3.0")
 	)
 	(lib_symbols
@@ -11405,7 +11405,7 @@
 			)
 		)
 	)
-	(global_label "_BG-3V"
+	(global_label "_BGA"
 		(shape output)
 		(at 271.78 101.6 0)
 		(fields_autoplaced yes)
@@ -11417,7 +11417,7 @@
 		)
 		(uuid "5492c148-c474-4646-8bd2-1e3a77e60163")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 282.1433 101.6 0)
+			(at 279.3614 101.6 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11572,7 +11572,7 @@
 			)
 		)
 	)
-	(global_label "_TCI"
+	(global_label "_TCI-CPU"
 		(shape input)
 		(at 35.56 185.42 180)
 		(fields_autoplaced yes)
@@ -11584,7 +11584,7 @@
 		)
 		(uuid "7c63f7e8-89c0-4dc5-8951-3a12e8f413e0")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 28.8442 185.42 0)
+			(at 23.3219 185.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11759,7 +11759,7 @@
 			)
 		)
 	)
-	(global_label "_RSTI"
+	(global_label "_CPURST"
 		(shape input)
 		(at 128.27 157.48 0)
 		(fields_autoplaced yes)
@@ -11771,7 +11771,7 @@
 		)
 		(uuid "ad3f3f26-abe9-4cd8-bb7e-4e2af8a69644")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 136.2747 157.48 0)
+			(at 139.5404 157.48 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11822,7 +11822,7 @@
 			)
 		)
 	)
-	(global_label "_TBI"
+	(global_label "_TBI-CPU"
 		(shape input)
 		(at 35.56 187.96 180)
 		(fields_autoplaced yes)
@@ -11834,7 +11834,7 @@
 		)
 		(uuid "b0849d19-6007-45db-b924-858071a502cd")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 28.8442 187.96 0)
+			(at 23.3219 187.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12010,27 +12010,6 @@
 			)
 		)
 	)
-	(global_label "_TBI-3V"
-		(shape output)
-		(at 271.78 106.68 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "d45e62d7-5681-41a3-babd-0a4f6124f235")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 282.4457 106.68 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-	)
 	(global_label "UPA1"
 		(shape output)
 		(at 35.56 152.4 180)
@@ -12052,7 +12031,7 @@
 			)
 		)
 	)
-	(global_label "_TEA"
+	(global_label "_TEA-CPU"
 		(shape input)
 		(at 35.56 182.88 180)
 		(fields_autoplaced yes)
@@ -12064,7 +12043,7 @@
 		)
 		(uuid "dfe5df28-61ac-40d8-96b2-733ec51d5ebb")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 28.4814 182.88 0)
+			(at 22.9591 182.88 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12076,7 +12055,6 @@
 	(global_label "_TS-CPU"
 		(shape output)
 		(at 35.56 172.72 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12085,28 +12063,7 @@
 		)
 		(uuid "e342ddb4-8b68-483e-80f0-3214f7305c95")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 23.9872 172.72 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-	)
-	(global_label "_TBI"
-		(shape input)
-		(at 241.3 106.68 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "eb3a77a2-8a98-4c33-81cd-68d7155c420e")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 234.5048 106.68 0)
+			(at 26.924 170.18 0)
 			(effects
 				(font
 					(size 1.27 1.27)

@@ -629,10 +629,6 @@
       },
       {
         "netclass": "Narrow",
-        "pattern": "R_W-3V"
-      },
-      {
-        "netclass": "Narrow",
         "pattern": "_RAMEN"
       },
       {
