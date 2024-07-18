@@ -197,11 +197,11 @@ The AmigaPCI utilizes the CPU Local Bus port to attach CPU devices to the AmigaP
 
 ## 3.1 Devices
 
-The primary purpose of the CPU Local Bus Port is to provide a means to connect a MC68040, MC68060, or other compatable processor to the local bus of the AmigaPCI. There is no CPU on the AmigaPCI main board, so it will not function without a CPU Local Bus card attached. The CPU Local Bus Port also supports other types of devices. 
+The primary purpose of the CPU Local Bus Port is to provide a means to connect a MC68040, MC68060, or other compatable processor to the local bus of the AmigaPCI. There is no CPU on the AmigaPCI main board, so it will not function without a CPU Local Bus card attached. The CPU Local Bus Port also supports other types of devices.
 
 ### 3.1.1 Fast Memory
 
-The Amiga memory map reserves the address ranges $0400 0000 - $07FF FFFF and $0800 0000 - $0FFF FFFF for fast memory. These two regions are treated slightly differently by Kickstart. Any memory responding here will be automatically sized and added to the Amiga memory pool with the highest priority available. This address range is fixed and is not part of the AUTOCONFIG space. If memory is present on the CPU Local Bus card, the memory controller must assert **_LBEN** when addressed and terminate cycles in this address range. 
+The Amiga memory map reserves the address ranges $0400 0000 - $07FF FFFF and $0800 0000 - $0FFF FFFF for fast memory. These two regions are treated differently by Kickstart. Any memory responding in these regions will be automatically sized and added to the Amiga memory pool with the highest priority available. These address ranges are fixed and are not part of the AUTOCONFIG space. If memory is present on the CPU Local Bus card, the memory controller must assert **_LBEN** when addressed and terminate cycles in this address range. 
 
 #### 3.1.1.1 Address Range $0400 0000 - $07FF FFFF
 
@@ -252,10 +252,10 @@ The signals on the CPU Local Bus Port are broken into categories. Some are speci
 This is the digital supply ground used by all digital devices in the system. CPU Local Bus cards may get their ground through the connector and the mounting posts.
 
 **+5VDC**  
-This is the digital supply for TTL and other TTL-like devices, such as F, LS, or HCT logic families and the Motorola MC68040.
+This is the digital supply for TTL and TTL-like devices, such as F, LS, or HCT logic families and the Motorola MC68040.
 
 **+3.3VDC**  
-This is the digital supply for LVTTL devices, such as HC or LVC logic families and the Motorola MC68060.
+This is the digital supply for LVTTL devices, such as LVC logic families and the Motorola MC68060.
 
 **+1.2VDC**  
 This is the digital supply for low power devices of certain logic families or FPGA's, like the Lattice iCE40 series.
@@ -265,10 +265,13 @@ This is the digital supply for low power devices of certain logic families or FP
 These signals are used to initialize the system. The CPU Local Bus device should listen or drive, as appropriate.
 
 **_RESET** (System Reset)  
-This LVTTL level signal is driven by the system reset logic and initiates a complete system reset.
+This LVTTL level signal is driven by the system reset logic and initiates a reset of all logic and I/O on the AmigaPCI and CPU Local Bus Card, but not the CPU.
 
 **_RSTOUT**  (Reset Out)  
-This TTL tolerant signal is driven by the CPU to initiate a system reset. When driven, the IC Supervisor will assert **_RESET** for at least 250ms. All systems on the AmigaPCI except the CPU are reset when _RSTOUT is asserted.
+This TTL tolerant signal is driven by the CPU to initiate a reset of all logic and I/O on the AmigaPCI. When driven, **_RESET** will assert for at least 250ms.
+
+**_CPURST** (CPU Reset)
+This LVTTL signal is driven by the system reset logic and initiates a reset of the CPU. This signal is asserted in reponse to the push button or keyboard reset action.
 
 ### 3.4.3 Data Transfer Signals
 
@@ -279,76 +282,73 @@ This bus is driven by the bus master and tristated by inactive bus masters. The 
 This bus is driven by the bus master for writes and the target device for reads and tristated by inactive bus masters. The CPU Local Bus devices may drive this bus with either TTL or LVTTL level logic. However, the AmigaPCI drives this bus at TTL levels. As such, it is necessary that the CPU Local Bus Card devices be TTL, TTL tolerant, or use level shifting to convert the incoming TTL levels to the voltage required.
 
 **DSACK(1..0)** (Data Port Size and Cycle Termination)  
-This bus is driven by the target device. This bus indicates the data port width of the target device and terminates the cycle. See Section 3.6 for a detailed description. LVTTL. In certain circumstances, devices on the CPU Local Bus Card may choose to drive MC68040/MC68060 **_TA** (transfer acknowledge) directly.
+This LVTTL bus is driven by the target device and tristated by inactive target devices. This bus indicates the data port width of the target device and terminates the cycle. See Section 3.7 for a detailed description. In certain circumstances, devices on the CPU Local Bus Card may choose to drive MC68040/MC68060 **_TA** (transfer acknowledge) directly.
 
 **R_W** (Read/Write)  
-Driven by the bus master and tristated by inactive bus masters. The CPU Local Bus devices may drive this signal with either TTL or LVTTL level logic.
+This TTL tolerant signal is driven by the bus master and tristated by inactive bus masters.
 
 **_TBI** (Tranfer Burst Inhibit)  
-Driven by the target device and tristated by inactive target devices. Inhibits a burst cycle in favor of individual data transfers. LVTTL.
+This LVTTL signal is driven by the target device and tristated by inactive target devices. Inhibits a burst cycle in favor of individual data transfers.
 
 **_TCI** (Tranfer Cache Inhibit)  
-Driven by the target device and tristated by inactive target devices. Inhibits caching of data from a data transfer burst cycle. LVTTL.
+This LVTTL signal is driven by the target device and tristated by inactive target devices. Inhibits caching of data from a data transfer burst cycle.
 
 **_TEA** (Tranfer Error Acknowledge)  
-Driven by the target device and tristated by inactive target devices. Asserted with **_DSACKx** to indicate a retry condition exists or asserted alone to indicate a cycle request cannot be completed. LVTTL.
+This LVTTL signal is driven by the target device and tristated by inactive target devices. Asserted with **_DSACKx** to indicate a retry condition exists or asserted alone to indicate a cycle request cannot be completed.
 
 **TT(1..0)** (Transfer Type)  
-These are the MC68040/MC68060 transfer type signals. Driven by the bus master and tristated by inactive bus masters. CPU Local Bus devices may drive these signals with either TTL or LVTTL level logic.
+This TTL tolerant bus is driven by the bus master and tristated by inactive bus masters. These are the MC68040/MC68060 transfer type signals.
 
 **SIZ(1..0)** (Transfer Size)  
-These are the MC68040/MC68060 transfer size signals. Driven by the bus master and tristated by inactive bus masters. CPU Local Bus devices may drive these signals with either TTL or LVTTL level logic.
+This TTL tolerant bus is driven by the bus master and tristated by inactive bus masters. These are the MC68040/MC68060 transfer size signals. 
 
 **TM(2..0)** (Transfer Modifiers)  
-These are the MC68040/MC68060 transfer modifier signals. Driven by the bus master and tristated by inactive bus masters. CPU Local Bus devices may drive these signals with either TTL or LVTTL level logic.
+This TTL tolerant bus is driven by the bus master and tristated by inactive bus masters. These are the MC68040/MC68060 transfer modifier signals. 
 
 **_TS** (Transfer Start)  
-Driven by the bus master and tristated by inactive bus masters. Indicates the start of a data transfer cycle. The CPU Local Bus devices may drive this signal with either TTL or LVTTL level logic.
+This TTL tolerant signal is driven by the bus master and tristated by inactive bus masters. Indicates the start of a data transfer cycle.
 
 **UPA(1..0)** (User Programmable Attribute)  
-Driven by the bus master and tristated by inactive bus masters. An address bus extension, these signals are needed by the PCI Bridge to enable access to the parallel address spaces of the PCI Local Bus. The CPU Local Bus devices may drive this signal with either TTL or LVTTL level logic.
+This TTL tolerant bus is driven by the bus master and tristated by inactive bus masters. An address bus extension, these signals are used by the PCI Bridge to enable access to the parallel address spaces of the PCI Local Bus.
 
 ### 3.4.4 Bus Arbitration Signals
 
 **_BB** (Bus Busy)  
-Asserted by the bus master and tristated by inactive bus masters. Indicate the bus master is actively driving the bus. This signal must not be unecessarily held asserted as that will prevent other devices from becoming bus masters. CPU Local Bus devices may drive this signal with either TTL or LVTTL level logic.
+This TTL tolerant signal is driven by the bus master and tristated by inactive bus masters. Indicate the bus master is actively driving the bus. This signal must not be unecessarily held asserted as that will prevent other devices from becoming bus masters.
 
 **_BG** (Bus Grant)  
-Asserted by the bus arbitor. Assertion indicates the CPU Local Bus Device has control of the system bus. Unless bus lock (**_LOCK**) has been asserted by the bus master, **_BG** may be negated at any time. Negation indicates either the PCI Local Bridge has the bus (with assedrtion of **_BB**) or no device has the bus (**_BB** is negated). A bus master must not take control of the system bus until **_BB** has been negated. When no device has actively requested the bus, **_BG** is asserted. LVTTL.
+This LVTTL is asserted by the bus arbitor. Assertion indicates the CPU Local Bus Device has control of the system bus. Unless bus lock (**_LOCK**) has been asserted by the bus master, **_BG** may be negated at any time. Negation indicates either the PCI Local Bridge has the bus (with assedrtion of **_BB**) or no device has the bus (**_BB** is negated). A bus master must not take control of the system bus until **_BB** has been negated. When no device has actively requested the bus, **_BG** is asserted.
 
 **_BR** (Bus Request)  
-Asserted by the bus master and tristated by inactive bus masters. Indicates an inactive bus master is requesting the bus. A bus master must not take control of the bus until it has been granted the bus by the assertion of **_BG** and the bus is not busy, as indicated by negation of **_BB**. CPU Local Bus devices may drive this signal with either TTL or LVTTL level logic.
+This TTL tolerant signal is asserted by bus masters on the CPU Local Bus Card and tristated by inactive bus masters. Indicates an inactive bus master is requesting the bus. A bus master must not take control of the bus until it has been granted the bus by the assertion of **_BG** and the bus is not busy, as indicated by negation of **_BB**.
 
 **_LOCK** (Bus Lock)  
-Asserted by the bus master and tristated by inactive bus masters. Indicates a read-modify-write cycle is in progress, preventing the bus arbitor from granting the bus to a new device. CPU Local Bus devices may drive these signals with either TTL or LVTTL level logic.
-
-**_LOCKE** (Bus Lock End)  
-Asserted by the bus master and tristated by inactive bus masters. Indicates a read-modify-write cycle is about to end. CPU Local Bus devices may drive these signals with either TTL or LVTTL level logic.
+This TTL tolerant signal is driven by the bus master and tristated by inactive bus masters. Indicates a read-modify-write cycle is in progress, preventing the bus arbitor from granting the bus to a new device.
 
 ### 3.4.5 Clocks
 
 **BCLK** (Bus Clock)  
-The bus clock is generated on the CPU Local Bus Card and used to syncronize data transactions between the AmigaPCI and the CPU Local Bus device. This 40MHz clock signal must be driven at LVTTL logic levels. BCLK is always 1/2 PCLK.
+The 40MHz LVTTL bus clock is generated on the CPU Local Bus Card and used to syncronize data transactions between the AmigaPCI and the CPU Local Bus device.
 
-**PCLK** (Processor Clock)  
-The processor clock is generated on the CPU Local Bus Card and used to clock SDRAM timings. This 80MHz clock signal must be driven at LVTTL logic levels. PCLK is always 2x BCLK.
+**RAMCLK** (Ram Clock)  
+The 80MHz LVTTL RAM clock is generated on the CPU Local Bus Card and used to clock SDRAM timings. Must be synchronous with BCLK, with the rising edge of BCLK on the rising edges of RAMCLK.
 
 ### 3.4.6 Other CPU Local Bus Port Signals
 
 **_CPUCONF** (CPU Local Bus Card Configured)  
-Driven by AUTOCONFIG logic on the CPU Local Bus Card. Indicates AUTOCONFIG devices on the CPU Local Bus card have been configured. AUTOCONFIG devices on the CPU Local Bus card are configured first. Once configured, asserting this signal allows devices on the AmigaPCI main board to be configured. In the absence of an AUTOCONFIG device, this may be left unconnected. This signal must be driven at LVTTL logic levels.
+This LVTTL signal is driven by AUTOCONFIG logic on the CPU Local Bus Card. Indicates AUTOCONFIG devices on the CPU Local Bus card have been configured. AUTOCONFIG devices on the CPU Local Bus card are configured first. Once configured, asserting this signal allows devices on the AmigaPCI main board to be configured. In the absence of an AUTOCONFIG device, this may be left unconnected
 
 **_INT2** (Amiga Interupt 2)  
-Driven by target device on the CPU Local Bus Card. Open drain. TTL.
+This TTL signal is driven by target device on the CPU Local Bus Card. Open drain.
 
 **_INT6** (Amiga Interupt 6)  
-Driven by target device on the CPU Local Bus Card. Open drain. TTL.
+This TTL signal is driven by target device on the CPU Local Bus Card. Open drain.
 
 **IPL(2..0)** (Interupt Level)  
-Driven by the Amiga chipset. TTL.
+This TTL bus is driven by the Amiga chipset.
 
 **_LBEN** (Local Bus Enabled)  
-Driven by target device on the CPU Local Bus Card. When the CPU Local Bus Card is addressed, this signal is asserted so the onboard signal buffers may be set correctly to avoid bus contention. Needed when memory or AUTOCONFIG devices are implemented on the CPU Local Bus card. In the absence of such devices, this may be left unconnected. LVTTL.
+This LVTTL signal is driven by a target device on the CPU Local Bus Card and tristated by inactive target devices on the CPU Local Bus Card. When the CPU Local Bus Card is addressed, this signal is asserted so the onboard signal buffers may be set correctly to avoid bus contention. Needed when memory or AUTOCONFIG devices are implemented on the CPU Local Bus card. In the absence of such devices, this may be left unconnected.
 
 **Table 3.4**. CPU Local Bus Pinout.
 Pin|Signal|Pin|Signal|Pin|Signal
@@ -363,7 +363,7 @@ Pin|Signal|Pin|Signal|Pin|Signal
 **A8**|A6|**B8**|A5|**C8**|A9
 **A9**|A8|**B9**|A7|**C9**|GND
 **A10**|A11|**B10**|A10|**C10**|GND
-**A11**|_BR|**B11**|_LOCK|**C11**|_LOCKE
+**A11**|_BR|**B11**|_LOCK|**C11**|_CPURST
 **A12**|TM0|**B12**|R_W|**C12**|TM1
 **A13**|TM2|**B13**|D28|**C13**|+3.3V
 **A14**|D26|**B14**|D24|**C14**|+3.3V
@@ -376,11 +376,11 @@ Pin|Signal|Pin|Signal|Pin|Signal
 **A21**|+3.3V|**B21**|_DSACK1|**C21**|_TEA
 **A22**|+5V|**B22**|_LBEN|**C22**|_BG
 **A23**|_TBI|**B23**|_INT6|**C23**|_TCI
-**A24**|CLK80|**B24**|D18|**C24**|D13
+**A24**|RAMCLK|**B24**|D18|**C24**|D13
 **A25**|+5V|**B25**|D16|**C25**|D12
 **A26**|+5V|**B26**|D11|**C26**|D10
 **A27**|D8|**B27**|D9|**C27**|_IPL0
-**A28**|CLK40|**B28**|_RESET|**C28**|_IPL1
+**A28**|BCLK|**B28**|_RESET|**C28**|_IPL1
 **A29**|GND|**B29**|_IPL2|**C29**|D7
 **A30**|GND|**B30**|D6|**C30**|D5
 **A31**|D2|**B31**|D4|**C31**|D1
@@ -400,7 +400,7 @@ It is possible to include RAM and AUTOCONFIG devices on the CPU Local Bus Card. 
 
 ## 3.6 Clocks
 
-All system clocks are generated on the CPU Local Bus card. This minimizes issues with clock skew where the CPU Local Bus Card may have high-speed RAM or other timing sensitive AUTOCONFIG devices. LVTTL clocks must be generated on the CPU Local Bus card and connected to the correct pins to provide clocks to the AmigaPCI board. The bus clock (BCLK) is 40MHz, which is used to correctly time data transer cycle responses to the CPU Local Bus Card. The 80MHz clock (PCLK) is used to generate the SDRAM clock for chip ram cycles. Both BCLK and PCLK clocks are unbuffered and routed to U712. These clocks are then distributed to other components with an FPGA clock fanout. It is possible to drive the AmigaPCI logic clocks at other frequencies, but it is the designer's responsibility to ensure logic cycles are not adversely effected. In MC68040/MC68060 architecture, PCLK and BCLK are synchronous and PCLK is always 2x the BCLK. It is recommended designers observe this timing restriction when supplying clocks to the AmigaPCI. Failure to do so will likely result in unstable operation.
+Two system clocks, BCLK and RAMCLK, are generated on the CPU Local Bus card. This minimizes issues with clock skew where the CPU Local Bus Card may have high-speed RAM or other timing sensitive AUTOCONFIG devices. LVTTL clocks must be generated on the CPU Local Bus card and connected to the correct pins to provide clocks to the AmigaPCI board. The bus clock (BCLK) is 40MHz, which is used to correctly time data transer cycle responses to the CPU Local Bus Card. The 80MHz clock (RAMCLK) is used to generate the SDRAM clock for chip ram cycles. Both BCLK and RAMCLK clocks are unbuffered and routed to U712. These clocks are then distributed to other components with an FPGA clock fanout. It is possible to drive the AmigaPCI logic clocks at other frequencies, but it is the designer's responsibility to ensure logic cycles are not adversely effected. 
 
 Correct clock distribution is critical to ensure stable operation of the CPU Local Bus card and AmigaPCI. Each clocked device should have a dedicated clock signal by using fanouts from a singal clock source. Traces should be kept as short as possible and small value series resistors should be implemented at the clock signal source.
 
