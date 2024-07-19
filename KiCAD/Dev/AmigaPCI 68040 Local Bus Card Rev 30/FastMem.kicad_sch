@@ -13272,7 +13272,7 @@
 		(uuid "98164266-0c97-4456-8c3c-d5488dc64879")
 	)
 	(label "LVA13"
-		(at 383.54 179.07 180)
+		(at 383.54 168.91 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -14052,7 +14052,7 @@
 	)
 	(global_label "PCLKB"
 		(shape input)
-		(at 383.54 171.45 0)
+		(at 383.54 191.77 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -14062,7 +14062,7 @@
 		)
 		(uuid "16359168-7bd2-4d16-8300-c87904cbb467")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 392.6333 171.45 0)
+			(at 392.6333 191.77 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14178,7 +14178,7 @@
 	)
 	(global_label "_TS-3V"
 		(shape input)
-		(at 383.54 186.69 0)
+		(at 383.54 181.61 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -14188,7 +14188,7 @@
 		)
 		(uuid "2b73a457-2c22-4974-bfe6-ce7146dcf25f")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 393.5404 186.69 0)
+			(at 393.5404 181.61 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14282,7 +14282,7 @@
 	)
 	(global_label "TT1-3V"
 		(shape input)
-		(at 383.54 191.77 0)
+		(at 383.54 173.99 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -14292,7 +14292,7 @@
 		)
 		(uuid "42a31359-2b34-4540-8494-2bde140d4b17")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 393.5404 191.77 0)
+			(at 393.5404 173.99 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14322,27 +14322,6 @@
 			)
 		)
 	)
-	(global_label "_TS"
-		(shape input)
-		(at 383.54 176.53 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "4dc73d34-d54a-4fd8-ac96-bb9f02bbd09e")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 389.6699 176.53 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-	)
 	(global_label "BANK1"
 		(shape input)
 		(at 158.75 118.11 180)
@@ -14366,7 +14345,7 @@
 	)
 	(global_label "TT0-3V"
 		(shape input)
-		(at 383.54 189.23 0)
+		(at 383.54 179.07 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -14376,7 +14355,7 @@
 		)
 		(uuid "604a79ba-8f8c-47b4-b5e6-43ef87645341")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 393.5404 189.23 0)
+			(at 393.5404 179.07 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14492,7 +14471,7 @@
 	)
 	(global_label "BCLKB"
 		(shape input)
-		(at 383.54 173.99 0)
+		(at 383.54 189.23 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -14502,7 +14481,7 @@
 		)
 		(uuid "8000a5a7-da0b-4cf6-aee7-f88d7c4ad0bf")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 392.6333 173.99 0)
+			(at 392.6333 189.23 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14679,7 +14658,7 @@
 	)
 	(global_label "_TA-CPU"
 		(shape output)
-		(at 383.54 168.91 0)
+		(at 383.54 184.15 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -14689,7 +14668,7 @@
 		)
 		(uuid "b0bfa6e6-ccd7-4c27-9ec4-96ca5b1f4b5e")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 394.9919 168.91 0)
+			(at 394.9919 184.15 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14742,7 +14721,7 @@
 	)
 	(global_label "_RESET"
 		(shape input)
-		(at 383.54 184.15 0)
+		(at 383.54 171.45 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -14752,7 +14731,7 @@
 		)
 		(uuid "c3e8e045-8f45-451f-ae28-6b015c514711")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 393.2379 184.15 0)
+			(at 393.2379 171.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14908,7 +14887,7 @@
 	)
 	(global_label "_LBEN"
 		(shape output)
-		(at 383.54 181.61 0)
+		(at 383.54 186.69 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -14918,7 +14897,7 @@
 		)
 		(uuid "e2d51803-9241-4742-b71f-71015fca4fef")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 392.2704 181.61 0)
+			(at 392.2704 186.69 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15850,7 +15829,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_2x03_P2.54mm_Vertical"
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x06_P2.54mm_Vertical"
 			(at 262.89 74.93 0)
 			(effects
 				(font

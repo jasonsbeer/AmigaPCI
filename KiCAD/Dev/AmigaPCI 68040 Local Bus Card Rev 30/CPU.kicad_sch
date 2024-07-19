@@ -5643,6 +5643,10 @@
 		(uuid "593b0d5f-e8ba-4c30-b991-de30bcf55dcc")
 	)
 	(no_connect
+		(at 271.78 106.68)
+		(uuid "6394f7b8-d2ac-41be-8016-c242424b9c35")
+	)
+	(no_connect
 		(at 92.71 200.66)
 		(uuid "8a780fb1-d094-4a01-8efe-3bce9c1aa65c")
 	)
@@ -7860,16 +7864,6 @@
 	)
 	(wire
 		(pts
-			(xy 241.3 106.68) (xy 243.84 106.68)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "6b1dfa13-769b-48d3-af86-707295522d23")
-	)
-	(wire
-		(pts
 			(xy 171.45 81.28) (xy 171.45 83.82)
 		)
 		(stroke
@@ -7897,6 +7891,16 @@
 			(type default)
 		)
 		(uuid "6d02e22f-3fe2-4e80-97e2-e4bc85976845")
+	)
+	(wire
+		(pts
+			(xy 229.87 106.68) (xy 243.84 106.68)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6df3d65c-1e5c-4140-8177-00b641e77697")
 	)
 	(bus
 		(pts
@@ -8287,6 +8291,16 @@
 			(type default)
 		)
 		(uuid "8dc13b46-9949-46d0-aa2b-c0a1306eceff")
+	)
+	(wire
+		(pts
+			(xy 229.87 106.68) (xy 229.87 127)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8df9bac4-13a3-40e1-be17-c1d2209013cf")
 	)
 	(wire
 		(pts
@@ -9220,16 +9234,6 @@
 	)
 	(wire
 		(pts
-			(xy 35.56 165.1) (xy 64.77 165.1)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c5ede01b-a1ff-4116-9835-6dff903ae1d8")
-	)
-	(wire
-		(pts
 			(xy 207.01 134.62) (xy 203.2 134.62)
 		)
 		(stroke
@@ -9287,6 +9291,16 @@
 			(type default)
 		)
 		(uuid "cb3a9134-dff9-44fe-9ef9-f4340ac70c11")
+	)
+	(wire
+		(pts
+			(xy 20.32 165.1) (xy 64.77 165.1)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cb707d61-3344-4579-ae77-2394f6e8512a")
 	)
 	(wire
 		(pts
@@ -9567,6 +9581,16 @@
 			(type default)
 		)
 		(uuid "d8844f28-8347-4572-a7d2-7231ef98c694")
+	)
+	(wire
+		(pts
+			(xy 20.32 165.1) (xy 20.32 161.29)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d8876799-d6cc-414b-ab8d-7035a5864f67")
 	)
 	(wire
 		(pts
@@ -11250,27 +11274,6 @@
 		(uuid "1e6f745d-6229-4b5b-affc-f3843d26d147")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 26.788 162.56 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-	)
-	(global_label "_LOCKE"
-		(shape output)
-		(at 35.56 165.1 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "2aaf2294-836b-46fc-ab68-872df162f3e1")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 25.5596 165.1 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13661,6 +13664,75 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R")
+		(at 20.32 157.48 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "52268108-7783-43f9-9de2-3f4a68a1781c")
+		(property "Reference" "R110"
+			(at 22.987 160.02 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "2k7"
+			(at 20.32 159.385 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 18.542 157.48 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 20.32 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 20.32 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "595fdfa3-da72-4271-bd54-2832d66b1d61")
+		)
+		(pin "2"
+			(uuid "6e289132-641b-431a-9a34-bd7ae2067db5")
+		)
+		(instances
+			(project "AmigaPCI 68040"
+				(path "/e4eb271a-56d6-4281-ada6-40852f202c68/0949e450-9e28-4a27-951c-3961f6039256"
+					(reference "R110")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "74xGxx:74AHC1G08")
 		(at 273.05 41.91 0)
 		(unit 1)
@@ -14183,7 +14255,7 @@
 			)
 		)
 		(property "Value" "+5V"
-			(at 20.32 166.116 0)
+			(at 20.32 166.624 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14866,6 +14938,72 @@
 			(project "AmigaPCI 68040"
 				(path "/e4eb271a-56d6-4281-ada6-40852f202c68/0949e450-9e28-4a27-951c-3961f6039256"
 					(reference "C215")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_name "+5V_1")
+		(lib_id "power:+5V")
+		(at 20.32 153.67 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "bd72f001-6945-4f4e-85f7-e7f16b350d5b")
+		(property "Reference" "#PWR020"
+			(at 20.32 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+5V"
+			(at 20.32 149.606 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 20.32 153.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 20.32 153.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+5V\""
+			(at 20.32 153.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "00f20ea8-0c7a-4ff2-aed7-5d28656b40aa")
+		)
+		(instances
+			(project "AmigaPCI 68040"
+				(path "/e4eb271a-56d6-4281-ada6-40852f202c68/0949e450-9e28-4a27-951c-3961f6039256"
+					(reference "#PWR020")
 					(unit 1)
 				)
 			)
@@ -15979,6 +16117,73 @@
 			(project "AmigaPCI 68040"
 				(path "/e4eb271a-56d6-4281-ada6-40852f202c68/0949e450-9e28-4a27-951c-3961f6039256"
 					(reference "#PWR0152")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_name "GND_3")
+		(lib_id "power:GND")
+		(at 229.87 127 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "e9df7cc7-1277-4e78-8de2-8c7fe68c9a91")
+		(property "Reference" "#PWR019"
+			(at 229.87 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 229.87 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 229.87 127 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 229.87 127 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 229.87 127 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "b1493aac-9491-4500-b6c4-8b8fa32eea2b")
+		)
+		(instances
+			(project "AmigaPCI 68040"
+				(path "/e4eb271a-56d6-4281-ada6-40852f202c68/0949e450-9e28-4a27-951c-3961f6039256"
+					(reference "#PWR019")
 					(unit 1)
 				)
 			)
