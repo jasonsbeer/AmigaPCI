@@ -268,7 +268,7 @@ These signals are used to initialize the system. The CPU Local Bus device should
 This LVTTL level signal is driven by the system reset logic and initiates a reset of all logic and I/O on the AmigaPCI and CPU Local Bus Card, but not the CPU.
 
 **_RSTOUT**  (Reset Out)  
-This TTL tolerant signal is driven by the CPU to initiate a reset of all logic and I/O on the AmigaPCI. When driven, **_RESET** will assert for at least 250ms.
+This TTL tolerant signal is driven by the CPU to initiate a reset of all logic and I/O on the AmigaPCI. When driven, **_RESET** will assert as long as **_RSTOUT** is asserted.
 
 **_CPURST** (CPU Reset)
 This LVTTL signal is driven by the system reset logic and initiates a reset of the CPU. This signal is asserted in reponse to the push button or keyboard reset action.

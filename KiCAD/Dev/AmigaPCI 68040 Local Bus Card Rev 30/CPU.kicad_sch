@@ -5,8 +5,8 @@
 	(uuid "315e23ba-5519-4324-a801-4b09b2931625")
 	(paper "B")
 	(title_block
-		(title "AmigaPCI 68040")
-		(date "2024-07-18")
+		(title "AmigaPCI 68040 Local Bus Card")
+		(date "2024-07-20")
 		(rev "3.0")
 	)
 	(lib_symbols
@@ -5643,10 +5643,6 @@
 		(uuid "593b0d5f-e8ba-4c30-b991-de30bcf55dcc")
 	)
 	(no_connect
-		(at 271.78 106.68)
-		(uuid "6394f7b8-d2ac-41be-8016-c242424b9c35")
-	)
-	(no_connect
 		(at 92.71 200.66)
 		(uuid "8a780fb1-d094-4a01-8efe-3bce9c1aa65c")
 	)
@@ -7892,16 +7888,6 @@
 		)
 		(uuid "6d02e22f-3fe2-4e80-97e2-e4bc85976845")
 	)
-	(wire
-		(pts
-			(xy 229.87 106.68) (xy 243.84 106.68)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "6df3d65c-1e5c-4140-8177-00b641e77697")
-	)
 	(bus
 		(pts
 			(xy 55.88 34.29) (xy 137.16 34.29)
@@ -8291,16 +8277,6 @@
 			(type default)
 		)
 		(uuid "8dc13b46-9949-46d0-aa2b-c0a1306eceff")
-	)
-	(wire
-		(pts
-			(xy 229.87 106.68) (xy 229.87 127)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "8df9bac4-13a3-40e1-be17-c1d2209013cf")
 	)
 	(wire
 		(pts
@@ -9464,6 +9440,16 @@
 	)
 	(wire
 		(pts
+			(xy 241.3 106.68) (xy 243.84 106.68)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d32706f3-8c82-4e93-98f0-109b7d823a7e")
+	)
+	(wire
+		(pts
 			(xy 203.2 101.6) (xy 207.01 101.6)
 		)
 		(stroke
@@ -10398,7 +10384,7 @@
 		)
 		(uuid "d9f3f701-d5b6-4ce0-bb7c-3080ffb6c156")
 	)
-	(text "HOLDS _RSTOUT LOW WHEN THE\nCPU ASSERTS RESET OR\nTHE FPGAs ARE CONFIGURING.\nPULLUP SUPPLIED ON AMIGAPCI."
+	(text "HOLDS _RSTOUT LOW WHEN THE\nCPU ASSERTS RESET OR\nTHE FPGAs ARE CONFIGURING."
 		(exclude_from_sim no)
 		(at 292.608 29.464 0)
 		(effects
@@ -11282,6 +11268,27 @@
 			)
 		)
 	)
+	(global_label "_BB"
+		(shape input)
+		(at 241.3 106.68 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "218e708b-47e9-43b7-b4d7-b90d1e4abd1b")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 234.8072 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+	)
 	(global_label "PCLKA"
 		(shape input)
 		(at 128.27 193.04 0)
@@ -11408,9 +11415,9 @@
 			)
 		)
 	)
-	(global_label "_BGA"
+	(global_label "_BG-3V"
 		(shape output)
-		(at 271.78 101.6 0)
+		(at 271.78 99.06 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -11420,7 +11427,7 @@
 		)
 		(uuid "5492c148-c474-4646-8bd2-1e3a77e60163")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 279.3614 101.6 0)
+			(at 282.1433 99.06 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11452,7 +11459,7 @@
 	)
 	(global_label "_BG"
 		(shape input)
-		(at 241.3 101.6 180)
+		(at 241.3 99.06 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -11462,7 +11469,7 @@
 		)
 		(uuid "69fdbff0-8d90-4915-a360-69b7e9361a24")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 234.8072 101.6 0)
+			(at 234.8072 99.06 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11598,7 +11605,7 @@
 	)
 	(global_label "R_W"
 		(shape input)
-		(at 241.3 99.06 180)
+		(at 241.3 101.6 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11607,7 +11614,7 @@
 		)
 		(uuid "802a1e77-ccde-4e41-8a08-c155f220a18d")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 234.95 98.806 0)
+			(at 234.95 101.346 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11888,9 +11895,30 @@
 			)
 		)
 	)
+	(global_label "_BB-3V"
+		(shape output)
+		(at 271.78 106.68 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "bab0d996-50db-4c83-af16-47e2f7de7eba")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 282.1433 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
 	(global_label "R_W-3V"
 		(shape output)
-		(at 271.78 99.06 0)
+		(at 271.78 101.6 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11899,7 +11927,7 @@
 		)
 		(uuid "c04d1ddd-d544-40ec-ad80-4f1ef7e5e462")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 282.194 98.806 0)
+			(at 282.194 101.346 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13749,7 +13777,7 @@
 				)
 			)
 		)
-		(property "Value" "74AHC1G09"
+		(property "Value" "74AHCT1G08"
 			(at 283.464 48.514 0)
 			(effects
 				(font
@@ -16117,73 +16145,6 @@
 			(project "AmigaPCI 68040"
 				(path "/e4eb271a-56d6-4281-ada6-40852f202c68/0949e450-9e28-4a27-951c-3961f6039256"
 					(reference "#PWR0152")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_name "GND_3")
-		(lib_id "power:GND")
-		(at 229.87 127 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "e9df7cc7-1277-4e78-8de2-8c7fe68c9a91")
-		(property "Reference" "#PWR019"
-			(at 229.87 133.35 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 229.87 132.08 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 229.87 127 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 229.87 127 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 229.87 127 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "b1493aac-9491-4500-b6c4-8b8fa32eea2b")
-		)
-		(instances
-			(project "AmigaPCI 68040"
-				(path "/e4eb271a-56d6-4281-ada6-40852f202c68/0949e450-9e28-4a27-951c-3961f6039256"
-					(reference "#PWR019")
 					(unit 1)
 				)
 			)

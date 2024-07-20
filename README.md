@@ -46,7 +46,7 @@ The PCI bus is based on the [PCI Local Bus Revision 2.3 specifications](/DataShe
 ## CPU Local Bus
 The AmigaPCI main board has no CPU or fast ram. Instead, the CPU Local Bus port supports CPUs and AUTOCONFIG devices. The CPU Local Bus port is a DIN 41612 connector with 120 pins in 3 rows by 40 columns. The CPU local bus is discussed further in the [AmigaPCI Technical Reference Manual](/AmigaPCI_Technical_Manual.md). This approach allows fast RAM and other AUTOCONFIG devices be optimized for the clock speed and capabilities of the CPU device implemented.
 
-<p align="center"><img src="/Images/CPULocalBus-20.jpg" width="400"></p>
+<p align="center"><img src="/Images/CPULocalBus-30.jpg" width="425"></p>
 
 ## Amiga Custom Chips  
 The AmigaPCI must be populated with the Amiga OCS/ECS custom chips. The Amiga chipset is required to enable critical functions of the Amiga computer. See [Assembly Notes](assembly.md) for more information.

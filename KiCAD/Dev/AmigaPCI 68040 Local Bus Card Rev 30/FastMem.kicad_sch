@@ -5,8 +5,8 @@
 	(uuid "668ce759-f52a-4399-8c3c-b3f39f8df684")
 	(paper "B")
 	(title_block
-		(title "AmigaPCI 68040")
-		(date "2024-07-18")
+		(title "AmigaPCI 68040 Local Bus Card")
+		(date "2024-07-20")
 		(rev "3.0")
 	)
 	(lib_symbols
@@ -5325,6 +5325,10 @@
 	(no_connect
 		(at 325.12 52.07)
 		(uuid "36f0fbb9-2401-4d85-9a3c-4d6ac6fd29f4")
+	)
+	(no_connect
+		(at 383.54 176.53)
+		(uuid "659d73b8-7a56-46c6-b153-08f88819be43")
 	)
 	(no_connect
 		(at 325.12 54.61)

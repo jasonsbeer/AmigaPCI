@@ -5,8 +5,8 @@
 	(uuid "5ff5345d-209e-44aa-bccc-4622cf31e1b4")
 	(paper "USLedger")
 	(title_block
-		(title "AmigaPCI 68040")
-		(date "2024-07-18")
+		(title "AmigaPCI 68040 Local Bus Card")
+		(date "2024-07-20")
 		(rev "3.0")
 	)
 	(lib_symbols
@@ -11978,7 +11978,7 @@
 			)
 		)
 	)
-	(global_label "_BGA"
+	(global_label "_CPUBG"
 		(shape input)
 		(at 33.02 170.18 180)
 		(effects

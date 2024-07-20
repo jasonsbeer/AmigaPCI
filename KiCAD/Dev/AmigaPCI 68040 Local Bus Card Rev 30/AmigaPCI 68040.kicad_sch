@@ -5,8 +5,8 @@
 	(uuid "e4eb271a-56d6-4281-ada6-40852f202c68")
 	(paper "A")
 	(title_block
-		(title "AmigaPCI 68040")
-		(date "2024-07-18")
+		(title "AmigaPCI 68040 Local Bus Card")
+		(date "2024-07-20")
 		(rev "3.0")
 	)
 	(lib_symbols)
