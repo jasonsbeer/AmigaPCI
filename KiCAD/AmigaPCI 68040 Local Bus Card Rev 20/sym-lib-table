@@ -1,5 +1,0 @@
-(sym_lib_table
-  (version 7)
-  (lib (name "AmigaPCI-Symbols")(type "KiCad")(uri "${KIPRJMOD}/AmigaPCI-Symbols/AmigaPCI-Symbols.kicad_sym")(options "")(descr ""))
-  (lib (name "din41612_03x40")(type "KiCad")(uri "/home/jason/Desktop/AmigaPCI Mainboard-KiCAD REV 30/AmigaPCI-Symbols/din41612_03x40.kicad_sym")(options "")(descr ""))
-)
