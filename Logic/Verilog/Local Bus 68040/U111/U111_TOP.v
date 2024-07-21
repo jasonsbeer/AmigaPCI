@@ -26,6 +26,7 @@ Description: DYNAMIC BUS SIZING
 
 Revision History:
     12-JUL-2024 : INITIAL CODE
+    21-JUL-2024 : ADDED _TBI AND _TCI TO BURST CYCLE TERMINATION.
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 TO BUILD WITH APIO: apio build --top-module U111_TOP --fpga iCE40-HX4K-TQ144
@@ -37,9 +38,9 @@ input [1:0] A,
 input [1:0] DSACK,
 input [1:0] SIZ,
 input [1:0] TT,
-input nTS_CPU, nTBI, RnW, nBG, nRESET, CLK40,
+input nTS_CPU, nTBI, nTCI, RnW, nBG, nRESET, CLK40,
 
-output nTS, nTA, CLK40A, CLK40B, CLK40C, CLK80A, CLK80B, CLK80C, RAMCLK,
+output nTS, nTA, nTBI_CPU, nTCI_CPU, CLK40A, CLK40B, CLK40C, CLK80A, CLK80B, CLK80C, RAMCLK,
 
 inout [31:24] D3V3A_BYTE0,
 inout [23:16] D3V3A_BYTE1,
@@ -57,6 +58,8 @@ inout [7:0] D3V3B_BYTE3
 //////////////////////////////
 
 //WE GENERATE THE 40MHz AND 80MHz CLOCKS HERE
+
+//wire BCLK = CLK40; //FOR THE TEST BENCH. COMMENT OUT THE PLL CLOCK STUFF.
 
 wire BCLK;
 wire CLK80m;
@@ -117,17 +120,25 @@ SB_PLL40_PAD # (
 
 reg TA_OUT;
 reg TS_OUT;
+reg TBI_OUT;
+reg TCI_OUT;
 
 assign nTA = ~TA_OUT;
 assign nTS = ~TS_OUT;
+assign nTBI_CPU = ~TBI_OUT;
+assign nTCI_CPU = ~TCI_OUT;
 
 always @(negedge BCLK, negedge nRESET) begin
     if (!nRESET) begin
         TA_OUT <= 0;
         TS_OUT <= 0;
+        TBI_OUT <= 0;
+        TCI_OUT <= 0;
     end else begin
         TA_OUT <= TA;
         TS_OUT <= TS;
+        TBI_OUT <= TBI;
+        TCI_OUT <= TCI;
     end
 end
 
@@ -318,6 +329,9 @@ end
 
 reg [3:0]STATE;
 reg TA;
+reg TBI;
+reg TCI;
+reg CYCLE_BURST_INHIBIT;
 reg CYCLE1;
 reg BURST;
 reg [2:0] BURST_COUNTER;
@@ -330,6 +344,9 @@ always @(posedge BCLK, negedge nRESET) begin
 		STATE <= 4'b0000;
         TA <= 0;
         TS <= 0;
+        TBI <= 0;
+        TCI <= 0;
+        CYCLE_BURST_INHIBIT <= 0;
         CYCLE1 <= 0;
         BURST <= 0;
         BURST_COUNTER <= 3'b000;
@@ -340,7 +357,10 @@ always @(posedge BCLK, negedge nRESET) begin
 
 			4'b0000 : //IDLE
                 begin
-                    TA <= 0;                    
+                    TA <= 0;
+                    TBI <= 0;
+                    TCI <= 0;
+                    CYCLE_BURST_INHIBIT <= 0;           
                     
                     if (!nTS_CPU) begin	
 
@@ -379,6 +399,9 @@ always @(posedge BCLK, negedge nRESET) begin
                             begin 
 
                                 TA <= 1;
+                                TBI <= ~nTBI;
+                                CYCLE_BURST_INHIBIT <= ~nTBI;
+                                TCI <= ~nTCI;                                
 
                                 if (BURST) begin
                                     //STAY IN THIS STATE UNTIL THE BURST HAS COMPLETED OR BURST INHIBIT IS ASSERTED
@@ -402,7 +425,9 @@ always @(posedge BCLK, negedge nRESET) begin
                                 end else begin
                                     if (TA) begin
                                         TA <= 0; 
-                                        if (!BURST || !nTBI || BURST_COUNTER == 3'b100) begin                                                                        
+                                        TBI <= 0;
+                                        TCI <= 0;
+                                        if (!BURST || (CYCLE_BURST_INHIBIT && BURST_COUNTER == 1'b1) || BURST_COUNTER == 3'b100) begin                                                                        
                                             STATE <= 4'b0000; 
                                         end
                                     end

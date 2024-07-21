@@ -14,12 +14,15 @@ reg [1:0]DSACK = 2'b11;
 reg [1:0]A = 2'b00;
 reg nTS_CPU = 1;
 reg nTBI = 1;
+reg nTCI = 1;
 reg nBG = 0;
 reg nRESET = 0;
 
 //outputs
 wire nTS;
 wire nTA;
+wire nTBI_CPU;
+wire nTCI_CPU;
 
 //WRITE INPUTS/READ OUTPUTS
 wire [31:24] D3V3A_BYTE0;
@@ -113,13 +116,13 @@ initial begin
     #25 DSACK <= 2'b11;*/
 
     //LONG WORD WRITE CYCLE, WORD PORT
-    #50 A <= 2'b00; RnW <= 0; SIZ <= 2'b00; nTS_CPU <= 0; DAB0 <= 8'haa; DAB1 <= 8'hbb; DAB2 <= 8'hcc; DAB3 <= 8'hdd;
+    /*#50 A <= 2'b00; RnW <= 0; SIZ <= 2'b00; nTS_CPU <= 0; DAB0 <= 8'haa; DAB1 <= 8'hbb; DAB2 <= 8'hcc; DAB3 <= 8'hdd;
     DBB0 <= 8'bzzzzzzzz; DBB1 <= 8'bzzzzzzzz; DBB2 <= 8'bzzzzzzzz; DBB3 <= 8'bzzzzzzzz;
     #25 nTS_CPU <= 1;
     #25 DSACK <= 2'b01;
     #25 DSACK <= 2'b11;
     #25 DSACK <= 2'b01;
-    #25 DSACK <= 2'b11;
+    #25 DSACK <= 2'b11;*/
 
     //BYTE READ CYCLE
     /*#50 SIZ <= 2'b01; A <= 2'b00; nTS_CPU <= 0; 
@@ -174,6 +177,63 @@ initial begin
     #25 DSACK <= 2'b11; DBB0 <= 8'hcc; DBB1 <= 8'hdd;
     #25 DSACK <= 2'b01;
     #25 DSACK <= 2'b11;*/
+
+    //LINE TRANSFER WRITE CYCLE w/BURST INHIBIT
+    /*#50 A <= 2'b00; RnW <= 0; SIZ <= 2'b11; TT <= 2'b01; nTS_CPU <= 0; DAB0 <= 8'haa; DAB1 <= 8'hbb; DAB2 <= 8'hcc; DAB3 <= 8'hdd;
+    DBB0 <= 8'bzzzzzzzz; DBB1 <= 8'bzzzzzzzz; DBB2 <= 8'bzzzzzzzz; DBB3 <= 8'bzzzzzzzz;
+    #25 nTS_CPU <= 1;
+    #25 DSACK <= 2'b00; nTBI <= 0;
+    #25 DSACK <= 2'b11; nTBI <= 1;*/
+
+    //LINE TRANSFER WRITE CYCLE
+    /*#25 A <= 2'b00; RnW <= 0; SIZ <= 2'b11; TT <= 2'b01; nTS_CPU <= 0; DAB0 <= 8'haa; DAB1 <= 8'hbb; DAB2 <= 8'hcc; DAB3 <= 8'hdd;
+    DBB0 <= 8'bzzzzzzzz; DBB1 <= 8'bzzzzzzzz; DBB2 <= 8'bzzzzzzzz; DBB3 <= 8'bzzzzzzzz;
+    #25 nTS_CPU <= 1;
+    #25 DSACK <= 2'b00;
+    #25 DSACK <= 2'b11;
+    #50 DSACK <= 2'b00;
+    #25 DSACK <= 2'b11;
+    #50 DSACK <= 2'b00;
+    #25 DSACK <= 2'b11;
+    #50 DSACK <= 2'b00;
+    #25 DSACK <= 2'b11;*/
+
+
+    //LINE TRANSFER READ CYCLE w/BURST INHIBIT
+    #50 A <= 2'b00; RnW <= 1; SIZ <= 2'b11; TT <= 2'b01; nTS_CPU <= 0; 
+    DBB0 <= 8'haa; DBB1 <= 8'hbb; DBB2 <= 8'hcc; DBB3 <= 8'hdd; 
+    DAB0 <= 8'bzzzzzzzz; DAB1 <= 8'bzzzzzzzz; DAB2 <= 8'bzzzzzzzz; DAB3 <= 8'bzzzzzzzz;
+    #25 nTS_CPU <= 1;
+    #25 DSACK <= 2'b00; nTBI <= 0;
+    #25 DSACK <= 2'b11; nTBI <= 1;
+
+    //LINE TRANSFER READ CYCLE w/CACHE INHIBIT
+    #25 A <= 2'b00; RnW <= 1; SIZ <= 2'b11; TT <= 2'b01; nTS_CPU <= 0; 
+    DBB0 <= 8'haa; DBB1 <= 8'hbb; DBB2 <= 8'hcc; DBB3 <= 8'hdd; 
+    DAB0 <= 8'bzzzzzzzz; DAB1 <= 8'bzzzzzzzz; DAB2 <= 8'bzzzzzzzz; DAB3 <= 8'bzzzzzzzz;
+    #25 nTS_CPU <= 1;
+    #25 DSACK <= 2'b00; nTCI <= 0;
+    #25 DSACK <= 2'b11; nTCI <= 1;
+    #50 DSACK <= 2'b00;
+    #25 DSACK <= 2'b11;
+    #50 DSACK <= 2'b00;
+    #25 DSACK <= 2'b11;
+    #50 DSACK <= 2'b00;
+    #25 DSACK <= 2'b11;
+
+    //LINE TRANSFER READ CYCLE
+    #25 A <= 2'b00; RnW <= 1; SIZ <= 2'b11; TT <= 2'b01; nTS_CPU <= 0;
+    DBB0 <= 8'haa; DBB1 <= 8'hbb; DBB2 <= 8'hcc; DBB3 <= 8'hdd; 
+    DAB0 <= 8'bzzzzzzzz; DAB1 <= 8'bzzzzzzzz; DAB2 <= 8'bzzzzzzzz; DAB3 <= 8'bzzzzzzzz;
+    #25 nTS_CPU <= 1;
+    #25 DSACK <= 2'b00;
+    #25 DSACK <= 2'b11; 
+    #50 DSACK <= 2'b00; DBB0 <= 8'hee; DBB1 <= 8'hff; DBB2 <= 8'h00; DBB3 <= 8'h11; 
+    #25 DSACK <= 2'b11;
+    #50 DSACK <= 2'b00; DBB0 <= 8'h22; DBB1 <= 8'h33; DBB2 <= 8'h44; DBB3 <= 8'h55; 
+    #25 DSACK <= 2'b11;
+    #50 DSACK <= 2'b00; DBB0 <= 8'h66; DBB1 <= 8'h77; DBB2 <= 8'h88; DBB3 <= 8'h99; 
+    #25 DSACK <= 2'b11;
     
 
 end
@@ -200,8 +260,13 @@ U111_TOP dut (
     .A (A),
     .nTS_CPU (nTS_CPU),
     .nTBI (nTBI),
+    .nTCI (nTCI),
     .nBG (nBG),
     .nRESET (nRESET),
+    .nTS (nTS),
+    .nTCI_CPU (nTCI_CPU),
+    .nTBI_CPU (nTBI_CPU),
+    .nTA (nTA),
 
     .D3V3A_BYTE0 (D3V3A_BYTE0),
     .D3V3A_BYTE1 (D3V3A_BYTE1),
