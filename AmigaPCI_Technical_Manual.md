@@ -26,6 +26,7 @@ Revision|Date|Status
 0.3|July 11, 2024|Added dynamic bus sizing to section 3. Modified CPU Local Bus signals.
 0.4|July 15, 2024|Added section 3.1. CPU Local Bus Card Devices
 0.5|July 16, 2024|Rework of Section 3.
+0.6|July 29, 2024|Added Section 4, Jumpers
 
 <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://github.com/jasonsbeer/AmigaPCI">AmigaPCI Hardware Reference</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://github.com/jasonsbeer">Jason Neus</a> is licensed under <a href="https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">Creative Commons Attribution-NonCommercial 4.0 International<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt=""></a></p>
 
@@ -424,5 +425,48 @@ Figure 3.7 shows a state machine for enabling dynamic bus sizing. This state mac
 
 Figure 3.7.  
 <img src="/Images/dynamic_bus_states.png">
+
+# 4.0 Jumpers
+
+There are a number of jumpers on the AmigaPCI mainboard that control how it behaves. Incorrect jumper settings can lead to system instability or a failure to boot.
+
+Description|Jumper|Setting|Result
+-|-|-|-
+PCI Mode|J100|[]()|RESERVED
+PCI Mode|J101|[]()|RESERVED
+PCI Mode|J102|[]()|RESERVED
+DF1 Presence|J200|Short|Second internal floppy drive present.
+[]()|[]()|Open|Second internal floppy drive not present.
+Floppy Disk Change Signal*|J201|1-2 Amiga|Amiga type floppy drive(s) installed.
+[]()|[]()|2-3 PC|PC type floppy drive(s) installed.
+Floppy Ready Signal*|J202|1-2 Amiga|Amiga type floppy drive(s) installed.
+[]()|[]()|2-3 PC|PC type floppy drive(s) installed.
+_RAMEN|J203|Short|Pass the _RAMEN signal to Agnus.
+[]()|[]()|Open|Do not pass the _RAMEN signal to Agnus. Factory Default.
+Agnus Part|J204|Short|Agnus 8372A Installed.
+[]()|[]()|Open|Agnus 8375 Installed.
+Agnus Video Mode|J205|Short|PAL 8375 Installed.
+[]()|[]()|Open|NTSC 8375 or any 8372A** Installed.
+Agnus Vbb|J206|Short|Vbb Agnus installed.
+[]()|[]()|Open|Non-Vbb Agnus Installed.
+TICK Frequency|J207|1-2 50Hz|PAL
+[]()|[]()|2-3 60HZ|NTSC
+Timebase Source|J208|1-2 VSYNC|Timebase driven by Agnus VSYNC.
+[]()|[]()|2-3 TICK|Timebase driven by TICK.
+Sync Source|J303|1-2 HSYNC|Supplies HSYNC to pin 13 of the HD15 video port.
+[]()|[]()|2-3 CSYNC|Supplies CSYNC to pin 13 of the HD15 video port.
+RAM Clock|J700|1-2 80MHz|Supplies 80MHz to SDRAM. Factory Default.
+[]()|[]()|2-3 40MHz|Supplies 40MHz to SDRAM.
+ATA Autoboot|J900|Short|ATA autoboot disabled.
+[]()|[]()|Open|ATA autoboot enabled.
+Primary ATA Port Ultra Mode|J901|Short|Enable Ultra 2*** mode.
+[]()|[]()|Open|Disable Ultra 2 mode.
+Secondary ATA Port Ultra Mode|J902|Short|Enable Ultra 2 mode.
+[]()|[]()|Open|Disable Ultra 2 mode.
+
+*Jumpers J201 and J202 must both be set to PC Type or Amiga Type.  
+**Agnus 8372A is capable of either PAL or NTSC operation.  
+***Ultra 2 mode is an undocumented ATA PIO timing designed specifically for the SanDisk Ultra II compact flash card.  
+
 
 **END**
