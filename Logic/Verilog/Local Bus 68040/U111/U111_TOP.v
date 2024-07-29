@@ -403,10 +403,8 @@ always @(posedge BCLK, negedge nRESET) begin
                                 CYCLE_BURST_INHIBIT <= ~nTBI;
                                 TCI <= ~nTCI;                                
 
-                                if (BURST) begin
-                                    //STAY IN THIS STATE UNTIL THE BURST HAS COMPLETED OR BURST INHIBIT IS ASSERTED
-                                    BURST_COUNTER <= BURST_COUNTER + 1;
-                                end 
+                                //STAY IN THIS STATE UNTIL THE BURST HAS COMPLETED OR BURST INHIBIT IS ASSERTED
+                                BURST_COUNTER <= BURST_COUNTER + 1;
                             end
 
                         2'b01: //TRANSFER THE NEXT WORD

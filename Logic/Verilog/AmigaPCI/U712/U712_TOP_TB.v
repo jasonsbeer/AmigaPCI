@@ -7,6 +7,8 @@ module top_tb();
 
 //inputs
 reg CLK7 = 0;
+reg CLK40 = 1;
+reg CLK80 = 1;
 //reg CLK20 = 1;
 reg C1 = 1;
 reg C3 = 0;
@@ -15,8 +17,8 @@ reg nREGSPACE = 1;
 reg nRAMSPACE = 1;
 reg RnW = 1;
 reg [20:0]A = 21'b00000_00000000_00000000;
-wire SIZ0 = 1;
-wire SIZ1 = 1;
+reg SIZ0 = 1;
+reg SIZ1 = 1;
 reg nDBR = 1;
 reg nAWE = 1;
 reg nRAS0 = 1;
@@ -26,14 +28,13 @@ reg nCASL = 1;
 reg [9:0]DRA = 10'b0000000000;
 reg TT1 = 1;
 reg TT0 = 1;
+reg nTS = 1;
 
 //outputs
-wire CLK40m;
-wire CLK80m;
 wire nUDS;
 wire nLDS;
 wire nAS;
-wire nTA;
+wire [1:0]DSACK;
 wire nREGEN;
 wire nRAMEN;
 wire nUMBE;
@@ -45,10 +46,10 @@ wire nDRDEN;
 wire DRDDIR;
 wire nCRCS; wire nRAS; wire nCAS; wire nWE; wire CLKE; wire nTBI; wire nDBEN; wire [10:0]CMA;
 
-reg myCLK40 = 1;
-reg myCLK80 = 1;
-assign CLK40m = myCLK40;
-assign CLK80m = myCLK80;
+//reg myCLK40 = 1;
+//reg myCLK80 = 1;
+//assign CLK40m = myCLK40;
+//assign CLK80m = myCLK80;
 
 //Simulation time : 10000 * 1ns = 10us
 localparam DURATION = 20000;
@@ -61,8 +62,10 @@ localparam DURATION = 20000;
 
 always #69.5 CLK7 = ~CLK7;
 //always #25 CLK20 = ~CLK20;
-always #12.5 myCLK40 = ~myCLK40;
-always #6.25 myCLK80 = ~myCLK80;
+//always #12.5 myCLK40 = ~myCLK40;
+//always #6.25 myCLK80 = ~myCLK80;
+always #12.5 CLK40 = ~CLK40;
+always #6.25 CLK80 = ~CLK80;
 always #139 C1 = ~C1;
 
 initial begin
@@ -77,7 +80,7 @@ initial begin
     #100 nRESET = 1;
 
     //REGISTER ONLY TEST
-    /*#12.5 nREGSPACE = 0;
+    /*#12.5 nREGSPACE = 0; RnW = 0; SIZ0 = 0;
     #513 nDBR = 0;
     #750 nDBR = 1;
     #238 RnW = 1;
@@ -137,51 +140,58 @@ initial begin
     #493 nREGSPACE = 1; RnW = 1;*/
 
     //CPU VS DMA CHIP RAM ACCESS
-    #40 nDBR = 0; nAWE = 0;
-    #210 DRA = 10'b0101010101; nRAS0 = 0;
-    #70 DRA = 10'b1010101010; nCASU = 0; nCASL = 0;
+    #340 nDBR = 0; nAWE = 1;
+    #185 DRA = 10'b0101010101; nRAS0 = 0; //AGNUS ASSERTS RAS ON RISING EDGE OF C3 (CCKQ)
+    #70 DRA = 10'b1010101010; nCASU = 0; nCASL = 0; //AGNUS ASSERTS CAS ON FALLING EDGE OF C1 (CCK)
     #70 nRAS0 = 1;
     #70 nCASU = 1; nCASL = 1;
     #70 nRAS0 = 0;
-    #10 nRAMSPACE = 0; RnW = 1;
-    #60 nCASU = 0; nCASL = 0;
+    #8 nRAMSPACE = 0; RnW = 1; nTS = 0;
+    #25 nTS = 1;
+    #37 nCASU = 0; nCASL = 0;
     #70 nRAS0 = 1;
     #70 nCASU = 1; nCASL = 1;
     #70 nRAS0 = 0;
-    #10 TT1 = 0;   
-    #60 nCASU = 0; nCASL = 0;
+    #70 nCASU = 0; nCASL = 0;
     #70 nRAS0 = 1;
     #70 nCASU = 1;  nCASL = 1;
-    #70 nRAS0 = 0;
+    #17 nTS = 0;
+    #25 nTS = 1;
+    #28 nRAS0 = 0;
     #70 nCASU = 0; nCASL = 0;
     #70 nRAS0 = 1; 
     #70 nCASU = 1;  nCASL = 1;
-    #70 nRAS0 = 0;      
-    #70 nCASU = 0; nCASL = 0; 
-    #70 nRAS0 = 1;    
+
+    #40 nTS = 0; TT1 = 0;
+    #23 nRAS0 = 0;
+    #2 nTS = 1;   
+    #70 nCASU = 0; nCASL = 0;
+
+    #5 nTS = 0;     
+    #25 nTS = 1;
+    #40 nRAS0 = 1;    
     #70 nCASU = 1;  nCASL = 1;
     #70 nRAS0 = 0; 
     #70 nCASU = 0; nCASL = 0;
-    #17 nRAMSPACE = 1;
-    #53 nRAS0 = 1;    
-    #60 nCASU = 1; nCASL = 1;
+    #70 nRAS0 = 1;    
+    #70 nCASU = 1; nCASL = 1;
 
-    //THIS TRANSFER "CRASHES" INTO A DMA START, SO IT ENDS EARLY BY ASSERTING _TBI.
-    #60 nRAMSPACE = 0;
-    #10 nRAS0 = 0;
+    //THIS BURST TRANSFER "CRASHES" INTO A DMA START, SO IT ENDS EARLY BY ASSERTING _TBI.
+    #5 nTS = 0;
+    #25 nTS = 1;
+    #35 nRAS0 = 0;
     #70 nCASU = 0; nCASL = 0;
-    #30 nRAMSPACE = 1;
-    #40 nRAS0 = 1;
+    #70 nRAS0 = 1;
     #70 nCASU = 1; nCASL = 1;
 
     //THIS TRANSFER STARTS JUST EARLY ENOUGH TO AVOID BEING CANCELLED BY THE DMA START  
-    #23 nRAMSPACE = 0;  
+    /*#23 nRAMSPACE = 0;  
     #47 nRAS0 = 0;
     #70 nCASU = 0; nCASL = 0;
     #50 nRAMSPACE = 1;
     #20 nRAS0 = 1; 
     #15 nDBR = 1;    
-    #55 nCASU = 1; nCASL = 1;   
+    #55 nCASU = 1; nCASL = 1;   */
 
 
 end
@@ -200,8 +210,8 @@ end
 
 U712_TOP dut (
     .CLK7 (CLK7),
-    .CLK40m (CLK40m),
-    .CLK80m (CLK80m),
+    .CLK40 (CLK40),
+    .CLK80 (CLK80),
     .C1 (C1),
     .C3 (C3),
     .nRESET (nRESET),
@@ -220,9 +230,10 @@ U712_TOP dut (
     .A (A),
     .TT1 (TT1),
     .TT0 (TT0),
+    .nTS (nTS),
 
     .nREGEN (nREGEN),
-    .nTA(nTA),
+    .DSACK (DSACK),
     .nVBEN(nVBEN),
     .nDRDEN(nDRDEN),
     .DRDDIR(DRDDIR),

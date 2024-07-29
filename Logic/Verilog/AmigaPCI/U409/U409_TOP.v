@@ -117,7 +117,6 @@ U409_ADDRESS_DECODE U409_ADDRESS_DECODE (
     .nRESET (nRESET),
     .OVL (OVL),
     .CIA_ENABLE (CIA_ENABLEm),
-    .TS (TS),
     .TT0 (TT0),
     .TT1 (TT1),
     .nLBEN (nLBEN),

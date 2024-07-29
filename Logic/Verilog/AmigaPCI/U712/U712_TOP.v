@@ -28,6 +28,9 @@ Revision History:
     16-JUN-2024 : INITIAL RELEASE
     18-JUN-2024 : ADDED 40MHz FANOUT
     19-JUN-2024 : ADDED 80MHz FANOUT
+    23-JUL-2024 : CHANGED FOR REV 3.0 CPU CARD
+                     REMOVED PLL CLOCKS
+                     ADDED CLOCK FANOUTS
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 TO BUILD WITH APIO: apio build --top-module U712_TOP --fpga iCE40-HX4K-TQ144
@@ -35,21 +38,30 @@ TO BUILD WITH APIO: apio build --top-module U712_TOP --fpga iCE40-HX4K-TQ144
 
 module U712_TOP
 (
-    input CLK7, CLK20, C1, C3, RnW, SIZ0, SIZ1, nBG, nRESET, nREGSPACE, nDBR, nAWE, nRAS0, nRAS1, nCASL, nCASU, nRAMSPACE, TT0, TT1, nTS,
+    input CLK7, CLK40, CLK80, C1, C3, RnW, SIZ0, SIZ1, nBG, nRESET, nREGSPACE, nDBR, nAWE, nRAS0, nRAS1, nCASL, nCASU, nRAMSPACE, TT0, TT1, nTS,
     input [20:0]A,
-    output nVBEN, nDRDEN, DRDDIR, nDBEN, nCRCS, nREGEN, nAS, CLK80A, CLK80B, CLK40A, CLK40B , nUUBE, nUMBE, nLMBE, nLLBE, nTA, nTBI, 
-    output nLDS, nUDS, nCUUBE, nCUMBE, nCLMBE, nCLLBE, nRAS, nCAS, nWE, CLKE, DBDIR, BANK0, BANK1, nRAMEN,
-    input [9:0] DRA, 
-    output [10:0] CMA
+    input [9:0] DRA,
 
-    //input CLK40m, CLK80m //<--THIS IS THE FOR THE TESTBENCH ONLY!!! 
+    output nVBEN, nDRDEN, DRDDIR, nDBEN, nCRCS, nREGEN, nAS, CLK80A, CLK40A, nUUBE, nUMBE, nLMBE, nLLBE, nTBI, 
+    output nLDS, nUDS, nCUUBE, nCUMBE, nCLMBE, nCLLBE, nRAS, nCAS, nWE, CLKE, DBDIR, BANK0, BANK1, nRAMEN,     
+    output [10:0] CMA,
+    output [1:0] DSACK
 
 );
+
+///////////////////
+// CLOCK FANOUTS //
+///////////////////
+
+wire CLK40m = CLK40;
+assign CLK40A = CLK40;
+wire CLK80m = CLK80;
+assign CLK80A = CLK80;
 
 //FOR TESTING
 
 //assign nRAMEN = nRAMSPACE;
-assign nRAMEN = CLKE;
+//assign nRAMEN = CLKE;
 
 ////////////////////
 // BUS/CPU CLOCKS //
@@ -57,7 +69,7 @@ assign nRAMEN = CLKE;
 
 //WE GENERATE THE 40MHz AND 80MHz CLOCKS HERE
 
-wire CLK40m;
+/*wire CLK40m;
 wire CLK80m;
 wire CLK40out;
 wire CLK80out;
@@ -97,7 +109,7 @@ SB_PLL40_CORE # (
         .LOCK(),
         .RESETB(1'b1),
         .BYPASS(1'b0)
-    );
+    );*/
 
 
 //LATCH _TS
@@ -178,8 +190,8 @@ U712_TRANSFER_ACK U712_TRANSFER_ACK (
     .nRESET (nRESET),
     .BURST_CYCLE (BURST_CYCLEm),
     .nTBI (nTBI),
-    .nTA (nTA),
-    .TA (TAm)
+    .TA (TAm),
+    .DSACK (DSACK)
     
 );
 

@@ -27,6 +27,7 @@ Description: MC68040/MC68060 TRANSFER ACK
 Revision History:
     09-JUN-2024 : INITIAL CODE
     28-JUN-2024 : Enable transfer burst inhibit on all register cycles.
+    23-JUL-2024 : CHANGE FOR DSACK TERMINATION.
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 TO BUILD WITH APIO: apio build --top-module U712_TOP --fpga iCE40-HX4K-TQ144
@@ -35,7 +36,8 @@ TO BUILD WITH APIO: apio build --top-module U712_TOP --fpga iCE40-HX4K-TQ144
 module U712_TRANSFER_ACK (
 
     input CLK40, REG_TA, RAM_TA, nREGSPACE, nRAMSPACE, nRESET, BURST_CYCLE,
-    output nTBI, nTA, TA
+    output nTBI, TA,
+    output [1:0] DSACK
 
 );
 
@@ -43,47 +45,94 @@ module U712_TRANSFER_ACK (
 // MC68040 TRANSFER ACK //
 //////////////////////////
 
-//ASSERT _TA WHEN DATA IS READY AND THE CYCLE CAN END. WE ASSERT BURST INHIBIT FOR ALL CYCLES EXCEPT UNINTERUPTED RAM CYCLES.
-//CACHING IS ALLOWED FOR ALL SPACES EXCEPT CHIP RAM, SINCE AGNUS CAN WRITE THERE, TOO.
-//WE FORCE _TA AND _tbi HIGH AFTER THE CYCLE TO PREVENT THE NEXT CYCLE FROM CATCHING THOSE ASSERTIONS.
+//ASSERT DSACK TO TERMINATE DATA TRANSFER CYCLE.
 
-wire TA;
-wire TA_SPACE;
-wire TB_SPACE;
-//wire TBI;
-//reg TBI_CYCLE;
-//reg TA_CYCLE;
+assign DSACK = DSACKEN ? DSACK_OUT : 2'bzz;
+assign nTBI = TBIEN ? nTBIOUT : 1'bz;
+assign TA = DSACK_OUT != 2'b11 && nRESET;
 
-assign TA = REG_TA || RAM_TA;
-assign TA_SPACE = !nREGSPACE || !nRAMSPACE; // || TA_CYCLE;
-assign nTA = TA_SPACE ? ~TA : 1'bz;
+//DSACK STATE MACHINE
+reg [1:0] DSACK_OUT;
+reg DSACKEN;
+reg [1:0] DSACK_STATE;
+reg TBIEN;
+reg nTBIOUT;
+//reg [1:0]BURST_COUNTER;
+reg DSACK_CYCLE;
 
-//TRANSFER BURST IS INHIBITED FOR WHEN A CPU RAM CYCLE IS INTERRUPTED BY A DMA CYCLE.
-assign TB_SPACE = (!nRAMSPACE && !BURST_CYCLE) || !nREGSPACE; // || TBI_CYCLE;
-assign nTBI = TB_SPACE ? ~TA : 1'bz;
-
-/*always @(posedge CLK40, negedge nRESET) begin
+always @(negedge CLK40, negedge nRESET) begin
     if (!nRESET) begin
-        TA_CYCLE <= 0;
+        DSACKEN <= 0;
+        TBIEN <= 0;
+        nTBIOUT <= 1;
+        DSACK_OUT <= 2'b11;
+        DSACK_STATE <= 2'b00;
+        //BURST_COUNTER <= 2'b00;
+        DSACK_CYCLE <= 0;
     end else begin
-        if (TA && TA_SPACE) begin
-            TA_CYCLE <= 1; end 
-        else begin
-            TA_CYCLE <= 0; 
-        end
-    end
-end*/
 
-/*always @(posedge CLK40, negedge nRESET) begin
-    if (!nRESET) begin
-        TBI_CYCLE <= 0;
-    end else begin
-        if (TA && TBI) begin
-            TBI_CYCLE <= 1; end 
-        else begin
-            TBI_CYCLE <= 0; 
+        if (RAM_TA) begin
+            DSACK_OUT <= 2'b00; //32-BIT PORT
+            DSACKEN <= 1;
+            TBIEN <= 1;
+            nTBIOUT <= BURST_CYCLE;
+            DSACK_CYCLE <= 1;
+        end else if (REG_TA) begin
+            DSACK_OUT <= 2'b01; //16-BIT PORT
+            DSACKEN <= 1;
+            DSACK_CYCLE <= 1;
+        end else if (DSACK_CYCLE) begin
+            DSACK_OUT <= 2'b11;
+            nTBIOUT <= 1;
+            DSACK_CYCLE <= 0;
+        end else begin
+            DSACKEN <= 0;
+            TBIEN <= 0;
         end
+
+
+        /*case (DSACK_STATE)
+            
+            2'b00: //ASSERT
+                begin
+                    if (REG_TA) begin
+                        DSACK_OUT <= 2'b01; //16-BIT PORT
+                        DSACKEN <= 1;
+                        DSACK_STATE <= 2'b01;
+                    end else if (RAM_TA) begin
+                        DSACK_OUT <= 2'b00; //32-BIT PORT
+                        DSACKEN <= 1;
+                        TBIEN <= 1;
+                        //BURST_COUNTER <= BURST_COUNTER + 1;
+
+                        //if (!BURST_CYCLE) begin
+                        DSACK_STATE <= 2'b01;
+                        nTBIOUT <= ~BURST_CYCLE;
+                        //end else if (BURST_COUNTER == 2'b11) begin
+                        //    DSACK_STATE <= 2'b01;
+                        //end
+
+                    end
+                end
+
+            2'b01: //NEGATE
+                begin
+                    DSACK_OUT <= 2'b11;                
+                    nTBIOUT <= 1;
+                    DSACK_STATE <= 2'b10;
+                    BURST_COUNTER <= 2'b00;
+                end
+
+            2'b10: //HIGH-Z
+                begin
+                    DSACKEN <= 0;
+                    TBIEN <= 0;
+                    DSACK_STATE <= 2'b00;
+                end
+
+        endcase*/
+
     end
-end*/
+end
 
 endmodule

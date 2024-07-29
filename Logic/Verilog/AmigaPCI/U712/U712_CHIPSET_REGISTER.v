@@ -30,6 +30,7 @@ Revision History:
     27-JUN-2024 : Early read cycle termination.
     28-JUN-2024 : Latch R_W at start of cycle to prevent late assertion of _TA during read cycles.
     01-JUL-2024 : Added _DBR synchronizer.
+    23-JUL-2024 : Fixed _UDS and _LDS.
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 TO BUILD WITH APIO: apio build --top-module U712_TOP --fpga iCE40-HX4K-TQ144
@@ -79,7 +80,7 @@ assign REG_CYCLE = REG_CYCLE_OUT;
 
 //MC68000 STATE MACHINE
 
-always @(negedge CLK40, negedge nRESET) begin
+always @(posedge CLK40, negedge nRESET) begin
     if (!nRESET) begin
 
         REG_EN <= 0;
@@ -102,13 +103,13 @@ always @(negedge CLK40, negedge nRESET) begin
 
             3'b000: //STATE 2
                 begin
-                    REGTA_EN <= 1'b0;
+                    REGTA_EN <= 0;
                     
                     if (!CLKC1[1] && !CLKC3[1] && !nREGSPACE) begin
                         AS_EN <= 1;
                         REG_EN <= 1;     
-                        LDS_OUT <= RnW || SIZ1 || !SIZ0 || A[0];
-                        UDS_OUT <= RnW || !A[0];
+                        UDS_OUT <= RnW || (!SIZ1 && SIZ0 && !A[0]) || !SIZ0;
+                        LDS_OUT <= RnW || (!SIZ1 && SIZ0 && A[0]) || !SIZ0;     
                         REG_CYCLE_OUT <= 1;
                         DS_EN <= RnW;        
                         READ_CYCLE <= RnW;
@@ -136,7 +137,7 @@ always @(negedge CLK40, negedge nRESET) begin
             3'b011: //STATE 6
                 begin 
                 
-                    REGTA_EN <= 1'b0;
+                    REGTA_EN <= 0;
                     
                     if (!CLKC1[1] && !CLKC3[1]) begin
                         STATE_COUNT <= 3'b100; 
@@ -164,7 +165,7 @@ end
 reg [1:0] CLKC1;
 reg [1:0] CLKC3;
 
-always @(posedge CLK40, negedge nRESET) begin
+always @(negedge CLK40, negedge nRESET) begin
     if (!nRESET) begin 
         CLKC1 <= 2'b11;
         CLKC3 <= 2'b11;

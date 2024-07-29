@@ -47,13 +47,12 @@ set_io SIZ1       1
 set_io SIZ0       2
 set_io TT1        3
 set_io TT0        4
-set_io nTA        7
-set_io CLK20      20
+set_io DSACK[1]   7
 set_io CLK40A     21
-set_io CLK40B     112
+set_io CLK40      112
 set_io nBG        37
-set_io CLK80A     38
-set_io CLK80B     115
+set_io CLK80      38
+set_io CLK80A     115
 set_io -pullup yes nTBI       39
 set_io nREGSPACE  41
 set_io nDBEN      42
@@ -87,7 +86,8 @@ set_io nLLBE      124
 set_io nUUBE      125
 set_io nRAMSPACE  130
 set_io nAWE       135
-set_io nTS        137
+set_io nTS        136
+set_io DSACK[0]   137
 set_io nDBR       138
 set_io nRAMEN     139
 set_io nREGEN     141
