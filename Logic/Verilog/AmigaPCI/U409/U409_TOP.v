@@ -36,46 +36,17 @@ module U409_TOP (
     input CLK40, CLK6, CLK7, nRESET, nTS, OVL, RnW, TT0, TT1, nLBEN,
     input [31:1] A,
 
-    output nROMEN, nBUFEN, TICK60, TICK50, CLKCIA, nTCI, nCIACS0, nCIACS1, nRAMSPACE, nREGSPACE, nTA
+    output nROMEN, nBUFEN, TICK60, TICK50, CLKCIA, nTCI, nCIACS0, nCIACS1, nRAMSPACE, nREGSPACE,
+    output [1:0] DSACK
 
 );
-
-/////////////////////////////////
-// LATCH TRANSFER START SIGNAL //
-/////////////////////////////////
-
-//WE NEED TO SAMPLE _TS SO WE KNOW WHEN A NEW CYCLE HAS STARTED.
-
-wire TS_RESET;
-reg TS;
-reg TA_RST;
-
-assign TS_RESET = TA_RST || !nRESET;
-
-always @(negedge CLK40, negedge nRESET) begin
-    if (!nRESET) begin
-        TA_RST <= 0;
-    end else begin
-        TA_RST <= TAm;
-    end
-end
-
-always @(negedge nTS, posedge TS_RESET) begin  
-    if (!nTS) begin
-        TS <= 1'b1; 
-    end else begin
-        TS <= 1'b0; 
-    end
-end
 
 //////////////////////
 // TRANSFER ACK TOP //
 //////////////////////
 
-wire TAm;
-
 U409_TRANSFER_ACK U409_TRANSFER_ACK (
-    .TS (TS),  
+    .nTS (nTS),  
     .ROMEN (ROMENm),
     .CIA_ENABLE (CIA_ENABLEm),
     .CLK40 (CLK40), 
@@ -85,11 +56,9 @@ U409_TRANSFER_ACK U409_TRANSFER_ACK (
     .AUTOVECTOR (AUTOVECTORm),
     .KNOWN_AD (KNOWN_ADm),
     .nRAMSPACE (nRAMSPACE),
-    .nREGSPACE (nREGSPACE),
-    .nTA (nTA), 
-    .TA (TAm),
+    .nREGSPACE (nREGSPACE), 
     .nROMEN (nROMEN), 
-    .nTCI (nTCI)
+    .DSACK (DSACK)
 );
 
 ////////////////////////////

@@ -31,6 +31,7 @@ Revision History:
     23-JUN-2024 : ADDED AUTOVECTOR TERMINATION
                   CYCLE TERMINATION FOR UNIMPLEMENTED ADDRESSES
     02-JUL-2024 : FIXED SHORT CYCLE _TA
+    29-JUL-2024 : ADDED SUPPORT FOR DSACK TERMINATION
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 TO BUILD WITH APIO: apio build --top-module U409_TOP --fpga iCE40-HX4K-TQ144
@@ -38,8 +39,9 @@ TO BUILD WITH APIO: apio build --top-module U409_TOP --fpga iCE40-HX4K-TQ144
 
 module U409_TRANSFER_ACK (
 
-    input TS, ROMEN, CIA_SPACE, CIA_ENABLE, CLK40, nRESET, CLKCIA, AUTOVECTOR, KNOWN_AD, nRAMSPACE, nREGSPACE,
-    output nROMEN, nTA, TA, nTCI
+    input nTS, ROMEN, CIA_SPACE, CIA_ENABLE, CLK40, nRESET, CLKCIA, AUTOVECTOR, KNOWN_AD, nRAMSPACE, nREGSPACE,
+    output nROMEN,
+    output [1:0] DSACK
 
 );
 
@@ -47,46 +49,92 @@ module U409_TRANSFER_ACK (
 // MC68040 TRANSFER ACK //
 //////////////////////////
 
-//ASSERT _TA WHEN DATA IS READY AND THE CYCLE CAN END. WE ASSERT BURST INHIBIT FOR ALL CYCLES EXCEPT RAM CYCLES.
-//CACHING IS ALLOWED FOR ALL SPACES EXCEPT CHIP RAM, SINCE AGNUS CAN WRITE THERE, TOO.
-//WE FORCE _TA HIGH AFTER THE CYCLE TO PREVENT THE NEXT CYCLE FROM ENDING PREMATURELY.
+//ASSERT DSACK TO TERMINATE DATA TRANSFER CYCLE.
 
-//ONLY BURST TRANSFERS ARE ELIGIABLE TO BE CACHED, SO WE DON'T WORRY ABOUT DISABLING THE TRANSFER CACHE.
+assign DSACK = DSACKEN ? DSACK_OUT : 2'bzz;
 
-wire TA;
-wire TA_SPACE;
-wire NOCACHE_SPACE;
+//DSACK STATE MACHINE
+reg [1:0] DSACK_OUT;
+reg DSACKEN;
+reg [1:0] DSACK_STATE;
+reg DSACK_CYCLE;
 
-assign TA = ROM_TA || CIA_TA || SC_TA[1]; //|| END_TA;
-assign TA_SPACE = ROMEN || CIA_SPACE || AUTOVECTOR || !KNOWN_AD; //|| END_TA;
-assign nTA = TA_SPACE ? ~TA : 1'bz;
+always @(negedge CLK40, negedge nRESET) begin
+    if (!nRESET) begin
+        DSACKEN <= 0;
+        DSACK_OUT <= 2'b11;
+        DSACK_STATE <= 2'b00;
+        DSACK_CYCLE <= 0;
+    end else begin
 
-//assign NOCACHE_SPACE = CIA_SPACE;
-//assign nTCI = NOCACHE_SPACE ? ~TA : 1'bz;
+        case (DSACK_STATE)
+            
+            2'b00: //ASSERT
+                begin
+                    if (CIA_TA) begin
+                        DSACK_OUT <= 2'b01; //16-BIT PORT
+                        DSACKEN <= 1;
+                        DSACK_STATE <= 2'b01;
+                    end else if (ROM_TA || SC_TA[1]) begin
+                        DSACK_OUT <= 2'b00; //32-BIT PORT
+                        DSACKEN <= 1;
+                        DSACK_STATE <= 2'b01;
+                    end
+                end
 
-assign nTCI = 1'bz;
-//assign nTBI = 1'bz; //TA ? 1'b0 : TA_SPACE || TA_CYCLE ? 1'b1 : 1'bZ;
+            2'b01: //NEGATE
+                begin
+                    DSACK_OUT <= 2'b11; 
+                    DSACK_STATE <= 2'b10;
+                end
+
+            2'b10: //HIGH-Z
+                begin
+                    DSACKEN <= 0;
+                    DSACK_STATE <= 2'b00;
+                end
+
+        endcase
+
+    end
+end
 
 ////////////////////////////
 // ROM TRANSFER ACK DELAY //
 ////////////////////////////
 
 //ROM TRANSFER ACK IS HELD OFF TO ADHEAR TO SETUP TIME OF THE ROM.
+//THIS IS SET FOR 125ns.
 
-reg [1:0] ROM_DELAY;
+parameter DELAY_COUNT = 4;
+reg [2:0] ROM_DELAY;
 reg ROM_TA;
 
 assign nROMEN = ~ROMEN;
 
 always @(posedge CLK40, negedge nRESET) begin
-	if (nRESET == 1'b0) begin
-		ROM_TA <= 1'b0;
-		ROM_DELAY <= 2'b00;
-	end else begin
-		case (ROM_DELAY)
-            2'b00 : begin ROM_TA <= 1'b0; if (ROMEN && TS) begin ROM_DELAY <= 2'b01; end end
-            2'b11 : begin ROM_TA <= 1'b1; ROM_DELAY <= 2'b00; end
-            default : ROM_DELAY <= ROM_DELAY + 1;
+	if (!nRESET) begin
+		ROM_TA <= 0;
+		ROM_DELAY <= 3'b000;
+	end else begin		
+
+        if (ROM_DELAY != 3'b000) begin ROM_DELAY <= ROM_DELAY + 1; end
+
+        case (ROM_DELAY)
+            3'b000 :
+                begin
+                    ROM_TA <= 0;
+                    if (!nTS && ROMEN) begin
+                        ROM_DELAY <= 3'b001;
+                    end
+                end
+
+            DELAY_COUNT :
+                begin
+                    ROM_TA <= 1;
+                    ROM_DELAY <= 3'b000;
+                end
+
 		endcase
 	end
 end
@@ -103,7 +151,7 @@ always @(posedge CLK40, negedge nRESET) begin
     if (!nRESET) begin
         SC_TA <= 2'b01;
     end else begin
-        if ((AUTOVECTOR || !KNOWN_AD) && TS) begin
+        if ((AUTOVECTOR || !KNOWN_AD) && !nTS) begin
             SC_TA <= SC_TA << 1;
         end else begin
             SC_TA <= 2'b01;
@@ -120,7 +168,7 @@ end
 //I INCLUDED A SYNCHRONIZER TO MAKE SURE THE CIA CLOCK IS LOW.
 
 reg [1:0] LASTCLK;
-reg TA_ENABLE;
+reg [1:0] CIA_STATE;
 reg CIA_TA;
 
 always @(posedge CLK40, negedge nRESET) begin
@@ -128,20 +176,44 @@ always @(posedge CLK40, negedge nRESET) begin
     if (nRESET == 0) begin
         LASTCLK <= 2'b00;
         CIA_TA <= 0;
-        TA_ENABLE <= 0;
+        CIA_STATE <= 2'b00;
     end else begin
 
         LASTCLK <= LASTCLK << 1;
         LASTCLK[0] <= CLKCIA;
 
-        if (LASTCLK == 2'b11 && CIA_ENABLE && TS) begin
-            TA_ENABLE <= 1;
-        end else if (LASTCLK == 2'b00 && TA_ENABLE) begin 
-            CIA_TA <= 1; 
-            TA_ENABLE <= 0;
-        end else begin
-            CIA_TA <= 0; 
-        end
+        case (CIA_STATE)
+
+        2'b00 :
+            begin
+                if (CIA_SPACE && !nTS) begin
+                    CIA_STATE <= 2'b01;
+                end
+            end
+
+        2'b01 :
+            begin
+                if (LASTCLK == 2'b11 && CIA_ENABLE) begin
+                    CIA_STATE <= 2'b10;
+                end
+            end
+
+        2'b10 :
+            begin
+                if (LASTCLK == 2'b00) begin 
+                    CIA_TA <= 1;
+                    CIA_STATE <= 2'b11;
+                end
+            end
+
+        2'b11 :
+            begin
+                CIA_TA <= 0;
+                CIA_STATE <= 2'b00;
+            end
+
+        endcase
+
     end
 
 end
