@@ -10645,7 +10645,7 @@
 			)
 		)
 	)
-	(global_label "LVR_W"
+	(global_label "_WEA"
 		(shape input)
 		(at 47.244 142.494 180)
 		(fields_autoplaced yes)
@@ -10657,7 +10657,7 @@
 		)
 		(uuid "6eb5cce5-6003-4ca0-8f45-26e12724f3b6")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 38.2777 142.494 0)
+			(at 39.4498 142.494 0)
 			(effects
 				(font
 					(size 1.27 1.27)

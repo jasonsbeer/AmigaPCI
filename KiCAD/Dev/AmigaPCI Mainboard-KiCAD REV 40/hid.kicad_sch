@@ -16353,7 +16353,7 @@
 		)
 		(uuid "ffeb7a11-5f2a-40f3-82b9-2f3601ffebb8")
 	)
-	(global_label "R_W"
+	(global_label "R_WA"
 		(shape input)
 		(at 294.64 102.87 0)
 		(fields_autoplaced yes)
@@ -16365,7 +16365,7 @@
 		)
 		(uuid "2762f8ff-7111-410d-89a2-5e4b5f724653")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 301.3142 102.87 0)
+			(at 302.4028 102.87 0)
 			(effects
 				(font
 					(size 1.27 1.27)

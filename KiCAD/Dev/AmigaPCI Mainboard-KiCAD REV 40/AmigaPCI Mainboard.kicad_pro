@@ -80,6 +80,7 @@
         "footprint_type_mismatch": "error",
         "hole_clearance": "error",
         "hole_near_hole": "error",
+        "holes_co_located": "warning",
         "invalid_outline": "error",
         "isolated_copper": "warning",
         "item_on_disabled_layer": "error",
@@ -2845,6 +2846,62 @@
       {
         "netclass": "PCI",
         "pattern": "_CBE0"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_DSACK0"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_RSTBTN"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Power and Spares/_BTNRST"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "CLK40A"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "CLK40B"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "CLK40C"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "CLK40D"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_DSACK1"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_RESETB"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_WEB"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_WEA"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_RESETA"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "R_WA"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "CLK28"
       }
     ]
   },
@@ -2864,6 +2921,7 @@
   },
   "schematic": {
     "annotate_start_num": 0,
+    "bom_export_filename": "",
     "bom_fmt_presets": [],
     "bom_fmt_settings": {
       "field_delimiter": ",",
