@@ -6,7 +6,7 @@
 	(paper "B")
 	(title_block
 		(title "AMIGA PCI")
-		(date "2024-07-17")
+		(date "2024-07-31")
 		(rev "4.0")
 	)
 	(lib_symbols
@@ -4363,6 +4363,12 @@
 		(uuid "4363b3bc-713f-41fe-bec2-5aee51b471cd")
 	)
 	(junction
+		(at 62.23 212.09)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "45c07004-51d9-414a-9877-b42716045dea")
+	)
+	(junction
 		(at 382.27 193.04)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -4445,6 +4451,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "73a22fd2-128f-43b0-a978-b44b96dcd310")
+	)
+	(junction
+		(at 147.32 212.09)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "78152b37-5273-4fe3-93bc-2d7b6ecf2904")
 	)
 	(junction
 		(at 382.27 106.68)
@@ -7078,6 +7090,16 @@
 		)
 		(uuid "879bd5d3-208f-4bbb-a8ed-cb61a2982129")
 	)
+	(wire
+		(pts
+			(xy 62.23 212.09) (xy 96.52 212.09)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "887a2fd5-9a15-43a2-9535-98b46a59f1f3")
+	)
 	(bus
 		(pts
 			(xy 115.57 52.07) (xy 194.31 52.07)
@@ -7480,7 +7502,7 @@
 	)
 	(wire
 		(pts
-			(xy 154.94 212.09) (xy 176.53 212.09)
+			(xy 139.7 212.09) (xy 147.32 212.09)
 		)
 		(stroke
 			(width 0)
@@ -8120,6 +8142,16 @@
 	)
 	(wire
 		(pts
+			(xy 147.32 212.09) (xy 176.53 212.09)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c8465f45-b9c6-41a7-b472-86ed08b72800")
+	)
+	(wire
+		(pts
 			(xy 356.87 222.25) (xy 356.87 217.17)
 		)
 		(stroke
@@ -8680,7 +8712,7 @@
 	)
 	(wire
 		(pts
-			(xy 74.93 212.09) (xy 96.52 212.09)
+			(xy 54.61 212.09) (xy 62.23 212.09)
 		)
 		(stroke
 			(width 0)
@@ -10075,7 +10107,7 @@
 		(uuid "70efddd8-897f-4ea9-8de1-5c9d05e9c310")
 	)
 	(label "INTRQP"
-		(at 74.93 212.09 0)
+		(at 54.61 212.09 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -11076,7 +11108,7 @@
 		(uuid "e4822f62-6911-4f72-a47d-0a1e377a2d2f")
 	)
 	(label "INTRQS"
-		(at 154.94 212.09 0)
+		(at 139.7 212.09 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -13522,6 +13554,72 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 62.23 219.71 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "41384113-bc23-4c17-8821-23b98d38059c")
+		(property "Reference" "#PWR07"
+			(at 62.23 226.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 62.23 224.1534 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 62.23 219.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 62.23 219.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 62.23 219.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "1aa109f6-8f0e-43bf-bc55-98f77e5a0fb7")
+		)
+		(instances
+			(project "AmigaPCI Mainboard"
+				(path "/72453515-27fe-4336-91f3-e3c8054f7767/7a35a97e-5686-44dd-976e-0306b0eb5ef2"
+					(reference "#PWR07")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:R")
 		(at 217.17 80.01 270)
 		(unit 1)
@@ -14897,6 +14995,72 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 147.32 219.71 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "671838fe-9497-4d81-b823-e85feef03548")
+		(property "Reference" "#PWR0186"
+			(at 147.32 226.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 147.32 224.1534 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 147.32 219.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 147.32 219.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 147.32 219.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "0d59f166-d99b-493b-9937-81a3434a6c34")
+		)
+		(instances
+			(project "AmigaPCI Mainboard"
+				(path "/72453515-27fe-4336-91f3-e3c8054f7767/7a35a97e-5686-44dd-976e-0306b0eb5ef2"
+					(reference "#PWR0186")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:C_Small")
 		(at 370.84 135.89 270)
 		(unit 1)
@@ -15960,6 +16124,75 @@
 	)
 	(symbol
 		(lib_id "Device:R")
+		(at 147.32 215.9 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "a08f0b03-526e-41dd-afab-5e6b422d68d7")
+		(property "Reference" "R902"
+			(at 149.606 218.44 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "10k"
+			(at 147.32 217.678 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 145.542 215.9 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 147.32 215.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 147.32 215.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "5f79ecf0-90dc-4d42-91cf-c1eaf1124031")
+		)
+		(pin "2"
+			(uuid "7451e9ab-f33b-4d4b-96c1-e419f28b7cd9")
+		)
+		(instances
+			(project "AmigaPCI Mainboard"
+				(path "/72453515-27fe-4336-91f3-e3c8054f7767/7a35a97e-5686-44dd-976e-0306b0eb5ef2"
+					(reference "R902")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
 		(at 62.23 203.2 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -16857,6 +17090,75 @@
 			(project "AmigaPCI Mainboard"
 				(path "/72453515-27fe-4336-91f3-e3c8054f7767/7a35a97e-5686-44dd-976e-0306b0eb5ef2"
 					(reference "U906")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 62.23 215.9 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "ca4720b5-fd95-42ac-9405-b498bbf190cb")
+		(property "Reference" "R901"
+			(at 64.516 218.44 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "10k"
+			(at 62.23 217.678 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 60.452 215.9 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 62.23 215.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 62.23 215.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "d951bb95-41f6-4782-b979-f8340d4170d4")
+		)
+		(pin "2"
+			(uuid "0ea4b7b9-25ba-4f6f-ad82-85b45f552c4b")
+		)
+		(instances
+			(project "AmigaPCI Mainboard"
+				(path "/72453515-27fe-4336-91f3-e3c8054f7767/7a35a97e-5686-44dd-976e-0306b0eb5ef2"
+					(reference "R901")
 					(unit 1)
 				)
 			)

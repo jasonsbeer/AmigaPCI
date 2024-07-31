@@ -6,7 +6,7 @@
 	(paper "B")
 	(title_block
 		(title "AMIGA PCI")
-		(date "2024-07-17")
+		(date "2024-07-31")
 		(rev "4.0")
 	)
 	(lib_symbols
@@ -15835,7 +15835,7 @@
 			)
 		)
 	)
-	(global_label "CLK7"
+	(global_label "LVCLK7"
 		(shape input)
 		(at 332.74 52.07 0)
 		(fields_autoplaced yes)
@@ -15847,7 +15847,7 @@
 		)
 		(uuid "e7e3136a-ea5b-4f00-b907-dc62ea909c48")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 340.5028 52.07 0)
+			(at 342.6195 52.07 0)
 			(effects
 				(font
 					(size 1.27 1.27)

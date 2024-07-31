@@ -6,7 +6,7 @@
 	(paper "B")
 	(title_block
 		(title "AMIGA PCI")
-		(date "2024-07-17")
+		(date "2024-07-31")
 		(rev "4.0")
 	)
 	(lib_symbols
@@ -8699,7 +8699,7 @@
 		(uuid "7cabfb07-741c-403d-8856-2ecbeba778f3")
 	)
 	(no_connect
-		(at 74.93 53.34)
+		(at 134.62 205.74)
 		(uuid "84e2a821-d6c1-4f5c-8d96-aee3e77f0b9b")
 	)
 	(no_connect
@@ -13705,6 +13705,16 @@
 			(type default)
 		)
 		(uuid "86b3dc9b-b55b-45e0-94d5-4af7e3f27d7e")
+	)
+	(wire
+		(pts
+			(xy 73.66 53.34) (xy 74.93 53.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "86f5abee-d602-45f8-971f-efb532f6f566")
 	)
 	(wire
 		(pts
@@ -21403,22 +21413,22 @@
 	)
 	(global_label "_TCI"
 		(shape output)
-		(at 134.62 205.74 0)
+		(at 73.66 53.34 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.2954 1.2954)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "ae5ea9db-8dae-4d2a-938c-e381fb3a5408")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 141.5507 205.74 0)
+			(at 66.7293 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
 			)
 		)
 	)

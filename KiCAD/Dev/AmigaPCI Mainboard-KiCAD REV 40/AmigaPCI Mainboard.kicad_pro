@@ -2902,6 +2902,46 @@
       {
         "netclass": "Narrow",
         "pattern": "CLK28"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/IDE Interface/INTRQP"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/IDE Interface/INTRQS"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "INTRP"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "INTRS"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Chip RAM Controller/U712_SDI"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Chip RAM Controller/U712_SCK"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Chip RAM Controller/U712_SDO"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Chip RAM Controller/U712_SS"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Chip RAM Controller/U712_CRESET"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_LBEN"
       }
     ]
   },

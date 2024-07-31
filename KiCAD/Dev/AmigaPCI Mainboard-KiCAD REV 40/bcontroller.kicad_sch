@@ -6,7 +6,7 @@
 	(paper "B")
 	(title_block
 		(title "AMIGA PCI")
-		(date "2024-07-17")
+		(date "2024-07-31")
 		(rev "4.0")
 	)
 	(lib_symbols
@@ -5615,10 +5615,6 @@
 		(uuid "1d9b41f1-942c-4395-8a79-62bb358d7ee9")
 	)
 	(no_connect
-		(at 147.32 185.42)
-		(uuid "23da42a7-0666-4d43-85f2-492c78fceb94")
-	)
-	(no_connect
 		(at 147.32 162.56)
 		(uuid "27438adf-1716-46db-9e1f-1820e8e0b16c")
 	)
@@ -5633,10 +5629,6 @@
 	(no_connect
 		(at 87.63 55.88)
 		(uuid "619d9623-6d4c-4572-a293-6ce72741c946")
-	)
-	(no_connect
-		(at 147.32 182.88)
-		(uuid "70aa2ce0-afc4-43f5-a5cc-de60177d3fc3")
 	)
 	(no_connect
 		(at 147.32 142.24)
@@ -13470,6 +13462,27 @@
 			)
 		)
 	)
+	(global_label "_TCI"
+		(shape output)
+		(at 147.32 182.88 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "2e41d16d-8034-4099-8b0a-f4015d2ae008")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 154.1152 182.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
 	(global_label "PIO_S0"
 		(shape output)
 		(at 147.32 104.14 0)
@@ -13671,6 +13684,27 @@
 		(uuid "597efe6f-b052-4413-acb7-cb1d09700ef2")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 154.9429 134.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "_TBI"
+		(shape output)
+		(at 147.32 185.42 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "5b90d4ff-8f70-49ce-9bd4-ddc41662a06e")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 154.1152 185.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
