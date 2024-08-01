@@ -6,11 +6,11 @@
 	(paper "USLedger")
 	(title_block
 		(title "AMIGA PCI")
-		(date "2024-07-31")
+		(date "2024-08-01")
 		(rev "4.0")
 	)
 	(lib_symbols)
-	(text "100 = PCI BUS\n200 = CPU AND CHIPSET\n300 = VIDEO\n400 = FAST RAM\n500 = AUDIO\n600 = POWER\n700 = CHIPSET RAM\n800 = VOLTAGE SHIFTER\n900 = IDE"
+	(text "100 = PCI BUS\n200 = CPU AND CHIPSET\n300 = VIDEO\n400 = FAST RAM\n500 = AUDIO\n600 = POWER\n700 = CHIPSET RAM\n800 = VOLTAGE SHIFTER\n900 = ATA"
 		(exclude_from_sim no)
 		(at 158.75 121.158 0)
 		(effects
