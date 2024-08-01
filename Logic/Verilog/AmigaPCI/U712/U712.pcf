@@ -50,7 +50,7 @@ set_io TT0        4
 set_io DSACK[1]   7
 set_io CLK40A     21
 set_io CLK40      112
-set_io nBG        37
+#set_io nBG        37
 set_io CLK80      38
 set_io CLK80A     115
 set_io -pullup yes nTBI       39

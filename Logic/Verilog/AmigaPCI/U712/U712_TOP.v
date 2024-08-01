@@ -38,7 +38,7 @@ TO BUILD WITH APIO: apio build --top-module U712_TOP --fpga iCE40-HX4K-TQ144
 
 module U712_TOP
 (
-    input CLK7, CLK40, CLK80, C1, C3, RnW, SIZ0, SIZ1, nBG, nRESET, nREGSPACE, nDBR, nAWE, nRAS0, nRAS1, nCASL, nCASU, nRAMSPACE, TT0, TT1, nTS,
+    input CLK7, CLK40, CLK80, C1, C3, RnW, SIZ0, SIZ1, nRESET, nREGSPACE, nDBR, nAWE, nRAS0, nRAS1, nCASL, nCASU, nRAMSPACE, TT0, TT1, nTS,
     input [20:0]A,
     input [9:0] DRA,
 

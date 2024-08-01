@@ -2942,6 +2942,10 @@
       {
         "netclass": "Narrow",
         "pattern": "_LBEN"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "BUSDIR"
       }
     ]
   },

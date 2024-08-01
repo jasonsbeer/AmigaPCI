@@ -24321,7 +24321,7 @@
 			)
 		)
 	)
-	(global_label "_BG"
+	(global_label "BUSDIR"
 		(shape input)
 		(at 336.55 134.62 180)
 		(fields_autoplaced yes)
@@ -24333,7 +24333,7 @@
 		)
 		(uuid "180bdb66-3d92-4529-87c9-cbb34cad85ce")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 330.0572 134.62 0)
+			(at 326.61 134.62 0)
 			(effects
 				(font
 					(size 1.27 1.27)
