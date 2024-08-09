@@ -42,8 +42,8 @@ module U712_TOP
     input [20:0]A,
     input [9:0] DRA,
 
-    output nVBEN, nDRDEN, DRDDIR, nDBEN, nCRCS, nREGEN, nAS, CLK80A, CLK40A, nUUBE, nUMBE, nLMBE, nLLBE, nTBI, 
-    output nLDS, nUDS, nCUUBE, nCUMBE, nCLMBE, nCLLBE, nRAS, nCAS, nWE, CLKE, DBDIR, BANK0, BANK1, nRAMEN,     
+    output nVBEN, nDRDEN, DRDDIR, nDBEN, nCRCS, nREGEN, nAS, CLKRAM, CLK40A, nUUBE, nUMBE, nLMBE, nLLBE, nTBI, 
+    output nLDS, nUDS, nCUUBE, nCUMBE, nCLMBE, nCLLBE, nRAS, nCAS, nWE, CLKE, DBDIR, BANK0, BANK1, //nRAMEN,     
     output [10:0] CMA,
     output [1:0] DSACK
 
@@ -56,7 +56,7 @@ module U712_TOP
 wire CLK40m = CLK40;
 assign CLK40A = CLK40;
 wire CLK80m = CLK80;
-assign CLK80A = CLK80;
+assign CLKRAM = CLK80;
 
 //FOR TESTING
 

@@ -32,8 +32,8 @@ set_io   -pullup yes   A[31] 10
 
 #set_io   -pullup yes   nTCI  115 
 #set_io   -pullup yes   nTBI  116
-set_io   -pullup yes   DSACK[0]    117
-set_io   -pullup yes   DSACK[1]    135
+set_io   -pullup yes   DSACK[0]    135
+set_io   -pullup yes   DSACK[1]    117
 
 set_io   nRAMSPACE   48
 set_io   CLK7        49

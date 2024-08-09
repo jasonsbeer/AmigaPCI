@@ -36,7 +36,7 @@ module U409_TOP (
     input CLK40, CLK6, CLK7, nRESET, nTS, OVL, RnW, TT0, TT1, nLBEN,
     input [31:1] A,
 
-    output nROMEN, nBUFEN, TICK60, TICK50, CLKCIA, nTCI, nCIACS0, nCIACS1, nRAMSPACE, nREGSPACE,
+    output nROMEN, nBUFEN, TICK60, TICK50, CLKCIA, nCIACS0, nCIACS1, nRAMSPACE, nREGSPACE,
     output [1:0] DSACK
 
 );

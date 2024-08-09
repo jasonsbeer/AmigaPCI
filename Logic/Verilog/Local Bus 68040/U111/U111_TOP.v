@@ -409,6 +409,7 @@ always @(posedge BCLK, negedge nRESET) begin
 
                         2'b01: //TRANSFER THE NEXT WORD
                             begin 
+                                if (BURST) begin TBI <= 1; TCI <= ~nTCI; end //DISABLE BURSTS AGAINST A 16-BIT PORT.
                                 TS <= 1; 
                                 CYCLE1 <= 1;
                             end
