@@ -1,1 +1,103 @@
-blah
+set_io -pullup yes DA[0] 74
+set_io -pullup yes DA[1] 75
+set_io -pullup yes DA[2] 78
+set_io -pullup yes DA[3] 73
+set_io -pullup yes DA[4] 76
+set_io -pullup yes DA[5] 79
+set_io -pullup yes DA[6] 80
+set_io -pullup yes DA[7] 81
+set_io -pullup yes DA[8] 82
+set_io -pullup yes DA[9] 83
+set_io -pullup yes DA[10] 84
+set_io -pullup yes DA[11] 85
+set_io -pullup yes DA[12] 87
+set_io -pullup yes DA[13] 90
+set_io -pullup yes DA[14] 98
+set_io -pullup yes DA[15] 99
+set_io -pullup yes DA[16] 88
+set_io -pullup yes DA[17] 104
+set_io -pullup yes DA[18] 91
+set_io -pullup yes DA[19] 106
+set_io -pullup yes DA[20] 110
+set_io -pullup yes DA[21] 114
+set_io -pullup yes DA[22] 95
+set_io -pullup yes DA[23] 105
+set_io -pullup yes DA[24] 117
+set_io -pullup yes DA[25] 107
+set_io -pullup yes DA[26] 118
+set_io -pullup yes DA[27] 112
+set_io -pullup yes DA[28] 119
+set_io -pullup yes DA[29] 113
+set_io -pullup yes DA[30] 115
+set_io -pullup yes DA[31] 116
+
+set_io -pullup yes DB[0] 33
+set_io -pullup yes DB[1] 28
+set_io -pullup yes DB[2] 31
+set_io -pullup yes DB[3] 32
+set_io -pullup yes DB[4] 29
+set_io -pullup yes DB[5] 25
+set_io -pullup yes DB[6] 26
+set_io -pullup yes DB[7] 24
+set_io -pullup yes DB[8] 23
+set_io -pullup yes DB[9] 22
+set_io -pullup yes DB[10] 18
+set_io -pullup yes DB[11] 19
+set_io -pullup yes DB[12] 16
+set_io -pullup yes DB[13] 12
+set_io -pullup yes DB[14] 9
+set_io -pullup yes DB[15] 10
+set_io -pullup yes DB[16] 17
+set_io -pullup yes DB[17] 11
+set_io -pullup yes DB[18] 15
+set_io -pullup yes DB[19] 7
+set_io -pullup yes DB[20] 3
+set_io -pullup yes DB[21] 141
+set_io -pullup yes DB[22] 2
+set_io -pullup yes DB[23] 4
+set_io -pullup yes DB[24] 138
+set_io -pullup yes DB[25] 8
+set_io -pullup yes DB[26] 139
+set_io -pullup yes DB[27] 144
+set_io -pullup yes DB[28] 137
+set_io -pullup yes DB[29] 1
+set_io -pullup yes DB[30] 142
+set_io -pullup yes DB[31] 143
+
+set_io PCLKC 20
+set_io PCLKB 52
+set_io PCLKA 94
+set_io BCLKC 21
+set_io BCLKB 49
+set_io BCLKA 93
+set_io CLKC40 128
+set_io RAMCLK 56
+
+set_io nRESET 34
+set_io nBB 37
+set_io A[0] 38
+set_io A[1] 39
+set_io nTEA 41
+set_io nTS 42
+set_io nTCI 43
+set_io DSACK[1] 45
+set_io nLBEN 47
+set_io nTBI 48
+set_io nLLBE 60
+set_io nUUBE 61
+set_io nLMBE 62
+set_io nUMBE 63
+set_io nTBI_CPU 64
+set_io nBG 96
+set_io RnW 97
+set_io nTCI_CPU 101
+set_io nCPUBG 102
+set_io SIZ[1] 120
+set_io SIZ[0] 121
+set_io nTEA_CPU 122
+set_io nTA_CPU 124
+set_io nTS 125
+set_io TT[0] 130
+set_io TT[1] 134
+set_io nBUFEN 135
+set_io BUFDIR 136
