@@ -38,9 +38,9 @@ input [1:0] A,
 input [1:0] DSACK,
 input [1:0] SIZ,
 input [1:0] TT,
-input nTS_CPU, nTBI, nTCI, RnW, nBG, nRESET, CLK40,
+input nTS_CPU, nTBI, nTCI, RnW, nBG, nRESET, CLK40, nTEA,
 
-output nTS, nTA, nTBI_CPU, nTCI_CPU, CLK40A, CLK40B, CLK40C, CLK80A, CLK80B, CLK80C, RAMCLK,
+output nTS, nTA, nTBI_CPU, nTCI_CPU, CLK40A, CLK40B, CLK40C, CLK80A, CLK80B, CLK80C, RAMCLK, nTEA_CPU, nCPUBG, nBUFEN, BUFDIR,
 
 inout [31:24] DA_BYTE0,
 inout [23:16] DA_BYTE1,
@@ -61,8 +61,11 @@ inout [7:0] DB_BYTE3
 
 //wire BCLK = CLK40; //FOR THE TEST BENCH. COMMENT OUT THE PLL CLOCK STUFF.
 
+//NOTE: TO USE THE "PAD" PLL PRIMATIVES, YOU MUST ROUTE THE CLOCK INPUT TO EITHER PIN 49 OR PIN 129 OF THE iCE40 TQFP-144 PACKAGE.
+//THE CLK40 INPUT SHOULD BE MOVED TO PIN 129 TO USE A "PAD" PRIMITIVE, BUT THIS MEANS PIN 128 CAN ONLY BE USED AS AN OUTPUT. DSACK0 NEEDS TO BE MOVED ANYWHERE EXCEPT PIN 129.
+
 wire BCLK;
-wire CLK80m;
+wire CLK80out;
 wire CLK40out;
 
 assign CLK40A = CLK40out;
@@ -73,37 +76,40 @@ assign CLK80B = CLK80out;
 assign CLK80C = CLK80out;
 assign RAMCLK = CLK80out;
 
-SB_PLL40_PAD # (
+SB_PLL40_2F_CORE #(
+    .DIVR (4'b0000),
+    .DIVF (7'b0001111),
+    .DIVQ (3'b011),
+    .FILTER_RANGE (3'b011),
+    .FEEDBACK_PATH ("SIMPLE"),
+    .PLLOUT_SELECT_PORTA ("GENCLK"),
+    .PLLOUT_SELECT_PORTB ("GENCLK_HALF")
+) pll (
+    .LOCK           (),
+    .RESETB         (1'b1),
+    .REFERENCECLK   (CLK40),
+    .PLLOUTGLOBALA  (CLK80out),
+    .PLLOUTGLOBALB  (CLK40out),
+    .PLLOUTCOREB    (BCLK)
+);
+
+/*SB_PLL40_2_PAD # (
     .FEEDBACK_PATH("SIMPLE"),
-    .PLLOUT_SELECT("GENCLK"),
+    .PLLOUT_SELECT_PORTB("GENCLK"),
     .DIVR(4'b0000),		    // DIVR =  0
     .DIVF(7'b0001111),  	// DIVF = 15
-    .DIVQ(3'b100),		    // DIVQ =  4
+    .DIVQ(3'b011),		    // DIVQ =  3
     .FILTER_RANGE(3'b011)	// FILTER_RANGE = 3
     ) PLL40 (
         .PACKAGEPIN(CLK40),
-        .PLLOUTGLOBAL(CLK40out),
-        .PLLOUTCORE(BCLK),
+        .PLLOUTGLOBALA(CLK40out),
+        .PLLOUTCOREA(BCLK),
+        .PLLOUTGLOBALB(CLK80out),
+        .PLLOUTCOREB(),
         .LOCK(),
         .RESETB(1'b1),
         .BYPASS(1'b0)
-    );
-
-SB_PLL40_PAD # (
-    .FEEDBACK_PATH("SIMPLE"),
-    .PLLOUT_SELECT("GENCLK"),
-    .DIVR(4'b0000),	    	// DIVR =  0
-	.DIVF(7'b0001111),  	// DIVF = 15
-    .DIVQ(3'b011),		    // DIVQ =  3
-    .FILTER_RANGE(3'b011)	// FILTER_RANGE = 3
-
-    ) PLL80 (
-        .PACKAGEPIN(CLK40),
-        .PLLOUTGLOBAL(CLK80out),
-        .LOCK(),
-        .RESETB(1'b1),
-        .BYPASS(1'b0)
-    );
+    );*/
 
 /////////////////////////
 // CYCLE START AND END //
@@ -115,11 +121,13 @@ reg TA_OUT;
 reg TS_OUT;
 reg TBI_OUT;
 reg TCI_OUT;
+reg TEA_OUT;
 
 assign nTA = ~TA_OUT;
 assign nTS = ~TS_OUT;
 assign nTBI_CPU = ~TBI_OUT;
 assign nTCI_CPU = ~TCI_OUT;
+assign nTEA_CPU = ~TEA_OUT;
 
 always @(negedge BCLK, negedge nRESET) begin
     if (!nRESET) begin
@@ -127,13 +135,24 @@ always @(negedge BCLK, negedge nRESET) begin
         TS_OUT <= 0;
         TBI_OUT <= 0;
         TCI_OUT <= 0;
+        TEA_OUT <= 0;
     end else begin
         TA_OUT <= TA;
         TS_OUT <= TS;
         TBI_OUT <= TBI;
         TCI_OUT <= TCI;
+        TEA_OUT <= TEA;
     end
 end
+
+//////////////////////////////////
+// BUFFER ENABLES AND DIRECTION //
+//////////////////////////////////
+
+assign nCPUBG = 0; //ENABLE THE CPU DATA BUS BUFFERS
+
+assign nBUFEN = 0; //ENABLE THE AMIGAPCI DATA BUS WHEN NOT USING ONBOARD RESOURCES.
+assign BUFDIR = RnW; //DIRECTION OF THE AMIGAPCI DATA BUS. INFLUENCED BY WHO HAS THE BUS.
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // THIS IS AN IMPLEMENTATION OF THE DYNAMIC BUS SIZING STATE MACHINE PRESENTED IN       //
@@ -336,6 +355,7 @@ reg CYCLE1;
 reg BURST;
 reg [2:0] BURST_COUNTER;
 reg TS;
+reg TEA;
 
 always @(posedge BCLK, negedge nRESET) begin
 
@@ -346,6 +366,7 @@ always @(posedge BCLK, negedge nRESET) begin
         TS <= 0;
         TBI <= 0;
         TCI <= 0;
+        TEA <= 0;
         CYCLE_BURST_INHIBIT <= 0;
         CYCLE1 <= 0;
         BURST <= 0;
@@ -360,6 +381,7 @@ always @(posedge BCLK, negedge nRESET) begin
                     TA <= 0;
                     TBI <= 0;
                     TCI <= 0;
+                    TEA <= 0;
                     CYCLE_BURST_INHIBIT <= 0;           
                     
                     if (!nTS_CPU) begin	
@@ -393,6 +415,7 @@ always @(posedge BCLK, negedge nRESET) begin
 			4'b0001: //LONG WORD OR LINE
                 begin
                     TS <= 0; 
+                    TEA <= ~nTEA;
                     case (DSACK)
                         2'b00: 
                         
@@ -400,7 +423,7 @@ always @(posedge BCLK, negedge nRESET) begin
 
                                 TA <= 1;
                                 TBI <= ~nTBI;
-                                CYCLE_BURST_INHIBIT <= ~nTBI;
+                                CYCLE_BURST_INHIBIT <= ~nTBI;                                
                                 TCI <= ~nTCI;                                
 
                                 //STAY IN THIS STATE UNTIL THE BURST HAS COMPLETED OR BURST INHIBIT IS ASSERTED
@@ -437,6 +460,7 @@ always @(posedge BCLK, negedge nRESET) begin
 
                 begin
                     TS <= 0;
+                    TEA <= ~nTEA;
                     if (DSACK != 2'b11) begin                        
                         TA <= 1;  
                     end else if (TA) begin
