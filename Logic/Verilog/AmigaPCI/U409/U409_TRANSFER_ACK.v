@@ -57,14 +57,14 @@ assign DSACK = DSACKEN ? DSACK_OUT : 2'bzz;
 reg [1:0] DSACK_OUT;
 reg DSACKEN;
 reg [1:0] DSACK_STATE;
-reg DSACK_CYCLE;
+//reg DSACK_CYCLE;
 
-always @(negedge CLK40, negedge nRESET) begin
+always @(posedge CLK40, negedge nRESET) begin
     if (!nRESET) begin
         DSACKEN <= 0;
         DSACK_OUT <= 2'b11;
         DSACK_STATE <= 2'b00;
-        DSACK_CYCLE <= 0;
+        //DSACK_CYCLE <= 0;
     end else begin
 
         case (DSACK_STATE)
@@ -112,7 +112,7 @@ reg ROM_TA;
 
 assign nROMEN = ~ROMEN;
 
-always @(posedge CLK40, negedge nRESET) begin
+always @(negedge CLK40, negedge nRESET) begin
 	if (!nRESET) begin
 		ROM_TA <= 0;
 		ROM_DELAY <= 3'b000;
@@ -147,7 +147,7 @@ end
 
 reg [1:0] SC_TA;
 
-always @(posedge CLK40, negedge nRESET) begin
+always @(negedge CLK40, negedge nRESET) begin
     if (!nRESET) begin
         SC_TA <= 2'b01;
     end else begin
