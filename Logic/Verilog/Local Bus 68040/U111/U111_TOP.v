@@ -129,6 +129,8 @@ assign nTBI_CPU = ~TBI_OUT;
 assign nTCI_CPU = ~TCI_OUT;
 assign nTEA_CPU = ~TEA_OUT;
 
+//assign nTS = ~((!nTS_CPU && !nBG) || TS_OUT); //WILL NEED TO HI-Z THIS DURING PCI DMA.
+
 always @(negedge BCLK, negedge nRESET) begin
     if (!nRESET) begin
         TA_OUT <= 0;
