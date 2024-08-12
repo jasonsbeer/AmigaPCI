@@ -80,7 +80,7 @@ set_io A[1] 39
 set_io nTEA 41
 set_io -pullup yes nTS 42
 set_io nTCI 43
-set_io -pullup yes DSACK[1] 45
+set_io DSACK[1] 45
 #set_io nLBEN 47
 set_io nTBI 48
 #set_io nLLBE 60
@@ -97,7 +97,7 @@ set_io SIZ[0] 121
 set_io nTEA_CPU 122
 set_io nTA 124
 set_io nTS_CPU 125
-set_io -pullup yes DSACK[0] 129
+set_io DSACK[0] 129
 set_io TT[0] 130
 set_io TT[1] 134
 set_io nBUFEN 135

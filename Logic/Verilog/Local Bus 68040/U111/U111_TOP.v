@@ -358,6 +358,7 @@ reg BURST;
 reg [2:0] BURST_COUNTER;
 reg TS;
 reg TEA;
+reg TA_DELAY;
 
 always @(posedge BCLK, negedge nRESET) begin
 
@@ -373,6 +374,7 @@ always @(posedge BCLK, negedge nRESET) begin
         CYCLE1 <= 0;
         BURST <= 0;
         BURST_COUNTER <= 3'b000;
+        TA_DELAY <= 0;
 
 	end else begin
 
@@ -385,7 +387,7 @@ always @(posedge BCLK, negedge nRESET) begin
                     TCI <= 0;
                     TEA <= 0;
                     CYCLE_BURST_INHIBIT <= 0;           
-                    
+
                     if (!nTS_CPU) begin	
 
                         TS <= 1;
@@ -418,18 +420,28 @@ always @(posedge BCLK, negedge nRESET) begin
                 begin
                     TS <= 0; 
                     TEA <= ~nTEA;
+
+                    if (TA_DELAY) begin
+                        TA <= 1;
+                        TA_DELAY <= 0;
+                        STATE <= 4'b0000;
+                    end
+
                     case (DSACK)
-                        2'b00: 
-                        
+                        2'b00:                         
                             begin 
 
-                                TA <= 1;
-                                TBI <= ~nTBI;
-                                CYCLE_BURST_INHIBIT <= ~nTBI;                                
-                                TCI <= ~nTCI;                                
+                                //TA <= 1;
+                                TA_DELAY <= 1;
+                                //if (BURST) begin
+                                //    TBI <= ~nTBI;
+                                //    CYCLE_BURST_INHIBIT <= ~nTBI;                                
+                                //    TCI <= ~nTCI;
+                                //    BURST_COUNTER <= BURST_COUNTER + 1;
+                                //end else begin
+                                    //STATE <= 4'b0000;
+                                //end
 
-                                //STAY IN THIS STATE UNTIL THE BURST HAS COMPLETED OR BURST INHIBIT IS ASSERTED
-                                BURST_COUNTER <= BURST_COUNTER + 1;
                             end
 
                         2'b01: //TRANSFER THE NEXT WORD
@@ -450,7 +462,7 @@ always @(posedge BCLK, negedge nRESET) begin
                                     TA <= 0; 
                                     TBI <= 0;
                                     TCI <= 0;
-                                    if (!BURST || (CYCLE_BURST_INHIBIT && BURST_COUNTER == 1'b1) || BURST_COUNTER == 3'b100) begin                                                                        
+                                    if ((CYCLE_BURST_INHIBIT && BURST_COUNTER == 1'b1) || BURST_COUNTER == 3'b100) begin                                                                        
                                         STATE <= 4'b0000; 
                                     end
                                 end
@@ -465,8 +477,6 @@ always @(posedge BCLK, negedge nRESET) begin
                     TEA <= ~nTEA;
                     if (DSACK != 2'b11) begin                        
                         TA <= 1;  
-                    end else if (TA) begin
-                        TA <= 0;
                         STATE <= 4'b0000; 
                     end
                 end

@@ -25,16 +25,16 @@ wire nTBI_CPU;
 wire nTCI_CPU;
 
 //WRITE INPUTS/READ OUTPUTS
-wire [31:24] D3V3A_BYTE0;
-wire [23:16] D3V3A_BYTE1;
-wire [15:8] D3V3A_BYTE2;
-wire [7:0] D3V3A_BYTE3;
+wire [31:24] DA_BYTE0;
+wire [23:16] DA_BYTE1;
+wire [15:8] DA_BYTE2;
+wire [7:0] DA_BYTE3;
 
 //WRITE OUTPUTS/READ INPUTS
-wire [31:24] D3V3B_BYTE0;
-wire [23:16] D3V3B_BYTE1;
-wire [15:8] D3V3B_BYTE2;
-wire [7:0] D3V3B_BYTE3;
+wire [31:24] DB_BYTE0;
+wire [23:16] DB_BYTE1;
+wire [15:8] DB_BYTE2;
+wire [7:0] DB_BYTE3;
 
 //DRIVE THE BUS
 reg [7:0]DAB0 = 8'h00;
@@ -42,20 +42,20 @@ reg [7:0]DAB1 = 8'h00;
 reg [7:0]DAB2 = 8'h00;
 reg [7:0]DAB3 = 8'h00;
 
-assign D3V3A_BYTE0 = DAB0;
-assign D3V3A_BYTE1 = DAB1;
-assign D3V3A_BYTE2 = DAB2;
-assign D3V3A_BYTE3 = DAB3;
+assign DA_BYTE0 = DAB0;
+assign DA_BYTE1 = DAB1;
+assign DA_BYTE2 = DAB2;
+assign DA_BYTE3 = DAB3;
 
 reg [7:0]DBB0 = 8'h00;
 reg [7:0]DBB1 = 8'h00;
 reg [7:0]DBB2 = 8'h00;
 reg [7:0]DBB3 = 8'h00;
 
-assign D3V3B_BYTE0 = DBB0;
-assign D3V3B_BYTE1 = DBB1;
-assign D3V3B_BYTE2 = DBB2;
-assign D3V3B_BYTE3 = DBB3;
+assign DB_BYTE0 = DBB0;
+assign DB_BYTE1 = DBB1;
+assign DB_BYTE2 = DBB2;
+assign DB_BYTE3 = DBB3;
 
 //Simulation time : 10000 * 1ns = 10us
 localparam DURATION = 10000;
@@ -161,12 +161,16 @@ initial begin
     #25 DSACK <= 2'b11;*/
 
     //LONG WORD READ CYCLE
-    /*#50 SIZ <= 2'b00; A <= 2'b00; nTS_CPU <= 0; 
+    #50 SIZ <= 2'b00; A <= 2'b00; nTS_CPU <= 0; 
     DBB0 <= 8'haa; DBB1 <= 8'hbb; DBB2 <= 8'hcc; DBB3 <= 8'hdd; 
     DAB0 <= 8'bzzzzzzzz; DAB1 <= 8'bzzzzzzzz; DAB2 <= 8'bzzzzzzzz; DAB3 <= 8'bzzzzzzzz;
     #25 nTS_CPU <= 1;
     #25 DSACK <= 2'b00;
-    #25 DSACK <= 2'b11;*/
+    #25 DSACK <= 2'b11;
+    #100 nTS_CPU <= 0;
+    #25 nTS_CPU <= 1;
+    #25 DSACK <= 2'b00;
+    #25 DSACK <= 2'b11;
 
     //LONG WORD READ CYCLE, WORD PORT
     /*#50 A <= 2'b00; RnW <= 1; SIZ <= 2'b00; nTS_CPU <= 0; 
@@ -200,15 +204,15 @@ initial begin
 
 
     //LINE TRANSFER READ CYCLE w/BURST INHIBIT
-    #50 A <= 2'b00; RnW <= 1; SIZ <= 2'b11; TT <= 2'b01; nTS_CPU <= 0; 
+    /*#50 A <= 2'b00; RnW <= 1; SIZ <= 2'b11; TT <= 2'b01; nTS_CPU <= 0; 
     DBB0 <= 8'haa; DBB1 <= 8'hbb; DBB2 <= 8'hcc; DBB3 <= 8'hdd; 
     DAB0 <= 8'bzzzzzzzz; DAB1 <= 8'bzzzzzzzz; DAB2 <= 8'bzzzzzzzz; DAB3 <= 8'bzzzzzzzz;
     #25 nTS_CPU <= 1;
     #25 DSACK <= 2'b00; nTBI <= 0;
-    #25 DSACK <= 2'b11; nTBI <= 1;
+    #25 DSACK <= 2'b11; nTBI <= 1;*/
 
     //LINE TRANSFER READ CYCLE w/CACHE INHIBIT
-    #25 A <= 2'b00; RnW <= 1; SIZ <= 2'b11; TT <= 2'b01; nTS_CPU <= 0; 
+    /*#25 A <= 2'b00; RnW <= 1; SIZ <= 2'b11; TT <= 2'b01; nTS_CPU <= 0; 
     DBB0 <= 8'haa; DBB1 <= 8'hbb; DBB2 <= 8'hcc; DBB3 <= 8'hdd; 
     DAB0 <= 8'bzzzzzzzz; DAB1 <= 8'bzzzzzzzz; DAB2 <= 8'bzzzzzzzz; DAB3 <= 8'bzzzzzzzz;
     #25 nTS_CPU <= 1;
@@ -219,10 +223,10 @@ initial begin
     #50 DSACK <= 2'b00;
     #25 DSACK <= 2'b11;
     #50 DSACK <= 2'b00;
-    #25 DSACK <= 2'b11;
+    #25 DSACK <= 2'b11;*/
 
     //LINE TRANSFER READ CYCLE
-    #25 A <= 2'b00; RnW <= 1; SIZ <= 2'b11; TT <= 2'b01; nTS_CPU <= 0;
+    /*#25 A <= 2'b00; RnW <= 1; SIZ <= 2'b11; TT <= 2'b01; nTS_CPU <= 0;
     DBB0 <= 8'haa; DBB1 <= 8'hbb; DBB2 <= 8'hcc; DBB3 <= 8'hdd; 
     DAB0 <= 8'bzzzzzzzz; DAB1 <= 8'bzzzzzzzz; DAB2 <= 8'bzzzzzzzz; DAB3 <= 8'bzzzzzzzz;
     #25 nTS_CPU <= 1;
@@ -233,7 +237,7 @@ initial begin
     #50 DSACK <= 2'b00; DBB0 <= 8'h22; DBB1 <= 8'h33; DBB2 <= 8'h44; DBB3 <= 8'h55; 
     #25 DSACK <= 2'b11;
     #50 DSACK <= 2'b00; DBB0 <= 8'h66; DBB1 <= 8'h77; DBB2 <= 8'h88; DBB3 <= 8'h99; 
-    #25 DSACK <= 2'b11;
+    #25 DSACK <= 2'b11;*/
     
 
 end
@@ -268,14 +272,14 @@ U111_TOP dut (
     .nTBI_CPU (nTBI_CPU),
     .nTA (nTA),
 
-    .D3V3A_BYTE0 (D3V3A_BYTE0),
-    .D3V3A_BYTE1 (D3V3A_BYTE1),
-    .D3V3A_BYTE2 (D3V3A_BYTE2),
-    .D3V3A_BYTE3 (D3V3A_BYTE3),
-    .D3V3B_BYTE0 (D3V3B_BYTE0),
-    .D3V3B_BYTE1 (D3V3B_BYTE1),
-    .D3V3B_BYTE2 (D3V3B_BYTE2),
-    .D3V3B_BYTE3 (D3V3B_BYTE3)
+    .DA_BYTE0 (DA_BYTE0),
+    .DA_BYTE1 (DA_BYTE1),
+    .DA_BYTE2 (DA_BYTE2),
+    .DA_BYTE3 (DA_BYTE3),
+    .DB_BYTE0 (DB_BYTE0),
+    .DB_BYTE1 (DB_BYTE1),
+    .DB_BYTE2 (DB_BYTE2),
+    .DB_BYTE3 (DB_BYTE3)
 
 );
 
