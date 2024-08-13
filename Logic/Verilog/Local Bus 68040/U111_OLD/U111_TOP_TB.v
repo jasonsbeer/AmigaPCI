@@ -25,16 +25,16 @@ wire nTBI_CPU;
 wire nTCI_CPU;
 
 //WRITE INPUTS/READ OUTPUTS
-wire [7:0] DA0;
-wire [7:0] DA1;
-wire [7:0] DA2;
-wire [7:0] DA3;
+wire [31:24] DA_BYTE0;
+wire [23:16] DA_BYTE1;
+wire [15:8] DA_BYTE2;
+wire [7:0] DA_BYTE3;
 
 //WRITE OUTPUTS/READ INPUTS
-wire [7:0] DB0;
-wire [7:0] DB1;
-wire [7:0] DB2;
-wire [7:0] DB3;
+wire [31:24] DB_BYTE0;
+wire [23:16] DB_BYTE1;
+wire [15:8] DB_BYTE2;
+wire [7:0] DB_BYTE3;
 
 //DRIVE THE BUS
 reg [7:0]DAB0 = 8'h00;
@@ -42,20 +42,20 @@ reg [7:0]DAB1 = 8'h00;
 reg [7:0]DAB2 = 8'h00;
 reg [7:0]DAB3 = 8'h00;
 
-assign DA0 = DAB0;
-assign DA1 = DAB1;
-assign DA2 = DAB2;
-assign DA3 = DAB3;
+assign DA_BYTE0 = DAB0;
+assign DA_BYTE1 = DAB1;
+assign DA_BYTE2 = DAB2;
+assign DA_BYTE3 = DAB3;
 
 reg [7:0]DBB0 = 8'h00;
 reg [7:0]DBB1 = 8'h00;
 reg [7:0]DBB2 = 8'h00;
 reg [7:0]DBB3 = 8'h00;
 
-assign DB0 = DBB0;
-assign DB1 = DBB1;
-assign DB2 = DBB2;
-assign DB3 = DBB3;
+assign DB_BYTE0 = DBB0;
+assign DB_BYTE1 = DBB1;
+assign DB_BYTE2 = DBB2;
+assign DB_BYTE3 = DBB3;
 
 //Simulation time : 10000 * 1ns = 10us
 localparam DURATION = 10000;
@@ -259,27 +259,27 @@ U111_TOP dut (
     .CLK40 (CLK40),
     .RnW (RnW),
     .SIZ (SIZ),
-    //.TT (TT),
+    .TT (TT),
     .DSACK (DSACK),
     .A (A),
     .nTS_CPU (nTS_CPU),
-    //.nTBI (nTBI),
-    //.nTCI (nTCI),
-    //.nBG (nBG),
+    .nTBI (nTBI),
+    .nTCI (nTCI),
+    .nBG (nBG),
     .nRESET (nRESET),
     .nTS (nTS),
-    //.nTCI_CPU (nTCI_CPU),
-    //.nTBI_CPU (nTBI_CPU),
+    .nTCI_CPU (nTCI_CPU),
+    .nTBI_CPU (nTBI_CPU),
     .nTA (nTA),
 
-    .DA0 (DA0),
-    .DA1 (DA1),
-    .DA2 (DA2),
-    .DA3 (DA3),
-    .DB0 (DB0),
-    .DB1 (DB1),
-    .DB2 (DB2),
-    .DB3 (DB3)
+    .DA_BYTE0 (DA_BYTE0),
+    .DA_BYTE1 (DA_BYTE1),
+    .DA_BYTE2 (DA_BYTE2),
+    .DA_BYTE3 (DA_BYTE3),
+    .DB_BYTE0 (DB_BYTE0),
+    .DB_BYTE1 (DB_BYTE1),
+    .DB_BYTE2 (DB_BYTE2),
+    .DB_BYTE3 (DB_BYTE3)
 
 );
 

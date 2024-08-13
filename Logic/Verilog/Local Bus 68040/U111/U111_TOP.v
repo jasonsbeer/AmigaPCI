@@ -37,19 +37,26 @@ module U111_TOP (
 input [1:0] A,
 input [1:0] DSACK,
 input [1:0] SIZ,
-input [1:0] TT,
+/*input [1:0] TT,
 input nTS_CPU, nTBI, nTCI, RnW, nBG, nRESET, CLK40, nTEA,
 
-output nTS, nTA, nTBI_CPU, nTCI_CPU, CLK40A, CLK40B, CLK40C, CLK80A, CLK80B, CLK80C, RAMCLK, nTEA_CPU, nCPUBG, nBUFEN, BUFDIR,
+output nTS, nTA, nTBI_CPU, nTCI_CPU, CLK40A, CLK40B, CLK40C, CLK80A, CLK80B, CLK80C, RAMCLK, nTEA_CPU, nCPUBG, nBUFEN, BUFDIR,*/
 
-inout [31:24] DA_BYTE0,
-inout [23:16] DA_BYTE1,
-inout [15:8] DA_BYTE2,
-inout [7:0] DA_BYTE3,
-inout [31:24] DB_BYTE0,
-inout [23:16] DB_BYTE1,
-inout [15:8] DB_BYTE2,
-inout [7:0] DB_BYTE3
+input nRESET, nTS_CPU, RnW, CLK40,
+//input A_CPU,
+
+output nTS, nTA, CLK40A, CLK40B, CLK40C, CLK80A, CLK80B, CLK80C, RAMCLK, nCPUBG, nBUFEN, BUFDIR,
+//output A,
+
+inout [7:0] DA0, //68040 SIDE
+inout [7:0] DA1,
+inout [7:0] DA2,
+inout [7:0] DA3,
+
+inout [7:0] DB0, //AMIGA SIDE
+inout [7:0] DB1,
+inout [7:0] DB2,
+inout [7:0] DB3  
 
 );
 
@@ -65,6 +72,7 @@ inout [7:0] DB_BYTE3
 //THE CLK40 INPUT SHOULD BE MOVED TO PIN 129 TO USE A "PAD" PRIMITIVE, BUT THIS MEANS PIN 128 CAN ONLY BE USED AS AN OUTPUT. DSACK0 NEEDS TO BE MOVED ANYWHERE EXCEPT PIN 129.
 
 wire BCLK;
+wire PCLK;
 wire CLK80out;
 wire CLK40out;
 
@@ -75,6 +83,7 @@ assign CLK80A = CLK80out;
 assign CLK80B = CLK80out;
 assign CLK80C = CLK80out;
 assign RAMCLK = CLK80out;
+
 
 SB_PLL40_2F_CORE #(
     .DIVR (4'b0000),
@@ -89,6 +98,7 @@ SB_PLL40_2F_CORE #(
     .RESETB         (1'b1),
     .REFERENCECLK   (CLK40),
     .PLLOUTGLOBALA  (CLK80out),
+    .PLLOUTCOREA    (PCLK),
     .PLLOUTGLOBALB  (CLK40out),
     .PLLOUTCOREB    (BCLK)
 );
@@ -111,42 +121,6 @@ SB_PLL40_2F_CORE #(
         .BYPASS(1'b0)
     );*/
 
-/////////////////////////
-// CYCLE START AND END //
-/////////////////////////
-
-//ASSERT _TS TO THE AMIGAPCI TO START A CYCLE AND _TA TO THE CPU TO END IT.
-
-reg TA_OUT;
-reg TS_OUT;
-reg TBI_OUT;
-reg TCI_OUT;
-reg TEA_OUT;
-
-assign nTA = ~TA_OUT;
-assign nTS = ~TS_OUT;
-assign nTBI_CPU = ~TBI_OUT;
-assign nTCI_CPU = ~TCI_OUT;
-assign nTEA_CPU = ~TEA_OUT;
-
-//assign nTS = ~((!nTS_CPU && !nBG) || TS_OUT); //WILL NEED TO HI-Z THIS DURING PCI DMA.
-
-always @(negedge BCLK, negedge nRESET) begin
-    if (!nRESET) begin
-        TA_OUT <= 0;
-        TS_OUT <= 0;
-        TBI_OUT <= 0;
-        TCI_OUT <= 0;
-        TEA_OUT <= 0;
-    end else begin
-        TA_OUT <= TA;
-        TS_OUT <= TS;
-        TBI_OUT <= TBI;
-        TCI_OUT <= TCI;
-        TEA_OUT <= TEA;
-    end
-end
-
 //////////////////////////////////
 // BUFFER ENABLES AND DIRECTION //
 //////////////////////////////////
@@ -156,334 +130,150 @@ assign nCPUBG = 0; //ENABLE THE CPU DATA BUS BUFFERS
 assign nBUFEN = 0; //ENABLE THE AMIGAPCI DATA BUS WHEN NOT USING ONBOARD RESOURCES.
 assign BUFDIR = RnW; //DIRECTION OF THE AMIGAPCI DATA BUS. INFLUENCED BY WHO HAS THE BUS.
 
-//////////////////////////////////////////////////////////////////////////////////////////
-// THIS IS AN IMPLEMENTATION OF THE DYNAMIC BUS SIZING STATE MACHINE PRESENTED IN       //
-// THE "MC68040 DESIGNER'S HANDBOOK". SUPPORT FOR BYTE PORT TERMINATION IS NOT INCLUDED //
-// BECAUSE THE AMIGAPCI DOES NOT NEED THIS. BOTH WORD AND LONG WORD TERMINATED CYCLES   //
-// ARE SUPPORTED.                                                                       //
-//////////////////////////////////////////////////////////////////////////////////////////
 
-//BYTE0 IS THE MOST SIGNIFICANT. BYTE3 IS THE LEAST.
+// DA0/DB0 IS MOST SIGNIFICANT BYTE.
 
-////////////////////////
-// DRIVE THE DATA BUS //
-////////////////////////
+//ADDRESS
 
-reg [7:0]DA_BYTE0_O;
-reg [7:0]DA_BYTE1_O;
-reg [7:0]DA_BYTE2_O;
-reg [7:0]DA_BYTE3_O;
-wire [7:0]DB_BYTE0_O;
-wire [7:0]DB_BYTE1_O;
-wire [7:0]DB_BYTE2_O;
-wire [7:0]DB_BYTE3_O;
+//assign A = ODD_EN ? 1 : A_CPU;
 
-wire DAEN = RnW && !nBG && nRESET;
+//TRANSFER START
 
-assign DA_BYTE0 = DAEN ? DA_BYTE0_O : 8'bzzzzzzzz;
-assign DA_BYTE1 = DAEN ? DA_BYTE1_O : 8'bzzzzzzzz;
-assign DA_BYTE2 = DAEN ? DA_BYTE2_O : 8'bzzzzzzzz;
-assign DA_BYTE3 = DAEN ? DA_BYTE3_O : 8'bzzzzzzzz;
+assign nTS = ~(!nTS_CPU || TS);
 
-wire DBEN = !RnW && !nBG && nRESET;
+//TRANSFER ACK
+assign nTA = ~TA_OUT;
+reg TA_OUT;
 
-assign DB_BYTE0 = DBEN ? DB_BYTE0_O : 8'bzzzzzzzz;
-assign DB_BYTE1 = DBEN ? DB_BYTE1_O : 8'bzzzzzzzz;
-assign DB_BYTE2 = DBEN ? DB_BYTE2_O : 8'bzzzzzzzz;
-assign DB_BYTE3 = DBEN ? DB_BYTE3_O : 8'bzzzzzzzz;
-
-//////////////////////////
-// DEFINE THE WRITE I/O //
-//////////////////////////
-
-//WHEN IN A WRITE CYCLE, THE BYTES ARE SWAPPED, AS NEEDED, AND PASSED THROUGH LIVE.
-//THE CYCLE SIZE DESCRIPTORS (SIZ0, SIZ1, A0, A1) ARE USED BY THE TARGET DEVICE TO
-//IDENTIFY THE CORRECT BYTES FOR LATCHING.
-
-assign DB_BYTE0_O =
-    STATE == 4'b0001 ? DA_BYTE0 :
-    STATE == 4'b0010 ? DA_BYTE2 :
-    STATE == 4'b0011 ? DA_BYTE0 :
-    STATE == 4'b0100 ? DA_BYTE2 :
-    STATE == 4'b0101 ? DA_BYTE0 :
-    STATE == 4'b0110 ? DA_BYTE1 :
-    STATE == 4'b0111 ? DA_BYTE2 :
-    STATE == 4'b1000 ? DA_BYTE3 :
-    8'b00000000;
-    
-assign DB_BYTE1_O =
-    STATE == 4'b0001 ? DA_BYTE1 :
-    STATE == 4'b0010 ? DA_BYTE3 :
-    STATE == 4'b0011 ? DA_BYTE1 :
-    STATE == 4'b0100 ? DA_BYTE3 :
-    STATE == 4'b0101 ? DA_BYTE1 :
-    STATE == 4'b0110 ? DA_BYTE1 :
-    STATE == 4'b0111 ? DA_BYTE1 :
-    STATE == 4'b1000 ? DA_BYTE3 :
-    8'b00000000;
-
-assign DB_BYTE2_O =
-    STATE == 4'b0001 ? DA_BYTE2 :
-    STATE == 4'b0010 ? DA_BYTE2 :
-    STATE == 4'b0011 ? DA_BYTE2 :
-    STATE == 4'b0100 ? DA_BYTE2 :
-    STATE == 4'b0101 ? DA_BYTE2 :
-    STATE == 4'b0110 ? DA_BYTE2 :
-    STATE == 4'b0111 ? DA_BYTE2 :
-    STATE == 4'b1000 ? DA_BYTE3 :
-    8'b00000000;
-
-assign DB_BYTE3_O =
-    STATE == 4'b0001 ? DA_BYTE3 :
-    STATE == 4'b0010 ? DA_BYTE3 :
-    STATE == 4'b0011 ? DA_BYTE3 :
-    STATE == 4'b0100 ? DA_BYTE3 :
-    STATE == 4'b0101 ? DA_BYTE3 :
-    STATE == 4'b0110 ? DA_BYTE3 :
-    STATE == 4'b0111 ? DA_BYTE3 :
-    STATE == 4'b1000 ? DA_BYTE3 :
-    8'b00000000;
-
-///////////////////////////////
-// LATCH DATA ON READ CYCLES //
-///////////////////////////////
-
+//CYCLE ATTRIBUTES LATCH
+reg [1:0] DSACK_LATCH;
+reg nTS_LATCH;
 always @(posedge BCLK, negedge nRESET) begin
     if (!nRESET) begin
-
-        DA_BYTE0_O <= 8'b00000000;
-        DA_BYTE1_O <= 8'b00000000;
-        DA_BYTE2_O <= 8'b00000000;
-        DA_BYTE3_O <= 8'b00000000;
-
+        DSACK_LATCH <= 2'b11;
+        nTS_LATCH <= 1;
     end else begin
-
-        if (DSACK != 2'b11) begin
-
-            case (STATE)
-
-                4'b0001: //LINE OR LONG WORD TRANSFER A
-                    case (DSACK)
-                                    
-                        2'b00: //32-BIT PORT	
-                            begin
-                                DA_BYTE0_O <= DB_BYTE0;
-                                DA_BYTE1_O <= DB_BYTE1;
-                                DA_BYTE2_O <= DB_BYTE2;
-                                DA_BYTE3_O <= DB_BYTE3;
-                            end
-                            
-                        2'b01: //16-BIT PORT
-                            begin
-                                DA_BYTE0_O <= DB_BYTE0;
-                                DA_BYTE1_O <= DB_BYTE1;
-                            end
-                    endcase
-
-                4'b0010: //16-BIT PORT, COMPLETE THE LONG WORD TRANSFER B
-                    begin
-                        DA_BYTE2_O <= DB_BYTE0;
-                        DA_BYTE3_O <= DB_BYTE1;
-                    end
-
-                4'b0011: //WORD TRANSFER, ADDRESS 0 F,3
-                    begin
-                        DA_BYTE0_O <= DB_BYTE0;
-                        DA_BYTE1_O <= DB_BYTE1;
-                        DA_BYTE2_O <= DB_BYTE2;
-                        DA_BYTE3_O <= DB_BYTE3;
-                    end
-
-                4'b0100: //WORD TRANSFER, ADDRESS 2 G,4
-                    begin
-                        DA_BYTE0_O <= DB_BYTE2;
-                        DA_BYTE1_O <= DB_BYTE3;
-                        DA_BYTE2_O <= DB_BYTE2;
-                        DA_BYTE3_O <= DB_BYTE3;
-                    end
-
-                4'b0101: //BYTE TRANSFER, ADDRESS 0 K,5
-                    begin
-                        DA_BYTE0_O <= DB_BYTE0;
-                        DA_BYTE1_O <= DB_BYTE1;
-                        DA_BYTE2_O <= DB_BYTE2;
-                        DA_BYTE3_O <= DB_BYTE3;
-                    end
-
-                4'b0110: //BYTE TRANSFER, ADDRESS 1 L,6
-                    begin
-                        DA_BYTE0_O <= DB_BYTE1;
-                        DA_BYTE1_O <= DB_BYTE1;
-                        DA_BYTE2_O <= DB_BYTE2;
-                        DA_BYTE3_O <= DB_BYTE3;
-                    end
-
-                4'b0111: //BYTE TRANSFER, ADDRESS 2 M,7
-                    begin
-                        DA_BYTE0_O <= DB_BYTE2;
-                        DA_BYTE1_O <= DB_BYTE1;
-                        DA_BYTE2_O <= DB_BYTE2;
-                        DA_BYTE3_O <= DB_BYTE3;
-                    end
-
-                4'b1000: //BYTE TRANSFER, ADDRESS 3 N,8
-                    begin
-                        DA_BYTE0_O <= DB_BYTE3;
-                        DA_BYTE1_O <= DB_BYTE3;
-                        DA_BYTE2_O <= DB_BYTE2;
-                        DA_BYTE3_O <= DB_BYTE3;
-                    end
-
-            endcase
-
-        end
-
+        DSACK_LATCH <= DSACK;
+        nTS_LATCH <= nTS;
     end
-    
 end
 
-////////////////////////////////////
-//DYNAMIC BUS SIZE STATE MACHINE //
-////////////////////////////////////
+//DATA TRANSFER STATE MACHINE
 
-//MOVE THE DATA
+//STATE PARAMETERS
+parameter IDLE              = 3'b000;
+parameter LONG_TRANSFER     = 3'b001;
+parameter UWORD_TRANSFER    = 3'b010;
+parameter LWORD_TRANSFER    = 3'b011;
+parameter UU_BYTE_TRANSFER  = 3'b100;
+parameter UM_BYTE_TRANSFER  = 3'b101;
+parameter LM_BYTE_TRANSFER  = 3'b110;
+parameter LL_BYTE_TRANSFER  = 3'b111;
 
-reg [3:0]STATE;
-reg TA;
-reg TBI;
-reg TCI;
-reg CYCLE_BURST_INHIBIT;
-reg CYCLE1;
-reg BURST;
-reg [2:0] BURST_COUNTER;
+//SIZ PARAMETERS
+parameter LWORD = 2'b00;
+parameter BYTE  = 2'b01;
+parameter WORD  = 2'b10;
+parameter BURST = 2'b11;
+
+//DSACK PARAMETERS
+parameter L_TERM = 2'b00;
+parameter W_TERM = 2'b01;
+parameter B_TERM = 2'b10; //NOT USED
+parameter WAIT_TERM = 2'b11;
+
+reg [2:0] TRANSFER_STATE;
+reg [2:0] CURRENT_TRANSFER;
+reg CYCLE_NEXT;
 reg TS;
-reg TEA;
-reg TA_DELAY;
+//reg ODD_EN;
 
-always @(posedge BCLK, negedge nRESET) begin
-
+always @(negedge BCLK, negedge nRESET) begin
 	if (!nRESET) begin
-
-		STATE <= 4'b0000;
-        TA <= 0;
+		TRANSFER_STATE <= IDLE;
+		CYCLE_NEXT <= 0;
+		//ODD_EN <= 0;
         TS <= 0;
-        TBI <= 0;
-        TCI <= 0;
-        TEA <= 0;
-        CYCLE_BURST_INHIBIT <= 0;
-        CYCLE1 <= 0;
-        BURST <= 0;
-        BURST_COUNTER <= 3'b000;
-        TA_DELAY <= 0;
-
+        TA_OUT <= 0;
 	end else begin
 
-		case (STATE)
+		case (TRANSFER_STATE)
 
-			4'b0000 : //IDLE
+			IDLE:
                 begin
-                    TA <= 0;
-                    TBI <= 0;
-                    TCI <= 0;
-                    TEA <= 0;
-                    CYCLE_BURST_INHIBIT <= 0;           
+                    TA_OUT <= 0;
+                    //ODD_EN <= 0;
 
-                    if (!nTS_CPU) begin	
-
-                        TS <= 1;
-
+                    if (!nTS_LATCH) begin
                         case (SIZ)
-
-                            2'b00, 2'b11: //LONG WORD OR LINE
-                                begin
-                                    BURST <= TT == 2'b01;
-                                    BURST_COUNTER <= 3'b000;
-                                    STATE <= 4'b0001; 
-                                end
-                            2'b10: //WORD
-                                case (A)
-                                    2'b00: STATE <= 4'b0011;
-                                    2'b10: STATE <= 4'b0100;
-                                endcase
-                            2'b01: //BYTE
-                                case (A)
-                                    2'b00 : STATE <= 4'b0101;
-                                    2'b01 : STATE <= 4'b0110;
-                                    2'b10 : STATE <= 4'b0111;
-                                    2'b11 : STATE <= 4'b1000;
-                                endcase
+                            LWORD, BURST : begin TRANSFER_STATE <= LONG_TRANSFER; CURRENT_TRANSFER <= LONG_TRANSFER; end
+                            BYTE         : case (A)
+                                                2'b00 : begin TRANSFER_STATE <= UU_BYTE_TRANSFER; CURRENT_TRANSFER <= UU_BYTE_TRANSFER; end
+                                                2'b01 : begin TRANSFER_STATE <= UM_BYTE_TRANSFER; CURRENT_TRANSFER <= UM_BYTE_TRANSFER; end
+                                                2'b10 : begin TRANSFER_STATE <= LM_BYTE_TRANSFER; CURRENT_TRANSFER <= LM_BYTE_TRANSFER; end
+                                                2'b11 : begin TRANSFER_STATE <= LL_BYTE_TRANSFER; CURRENT_TRANSFER <= LL_BYTE_TRANSFER; end
+                                           endcase
+                            WORD         : case (A) 
+                                                2'b00 : begin TRANSFER_STATE <= UWORD_TRANSFER; CURRENT_TRANSFER <= UWORD_TRANSFER; end
+                                                2'b10 : begin TRANSFER_STATE <= LWORD_TRANSFER; CURRENT_TRANSFER <= LWORD_TRANSFER; end
+                                           endcase
                         endcase
                     end
                 end
 
-			4'b0001: //LONG WORD OR LINE
+			LONG_TRANSFER:                
+                    case (DSACK_LATCH)
+                        L_TERM: begin TA_OUT <= 1; TRANSFER_STATE <= IDLE; end
+                        W_TERM: begin CYCLE_NEXT <= 1; TRANSFER_STATE <= LWORD_TRANSFER; end
+                    endcase
+                
+
+			UWORD_TRANSFER, UU_BYTE_TRANSFER, UM_BYTE_TRANSFER, LM_BYTE_TRANSFER, LL_BYTE_TRANSFER:
                 begin
-                    TS <= 0; 
-                    TEA <= ~nTEA;
-
-                    if (TA_DELAY) begin
-                        TA <= 1;
-                        TA_DELAY <= 0;
-                        STATE <= 4'b0000;
-                    end
-
-                    case (DSACK)
-                        2'b00:                         
-                            begin 
-
-                                //TA <= 1;
-                                TA_DELAY <= 1;
-                                //if (BURST) begin
-                                //    TBI <= ~nTBI;
-                                //    CYCLE_BURST_INHIBIT <= ~nTBI;                                
-                                //    TCI <= ~nTCI;
-                                //    BURST_COUNTER <= BURST_COUNTER + 1;
-                                //end else begin
-                                    //STATE <= 4'b0000;
-                                //end
-
-                            end
-
-                        2'b01: //TRANSFER THE NEXT WORD
-                            begin 
-                                if (BURST) begin TBI <= 1; TCI <= ~nTCI; end //DISABLE BURSTS AGAINST A 16-BIT PORT.
-                                TS <= 1; 
-                                CYCLE1 <= 1;
-                            end
-
-                        2'b11: 
-                            begin
-
-                                if (CYCLE1) begin
-                                    STATE <= 4'b0010; 
-                                    TS <= 0; 
-                                    CYCLE1 <= 0;
-                                end else if (TA) begin
-                                    TA <= 0; 
-                                    TBI <= 0;
-                                    TCI <= 0;
-                                    if ((CYCLE_BURST_INHIBIT && BURST_COUNTER == 1'b1) || BURST_COUNTER == 3'b100) begin                                                                        
-                                        STATE <= 4'b0000; 
-                                    end
-                                end
-                            end
-                    endcase   
+				    if (DSACK != WAIT_TERM) begin TA_OUT <= 1; TRANSFER_STATE <= IDLE; end
                 end
 
-            4'b0010, 4'b0011, 4'b0100, 4'b0101, 4'b0110, 4'b0111, 4'b1000:
-
+			LWORD_TRANSFER:
                 begin
-                    TS <= 0;
-                    TEA <= ~nTEA;
-                    if (DSACK != 2'b11) begin                        
-                        TA <= 1;  
-                        STATE <= 4'b0000; 
+                    if (CYCLE_NEXT) begin
+                        //ODD_EN <= 1;
+                        TS <= 1;
+                        CYCLE_NEXT <= 0;
+                    end else begin
+                        TS <= 0;
+                    end
+
+                    if (DSACK != WAIT_TERM) begin 
+                        TA_OUT <= 1;
+                        TRANSFER_STATE <= IDLE;
                     end
                 end
 
-        endcase
+		endcase			
 	end
-
 end
 
-endmodule
+//READ MODE
+assign DA0 = RnW ? DB0 : 8'bzzzzzzzz;
+
+assign DA1 = RnW ? DB1 : 8'bzzzzzzzz;
+
+assign DA2 = 
+    (RnW && CURRENT_TRANSFER == LONG_TRANSFER) ? DB2 : 
+    (RnW && CURRENT_TRANSFER == LM_BYTE_TRANSFER) ? DB0 : 
+    (RnW && CURRENT_TRANSFER == LWORD_TRANSFER) ? DB0 : 
+    8'bzzzzzzzz;
+
+assign DA3 = 
+    (RnW && CURRENT_TRANSFER == LONG_TRANSFER) ? DB3 : 
+    (RnW && CURRENT_TRANSFER == LL_BYTE_TRANSFER) ? DB1 : 
+    (RnW && CURRENT_TRANSFER == LWORD_TRANSFER) ? DB1 : 
+    8'bzzzzzzzz;
+
+//WRITE MODE
+//assign DB0 = !RnW ? DA0 : 8'bzzzzzzzz;
+//assign DB1 = !RnW ? DA1 : 8'bzzzzzzzz;
+//assign DB2 = !RnW ? DA2 : 8'bzzzzzzzz;
+//assign DB3 = !RnW ? DA3 : 8'bzzzzzzzz;
+
+endmodule	
