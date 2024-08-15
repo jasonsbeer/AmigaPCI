@@ -72,7 +72,6 @@ inout [7:0] DB3
 //THE CLK40 INPUT SHOULD BE MOVED TO PIN 129 TO USE A "PAD" PRIMITIVE, BUT THIS MEANS PIN 128 CAN ONLY BE USED AS AN OUTPUT. DSACK0 NEEDS TO BE MOVED ANYWHERE EXCEPT PIN 129.
 
 wire BCLK;
-wire PCLK;
 wire CLK80out;
 wire CLK40out;
 
@@ -83,7 +82,6 @@ assign CLK80A = CLK80out;
 assign CLK80B = CLK80out;
 assign CLK80C = CLK80out;
 assign RAMCLK = CLK80out;
-
 
 SB_PLL40_2F_CORE #(
     .DIVR (4'b0000),
@@ -98,7 +96,6 @@ SB_PLL40_2F_CORE #(
     .RESETB         (1'b1),
     .REFERENCECLK   (CLK40),
     .PLLOUTGLOBALA  (CLK80out),
-    .PLLOUTCOREA    (PCLK),
     .PLLOUTGLOBALB  (CLK40out),
     .PLLOUTCOREB    (BCLK)
 );
@@ -148,27 +145,32 @@ reg TA_OUT;
 //CYCLE ATTRIBUTES LATCH
 reg [1:0] DSACK_LATCH;
 reg nTS_LATCH;
+reg [1:0] SIZ_LATCH;
 always @(posedge BCLK, negedge nRESET) begin
     if (!nRESET) begin
         DSACK_LATCH <= 2'b11;
         nTS_LATCH <= 1;
+        SIZ_LATCH <= 2'b11;
     end else begin
         DSACK_LATCH <= DSACK;
         nTS_LATCH <= nTS;
+        if (!nTS) begin
+            SIZ_LATCH <= SIZ;
+        end
     end
 end
 
 //DATA TRANSFER STATE MACHINE
 
 //STATE PARAMETERS
-parameter IDLE              = 3'b000;
-parameter LONG_TRANSFER     = 3'b001;
-parameter UWORD_TRANSFER    = 3'b010;
-parameter LWORD_TRANSFER    = 3'b011;
-parameter UU_BYTE_TRANSFER  = 3'b100;
-parameter UM_BYTE_TRANSFER  = 3'b101;
-parameter LM_BYTE_TRANSFER  = 3'b110;
-parameter LL_BYTE_TRANSFER  = 3'b111;
+parameter IDLE             = 3'b000;
+parameter LONG_TRANSFER    = 3'b001;
+parameter UWORD_TRANSFER   = 3'b010;
+parameter LWORD_TRANSFER   = 3'b011;
+parameter UU_BYTE_TRANSFER = 3'b100;
+parameter UM_BYTE_TRANSFER = 3'b101;
+parameter LM_BYTE_TRANSFER = 3'b110;
+parameter LL_BYTE_TRANSFER = 3'b111;
 
 //SIZ PARAMETERS
 parameter LWORD = 2'b00;
@@ -177,10 +179,18 @@ parameter WORD  = 2'b10;
 parameter BURST = 2'b11;
 
 //DSACK PARAMETERS
-parameter L_TERM = 2'b00;
-parameter W_TERM = 2'b01;
-parameter B_TERM = 2'b10; //NOT USED
+parameter L_TERM    = 2'b00;
+parameter W_TERM    = 2'b01;
+parameter B_TERM    = 2'b10; //NOT USED
 parameter WAIT_TERM = 2'b11;
+
+//ADDRESS PARAMETERS
+parameter UPPER_WORD = 2'b00;
+parameter LOWER_WORD = 2'b10;
+parameter UU_BYTE    = 2'b00;
+parameter UM_BYTE    = 2'b01;
+parameter LM_BYTE    = 2'b10;
+parameter LL_BYTE    = 2'b11;
 
 reg [2:0] TRANSFER_STATE;
 reg [2:0] CURRENT_TRANSFER;
@@ -205,7 +215,7 @@ always @(negedge BCLK, negedge nRESET) begin
                     //ODD_EN <= 0;
 
                     if (!nTS_LATCH) begin
-                        case (SIZ)
+                        case (SIZ_LATCH)
                             LWORD, BURST : begin TRANSFER_STATE <= LONG_TRANSFER; CURRENT_TRANSFER <= LONG_TRANSFER; end
                             BYTE         : case (A)
                                                 2'b00 : begin TRANSFER_STATE <= UU_BYTE_TRANSFER; CURRENT_TRANSFER <= UU_BYTE_TRANSFER; end
@@ -230,7 +240,7 @@ always @(negedge BCLK, negedge nRESET) begin
 
 			UWORD_TRANSFER, UU_BYTE_TRANSFER, UM_BYTE_TRANSFER, LM_BYTE_TRANSFER, LL_BYTE_TRANSFER:
                 begin
-				    if (DSACK != WAIT_TERM) begin TA_OUT <= 1; TRANSFER_STATE <= IDLE; end
+				    if (DSACK_LATCH != WAIT_TERM) begin TA_OUT <= 1; TRANSFER_STATE <= IDLE; end
                 end
 
 			LWORD_TRANSFER:
@@ -243,7 +253,7 @@ always @(negedge BCLK, negedge nRESET) begin
                         TS <= 0;
                     end
 
-                    if (DSACK != WAIT_TERM) begin 
+                    if (DSACK_LATCH != WAIT_TERM) begin 
                         TA_OUT <= 1;
                         TRANSFER_STATE <= IDLE;
                     end
@@ -253,27 +263,67 @@ always @(negedge BCLK, negedge nRESET) begin
 	end
 end
 
-//READ MODE
-assign DA0 = RnW ? DB0 : 8'bzzzzzzzz;
+///////////////
+// FINAL I/O //
+///////////////
 
-assign DA1 = RnW ? DB1 : 8'bzzzzzzzz;
+wire DAEN = RnW && nRESET;
+assign DA0 = DAEN ? D0_LATCHED : 8'bz;
+assign DA1 = DAEN ? D1_LATCHED : 8'bz;
+assign DA2 = DAEN ? D2_LATCHED : 8'bz;
+assign DA3 = DAEN ? D3_LATCHED : 8'bz;
 
-assign DA2 = 
-    (RnW && CURRENT_TRANSFER == LONG_TRANSFER) ? DB2 : 
-    (RnW && CURRENT_TRANSFER == LM_BYTE_TRANSFER) ? DB0 : 
-    (RnW && CURRENT_TRANSFER == LWORD_TRANSFER) ? DB0 : 
-    8'bzzzzzzzz;
+wire DBEN = !RnW && nRESET;
+assign DB0 = DBEN ? WD0 : 8'bz;
+assign DB1 = DBEN ? WD1 : 8'bz;
+assign DB2 = DBEN ? WD2 : 8'bz;
+assign DB3 = DBEN ? WD3 : 8'bz;
 
-assign DA3 = 
-    (RnW && CURRENT_TRANSFER == LONG_TRANSFER) ? DB3 : 
-    (RnW && CURRENT_TRANSFER == LL_BYTE_TRANSFER) ? DB1 : 
-    (RnW && CURRENT_TRANSFER == LWORD_TRANSFER) ? DB1 : 
-    8'bzzzzzzzz;
+/////////////////////////
+// DEFINE THE READ I/O //
+/////////////////////////
 
-//WRITE MODE
-//assign DB0 = !RnW ? DA0 : 8'bzzzzzzzz;
-//assign DB1 = !RnW ? DA1 : 8'bzzzzzzzz;
-//assign DB2 = !RnW ? DA2 : 8'bzzzzzzzz;
-//assign DB3 = !RnW ? DA3 : 8'bzzzzzzzz;
+wire [7:0] RD0;
+wire [7:0] RD1;
+wire [7:0] RD2;
+wire [7:0] RD3;
+
+assign RD0 = (SIZ_LATCH == BYTE && A == LM_BYTE) || (SIZ_LATCH == WORD && A == LOWER_WORD) ? DB2 : DB0;
+assign RD1 = (SIZ_LATCH == BYTE && A == LL_BYTE) || (SIZ_LATCH == WORD && A == LOWER_WORD) ? DB3 : DB1;
+assign RD2 = DB2;
+assign RD3 = DB3;
+
+reg [7:0] D0_LATCHED;
+reg [7:0] D1_LATCHED;
+reg [7:0] D2_LATCHED;
+reg [7:0] D3_LATCHED;
+
+always @(posedge BCLK, negedge nRESET) begin
+    if (!nRESET) begin
+        D0_LATCHED <= 8'hFF;
+        D1_LATCHED <= 8'hFF;
+        D2_LATCHED <= 8'hFF;
+        D3_LATCHED <= 8'hFF;
+    end else if (DSACK != WAIT_TERM) begin
+        D0_LATCHED <= RD0;
+        D1_LATCHED <= RD1;
+        D2_LATCHED <= RD2;
+        D3_LATCHED <= RD3;
+    end 
+end
+
+//////////////////////////
+// DEFINE THE WRITE I/O //
+//////////////////////////
+
+wire [7:0] WD0;
+wire [7:0] WD1;
+wire [7:0] WD2;
+wire [7:0] WD3;
+
+assign WD0 = (SIZ_LATCH == BYTE && A == LM_BYTE) || (SIZ_LATCH == WORD && A == LOWER_WORD) ? DA2 : DA0 ;
+assign WD1 = (SIZ_LATCH == BYTE && A == LL_BYTE) || (SIZ_LATCH == WORD && A == LOWER_WORD) ? DA3 : DA1 ;
+assign WD2 = DA2 ;
+assign WD3 = DA3 ;
 
 endmodule	
