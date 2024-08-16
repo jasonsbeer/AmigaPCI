@@ -37,16 +37,14 @@ module U111_TOP (
 input [1:0] A,
 input [1:0] DSACK,
 input [1:0] SIZ,
-/*input [1:0] TT,
-input nTS_CPU, nTBI, nTCI, RnW, nBG, nRESET, CLK40, nTEA,
+//input [1:0] TT,
 
-output nTS, nTA, nTBI_CPU, nTCI_CPU, CLK40A, CLK40B, CLK40C, CLK80A, CLK80B, CLK80C, RAMCLK, nTEA_CPU, nCPUBG, nBUFEN, BUFDIR,*/
-
-input nRESET, nTS_CPU, RnW, CLK40,
+input nRESET, nTS_CPU, RnW, CLK40, nTBI, nTCI, nTEA, nBG, nBB, 
 //input A_CPU,
 
-output nTS, nTA, CLK40A, CLK40B, CLK40C, CLK80A, CLK80B, CLK80C, RAMCLK, nCPUBG, nBUFEN, BUFDIR,
+output nTS, nTA, CLK40A, CLK40B, CLK40C, CLK80A, CLK80B, CLK80C, RAMCLK, nCPUBG, nBUFEN, BUFDIR, nTBI_CPU, nTCI_CPU, nTEA_CPU, 
 //output A,
+//output reg CYCLE_NEXT,
 
 inout [7:0] DA0, //68040 SIDE
 inout [7:0] DA1,
@@ -122,86 +120,124 @@ SB_PLL40_2F_CORE #(
 // BUFFER ENABLES AND DIRECTION //
 //////////////////////////////////
 
-assign nCPUBG = 0; //ENABLE THE CPU DATA BUS BUFFERS
+assign nCPUBG = ~CPUBUSEN; //ENABLE THE CPU DATA BUS BUFFERS
 
-assign nBUFEN = 0; //ENABLE THE AMIGAPCI DATA BUS WHEN NOT USING ONBOARD RESOURCES.
-assign BUFDIR = RnW; //DIRECTION OF THE AMIGAPCI DATA BUS. INFLUENCED BY WHO HAS THE BUS.
+//assign nBUFEN = ~nLBEN; //ENABLE THE AMIGAPCI DATA BUS WHEN NOT USING ONBOARD RESOURCES.
+assign nBUFEN = 0;
+assign BUFDIR = (RnW && CPUBUSEN) || (!RnW && nBG); //DIRECTION OF THE AMIGAPCI DATA BUS. INFLUENCED BY WHO HAS THE BUS.
 
+//WE ENABLE THE 68040 DATA BUS BUFFERS WITH THE _CPUBG SIGNAL. IF BUS GRANT (_BG) IS NEGATED DURING A CPU CYCLE,
+//THE DATA BUFFERS MUST STAY ENABLED UNTIL THE 68040 IS DONE WITH THE BUS. SIGNIFIED BY NEGATION OF _BB.
+reg CPUBUSEN;
 
-// DA0/DB0 IS MOST SIGNIFICANT BYTE.
+always @(posedge BCLK, negedge nRESET) begin
+    if (!nRESET) begin
+        CPUBUSEN <= 0;
+    end else begin
+        CPUBUSEN <= !nBG || (CPUBUSEN && !nBB);
+    end
+end
+
 
 //ADDRESS
 
 //assign A = ODD_EN ? 1 : A_CPU;
 
-//TRANSFER START
+////////////////////
+// TRANSFER START //
+////////////////////
 
 assign nTS = ~(!nTS_CPU || TS);
 
-//TRANSFER ACK
-assign nTA = ~TA_OUT;
-reg TA_OUT;
+//////////////////
+// TRANSFER ACK //
+//////////////////
 
-//CYCLE ATTRIBUTES LATCH
+//END THE CYCLE
+
+assign nTA = ~TA_OUT;
+assign nTEA_CPU = !TA_OUT ? nTEA_LATCH : 1;
+assign nTBI_CPU = !TA_OUT ? nTBI_LATCH : 1;
+assign nTCI_CPU = !TA_OUT ? nTCI_LATCH : 1;
+
+////////////////////////////
+// CYCLE ATTRIBUTES LATCH //
+////////////////////////////
+
+//LATCH THE ATTRIBUTES OF THE CURRENT TRANSFER
+
 reg [1:0] DSACK_LATCH;
 reg nTS_LATCH;
 reg [1:0] SIZ_LATCH;
+reg nTBI_LATCH;
+reg nTCI_LATCH;
+reg nTEA_LATCH;
+reg [1:0] A_LATCH;
+
 always @(posedge BCLK, negedge nRESET) begin
     if (!nRESET) begin
         DSACK_LATCH <= 2'b11;
         nTS_LATCH <= 1;
         SIZ_LATCH <= 2'b11;
+        nTBI_LATCH <= 1;
+        nTCI_LATCH <= 1;
+        nTEA_LATCH <= 1;
+        A_LATCH <= 2'b11;
     end else begin
         DSACK_LATCH <= DSACK;
         nTS_LATCH <= nTS;
+        nTBI_LATCH <= nTBI;
+        nTCI_LATCH <= nTCI;
+        nTEA_LATCH <= nTEA;
         if (!nTS) begin
             SIZ_LATCH <= SIZ;
+            A_LATCH <= A;
         end
     end
 end
 
-//DATA TRANSFER STATE MACHINE
+//////////////////////////////////
+//  DATA TRANSFER STATE MACHINE //
+//////////////////////////////////
+
+//STATE MACHINE CONTROLLING THE BUS SIZING INTERFACE.
 
 //STATE PARAMETERS
-parameter IDLE             = 3'b000;
-parameter LONG_TRANSFER    = 3'b001;
-parameter UWORD_TRANSFER   = 3'b010;
-parameter LWORD_TRANSFER   = 3'b011;
-parameter UU_BYTE_TRANSFER = 3'b100;
-parameter UM_BYTE_TRANSFER = 3'b101;
-parameter LM_BYTE_TRANSFER = 3'b110;
-parameter LL_BYTE_TRANSFER = 3'b111;
+localparam IDLE                = 3'b000;
+localparam BYTE_TRANSFER       = 3'b001;
+localparam WORD_TRANSFER       = 3'b010;
+localparam LOWER_WORD_TRANSFER = 3'b011;
+localparam LONG_TRANSFER       = 3'b101; //3'b100 DOES NOT WORK????????
 
 //SIZ PARAMETERS
-parameter LWORD = 2'b00;
-parameter BYTE  = 2'b01;
-parameter WORD  = 2'b10;
-parameter BURST = 2'b11;
+localparam LWORD = 2'b00;
+localparam BYTE  = 2'b01;
+localparam WORD  = 2'b10;
+localparam BURST = 2'b11;
 
 //DSACK PARAMETERS
-parameter L_TERM    = 2'b00;
-parameter W_TERM    = 2'b01;
-parameter B_TERM    = 2'b10; //NOT USED
-parameter WAIT_TERM = 2'b11;
+localparam L_TERM    = 2'b00;
+localparam W_TERM    = 2'b01;
+localparam B_TERM    = 2'b10; //NOT USED
+localparam WAIT_TERM = 2'b11;
 
 //ADDRESS PARAMETERS
-parameter UPPER_WORD = 2'b00;
-parameter LOWER_WORD = 2'b10;
-parameter UU_BYTE    = 2'b00;
-parameter UM_BYTE    = 2'b01;
-parameter LM_BYTE    = 2'b10;
-parameter LL_BYTE    = 2'b11;
+localparam UPPER_WORD = 2'b00;
+localparam LOWER_WORD = 2'b10;
+localparam UU_BYTE    = 2'b00;
+localparam UM_BYTE    = 2'b01;
+localparam LM_BYTE    = 2'b10;
+localparam LL_BYTE    = 2'b11;
 
 reg [2:0] TRANSFER_STATE;
-reg [2:0] CURRENT_TRANSFER;
-reg CYCLE_NEXT;
+reg [2:0] CURRENT_STATE;
 reg TS;
+reg TA_OUT;
 //reg ODD_EN;
 
 always @(negedge BCLK, negedge nRESET) begin
 	if (!nRESET) begin
 		TRANSFER_STATE <= IDLE;
-		CYCLE_NEXT <= 0;
 		//ODD_EN <= 0;
         TS <= 0;
         TA_OUT <= 0;
@@ -216,46 +252,33 @@ always @(negedge BCLK, negedge nRESET) begin
 
                     if (!nTS_LATCH) begin
                         case (SIZ_LATCH)
-                            LWORD, BURST : begin TRANSFER_STATE <= LONG_TRANSFER; CURRENT_TRANSFER <= LONG_TRANSFER; end
-                            BYTE         : case (A)
-                                                2'b00 : begin TRANSFER_STATE <= UU_BYTE_TRANSFER; CURRENT_TRANSFER <= UU_BYTE_TRANSFER; end
-                                                2'b01 : begin TRANSFER_STATE <= UM_BYTE_TRANSFER; CURRENT_TRANSFER <= UM_BYTE_TRANSFER; end
-                                                2'b10 : begin TRANSFER_STATE <= LM_BYTE_TRANSFER; CURRENT_TRANSFER <= LM_BYTE_TRANSFER; end
-                                                2'b11 : begin TRANSFER_STATE <= LL_BYTE_TRANSFER; CURRENT_TRANSFER <= LL_BYTE_TRANSFER; end
-                                           endcase
-                            WORD         : case (A) 
-                                                2'b00 : begin TRANSFER_STATE <= UWORD_TRANSFER; CURRENT_TRANSFER <= UWORD_TRANSFER; end
-                                                2'b10 : begin TRANSFER_STATE <= LWORD_TRANSFER; CURRENT_TRANSFER <= LWORD_TRANSFER; end
-                                           endcase
+                            LWORD, BURST :  TRANSFER_STATE <= LONG_TRANSFER;
+                            BYTE         :  TRANSFER_STATE <= BYTE_TRANSFER;
+                            WORD         :  TRANSFER_STATE <= WORD_TRANSFER;
                         endcase
                     end
                 end
 
-			LONG_TRANSFER:                
+			LONG_TRANSFER:  
+                begin    
                     case (DSACK_LATCH)
                         L_TERM: begin TA_OUT <= 1; TRANSFER_STATE <= IDLE; end
-                        W_TERM: begin CYCLE_NEXT <= 1; TRANSFER_STATE <= LWORD_TRANSFER; end
+                        W_TERM: begin TS <= 1; CURRENT_STATE <= LOWER_WORD_TRANSFER; TRANSFER_STATE <= LOWER_WORD_TRANSFER; end
                     endcase
-                
+                end                
 
-			UWORD_TRANSFER, UU_BYTE_TRANSFER, UM_BYTE_TRANSFER, LM_BYTE_TRANSFER, LL_BYTE_TRANSFER:
+			WORD_TRANSFER, BYTE_TRANSFER :
                 begin
 				    if (DSACK_LATCH != WAIT_TERM) begin TA_OUT <= 1; TRANSFER_STATE <= IDLE; end
                 end
 
-			LWORD_TRANSFER:
+			LOWER_WORD_TRANSFER:
                 begin
-                    if (CYCLE_NEXT) begin
-                        //ODD_EN <= 1;
-                        TS <= 1;
-                        CYCLE_NEXT <= 0;
-                    end else begin
-                        TS <= 0;
-                    end
-
+                    TS <= 0;           
                     if (DSACK_LATCH != WAIT_TERM) begin 
                         TA_OUT <= 1;
                         TRANSFER_STATE <= IDLE;
+                        CURRENT_STATE <= IDLE;
                     end
                 end
 
@@ -304,11 +327,16 @@ always @(posedge BCLK, negedge nRESET) begin
         D1_LATCHED <= 8'hFF;
         D2_LATCHED <= 8'hFF;
         D3_LATCHED <= 8'hFF;
-    end else if (DSACK != WAIT_TERM) begin
+    end else if (DSACK != WAIT_TERM) begin       
         D0_LATCHED <= RD0;
-        D1_LATCHED <= RD1;
-        D2_LATCHED <= RD2;
-        D3_LATCHED <= RD3;
+        D1_LATCHED <= RD1;        
+        if (CURRENT_STATE == LOWER_WORD_TRANSFER) begin
+            D2_LATCHED <= RD0;
+            D3_LATCHED <= RD1;
+        end else begin
+            D2_LATCHED <= RD2;
+            D3_LATCHED <= RD3;
+        end
     end 
 end
 
