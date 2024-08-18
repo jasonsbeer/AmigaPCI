@@ -85,7 +85,7 @@ set_io DSACK[1] 45
 set_io nTBI 48
 #set_io nLLBE 60
 #set_io nUUBE 61
-#set_io CYCLE_NEXT 61
+#set_io lbenout 61
 #set_io nLMBE 62
 #set_io nUMBE 63
 set_io nTBI_CPU 64

@@ -37,14 +37,12 @@ module U111_TOP (
 input [1:0] A,
 input [1:0] DSACK,
 input [1:0] SIZ,
-//input [1:0] TT,
 
-input nRESET, nTS_CPU, RnW, CLK40, nTBI, nTCI, nTEA, nBG, nBB, 
+input nRESET, nTS_CPU, RnW, CLK40, nTBI, nTCI, nTEA, nBG, nBB, //nLBEN,
 //input A_CPU,
 
-output nTS, nTA, CLK40A, CLK40B, CLK40C, CLK80A, CLK80B, CLK80C, RAMCLK, nCPUBG, nBUFEN, BUFDIR, nTBI_CPU, nTCI_CPU, nTEA_CPU, 
+output nTS, nTA, CLK40A, CLK40B, CLK40C, CLK80A, CLK80B, CLK80C, RAMCLK, nCPUBG, nBUFEN, BUFDIR, nTBI_CPU, nTCI_CPU, nTEA_CPU,
 //output A,
-//output reg CYCLE_NEXT,
 
 inout [7:0] DA0, //68040 SIDE
 inout [7:0] DA1,
@@ -121,9 +119,8 @@ SB_PLL40_2F_CORE #(
 //////////////////////////////////
 
 assign nCPUBG = ~CPUBUSEN; //ENABLE THE CPU DATA BUS BUFFERS
-
-//assign nBUFEN = ~nLBEN; //ENABLE THE AMIGAPCI DATA BUS WHEN NOT USING ONBOARD RESOURCES.
-assign nBUFEN = 0;
+wire nLBEN = 1; //THIS IS NECESSARY UNTIL WE HAVE A RAM CONTROLLER ON THE CARD.
+assign nBUFEN = ~nLBEN; //DISABLE THE AMIGAPCI DATA BUS WHEN USING ONBOARD RESOURCES.
 assign BUFDIR = (RnW && CPUBUSEN) || (!RnW && nBG); //DIRECTION OF THE AMIGAPCI DATA BUS. INFLUENCED BY WHO HAS THE BUS.
 
 //WE ENABLE THE 68040 DATA BUS BUFFERS WITH THE _CPUBG SIGNAL. IF BUS GRANT (_BG) IS NEGATED DURING A CPU CYCLE,
@@ -134,10 +131,13 @@ always @(posedge BCLK, negedge nRESET) begin
     if (!nRESET) begin
         CPUBUSEN <= 0;
     end else begin
-        CPUBUSEN <= !nBG || (CPUBUSEN && !nBB);
+        if (CPUBUSEN && nBB) begin
+            CPUBUSEN <= 0;
+        end else if (!nBG) begin
+            CPUBUSEN <= 1;
+        end
     end
 end
-
 
 //ADDRESS
 
@@ -156,9 +156,9 @@ assign nTS = ~(!nTS_CPU || TS);
 //END THE CYCLE
 
 assign nTA = ~TA_OUT;
-assign nTEA_CPU = !TA_OUT ? nTEA_LATCH : 1;
-assign nTBI_CPU = !TA_OUT ? nTBI_LATCH : 1;
-assign nTCI_CPU = !TA_OUT ? nTCI_LATCH : 1;
+assign nTEA_CPU = TA_OUT ? ~TEA_EN : 1;
+assign nTBI_CPU = TA_OUT ? ~TBI_EN : 1;
+assign nTCI_CPU = TA_OUT ? ~TCI_EN : 1;
 
 ////////////////////////////
 // CYCLE ATTRIBUTES LATCH //
@@ -169,29 +169,33 @@ assign nTCI_CPU = !TA_OUT ? nTCI_LATCH : 1;
 reg [1:0] DSACK_LATCH;
 reg nTS_LATCH;
 reg [1:0] SIZ_LATCH;
-reg nTBI_LATCH;
-reg nTCI_LATCH;
-reg nTEA_LATCH;
 reg [1:0] A_LATCH;
+reg TBI_EN;
+reg TCI_EN;
+reg TEA_EN;
+reg WRITE_CYCLE;
 
 always @(posedge BCLK, negedge nRESET) begin
     if (!nRESET) begin
         DSACK_LATCH <= 2'b11;
         nTS_LATCH <= 1;
         SIZ_LATCH <= 2'b11;
-        nTBI_LATCH <= 1;
-        nTCI_LATCH <= 1;
-        nTEA_LATCH <= 1;
+        TBI_EN <= 0;
+        TCI_EN <= 0;
+        TEA_EN <= 0;        
         A_LATCH <= 2'b11;
     end else begin
         DSACK_LATCH <= DSACK;
         nTS_LATCH <= nTS;
-        nTBI_LATCH <= nTBI;
-        nTCI_LATCH <= nTCI;
-        nTEA_LATCH <= nTEA;
         if (!nTS) begin
             SIZ_LATCH <= SIZ;
             A_LATCH <= A;
+            WRITE_CYCLE <= ~RnW;
+        end
+        if (DSACK != WAIT_TERM) begin
+            TBI_EN <= ~nTBI;
+            TCI_EN <= ~nTCI;
+            TEA_EN <= ~nTEA;
         end
     end
 end
@@ -207,7 +211,7 @@ localparam IDLE                = 3'b000;
 localparam BYTE_TRANSFER       = 3'b001;
 localparam WORD_TRANSFER       = 3'b010;
 localparam LOWER_WORD_TRANSFER = 3'b011;
-localparam LONG_TRANSFER       = 3'b101; //3'b100 DOES NOT WORK????????
+localparam LONG_TRANSFER       = 3'b100;
 
 //SIZ PARAMETERS
 localparam LWORD = 2'b00;
@@ -290,13 +294,13 @@ end
 // FINAL I/O //
 ///////////////
 
-wire DAEN = RnW && nRESET;
+wire DAEN = !WRITE_CYCLE && CPUBUSEN && nRESET;
 assign DA0 = DAEN ? D0_LATCHED : 8'bz;
 assign DA1 = DAEN ? D1_LATCHED : 8'bz;
 assign DA2 = DAEN ? D2_LATCHED : 8'bz;
 assign DA3 = DAEN ? D3_LATCHED : 8'bz;
 
-wire DBEN = !RnW && nRESET;
+wire DBEN = WRITE_CYCLE && CPUBUSEN && nRESET;
 assign DB0 = DBEN ? WD0 : 8'bz;
 assign DB1 = DBEN ? WD1 : 8'bz;
 assign DB2 = DBEN ? WD2 : 8'bz;
@@ -318,7 +322,7 @@ assign RD3 = DB3;
 
 reg [7:0] D0_LATCHED;
 reg [7:0] D1_LATCHED;
-reg [7:0] D2_LATCHED;
+reg [7:0] D2_LATCHED; //CULPRIT!
 reg [7:0] D3_LATCHED;
 
 always @(posedge BCLK, negedge nRESET) begin
@@ -327,7 +331,7 @@ always @(posedge BCLK, negedge nRESET) begin
         D1_LATCHED <= 8'hFF;
         D2_LATCHED <= 8'hFF;
         D3_LATCHED <= 8'hFF;
-    end else if (DSACK != WAIT_TERM) begin       
+    end else if (DSACK != WAIT_TERM) begin      
         D0_LATCHED <= RD0;
         D1_LATCHED <= RD1;        
         if (CURRENT_STATE == LOWER_WORD_TRANSFER) begin
