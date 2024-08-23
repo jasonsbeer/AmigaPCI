@@ -25,8 +25,6 @@ Target Devices: iCE40-HX4K-TQ144
 Description: DYNAMIC BUS SIZING
 
 Revision History:
-    12-JUL-2024 : INITIAL CODE
-    21-JUL-2024 : ADDED _TBI AND _TCI TO BURST CYCLE TERMINATION.
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 TO BUILD WITH APIO: apio build --top-module U111_TOP --fpga iCE40-HX4K-TQ144
@@ -38,10 +36,10 @@ input [1:0] A,
 input [1:0] DSACK,
 input [1:0] SIZ,
 
-input nRESET, nTS_CPU, RnW, CLK40, nTBI, nTCI, nTEA, nBG, nBB, //nLBEN,
+input nRESET, nTS_CPU, RnW, CLK40, nBG, nBB, //nTBI, nTCI, nTEA, //nLBEN,
 //input A_CPU,
 
-output nTS, nTA, CLK40A, CLK40B, CLK40C, CLK80A, CLK80B, CLK80C, RAMCLK, nCPUBG, nBUFEN, BUFDIR, nTBI_CPU, nTCI_CPU, nTEA_CPU,
+output nTS, nTA, nTBI_CPU, nCPUBG, nBUFEN, BUFDIR,  //CLK40A, CLK40B, CLK40C, CLK80A, CLK80B, CLK80C, RAMCLK, nTCI_CPU, nTEA_CPU, //nUUBE, nUMBE, nLMBE, nLLBE,
 //output A,
 
 inout [7:0] DA0, //68040 SIDE
@@ -52,7 +50,7 @@ inout [7:0] DA3,
 inout [7:0] DB0, //AMIGA SIDE
 inout [7:0] DB1,
 inout [7:0] DB2,
-inout [7:0] DB3  
+inout [7:0] DB3
 
 );
 
@@ -62,12 +60,12 @@ inout [7:0] DB3
 
 //WE GENERATE THE 40MHz AND 80MHz CLOCKS HERE
 
-//wire BCLK = CLK40; //FOR THE TEST BENCH. COMMENT OUT THE PLL CLOCK STUFF.
+wire BCLK = CLK40; //FOR THE TEST BENCH. COMMENT OUT THE PLL CLOCK STUFF.
 
 //NOTE: TO USE THE "PAD" PLL PRIMATIVES, YOU MUST ROUTE THE CLOCK INPUT TO EITHER PIN 49 OR PIN 129 OF THE iCE40 TQFP-144 PACKAGE.
 //THE CLK40 INPUT SHOULD BE MOVED TO PIN 129 TO USE A "PAD" PRIMITIVE, BUT THIS MEANS PIN 128 CAN ONLY BE USED AS AN OUTPUT. DSACK0 NEEDS TO BE MOVED ANYWHERE EXCEPT PIN 129.
 
-wire BCLK;
+/*wire BCLK;
 wire CLK80out;
 wire CLK40out;
 
@@ -94,7 +92,7 @@ SB_PLL40_2F_CORE #(
     .PLLOUTGLOBALA  (CLK80out),
     .PLLOUTGLOBALB  (CLK40out),
     .PLLOUTCOREB    (BCLK)
-);
+);*/
 
 /*SB_PLL40_2_PAD # (
     .FEEDBACK_PATH("SIMPLE"),
@@ -113,6 +111,20 @@ SB_PLL40_2F_CORE #(
         .RESETB(1'b1),
         .BYPASS(1'b0)
     );*/
+
+////////////////////////////
+// CREATE FIFO RAM BLOCKS //
+////////////////////////////
+
+//THE BLOCK RAM OF THE HX4K IS 256x16 (4k).
+
+parameter DATA_WIDTH = 16; //DATA BUS WIDTH, IN BYTES. 16 IS THE MAX.
+parameter DEPTH = 16; //TOTAL NUMBER OF WORDS THE FIFO SHOULD STORE.
+parameter PTR_SIZE = 4; //ADDRESS BUS SIZE. WE NEED TO BE ABLE TO ADDRESS 8 POSITIONS.
+
+reg [DEPTH-1:0] FIFO [0:DATA_WIDTH-1]; //2D ARRAY. 16 DEEP x 1 BYTES WIDE.
+reg [PTR_SIZE-1:0] WR_POINTER;
+reg [PTR_SIZE-1:0] RD_POINTER;
 
 //////////////////////////////////
 // BUFFER ENABLES AND DIRECTION //
@@ -139,74 +151,174 @@ always @(posedge BCLK, negedge nRESET) begin
     end
 end
 
-//ADDRESS
-
-//assign A = ODD_EN ? 1 : A_CPU;
-
-////////////////////
-// TRANSFER START //
-////////////////////
-
-assign nTS = ~(!nTS_CPU || TS);
-
 //////////////////
 // TRANSFER ACK //
 //////////////////
 
-//END THE CYCLE
+assign nTA = TA_EN ? TA_OUT : 1'bz;
+assign nTBI_CPU = TA_EN ? TBI_OUT : 1'bz;
 
-assign nTA = ~TA_OUT;
-assign nTEA_CPU = TA_OUT ? ~TEA_EN : 1;
-assign nTBI_CPU = TA_OUT ? ~TBI_EN : 1;
-assign nTCI_CPU = TA_OUT ? ~TCI_EN : 1;
+reg [1:0] ACK_STATE;
+reg TA_OUT;
+reg TS_OUT;
+reg TBI_OUT;
+reg TA_EN;
 
-////////////////////////////
-// CYCLE ATTRIBUTES LATCH //
-////////////////////////////
+always @(negedge BCLK, negedge nRESET) begin
+    if (!nRESET) begin
+        TA_EN <= 0;
+        TS_OUT <= 0;
+        ACK_STATE <= 2'b00;
+    end else begin      
 
-//LATCH THE ATTRIBUTES OF THE CURRENT TRANSFER
+        TS_OUT <= TS;
 
-reg [1:0] DSACK_LATCH;
+        case (ACK_STATE)
+            2'b00 : 
+                begin 
+                    if (TA) begin 
+                        TA_EN <= 1; 
+                        TA_OUT <= 0; 
+                        TBI_OUT <= ~TBI;
+                        ACK_STATE <= 2'b01;
+                    end 
+                end
+            2'b01 :
+                begin
+                    if (!TA) begin
+                        TA_OUT <= 1;
+                        TBI_OUT <= 1;
+                        ACK_STATE <= 2'b10;
+                    end
+                end
+            2'b10 :
+                begin
+                    TA_EN <= 0;
+                    ACK_STATE <= 2'b00;
+                end
+        endcase    
+    end
+end
+
+////////////////////////////////
+// CYCLE START AND ATTRIBUTES //
+////////////////////////////////
+
+assign nTS = ~(!nTS_CPU || TS_OUT);
+//assign nTS = nTS_CPU;
+
 reg nTS_LATCH;
 reg [1:0] SIZ_LATCH;
 reg [1:0] A_LATCH;
-reg TBI_EN;
-reg TCI_EN;
-reg TEA_EN;
+reg [1:0] DSACK_LATCH;
+reg TA_OUT_LATCH;
 reg WRITE_CYCLE;
 
 always @(posedge BCLK, negedge nRESET) begin
     if (!nRESET) begin
-        DSACK_LATCH <= 2'b11;
         nTS_LATCH <= 1;
         SIZ_LATCH <= 2'b11;
-        TBI_EN <= 0;
-        TCI_EN <= 0;
-        TEA_EN <= 0;        
-        A_LATCH <= 2'b11;
-    end else begin
-        DSACK_LATCH <= DSACK;
+        A_LATCH <= 2'b00;
+        DSACK_LATCH <= 2'b11;
+        TA_OUT_LATCH <= 1;
+        WRITE_CYCLE <= 0;
+    end else begin        
         nTS_LATCH <= nTS;
+        DSACK_LATCH <= DSACK;
+        TA_OUT_LATCH <= TA_OUT;
         if (!nTS) begin
             SIZ_LATCH <= SIZ;
             A_LATCH <= A;
             WRITE_CYCLE <= ~RnW;
         end
-        if (DSACK != WAIT_TERM) begin
-            TBI_EN <= ~nTBI;
-            TCI_EN <= ~nTCI;
-            TEA_EN <= ~nTEA;
-        end
     end
 end
 
-//////////////////////////////////
-//  DATA TRANSFER STATE MACHINE //
-//////////////////////////////////
+///////////////////
+// INPUT TO FIFO //
+///////////////////
 
-//STATE MACHINE CONTROLLING THE BUS SIZING INTERFACE.
+//ADDRESS PARAMETERS
+localparam UPPER_WORD = 2'b00;
+localparam LOWER_WORD = 2'b10;
+localparam UU_BYTE    = 2'b00;
+localparam UM_BYTE    = 2'b01;
+localparam LM_BYTE    = 2'b10;
+localparam LL_BYTE    = 2'b11;
 
-//STATE PARAMETERS
+integer i;
+wire W_LATCH_DATA = (WRITE_CYCLE && !TA_OUT) || (!WRITE_CYCLE && DSACK != WAIT_TERM);
+
+
+/*assign WD0 = (SIZ_LATCH == BYTE && A_LATCH == LM_BYTE) || (SIZ_LATCH == WORD && A_LATCH == LOWER_WORD) ? DA2 : DA0 ;
+assign WD1 = (SIZ_LATCH == BYTE && A_LATCH == LL_BYTE) || (SIZ_LATCH == WORD && A_LATCH == LOWER_WORD) ? DA3 : DA1 ;
+assign WD2 = DA2 ;
+assign WD3 = DA3 ;*/
+
+
+/*wire [7:0]RD0 = (SIZ_LATCH == BYTE && A_LATCH == LM_BYTE) || (SIZ_LATCH == WORD && A_LATCH == LOWER_WORD) ? DB2 : DB0;
+wire [7:0]RD1 = (SIZ_LATCH == BYTE && A_LATCH == LL_BYTE) || (SIZ_LATCH == WORD && A_LATCH == LOWER_WORD) ? DB3 : DB1;
+wire [7:0]RD2 = DB2;
+wire [7:0]RD3 = DB3;*/
+
+//WRITE DATA TO THE FIFO
+always @(posedge BCLK, negedge nRESET) begin
+    if (!nRESET) begin
+        for (i=0; i<DEPTH-1; i=i+1) begin FIFO[i] <= 8'h0; end
+        WR_POINTER <= 0;
+    end else if (W_LATCH_DATA) begin
+        //WR_POINTER <= WR_POINTER + 4;
+        case (WRITE_CYCLE)
+            0:
+                begin //READ FROM AMIGA. MIGHT BE 16-BIT!
+                    if (TRANSFER_STATE == LOWER_WORD_TRANSFER) begin
+                        FIFO[WR_POINTER - 2] <= { DB0, DB1 };
+                    end else begin
+                        FIFO[WR_POINTER] <= { DB0, DB1 }; 
+
+                        if (TRANSFER_STATE == BYTE_TRANSFER && DSACK == W_TERM) begin
+                            FIFO[WR_POINTER + 2] <= { DB0, DB1 };
+                        end else begin
+                            FIFO[WR_POINTER + 2] <= { DB2, DB3 };
+                        end
+
+                        WR_POINTER <= WR_POINTER + 4;
+                    end
+                end
+
+            1:
+                begin //WRITE FROM CPU. ALWAYS 32 BIT!
+                    FIFO[WR_POINTER] <= { DA0, DA1 };
+                    FIFO[WR_POINTER + 2] <= { DA2, DA3 };
+                    WR_POINTER <= WR_POINTER + 4;
+                end
+        endcase        
+    end
+end
+
+//////////////////////////
+// OUTPUT FROM THE FIFO //
+//////////////////////////
+
+wire [7:0]D_OUT0 = FIFO[RD_POINTER][15:8];
+wire [7:0]D_OUT1 = FIFO[RD_POINTER][7:0];
+wire [7:0]D_OUT2 = FIFO[RD_POINTER + 2][15:8];
+wire [7:0]D_OUT3 = FIFO[RD_POINTER + 2][7:0];
+
+//READ COUNTER
+always @(negedge BCLK, negedge nRESET) begin
+    if (!nRESET) begin
+        RD_POINTER <= 0;
+    end else if ((!WRITE_CYCLE && !TA_OUT_LATCH) || (WRITE_CYCLE && DSACK_LATCH != WAIT_TERM)) begin
+        RD_POINTER <= RD_POINTER + 4;
+    end
+end
+
+
+////////////////////////////
+// TRANSFER STATE MACHINE //
+////////////////////////////
+
 localparam IDLE                = 3'b000;
 localparam BYTE_TRANSFER       = 3'b001;
 localparam WORD_TRANSFER       = 3'b010;
@@ -217,145 +329,98 @@ localparam LONG_TRANSFER       = 3'b100;
 localparam LWORD = 2'b00;
 localparam BYTE  = 2'b01;
 localparam WORD  = 2'b10;
-localparam BURST = 2'b11;
+localparam LINE  = 2'b11;
 
 //DSACK PARAMETERS
 localparam L_TERM    = 2'b00;
 localparam W_TERM    = 2'b01;
-localparam B_TERM    = 2'b10; //NOT USED
+//localparam B_TERM    = 2'b10;
 localparam WAIT_TERM = 2'b11;
 
-//ADDRESS PARAMETERS
-localparam UPPER_WORD = 2'b00;
-localparam LOWER_WORD = 2'b10;
-localparam UU_BYTE    = 2'b00;
-localparam UM_BYTE    = 2'b01;
-localparam LM_BYTE    = 2'b10;
-localparam LL_BYTE    = 2'b11;
 
-reg [2:0] TRANSFER_STATE;
-reg [2:0] CURRENT_STATE;
+
+reg [2:0]TRANSFER_STATE;
 reg TS;
-reg TA_OUT;
-//reg ODD_EN;
-
-always @(negedge BCLK, negedge nRESET) begin
-	if (!nRESET) begin
-		TRANSFER_STATE <= IDLE;
-		//ODD_EN <= 0;
-        TS <= 0;
-        TA_OUT <= 0;
-	end else begin
-
-		case (TRANSFER_STATE)
-
-			IDLE:
-                begin
-                    TA_OUT <= 0;
-                    //ODD_EN <= 0;
-
-                    if (!nTS_LATCH) begin
-                        case (SIZ_LATCH)
-                            LWORD, BURST :  TRANSFER_STATE <= LONG_TRANSFER;
-                            BYTE         :  TRANSFER_STATE <= BYTE_TRANSFER;
-                            WORD         :  TRANSFER_STATE <= WORD_TRANSFER;
-                        endcase
-                    end
-                end
-
-			LONG_TRANSFER:  
-                begin    
-                    case (DSACK_LATCH)
-                        L_TERM: begin TA_OUT <= 1; TRANSFER_STATE <= IDLE; end
-                        W_TERM: begin TS <= 1; CURRENT_STATE <= LOWER_WORD_TRANSFER; TRANSFER_STATE <= LOWER_WORD_TRANSFER; end
-                    endcase
-                end                
-
-			WORD_TRANSFER, BYTE_TRANSFER :
-                begin
-				    if (DSACK_LATCH != WAIT_TERM) begin TA_OUT <= 1; TRANSFER_STATE <= IDLE; end
-                end
-
-			LOWER_WORD_TRANSFER:
-                begin
-                    TS <= 0;           
-                    if (DSACK_LATCH != WAIT_TERM) begin 
-                        TA_OUT <= 1;
-                        TRANSFER_STATE <= IDLE;
-                        CURRENT_STATE <= IDLE;
-                    end
-                end
-
-		endcase			
-	end
-end
-
-///////////////
-// FINAL I/O //
-///////////////
-
-wire DAEN = !WRITE_CYCLE && CPUBUSEN && nRESET;
-assign DA0 = DAEN ? D0_LATCHED : 8'bz;
-assign DA1 = DAEN ? D1_LATCHED : 8'bz;
-assign DA2 = DAEN ? D2_LATCHED : 8'bz;
-assign DA3 = DAEN ? D3_LATCHED : 8'bz;
-
-wire DBEN = WRITE_CYCLE && CPUBUSEN && nRESET;
-assign DB0 = DBEN ? WD0 : 8'bz;
-assign DB1 = DBEN ? WD1 : 8'bz;
-assign DB2 = DBEN ? WD2 : 8'bz;
-assign DB3 = DBEN ? WD3 : 8'bz;
-
-/////////////////////////
-// DEFINE THE READ I/O //
-/////////////////////////
-
-wire [7:0] RD0;
-wire [7:0] RD1;
-wire [7:0] RD2;
-wire [7:0] RD3;
-
-assign RD0 = (SIZ_LATCH == BYTE && A == LM_BYTE) || (SIZ_LATCH == WORD && A == LOWER_WORD) ? DB2 : DB0;
-assign RD1 = (SIZ_LATCH == BYTE && A == LL_BYTE) || (SIZ_LATCH == WORD && A == LOWER_WORD) ? DB3 : DB1;
-assign RD2 = DB2;
-assign RD3 = DB3;
-
-reg [7:0] D0_LATCHED;
-reg [7:0] D1_LATCHED;
-reg [7:0] D2_LATCHED; //CULPRIT!
-reg [7:0] D3_LATCHED;
+reg TA;
+reg TBI;
+reg [2:0]LINE_COUNTER;
 
 always @(posedge BCLK, negedge nRESET) begin
     if (!nRESET) begin
-        D0_LATCHED <= 8'hFF;
-        D1_LATCHED <= 8'hFF;
-        D2_LATCHED <= 8'hFF;
-        D3_LATCHED <= 8'hFF;
-    end else if (DSACK != WAIT_TERM) begin      
-        D0_LATCHED <= RD0;
-        D1_LATCHED <= RD1;        
-        if (CURRENT_STATE == LOWER_WORD_TRANSFER) begin
-            D2_LATCHED <= RD0;
-            D3_LATCHED <= RD1;
-        end else begin
-            D2_LATCHED <= RD2;
-            D3_LATCHED <= RD3;
-        end
-    end 
+        TRANSFER_STATE <= IDLE;
+        TS <= 0;
+        TA <= 0;
+        TBI <= 0;
+        LINE_COUNTER <= 2'b00;
+    end else begin
+        
+        case (TRANSFER_STATE)
+
+            IDLE :
+                    begin    
+                        TA <= 0;
+                        TBI <= 0;
+                        LINE_COUNTER <= 2'b00;
+
+                        if (!nTS_CPU) begin                        
+                            case (SIZ)
+                                LWORD, LINE : TRANSFER_STATE <= LONG_TRANSFER;
+                                WORD        : TRANSFER_STATE <= WORD_TRANSFER;
+                                BYTE        : TRANSFER_STATE <= BYTE_TRANSFER;
+                            endcase
+                        end
+                    end
+
+            LONG_TRANSFER : 
+                    begin
+                        case (DSACK)
+
+                            L_TERM : 
+                                begin 
+                                    if (SIZ == LINE) begin  //LINE TRANSFER 
+                                        if (LINE_COUNTER == 2'b11) begin 
+                                            TRANSFER_STATE <= IDLE;
+                                        end else begin
+                                            LINE_COUNTER <= LINE_COUNTER + 1;
+                                            TA <= 1;
+                                        end;                                            
+                                    end else begin
+                                        TRANSFER_STATE <= IDLE;
+                                        TA <= 1;
+                                    end
+                                end
+
+                            W_TERM :
+                                begin
+                                    TRANSFER_STATE <= LOWER_WORD_TRANSFER;
+                                    //A <= 2'b10;
+                                    TS <= 1;
+                                end
+
+                        endcase
+
+                    end
+
+            LOWER_WORD_TRANSFER :
+                    begin
+                        TS <= 0;
+                        if (DSACK != WAIT_TERM) begin 
+                            TRANSFER_STATE <= IDLE; 
+                            TA <= 1;
+                            TBI <= 1;
+                        end
+                    end
+
+            WORD_TRANSFER, BYTE_TRANSFER :
+                    begin                  
+                        if (DSACK != WAIT_TERM) begin TRANSFER_STATE <= IDLE; TA <= 1; end
+                    end
+
+        endcase
+    
+    end
 end
 
-//////////////////////////
-// DEFINE THE WRITE I/O //
-//////////////////////////
 
-wire [7:0] WD0;
-wire [7:0] WD1;
-wire [7:0] WD2;
-wire [7:0] WD3;
 
-assign WD0 = (SIZ_LATCH == BYTE && A == LM_BYTE) || (SIZ_LATCH == WORD && A == LOWER_WORD) ? DA2 : DA0 ;
-assign WD1 = (SIZ_LATCH == BYTE && A == LL_BYTE) || (SIZ_LATCH == WORD && A == LOWER_WORD) ? DA3 : DA1 ;
-assign WD2 = DA2 ;
-assign WD3 = DA3 ;
-
-endmodule	
+endmodule
