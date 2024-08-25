@@ -122,7 +122,7 @@ parameter DATA_WIDTH = 16; //DATA BUS WIDTH, IN BYTES. 16 IS THE MAX.
 parameter DEPTH = 16; //TOTAL NUMBER OF WORDS THE FIFO SHOULD STORE.
 parameter PTR_SIZE = 4; //ADDRESS BUS SIZE. WE NEED TO BE ABLE TO ADDRESS 8 POSITIONS.
 
-reg [DEPTH-1:0] FIFO [0:DATA_WIDTH-1]; //2D ARRAY. 16 DEEP x 1 BYTES WIDE.
+reg [DEPTH-1:0] FIFO [0:DATA_WIDTH-1]; //2D ARRAY. 16 DEEP x 2 BYTES WIDE.
 reg [PTR_SIZE-1:0] WR_POINTER;
 reg [PTR_SIZE-1:0] RD_POINTER;
 
@@ -133,7 +133,7 @@ reg [PTR_SIZE-1:0] RD_POINTER;
 assign nCPUBG = ~CPUBUSEN; //ENABLE THE CPU DATA BUS BUFFERS
 wire nLBEN = 1; //THIS IS NECESSARY UNTIL WE HAVE A RAM CONTROLLER ON THE CARD.
 assign nBUFEN = ~nLBEN; //DISABLE THE AMIGAPCI DATA BUS WHEN USING ONBOARD RESOURCES.
-assign BUFDIR = (RnW && CPUBUSEN) || (!RnW && nBG); //DIRECTION OF THE AMIGAPCI DATA BUS. INFLUENCED BY WHO HAS THE BUS.
+assign BUFDIR = (!WRITE_CYCLE_CURRENT && CPUBUSEN) || (!RnW && nBG); //DIRECTION OF THE AMIGAPCI DATA BUS. INFLUENCED BY WHO HAS THE BUS.
 
 //WE ENABLE THE 68040 DATA BUS BUFFERS WITH THE _CPUBG SIGNAL. IF BUS GRANT (_BG) IS NEGATED DURING A CPU CYCLE,
 //THE DATA BUFFERS MUST STAY ENABLED UNTIL THE 68040 IS DONE WITH THE BUS. SIGNIFIED BY NEGATION OF _BB.
@@ -155,10 +155,16 @@ end
 // TRANSFER ACK //
 //////////////////
 
+//READ/WRITE PARAMETER
+//localparam R_CYCLE = 0;
+//localparam W_CYCLE = 1;
+
+//THIS STATE MACHINE HANDLES DATA ACKING TO THE 68040 DURING READ CYCLES.
+
 assign nTA = TA_EN ? TA_OUT : 1'bz;
 assign nTBI_CPU = TA_EN ? TBI_OUT : 1'bz;
 
-reg [1:0] ACK_STATE;
+reg [2:0] ACK_COUNTER;
 reg TA_OUT;
 reg TS_OUT;
 reg TBI_OUT;
@@ -167,36 +173,42 @@ reg TA_EN;
 always @(negedge BCLK, negedge nRESET) begin
     if (!nRESET) begin
         TA_EN <= 0;
+        TA_OUT <= 1;
         TS_OUT <= 0;
-        ACK_STATE <= 2'b00;
+        ACK_COUNTER <= 3'b000;
     end else begin      
 
         TS_OUT <= TS;
 
-        case (ACK_STATE)
-            2'b00 : 
+        case (ACK_COUNTER)
+
+            3'b000 : //IDLE
                 begin 
-                    if (TA) begin 
+                    if ((TA && !WRITE_CYCLE) || (CYCLE_START && STATE_COUNTER == 3'b000) || (!nTS_LATCH && FIFO_COUNT == 4'h0)) begin 
                         TA_EN <= 1; 
-                        TA_OUT <= 0; 
-                        TBI_OUT <= ~TBI;
-                        ACK_STATE <= 2'b01;
-                    end 
-                end
-            2'b01 :
-                begin
-                    if (!TA) begin
-                        TA_OUT <= 1;
-                        TBI_OUT <= 1;
-                        ACK_STATE <= 2'b10;
+                        TA_OUT <= 0;                         
+                        ACK_COUNTER <= 3'b001;
+                    end else begin
+                        TA_EN <= 0;
                     end
                 end
-            2'b10 :
+
+            3'b001 :
                 begin
-                    TA_EN <= 0;
-                    ACK_STATE <= 2'b00;
+                    if (SIZ_CURRENT == LINE) begin
+                        ACK_COUNTER <= 3'b010;
+                    end else begin
+                        ACK_COUNTER <= 3'b000;
+                        TA_OUT <= 1; 
+                    end
                 end
-        endcase    
+
+            3'b010 : ACK_COUNTER <= 3'b011;
+            3'b011 : ACK_COUNTER <= 3'b100;
+            3'b100 : begin TA_OUT <= 1; ACK_COUNTER <= 3'b000; end
+
+        endcase
+
     end
 end
 
@@ -204,32 +216,45 @@ end
 // CYCLE START AND ATTRIBUTES //
 ////////////////////////////////
 
-assign nTS = ~(!nTS_CPU || TS_OUT);
-//assign nTS = nTS_CPU;
+//ASSERT _TS TO THE AMIGA AND LATCH THE ATTRIBUTES OF THE CURRENT CPU CYCLE.
 
-reg nTS_LATCH;
-reg [1:0] SIZ_LATCH;
-reg [1:0] A_LATCH;
+assign nTS = ~((!nTS_CPU && RnW) || TS_OUT);
+
 reg [1:0] DSACK_LATCH;
 reg TA_OUT_LATCH;
-reg WRITE_CYCLE;
+reg nTS_LATCH;
 
 always @(posedge BCLK, negedge nRESET) begin
     if (!nRESET) begin
-        nTS_LATCH <= 1;
-        SIZ_LATCH <= 2'b11;
-        A_LATCH <= 2'b00;
         DSACK_LATCH <= 2'b11;
         TA_OUT_LATCH <= 1;
+        nTS_LATCH <= 1;
         WRITE_CYCLE <= 0;
     end else begin        
-        nTS_LATCH <= nTS;
         DSACK_LATCH <= DSACK;
         TA_OUT_LATCH <= TA_OUT;
-        if (!nTS) begin
+        nTS_LATCH <= nTS_CPU;
+        if (!nTS_CPU) begin WRITE_CYCLE <= !RnW; end
+    end
+end
+
+wire CYCLE_RESET = !nRESET || (C_RESET && nTS_CPU);
+reg CYCLE_START;
+reg [1:0] SIZ_LATCH;
+reg [1:0] A_LATCH;
+reg WRITE_CYCLE;
+reg C_RESET;
+
+always @(posedge BCLK) begin
+    if (CYCLE_RESET) begin
+        CYCLE_START <= 0;
+        SIZ_LATCH <= 2'b11;
+        A_LATCH <= 2'b00;
+    end else begin
+        if (!nTS_CPU) begin 
+            CYCLE_START <= 1;
             SIZ_LATCH <= SIZ;
             A_LATCH <= A;
-            WRITE_CYCLE <= ~RnW;
         end
     end
 end
@@ -247,41 +272,33 @@ localparam LM_BYTE    = 2'b10;
 localparam LL_BYTE    = 2'b11;
 
 integer i;
-wire W_LATCH_DATA = (WRITE_CYCLE && !TA_OUT) || (!WRITE_CYCLE && DSACK != WAIT_TERM);
+wire W_LATCH_DATA = (WRITE_CYCLE && !TA_OUT) || (!WRITE_CYCLE_CURRENT && DSACK != WAIT_TERM);
 
-
-/*assign WD0 = (SIZ_LATCH == BYTE && A_LATCH == LM_BYTE) || (SIZ_LATCH == WORD && A_LATCH == LOWER_WORD) ? DA2 : DA0 ;
-assign WD1 = (SIZ_LATCH == BYTE && A_LATCH == LL_BYTE) || (SIZ_LATCH == WORD && A_LATCH == LOWER_WORD) ? DA3 : DA1 ;
-assign WD2 = DA2 ;
-assign WD3 = DA3 ;*/
-
-
-/*wire [7:0]RD0 = (SIZ_LATCH == BYTE && A_LATCH == LM_BYTE) || (SIZ_LATCH == WORD && A_LATCH == LOWER_WORD) ? DB2 : DB0;
-wire [7:0]RD1 = (SIZ_LATCH == BYTE && A_LATCH == LL_BYTE) || (SIZ_LATCH == WORD && A_LATCH == LOWER_WORD) ? DB3 : DB1;
-wire [7:0]RD2 = DB2;
-wire [7:0]RD3 = DB3;*/
+reg [3:0]FIFO_COUNT;
+reg FIFO_ADD;
 
 //WRITE DATA TO THE FIFO
 always @(posedge BCLK, negedge nRESET) begin
     if (!nRESET) begin
-        for (i=0; i<DEPTH-1; i=i+1) begin FIFO[i] <= 8'h0; end
+        for (i=0; i<DEPTH-1; i=i+1) begin FIFO[i] <= 16'h0; end
         WR_POINTER <= 0;
+        FIFO_ADD <= 0;
     end else if (W_LATCH_DATA) begin
-        //WR_POINTER <= WR_POINTER + 4;
-        case (WRITE_CYCLE)
+        FIFO_ADD <= 1;
+        case (WRITE_CYCLE)            
             0:
                 begin //READ FROM AMIGA. MIGHT BE 16-BIT!
                     if (TRANSFER_STATE == LOWER_WORD_TRANSFER) begin
                         FIFO[WR_POINTER - 2] <= { DB0, DB1 };
-                    end else begin
-                        FIFO[WR_POINTER] <= { DB0, DB1 }; 
+                    end else begin                         
 
-                        if (TRANSFER_STATE == BYTE_TRANSFER && DSACK == W_TERM) begin
+                        if (DSACK == W_TERM) begin
                             FIFO[WR_POINTER + 2] <= { DB0, DB1 };
                         end else begin
                             FIFO[WR_POINTER + 2] <= { DB2, DB3 };
                         end
 
+                        FIFO[WR_POINTER] <= { DB0, DB1 };
                         WR_POINTER <= WR_POINTER + 4;
                     end
                 end
@@ -293,6 +310,8 @@ always @(posedge BCLK, negedge nRESET) begin
                     WR_POINTER <= WR_POINTER + 4;
                 end
         endcase        
+    end else begin
+        FIFO_ADD <= 0;
     end
 end
 
@@ -300,24 +319,62 @@ end
 // OUTPUT FROM THE FIFO //
 //////////////////////////
 
-wire [7:0]D_OUT0 = FIFO[RD_POINTER][15:8];
-wire [7:0]D_OUT1 = FIFO[RD_POINTER][7:0];
+wire [7:0]D_OUT0 = LSW_EN ? FIFO[RD_POINTER + 2][15:8] : FIFO[RD_POINTER][15:8];
+wire [7:0]D_OUT1 = LSW_EN ? FIFO[RD_POINTER + 2][7:0]  : FIFO[RD_POINTER][7:0];
 wire [7:0]D_OUT2 = FIFO[RD_POINTER + 2][15:8];
 wire [7:0]D_OUT3 = FIFO[RD_POINTER + 2][7:0];
+
+reg LSW_EN;
 
 //READ COUNTER
 always @(negedge BCLK, negedge nRESET) begin
     if (!nRESET) begin
         RD_POINTER <= 0;
-    end else if ((!WRITE_CYCLE && !TA_OUT_LATCH) || (WRITE_CYCLE && DSACK_LATCH != WAIT_TERM)) begin
-        RD_POINTER <= RD_POINTER + 4;
+        FIFO_COUNT <= 4'h0;
+        LSW_EN <= 0;
+    end else begin
+        if ((!WRITE_CYCLE && !TA_OUT_LATCH) || (WRITE_CYCLE_CURRENT && DSACK_LATCH != WAIT_TERM)) begin
+            
+            if (STATE_COUNTER == 3'b011) begin
+                LSW_EN <= 1;
+            end else begin
+                LSW_EN <= 0;
+                RD_POINTER <= RD_POINTER + 4;
+            end
+
+            if (!FIFO_ADD) begin FIFO_COUNT <= FIFO_COUNT - 1; end
+        end else if (FIFO_ADD) begin
+            FIFO_COUNT <= FIFO_COUNT + 1;
+        end
     end
 end
 
+//////////////////////
+// SET ADDRESS PORT //
+//////////////////////
+
+reg [1:0] A_OUT;
+
+always @(negedge BCLK, negedge nRESET) begin
+    if (!nRESET) begin
+        A_OUT <= 2'b00;
+    end else begin
+        case (STATE_COUNTER)
+            3'b011  : A_OUT <= 2'b10;
+            default : A_OUT <= 2'b00;
+        endcase
+    end
+end
 
 ////////////////////////////
 // TRANSFER STATE MACHINE //
 ////////////////////////////
+
+//THIS STATE MACHINE HANDLES DATA MOVEMENT TO THE AMIGA.
+
+//THE CPU CAN WRITE INTO THE FIFO MUCH FASTER THAN THE AMIGA CAN CONSUME IT.
+//WE WAIT TO ASSERT _TA UNTIL ANY PREVIOUS AMIGA CYCLE HAS COMPLETED, INDICATED BY ASSERTING DSACK.
+//THIS KEEPS THINGS CLEAN BY LIMITING THE FIFO TO ONLY ONE CYCLE AT TIME AND PREVENTING THE CPU FROM OUTRUNNING THE FIFO.
 
 localparam IDLE                = 3'b000;
 localparam BYTE_TRANSFER       = 3'b001;
@@ -338,12 +395,17 @@ localparam W_TERM    = 2'b01;
 localparam WAIT_TERM = 2'b11;
 
 
-
 reg [2:0]TRANSFER_STATE;
 reg TS;
 reg TA;
 reg TBI;
-reg [2:0]LINE_COUNTER;
+reg [1:0]LINE_COUNTER;
+reg [2:0]STATE_COUNTER;
+reg CYCLE_ACTIVE;
+
+reg WRITE_CYCLE_CURRENT;
+reg [1:0] SIZ_CURRENT;
+reg [1:0] A_CURRENT;
 
 always @(posedge BCLK, negedge nRESET) begin
     if (!nRESET) begin
@@ -351,76 +413,108 @@ always @(posedge BCLK, negedge nRESET) begin
         TS <= 0;
         TA <= 0;
         TBI <= 0;
+        STATE_COUNTER <= 3'b000;
+        CYCLE_ACTIVE <= 0;
         LINE_COUNTER <= 2'b00;
+        WRITE_CYCLE_CURRENT <= 0;
+        SIZ_CURRENT <= 2'b11;
+        A_CURRENT <= 2'b11;
+        C_RESET <= 0;
     end else begin
-        
-        case (TRANSFER_STATE)
 
-            IDLE :
-                    begin    
-                        TA <= 0;
-                        TBI <= 0;
-                        LINE_COUNTER <= 2'b00;
+        case (STATE_COUNTER)
 
-                        if (!nTS_CPU) begin                        
-                            case (SIZ)
-                                LWORD, LINE : TRANSFER_STATE <= LONG_TRANSFER;
-                                WORD        : TRANSFER_STATE <= WORD_TRANSFER;
-                                BYTE        : TRANSFER_STATE <= BYTE_TRANSFER;
+            3'b000 : //IDLE
+                begin
+                    if (CYCLE_START) begin //IF A NEW CPU CYCLE STARTS BEFORE THE PREVIOUS TRANSFER IS DONE, THIS IS WHERE WE GO.
+                        STATE_COUNTER <= 3'b001;
+                        TS <= WRITE_CYCLE;
+                        WRITE_CYCLE_CURRENT <= WRITE_CYCLE;
+                        SIZ_CURRENT <= SIZ_LATCH;
+                        A_CURRENT <= A_LATCH;
+                        CYCLE_ACTIVE <= 1;
+                        C_RESET <= 1;
+                    end else if (!nTS_CPU) begin //IF WE ARE IDLE, WE CAN USE _TS TO START THE CYCLE IMMEDIATELY.
+                        STATE_COUNTER <= 3'b001;
+                        TS <= !RnW;
+                        WRITE_CYCLE_CURRENT <= !RnW;
+                        SIZ_CURRENT <= SIZ;
+                        A_CURRENT <= A;
+                        CYCLE_ACTIVE <= 1;
+                        C_RESET <= 1;
+                    end
+                end
+
+            3'b001 : //WAIT FOR DSACK
+                begin
+                    C_RESET <= 0;
+                    TS <= 0;                
+                    case (DSACK)
+                        L_TERM: 
+
+                            case (SIZ_CURRENT)
+                                LINE    : begin TA <= !WRITE_CYCLE_CURRENT; LINE_COUNTER <= 2'b01; STATE_COUNTER <= 3'b010; end // LINE TRANSFER, FIRST LONG WORD.
+                                default : begin TA <= !WRITE_CYCLE_CURRENT; CYCLE_ACTIVE <= 0;     STATE_COUNTER <= 3'b000; end
                             endcase
+
+                        W_TERM:
+
+                            case (SIZ_CURRENT)
+                                LINE, LWORD : begin TS <= 1; STATE_COUNTER <= 3'b011; end // LINE OR LONG WORD TRANSFER, WORD PORT, MOST SIGNIFICANT WORD OF FIRST LONG WORD.
+                                default     : begin TA <= !WRITE_CYCLE_CURRENT; CYCLE_ACTIVE <= 0; STATE_COUNTER <= 3'b000; end
+                            endcase
+
+                        default: begin TA <= 0; TS <= 0; end
+
+                    endcase
+                end            
+
+            3'b010 : // LINE TRANSFER, LONG WORD PORT. COMPLETE TRANSFER.
+                begin
+                    if (DSACK != WAIT_TERM) begin
+                        TA <= !WRITE_CYCLE_CURRENT; 
+                        if (LINE_COUNTER == 2'b11) begin
+                            CYCLE_ACTIVE <= 0; 
+                            STATE_COUNTER <= 3'b000;
+                        end else begin
+                            LINE_COUNTER <= LINE_COUNTER + 1;
                         end
                     end
+                end
 
-            LONG_TRANSFER : 
-                    begin
-                        case (DSACK)
+            3'b011 : //LINE OR LONG WORD TRANSFER, WORD PORT, LEAST SIGNIFICANT WORD
+                begin                    
+                    if (DSACK != WAIT_TERM) begin
+                        TA <= !WRITE_CYCLE_CURRENT; 
+                        case (SIZ_CURRENT)
 
-                            L_TERM : 
-                                begin 
-                                    if (SIZ == LINE) begin  //LINE TRANSFER 
-                                        if (LINE_COUNTER == 2'b11) begin 
-                                            TRANSFER_STATE <= IDLE;
-                                        end else begin
-                                            LINE_COUNTER <= LINE_COUNTER + 1;
-                                            TA <= 1;
-                                        end;                                            
+                            LINE  : 
+                                begin
+                                    if (LINE_COUNTER == 2'b11) begin
+                                        CYCLE_ACTIVE <= 0; 
+                                        STATE_COUNTER <= 3'b000;
                                     end else begin
-                                        TRANSFER_STATE <= IDLE;
-                                        TA <= 1;
+                                        LINE_COUNTER <= LINE_COUNTER + 1;
+                                        STATE_COUNTER <= 3'b001;
+                                        TS <= 1;                                        
                                     end
                                 end
 
-                            W_TERM :
+                            default :
                                 begin
-                                    TRANSFER_STATE <= LOWER_WORD_TRANSFER;
-                                    //A <= 2'b10;
-                                    TS <= 1;
-                                end
-
+                                    CYCLE_ACTIVE <= 0; 
+                                    STATE_COUNTER <= 3'b000;
+                                end   
+                        
                         endcase
-
-                    end
-
-            LOWER_WORD_TRANSFER :
-                    begin
+                    end else begin
+                        TA <= 0;
                         TS <= 0;
-                        if (DSACK != WAIT_TERM) begin 
-                            TRANSFER_STATE <= IDLE; 
-                            TA <= 1;
-                            TBI <= 1;
-                        end
                     end
-
-            WORD_TRANSFER, BYTE_TRANSFER :
-                    begin                  
-                        if (DSACK != WAIT_TERM) begin TRANSFER_STATE <= IDLE; TA <= 1; end
-                    end
+                end
 
         endcase
-    
     end
 end
-
-
 
 endmodule
