@@ -40,7 +40,7 @@ input nRESET, nTS_CPU, RnW, CLK40, nBG, nBB, //nTBI, nTCI, nTEA, //nLBEN,
 //input A_CPU,
 
 output nTS, nTA, nTBI_CPU, nCPUBG, nBUFEN, BUFDIR,  //CLK40A, CLK40B, CLK40C, CLK80A, CLK80B, CLK80C, RAMCLK, nTCI_CPU, nTEA_CPU, //nUUBE, nUMBE, nLMBE, nLLBE,
-//output A,
+output reg [1:0] A_OUT,
 
 inout [7:0] DA0, //68040 SIDE
 inout [7:0] DA1,
@@ -53,6 +53,8 @@ inout [7:0] DB2,
 inout [7:0] DB3
 
 );
+
+
 
 //////////////////////////////
 // BUS AND PROCESSOR CLOCKS //
@@ -97,10 +99,10 @@ SB_PLL40_2F_CORE #(
 /*SB_PLL40_2_PAD # (
     .FEEDBACK_PATH("SIMPLE"),
     .PLLOUT_SELECT_PORTB("GENCLK"),
-    .DIVR(4'b0000),		    // DIVR =  0
-    .DIVF(7'b0001111),  	// DIVF = 15
-    .DIVQ(3'b011),		    // DIVQ =  3
-    .FILTER_RANGE(3'b011)	// FILTER_RANGE = 3
+    .DIVR(4'b0000),         // DIVR =  0
+    .DIVF(7'b0001111),      // DIVF = 15
+    .DIVQ(3'b011),          // DIVQ =  3
+    .FILTER_RANGE(3'b011)   // FILTER_RANGE = 3
     ) PLL40 (
         .PACKAGEPIN(CLK40),
         .PLLOUTGLOBALA(CLK40out),
@@ -118,22 +120,29 @@ SB_PLL40_2F_CORE #(
 
 //THE BLOCK RAM OF THE HX4K IS 256x16 (4k).
 
-parameter DATA_WIDTH = 16; //DATA BUS WIDTH, IN BYTES. 16 IS THE MAX.
-parameter DEPTH = 16; //TOTAL NUMBER OF WORDS THE FIFO SHOULD STORE.
-parameter PTR_SIZE = 4; //ADDRESS BUS SIZE. WE NEED TO BE ABLE TO ADDRESS 8 POSITIONS.
+localparam DATA_WIDTH = 16; //DATA BUS WIDTH, IN BYTES. 16 IS THE MAX.
+localparam DEPTH = 16; //TOTAL NUMBER OF WORDS THE FIFO SHOULD STORE.
+localparam PTR_SIZE = 4; //ADDRESS BUS SIZE. WE NEED TO BE ABLE TO ADDRESS 8 POSITIONS.
 
-reg [DEPTH-1:0] FIFO [0:DATA_WIDTH-1]; //2D ARRAY. 16 DEEP x 2 BYTES WIDE.
-reg [PTR_SIZE-1:0] WR_POINTER;
-reg [PTR_SIZE-1:0] RD_POINTER;
+reg [DEPTH - 1 : 0] FIFO [0 : DATA_WIDTH - 1]; //2D ARRAY. 16 DEEP x 2 BYTES WIDE.
+reg [PTR_SIZE - 1 : 0] WR_POINTER;
+reg [PTR_SIZE - 1 : 0] RD_POINTER;
 
 //////////////////////////////////
 // BUFFER ENABLES AND DIRECTION //
 //////////////////////////////////
 
-assign nCPUBG = ~CPUBUSEN; //ENABLE THE CPU DATA BUS BUFFERS
-wire nLBEN = 1; //THIS IS NECESSARY UNTIL WE HAVE A RAM CONTROLLER ON THE CARD.
-assign nBUFEN = ~nLBEN; //DISABLE THE AMIGAPCI DATA BUS WHEN USING ONBOARD RESOURCES.
-assign BUFDIR = (!WRITE_CYCLE_CURRENT && CPUBUSEN) || (!RnW && nBG); //DIRECTION OF THE AMIGAPCI DATA BUS. INFLUENCED BY WHO HAS THE BUS.
+//ENABLE THE CPU DATA BUS BUFFERS
+assign nCPUBG = ~CPUBUSEN;
+
+//THIS IS NECESSARY UNTIL WE HAVE A RAM CONTROLLER ON THE CARD.
+wire nLBEN = 1;
+
+//DISABLE THE AMIGAPCI DATA BUS WHEN USING ONBOARD RESOURCES.
+assign nBUFEN = ~nLBEN;
+
+//DIRECTION OF THE AMIGAPCI DATA BUS. INFLUENCED BY WHO HAS THE BUS.
+assign BUFDIR = (!WRITE_CYCLE_CURRENT && CPUBUSEN) || (!RnW && nBG);
 
 //WE ENABLE THE 68040 DATA BUS BUFFERS WITH THE _CPUBG SIGNAL. IF BUS GRANT (_BG) IS NEGATED DURING A CPU CYCLE,
 //THE DATA BUFFERS MUST STAY ENABLED UNTIL THE 68040 IS DONE WITH THE BUS. SIGNIFIED BY NEGATION OF _BB.
@@ -176,17 +185,20 @@ always @(negedge BCLK, negedge nRESET) begin
         TA_OUT <= 1;
         TS_OUT <= 0;
         ACK_COUNTER <= 3'b000;
-    end else begin      
+    end else begin
 
         TS_OUT <= TS;
 
         case (ACK_COUNTER)
 
             3'b000 : //IDLE
-                begin 
-                    if ((TA && !WRITE_CYCLE) || (CYCLE_START && STATE_COUNTER == 3'b000) || (!nTS_LATCH && FIFO_COUNT == 4'h0)) begin 
-                        TA_EN <= 1; 
-                        TA_OUT <= 0;                         
+                begin
+                    if ((TA && !WRITE_CYCLE)                     ||
+                        (CYCLE_START && STATE_COUNTER == 3'b000) ||
+                        (!nTS_LATCH && FIFO_COUNT == 4'h0))
+                    begin
+                        TA_EN <= 1;
+                        TA_OUT <= 0;
                         ACK_COUNTER <= 3'b001;
                     end else begin
                         TA_EN <= 0;
@@ -199,7 +211,7 @@ always @(negedge BCLK, negedge nRESET) begin
                         ACK_COUNTER <= 3'b010;
                     end else begin
                         ACK_COUNTER <= 3'b000;
-                        TA_OUT <= 1; 
+                        TA_OUT <= 1;
                     end
                 end
 
@@ -230,7 +242,7 @@ always @(posedge BCLK, negedge nRESET) begin
         TA_OUT_LATCH <= 1;
         nTS_LATCH <= 1;
         WRITE_CYCLE <= 0;
-    end else begin        
+    end else begin
         DSACK_LATCH <= DSACK;
         TA_OUT_LATCH <= TA_OUT;
         nTS_LATCH <= nTS_CPU;
@@ -251,7 +263,7 @@ always @(posedge BCLK) begin
         SIZ_LATCH <= 2'b11;
         A_LATCH <= 2'b00;
     end else begin
-        if (!nTS_CPU) begin 
+        if (!nTS_CPU) begin
             CYCLE_START <= 1;
             SIZ_LATCH <= SIZ;
             A_LATCH <= A;
@@ -285,12 +297,12 @@ always @(posedge BCLK, negedge nRESET) begin
         FIFO_ADD <= 0;
     end else if (W_LATCH_DATA) begin
         FIFO_ADD <= 1;
-        case (WRITE_CYCLE)            
+        case (WRITE_CYCLE)
             0:
                 begin //READ FROM AMIGA. MIGHT BE 16-BIT!
                     if (TRANSFER_STATE == LOWER_WORD_TRANSFER) begin
                         FIFO[WR_POINTER - 2] <= { DB0, DB1 };
-                    end else begin                         
+                    end else begin
 
                         if (DSACK == W_TERM) begin
                             FIFO[WR_POINTER + 2] <= { DB0, DB1 };
@@ -309,7 +321,7 @@ always @(posedge BCLK, negedge nRESET) begin
                     FIFO[WR_POINTER + 2] <= { DA2, DA3 };
                     WR_POINTER <= WR_POINTER + 4;
                 end
-        endcase        
+        endcase
     end else begin
         FIFO_ADD <= 0;
     end
@@ -319,9 +331,12 @@ end
 // OUTPUT FROM THE FIFO //
 //////////////////////////
 
-wire [7:0]D_OUT0 = LSW_EN ? FIFO[RD_POINTER + 2][15:8] : FIFO[RD_POINTER][15:8];
-wire [7:0]D_OUT1 = LSW_EN ? FIFO[RD_POINTER + 2][7:0]  : FIFO[RD_POINTER][7:0];
+wire [7:0]D_OUT0 = (LSW_EN || (SIZ_CURRENT == BYTE && A_CURRENT == 2'b10)) ? FIFO[RD_POINTER + 2][15:8] : FIFO[RD_POINTER][15:8];
+
+wire [7:0]D_OUT1 = (LSW_EN || (SIZ_CURRENT == BYTE && A_CURRENT == 2'b11)) ? FIFO[RD_POINTER + 2][7:0]  : FIFO[RD_POINTER][7:0];
+
 wire [7:0]D_OUT2 = FIFO[RD_POINTER + 2][15:8];
+
 wire [7:0]D_OUT3 = FIFO[RD_POINTER + 2][7:0];
 
 reg LSW_EN;
@@ -334,7 +349,7 @@ always @(negedge BCLK, negedge nRESET) begin
         LSW_EN <= 0;
     end else begin
         if ((!WRITE_CYCLE && !TA_OUT_LATCH) || (WRITE_CYCLE_CURRENT && DSACK_LATCH != WAIT_TERM)) begin
-            
+
             if (STATE_COUNTER == 3'b011) begin
                 LSW_EN <= 1;
             end else begin
@@ -353,7 +368,7 @@ end
 // SET ADDRESS PORT //
 //////////////////////
 
-reg [1:0] A_OUT;
+//reg [1:0] A_OUT;
 
 always @(negedge BCLK, negedge nRESET) begin
     if (!nRESET) begin
@@ -374,7 +389,7 @@ end
 
 //THE CPU CAN WRITE INTO THE FIFO MUCH FASTER THAN THE AMIGA CAN CONSUME IT.
 //WE WAIT TO ASSERT _TA UNTIL ANY PREVIOUS AMIGA CYCLE HAS COMPLETED, INDICATED BY ASSERTING DSACK.
-//THIS KEEPS THINGS CLEAN BY LIMITING THE FIFO TO ONLY ONE CYCLE AT TIME AND PREVENTING THE CPU FROM OUTRUNNING THE FIFO.
+//THIS KEEPS THINGS CLEAN BY LIMITING THE FIFO TO ONLY ONE CYCLE AT TIME AND PREVENTING THE CPU FROM OUTRUNNING IT.
 
 localparam IDLE                = 3'b000;
 localparam BYTE_TRANSFER       = 3'b001;
@@ -426,7 +441,7 @@ always @(posedge BCLK, negedge nRESET) begin
 
             3'b000 : //IDLE
                 begin
-                    if (CYCLE_START) begin //IF A NEW CPU CYCLE STARTS BEFORE THE PREVIOUS TRANSFER IS DONE, THIS IS WHERE WE GO.
+                    if (CYCLE_START) begin //IF A NEW CPU CYCLE STARTS BEFORE THE PREVIOUS TRANSFER IS DONE, START HERE.
                         STATE_COUNTER <= 3'b001;
                         TS <= WRITE_CYCLE;
                         WRITE_CYCLE_CURRENT <= WRITE_CYCLE;
@@ -434,7 +449,7 @@ always @(posedge BCLK, negedge nRESET) begin
                         A_CURRENT <= A_LATCH;
                         CYCLE_ACTIVE <= 1;
                         C_RESET <= 1;
-                    end else if (!nTS_CPU) begin //IF WE ARE IDLE, WE CAN USE _TS TO START THE CYCLE IMMEDIATELY.
+                    end else if (!nTS_CPU) begin //IF WE ARE IDLE, START THE CYCLE IMMEDIATELY.
                         STATE_COUNTER <= 3'b001;
                         TS <= !RnW;
                         WRITE_CYCLE_CURRENT <= !RnW;
@@ -448,33 +463,53 @@ always @(posedge BCLK, negedge nRESET) begin
             3'b001 : //WAIT FOR DSACK
                 begin
                     C_RESET <= 0;
-                    TS <= 0;                
+                    TS <= 0;
                     case (DSACK)
-                        L_TERM: 
+
+                        L_TERM:
 
                             case (SIZ_CURRENT)
-                                LINE    : begin TA <= !WRITE_CYCLE_CURRENT; LINE_COUNTER <= 2'b01; STATE_COUNTER <= 3'b010; end // LINE TRANSFER, FIRST LONG WORD.
-                                default : begin TA <= !WRITE_CYCLE_CURRENT; CYCLE_ACTIVE <= 0;     STATE_COUNTER <= 3'b000; end
+
+                                LINE    : begin // LINE TRANSFER, FIRST LONG WORD.
+                                            TA <= !WRITE_CYCLE_CURRENT; LINE_COUNTER <= 2'b01;
+                                            STATE_COUNTER <= 3'b010;
+                                          end
+
+                                default : begin
+                                            TA <= !WRITE_CYCLE_CURRENT; CYCLE_ACTIVE <= 0;
+                                            STATE_COUNTER <= 3'b000;
+                                          end
+
                             endcase
 
                         W_TERM:
 
                             case (SIZ_CURRENT)
-                                LINE, LWORD : begin TS <= 1; STATE_COUNTER <= 3'b011; end // LINE OR LONG WORD TRANSFER, WORD PORT, MOST SIGNIFICANT WORD OF FIRST LONG WORD.
-                                default     : begin TA <= !WRITE_CYCLE_CURRENT; CYCLE_ACTIVE <= 0; STATE_COUNTER <= 3'b000; end
+
+                                LINE, LWORD : begin // WORD PORT, MOST SIGNIFICANT WORD OF FIRST LONG WORD.
+                                                TS <= 1;
+                                                STATE_COUNTER <= 3'b011;
+                                              end
+
+                                default     : begin
+                                                TA <= !WRITE_CYCLE_CURRENT;
+                                                CYCLE_ACTIVE <= 0;
+                                                STATE_COUNTER <= 3'b000;
+                                              end
+
                             endcase
 
                         default: begin TA <= 0; TS <= 0; end
 
                     endcase
-                end            
+                end
 
             3'b010 : // LINE TRANSFER, LONG WORD PORT. COMPLETE TRANSFER.
                 begin
                     if (DSACK != WAIT_TERM) begin
-                        TA <= !WRITE_CYCLE_CURRENT; 
+                        TA <= !WRITE_CYCLE_CURRENT;
                         if (LINE_COUNTER == 2'b11) begin
-                            CYCLE_ACTIVE <= 0; 
+                            CYCLE_ACTIVE <= 0;
                             STATE_COUNTER <= 3'b000;
                         end else begin
                             LINE_COUNTER <= LINE_COUNTER + 1;
@@ -483,29 +518,29 @@ always @(posedge BCLK, negedge nRESET) begin
                 end
 
             3'b011 : //LINE OR LONG WORD TRANSFER, WORD PORT, LEAST SIGNIFICANT WORD
-                begin                    
+                begin
                     if (DSACK != WAIT_TERM) begin
-                        TA <= !WRITE_CYCLE_CURRENT; 
+                        TA <= !WRITE_CYCLE_CURRENT;
                         case (SIZ_CURRENT)
 
-                            LINE  : 
+                            LINE  :
                                 begin
                                     if (LINE_COUNTER == 2'b11) begin
-                                        CYCLE_ACTIVE <= 0; 
+                                        CYCLE_ACTIVE <= 0;
                                         STATE_COUNTER <= 3'b000;
                                     end else begin
                                         LINE_COUNTER <= LINE_COUNTER + 1;
                                         STATE_COUNTER <= 3'b001;
-                                        TS <= 1;                                        
+                                        TS <= 1;
                                     end
                                 end
 
                             default :
                                 begin
-                                    CYCLE_ACTIVE <= 0; 
+                                    CYCLE_ACTIVE <= 0;
                                     STATE_COUNTER <= 3'b000;
-                                end   
-                        
+                                end
+
                         endcase
                     end else begin
                         TA <= 0;
