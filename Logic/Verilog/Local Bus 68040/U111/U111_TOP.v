@@ -25,6 +25,7 @@ Target Devices: iCE40-HX4K-TQ144
 Description: DYNAMIC BUS SIZING
 
 Revision History:
+26-aug-2024 : Initial FIFO release.
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 TO BUILD WITH APIO: apio build --top-module U111_TOP --fpga iCE40-HX4K-TQ144
@@ -40,7 +41,7 @@ input nRESET, nTS_CPU, RnW, CLK40, nBG, nBB, //nTBI, nTCI, nTEA, //nLBEN,
 //input A_CPU,
 
 output nTS, nTA, nTBI_CPU, nCPUBG, nBUFEN, BUFDIR,  //CLK40A, CLK40B, CLK40C, CLK80A, CLK80B, CLK80C, RAMCLK, nTCI_CPU, nTEA_CPU, //nUUBE, nUMBE, nLMBE, nLLBE,
-output reg [1:0] A_OUT,
+output [1:0] A_OUT,
 
 inout [7:0] DA0, //68040 SIDE
 inout [7:0] DA1,
@@ -53,8 +54,6 @@ inout [7:0] DB2,
 inout [7:0] DB3
 
 );
-
-
 
 //////////////////////////////
 // BUS AND PROCESSOR CLOCKS //
@@ -193,9 +192,7 @@ always @(negedge BCLK, negedge nRESET) begin
 
             3'b000 : //IDLE
                 begin
-                    if ((TA && !WRITE_CYCLE)                     ||
-                        (CYCLE_START && STATE_COUNTER == 3'b000) ||
-                        (!nTS_LATCH && FIFO_COUNT == 4'h0))
+                    if ((TA && !WRITE_CYCLE_CURRENT) || (WRITE_CYCLE_CURRENT && ((CYCLE_START && STATE_COUNTER == 3'b000) || (!nTS_LATCH && FIFO_COUNT == 4'h0))))
                     begin
                         TA_EN <= 1;
                         TA_OUT <= 0;
@@ -208,15 +205,50 @@ always @(negedge BCLK, negedge nRESET) begin
             3'b001 :
                 begin
                     if (SIZ_CURRENT == LINE) begin
-                        ACK_COUNTER <= 3'b010;
+                        if (!WRITE_CYCLE_CURRENT) begin
+                            if (TA) begin
+                                ACK_COUNTER <= 3'b010;
+                                TA_OUT <= 0;
+                            end else begin
+                                TA_OUT <= 1;
+                            end
+                        end else begin
+                            ACK_COUNTER <= 3'b010;
+                        end
                     end else begin
                         ACK_COUNTER <= 3'b000;
                         TA_OUT <= 1;
                     end
                 end
 
-            3'b010 : ACK_COUNTER <= 3'b011;
-            3'b011 : ACK_COUNTER <= 3'b100;
+            3'b010 :
+                begin
+                    if (!WRITE_CYCLE_CURRENT) begin
+                        if (TA) begin
+                            ACK_COUNTER <= 3'b011;
+                            TA_OUT <= 0;
+                        end else begin
+                            TA_OUT <= 1;
+                        end
+                    end else begin
+                        ACK_COUNTER <= 3'b011;
+                    end
+                end
+
+            3'b011 :
+                begin
+                    if (!WRITE_CYCLE_CURRENT) begin
+                        if (TA) begin
+                            ACK_COUNTER <= 3'b100;
+                            TA_OUT <= 0;
+                        end else begin
+                            TA_OUT <= 1;
+                        end
+                    end else begin
+                        ACK_COUNTER <= 3'b100;
+                    end
+                end
+
             3'b100 : begin TA_OUT <= 1; ACK_COUNTER <= 3'b000; end
 
         endcase
@@ -300,18 +332,27 @@ always @(posedge BCLK, negedge nRESET) begin
         case (WRITE_CYCLE)
             0:
                 begin //READ FROM AMIGA. MIGHT BE 16-BIT!
-                    if (TRANSFER_STATE == LOWER_WORD_TRANSFER) begin
-                        FIFO[WR_POINTER - 2] <= { DB0, DB1 };
-                    end else begin
-
-                        if (DSACK == W_TERM) begin
-                            FIFO[WR_POINTER + 2] <= { DB0, DB1 };
-                        end else begin
-                            FIFO[WR_POINTER + 2] <= { DB2, DB3 };
-                        end
-
+                    if (STATE_COUNTER_LATCH == 3'b011) begin
+                        //THIS LATCHES THE LEAST SIGNIFICANT WORD FOR A LONG WORD TRANSFER FROM A WORD PORT.
                         FIFO[WR_POINTER] <= { DB0, DB1 };
-                        WR_POINTER <= WR_POINTER + 4;
+                        WR_POINTER <= WR_POINTER + 2;
+                    end else begin
+                        //ALWAYS LATCH THE MOST SIGNIFICANT WORD REGARDLESS OF PORT TYPE.
+                        FIFO[WR_POINTER] <= { DB0, DB1 };
+                        if (DSACK == W_TERM) begin
+                            //LATCH THE WORD FROM A WORD PORT IN THE LEAST SIGNIFICANT WORD POSITION.
+                            FIFO[WR_POINTER + 2] <= { DB0, DB1 };
+                            //FOR WORD OR BYTE READS WE MOVE THE WRITE POINTER 4, OTHERWISE 2.
+                            if (SIZ == WORD || SIZ == BYTE) begin
+                                WR_POINTER <= WR_POINTER + 4;
+                            end else begin
+                                WR_POINTER <= WR_POINTER + 2;
+                            end
+                        end else begin
+                            //LATCH THE LEAST SIGNIFICANT WORD FROM A LONG WORD PORT.
+                            FIFO[WR_POINTER + 2] <= { DB2, DB3 };
+                            WR_POINTER <= WR_POINTER + 4;
+                        end
                     end
                 end
 
@@ -340,6 +381,7 @@ wire [7:0]D_OUT2 = FIFO[RD_POINTER + 2][15:8];
 wire [7:0]D_OUT3 = FIFO[RD_POINTER + 2][7:0];
 
 reg LSW_EN;
+reg [2:0]STATE_COUNTER_LATCH;
 
 //READ COUNTER
 always @(negedge BCLK, negedge nRESET) begin
@@ -347,7 +389,10 @@ always @(negedge BCLK, negedge nRESET) begin
         RD_POINTER <= 0;
         FIFO_COUNT <= 4'h0;
         LSW_EN <= 0;
+        STATE_COUNTER_LATCH <= 2'b00;
     end else begin
+        STATE_COUNTER_LATCH <= STATE_COUNTER; //LATCH THIS SO WE CAN USE IT ON THE RISING EDGE
+
         if ((!WRITE_CYCLE && !TA_OUT_LATCH) || (WRITE_CYCLE_CURRENT && DSACK_LATCH != WAIT_TERM)) begin
 
             if (STATE_COUNTER == 3'b011) begin
@@ -368,15 +413,16 @@ end
 // SET ADDRESS PORT //
 //////////////////////
 
-//reg [1:0] A_OUT;
+reg [1:0] A_OUT_TEMP;
+assign A_OUT = (!nTS_CPU && RnW) ? A : A_OUT_TEMP;
 
 always @(negedge BCLK, negedge nRESET) begin
     if (!nRESET) begin
-        A_OUT <= 2'b00;
+        A_OUT_TEMP <= 2'b00;
     end else begin
         case (STATE_COUNTER)
-            3'b011  : A_OUT <= 2'b10;
-            default : A_OUT <= 2'b00;
+            3'b011  : A_OUT_TEMP <= 2'b10;
+            default : A_OUT_TEMP <= A_CURRENT;
         endcase
     end
 end
@@ -391,12 +437,6 @@ end
 //WE WAIT TO ASSERT _TA UNTIL ANY PREVIOUS AMIGA CYCLE HAS COMPLETED, INDICATED BY ASSERTING DSACK.
 //THIS KEEPS THINGS CLEAN BY LIMITING THE FIFO TO ONLY ONE CYCLE AT TIME AND PREVENTING THE CPU FROM OUTRUNNING IT.
 
-localparam IDLE                = 3'b000;
-localparam BYTE_TRANSFER       = 3'b001;
-localparam WORD_TRANSFER       = 3'b010;
-localparam LOWER_WORD_TRANSFER = 3'b011;
-localparam LONG_TRANSFER       = 3'b100;
-
 //SIZ PARAMETERS
 localparam LWORD = 2'b00;
 localparam BYTE  = 2'b01;
@@ -409,8 +449,6 @@ localparam W_TERM    = 2'b01;
 //localparam B_TERM    = 2'b10;
 localparam WAIT_TERM = 2'b11;
 
-
-reg [2:0]TRANSFER_STATE;
 reg TS;
 reg TA;
 reg TBI;
@@ -424,7 +462,6 @@ reg [1:0] A_CURRENT;
 
 always @(posedge BCLK, negedge nRESET) begin
     if (!nRESET) begin
-        TRANSFER_STATE <= IDLE;
         TS <= 0;
         TA <= 0;
         TBI <= 0;
@@ -441,6 +478,8 @@ always @(posedge BCLK, negedge nRESET) begin
 
             3'b000 : //IDLE
                 begin
+                    TA <= 0;
+                    LINE_COUNTER <= 2'b00;
                     if (CYCLE_START) begin //IF A NEW CPU CYCLE STARTS BEFORE THE PREVIOUS TRANSFER IS DONE, START HERE.
                         STATE_COUNTER <= 3'b001;
                         TS <= WRITE_CYCLE;
