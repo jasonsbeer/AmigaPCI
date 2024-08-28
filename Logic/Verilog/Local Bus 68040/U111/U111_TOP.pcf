@@ -1,0 +1,107 @@
+set_io -pullup yes D3_040[0] 74
+set_io -pullup yes D3_040[1] 75
+set_io -pullup yes D3_040[2] 78
+set_io -pullup yes D3_040[3] 73
+set_io -pullup yes D3_040[4] 76
+set_io -pullup yes D3_040[5] 79
+set_io -pullup yes D3_040[6] 80
+set_io -pullup yes D3_040[7] 81
+set_io -pullup yes D2_040[0] 82
+set_io -pullup yes D2_040[1] 83
+set_io -pullup yes D2_040[2] 84
+set_io -pullup yes D2_040[3] 85
+set_io -pullup yes D2_040[4] 87
+set_io -pullup yes D2_040[5] 90
+set_io -pullup yes D2_040[6] 98
+set_io -pullup yes D2_040[7] 99
+set_io -pullup yes D1_040[0] 88
+set_io -pullup yes D1_040[1] 104
+set_io -pullup yes D1_040[2] 91
+set_io -pullup yes D1_040[3] 106
+set_io -pullup yes D1_040[4] 110
+set_io -pullup yes D1_040[5] 114
+set_io -pullup yes D1_040[6] 95
+set_io -pullup yes D1_040[7] 105
+set_io -pullup yes D0_040[0] 117
+set_io -pullup yes D0_040[1] 107
+set_io -pullup yes D0_040[2] 118
+set_io -pullup yes D0_040[3] 112
+set_io -pullup yes D0_040[4] 119
+set_io -pullup yes D0_040[5] 113
+set_io -pullup yes D0_040[6] 115
+set_io -pullup yes D0_040[7] 116
+
+set_io -pullup yes D3_AMIGA[0] 33
+set_io -pullup yes D3_AMIGA[1] 28
+set_io -pullup yes D3_AMIGA[2] 31
+set_io -pullup yes D3_AMIGA[3] 32
+set_io -pullup yes D3_AMIGA[4] 29
+set_io -pullup yes D3_AMIGA[5] 25
+set_io -pullup yes D3_AMIGA[6] 26
+set_io -pullup yes D3_AMIGA[7] 24
+set_io -pullup yes D2_AMIGA[0] 23
+set_io -pullup yes D2_AMIGA[1] 22
+set_io -pullup yes D2_AMIGA[2] 18
+set_io -pullup yes D2_AMIGA[3] 19
+set_io -pullup yes D2_AMIGA[4] 16
+set_io -pullup yes D2_AMIGA[5] 12
+set_io -pullup yes D2_AMIGA[6] 9
+set_io -pullup yes D2_AMIGA[7] 10
+set_io -pullup yes D1_AMIGA[0] 17
+set_io -pullup yes D1_AMIGA[1] 11
+set_io -pullup yes D1_AMIGA[2] 15
+set_io -pullup yes D1_AMIGA[3] 7
+set_io -pullup yes D1_AMIGA[4] 3
+set_io -pullup yes D1_AMIGA[5] 141
+set_io -pullup yes D1_AMIGA[6] 2
+set_io -pullup yes D1_AMIGA[7] 4
+set_io -pullup yes D0_AMIGA[0] 138
+set_io -pullup yes D0_AMIGA[1] 8
+set_io -pullup yes D0_AMIGA[2] 139
+set_io -pullup yes D0_AMIGA[3] 144
+set_io -pullup yes D0_AMIGA[4] 137
+set_io -pullup yes D0_AMIGA[5] 1
+set_io -pullup yes D0_AMIGA[6] 142
+set_io -pullup yes D0_AMIGA[7] 143
+
+set_io CLK80C 20
+set_io CLK80B 52
+set_io CLK80A 94
+set_io CLK40C 21
+set_io CLK40B 49
+set_io CLK40A 93
+set_io CLK40 128
+set_io RAMCLK 56
+
+set_io nRESET 34
+set_io nBB 37
+set_io A_040[0] 38
+set_io A_040[1] 39
+#set_io nTEA 41
+set_io -pullup yes nTS 42
+#set_io nTCI 43
+set_io A_AMIGA[0] 44
+set_io DSACK[1] 45
+#set_io nLBEN 47
+#set_io nTBI 48
+set_io A_AMIGA[1] 55
+set_io nLLBE 60
+set_io nUUBE 61
+#set_io lbenout 61
+set_io nLMBE 62
+set_io nUMBE 63
+set_io nTBI_CPU 64
+set_io nBG 96
+set_io RnW 97
+set_io nTCI_CPU 101
+set_io nCPUBG 102
+set_io SIZ[1] 120
+set_io SIZ[0] 121
+set_io nTEA_CPU 122
+set_io nTA 124
+set_io nTS_CPU 125
+set_io DSACK[0] 129
+#set_io TT[0] 130
+#set_io TT[1] 134
+set_io nBUFEN 135
+set_io BUFDIR 136

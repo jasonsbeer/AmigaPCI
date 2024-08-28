@@ -33,27 +33,43 @@ TO BUILD WITH APIO: apio build --top-module U111_TOP --fpga iCE40-HX4K-TQ144
 
 module U111_TOP (
 
-input [1:0] A,
+input [1:0] A_040,
 input [1:0] DSACK,
 input [1:0] SIZ,
 
 input nRESET, nTS_CPU, RnW, CLK40, nBG, nBB, //nTBI, nTCI, nTEA, //nLBEN,
-//input A_CPU,
 
-output nTS, nTA, nTBI_CPU, nCPUBG, nBUFEN, BUFDIR,  //CLK40A, CLK40B, CLK40C, CLK80A, CLK80B, CLK80C, RAMCLK, nTCI_CPU, nTEA_CPU, //nUUBE, nUMBE, nLMBE, nLLBE,
-output [1:0] A_OUT,
+output nTS, nTA, nTBI_CPU, nCPUBG, nBUFEN, BUFDIR, nUUBE, nUMBE, nLMBE, nLLBE, nTCI_CPU, nTEA_CPU, CLK40A, CLK40B, CLK40C, CLK80A, CLK80B, CLK80C, RAMCLK,
+output [1:0] A_AMIGA,
 
-inout [7:0] DA0, //68040 SIDE
-inout [7:0] DA1,
-inout [7:0] DA2,
-inout [7:0] DA3,
+inout [7:0] D0_040, //68040 DATA BUS
+inout [7:0] D1_040,
+inout [7:0] D2_040,
+inout [7:0] D3_040,
 
-inout [7:0] DB0, //AMIGA SIDE
-inout [7:0] DB1,
-inout [7:0] DB2,
-inout [7:0] DB3
+inout [7:0] D0_AMIGA, //AMIGA DATA BUS
+inout [7:0] D1_AMIGA,
+inout [7:0] D2_AMIGA,
+inout [7:0] D3_AMIGA
 
 );
+
+//SIZ PARAMETERS
+localparam LWORD = 2'b00;
+localparam BYTE  = 2'b01;
+localparam WORD  = 2'b10;
+localparam LINE  = 2'b11;
+
+//DSACK PARAMETERS
+localparam L_TERM    = 2'b00;
+localparam W_TERM    = 2'b01;
+localparam WAIT_TERM = 2'b11;
+
+//ADDRESS PARAMETERS
+localparam UU_BYTE    = 2'b00;
+localparam UM_BYTE    = 2'b01;
+localparam LM_BYTE    = 2'b10;
+localparam LL_BYTE    = 2'b11;
 
 //////////////////////////////
 // BUS AND PROCESSOR CLOCKS //
@@ -61,12 +77,12 @@ inout [7:0] DB3
 
 //WE GENERATE THE 40MHz AND 80MHz CLOCKS HERE
 
-wire BCLK = CLK40; //FOR THE TEST BENCH. COMMENT OUT THE PLL CLOCK STUFF.
+//wire BCLK = CLK40; //FOR THE TEST BENCH. COMMENT OUT THE PLL CLOCK STUFF.
 
 //NOTE: TO USE THE "PAD" PLL PRIMATIVES, YOU MUST ROUTE THE CLOCK INPUT TO EITHER PIN 49 OR PIN 129 OF THE iCE40 TQFP-144 PACKAGE.
 //THE CLK40 INPUT SHOULD BE MOVED TO PIN 129 TO USE A "PAD" PRIMITIVE, BUT THIS MEANS PIN 128 CAN ONLY BE USED AS AN OUTPUT. DSACK0 NEEDS TO BE MOVED ANYWHERE EXCEPT PIN 129.
 
-/*wire BCLK;
+wire BCLK;
 wire CLK80out;
 wire CLK40out;
 
@@ -93,7 +109,7 @@ SB_PLL40_2F_CORE #(
     .PLLOUTGLOBALA  (CLK80out),
     .PLLOUTGLOBALB  (CLK40out),
     .PLLOUTCOREB    (BCLK)
-);*/
+);
 
 /*SB_PLL40_2_PAD # (
     .FEEDBACK_PATH("SIMPLE"),
@@ -112,6 +128,17 @@ SB_PLL40_2F_CORE #(
         .RESETB(1'b1),
         .BYPASS(1'b0)
     );*/
+
+//////////////////
+// BYTE ENABLES //
+//////////////////
+
+//BYTE ENABLES FOR ONBOARD DEVICES.
+
+assign nUUBE = A_040 == UU_BYTE || SIZ == LINE || SIZ == LWORD;
+assign nUMBE = A_040 == UM_BYTE || SIZ == LINE || SIZ == LWORD || (SIZ == WORD && A_040 == UU_BYTE);
+assign nLMBE = A_040 == LM_BYTE || SIZ == LINE || SIZ == LWORD;
+assign nLLBE = A_040 == LL_BYTE || SIZ == LINE || SIZ == LWORD || (SIZ == WORD && A_040 == LM_BYTE);
 
 ////////////////////////////
 // CREATE FIFO RAM BLOCKS //
@@ -163,19 +190,18 @@ end
 // TRANSFER ACK //
 //////////////////
 
-//READ/WRITE PARAMETER
-//localparam R_CYCLE = 0;
-//localparam W_CYCLE = 1;
-
 //THIS STATE MACHINE HANDLES DATA ACKING TO THE 68040 DURING READ CYCLES.
 
 assign nTA = TA_EN ? TA_OUT : 1'bz;
-assign nTBI_CPU = TA_EN ? TBI_OUT : 1'bz;
+//assign nTBI_CPU = TA_EN ? TBI_OUT : 1'bz;
+assign nTBI_CPU = 1;
+assign nTCI_CPU = 1;
+assign nTEA_CPU = 1;
 
 reg [2:0] ACK_COUNTER;
 reg TA_OUT;
 reg TS_OUT;
-reg TBI_OUT;
+//reg TBI_OUT;
 reg TA_EN;
 
 always @(negedge BCLK, negedge nRESET) begin
@@ -257,7 +283,7 @@ always @(negedge BCLK, negedge nRESET) begin
 end
 
 ////////////////////////////////
-// CYCLE START AND ATTRIBUTES //
+// CYCLE START AND ATTRIBUTES //assign D0_AMIGA = !D_040_EN ? D0_OUT : 8'bz;
 ////////////////////////////////
 
 //ASSERT _TS TO THE AMIGA AND LATCH THE ATTRIBUTES OF THE CURRENT CPU CYCLE.
@@ -298,22 +324,30 @@ always @(posedge BCLK) begin
         if (!nTS_CPU) begin
             CYCLE_START <= 1;
             SIZ_LATCH <= SIZ;
-            A_LATCH <= A;
+            A_LATCH <= A_040;
         end
     end
 end
 
+////////////////
+// DEFINE I/O //
+////////////////
+
+wire D_040_EN = !WRITE_CYCLE_CURRENT && CPUBUSEN && nRESET;
+
+assign D0_040 = D_040_EN ? D0_OUT : 8'bz;
+assign D1_040 = D_040_EN ? D1_OUT : 8'bz;
+assign D2_040 = D_040_EN ? D2_OUT : 8'bz;
+assign D3_040 = D_040_EN ? D3_OUT : 8'bz;
+
+assign D0_AMIGA = !D_040_EN ? D0_OUT : 8'bz;
+assign D1_AMIGA = !D_040_EN ? D1_OUT : 8'bz;
+assign D2_AMIGA = !D_040_EN ? D2_OUT : 8'bz;
+assign D3_AMIGA = !D_040_EN ? D3_OUT : 8'bz;
+
 ///////////////////
 // INPUT TO FIFO //
 ///////////////////
-
-//ADDRESS PARAMETERS
-localparam UPPER_WORD = 2'b00;
-localparam LOWER_WORD = 2'b10;
-localparam UU_BYTE    = 2'b00;
-localparam UM_BYTE    = 2'b01;
-localparam LM_BYTE    = 2'b10;
-localparam LL_BYTE    = 2'b11;
 
 integer i;
 wire W_LATCH_DATA = (WRITE_CYCLE && !TA_OUT) || (!WRITE_CYCLE_CURRENT && DSACK != WAIT_TERM);
@@ -334,14 +368,14 @@ always @(posedge BCLK, negedge nRESET) begin
                 begin //READ FROM AMIGA. MIGHT BE 16-BIT!
                     if (STATE_COUNTER_LATCH == 3'b011) begin
                         //THIS LATCHES THE LEAST SIGNIFICANT WORD FOR A LONG WORD TRANSFER FROM A WORD PORT.
-                        FIFO[WR_POINTER] <= { DB0, DB1 };
+                        FIFO[WR_POINTER] <= { D0_AMIGA, D1_AMIGA };
                         WR_POINTER <= WR_POINTER + 2;
                     end else begin
                         //ALWAYS LATCH THE MOST SIGNIFICANT WORD REGARDLESS OF PORT TYPE.
-                        FIFO[WR_POINTER] <= { DB0, DB1 };
+                        FIFO[WR_POINTER] <= { D0_AMIGA, D1_AMIGA };
                         if (DSACK == W_TERM) begin
                             //LATCH THE WORD FROM A WORD PORT IN THE LEAST SIGNIFICANT WORD POSITION.
-                            FIFO[WR_POINTER + 2] <= { DB0, DB1 };
+                            FIFO[WR_POINTER + 2] <= { D0_AMIGA, D1_AMIGA };
                             //FOR WORD OR BYTE READS WE MOVE THE WRITE POINTER 4, OTHERWISE 2.
                             if (SIZ == WORD || SIZ == BYTE) begin
                                 WR_POINTER <= WR_POINTER + 4;
@@ -350,7 +384,7 @@ always @(posedge BCLK, negedge nRESET) begin
                             end
                         end else begin
                             //LATCH THE LEAST SIGNIFICANT WORD FROM A LONG WORD PORT.
-                            FIFO[WR_POINTER + 2] <= { DB2, DB3 };
+                            FIFO[WR_POINTER + 2] <= { D2_AMIGA, D3_AMIGA };
                             WR_POINTER <= WR_POINTER + 4;
                         end
                     end
@@ -358,8 +392,8 @@ always @(posedge BCLK, negedge nRESET) begin
 
             1:
                 begin //WRITE FROM CPU. ALWAYS 32 BIT!
-                    FIFO[WR_POINTER] <= { DA0, DA1 };
-                    FIFO[WR_POINTER + 2] <= { DA2, DA3 };
+                    FIFO[WR_POINTER] <= { D0_040, D1_040 };
+                    FIFO[WR_POINTER + 2] <= { D2_040, D3_040 };
                     WR_POINTER <= WR_POINTER + 4;
                 end
         endcase
@@ -372,13 +406,10 @@ end
 // OUTPUT FROM THE FIFO //
 //////////////////////////
 
-wire [7:0]D_OUT0 = (LSW_EN || (SIZ_CURRENT == BYTE && A_CURRENT == 2'b10)) ? FIFO[RD_POINTER + 2][15:8] : FIFO[RD_POINTER][15:8];
-
-wire [7:0]D_OUT1 = (LSW_EN || (SIZ_CURRENT == BYTE && A_CURRENT == 2'b11)) ? FIFO[RD_POINTER + 2][7:0]  : FIFO[RD_POINTER][7:0];
-
-wire [7:0]D_OUT2 = FIFO[RD_POINTER + 2][15:8];
-
-wire [7:0]D_OUT3 = FIFO[RD_POINTER + 2][7:0];
+wire [7:0]D0_OUT = (LSW_EN || (SIZ_CURRENT == BYTE && A_CURRENT == 2'b10)) ? FIFO[RD_POINTER + 2][15:8] : FIFO[RD_POINTER][15:8];
+wire [7:0]D1_OUT = (LSW_EN || (SIZ_CURRENT == BYTE && A_CURRENT == 2'b11)) ? FIFO[RD_POINTER + 2][7:0]  : FIFO[RD_POINTER][7:0];
+wire [7:0]D2_OUT = FIFO[RD_POINTER + 2][15:8];
+wire [7:0]D3_OUT = FIFO[RD_POINTER + 2][7:0];
 
 reg LSW_EN;
 reg [2:0]STATE_COUNTER_LATCH;
@@ -414,7 +445,7 @@ end
 //////////////////////
 
 reg [1:0] A_OUT_TEMP;
-assign A_OUT = (!nTS_CPU && RnW) ? A : A_OUT_TEMP;
+assign A_AMIGA = (!nTS_CPU && RnW) ? A_040 : A_OUT_TEMP;
 
 always @(negedge BCLK, negedge nRESET) begin
     if (!nRESET) begin
@@ -436,18 +467,6 @@ end
 //THE CPU CAN WRITE INTO THE FIFO MUCH FASTER THAN THE AMIGA CAN CONSUME IT.
 //WE WAIT TO ASSERT _TA UNTIL ANY PREVIOUS AMIGA CYCLE HAS COMPLETED, INDICATED BY ASSERTING DSACK.
 //THIS KEEPS THINGS CLEAN BY LIMITING THE FIFO TO ONLY ONE CYCLE AT TIME AND PREVENTING THE CPU FROM OUTRUNNING IT.
-
-//SIZ PARAMETERS
-localparam LWORD = 2'b00;
-localparam BYTE  = 2'b01;
-localparam WORD  = 2'b10;
-localparam LINE  = 2'b11;
-
-//DSACK PARAMETERS
-localparam L_TERM    = 2'b00;
-localparam W_TERM    = 2'b01;
-//localparam B_TERM    = 2'b10;
-localparam WAIT_TERM = 2'b11;
 
 reg TS;
 reg TA;
@@ -493,7 +512,7 @@ always @(posedge BCLK, negedge nRESET) begin
                         TS <= !RnW;
                         WRITE_CYCLE_CURRENT <= !RnW;
                         SIZ_CURRENT <= SIZ;
-                        A_CURRENT <= A;
+                        A_CURRENT <= A_040;
                         CYCLE_ACTIVE <= 1;
                         C_RESET <= 1;
                     end
