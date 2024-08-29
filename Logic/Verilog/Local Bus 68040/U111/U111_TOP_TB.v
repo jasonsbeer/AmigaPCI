@@ -22,6 +22,10 @@ reg nRESET = 0;
 wire nTS;
 wire nTA;
 wire nTBI_CPU;
+wire nUUBE;
+wire nUMBE;
+wire nLMBE;
+wire nLLBE;
 
 //WRITE INPUTS/READ OUTPUTS
 wire [7:0] D0_040;
@@ -167,7 +171,7 @@ initial begin
     #25 DSACK <= 2'b11;*/
 
     //LINE WRITE TO WORD PORT
-    #50 A_040 <= 2'b00; RnW <= 0; SIZ <= 2'b11; nTS_CPU <= 0; DAB0 <= 8'haa; DAB1 <= 8'hbb; DAB2 <= 8'hcc; DAB3 <= 8'hdd; //CYCLE 1
+    /*#50 A_040 <= 2'b00; RnW <= 0; SIZ <= 2'b11; nTS_CPU <= 0; DAB0 <= 8'haa; DAB1 <= 8'hbb; DAB2 <= 8'hcc; DAB3 <= 8'hdd; //CYCLE 1
     DBB0 <= 8'bzzzzzzzz; DBB1 <= 8'bzzzzzzzz; DBB2 <= 8'bzzzzzzzz; DBB3 <= 8'bzzzzzzzz;
     #25 nTS_CPU <= 1;
     #25 DAB0 <= 8'h11; DAB1 <= 8'h22; DAB2 <= 8'h33; DAB3 <= 8'h44; //CYCLE 1
@@ -205,7 +209,7 @@ initial begin
     #75 DSACK <= 2'b01;
     #25 DSACK <= 2'b11;
     #75 DSACK <= 2'b01;
-    #25 DSACK <= 2'b11;
+    #25 DSACK <= 2'b11;*/
 
     //BYTE WRITE CYCLE, LONG WORD PORT
     /*#50 A_040 <= 2'b00; RnW <= 0; SIZ <= 2'b01; nTS_CPU <= 0; DAB0 <= 8'haa; DAB1 <= 8'hx; DAB2 <= 8'hx; DAB3 <= 8'hx;
@@ -405,6 +409,221 @@ initial begin
     #50 DSACK <= 2'b01;
     #25 DSACK <= 2'b11;*/
 
+    //LONG WORD R/W, LONG WORD PORT
+    #50 A_040 <= 2'b00; RnW <= 0; SIZ <= 2'b00; nTS_CPU <= 0; 
+        DAB0 <= 8'haa; DAB1 <= 8'hbb; DAB2 <= 8'hcc; DAB3 <= 8'hdd;
+        DBB0 <= 8'bzzzzzzzz; DBB1 <= 8'bzzzzzzzz; DBB2 <= 8'bzzzzzzzz; DBB3 <= 8'bzzzzzzzz;
+    #25 nTS_CPU <= 1;
+    #50 DSACK <= 2'b00;
+    #25 DSACK <= 2'b11;
+    #50 nTS_CPU <= 0; RnW <= 1; 
+        DBB0 <= 8'h11; DBB1 <= 8'h22; DBB2 <= 8'h33; DBB3 <= 8'h44;
+        DAB0 <= 8'bzzzzzzzz; DAB1 <= 8'bzzzzzzzz; DAB2 <= 8'bzzzzzzzz; DAB3 <= 8'bzzzzzzzz;
+    #25 nTS_CPU <= 1;
+    #50 DSACK <= 2'b00;
+    #25 DSACK <= 2'b11;
+    #50 nTS_CPU <= 0; RnW <= 0;
+        DAB0 <= 8'h55; DAB1 <= 8'h66; DAB2 <= 8'h77; DAB3 <= 8'h88;
+        DBB0 <= 8'bzzzzzzzz; DBB1 <= 8'bzzzzzzzz; DBB2 <= 8'bzzzzzzzz; DBB3 <= 8'bzzzzzzzz;
+    #25 nTS_CPU <= 1;
+    #50 DSACK <= 2'b00;
+    #25 DSACK <= 2'b11;
+    #50 nTS_CPU <= 0; RnW <= 1;
+        DBB0 <= 8'hA0; DBB1 <= 8'hB0; DBB2 <= 8'hC0; DBB3 <= 8'hD0;
+        DAB0 <= 8'bzzzzzzzz; DAB1 <= 8'bzzzzzzzz; DAB2 <= 8'bzzzzzzzz; DAB3 <= 8'bzzzzzzzz;
+    #25 nTS_CPU <= 1;
+    #50 DSACK <= 2'b00;
+    #25 DSACK <= 2'b11
+
+    //LINE R/W TRANSFER TO LONG WORD PORT
+    //CYCLE 1
+    /*#50 A_040 <= 2'b00; RnW <= 0; SIZ <= 2'b11; nTS_CPU <= 0; 
+        DAB0 <= 8'haa; DAB1 <= 8'hbb; DAB2 <= 8'hcc; DAB3 <= 8'hdd;
+        DBB0 <= 8'bzzzzzzzz; DBB1 <= 8'bzzzzzzzz; DBB2 <= 8'bzzzzzzzz; DBB3 <= 8'bzzzzzzzz;
+    #25 nTS_CPU <= 1;
+    #25 DAB0 <= 8'h11; DAB1 <= 8'h22; DAB2 <= 8'h33; DAB3 <= 8'h44; DSACK <= 2'b00;
+    #25 DAB0 <= 8'h55; DAB1 <= 8'h66; DAB2 <= 8'h77; DAB3 <= 8'h88;
+    #25 DAB0 <= 8'hA0; DAB1 <= 8'hB0; DAB2 <= 8'hC0; DAB3 <= 8'hD0;
+
+    //CYCLE 2
+    #25 nTS_CPU <= 0; RnW <= 1; 
+        DBB0 <= 8'h0A; DBB1 <= 8'h0B; DBB2 <= 8'h0C; DBB3 <= 8'h0D;
+        DAB0 <= 8'bzzzzzzzz; DAB1 <= 8'bzzzzzzzz; DAB2 <= 8'bzzzzzzzz; DAB3 <= 8'bzzzzzzzz;
+    #25 nTS_CPU <= 1;
+        DSACK <= 2'b11; //CYCLE 1
+    #25 DBB0 <= 8'h0E; DBB1 <= 8'h0F; DBB2 <= 8'h1A; DBB3 <= 8'h1B;
+    #25 DBB0 <= 8'h1F; DBB1 <= 8'h1C; DBB2 <= 8'h1D; DBB3 <= 8'h1E; DSACK <= 2'b00;
+    #25 DBB0 <= 8'h3B; DBB1 <= 8'h3C; DBB2 <= 8'h3D; DBB3 <= 8'h3E;
+
+    //CYCLE 3
+    #25 nTS_CPU <= 0; RnW <= 0; 
+        DAB0 <= 8'haa; DAB1 <= 8'hbb; DAB2 <= 8'hcc; DAB3 <= 8'hdd;
+        DBB0 <= 8'bzzzzzzzz; DBB1 <= 8'bzzzzzzzz; DBB2 <= 8'bzzzzzzzz; DBB3 <= 8'bzzzzzzzz;
+    #25 nTS_CPU <= 1;
+    #25 DSACK <= 2'b11; //CYCLE 2
+    #25 DAB0 <= 8'h11; DAB1 <= 8'h22; DAB2 <= 8'h33; DAB3 <= 8'h44;
+    #25 DAB0 <= 8'h55; DAB1 <= 8'h66; DAB2 <= 8'h77; DAB3 <= 8'h88;
+    #25 DAB0 <= 8'hA0; DAB1 <= 8'hB0; DAB2 <= 8'hC0; DAB3 <= 8'hD0; DSACK <= 2'b00;
+
+    //CYCLE 4
+    #25 nTS_CPU <= 0; RnW <= 1; 
+        DBB0 <= 8'h0A; DBB1 <= 8'h0B; DBB2 <= 8'h0C; DBB3 <= 8'h0D;
+        DAB0 <= 8'bzzzzzzzz; DAB1 <= 8'bzzzzzzzz; DAB2 <= 8'bzzzzzzzz; DAB3 <= 8'bzzzzzzzz;
+    #25 nTS_CPU <= 1;
+    #50 DSACK <= 2'b11; //CYCLE 3
+    #25 DBB0 <= 8'h0E; DBB1 <= 8'h0F; DBB2 <= 8'h1A; DBB3 <= 8'h1B; //DSACK <= 2'b11; //CYCLE 3
+    #25 DBB0 <= 8'h1F; DBB1 <= 8'h1C; DBB2 <= 8'h1D; DBB3 <= 8'h1E; //DSACK <= 2'b11; //CYCLE 3
+    #25 DBB0 <= 8'h3B; DBB1 <= 8'h3C; DBB2 <= 8'h3D; DBB3 <= 8'h3E; //DSACK <= 2'b00;
+    #25 DSACK <= 2'b00;
+    #100 DSACK <= 2'b11; //CYCLE 4*/
+
+    //LINE R/W CYCLE, WORD PORT
+    /*#50 A_040 <= 2'b00; RnW <= 0; SIZ <= 2'b11; nTS_CPU <= 0; 
+        DAB0 <= 8'haa; DAB1 <= 8'hbb; DAB2 <= 8'hcc; DAB3 <= 8'hdd; //CYCLE 1
+        DBB0 <= 8'bzzzzzzzz; DBB1 <= 8'bzzzzzzzz; DBB2 <= 8'bzzzzzzzz; DBB3 <= 8'bzzzzzzzz;
+    #25 nTS_CPU <= 1;
+    #25 DAB0 <= 8'h11; DAB1 <= 8'h22; DAB2 <= 8'h33; DAB3 <= 8'h44; //CYCLE 1
+    #25 DSACK <= 2'b01; DAB0 <= 8'ha1; DAB1 <= 8'ha2; DAB2 <= 8'ha3; DAB3 <= 8'ha4; //CYCLE 1
+    #25 DSACK <= 2'b11; DAB0 <= 8'ha5; DAB1 <= 8'ha6; DAB2 <= 8'ha7; DAB3 <= 8'ha8; //CYCLE 1    
+    #50 DSACK <= 2'b01; 
+    #25 DSACK <= 2'b11;
+    #75 DSACK <= 2'b01;
+    #25 DSACK <= 2'b11;
+    #75 DSACK <= 2'b01;
+    #25 DSACK <= 2'b11;
+    #75 DSACK <= 2'b01;
+    #25 DSACK <= 2'b11;
+    #75 DSACK <= 2'b01;
+    #25 DSACK <= 2'b11;
+    #75 DSACK <= 2'b01;
+    #25 DSACK <= 2'b11;
+    #75 DSACK <= 2'b01;
+    #25 DSACK <= 2'b11; 
+        
+    #50 A_040 <= 2'b00; RnW <= 1; SIZ <= 2'b11; nTS_CPU <= 0; 
+        DBB0 <= 8'haa; DBB1 <= 8'hbb; DBB2 <= 8'hx; DBB3 <= 8'hx;
+        DAB0 <= 8'bzzzzzzzz; DAB1 <= 8'bzzzzzzzz; DAB2 <= 8'bzzzzzzzz; DAB3 <= 8'bzzzzzzzz;
+    #25 nTS_CPU <= 1;
+    #50 DSACK <= 2'b01;
+    #25 DSACK <= 2'b11;
+    #25 DBB0 <= 8'hcc; DBB1 <= 8'hdd; DBB2 <= 8'hx; DBB3 <= 8'hx;
+    #50 DSACK <= 2'b01;
+    #25 DSACK <= 2'b11;
+    #25 DBB0 <= 8'hee; DBB1 <= 8'hff; DBB2 <= 8'hx; DBB3 <= 8'hx;
+    #50 DSACK <= 2'b01;
+    #25 DSACK <= 2'b11;
+    #25 DBB0 <= 8'ha1; DBB1 <= 8'ha2; DBB2 <= 8'hx; DBB3 <= 8'hx;
+    #50 DSACK <= 2'b01;
+    #25 DSACK <= 2'b11;    
+    #25 DBB0 <= 8'ha3; DBB1 <= 8'ha4; DBB2 <= 8'hx; DBB3 <= 8'hx;
+    #50 DSACK <= 2'b01;
+    #25 DSACK <= 2'b11;
+    #25 DBB0 <= 8'ha5; DBB1 <= 8'ha6; DBB2 <= 8'hx; DBB3 <= 8'hx;
+    #50 DSACK <= 2'b01;
+    #25 DSACK <= 2'b11;
+    #25 DBB0 <= 8'ha7; DBB1 <= 8'ha8; DBB2 <= 8'hx; DBB3 <= 8'hx;
+    #50 DSACK <= 2'b01;
+    #25 DSACK <= 2'b11;
+    #25 DBB0 <= 8'ha9; DBB1 <= 8'ha0; DBB2 <= 8'hx; DBB3 <= 8'hx;
+    #50 DSACK <= 2'b01;
+    #25 DSACK <= 2'b11;
+
+    #25 nTS_CPU <= 0; RnW <= 0; DAB0 <= 8'hb0; DAB1 <= 8'hb1; DAB2 <= 8'hb2; DAB3 <= 8'hb3; //CYCLE 2
+    #25 nTS_CPU <= 1; DAB0 <= 8'hb4; DAB1 <= 8'hb5; DAB2 <= 8'hb6; DAB3 <= 8'hb7; //CYCLE 2
+    #25 DAB0 <= 8'hb8; DAB1 <= 8'hb9; DAB2 <= 8'hba; DAB3 <= 8'hbb; //CYCLE 2
+    #25 DSACK <= 2'b01; DAB0 <= 8'hbc; DAB1 <= 8'hbd; DAB2 <= 8'hbe; DAB3 <= 8'hbf; //CYCLE 2
+    #25 DSACK <= 2'b11;
+    #75 DSACK <= 2'b01;
+    #25 DSACK <= 2'b11;
+    #75 DSACK <= 2'b01;
+    #25 DSACK <= 2'b11;
+    #75 DSACK <= 2'b01;
+    #25 DSACK <= 2'b11;
+    #75 DSACK <= 2'b01;
+    #25 DSACK <= 2'b11;
+    #75 DSACK <= 2'b01;
+    #25 DSACK <= 2'b11;
+    #75 DSACK <= 2'b01;
+    #25 DSACK <= 2'b11;
+    #75 DSACK <= 2'b01;
+    #25 DSACK <= 2'b11;
+
+    #50 A_040 <= 2'b00; RnW <= 0; SIZ <= 2'b11; nTS_CPU <= 0; 
+        DAB0 <= 8'haa; DAB1 <= 8'hbb; DAB2 <= 8'hx; DAB3 <= 8'hx;
+        DBB0 <= 8'bzzzzzzzz; DBB1 <= 8'bzzzzzzzz; DBB2 <= 8'bzzzzzzzz; DBB3 <= 8'bzzzzzzzz;
+    #25 nTS_CPU <= 1;
+    #50 DSACK <= 2'b01;
+    #25 DSACK <= 2'b11;
+    #25 DAB0 <= 8'hcc; DAB1 <= 8'hdd; DAB2 <= 8'hx; DAB3 <= 8'hx;
+    #50 DSACK <= 2'b01;
+    #25 DSACK <= 2'b11;
+    #25 DAB0 <= 8'hee; DAB1 <= 8'hff; DAB2 <= 8'hx; DAB3 <= 8'hx;
+    #50 DSACK <= 2'b01;
+    #25 DSACK <= 2'b11;
+    #25 DAB0 <= 8'ha1; DAB1 <= 8'ha2; DAB2 <= 8'hx; DAB3 <= 8'hx;
+    #50 DSACK <= 2'b01;
+    #25 DSACK <= 2'b11;    
+    #25 DAB0 <= 8'ha3; DAB1 <= 8'ha4; DAB2 <= 8'hx; DAB3 <= 8'hx;
+    #50 DSACK <= 2'b01;
+    #25 DSACK <= 2'b11;
+    #25 DAB0 <= 8'ha5; DAB1 <= 8'ha6; DAB2 <= 8'hx; DAB3 <= 8'hx;
+    #50 DSACK <= 2'b01;
+    #25 DSACK <= 2'b11;
+    #25 DAB0 <= 8'ha7; DAB1 <= 8'ha8; DAB2 <= 8'hx; DAB3 <= 8'hx;
+    #50 DSACK <= 2'b01;
+    #25 DSACK <= 2'b11;
+    #25 DAB0 <= 8'ha9; DAB1 <= 8'ha0; DAB2 <= 8'hx; DAB3 <= 8'hx;
+    #50 DSACK <= 2'b01;
+    #25 DSACK <= 2'b11;
+
+    #50 A_040 <= 2'b00; RnW <= 1; SIZ <= 2'b11; nTS_CPU <= 0; 
+        DBB0 <= 8'haa; DBB1 <= 8'hbb; DBB2 <= 8'hx; DBB3 <= 8'hx;
+        DAB0 <= 8'bzzzzzzzz; DAB1 <= 8'bzzzzzzzz; DAB2 <= 8'bzzzzzzzz; DAB3 <= 8'bzzzzzzzz;
+    #25 nTS_CPU <= 1;
+    #50 DSACK <= 2'b01;
+    #25 DSACK <= 2'b11;
+    #25 DBB0 <= 8'hcc; DBB1 <= 8'hdd; DBB2 <= 8'hx; DBB3 <= 8'hx;
+    #50 DSACK <= 2'b01;
+    #25 DSACK <= 2'b11;
+    #25 DBB0 <= 8'hee; DBB1 <= 8'hff; DBB2 <= 8'hx; DBB3 <= 8'hx;
+    #50 DSACK <= 2'b01;
+    #25 DSACK <= 2'b11;
+    #25 DBB0 <= 8'ha1; DBB1 <= 8'ha2; DBB2 <= 8'hx; DBB3 <= 8'hx;
+    #50 DSACK <= 2'b01;
+    #25 DSACK <= 2'b11;    
+    #25 DBB0 <= 8'ha3; DBB1 <= 8'ha4; DBB2 <= 8'hx; DBB3 <= 8'hx;
+    #50 DSACK <= 2'b01;
+    #25 DSACK <= 2'b11;
+    #25 DBB0 <= 8'ha5; DBB1 <= 8'ha6; DBB2 <= 8'hx; DBB3 <= 8'hx;
+    #50 DSACK <= 2'b01;
+    #25 DSACK <= 2'b11;
+    #25 DBB0 <= 8'ha7; DBB1 <= 8'ha8; DBB2 <= 8'hx; DBB3 <= 8'hx;
+    #50 DSACK <= 2'b01;
+    #25 DSACK <= 2'b11;
+    #25 DBB0 <= 8'ha9; DBB1 <= 8'ha0; DBB2 <= 8'hx; DBB3 <= 8'hx;
+    #50 DSACK <= 2'b01;
+    #25 DSACK <= 2'b11;*/
+
+    //LONG WORD R/W TO WORD PORT
+    /*#50 A_040 <= 2'b00; RnW <= 0; SIZ <= 2'b00; nTS_CPU <= 0;
+        DAB0 <= 8'haa; DAB1 <= 8'hbb; DAB2 <= 8'hcc; DAB3 <= 8'hdd;
+        DBB0 <= 8'bzzzzzzzz; DBB1 <= 8'bzzzzzzzz; DBB2 <= 8'bzzzzzzzz; DBB3 <= 8'bzzzzzzzz;
+    #25 nTS_CPU <= 1;
+    #25 DSACK <= 2'b01;
+    #25 DSACK <= 2'b11;
+    #50 DSACK <= 2'b01;
+    #25 DSACK <= 2'b11;
+
+    #50 A_040 <= 2'b00; RnW <= 1; SIZ <= 2'b00; nTS_CPU <= 0;
+        DBB0 <= 8'haa; DBB1 <= 8'hbb; DBB2 <= 8'hx; DBB3 <= 8'hx;
+        DAB0 <= 8'bzzzzzzzz; DAB1 <= 8'bzzzzzzzz; DAB2 <= 8'bzzzzzzzz; DAB3 <= 8'bzzzzzzzz;
+    #25 nTS_CPU <= 1;
+    #50 DSACK <= 2'b01;
+    #25 DSACK <= 2'b11;
+    #25 DBB0 <= 8'hcc; DBB1 <= 8'hdd; DBB2 <= 8'hx; DBB3 <= 8'hx;
+    #50 DSACK <= 2'b01;
+    #25 DSACK <= 2'b11;*/
+    
 end
 
 //Test Parameters
@@ -445,10 +664,10 @@ U111_TOP dut (
     .D1_AMIGA (D1_AMIGA),
     .D2_AMIGA (D2_AMIGA),
     .D3_AMIGA (D3_AMIGA)
-    //.nUUBE (nUUBE),
-    //.nUMBE (nUMBE),
-    //.nLMBE (nLMBE),
-    //.nLLBE (nLLBE)
+    .nUUBE (nUUBE),
+    .nUMBE (nUMBE),
+    .nLMBE (nLMBE),
+    .nLLBE (nLLBE)
 
 );
 
