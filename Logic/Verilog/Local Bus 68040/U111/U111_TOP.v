@@ -429,17 +429,19 @@ end
 //////////////////////////
 
 wire [7:0]D0_OUT =  (LSW_EN
-                 || (SIZ_CURRENT == BYTE && A_CURRENT == 2'b10))
+                 || (SIZ_CURRENT == BYTE && A_CURRENT == 2'b10)
+                 || (SIZ_CURRENT == WORD && A_CURRENT == 2'b10))
                  ?  FIFO[RD_POINTER + 2][15:8]
                  :  FIFO[RD_POINTER][15:8];
 
 wire [7:0]D1_OUT =  (LSW_EN
-                 || (SIZ_CURRENT == BYTE && A_CURRENT == 2'b11))
+                 || (SIZ_CURRENT == BYTE && A_CURRENT == 2'b11)
+                 || (SIZ_CURRENT == WORD && A_CURRENT == 2'b10))
                  ?  FIFO[RD_POINTER + 2][7:0]
                  :  FIFO[RD_POINTER][7:0];
 
-wire [7:0]D2_OUT = FIFO[RD_POINTER + 2][15:8];
-wire [7:0]D3_OUT = FIFO[RD_POINTER + 2][7:0];
+wire [7:0]D2_OUT =  FIFO[RD_POINTER + 2][15:8];
+wire [7:0]D3_OUT =  FIFO[RD_POINTER + 2][7:0];
 
 reg LSW_EN;
 reg [2:0]STATE_COUNTER_LATCH;
@@ -475,7 +477,8 @@ end
 //////////////////////
 
 reg [1:0] A_OUT_TEMP;
-assign A_AMIGA = (!nTS_CPU && RnW) ? A_040 : A_OUT_TEMP;
+//assign A_AMIGA = (!nTS_CPU && RnW) ? A_040 : A_OUT_TEMP;
+assign A_AMIGA = A_OUT_TEMP;
 
 always @(negedge BCLK, negedge nRESET) begin
     if (!nRESET) begin
@@ -570,9 +573,9 @@ always @(posedge BCLK, negedge nRESET) begin
                             case (SIZ_CURRENT)
 
                                 LINE, LWORD : begin // WORD PORT, MOST SIGNIFICANT WORD OF FIRST LONG WORD.
-                                                TS <= 1;
-                                                STATE_COUNTER <= 3'b011;
-                                              end
+                                                        TS <= 1;
+                                                        STATE_COUNTER <= 3'b011;
+                                                    end
 
                                 default     : begin
                                                 TA <= !WRITE_CYCLE_CURRENT;
