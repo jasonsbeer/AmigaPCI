@@ -27,6 +27,7 @@ Revision|Date|Status
 0.4|July 15, 2024|Added section 3.1. CPU Local Bus Card Devices
 0.5|July 16, 2024|Rework of Section 3.
 0.6|July 29, 2024|Added Section 4, Jumpers
+0.7|October 22, 2024|Updated sections 3.4, 3.6, and 3.7 with new termination signals and clock descriptions.
 
 <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://github.com/jasonsbeer/AmigaPCI">AmigaPCI Hardware Reference</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://github.com/jasonsbeer">Jason Neus</a> is licensed under <a href="https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">Creative Commons Attribution-NonCommercial 4.0 International<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt=""></a></p>
 
@@ -242,7 +243,7 @@ A target device is any device that may be controlled by the bus master, such as 
 The signals on the CPU Local Bus Port are broken into categories. Some are specific to the MC68040/MC68060 and others are specific to the port. The pinout of the port is detailed in Table 3.4.
 
 > [!NOTE]  
-> The CPU Local Bus Port is a mixture of TTL and LVTTL signaling. While CPU Local Bus Card devices may be drive most signals at TTL logic levels, some signals are not TTL tolerant. It is critical to read the signal descriptions completely to understand what logic levels are implemented.
+> The CPU Local Bus Port is a mixture of TTL and LVTTL signaling. While CPU Local Bus Card devices may be drive most signals at TTL logic levels, some signals are not TTL tolerant. It is critical to read the signal descriptions completely to understand the logic levels implemented.
 
 > [!WARNING] 
 > **Applying +5V to LVTTL only signals may damage logic on the Amiga PCI main board.**
@@ -282,11 +283,17 @@ This bus is driven by the bus master and tristated by inactive bus masters. The 
 **D(31..0)** (Data Bus)  
 This bus is driven by the bus master for writes and the target device for reads and tristated by inactive bus masters. The CPU Local Bus devices may drive this bus with either TTL or LVTTL level logic. However, the AmigaPCI drives this bus at TTL levels. As such, it is necessary that the CPU Local Bus Card devices be TTL, TTL tolerant, or use level shifting to convert the incoming TTL levels to the voltage required.
 
-**DSACK(1..0)** (Data Port Size and Cycle Termination)  
-This LVTTL bus is driven by the target device and tristated by inactive target devices. This bus indicates the data port width of the target device and terminates the cycle. See Section 3.7 for a detailed description. In certain circumstances, devices on the CPU Local Bus Card may choose to drive MC68040/MC68060 **_TA** (transfer acknowledge) directly.
+**PORT** (Port Size)
+This LVTTL signal is driven by the target device and tristated by inactive target devices. Used to indicate the data bus width of the target device. Logic low (0) indicates a 32-bit port. Logic high (1) indicates a 16-bit port.
 
 **R_W** (Read/Write)  
 This TTL tolerant signal is driven by the bus master and tristated by inactive bus masters.
+
+**SIZ(1..0)** (Transfer Size)  
+This TTL tolerant bus is driven by the bus master and tristated by inactive bus masters. These are the MC68040/MC68060 transfer size signals. 
+
+**_TACK** (Transfer Acknowledge)
+This LVTTL signal is driven by the target device and tristated by inactive target devices. It signals the CPU Local Bus device that the target device has is ready to complete the data transfer cycle.
 
 **_TBI** (Tranfer Burst Inhibit)  
 This LVTTL signal is driven by the target device and tristated by inactive target devices. Inhibits a burst cycle in favor of individual data transfers.
@@ -299,9 +306,6 @@ This LVTTL signal is driven by the target device and tristated by inactive targe
 
 **TT(1..0)** (Transfer Type)  
 This TTL tolerant bus is driven by the bus master and tristated by inactive bus masters. These are the MC68040/MC68060 transfer type signals.
-
-**SIZ(1..0)** (Transfer Size)  
-This TTL tolerant bus is driven by the bus master and tristated by inactive bus masters. These are the MC68040/MC68060 transfer size signals. 
 
 **TM(2..0)** (Transfer Modifiers)  
 This TTL tolerant bus is driven by the bus master and tristated by inactive bus masters. These are the MC68040/MC68060 transfer modifier signals. 
@@ -331,9 +335,6 @@ This TTL tolerant signal is driven by the bus master and tristated by inactive b
 **BCLK** (Bus Clock)  
 The 40MHz LVTTL bus clock is generated on the CPU Local Bus Card and used to syncronize data transactions between the AmigaPCI and the CPU Local Bus device.
 
-**RAMCLK** (Ram Clock)  
-The 80MHz LVTTL RAM clock is generated on the CPU Local Bus Card and used to clock SDRAM timings. Must be synchronous with BCLK, with the rising edge of BCLK on the rising edges of RAMCLK.
-
 ### 3.4.6 Other CPU Local Bus Port Signals
 
 **_CPUCONF** (CPU Local Bus Card Configured)  
@@ -354,7 +355,7 @@ This LVTTL signal is driven by a target device on the CPU Local Bus Card and tri
 **Table 3.4**. CPU Local Bus Pinout.
 Pin|Signal|Pin|Signal|Pin|Signal
 -|-|-|-|-|-
-**A1**|_DSACK0|**B1**|_BB|**C1**|GND
+**A1**|PORTSIZE|**B1**|_BB|**C1**|GND
 **A2**|A12|**B2**|A13|**C2**|GND
 **A3**|A14|**B3**|A0|**C3**|A15
 **A4**|A1|**B4**|A2|**C4**|A3
@@ -374,10 +375,10 @@ Pin|Signal|Pin|Signal|Pin|Signal
 **A18**|D20|**B18**|D22|**C18**|GND
 **A19**|D25|**B19**|D19|**C19**|D23
 **A20**|D17|**B20**|D15|**C20**|D14
-**A21**|+3.3V|**B21**|_DSACK1|**C21**|_TEA
+**A21**|+3.3V|**B21**|_TACK|**C21**|_TEA
 **A22**|+5V|**B22**|_LBEN|**C22**|_BG
 **A23**|_TBI|**B23**|_INT6|**C23**|_TCI
-**A24**|RAMCLK|**B24**|D18|**C24**|D13
+**A24**|GND|**B24**|D18|**C24**|D13
 **A25**|+5V|**B25**|D16|**C25**|D12
 **A26**|+5V|**B26**|D11|**C26**|D10
 **A27**|D8|**B27**|D9|**C27**|_IPL0
@@ -401,25 +402,17 @@ It is possible to include RAM and AUTOCONFIG devices on the CPU Local Bus Card. 
 
 ## 3.6 Clocks
 
-Two system clocks, BCLK and RAMCLK, are generated on the CPU Local Bus card. This minimizes issues with clock skew where the CPU Local Bus Card may have high-speed RAM or other timing sensitive AUTOCONFIG devices. LVTTL clocks must be generated on the CPU Local Bus card and connected to the correct pins to provide clocks to the AmigaPCI board. The bus clock (BCLK) is 40MHz, which is used to correctly time data transer cycle responses to the CPU Local Bus Card. The 80MHz clock (RAMCLK) is used to generate the SDRAM clock for chip ram cycles. Both BCLK and RAMCLK clocks are unbuffered and routed to U712. These clocks are then distributed to other components with an FPGA clock fanout. It is possible to drive the AmigaPCI logic clocks at other frequencies, but it is the designer's responsibility to ensure logic cycles are not adversely effected. 
+The bus clock (BCLK) is a 40MHz clock that is used to time data transer cycle responses to the CPU Local Bus Card. The 40MHz bus clock is generated on the CPU Local Bus card. This minimizes issues with clock skew where the CPU Local Bus Card may have high-speed RAM or other timing sensitive AUTOCONFIG devices. BCLK is unbuffered and routed to U712 on the AmigaPCI. The signal is then distributed to other FPGA's on the AmigaPCI via a PLL in U712.
 
 Correct clock distribution is critical to ensure stable operation of the CPU Local Bus card and AmigaPCI. Each clocked device should have a dedicated clock signal by using fanouts from a singal clock source. Traces should be kept as short as possible and small value series resistors should be implemented at the clock signal source.
 
 ## 3.7 Cycle Termination
 
-The CPU Local Bus card must support dynamic bus sizing to enable the 16-bit data ports of the Amiga chipset. The AmigaPCI supplies two data cycle termination signals, **_DSACK1** and **_DSACK0**, which are latched on the rising edge of **BCLK**. These signals are used together to signal not only the end of a cycle, but also the data port size of the target device, essentially implementing the MC68030 dynamic bus sizer in logic. These two signals are used by the dynamic bus sizer to determine whether the CPU cycle is complete or if additional data transfer cycles are required to complete the requested data transfer. The AmigaPCI implements 16-bit and 32-bit ports. Support of 8-bit target devices is not necessary.
+The CPU Local Bus card must support dynamic bus sizing to enable the 16-bit data ports of the Amiga chipset. The AmigaPCI supplies two data cycle termination signals, **PORTSIZE** and **_TACK**. **PORTSIZE** is an address driven signal from logic on the AmigaPCI that indicates the data port width of the device currently addressed. A logic low signal indicates the addressed data port is 32-bits wide, while a logic high signal indicates a 16-bit port. **_TACK** is asserted by the AmigaPCI logic to indicate the completion of a data transfer cycle of any port size and is latched on the rising edge of **BCLK**. Together, these signals are used to determine the status of the current data transfer cycle. The AmigaPCI implements 16-bit and 32-bit data ports. Support of 8-bit target devices is not necessary.
 
-If the data to be transfered is longer than the data port of the target device, multiple transfer cycles are required to move the data. For example, if the MC68040/MC68060 initiates a long-word transfer and the target device responds as a 16-bit port, the dynamic bus sizer will latch the 16 bits of the first cycle and run a second cycle to latch the next 16 bits. These two cycles are driven by the dynamic bus sizer and are transparent to the MC68040/MC68060. Once the dynamic bus sizer latches all the requested data on a read cycle, or completes the necessary cycles on a write, it asserts **_TA** to signal the MC68040/MC68060 to complete the cycle. The dynamic bus sizer places the most significant byte of the transfer at D31-24. The next most significant at D23-16. Misaligned operands are treated the same, with the byte enable signals identifying the particular byte(s) to be latched.
+If the data to be transfered is larger than the data port of the addressed device, multiple transfer cycles are required to complete the data transfer. For example, if the MC68040/MC68060 initiates a long-word transfer and the target device responds as a 16-bit port, the dynamic bus sizer will latch the 16 bits of the first cycle and run a second cycle to latch the next 16 bits. These two cycles are driven by the dynamic bus sizer and are transparent to the MC68040/MC68060. Once the dynamic bus sizer latches all the requested data on a read cycle, or completes the necessary cycles on a write, it asserts **_TA** to signal the MC68040/MC68060 to complete the cycle. The dynamic bus sizer places the most significant byte of the transfer at D31-24. The next most significant at D23-16. Misaligned operands are treated the same, with the byte enable signals identifying the particular byte(s) to be latched.
 
 Dynamic bus sizing is described in great detail in the [Motorola MC68030](/DataSheets/Motorola/MC68030UM.pdf) user manual, Sections 7.2.1-7.2.3, and the [MC68040 Designer's Handbook](/DataSheets/Motorola/MC68040_Designers_Handbook_1990.pdf), Section 7. It is strongly advised to review these documents, as significant reproduction here is not attempted. A reference project can be found with the MC68040 Local Bus card with the [AmigaPCI project Github repo](https://github.com/jasonsbeer/AmigaPCI).
-
-Table 3.7. DSACKx results.
-_DSACK1|_DSACK0|Result
--|-|-
-H|H|Wait
-H|L|Transfer complete. 8-bit data port.
-L|H|Transfer complete. 16-bit data port
-L|L|Transfer complete. 32-bit data port
 
 Figure 3.7 shows a state machine for enabling dynamic bus sizing. This state machine is adapted from Section 7 of the MC68040 Designer's Handbook from Motorola. 
 
