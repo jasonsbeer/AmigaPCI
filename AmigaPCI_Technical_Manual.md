@@ -295,9 +295,6 @@ This TTL tolerant bus is driven by the bus master and tristated by inactive bus 
 **_TACK** (Transfer Acknowledge)
 This LVTTL signal is driven by the target device and tristated by inactive target devices. It signals the CPU Local Bus device that the target device has is ready to complete the data transfer cycle.
 
-**_TBI** (Tranfer Burst Inhibit)  
-This LVTTL signal is driven by the target device and tristated by inactive target devices. Inhibits a burst cycle in favor of individual data transfers.
-
 **_TCI** (Tranfer Cache Inhibit)  
 This LVTTL signal is driven by the target device and tristated by inactive target devices. Inhibits caching of data from a data transfer burst cycle.
 
@@ -377,7 +374,7 @@ Pin|Signal|Pin|Signal|Pin|Signal
 **A20**|D17|**B20**|D15|**C20**|D14
 **A21**|+3.3V|**B21**|_TACK|**C21**|_TEA
 **A22**|+5V|**B22**|_LBEN|**C22**|_BG
-**A23**|_TBI|**B23**|_INT6|**C23**|_TCI
+**A23**|GND|**B23**|_INT6|**C23**|_TCI
 **A24**|GND|**B24**|D18|**C24**|D13
 **A25**|+5V|**B25**|D16|**C25**|D12
 **A26**|+5V|**B26**|D11|**C26**|D10
