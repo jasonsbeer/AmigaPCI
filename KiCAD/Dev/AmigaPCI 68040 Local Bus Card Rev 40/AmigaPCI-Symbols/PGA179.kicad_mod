@@ -36,6 +36,7 @@
 		(effects
 			(font
 				(size 1.27 1.27)
+				(thickness 0.15)
 			)
 		)
 	)
@@ -48,6 +49,7 @@
 		(effects
 			(font
 				(size 1.27 1.27)
+				(thickness 0.15)
 			)
 		)
 	)
@@ -60,6 +62,7 @@
 		(effects
 			(font
 				(size 1.27 1.27)
+				(thickness 0.15)
 			)
 		)
 	)
@@ -75,34 +78,6 @@
 		(fill none)
 		(layer "F.SilkS")
 		(uuid "d2c56cce-21dd-4107-ac2e-ced4ab9a076a")
-	)
-	(pad "" np_thru_hole circle
-		(at -26.5 -26.5)
-		(size 3.175 3.175)
-		(drill 3.175)
-		(layers "F&B.Cu" "*.Mask")
-		(uuid "8d2e2236-7b90-417f-870c-c06440fccc7c")
-	)
-	(pad "" np_thru_hole circle
-		(at -26.5 26.5)
-		(size 3.175 3.175)
-		(drill 3.175)
-		(layers "F&B.Cu" "*.Mask")
-		(uuid "cef8e6f3-b4b2-4a15-acf1-c1c95afa05b1")
-	)
-	(pad "" np_thru_hole circle
-		(at 26.5 -26.5)
-		(size 3.175 3.175)
-		(drill 3.175)
-		(layers "F&B.Cu" "*.Mask")
-		(uuid "60946d42-7f98-46bb-9e18-79e01c4274bc")
-	)
-	(pad "" np_thru_hole circle
-		(at 26.5 26.5)
-		(size 3.175 3.175)
-		(drill 3.175)
-		(layers "F&B.Cu" "*.Mask")
-		(uuid "93c3d6c5-48c0-48a1-a3d1-f2629e16814e")
 	)
 	(pad "1" thru_hole roundrect
 		(at 21.59 21.59)

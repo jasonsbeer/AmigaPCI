@@ -678,6 +678,10 @@
       {
         "netclass": "Narrow",
         "pattern": "BUFDIR"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "RAMCLKA"
       }
     ]
   },

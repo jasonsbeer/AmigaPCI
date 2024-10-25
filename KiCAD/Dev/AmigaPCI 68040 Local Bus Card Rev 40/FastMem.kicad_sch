@@ -6,7 +6,7 @@
 	(paper "B")
 	(title_block
 		(title "AmigaPCI 68040 Local Bus Card")
-		(date "2024-07-21")
+		(date "2024-10-24")
 		(rev "4.0")
 	)
 	(lib_symbols
@@ -5315,16 +5315,16 @@
 		(uuid "ff811690-7c18-428b-bd84-799a6b98b896")
 	)
 	(no_connect
+		(at 316.23 80.01)
+		(uuid "1aaf0a1b-d66e-4dd4-af51-8bba31cd90c0")
+	)
+	(no_connect
 		(at 377.19 80.01)
 		(uuid "2e0cd5c0-9636-4fca-8c88-7e5189a6108d")
 	)
 	(no_connect
 		(at 383.54 173.99)
 		(uuid "659d73b8-7a56-46c6-b153-08f88819be43")
-	)
-	(no_connect
-		(at 316.23 151.13)
-		(uuid "c3bdeff5-09b4-4e1d-a887-d0bd50c6af38")
 	)
 	(bus_entry
 		(at 129.54 140.97)
@@ -12177,7 +12177,7 @@
 		)
 		(uuid "00c77fb9-794b-40aa-8444-fa11e7115e65")
 	)
-	(label "D3V3A19"
+	(label "LVDA19"
 		(at 129.54 130.81 180)
 		(fields_autoplaced yes)
 		(effects
@@ -12232,7 +12232,7 @@
 		)
 		(uuid "09175cfc-1607-4f30-926f-a25fac45814b")
 	)
-	(label "D3V3A18"
+	(label "LVDA18"
 		(at 232.41 128.27 180)
 		(fields_autoplaced yes)
 		(effects
@@ -12298,7 +12298,7 @@
 		)
 		(uuid "11138636-5bad-4a57-84b5-53ad6a65f112")
 	)
-	(label "D3V3A9"
+	(label "LVDA9"
 		(at 129.54 118.11 180)
 		(fields_autoplaced yes)
 		(effects
@@ -12309,7 +12309,7 @@
 		)
 		(uuid "114621c6-758c-4ec9-a806-767f8c3e5f66")
 	)
-	(label "D3V3A26"
+	(label "LVDA26"
 		(at 232.41 148.59 180)
 		(fields_autoplaced yes)
 		(effects
@@ -12320,7 +12320,7 @@
 		)
 		(uuid "134195cf-f22b-4432-bd9c-4d8fae1b74de")
 	)
-	(label "D3V3A5"
+	(label "LVDA5"
 		(at 129.54 95.25 180)
 		(fields_autoplaced yes)
 		(effects
@@ -12331,7 +12331,7 @@
 		)
 		(uuid "13817ad6-4523-44b9-8f53-066e2ad6f7aa")
 	)
-	(label "D3V3A9"
+	(label "LVDA9"
 		(at 232.41 118.11 180)
 		(fields_autoplaced yes)
 		(effects
@@ -12342,7 +12342,7 @@
 		)
 		(uuid "165c096d-8418-4f05-bddc-1627d6e5512b")
 	)
-	(label "D3V3A25"
+	(label "LVDA25"
 		(at 129.54 146.05 180)
 		(fields_autoplaced yes)
 		(effects
@@ -12364,7 +12364,7 @@
 		)
 		(uuid "1ac08a12-2e49-46ef-8f83-d79881cabe60")
 	)
-	(label "D3V3A6"
+	(label "LVDA6"
 		(at 129.54 97.79 180)
 		(fields_autoplaced yes)
 		(effects
@@ -12408,7 +12408,7 @@
 		)
 		(uuid "257117f4-7c02-4fb4-9271-7e3c2d9b822e")
 	)
-	(label "D3V3A5"
+	(label "LVDA5"
 		(at 232.41 95.25 180)
 		(fields_autoplaced yes)
 		(effects
@@ -12464,7 +12464,7 @@
 		(uuid "2829d951-e29b-4cb1-80e7-9175d1906072")
 	)
 	(label "LVA16"
-		(at 316.23 105.41 0)
+		(at 316.23 102.87 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -12485,7 +12485,7 @@
 		)
 		(uuid "30f9845e-0b20-4efb-a477-34d390a1494f")
 	)
-	(label "D3V3A4"
+	(label "LVDA4"
 		(at 129.54 90.17 180)
 		(fields_autoplaced yes)
 		(effects
@@ -12551,7 +12551,7 @@
 		)
 		(uuid "3e7c169d-9919-4eec-a693-306ec5d511db")
 	)
-	(label "D3V3A16"
+	(label "LVDA16"
 		(at 129.54 123.19 180)
 		(fields_autoplaced yes)
 		(effects
@@ -12563,7 +12563,7 @@
 		(uuid "3f299132-957c-4c33-8303-c46f8d45fe6b")
 	)
 	(label "LVA21"
-		(at 316.23 118.11 0)
+		(at 316.23 115.57 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -12606,7 +12606,7 @@
 		)
 		(uuid "467109bd-3970-4e9f-87d8-9e644cdb2549")
 	)
-	(label "D3V3A3"
+	(label "LVDA3"
 		(at 232.41 82.55 180)
 		(fields_autoplaced yes)
 		(effects
@@ -12618,7 +12618,7 @@
 		(uuid "4682897e-da88-4d1f-a32b-f76f90a82572")
 	)
 	(label "LVA31"
-		(at 316.23 133.35 0)
+		(at 316.23 130.81 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -12629,7 +12629,7 @@
 		(uuid "49e261af-ba7a-4848-b1db-b88366cbe357")
 	)
 	(label "LVA1"
-		(at 316.23 54.61 0)
+		(at 316.23 85.09 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -12639,7 +12639,7 @@
 		)
 		(uuid "4b3789d0-6af2-40ff-b94c-884c628e8d1d")
 	)
-	(label "D3V3A4"
+	(label "LVDA4"
 		(at 232.41 90.17 180)
 		(fields_autoplaced yes)
 		(effects
@@ -12683,7 +12683,7 @@
 		)
 		(uuid "538b65da-3508-4b72-8353-04af0d05f2e7")
 	)
-	(label "D3V3A0"
+	(label "LVDA0"
 		(at 232.41 85.09 180)
 		(fields_autoplaced yes)
 		(effects
@@ -12695,7 +12695,7 @@
 		(uuid "539ae5bd-7538-4295-9a35-4e17a442f6a8")
 	)
 	(label "LVA29"
-		(at 316.23 130.81 0)
+		(at 316.23 128.27 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -12705,7 +12705,7 @@
 		)
 		(uuid "54f01bb2-6e89-4bc0-a45f-d49abe2d680b")
 	)
-	(label "D3V3A13"
+	(label "LVDA13"
 		(at 232.41 107.95 180)
 		(fields_autoplaced yes)
 		(effects
@@ -12727,7 +12727,7 @@
 		)
 		(uuid "57cf19e6-b518-4dd6-952b-0cc87fcc13a7")
 	)
-	(label "D3V3A1"
+	(label "LVDA1"
 		(at 129.54 87.63 180)
 		(fields_autoplaced yes)
 		(effects
@@ -12749,7 +12749,7 @@
 		)
 		(uuid "5a62714c-28f4-4596-a91e-88e05c190235")
 	)
-	(label "D3V3A30"
+	(label "LVDA30"
 		(at 129.54 158.75 180)
 		(fields_autoplaced yes)
 		(effects
@@ -12771,7 +12771,7 @@
 		)
 		(uuid "5af8b3a4-b95e-4a8b-92f7-d896e395ec49")
 	)
-	(label "D3V3A30"
+	(label "LVDA30"
 		(at 232.41 158.75 180)
 		(fields_autoplaced yes)
 		(effects
@@ -12782,7 +12782,7 @@
 		)
 		(uuid "5baa51dd-1ecb-4ea0-af0e-76454343549f")
 	)
-	(label "D3V3A6"
+	(label "LVDA6"
 		(at 232.41 97.79 180)
 		(fields_autoplaced yes)
 		(effects
@@ -12805,7 +12805,7 @@
 		(uuid "5cfa84d9-9af9-4830-b0fc-e517505f1984")
 	)
 	(label "LVA19"
-		(at 316.23 113.03 0)
+		(at 316.23 110.49 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -12816,7 +12816,7 @@
 		(uuid "5f228380-61e4-4b45-9e68-72e73071d2df")
 	)
 	(label "LVA26"
-		(at 316.23 138.43 0)
+		(at 316.23 135.89 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -12848,7 +12848,7 @@
 		)
 		(uuid "649da803-85d5-4679-ab80-24f67d036a1c")
 	)
-	(label "D3V3A2"
+	(label "LVDA2"
 		(at 129.54 92.71 180)
 		(fields_autoplaced yes)
 		(effects
@@ -12859,7 +12859,7 @@
 		)
 		(uuid "6506a0b2-c817-4c1a-8f7d-9ed1fa6e5b23")
 	)
-	(label "D3V3A23"
+	(label "LVDA23"
 		(at 129.54 140.97 180)
 		(fields_autoplaced yes)
 		(effects
@@ -12870,7 +12870,7 @@
 		)
 		(uuid "654f5382-f246-4603-8864-1c404b131ca6")
 	)
-	(label "D3V3A26"
+	(label "LVDA26"
 		(at 129.54 148.59 180)
 		(fields_autoplaced yes)
 		(effects
@@ -12881,7 +12881,7 @@
 		)
 		(uuid "658bafad-2a43-4409-bc67-c221fabf86d3")
 	)
-	(label "D3V3A20"
+	(label "LVDA20"
 		(at 129.54 133.35 180)
 		(fields_autoplaced yes)
 		(effects
@@ -12892,7 +12892,7 @@
 		)
 		(uuid "68a791e4-7e84-4f39-a3db-f98306988d54")
 	)
-	(label "D3V3A28"
+	(label "LVDA28"
 		(at 129.54 153.67 180)
 		(fields_autoplaced yes)
 		(effects
@@ -12914,7 +12914,7 @@
 		)
 		(uuid "6c1f6133-1f68-4537-9c57-2831cf8c8d1b")
 	)
-	(label "D3V3A18"
+	(label "LVDA18"
 		(at 129.54 128.27 180)
 		(fields_autoplaced yes)
 		(effects
@@ -12936,7 +12936,7 @@
 		)
 		(uuid "723567a2-5b29-492f-906b-a3ba07742dc3")
 	)
-	(label "D3V3A27"
+	(label "LVDA27"
 		(at 129.54 151.13 180)
 		(fields_autoplaced yes)
 		(effects
@@ -13002,7 +13002,7 @@
 		)
 		(uuid "7b6bae84-46c5-4b6b-92fd-43faa5de9884")
 	)
-	(label "D3V3A14"
+	(label "LVDA14"
 		(at 129.54 105.41 180)
 		(fields_autoplaced yes)
 		(effects
@@ -13013,7 +13013,7 @@
 		)
 		(uuid "7c13cb1e-2461-42be-b617-6f39a25b0fc0")
 	)
-	(label "D3V3A13"
+	(label "LVDA13"
 		(at 129.54 107.95 180)
 		(fields_autoplaced yes)
 		(effects
@@ -13036,7 +13036,7 @@
 		(uuid "8156d004-b7f3-4172-832e-b61a8fba0681")
 	)
 	(label "LVA22"
-		(at 316.23 135.89 0)
+		(at 316.23 133.35 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -13046,7 +13046,7 @@
 		)
 		(uuid "8162f81d-e07f-4b8a-a11f-d1d615ff52e4")
 	)
-	(label "D3V3A14"
+	(label "LVDA14"
 		(at 232.41 105.41 180)
 		(fields_autoplaced yes)
 		(effects
@@ -13057,7 +13057,7 @@
 		)
 		(uuid "81ca2f86-6cce-4276-90aa-b5f4256833d0")
 	)
-	(label "D3V3A22"
+	(label "LVDA22"
 		(at 232.41 138.43 180)
 		(fields_autoplaced yes)
 		(effects
@@ -13068,7 +13068,7 @@
 		)
 		(uuid "84009fee-7248-4840-b8f8-d69c4317c162")
 	)
-	(label "D3V3A7"
+	(label "LVDA7"
 		(at 129.54 100.33 180)
 		(fields_autoplaced yes)
 		(effects
@@ -13079,7 +13079,7 @@
 		)
 		(uuid "8452934e-ce88-4c02-866c-05068f7c2e1d")
 	)
-	(label "D3V3A16"
+	(label "LVDA16"
 		(at 232.41 123.19 180)
 		(fields_autoplaced yes)
 		(effects
@@ -13112,7 +13112,7 @@
 		)
 		(uuid "89681d1c-dffb-4932-8e92-b38c4596667e")
 	)
-	(label "D3V3A2"
+	(label "LVDA2"
 		(at 232.41 92.71 180)
 		(fields_autoplaced yes)
 		(effects
@@ -13123,7 +13123,7 @@
 		)
 		(uuid "8a341489-df20-41e6-bc44-88fd002bbae2")
 	)
-	(label "D3V3A17"
+	(label "LVDA17"
 		(at 129.54 125.73 180)
 		(fields_autoplaced yes)
 		(effects
@@ -13135,7 +13135,7 @@
 		(uuid "8a7fac61-ed1b-42b7-b379-f5fd1def4f01")
 	)
 	(label "LVA28"
-		(at 316.23 140.97 0)
+		(at 316.23 138.43 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -13146,7 +13146,7 @@
 		(uuid "8b831012-8f99-439b-bda1-a261b1eae5b2")
 	)
 	(label "LVA17"
-		(at 316.23 107.95 0)
+		(at 316.23 105.41 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -13156,7 +13156,7 @@
 		)
 		(uuid "8d5e0d4f-8c7d-481b-9320-4f6f4d4f45f9")
 	)
-	(label "D3V3A29"
+	(label "LVDA29"
 		(at 232.41 156.21 180)
 		(fields_autoplaced yes)
 		(effects
@@ -13167,7 +13167,7 @@
 		)
 		(uuid "8db82ca7-618c-4d78-b356-0424e76f78e8")
 	)
-	(label "D3V3A27"
+	(label "LVDA27"
 		(at 232.41 151.13 180)
 		(fields_autoplaced yes)
 		(effects
@@ -13178,7 +13178,7 @@
 		)
 		(uuid "8e04f4fd-38ec-4be6-8513-8ab908502c3d")
 	)
-	(label "D3V3A8"
+	(label "LVDA8"
 		(at 129.54 120.65 180)
 		(fields_autoplaced yes)
 		(effects
@@ -13189,7 +13189,7 @@
 		)
 		(uuid "8e760d25-c6e1-485f-8323-f72b7b93d28d")
 	)
-	(label "D3V3A15"
+	(label "LVDA15"
 		(at 232.41 102.87 180)
 		(fields_autoplaced yes)
 		(effects
@@ -13211,7 +13211,7 @@
 		)
 		(uuid "8ed5038d-4da4-4a36-87c1-31513ceddf10")
 	)
-	(label "D3V3A29"
+	(label "LVDA29"
 		(at 129.54 156.21 180)
 		(fields_autoplaced yes)
 		(effects
@@ -13244,7 +13244,7 @@
 		)
 		(uuid "929b9f6f-5571-4fb1-aae2-503adc56c8d6")
 	)
-	(label "D3V3A12"
+	(label "LVDA12"
 		(at 232.41 110.49 180)
 		(fields_autoplaced yes)
 		(effects
@@ -13266,7 +13266,7 @@
 		)
 		(uuid "9373de65-538d-43ea-88d5-d7daf3dacc61")
 	)
-	(label "D3V3A8"
+	(label "LVDA8"
 		(at 232.41 120.65 180)
 		(fields_autoplaced yes)
 		(effects
@@ -13277,7 +13277,7 @@
 		)
 		(uuid "96020efb-8fe2-4d57-ac58-5caf58a09fda")
 	)
-	(label "D3V3A24"
+	(label "LVDA24"
 		(at 129.54 143.51 180)
 		(fields_autoplaced yes)
 		(effects
@@ -13321,7 +13321,7 @@
 		)
 		(uuid "9989da03-5700-4700-bd5c-0ae43b1e8b47")
 	)
-	(label "D3V3A1"
+	(label "LVDA1"
 		(at 232.41 87.63 180)
 		(fields_autoplaced yes)
 		(effects
@@ -13343,7 +13343,7 @@
 		)
 		(uuid "9b48865f-7af9-48f6-862f-472d505cc92d")
 	)
-	(label "D3V3A28"
+	(label "LVDA28"
 		(at 232.41 153.67 180)
 		(fields_autoplaced yes)
 		(effects
@@ -13387,7 +13387,7 @@
 		)
 		(uuid "a3b19311-9eef-43c2-8929-beb0b2c27050")
 	)
-	(label "D3V3A12"
+	(label "LVDA12"
 		(at 129.54 110.49 180)
 		(fields_autoplaced yes)
 		(effects
@@ -13476,7 +13476,7 @@
 		(uuid "aa8e5a21-27a7-4b32-96c7-d115f9072fa2")
 	)
 	(label "LVA23"
-		(at 316.23 143.51 0)
+		(at 316.23 140.97 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -13498,7 +13498,7 @@
 		(uuid "b08b1cae-dce6-4957-adfe-8c4b69cc3e43")
 	)
 	(label "LVA30"
-		(at 316.23 146.05 0)
+		(at 316.23 143.51 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -13542,7 +13542,7 @@
 		(uuid "b4c5b45e-8140-422a-a31f-80d9f7bb1b46")
 	)
 	(label "LVA20"
-		(at 316.23 115.57 0)
+		(at 316.23 113.03 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -13552,7 +13552,7 @@
 		)
 		(uuid "b4db1b58-c228-48d6-ad9e-42c0441aca7e")
 	)
-	(label "D3V3A10"
+	(label "LVDA10"
 		(at 129.54 115.57 180)
 		(fields_autoplaced yes)
 		(effects
@@ -13563,7 +13563,7 @@
 		)
 		(uuid "b6a7b14e-020f-4cb7-bf99-659a1127c5e7")
 	)
-	(label "D3V3A15"
+	(label "LVDA15"
 		(at 129.54 102.87 180)
 		(fields_autoplaced yes)
 		(effects
@@ -13607,7 +13607,7 @@
 		)
 		(uuid "bf0e022b-d973-402b-8525-b21f7fa7443f")
 	)
-	(label "D3V3A20"
+	(label "LVDA20"
 		(at 232.41 133.35 180)
 		(fields_autoplaced yes)
 		(effects
@@ -13618,7 +13618,7 @@
 		)
 		(uuid "bf943618-b8e5-4ebb-94a1-44f4d82f5be5")
 	)
-	(label "D3V3A31"
+	(label "LVDA31"
 		(at 232.41 161.29 180)
 		(fields_autoplaced yes)
 		(effects
@@ -13630,7 +13630,7 @@
 		(uuid "c0ca4eb8-1257-4eb2-819f-4337c4f49a94")
 	)
 	(label "LVA25"
-		(at 316.23 148.59 0)
+		(at 316.23 146.05 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -13662,7 +13662,7 @@
 		)
 		(uuid "c2c87af2-6f12-4e66-a2aa-51728751aa0a")
 	)
-	(label "D3V3A31"
+	(label "LVDA31"
 		(at 129.54 161.29 180)
 		(fields_autoplaced yes)
 		(effects
@@ -13673,7 +13673,7 @@
 		)
 		(uuid "c3ec2c44-a108-4855-ac98-1c4d64e2e15b")
 	)
-	(label "D3V3A7"
+	(label "LVDA7"
 		(at 232.41 100.33 180)
 		(fields_autoplaced yes)
 		(effects
@@ -13684,7 +13684,7 @@
 		)
 		(uuid "c41e4675-6c5f-403b-8310-f00c13331009")
 	)
-	(label "D3V3A21"
+	(label "LVDA21"
 		(at 129.54 135.89 180)
 		(fields_autoplaced yes)
 		(effects
@@ -13706,7 +13706,7 @@
 		)
 		(uuid "c66cf5ef-d308-47ef-8ee9-5c496d234cab")
 	)
-	(label "D3V3A21"
+	(label "LVDA21"
 		(at 232.41 135.89 180)
 		(fields_autoplaced yes)
 		(effects
@@ -13728,7 +13728,7 @@
 		)
 		(uuid "ca1fe45b-80f1-4636-b658-c61821a93a05")
 	)
-	(label "D3V3A22"
+	(label "LVDA22"
 		(at 129.54 138.43 180)
 		(fields_autoplaced yes)
 		(effects
@@ -13739,7 +13739,7 @@
 		)
 		(uuid "cb8e5f9c-c676-4812-9246-e8d65cf3038f")
 	)
-	(label "D3V3A25"
+	(label "LVDA25"
 		(at 232.41 146.05 180)
 		(fields_autoplaced yes)
 		(effects
@@ -13761,7 +13761,7 @@
 		)
 		(uuid "ce5d1e40-7d76-4e8c-9b58-0fa50e2fc6b9")
 	)
-	(label "D3V3A24"
+	(label "LVDA24"
 		(at 232.41 143.51 180)
 		(fields_autoplaced yes)
 		(effects
@@ -13816,7 +13816,7 @@
 		)
 		(uuid "d7de1a07-09b4-4f6c-bb23-18f372f4ba9f")
 	)
-	(label "D3V3A11"
+	(label "LVDA11"
 		(at 129.54 113.03 180)
 		(fields_autoplaced yes)
 		(effects
@@ -13827,7 +13827,7 @@
 		)
 		(uuid "d9f3d1d6-f5a6-42e7-a839-2299b546d098")
 	)
-	(label "D3V3A19"
+	(label "LVDA19"
 		(at 232.41 130.81 180)
 		(fields_autoplaced yes)
 		(effects
@@ -13860,7 +13860,7 @@
 		)
 		(uuid "dcf7c0d4-11ae-4129-aff6-19cf5ef87908")
 	)
-	(label "D3V3A0"
+	(label "LVDA0"
 		(at 129.54 85.09 180)
 		(fields_autoplaced yes)
 		(effects
@@ -13882,7 +13882,7 @@
 		)
 		(uuid "e1ce1853-68ac-4427-bf9f-d33a38ae0a77")
 	)
-	(label "D3V3A23"
+	(label "LVDA23"
 		(at 232.41 140.97 180)
 		(fields_autoplaced yes)
 		(effects
@@ -13894,7 +13894,7 @@
 		(uuid "e48cad8a-5c0b-4c54-8c25-9734917103c4")
 	)
 	(label "LVA27"
-		(at 316.23 128.27 0)
+		(at 316.23 120.65 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -13915,7 +13915,7 @@
 		)
 		(uuid "e91d660c-91f9-4d14-a822-276fbbfa5fd3")
 	)
-	(label "D3V3A17"
+	(label "LVDA17"
 		(at 232.41 125.73 180)
 		(fields_autoplaced yes)
 		(effects
@@ -13937,7 +13937,7 @@
 		)
 		(uuid "ea6aad84-43b5-4e2c-a3c4-cacbd1303e50")
 	)
-	(label "D3V3A11"
+	(label "LVDA11"
 		(at 232.41 113.03 180)
 		(fields_autoplaced yes)
 		(effects
@@ -13959,7 +13959,7 @@
 		)
 		(uuid "ec1c6ff6-d4ae-4bc7-8284-b6a0b8428eb7")
 	)
-	(label "D3V3A3"
+	(label "LVDA3"
 		(at 129.54 82.55 180)
 		(fields_autoplaced yes)
 		(effects
@@ -13981,7 +13981,7 @@
 		)
 		(uuid "ed01c13f-6e96-467d-b2c1-7f68acf7898c")
 	)
-	(label "D3V3A10"
+	(label "LVDA10"
 		(at 232.41 115.57 180)
 		(fields_autoplaced yes)
 		(effects
@@ -14015,7 +14015,7 @@
 		(uuid "f305f8f7-d108-4084-b0b6-a3699203e884")
 	)
 	(label "LVA24"
-		(at 316.23 120.65 0)
+		(at 316.23 118.11 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -14026,7 +14026,7 @@
 		(uuid "f339f820-7ce6-4142-9797-b0c515bdc0d1")
 	)
 	(label "LVA18"
-		(at 316.23 110.49 0)
+		(at 316.23 107.95 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -14037,7 +14037,7 @@
 		(uuid "f3a4e3bd-8261-418c-8100-92133c83bab4")
 	)
 	(label "LVA0"
-		(at 316.23 52.07 0)
+		(at 316.23 82.55 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -14103,7 +14103,7 @@
 	)
 	(global_label "_UUBE"
 		(shape output)
-		(at 316.23 80.01 180)
+		(at 316.23 148.59 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -14113,7 +14113,7 @@
 		)
 		(uuid "0ce8e27d-6383-4087-a95c-9d768dcd06dd")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 307.1972 80.01 0)
+			(at 307.1972 148.59 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14143,9 +14143,9 @@
 			)
 		)
 	)
-	(global_label "PCLKB"
+	(global_label "BCLKB"
 		(shape input)
-		(at 383.54 191.77 0)
+		(at 383.54 189.23 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -14155,7 +14155,7 @@
 		)
 		(uuid "16359168-7bd2-4d16-8300-c87904cbb467")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 392.6333 191.77 0)
+			(at 392.6333 189.23 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14166,7 +14166,7 @@
 	)
 	(global_label "_LMBE"
 		(shape output)
-		(at 316.23 85.09 180)
+		(at 316.23 52.07 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -14176,7 +14176,7 @@
 		)
 		(uuid "1716042c-982e-4c28-abd0-796d238809e0")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 307.3787 85.09 0)
+			(at 307.3787 52.07 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14208,7 +14208,7 @@
 	)
 	(global_label "BANK0"
 		(shape output)
-		(at 316.23 92.71 180)
+		(at 316.23 90.17 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -14218,7 +14218,7 @@
 		)
 		(uuid "225d3e9f-f71c-43a5-88e5-fe5f2acadc2a")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 307.0762 92.71 0)
+			(at 307.0762 90.17 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14250,7 +14250,7 @@
 	)
 	(global_label "_EMCAS"
 		(shape output)
-		(at 316.23 102.87 180)
+		(at 316.23 100.33 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -14260,7 +14260,7 @@
 		)
 		(uuid "28433df7-d16d-4da6-8837-ab350f7f45c1")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 306.1087 102.87 0)
+			(at 306.1087 100.33 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14396,7 +14396,7 @@
 	)
 	(global_label "SIZ1-3V"
 		(shape input)
-		(at 383.54 176.53 0)
+		(at 383.54 179.07 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -14406,7 +14406,7 @@
 		)
 		(uuid "42a31359-2b34-4540-8494-2bde140d4b17")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 394.629 176.53 0)
+			(at 394.629 179.07 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14459,7 +14459,7 @@
 	)
 	(global_label "SIZ0-3V"
 		(shape input)
-		(at 383.54 179.07 0)
+		(at 383.54 176.53 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -14469,7 +14469,7 @@
 		)
 		(uuid "604a79ba-8f8c-47b4-b5e6-43ef87645341")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 394.629 179.07 0)
+			(at 394.629 176.53 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14480,7 +14480,7 @@
 	)
 	(global_label "_EM0CS"
 		(shape output)
-		(at 316.23 95.25 180)
+		(at 316.23 92.71 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -14490,7 +14490,7 @@
 		)
 		(uuid "6b3e9b18-7b40-4624-b686-43907c7ca217")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 305.9878 95.25 0)
+			(at 305.9878 92.71 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14522,7 +14522,7 @@
 	)
 	(global_label "_UMBE"
 		(shape output)
-		(at 316.23 82.55 180)
+		(at 316.23 151.13 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -14532,7 +14532,7 @@
 		)
 		(uuid "7550676b-b633-46e0-9b23-d1a85828b46e")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 307.0763 82.55 0)
+			(at 307.0763 151.13 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14604,9 +14604,9 @@
 			)
 		)
 	)
-	(global_label "BCLKB"
+	(global_label "RAMCLKB"
 		(shape input)
-		(at 383.54 189.23 0)
+		(at 383.54 191.77 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -14616,7 +14616,7 @@
 		)
 		(uuid "8000a5a7-da0b-4cf6-aee7-f88d7c4ad0bf")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 392.6333 189.23 0)
+			(at 395.1733 191.77 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14667,7 +14667,7 @@
 			)
 		)
 	)
-	(global_label "RAMCLK"
+	(global_label "RAMCLKA"
 		(shape input)
 		(at 55.88 135.89 180)
 		(effects
@@ -14678,7 +14678,7 @@
 		)
 		(uuid "898c389b-eaa0-4162-bf7b-7818dcbc2355")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 46.99 135.763 0)
+			(at 45.466 135.89 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14708,7 +14708,7 @@
 			)
 		)
 	)
-	(global_label "D3V3A[0..31]"
+	(global_label "LVDA[0..31]"
 		(shape bidirectional)
 		(at 40.64 33.02 180)
 		(effects
@@ -14835,7 +14835,7 @@
 	)
 	(global_label "_EMWE"
 		(shape output)
-		(at 316.23 100.33 180)
+		(at 316.23 97.79 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -14845,7 +14845,7 @@
 		)
 		(uuid "be162652-2dbd-4b3f-8915-951e5c086755")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 307.0764 100.33 0)
+			(at 307.0764 97.79 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14917,7 +14917,7 @@
 			)
 		)
 	)
-	(global_label "RAMCLK"
+	(global_label "RAMCLKA"
 		(shape input)
 		(at 158.75 135.89 180)
 		(effects
@@ -14928,7 +14928,7 @@
 		)
 		(uuid "d67b658a-c15f-4163-9b46-65ef17937e3e")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 149.86 135.763 0)
+			(at 148.336 135.636 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14960,7 +14960,7 @@
 	)
 	(global_label "_EMRAS"
 		(shape output)
-		(at 316.23 97.79 180)
+		(at 316.23 95.25 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -14970,7 +14970,7 @@
 		)
 		(uuid "dd412964-afd3-42b9-b121-972cffa1512c")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 306.1087 97.79 0)
+			(at 306.1087 95.25 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15043,7 +15043,7 @@
 	)
 	(global_label "_LLBE"
 		(shape output)
-		(at 316.23 87.63 180)
+		(at 316.23 54.61 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -15053,7 +15053,7 @@
 		)
 		(uuid "e999ecab-1083-4ba5-aec0-0abca3136313")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 307.802 87.63 0)
+			(at 307.802 54.61 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15085,7 +15085,7 @@
 	)
 	(global_label "BANK1"
 		(shape output)
-		(at 316.23 90.17 180)
+		(at 316.23 87.63 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -15095,7 +15095,7 @@
 		)
 		(uuid "f354d963-439e-45f8-80ad-49858da69e98")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 307.0762 90.17 0)
+			(at 307.0762 87.63 0)
 			(effects
 				(font
 					(size 1.27 1.27)
