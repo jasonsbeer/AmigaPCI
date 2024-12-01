@@ -296,13 +296,13 @@ This TTL tolerant bus is driven by the bus master and tristated by inactive bus 
 This LVTTL signal is driven by the target device and tristated by inactive target devices. It signals the CPU Local Bus device that the target device has is ready to complete the data transfer cycle.
 
 **_TBI** (Tranfer Burst Inhibit)
-This LVTTL signal is driven by the target device and tristated by inactive target devices. Inhibits a burst cycle in favor of individual data transfers.
+This LVTTL signal is driven by the target device and tristated by inactive target devices. Inhibits a burst cycle in favor of individual data transfers. Asserted with **_TACK**.
 
 **_TCI** (Tranfer Cache Inhibit)  
-This LVTTL signal is driven by the target device and tristated by inactive target devices. Inhibits caching of data from a data transfer burst cycle.
+This LVTTL signal is driven by the target device and tristated by inactive target devices. Inhibits caching of data from a data transfer burst cycle. Asserted with **_TACK**.
 
 **_TEA** (Tranfer Error Acknowledge)  
-This LVTTL signal is driven by the target device and tristated by inactive target devices. Asserted with **_DSACKx** to indicate a retry condition exists or asserted alone to indicate a cycle request cannot be completed.
+This LVTTL signal is driven by the target device and tristated by inactive target devices. Asserted with **_TACK** to indicate a retry condition exists or asserted alone to indicate a cycle request cannot be completed.
 
 **TT(1..0)** (Transfer Type)  
 This TTL tolerant bus is driven by the bus master and tristated by inactive bus masters. These are the MC68040/MC68060 transfer type signals.
