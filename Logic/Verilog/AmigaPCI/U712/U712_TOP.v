@@ -1,0 +1,174 @@
+//iceprog D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\sbt\outputs\bitmap\U712_TOP_bitmap.bin
+
+
+module U712_TOP (
+
+    input CLK40_IN, C1, C3, RESETn,
+    input RnW, TSn, DBRn, REGSPACEn, DBDIR, RAMSPACEn, //RAS0n, RAS1n,
+    input [1:0] SIZ,
+    input [20:0] A,
+
+    output CLK40C, CLKRAM,
+    output LDSn, UDSn, ASn, REGENn,
+    output VBENn, DRDENn, DRDDIR,
+    output DBENn, CRCSn, CLKEN, BANK1, BANK0, RASn, CASn, WEn, RAMENn,
+    output [10:0] CMA,
+    output CUUBEn, CUMBEn, CLMBEn, CLLBEn,
+
+    output TACKn
+);
+
+//SPECIAL ATTENTION
+//assign TBIn = 1; //TRANSFER BURST INHIBIT IS MISSING FROM THE REV 4 BOARD.
+
+///////////////////
+// CLOCK FANOUT //
+/////////////////
+
+//WE GENERATE THE 40MHz AND 80MHz CLOCKS HERE BASED ON THE CLK40_IN CLOCK SIGNAL FROM THE LOCAL BUS CARD.
+//WE DISTRIBUTE THE CLOCKS FROM THE PLL TO OTHER DEVICES ON THE AMIGAPCI. SINCE THIS PLL INVERTS THE CLOCK SIGNAL,
+//WE PHASE MATCH IT BEFORE PUTTING THE SIGNAL OUT.
+
+wire CLK40_OUT;
+wire CLK80_OUT;
+
+//assign CLK40B = !CLK40_OUT;
+assign CLK40C = ~CLK40_OUT;
+//assign CLK40D = !CLK40_OUT;
+wire   CLK40  = ~CLK40_OUT;
+
+wire   CLK80  = ~CLK80_OUT;
+assign CLKRAM = ~CLK80_OUT;
+
+
+SB_PLL40_2F_CORE #(
+    .DIVR (4'b0000),
+    .DIVF (7'b0000001),
+    .DIVQ (3'b011),
+    .FILTER_RANGE (3'b011),
+    .FEEDBACK_PATH ("DELAY"),
+    .DELAY_ADJUSTMENT_MODE_FEEDBACK ("FIXED"),
+    .FDA_FEEDBACK   (4'b0000),
+    .DELAY_ADJUSTMENT_MODE_RELATIVE ("FIXED"),
+    .FDA_RELATIVE   (4'b0000),
+    .PLLOUT_SELECT_PORTA ("GENCLK"),
+    .PLLOUT_SELECT_PORTB ("GENCLK_HALF")
+) pll (
+    .LOCK           (),
+    .RESETB         (1'b1),
+    .REFERENCECLK   (CLK40_IN),
+    //.PLLOUTGLOBALA  (CLK80_OUT),
+    //.PLLOUTGLOBALB  (CLK40_OUT),
+    .PLLOUTCOREA    (CLK80_OUT),
+    .PLLOUTCOREB    (CLK40_OUT)
+);
+
+///////////////////////////////////
+// AGNUS MC68000 REGISTER CYCLE //
+/////////////////////////////////
+
+wire REG_TACK;
+wire REG_CYCLE;
+//wire AGNUS_REFRESH = !RAS0n && !RAS1n;
+
+U712_REG_SM U712_REG_SM (
+    //INPUTS
+    .CLK80 (CLK80),
+    .C1 (C1),
+    .C3 (C3),
+    .RESETn (RESETn),
+    .TSn (TSn),
+    .REGSPACEn (REGSPACEn),
+    .RnW (RnW),
+    .DBRn (DBRn),
+    .SIZ0 (SIZ[0]),
+    .A0 (A[0]),
+
+    //OUTPUTS
+    .LDSn (LDSn),
+    .UDSn (UDSn),
+    .ASn (ASn),
+    .REGENn (REGENn),
+    .REG_TACK (REG_TACK)
+    //.REG_CYCLE (REG_CYCLE)
+);
+
+///////////////////////////
+// CHIPSET DATA BUFFERS //
+/////////////////////////
+
+wire DMA_CYCLE = 0;
+
+U712_BUFFERS U712_BUFFERS (
+    .DBDIR (DBDIR),
+    //.REG_CYCLE (REG_CYCLE),
+    .RnW (RnW),
+    .DMA_CYCLE (DMA_CYCLE),
+    .VBENn (VBENn),
+    .DRDENn (DRDENn),
+    .DRDDIR (DRDDIR),
+    .REGSPACEn (REGSPACEn)
+);
+
+////////////////////////////
+// CPU CYCLE TERMINATION //
+//////////////////////////
+
+U712_CYCLE_TERM U712_CYCLE_TERM (
+    //INPUTS
+    .CLK80 (CLK80),
+    .CLK40 (CLK40),
+    .RESETn (RESETn),
+    .REG_TACK (REG_TACK),
+
+    //OUTPUTTS
+    .TACKn (TACKn)
+);
+
+/////////////////////
+// CHIP RAM CYCLE //
+///////////////////
+
+//wire DMA_CYCLE <= 0;
+assign DBENn = 1;
+
+U712_CHIP_RAM U712_CHIP_RAM (
+    //INPUTS
+    .CLK80 (CLK80),
+    //.CLK7 (CLK7),
+    .C1 (C1),
+    .RESETn (RESETn),
+    .RAMSPACEn (RAMSPACEn),
+
+    //OUTPUTS
+    .BANK1 (BANK1),
+    .BANK0 (BANK0),
+    .CRCSn (CRCSn),
+    .RASn (RASn),
+    .CASn (CASn),
+    .WEn (WEn),
+    .CLKEN (CLKEN),
+    .RAMENn (RAMENn),
+    .CMA (CMA)
+);
+
+///////////////////
+// BYTE ENABLES //
+/////////////////
+
+U712_BYTE_ENABLE U712_BYTE_ENABLE (
+    //INPUTS
+    .A (A[1:0]),
+    .SIZ (SIZ),
+
+    //OUTPUTS
+    .CUUBEn (CUUBEn),
+    .CUMBEn (CUMBEn),
+    .CLMBEn (CLMBEn),
+    .CLLBEn (CLLBEn)
+    //.UUBEn (CUUBEn),
+    //.UMBEn (CUMBEn),
+    //.LMBEn (CLMBEn),
+    //.LLBEn (CLLBEn)
+);
+endmodule

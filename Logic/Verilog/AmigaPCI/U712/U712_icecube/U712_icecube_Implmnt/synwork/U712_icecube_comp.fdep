@@ -1,0 +1,40 @@
+#OPTIONS:"|-layerid|0|-orig_srs|D:\\AmigaPCI\\U712\\U712_icecube\\U712_icecube_Implmnt\\synwork\\U712_icecube_comp.srs|-prodtype|synplify_pro|-primux|-fixsmult|-infer_seqShift|-ice|-sdff_counter|-nram|-divnmod|-nostructver|-I|D:\\AmigaPCI\\U712\\U712_icecube\\|-I|C:\\lscc\\iCEcube2.2020.12\\synpbase\\lib|-v2001|-devicelib|C:\\lscc\\iCEcube2.2020.12\\synpbase\\lib\\generic\\sb_ice40.v|-encrypt|-pro|-ui|-fid2|-ram|-sharing|on|-ll|2000|-autosm|-lib|work|-lib|work|-lib|work|-lib|work|-lib|work|-lib|work"
+#CUR:"C:\\lscc\\iCEcube2.2020.12\\synpbase\\bin64\\c_ver.exe":1728534473
+#CUR:"C:\\lscc\\iCEcube2.2020.12\\synpbase\\lib\\generic\\sb_ice40.v":1728534475
+#CUR:"C:\\lscc\\iCEcube2.2020.12\\synpbase\\lib\\vlog\\hypermods.v":1728534477
+#CUR:"C:\\lscc\\iCEcube2.2020.12\\synpbase\\lib\\vlog\\umr_capim.v":1728534477
+#CUR:"C:\\lscc\\iCEcube2.2020.12\\synpbase\\lib\\vlog\\scemi_objects.v":1728534477
+#CUR:"C:\\lscc\\iCEcube2.2020.12\\synpbase\\lib\\vlog\\scemi_pipes.svh":1728534477
+#CUR:"D:\\AmigaPCI\\U712\\U712_BUFFERS.v":1732900380
+#CUR:"D:\\AmigaPCI\\U712\\U712_CYCLE_TERM.v":1732840406
+#CUR:"D:\\AmigaPCI\\U712\\U712_REG_SM.v":1732900412
+#CUR:"D:\\AmigaPCI\\U712\\U712_TOP.v":1732900522
+#CUR:"D:\\AmigaPCI\\U712\\U712_BYTE_ENABLE.v":1732840403
+#CUR:"D:\\AmigaPCI\\U712\\U712_CHIP_RAM.v":1732900529
+0			"D:\AmigaPCI\U712\U712_BUFFERS.v" verilog
+1			"D:\AmigaPCI\U712\U712_CYCLE_TERM.v" verilog
+2			"D:\AmigaPCI\U712\U712_REG_SM.v" verilog
+3			"D:\AmigaPCI\U712\U712_TOP.v" verilog
+4			"D:\AmigaPCI\U712\U712_BYTE_ENABLE.v" verilog
+5			"D:\AmigaPCI\U712\U712_CHIP_RAM.v" verilog
+#Dependency Lists(Uses List)
+0 -1
+1 -1
+2 -1
+3 4 5 1 0 2
+4 -1
+5 -1
+#Dependency Lists(Users Of)
+0 3
+1 3
+2 3
+3 -1
+4 3
+5 3
+#Design Unit to File Association
+module work U712_TOP 3
+module work U712_BYTE_ENABLE 4
+module work U712_CHIP_RAM 5
+module work U712_REG_SM 2
+module work U712_CYCLE_TERM 1
+module work U712_BUFFERS 0

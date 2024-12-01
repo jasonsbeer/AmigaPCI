@@ -1,0 +1,108 @@
+Synopsys HDL Compiler, version comp2016q3p1, Build 141R, built Dec  5 2016
+@N|Running in 64-bit mode
+Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
+
+Synopsys Verilog Compiler, version comp2016q3p1, Build 141R, built Dec  5 2016
+@N|Running in 64-bit mode
+Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
+
+@I::"C:\lscc\iCEcube2.2020.12\synpbase\lib\generic\sb_ice40.v" (library work)
+@I::"C:\lscc\iCEcube2.2020.12\synpbase\lib\vlog\hypermods.v" (library __hyper__lib__)
+@I::"C:\lscc\iCEcube2.2020.12\synpbase\lib\vlog\umr_capim.v" (library snps_haps)
+@I::"C:\lscc\iCEcube2.2020.12\synpbase\lib\vlog\scemi_objects.v" (library snps_haps)
+@I::"C:\lscc\iCEcube2.2020.12\synpbase\lib\vlog\scemi_pipes.svh" (library snps_haps)
+@I::"D:\AmigaPCI\U712\U712_BUFFERS.v" (library work)
+@I::"D:\AmigaPCI\U712\U712_CYCLE_TERM.v" (library work)
+@I::"D:\AmigaPCI\U712\U712_REG_SM.v" (library work)
+@I::"D:\AmigaPCI\U712\U712_TOP.v" (library work)
+@I::"D:\AmigaPCI\U712\U712_BYTE_ENABLE.v" (library work)
+@I::"D:\AmigaPCI\U712\U712_CHIP_RAM.v" (library work)
+Verilog syntax check successful!
+File D:\AmigaPCI\U712\U712_TOP.v changed - recompiling
+File D:\AmigaPCI\U712\U712_CHIP_RAM.v changed - recompiling
+Selecting top level module U712_TOP
+@N: CG364 :"C:\lscc\iCEcube2.2020.12\synpbase\lib\generic\sb_ice40.v":870:7:870:22|Synthesizing module SB_PLL40_2F_CORE in library work.
+
+@N: CG364 :"D:\AmigaPCI\U712\U712_REG_SM.v":1:7:1:17|Synthesizing module U712_REG_SM in library work.
+
+@N: CG364 :"D:\AmigaPCI\U712\U712_BUFFERS.v":35:7:35:18|Synthesizing module U712_BUFFERS in library work.
+
+@N: CG364 :"D:\AmigaPCI\U712\U712_CYCLE_TERM.v":1:7:1:21|Synthesizing module U712_CYCLE_TERM in library work.
+
+@N: CG364 :"D:\AmigaPCI\U712\U712_CHIP_RAM.v":1:7:1:19|Synthesizing module U712_CHIP_RAM in library work.
+
+@N: CL189 :"D:\AmigaPCI\U712\U712_CHIP_RAM.v":88:0:88:5|Register bit MEMORY_CYCLE is always 0.
+@N: CL189 :"D:\AmigaPCI\U712\U712_CHIP_RAM.v":88:0:88:5|Register bit CMA[0] is always 0.
+@N: CL189 :"D:\AmigaPCI\U712\U712_CHIP_RAM.v":88:0:88:5|Register bit CMA[2] is always 0.
+@N: CL189 :"D:\AmigaPCI\U712\U712_CHIP_RAM.v":88:0:88:5|Register bit CMA[3] is always 0.
+@N: CL189 :"D:\AmigaPCI\U712\U712_CHIP_RAM.v":88:0:88:5|Register bit CMA[4] is always 0.
+@N: CL189 :"D:\AmigaPCI\U712\U712_CHIP_RAM.v":88:0:88:5|Register bit CMA[6] is always 0.
+@N: CL189 :"D:\AmigaPCI\U712\U712_CHIP_RAM.v":88:0:88:5|Register bit CMA[7] is always 0.
+@N: CL189 :"D:\AmigaPCI\U712\U712_CHIP_RAM.v":88:0:88:5|Register bit CMA[8] is always 0.
+@N: CL189 :"D:\AmigaPCI\U712\U712_CHIP_RAM.v":88:0:88:5|Register bit CMA[9] is always 0.
+@W: CL279 :"D:\AmigaPCI\U712\U712_CHIP_RAM.v":88:0:88:5|Pruning register bits 9 to 6 of CMA[10:0]. If this is not the intended behavior, drive the inputs with valid values, or inputs from the top level.
+@W: CL279 :"D:\AmigaPCI\U712\U712_CHIP_RAM.v":88:0:88:5|Pruning register bits 4 to 2 of CMA[10:0]. If this is not the intended behavior, drive the inputs with valid values, or inputs from the top level.
+@W: CL260 :"D:\AmigaPCI\U712\U712_CHIP_RAM.v":88:0:88:5|Pruning register bit 0 of CMA[10:0]. If this is not the intended behavior, drive the input with valid values, or an input from the top level.
+@N: CG364 :"D:\AmigaPCI\U712\U712_BYTE_ENABLE.v":1:7:1:22|Synthesizing module U712_BYTE_ENABLE in library work.
+
+@N: CG364 :"D:\AmigaPCI\U712\U712_TOP.v":4:7:4:14|Synthesizing module U712_TOP in library work.
+
+@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":56:2:56:4|Input EXTFEEDBACK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":56:2:56:4|Input DYNAMICDELAY on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":56:2:56:4|Input BYPASS on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":56:2:56:4|Input SDI on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":56:2:56:4|Input SCLK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":56:2:56:4|Input LATCHINPUTVALUE on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG360 :"D:\AmigaPCI\U712\U712_TOP.v":71:5:71:13|Removing wire REG_CYCLE, as there is no assignment to it.
+@W: CL246 :"D:\AmigaPCI\U712\U712_TOP.v":9:17:9:17|Input port bits 20 to 2 of A[20:0] are unused. Assign logic for all port bits or change the input port size.
+@W: CL260 :"D:\AmigaPCI\U712\U712_CHIP_RAM.v":88:0:88:5|Pruning register bit 3 of SDRAM_CMD[3:0]. If this is not the intended behavior, drive the input with valid values, or an input from the top level.
+@N: CL201 :"D:\AmigaPCI\U712\U712_CYCLE_TERM.v":22:0:22:5|Trying to extract state machine for register TACK_STATE.
+Extracted state machine for register TACK_STATE
+State machine has 5 reachable states with original encodings of:
+   000
+   001
+   010
+   011
+   100
+@N: CL201 :"D:\AmigaPCI\U712\U712_REG_SM.v":41:0:41:5|Trying to extract state machine for register STATE_COUNT.
+Extracted state machine for register STATE_COUNT
+State machine has 7 reachable states with original encodings of:
+   000
+   001
+   010
+   011
+   100
+   101
+   110
+
+At c_ver Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 71MB peak: 72MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+
+Process completed successfully.
+# Fri Nov 29 11:16:44 2024
+
+###########################################################]
+Synopsys Netlist Linker, version comp2016q3p1, Build 141R, built Dec  5 2016
+@N|Running in 64-bit mode
+@N: NF107 :"D:\AmigaPCI\U712\U712_TOP.v":4:7:4:14|Selected library: work cell: U712_TOP view verilog as top level
+@N: NF107 :"D:\AmigaPCI\U712\U712_TOP.v":4:7:4:14|Selected library: work cell: U712_TOP view verilog as top level
+
+At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 67MB peak: 68MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+
+Process completed successfully.
+# Fri Nov 29 11:16:44 2024
+
+###########################################################]
+@END
+
+At c_hdl Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 3MB peak: 4MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+
+Process completed successfully.
+# Fri Nov 29 11:16:44 2024
+
+###########################################################]

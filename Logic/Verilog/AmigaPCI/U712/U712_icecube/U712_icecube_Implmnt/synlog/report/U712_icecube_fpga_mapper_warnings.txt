@@ -1,0 +1,3 @@
+@W: MT511 :"d:/amigapci/u712/u712_top.sdc":3:0:3:0|Clock source [get_ports CLK7] not found in netlist: create_clock -period 139.6648 [get_ports CLK7]
+@W: MT116 |Paths from clock (U712_TOP|CLK80_OUT_derived_clock:r) to clock (C1:r) are overconstrained because the required time of 0.86 ns is too small.  
+@W: MT116 |Paths from clock (C1:r) to clock (U712_TOP|CLK80_OUT_derived_clock:r) are overconstrained because the required time of 0.18 ns is too small.  

@@ -1,0 +1,45 @@
+ble_pack D_LL_040_iobuf_RNO[0]_LC_0 {D_LL_040_iobuf_RNO[0]}
+ble_pack D_LL_040_iobuf_RNO[1]_LC_1 {D_LL_040_iobuf_RNO[1]}
+ble_pack D_LL_040_iobuf_RNO[2]_LC_2 {D_LL_040_iobuf_RNO[2]}
+ble_pack D_LL_040_iobuf_RNO[3]_LC_3 {D_LL_040_iobuf_RNO[3]}
+ble_pack D_LL_040_iobuf_RNO[4]_LC_4 {D_LL_040_iobuf_RNO[4]}
+ble_pack D_LL_040_iobuf_RNO[5]_LC_5 {D_LL_040_iobuf_RNO[5]}
+ble_pack D_LL_040_iobuf_RNO[6]_LC_6 {D_LL_040_iobuf_RNO[6]}
+ble_pack D_LL_040_iobuf_RNO[7]_LC_7 {D_LL_040_iobuf_RNO[7]}
+clb_pack PLB_0 {D_LL_040_iobuf_RNO[0]_LC_0, D_LL_040_iobuf_RNO[1]_LC_1, D_LL_040_iobuf_RNO[2]_LC_2, D_LL_040_iobuf_RNO[3]_LC_3, D_LL_040_iobuf_RNO[4]_LC_4, D_LL_040_iobuf_RNO[5]_LC_5, D_LL_040_iobuf_RNO[6]_LC_6, D_LL_040_iobuf_RNO[7]_LC_7}
+ble_pack D_LM_040_iobuf_RNO[0]_LC_8 {D_LM_040_iobuf_RNO[0]}
+ble_pack D_LM_040_iobuf_RNO[1]_LC_9 {D_LM_040_iobuf_RNO[1]}
+ble_pack D_LM_040_iobuf_RNO[2]_LC_10 {D_LM_040_iobuf_RNO[2]}
+ble_pack D_LM_040_iobuf_RNO[3]_LC_11 {D_LM_040_iobuf_RNO[3]}
+ble_pack D_LM_040_iobuf_RNO[4]_LC_12 {D_LM_040_iobuf_RNO[4]}
+ble_pack D_LM_040_iobuf_RNO[5]_LC_13 {D_LM_040_iobuf_RNO[5]}
+ble_pack D_LM_040_iobuf_RNO[6]_LC_14 {D_LM_040_iobuf_RNO[6]}
+ble_pack D_LM_040_iobuf_RNO[7]_LC_15 {D_LM_040_iobuf_RNO[7]}
+clb_pack PLB_1 {D_LM_040_iobuf_RNO[0]_LC_8, D_LM_040_iobuf_RNO[1]_LC_9, D_LM_040_iobuf_RNO[2]_LC_10, D_LM_040_iobuf_RNO[3]_LC_11, D_LM_040_iobuf_RNO[4]_LC_12, D_LM_040_iobuf_RNO[5]_LC_13, D_LM_040_iobuf_RNO[6]_LC_14, D_LM_040_iobuf_RNO[7]_LC_15}
+ble_pack D_UM_AMIGA_iobuf_RNO[0]_LC_16 {D_UM_AMIGA_iobuf_RNO[0]}
+ble_pack D_UM_AMIGA_iobuf_RNO[1]_LC_17 {D_UM_AMIGA_iobuf_RNO[1]}
+ble_pack D_UM_AMIGA_iobuf_RNO[2]_LC_18 {D_UM_AMIGA_iobuf_RNO[2]}
+ble_pack D_UM_AMIGA_iobuf_RNO[3]_LC_19 {D_UM_AMIGA_iobuf_RNO[3]}
+ble_pack D_UM_AMIGA_iobuf_RNO[4]_LC_20 {D_UM_AMIGA_iobuf_RNO[4]}
+ble_pack D_UM_AMIGA_iobuf_RNO[5]_LC_21 {D_UM_AMIGA_iobuf_RNO[5]}
+ble_pack D_UM_AMIGA_iobuf_RNO[6]_LC_22 {D_UM_AMIGA_iobuf_RNO[6]}
+ble_pack D_UM_AMIGA_iobuf_RNO[7]_LC_23 {D_UM_AMIGA_iobuf_RNO[7]}
+clb_pack PLB_2 {D_UM_AMIGA_iobuf_RNO[0]_LC_16, D_UM_AMIGA_iobuf_RNO[1]_LC_17, D_UM_AMIGA_iobuf_RNO[2]_LC_18, D_UM_AMIGA_iobuf_RNO[3]_LC_19, D_UM_AMIGA_iobuf_RNO[4]_LC_20, D_UM_AMIGA_iobuf_RNO[5]_LC_21, D_UM_AMIGA_iobuf_RNO[6]_LC_22, D_UM_AMIGA_iobuf_RNO[7]_LC_23}
+ble_pack D_UU_AMIGA_iobuf_RNO[0]_LC_24 {D_UU_AMIGA_iobuf_RNO[0]}
+ble_pack D_UU_AMIGA_iobuf_RNO[1]_LC_25 {D_UU_AMIGA_iobuf_RNO[1]}
+ble_pack D_UU_AMIGA_iobuf_RNO[2]_LC_26 {D_UU_AMIGA_iobuf_RNO[2]}
+ble_pack D_UU_AMIGA_iobuf_RNO[3]_LC_27 {D_UU_AMIGA_iobuf_RNO[3]}
+ble_pack D_UU_AMIGA_iobuf_RNO[4]_LC_28 {D_UU_AMIGA_iobuf_RNO[4]}
+ble_pack D_UU_AMIGA_iobuf_RNO[5]_LC_29 {D_UU_AMIGA_iobuf_RNO[5]}
+ble_pack D_UU_AMIGA_iobuf_RNO[6]_LC_30 {D_UU_AMIGA_iobuf_RNO[6]}
+ble_pack D_UU_AMIGA_iobuf_RNO[7]_LC_31 {D_UU_AMIGA_iobuf_RNO[7]}
+clb_pack PLB_3 {D_UU_AMIGA_iobuf_RNO[0]_LC_24, D_UU_AMIGA_iobuf_RNO[1]_LC_25, D_UU_AMIGA_iobuf_RNO[2]_LC_26, D_UU_AMIGA_iobuf_RNO[3]_LC_27, D_UU_AMIGA_iobuf_RNO[4]_LC_28, D_UU_AMIGA_iobuf_RNO[5]_LC_29, D_UU_AMIGA_iobuf_RNO[6]_LC_30, D_UU_AMIGA_iobuf_RNO[7]_LC_31}
+ble_pack SIZ_ibuf_RNI93PP[0]_LC_33 {SIZ_ibuf_RNI93PP[0]}
+ble_pack U111_CYCLE_SM.TS_EN_LC_34 {U111_CYCLE_SM.TS_EN, U111_CYCLE_SM.TS_EN_RNO}
+ble_pack GB_BUFFER_CLK40_THRU_LUT4_0_LC_37 {GB_BUFFER_CLK40_THRU_LUT4_0}
+ble_pack RnW_c_sbtinv_LC_32 {RnW_c_sbtinv}
+ble_pack GB_BUFFER_CLK80_THRU_LUT4_0_LC_36 {GB_BUFFER_CLK80_THRU_LUT4_0}
+ble_pack LC_38 {CONSTANT_ONE_LUT4}
+clb_pack PLB_4 {SIZ_ibuf_RNI93PP[0]_LC_33, U111_CYCLE_SM.TS_EN_LC_34, GB_BUFFER_CLK40_THRU_LUT4_0_LC_37, RnW_c_sbtinv_LC_32, GB_BUFFER_CLK80_THRU_LUT4_0_LC_36, LC_38}
+ble_pack U111_CYCLE_SM.TSn_LC_35 {U111_CYCLE_SM.TSn, U111_CYCLE_SM.TSn_RNO}
+clb_pack PLB_5 {U111_CYCLE_SM.TSn_LC_35}

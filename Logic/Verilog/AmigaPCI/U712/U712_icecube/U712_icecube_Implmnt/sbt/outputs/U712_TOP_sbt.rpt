@@ -1,0 +1,141 @@
+* ******************************************************************************
+
+* iCEcube Report
+
+* Version:            2020.12.27943
+
+* Build Date:         Dec  9 2020 17:31:51
+
+* File Generated:     Nov 29 2024 11:17:00
+
+* Purpose:            General info of design implementation
+
+* Copyright (C) 2006-2010 by Lattice Semiconductor Corp. All rights reserved.
+
+* ******************************************************************************
+
+Synthesis/Placement Summary:
+----------------------------
+    Status:  Successful
+    Runtime: 0 seconds
+
+Device Info:
+------------
+    Device Family: iCE40
+    Device:        iCE40HX4K
+    Package:       TQ144
+
+Design statistics:
+------------------
+    FFs:                  51
+    LUTs:                 113
+    RAMs:                 0
+    IOBs:                 47
+    GBs:                  3
+    PLLs:                 1
+    Warm Boots:           0
+
+Logic Resource Utilization:
+---------------------------
+    Total Logic Cells: 113/3520
+        Combinational Logic Cells: 62       out of   3520      1.76136%
+        Sequential Logic Cells:    51       out of   3520      1.44886%
+        Logic Tiles:               38       out of   440       8.63636%
+    Registers: 
+        Logic Registers:           51       out of   3520      1.44886%
+        IO Registers:              0        out of   880       0
+    Block RAMs:                    0        out of   20        0%
+    Warm Boots:                    0        out of   1         0%
+    Pins:
+        Input Pins:                13       out of   107       12.1495%
+        Output Pins:               34       out of   107       31.7757%
+        InOut Pins:                0        out of   107       0%
+    Global Buffers:                3        out of   8         37.5%
+    PLLs:                          1        out of   2         50%
+
+IO Bank Utilization:
+--------------------
+    Bank 3: 7        out of   28        25%
+    Bank 1: 14       out of   29        48.2759%
+    Bank 0: 12       out of   27        44.4444%
+    Bank 2: 14       out of   23        60.8696%
+
+Detailed I/O Info:
+------------------
+    Input Pins: 
+    Pin Number  Direction  IO Standard  Pull Up  IO Bank  IO Function                   Signal Name
+    ----------  ---------  -----------  -------  -------  -----------                   -----------
+    1           Input      SB_LVCMOS    No       3        Simple Input                  SIZ[1]     
+    2           Input      SB_LVCMOS    No       3        Simple Input                  SIZ[0]     
+    10          Input      SB_LVCMOS    No       3        Simple Input                  A[1]       
+    12          Input      SB_LVCMOS    Yes      3        Simple Input                  A[0]       
+    20          Input      SB_LVCMOS    No       3        Simple Input                  CLK40_IN   
+    41          Input      SB_LVCMOS    No       2        Simple Input                  REGSPACEn  
+    94          Input      SB_LVCMOS    No       1        Simple Input                  RESETn     
+    130         Input      SB_LVCMOS    No       0        Simple Input                  RAMSPACEn  
+    136         Input      SB_LVCMOS    No       0        Simple Input                  TSn        
+    138         Input      SB_LVCMOS    No       0        Simple Input                  DBRn       
+    142         Input      SB_LVCMOS    No       0        Simple Input                  C1         
+    143         Input      SB_LVCMOS    No       0        Simple Input                  C3         
+    144         Input      SB_LVCMOS    No       0        Simple Input                  RnW        
+
+    Output Pins: 
+    Pin Number  Direction  IO Standard  Pull Up  IO Bank  IO Function                   Signal Name
+    ----------  ---------  -----------  -------  -------  -----------                   -----------
+    7           Output     SB_LVCMOS    No       3        Output Tristatable by Enable  TACKn      
+    21          Output     SB_LVCMOS    No       3        Simple Output                 CLK40C     
+    38          Output     SB_LVCMOS    No       2        Simple Output                 CLKRAM     
+    42          Output     SB_LVCMOS    No       2        Simple Output                 DBENn      
+    44          Output     SB_LVCMOS    No       2        Simple Output                 VBENn      
+    45          Output     SB_LVCMOS    No       2        Simple Output                 CLLBEn     
+    47          Output     SB_LVCMOS    No       2        Simple Output                 CMA[2]     
+    48          Output     SB_LVCMOS    No       2        Simple Output                 CMA[1]     
+    49          Output     SB_LVCMOS    No       2        Simple Output                 BANK1      
+    52          Output     SB_LVCMOS    No       2        Simple Output                 BANK0      
+    55          Output     SB_LVCMOS    No       2        Simple Output                 CMA[0]     
+    56          Output     SB_LVCMOS    No       2        Simple Output                 CMA[10]    
+    60          Output     SB_LVCMOS    No       2        Simple Output                 CRCSn      
+    61          Output     SB_LVCMOS    No       2        Simple Output                 RASn       
+    62          Output     SB_LVCMOS    No       2        Simple Output                 CASn       
+    73          Output     SB_LVCMOS    No       1        Simple Output                 WEn        
+    74          Output     SB_LVCMOS    No       1        Simple Output                 CUMBEn     
+    75          Output     SB_LVCMOS    No       1        Simple Output                 CLMBEn     
+    76          Output     SB_LVCMOS    No       1        Simple Output                 CMA[3]     
+    78          Output     SB_LVCMOS    No       1        Simple Output                 CMA[4]     
+    79          Output     SB_LVCMOS    No       1        Simple Output                 CMA[5]     
+    80          Output     SB_LVCMOS    No       1        Simple Output                 CMA[6]     
+    81          Output     SB_LVCMOS    No       1        Simple Output                 CMA[7]     
+    82          Output     SB_LVCMOS    No       1        Simple Output                 CMA[8]     
+    83          Output     SB_LVCMOS    No       1        Simple Output                 CMA[9]     
+    84          Output     SB_LVCMOS    No       1        Simple Output                 CLKEN      
+    85          Output     SB_LVCMOS    No       1        Simple Output                 CUUBEn     
+    107         Output     SB_LVCMOS    No       1        Simple Output                 DRDDIR     
+    110         Output     SB_LVCMOS    No       0        Simple Output                 DRDENn     
+    116         Output     SB_LVCMOS    No       0        Simple Output                 ASn        
+    117         Output     SB_LVCMOS    No       0        Simple Output                 LDSn       
+    118         Output     SB_LVCMOS    No       0        Simple Output                 UDSn       
+    139         Output     SB_LVCMOS    No       0        Simple Output                 RAMENn     
+    141         Output     SB_LVCMOS    No       0        Simple Output                 REGENn     
+
+Detailed Global Buffer Info:
+----------------------------
+    Buffer Number  IO Bank  Driven By  Fanout  Signal Name   
+    -------------  -------  ---------  ------  -----------   
+    3              3                   8       C1_c_g        
+    6              3                   37      RESETn_c_i_g  
+    4              0                   32      CLK80_OUT_g   
+
+
+Router Summary:
+---------------
+    Status:  Successful
+    Runtime: 9 seconds
+
+Routing Resource Utilization:
+-----------------------------
+              Local line of tile      881 out of 146184      0.602665%
+                          Span 4      146 out of  29696      0.491649%
+                         Span 12       94 out of   5632      1.66903%
+                  Global network        3 out of      8      37.5%
+      Vertical Inter-LUT Connect       25 out of   6720      0.372024%
+

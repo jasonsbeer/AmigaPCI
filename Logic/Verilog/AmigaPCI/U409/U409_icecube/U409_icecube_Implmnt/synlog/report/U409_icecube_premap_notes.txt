@@ -1,0 +1,4 @@
+@N: MF248 |Running in 64-bit mode.
+@N: MF666 |Clock conversion enabled. (Command "set_option -fix_gated_and_generated_clocks 1" in the project file.)
+@N: BN225 |Writing default property annotation file D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\U409_icecube.sap.
+@N: MO225 :"d:\amigapci\u409\u409_transfer_ack.v":139:0:139:5|There are no possible illegal states for state machine CIA_STATE[3:0] (in view: work.U409_TRANSFER_ACK(verilog)); safe FSM implementation is not required.

@@ -1,0 +1,107 @@
+#CLOCKS
+set_io CLKRAMB   52
+set_io CLK80_CPU     94
+set_io CLK40C    21
+set_io CLK40B    49
+set_io CLK40A    93
+set_io CLK40_IN 129
+set_io CLKRAMA   56
+
+#68040 DATA BUS
+set_io  D_LL_040[0] 74  -pullup yes #DA0
+set_io  D_LL_040[1] 75  -pullup yes #DA1
+set_io  D_LL_040[2] 78  -pullup yes #DA2
+set_io  D_LL_040[3] 73  -pullup yes #DA3
+set_io  D_LL_040[4] 76  -pullup yes #DA4
+set_io  D_LL_040[5] 79  -pullup yes #DA5
+set_io  D_LL_040[6] 80  -pullup yes #DA6
+set_io  D_LL_040[7] 81  -pullup yes #DA7
+set_io  D_LM_040[0] 82  -pullup yes #DA8
+set_io  D_LM_040[1] 83  -pullup yes #DA9
+set_io  D_LM_040[2] 84  -pullup yes #DA10
+set_io  D_LM_040[3] 85  -pullup yes #DA11
+set_io  D_LM_040[4] 87  -pullup yes #DA12
+set_io  D_LM_040[5] 90  -pullup yes #DA13
+set_io  D_LM_040[6] 98  -pullup yes #DA14
+set_io  D_LM_040[7] 99  -pullup yes #DA15
+set_io  D_UM_040[0] 88  -pullup yes #DA16
+set_io  D_UM_040[1] 104 -pullup yes #DA17
+set_io  D_UM_040[2] 91  -pullup yes #DA18
+set_io  D_UM_040[3] 106 -pullup yes #DA19
+set_io  D_UM_040[4] 110 -pullup yes #DA20
+set_io  D_UM_040[5] 114 -pullup yes #DA21
+set_io  D_UM_040[6] 95  -pullup yes #DA22
+set_io  D_UM_040[7] 105 -pullup yes #DA23
+set_io  D_UU_040[0] 117 -pullup yes #DA24
+set_io  D_UU_040[1] 107 -pullup yes #DA25
+set_io  D_UU_040[2] 118 -pullup yes #DA26
+set_io  D_UU_040[3] 112 -pullup yes #DA27
+set_io  D_UU_040[4] 119 -pullup yes #DA28
+set_io  D_UU_040[5] 113 -pullup yes #DA29
+set_io  D_UU_040[6] 115 -pullup yes #DA30
+set_io  D_UU_040[7] 116 -pullup yes #DA31
+
+#AMIGA DATA BUS
+set_io  D_LL_AMIGA[0] 33  -pullup yes #DB0
+set_io  D_LL_AMIGA[1] 28  -pullup yes #DB1
+set_io  D_LL_AMIGA[2] 31  -pullup yes #DB2
+set_io  D_LL_AMIGA[3] 32  -pullup yes #DB3
+set_io  D_LL_AMIGA[4] 29  -pullup yes #DB4
+set_io  D_LL_AMIGA[5] 25  -pullup yes #DB5
+set_io  D_LL_AMIGA[6] 26  -pullup yes #DB6
+set_io  D_LL_AMIGA[7] 24  -pullup yes #DB7
+set_io  D_LM_AMIGA[0] 23  -pullup yes #DB8
+set_io  D_LM_AMIGA[1] 22  -pullup yes #DB9
+set_io  D_LM_AMIGA[2] 18  -pullup yes #DB10
+set_io  D_LM_AMIGA[3] 19  -pullup yes #DB11
+set_io  D_LM_AMIGA[4] 16  -pullup yes #DB12
+set_io  D_LM_AMIGA[5] 12  -pullup yes #DB13
+set_io  D_LM_AMIGA[6] 9   -pullup yes #DB14
+set_io  D_LM_AMIGA[7] 10  -pullup yes #DB15
+set_io  D_UM_AMIGA[0] 17  -pullup yes #DB16
+set_io  D_UM_AMIGA[1] 11  -pullup yes #DB17
+set_io  D_UM_AMIGA[2] 15  -pullup yes #DB18
+set_io  D_UM_AMIGA[3] 7   -pullup yes #DB19
+set_io  D_UM_AMIGA[4] 3   -pullup yes #DB20
+set_io  D_UM_AMIGA[5] 141 -pullup yes #DB21
+set_io  D_UM_AMIGA[6] 2   -pullup yes #DB22
+set_io  D_UM_AMIGA[7] 4   -pullup yes #DB23
+set_io  D_UU_AMIGA[0] 138 -pullup yes #DB24
+set_io  D_UU_AMIGA[1] 8   -pullup yes #DB25
+set_io  D_UU_AMIGA[2] 139 -pullup yes #DB26
+set_io  D_UU_AMIGA[3] 144 -pullup yes #DB27
+set_io  D_UU_AMIGA[4] 137 -pullup yes #DB28
+set_io  D_UU_AMIGA[5] 1   -pullup yes #DB29
+set_io  D_UU_AMIGA[6] 142 -pullup yes #DB30
+set_io  D_UU_AMIGA[7] 143 -pullup yes #DB31
+
+#DATA TRANSFER SIGALS
+set_io TS_CPUn  125 //PULLUP DID NOT WORK???
+set_io TSn       45 -pullup yes
+set_io TAn      124 -pullup yes
+set_io TACKn     47 -pullup yes
+set_io PORTSIZE  42 -pullup yes
+set_io SIZ[1]   120 -pullup yes
+set_io SIZ[0]   121 -pullup yes
+set_io RnW       97 -pullup yes
+#set_io TCIn     44 -pullup yes
+#set_io TCI_CPUn 101 -pullup yes
+#set_io TEAn      43 -pullup yes
+#set_io TEA_CPUn 122 -pullup yes
+set_io TBIn      55
+
+#BUS ARBITRATION
+set_io RESETn 34
+set_io CPUBGn 102 -pullup yes
+set_io BUFENn 135
+set_io BUFDIR 136
+set_io BGn    96  -pullup yes
+#set_io BBn    130 -pullup yes
+set_io DMAn   134
+#set_io LBENn  48
+
+#ADDRESS
+set_io A_040[0]   37 -pullup yes
+set_io A_040[1]   38 -pullup yes
+set_io A_AMIGA[0] 39 -pullup yes
+set_io A_AMIGA[1] 41 -pullup yes

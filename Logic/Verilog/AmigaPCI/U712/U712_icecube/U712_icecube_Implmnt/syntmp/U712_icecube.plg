@@ -1,0 +1,27 @@
+@P:  Worst Slack : -5.779
+@P:  C1 - Estimated Frequency : 0.4 MHz
+@P:  C1 - Requested Frequency : 14.3 MHz
+@P:  C1 - Estimated Period : 2340.859
+@P:  C1 - Requested Period : 69.832
+@P:  C1 - Slack : -5.779
+@P:  C3 - Estimated Frequency : NA
+@P:  C3 - Requested Frequency : 14.3 MHz
+@P:  C3 - Estimated Period : NA
+@P:  C3 - Requested Period : 69.832
+@P:  C3 - Slack : NA
+@P:  CLK40_IN - Estimated Frequency : NA
+@P:  CLK40_IN - Requested Frequency : 40.0 MHz
+@P:  CLK40_IN - Estimated Period : NA
+@P:  CLK40_IN - Requested Period : 25.000
+@P:  CLK40_IN - Slack : NA
+@P:  U712_TOP|CLK80_OUT_derived_clock - Estimated Frequency : 2.4 MHz
+@P:  U712_TOP|CLK80_OUT_derived_clock - Requested Frequency : 80.0 MHz
+@P:  U712_TOP|CLK80_OUT_derived_clock - Estimated Period : 419.014
+@P:  U712_TOP|CLK80_OUT_derived_clock - Requested Period : 12.500
+@P:  U712_TOP|CLK80_OUT_derived_clock - Slack : -0.568
+@P: U712_TOP Part : ice40hx4ktq144
+@P: U712_TOP I/O primitives : 47
+@P: U712_TOP I/O Register bits : 0
+@P: U712_TOP Register bits (Non I/O) : 51 (1%)
+@P: U712_TOP Total Luts : 101 (2%)
+@P:  CPU Time : 0h:00m:00s

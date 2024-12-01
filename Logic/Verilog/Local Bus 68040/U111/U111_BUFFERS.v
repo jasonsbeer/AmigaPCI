@@ -1,0 +1,22 @@
+module U111_BUFFERS (
+    input RnW, LBENn, CYCLE_EN, BGn,
+    output CPUBGn, BUFENn, BUFDIR, DMAn
+);
+
+///////////////////////////////////
+// BUFFER ENABLES AND DIRECTION //
+/////////////////////////////////
+
+//ENABLE THE CPU DATA BUS BUFFERS
+assign CPUBGn = ~(!BGn || CYCLE_EN);
+
+//DISABLE THE AMIGAPCI DATA BUS WHEN USING ONBOARD RESOURCES.
+assign BUFENn = ~LBENn;
+
+//DIRECTION OF THE AMIGAPCI DATA BUS. INFLUENCED BY WHO HAS THE BUS.
+assign BUFDIR = RnW;
+
+//TURN ON ADDRESS BUFFERS DURING DMA
+assign DMAn = 1;
+
+endmodule

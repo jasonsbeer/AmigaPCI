@@ -1,0 +1,13 @@
+@W: CL279 :"D:\AmigaPCI\U712\U712_CHIP_RAM.v":88:0:88:5|Pruning register bits 9 to 6 of CMA[10:0]. If this is not the intended behavior, drive the inputs with valid values, or inputs from the top level.
+@W: CL279 :"D:\AmigaPCI\U712\U712_CHIP_RAM.v":88:0:88:5|Pruning register bits 4 to 2 of CMA[10:0]. If this is not the intended behavior, drive the inputs with valid values, or inputs from the top level.
+@W: CL260 :"D:\AmigaPCI\U712\U712_CHIP_RAM.v":88:0:88:5|Pruning register bit 0 of CMA[10:0]. If this is not the intended behavior, drive the input with valid values, or an input from the top level.
+@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":56:2:56:4|Input EXTFEEDBACK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":56:2:56:4|Input DYNAMICDELAY on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":56:2:56:4|Input BYPASS on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":56:2:56:4|Input SDI on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":56:2:56:4|Input SCLK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":56:2:56:4|Input LATCHINPUTVALUE on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG360 :"D:\AmigaPCI\U712\U712_TOP.v":71:5:71:13|Removing wire REG_CYCLE, as there is no assignment to it.
+@W: CL246 :"D:\AmigaPCI\U712\U712_TOP.v":9:17:9:17|Input port bits 20 to 2 of A[20:0] are unused. Assign logic for all port bits or change the input port size.
+@W: CL260 :"D:\AmigaPCI\U712\U712_CHIP_RAM.v":88:0:88:5|Pruning register bit 3 of SDRAM_CMD[3:0]. If this is not the intended behavior, drive the input with valid values, or an input from the top level.
+

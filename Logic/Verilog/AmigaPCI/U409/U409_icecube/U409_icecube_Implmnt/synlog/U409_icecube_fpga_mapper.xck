@@ -1,0 +1,3 @@
+CKID0001:@|S:pll@|E:U409_TRANSFER_ACK.TACK_EN_i@|F:@syn_sample_clock_path==CKID0001@|M:ClockId0001 
+CKID0002:@|S:CLK6_ibuf_gb_io@|E:U409_TICK.COUNTER50[5]@|F:@syn_sample_clock_path==CKID0002@|M:ClockId0002 
+CKID0003:@|S:CLK28_IN_ibuf_gb_io@|E:U409_CIA.CLKCIA@|F:@syn_sample_clock_path==CKID0003@|M:ClockId0003 

@@ -1,0 +1,131 @@
+set_location D_LL_040_iobuf_RNO[0] 14 2 2 # SB_LUT4 (LogicCell: D_LL_040_iobuf_RNO[0]_LC_0)
+set_location D_LL_040_iobuf_RNO[1] 13 3 2 # SB_LUT4 (LogicCell: D_LL_040_iobuf_RNO[1]_LC_1)
+set_location D_LL_040_iobuf_RNO[2] 13 3 1 # SB_LUT4 (LogicCell: D_LL_040_iobuf_RNO[2]_LC_2)
+set_location D_LL_040_iobuf_RNO[3] 14 2 1 # SB_LUT4 (LogicCell: D_LL_040_iobuf_RNO[3]_LC_3)
+set_location D_LL_040_iobuf_RNO[4] 13 3 5 # SB_LUT4 (LogicCell: D_LL_040_iobuf_RNO[4]_LC_4)
+set_location D_LL_040_iobuf_RNO[5] 14 6 3 # SB_LUT4 (LogicCell: D_LL_040_iobuf_RNO[5]_LC_5)
+set_location D_LL_040_iobuf_RNO[6] 14 6 5 # SB_LUT4 (LogicCell: D_LL_040_iobuf_RNO[6]_LC_6)
+set_location D_LL_040_iobuf_RNO[7] 18 7 4 # SB_LUT4 (LogicCell: D_LL_040_iobuf_RNO[7]_LC_7)
+set_location D_LM_040_iobuf_RNO[0] 18 7 1 # SB_LUT4 (LogicCell: D_LM_040_iobuf_RNO[0]_LC_8)
+set_location D_LM_040_iobuf_RNO[1] 13 10 0 # SB_LUT4 (LogicCell: D_LM_040_iobuf_RNO[1]_LC_9)
+set_location D_LM_040_iobuf_RNO[2] 18 12 4 # SB_LUT4 (LogicCell: D_LM_040_iobuf_RNO[2]_LC_10)
+set_location D_LM_040_iobuf_RNO[3] 18 12 2 # SB_LUT4 (LogicCell: D_LM_040_iobuf_RNO[3]_LC_11)
+set_location D_LM_040_iobuf_RNO[4] 15 15 2 # SB_LUT4 (LogicCell: D_LM_040_iobuf_RNO[4]_LC_12)
+set_location D_LM_040_iobuf_RNO[5] 15 15 4 # SB_LUT4 (LogicCell: D_LM_040_iobuf_RNO[5]_LC_13)
+set_location D_LM_040_iobuf_RNO[6] 18 17 6 # SB_LUT4 (LogicCell: D_LM_040_iobuf_RNO[6]_LC_14)
+set_location D_LM_040_iobuf_RNO[7] 18 17 2 # SB_LUT4 (LogicCell: D_LM_040_iobuf_RNO[7]_LC_15)
+set_location D_UM_AMIGA_iobuf_RNO[0] 12 9 3 # SB_LUT4 (LogicCell: D_UM_AMIGA_iobuf_RNO[0]_LC_16)
+set_location D_UM_AMIGA_iobuf_RNO[1] 15 15 6 # SB_LUT4 (LogicCell: D_UM_AMIGA_iobuf_RNO[1]_LC_17)
+set_location D_UM_AMIGA_iobuf_RNO[2] 13 10 2 # SB_LUT4 (LogicCell: D_UM_AMIGA_iobuf_RNO[2]_LC_18)
+set_location D_UM_AMIGA_iobuf_RNO[3] 17 18 7 # SB_LUT4 (LogicCell: D_UM_AMIGA_iobuf_RNO[3]_LC_19)
+set_location D_UM_AMIGA_iobuf_RNO[4] 15 19 0 # SB_LUT4 (LogicCell: D_UM_AMIGA_iobuf_RNO[4]_LC_20)
+set_location D_UM_AMIGA_iobuf_RNO[5] 12 20 7 # SB_LUT4 (LogicCell: D_UM_AMIGA_iobuf_RNO[5]_LC_21)
+set_location D_UM_AMIGA_iobuf_RNO[6] 18 12 0 # SB_LUT4 (LogicCell: D_UM_AMIGA_iobuf_RNO[6]_LC_22)
+set_location D_UM_AMIGA_iobuf_RNO[7] 15 19 1 # SB_LUT4 (LogicCell: D_UM_AMIGA_iobuf_RNO[7]_LC_23)
+set_location D_UU_AMIGA_iobuf_RNO[0] 12 20 4 # SB_LUT4 (LogicCell: D_UU_AMIGA_iobuf_RNO[0]_LC_24)
+set_location D_UU_AMIGA_iobuf_RNO[1] 17 18 0 # SB_LUT4 (LogicCell: D_UU_AMIGA_iobuf_RNO[1]_LC_25)
+set_location D_UU_AMIGA_iobuf_RNO[2] 18 20 1 # SB_LUT4 (LogicCell: D_UU_AMIGA_iobuf_RNO[2]_LC_26)
+set_location D_UU_AMIGA_iobuf_RNO[3] 13 20 2 # SB_LUT4 (LogicCell: D_UU_AMIGA_iobuf_RNO[3]_LC_27)
+set_location D_UU_AMIGA_iobuf_RNO[4] 13 20 4 # SB_LUT4 (LogicCell: D_UU_AMIGA_iobuf_RNO[4]_LC_28)
+set_location D_UU_AMIGA_iobuf_RNO[5] 12 20 5 # SB_LUT4 (LogicCell: D_UU_AMIGA_iobuf_RNO[5]_LC_29)
+set_location D_UU_AMIGA_iobuf_RNO[6] 18 20 3 # SB_LUT4 (LogicCell: D_UU_AMIGA_iobuf_RNO[6]_LC_30)
+set_location D_UU_AMIGA_iobuf_RNO[7] 18 20 6 # SB_LUT4 (LogicCell: D_UU_AMIGA_iobuf_RNO[7]_LC_31)
+set_location RnW_c_sbtinv 6 14 7 # SB_LUT4 (LogicCell: RnW_c_sbtinv_LC_32)
+set_location SIZ_ibuf_RNI93PP[0] 18 20 0 # SB_LUT4 (LogicCell: SIZ_ibuf_RNI93PP[0]_LC_33)
+set_location U111_CYCLE_SM.TS_EN_RNO 12 9 2 # SB_LUT4 (LogicCell: U111_CYCLE_SM.TS_EN_LC_34)
+set_location U111_CYCLE_SM.TS_EN 12 9 2 # SB_DFFN (LogicCell: U111_CYCLE_SM.TS_EN_LC_34)
+set_location U111_CYCLE_SM.TSn_RNO 12 3 0 # SB_LUT4 (LogicCell: U111_CYCLE_SM.TSn_LC_35)
+set_location U111_CYCLE_SM.TSn 12 3 0 # SB_DFFN (LogicCell: U111_CYCLE_SM.TSn_LC_35)
+set_location GB_BUFFER_CLK80_THRU_LUT4_0 13 20 0 # SB_LUT4 (LogicCell: GB_BUFFER_CLK80_THRU_LUT4_0_LC_36)
+set_location GB_BUFFER_CLK40_THRU_LUT4_0 12 9 4 # SB_LUT4 (LogicCell: GB_BUFFER_CLK40_THRU_LUT4_0_LC_37)
+set_io A_040_ibuf[0] 2 0 0 # ICE_IO
+set_io A_040_ibuf[1] 2 0 1 # ICE_IO
+set_io A_AMIGA_obuf[0] 3 0 1 # ICE_IO
+set_io A_AMIGA_obuf[1] 4 0 1 # ICE_IO
+set_io BUFDIR_obuf 6 21 1 # ICE_IO
+set_io BUFENn_obuf 7 21 0 # ICE_IO
+set_io CLK40A_obuf 25 10 1 # ICE_IO
+set_io CLK40B_obuf 12 0 1 # ICE_IO
+set_io CLK40C_obuf 0 10 1 # ICE_IO
+set_io CLK80_CPU_obuf 25 11 0 # ICE_IO
+set_io CLKRAMA_obuf 18 0 0 # ICE_IO
+set_io CLKRAMB_obuf 13 0 0 # ICE_IO
+set_io CPUBGn_obuf 25 17 0 # ICE_IO
+set_io DMAn_obuf 7 21 1 # ICE_IO
+set_io D_LL_040_iobuf[0] 25 1 1 # ICE_IO
+set_io D_LL_040_iobuf[1] 25 2 0 # ICE_IO
+set_io D_LL_040_iobuf[2] 25 3 1 # ICE_IO
+set_io D_LL_040_iobuf[3] 25 1 0 # ICE_IO
+set_io D_LL_040_iobuf[4] 25 2 1 # ICE_IO
+set_io D_LL_040_iobuf[5] 25 4 0 # ICE_IO
+set_io D_LL_040_iobuf[6] 25 4 1 # ICE_IO
+set_io D_LL_040_iobuf[7] 25 5 0 # ICE_IO
+set_io D_LL_AMIGA_iobuf[0] 0 1 1 # ICE_IO
+set_io D_LL_AMIGA_iobuf[1] 0 3 1 # ICE_IO
+set_io D_LL_AMIGA_iobuf[2] 0 2 1 # ICE_IO
+set_io D_LL_AMIGA_iobuf[3] 0 2 0 # ICE_IO
+set_io D_LL_AMIGA_iobuf[4] 0 3 0 # ICE_IO
+set_io D_LL_AMIGA_iobuf[5] 0 6 1 # ICE_IO
+set_io D_LL_AMIGA_iobuf[6] 0 6 0 # ICE_IO
+set_io D_LL_AMIGA_iobuf[7] 0 7 0 # ICE_IO
+set_io D_LM_040_iobuf[0] 25 5 1 # ICE_IO
+set_io D_LM_040_iobuf[1] 25 6 0 # ICE_IO
+set_io D_LM_040_iobuf[2] 25 6 1 # ICE_IO
+set_io D_LM_040_iobuf[3] 25 7 1 # ICE_IO
+set_io D_LM_040_iobuf[4] 25 8 1 # ICE_IO
+set_io D_LM_040_iobuf[5] 25 9 1 # ICE_IO
+set_io D_LM_040_iobuf[6] 25 14 1 # ICE_IO
+set_io D_LM_040_iobuf[7] 25 15 1 # ICE_IO
+set_io D_LM_AMIGA_iobuf[0] 0 7 1 # ICE_IO
+set_io D_LM_AMIGA_iobuf[1] 0 10 0 # ICE_IO
+set_io D_LM_AMIGA_iobuf[2] 0 12 0 # ICE_IO
+set_io D_LM_AMIGA_iobuf[3] 0 11 1 # ICE_IO
+set_io D_LM_AMIGA_iobuf[4] 0 13 0 # ICE_IO
+set_io D_LM_AMIGA_iobuf[5] 0 15 0 # ICE_IO
+set_io D_LM_AMIGA_iobuf[6] 0 17 1 # ICE_IO
+set_io D_LM_AMIGA_iobuf[7] 0 17 0 # ICE_IO
+set_io D_UM_040_iobuf[0] 25 9 0 # ICE_IO
+set_io D_UM_040_iobuf[1] 25 18 1 # ICE_IO
+set_io D_UM_040_iobuf[2] 25 10 0 # ICE_IO
+set_io D_UM_040_iobuf[3] 25 19 1 # ICE_IO
+set_io D_UM_040_iobuf[4] 24 21 1 # ICE_IO
+set_io D_UM_040_iobuf[5] 23 21 0 # ICE_IO
+set_io D_UM_040_iobuf[6] 25 12 1 # ICE_IO
+set_io D_UM_040_iobuf[7] 25 19 0 # ICE_IO
+set_io D_UM_AMIGA_iobuf[0] 0 12 1 # ICE_IO
+set_io D_UM_AMIGA_iobuf[1] 0 15 1 # ICE_IO
+set_io D_UM_AMIGA_iobuf[2] 0 13 1 # ICE_IO
+set_io D_UM_AMIGA_iobuf[3] 0 18 1 # ICE_IO
+set_io D_UM_AMIGA_iobuf[4] 0 19 1 # ICE_IO
+set_io D_UM_AMIGA_iobuf[5] 4 21 0 # ICE_IO
+set_io D_UM_AMIGA_iobuf[6] 0 20 0 # ICE_IO
+set_io D_UM_AMIGA_iobuf[7] 0 19 0 # ICE_IO
+set_io D_UU_040_iobuf[0] 21 21 1 # ICE_IO
+set_io D_UU_040_iobuf[1] 25 20 0 # ICE_IO
+set_io D_UU_040_iobuf[2] 20 21 0 # ICE_IO
+set_io D_UU_040_iobuf[3] 24 21 0 # ICE_IO
+set_io D_UU_040_iobuf[4] 19 21 1 # ICE_IO
+set_io D_UU_040_iobuf[5] 23 21 1 # ICE_IO
+set_io D_UU_040_iobuf[6] 22 21 1 # ICE_IO
+set_io D_UU_040_iobuf[7] 22 21 0 # ICE_IO
+set_io D_UU_AMIGA_iobuf[0] 5 21 1 # ICE_IO
+set_io D_UU_AMIGA_iobuf[1] 0 18 0 # ICE_IO
+set_io D_UU_AMIGA_iobuf[2] 5 21 0 # ICE_IO
+set_io D_UU_AMIGA_iobuf[3] 2 21 1 # ICE_IO
+set_io D_UU_AMIGA_iobuf[4] 6 21 0 # ICE_IO
+set_io D_UU_AMIGA_iobuf[5] 0 20 1 # ICE_IO
+set_io D_UU_AMIGA_iobuf[6] 3 21 1 # ICE_IO
+set_io D_UU_AMIGA_iobuf[7] 3 21 0 # ICE_IO
+set_location GND -1 -1 -1 # GND
+set_io RESETn_ibuf 0 1 0 # ICE_IO
+set_io RnW_ibuf 25 14 0 # ICE_IO
+set_io SIZ_ibuf[0] 18 21 0 # ICE_IO
+set_io SIZ_ibuf[1] 19 21 0 # ICE_IO
+set_io TACKn_ibuf 11 0 1 # ICE_IO
+set_io TAn_obuf 15 21 0 # ICE_IO
+set_io TS_CPUn_ibuf 14 21 1 # ICE_IO
+set_io TSn_obuf 8 0 1 # ICE_IO
+set_location pll 12 21 1 # SB_PLL40_2F_PAD
+set_location INV_CLK80 -1 -1 -1 # INV
+set_location INV_CLK40 -1 -1 -1 # INV
+set_location CONSTANT_ONE_LUT4 12 20 0 # SB_LUT4 (LogicCell: LC_38)

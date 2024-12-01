@@ -1,0 +1,129 @@
+set_location CONSTANT_ONE_LUT4 12 20 0 #SB_LUT4
+set_location GB_BUFFER_CLK40_THRU_LUT4_0 12 9 4 #SB_LUT4
+set_location GB_BUFFER_CLK80_THRU_LUT4_0 13 20 0 #SB_LUT4
+set_location D_UU_AMIGA_iobuf_RNO[0] 12 20 4 #SB_LUT4
+set_location D_LM_040_iobuf_RNO[2] 18 12 4 #SB_LUT4
+set_location D_LL_040_iobuf_RNO[6] 14 6 5 #SB_LUT4
+set_location D_UU_AMIGA_iobuf_RNO[4] 13 20 4 #SB_LUT4
+set_location D_UM_AMIGA_iobuf_RNO[0] 12 9 3 #SB_LUT4
+set_location D_LM_040_iobuf_RNO[6] 18 17 6 #SB_LUT4
+set_location U111_CYCLE_SM.TSn_RNO 12 3 0 #SB_LUT4
+set_location RnW_c_sbtinv 6 14 7 #SB_LUT4
+set_location D_UU_AMIGA_iobuf_RNO[1] 17 18 0 #SB_LUT4
+set_location D_LM_040_iobuf_RNO[3] 18 12 2 #SB_LUT4
+set_location D_UM_AMIGA_iobuf_RNO[4] 15 19 0 #SB_LUT4
+set_location D_LL_040_iobuf_RNO[1] 13 3 2 #SB_LUT4
+set_location GND -1 -1 -1 #GND
+set_location D_UU_AMIGA_iobuf_RNO[5] 12 20 5 #SB_LUT4
+set_location D_UM_AMIGA_iobuf_RNO[1] 15 15 6 #SB_LUT4
+set_location D_LM_040_iobuf_RNO[7] 18 17 2 #SB_LUT4
+set_location D_LL_040_iobuf_RNO[5] 14 6 3 #SB_LUT4
+set_location U111_CYCLE_SM.TSn 12 3 0 #SB_DFFN
+set_location D_UU_AMIGA_iobuf_RNO[2] 18 20 1 #SB_LUT4
+set_location D_UM_AMIGA_iobuf_RNO[5] 12 20 7 #SB_LUT4
+set_location D_LL_040_iobuf_RNO[0] 14 2 2 #SB_LUT4
+set_location U111_CYCLE_SM.TS_EN_RNO 12 9 2 #SB_LUT4
+set_location D_UU_AMIGA_iobuf_RNO[6] 18 20 3 #SB_LUT4
+set_location D_UM_AMIGA_iobuf_RNO[2] 13 10 2 #SB_LUT4
+set_location D_LM_040_iobuf_RNO[0] 18 7 1 #SB_LUT4
+set_location D_LL_040_iobuf_RNO[4] 13 3 5 #SB_LUT4
+set_location D_UU_AMIGA_iobuf_RNO[3] 13 20 2 #SB_LUT4
+set_location U111_CYCLE_SM.TS_EN 12 9 2 #SB_DFFN
+set_location SIZ_ibuf_RNI93PP[0] 18 20 0 #SB_LUT4
+set_location D_UM_AMIGA_iobuf_RNO[6] 18 12 0 #SB_LUT4
+set_location D_LM_040_iobuf_RNO[4] 15 15 2 #SB_LUT4
+set_location D_LL_040_iobuf_RNO[3] 14 2 1 #SB_LUT4
+set_location D_UU_AMIGA_iobuf_RNO[7] 18 20 6 #SB_LUT4
+set_location D_UM_AMIGA_iobuf_RNO[3] 17 18 7 #SB_LUT4
+set_location D_LM_040_iobuf_RNO[1] 13 10 0 #SB_LUT4
+set_location D_LL_040_iobuf_RNO[7] 18 7 4 #SB_LUT4
+set_location D_UM_AMIGA_iobuf_RNO[7] 15 19 1 #SB_LUT4
+set_location D_LM_040_iobuf_RNO[5] 15 15 4 #SB_LUT4
+set_location D_LL_040_iobuf_RNO[2] 13 3 1 #SB_LUT4
+set_io D_LM_AMIGA[6] 9
+set_io A_040[1] 38
+set_io TSn 45
+set_io D_UM_AMIGA[0] 17
+set_io D_UM_040[0] 88
+set_io D_LM_040[4] 87
+set_io D_UU_AMIGA[7] 143
+set_io D_UU_040[7] 116
+set_io D_LM_AMIGA[1] 22
+set_io D_LL_AMIGA[0] 33
+set_io D_LL_040[5] 79
+set_io RESETn 34
+set_io SIZ[0] 121
+set_io D_LM_040[1] 83
+set_io CLKRAMA 56
+set_io D_UM_AMIGA[4] 3
+set_io D_LL_AMIGA[5] 25
+set_io D_LL_040[0] 74
+set_io D_UU_040[3] 112
+set_io D_UM_AMIGA[3] 7
+set_io D_UM_040[5] 114
+set_io D_LM_AMIGA[5] 12
+set_io D_LM_040[7] 99
+set_io D_UU_AMIGA[2] 139
+set_io D_UU_040[4] 119
+set_io D_LL_AMIGA[7] 24
+set_io D_LL_040[6] 80
+set_io CLK40B 49
+set_io A_040[0] 37
+set_io TAn 124
+set_io D_UM_AMIGA[1] 11
+set_io D_UM_040[7] 105
+set_io D_LM_AMIGA[7] 10
+set_io D_LM_040[5] 90
+set_io CPUBGn 102
+set_io BUFENn 135
+set_io RnW 97
+set_io D_UU_AMIGA[0] 138
+set_io D_UU_040[6] 115
+set_io D_LM_AMIGA[0] 23
+set_io D_LL_AMIGA[1] 28
+set_io D_LL_040[4] 76
+set_io CLK80_CPU 94
+set_io BUFDIR 136
+set_io A_AMIGA[1] 41
+set_io D_UM_AMIGA[7] 4
+set_io D_UM_040[1] 104
+set_io TS_CPUn 125
+set_io D_UU_AMIGA[6] 142
+set_io D_UU_040[0] 117
+set_io D_LM_AMIGA[2] 18
+set_io D_LM_040[2] 84
+set_io D_LL_AMIGA[3] 32
+set_io CLKRAMB 52
+set_io D_UM_AMIGA[5] 141
+set_io D_UM_040[3] 106
+set_io D_LL_040[3] 73
+set_io CLK40A 93
+set_io SIZ[1] 120
+set_io D_UU_AMIGA[4] 137
+set_io D_UU_040[2] 118
+set_io D_UM_040[4] 110
+set_io D_LM_AMIGA[4] 16
+set_io D_LM_040[0] 82
+set_io D_UU_AMIGA[3] 144
+set_io D_LL_AMIGA[4] 29
+set_io D_LL_040[1] 75
+set_io DMAn 134
+set_io CLK40C 21
+set_io D_UM_AMIGA[2] 15
+set_io D_UM_040[6] 95
+set_io D_LM_040[6] 98
+set_io CLK40_IN 129
+set_io D_UU_AMIGA[1] 8
+set_io D_UU_040[5] 113
+set_io D_LL_AMIGA[6] 26
+set_io D_LL_040[7] 81
+set_io D_LM_040[3] 85
+set_io A_AMIGA[0] 39
+set_io D_UM_AMIGA[6] 2
+set_io D_UM_040[2] 91
+set_io D_LL_040[2] 78
+set_io TACKn 47
+set_io D_UU_AMIGA[5] 1
+set_io D_UU_040[1] 107
+set_io D_LM_AMIGA[3] 19
+set_io D_LL_AMIGA[2] 31
