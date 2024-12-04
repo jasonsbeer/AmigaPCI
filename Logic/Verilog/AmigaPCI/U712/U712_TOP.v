@@ -12,7 +12,7 @@ module U712_TOP (
     output LDSn, UDSn, ASn, REGENn,
     output VBENn, DRDENn, DRDDIR,
     output DBENn, CRCSn, CLKEN, BANK1, BANK0, RASn, CASn, WEn, RAMENn,
-    output [10:0] CMA,
+    output [10:0]CMA,
     output CUUBEn, CUMBEn, CLMBEn, CLLBEn,
 
     output TACKn
@@ -57,9 +57,9 @@ SB_PLL40_2F_CORE #(
     .LOCK           (),
     .RESETB         (1'b1),
     .REFERENCECLK   (CLK40_IN),
-    //.PLLOUTGLOBALA  (CLK80_OUT),
+    .PLLOUTGLOBALA  (CLK80_OUT),
     //.PLLOUTGLOBALB  (CLK40_OUT),
-    .PLLOUTCOREA    (CLK80_OUT),
+    //.PLLOUTCOREA    (CLK80_OUT),
     .PLLOUTCOREB    (CLK40_OUT)
 );
 
@@ -68,7 +68,7 @@ SB_PLL40_2F_CORE #(
 /////////////////////////////////
 
 wire REG_TACK;
-wire REG_CYCLE;
+//wire REG_CYCLE;
 //wire AGNUS_REFRESH = !RAS0n && !RAS1n;
 
 U712_REG_SM U712_REG_SM (
@@ -107,12 +107,15 @@ U712_BUFFERS U712_BUFFERS (
     .VBENn (VBENn),
     .DRDENn (DRDENn),
     .DRDDIR (DRDDIR),
-    .REGSPACEn (REGSPACEn)
+    .REGSPACEn (REGSPACEn),
+    .RAMSPACEn (RAMSPACEn)
 );
 
 ////////////////////////////
 // CPU CYCLE TERMINATION //
 //////////////////////////
+
+wire CPU_TACKm;
 
 U712_CYCLE_TERM U712_CYCLE_TERM (
     //INPUTS
@@ -120,6 +123,7 @@ U712_CYCLE_TERM U712_CYCLE_TERM (
     .CLK40 (CLK40),
     .RESETn (RESETn),
     .REG_TACK (REG_TACK),
+    .CPU_TACK (CPU_TACKm),
 
     //OUTPUTTS
     .TACKn (TACKn)
@@ -139,6 +143,10 @@ U712_CHIP_RAM U712_CHIP_RAM (
     .C1 (C1),
     .RESETn (RESETn),
     .RAMSPACEn (RAMSPACEn),
+    .TSn (TSn),
+    .RnW (RnW),
+    .DBRn (DBRn),
+    .A (A[20:1]),
 
     //OUTPUTS
     .BANK1 (BANK1),
@@ -149,6 +157,7 @@ U712_CHIP_RAM U712_CHIP_RAM (
     .WEn (WEn),
     .CLKEN (CLKEN),
     .RAMENn (RAMENn),
+    .CPU_TACK (CPU_TACKm),
     .CMA (CMA)
 );
 

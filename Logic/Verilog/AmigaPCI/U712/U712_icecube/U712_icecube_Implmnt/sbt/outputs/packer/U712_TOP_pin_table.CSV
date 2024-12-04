@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:31:51
 
-* File Generated:     Nov 29 2024 11:17:00
+* File Generated:     Dec 3 2024 18:22:22
 
 * Purpose:            Detailed IO and package pin info
 
@@ -26,33 +26,33 @@ Pin Number, Pin Type Name, Signal Name, Direction, Global Buffer, IO Standard, P
 5, GND, not used, , , , , , UnknownBank
 6, VCCIO_3, not used, , , , , , leftBank
 7, PIO, TACKn, Output, , SB_LVCMOS, No Pull Up, Output Tristatable by Enable, leftBank
-8, PIO, not used, , , , , , leftBank
-9, PIO, not used, , , , , , leftBank
+8, PIO, A[2], Input, , SB_LVCMOS, No Pull Up, Simple Input, leftBank
+9, PIO, A[3], Input, , SB_LVCMOS, No Pull Up, Simple Input, leftBank
 10, PIO, A[1], Input, , SB_LVCMOS, No Pull Up, Simple Input, leftBank
 11, PIO, not used, , , , , , leftBank
 12, PIO, A[0], Input, , SB_LVCMOS, Pull Up, Simple Input, leftBank
 13, GND, not used, , , , , , UnknownBank
 14, GND, not used, , , , , , UnknownBank
-15, PIO, not used, , , , , , leftBank
-16, PIO, not used, , , , , , leftBank
-17, PIO, not used, , , , , , leftBank
-18, PIO, not used, , , , , , leftBank
-19, PIO, not used, , , , , , leftBank
+15, PIO, A[4], Input, , SB_LVCMOS, No Pull Up, Simple Input, leftBank
+16, PIO, A[5], Input, , SB_LVCMOS, No Pull Up, Simple Input, leftBank
+17, PIO, A[6], Input, , SB_LVCMOS, No Pull Up, Simple Input, leftBank
+18, PIO, A[7], Input, , SB_LVCMOS, No Pull Up, Simple Input, leftBank
+19, PIO, A[8], Input, , SB_LVCMOS, No Pull Up, Simple Input, leftBank
 20, PIO_GBIN, CLK40_IN, Input, , SB_LVCMOS, No Pull Up, Simple Input, leftBank
 21, PIO_GBIN, CLK40C, Output, , SB_LVCMOS, No Pull Up, Simple Output, leftBank
-22, PIO, not used, , , , , , leftBank
-23, PIO, not used, , , , , , leftBank
-24, PIO, not used, , , , , , leftBank
-25, PIO, not used, , , , , , leftBank
-26, PIO, not used, , , , , , leftBank
+22, PIO, A[9], Input, , SB_LVCMOS, No Pull Up, Simple Input, leftBank
+23, PIO, A[10], Input, , SB_LVCMOS, No Pull Up, Simple Input, leftBank
+24, PIO, A[11], Input, , SB_LVCMOS, No Pull Up, Simple Input, leftBank
+25, PIO, A[12], Input, , SB_LVCMOS, No Pull Up, Simple Input, leftBank
+26, PIO, A[13], Input, , SB_LVCMOS, No Pull Up, Simple Input, leftBank
 27, VCC, not used, , , , , , UnknownBank
-28, PIO, not used, , , , , , leftBank
-29, PIO, not used, , , , , , leftBank
+28, PIO, A[14], Input, , SB_LVCMOS, No Pull Up, Simple Input, leftBank
+29, PIO, A[15], Input, , SB_LVCMOS, No Pull Up, Simple Input, leftBank
 30, VCCIO_3, not used, , , , , , leftBank
-31, PIO, not used, , , , , , leftBank
-32, PIO, not used, , , , , , leftBank
-33, PIO, not used, , , , , , leftBank
-34, PIO, not used, , , , , , leftBank
+31, PIO, A[16], Input, , SB_LVCMOS, No Pull Up, Simple Input, leftBank
+32, PIO, A[17], Input, , SB_LVCMOS, No Pull Up, Simple Input, leftBank
+33, PIO, A[18], Input, , SB_LVCMOS, No Pull Up, Simple Input, leftBank
+34, PIO, A[19], Input, , SB_LVCMOS, No Pull Up, Simple Input, leftBank
 37, PIO, not used, , , , , , bottomBank
 38, PIO, CLKRAM, Output, , SB_LVCMOS, No Pull Up, Simple Output, bottomBank
 39, PIO, not used, , , , , , bottomBank
@@ -157,4 +157,4 @@ Pin Number, Pin Type Name, Signal Name, Direction, Global Buffer, IO Standard, P
 142, PIO, C1, Input, , SB_LVCMOS, No Pull Up, Simple Input, topBank
 143, PIO, C3, Input, , SB_LVCMOS, No Pull Up, Simple Input, topBank
 144, PIO, RnW, Input, , SB_LVCMOS, No Pull Up, Simple Input, topBank
-Total Number of Used Pins, 47
+Total Number of Used Pins, 65

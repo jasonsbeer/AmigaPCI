@@ -1,2 +1,2 @@
-@E: CG849 :"D:\AmigaPCI\U712\U712_REG_SM.v":11:0:11:0|Unexpected ) after , missing port in ANSI list
+@E: CG244 :"D:\AmigaPCI\U712\U712_CHIP_RAM.v":7:22:7:24|Expecting port direction input/output/inout
 

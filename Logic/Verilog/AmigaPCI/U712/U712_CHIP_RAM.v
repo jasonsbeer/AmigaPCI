@@ -1,8 +1,14 @@
 module U712_CHIP_RAM (
 
-    input CLK80, C1, RESETn, RAMSPACEn,
+    input CLK80, C1, RESETn, RAMSPACEn, TSn, RnW, DBRn,
+    input [20:1] A,
 
-    output BANK1, BANK0, CRCSn, RASn, CASn, WEn, CLKEN, RAMENn,
+    output BANK1, BANK0, /*CRCSn, RASn, CASn, WEn,*/ CLKEN, RAMENn,
+    output reg CRCSn,
+    output reg RASn,
+    output reg CASn,
+    output reg WEn,
+    output reg CPU_TACK,
     output reg [10:0]CMA
 
 );
@@ -32,13 +38,14 @@ localparam [7:0] REFRESH_DEFAULT = 8'h1B;   //d27
 //SO...8192 TIMES IN 64,000,000ns. THATS ONCE EVERY 7812.5ns.
 //7812.5ns IS EQUAL TO APPROX...
 
-//56 7.16MHz CLOCK CYCLES
+// 28 3.55MHz CLOCK CYCLES
+// 56 7.16MHz CLOCK CYCLES
 //185 25MHz CLOCK CYCLES
 //244 33MHz CLOCK CYCLES
 //296 40MHz CLOCK CYCLES
 //370 50MHz CLOCK CYCLES
 
-//WE USE THE 7MHz CLOCK TO DRIVE THE REFRESH COUNTER.
+//WE USE THE C1 CLOCK (~3.55MHz) TO DRIVE THE REFRESH COUNTER.
 //SINCE WE ARE JUMPING BETWEEN CLOCK DOMAINS, WE NEED TO HAVE
 //TWO PROCESSES TO ACCOMODATE THE JUMP.
 
@@ -70,42 +77,80 @@ end
 // SDRAM STATE MACHINE //
 ////////////////////////
 
-reg [3:0] SDRAM_CMD;
+/*
+THIS IS THE AGNUS DRAM MULTIPLEXING. 
+MA9 ONLY EXISTS ON 8375 VARIANTS.
+8372A USES A19 TO DRIVE RAS.
 
-assign CRCSn = SDRAM_CMD[3];
-assign RASn  = SDRAM_CMD[2];
-assign CASn  = SDRAM_CMD[1];
-assign WEn   = SDRAM_CMD[0];
+IN AGNUS 8372A, _RAS0 = A19. _RAS1 = A19 INVERSE.
+
+     MA9 MA8 MA7 MA6 MA5 MA4 MA3 MA2 MA1 MA0
+    ----------------------------------------
+ROW: A19 A17 A16 A15 A14 A13 A12 A11 A10  A9
+COL: A20 A18  A8  A7  A6  A5  A4  A3  A2  A1
+*/
+
 assign BANK1 = 0;
 assign BANK0 = 0;
 assign CLKEN = 1;
 
+reg [3:0] SDRAM_CMD;
 reg SDRAM_CONFIGURED;
-reg MEMORY_CYCLE;
+reg CPU_CYCLE;
 reg REFRESH_CYCLE;
 reg [7:0] SDRAM_COUNTER;
+reg [1:0] DBR_SYNC;
+reg CPU_CYCLE_START;
+reg REFRESH_CYCLE_START;
 
 always @(negedge CLK80) begin
     if (!RESETn) begin
         SDRAM_CMD <= NOP;
         SDRAM_CONFIGURED <= 0;
         SDRAM_COUNTER <= 8'h00;
-        MEMORY_CYCLE <= 0;
         REFRESH_CYCLE <= 0;
+        REFRESH_CYCLE_START <= 0;
         CMA <= 11'b00000000000;
+        DBR_SYNC <= 2'b11;
+        CPU_CYCLE <= 0; //As opposed to DMA_CYCLE.
+        CPU_CYCLE_START <= 0;
+        CPU_TACK <= 0;
+        CRCSn <= 1;
+        RASn <= 1;
+        CASn <= 1;
+        WEn <= 1;
     end else begin
 
         if (SDRAM_COUNTER != 8'h00) begin SDRAM_COUNTER ++; end
 
+        DBR_SYNC[1] <= DBR_SYNC[0];
+        DBR_SYNC[0] <= DBRn;
+
+        CPU_CYCLE_START  <= (!TSn && !RAMSPACEn) || (CPU_CYCLE_START && !CPU_CYCLE);
+        REFRESH_CYCLE_START <= REFRESH && !CPU_CYCLE;
+
+        CRCSn <= SDRAM_CMD[3];
+        RASn  <= SDRAM_CMD[2];
+        CASn  <= SDRAM_CMD[1];
+        WEn   <= SDRAM_CMD[0];
+
         case (SDRAM_CMD)
             PRECHARGE    : CMA <= 11'b10000000000;
             MODEREGISTER : CMA <= 11'b00000100010;
-            //BANKACTIVATE : CMA <= xxx;
-            //READ | WRITE : CMA <= xxx;
+            BANKACTIVATE : CMA <= {1'b0, A[19], A[17:9]}; //1MB CPU ACCESS
+            //{1'b0, RASn, DMA_ROW_ADDRESS[8:0]} //1MB AGNUS ACCESS
+            //{1'b0, A[19], A[17:9]} //2MB CPU ACCESS
+            //{1'b0, DMA_ROW_ADDRESS[9:0]} //2MB AGNUS ACCESS
+            READ, WRITE  : CMA <= {3'b000, A[18], A[8:2]}; //1MB CPU ACCESS
+            //{3'b000, DMA_COL_ADDRESS[8:1]} //1MB AGNUS ACCESS
+            //{3'b00, A[20], A[18], A[8:2]}; //2MB CPU ACCESS
+            //{3'b00, DMA_COL_ADDRESS[9:1]} //2MB AGNUS ACCESS
+            //COLUMN ADDRESS MA1 DRIVES _DBEN, BELOW.
+            //default : CMA <= 11'b00000000000;
         endcase
 
-        //CONFIGURE THE SDRAM
         if (!SDRAM_CONFIGURED) begin
+            //CONFIGURE THE SDRAM
             case (SDRAM_COUNTER)
                 8'h00 : begin
                     SDRAM_CMD <= PRECHARGE;
@@ -114,7 +159,7 @@ always @(negedge CLK80) begin
                 8'h02 : begin
                     SDRAM_CMD <= MODEREGISTER;
                 end
-                8'h05|| 8'h09 : begin
+                8'h05, 8'h09 : begin
                     SDRAM_CMD <= AUTOREFRESH; //REFRESH TAKES 60ns = 3 80MHz CLOCK CYCLES.
                 end
                 8'h0D : begin
@@ -125,26 +170,63 @@ always @(negedge CLK80) begin
                     SDRAM_CMD <= NOP;
                 end
             endcase
+        end else begin
+            if (REFRESH_CYCLE_START || REFRESH_CYCLE) begin
+                //REFRESH CYCLE
+                case (SDRAM_COUNTER)
+                    8'h00 : begin
+                        SDRAM_CMD <= AUTOREFRESH;
+                        REFRESH_CYCLE <= 1;
+                        SDRAM_COUNTER <= 8'h01;
+                    end
+                    8'h04 : begin
+                        REFRESH_CYCLE <= 0;
+                        SDRAM_COUNTER <= 8'h00;
+                    end
+                    default : begin
+                        SDRAM_CMD <= NOP;
+                    end
+                endcase
+            end else begin
+                //CPU RAM ACCESS CYCLE
+                //THIS IS BASICALLY HOW AGNUS MEDIATED RAM ACCESS WORKS. IN THIS CASE,
+                //WE ARE REPLACING AGNUS' DRAM CONTROLLER FOR OUR OWN SDRAM CONTROLLER.
+                //WE MONITOR _DBR TO KNOW WHEN AGNUS IS NOT ACCESSING RAM.
+                //INCREASED PERFORMANCE MIGHT BE GAINED BY WATCHING AGNUS' RAS AND CAS
+                //SIGNALS TO INSERT OUR MEMORY ACCESS CYCLE IN BETWEEN INDIVIDUAL AGNUS DMA CYCLES.
+                //WHETHER THIS WILL WORK IS UNKNOWN. IT MAY INTRODUCE TIMING ISSUES, ESPECIALLY
+                //WITH CERTAIN SOFTWARE.
+                case (SDRAM_COUNTER)
+                    8'h00 : begin                        
+                        if (CPU_CYCLE_START && DBR_SYNC == 2'b11) begin
+                            SDRAM_CMD <= BANKACTIVATE; //RAS to CAS delay is 18ns.
+                            CPU_CYCLE <= 1;
+                            SDRAM_COUNTER <= 8'h01;
+                        end
+                    end
+                    8'h01 : begin
+                        SDRAM_CMD <= NOP;
+                    end
+                    8'h02 : begin
+                        if (RnW) begin
+                            SDRAM_CMD <= READ; //CAS latency = 2.
+                        end else begin
+                            SDRAM_CMD <= WRITE;                 
+                        end
+                    end
+                    8'h03 : begin
+                        SDRAM_CMD <= PRECHARGE;
+                        CPU_TACK <= 1;                  
+                    end
+                    8'h04 : begin
+                        SDRAM_CMD <= NOP;
+                        CPU_TACK <= 0;
+                        CPU_CYCLE <= 0;
+                        SDRAM_COUNTER <= 8'h00;                
+                    end
+                endcase
+            end
         end
-
-        //REFRESH CYCLE
-        if (SDRAM_CONFIGURED && !MEMORY_CYCLE && (REFRESH || REFRESH_CYCLE)) begin
-            case (SDRAM_COUNTER)
-                8'h00 : begin
-                    SDRAM_CMD <= AUTOREFRESH;
-                    REFRESH_CYCLE <= 1;
-                    SDRAM_COUNTER <= 8'h01;
-                end
-                8'h04 : begin
-                    REFRESH_CYCLE <= 0;
-                    SDRAM_COUNTER <= 8'h00;
-                end
-                default : begin
-                    SDRAM_CMD <= NOP;
-                end
-            endcase
-        end
-
     end
 end
 

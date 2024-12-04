@@ -1,3 +1,4 @@
-@W: MT511 :"d:/amigapci/u712/u712_top.sdc":3:0:3:0|Clock source [get_ports CLK7] not found in netlist: create_clock -period 139.6648 [get_ports CLK7]
-@W: MT116 |Paths from clock (U712_TOP|CLK80_OUT_derived_clock:r) to clock (C1:r) are overconstrained because the required time of 0.86 ns is too small.  
-@W: MT116 |Paths from clock (C1:r) to clock (U712_TOP|CLK80_OUT_derived_clock:r) are overconstrained because the required time of 0.18 ns is too small.  
+@W: BN132 :"d:\amigapci\u712\u712_reg_sm.v":41:0:41:5|Removing instance U712_REG_SM.DBR_SYNC[0] because it is equivalent to instance U712_CHIP_RAM.DBR_SYNC[0]. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: BN132 :"d:\amigapci\u712\u712_chip_ram.v":106:0:106:5|Removing instance U712_CHIP_RAM.DBR_SYNC[1] because it is equivalent to instance U712_REG_SM.DBR_SYNC[1]. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: MT116 |Paths from clock (U712_TOP|CLK80_OUT_derived_clock:r) to clock (C1:r) are overconstrained because the required time of 2.84 ns is too small.  
+@W: MT116 |Paths from clock (C1:r) to clock (U712_TOP|CLK80_OUT_derived_clock:r) are overconstrained because the required time of 1.33 ns is too small.  

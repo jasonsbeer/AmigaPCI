@@ -1,7 +1,7 @@
 # Synopsys Constraint Checker, version maplat, Build 1612R, built Dec  5 2016
 # Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
 
-# Written on Fri Nov 29 11:16:45 2024
+# Written on Tue Dec 03 18:22:05 2024
 
 
 ##### DESIGN INFO #######################################################
@@ -14,7 +14,7 @@ Constraint File(s):      "D:\AmigaPCI\U712\U712_TOP.sdc"
 
 ##### SUMMARY ############################################################
 
-Found 1 issues in 1 out of 4 constraints
+Found 0 issues in 0 out of 3 constraints
 
 
 ##### DETAILS ############################################################
@@ -26,17 +26,17 @@ Clock Relationships
 
 Starting                             Ending                               |     rise to rise     |     fall to fall     |     rise to fall     |     fall to rise                     
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-C1                                   C1                                   |     69.832           |     No paths         |     No paths         |     No paths                         
-C1                                   U712_TOP|CLK80_OUT_derived_clock     |     0.178            |     No paths         |     No paths         |     No paths                         
-U712_TOP|CLK80_OUT_derived_clock     C1                                   |     0.865            |     No paths         |     No paths         |     No paths                         
-U712_TOP|CLK80_OUT_derived_clock     U712_TOP|CLK80_OUT_derived_clock     |     12.500           |     12.500           |     No paths         |     6.350                            
+C1                                   C1                                   |     279.330          |     No paths         |     No paths         |     No paths                         
+C1                                   U712_TOP|CLK80_OUT_derived_clock     |     1.330            |     No paths         |     No paths         |     No paths                         
+U712_TOP|CLK80_OUT_derived_clock     C1                                   |     2.839            |     No paths         |     No paths         |     No paths                         
+U712_TOP|CLK80_OUT_derived_clock     U712_TOP|CLK80_OUT_derived_clock     |     12.500           |     No paths         |     No paths         |     No paths                         
 =====================================================================================================================================================================================
  Note: 'No paths' indicates there are no paths in the design for that pair of clock edges.
        'Diff grp' indicates that paths exist but the starting clock and ending clock are in different clock groups.
 
 
-@W|Paths from clock (C1:r) to clock (U712_TOP|CLK80_OUT_derived_clock:r) are overconstrained because the required time of 0.18 ns is too small.  
-@W|Paths from clock (U712_TOP|CLK80_OUT_derived_clock:r) to clock (C1:r) are overconstrained because the required time of 0.86 ns is too small.  
+@W|Paths from clock (C1:r) to clock (U712_TOP|CLK80_OUT_derived_clock:r) are overconstrained because the required time of 1.33 ns is too small.  
+@W|Paths from clock (U712_TOP|CLK80_OUT_derived_clock:r) to clock (C1:r) are overconstrained because the required time of 2.84 ns is too small.  
 
 
 Unconstrained Start/End Points
@@ -109,8 +109,8 @@ p:WEn
 Inapplicable constraints
 ************************
 
-create_clock -period { 139.6648 } { get_ports CLK7 }
-	@E:"d:/amigapci/u712/u712_top.sdc":3:0:3:0|collection "[get_ports CLK7]" is empty
+(none)
+
 
 Applicable constraints with issues
 **********************************

@@ -1,2 +1,0 @@
-@W: BN132 :"d:\amigapci\u712\u712_chip_ram.v":88:0:88:5|Removing sequential instance U712_CHIP_RAM.CMA_1[5] because it is equivalent to instance U712_CHIP_RAM.CMA_1[1]. To keep the instance, apply constraint syn_preserve=1 on the instance.
-@W: MF511 |Found issues with constraints. Please check constraint checker report "D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\U712_icecube_cck.rpt" .

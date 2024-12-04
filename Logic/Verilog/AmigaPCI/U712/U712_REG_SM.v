@@ -38,7 +38,7 @@ assign UDSn = ~(UDS_OUT && DS_EN);
 
 //MC68000 STATE MACHINE
 
-always @(posedge CLK80) begin
+always @(negedge CLK80) begin
     if (!RESETn) begin
 
         DS_EN <= 0;

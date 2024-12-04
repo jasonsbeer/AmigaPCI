@@ -1,8 +1,7 @@
 @N: MF248 |Running in 64-bit mode.
 @N: MF666 |Clock conversion enabled. (Command "set_option -fix_gated_and_generated_clocks 1" in the project file.)
 @N: MT204 |Auto Constrain mode is disabled because clocks are defined in the SDC file
-@N: MO231 :"d:\amigapci\u712\u712_chip_ram.v":49:0:49:5|Found counter in view:work.U712_CHIP_RAM(verilog) instance REFRESH_COUNTER[7:0] 
-@N: FX1017 :|SB_GB inserted on the net CLK80_OUT.
+@N: MO231 :"d:\amigapci\u712\u712_chip_ram.v":56:0:56:5|Found counter in view:work.U712_CHIP_RAM(verilog) instance REFRESH_COUNTER[7:0] 
 @N: FX1017 :"d:\amigapci\u712\u712_top.v":6:20:6:21|SB_GB inserted on the net C1_c.
 @N: FX1017 :|SB_GB inserted on the net RESETn_c_i.
 @N: MT611 :|Automatically generated clock U712_TOP|CLK40_OUT_derived_clock is not used and is being removed
@@ -10,8 +9,8 @@
 @N: BW107 |Synopsys Constraint File capacitance units using default value of 1pF 
 @N: FX1056 |Writing EDF file: D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\U712_icecube.edf
 @N: MT615 |Found clock CLK40_IN with period 25.00ns 
-@N: MT615 |Found clock C1 with period 69.83ns 
-@N: MT615 |Found clock C3 with period 69.83ns 
+@N: MT615 |Found clock C1 with period 279.33ns 
+@N: MT615 |Found clock C3 with period 279.33ns 
 @N: MT615 |Found clock U712_TOP|CLK80_OUT_derived_clock with period 12.50ns 
 @N: MT320 |This timing report is an estimate of place and route data. For final timing results, use the FPGA vendor place and route report.
 @N: MT322 |Clock constraints include only register-to-register paths associated with each individual clock.

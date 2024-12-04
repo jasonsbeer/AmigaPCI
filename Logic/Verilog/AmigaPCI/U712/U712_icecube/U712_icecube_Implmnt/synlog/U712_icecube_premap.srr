@@ -1,4 +1,4 @@
-# Fri Nov 29 11:16:45 2024
+# Tue Dec 03 18:22:04 2024
 
 Synopsys Lattice Technology Pre-mapping, Version maplat, Build 1612R, Built Dec  5 2016 10:31:39
 Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
@@ -21,9 +21,8 @@ Mapper Initialization Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0
 Start loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 101MB peak: 102MB)
 
 
-Finished loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 101MB peak: 103MB)
+Finished loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 101MB peak: 104MB)
 
-@W: BN132 :"d:\amigapci\u712\u712_chip_ram.v":88:0:88:5|Removing sequential instance U712_CHIP_RAM.CMA_1[5] because it is equivalent to instance U712_CHIP_RAM.CMA_1[1]. To keep the instance, apply constraint syn_preserve=1 on the instance.
 
 ICG Latch Removal Summary:
 Number of ICG latches removed:	0
@@ -40,11 +39,11 @@ Clock Summary
 Start                                Requested     Requested     Clock                       Clock                Clock
 Clock                                Frequency     Period        Type                        Group                Load 
 -----------------------------------------------------------------------------------------------------------------------
-C1                                   14.3 MHz      69.832        declared                    default_clkgroup     11   
-C3                                   14.3 MHz      69.832        declared                    default_clkgroup     3    
+C1                                   3.6 MHz       279.330       declared                    default_clkgroup     11   
+C3                                   3.6 MHz       279.330       declared                    default_clkgroup     3    
 CLK40_IN                             40.0 MHz      25.000        declared                    default_clkgroup     0    
 U712_TOP|CLK40_OUT_derived_clock     40.0 MHz      25.000        derived (from CLK40_IN)     default_clkgroup     6    
-U712_TOP|CLK80_OUT_derived_clock     80.0 MHz      12.500        derived (from CLK40_IN)     default_clkgroup     43   
+U712_TOP|CLK80_OUT_derived_clock     80.0 MHz      12.500        derived (from CLK40_IN)     default_clkgroup     63   
 =======================================================================================================================
 
 Finished Pre Mapping Phase.
@@ -70,7 +69,6 @@ original code -> new code
    100 -> 10000
 None
 None
-@W: MF511 |Found issues with constraints. Please check constraint checker report "D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\U712_icecube_cck.rpt" .
 
 Finished constraint checker (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 132MB peak: 133MB)
 
@@ -79,6 +77,6 @@ Pre-mapping successful!
 At Mapper Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 47MB peak: 133MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
-# Fri Nov 29 11:16:45 2024
+# Tue Dec 03 18:22:05 2024
 
 ###########################################################]

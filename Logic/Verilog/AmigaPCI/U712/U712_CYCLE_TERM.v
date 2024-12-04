@@ -1,5 +1,5 @@
 module U712_CYCLE_TERM (
-    input CLK80, CLK40, RESETn, REG_TACK,
+    input CLK80, CLK40, RESETn, REG_TACK, CPU_TACK,
     output TACKn
 );
 
@@ -27,13 +27,13 @@ always @(negedge CLK80) begin
     end else begin
         case (TACK_STATE)
             3'b000 : begin
-                if (REG_TACK) begin
+                if (REG_TACK || CPU_TACK) begin
                     TACK_EN <= 1;
                     TACK_STATE <= 3'b001;
                 end
             end
             3'b001 : begin
-                if (!CLK40) begin
+                if (CLK40) begin
                     TACK_STATE <= 3'b010;
                     TACK_OUTn <= 0;
                 end
