@@ -21,9 +21,7 @@ The AmigaPCI is an OCS/ECS Amiga computer in the ATX form factor. It provides a 
 ## Project Status  
 **THIS IS A WORK IN PROGRESS AND IS SUBJECT TO CHANGE WITHOUT NOTICE.**
 
-This is an active project and is currently in the prototype stage. Specifications are subject to change. See [Milestones and progress](milestones.md) for current status. Because this project is in the prototype stage, it is not recommended for general use at this time. There will be errors that adversely affect performance and the logic equations are not complete. If you choose to build this before final release, you accept all cost and risk associated with the decision.
-
-For the technically minded, I would appreciate a review of the [AmigaPCI Hardware Reference](/AmigaPCI_Technical_Manual.md) and [AmigaPCI PCI Hardware Developer Reference](/AmigaPCI_PCI_Dev_Guide.md) references.  
+This is an active project and is currently in the prototype stage. Specifications are subject to change. Because this project is in the prototype stage, it is not recommended for general use at this time. There will be errors that adversely affect performance and the logic equations are not complete. If you choose to build this before final release, you accept all cost and risk associated with the decision.
 
 I am not seeking hardware enhancement requests at this time, but feel free to post these in the issues section. Discussions can be found at Discord: https://discord.gg/NU7SPYfNFj.
 
@@ -106,7 +104,8 @@ The real time clock (RTC) of the AmigaPCI is supplied by the STM32F205 microcont
 [AmigaPCI Hardware Reference](/AmigaPCI_Technical_Manual.md)  
 [PCI Local Bus Revision 2.3 specifications](/DataSheets/PCI/pci_23.pdf)  
 
-# Revision History   
+# Revision History 
+**Rev 4.0**  Third engineering prototype.
 **Rev 3.0**  Second engineering prototype.  
 
 # Acknowledgements  
@@ -118,4 +117,4 @@ Floppy interface modifications from Ian Steadman (noted in schematic) released u
 
 <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://github.com/jasonsbeer/AmigaPCI">AmigaPCI</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://github.com/jasonsbeer">Jason Neus</a> is licensed under <a href="https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">Creative Commons Attribution-NonCommercial 4.0 International<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt=""></a></p>
 
-**Last Update: 07-JUN-2024**
+**Last Update: 04-DEC-2024**
