@@ -1,2 +1,2 @@
-@E: CG244 :"D:\AmigaPCI\U712\U712_CHIP_RAM.v":7:22:7:24|Expecting port direction input/output/inout
+@E: CS168 :"D:\AmigaPCI\U712\U712_TOP.v":112:15:112:15|Port REG_CYCLE does not exist
 

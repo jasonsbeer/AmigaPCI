@@ -4,7 +4,7 @@
   (keywordMap (keywordLevel 0))
   (status
     (written
-      (timeStamp 2024 11 25 16 42 57)
+      (timeStamp 2024 11 26 16 52 36)
       (author "Synopsys, Inc.")
       (program "Synplify Pro" (version "L-2016.09L+ice40, mapper maplat, Build 1612R"))
      )
@@ -91,6 +91,16 @@
          )
        )
     )
+    (cell SB_DFFN (cellType GENERIC)
+      (property is_sequential (integer 1))
+       (view PRIM (viewType NETLIST)
+         (interface
+           (port Q (direction OUTPUT))
+           (port D (direction INPUT))
+           (port C (direction INPUT))
+         )
+       )
+    )
     (cell SB_LUT4 (cellType GENERIC)
        (view PRIM (viewType NETLIST)
          (interface
@@ -127,6 +137,79 @@
   (library work
     (edifLevel 0)
     (technology (numberDefinition ))
+    (cell U111_CYCLE_SM (cellType GENERIC)
+       (view netlist (viewType NETLIST)
+         (interface
+           (port CLK80 (direction INPUT))
+           (port CLK40 (direction INPUT))
+           (port TSn_c (direction OUTPUT))
+           (port TS_CPUn_c (direction INPUT))
+           (port RESETn_c (direction INPUT))
+           (port CLK40_i (direction INPUT))
+         )
+         (contents
+          (instance TS_EN_RNO (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "0808"))
+          )
+          (instance TSn_RNO (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "7777"))
+          )
+          (instance TSn (viewRef PRIM (cellRef SB_DFFN (libraryRef sb_ice)))
+          )
+          (instance TS_EN (viewRef PRIM (cellRef SB_DFFN (libraryRef sb_ice)))
+          )
+          (instance GND (viewRef PRIM (cellRef GND (libraryRef sb_ice)))          )
+          (instance VCC (viewRef PRIM (cellRef VCC (libraryRef sb_ice)))          )
+          (net (rename clk40_i "CLK40_i") (joined
+           (portRef CLK40_i)
+           (portRef I0 (instanceRef TS_EN_RNO))
+          ))
+          (net (rename resetn_c "RESETn_c") (joined
+           (portRef RESETn_c)
+           (portRef I0 (instanceRef TSn_RNO))
+           (portRef I1 (instanceRef TS_EN_RNO))
+          ))
+          (net (rename ts_cpun_c "TS_CPUn_c") (joined
+           (portRef TS_CPUn_c)
+           (portRef I2 (instanceRef TS_EN_RNO))
+          ))
+          (net (rename GNDZ0 "GND") (joined
+           (portRef Y (instanceRef GND))
+           (portRef I3 (instanceRef TSn_RNO))
+           (portRef I2 (instanceRef TSn_RNO))
+           (portRef I3 (instanceRef TS_EN_RNO))
+          ))
+          (net TS_EN_0 (joined
+           (portRef O (instanceRef TS_EN_RNO))
+           (portRef D (instanceRef TS_EN))
+          ))
+          (net (rename TS_ENZ0 "TS_EN") (joined
+           (portRef Q (instanceRef TS_EN))
+           (portRef I1 (instanceRef TSn_RNO))
+          ))
+          (net (rename TSnZ0 "TSn") (joined
+           (portRef O (instanceRef TSn_RNO))
+           (portRef D (instanceRef TSn))
+          ))
+          (net (rename tsn_c "TSn_c") (joined
+           (portRef Q (instanceRef TSn))
+           (portRef TSn_c)
+          ))
+          (net (rename clk40 "CLK40") (joined
+           (portRef CLK40)
+           (portRef C (instanceRef TSn))
+          ))
+          (net (rename clk80 "CLK80") (joined
+           (portRef CLK80)
+           (portRef C (instanceRef TS_EN))
+          ))
+          (net (rename VCCZ0 "VCC") (joined
+           (portRef Y (instanceRef VCC))
+          ))
+         )
+        (property orig_inst_of (string "U111_CYCLE_SM"))
+       )
+    )
     (cell U111_TOP (cellType GENERIC)
        (view verilog (viewType NETLIST)
          (interface
@@ -277,6 +360,10 @@
            (property PIN_TYPE (string "000001"))
           )
           (instance (rename SIZ_ibuf_1 "SIZ_ibuf[1]") (viewRef PRIM (cellRef SB_IO (libraryRef sb_ice)))
+           (property NEG_TRIGGER (string "0"))
+           (property PIN_TYPE (string "000001"))
+          )
+          (instance RESETn_ibuf (viewRef PRIM (cellRef SB_IO (libraryRef sb_ice)))
            (property NEG_TRIGGER (string "0"))
            (property PIN_TYPE (string "000001"))
           )
@@ -622,6 +709,8 @@
            (property PLLOUT_SELECT_PORTA (string "GENCLK"))
            (property PLLOUT_SELECT_PORTB (string "GENCLK_HALF"))
           )
+          (instance U111_CYCLE_SM (viewRef netlist (cellRef U111_CYCLE_SM))
+          )
           (instance VCC (viewRef PRIM (cellRef VCC (libraryRef sb_ice)))          )
           (instance GND (viewRef PRIM (cellRef GND (libraryRef sb_ice)))          )
           (net (rename clk40_in "CLK40_IN") (joined
@@ -756,6 +845,21 @@
            (portRef O (instanceRef D_LM_040_iobuf_RNO_7))
            (portRef D_OUT_0 (instanceRef D_LM_040_iobuf_7))
           ))
+          (net CLK80 (joined
+           (portRef CLK80 (instanceRef U111_CYCLE_SM))
+           (portRef D_OUT_0 (instanceRef CLKRAMB_obuf))
+           (portRef D_OUT_0 (instanceRef CLKRAMA_obuf))
+           (portRef D_OUT_0 (instanceRef CLK80_CPU_obuf))
+           (portRef PLLOUTGLOBALA (instanceRef pll))
+          ))
+          (net CLK40 (joined
+           (portRef CLK40 (instanceRef U111_CYCLE_SM))
+           (portRef D_OUT_0 (instanceRef CLK40C_obuf))
+           (portRef D_OUT_0 (instanceRef CLK40B_obuf))
+           (portRef D_OUT_0 (instanceRef CLK40A_obuf))
+           (portRef PLLOUTGLOBALB (instanceRef pll))
+           (portRef CLK40_i (instanceRef U111_CYCLE_SM))
+          ))
           (net (rename GNDZ0 "GND") (joined
            (portRef Y (instanceRef GND))
            (portRef (member DYNAMICDELAY 0) (instanceRef pll))
@@ -809,18 +913,6 @@
            (portRef I2 (instanceRef D_UU_AMIGA_iobuf_RNO_0))
            (portRef I2 (instanceRef D_UM_AMIGA_iobuf_RNO_0))
           ))
-          (net CLK80 (joined
-           (portRef PLLOUTGLOBALA (instanceRef pll))
-           (portRef D_OUT_0 (instanceRef CLKRAMB_obuf))
-           (portRef D_OUT_0 (instanceRef CLKRAMA_obuf))
-           (portRef D_OUT_0 (instanceRef CLK80_CPU_obuf))
-          ))
-          (net CLK40 (joined
-           (portRef PLLOUTGLOBALB (instanceRef pll))
-           (portRef D_OUT_0 (instanceRef CLK40C_obuf))
-           (portRef D_OUT_0 (instanceRef CLK40B_obuf))
-           (portRef D_OUT_0 (instanceRef CLK40A_obuf))
-          ))
           (net (rename A_040_c_0 "A_040_c[0]") (joined
            (portRef D_IN_0 (instanceRef A_040_ibuf_0))
            (portRef D_OUT_0 (instanceRef A_AMIGA_obuf_0))
@@ -854,12 +946,17 @@
            (portRef PACKAGE_PIN (instanceRef SIZ_ibuf_1))
            (portRef (member SIZ 0))
           ))
+          (net RESETn_c (joined
+           (portRef D_IN_0 (instanceRef RESETn_ibuf))
+           (portRef RESETn_c (instanceRef U111_CYCLE_SM))
+          ))
           (net (rename resetn "RESETn") (joined
+           (portRef PACKAGE_PIN (instanceRef RESETn_ibuf))
            (portRef RESETn)
           ))
-          (net TSn_c (joined
+          (net TS_CPUn_c (joined
            (portRef D_IN_0 (instanceRef TS_CPUn_ibuf))
-           (portRef D_OUT_0 (instanceRef TSn_obuf))
+           (portRef TS_CPUn_c (instanceRef U111_CYCLE_SM))
           ))
           (net (rename ts_cpun "TS_CPUn") (joined
            (portRef PACKAGE_PIN (instanceRef TS_CPUn_ibuf))
@@ -1495,6 +1592,10 @@
           (net (rename clkramb "CLKRAMB") (joined
            (portRef PACKAGE_PIN (instanceRef CLKRAMB_obuf))
            (portRef CLKRAMB)
+          ))
+          (net TSn_c (joined
+           (portRef TSn_c (instanceRef U111_CYCLE_SM))
+           (portRef D_OUT_0 (instanceRef TSn_obuf))
           ))
           (net (rename tsn "TSn") (joined
            (portRef PACKAGE_PIN (instanceRef TSn_obuf))

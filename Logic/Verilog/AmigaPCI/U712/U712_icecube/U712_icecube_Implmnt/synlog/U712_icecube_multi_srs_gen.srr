@@ -4,11 +4,11 @@ File D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\synwork\U712_icecube_com
 @N: NF107 :"D:\AmigaPCI\U712\U712_TOP.v":4:7:4:14|Selected library: work cell: U712_TOP view verilog as top level
 @N: NF107 :"D:\AmigaPCI\U712\U712_TOP.v":4:7:4:14|Selected library: work cell: U712_TOP view verilog as top level
 
-At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 67MB peak: 68MB)
+At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 68MB peak: 68MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Tue Dec 03 18:22:04 2024
+# Fri Dec 06 13:44:55 2024
 
 ###########################################################]

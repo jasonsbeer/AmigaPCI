@@ -7,7 +7,7 @@ module U111_TOP (
 
     output [1:0] A_AMIGA,
     output CLK40A, CLK40B, CLK40C, CLK80_CPU, CLKRAMA, CLKRAMB,
-    output TSn, TAn, CPUBGn, BUFENn, BUFDIR, DMAn,
+    output TSn, TAn, TBIn, CPUBGn, BUFENn, BUFDIR, DMAn,
 
     inout [7:0] D_UU_040, //68040 DATA BUS
     inout [7:0] D_UM_040,
@@ -24,12 +24,11 @@ module U111_TOP (
 
 );
 
-
 ///////////////////////////////
 // BUS AND PROCESSOR CLOCKS //
 /////////////////////////////
 
-//iCECUBE2 THROWS THIS ERROR, WHICH MUST BE ERRONEOUS.
+//iCECUBE2 THROWS THIS ERROR, WHICH MUST BE ERRONEOUS?
 //An input port (port CLK40_IN) is the target of an assignment - please check if this is intentional
 
 //WE GENERATE THE 40MHz AND 80MHz CLOCKS HERE
@@ -59,7 +58,9 @@ SB_PLL40_2F_PAD #(
     .PLLOUTGLOBALB  (CLK40)
 );
 
+//////////////
 // BUFFERS //
+////////////
 
 wire CYCLE_EN = 1;
 wire LBENn = 1;
@@ -78,104 +79,38 @@ U111_BUFFERS U111_BUFFERS (
     .DMAn (DMAn)
 );
 
-////////////////////////
-// DATA PASS THROUGH //
-//////////////////////
-
-//DRIVE ADDRESS BITS 1-0 DURING CPU CYCLES.
-assign A_AMIGA = A_040;
-
-//wire [7:0] DATA_LATCH0 = 8'hFF;
-//wire [7:0] DATA_LATCH1 = 8'hEE;
-
-//IS THIS A LONG WORD TRANSFER CYCLE?
-wire LW_TRANS = SIZ == 2'b00 || SIZ == 2'b11;
-
-//WHEN TRANSFERRING A BYTE OR WORD IN A READ CYCLE, DUPLICATE THE UPPER WORD TO THE LOWER WORD.
-wire FLIP = !LW_TRANS && A_AMIGA[1] == 1'b1;
-
-//USE THE LATCHED VALUE FROM THE STATE MACHINE WHEN TRANSFERING A LONG WORD TO A WORD PORT.
-//WHEN PORT = 1 THIS IS A 16 BIT PORT. 0 = 32 BIT PORT.
-wire WORD_LATCH = LW_TRANS && PORTSIZE;
-
-//THESE WILL BE DRIVEN BY THE STATE MACHINE!!!////////////
-
-//wire [7:0] LATCHED0 = 8'hff;
-//wire [7:0] LATCHED1 = 8'hff;
-//wire [7:0] RD_LATCH0 = WORD_LATCH ? LATCHED0 : D_UU_AMIGA;
-//wire [7:0] RD_LATCH1 = WORD_LATCH ? LATCHED1 : D_UM_AMIGA;
-//////////////////////////////////////////////////////////
-
-//assign D_UU_040 = (RnW && WORD_LATCH) ? LATCHED0 : RnW ? D_UU_AMIGA : 8'bzzzzzzzz;
-//assign D_UM_040 = (RnW && WORD_LATCH) ? LATCHED1 : RnW ? D_UM_AMIGA : 8'bzzzzzzzz;
-assign D_UU_040 = RnW ? D_UU_AMIGA : 8'bzzzzzzzz;
-assign D_UM_040 = RnW ? D_UM_AMIGA : 8'bzzzzzzzz;
-//assign D_LM_040 = RnW ? D_LM_AMIGA : 8'bzzzzzzzz;
-//assign D_LL_040 = RnW ? D_LL_AMIGA : 8'bzzzzzzzz;
-assign D_LM_040 = (RnW && FLIP) ? D_UU_AMIGA : RnW ? D_LM_AMIGA : 8'bzzzzzzzz;
-assign D_LL_040 = (RnW && FLIP) ? D_UM_AMIGA : RnW ? D_LL_AMIGA : 8'bzzzzzzzz;
-
-//ON WRITES, LM AND LL ARE ALWAYS PASSED THROUGH.
-assign D_UU_AMIGA = (!RnW && FLIP) ? D_LM_040 : !RnW ? D_UU_040 : 8'bzzzzzzzz;
-assign D_UM_AMIGA = (!RnW && FLIP) ? D_LL_040 : !RnW ? D_UM_040 : 8'bzzzzzzzz;
-assign D_LM_AMIGA = !RnW ? D_LM_040 : 8'bzzzzzzzz;
-assign D_LL_AMIGA = !RnW ? D_LL_040 : 8'bzzzzzzzz;
-
-////////////////////////
-// CYCLE TERMINATION //
-//////////////////////
-
-//WE PASS THE _TACK SIGNAL THROUGH WHEN THE _TA OUTPUT IS ENABLED.
-//TRANSFER BURST INHIBIT IS ENABLED WHEN ADDRESSING A WORD PORT.
-
-wire TA_EN = 1;
-assign TAn = TA_EN ? TACKn : 1'bz;
-//assign TBIn = PORTSIZE ? TACKn : 1'b1;
-assign TBIn = 0;
-
-/*assign TAn = TA_EN ? TACK_OUTn : 1'b1;
-
-reg TACK_OUTn;
-reg TA_EN;
-reg [1:0] TACK_STATE;
-always @(posedge CLK80) begin
-    if (!RESETn) begin
-        TA_EN <= 0;
-        TACK_STATE <= 2'b00;
-    end else begin
-        case (TACK_STATE)
-        2'b00 : begin
-            if (!TACKn) begin
-                TACK_OUTn <= 0;
-                TA_EN <= 1;
-                TACK_STATE <= 2'b01;
-            end
-        end
-        2'b01 : begin
-            TACK_STATE <= 2'b10;
-        end
-        2'b10 : begin
-            if (TACKn) begin
-                TACK_OUTn <= 1;
-                TACK_STATE <= 2'b00;
-            end
-        end
-        endcase
-    end
-end*/
-
 //////////////////////////////////
 // DATA TRANSFER STATE MACHINE //
 ////////////////////////////////
 
-//wire TS_SMn = 1;
 U111_CYCLE_SM U111_CYCLE_SM (
-    .CLK160 (CLK160),
+    //INPUTS
     .CLK80 (CLK80),
     .CLK40 (CLK40),
     .RESETn (RESETn),
     .TS_CPUn (TS_CPUn),
-    .TSn (TSn)
+    .RnW (RnW),
+    .PORTSIZE (PORTSIZE),
+    .TACKn (TACKn),
+    .SIZ (SIZ),
+    .A_040 (A_040),
+
+    //OUTPUTS
+    .TAn (TAn),
+    .TBIn (TBIn),
+    .A_AMIGA (A_AMIGA),
+    .TSn (TSn),
+
+    //INOUT
+    .D_UU_040 (D_UU_040),
+    .D_UM_040 (D_UM_040),
+    .D_LM_040 (D_LM_040),
+    .D_LL_040 (D_LL_040),
+    .D_UU_AMIGA (D_UU_AMIGA),
+    .D_UM_AMIGA (D_UM_AMIGA),
+    .D_LM_AMIGA (D_LM_AMIGA),
+    .D_LL_AMIGA (D_LL_AMIGA)
 );
+
 
 endmodule

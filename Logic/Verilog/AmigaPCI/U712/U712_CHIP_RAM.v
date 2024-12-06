@@ -1,9 +1,15 @@
 module U712_CHIP_RAM (
 
-    input CLK80, C1, RESETn, RAMSPACEn, TSn, RnW, DBRn,
+    input CLK80, C1, RESETn, RAMSPACEn, TSn, RnW, DBRn, AWEn, RAS0n, RAS1n, CASLn, CASUn,
     input [20:1] A,
+    input [9:0] DRA,
 
-    output BANK1, BANK0, /*CRCSn, RASn, CASn, WEn,*/ CLKEN, RAMENn,
+    output BANK1, BANK0, RAMENn,
+    output reg DBDIR,
+    output reg CLKEN,
+    output reg DMA_CYCLE,
+    output reg CPU_CYCLE,
+    output reg DBENn,
     output reg CRCSn,
     output reg RASn,
     output reg CASn,
@@ -74,6 +80,43 @@ always @(negedge CLK80) begin
 end
 
 //////////////////////////
+// AGNUS SYNCHRONIZERS //
+////////////////////////
+
+//SYNCHRONIZE THE NECESSARY AGNUS SIGNALS HERE.
+//THESE ARE NECESSARY TO DRIVE DMA CYCLES AND PREVENT
+//CONTENTION OF RAM CYCLES. THE INDIVIDUAL RAS AND CAS SIGNALS
+//ARE MEANINGLESS FOR THIS SDRAM CONTROLLER, SO WE CAPTURE WHEN
+//EITHER SIGNAL IS ASSERTED. THE INDIVIDUAL CAS SIGNALS
+//INDICATE WHICH BYTES ARE ENABLED. CASL = D7-0, CASU = D15-8.
+
+//TO DO - UPDATE BYTE ENABLE MODULE WITH CAS INFO FOR DMA CYCLES!
+
+reg [1:0] RAS_SYNC;
+reg [1:0] CAS_SYNC;
+reg [1:0] DBR_SYNC;
+
+wire RAS_AGNUSn = ~(!RAS0n || !RAS1n);
+wire CAS_AGNUSn = ~(!CASLn || !CASUn);
+
+always @(negedge CLK80) begin
+    if (!RESETn) begin
+        RAS_SYNC <= 2'b11;
+        CAS_SYNC <= 2'b11;
+        DBR_SYNC <= 2'b11;
+    end else begin
+        RAS_SYNC[1] <= RAS_SYNC[0];
+        RAS_SYNC[0] <= RAS_AGNUSn;
+
+        CAS_SYNC[1] <= CAS_SYNC[0];
+        CAS_SYNC[0] <= CAS_AGNUSn;
+
+        DBR_SYNC[1] <= DBR_SYNC[0];
+        DBR_SYNC[0] <= DBRn;
+    end
+end
+
+//////////////////////////
 // SDRAM STATE MACHINE //
 ////////////////////////
 
@@ -92,16 +135,17 @@ COL: A20 A18  A8  A7  A6  A5  A4  A3  A2  A1
 
 assign BANK1 = 0;
 assign BANK0 = 0;
-assign CLKEN = 1;
 
 reg [3:0] SDRAM_CMD;
 reg SDRAM_CONFIGURED;
-reg CPU_CYCLE;
 reg REFRESH_CYCLE;
 reg [7:0] SDRAM_COUNTER;
-reg [1:0] DBR_SYNC;
 reg CPU_CYCLE_START;
 reg REFRESH_CYCLE_START;
+reg [9:0] DMA_ROW_ADDRESS;
+reg [9:0] DMA_COL_ADDRESS;
+reg DMA_CYCLE_START;
+reg WRITE_CYCLE;
 
 always @(negedge CLK80) begin
     if (!RESETn) begin
@@ -110,11 +154,18 @@ always @(negedge CLK80) begin
         SDRAM_COUNTER <= 8'h00;
         REFRESH_CYCLE <= 0;
         REFRESH_CYCLE_START <= 0;
-        CMA <= 11'b00000000000;
-        DBR_SYNC <= 2'b11;
-        CPU_CYCLE <= 0; //As opposed to DMA_CYCLE.
+        DMA_CYCLE <= 0;
+        DMA_CYCLE_START <= 0;
+        DMA_ROW_ADDRESS <= 9'b000000000;
+        DMA_COL_ADDRESS <= 9'b000000000;
+        DBENn <= 1;
+        WRITE_CYCLE <= 0;
+        CPU_CYCLE <= 0;
         CPU_CYCLE_START <= 0;
+        CMA <= 11'b00000000000;
         CPU_TACK <= 0;
+        DBDIR <= 1;
+        CLKEN <= 1;
         CRCSn <= 1;
         RASn <= 1;
         CASn <= 1;
@@ -122,12 +173,12 @@ always @(negedge CLK80) begin
     end else begin
 
         if (SDRAM_COUNTER != 8'h00) begin SDRAM_COUNTER ++; end
+        if (RAS_SYNC == 2'b10) begin DMA_ROW_ADDRESS <= DRA; end
+        if (CAS_SYNC == 2'b10) begin DMA_COL_ADDRESS <= DRA; end
 
-        DBR_SYNC[1] <= DBR_SYNC[0];
-        DBR_SYNC[0] <= DBRn;
-
-        CPU_CYCLE_START  <= (!TSn && !RAMSPACEn) || (CPU_CYCLE_START && !CPU_CYCLE);
-        REFRESH_CYCLE_START <= REFRESH && !CPU_CYCLE;
+        DMA_CYCLE_START <= (CAS_SYNC == 2'b10) || (DMA_CYCLE_START && !DMA_CYCLE);
+        CPU_CYCLE_START <= (!TSn && !RAMSPACEn) || (CPU_CYCLE_START && !CPU_CYCLE);
+        REFRESH_CYCLE_START <= REFRESH && !CPU_CYCLE && !DMA_CYCLE;
 
         CRCSn <= SDRAM_CMD[3];
         RASn  <= SDRAM_CMD[2];
@@ -137,12 +188,12 @@ always @(negedge CLK80) begin
         case (SDRAM_CMD)
             PRECHARGE    : CMA <= 11'b10000000000;
             MODEREGISTER : CMA <= 11'b00000100010;
-            BANKACTIVATE : CMA <= {1'b0, A[19], A[17:9]}; //1MB CPU ACCESS
-            //{1'b0, RASn, DMA_ROW_ADDRESS[8:0]} //1MB AGNUS ACCESS
+            BANKACTIVATE : CMA <= CPU_CYCLE ? {1'b0, A[19], A[17:9]} : //1MB CPU ACCESS
+                                              {1'b0, RAS0n, DMA_ROW_ADDRESS[8:0]}; //1MB AGNUS ACCESS
             //{1'b0, A[19], A[17:9]} //2MB CPU ACCESS
             //{1'b0, DMA_ROW_ADDRESS[9:0]} //2MB AGNUS ACCESS
-            READ, WRITE  : CMA <= {3'b000, A[18], A[8:2]}; //1MB CPU ACCESS
-            //{3'b000, DMA_COL_ADDRESS[8:1]} //1MB AGNUS ACCESS
+            READ, WRITE  : CMA <= CPU_CYCLE ? {3'b000, A[18], A[8:2]} : //1MB CPU ACCESS
+                                              {3'b000, DMA_COL_ADDRESS[8:1]}; //1MB AGNUS ACCESS
             //{3'b00, A[20], A[18], A[8:2]}; //2MB CPU ACCESS
             //{3'b00, DMA_COL_ADDRESS[9:1]} //2MB AGNUS ACCESS
             //COLUMN ADDRESS MA1 DRIVES _DBEN, BELOW.
@@ -179,7 +230,7 @@ always @(negedge CLK80) begin
                         REFRESH_CYCLE <= 1;
                         SDRAM_COUNTER <= 8'h01;
                     end
-                    8'h04 : begin
+                    8'h03 : begin
                         REFRESH_CYCLE <= 0;
                         SDRAM_COUNTER <= 8'h00;
                     end
@@ -195,34 +246,40 @@ always @(negedge CLK80) begin
                 //INCREASED PERFORMANCE MIGHT BE GAINED BY WATCHING AGNUS' RAS AND CAS
                 //SIGNALS TO INSERT OUR MEMORY ACCESS CYCLE IN BETWEEN INDIVIDUAL AGNUS DMA CYCLES.
                 //WHETHER THIS WILL WORK IS UNKNOWN. IT MAY INTRODUCE TIMING ISSUES, ESPECIALLY
-                //WITH CERTAIN SOFTWARE.
+                //WITH CERTAIN SOFTWARE. DMA CYCLES ALWAYS GET PRIORITY.
                 case (SDRAM_COUNTER)
-                    8'h00 : begin                        
-                        if (CPU_CYCLE_START && DBR_SYNC == 2'b11) begin
+                    8'h00 : begin
+                        if ((CPU_CYCLE_START && DBR_SYNC == 2'b11) || DMA_CYCLE_START) begin
                             SDRAM_CMD <= BANKACTIVATE; //RAS to CAS delay is 18ns.
-                            CPU_CYCLE <= 1;
+                            CPU_CYCLE <= CPU_CYCLE_START && !DMA_CYCLE_START;
+                            DMA_CYCLE <= DMA_CYCLE_START;
+                            DBENn <= ~(DMA_COL_ADDRESS[0] && DMA_CYCLE_START); //_DBEN is driven by DRA0 from the column address.
                             SDRAM_COUNTER <= 8'h01;
+                            DBDIR <= ~AWEn;
                         end
                     end
                     8'h01 : begin
                         SDRAM_CMD <= NOP;
+                        WRITE_CYCLE <= (DMA_CYCLE && !AWEn) || (CPU_CYCLE && !RnW);
                     end
                     8'h02 : begin
-                        if (RnW) begin
-                            SDRAM_CMD <= READ; //CAS latency = 2.
+                        if (WRITE_CYCLE) begin
+                            SDRAM_CMD <= WRITE;
                         end else begin
-                            SDRAM_CMD <= WRITE;                 
+                            SDRAM_CMD <= READ; //CAS latency = 2.
                         end
                     end
                     8'h03 : begin
                         SDRAM_CMD <= PRECHARGE;
-                        CPU_TACK <= 1;                  
+                        CPU_TACK <= CPU_CYCLE;
                     end
                     8'h04 : begin
                         SDRAM_CMD <= NOP;
                         CPU_TACK <= 0;
                         CPU_CYCLE <= 0;
-                        SDRAM_COUNTER <= 8'h00;                
+                        DMA_CYCLE <= 0;
+                        DBENn <= 1;
+                        SDRAM_COUNTER <= 8'h00;
                     end
                 endcase
             end

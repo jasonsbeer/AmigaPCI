@@ -4,11 +4,11 @@
 
 #project files
 add_file -verilog "D:/AmigaPCI/U712/U712_BUFFERS.v"
-add_file -verilog "D:/AmigaPCI/U712/U712_CYCLE_TERM.v"
 add_file -verilog "D:/AmigaPCI/U712/U712_REG_SM.v"
 add_file -verilog "D:/AmigaPCI/U712/U712_TOP.v"
 add_file -verilog "D:/AmigaPCI/U712/U712_BYTE_ENABLE.v"
 add_file -verilog "D:/AmigaPCI/U712/U712_CHIP_RAM.v"
+add_file -verilog "D:/AmigaPCI/U712/U712_CYCLE_TERM.v"
 add_file -constraint "D:/AmigaPCI/U712/U712_TOP.sdc"
 
 

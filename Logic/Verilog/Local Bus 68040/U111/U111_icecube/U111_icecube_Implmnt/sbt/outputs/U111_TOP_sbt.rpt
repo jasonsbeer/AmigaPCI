@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:31:51
 
-* File Generated:     Nov 26 2024 16:52:41
+* File Generated:     Dec 6 2024 09:04:09
 
 * Purpose:            General info of design implementation
 
@@ -27,28 +27,28 @@ Device Info:
 
 Design statistics:
 ------------------
-    FFs:                  2
-    LUTs:                 39
+    FFs:                  24
+    LUTs:                 90
     RAMs:                 0
-    IOBs:                 86
+    IOBs:                 88
     GBs:                  0
     PLLs:                 1
     Warm Boots:           0
 
 Logic Resource Utilization:
 ---------------------------
-    Total Logic Cells: 39/3520
-        Combinational Logic Cells: 37       out of   3520      1.05114%
-        Sequential Logic Cells:    2        out of   3520      0.0568182%
-        Logic Tiles:               16       out of   440       3.63636%
+    Total Logic Cells: 90/3520
+        Combinational Logic Cells: 66       out of   3520      1.875%
+        Sequential Logic Cells:    24       out of   3520      0.681818%
+        Logic Tiles:               57       out of   440       12.9545%
     Registers: 
-        Logic Registers:           2        out of   3520      0.0568182%
+        Logic Registers:           24       out of   3520      0.681818%
         IO Registers:              0        out of   880       0
     Block RAMs:                    0        out of   20        0%
     Warm Boots:                    0        out of   1         0%
     Pins:
-        Input Pins:                8        out of   107       7.47664%
-        Output Pins:               14       out of   107       13.0841%
+        Input Pins:                9        out of   107       8.41121%
+        Output Pins:               15       out of   107       14.0187%
         InOut Pins:                64       out of   107       59.8131%
     Global Buffers:                0        out of   8         0%
     PLLs:                          1        out of   2         50%
@@ -58,7 +58,7 @@ IO Bank Utilization:
     Bank 3: 27       out of   28        96.4286%
     Bank 1: 27       out of   29        93.1034%
     Bank 0: 23       out of   27        85.1852%
-    Bank 2: 9        out of   23        39.1304%
+    Bank 2: 11       out of   23        47.8261%
 
 Detailed I/O Info:
 ------------------
@@ -68,11 +68,12 @@ Detailed I/O Info:
     34          Input      SB_LVCMOS    No       3        Simple Input                               RESETn         
     37          Input      SB_LVCMOS    Yes      2        Simple Input                               A_040[0]       
     38          Input      SB_LVCMOS    Yes      2        Simple Input                               A_040[1]       
+    42          Input      SB_LVCMOS    Yes      2        Simple Input                               PORTSIZE       
     47          Input      SB_LVCMOS    Yes      2        Simple Input                               TACKn          
     97          Input      SB_LVCMOS    Yes      1        Simple Input                               RnW            
     120         Input      SB_LVCMOS    Yes      0        Simple Input                               SIZ[1]         
     121         Input      SB_LVCMOS    Yes      0        Simple Input                               SIZ[0]         
-    125         Input      SB_LVCMOS    Yes      0        Simple Input                               TS_CPUn        
+    125         Input      SB_LVCMOS    No       0        Simple Input                               TS_CPUn        
 
     Output Pins: 
     Pin Number  Direction  IO Standard  Pull Up  IO Bank  IO Function                                Signal Name    
@@ -83,6 +84,7 @@ Detailed I/O Info:
     45          Output     SB_LVCMOS    Yes      2        Simple Output                              TSn            
     49          Output     SB_LVCMOS    No       2        Simple Output                              CLK40B         
     52          Output     SB_LVCMOS    No       2        Simple Output                              CLKRAMB        
+    55          Output     SB_LVCMOS    No       2        Simple Output                              TBIn           
     56          Output     SB_LVCMOS    No       2        Simple Output                              CLKRAMA        
     93          Output     SB_LVCMOS    No       1        Simple Output                              CLK40A         
     94          Output     SB_LVCMOS    No       1        Simple Output                              CLK80_CPU      
@@ -169,9 +171,9 @@ Router Summary:
 
 Routing Resource Utilization:
 -----------------------------
-              Local line of tile      596 out of 146184      0.407705%
-                          Span 4      379 out of  29696      1.27627%
-                         Span 12      336 out of   5632      5.96591%
+              Local line of tile      916 out of 146184      0.626608%
+                          Span 4      464 out of  29696      1.5625%
+                         Span 12      367 out of   5632      6.51634%
                   Global network        2 out of      8      25%
-      Vertical Inter-LUT Connect        1 out of   6720      0.014881%
+      Vertical Inter-LUT Connect        3 out of   6720      0.0446429%
 

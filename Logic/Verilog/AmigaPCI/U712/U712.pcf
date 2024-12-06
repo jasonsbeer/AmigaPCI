@@ -77,24 +77,24 @@ set_io DRDDIR    107
 set_io DRDENn    110
 
 #AGNUS
-#set_io RAS1n     87  #INPUT - AGNUS RAS1
-#set_io RAS0n     88  #INPUT - AGNUS RAS0
-#set_io CASLn     104 #INPUT - AGNUS CASL
-#set_io CASUn     105 #INPUT - AGNUS CASU
+set_io RAS1n     87  #INPUT - AGNUS RAS1
+set_io RAS0n     88  #INPUT - AGNUS RAS0
+set_io CASLn     104 #INPUT - AGNUS CASL
+set_io CASUn     105 #INPUT - AGNUS CASU
 set_io ASn       116
 set_io LDSn      117
 set_io UDSn      118
-set_io nAWE      135
+set_io AWEn      135
 set_io DBRn      138
 set_io RAMENn    139
 set_io REGENn    141 #OUTPUT - AGNUS REGISTER ENABLE
-set_io REGSPACEn 41 #INPUT - CHIPSET REGISTER ADDRESS SPACE
+set_io REGSPACEn 41  #INPUT - CHIPSET REGISTER ADDRESS SPACE
 
 #DATA TRANSFER SIGNALS
 set_io SIZ[1]     1
 set_io SIZ[0]     2
-set_io TT1        3
-set_io TT0        4
+#set_io TT1        3
+#set_io TT0        4
 set_io TACKn      7
 #set_io TBIn       39
 #set_io TCIn       64

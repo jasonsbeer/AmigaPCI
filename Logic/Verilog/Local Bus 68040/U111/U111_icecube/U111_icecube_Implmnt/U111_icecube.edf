@@ -4,7 +4,7 @@
   (keywordMap (keywordLevel 0))
   (status
     (written
-      (timeStamp 2024 11 26 16 52 36)
+      (timeStamp 2024 12 6 9 3 57)
       (author "Synopsys, Inc.")
       (program "Synplify Pro" (version "L-2016.09L+ice40, mapper maplat, Build 1612R"))
      )
@@ -91,6 +91,30 @@
          )
        )
     )
+    (cell SB_DFFNESS (cellType GENERIC)
+      (property is_sequential (integer 1))
+       (view PRIM (viewType NETLIST)
+         (interface
+           (port Q (direction OUTPUT))
+           (port D (direction INPUT))
+           (port C (direction INPUT))
+           (port S (direction INPUT))
+           (port E (direction INPUT))
+         )
+       )
+    )
+    (cell SB_DFFNESR (cellType GENERIC)
+      (property is_sequential (integer 1))
+       (view PRIM (viewType NETLIST)
+         (interface
+           (port Q (direction OUTPUT))
+           (port D (direction INPUT))
+           (port C (direction INPUT))
+           (port R (direction INPUT))
+           (port E (direction INPUT))
+         )
+       )
+    )
     (cell SB_DFFN (cellType GENERIC)
       (property is_sequential (integer 1))
        (view PRIM (viewType NETLIST)
@@ -140,68 +164,1205 @@
     (cell U111_CYCLE_SM (cellType GENERIC)
        (view netlist (viewType NETLIST)
          (interface
-           (port CLK80 (direction INPUT))
+           (port (array (rename A_AMIGA_c "A_AMIGA_c[1:0]") 2) (direction OUTPUT))
+           (port (array (rename A_040_c "A_040_c[1:0]") 2) (direction INPUT))
+           (port (array (rename un1_D_UU_AMIGA "un1_D_UU_AMIGA[7:0]") 8) (direction OUTPUT))
+           (port (array (rename un1_D_UM_AMIGA "un1_D_UM_AMIGA[7:0]") 8) (direction OUTPUT))
+           (port (array (rename SIZ_c "SIZ_c[1:0]") 2) (direction INPUT))
+           (port (array (rename un1_D_LL_AMIGA "un1_D_LL_AMIGA[7:0]") 8) (direction OUTPUT))
+           (port (array (rename D_LL_AMIGA_in "D_LL_AMIGA_in[7:0]") 8) (direction INPUT))
+           (port (array (rename un1_D_LM_AMIGA "un1_D_LM_AMIGA[7:0]") 8) (direction OUTPUT))
+           (port (array (rename D_LM_AMIGA_in "D_LM_AMIGA_in[7:0]") 8) (direction INPUT))
+           (port (array (rename un1_D_UU_040 "un1_D_UU_040[7:0]") 8) (direction OUTPUT))
+           (port (array (rename D_UU_040_in "D_UU_040_in[7:0]") 8) (direction INPUT))
+           (port (array (rename D_LM_040_in "D_LM_040_in[7:0]") 8) (direction INPUT))
+           (port (array (rename un1_D_UM_040 "un1_D_UM_040[7:0]") 8) (direction OUTPUT))
+           (port (array (rename D_UM_040_in "D_UM_040_in[7:0]") 8) (direction INPUT))
+           (port (array (rename D_LL_040_in "D_LL_040_in[7:0]") 8) (direction INPUT))
+           (port (array (rename D_UM_AMIGA_in "D_UM_AMIGA_in[7:0]") 8) (direction INPUT))
+           (port (array (rename D_UU_AMIGA_in "D_UU_AMIGA_in[7:0]") 8) (direction INPUT))
            (port CLK40 (direction INPUT))
-           (port TSn_c (direction OUTPUT))
+           (port TAn_0_i (direction OUTPUT))
            (port TS_CPUn_c (direction INPUT))
-           (port RESETn_c (direction INPUT))
            (port CLK40_i (direction INPUT))
+           (port TACKn_c (direction INPUT))
+           (port RnW_c (direction INPUT))
+           (port TSn_c (direction OUTPUT))
+           (port PORTSIZE_c (direction INPUT))
+           (port RESETn_c (direction INPUT))
+           (port RESETn_c_i (direction INPUT))
+           (port CLK80 (direction INPUT))
          )
          (contents
+          (instance (rename UU_LATCHED_nesr_0 "UU_LATCHED_nesr[0]") (viewRef PRIM (cellRef SB_DFFNESR (libraryRef sb_ice)))
+          )
+          (instance (rename UU_LATCHED_nesr_1 "UU_LATCHED_nesr[1]") (viewRef PRIM (cellRef SB_DFFNESR (libraryRef sb_ice)))
+          )
+          (instance (rename UU_LATCHED_nesr_2 "UU_LATCHED_nesr[2]") (viewRef PRIM (cellRef SB_DFFNESR (libraryRef sb_ice)))
+          )
+          (instance (rename UU_LATCHED_nesr_3 "UU_LATCHED_nesr[3]") (viewRef PRIM (cellRef SB_DFFNESR (libraryRef sb_ice)))
+          )
+          (instance (rename UU_LATCHED_nesr_4 "UU_LATCHED_nesr[4]") (viewRef PRIM (cellRef SB_DFFNESR (libraryRef sb_ice)))
+          )
+          (instance (rename UU_LATCHED_nesr_5 "UU_LATCHED_nesr[5]") (viewRef PRIM (cellRef SB_DFFNESR (libraryRef sb_ice)))
+          )
+          (instance (rename UU_LATCHED_nesr_6 "UU_LATCHED_nesr[6]") (viewRef PRIM (cellRef SB_DFFNESR (libraryRef sb_ice)))
+          )
+          (instance (rename UU_LATCHED_nesr_7 "UU_LATCHED_nesr[7]") (viewRef PRIM (cellRef SB_DFFNESR (libraryRef sb_ice)))
+          )
+          (instance (rename UM_LATCHED_nesr_0 "UM_LATCHED_nesr[0]") (viewRef PRIM (cellRef SB_DFFNESR (libraryRef sb_ice)))
+          )
+          (instance (rename UM_LATCHED_nesr_1 "UM_LATCHED_nesr[1]") (viewRef PRIM (cellRef SB_DFFNESR (libraryRef sb_ice)))
+          )
+          (instance (rename UM_LATCHED_nesr_2 "UM_LATCHED_nesr[2]") (viewRef PRIM (cellRef SB_DFFNESR (libraryRef sb_ice)))
+          )
+          (instance (rename UM_LATCHED_nesr_3 "UM_LATCHED_nesr[3]") (viewRef PRIM (cellRef SB_DFFNESR (libraryRef sb_ice)))
+          )
+          (instance (rename UM_LATCHED_nesr_4 "UM_LATCHED_nesr[4]") (viewRef PRIM (cellRef SB_DFFNESR (libraryRef sb_ice)))
+          )
+          (instance (rename UM_LATCHED_nesr_5 "UM_LATCHED_nesr[5]") (viewRef PRIM (cellRef SB_DFFNESR (libraryRef sb_ice)))
+          )
+          (instance (rename UM_LATCHED_nesr_6 "UM_LATCHED_nesr[6]") (viewRef PRIM (cellRef SB_DFFNESR (libraryRef sb_ice)))
+          )
+          (instance (rename CYCLE_STATE_RNIGG4C2_0 "CYCLE_STATE_RNIGG4C2[0]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "FCFC"))
+          )
+          (instance (rename UM_LATCHED_nesr_7 "UM_LATCHED_nesr[7]") (viewRef PRIM (cellRef SB_DFFNESR (libraryRef sb_ice)))
+          )
+          (instance TA_EN_ness_RNO (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "FCFC"))
+          )
+          (instance TA_EN_ness (viewRef PRIM (cellRef SB_DFFNESS (libraryRef sb_ice)))
+          )
+          (instance LW_CYCLE_RNIOVRM1 (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "ACAC"))
+          )
+          (instance LW_CYCLE_RNIFAQ22 (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "ACAC"))
+          )
+          (instance LW_CYCLE_RNIHCQ22 (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "ACAC"))
+          )
+          (instance LW_CYCLE_RNIQ1SM1 (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "ACAC"))
+          )
+          (instance LW_CYCLE_RNIS3SM1 (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "ACAC"))
+          )
+          (instance LW_CYCLE_RNIJEQ22 (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "ACAC"))
+          )
+          (instance LW_CYCLE_RNILGQ22 (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "ACAC"))
+          )
+          (instance LW_CYCLE_RNIU5SM1 (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "ACAC"))
+          )
+          (instance LW_CYCLE_RNI08SM1 (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "ACAC"))
+          )
+          (instance LW_CYCLE_RNINIQ22 (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "ACAC"))
+          )
+          (instance LW_CYCLE_RNIPKQ22 (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "ACAC"))
+          )
+          (instance LW_CYCLE_RNI2ASM1 (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "ACAC"))
+          )
+          (instance LW_CYCLE_RNI4CSM1 (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "ACAC"))
+          )
+          (instance LW_CYCLE_RNIRMQ22 (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "ACAC"))
+          )
+          (instance LW_CYCLE_RNITOQ22 (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "ACAC"))
+          )
+          (instance LW_CYCLE_RNI6ESM1 (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "ACAC"))
+          )
+          (instance LW_CYCLE_RNISEL62 (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "CACA"))
+          )
+          (instance LW_CYCLE_RNIJ70A2 (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "CACA"))
+          )
+          (instance LW_CYCLE_RNIQCL62 (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "CACA"))
+          )
+          (instance LW_CYCLE_RNIH50A2 (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "CACA"))
+          )
+          (instance LW_CYCLE_RNIOAL62 (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "CACA"))
+          )
+          (instance LW_CYCLE_RNIF30A2 (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "CACA"))
+          )
+          (instance LW_CYCLE_RNIM8L62 (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "CACA"))
+          )
+          (instance LW_CYCLE_RNID10A2 (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "CACA"))
+          )
+          (instance LW_CYCLE_RNIK6L62 (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "CACA"))
+          )
+          (instance LW_CYCLE_RNIBVV92 (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "CACA"))
+          )
+          (instance LW_CYCLE_RNII4L62 (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "CACA"))
+          )
+          (instance LW_CYCLE_RNI9TV92 (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "CACA"))
+          )
+          (instance LW_CYCLE_RNIG2L62 (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "CACA"))
+          )
+          (instance LW_CYCLE_RNI7RV92 (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "CACA"))
+          )
+          (instance LW_CYCLE_RNIE0L62 (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "CACA"))
+          )
+          (instance LW_CYCLE_RNI5PV92 (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "CACA"))
+          )
+          (instance A_OUT_RNO (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "A088"))
+          )
           (instance TS_EN_RNO (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
-           (property LUT_INIT (string "0808"))
+           (property LUT_INIT (string "8A80"))
+          )
+          (instance LW_CYCLE_START_RNO (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "0008"))
+          )
+          (instance (rename CYCLE_STATE_RNI14FL1_0 "CYCLE_STATE_RNI14FL1[0]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "7575"))
+          )
+          (instance (rename CYCLE_STATE_RNO_0 "CYCLE_STATE_RNO[0]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "8A80"))
+          )
+          (instance (rename CYCLE_STATE_RNO_1 "CYCLE_STATE_RNO[1]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "8A20"))
+          )
+          (instance TS_EN_RNO_1 (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "0F02"))
+          )
+          (instance LW_CYCLE_START_RNIIU7U (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "5554"))
+          )
+          (instance LW_CYCLE_START_RNO_0 (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "6666"))
+          )
+          (instance TA_EN_ness_RNIPNOD (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "BBBB"))
+          )
+          (instance A_OUT_RNIK8GP (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "CACA"))
+          )
+          (instance (rename UM_LATCHED_nesr_RNIS58L_7 "UM_LATCHED_nesr_RNIS58L[7]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "E2E2"))
+          )
+          (instance (rename UU_LATCHED_nesr_RNICUN51_7 "UU_LATCHED_nesr_RNICUN51[7]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "E2E2"))
+          )
+          (instance (rename UM_LATCHED_nesr_RNIQ38L_6 "UM_LATCHED_nesr_RNIQ38L[6]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "E2E2"))
+          )
+          (instance (rename UU_LATCHED_nesr_RNIASN51_6 "UU_LATCHED_nesr_RNIASN51[6]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "E2E2"))
+          )
+          (instance (rename UM_LATCHED_nesr_RNIO18L_5 "UM_LATCHED_nesr_RNIO18L[5]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "E2E2"))
+          )
+          (instance (rename UU_LATCHED_nesr_RNI8QN51_5 "UU_LATCHED_nesr_RNI8QN51[5]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "E2E2"))
+          )
+          (instance (rename UM_LATCHED_nesr_RNIMV7L_4 "UM_LATCHED_nesr_RNIMV7L[4]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "E2E2"))
+          )
+          (instance (rename UU_LATCHED_nesr_RNI6ON51_4 "UU_LATCHED_nesr_RNI6ON51[4]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "E2E2"))
+          )
+          (instance (rename UM_LATCHED_nesr_RNIKT7L_3 "UM_LATCHED_nesr_RNIKT7L[3]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "E2E2"))
+          )
+          (instance (rename UU_LATCHED_nesr_RNI4MN51_3 "UU_LATCHED_nesr_RNI4MN51[3]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "E2E2"))
+          )
+          (instance (rename UM_LATCHED_nesr_RNIIR7L_2 "UM_LATCHED_nesr_RNIIR7L[2]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "E2E2"))
+          )
+          (instance (rename UU_LATCHED_nesr_RNI2KN51_2 "UU_LATCHED_nesr_RNI2KN51[2]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "E2E2"))
+          )
+          (instance (rename UM_LATCHED_nesr_RNIGP7L_1 "UM_LATCHED_nesr_RNIGP7L[1]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "E2E2"))
+          )
+          (instance (rename UU_LATCHED_nesr_RNI0IN51_1 "UU_LATCHED_nesr_RNI0IN51[1]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "E2E2"))
+          )
+          (instance (rename UM_LATCHED_nesr_RNIEN7L_0 "UM_LATCHED_nesr_RNIEN7L[0]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "E2E2"))
+          )
+          (instance (rename UU_LATCHED_nesr_RNIUFN51_0 "UU_LATCHED_nesr_RNIUFN51[0]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "E2E2"))
+          )
+          (instance LW_CYCLE_RNIN15M (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "2222"))
+          )
+          (instance TS_EN_RNO_0 (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "2222"))
           )
           (instance TSn_RNO (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
            (property LUT_INIT (string "7777"))
           )
+          (instance LW_CYCLE_RNO_0 (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "4340"))
+          )
+          (instance LW_CYCLE_RNO (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "22A0"))
+          )
+          (instance LW_CYCLE_RNIHM0E1 (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "8CC8"))
+          )
+          (instance (rename CYCLE_STATE_RNIFCLM_0 "CYCLE_STATE_RNIFCLM[0]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "1010"))
+          )
+          (instance (rename CYCLE_STATE_0 "CYCLE_STATE[0]") (viewRef PRIM (cellRef SB_DFFN (libraryRef sb_ice)))
+          )
+          (instance (rename CYCLE_STATE_1 "CYCLE_STATE[1]") (viewRef PRIM (cellRef SB_DFFN (libraryRef sb_ice)))
+          )
+          (instance LW_CYCLE (viewRef PRIM (cellRef SB_DFFN (libraryRef sb_ice)))
+          )
           (instance TSn (viewRef PRIM (cellRef SB_DFFN (libraryRef sb_ice)))
+          )
+          (instance LW_CYCLE_START (viewRef PRIM (cellRef SB_DFFN (libraryRef sb_ice)))
           )
           (instance TS_EN (viewRef PRIM (cellRef SB_DFFN (libraryRef sb_ice)))
           )
+          (instance A_OUT (viewRef PRIM (cellRef SB_DFFN (libraryRef sb_ice)))
+          )
           (instance GND (viewRef PRIM (cellRef GND (libraryRef sb_ice)))          )
           (instance VCC (viewRef PRIM (cellRef VCC (libraryRef sb_ice)))          )
-          (net (rename clk40_i "CLK40_i") (joined
-           (portRef CLK40_i)
-           (portRef I0 (instanceRef TS_EN_RNO))
+          (net (rename UU_LATCHEDZ0Z_0 "UU_LATCHED[0]") (joined
+           (portRef Q (instanceRef UU_LATCHED_nesr_0))
+           (portRef I2 (instanceRef UU_LATCHED_nesr_RNIUFN51_0))
           ))
-          (net (rename resetn_c "RESETn_c") (joined
-           (portRef RESETn_c)
-           (portRef I0 (instanceRef TSn_RNO))
-           (portRef I1 (instanceRef TS_EN_RNO))
+          (net (rename d_uu_amiga_in_0 "D_UU_AMIGA_in[0]") (joined
+           (portRef (member D_UU_AMIGA_in 7))
+           (portRef I0 (instanceRef UU_LATCHED_nesr_RNIUFN51_0))
+           (portRef I1 (instanceRef LW_CYCLE_RNIE0L62))
+           (portRef D (instanceRef UU_LATCHED_nesr_0))
           ))
-          (net (rename ts_cpun_c "TS_CPUn_c") (joined
-           (portRef TS_CPUn_c)
-           (portRef I2 (instanceRef TS_EN_RNO))
+          (net (rename clk80 "CLK80") (joined
+           (portRef CLK80)
+           (portRef C (instanceRef A_OUT))
+           (portRef C (instanceRef TS_EN))
+           (portRef C (instanceRef LW_CYCLE_START))
+           (portRef C (instanceRef LW_CYCLE))
+           (portRef C (instanceRef CYCLE_STATE_1))
+           (portRef C (instanceRef CYCLE_STATE_0))
+           (portRef C (instanceRef TA_EN_ness))
+           (portRef C (instanceRef UM_LATCHED_nesr_7))
+           (portRef C (instanceRef UM_LATCHED_nesr_6))
+           (portRef C (instanceRef UM_LATCHED_nesr_5))
+           (portRef C (instanceRef UM_LATCHED_nesr_4))
+           (portRef C (instanceRef UM_LATCHED_nesr_3))
+           (portRef C (instanceRef UM_LATCHED_nesr_2))
+           (portRef C (instanceRef UM_LATCHED_nesr_1))
+           (portRef C (instanceRef UM_LATCHED_nesr_0))
+           (portRef C (instanceRef UU_LATCHED_nesr_7))
+           (portRef C (instanceRef UU_LATCHED_nesr_6))
+           (portRef C (instanceRef UU_LATCHED_nesr_5))
+           (portRef C (instanceRef UU_LATCHED_nesr_4))
+           (portRef C (instanceRef UU_LATCHED_nesr_3))
+           (portRef C (instanceRef UU_LATCHED_nesr_2))
+           (portRef C (instanceRef UU_LATCHED_nesr_1))
+           (portRef C (instanceRef UU_LATCHED_nesr_0))
+          ))
+          (net (rename CYCLE_STATE_RNI14FL1Z0Z_0 "CYCLE_STATE_RNI14FL1[0]") (joined
+           (portRef O (instanceRef CYCLE_STATE_RNI14FL1_0))
+           (portRef R (instanceRef UM_LATCHED_nesr_7))
+           (portRef I2 (instanceRef CYCLE_STATE_RNIGG4C2_0))
+           (portRef R (instanceRef UM_LATCHED_nesr_6))
+           (portRef R (instanceRef UM_LATCHED_nesr_5))
+           (portRef R (instanceRef UM_LATCHED_nesr_4))
+           (portRef R (instanceRef UM_LATCHED_nesr_3))
+           (portRef R (instanceRef UM_LATCHED_nesr_2))
+           (portRef R (instanceRef UM_LATCHED_nesr_1))
+           (portRef R (instanceRef UM_LATCHED_nesr_0))
+           (portRef R (instanceRef UU_LATCHED_nesr_7))
+           (portRef R (instanceRef UU_LATCHED_nesr_6))
+           (portRef R (instanceRef UU_LATCHED_nesr_5))
+           (portRef R (instanceRef UU_LATCHED_nesr_4))
+           (portRef R (instanceRef UU_LATCHED_nesr_3))
+           (portRef R (instanceRef UU_LATCHED_nesr_2))
+           (portRef R (instanceRef UU_LATCHED_nesr_1))
+           (portRef R (instanceRef UU_LATCHED_nesr_0))
+          ))
+          (net CYCLE_STATE_0_sqmuxa_0 (joined
+           (portRef O (instanceRef CYCLE_STATE_RNIGG4C2_0))
+           (portRef E (instanceRef UM_LATCHED_nesr_7))
+           (portRef E (instanceRef UM_LATCHED_nesr_6))
+           (portRef E (instanceRef UM_LATCHED_nesr_5))
+           (portRef E (instanceRef UM_LATCHED_nesr_4))
+           (portRef E (instanceRef UM_LATCHED_nesr_3))
+           (portRef E (instanceRef UM_LATCHED_nesr_2))
+           (portRef E (instanceRef UM_LATCHED_nesr_1))
+           (portRef E (instanceRef UM_LATCHED_nesr_0))
+           (portRef E (instanceRef UU_LATCHED_nesr_7))
+           (portRef E (instanceRef UU_LATCHED_nesr_6))
+           (portRef E (instanceRef UU_LATCHED_nesr_5))
+           (portRef E (instanceRef UU_LATCHED_nesr_4))
+           (portRef E (instanceRef UU_LATCHED_nesr_3))
+           (portRef E (instanceRef UU_LATCHED_nesr_2))
+           (portRef E (instanceRef UU_LATCHED_nesr_1))
+           (portRef E (instanceRef UU_LATCHED_nesr_0))
+          ))
+          (net (rename UU_LATCHEDZ0Z_1 "UU_LATCHED[1]") (joined
+           (portRef Q (instanceRef UU_LATCHED_nesr_1))
+           (portRef I2 (instanceRef UU_LATCHED_nesr_RNI0IN51_1))
+          ))
+          (net (rename d_uu_amiga_in_1 "D_UU_AMIGA_in[1]") (joined
+           (portRef (member D_UU_AMIGA_in 6))
+           (portRef I0 (instanceRef UU_LATCHED_nesr_RNI0IN51_1))
+           (portRef I1 (instanceRef LW_CYCLE_RNIG2L62))
+           (portRef D (instanceRef UU_LATCHED_nesr_1))
+          ))
+          (net (rename UU_LATCHEDZ0Z_2 "UU_LATCHED[2]") (joined
+           (portRef Q (instanceRef UU_LATCHED_nesr_2))
+           (portRef I2 (instanceRef UU_LATCHED_nesr_RNI2KN51_2))
+          ))
+          (net (rename d_uu_amiga_in_2 "D_UU_AMIGA_in[2]") (joined
+           (portRef (member D_UU_AMIGA_in 5))
+           (portRef I0 (instanceRef UU_LATCHED_nesr_RNI2KN51_2))
+           (portRef I1 (instanceRef LW_CYCLE_RNII4L62))
+           (portRef D (instanceRef UU_LATCHED_nesr_2))
+          ))
+          (net (rename UU_LATCHEDZ0Z_3 "UU_LATCHED[3]") (joined
+           (portRef Q (instanceRef UU_LATCHED_nesr_3))
+           (portRef I2 (instanceRef UU_LATCHED_nesr_RNI4MN51_3))
+          ))
+          (net (rename d_uu_amiga_in_3 "D_UU_AMIGA_in[3]") (joined
+           (portRef (member D_UU_AMIGA_in 4))
+           (portRef I0 (instanceRef UU_LATCHED_nesr_RNI4MN51_3))
+           (portRef I1 (instanceRef LW_CYCLE_RNIK6L62))
+           (portRef D (instanceRef UU_LATCHED_nesr_3))
+          ))
+          (net (rename UU_LATCHEDZ0Z_4 "UU_LATCHED[4]") (joined
+           (portRef Q (instanceRef UU_LATCHED_nesr_4))
+           (portRef I2 (instanceRef UU_LATCHED_nesr_RNI6ON51_4))
+          ))
+          (net (rename d_uu_amiga_in_4 "D_UU_AMIGA_in[4]") (joined
+           (portRef (member D_UU_AMIGA_in 3))
+           (portRef I0 (instanceRef UU_LATCHED_nesr_RNI6ON51_4))
+           (portRef I1 (instanceRef LW_CYCLE_RNIM8L62))
+           (portRef D (instanceRef UU_LATCHED_nesr_4))
+          ))
+          (net (rename UU_LATCHEDZ0Z_5 "UU_LATCHED[5]") (joined
+           (portRef Q (instanceRef UU_LATCHED_nesr_5))
+           (portRef I2 (instanceRef UU_LATCHED_nesr_RNI8QN51_5))
+          ))
+          (net (rename d_uu_amiga_in_5 "D_UU_AMIGA_in[5]") (joined
+           (portRef (member D_UU_AMIGA_in 2))
+           (portRef I0 (instanceRef UU_LATCHED_nesr_RNI8QN51_5))
+           (portRef I1 (instanceRef LW_CYCLE_RNIOAL62))
+           (portRef D (instanceRef UU_LATCHED_nesr_5))
+          ))
+          (net (rename UU_LATCHEDZ0Z_6 "UU_LATCHED[6]") (joined
+           (portRef Q (instanceRef UU_LATCHED_nesr_6))
+           (portRef I2 (instanceRef UU_LATCHED_nesr_RNIASN51_6))
+          ))
+          (net (rename d_uu_amiga_in_6 "D_UU_AMIGA_in[6]") (joined
+           (portRef (member D_UU_AMIGA_in 1))
+           (portRef I0 (instanceRef UU_LATCHED_nesr_RNIASN51_6))
+           (portRef I1 (instanceRef LW_CYCLE_RNIQCL62))
+           (portRef D (instanceRef UU_LATCHED_nesr_6))
+          ))
+          (net (rename UU_LATCHEDZ0Z_7 "UU_LATCHED[7]") (joined
+           (portRef Q (instanceRef UU_LATCHED_nesr_7))
+           (portRef I2 (instanceRef UU_LATCHED_nesr_RNICUN51_7))
+          ))
+          (net (rename d_uu_amiga_in_7 "D_UU_AMIGA_in[7]") (joined
+           (portRef (member D_UU_AMIGA_in 0))
+           (portRef I0 (instanceRef UU_LATCHED_nesr_RNICUN51_7))
+           (portRef I1 (instanceRef LW_CYCLE_RNISEL62))
+           (portRef D (instanceRef UU_LATCHED_nesr_7))
+          ))
+          (net (rename UM_LATCHEDZ0Z_0 "UM_LATCHED[0]") (joined
+           (portRef Q (instanceRef UM_LATCHED_nesr_0))
+           (portRef I2 (instanceRef UM_LATCHED_nesr_RNIEN7L_0))
+          ))
+          (net (rename d_um_amiga_in_0 "D_UM_AMIGA_in[0]") (joined
+           (portRef (member D_UM_AMIGA_in 7))
+           (portRef I0 (instanceRef UM_LATCHED_nesr_RNIEN7L_0))
+           (portRef I1 (instanceRef LW_CYCLE_RNI5PV92))
+           (portRef D (instanceRef UM_LATCHED_nesr_0))
+          ))
+          (net (rename UM_LATCHEDZ0Z_1 "UM_LATCHED[1]") (joined
+           (portRef Q (instanceRef UM_LATCHED_nesr_1))
+           (portRef I2 (instanceRef UM_LATCHED_nesr_RNIGP7L_1))
+          ))
+          (net (rename d_um_amiga_in_1 "D_UM_AMIGA_in[1]") (joined
+           (portRef (member D_UM_AMIGA_in 6))
+           (portRef I0 (instanceRef UM_LATCHED_nesr_RNIGP7L_1))
+           (portRef I1 (instanceRef LW_CYCLE_RNI7RV92))
+           (portRef D (instanceRef UM_LATCHED_nesr_1))
+          ))
+          (net (rename UM_LATCHEDZ0Z_2 "UM_LATCHED[2]") (joined
+           (portRef Q (instanceRef UM_LATCHED_nesr_2))
+           (portRef I2 (instanceRef UM_LATCHED_nesr_RNIIR7L_2))
+          ))
+          (net (rename d_um_amiga_in_2 "D_UM_AMIGA_in[2]") (joined
+           (portRef (member D_UM_AMIGA_in 5))
+           (portRef I0 (instanceRef UM_LATCHED_nesr_RNIIR7L_2))
+           (portRef I1 (instanceRef LW_CYCLE_RNI9TV92))
+           (portRef D (instanceRef UM_LATCHED_nesr_2))
+          ))
+          (net (rename UM_LATCHEDZ0Z_3 "UM_LATCHED[3]") (joined
+           (portRef Q (instanceRef UM_LATCHED_nesr_3))
+           (portRef I2 (instanceRef UM_LATCHED_nesr_RNIKT7L_3))
+          ))
+          (net (rename d_um_amiga_in_3 "D_UM_AMIGA_in[3]") (joined
+           (portRef (member D_UM_AMIGA_in 4))
+           (portRef I0 (instanceRef UM_LATCHED_nesr_RNIKT7L_3))
+           (portRef I1 (instanceRef LW_CYCLE_RNIBVV92))
+           (portRef D (instanceRef UM_LATCHED_nesr_3))
+          ))
+          (net (rename UM_LATCHEDZ0Z_4 "UM_LATCHED[4]") (joined
+           (portRef Q (instanceRef UM_LATCHED_nesr_4))
+           (portRef I2 (instanceRef UM_LATCHED_nesr_RNIMV7L_4))
+          ))
+          (net (rename d_um_amiga_in_4 "D_UM_AMIGA_in[4]") (joined
+           (portRef (member D_UM_AMIGA_in 3))
+           (portRef I0 (instanceRef UM_LATCHED_nesr_RNIMV7L_4))
+           (portRef I1 (instanceRef LW_CYCLE_RNID10A2))
+           (portRef D (instanceRef UM_LATCHED_nesr_4))
+          ))
+          (net (rename UM_LATCHEDZ0Z_5 "UM_LATCHED[5]") (joined
+           (portRef Q (instanceRef UM_LATCHED_nesr_5))
+           (portRef I2 (instanceRef UM_LATCHED_nesr_RNIO18L_5))
+          ))
+          (net (rename d_um_amiga_in_5 "D_UM_AMIGA_in[5]") (joined
+           (portRef (member D_UM_AMIGA_in 2))
+           (portRef I0 (instanceRef UM_LATCHED_nesr_RNIO18L_5))
+           (portRef I1 (instanceRef LW_CYCLE_RNIF30A2))
+           (portRef D (instanceRef UM_LATCHED_nesr_5))
+          ))
+          (net (rename UM_LATCHEDZ0Z_6 "UM_LATCHED[6]") (joined
+           (portRef Q (instanceRef UM_LATCHED_nesr_6))
+           (portRef I2 (instanceRef UM_LATCHED_nesr_RNIQ38L_6))
+          ))
+          (net (rename d_um_amiga_in_6 "D_UM_AMIGA_in[6]") (joined
+           (portRef (member D_UM_AMIGA_in 1))
+           (portRef I0 (instanceRef UM_LATCHED_nesr_RNIQ38L_6))
+           (portRef I1 (instanceRef LW_CYCLE_RNIH50A2))
+           (portRef D (instanceRef UM_LATCHED_nesr_6))
           ))
           (net (rename GNDZ0 "GND") (joined
            (portRef Y (instanceRef GND))
+           (portRef I3 (instanceRef CYCLE_STATE_RNIFCLM_0))
            (portRef I3 (instanceRef TSn_RNO))
            (portRef I2 (instanceRef TSn_RNO))
-           (portRef I3 (instanceRef TS_EN_RNO))
+           (portRef I3 (instanceRef TS_EN_RNO_0))
+           (portRef I2 (instanceRef TS_EN_RNO_0))
+           (portRef I3 (instanceRef LW_CYCLE_RNIN15M))
+           (portRef I2 (instanceRef LW_CYCLE_RNIN15M))
+           (portRef I3 (instanceRef UU_LATCHED_nesr_RNIUFN51_0))
+           (portRef I3 (instanceRef UM_LATCHED_nesr_RNIEN7L_0))
+           (portRef I3 (instanceRef UU_LATCHED_nesr_RNI0IN51_1))
+           (portRef I3 (instanceRef UM_LATCHED_nesr_RNIGP7L_1))
+           (portRef I3 (instanceRef UU_LATCHED_nesr_RNI2KN51_2))
+           (portRef I3 (instanceRef UM_LATCHED_nesr_RNIIR7L_2))
+           (portRef I3 (instanceRef UU_LATCHED_nesr_RNI4MN51_3))
+           (portRef I3 (instanceRef UM_LATCHED_nesr_RNIKT7L_3))
+           (portRef I3 (instanceRef UU_LATCHED_nesr_RNI6ON51_4))
+           (portRef I3 (instanceRef UM_LATCHED_nesr_RNIMV7L_4))
+           (portRef I3 (instanceRef UU_LATCHED_nesr_RNI8QN51_5))
+           (portRef I3 (instanceRef UM_LATCHED_nesr_RNIO18L_5))
+           (portRef I3 (instanceRef UU_LATCHED_nesr_RNIASN51_6))
+           (portRef I3 (instanceRef UM_LATCHED_nesr_RNIQ38L_6))
+           (portRef I3 (instanceRef UU_LATCHED_nesr_RNICUN51_7))
+           (portRef I3 (instanceRef UM_LATCHED_nesr_RNIS58L_7))
+           (portRef I3 (instanceRef A_OUT_RNIK8GP))
+           (portRef I3 (instanceRef TA_EN_ness_RNIPNOD))
+           (portRef I2 (instanceRef TA_EN_ness_RNIPNOD))
+           (portRef I3 (instanceRef LW_CYCLE_START_RNO_0))
+           (portRef I2 (instanceRef LW_CYCLE_START_RNO_0))
+           (portRef I3 (instanceRef CYCLE_STATE_RNI14FL1_0))
+           (portRef I3 (instanceRef LW_CYCLE_RNI5PV92))
+           (portRef I3 (instanceRef LW_CYCLE_RNIE0L62))
+           (portRef I3 (instanceRef LW_CYCLE_RNI7RV92))
+           (portRef I3 (instanceRef LW_CYCLE_RNIG2L62))
+           (portRef I3 (instanceRef LW_CYCLE_RNI9TV92))
+           (portRef I3 (instanceRef LW_CYCLE_RNII4L62))
+           (portRef I3 (instanceRef LW_CYCLE_RNIBVV92))
+           (portRef I3 (instanceRef LW_CYCLE_RNIK6L62))
+           (portRef I3 (instanceRef LW_CYCLE_RNID10A2))
+           (portRef I3 (instanceRef LW_CYCLE_RNIM8L62))
+           (portRef I3 (instanceRef LW_CYCLE_RNIF30A2))
+           (portRef I3 (instanceRef LW_CYCLE_RNIOAL62))
+           (portRef I3 (instanceRef LW_CYCLE_RNIH50A2))
+           (portRef I3 (instanceRef LW_CYCLE_RNIQCL62))
+           (portRef I3 (instanceRef LW_CYCLE_RNIJ70A2))
+           (portRef I3 (instanceRef LW_CYCLE_RNISEL62))
+           (portRef I3 (instanceRef LW_CYCLE_RNI6ESM1))
+           (portRef I3 (instanceRef LW_CYCLE_RNITOQ22))
+           (portRef I3 (instanceRef LW_CYCLE_RNIRMQ22))
+           (portRef I3 (instanceRef LW_CYCLE_RNI4CSM1))
+           (portRef I3 (instanceRef LW_CYCLE_RNI2ASM1))
+           (portRef I3 (instanceRef LW_CYCLE_RNIPKQ22))
+           (portRef I3 (instanceRef LW_CYCLE_RNINIQ22))
+           (portRef I3 (instanceRef LW_CYCLE_RNI08SM1))
+           (portRef I3 (instanceRef LW_CYCLE_RNIU5SM1))
+           (portRef I3 (instanceRef LW_CYCLE_RNILGQ22))
+           (portRef I3 (instanceRef LW_CYCLE_RNIJEQ22))
+           (portRef I3 (instanceRef LW_CYCLE_RNIS3SM1))
+           (portRef I3 (instanceRef LW_CYCLE_RNIQ1SM1))
+           (portRef I3 (instanceRef LW_CYCLE_RNIHCQ22))
+           (portRef I3 (instanceRef LW_CYCLE_RNIFAQ22))
+           (portRef I3 (instanceRef LW_CYCLE_RNIOVRM1))
+           (portRef I3 (instanceRef TA_EN_ness_RNO))
+           (portRef I0 (instanceRef TA_EN_ness_RNO))
+           (portRef I3 (instanceRef CYCLE_STATE_RNIGG4C2_0))
+           (portRef I0 (instanceRef CYCLE_STATE_RNIGG4C2_0))
           ))
-          (net TS_EN_0 (joined
-           (portRef O (instanceRef TS_EN_RNO))
-           (portRef D (instanceRef TS_EN))
+          (net CYCLE_STATE_0_sqmuxa (joined
+           (portRef O (instanceRef CYCLE_STATE_RNIFCLM_0))
+           (portRef I2 (instanceRef CYCLE_STATE_RNI14FL1_0))
+           (portRef I1 (instanceRef CYCLE_STATE_RNIGG4C2_0))
+          ))
+          (net (rename UM_LATCHEDZ0Z_7 "UM_LATCHED[7]") (joined
+           (portRef Q (instanceRef UM_LATCHED_nesr_7))
+           (portRef I2 (instanceRef UM_LATCHED_nesr_RNIS58L_7))
+          ))
+          (net (rename d_um_amiga_in_7 "D_UM_AMIGA_in[7]") (joined
+           (portRef (member D_UM_AMIGA_in 0))
+           (portRef I0 (instanceRef UM_LATCHED_nesr_RNIS58L_7))
+           (portRef I1 (instanceRef LW_CYCLE_RNIJ70A2))
+           (portRef D (instanceRef UM_LATCHED_nesr_7))
+          ))
+          (net un1_CYCLE_STATE_1_0 (joined
+           (portRef O (instanceRef LW_CYCLE_START_RNIIU7U))
+           (portRef I3 (instanceRef A_OUT_RNO))
+           (portRef I1 (instanceRef TA_EN_ness_RNO))
+          ))
+          (net (rename resetn_c_i "RESETn_c_i") (joined
+           (portRef RESETn_c_i)
+           (portRef S (instanceRef TA_EN_ness))
+           (portRef I2 (instanceRef TA_EN_ness_RNO))
+          ))
+          (net un1_CYCLE_STATE_1_0_0 (joined
+           (portRef O (instanceRef TA_EN_ness_RNO))
+           (portRef E (instanceRef TA_EN_ness))
+          ))
+          (net (rename TA_ENZ0 "TA_EN") (joined
+           (portRef Q (instanceRef TA_EN_ness))
+           (portRef I1 (instanceRef TA_EN_ness_RNIPNOD))
+          ))
+          (net (rename CYCLE_STATEZ0Z_1 "CYCLE_STATE[1]") (joined
+           (portRef Q (instanceRef CYCLE_STATE_1))
+           (portRef I1 (instanceRef CYCLE_STATE_RNIFCLM_0))
+           (portRef I1 (instanceRef LW_CYCLE_RNO))
+           (portRef I2 (instanceRef LW_CYCLE_RNO_0))
+           (portRef I1 (instanceRef TS_EN_RNO_0))
+           (portRef I1 (instanceRef LW_CYCLE_START_RNIIU7U))
+           (portRef I3 (instanceRef TS_EN_RNO_1))
+           (portRef I3 (instanceRef CYCLE_STATE_RNO_1))
+           (portRef I3 (instanceRef CYCLE_STATE_RNO_0))
+           (portRef I2 (instanceRef A_OUT_RNO))
+           (portRef D (instanceRef TA_EN_ness))
+          ))
+          (net (rename d_lm_040_in_0 "D_LM_040_in[0]") (joined
+           (portRef (member D_LM_040_in 7))
+           (portRef I0 (instanceRef LW_CYCLE_RNIOVRM1))
+          ))
+          (net (rename d_uu_040_in_0 "D_UU_040_in[0]") (joined
+           (portRef (member D_UU_040_in 7))
+           (portRef I1 (instanceRef LW_CYCLE_RNIOVRM1))
+          ))
+          (net FLIP (joined
+           (portRef O (instanceRef LW_CYCLE_RNIHM0E1))
+           (portRef I2 (instanceRef LW_CYCLE_RNI5PV92))
+           (portRef I2 (instanceRef LW_CYCLE_RNIE0L62))
+           (portRef I2 (instanceRef LW_CYCLE_RNI7RV92))
+           (portRef I2 (instanceRef LW_CYCLE_RNIG2L62))
+           (portRef I2 (instanceRef LW_CYCLE_RNI9TV92))
+           (portRef I2 (instanceRef LW_CYCLE_RNII4L62))
+           (portRef I2 (instanceRef LW_CYCLE_RNIBVV92))
+           (portRef I2 (instanceRef LW_CYCLE_RNIK6L62))
+           (portRef I2 (instanceRef LW_CYCLE_RNID10A2))
+           (portRef I2 (instanceRef LW_CYCLE_RNIM8L62))
+           (portRef I2 (instanceRef LW_CYCLE_RNIF30A2))
+           (portRef I2 (instanceRef LW_CYCLE_RNIOAL62))
+           (portRef I2 (instanceRef LW_CYCLE_RNIH50A2))
+           (portRef I2 (instanceRef LW_CYCLE_RNIQCL62))
+           (portRef I2 (instanceRef LW_CYCLE_RNIJ70A2))
+           (portRef I2 (instanceRef LW_CYCLE_RNISEL62))
+           (portRef I2 (instanceRef LW_CYCLE_RNI6ESM1))
+           (portRef I2 (instanceRef LW_CYCLE_RNITOQ22))
+           (portRef I2 (instanceRef LW_CYCLE_RNIRMQ22))
+           (portRef I2 (instanceRef LW_CYCLE_RNI4CSM1))
+           (portRef I2 (instanceRef LW_CYCLE_RNI2ASM1))
+           (portRef I2 (instanceRef LW_CYCLE_RNIPKQ22))
+           (portRef I2 (instanceRef LW_CYCLE_RNINIQ22))
+           (portRef I2 (instanceRef LW_CYCLE_RNI08SM1))
+           (portRef I2 (instanceRef LW_CYCLE_RNIU5SM1))
+           (portRef I2 (instanceRef LW_CYCLE_RNILGQ22))
+           (portRef I2 (instanceRef LW_CYCLE_RNIJEQ22))
+           (portRef I2 (instanceRef LW_CYCLE_RNIS3SM1))
+           (portRef I2 (instanceRef LW_CYCLE_RNIQ1SM1))
+           (portRef I2 (instanceRef LW_CYCLE_RNIHCQ22))
+           (portRef I2 (instanceRef LW_CYCLE_RNIFAQ22))
+           (portRef I2 (instanceRef LW_CYCLE_RNIOVRM1))
+          ))
+          (net (rename un1_d_uu_040_0 "un1_D_UU_040[0]") (joined
+           (portRef O (instanceRef LW_CYCLE_RNIOVRM1))
+           (portRef (member un1_D_UU_040 7))
+          ))
+          (net (rename d_ll_040_in_0 "D_LL_040_in[0]") (joined
+           (portRef (member D_LL_040_in 7))
+           (portRef I0 (instanceRef LW_CYCLE_RNIFAQ22))
+          ))
+          (net (rename d_um_040_in_0 "D_UM_040_in[0]") (joined
+           (portRef (member D_UM_040_in 7))
+           (portRef I1 (instanceRef LW_CYCLE_RNIFAQ22))
+          ))
+          (net (rename un1_d_um_040_0 "un1_D_UM_040[0]") (joined
+           (portRef O (instanceRef LW_CYCLE_RNIFAQ22))
+           (portRef (member un1_D_UM_040 7))
+          ))
+          (net (rename d_ll_040_in_1 "D_LL_040_in[1]") (joined
+           (portRef (member D_LL_040_in 6))
+           (portRef I0 (instanceRef LW_CYCLE_RNIHCQ22))
+          ))
+          (net (rename d_um_040_in_1 "D_UM_040_in[1]") (joined
+           (portRef (member D_UM_040_in 6))
+           (portRef I1 (instanceRef LW_CYCLE_RNIHCQ22))
+          ))
+          (net (rename un1_d_um_040_1 "un1_D_UM_040[1]") (joined
+           (portRef O (instanceRef LW_CYCLE_RNIHCQ22))
+           (portRef (member un1_D_UM_040 6))
+          ))
+          (net (rename d_lm_040_in_1 "D_LM_040_in[1]") (joined
+           (portRef (member D_LM_040_in 6))
+           (portRef I0 (instanceRef LW_CYCLE_RNIQ1SM1))
+          ))
+          (net (rename d_uu_040_in_1 "D_UU_040_in[1]") (joined
+           (portRef (member D_UU_040_in 6))
+           (portRef I1 (instanceRef LW_CYCLE_RNIQ1SM1))
+          ))
+          (net (rename un1_d_uu_040_1 "un1_D_UU_040[1]") (joined
+           (portRef O (instanceRef LW_CYCLE_RNIQ1SM1))
+           (portRef (member un1_D_UU_040 6))
+          ))
+          (net (rename d_lm_040_in_2 "D_LM_040_in[2]") (joined
+           (portRef (member D_LM_040_in 5))
+           (portRef I0 (instanceRef LW_CYCLE_RNIS3SM1))
+          ))
+          (net (rename d_uu_040_in_2 "D_UU_040_in[2]") (joined
+           (portRef (member D_UU_040_in 5))
+           (portRef I1 (instanceRef LW_CYCLE_RNIS3SM1))
+          ))
+          (net (rename un1_d_uu_040_2 "un1_D_UU_040[2]") (joined
+           (portRef O (instanceRef LW_CYCLE_RNIS3SM1))
+           (portRef (member un1_D_UU_040 5))
+          ))
+          (net (rename d_ll_040_in_2 "D_LL_040_in[2]") (joined
+           (portRef (member D_LL_040_in 5))
+           (portRef I0 (instanceRef LW_CYCLE_RNIJEQ22))
+          ))
+          (net (rename d_um_040_in_2 "D_UM_040_in[2]") (joined
+           (portRef (member D_UM_040_in 5))
+           (portRef I1 (instanceRef LW_CYCLE_RNIJEQ22))
+          ))
+          (net (rename un1_d_um_040_2 "un1_D_UM_040[2]") (joined
+           (portRef O (instanceRef LW_CYCLE_RNIJEQ22))
+           (portRef (member un1_D_UM_040 5))
+          ))
+          (net (rename d_ll_040_in_3 "D_LL_040_in[3]") (joined
+           (portRef (member D_LL_040_in 4))
+           (portRef I0 (instanceRef LW_CYCLE_RNILGQ22))
+          ))
+          (net (rename d_um_040_in_3 "D_UM_040_in[3]") (joined
+           (portRef (member D_UM_040_in 4))
+           (portRef I1 (instanceRef LW_CYCLE_RNILGQ22))
+          ))
+          (net (rename un1_d_um_040_3 "un1_D_UM_040[3]") (joined
+           (portRef O (instanceRef LW_CYCLE_RNILGQ22))
+           (portRef (member un1_D_UM_040 4))
+          ))
+          (net (rename d_lm_040_in_3 "D_LM_040_in[3]") (joined
+           (portRef (member D_LM_040_in 4))
+           (portRef I0 (instanceRef LW_CYCLE_RNIU5SM1))
+          ))
+          (net (rename d_uu_040_in_3 "D_UU_040_in[3]") (joined
+           (portRef (member D_UU_040_in 4))
+           (portRef I1 (instanceRef LW_CYCLE_RNIU5SM1))
+          ))
+          (net (rename un1_d_uu_040_3 "un1_D_UU_040[3]") (joined
+           (portRef O (instanceRef LW_CYCLE_RNIU5SM1))
+           (portRef (member un1_D_UU_040 4))
+          ))
+          (net (rename d_lm_040_in_4 "D_LM_040_in[4]") (joined
+           (portRef (member D_LM_040_in 3))
+           (portRef I0 (instanceRef LW_CYCLE_RNI08SM1))
+          ))
+          (net (rename d_uu_040_in_4 "D_UU_040_in[4]") (joined
+           (portRef (member D_UU_040_in 3))
+           (portRef I1 (instanceRef LW_CYCLE_RNI08SM1))
+          ))
+          (net (rename un1_d_uu_040_4 "un1_D_UU_040[4]") (joined
+           (portRef O (instanceRef LW_CYCLE_RNI08SM1))
+           (portRef (member un1_D_UU_040 3))
+          ))
+          (net (rename d_ll_040_in_4 "D_LL_040_in[4]") (joined
+           (portRef (member D_LL_040_in 3))
+           (portRef I0 (instanceRef LW_CYCLE_RNINIQ22))
+          ))
+          (net (rename d_um_040_in_4 "D_UM_040_in[4]") (joined
+           (portRef (member D_UM_040_in 3))
+           (portRef I1 (instanceRef LW_CYCLE_RNINIQ22))
+          ))
+          (net (rename un1_d_um_040_4 "un1_D_UM_040[4]") (joined
+           (portRef O (instanceRef LW_CYCLE_RNINIQ22))
+           (portRef (member un1_D_UM_040 3))
+          ))
+          (net (rename d_ll_040_in_5 "D_LL_040_in[5]") (joined
+           (portRef (member D_LL_040_in 2))
+           (portRef I0 (instanceRef LW_CYCLE_RNIPKQ22))
+          ))
+          (net (rename d_um_040_in_5 "D_UM_040_in[5]") (joined
+           (portRef (member D_UM_040_in 2))
+           (portRef I1 (instanceRef LW_CYCLE_RNIPKQ22))
+          ))
+          (net (rename un1_d_um_040_5 "un1_D_UM_040[5]") (joined
+           (portRef O (instanceRef LW_CYCLE_RNIPKQ22))
+           (portRef (member un1_D_UM_040 2))
+          ))
+          (net (rename d_lm_040_in_5 "D_LM_040_in[5]") (joined
+           (portRef (member D_LM_040_in 2))
+           (portRef I0 (instanceRef LW_CYCLE_RNI2ASM1))
+          ))
+          (net (rename d_uu_040_in_5 "D_UU_040_in[5]") (joined
+           (portRef (member D_UU_040_in 2))
+           (portRef I1 (instanceRef LW_CYCLE_RNI2ASM1))
+          ))
+          (net (rename un1_d_uu_040_5 "un1_D_UU_040[5]") (joined
+           (portRef O (instanceRef LW_CYCLE_RNI2ASM1))
+           (portRef (member un1_D_UU_040 2))
+          ))
+          (net (rename d_lm_040_in_6 "D_LM_040_in[6]") (joined
+           (portRef (member D_LM_040_in 1))
+           (portRef I0 (instanceRef LW_CYCLE_RNI4CSM1))
+          ))
+          (net (rename d_uu_040_in_6 "D_UU_040_in[6]") (joined
+           (portRef (member D_UU_040_in 1))
+           (portRef I1 (instanceRef LW_CYCLE_RNI4CSM1))
+          ))
+          (net (rename un1_d_uu_040_6 "un1_D_UU_040[6]") (joined
+           (portRef O (instanceRef LW_CYCLE_RNI4CSM1))
+           (portRef (member un1_D_UU_040 1))
+          ))
+          (net (rename d_ll_040_in_6 "D_LL_040_in[6]") (joined
+           (portRef (member D_LL_040_in 1))
+           (portRef I0 (instanceRef LW_CYCLE_RNIRMQ22))
+          ))
+          (net (rename d_um_040_in_6 "D_UM_040_in[6]") (joined
+           (portRef (member D_UM_040_in 1))
+           (portRef I1 (instanceRef LW_CYCLE_RNIRMQ22))
+          ))
+          (net (rename un1_d_um_040_6 "un1_D_UM_040[6]") (joined
+           (portRef O (instanceRef LW_CYCLE_RNIRMQ22))
+           (portRef (member un1_D_UM_040 1))
+          ))
+          (net (rename d_ll_040_in_7 "D_LL_040_in[7]") (joined
+           (portRef (member D_LL_040_in 0))
+           (portRef I0 (instanceRef LW_CYCLE_RNITOQ22))
+          ))
+          (net (rename d_um_040_in_7 "D_UM_040_in[7]") (joined
+           (portRef (member D_UM_040_in 0))
+           (portRef I1 (instanceRef LW_CYCLE_RNITOQ22))
+          ))
+          (net (rename un1_d_um_040_7 "un1_D_UM_040[7]") (joined
+           (portRef O (instanceRef LW_CYCLE_RNITOQ22))
+           (portRef (member un1_D_UM_040 0))
+          ))
+          (net (rename d_lm_040_in_7 "D_LM_040_in[7]") (joined
+           (portRef (member D_LM_040_in 0))
+           (portRef I0 (instanceRef LW_CYCLE_RNI6ESM1))
+          ))
+          (net (rename d_uu_040_in_7 "D_UU_040_in[7]") (joined
+           (portRef (member D_UU_040_in 0))
+           (portRef I1 (instanceRef LW_CYCLE_RNI6ESM1))
+          ))
+          (net (rename un1_d_uu_040_7 "un1_D_UU_040[7]") (joined
+           (portRef O (instanceRef LW_CYCLE_RNI6ESM1))
+           (portRef (member un1_D_UU_040 0))
+          ))
+          (net (rename d_lm_amiga_in_7 "D_LM_AMIGA_in[7]") (joined
+           (portRef (member D_LM_AMIGA_in 0))
+           (portRef I0 (instanceRef LW_CYCLE_RNISEL62))
+          ))
+          (net (rename un1_d_lm_amiga_7 "un1_D_LM_AMIGA[7]") (joined
+           (portRef O (instanceRef LW_CYCLE_RNISEL62))
+           (portRef (member un1_D_LM_AMIGA 0))
+          ))
+          (net (rename d_ll_amiga_in_7 "D_LL_AMIGA_in[7]") (joined
+           (portRef (member D_LL_AMIGA_in 0))
+           (portRef I0 (instanceRef LW_CYCLE_RNIJ70A2))
+          ))
+          (net (rename un1_d_ll_amiga_7 "un1_D_LL_AMIGA[7]") (joined
+           (portRef O (instanceRef LW_CYCLE_RNIJ70A2))
+           (portRef (member un1_D_LL_AMIGA 0))
+          ))
+          (net (rename d_lm_amiga_in_6 "D_LM_AMIGA_in[6]") (joined
+           (portRef (member D_LM_AMIGA_in 1))
+           (portRef I0 (instanceRef LW_CYCLE_RNIQCL62))
+          ))
+          (net (rename un1_d_lm_amiga_6 "un1_D_LM_AMIGA[6]") (joined
+           (portRef O (instanceRef LW_CYCLE_RNIQCL62))
+           (portRef (member un1_D_LM_AMIGA 1))
+          ))
+          (net (rename d_ll_amiga_in_6 "D_LL_AMIGA_in[6]") (joined
+           (portRef (member D_LL_AMIGA_in 1))
+           (portRef I0 (instanceRef LW_CYCLE_RNIH50A2))
+          ))
+          (net (rename un1_d_ll_amiga_6 "un1_D_LL_AMIGA[6]") (joined
+           (portRef O (instanceRef LW_CYCLE_RNIH50A2))
+           (portRef (member un1_D_LL_AMIGA 1))
+          ))
+          (net (rename d_lm_amiga_in_5 "D_LM_AMIGA_in[5]") (joined
+           (portRef (member D_LM_AMIGA_in 2))
+           (portRef I0 (instanceRef LW_CYCLE_RNIOAL62))
+          ))
+          (net (rename un1_d_lm_amiga_5 "un1_D_LM_AMIGA[5]") (joined
+           (portRef O (instanceRef LW_CYCLE_RNIOAL62))
+           (portRef (member un1_D_LM_AMIGA 2))
+          ))
+          (net (rename d_ll_amiga_in_5 "D_LL_AMIGA_in[5]") (joined
+           (portRef (member D_LL_AMIGA_in 2))
+           (portRef I0 (instanceRef LW_CYCLE_RNIF30A2))
+          ))
+          (net (rename un1_d_ll_amiga_5 "un1_D_LL_AMIGA[5]") (joined
+           (portRef O (instanceRef LW_CYCLE_RNIF30A2))
+           (portRef (member un1_D_LL_AMIGA 2))
+          ))
+          (net (rename d_lm_amiga_in_4 "D_LM_AMIGA_in[4]") (joined
+           (portRef (member D_LM_AMIGA_in 3))
+           (portRef I0 (instanceRef LW_CYCLE_RNIM8L62))
+          ))
+          (net (rename un1_d_lm_amiga_4 "un1_D_LM_AMIGA[4]") (joined
+           (portRef O (instanceRef LW_CYCLE_RNIM8L62))
+           (portRef (member un1_D_LM_AMIGA 3))
+          ))
+          (net (rename d_ll_amiga_in_4 "D_LL_AMIGA_in[4]") (joined
+           (portRef (member D_LL_AMIGA_in 3))
+           (portRef I0 (instanceRef LW_CYCLE_RNID10A2))
+          ))
+          (net (rename un1_d_ll_amiga_4 "un1_D_LL_AMIGA[4]") (joined
+           (portRef O (instanceRef LW_CYCLE_RNID10A2))
+           (portRef (member un1_D_LL_AMIGA 3))
+          ))
+          (net (rename d_lm_amiga_in_3 "D_LM_AMIGA_in[3]") (joined
+           (portRef (member D_LM_AMIGA_in 4))
+           (portRef I0 (instanceRef LW_CYCLE_RNIK6L62))
+          ))
+          (net (rename un1_d_lm_amiga_3 "un1_D_LM_AMIGA[3]") (joined
+           (portRef O (instanceRef LW_CYCLE_RNIK6L62))
+           (portRef (member un1_D_LM_AMIGA 4))
+          ))
+          (net (rename d_ll_amiga_in_3 "D_LL_AMIGA_in[3]") (joined
+           (portRef (member D_LL_AMIGA_in 4))
+           (portRef I0 (instanceRef LW_CYCLE_RNIBVV92))
+          ))
+          (net (rename un1_d_ll_amiga_3 "un1_D_LL_AMIGA[3]") (joined
+           (portRef O (instanceRef LW_CYCLE_RNIBVV92))
+           (portRef (member un1_D_LL_AMIGA 4))
+          ))
+          (net (rename d_lm_amiga_in_2 "D_LM_AMIGA_in[2]") (joined
+           (portRef (member D_LM_AMIGA_in 5))
+           (portRef I0 (instanceRef LW_CYCLE_RNII4L62))
+          ))
+          (net (rename un1_d_lm_amiga_2 "un1_D_LM_AMIGA[2]") (joined
+           (portRef O (instanceRef LW_CYCLE_RNII4L62))
+           (portRef (member un1_D_LM_AMIGA 5))
+          ))
+          (net (rename d_ll_amiga_in_2 "D_LL_AMIGA_in[2]") (joined
+           (portRef (member D_LL_AMIGA_in 5))
+           (portRef I0 (instanceRef LW_CYCLE_RNI9TV92))
+          ))
+          (net (rename un1_d_ll_amiga_2 "un1_D_LL_AMIGA[2]") (joined
+           (portRef O (instanceRef LW_CYCLE_RNI9TV92))
+           (portRef (member un1_D_LL_AMIGA 5))
+          ))
+          (net (rename d_lm_amiga_in_1 "D_LM_AMIGA_in[1]") (joined
+           (portRef (member D_LM_AMIGA_in 6))
+           (portRef I0 (instanceRef LW_CYCLE_RNIG2L62))
+          ))
+          (net (rename un1_d_lm_amiga_1 "un1_D_LM_AMIGA[1]") (joined
+           (portRef O (instanceRef LW_CYCLE_RNIG2L62))
+           (portRef (member un1_D_LM_AMIGA 6))
+          ))
+          (net (rename d_ll_amiga_in_1 "D_LL_AMIGA_in[1]") (joined
+           (portRef (member D_LL_AMIGA_in 6))
+           (portRef I0 (instanceRef LW_CYCLE_RNI7RV92))
+          ))
+          (net (rename un1_d_ll_amiga_1 "un1_D_LL_AMIGA[1]") (joined
+           (portRef O (instanceRef LW_CYCLE_RNI7RV92))
+           (portRef (member un1_D_LL_AMIGA 6))
+          ))
+          (net (rename d_lm_amiga_in_0 "D_LM_AMIGA_in[0]") (joined
+           (portRef (member D_LM_AMIGA_in 7))
+           (portRef I0 (instanceRef LW_CYCLE_RNIE0L62))
+          ))
+          (net (rename un1_d_lm_amiga_0 "un1_D_LM_AMIGA[0]") (joined
+           (portRef O (instanceRef LW_CYCLE_RNIE0L62))
+           (portRef (member un1_D_LM_AMIGA 7))
+          ))
+          (net (rename d_ll_amiga_in_0 "D_LL_AMIGA_in[0]") (joined
+           (portRef (member D_LL_AMIGA_in 7))
+           (portRef I0 (instanceRef LW_CYCLE_RNI5PV92))
+          ))
+          (net (rename un1_d_ll_amiga_0 "un1_D_LL_AMIGA[0]") (joined
+           (portRef O (instanceRef LW_CYCLE_RNI5PV92))
+           (portRef (member un1_D_LL_AMIGA 7))
+          ))
+          (net (rename resetn_c "RESETn_c") (joined
+           (portRef RESETn_c)
+           (portRef I0 (instanceRef LW_CYCLE_RNO))
+           (portRef I0 (instanceRef TSn_RNO))
+           (portRef I0 (instanceRef CYCLE_STATE_RNO_1))
+           (portRef I0 (instanceRef CYCLE_STATE_RNO_0))
+           (portRef I0 (instanceRef CYCLE_STATE_RNI14FL1_0))
+           (portRef I1 (instanceRef LW_CYCLE_START_RNO))
+           (portRef I0 (instanceRef TS_EN_RNO))
+           (portRef I0 (instanceRef A_OUT_RNO))
+          ))
+          (net (rename A_OUTZ0 "A_OUT") (joined
+           (portRef Q (instanceRef A_OUT))
+           (portRef I1 (instanceRef A_OUT_RNIK8GP))
+           (portRef I1 (instanceRef A_OUT_RNO))
+          ))
+          (net A_OUT_1 (joined
+           (portRef O (instanceRef A_OUT_RNO))
+           (portRef D (instanceRef A_OUT))
           ))
           (net (rename TS_ENZ0 "TS_EN") (joined
            (portRef Q (instanceRef TS_EN))
            (portRef I1 (instanceRef TSn_RNO))
+           (portRef I1 (instanceRef TS_EN_RNO))
+          ))
+          (net TS_EN10 (joined
+           (portRef O (instanceRef TS_EN_RNO_0))
+           (portRef I2 (instanceRef TS_EN_RNO))
+          ))
+          (net TS_EN_4 (joined
+           (portRef O (instanceRef TS_EN_RNO_1))
+           (portRef I3 (instanceRef TS_EN_RNO))
+          ))
+          (net TS_EN_1 (joined
+           (portRef O (instanceRef TS_EN_RNO))
+           (portRef D (instanceRef TS_EN))
+          ))
+          (net (rename portsize_c "PORTSIZE_c") (joined
+           (portRef PORTSIZE_c)
+           (portRef I0 (instanceRef LW_CYCLE_START_RNO))
+          ))
+          (net (rename tsn_c "TSn_c") (joined
+           (portRef Q (instanceRef TSn))
+           (portRef I2 (instanceRef LW_CYCLE_START_RNO))
+           (portRef TSn_c)
+          ))
+          (net LW_TRANS_0 (joined
+           (portRef O (instanceRef LW_CYCLE_START_RNO_0))
+           (portRef I3 (instanceRef LW_CYCLE_START_RNO))
+          ))
+          (net LW_CYCLE_START_0 (joined
+           (portRef O (instanceRef LW_CYCLE_START_RNO))
+           (portRef D (instanceRef LW_CYCLE_START))
+          ))
+          (net (rename rnw_c "RnW_c") (joined
+           (portRef RnW_c)
+           (portRef I1 (instanceRef CYCLE_STATE_RNI14FL1_0))
+          ))
+          (net (rename tackn_c "TACKn_c") (joined
+           (portRef TACKn_c)
+           (portRef I0 (instanceRef CYCLE_STATE_RNIFCLM_0))
+           (portRef I0 (instanceRef LW_CYCLE_RNO_0))
+           (portRef I0 (instanceRef TA_EN_ness_RNIPNOD))
+           (portRef I1 (instanceRef CYCLE_STATE_RNO_1))
+           (portRef I1 (instanceRef CYCLE_STATE_RNO_0))
+          ))
+          (net (rename CYCLE_STATEZ0Z_0 "CYCLE_STATE[0]") (joined
+           (portRef Q (instanceRef CYCLE_STATE_0))
+           (portRef I2 (instanceRef CYCLE_STATE_RNIFCLM_0))
+           (portRef I1 (instanceRef LW_CYCLE_RNO_0))
+           (portRef I0 (instanceRef TS_EN_RNO_0))
+           (portRef I0 (instanceRef LW_CYCLE_START_RNIIU7U))
+           (portRef I2 (instanceRef TS_EN_RNO_1))
+           (portRef I2 (instanceRef CYCLE_STATE_RNO_1))
+           (portRef I2 (instanceRef CYCLE_STATE_RNO_0))
+          ))
+          (net (rename CYCLE_STATE_cnst_0 "CYCLE_STATE_cnst[0]") (joined
+           (portRef O (instanceRef CYCLE_STATE_RNO_0))
+           (portRef D (instanceRef CYCLE_STATE_0))
+          ))
+          (net (rename CYCLE_STATE_cnst_1 "CYCLE_STATE_cnst[1]") (joined
+           (portRef O (instanceRef CYCLE_STATE_RNO_1))
+           (portRef D (instanceRef CYCLE_STATE_1))
+          ))
+          (net (rename clk40_i "CLK40_i") (joined
+           (portRef CLK40_i)
+           (portRef I0 (instanceRef TS_EN_RNO_1))
+          ))
+          (net (rename ts_cpun_c "TS_CPUn_c") (joined
+           (portRef TS_CPUn_c)
+           (portRef I1 (instanceRef TS_EN_RNO_1))
+          ))
+          (net (rename LW_CYCLEZ0 "LW_CYCLE") (joined
+           (portRef Q (instanceRef LW_CYCLE))
+           (portRef I0 (instanceRef LW_CYCLE_RNIHM0E1))
+           (portRef I2 (instanceRef LW_CYCLE_RNO))
+           (portRef I1 (instanceRef LW_CYCLE_RNIN15M))
+           (portRef I1 (instanceRef UU_LATCHED_nesr_RNIUFN51_0))
+           (portRef I1 (instanceRef UM_LATCHED_nesr_RNIEN7L_0))
+           (portRef I1 (instanceRef UU_LATCHED_nesr_RNI0IN51_1))
+           (portRef I1 (instanceRef UM_LATCHED_nesr_RNIGP7L_1))
+           (portRef I1 (instanceRef UU_LATCHED_nesr_RNI2KN51_2))
+           (portRef I1 (instanceRef UM_LATCHED_nesr_RNIIR7L_2))
+           (portRef I1 (instanceRef UU_LATCHED_nesr_RNI4MN51_3))
+           (portRef I1 (instanceRef UM_LATCHED_nesr_RNIKT7L_3))
+           (portRef I1 (instanceRef UU_LATCHED_nesr_RNI6ON51_4))
+           (portRef I1 (instanceRef UM_LATCHED_nesr_RNIMV7L_4))
+           (portRef I1 (instanceRef UU_LATCHED_nesr_RNI8QN51_5))
+           (portRef I1 (instanceRef UM_LATCHED_nesr_RNIO18L_5))
+           (portRef I1 (instanceRef UU_LATCHED_nesr_RNIASN51_6))
+           (portRef I1 (instanceRef UM_LATCHED_nesr_RNIQ38L_6))
+           (portRef I1 (instanceRef UU_LATCHED_nesr_RNICUN51_7))
+           (portRef I1 (instanceRef UM_LATCHED_nesr_RNIS58L_7))
+           (portRef I2 (instanceRef A_OUT_RNIK8GP))
+           (portRef I2 (instanceRef LW_CYCLE_START_RNIIU7U))
+          ))
+          (net (rename LW_CYCLE_STARTZ0 "LW_CYCLE_START") (joined
+           (portRef Q (instanceRef LW_CYCLE_START))
+           (portRef I3 (instanceRef LW_CYCLE_RNO_0))
+           (portRef I3 (instanceRef LW_CYCLE_START_RNIIU7U))
+          ))
+          (net (rename siz_c_0 "SIZ_c[0]") (joined
+           (portRef (member SIZ_c 1))
+           (portRef I3 (instanceRef LW_CYCLE_RNIHM0E1))
+           (portRef I0 (instanceRef LW_CYCLE_START_RNO_0))
+          ))
+          (net (rename siz_c_1 "SIZ_c[1]") (joined
+           (portRef (member SIZ_c 0))
+           (portRef I2 (instanceRef LW_CYCLE_RNIHM0E1))
+           (portRef I1 (instanceRef LW_CYCLE_START_RNO_0))
+          ))
+          (net (rename tan_0_i "TAn_0_i") (joined
+           (portRef O (instanceRef TA_EN_ness_RNIPNOD))
+           (portRef TAn_0_i)
+          ))
+          (net (rename a_040_c_1 "A_040_c[1]") (joined
+           (portRef (member A_040_c 0))
+           (portRef I0 (instanceRef A_OUT_RNIK8GP))
+          ))
+          (net (rename a_amiga_c_1 "A_AMIGA_c[1]") (joined
+           (portRef O (instanceRef A_OUT_RNIK8GP))
+           (portRef I1 (instanceRef LW_CYCLE_RNIHM0E1))
+           (portRef (member A_AMIGA_c 0))
+          ))
+          (net (rename un1_d_um_amiga_7 "un1_D_UM_AMIGA[7]") (joined
+           (portRef O (instanceRef UM_LATCHED_nesr_RNIS58L_7))
+           (portRef (member un1_D_UM_AMIGA 0))
+          ))
+          (net (rename un1_d_uu_amiga_7 "un1_D_UU_AMIGA[7]") (joined
+           (portRef O (instanceRef UU_LATCHED_nesr_RNICUN51_7))
+           (portRef (member un1_D_UU_AMIGA 0))
+          ))
+          (net (rename un1_d_um_amiga_6 "un1_D_UM_AMIGA[6]") (joined
+           (portRef O (instanceRef UM_LATCHED_nesr_RNIQ38L_6))
+           (portRef (member un1_D_UM_AMIGA 1))
+          ))
+          (net (rename un1_d_uu_amiga_6 "un1_D_UU_AMIGA[6]") (joined
+           (portRef O (instanceRef UU_LATCHED_nesr_RNIASN51_6))
+           (portRef (member un1_D_UU_AMIGA 1))
+          ))
+          (net (rename un1_d_um_amiga_5 "un1_D_UM_AMIGA[5]") (joined
+           (portRef O (instanceRef UM_LATCHED_nesr_RNIO18L_5))
+           (portRef (member un1_D_UM_AMIGA 2))
+          ))
+          (net (rename un1_d_uu_amiga_5 "un1_D_UU_AMIGA[5]") (joined
+           (portRef O (instanceRef UU_LATCHED_nesr_RNI8QN51_5))
+           (portRef (member un1_D_UU_AMIGA 2))
+          ))
+          (net (rename un1_d_um_amiga_4 "un1_D_UM_AMIGA[4]") (joined
+           (portRef O (instanceRef UM_LATCHED_nesr_RNIMV7L_4))
+           (portRef (member un1_D_UM_AMIGA 3))
+          ))
+          (net (rename un1_d_uu_amiga_4 "un1_D_UU_AMIGA[4]") (joined
+           (portRef O (instanceRef UU_LATCHED_nesr_RNI6ON51_4))
+           (portRef (member un1_D_UU_AMIGA 3))
+          ))
+          (net (rename un1_d_um_amiga_3 "un1_D_UM_AMIGA[3]") (joined
+           (portRef O (instanceRef UM_LATCHED_nesr_RNIKT7L_3))
+           (portRef (member un1_D_UM_AMIGA 4))
+          ))
+          (net (rename un1_d_uu_amiga_3 "un1_D_UU_AMIGA[3]") (joined
+           (portRef O (instanceRef UU_LATCHED_nesr_RNI4MN51_3))
+           (portRef (member un1_D_UU_AMIGA 4))
+          ))
+          (net (rename un1_d_um_amiga_2 "un1_D_UM_AMIGA[2]") (joined
+           (portRef O (instanceRef UM_LATCHED_nesr_RNIIR7L_2))
+           (portRef (member un1_D_UM_AMIGA 5))
+          ))
+          (net (rename un1_d_uu_amiga_2 "un1_D_UU_AMIGA[2]") (joined
+           (portRef O (instanceRef UU_LATCHED_nesr_RNI2KN51_2))
+           (portRef (member un1_D_UU_AMIGA 5))
+          ))
+          (net (rename un1_d_um_amiga_1 "un1_D_UM_AMIGA[1]") (joined
+           (portRef O (instanceRef UM_LATCHED_nesr_RNIGP7L_1))
+           (portRef (member un1_D_UM_AMIGA 6))
+          ))
+          (net (rename un1_d_uu_amiga_1 "un1_D_UU_AMIGA[1]") (joined
+           (portRef O (instanceRef UU_LATCHED_nesr_RNI0IN51_1))
+           (portRef (member un1_D_UU_AMIGA 6))
+          ))
+          (net (rename un1_d_um_amiga_0 "un1_D_UM_AMIGA[0]") (joined
+           (portRef O (instanceRef UM_LATCHED_nesr_RNIEN7L_0))
+           (portRef (member un1_D_UM_AMIGA 7))
+          ))
+          (net (rename un1_d_uu_amiga_0 "un1_D_UU_AMIGA[0]") (joined
+           (portRef O (instanceRef UU_LATCHED_nesr_RNIUFN51_0))
+           (portRef (member un1_D_UU_AMIGA 7))
+          ))
+          (net (rename a_040_c_0 "A_040_c[0]") (joined
+           (portRef (member A_040_c 1))
+           (portRef I0 (instanceRef LW_CYCLE_RNIN15M))
+          ))
+          (net (rename a_amiga_c_0 "A_AMIGA_c[0]") (joined
+           (portRef O (instanceRef LW_CYCLE_RNIN15M))
+           (portRef (member A_AMIGA_c 1))
           ))
           (net (rename TSnZ0 "TSn") (joined
            (portRef O (instanceRef TSn_RNO))
            (portRef D (instanceRef TSn))
           ))
-          (net (rename tsn_c "TSn_c") (joined
-           (portRef Q (instanceRef TSn))
-           (portRef TSn_c)
+          (net LW_CYCLE_r_1 (joined
+           (portRef O (instanceRef LW_CYCLE_RNO_0))
+           (portRef I3 (instanceRef LW_CYCLE_RNO))
+          ))
+          (net LW_CYCLE_2 (joined
+           (portRef O (instanceRef LW_CYCLE_RNO))
+           (portRef D (instanceRef LW_CYCLE))
           ))
           (net (rename clk40 "CLK40") (joined
            (portRef CLK40)
            (portRef C (instanceRef TSn))
-          ))
-          (net (rename clk80 "CLK80") (joined
-           (portRef CLK80)
-           (portRef C (instanceRef TS_EN))
           ))
           (net (rename VCCZ0 "VCC") (joined
            (portRef Y (instanceRef VCC))
@@ -239,6 +1400,7 @@
            (port CLKRAMB (direction OUTPUT))
            (port TSn (direction OUTPUT))
            (port TAn (direction OUTPUT))
+           (port TBIn (direction OUTPUT))
            (port CPUBGn (direction OUTPUT))
            (port BUFENn (direction OUTPUT))
            (port BUFDIR (direction OUTPUT))
@@ -248,104 +1410,8 @@
           (instance RnW_c_sbtinv (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
            (property LUT_INIT (string "5555"))
           )
-          (instance (rename D_UM_AMIGA_iobuf_RNO_0 "D_UM_AMIGA_iobuf_RNO[0]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
-           (property LUT_INIT (string "ACAC"))
-          )
-          (instance (rename D_UU_AMIGA_iobuf_RNO_0 "D_UU_AMIGA_iobuf_RNO[0]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
-           (property LUT_INIT (string "ACAC"))
-          )
-          (instance (rename D_UM_AMIGA_iobuf_RNO_1 "D_UM_AMIGA_iobuf_RNO[1]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
-           (property LUT_INIT (string "ACAC"))
-          )
-          (instance (rename D_UU_AMIGA_iobuf_RNO_1 "D_UU_AMIGA_iobuf_RNO[1]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
-           (property LUT_INIT (string "ACAC"))
-          )
-          (instance (rename D_UM_AMIGA_iobuf_RNO_2 "D_UM_AMIGA_iobuf_RNO[2]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
-           (property LUT_INIT (string "ACAC"))
-          )
-          (instance (rename D_UU_AMIGA_iobuf_RNO_2 "D_UU_AMIGA_iobuf_RNO[2]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
-           (property LUT_INIT (string "ACAC"))
-          )
-          (instance (rename D_UM_AMIGA_iobuf_RNO_3 "D_UM_AMIGA_iobuf_RNO[3]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
-           (property LUT_INIT (string "ACAC"))
-          )
-          (instance (rename D_UU_AMIGA_iobuf_RNO_3 "D_UU_AMIGA_iobuf_RNO[3]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
-           (property LUT_INIT (string "ACAC"))
-          )
-          (instance (rename D_UM_AMIGA_iobuf_RNO_4 "D_UM_AMIGA_iobuf_RNO[4]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
-           (property LUT_INIT (string "ACAC"))
-          )
-          (instance (rename D_UU_AMIGA_iobuf_RNO_4 "D_UU_AMIGA_iobuf_RNO[4]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
-           (property LUT_INIT (string "ACAC"))
-          )
-          (instance (rename D_UM_AMIGA_iobuf_RNO_5 "D_UM_AMIGA_iobuf_RNO[5]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
-           (property LUT_INIT (string "ACAC"))
-          )
-          (instance (rename D_UU_AMIGA_iobuf_RNO_5 "D_UU_AMIGA_iobuf_RNO[5]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
-           (property LUT_INIT (string "ACAC"))
-          )
-          (instance (rename D_UM_AMIGA_iobuf_RNO_6 "D_UM_AMIGA_iobuf_RNO[6]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
-           (property LUT_INIT (string "ACAC"))
-          )
-          (instance (rename D_UU_AMIGA_iobuf_RNO_6 "D_UU_AMIGA_iobuf_RNO[6]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
-           (property LUT_INIT (string "ACAC"))
-          )
-          (instance (rename D_UM_AMIGA_iobuf_RNO_7 "D_UM_AMIGA_iobuf_RNO[7]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
-           (property LUT_INIT (string "ACAC"))
-          )
-          (instance (rename D_UU_AMIGA_iobuf_RNO_7 "D_UU_AMIGA_iobuf_RNO[7]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
-           (property LUT_INIT (string "ACAC"))
-          )
-          (instance (rename D_LL_040_iobuf_RNO_0 "D_LL_040_iobuf_RNO[0]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
-           (property LUT_INIT (string "CACA"))
-          )
-          (instance (rename D_LM_040_iobuf_RNO_0 "D_LM_040_iobuf_RNO[0]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
-           (property LUT_INIT (string "CACA"))
-          )
-          (instance (rename D_LL_040_iobuf_RNO_1 "D_LL_040_iobuf_RNO[1]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
-           (property LUT_INIT (string "CACA"))
-          )
-          (instance (rename D_LM_040_iobuf_RNO_1 "D_LM_040_iobuf_RNO[1]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
-           (property LUT_INIT (string "CACA"))
-          )
-          (instance (rename D_LL_040_iobuf_RNO_2 "D_LL_040_iobuf_RNO[2]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
-           (property LUT_INIT (string "CACA"))
-          )
-          (instance (rename D_LM_040_iobuf_RNO_2 "D_LM_040_iobuf_RNO[2]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
-           (property LUT_INIT (string "CACA"))
-          )
-          (instance (rename D_LL_040_iobuf_RNO_3 "D_LL_040_iobuf_RNO[3]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
-           (property LUT_INIT (string "CACA"))
-          )
-          (instance (rename D_LM_040_iobuf_RNO_3 "D_LM_040_iobuf_RNO[3]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
-           (property LUT_INIT (string "CACA"))
-          )
-          (instance (rename D_LL_040_iobuf_RNO_4 "D_LL_040_iobuf_RNO[4]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
-           (property LUT_INIT (string "CACA"))
-          )
-          (instance (rename D_LM_040_iobuf_RNO_4 "D_LM_040_iobuf_RNO[4]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
-           (property LUT_INIT (string "CACA"))
-          )
-          (instance (rename D_LL_040_iobuf_RNO_5 "D_LL_040_iobuf_RNO[5]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
-           (property LUT_INIT (string "CACA"))
-          )
-          (instance (rename D_LM_040_iobuf_RNO_5 "D_LM_040_iobuf_RNO[5]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
-           (property LUT_INIT (string "CACA"))
-          )
-          (instance (rename D_LL_040_iobuf_RNO_6 "D_LL_040_iobuf_RNO[6]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
-           (property LUT_INIT (string "CACA"))
-          )
-          (instance (rename D_LM_040_iobuf_RNO_6 "D_LM_040_iobuf_RNO[6]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
-           (property LUT_INIT (string "CACA"))
-          )
-          (instance (rename D_LL_040_iobuf_RNO_7 "D_LL_040_iobuf_RNO[7]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
-           (property LUT_INIT (string "CACA"))
-          )
-          (instance (rename D_LM_040_iobuf_RNO_7 "D_LM_040_iobuf_RNO[7]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
-           (property LUT_INIT (string "CACA"))
-          )
-          (instance (rename SIZ_ibuf_RNI93PP_0 "SIZ_ibuf_RNI93PP[0]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
-           (property LUT_INIT (string "2828"))
+          (instance RESETn_ibuf_RNIM9SF (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "5555"))
           )
           (instance (rename A_040_ibuf_0 "A_040_ibuf[0]") (viewRef PRIM (cellRef SB_IO (libraryRef sb_ice)))
            (property NEG_TRIGGER (string "0"))
@@ -372,6 +1438,10 @@
            (property PIN_TYPE (string "000001"))
           )
           (instance RnW_ibuf (viewRef PRIM (cellRef SB_IO (libraryRef sb_ice)))
+           (property NEG_TRIGGER (string "0"))
+           (property PIN_TYPE (string "000001"))
+          )
+          (instance PORTSIZE_ibuf (viewRef PRIM (cellRef SB_IO (libraryRef sb_ice)))
            (property NEG_TRIGGER (string "0"))
            (property PIN_TYPE (string "000001"))
           )
@@ -675,6 +1745,10 @@
            (property NEG_TRIGGER (string "0"))
            (property PIN_TYPE (string "011001"))
           )
+          (instance TBIn_obuf (viewRef PRIM (cellRef SB_IO (libraryRef sb_ice)))
+           (property NEG_TRIGGER (string "0"))
+           (property PIN_TYPE (string "011001"))
+          )
           (instance CPUBGn_obuf (viewRef PRIM (cellRef SB_IO (libraryRef sb_ice)))
            (property NEG_TRIGGER (string "0"))
            (property PIN_TYPE (string "011001"))
@@ -717,133 +1791,10 @@
            (portRef CLK40_IN)
            (portRef PACKAGEPIN (instanceRef pll))
           ))
-          (net (rename D_UM_AMIGA_iobuf_RNOZ0Z_0 "D_UM_AMIGA_iobuf_RNO[0]") (joined
-           (portRef O (instanceRef D_UM_AMIGA_iobuf_RNO_0))
-           (portRef D_OUT_0 (instanceRef D_UM_AMIGA_iobuf_0))
-          ))
-          (net (rename D_UU_AMIGA_iobuf_RNOZ0Z_0 "D_UU_AMIGA_iobuf_RNO[0]") (joined
-           (portRef O (instanceRef D_UU_AMIGA_iobuf_RNO_0))
-           (portRef D_OUT_0 (instanceRef D_UU_AMIGA_iobuf_0))
-          ))
-          (net (rename D_UM_AMIGA_iobuf_RNOZ0Z_1 "D_UM_AMIGA_iobuf_RNO[1]") (joined
-           (portRef O (instanceRef D_UM_AMIGA_iobuf_RNO_1))
-           (portRef D_OUT_0 (instanceRef D_UM_AMIGA_iobuf_1))
-          ))
-          (net (rename D_UU_AMIGA_iobuf_RNOZ0Z_1 "D_UU_AMIGA_iobuf_RNO[1]") (joined
-           (portRef O (instanceRef D_UU_AMIGA_iobuf_RNO_1))
-           (portRef D_OUT_0 (instanceRef D_UU_AMIGA_iobuf_1))
-          ))
-          (net (rename D_UM_AMIGA_iobuf_RNOZ0Z_2 "D_UM_AMIGA_iobuf_RNO[2]") (joined
-           (portRef O (instanceRef D_UM_AMIGA_iobuf_RNO_2))
-           (portRef D_OUT_0 (instanceRef D_UM_AMIGA_iobuf_2))
-          ))
-          (net (rename D_UU_AMIGA_iobuf_RNOZ0Z_2 "D_UU_AMIGA_iobuf_RNO[2]") (joined
-           (portRef O (instanceRef D_UU_AMIGA_iobuf_RNO_2))
-           (portRef D_OUT_0 (instanceRef D_UU_AMIGA_iobuf_2))
-          ))
-          (net (rename D_UM_AMIGA_iobuf_RNOZ0Z_3 "D_UM_AMIGA_iobuf_RNO[3]") (joined
-           (portRef O (instanceRef D_UM_AMIGA_iobuf_RNO_3))
-           (portRef D_OUT_0 (instanceRef D_UM_AMIGA_iobuf_3))
-          ))
-          (net (rename D_UU_AMIGA_iobuf_RNOZ0Z_3 "D_UU_AMIGA_iobuf_RNO[3]") (joined
-           (portRef O (instanceRef D_UU_AMIGA_iobuf_RNO_3))
-           (portRef D_OUT_0 (instanceRef D_UU_AMIGA_iobuf_3))
-          ))
-          (net (rename D_UM_AMIGA_iobuf_RNOZ0Z_4 "D_UM_AMIGA_iobuf_RNO[4]") (joined
-           (portRef O (instanceRef D_UM_AMIGA_iobuf_RNO_4))
-           (portRef D_OUT_0 (instanceRef D_UM_AMIGA_iobuf_4))
-          ))
-          (net (rename D_UU_AMIGA_iobuf_RNOZ0Z_4 "D_UU_AMIGA_iobuf_RNO[4]") (joined
-           (portRef O (instanceRef D_UU_AMIGA_iobuf_RNO_4))
-           (portRef D_OUT_0 (instanceRef D_UU_AMIGA_iobuf_4))
-          ))
-          (net (rename D_UM_AMIGA_iobuf_RNOZ0Z_5 "D_UM_AMIGA_iobuf_RNO[5]") (joined
-           (portRef O (instanceRef D_UM_AMIGA_iobuf_RNO_5))
-           (portRef D_OUT_0 (instanceRef D_UM_AMIGA_iobuf_5))
-          ))
-          (net (rename D_UU_AMIGA_iobuf_RNOZ0Z_5 "D_UU_AMIGA_iobuf_RNO[5]") (joined
-           (portRef O (instanceRef D_UU_AMIGA_iobuf_RNO_5))
-           (portRef D_OUT_0 (instanceRef D_UU_AMIGA_iobuf_5))
-          ))
-          (net (rename D_UM_AMIGA_iobuf_RNOZ0Z_6 "D_UM_AMIGA_iobuf_RNO[6]") (joined
-           (portRef O (instanceRef D_UM_AMIGA_iobuf_RNO_6))
-           (portRef D_OUT_0 (instanceRef D_UM_AMIGA_iobuf_6))
-          ))
-          (net (rename D_UU_AMIGA_iobuf_RNOZ0Z_6 "D_UU_AMIGA_iobuf_RNO[6]") (joined
-           (portRef O (instanceRef D_UU_AMIGA_iobuf_RNO_6))
-           (portRef D_OUT_0 (instanceRef D_UU_AMIGA_iobuf_6))
-          ))
-          (net (rename D_UM_AMIGA_iobuf_RNOZ0Z_7 "D_UM_AMIGA_iobuf_RNO[7]") (joined
-           (portRef O (instanceRef D_UM_AMIGA_iobuf_RNO_7))
-           (portRef D_OUT_0 (instanceRef D_UM_AMIGA_iobuf_7))
-          ))
-          (net (rename D_UU_AMIGA_iobuf_RNOZ0Z_7 "D_UU_AMIGA_iobuf_RNO[7]") (joined
-           (portRef O (instanceRef D_UU_AMIGA_iobuf_RNO_7))
-           (portRef D_OUT_0 (instanceRef D_UU_AMIGA_iobuf_7))
-          ))
-          (net (rename D_LL_040_iobuf_RNOZ0Z_0 "D_LL_040_iobuf_RNO[0]") (joined
-           (portRef O (instanceRef D_LL_040_iobuf_RNO_0))
-           (portRef D_OUT_0 (instanceRef D_LL_040_iobuf_0))
-          ))
-          (net (rename D_LM_040_iobuf_RNOZ0Z_0 "D_LM_040_iobuf_RNO[0]") (joined
-           (portRef O (instanceRef D_LM_040_iobuf_RNO_0))
-           (portRef D_OUT_0 (instanceRef D_LM_040_iobuf_0))
-          ))
-          (net (rename D_LL_040_iobuf_RNOZ0Z_1 "D_LL_040_iobuf_RNO[1]") (joined
-           (portRef O (instanceRef D_LL_040_iobuf_RNO_1))
-           (portRef D_OUT_0 (instanceRef D_LL_040_iobuf_1))
-          ))
-          (net (rename D_LM_040_iobuf_RNOZ0Z_1 "D_LM_040_iobuf_RNO[1]") (joined
-           (portRef O (instanceRef D_LM_040_iobuf_RNO_1))
-           (portRef D_OUT_0 (instanceRef D_LM_040_iobuf_1))
-          ))
-          (net (rename D_LL_040_iobuf_RNOZ0Z_2 "D_LL_040_iobuf_RNO[2]") (joined
-           (portRef O (instanceRef D_LL_040_iobuf_RNO_2))
-           (portRef D_OUT_0 (instanceRef D_LL_040_iobuf_2))
-          ))
-          (net (rename D_LM_040_iobuf_RNOZ0Z_2 "D_LM_040_iobuf_RNO[2]") (joined
-           (portRef O (instanceRef D_LM_040_iobuf_RNO_2))
-           (portRef D_OUT_0 (instanceRef D_LM_040_iobuf_2))
-          ))
-          (net (rename D_LL_040_iobuf_RNOZ0Z_3 "D_LL_040_iobuf_RNO[3]") (joined
-           (portRef O (instanceRef D_LL_040_iobuf_RNO_3))
-           (portRef D_OUT_0 (instanceRef D_LL_040_iobuf_3))
-          ))
-          (net (rename D_LM_040_iobuf_RNOZ0Z_3 "D_LM_040_iobuf_RNO[3]") (joined
-           (portRef O (instanceRef D_LM_040_iobuf_RNO_3))
-           (portRef D_OUT_0 (instanceRef D_LM_040_iobuf_3))
-          ))
-          (net (rename D_LL_040_iobuf_RNOZ0Z_4 "D_LL_040_iobuf_RNO[4]") (joined
-           (portRef O (instanceRef D_LL_040_iobuf_RNO_4))
-           (portRef D_OUT_0 (instanceRef D_LL_040_iobuf_4))
-          ))
-          (net (rename D_LM_040_iobuf_RNOZ0Z_4 "D_LM_040_iobuf_RNO[4]") (joined
-           (portRef O (instanceRef D_LM_040_iobuf_RNO_4))
-           (portRef D_OUT_0 (instanceRef D_LM_040_iobuf_4))
-          ))
-          (net (rename D_LL_040_iobuf_RNOZ0Z_5 "D_LL_040_iobuf_RNO[5]") (joined
-           (portRef O (instanceRef D_LL_040_iobuf_RNO_5))
-           (portRef D_OUT_0 (instanceRef D_LL_040_iobuf_5))
-          ))
-          (net (rename D_LM_040_iobuf_RNOZ0Z_5 "D_LM_040_iobuf_RNO[5]") (joined
-           (portRef O (instanceRef D_LM_040_iobuf_RNO_5))
-           (portRef D_OUT_0 (instanceRef D_LM_040_iobuf_5))
-          ))
-          (net (rename D_LL_040_iobuf_RNOZ0Z_6 "D_LL_040_iobuf_RNO[6]") (joined
-           (portRef O (instanceRef D_LL_040_iobuf_RNO_6))
-           (portRef D_OUT_0 (instanceRef D_LL_040_iobuf_6))
-          ))
-          (net (rename D_LM_040_iobuf_RNOZ0Z_6 "D_LM_040_iobuf_RNO[6]") (joined
-           (portRef O (instanceRef D_LM_040_iobuf_RNO_6))
-           (portRef D_OUT_0 (instanceRef D_LM_040_iobuf_6))
-          ))
-          (net (rename D_LL_040_iobuf_RNOZ0Z_7 "D_LL_040_iobuf_RNO[7]") (joined
-           (portRef O (instanceRef D_LL_040_iobuf_RNO_7))
-           (portRef D_OUT_0 (instanceRef D_LL_040_iobuf_7))
-          ))
-          (net (rename D_LM_040_iobuf_RNOZ0Z_7 "D_LM_040_iobuf_RNO[7]") (joined
-           (portRef O (instanceRef D_LM_040_iobuf_RNO_7))
-           (portRef D_OUT_0 (instanceRef D_LM_040_iobuf_7))
+          (net (rename VCCZ0 "VCC") (joined
+           (portRef Y (instanceRef VCC))
+           (portRef RESETB (instanceRef pll))
+           (portRef D_OUT_0 (instanceRef DMAn_obuf))
           ))
           (net CLK80 (joined
            (portRef CLK80 (instanceRef U111_CYCLE_SM))
@@ -872,50 +1823,203 @@
            (portRef (member DYNAMICDELAY 7) (instanceRef pll))
            (portRef D_OUT_0 (instanceRef BUFENn_obuf))
            (portRef D_OUT_0 (instanceRef CPUBGn_obuf))
+           (portRef D_OUT_0 (instanceRef TBIn_obuf))
           ))
-          (net (rename VCCZ0 "VCC") (joined
-           (portRef Y (instanceRef VCC))
-           (portRef RESETB (instanceRef pll))
-           (portRef D_OUT_0 (instanceRef DMAn_obuf))
+          (net (rename un1_D_UU_AMIGA_0 "un1_D_UU_AMIGA[0]") (joined
+           (portRef (member un1_D_UU_AMIGA 7) (instanceRef U111_CYCLE_SM))
+           (portRef D_OUT_0 (instanceRef D_UU_040_iobuf_0))
           ))
-          (net FLIP (joined
-           (portRef O (instanceRef SIZ_ibuf_RNI93PP_0))
-           (portRef I2 (instanceRef D_LM_040_iobuf_RNO_7))
-           (portRef I2 (instanceRef D_LL_040_iobuf_RNO_7))
-           (portRef I2 (instanceRef D_LM_040_iobuf_RNO_6))
-           (portRef I2 (instanceRef D_LL_040_iobuf_RNO_6))
-           (portRef I2 (instanceRef D_LM_040_iobuf_RNO_5))
-           (portRef I2 (instanceRef D_LL_040_iobuf_RNO_5))
-           (portRef I2 (instanceRef D_LM_040_iobuf_RNO_4))
-           (portRef I2 (instanceRef D_LL_040_iobuf_RNO_4))
-           (portRef I2 (instanceRef D_LM_040_iobuf_RNO_3))
-           (portRef I2 (instanceRef D_LL_040_iobuf_RNO_3))
-           (portRef I2 (instanceRef D_LM_040_iobuf_RNO_2))
-           (portRef I2 (instanceRef D_LL_040_iobuf_RNO_2))
-           (portRef I2 (instanceRef D_LM_040_iobuf_RNO_1))
-           (portRef I2 (instanceRef D_LL_040_iobuf_RNO_1))
-           (portRef I2 (instanceRef D_LM_040_iobuf_RNO_0))
-           (portRef I2 (instanceRef D_LL_040_iobuf_RNO_0))
-           (portRef I2 (instanceRef D_UU_AMIGA_iobuf_RNO_7))
-           (portRef I2 (instanceRef D_UM_AMIGA_iobuf_RNO_7))
-           (portRef I2 (instanceRef D_UU_AMIGA_iobuf_RNO_6))
-           (portRef I2 (instanceRef D_UM_AMIGA_iobuf_RNO_6))
-           (portRef I2 (instanceRef D_UU_AMIGA_iobuf_RNO_5))
-           (portRef I2 (instanceRef D_UM_AMIGA_iobuf_RNO_5))
-           (portRef I2 (instanceRef D_UU_AMIGA_iobuf_RNO_4))
-           (portRef I2 (instanceRef D_UM_AMIGA_iobuf_RNO_4))
-           (portRef I2 (instanceRef D_UU_AMIGA_iobuf_RNO_3))
-           (portRef I2 (instanceRef D_UM_AMIGA_iobuf_RNO_3))
-           (portRef I2 (instanceRef D_UU_AMIGA_iobuf_RNO_2))
-           (portRef I2 (instanceRef D_UM_AMIGA_iobuf_RNO_2))
-           (portRef I2 (instanceRef D_UU_AMIGA_iobuf_RNO_1))
-           (portRef I2 (instanceRef D_UM_AMIGA_iobuf_RNO_1))
-           (portRef I2 (instanceRef D_UU_AMIGA_iobuf_RNO_0))
-           (portRef I2 (instanceRef D_UM_AMIGA_iobuf_RNO_0))
+          (net (rename un1_D_UU_AMIGA_1 "un1_D_UU_AMIGA[1]") (joined
+           (portRef (member un1_D_UU_AMIGA 6) (instanceRef U111_CYCLE_SM))
+           (portRef D_OUT_0 (instanceRef D_UU_040_iobuf_1))
+          ))
+          (net (rename un1_D_UU_AMIGA_2 "un1_D_UU_AMIGA[2]") (joined
+           (portRef (member un1_D_UU_AMIGA 5) (instanceRef U111_CYCLE_SM))
+           (portRef D_OUT_0 (instanceRef D_UU_040_iobuf_2))
+          ))
+          (net (rename un1_D_UU_AMIGA_3 "un1_D_UU_AMIGA[3]") (joined
+           (portRef (member un1_D_UU_AMIGA 4) (instanceRef U111_CYCLE_SM))
+           (portRef D_OUT_0 (instanceRef D_UU_040_iobuf_3))
+          ))
+          (net (rename un1_D_UU_AMIGA_4 "un1_D_UU_AMIGA[4]") (joined
+           (portRef (member un1_D_UU_AMIGA 3) (instanceRef U111_CYCLE_SM))
+           (portRef D_OUT_0 (instanceRef D_UU_040_iobuf_4))
+          ))
+          (net (rename un1_D_UU_AMIGA_5 "un1_D_UU_AMIGA[5]") (joined
+           (portRef (member un1_D_UU_AMIGA 2) (instanceRef U111_CYCLE_SM))
+           (portRef D_OUT_0 (instanceRef D_UU_040_iobuf_5))
+          ))
+          (net (rename un1_D_UU_AMIGA_6 "un1_D_UU_AMIGA[6]") (joined
+           (portRef (member un1_D_UU_AMIGA 1) (instanceRef U111_CYCLE_SM))
+           (portRef D_OUT_0 (instanceRef D_UU_040_iobuf_6))
+          ))
+          (net (rename un1_D_UU_AMIGA_7 "un1_D_UU_AMIGA[7]") (joined
+           (portRef (member un1_D_UU_AMIGA 0) (instanceRef U111_CYCLE_SM))
+           (portRef D_OUT_0 (instanceRef D_UU_040_iobuf_7))
+          ))
+          (net (rename un1_D_UM_AMIGA_0 "un1_D_UM_AMIGA[0]") (joined
+           (portRef (member un1_D_UM_AMIGA 7) (instanceRef U111_CYCLE_SM))
+           (portRef D_OUT_0 (instanceRef D_UM_040_iobuf_0))
+          ))
+          (net (rename un1_D_UM_AMIGA_1 "un1_D_UM_AMIGA[1]") (joined
+           (portRef (member un1_D_UM_AMIGA 6) (instanceRef U111_CYCLE_SM))
+           (portRef D_OUT_0 (instanceRef D_UM_040_iobuf_1))
+          ))
+          (net (rename un1_D_UM_AMIGA_2 "un1_D_UM_AMIGA[2]") (joined
+           (portRef (member un1_D_UM_AMIGA 5) (instanceRef U111_CYCLE_SM))
+           (portRef D_OUT_0 (instanceRef D_UM_040_iobuf_2))
+          ))
+          (net (rename un1_D_UM_AMIGA_3 "un1_D_UM_AMIGA[3]") (joined
+           (portRef (member un1_D_UM_AMIGA 4) (instanceRef U111_CYCLE_SM))
+           (portRef D_OUT_0 (instanceRef D_UM_040_iobuf_3))
+          ))
+          (net (rename un1_D_UM_AMIGA_4 "un1_D_UM_AMIGA[4]") (joined
+           (portRef (member un1_D_UM_AMIGA 3) (instanceRef U111_CYCLE_SM))
+           (portRef D_OUT_0 (instanceRef D_UM_040_iobuf_4))
+          ))
+          (net (rename un1_D_UM_AMIGA_5 "un1_D_UM_AMIGA[5]") (joined
+           (portRef (member un1_D_UM_AMIGA 2) (instanceRef U111_CYCLE_SM))
+           (portRef D_OUT_0 (instanceRef D_UM_040_iobuf_5))
+          ))
+          (net (rename un1_D_UM_AMIGA_6 "un1_D_UM_AMIGA[6]") (joined
+           (portRef (member un1_D_UM_AMIGA 1) (instanceRef U111_CYCLE_SM))
+           (portRef D_OUT_0 (instanceRef D_UM_040_iobuf_6))
+          ))
+          (net (rename un1_D_UM_AMIGA_7 "un1_D_UM_AMIGA[7]") (joined
+           (portRef (member un1_D_UM_AMIGA 0) (instanceRef U111_CYCLE_SM))
+           (portRef D_OUT_0 (instanceRef D_UM_040_iobuf_7))
+          ))
+          (net (rename un1_D_LM_AMIGA_0 "un1_D_LM_AMIGA[0]") (joined
+           (portRef (member un1_D_LM_AMIGA 7) (instanceRef U111_CYCLE_SM))
+           (portRef D_OUT_0 (instanceRef D_LM_040_iobuf_0))
+          ))
+          (net (rename un1_D_LM_AMIGA_1 "un1_D_LM_AMIGA[1]") (joined
+           (portRef (member un1_D_LM_AMIGA 6) (instanceRef U111_CYCLE_SM))
+           (portRef D_OUT_0 (instanceRef D_LM_040_iobuf_1))
+          ))
+          (net (rename un1_D_LM_AMIGA_2 "un1_D_LM_AMIGA[2]") (joined
+           (portRef (member un1_D_LM_AMIGA 5) (instanceRef U111_CYCLE_SM))
+           (portRef D_OUT_0 (instanceRef D_LM_040_iobuf_2))
+          ))
+          (net (rename un1_D_LM_AMIGA_3 "un1_D_LM_AMIGA[3]") (joined
+           (portRef (member un1_D_LM_AMIGA 4) (instanceRef U111_CYCLE_SM))
+           (portRef D_OUT_0 (instanceRef D_LM_040_iobuf_3))
+          ))
+          (net (rename un1_D_LM_AMIGA_4 "un1_D_LM_AMIGA[4]") (joined
+           (portRef (member un1_D_LM_AMIGA 3) (instanceRef U111_CYCLE_SM))
+           (portRef D_OUT_0 (instanceRef D_LM_040_iobuf_4))
+          ))
+          (net (rename un1_D_LM_AMIGA_5 "un1_D_LM_AMIGA[5]") (joined
+           (portRef (member un1_D_LM_AMIGA 2) (instanceRef U111_CYCLE_SM))
+           (portRef D_OUT_0 (instanceRef D_LM_040_iobuf_5))
+          ))
+          (net (rename un1_D_LM_AMIGA_6 "un1_D_LM_AMIGA[6]") (joined
+           (portRef (member un1_D_LM_AMIGA 1) (instanceRef U111_CYCLE_SM))
+           (portRef D_OUT_0 (instanceRef D_LM_040_iobuf_6))
+          ))
+          (net (rename un1_D_LM_AMIGA_7 "un1_D_LM_AMIGA[7]") (joined
+           (portRef (member un1_D_LM_AMIGA 0) (instanceRef U111_CYCLE_SM))
+           (portRef D_OUT_0 (instanceRef D_LM_040_iobuf_7))
+          ))
+          (net (rename un1_D_LL_AMIGA_0 "un1_D_LL_AMIGA[0]") (joined
+           (portRef (member un1_D_LL_AMIGA 7) (instanceRef U111_CYCLE_SM))
+           (portRef D_OUT_0 (instanceRef D_LL_040_iobuf_0))
+          ))
+          (net (rename un1_D_LL_AMIGA_1 "un1_D_LL_AMIGA[1]") (joined
+           (portRef (member un1_D_LL_AMIGA 6) (instanceRef U111_CYCLE_SM))
+           (portRef D_OUT_0 (instanceRef D_LL_040_iobuf_1))
+          ))
+          (net (rename un1_D_LL_AMIGA_2 "un1_D_LL_AMIGA[2]") (joined
+           (portRef (member un1_D_LL_AMIGA 5) (instanceRef U111_CYCLE_SM))
+           (portRef D_OUT_0 (instanceRef D_LL_040_iobuf_2))
+          ))
+          (net (rename un1_D_LL_AMIGA_3 "un1_D_LL_AMIGA[3]") (joined
+           (portRef (member un1_D_LL_AMIGA 4) (instanceRef U111_CYCLE_SM))
+           (portRef D_OUT_0 (instanceRef D_LL_040_iobuf_3))
+          ))
+          (net (rename un1_D_LL_AMIGA_4 "un1_D_LL_AMIGA[4]") (joined
+           (portRef (member un1_D_LL_AMIGA 3) (instanceRef U111_CYCLE_SM))
+           (portRef D_OUT_0 (instanceRef D_LL_040_iobuf_4))
+          ))
+          (net (rename un1_D_LL_AMIGA_5 "un1_D_LL_AMIGA[5]") (joined
+           (portRef (member un1_D_LL_AMIGA 2) (instanceRef U111_CYCLE_SM))
+           (portRef D_OUT_0 (instanceRef D_LL_040_iobuf_5))
+          ))
+          (net (rename un1_D_LL_AMIGA_6 "un1_D_LL_AMIGA[6]") (joined
+           (portRef (member un1_D_LL_AMIGA 1) (instanceRef U111_CYCLE_SM))
+           (portRef D_OUT_0 (instanceRef D_LL_040_iobuf_6))
+          ))
+          (net (rename un1_D_LL_AMIGA_7 "un1_D_LL_AMIGA[7]") (joined
+           (portRef (member un1_D_LL_AMIGA 0) (instanceRef U111_CYCLE_SM))
+           (portRef D_OUT_0 (instanceRef D_LL_040_iobuf_7))
+          ))
+          (net (rename un1_D_UU_040_0 "un1_D_UU_040[0]") (joined
+           (portRef (member un1_D_UU_040 7) (instanceRef U111_CYCLE_SM))
+           (portRef D_OUT_0 (instanceRef D_UU_AMIGA_iobuf_0))
+          ))
+          (net (rename un1_D_UU_040_1 "un1_D_UU_040[1]") (joined
+           (portRef (member un1_D_UU_040 6) (instanceRef U111_CYCLE_SM))
+           (portRef D_OUT_0 (instanceRef D_UU_AMIGA_iobuf_1))
+          ))
+          (net (rename un1_D_UU_040_2 "un1_D_UU_040[2]") (joined
+           (portRef (member un1_D_UU_040 5) (instanceRef U111_CYCLE_SM))
+           (portRef D_OUT_0 (instanceRef D_UU_AMIGA_iobuf_2))
+          ))
+          (net (rename un1_D_UU_040_3 "un1_D_UU_040[3]") (joined
+           (portRef (member un1_D_UU_040 4) (instanceRef U111_CYCLE_SM))
+           (portRef D_OUT_0 (instanceRef D_UU_AMIGA_iobuf_3))
+          ))
+          (net (rename un1_D_UU_040_4 "un1_D_UU_040[4]") (joined
+           (portRef (member un1_D_UU_040 3) (instanceRef U111_CYCLE_SM))
+           (portRef D_OUT_0 (instanceRef D_UU_AMIGA_iobuf_4))
+          ))
+          (net (rename un1_D_UU_040_5 "un1_D_UU_040[5]") (joined
+           (portRef (member un1_D_UU_040 2) (instanceRef U111_CYCLE_SM))
+           (portRef D_OUT_0 (instanceRef D_UU_AMIGA_iobuf_5))
+          ))
+          (net (rename un1_D_UU_040_6 "un1_D_UU_040[6]") (joined
+           (portRef (member un1_D_UU_040 1) (instanceRef U111_CYCLE_SM))
+           (portRef D_OUT_0 (instanceRef D_UU_AMIGA_iobuf_6))
+          ))
+          (net (rename un1_D_UU_040_7 "un1_D_UU_040[7]") (joined
+           (portRef (member un1_D_UU_040 0) (instanceRef U111_CYCLE_SM))
+           (portRef D_OUT_0 (instanceRef D_UU_AMIGA_iobuf_7))
+          ))
+          (net (rename un1_D_UM_040_0 "un1_D_UM_040[0]") (joined
+           (portRef (member un1_D_UM_040 7) (instanceRef U111_CYCLE_SM))
+           (portRef D_OUT_0 (instanceRef D_UM_AMIGA_iobuf_0))
+          ))
+          (net (rename un1_D_UM_040_1 "un1_D_UM_040[1]") (joined
+           (portRef (member un1_D_UM_040 6) (instanceRef U111_CYCLE_SM))
+           (portRef D_OUT_0 (instanceRef D_UM_AMIGA_iobuf_1))
+          ))
+          (net (rename un1_D_UM_040_2 "un1_D_UM_040[2]") (joined
+           (portRef (member un1_D_UM_040 5) (instanceRef U111_CYCLE_SM))
+           (portRef D_OUT_0 (instanceRef D_UM_AMIGA_iobuf_2))
+          ))
+          (net (rename un1_D_UM_040_3 "un1_D_UM_040[3]") (joined
+           (portRef (member un1_D_UM_040 4) (instanceRef U111_CYCLE_SM))
+           (portRef D_OUT_0 (instanceRef D_UM_AMIGA_iobuf_3))
+          ))
+          (net (rename un1_D_UM_040_4 "un1_D_UM_040[4]") (joined
+           (portRef (member un1_D_UM_040 3) (instanceRef U111_CYCLE_SM))
+           (portRef D_OUT_0 (instanceRef D_UM_AMIGA_iobuf_4))
+          ))
+          (net (rename un1_D_UM_040_5 "un1_D_UM_040[5]") (joined
+           (portRef (member un1_D_UM_040 2) (instanceRef U111_CYCLE_SM))
+           (portRef D_OUT_0 (instanceRef D_UM_AMIGA_iobuf_5))
+          ))
+          (net (rename un1_D_UM_040_6 "un1_D_UM_040[6]") (joined
+           (portRef (member un1_D_UM_040 1) (instanceRef U111_CYCLE_SM))
+           (portRef D_OUT_0 (instanceRef D_UM_AMIGA_iobuf_6))
+          ))
+          (net (rename un1_D_UM_040_7 "un1_D_UM_040[7]") (joined
+           (portRef (member un1_D_UM_040 0) (instanceRef U111_CYCLE_SM))
+           (portRef D_OUT_0 (instanceRef D_UM_AMIGA_iobuf_7))
           ))
           (net (rename A_040_c_0 "A_040_c[0]") (joined
            (portRef D_IN_0 (instanceRef A_040_ibuf_0))
-           (portRef D_OUT_0 (instanceRef A_AMIGA_obuf_0))
+           (portRef (member A_040_c 1) (instanceRef U111_CYCLE_SM))
           ))
           (net (rename a_040_0 "A_040[0]") (joined
            (portRef PACKAGE_PIN (instanceRef A_040_ibuf_0))
@@ -923,8 +2027,7 @@
           ))
           (net (rename A_040_c_1 "A_040_c[1]") (joined
            (portRef D_IN_0 (instanceRef A_040_ibuf_1))
-           (portRef D_OUT_0 (instanceRef A_AMIGA_obuf_1))
-           (portRef I0 (instanceRef SIZ_ibuf_RNI93PP_0))
+           (portRef (member A_040_c 0) (instanceRef U111_CYCLE_SM))
           ))
           (net (rename a_040_1 "A_040[1]") (joined
            (portRef PACKAGE_PIN (instanceRef A_040_ibuf_1))
@@ -932,7 +2035,7 @@
           ))
           (net (rename SIZ_c_0 "SIZ_c[0]") (joined
            (portRef D_IN_0 (instanceRef SIZ_ibuf_0))
-           (portRef I1 (instanceRef SIZ_ibuf_RNI93PP_0))
+           (portRef (member SIZ_c 1) (instanceRef U111_CYCLE_SM))
           ))
           (net (rename siz_0 "SIZ[0]") (joined
            (portRef PACKAGE_PIN (instanceRef SIZ_ibuf_0))
@@ -940,7 +2043,7 @@
           ))
           (net (rename SIZ_c_1 "SIZ_c[1]") (joined
            (portRef D_IN_0 (instanceRef SIZ_ibuf_1))
-           (portRef I2 (instanceRef SIZ_ibuf_RNI93PP_0))
+           (portRef (member SIZ_c 0) (instanceRef U111_CYCLE_SM))
           ))
           (net (rename siz_1 "SIZ[1]") (joined
            (portRef PACKAGE_PIN (instanceRef SIZ_ibuf_1))
@@ -949,6 +2052,7 @@
           (net RESETn_c (joined
            (portRef D_IN_0 (instanceRef RESETn_ibuf))
            (portRef RESETn_c (instanceRef U111_CYCLE_SM))
+           (portRef I0 (instanceRef RESETn_ibuf_RNIM9SF))
           ))
           (net (rename resetn "RESETn") (joined
            (portRef PACKAGE_PIN (instanceRef RESETn_ibuf))
@@ -964,6 +2068,7 @@
           ))
           (net RnW_c (joined
            (portRef D_IN_0 (instanceRef RnW_ibuf))
+           (portRef RnW_c (instanceRef U111_CYCLE_SM))
            (portRef D_OUT_0 (instanceRef BUFDIR_obuf))
            (portRef OUTPUT_ENABLE (instanceRef D_LL_040_iobuf_7))
            (portRef OUTPUT_ENABLE (instanceRef D_LL_040_iobuf_6))
@@ -1006,12 +2111,17 @@
           (net (rename bgn "BGn") (joined
            (portRef BGn)
           ))
+          (net PORTSIZE_c (joined
+           (portRef D_IN_0 (instanceRef PORTSIZE_ibuf))
+           (portRef PORTSIZE_c (instanceRef U111_CYCLE_SM))
+          ))
           (net (rename portsize "PORTSIZE") (joined
+           (portRef PACKAGE_PIN (instanceRef PORTSIZE_ibuf))
            (portRef PORTSIZE)
           ))
-          (net TAn_c (joined
+          (net TACKn_c (joined
            (portRef D_IN_0 (instanceRef TACKn_ibuf))
-           (portRef D_OUT_0 (instanceRef TAn_obuf))
+           (portRef TACKn_c (instanceRef U111_CYCLE_SM))
           ))
           (net (rename tackn "TACKn") (joined
            (portRef PACKAGE_PIN (instanceRef TACKn_ibuf))
@@ -1023,7 +2133,7 @@
           ))
           (net (rename D_UU_040_in_0 "D_UU_040_in[0]") (joined
            (portRef D_IN_0 (instanceRef D_UU_040_iobuf_0))
-           (portRef I1 (instanceRef D_UU_AMIGA_iobuf_RNO_0))
+           (portRef (member D_UU_040_in 7) (instanceRef U111_CYCLE_SM))
           ))
           (net (rename d_uu_040_1 "D_UU_040[1]") (joined
            (portRef PACKAGE_PIN (instanceRef D_UU_040_iobuf_1))
@@ -1031,7 +2141,7 @@
           ))
           (net (rename D_UU_040_in_1 "D_UU_040_in[1]") (joined
            (portRef D_IN_0 (instanceRef D_UU_040_iobuf_1))
-           (portRef I1 (instanceRef D_UU_AMIGA_iobuf_RNO_1))
+           (portRef (member D_UU_040_in 6) (instanceRef U111_CYCLE_SM))
           ))
           (net (rename d_uu_040_2 "D_UU_040[2]") (joined
            (portRef PACKAGE_PIN (instanceRef D_UU_040_iobuf_2))
@@ -1039,7 +2149,7 @@
           ))
           (net (rename D_UU_040_in_2 "D_UU_040_in[2]") (joined
            (portRef D_IN_0 (instanceRef D_UU_040_iobuf_2))
-           (portRef I1 (instanceRef D_UU_AMIGA_iobuf_RNO_2))
+           (portRef (member D_UU_040_in 5) (instanceRef U111_CYCLE_SM))
           ))
           (net (rename d_uu_040_3 "D_UU_040[3]") (joined
            (portRef PACKAGE_PIN (instanceRef D_UU_040_iobuf_3))
@@ -1047,7 +2157,7 @@
           ))
           (net (rename D_UU_040_in_3 "D_UU_040_in[3]") (joined
            (portRef D_IN_0 (instanceRef D_UU_040_iobuf_3))
-           (portRef I1 (instanceRef D_UU_AMIGA_iobuf_RNO_3))
+           (portRef (member D_UU_040_in 4) (instanceRef U111_CYCLE_SM))
           ))
           (net (rename d_uu_040_4 "D_UU_040[4]") (joined
            (portRef PACKAGE_PIN (instanceRef D_UU_040_iobuf_4))
@@ -1055,7 +2165,7 @@
           ))
           (net (rename D_UU_040_in_4 "D_UU_040_in[4]") (joined
            (portRef D_IN_0 (instanceRef D_UU_040_iobuf_4))
-           (portRef I1 (instanceRef D_UU_AMIGA_iobuf_RNO_4))
+           (portRef (member D_UU_040_in 3) (instanceRef U111_CYCLE_SM))
           ))
           (net (rename d_uu_040_5 "D_UU_040[5]") (joined
            (portRef PACKAGE_PIN (instanceRef D_UU_040_iobuf_5))
@@ -1063,7 +2173,7 @@
           ))
           (net (rename D_UU_040_in_5 "D_UU_040_in[5]") (joined
            (portRef D_IN_0 (instanceRef D_UU_040_iobuf_5))
-           (portRef I1 (instanceRef D_UU_AMIGA_iobuf_RNO_5))
+           (portRef (member D_UU_040_in 2) (instanceRef U111_CYCLE_SM))
           ))
           (net (rename d_uu_040_6 "D_UU_040[6]") (joined
            (portRef PACKAGE_PIN (instanceRef D_UU_040_iobuf_6))
@@ -1071,7 +2181,7 @@
           ))
           (net (rename D_UU_040_in_6 "D_UU_040_in[6]") (joined
            (portRef D_IN_0 (instanceRef D_UU_040_iobuf_6))
-           (portRef I1 (instanceRef D_UU_AMIGA_iobuf_RNO_6))
+           (portRef (member D_UU_040_in 1) (instanceRef U111_CYCLE_SM))
           ))
           (net (rename d_uu_040_7 "D_UU_040[7]") (joined
            (portRef PACKAGE_PIN (instanceRef D_UU_040_iobuf_7))
@@ -1079,7 +2189,7 @@
           ))
           (net (rename D_UU_040_in_7 "D_UU_040_in[7]") (joined
            (portRef D_IN_0 (instanceRef D_UU_040_iobuf_7))
-           (portRef I1 (instanceRef D_UU_AMIGA_iobuf_RNO_7))
+           (portRef (member D_UU_040_in 0) (instanceRef U111_CYCLE_SM))
           ))
           (net (rename d_um_040_0 "D_UM_040[0]") (joined
            (portRef PACKAGE_PIN (instanceRef D_UM_040_iobuf_0))
@@ -1087,7 +2197,7 @@
           ))
           (net (rename D_UM_040_in_0 "D_UM_040_in[0]") (joined
            (portRef D_IN_0 (instanceRef D_UM_040_iobuf_0))
-           (portRef I1 (instanceRef D_UM_AMIGA_iobuf_RNO_0))
+           (portRef (member D_UM_040_in 7) (instanceRef U111_CYCLE_SM))
           ))
           (net (rename d_um_040_1 "D_UM_040[1]") (joined
            (portRef PACKAGE_PIN (instanceRef D_UM_040_iobuf_1))
@@ -1095,7 +2205,7 @@
           ))
           (net (rename D_UM_040_in_1 "D_UM_040_in[1]") (joined
            (portRef D_IN_0 (instanceRef D_UM_040_iobuf_1))
-           (portRef I1 (instanceRef D_UM_AMIGA_iobuf_RNO_1))
+           (portRef (member D_UM_040_in 6) (instanceRef U111_CYCLE_SM))
           ))
           (net (rename d_um_040_2 "D_UM_040[2]") (joined
            (portRef PACKAGE_PIN (instanceRef D_UM_040_iobuf_2))
@@ -1103,7 +2213,7 @@
           ))
           (net (rename D_UM_040_in_2 "D_UM_040_in[2]") (joined
            (portRef D_IN_0 (instanceRef D_UM_040_iobuf_2))
-           (portRef I1 (instanceRef D_UM_AMIGA_iobuf_RNO_2))
+           (portRef (member D_UM_040_in 5) (instanceRef U111_CYCLE_SM))
           ))
           (net (rename d_um_040_3 "D_UM_040[3]") (joined
            (portRef PACKAGE_PIN (instanceRef D_UM_040_iobuf_3))
@@ -1111,7 +2221,7 @@
           ))
           (net (rename D_UM_040_in_3 "D_UM_040_in[3]") (joined
            (portRef D_IN_0 (instanceRef D_UM_040_iobuf_3))
-           (portRef I1 (instanceRef D_UM_AMIGA_iobuf_RNO_3))
+           (portRef (member D_UM_040_in 4) (instanceRef U111_CYCLE_SM))
           ))
           (net (rename d_um_040_4 "D_UM_040[4]") (joined
            (portRef PACKAGE_PIN (instanceRef D_UM_040_iobuf_4))
@@ -1119,7 +2229,7 @@
           ))
           (net (rename D_UM_040_in_4 "D_UM_040_in[4]") (joined
            (portRef D_IN_0 (instanceRef D_UM_040_iobuf_4))
-           (portRef I1 (instanceRef D_UM_AMIGA_iobuf_RNO_4))
+           (portRef (member D_UM_040_in 3) (instanceRef U111_CYCLE_SM))
           ))
           (net (rename d_um_040_5 "D_UM_040[5]") (joined
            (portRef PACKAGE_PIN (instanceRef D_UM_040_iobuf_5))
@@ -1127,7 +2237,7 @@
           ))
           (net (rename D_UM_040_in_5 "D_UM_040_in[5]") (joined
            (portRef D_IN_0 (instanceRef D_UM_040_iobuf_5))
-           (portRef I1 (instanceRef D_UM_AMIGA_iobuf_RNO_5))
+           (portRef (member D_UM_040_in 2) (instanceRef U111_CYCLE_SM))
           ))
           (net (rename d_um_040_6 "D_UM_040[6]") (joined
            (portRef PACKAGE_PIN (instanceRef D_UM_040_iobuf_6))
@@ -1135,7 +2245,7 @@
           ))
           (net (rename D_UM_040_in_6 "D_UM_040_in[6]") (joined
            (portRef D_IN_0 (instanceRef D_UM_040_iobuf_6))
-           (portRef I1 (instanceRef D_UM_AMIGA_iobuf_RNO_6))
+           (portRef (member D_UM_040_in 1) (instanceRef U111_CYCLE_SM))
           ))
           (net (rename d_um_040_7 "D_UM_040[7]") (joined
            (portRef PACKAGE_PIN (instanceRef D_UM_040_iobuf_7))
@@ -1143,7 +2253,7 @@
           ))
           (net (rename D_UM_040_in_7 "D_UM_040_in[7]") (joined
            (portRef D_IN_0 (instanceRef D_UM_040_iobuf_7))
-           (portRef I1 (instanceRef D_UM_AMIGA_iobuf_RNO_7))
+           (portRef (member D_UM_040_in 0) (instanceRef U111_CYCLE_SM))
           ))
           (net (rename d_lm_040_0 "D_LM_040[0]") (joined
            (portRef PACKAGE_PIN (instanceRef D_LM_040_iobuf_0))
@@ -1151,8 +2261,8 @@
           ))
           (net (rename D_LM_040_in_0 "D_LM_040_in[0]") (joined
            (portRef D_IN_0 (instanceRef D_LM_040_iobuf_0))
+           (portRef (member D_LM_040_in 7) (instanceRef U111_CYCLE_SM))
            (portRef D_OUT_0 (instanceRef D_LM_AMIGA_iobuf_0))
-           (portRef I0 (instanceRef D_UU_AMIGA_iobuf_RNO_0))
           ))
           (net (rename d_lm_040_1 "D_LM_040[1]") (joined
            (portRef PACKAGE_PIN (instanceRef D_LM_040_iobuf_1))
@@ -1160,8 +2270,8 @@
           ))
           (net (rename D_LM_040_in_1 "D_LM_040_in[1]") (joined
            (portRef D_IN_0 (instanceRef D_LM_040_iobuf_1))
+           (portRef (member D_LM_040_in 6) (instanceRef U111_CYCLE_SM))
            (portRef D_OUT_0 (instanceRef D_LM_AMIGA_iobuf_1))
-           (portRef I0 (instanceRef D_UU_AMIGA_iobuf_RNO_1))
           ))
           (net (rename d_lm_040_2 "D_LM_040[2]") (joined
            (portRef PACKAGE_PIN (instanceRef D_LM_040_iobuf_2))
@@ -1169,8 +2279,8 @@
           ))
           (net (rename D_LM_040_in_2 "D_LM_040_in[2]") (joined
            (portRef D_IN_0 (instanceRef D_LM_040_iobuf_2))
+           (portRef (member D_LM_040_in 5) (instanceRef U111_CYCLE_SM))
            (portRef D_OUT_0 (instanceRef D_LM_AMIGA_iobuf_2))
-           (portRef I0 (instanceRef D_UU_AMIGA_iobuf_RNO_2))
           ))
           (net (rename d_lm_040_3 "D_LM_040[3]") (joined
            (portRef PACKAGE_PIN (instanceRef D_LM_040_iobuf_3))
@@ -1178,8 +2288,8 @@
           ))
           (net (rename D_LM_040_in_3 "D_LM_040_in[3]") (joined
            (portRef D_IN_0 (instanceRef D_LM_040_iobuf_3))
+           (portRef (member D_LM_040_in 4) (instanceRef U111_CYCLE_SM))
            (portRef D_OUT_0 (instanceRef D_LM_AMIGA_iobuf_3))
-           (portRef I0 (instanceRef D_UU_AMIGA_iobuf_RNO_3))
           ))
           (net (rename d_lm_040_4 "D_LM_040[4]") (joined
            (portRef PACKAGE_PIN (instanceRef D_LM_040_iobuf_4))
@@ -1187,8 +2297,8 @@
           ))
           (net (rename D_LM_040_in_4 "D_LM_040_in[4]") (joined
            (portRef D_IN_0 (instanceRef D_LM_040_iobuf_4))
+           (portRef (member D_LM_040_in 3) (instanceRef U111_CYCLE_SM))
            (portRef D_OUT_0 (instanceRef D_LM_AMIGA_iobuf_4))
-           (portRef I0 (instanceRef D_UU_AMIGA_iobuf_RNO_4))
           ))
           (net (rename d_lm_040_5 "D_LM_040[5]") (joined
            (portRef PACKAGE_PIN (instanceRef D_LM_040_iobuf_5))
@@ -1196,8 +2306,8 @@
           ))
           (net (rename D_LM_040_in_5 "D_LM_040_in[5]") (joined
            (portRef D_IN_0 (instanceRef D_LM_040_iobuf_5))
+           (portRef (member D_LM_040_in 2) (instanceRef U111_CYCLE_SM))
            (portRef D_OUT_0 (instanceRef D_LM_AMIGA_iobuf_5))
-           (portRef I0 (instanceRef D_UU_AMIGA_iobuf_RNO_5))
           ))
           (net (rename d_lm_040_6 "D_LM_040[6]") (joined
            (portRef PACKAGE_PIN (instanceRef D_LM_040_iobuf_6))
@@ -1205,8 +2315,8 @@
           ))
           (net (rename D_LM_040_in_6 "D_LM_040_in[6]") (joined
            (portRef D_IN_0 (instanceRef D_LM_040_iobuf_6))
+           (portRef (member D_LM_040_in 1) (instanceRef U111_CYCLE_SM))
            (portRef D_OUT_0 (instanceRef D_LM_AMIGA_iobuf_6))
-           (portRef I0 (instanceRef D_UU_AMIGA_iobuf_RNO_6))
           ))
           (net (rename d_lm_040_7 "D_LM_040[7]") (joined
            (portRef PACKAGE_PIN (instanceRef D_LM_040_iobuf_7))
@@ -1214,8 +2324,8 @@
           ))
           (net (rename D_LM_040_in_7 "D_LM_040_in[7]") (joined
            (portRef D_IN_0 (instanceRef D_LM_040_iobuf_7))
+           (portRef (member D_LM_040_in 0) (instanceRef U111_CYCLE_SM))
            (portRef D_OUT_0 (instanceRef D_LM_AMIGA_iobuf_7))
-           (portRef I0 (instanceRef D_UU_AMIGA_iobuf_RNO_7))
           ))
           (net (rename d_ll_040_0 "D_LL_040[0]") (joined
            (portRef PACKAGE_PIN (instanceRef D_LL_040_iobuf_0))
@@ -1223,8 +2333,8 @@
           ))
           (net (rename D_LL_040_in_0 "D_LL_040_in[0]") (joined
            (portRef D_IN_0 (instanceRef D_LL_040_iobuf_0))
+           (portRef (member D_LL_040_in 7) (instanceRef U111_CYCLE_SM))
            (portRef D_OUT_0 (instanceRef D_LL_AMIGA_iobuf_0))
-           (portRef I0 (instanceRef D_UM_AMIGA_iobuf_RNO_0))
           ))
           (net (rename d_ll_040_1 "D_LL_040[1]") (joined
            (portRef PACKAGE_PIN (instanceRef D_LL_040_iobuf_1))
@@ -1232,8 +2342,8 @@
           ))
           (net (rename D_LL_040_in_1 "D_LL_040_in[1]") (joined
            (portRef D_IN_0 (instanceRef D_LL_040_iobuf_1))
+           (portRef (member D_LL_040_in 6) (instanceRef U111_CYCLE_SM))
            (portRef D_OUT_0 (instanceRef D_LL_AMIGA_iobuf_1))
-           (portRef I0 (instanceRef D_UM_AMIGA_iobuf_RNO_1))
           ))
           (net (rename d_ll_040_2 "D_LL_040[2]") (joined
            (portRef PACKAGE_PIN (instanceRef D_LL_040_iobuf_2))
@@ -1241,8 +2351,8 @@
           ))
           (net (rename D_LL_040_in_2 "D_LL_040_in[2]") (joined
            (portRef D_IN_0 (instanceRef D_LL_040_iobuf_2))
+           (portRef (member D_LL_040_in 5) (instanceRef U111_CYCLE_SM))
            (portRef D_OUT_0 (instanceRef D_LL_AMIGA_iobuf_2))
-           (portRef I0 (instanceRef D_UM_AMIGA_iobuf_RNO_2))
           ))
           (net (rename d_ll_040_3 "D_LL_040[3]") (joined
            (portRef PACKAGE_PIN (instanceRef D_LL_040_iobuf_3))
@@ -1250,8 +2360,8 @@
           ))
           (net (rename D_LL_040_in_3 "D_LL_040_in[3]") (joined
            (portRef D_IN_0 (instanceRef D_LL_040_iobuf_3))
+           (portRef (member D_LL_040_in 4) (instanceRef U111_CYCLE_SM))
            (portRef D_OUT_0 (instanceRef D_LL_AMIGA_iobuf_3))
-           (portRef I0 (instanceRef D_UM_AMIGA_iobuf_RNO_3))
           ))
           (net (rename d_ll_040_4 "D_LL_040[4]") (joined
            (portRef PACKAGE_PIN (instanceRef D_LL_040_iobuf_4))
@@ -1259,8 +2369,8 @@
           ))
           (net (rename D_LL_040_in_4 "D_LL_040_in[4]") (joined
            (portRef D_IN_0 (instanceRef D_LL_040_iobuf_4))
+           (portRef (member D_LL_040_in 3) (instanceRef U111_CYCLE_SM))
            (portRef D_OUT_0 (instanceRef D_LL_AMIGA_iobuf_4))
-           (portRef I0 (instanceRef D_UM_AMIGA_iobuf_RNO_4))
           ))
           (net (rename d_ll_040_5 "D_LL_040[5]") (joined
            (portRef PACKAGE_PIN (instanceRef D_LL_040_iobuf_5))
@@ -1268,8 +2378,8 @@
           ))
           (net (rename D_LL_040_in_5 "D_LL_040_in[5]") (joined
            (portRef D_IN_0 (instanceRef D_LL_040_iobuf_5))
+           (portRef (member D_LL_040_in 2) (instanceRef U111_CYCLE_SM))
            (portRef D_OUT_0 (instanceRef D_LL_AMIGA_iobuf_5))
-           (portRef I0 (instanceRef D_UM_AMIGA_iobuf_RNO_5))
           ))
           (net (rename d_ll_040_6 "D_LL_040[6]") (joined
            (portRef PACKAGE_PIN (instanceRef D_LL_040_iobuf_6))
@@ -1277,8 +2387,8 @@
           ))
           (net (rename D_LL_040_in_6 "D_LL_040_in[6]") (joined
            (portRef D_IN_0 (instanceRef D_LL_040_iobuf_6))
+           (portRef (member D_LL_040_in 1) (instanceRef U111_CYCLE_SM))
            (portRef D_OUT_0 (instanceRef D_LL_AMIGA_iobuf_6))
-           (portRef I0 (instanceRef D_UM_AMIGA_iobuf_RNO_6))
           ))
           (net (rename d_ll_040_7 "D_LL_040[7]") (joined
            (portRef PACKAGE_PIN (instanceRef D_LL_040_iobuf_7))
@@ -1286,8 +2396,8 @@
           ))
           (net (rename D_LL_040_in_7 "D_LL_040_in[7]") (joined
            (portRef D_IN_0 (instanceRef D_LL_040_iobuf_7))
+           (portRef (member D_LL_040_in 0) (instanceRef U111_CYCLE_SM))
            (portRef D_OUT_0 (instanceRef D_LL_AMIGA_iobuf_7))
-           (portRef I0 (instanceRef D_UM_AMIGA_iobuf_RNO_7))
           ))
           (net (rename d_uu_amiga_0 "D_UU_AMIGA[0]") (joined
            (portRef PACKAGE_PIN (instanceRef D_UU_AMIGA_iobuf_0))
@@ -1295,8 +2405,7 @@
           ))
           (net (rename D_UU_AMIGA_in_0 "D_UU_AMIGA_in[0]") (joined
            (portRef D_IN_0 (instanceRef D_UU_AMIGA_iobuf_0))
-           (portRef D_OUT_0 (instanceRef D_UU_040_iobuf_0))
-           (portRef I1 (instanceRef D_LM_040_iobuf_RNO_0))
+           (portRef (member D_UU_AMIGA_in 7) (instanceRef U111_CYCLE_SM))
           ))
           (net (rename d_uu_amiga_1 "D_UU_AMIGA[1]") (joined
            (portRef PACKAGE_PIN (instanceRef D_UU_AMIGA_iobuf_1))
@@ -1304,8 +2413,7 @@
           ))
           (net (rename D_UU_AMIGA_in_1 "D_UU_AMIGA_in[1]") (joined
            (portRef D_IN_0 (instanceRef D_UU_AMIGA_iobuf_1))
-           (portRef D_OUT_0 (instanceRef D_UU_040_iobuf_1))
-           (portRef I1 (instanceRef D_LM_040_iobuf_RNO_1))
+           (portRef (member D_UU_AMIGA_in 6) (instanceRef U111_CYCLE_SM))
           ))
           (net (rename d_uu_amiga_2 "D_UU_AMIGA[2]") (joined
            (portRef PACKAGE_PIN (instanceRef D_UU_AMIGA_iobuf_2))
@@ -1313,8 +2421,7 @@
           ))
           (net (rename D_UU_AMIGA_in_2 "D_UU_AMIGA_in[2]") (joined
            (portRef D_IN_0 (instanceRef D_UU_AMIGA_iobuf_2))
-           (portRef D_OUT_0 (instanceRef D_UU_040_iobuf_2))
-           (portRef I1 (instanceRef D_LM_040_iobuf_RNO_2))
+           (portRef (member D_UU_AMIGA_in 5) (instanceRef U111_CYCLE_SM))
           ))
           (net (rename d_uu_amiga_3 "D_UU_AMIGA[3]") (joined
            (portRef PACKAGE_PIN (instanceRef D_UU_AMIGA_iobuf_3))
@@ -1322,8 +2429,7 @@
           ))
           (net (rename D_UU_AMIGA_in_3 "D_UU_AMIGA_in[3]") (joined
            (portRef D_IN_0 (instanceRef D_UU_AMIGA_iobuf_3))
-           (portRef D_OUT_0 (instanceRef D_UU_040_iobuf_3))
-           (portRef I1 (instanceRef D_LM_040_iobuf_RNO_3))
+           (portRef (member D_UU_AMIGA_in 4) (instanceRef U111_CYCLE_SM))
           ))
           (net (rename d_uu_amiga_4 "D_UU_AMIGA[4]") (joined
            (portRef PACKAGE_PIN (instanceRef D_UU_AMIGA_iobuf_4))
@@ -1331,8 +2437,7 @@
           ))
           (net (rename D_UU_AMIGA_in_4 "D_UU_AMIGA_in[4]") (joined
            (portRef D_IN_0 (instanceRef D_UU_AMIGA_iobuf_4))
-           (portRef D_OUT_0 (instanceRef D_UU_040_iobuf_4))
-           (portRef I1 (instanceRef D_LM_040_iobuf_RNO_4))
+           (portRef (member D_UU_AMIGA_in 3) (instanceRef U111_CYCLE_SM))
           ))
           (net (rename d_uu_amiga_5 "D_UU_AMIGA[5]") (joined
            (portRef PACKAGE_PIN (instanceRef D_UU_AMIGA_iobuf_5))
@@ -1340,8 +2445,7 @@
           ))
           (net (rename D_UU_AMIGA_in_5 "D_UU_AMIGA_in[5]") (joined
            (portRef D_IN_0 (instanceRef D_UU_AMIGA_iobuf_5))
-           (portRef D_OUT_0 (instanceRef D_UU_040_iobuf_5))
-           (portRef I1 (instanceRef D_LM_040_iobuf_RNO_5))
+           (portRef (member D_UU_AMIGA_in 2) (instanceRef U111_CYCLE_SM))
           ))
           (net (rename d_uu_amiga_6 "D_UU_AMIGA[6]") (joined
            (portRef PACKAGE_PIN (instanceRef D_UU_AMIGA_iobuf_6))
@@ -1349,8 +2453,7 @@
           ))
           (net (rename D_UU_AMIGA_in_6 "D_UU_AMIGA_in[6]") (joined
            (portRef D_IN_0 (instanceRef D_UU_AMIGA_iobuf_6))
-           (portRef D_OUT_0 (instanceRef D_UU_040_iobuf_6))
-           (portRef I1 (instanceRef D_LM_040_iobuf_RNO_6))
+           (portRef (member D_UU_AMIGA_in 1) (instanceRef U111_CYCLE_SM))
           ))
           (net (rename d_uu_amiga_7 "D_UU_AMIGA[7]") (joined
            (portRef PACKAGE_PIN (instanceRef D_UU_AMIGA_iobuf_7))
@@ -1358,8 +2461,7 @@
           ))
           (net (rename D_UU_AMIGA_in_7 "D_UU_AMIGA_in[7]") (joined
            (portRef D_IN_0 (instanceRef D_UU_AMIGA_iobuf_7))
-           (portRef D_OUT_0 (instanceRef D_UU_040_iobuf_7))
-           (portRef I1 (instanceRef D_LM_040_iobuf_RNO_7))
+           (portRef (member D_UU_AMIGA_in 0) (instanceRef U111_CYCLE_SM))
           ))
           (net (rename d_um_amiga_0 "D_UM_AMIGA[0]") (joined
            (portRef PACKAGE_PIN (instanceRef D_UM_AMIGA_iobuf_0))
@@ -1367,8 +2469,7 @@
           ))
           (net (rename D_UM_AMIGA_in_0 "D_UM_AMIGA_in[0]") (joined
            (portRef D_IN_0 (instanceRef D_UM_AMIGA_iobuf_0))
-           (portRef D_OUT_0 (instanceRef D_UM_040_iobuf_0))
-           (portRef I1 (instanceRef D_LL_040_iobuf_RNO_0))
+           (portRef (member D_UM_AMIGA_in 7) (instanceRef U111_CYCLE_SM))
           ))
           (net (rename d_um_amiga_1 "D_UM_AMIGA[1]") (joined
            (portRef PACKAGE_PIN (instanceRef D_UM_AMIGA_iobuf_1))
@@ -1376,8 +2477,7 @@
           ))
           (net (rename D_UM_AMIGA_in_1 "D_UM_AMIGA_in[1]") (joined
            (portRef D_IN_0 (instanceRef D_UM_AMIGA_iobuf_1))
-           (portRef D_OUT_0 (instanceRef D_UM_040_iobuf_1))
-           (portRef I1 (instanceRef D_LL_040_iobuf_RNO_1))
+           (portRef (member D_UM_AMIGA_in 6) (instanceRef U111_CYCLE_SM))
           ))
           (net (rename d_um_amiga_2 "D_UM_AMIGA[2]") (joined
            (portRef PACKAGE_PIN (instanceRef D_UM_AMIGA_iobuf_2))
@@ -1385,8 +2485,7 @@
           ))
           (net (rename D_UM_AMIGA_in_2 "D_UM_AMIGA_in[2]") (joined
            (portRef D_IN_0 (instanceRef D_UM_AMIGA_iobuf_2))
-           (portRef D_OUT_0 (instanceRef D_UM_040_iobuf_2))
-           (portRef I1 (instanceRef D_LL_040_iobuf_RNO_2))
+           (portRef (member D_UM_AMIGA_in 5) (instanceRef U111_CYCLE_SM))
           ))
           (net (rename d_um_amiga_3 "D_UM_AMIGA[3]") (joined
            (portRef PACKAGE_PIN (instanceRef D_UM_AMIGA_iobuf_3))
@@ -1394,8 +2493,7 @@
           ))
           (net (rename D_UM_AMIGA_in_3 "D_UM_AMIGA_in[3]") (joined
            (portRef D_IN_0 (instanceRef D_UM_AMIGA_iobuf_3))
-           (portRef D_OUT_0 (instanceRef D_UM_040_iobuf_3))
-           (portRef I1 (instanceRef D_LL_040_iobuf_RNO_3))
+           (portRef (member D_UM_AMIGA_in 4) (instanceRef U111_CYCLE_SM))
           ))
           (net (rename d_um_amiga_4 "D_UM_AMIGA[4]") (joined
            (portRef PACKAGE_PIN (instanceRef D_UM_AMIGA_iobuf_4))
@@ -1403,8 +2501,7 @@
           ))
           (net (rename D_UM_AMIGA_in_4 "D_UM_AMIGA_in[4]") (joined
            (portRef D_IN_0 (instanceRef D_UM_AMIGA_iobuf_4))
-           (portRef D_OUT_0 (instanceRef D_UM_040_iobuf_4))
-           (portRef I1 (instanceRef D_LL_040_iobuf_RNO_4))
+           (portRef (member D_UM_AMIGA_in 3) (instanceRef U111_CYCLE_SM))
           ))
           (net (rename d_um_amiga_5 "D_UM_AMIGA[5]") (joined
            (portRef PACKAGE_PIN (instanceRef D_UM_AMIGA_iobuf_5))
@@ -1412,8 +2509,7 @@
           ))
           (net (rename D_UM_AMIGA_in_5 "D_UM_AMIGA_in[5]") (joined
            (portRef D_IN_0 (instanceRef D_UM_AMIGA_iobuf_5))
-           (portRef D_OUT_0 (instanceRef D_UM_040_iobuf_5))
-           (portRef I1 (instanceRef D_LL_040_iobuf_RNO_5))
+           (portRef (member D_UM_AMIGA_in 2) (instanceRef U111_CYCLE_SM))
           ))
           (net (rename d_um_amiga_6 "D_UM_AMIGA[6]") (joined
            (portRef PACKAGE_PIN (instanceRef D_UM_AMIGA_iobuf_6))
@@ -1421,8 +2517,7 @@
           ))
           (net (rename D_UM_AMIGA_in_6 "D_UM_AMIGA_in[6]") (joined
            (portRef D_IN_0 (instanceRef D_UM_AMIGA_iobuf_6))
-           (portRef D_OUT_0 (instanceRef D_UM_040_iobuf_6))
-           (portRef I1 (instanceRef D_LL_040_iobuf_RNO_6))
+           (portRef (member D_UM_AMIGA_in 1) (instanceRef U111_CYCLE_SM))
           ))
           (net (rename d_um_amiga_7 "D_UM_AMIGA[7]") (joined
            (portRef PACKAGE_PIN (instanceRef D_UM_AMIGA_iobuf_7))
@@ -1430,8 +2525,7 @@
           ))
           (net (rename D_UM_AMIGA_in_7 "D_UM_AMIGA_in[7]") (joined
            (portRef D_IN_0 (instanceRef D_UM_AMIGA_iobuf_7))
-           (portRef D_OUT_0 (instanceRef D_UM_040_iobuf_7))
-           (portRef I1 (instanceRef D_LL_040_iobuf_RNO_7))
+           (portRef (member D_UM_AMIGA_in 0) (instanceRef U111_CYCLE_SM))
           ))
           (net (rename d_lm_amiga_0 "D_LM_AMIGA[0]") (joined
            (portRef PACKAGE_PIN (instanceRef D_LM_AMIGA_iobuf_0))
@@ -1439,7 +2533,7 @@
           ))
           (net (rename D_LM_AMIGA_in_0 "D_LM_AMIGA_in[0]") (joined
            (portRef D_IN_0 (instanceRef D_LM_AMIGA_iobuf_0))
-           (portRef I0 (instanceRef D_LM_040_iobuf_RNO_0))
+           (portRef (member D_LM_AMIGA_in 7) (instanceRef U111_CYCLE_SM))
           ))
           (net (rename d_lm_amiga_1 "D_LM_AMIGA[1]") (joined
            (portRef PACKAGE_PIN (instanceRef D_LM_AMIGA_iobuf_1))
@@ -1447,7 +2541,7 @@
           ))
           (net (rename D_LM_AMIGA_in_1 "D_LM_AMIGA_in[1]") (joined
            (portRef D_IN_0 (instanceRef D_LM_AMIGA_iobuf_1))
-           (portRef I0 (instanceRef D_LM_040_iobuf_RNO_1))
+           (portRef (member D_LM_AMIGA_in 6) (instanceRef U111_CYCLE_SM))
           ))
           (net (rename d_lm_amiga_2 "D_LM_AMIGA[2]") (joined
            (portRef PACKAGE_PIN (instanceRef D_LM_AMIGA_iobuf_2))
@@ -1455,7 +2549,7 @@
           ))
           (net (rename D_LM_AMIGA_in_2 "D_LM_AMIGA_in[2]") (joined
            (portRef D_IN_0 (instanceRef D_LM_AMIGA_iobuf_2))
-           (portRef I0 (instanceRef D_LM_040_iobuf_RNO_2))
+           (portRef (member D_LM_AMIGA_in 5) (instanceRef U111_CYCLE_SM))
           ))
           (net (rename d_lm_amiga_3 "D_LM_AMIGA[3]") (joined
            (portRef PACKAGE_PIN (instanceRef D_LM_AMIGA_iobuf_3))
@@ -1463,7 +2557,7 @@
           ))
           (net (rename D_LM_AMIGA_in_3 "D_LM_AMIGA_in[3]") (joined
            (portRef D_IN_0 (instanceRef D_LM_AMIGA_iobuf_3))
-           (portRef I0 (instanceRef D_LM_040_iobuf_RNO_3))
+           (portRef (member D_LM_AMIGA_in 4) (instanceRef U111_CYCLE_SM))
           ))
           (net (rename d_lm_amiga_4 "D_LM_AMIGA[4]") (joined
            (portRef PACKAGE_PIN (instanceRef D_LM_AMIGA_iobuf_4))
@@ -1471,7 +2565,7 @@
           ))
           (net (rename D_LM_AMIGA_in_4 "D_LM_AMIGA_in[4]") (joined
            (portRef D_IN_0 (instanceRef D_LM_AMIGA_iobuf_4))
-           (portRef I0 (instanceRef D_LM_040_iobuf_RNO_4))
+           (portRef (member D_LM_AMIGA_in 3) (instanceRef U111_CYCLE_SM))
           ))
           (net (rename d_lm_amiga_5 "D_LM_AMIGA[5]") (joined
            (portRef PACKAGE_PIN (instanceRef D_LM_AMIGA_iobuf_5))
@@ -1479,7 +2573,7 @@
           ))
           (net (rename D_LM_AMIGA_in_5 "D_LM_AMIGA_in[5]") (joined
            (portRef D_IN_0 (instanceRef D_LM_AMIGA_iobuf_5))
-           (portRef I0 (instanceRef D_LM_040_iobuf_RNO_5))
+           (portRef (member D_LM_AMIGA_in 2) (instanceRef U111_CYCLE_SM))
           ))
           (net (rename d_lm_amiga_6 "D_LM_AMIGA[6]") (joined
            (portRef PACKAGE_PIN (instanceRef D_LM_AMIGA_iobuf_6))
@@ -1487,7 +2581,7 @@
           ))
           (net (rename D_LM_AMIGA_in_6 "D_LM_AMIGA_in[6]") (joined
            (portRef D_IN_0 (instanceRef D_LM_AMIGA_iobuf_6))
-           (portRef I0 (instanceRef D_LM_040_iobuf_RNO_6))
+           (portRef (member D_LM_AMIGA_in 1) (instanceRef U111_CYCLE_SM))
           ))
           (net (rename d_lm_amiga_7 "D_LM_AMIGA[7]") (joined
            (portRef PACKAGE_PIN (instanceRef D_LM_AMIGA_iobuf_7))
@@ -1495,7 +2589,7 @@
           ))
           (net (rename D_LM_AMIGA_in_7 "D_LM_AMIGA_in[7]") (joined
            (portRef D_IN_0 (instanceRef D_LM_AMIGA_iobuf_7))
-           (portRef I0 (instanceRef D_LM_040_iobuf_RNO_7))
+           (portRef (member D_LM_AMIGA_in 0) (instanceRef U111_CYCLE_SM))
           ))
           (net (rename d_ll_amiga_0 "D_LL_AMIGA[0]") (joined
            (portRef PACKAGE_PIN (instanceRef D_LL_AMIGA_iobuf_0))
@@ -1503,7 +2597,7 @@
           ))
           (net (rename D_LL_AMIGA_in_0 "D_LL_AMIGA_in[0]") (joined
            (portRef D_IN_0 (instanceRef D_LL_AMIGA_iobuf_0))
-           (portRef I0 (instanceRef D_LL_040_iobuf_RNO_0))
+           (portRef (member D_LL_AMIGA_in 7) (instanceRef U111_CYCLE_SM))
           ))
           (net (rename d_ll_amiga_1 "D_LL_AMIGA[1]") (joined
            (portRef PACKAGE_PIN (instanceRef D_LL_AMIGA_iobuf_1))
@@ -1511,7 +2605,7 @@
           ))
           (net (rename D_LL_AMIGA_in_1 "D_LL_AMIGA_in[1]") (joined
            (portRef D_IN_0 (instanceRef D_LL_AMIGA_iobuf_1))
-           (portRef I0 (instanceRef D_LL_040_iobuf_RNO_1))
+           (portRef (member D_LL_AMIGA_in 6) (instanceRef U111_CYCLE_SM))
           ))
           (net (rename d_ll_amiga_2 "D_LL_AMIGA[2]") (joined
            (portRef PACKAGE_PIN (instanceRef D_LL_AMIGA_iobuf_2))
@@ -1519,7 +2613,7 @@
           ))
           (net (rename D_LL_AMIGA_in_2 "D_LL_AMIGA_in[2]") (joined
            (portRef D_IN_0 (instanceRef D_LL_AMIGA_iobuf_2))
-           (portRef I0 (instanceRef D_LL_040_iobuf_RNO_2))
+           (portRef (member D_LL_AMIGA_in 5) (instanceRef U111_CYCLE_SM))
           ))
           (net (rename d_ll_amiga_3 "D_LL_AMIGA[3]") (joined
            (portRef PACKAGE_PIN (instanceRef D_LL_AMIGA_iobuf_3))
@@ -1527,7 +2621,7 @@
           ))
           (net (rename D_LL_AMIGA_in_3 "D_LL_AMIGA_in[3]") (joined
            (portRef D_IN_0 (instanceRef D_LL_AMIGA_iobuf_3))
-           (portRef I0 (instanceRef D_LL_040_iobuf_RNO_3))
+           (portRef (member D_LL_AMIGA_in 4) (instanceRef U111_CYCLE_SM))
           ))
           (net (rename d_ll_amiga_4 "D_LL_AMIGA[4]") (joined
            (portRef PACKAGE_PIN (instanceRef D_LL_AMIGA_iobuf_4))
@@ -1535,7 +2629,7 @@
           ))
           (net (rename D_LL_AMIGA_in_4 "D_LL_AMIGA_in[4]") (joined
            (portRef D_IN_0 (instanceRef D_LL_AMIGA_iobuf_4))
-           (portRef I0 (instanceRef D_LL_040_iobuf_RNO_4))
+           (portRef (member D_LL_AMIGA_in 3) (instanceRef U111_CYCLE_SM))
           ))
           (net (rename d_ll_amiga_5 "D_LL_AMIGA[5]") (joined
            (portRef PACKAGE_PIN (instanceRef D_LL_AMIGA_iobuf_5))
@@ -1543,7 +2637,7 @@
           ))
           (net (rename D_LL_AMIGA_in_5 "D_LL_AMIGA_in[5]") (joined
            (portRef D_IN_0 (instanceRef D_LL_AMIGA_iobuf_5))
-           (portRef I0 (instanceRef D_LL_040_iobuf_RNO_5))
+           (portRef (member D_LL_AMIGA_in 2) (instanceRef U111_CYCLE_SM))
           ))
           (net (rename d_ll_amiga_6 "D_LL_AMIGA[6]") (joined
            (portRef PACKAGE_PIN (instanceRef D_LL_AMIGA_iobuf_6))
@@ -1551,7 +2645,7 @@
           ))
           (net (rename D_LL_AMIGA_in_6 "D_LL_AMIGA_in[6]") (joined
            (portRef D_IN_0 (instanceRef D_LL_AMIGA_iobuf_6))
-           (portRef I0 (instanceRef D_LL_040_iobuf_RNO_6))
+           (portRef (member D_LL_AMIGA_in 1) (instanceRef U111_CYCLE_SM))
           ))
           (net (rename d_ll_amiga_7 "D_LL_AMIGA[7]") (joined
            (portRef PACKAGE_PIN (instanceRef D_LL_AMIGA_iobuf_7))
@@ -1559,11 +2653,19 @@
           ))
           (net (rename D_LL_AMIGA_in_7 "D_LL_AMIGA_in[7]") (joined
            (portRef D_IN_0 (instanceRef D_LL_AMIGA_iobuf_7))
-           (portRef I0 (instanceRef D_LL_040_iobuf_RNO_7))
+           (portRef (member D_LL_AMIGA_in 0) (instanceRef U111_CYCLE_SM))
+          ))
+          (net (rename A_AMIGA_c_0 "A_AMIGA_c[0]") (joined
+           (portRef (member A_AMIGA_c 1) (instanceRef U111_CYCLE_SM))
+           (portRef D_OUT_0 (instanceRef A_AMIGA_obuf_0))
           ))
           (net (rename a_amiga_0 "A_AMIGA[0]") (joined
            (portRef PACKAGE_PIN (instanceRef A_AMIGA_obuf_0))
            (portRef (member A_AMIGA 1))
+          ))
+          (net (rename A_AMIGA_c_1 "A_AMIGA_c[1]") (joined
+           (portRef (member A_AMIGA_c 0) (instanceRef U111_CYCLE_SM))
+           (portRef D_OUT_0 (instanceRef A_AMIGA_obuf_1))
           ))
           (net (rename a_amiga_1 "A_AMIGA[1]") (joined
            (portRef PACKAGE_PIN (instanceRef A_AMIGA_obuf_1))
@@ -1605,6 +2707,10 @@
            (portRef PACKAGE_PIN (instanceRef TAn_obuf))
            (portRef TAn)
           ))
+          (net (rename tbin "TBIn") (joined
+           (portRef PACKAGE_PIN (instanceRef TBIn_obuf))
+           (portRef TBIn)
+          ))
           (net (rename cpubgn "CPUBGn") (joined
            (portRef PACKAGE_PIN (instanceRef CPUBGn_obuf))
            (portRef CPUBGn)
@@ -1620,6 +2726,14 @@
           (net (rename dman "DMAn") (joined
            (portRef PACKAGE_PIN (instanceRef DMAn_obuf))
            (portRef DMAn)
+          ))
+          (net RESETn_c_i (joined
+           (portRef O (instanceRef RESETn_ibuf_RNIM9SF))
+           (portRef RESETn_c_i (instanceRef U111_CYCLE_SM))
+          ))
+          (net TAn_0_i (joined
+           (portRef TAn_0_i (instanceRef U111_CYCLE_SM))
+           (portRef D_OUT_0 (instanceRef TAn_obuf))
           ))
           (net RnW_c_i_0 (joined
            (portRef O (instanceRef RnW_c_sbtinv))

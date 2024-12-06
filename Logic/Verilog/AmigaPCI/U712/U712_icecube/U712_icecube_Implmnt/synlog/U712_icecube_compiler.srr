@@ -12,15 +12,13 @@ Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys softwa
 @I::"C:\lscc\iCEcube2.2020.12\synpbase\lib\vlog\scemi_objects.v" (library snps_haps)
 @I::"C:\lscc\iCEcube2.2020.12\synpbase\lib\vlog\scemi_pipes.svh" (library snps_haps)
 @I::"D:\AmigaPCI\U712\U712_BUFFERS.v" (library work)
-@I::"D:\AmigaPCI\U712\U712_CYCLE_TERM.v" (library work)
 @I::"D:\AmigaPCI\U712\U712_REG_SM.v" (library work)
 @I::"D:\AmigaPCI\U712\U712_TOP.v" (library work)
 @I::"D:\AmigaPCI\U712\U712_BYTE_ENABLE.v" (library work)
 @I::"D:\AmigaPCI\U712\U712_CHIP_RAM.v" (library work)
+@I::"D:\AmigaPCI\U712\U712_CYCLE_TERM.v" (library work)
 Verilog syntax check successful!
 File D:\AmigaPCI\U712\U712_BUFFERS.v changed - recompiling
-File D:\AmigaPCI\U712\U712_TOP.v changed - recompiling
-File D:\AmigaPCI\U712\U712_CHIP_RAM.v changed - recompiling
 Selecting top level module U712_TOP
 @N: CG364 :"C:\lscc\iCEcube2.2020.12\synpbase\lib\generic\sb_ice40.v":870:7:870:22|Synthesizing module SB_PLL40_2F_CORE in library work.
 
@@ -32,19 +30,24 @@ Selecting top level module U712_TOP
 
 @N: CG364 :"D:\AmigaPCI\U712\U712_CHIP_RAM.v":1:7:1:19|Synthesizing module U712_CHIP_RAM in library work.
 
+@W: CL265 :"D:\AmigaPCI\U712\U712_CHIP_RAM.v":150:0:150:5|Removing unused bit 9 of DMA_ROW_ADDRESS[9:0]. Either assign all bits or reduce the width of the signal.
+@W: CL265 :"D:\AmigaPCI\U712\U712_CHIP_RAM.v":150:0:150:5|Removing unused bit 9 of DMA_COL_ADDRESS[9:0]. Either assign all bits or reduce the width of the signal.
 @N: CG364 :"D:\AmigaPCI\U712\U712_BYTE_ENABLE.v":1:7:1:22|Synthesizing module U712_BYTE_ENABLE in library work.
 
 @N: CG364 :"D:\AmigaPCI\U712\U712_TOP.v":4:7:4:14|Synthesizing module U712_TOP in library work.
 
-@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":56:2:56:4|Input EXTFEEDBACK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":56:2:56:4|Input DYNAMICDELAY on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":56:2:56:4|Input BYPASS on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":56:2:56:4|Input SDI on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":56:2:56:4|Input SCLK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":56:2:56:4|Input LATCHINPUTVALUE on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":57:2:57:4|Input EXTFEEDBACK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":57:2:57:4|Input DYNAMICDELAY on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":57:2:57:4|Input BYPASS on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":57:2:57:4|Input SDI on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":57:2:57:4|Input SCLK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":57:2:57:4|Input LATCHINPUTVALUE on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@N: CL189 :"D:\AmigaPCI\U712\U712_CHIP_RAM.v":150:0:150:5|Register bit CLKEN is always 1.
 @W: CL247 :"D:\AmigaPCI\U712\U712_CHIP_RAM.v":4:17:4:17|Input port bit 20 of A[20:1] is unused
 
 @W: CL247 :"D:\AmigaPCI\U712\U712_CHIP_RAM.v":4:17:4:17|Input port bit 1 of A[20:1] is unused
+
+@W: CL247 :"D:\AmigaPCI\U712\U712_CHIP_RAM.v":5:16:5:18|Input port bit 9 of DRA[9:0] is unused
 
 @N: CL201 :"D:\AmigaPCI\U712\U712_CYCLE_TERM.v":22:0:22:5|Trying to extract state machine for register TACK_STATE.
 Extracted state machine for register TACK_STATE
@@ -54,6 +57,8 @@ State machine has 5 reachable states with original encodings of:
    010
    011
    100
+@N: CL159 :"D:\AmigaPCI\U712\U712_BUFFERS.v":37:33:37:41|Input REGSPACEn is unused.
+@N: CL159 :"D:\AmigaPCI\U712\U712_BUFFERS.v":37:44:37:52|Input RAMSPACEn is unused.
 @N: CL201 :"D:\AmigaPCI\U712\U712_REG_SM.v":41:0:41:5|Trying to extract state machine for register STATE_COUNT.
 Extracted state machine for register STATE_COUNT
 State machine has 7 reachable states with original encodings of:
@@ -65,12 +70,12 @@ State machine has 7 reachable states with original encodings of:
    101
    110
 
-At c_ver Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 72MB peak: 75MB)
+At c_ver Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 73MB peak: 83MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Tue Dec 03 18:22:03 2024
+# Fri Dec 06 13:44:54 2024
 
 ###########################################################]
 Synopsys Netlist Linker, version comp2016q3p1, Build 141R, built Dec  5 2016
@@ -83,7 +88,7 @@ At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Tue Dec 03 18:22:03 2024
+# Fri Dec 06 13:44:54 2024
 
 ###########################################################]
 @END
@@ -93,6 +98,6 @@ At c_hdl Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Tue Dec 03 18:22:03 2024
+# Fri Dec 06 13:44:54 2024
 
 ###########################################################]

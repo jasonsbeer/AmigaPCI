@@ -1,7 +1,7 @@
 # Synopsys Constraint Checker, version maplat, Build 1612R, built Dec  5 2016
 # Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
 
-# Written on Tue Nov 26 16:52:35 2024
+# Written on Fri Dec 06 09:03:56 2024
 
 
 ##### DESIGN INFO #######################################################
@@ -26,7 +26,9 @@ Clock Relationships
 
 Starting                         Ending                           |     rise to rise     |     fall to fall     |     rise to fall     |     fall to rise                     
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+U111_TOP|CLK80_derived_clock     U111_TOP|CLK80_derived_clock     |     No paths         |     12.500           |     No paths         |     No paths                         
 U111_TOP|CLK80_derived_clock     U111_TOP|CLK40_derived_clock     |     No paths         |     6.230            |     No paths         |     No paths                         
+U111_TOP|CLK40_derived_clock     U111_TOP|CLK80_derived_clock     |     No paths         |     6.270            |     No paths         |     No paths                         
 =============================================================================================================================================================================
  Note: 'No paths' indicates there are no paths in the design for that pair of clock edges.
        'Diff grp' indicates that paths exist but the starting clock and ending clock are in different clock groups.
@@ -179,6 +181,7 @@ p:SIZ[0]
 p:SIZ[1]
 p:TACKn
 p:TAn
+p:TBIn
 p:TS_CPUn
 p:TSn
 

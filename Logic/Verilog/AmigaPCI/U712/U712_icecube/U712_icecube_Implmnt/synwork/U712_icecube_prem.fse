@@ -1,32 +1,32 @@
 
-fsm_encoding {7410412} onehot
+fsm_encoding {6410412} onehot
 
-fsm_state_encoding {7410412} 000 {0000001}
+fsm_state_encoding {6410412} 000 {0000001}
 
-fsm_state_encoding {7410412} 001 {0000010}
+fsm_state_encoding {6410412} 001 {0000010}
 
-fsm_state_encoding {7410412} 010 {0000100}
+fsm_state_encoding {6410412} 010 {0000100}
 
-fsm_state_encoding {7410412} 011 {0001000}
+fsm_state_encoding {6410412} 011 {0001000}
 
-fsm_state_encoding {7410412} 100 {0010000}
+fsm_state_encoding {6410412} 100 {0010000}
 
-fsm_state_encoding {7410412} 101 {0100000}
+fsm_state_encoding {6410412} 101 {0100000}
 
-fsm_state_encoding {7410412} 110 {1000000}
+fsm_state_encoding {6410412} 110 {1000000}
 
-fsm_registers {7410412} {STATE_COUNT[6]}  {STATE_COUNT[5]}  {STATE_COUNT[4]}  {STATE_COUNT[3]}  {STATE_COUNT[2]}  {STATE_COUNT[1]}  {STATE_COUNT[0]} 
+fsm_registers {6410412} {STATE_COUNT[6]}  {STATE_COUNT[5]}  {STATE_COUNT[4]}  {STATE_COUNT[3]}  {STATE_COUNT[2]}  {STATE_COUNT[1]}  {STATE_COUNT[0]} 
 
-fsm_encoding {6220221} onehot
+fsm_encoding {10220221} onehot
 
-fsm_state_encoding {6220221} 000 {00001}
+fsm_state_encoding {10220221} 000 {00001}
 
-fsm_state_encoding {6220221} 001 {00010}
+fsm_state_encoding {10220221} 001 {00010}
 
-fsm_state_encoding {6220221} 010 {00100}
+fsm_state_encoding {10220221} 010 {00100}
 
-fsm_state_encoding {6220221} 011 {01000}
+fsm_state_encoding {10220221} 011 {01000}
 
-fsm_state_encoding {6220221} 100 {10000}
+fsm_state_encoding {10220221} 100 {10000}
 
-fsm_registers {6220221} {TACK_STATE[4]}  {TACK_STATE[3]}  {TACK_STATE[2]}  {TACK_STATE[1]}  {TACK_STATE[0]} 
+fsm_registers {10220221} {TACK_STATE[4]}  {TACK_STATE[3]}  {TACK_STATE[2]}  {TACK_STATE[1]}  {TACK_STATE[0]} 

@@ -1,6 +1,6 @@
 #CLOCKS
 set_io CLKRAMB   52
-set_io CLK80_CPU     94
+set_io CLK80_CPU 94
 set_io CLK40C    21
 set_io CLK40B    49
 set_io CLK40A    93

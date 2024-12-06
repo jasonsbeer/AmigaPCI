@@ -4,7 +4,7 @@ Version=Lattice Semiconductor Corporation iCEcube - Release: 2020.12.27943 - Bui
 ProjectName=U712_icecube
 Vendor=SiliconBlue
 Synthesis=synplify
-ProjectVFiles=../U712_BUFFERS.v=work,../U712_CYCLE_TERM.v=work,../U712_REG_SM.v=work,../U712_TOP.v=work,../U712_BYTE_ENABLE.v=work,../U712_CHIP_RAM.v=work
+ProjectVFiles=../U712_BUFFERS.v=work,../U712_REG_SM.v=work,../U712_TOP.v=work,../U712_BYTE_ENABLE.v=work,../U712_CHIP_RAM.v=work,../U712_CYCLE_TERM.v=work
 ProjectCFiles=../U712_TOP.sdc
 CurImplementation=U712_icecube_Implmnt
 Implementations=U712_icecube_Implmnt

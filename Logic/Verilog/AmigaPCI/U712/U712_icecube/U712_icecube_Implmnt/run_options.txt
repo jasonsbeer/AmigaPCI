@@ -1,16 +1,16 @@
 #--  Synopsys, Inc.
 #--  Version L-2016.09L+ice40
 #--  Project file D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\run_options.txt
-#--  Written on Tue Dec 03 18:22:03 2024
+#--  Written on Fri Dec 06 13:44:54 2024
 
 
 #project files
 add_file -verilog "../U712_BUFFERS.v"
-add_file -verilog "../U712_CYCLE_TERM.v"
 add_file -verilog "../U712_REG_SM.v"
 add_file -verilog "../U712_TOP.v"
 add_file -verilog "../U712_BYTE_ENABLE.v"
 add_file -verilog "../U712_CHIP_RAM.v"
+add_file -verilog "../U712_CYCLE_TERM.v"
 add_file -constraint "../U712_TOP.sdc"
 
 

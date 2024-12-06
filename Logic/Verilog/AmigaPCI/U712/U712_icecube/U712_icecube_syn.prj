@@ -3,11 +3,11 @@
 #project files
 
 add_file -verilog -lib work "../U712_BUFFERS.v" 
-add_file -verilog -lib work "../U712_CYCLE_TERM.v" 
 add_file -verilog -lib work "../U712_REG_SM.v" 
 add_file -verilog -lib work "../U712_TOP.v" 
 add_file -verilog -lib work "../U712_BYTE_ENABLE.v" 
 add_file -verilog -lib work "../U712_CHIP_RAM.v" 
+add_file -verilog -lib work "../U712_CYCLE_TERM.v" 
 add_file -constraint -lib work "../U712_TOP.sdc"
 #implementation: "U712_icecube_Implmnt"
 impl -add U712_icecube_Implmnt -type fpga

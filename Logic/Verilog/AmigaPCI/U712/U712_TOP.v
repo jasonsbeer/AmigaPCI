@@ -4,12 +4,13 @@
 module U712_TOP (
 
     input CLK40_IN, C1, C3, RESETn,
-    input RnW, TSn, DBRn, REGSPACEn, DBDIR, RAMSPACEn, //RAS0n, RAS1n,
+    input RnW, TSn, DBRn, REGSPACEn, RAMSPACEn, AWEn, RAS0n, RAS1n, CASLn, CASUn,
     input [1:0] SIZ,
     input [20:0] A,
+    input [9:0] DRA,
 
     output CLK40C, CLKRAM,
-    output LDSn, UDSn, ASn, REGENn,
+    output LDSn, UDSn, ASn, REGENn, DBDIR,
     output VBENn, DRDENn, DRDDIR,
     output DBENn, CRCSn, CLKEN, BANK1, BANK0, RASn, CASn, WEn, RAMENn,
     output [10:0]CMA,
@@ -68,7 +69,7 @@ SB_PLL40_2F_CORE #(
 /////////////////////////////////
 
 wire REG_TACK;
-//wire REG_CYCLE;
+wire REG_CYCLEm;
 //wire AGNUS_REFRESH = !RAS0n && !RAS1n;
 
 U712_REG_SM U712_REG_SM (
@@ -89,26 +90,28 @@ U712_REG_SM U712_REG_SM (
     .UDSn (UDSn),
     .ASn (ASn),
     .REGENn (REGENn),
-    .REG_TACK (REG_TACK)
-    //.REG_CYCLE (REG_CYCLE)
+    .REG_TACK (REG_TACK),
+    .REG_CYCLE (REG_CYCLEm)
 );
 
 ///////////////////////////
 // CHIPSET DATA BUFFERS //
 /////////////////////////
 
-wire DMA_CYCLE = 0;
+wire DMA_CYCLEm;
+wire CPU_CYCLEm;
 
 U712_BUFFERS U712_BUFFERS (
     .DBDIR (DBDIR),
-    //.REG_CYCLE (REG_CYCLE),
     .RnW (RnW),
-    .DMA_CYCLE (DMA_CYCLE),
+    .DMA_CYCLE (DMA_CYCLEm),
     .VBENn (VBENn),
     .DRDENn (DRDENn),
     .DRDDIR (DRDDIR),
     .REGSPACEn (REGSPACEn),
-    .RAMSPACEn (RAMSPACEn)
+    .RAMSPACEn (RAMSPACEn),
+    .REG_CYCLE (REG_CYCLEm),
+    .CPU_CYCLE (CPU_CYCLEm)
 );
 
 ////////////////////////////
@@ -133,9 +136,6 @@ U712_CYCLE_TERM U712_CYCLE_TERM (
 // CHIP RAM CYCLE //
 ///////////////////
 
-//wire DMA_CYCLE <= 0;
-assign DBENn = 1;
-
 U712_CHIP_RAM U712_CHIP_RAM (
     //INPUTS
     .CLK80 (CLK80),
@@ -146,7 +146,13 @@ U712_CHIP_RAM U712_CHIP_RAM (
     .TSn (TSn),
     .RnW (RnW),
     .DBRn (DBRn),
+    .AWEn (AWEn),
+    .RAS0n (RAS0n),
+    .RAS1n (RAS1n),
+    .CASLn (CASLn),
+    .CASUn (CASUn),
     .A (A[20:1]),
+    .DRA (DRA),
 
     //OUTPUTS
     .BANK1 (BANK1),
@@ -156,7 +162,11 @@ U712_CHIP_RAM U712_CHIP_RAM (
     .CASn (CASn),
     .WEn (WEn),
     .CLKEN (CLKEN),
+    .DMA_CYCLE (DMA_CYCLEm),
+    .CPU_CYCLE (CPU_CYCLEm),
+    .DBENn (DBENn),
     .RAMENn (RAMENn),
+    .DBDIR (DBDIR),
     .CPU_TACK (CPU_TACKm),
     .CMA (CMA)
 );
@@ -166,7 +176,12 @@ U712_CHIP_RAM U712_CHIP_RAM (
 /////////////////
 
 U712_BYTE_ENABLE U712_BYTE_ENABLE (
-    //INPUTS
+    //INPUTS+
+    .CPU_CYCLE (CPU_CYCLEm),
+    .DMA_CYCLE (DMA_CYCLEm),
+    .CASLn (CASLn),
+    .CASUn (CASUn),
+    .DBENn (DBENn),
     .A (A[1:0]),
     .SIZ (SIZ),
 

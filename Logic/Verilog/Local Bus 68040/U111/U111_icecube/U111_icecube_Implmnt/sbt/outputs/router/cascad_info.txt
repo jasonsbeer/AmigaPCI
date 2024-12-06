@@ -1,2 +1,4 @@
 [VIC]
-FLIP_cascade_=ltout:in2
+U111_CYCLE_SM.CYCLE_STATE_0_sqmuxa_cascade_=ltout:in2
+U111_CYCLE_SM.TS_EN10_cascade_=ltout:in2
+U111_CYCLE_SM.un1_CYCLE_STATE_1_0_cascade_=ltout:in1

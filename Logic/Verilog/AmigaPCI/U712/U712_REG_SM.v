@@ -6,8 +6,8 @@ module U712_REG_SM (
 
     output LDSn, UDSn, ASn,
     output reg REGENn,
-    output reg REG_TACK
-    //output REG_CYCLE
+    output reg REG_TACK,
+    output reg REG_CYCLE
 );
 
 ///////////////////
@@ -43,7 +43,7 @@ always @(negedge CLK80) begin
 
         DS_EN <= 0;
         STATE_COUNT <= 3'b000;
-        //REG_CYCLE <= 0;
+        REG_CYCLE <= 0;
         LDS_OUT <= 0;
         UDS_OUT <= 0;
         REGENn <= 1;
@@ -69,14 +69,11 @@ always @(negedge CLK80) begin
             3'b000 : begin
                 if (!TSn && !REGSPACEn) begin //CYCLE HAS STARTED IN THE REGISTER SPACE.
                     STATE_COUNT <= 3'b001;
-                    //REG_CYCLE <= 1;
-                    //REG_CYCLE_START <= 1;
                 end
             end
 
             3'b001: //STATE 2
                 begin
-                    //REG_CYCLE_START <= 0;
                     if (C1_SYNC == 3'b000 && C3_SYNC == 3'b110) begin
                         REGENn <= 0; //ASSERT REGISTER ENABLE TO AGNUS
                         UDS_OUT <= RnW || (SIZ0 && !A0) || !SIZ0; //SET UPPER DATA STROBE
@@ -96,6 +93,7 @@ always @(negedge CLK80) begin
                 //ADD WAITS UNTIL AND _DBR IS NEGATED AND WE ARE AT STATE 4.
                 if (DBR_SYNC == 2'b11 && C1_SYNC == 3'b111 && C3_SYNC == 3'b111) begin // && AGNUS_REFRESH_SYNC == 2'b00) begin //  && !CAS_AGNUS) begin
                     STATE_COUNT <= 3'b100;
+                    REG_CYCLE <= 1;
                 end
             end
 
@@ -106,15 +104,12 @@ always @(negedge CLK80) begin
                 end
             end
 
-            //3'b101 : begin STATE_COUNT <= 3'b110; end //ADD CYCLE TO ACCOMODATE _TACK ASSERTION.
-
             3'b101 : //STATE 6
                 begin
-                    //REG_CYCLE <= ~RnW;
+                    REG_CYCLE <= 0;
                     if (C1_SYNC == 3'b000 && C3_SYNC == 3'b000) begin
                         STATE_COUNT <= 3'b110;
                         REG_TACK <= !RnW; //END THE CPU CYCLE NOW FOR WRITES.
-                        //REG_TACK <= 1;
                     end else begin
                         REG_TACK <= 0;
                     end
