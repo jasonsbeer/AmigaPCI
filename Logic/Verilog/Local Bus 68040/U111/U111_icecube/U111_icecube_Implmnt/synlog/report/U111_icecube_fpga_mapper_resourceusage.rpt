@@ -10,9 +10,9 @@ SB_DFFNESS      1 use
 VCC             1 use
 SB_LUT4         70 uses
 
-I/O ports: 90
-I/O primitives: 89
-SB_IO          88 uses
+I/O ports: 91
+I/O primitives: 90
+SB_IO          89 uses
 SB_PLL40_2F_PAD 1 use
 
 I/O Register bits:                  0

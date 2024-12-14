@@ -28,6 +28,7 @@ INOUT D_LL_AMIGA[7] 	 location (0, 7, 0) 	 24
 INOUT D_LL_040[6] 	 location (25, 4, 1) 	 80 	 
 OUTPUT CLK40B 	 location (12, 0, 1) 	 49 	 
 INPUT  A_040[0] 	 location (2, 0, 0) 	 37 	 
+OUTPUT TBI_CPUn 	 location (17, 0, 1) 	 55 	 
 OUTPUT TAn 	 location (15, 21, 0) 	 124 	 
 INOUT D_UM_AMIGA[1] 	 location (0, 15, 1) 	 11 	 
 INOUT D_UM_040[7] 	 location (25, 19, 0) 	 105 	 
@@ -44,6 +45,7 @@ INOUT D_LL_040[4] 	 location (25, 2, 1) 	 76
 OUTPUT CLK80_CPU 	 location (25, 11, 0) 	 94 	 
 OUTPUT BUFDIR 	 location (6, 21, 1) 	 136 	 
 OUTPUT A_AMIGA[1] 	 location (4, 0, 1) 	 41 	 
+OUTPUT TCI_CPUn 	 location (25, 16, 1) 	 101 	 
 INOUT D_UM_AMIGA[7] 	 location (0, 19, 0) 	 4 	 
 INOUT D_UM_040[1] 	 location (25, 18, 1) 	 104 	 
 INPUT  TS_CPUn 	 location (14, 21, 1) 	 125 	 
@@ -57,7 +59,6 @@ INOUT D_UM_AMIGA[5] 	 location (4, 21, 0) 	 141
 INOUT D_UM_040[3] 	 location (25, 19, 1) 	 106 	 
 INOUT D_LL_040[3] 	 location (25, 1, 0) 	 73 	 
 OUTPUT CLK40A 	 location (25, 10, 1) 	 93 	 
-OUTPUT TBIn 	 location (17, 0, 1) 	 55 	 
 INPUT  SIZ[1] 	 location (19, 21, 0) 	 120 	 
 INOUT D_UU_AMIGA[4] 	 location (6, 21, 0) 	 137 	 
 INOUT D_UU_040[2] 	 location (20, 21, 0) 	 118 	 

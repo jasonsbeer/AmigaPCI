@@ -3,7 +3,7 @@ module U111_CYCLE_SM (
     input [1:0] SIZ,
     input [1:0] A_040,
 
-    output TAn, TBIn,
+    output TAn, TBI_CPUn, TCI_CPUn,
     output [1:0] A_AMIGA,
     output reg TSn,
 
@@ -39,7 +39,8 @@ end
 
 assign TAn = TA_EN ? TACKn : 1'b1;
 //assign TBIn = PORTSIZE ? TACKn : 1'b1;
-assign TBIn = 0;
+assign TBI_CPUn = 0; //DISABLE ALL TRANSFER BURSTS.
+assign TCI_CPUn = 0; //DISABLE ALL TRANSFER CACHING.
 
 ////////////////////////
 // DATA PASS THROUGH //
@@ -62,10 +63,11 @@ assign TBIn = 0;
 assign A_AMIGA = LW_CYCLE ? {A_OUT, 1'b0} : A_040;
 
 //IS THIS A LONG WORD TRANSFER CYCLE?
-wire LW_TRANS = SIZ == 2'b00 || SIZ == 2'b11;
+wire LW_TRANS = (SIZ == 2'b00 || SIZ == 2'b11 || !PORTSIZE);
 
 //WHEN TRANSFERRING A BYTE OR WORD
-wire FLIP = (!LW_TRANS || LW_CYCLE) && A_AMIGA[1] == 1'b1;
+wire FLIP = (!LW_TRANS || LW_CYCLE) && A_AMIGA[1];
+//wire FLIP = (!LW_TRANS || LW_CYCLE) && A_040[1];
 
 //READS
 assign D_UU_040 = (RnW && LW_CYCLE) ? UU_LATCHED : RnW ? D_UU_AMIGA : 8'bzzzzzzzz;

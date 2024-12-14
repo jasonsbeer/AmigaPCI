@@ -1,4 +1,4 @@
-# Fri Dec 06 09:03:56 2024
+# Sat Dec 14 10:36:18 2024
 
 Synopsys Lattice Technology Mapper, Version maplat, Build 1612R, Built Dec  5 2016 10:31:39
 Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
@@ -97,7 +97,7 @@ Start Writing Netlists (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00
 
 Writing Analyst data base D:\AmigaPCI\U111\U111_icecube\U111_icecube_Implmnt\synwork\U111_icecube_m.srm
 
-Finished Writing Netlist Databases (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 130MB peak: 133MB)
+Finished Writing Netlist Databases (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
 
 Writing EDIF Netlist and constraint files
 @N: BW103 |The default time unit for the Synopsys Constraint File (SDC or FDC) is 1ns.
@@ -108,7 +108,7 @@ L-2016.09L+ice40
 Finished Writing EDIF Netlist and constraint files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 132MB peak: 134MB)
 
 
-Start final timing analysis (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 132MB peak: 134MB)
+Start final timing analysis (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 133MB peak: 134MB)
 
 @N: MT615 |Found clock CLK40_IN with period 25.00ns 
 @N: MT615 |Found clock U111_TOP|CLK40_derived_clock with period 25.00ns 
@@ -116,7 +116,7 @@ Start final timing analysis (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:0
 
 
 ##### START OF TIMING REPORT #####[
-# Timing Report written on Fri Dec 06 09:03:57 2024
+# Timing Report written on Sat Dec 14 10:36:19 2024
 #
 
 
@@ -339,9 +339,9 @@ SB_DFFNESS      1 use
 VCC             1 use
 SB_LUT4         70 uses
 
-I/O ports: 90
-I/O primitives: 89
-SB_IO          88 uses
+I/O ports: 91
+I/O primitives: 90
+SB_IO          89 uses
 SB_PLL40_2F_PAD 1 use
 
 I/O Register bits:                  0
@@ -362,6 +362,6 @@ Mapper successful!
 At Mapper Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 26MB peak: 134MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
-# Fri Dec 06 09:03:57 2024
+# Sat Dec 14 10:36:19 2024
 
 ###########################################################]

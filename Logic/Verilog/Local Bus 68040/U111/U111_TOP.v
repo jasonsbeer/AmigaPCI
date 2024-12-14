@@ -7,7 +7,7 @@ module U111_TOP (
 
     output [1:0] A_AMIGA,
     output CLK40A, CLK40B, CLK40C, CLK80_CPU, CLKRAMA, CLKRAMB,
-    output TSn, TAn, TBIn, CPUBGn, BUFENn, BUFDIR, DMAn,
+    output TSn, TAn, TBI_CPUn, TCI_CPUn, CPUBGn, BUFENn, BUFDIR, DMAn,
 
     inout [7:0] D_UU_040, //68040 DATA BUS
     inout [7:0] D_UM_040,
@@ -97,7 +97,8 @@ U111_CYCLE_SM U111_CYCLE_SM (
 
     //OUTPUTS
     .TAn (TAn),
-    .TBIn (TBIn),
+    .TBI_CPUn (TBI_CPUn),
+    .TCI_CPUn (TCI_CPUn),
     .A_AMIGA (A_AMIGA),
     .TSn (TSn),
 

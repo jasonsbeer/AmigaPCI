@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:31:51
 
-* File Generated:     Dec 6 2024 09:04:09
+* File Generated:     Dec 14 2024 10:36:35
 
 * Purpose:            Detailed IO and package pin info
 
@@ -69,7 +69,7 @@ Pin Number, Pin Type Name, Signal Name, Direction, Global Buffer, IO Standard, P
 52, PIO_GBIN, CLKRAMB, Output, , SB_LVCMOS, No Pull Up, Simple Output, bottomBank
 53, AGND_BOT, not used, , , , , , UnknownBank
 54, AVDD_BOT, not used, , , , , , UnknownBank
-55, PIO, TBIn, Output, , SB_LVCMOS, No Pull Up, Simple Output, bottomBank
+55, PIO, TBI_CPUn, Output, , SB_LVCMOS, No Pull Up, Simple Output, bottomBank
 56, PIO, CLKRAMA, Output, , SB_LVCMOS, No Pull Up, Simple Output, bottomBank
 57, VCCIO_2, not used, , , , , , bottomBank
 59, GND, not used, , , , , , UnknownBank
@@ -114,7 +114,7 @@ Pin Number, Pin Type Name, Signal Name, Direction, Global Buffer, IO Standard, P
 98, PIO, D_LM_040[6], InOut, , SB_LVCMOS, Pull Up, Simple Input Output Tristatable by Enable, rightBank
 99, PIO, D_LM_040[7], InOut, , SB_LVCMOS, Pull Up, Simple Input Output Tristatable by Enable, rightBank
 100, VCCIO_1, not used, , , , , , rightBank
-101, PIO, not used, , , , , , rightBank
+101, PIO, TCI_CPUn, Output, , SB_LVCMOS, Pull Up, Simple Output, rightBank
 102, PIO, CPUBGn, Output, , SB_LVCMOS, Pull Up, Simple Output, rightBank
 103, GND, not used, , , , , , UnknownBank
 104, PIO, D_UM_040[1], InOut, , SB_LVCMOS, Pull Up, Simple Input Output Tristatable by Enable, rightBank
@@ -157,4 +157,4 @@ Pin Number, Pin Type Name, Signal Name, Direction, Global Buffer, IO Standard, P
 142, PIO, D_UU_AMIGA[6], InOut, , SB_LVCMOS, Pull Up, Simple Input Output Tristatable by Enable, topBank
 143, PIO, D_UU_AMIGA[7], InOut, , SB_LVCMOS, Pull Up, Simple Input Output Tristatable by Enable, topBank
 144, PIO, D_UU_AMIGA[3], InOut, , SB_LVCMOS, Pull Up, Simple Input Output Tristatable by Enable, topBank
-Total Number of Used Pins, 89
+Total Number of Used Pins, 90

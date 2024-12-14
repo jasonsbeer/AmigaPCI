@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:31:51
 
-* File Generated:     Dec 6 2024 09:04:09
+* File Generated:     Dec 14 2024 10:36:35
 
 * Purpose:            General info of design implementation
 
@@ -30,7 +30,7 @@ Design statistics:
     FFs:                  24
     LUTs:                 90
     RAMs:                 0
-    IOBs:                 88
+    IOBs:                 89
     GBs:                  0
     PLLs:                 1
     Warm Boots:           0
@@ -40,7 +40,7 @@ Logic Resource Utilization:
     Total Logic Cells: 90/3520
         Combinational Logic Cells: 66       out of   3520      1.875%
         Sequential Logic Cells:    24       out of   3520      0.681818%
-        Logic Tiles:               57       out of   440       12.9545%
+        Logic Tiles:               53       out of   440       12.0455%
     Registers: 
         Logic Registers:           24       out of   3520      0.681818%
         IO Registers:              0        out of   880       0
@@ -48,7 +48,7 @@ Logic Resource Utilization:
     Warm Boots:                    0        out of   1         0%
     Pins:
         Input Pins:                9        out of   107       8.41121%
-        Output Pins:               15       out of   107       14.0187%
+        Output Pins:               16       out of   107       14.9533%
         InOut Pins:                64       out of   107       59.8131%
     Global Buffers:                0        out of   8         0%
     PLLs:                          1        out of   2         50%
@@ -56,7 +56,7 @@ Logic Resource Utilization:
 IO Bank Utilization:
 --------------------
     Bank 3: 27       out of   28        96.4286%
-    Bank 1: 27       out of   29        93.1034%
+    Bank 1: 28       out of   29        96.5517%
     Bank 0: 23       out of   27        85.1852%
     Bank 2: 11       out of   23        47.8261%
 
@@ -84,10 +84,11 @@ Detailed I/O Info:
     45          Output     SB_LVCMOS    Yes      2        Simple Output                              TSn            
     49          Output     SB_LVCMOS    No       2        Simple Output                              CLK40B         
     52          Output     SB_LVCMOS    No       2        Simple Output                              CLKRAMB        
-    55          Output     SB_LVCMOS    No       2        Simple Output                              TBIn           
+    55          Output     SB_LVCMOS    No       2        Simple Output                              TBI_CPUn       
     56          Output     SB_LVCMOS    No       2        Simple Output                              CLKRAMA        
     93          Output     SB_LVCMOS    No       1        Simple Output                              CLK40A         
     94          Output     SB_LVCMOS    No       1        Simple Output                              CLK80_CPU      
+    101         Output     SB_LVCMOS    Yes      1        Simple Output                              TCI_CPUn       
     102         Output     SB_LVCMOS    Yes      1        Simple Output                              CPUBGn         
     124         Output     SB_LVCMOS    Yes      0        Simple Output                              TAn            
     134         Output     SB_LVCMOS    No       0        Simple Output                              DMAn           
@@ -167,13 +168,13 @@ Detailed I/O Info:
 Router Summary:
 ---------------
     Status:  Successful
-    Runtime: 10 seconds
+    Runtime: 11 seconds
 
 Routing Resource Utilization:
 -----------------------------
-              Local line of tile      916 out of 146184      0.626608%
-                          Span 4      464 out of  29696      1.5625%
+              Local line of tile      929 out of 146184      0.6355%
+                          Span 4      476 out of  29696      1.60291%
                          Span 12      367 out of   5632      6.51634%
                   Global network        2 out of      8      25%
-      Vertical Inter-LUT Connect        3 out of   6720      0.0446429%
+      Vertical Inter-LUT Connect        5 out of   6720      0.0744048%
 

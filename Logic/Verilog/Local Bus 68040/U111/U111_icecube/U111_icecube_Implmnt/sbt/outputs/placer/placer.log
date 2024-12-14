@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:55:50
 
-* File Generated:     Dec 6 2024 09:03:59
+* File Generated:     Dec 14 2024 10:36:25
 
 * Purpose:            
 
@@ -42,7 +42,7 @@ Input Design Statistics
     Number of Carrys    	:	0
     Number of RAMs      	:	0
     Number of ROMs      	:	0
-    Number of IOs       	:	88
+    Number of IOs       	:	89
     Number of GBIOs     	:	0
     Number of GBs       	:	0
     Number of WarmBoot  	:	0
@@ -98,7 +98,7 @@ Device Utilization Summary after Packing
     LogicCells                  :	90/3520
     PLBs                        :	13/440
     BRAMs                       :	0/20
-    IOs and GBIOs               :	88/107
+    IOs and GBIOs               :	89/107
     PLLs                        :	1/2
 
 
@@ -111,7 +111,7 @@ Phase 5
 I2088: Phase 5, elapsed time : 0.0 (sec)
 
 Phase 6
-I2088: Phase 6, elapsed time : 8.0 (sec)
+I2088: Phase 6, elapsed time : 8.1 (sec)
 
 Final Design Statistics
     Number of LUTs      	:	90
@@ -120,7 +120,7 @@ Final Design Statistics
     Number of Carrys    	:	0
     Number of RAMs      	:	0
     Number of ROMs      	:	0
-    Number of IOs       	:	88
+    Number of IOs       	:	89
     Number of GBIOs     	:	0
     Number of GBs       	:	0
     Number of WarmBoot  	:	0
@@ -128,9 +128,9 @@ Final Design Statistics
 
 Device Utilization Summary
     LogicCells                  :	90/3520
-    PLBs                        :	57/440
+    PLBs                        :	53/440
     BRAMs                       :	0/20
-    IOs and GBIOs               :	88/107
+    IOs and GBIOs               :	89/107
     PLLs                        :	1/2
 
 
@@ -150,7 +150,7 @@ Number of clocks: 5
 Clock: CLK40_IN | Frequency: N/A | Target: 40.00 MHz
 Clock: pll/PLLOUTCOREA | Frequency: N/A | Target: 80.00 MHz
 Clock: pll/PLLOUTCOREB | Frequency: N/A | Target: 40.00 MHz
-Clock: pll/PLLOUTGLOBALA | Frequency: 240.35 MHz | Target: 80.00 MHz
+Clock: pll/PLLOUTGLOBALA | Frequency: 260.18 MHz | Target: 80.00 MHz
 Clock: pll/PLLOUTGLOBALB | Frequency: N/A | Target: 40.00 MHz
 
 =====================================================================

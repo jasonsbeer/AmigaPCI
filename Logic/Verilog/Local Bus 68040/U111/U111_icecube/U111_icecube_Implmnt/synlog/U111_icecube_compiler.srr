@@ -15,8 +15,9 @@ Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys softwa
 @I::"D:\AmigaPCI\U111\U111_TOP.v" (library work)
 @I::"D:\AmigaPCI\U111\U111_CYCLE_SM.v" (library work)
 Verilog syntax check successful!
-File D:\AmigaPCI\U111\U111_TOP.v changed - recompiling
-File D:\AmigaPCI\U111\U111_CYCLE_SM.v changed - recompiling
+
+Compiler output is up to date.  No re-compile necessary
+
 Selecting top level module U111_TOP
 @N: CG364 :"C:\lscc\iCEcube2.2020.12\synpbase\lib\generic\sb_ice40.v":931:7:931:21|Synthesizing module SB_PLL40_2F_PAD in library work.
 
@@ -33,17 +34,17 @@ Selecting top level module U111_TOP
 @W: CG781 :"D:\AmigaPCI\U111\U111_TOP.v":53:2:53:4|Input SCLK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
 @W: CG781 :"D:\AmigaPCI\U111\U111_TOP.v":53:2:53:4|Input LATCHINPUTVALUE on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
 @W: CG1273 :"D:\AmigaPCI\U111\U111_TOP.v":56:21:56:28|An input port (port CLK40_IN) is the target of an assignment - please check if this is intentional
-@N: CL201 :"D:\AmigaPCI\U111\U111_CYCLE_SM.v":102:0:102:5|Trying to extract state machine for register CYCLE_STATE.
-@N: CL189 :"D:\AmigaPCI\U111\U111_CYCLE_SM.v":102:0:102:5|Register bit CYCLE_STATE[2] is always 0.
-@N: CL189 :"D:\AmigaPCI\U111\U111_CYCLE_SM.v":102:0:102:5|Register bit CYCLE_STATE[3] is always 0.
-@W: CL279 :"D:\AmigaPCI\U111\U111_CYCLE_SM.v":102:0:102:5|Pruning register bits 3 to 2 of CYCLE_STATE[3:0]. If this is not the intended behavior, drive the inputs with valid values, or inputs from the top level.
+@N: CL201 :"D:\AmigaPCI\U111\U111_CYCLE_SM.v":104:0:104:5|Trying to extract state machine for register CYCLE_STATE.
+@N: CL189 :"D:\AmigaPCI\U111\U111_CYCLE_SM.v":104:0:104:5|Register bit CYCLE_STATE[2] is always 0.
+@N: CL189 :"D:\AmigaPCI\U111\U111_CYCLE_SM.v":104:0:104:5|Register bit CYCLE_STATE[3] is always 0.
+@W: CL279 :"D:\AmigaPCI\U111\U111_CYCLE_SM.v":104:0:104:5|Pruning register bits 3 to 2 of CYCLE_STATE[3:0]. If this is not the intended behavior, drive the inputs with valid values, or inputs from the top level.
 
-At c_ver Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 71MB peak: 72MB)
+At c_ver Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 69MB peak: 70MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Fri Dec 06 09:03:55 2024
+# Sat Dec 14 10:36:16 2024
 
 ###########################################################]
 Synopsys Netlist Linker, version comp2016q3p1, Build 141R, built Dec  5 2016
@@ -56,7 +57,7 @@ At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Fri Dec 06 09:03:55 2024
+# Sat Dec 14 10:36:16 2024
 
 ###########################################################]
 @END
@@ -66,6 +67,6 @@ At c_hdl Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Fri Dec 06 09:03:55 2024
+# Sat Dec 14 10:36:16 2024
 
 ###########################################################]
