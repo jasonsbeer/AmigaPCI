@@ -11,16 +11,16 @@ Name      Total elements     Utilization     Notes
 --------------------------------------------------
 FLOPS     97                 100 %                
 ==================================================
-Total SEQUENTIAL ELEMENTS in the block U712_TOP:	97 (26.01 % Utilization)
+Total SEQUENTIAL ELEMENTS in the block U712_TOP:	97 (25.53 % Utilization)
 
 
 COMBINATIONAL LOGIC
 Name       Total elements     Utilization     Notes
 ---------------------------------------------------
-LUTS       173                100 %                
+LUTS       180                100 %                
 CARRYS     7                  100 %                
 ===================================================
-Total COMBINATIONAL LOGIC in the block U712_TOP:	180 (48.26 % Utilization)
+Total COMBINATIONAL LOGIC in the block U712_TOP:	187 (49.21 % Utilization)
 
 
 IO PADS
@@ -28,7 +28,7 @@ Name     Total elements     Utilization     Notes
 -------------------------------------------------
 PADS     82                 100 %                
 =================================================
-Total IO PADS in the block U712_TOP:	82 (21.98 % Utilization)
+Total IO PADS in the block U712_TOP:	82 (21.58 % Utilization)
 
 ------------------------------------------------------------------
 ########   Utilization report for  cell:   U712_BUFFERS   ########
@@ -38,9 +38,9 @@ Instance path:   U712_TOP.U712_BUFFERS
 COMBINATIONAL LOGIC
 Name     Total elements     Utilization     Notes
 -------------------------------------------------
-LUTS     3                  1.73 %               
+LUTS     3                  1.67 %               
 =================================================
-Total COMBINATIONAL LOGIC in the block U712_TOP.U712_BUFFERS:	3 (0.80 % Utilization)
+Total COMBINATIONAL LOGIC in the block U712_TOP.U712_BUFFERS:	3 (0.79 % Utilization)
 
 ----------------------------------------------------------------------
 ########   Utilization report for  cell:   U712_BYTE_ENABLE   ########
@@ -50,9 +50,9 @@ Instance path:   U712_TOP.U712_BYTE_ENABLE
 COMBINATIONAL LOGIC
 Name     Total elements     Utilization     Notes
 -------------------------------------------------
-LUTS     10                 5.78 %               
+LUTS     10                 5.56 %               
 =================================================
-Total COMBINATIONAL LOGIC in the block U712_TOP.U712_BYTE_ENABLE:	10 (2.68 % Utilization)
+Total COMBINATIONAL LOGIC in the block U712_TOP.U712_BYTE_ENABLE:	10 (2.63 % Utilization)
 
 -------------------------------------------------------------------
 ########   Utilization report for  cell:   U712_CHIP_RAM   ########
@@ -64,16 +64,16 @@ Name      Total elements     Utilization     Notes
 --------------------------------------------------
 FLOPS     70                 72.2 %               
 ==================================================
-Total SEQUENTIAL ELEMENTS in the block U712_TOP.U712_CHIP_RAM:	70 (18.77 % Utilization)
+Total SEQUENTIAL ELEMENTS in the block U712_TOP.U712_CHIP_RAM:	70 (18.42 % Utilization)
 
 
 COMBINATIONAL LOGIC
 Name       Total elements     Utilization     Notes
 ---------------------------------------------------
-LUTS       112                64.7 %               
+LUTS       120                66.7 %               
 CARRYS     7                  100 %                
 ===================================================
-Total COMBINATIONAL LOGIC in the block U712_TOP.U712_CHIP_RAM:	119 (31.90 % Utilization)
+Total COMBINATIONAL LOGIC in the block U712_TOP.U712_CHIP_RAM:	127 (33.42 % Utilization)
 
 ---------------------------------------------------------------------
 ########   Utilization report for  cell:   U712_CYCLE_TERM   ########
@@ -85,15 +85,15 @@ Name      Total elements     Utilization     Notes
 --------------------------------------------------
 FLOPS     7                  7.22 %               
 ==================================================
-Total SEQUENTIAL ELEMENTS in the block U712_TOP.U712_CYCLE_TERM:	7 (1.88 % Utilization)
+Total SEQUENTIAL ELEMENTS in the block U712_TOP.U712_CYCLE_TERM:	7 (1.84 % Utilization)
 
 
 COMBINATIONAL LOGIC
 Name     Total elements     Utilization     Notes
 -------------------------------------------------
-LUTS     9                  5.2 %                
+LUTS     9                  5 %                  
 =================================================
-Total COMBINATIONAL LOGIC in the block U712_TOP.U712_CYCLE_TERM:	9 (2.41 % Utilization)
+Total COMBINATIONAL LOGIC in the block U712_TOP.U712_CYCLE_TERM:	9 (2.37 % Utilization)
 
 -----------------------------------------------------------------
 ########   Utilization report for  cell:   U712_REG_SM   ########
@@ -105,15 +105,15 @@ Name      Total elements     Utilization     Notes
 --------------------------------------------------
 FLOPS     20                 20.6 %               
 ==================================================
-Total SEQUENTIAL ELEMENTS in the block U712_TOP.U712_REG_SM:	20 (5.36 % Utilization)
+Total SEQUENTIAL ELEMENTS in the block U712_TOP.U712_REG_SM:	20 (5.26 % Utilization)
 
 
 COMBINATIONAL LOGIC
 Name     Total elements     Utilization     Notes
 -------------------------------------------------
-LUTS     35                 20.2 %               
+LUTS     34                 18.9 %               
 =================================================
-Total COMBINATIONAL LOGIC in the block U712_TOP.U712_REG_SM:	35 (9.38 % Utilization)
+Total COMBINATIONAL LOGIC in the block U712_TOP.U712_REG_SM:	34 (8.95 % Utilization)
 
 
 ##### END OF AREA REPORT #####]

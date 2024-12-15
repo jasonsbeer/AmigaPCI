@@ -34,7 +34,7 @@ TO BUILD WITH APIO: apio build --top-module U712_TOP --fpga iCE40-HX4K-TQ144
 
 module U712_BUFFERS (
 
-    input DBDIR, RnW, DMA_CYCLE, REGSPACEn, RAMSPACEn, REG_CYCLE, CPU_CYCLE,
+    input DBDIR, RnW, DMA_CYCLE, REG_CYCLE, CPU_CYCLE,
     output VBENn, DRDENn, DRDDIR
 
 );

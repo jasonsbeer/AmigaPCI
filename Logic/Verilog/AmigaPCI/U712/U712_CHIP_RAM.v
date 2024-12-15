@@ -271,10 +271,17 @@ always @(negedge CLK80) begin
                     end
                     8'h03 : begin
                         SDRAM_CMD <= PRECHARGE;
-                        CPU_TACK <= CPU_CYCLE;
                     end
                     8'h04 : begin
                         SDRAM_CMD <= NOP;
+                    end
+                    8'h05 : begin
+                        CPU_TACK <= CPU_CYCLE;
+                    end
+                    8'h06 : begin
+                        CPU_TACK <= 0;
+                    end
+                    8'h07 : begin
                         CPU_TACK <= 0;
                         CPU_CYCLE <= 0;
                         DMA_CYCLE <= 0;

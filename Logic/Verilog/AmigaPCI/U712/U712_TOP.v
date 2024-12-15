@@ -40,6 +40,7 @@ wire   CLK40  = ~CLK40_OUT;
 
 wire   CLK80  = ~CLK80_OUT;
 assign CLKRAM = ~CLK80_OUT;
+//assign CLKRAM = ~CLK40_OUT;
 
 
 SB_PLL40_2F_CORE #(
@@ -108,8 +109,6 @@ U712_BUFFERS U712_BUFFERS (
     .VBENn (VBENn),
     .DRDENn (DRDENn),
     .DRDDIR (DRDDIR),
-    .REGSPACEn (REGSPACEn),
-    .RAMSPACEn (RAMSPACEn),
     .REG_CYCLE (REG_CYCLEm),
     .CPU_CYCLE (CPU_CYCLEm)
 );
@@ -176,7 +175,7 @@ U712_CHIP_RAM U712_CHIP_RAM (
 /////////////////
 
 U712_BYTE_ENABLE U712_BYTE_ENABLE (
-    //INPUTS+
+    //INPUTS
     .CPU_CYCLE (CPU_CYCLEm),
     .DMA_CYCLE (DMA_CYCLEm),
     .CASLn (CASLn),
@@ -190,9 +189,9 @@ U712_BYTE_ENABLE U712_BYTE_ENABLE (
     .CUMBEn (CUMBEn),
     .CLMBEn (CLMBEn),
     .CLLBEn (CLLBEn)
-    //.UUBEn (CUUBEn),
-    //.UMBEn (CUMBEn),
-    //.LMBEn (CLMBEn),
-    //.LLBEn (CLLBEn)
+    //.UUBEn (UUBEn),
+    //.UMBEn (UMBEn),
+    //.LMBEn (LMBEn),
+    //.LLBEn (LLBEn)
 );
 endmodule
