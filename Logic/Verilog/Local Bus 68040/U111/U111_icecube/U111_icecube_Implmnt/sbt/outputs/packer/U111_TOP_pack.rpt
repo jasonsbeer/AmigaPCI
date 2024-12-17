@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:31:51
 
-* File Generated:     Dec 14 2024 10:36:35
+* File Generated:     Dec 14 2024 11:08:49
 
 * Purpose:            General info of design implementation
 
@@ -40,7 +40,7 @@ Logic Resource Utilization:
     Total Logic Cells: 90/3520
         Combinational Logic Cells: 66       out of   3520      1.875%
         Sequential Logic Cells:    24       out of   3520      0.681818%
-        Logic Tiles:               53       out of   440       12.0455%
+        Logic Tiles:               55       out of   440       12.5%
     Registers: 
         Logic Registers:           24       out of   3520      0.681818%
         IO Registers:              0        out of   880       0

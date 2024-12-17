@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:31:51
 
-* File Generated:     Dec 15 2024 12:53:16
+* File Generated:     Dec 16 2024 18:13:02
 
 * Purpose:            Detailed IO and package pin info
 
@@ -97,7 +97,7 @@ Pin Number, Pin Type Name, Signal Name, Direction, Global Buffer, IO Standard, P
 81, PIO, CMA[7], Output, , SB_LVCMOS, No Pull Up, Simple Output, rightBank
 82, PIO, CMA[8], Output, , SB_LVCMOS, No Pull Up, Simple Output, rightBank
 83, PIO, CMA[9], Output, , SB_LVCMOS, No Pull Up, Simple Output, rightBank
-84, PIO, CLKEN, Output, , SB_LVCMOS, No Pull Up, Simple Output, rightBank
+84, PIO, CLK_EN, Output, , SB_LVCMOS, No Pull Up, Simple Output, rightBank
 85, PIO, CUUBEn, Output, , SB_LVCMOS, No Pull Up, Simple Output, rightBank
 86, GND, not used, , , , , , UnknownBank
 87, PIO, RAS1n, Input, , SB_LVCMOS, No Pull Up, Simple Input, rightBank

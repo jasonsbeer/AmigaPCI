@@ -6,7 +6,7 @@ module U712_CHIP_RAM (
 
     output BANK1, BANK0, RAMENn,
     output reg DBDIR,
-    output reg CLKEN,
+    output reg CLK_EN,
     output reg DMA_CYCLE,
     output reg CPU_CYCLE,
     output reg DBENn,
@@ -165,7 +165,7 @@ always @(negedge CLK80) begin
         CMA <= 11'b00000000000;
         CPU_TACK <= 0;
         DBDIR <= 1;
-        CLKEN <= 1;
+        CLK_EN <= 1;
         CRCSn <= 1;
         RASn <= 1;
         CASn <= 1;
@@ -282,7 +282,6 @@ always @(negedge CLK80) begin
                         CPU_TACK <= 0;
                     end
                     8'h07 : begin
-                        CPU_TACK <= 0;
                         CPU_CYCLE <= 0;
                         DMA_CYCLE <= 0;
                         DBENn <= 1;

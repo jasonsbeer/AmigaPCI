@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:55:50
 
-* File Generated:     Dec 15 2024 12:52:57
+* File Generated:     Dec 16 2024 18:12:44
 
 * Purpose:            
 
@@ -37,7 +37,7 @@ W2715: Warning for set_io Constraint: Ignoring pin assignment for DRA[9], as it 
 W2715: Warning for set_io Constraint: Ignoring pin assignment for A[20], as it is not connected to any PAD
 
 Input Design Statistics
-    Number of LUTs      	:	180
+    Number of LUTs      	:	176
     Number of DFFs      	:	97
     Number of DFFs packed to IO	:	0
     Number of Carrys    	:	7
@@ -81,7 +81,7 @@ Info-1404: Inferred PLL generated clock at pll/PLLOUTGLOBALA
 Info-1404: Inferred PLL generated clock at pll/PLLOUTGLOBALB
 
 Design Statistics after Packing
-    Number of LUTs      	:	216
+    Number of LUTs      	:	212
     Number of DFFs      	:	97
     Number of DFFs packed to IO	:	0
     Number of Carrys    	:	7
@@ -91,11 +91,11 @@ Device Utilization Summary after Packing
         LUT and DFF      	:	90
         LUT, DFF and CARRY	:	7
     Combinational LogicCells
-        Only LUT         	:	119
+        Only LUT         	:	115
         CARRY Only       	:	0
         LUT with CARRY   	:	0
-    LogicCells                  :	216/3520
-    PLBs                        :	30/440
+    LogicCells                  :	212/3520
+    PLBs                        :	29/440
     BRAMs                       :	0/20
     IOs and GBIOs               :	80/107
     PLLs                        :	1/2
@@ -110,10 +110,10 @@ Phase 5
 I2088: Phase 5, elapsed time : 0.2 (sec)
 
 Phase 6
-I2088: Phase 6, elapsed time : 16.4 (sec)
+I2088: Phase 6, elapsed time : 15.6 (sec)
 
 Final Design Statistics
-    Number of LUTs      	:	216
+    Number of LUTs      	:	212
     Number of DFFs      	:	97
     Number of DFFs packed to IO	:	0
     Number of Carrys    	:	7
@@ -126,8 +126,8 @@ Final Design Statistics
     Number of PLLs      	:	1
 
 Device Utilization Summary
-    LogicCells                  :	216/3520
-    PLBs                        :	78/440
+    LogicCells                  :	212/3520
+    PLBs                        :	68/440
     BRAMs                       :	0/20
     IOs and GBIOs               :	80/107
     PLLs                        :	1/2
@@ -151,7 +151,7 @@ Clock: C3 | Frequency: N/A | Target: 3.58 MHz
 Clock: CLK40_IN | Frequency: N/A | Target: 40.00 MHz
 Clock: pll/PLLOUTCOREA | Frequency: N/A | Target: 80.00 MHz
 Clock: pll/PLLOUTCOREB | Frequency: N/A | Target: 40.00 MHz
-Clock: pll/PLLOUTGLOBALA | Frequency: 135.72 MHz | Target: 80.00 MHz
+Clock: pll/PLLOUTGLOBALA | Frequency: 140.57 MHz | Target: 80.00 MHz
 Clock: pll/PLLOUTGLOBALB | Frequency: N/A | Target: 40.00 MHz
 
 =====================================================================
@@ -160,5 +160,5 @@ Clock: pll/PLLOUTGLOBALB | Frequency: N/A | Target: 40.00 MHz
 
 I2054: Placement of design completed successfully
 
-I2076: Placer run-time: 17.5 sec.
+I2076: Placer run-time: 16.6 sec.
 

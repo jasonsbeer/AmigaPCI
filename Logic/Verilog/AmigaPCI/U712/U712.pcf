@@ -67,7 +67,7 @@ set_io CASn      62 #OUTPUT - SDRAM CAS
 set_io WEn       73 #OUTPUT - SDRAM WRITE ENABLE
 set_io CUMBEn    74
 set_io CLMBEn    75
-set_io CLKEN     84 #OUTPUT - SDRAM CLOCK ENABLE
+set_io CLK_EN     84 #OUTPUT - SDRAM CLOCK ENABLE
 set_io CUUBEn    85
 set_io DBENn     42 #OUTPUT - ENABLE FOR CHIPSET DATA BRIDGE
 set_io DBDIR     43

@@ -1,6 +1,6 @@
 module U712_REG_SM (
 
-    input CLK80, C1, C3, RESETn, TSn, REGSPACEn, RnW, DBRn, //AGNUS_REFRESH,
+    input CLK80, C1, C3, RESETn, TSn, REGSPACEn, RnW, DBRn,
     input A0,
     input SIZ0,
 
@@ -15,12 +15,9 @@ module U712_REG_SM (
 /////////////////
 
 //WE CREATE A MC68000 COMPATIBLE CYCLE FOR CPU DRIVEN AGNUS CYCLES.
-//AT STATE 4, IF _DBR AND AGNUS _CASx ARE NEGATED, WE CAN PROCEED. OTHERWISE,
+//AT STATE 4 (C1 && C3), IF _DBR IS NEGATED, WE CAN PROCEED. OTHERWISE,
 //WAIT STATES ARE INSERTED UNTIL SUCH TIME AS THIS CONDITION IS TRUE.
 //READ CYCLES OF ORIGINAL AMIGAS ARE LATCHED EARLY, IN STATE 5. WE DO THE SAME.
-
-//AGNUS ASSERTS _DBR DURING CHIPSET DMA CYCLES. THESE ALWAYS TAKE PRECEDENCE.
-//AGNUS GETS WHAT AGNUS WANTS. AGNUS ASSERTS _DBR IN STATE 1 AND NEGATES IN STATE 5.
 
 reg [2:0]STATE_COUNT;
 reg DS_EN;
@@ -29,12 +26,10 @@ reg UDS_OUT;
 reg [1:0] DBR_SYNC;
 reg [2:0] C1_SYNC;
 reg [2:0] C3_SYNC;
-//reg REG_CYCLE_START;
 
 assign ASn = REGENn;
 assign LDSn = ~(LDS_OUT && DS_EN);
 assign UDSn = ~(UDS_OUT && DS_EN);
-//assign REG_CYCLE = ~REGSPACEn;
 
 //MC68000 STATE MACHINE
 
@@ -48,7 +43,6 @@ always @(negedge CLK80) begin
         UDS_OUT <= 0;
         REGENn <= 1;
         REG_TACK <= 0;
-        //REG_CYCLE_START <= 0;
         DBR_SYNC <= 2'b11;
         C1_SYNC <= 3'b111;
         C3_SYNC <= 3'b111;
@@ -91,15 +85,15 @@ always @(negedge CLK80) begin
 
             3'b011 : begin
                 //ADD WAITS UNTIL AND _DBR IS NEGATED AND WE ARE AT STATE 4.
-                if (DBR_SYNC == 2'b11 && C1_SYNC == 3'b111 && C3_SYNC == 3'b111) begin // && AGNUS_REFRESH_SYNC == 2'b00) begin //  && !CAS_AGNUS) begin
+                if (DBR_SYNC == 2'b11 && C1_SYNC == 3'b111 && C3_SYNC == 3'b111) begin
                     STATE_COUNT <= 3'b100;
                     REG_CYCLE <= 1;
                 end
             end
 
             3'b100: begin //STATE 5
-                if (C1_SYNC == 3'b110 && C3_SYNC == 3'b111) begin
-                    REG_TACK <= RnW; //LATCH THE DATA NOW FOR CPU READ CYCLES.
+                if (C1_SYNC == 3'b111 && C3_SYNC == 3'b111) begin
+                    REG_TACK <= 1;
                     STATE_COUNT <= 3'b101;
                 end
             end
@@ -107,18 +101,14 @@ always @(negedge CLK80) begin
             3'b101 : //STATE 6
                 begin
                     REG_CYCLE <= 0;
+                    REG_TACK <= 0;
                     if (C1_SYNC == 3'b000 && C3_SYNC == 3'b000) begin
                         STATE_COUNT <= 3'b110;
-                        REG_TACK <= !RnW; //END THE CPU CYCLE NOW FOR WRITES.
-                    end else begin
-                        REG_TACK <= 0;
                     end
                 end
 
             3'b110 : //STATE 7
                 begin
-                    //REG_CYCLE <= 0;
-                    REG_TACK <= 0;
                     if (C1_SYNC == 3'b011 && C3_SYNC == 3'b000) begin
                         STATE_COUNT <= 3'b000;
                         DS_EN <= 0;
@@ -128,22 +118,6 @@ always @(negedge CLK80) begin
         endcase
     end
 end
-
-//wire REG_CYCLE_RST = !TACKn || !RESETn;
-/*reg REG_CYCLE_RST;
-always @(posedge CLK80) begin
-    REG_CYCLE_RST <= !TACKn || !RESETn;
-end
-
-always @(posedge CLK80, posedge REG_CYCLE_RST) begin
-    if (REG_CYCLE_RST) begin
-        REG_CYCLE <= 0;
-    end else begin
-        if (REG_CYCLE_START) begin
-            REG_CYCLE <= 1;
-        end
-    end
-end*/
 
 endmodule
 

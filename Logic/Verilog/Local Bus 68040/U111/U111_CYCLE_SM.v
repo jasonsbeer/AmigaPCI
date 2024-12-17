@@ -40,7 +40,7 @@ end
 assign TAn = TA_EN ? TACKn : 1'b1;
 //assign TBIn = PORTSIZE ? TACKn : 1'b1;
 assign TBI_CPUn = 0; //DISABLE ALL TRANSFER BURSTS.
-assign TCI_CPUn = 0; //DISABLE ALL TRANSFER CACHING.
+assign TCI_CPUn = 1; //ENABLE ALL TRANSFER CACHING.
 
 ////////////////////////
 // DATA PASS THROUGH //
@@ -72,8 +72,6 @@ wire FLIP = (!LW_TRANS || LW_CYCLE) && A_AMIGA[1];
 //READS
 assign D_UU_040 = (RnW && LW_CYCLE) ? UU_LATCHED : RnW ? D_UU_AMIGA : 8'bzzzzzzzz;
 assign D_UM_040 = (RnW && LW_CYCLE) ? UM_LATCHED : RnW ? D_UM_AMIGA : 8'bzzzzzzzz;
-//assign D_UU_040 = RnW ? D_UU_AMIGA : 8'bzzzzzzzz;
-//assign D_UM_040 = RnW ? D_UM_AMIGA : 8'bzzzzzzzz;
 assign D_LM_040 = (RnW && FLIP) ? D_UU_AMIGA : RnW ? D_LM_AMIGA : 8'bzzzzzzzz;
 assign D_LL_040 = (RnW && FLIP) ? D_UM_AMIGA : RnW ? D_LL_AMIGA : 8'bzzzzzzzz;
 

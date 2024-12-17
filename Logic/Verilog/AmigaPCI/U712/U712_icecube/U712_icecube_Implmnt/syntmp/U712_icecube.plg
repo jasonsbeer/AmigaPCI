@@ -18,10 +18,10 @@
 @P:  U712_TOP|CLK80_OUT_derived_clock - Requested Frequency : 80.0 MHz
 @P:  U712_TOP|CLK80_OUT_derived_clock - Estimated Period : 55.984
 @P:  U712_TOP|CLK80_OUT_derived_clock - Requested Period : 12.500
-@P:  U712_TOP|CLK80_OUT_derived_clock - Slack : -0.554
+@P:  U712_TOP|CLK80_OUT_derived_clock - Slack : -0.476
 @P: U712_TOP Part : ice40hx4ktq144
 @P: U712_TOP I/O primitives : 80
 @P: U712_TOP I/O Register bits : 0
 @P: U712_TOP Register bits (Non I/O) : 97 (2%)
-@P: U712_TOP Total Luts : 180 (5%)
+@P: U712_TOP Total Luts : 176 (5%)
 @P:  CPU Time : 0h:00m:00s

@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:31:51
 
-* File Generated:     Dec 15 2024 12:53:16
+* File Generated:     Dec 16 2024 18:13:02
 
 * Purpose:            General info of design implementation
 
@@ -17,7 +17,7 @@
 Synthesis/Placement Summary:
 ----------------------------
     Status:  Successful
-    Runtime: 1 seconds
+    Runtime: 0 seconds
 
 Device Info:
 ------------
@@ -28,7 +28,7 @@ Device Info:
 Design statistics:
 ------------------
     FFs:                  97
-    LUTs:                 216
+    LUTs:                 212
     RAMs:                 0
     IOBs:                 80
     GBs:                  2
@@ -37,10 +37,10 @@ Design statistics:
 
 Logic Resource Utilization:
 ---------------------------
-    Total Logic Cells: 216/3520
-        Combinational Logic Cells: 119      out of   3520      3.38068%
+    Total Logic Cells: 212/3520
+        Combinational Logic Cells: 115      out of   3520      3.26705%
         Sequential Logic Cells:    97       out of   3520      2.75568%
-        Logic Tiles:               78       out of   440       17.7273%
+        Logic Tiles:               68       out of   440       15.4545%
     Registers: 
         Logic Registers:           97       out of   3520      2.75568%
         IO Registers:              0        out of   880       0
@@ -140,7 +140,7 @@ Detailed I/O Info:
     81          Output     SB_LVCMOS    No       1        Simple Output                 CMA[7]     
     82          Output     SB_LVCMOS    No       1        Simple Output                 CMA[8]     
     83          Output     SB_LVCMOS    No       1        Simple Output                 CMA[9]     
-    84          Output     SB_LVCMOS    No       1        Simple Output                 CLKEN      
+    84          Output     SB_LVCMOS    No       1        Simple Output                 CLK_EN     
     85          Output     SB_LVCMOS    No       1        Simple Output                 CUUBEn     
     107         Output     SB_LVCMOS    No       1        Simple Output                 DRDDIR     
     110         Output     SB_LVCMOS    No       0        Simple Output                 DRDENn     
@@ -154,5 +154,5 @@ Detailed Global Buffer Info:
 ----------------------------
     Buffer Number  IO Bank  Driven By  Fanout  Signal Name   
     -------------  -------  ---------  ------  -----------   
-    4              0                   87      RESETn_c_i_g  
+    4              0                   88      RESETn_c_i_g  
     3              3                   8       C1_c_g        

@@ -12,7 +12,7 @@ module U712_TOP (
     output CLK40C, CLKRAM,
     output LDSn, UDSn, ASn, REGENn, DBDIR,
     output VBENn, DRDENn, DRDDIR,
-    output DBENn, CRCSn, CLKEN, BANK1, BANK0, RASn, CASn, WEn, RAMENn,
+    output DBENn, CRCSn, CLK_EN, BANK1, BANK0, RASn, CASn, WEn, RAMENn,
     output [10:0]CMA,
     output CUUBEn, CUMBEn, CLMBEn, CLLBEn,
 
@@ -138,6 +138,7 @@ U712_CYCLE_TERM U712_CYCLE_TERM (
 U712_CHIP_RAM U712_CHIP_RAM (
     //INPUTS
     .CLK80 (CLK80),
+    //.CLK40 (CLK40),
     //.CLK7 (CLK7),
     .C1 (C1),
     .RESETn (RESETn),
@@ -160,7 +161,7 @@ U712_CHIP_RAM U712_CHIP_RAM (
     .RASn (RASn),
     .CASn (CASn),
     .WEn (WEn),
-    .CLKEN (CLKEN),
+    .CLK_EN (CLK_EN),
     .DMA_CYCLE (DMA_CYCLEm),
     .CPU_CYCLE (CPU_CYCLEm),
     .DBENn (DBENn),

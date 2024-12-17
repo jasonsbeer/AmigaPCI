@@ -4,7 +4,7 @@
   (keywordMap (keywordLevel 0))
   (status
     (written
-      (timeStamp 2024 12 14 10 36 19)
+      (timeStamp 2024 12 14 11 8 31)
       (author "Synopsys, Inc.")
       (program "Synplify Pro" (version "L-2016.09L+ice40, mapper maplat, Build 1612R"))
      )
@@ -1800,6 +1800,7 @@
            (portRef Y (instanceRef VCC))
            (portRef RESETB (instanceRef pll))
            (portRef D_OUT_0 (instanceRef DMAn_obuf))
+           (portRef D_OUT_0 (instanceRef TCI_CPUn_obuf))
           ))
           (net CLK80 (joined
            (portRef CLK80 (instanceRef U111_CYCLE_SM))
@@ -1828,7 +1829,6 @@
            (portRef (member DYNAMICDELAY 7) (instanceRef pll))
            (portRef D_OUT_0 (instanceRef BUFENn_obuf))
            (portRef D_OUT_0 (instanceRef CPUBGn_obuf))
-           (portRef D_OUT_0 (instanceRef TCI_CPUn_obuf))
            (portRef D_OUT_0 (instanceRef TBI_CPUn_obuf))
           ))
           (net (rename un1_D_UU_AMIGA_0 "un1_D_UU_AMIGA[0]") (joined

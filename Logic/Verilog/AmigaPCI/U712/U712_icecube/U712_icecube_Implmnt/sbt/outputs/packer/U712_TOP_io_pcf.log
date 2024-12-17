@@ -5,6 +5,7 @@ OUTPUT CLMBEn 	 location (25, 2, 0) 	 75
 INPUT  AWEn 	 location (7, 21, 0) 	 135 	 
 INPUT  RESETn 	 location (25, 11, 0) 	 94 	 
 OUTPUT CMA[1] 	 location (12, 0, 0) 	 48 	 
+OUTPUT CLK_EN 	 location (25, 6, 1) 	 84 	 
 OUTPUT CASn 	 location (21, 0, 0) 	 62 	 
 OUTPUT BANK0 	 location (13, 0, 0) 	 52 	 
 INPUT  SIZ[0] 	 location (0, 20, 0) 	 2 	 
@@ -74,7 +75,6 @@ INPUT  A[3] 	 location (0, 17, 1) 	 9
 INPUT  A[18] 	 location (0, 1, 1) 	 33 	 
 INPUT  A[11] 	 location (0, 7, 0) 	 24 	 
 OUTPUT TACKn 	 location (0, 18, 1) 	 7 	 
-OUTPUT CLKEN 	 location (25, 6, 1) 	 84 	 
 INPUT  C1 	 location (3, 21, 1) 	 142 	 
 OUTPUT CMA[7] 	 location (25, 5, 0) 	 81 	 
 INPUT  A[8] 	 location (0, 11, 1) 	 19 	 

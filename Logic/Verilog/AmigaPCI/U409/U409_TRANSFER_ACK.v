@@ -79,7 +79,7 @@ end
 
 //WE DELAY ASSERTION OF _TACK BY 100ns TO SUPPORT SETUP TIME FOR THE ROM.
 
-localparam integer ROM_TACK_DELAY = 5;
+localparam integer ROM_TACK_DELAY = 3; //5 is the appropriate delay for 100ns.
 reg [2:0] ROM_TACK_COUNTER;
 reg  ROM_TACK_EN;
 always @(posedge CLK80) begin
@@ -103,26 +103,6 @@ always @(posedge CLK80) begin
         endcase
     end
 end
-
-//////////////////////
-// SHORT CYCLE ACK //
-////////////////////
-
-//SHORT CYCLES REQUIRING ONLY TWO TOTAL CLOCKS ARE HANDLED HERE.
-
-/*reg [1:0] SC_TA;
-
-always @(posedge CLK40, negedge nRESET) begin
-    if (!nRESET) begin
-        SC_TA <= 2'b01;
-    end else begin
-        if ((AUTOVECTOR || !KNOWN_AD) && TS) begin
-            SC_TA <= SC_TA << 1;
-        end else begin
-            SC_TA <= 2'b01;
-        end
-    end
-end*/
 
 ///////////////////////
 // CIA TRANSFER ACK //
@@ -172,9 +152,9 @@ always @(posedge CLK80) begin
     end
 end
 
-///////////////////////////
-// NONRESPONSIVE CYCLES //
-/////////////////////////
+//////////////////////////
+// UNRESPONSIVE CYCLES //
+////////////////////////
 
 //END THE CYCLE WHEN THE CPU LOOKS FOR AN ADDRESS WE DON'T EXPLICITLY SUPPORT.
 //CIA CYCLES ARE THE LONGEST CYCLES WE SUPPORT, WHICH TAKE ~1us. WE WAIT A LITTLE
