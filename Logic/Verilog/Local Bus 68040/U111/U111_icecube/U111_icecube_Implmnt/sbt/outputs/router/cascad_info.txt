@@ -1,5 +1,8 @@
 [VIC]
+A_AMIGA_c_1_cascade_=ltout:in0
+U111_CYCLE_SM.A_OUT_0_cascade_=ltout:in1
 U111_CYCLE_SM.CYCLE_STATE_0_sqmuxa_cascade_=ltout:in2
 U111_CYCLE_SM.CYCLE_STATE_RNI14FL1Z0Z_0_cascade_=ltout:in2
-U111_CYCLE_SM.LW_CYCLE_r_1_cascade_=ltout:in3
-U111_CYCLE_SM.un1_CYCLE_STATE_1_0_cascade_=ltout:in1
+U111_CYCLE_SM.N_69_0_cascade_=ltout:in1
+U111_CYCLE_SM.N_91_cascade_=ltout:in3
+U111_CYCLE_SM.un3_LW_CYCLE_START_cascade_=ltout:in3

@@ -23,6 +23,8 @@ reg [2:0]STATE_COUNT;
 reg DS_EN;
 reg LDS_OUT;
 reg UDS_OUT;
+reg REG_CYCLE_START;
+reg REG_CYCLE_GO;
 reg [1:0] DBR_SYNC;
 reg [2:0] C1_SYNC;
 reg [2:0] C3_SYNC;
@@ -39,6 +41,8 @@ always @(negedge CLK80) begin
         DS_EN <= 0;
         STATE_COUNT <= 3'b000;
         REG_CYCLE <= 0;
+        REG_CYCLE_START <= 0;
+        REG_CYCLE_GO <= 0;
         LDS_OUT <= 0;
         UDS_OUT <= 0;
         REGENn <= 1;
@@ -58,11 +62,15 @@ always @(negedge CLK80) begin
         C3_SYNC <= C3_SYNC << 1;
         C3_SYNC[0] <= C3;
 
+        //The register cycle can start before the previous one has completed.
+        REG_CYCLE_START <= ((!TSn && !REGSPACEn) || (REG_CYCLE_START && !REG_CYCLE_GO));
+
         case (STATE_COUNT)
 
             3'b000 : begin
-                if (!TSn && !REGSPACEn) begin //CYCLE HAS STARTED IN THE REGISTER SPACE.
+                if (REG_CYCLE_START) begin //CYCLE HAS STARTED IN THE REGISTER SPACE.
                     STATE_COUNT <= 3'b001;
+                    REG_CYCLE_GO <= 1;
                 end
             end
 
@@ -74,6 +82,7 @@ always @(negedge CLK80) begin
                         LDS_OUT <= RnW || (SIZ0 &&  A0) || !SIZ0; //SET LOWER DATA STROBE                        
                         DS_EN <= RnW; //ENABLE DATA STROBES NOW FOR READ CYCLES.
                         STATE_COUNT <= 3'b010;
+                        REG_CYCLE_GO <= 0;
                     end
                 end
 

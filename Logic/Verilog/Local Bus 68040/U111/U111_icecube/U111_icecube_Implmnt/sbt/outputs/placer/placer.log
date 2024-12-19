@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:55:50
 
-* File Generated:     Dec 14 2024 11:08:38
+* File Generated:     Dec 19 2024 10:10:14
 
 * Purpose:            
 
@@ -36,7 +36,7 @@ I2053: Starting placement of the design
 W2715: Warning for set_io Constraint: Ignoring pin assignment for BGn, as it is not connected to any PAD
 
 Input Design Statistics
-    Number of LUTs      	:	70
+    Number of LUTs      	:	72
     Number of DFFs      	:	24
     Number of DFFs packed to IO	:	0
     Number of Carrys    	:	0
@@ -53,7 +53,7 @@ Phase 1
 I2077: Start design legalization
 
 Design Legalization Statistics
-    Number of feedthru LUTs inserted to legalize input of DFFs     	:	17
+    Number of feedthru LUTs inserted to legalize input of DFFs     	:	16
     Number of feedthru LUTs inserted for LUTs driving multiple DFFs	:	0
     Number of LUTs replicated for LUTs driving multiple DFFs       	:	0
     Number of feedthru LUTs inserted to legalize output of CARRYs  	:	0
@@ -62,7 +62,7 @@ Design Legalization Statistics
     Number of inserted LUTs to Legalize IOs with PIN_TYPE= 01xxxx  	:	0
     Number of inserted LUTs to Legalize IOs with PIN_TYPE= 10xxxx  	:	0
     Number of inserted LUTs to Legalize IOs with PIN_TYPE= 11xxxx  	:	0
-    Total LUTs inserted                                            	:	19
+    Total LUTs inserted                                            	:	18
     Total CARRYs inserted                                          	:	0
 
 
@@ -78,11 +78,11 @@ Info-1404: Inferred PLL generated clock at pll/PLLOUTCOREA
 Info-1404: Inferred PLL generated clock at pll/PLLOUTCOREB
 Info-1404: Inferred PLL generated clock at pll/PLLOUTGLOBALA
 Info-1404: Inferred PLL generated clock at pll/PLLOUTGLOBALB
-Warning-1034: Found non-unate timing arc, from pin "in3" to pin "lcout" of instance "GB_BUFFER_CLK80_THRU_LUT4_0_LC_87", in the clock network. Converting the timing arc to positive-unate
-Warning-1034: Found non-unate timing arc, from pin "in3" to pin "lcout" of instance "GB_BUFFER_CLK40_THRU_LUT4_0_LC_88", in the clock network. Converting the timing arc to positive-unate
+Warning-1034: Found non-unate timing arc, from pin "in3" to pin "lcout" of instance "GB_BUFFER_CLK80_THRU_LUT4_0_LC_88", in the clock network. Converting the timing arc to positive-unate
+Warning-1034: Found non-unate timing arc, from pin "in3" to pin "lcout" of instance "GB_BUFFER_CLK40_THRU_LUT4_0_LC_89", in the clock network. Converting the timing arc to positive-unate
 
 Design Statistics after Packing
-    Number of LUTs      	:	90
+    Number of LUTs      	:	91
     Number of DFFs      	:	24
     Number of DFFs packed to IO	:	0
     Number of Carrys    	:	0
@@ -92,11 +92,11 @@ Device Utilization Summary after Packing
         LUT and DFF      	:	24
         LUT, DFF and CARRY	:	0
     Combinational LogicCells
-        Only LUT         	:	66
+        Only LUT         	:	67
         CARRY Only       	:	0
         LUT with CARRY   	:	0
-    LogicCells                  :	90/3520
-    PLBs                        :	13/440
+    LogicCells                  :	91/3520
+    PLBs                        :	12/440
     BRAMs                       :	0/20
     IOs and GBIOs               :	89/107
     PLLs                        :	1/2
@@ -111,10 +111,10 @@ Phase 5
 I2088: Phase 5, elapsed time : 0.0 (sec)
 
 Phase 6
-I2088: Phase 6, elapsed time : 9.5 (sec)
+I2088: Phase 6, elapsed time : 7.9 (sec)
 
 Final Design Statistics
-    Number of LUTs      	:	90
+    Number of LUTs      	:	91
     Number of DFFs      	:	24
     Number of DFFs packed to IO	:	0
     Number of Carrys    	:	0
@@ -127,8 +127,8 @@ Final Design Statistics
     Number of PLLs      	:	1
 
 Device Utilization Summary
-    LogicCells                  :	90/3520
-    PLBs                        :	55/440
+    LogicCells                  :	91/3520
+    PLBs                        :	44/440
     BRAMs                       :	0/20
     IOs and GBIOs               :	89/107
     PLLs                        :	1/2
@@ -159,5 +159,5 @@ Clock: pll/PLLOUTGLOBALB | Frequency: N/A | Target: 40.00 MHz
 
 I2054: Placement of design completed successfully
 
-I2076: Placer run-time: 10.4 sec.
+I2076: Placer run-time: 8.8 sec.
 

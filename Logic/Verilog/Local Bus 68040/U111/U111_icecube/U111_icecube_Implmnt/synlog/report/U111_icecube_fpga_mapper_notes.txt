@@ -1,6 +1,7 @@
 @N: MF248 |Running in 64-bit mode.
 @N: MF666 |Clock conversion enabled. (Command "set_option -fix_gated_and_generated_clocks 1" in the project file.)
 @N: MT204 |Auto Constrain mode is disabled because clocks are defined in the SDC file
+@N: MO225 :"d:\amigapci\u111\u111_cycle_sm.v":104:0:104:5|There are no possible illegal states for state machine CYCLE_STATE[3:0] (in view: work.U111_CYCLE_SM(verilog)); safe FSM implementation is not required.
 @N: BW103 |The default time unit for the Synopsys Constraint File (SDC or FDC) is 1ns.
 @N: BW107 |Synopsys Constraint File capacitance units using default value of 1pF 
 @N: FX1056 |Writing EDF file: D:\AmigaPCI\U111\U111_icecube\U111_icecube_Implmnt\U111_icecube.edf

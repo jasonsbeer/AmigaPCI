@@ -6,9 +6,9 @@ Cell usage:
 GND             1 use
 SB_DFFN         7 uses
 SB_DFFNESR      16 uses
-SB_DFFNESS      1 use
+SB_DFFNSS       1 use
 VCC             1 use
-SB_LUT4         70 uses
+SB_LUT4         72 uses
 
 I/O ports: 91
 I/O primitives: 90
@@ -19,8 +19,8 @@ I/O Register bits:                  0
 Register bits not including I/Os:   24 (0%)
 
 @S |Mapping Summary:
-Total  LUTs: 70 (1%)
+Total  LUTs: 72 (2%)
 
 Distribution of All Consumed LUTs = LUT4 
-Distribution of All Consumed Luts 70 = 70 
+Distribution of All Consumed Luts 72 = 72 
 

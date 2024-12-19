@@ -64,10 +64,12 @@ assign A_AMIGA = LW_CYCLE ? {A_OUT, 1'b0} : A_040;
 
 //IS THIS A LONG WORD TRANSFER CYCLE?
 wire LW_TRANS = (SIZ == 2'b00 || SIZ == 2'b11 || !PORTSIZE);
+//wire LW_TRANS = (SIZ == 2'b00 || SIZ == 2'b11);
 
 //WHEN TRANSFERRING A BYTE OR WORD
 wire FLIP = (!LW_TRANS || LW_CYCLE) && A_AMIGA[1];
-//wire FLIP = (!LW_TRANS || LW_CYCLE) && A_040[1];
+//wire FLIP = ((!LW_TRANS && PORTSIZE) || LW_CYCLE) && A_AMIGA[1];
+
 
 //READS
 assign D_UU_040 = (RnW && LW_CYCLE) ? UU_LATCHED : RnW ? D_UU_AMIGA : 8'bzzzzzzzz;
@@ -112,17 +114,17 @@ always @(negedge CLK80) begin
     end else begin
 
         //Is this a long word cycle to a word port?
-        LW_CYCLE_START <= (!TSn && PORTSIZE && LW_TRANS); // || (LW_CYCLE_START && !LW_CYCLE);
+        LW_CYCLE_START <= (TS_EN && PORTSIZE && LW_TRANS) || (LW_CYCLE_START && !LW_CYCLE);
 
         case (CYCLE_STATE)
 
             4'h00 : begin
-                TS_EN <= !TS_CPUn && CLK40;
-                if (LW_CYCLE_START || LW_CYCLE) begin
+                TS_EN <= !TS_CPUn && CLK40; //Starts every cycle.
+                if (LW_CYCLE_START) begin
                     LW_CYCLE <= 1;
                     TA_EN <= 0;
                     A_OUT <= 0;
-                    //CYCLE_STATE <= 4'h01;
+                    CYCLE_STATE <= 4'h01;
                 end
             end
             4'h01 : begin
@@ -136,9 +138,11 @@ always @(negedge CLK80) begin
             4'h02 : begin
                 //Start the second word transfer cycle.
                 A_OUT <= 1;
-                TS_EN <= 1;
                 TA_EN <= 1;
-                CYCLE_STATE <= 4'h03;
+                if (CLK40) begin
+                    TS_EN <= 1;                    
+                    CYCLE_STATE <= 4'h03;
+                end
             end
             4'h03 : begin
                 TS_EN <= 0;

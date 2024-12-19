@@ -32,17 +32,20 @@ Selecting top level module U111_TOP
 @W: CG781 :"D:\AmigaPCI\U111\U111_TOP.v":53:2:53:4|Input SCLK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
 @W: CG781 :"D:\AmigaPCI\U111\U111_TOP.v":53:2:53:4|Input LATCHINPUTVALUE on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
 @W: CG1273 :"D:\AmigaPCI\U111\U111_TOP.v":56:21:56:28|An input port (port CLK40_IN) is the target of an assignment - please check if this is intentional
-@N: CL201 :"D:\AmigaPCI\U111\U111_CYCLE_SM.v":102:0:102:5|Trying to extract state machine for register CYCLE_STATE.
-@N: CL189 :"D:\AmigaPCI\U111\U111_CYCLE_SM.v":102:0:102:5|Register bit CYCLE_STATE[2] is always 0.
-@N: CL189 :"D:\AmigaPCI\U111\U111_CYCLE_SM.v":102:0:102:5|Register bit CYCLE_STATE[3] is always 0.
-@W: CL279 :"D:\AmigaPCI\U111\U111_CYCLE_SM.v":102:0:102:5|Pruning register bits 3 to 2 of CYCLE_STATE[3:0]. If this is not the intended behavior, drive the inputs with valid values, or inputs from the top level.
+@N: CL201 :"D:\AmigaPCI\U111\U111_CYCLE_SM.v":104:0:104:5|Trying to extract state machine for register CYCLE_STATE.
+Extracted state machine for register CYCLE_STATE
+State machine has 4 reachable states with original encodings of:
+   0000
+   0001
+   0010
+   0011
 
 At c_ver Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 71MB peak: 72MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Sat Dec 14 11:08:28 2024
+# Thu Dec 19 10:10:09 2024
 
 ###########################################################]
 Synopsys Netlist Linker, version comp2016q3p1, Build 141R, built Dec  5 2016
@@ -55,7 +58,7 @@ At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Sat Dec 14 11:08:28 2024
+# Thu Dec 19 10:10:09 2024
 
 ###########################################################]
 @END
@@ -65,6 +68,6 @@ At c_hdl Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Sat Dec 14 11:08:28 2024
+# Thu Dec 19 10:10:09 2024
 
 ###########################################################]

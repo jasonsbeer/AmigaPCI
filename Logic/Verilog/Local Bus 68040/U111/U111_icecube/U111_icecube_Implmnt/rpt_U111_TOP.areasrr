@@ -11,15 +11,15 @@ Name      Total elements     Utilization     Notes
 --------------------------------------------------
 FLOPS     24                 100 %                
 ==================================================
-Total SEQUENTIAL ELEMENTS in the block U111_TOP:	24 (12.63 % Utilization)
+Total SEQUENTIAL ELEMENTS in the block U111_TOP:	24 (12.50 % Utilization)
 
 
 COMBINATIONAL LOGIC
 Name     Total elements     Utilization     Notes
 -------------------------------------------------
-LUTS     70                 100 %                
+LUTS     72                 100 %                
 =================================================
-Total COMBINATIONAL LOGIC in the block U111_TOP:	70 (36.84 % Utilization)
+Total COMBINATIONAL LOGIC in the block U111_TOP:	72 (37.50 % Utilization)
 
 
 IO PADS
@@ -27,7 +27,7 @@ Name     Total elements     Utilization     Notes
 -------------------------------------------------
 PADS     89                 100 %                
 =================================================
-Total IO PADS in the block U111_TOP:	89 (46.84 % Utilization)
+Total IO PADS in the block U111_TOP:	89 (46.35 % Utilization)
 
 -------------------------------------------------------------------
 ########   Utilization report for  cell:   U111_CYCLE_SM   ########
@@ -39,15 +39,15 @@ Name      Total elements     Utilization     Notes
 --------------------------------------------------
 FLOPS     24                 100 %                
 ==================================================
-Total SEQUENTIAL ELEMENTS in the block U111_TOP.U111_CYCLE_SM:	24 (12.63 % Utilization)
+Total SEQUENTIAL ELEMENTS in the block U111_TOP.U111_CYCLE_SM:	24 (12.50 % Utilization)
 
 
 COMBINATIONAL LOGIC
 Name     Total elements     Utilization     Notes
 -------------------------------------------------
-LUTS     68                 97.1 %               
+LUTS     71                 98.6 %               
 =================================================
-Total COMBINATIONAL LOGIC in the block U111_TOP.U111_CYCLE_SM:	68 (35.79 % Utilization)
+Total COMBINATIONAL LOGIC in the block U111_TOP.U111_CYCLE_SM:	71 (36.98 % Utilization)
 
 
 ##### END OF AREA REPORT #####]

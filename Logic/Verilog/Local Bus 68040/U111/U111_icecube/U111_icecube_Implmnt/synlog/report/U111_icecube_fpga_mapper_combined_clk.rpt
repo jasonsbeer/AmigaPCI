@@ -9,12 +9,12 @@
 0 gated/generated clock tree(s) driving 0 clock pin(s) of sequential element(s)
 0 instances converted, 0 sequential instances remain driven by gated/generated clocks
 
-============================= Non-Gated/Non-Generated Clocks ==============================
-Clock Tree ID     Driving Element     Drive Element Type     Fanout     Sample Instance    
--------------------------------------------------------------------------------------------
-@K:CKID0001       pll                 SB_PLL40_2F_PAD        23         U111_CYCLE_SM.A_OUT
-@K:CKID0002       pll                 SB_PLL40_2F_PAD        1          U111_CYCLE_SM.TSn  
-===========================================================================================
+================================== Non-Gated/Non-Generated Clocks ==================================
+Clock Tree ID     Driving Element     Drive Element Type     Fanout     Sample Instance             
+----------------------------------------------------------------------------------------------------
+@K:CKID0001       pll                 SB_PLL40_2F_PAD        23         U111_CYCLE_SM.LW_CYCLE_START
+@K:CKID0002       pll                 SB_PLL40_2F_PAD        1          U111_CYCLE_SM.TSn           
+====================================================================================================
 
 
 ##### END OF CLOCK OPTIMIZATION REPORT ######]
