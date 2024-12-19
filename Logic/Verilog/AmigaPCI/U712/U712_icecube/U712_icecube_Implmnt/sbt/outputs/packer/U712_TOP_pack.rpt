@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:31:51
 
-* File Generated:     Dec 16 2024 18:13:02
+* File Generated:     Dec 18 2024 19:21:41
 
 * Purpose:            General info of design implementation
 
@@ -27,8 +27,8 @@ Device Info:
 
 Design statistics:
 ------------------
-    FFs:                  97
-    LUTs:                 212
+    FFs:                  98
+    LUTs:                 219
     RAMs:                 0
     IOBs:                 80
     GBs:                  2
@@ -37,12 +37,12 @@ Design statistics:
 
 Logic Resource Utilization:
 ---------------------------
-    Total Logic Cells: 212/3520
-        Combinational Logic Cells: 115      out of   3520      3.26705%
-        Sequential Logic Cells:    97       out of   3520      2.75568%
-        Logic Tiles:               68       out of   440       15.4545%
+    Total Logic Cells: 219/3520
+        Combinational Logic Cells: 121      out of   3520      3.4375%
+        Sequential Logic Cells:    98       out of   3520      2.78409%
+        Logic Tiles:               63       out of   440       14.3182%
     Registers: 
-        Logic Registers:           97       out of   3520      2.75568%
+        Logic Registers:           98       out of   3520      2.78409%
         IO Registers:              0        out of   880       0
     Block RAMs:                    0        out of   20        0%
     Warm Boots:                    0        out of   1         0%
@@ -154,5 +154,5 @@ Detailed Global Buffer Info:
 ----------------------------
     Buffer Number  IO Bank  Driven By  Fanout  Signal Name   
     -------------  -------  ---------  ------  -----------   
-    4              0                   88      RESETn_c_i_g  
+    4              0                   74      RESETn_c_i_g  
     3              3                   8       C1_c_g        

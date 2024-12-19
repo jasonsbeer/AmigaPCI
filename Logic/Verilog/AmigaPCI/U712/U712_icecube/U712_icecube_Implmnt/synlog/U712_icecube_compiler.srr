@@ -18,7 +18,6 @@ Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys softwa
 @I::"D:\AmigaPCI\U712\U712_CHIP_RAM.v" (library work)
 @I::"D:\AmigaPCI\U712\U712_CYCLE_TERM.v" (library work)
 Verilog syntax check successful!
-File D:\AmigaPCI\U712\U712_REG_SM.v changed - recompiling
 File D:\AmigaPCI\U712\U712_CHIP_RAM.v changed - recompiling
 Selecting top level module U712_TOP
 @N: CG364 :"C:\lscc\iCEcube2.2020.12\synpbase\lib\generic\sb_ice40.v":870:7:870:22|Synthesizing module SB_PLL40_2F_CORE in library work.
@@ -43,7 +42,6 @@ Selecting top level module U712_TOP
 @W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":58:2:58:4|Input SDI on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
 @W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":58:2:58:4|Input SCLK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
 @W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":58:2:58:4|Input LATCHINPUTVALUE on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@N: CL189 :"D:\AmigaPCI\U712\U712_CHIP_RAM.v":150:0:150:5|Register bit CLK_EN is always 1.
 @W: CL247 :"D:\AmigaPCI\U712\U712_CHIP_RAM.v":4:17:4:17|Input port bit 20 of A[20:1] is unused
 
 @W: CL247 :"D:\AmigaPCI\U712\U712_CHIP_RAM.v":4:17:4:17|Input port bit 1 of A[20:1] is unused
@@ -74,7 +72,7 @@ At c_ver Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Mon Dec 16 18:12:40 2024
+# Wed Dec 18 19:21:19 2024
 
 ###########################################################]
 Synopsys Netlist Linker, version comp2016q3p1, Build 141R, built Dec  5 2016
@@ -87,7 +85,7 @@ At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Mon Dec 16 18:12:40 2024
+# Wed Dec 18 19:21:20 2024
 
 ###########################################################]
 @END
@@ -97,6 +95,6 @@ At c_hdl Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Mon Dec 16 18:12:40 2024
+# Wed Dec 18 19:21:20 2024
 
 ###########################################################]

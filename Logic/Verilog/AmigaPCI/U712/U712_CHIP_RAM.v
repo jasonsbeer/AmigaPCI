@@ -187,7 +187,7 @@ always @(negedge CLK80) begin
 
         case (SDRAM_CMD)
             PRECHARGE    : CMA <= 11'b10000000000;
-            MODEREGISTER : CMA <= 11'b00000100010;
+            MODEREGISTER : CMA <= 11'b00000100010; //CAS latency = 2, 4 word sequential bursts.
             BANKACTIVATE : CMA <= CPU_CYCLE ? {1'b0, A[19], A[17:9]} : //1MB CPU ACCESS
                                               {1'b0, RAS0n, DMA_ROW_ADDRESS[8:0]}; //1MB AGNUS ACCESS
             //{1'b0, A[19], A[17:9]} //2MB CPU ACCESS
@@ -249,22 +249,25 @@ always @(negedge CLK80) begin
                 //WITH CERTAIN SOFTWARE. DMA CYCLES ALWAYS GET PRIORITY.
                 case (SDRAM_COUNTER)
                     8'h00 : begin
+                        CLK_EN <= 1;
                         if ((CPU_CYCLE_START && DBR_SYNC == 2'b11) || DMA_CYCLE_START) begin
-                            SDRAM_CMD <= BANKACTIVATE; //RAS to CAS delay is 18ns.
+                            SDRAM_CMD <= BANKACTIVATE;
                             CPU_CYCLE <= CPU_CYCLE_START && !DMA_CYCLE_START;
                             DMA_CYCLE <= DMA_CYCLE_START;
                             DBENn <= ~(DMA_COL_ADDRESS[0] && DMA_CYCLE_START); //_DBEN is driven by DRA0 from the column address.
                             SDRAM_COUNTER <= 8'h01;
                             DBDIR <= ~AWEn;
+                            WRITE_CYCLE <= (DMA_CYCLE_START && !AWEn) || (CPU_CYCLE_START && !RnW);
                         end
                     end
                     8'h01 : begin
                         SDRAM_CMD <= NOP;
-                        WRITE_CYCLE <= (DMA_CYCLE && !AWEn) || (CPU_CYCLE && !RnW);
+                        CPU_TACK <= WRITE_CYCLE; //Assert _TACK earlier for write cycles.
                     end
                     8'h02 : begin
+                        CPU_TACK <= 0;
                         if (WRITE_CYCLE) begin
-                            SDRAM_CMD <= WRITE;
+                            SDRAM_CMD <= WRITE; //RAS to CAS delay is 18ns.
                         end else begin
                             SDRAM_CMD <= READ; //CAS latency = 2.
                         end
@@ -276,7 +279,8 @@ always @(negedge CLK80) begin
                         SDRAM_CMD <= NOP;
                     end
                     8'h05 : begin
-                        CPU_TACK <= CPU_CYCLE;
+                        CPU_TACK <= (CPU_CYCLE && !WRITE_CYCLE); //Assert _TACK here for read cycles.
+                        CLK_EN <= WRITE_CYCLE;
                     end
                     8'h06 : begin
                         CPU_TACK <= 0;
