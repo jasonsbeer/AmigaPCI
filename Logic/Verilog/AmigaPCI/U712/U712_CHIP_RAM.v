@@ -1,10 +1,11 @@
 module U712_CHIP_RAM (
 
-    input CLK80, C1, RESETn, RAMSPACEn, TSn, RnW, DBRn, AWEn, RAS0n, RAS1n, CASLn, CASUn,
+    input CLK80, C1, RESETn, RAMSPACEn, TSn, RnW, DBRn, AWEn, RAS0n, RAS1n, CASLn, CASUn, TWO_MB_EN,
     input [20:1] A,
     input [9:0] DRA,
 
-    output BANK1, BANK0, RAMENn,
+    output BANK1, RAMENn,
+    output reg BANK0,
     output reg DBDIR,
     output reg CLK_EN,
     output reg DMA_CYCLE,
@@ -134,7 +135,6 @@ COL: A20 A18  A8  A7  A6  A5  A4  A3  A2  A1
 */
 
 assign BANK1 = 0;
-assign BANK0 = 0;
 
 reg [3:0] SDRAM_CMD;
 reg SDRAM_CONFIGURED;
@@ -149,6 +149,7 @@ reg WRITE_CYCLE;
 
 always @(negedge CLK80) begin
     if (!RESETn) begin
+        BANK0 <= 0;
         SDRAM_CMD <= NOP;
         SDRAM_CONFIGURED <= 0;
         SDRAM_COUNTER <= 8'h00;
@@ -188,16 +189,11 @@ always @(negedge CLK80) begin
         case (SDRAM_CMD)
             PRECHARGE    : CMA <= 11'b10000000000;
             MODEREGISTER : CMA <= 11'b00000100010; //CAS latency = 2, 4 word sequential bursts.
-            BANKACTIVATE : CMA <= CPU_CYCLE ? {1'b0, A[19], A[17:9]} : //1MB CPU ACCESS
-                                              {1'b0, RAS0n, DMA_ROW_ADDRESS[8:0]}; //1MB AGNUS ACCESS
-            //{1'b0, A[19], A[17:9]} //2MB CPU ACCESS
-            //{1'b0, DMA_ROW_ADDRESS[9:0]} //2MB AGNUS ACCESS
-            READ, WRITE  : CMA <= CPU_CYCLE ? {3'b000, A[18], A[8:2]} : //1MB CPU ACCESS
-                                              {3'b000, DMA_COL_ADDRESS[8:1]}; //1MB AGNUS ACCESS
-            //{3'b00, A[20], A[18], A[8:2]}; //2MB CPU ACCESS
-            //{3'b00, DMA_COL_ADDRESS[9:1]} //2MB AGNUS ACCESS
-            //COLUMN ADDRESS MA1 DRIVES _DBEN, BELOW.
-            //default : CMA <= 11'b00000000000;
+            BANKACTIVATE : CMA <= CPU_CYCLE ? {1'b0, A[19], A[17:9]} : //1MB and 2MB CPU row addresses are the same.
+                                              {1'b0, RAS0n, DMA_ROW_ADDRESS[8:0]}; //1MB Agnus row address.
+                                              //{1'b0, DMA_ROW_ADDRESS[9:0]} //2MB Agnus row address.
+            READ, WRITE  : CMA <= CPU_CYCLE ? {3'b000, A[18], A[8:2]} : //1MB and 2MB column addresses are the same.
+                                              {3'b00, DMA_COL_ADDRESS[8:1]};
         endcase
 
         if (!SDRAM_CONFIGURED) begin
@@ -258,6 +254,7 @@ always @(negedge CLK80) begin
                             SDRAM_COUNTER <= 8'h01;
                             DBDIR <= ~AWEn;
                             WRITE_CYCLE <= (DMA_CYCLE_START && !AWEn) || (CPU_CYCLE_START && !RnW);
+                            BANK0 <= (TWO_MB_EN && A[20]); //DMA_COL_ADDRESS[9]
                         end
                     end
                     8'h01 : begin
@@ -286,6 +283,7 @@ always @(negedge CLK80) begin
                         CPU_TACK <= 0;
                     end
                     8'h07 : begin
+                        BANK0 <= 0;
                         CPU_CYCLE <= 0;
                         DMA_CYCLE <= 0;
                         DBENn <= 1;

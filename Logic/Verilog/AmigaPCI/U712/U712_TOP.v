@@ -135,6 +135,8 @@ U712_CYCLE_TERM U712_CYCLE_TERM (
 // CHIP RAM CYCLE //
 ///////////////////
 
+wire TWO_MB_ENm = 0;
+
 U712_CHIP_RAM U712_CHIP_RAM (
     //INPUTS
     .CLK80 (CLK80),
@@ -151,6 +153,7 @@ U712_CHIP_RAM U712_CHIP_RAM (
     .RAS1n (RAS1n),
     .CASLn (CASLn),
     .CASUn (CASUn),
+    .TWO_MB_EN (TWO_MB_ENm),
     .A (A[20:1]),
     .DRA (DRA),
 

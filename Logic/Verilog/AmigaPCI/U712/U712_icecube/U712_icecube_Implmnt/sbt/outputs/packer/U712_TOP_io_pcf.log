@@ -8,6 +8,7 @@ OUTPUT CMA[1] 	 location (12, 0, 0) 	 48
 OUTPUT CLK_EN 	 location (25, 6, 1) 	 84 	 
 OUTPUT CASn 	 location (21, 0, 0) 	 62 	 
 OUTPUT BANK0 	 location (13, 0, 0) 	 52 	 
+INPUT  A[20] 	 location (0, 15, 1) 	 11 	 
 INPUT  SIZ[0] 	 location (0, 20, 0) 	 2 	 
 INPUT  DRA[7] 	 location (25, 10, 0) 	 91 	 
 OUTPUT CMA[8] 	 location (25, 5, 1) 	 82 	 

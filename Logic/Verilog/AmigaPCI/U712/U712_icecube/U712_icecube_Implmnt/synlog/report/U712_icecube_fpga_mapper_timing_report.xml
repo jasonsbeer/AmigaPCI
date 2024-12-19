@@ -18,7 +18,7 @@ Max Top 5 critical clocks will be reported. For rest user needs to refer to Deta
 <data>C1</data>
 <data>3.6 MHz</data>
 <data>0.8 MHz</data>
-<data>-4.592</data>
+<data>-4.627</data>
 </row>
 <row>
 <data>C3</data>
@@ -35,7 +35,7 @@ Max Top 5 critical clocks will be reported. For rest user needs to refer to Deta
 <row>
 <data>U712_TOP|CLK80_OUT_derived_clock</data>
 <data>80.0 MHz</data>
-<data>18.0 MHz</data>
-<data>-0.666</data>
+<data>17.9 MHz</data>
+<data>1.182</data>
 </row>
 </report_table>
