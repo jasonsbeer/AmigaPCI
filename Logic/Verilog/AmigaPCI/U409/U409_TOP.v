@@ -22,13 +22,12 @@ Module Name: U409_TOP
 Project Name: AmigaPCI
 Target Devices: iCE40-HX4K-TQ144
 
-Description: ADDRESS DECODE, ROM, TRANSFER ACK, AUTOCONFIG
+Description: ADDRESS DECODE, TRANSFER ACK, AUTOCONFIG
 
 Revision History:
     XXXX
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
-TO BUILD WITH APIO: apio build --top-module U409_TOP --fpga iCE40-HX4K-TQ144
 
 iceprog D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\sbt\outputs\bitmap\U409_TOP_bitmap.bin
 */
@@ -38,7 +37,7 @@ module U409_TOP (
     input CLK40_IN, CLK6, CLK28_IN, RESETn, TSn, OVL, RnW, TT0, TT1, LBENn,
     input [31:1] A,
 
-    output nROMEN, nBUFEN, TICK60, TICK50, CLKCIA, nCIACS0, nCIACS1, nRAMSPACE, nREGSPACE,
+    output ROMENn, BUFENn, TICK60, TICK50, CLKCIA, CIACS0n, CIACS1n, RAMSPACEn, REGSPACEn,
     output PORTSIZE,
 
     inout TACKn
@@ -84,6 +83,7 @@ wire AGNUS_SPACE;
 wire CIA_ENABLEm;
 
 U409_TRANSFER_ACK U409_TRANSFER_ACK (
+    //INPUTS
     .CLK80 (CLK80),
     .CLK40 (CLK40),
     .RESETn (RESETn),
@@ -91,46 +91,51 @@ U409_TRANSFER_ACK U409_TRANSFER_ACK (
     .ROMEN (ROMENm),
     .CIA_ENABLE (CIA_ENABLEm),
     .CLKCIA (CLKCIA),
+    .AGNUS_SPACE (AGNUS_SPACE),
+
+    //OUTPUTS
     .TACKn (TACKn)
 );
 
 ////////////////////////////
-// DATA BUFFER ENABLE TOP //
-////////////////////////////
+// DATA BUFFER ENABLE TOP /
+//////////////////////////
 
 U409_DATA_BUFFERS U409_DATA_BUFFERS (
     .AGNUS_SPACE (AGNUS_SPACE),
-    .nBUFEN (nBUFEN)
+    .BUFENn (BUFENn)
 );
 
 ////////////////////////
-// ADDRESS DECODE TOP //
-////////////////////////
+// ADDRESS DECODE TOP /
+//////////////////////
 
-assign nROMEN = ~ROMENm;
-assign AGNUS_SPACE = !nRAMSPACE || !nREGSPACE;
-//PORTSIZE WILL NEED TO HI-Z!
-assign PORTSIZE = CIA_SPACEm || !nREGSPACE;
+assign ROMENn = ~ROMENm;
+assign AGNUS_SPACE = !RAMSPACEn || !REGSPACEn;
+assign PORTSIZE = CIA_SPACEm || !REGSPACEn; //CLK_SPACE
 
 U409_ADDRESS_DECODE U409_ADDRESS_DECODE (
+    //INPUTS
     .RESETn (RESETn),
     .OVL (OVL),
     .CIA_ENABLE (CIA_ENABLEm),
-    .TT0 (TT0),
-    .TT1 (TT1),
-    .LBENn (LBENn),
+    //.TT0 (TT0),
+    //.TT1 (TT1),
+    //.LBENn (LBENn),
     .A (A),
+
+    //OUTPUTS
     .ROMEN (ROMENm),
     .CIA_SPACE (CIA_SPACEm),
-    .nCIACS0 (nCIACS0),
-    .nCIACS1 (nCIACS1),
-    .nRAMSPACE (nRAMSPACE),
-    .nREGSPACE (nREGSPACE)
+    .CIACS0n (CIACS0n),
+    .CIACS1n (CIACS1n),
+    .RAMSPACEn (RAMSPACEn),
+    .REGSPACEn (REGSPACEn)
 );
 
 ////////////////////
-// TICK CLOCK TOP //
-////////////////////
+// TICK CLOCK TOP /
+//////////////////
 
 U409_TICK U409_TICK (
     .CLK6 (CLK6),
@@ -139,8 +144,8 @@ U409_TICK U409_TICK (
 );
 
 ///////////////////
-// CIA CLOCK TOP //
-///////////////////
+// CIA CLOCK TOP /
+/////////////////
 
 U409_CIA U409_CIA (
     .CLK28_IN (CLK28_IN),

@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:31:51
 
-* File Generated:     Dec 13 2024 16:28:56
+* File Generated:     Dec 21 2024 14:05:50
 
 * Purpose:            Detailed IO and package pin info
 
@@ -64,7 +64,7 @@ Pin Number, Pin Type Name, Signal Name, Direction, Global Buffer, IO Standard, P
 45, PIO, not used, , , , , , bottomBank
 46, VCCIO_2, not used, , , , , , bottomBank
 47, PIO, not used, , , , , , bottomBank
-48, PIO, nRAMSPACE, Output, , SB_LVCMOS, No Pull Up, Simple Output, bottomBank
+48, PIO, RAMSPACEn, Output, , SB_LVCMOS, No Pull Up, Simple Output, bottomBank
 49, PIO_GBIN, not used, , , , , , bottomBank
 52, PIO_GBIN, CLK6, Input, glb Buff, SB_LVCMOS, No Pull Up, Simple Input, bottomBank
 53, AGND_BOT, not used, , , , , , UnknownBank
@@ -91,8 +91,8 @@ Pin Number, Pin Type Name, Signal Name, Direction, Global Buffer, IO Standard, P
 75, PIO, not used, , , , , , rightBank
 76, PIO, not used, , , , , , rightBank
 77, TRST_B, not used, , , , , , rightBank
-78, PIO, nCIACS0, Output, , SB_LVCMOS, No Pull Up, Simple Output, rightBank
-79, PIO, nCIACS1, Output, , SB_LVCMOS, No Pull Up, Simple Output, rightBank
+78, PIO, CIACS0n, Output, , SB_LVCMOS, No Pull Up, Simple Output, rightBank
+79, PIO, CIACS1n, Output, , SB_LVCMOS, No Pull Up, Simple Output, rightBank
 80, PIO, not used, , , , , , rightBank
 81, PIO, OVL, Input, , SB_LVCMOS, No Pull Up, Simple Input, rightBank
 82, PIO, not used, , , , , , rightBank
@@ -131,13 +131,13 @@ Pin Number, Pin Type Name, Signal Name, Direction, Global Buffer, IO Standard, P
 115, PIO, not used, , , , , , topBank
 116, PIO, not used, , , , , , topBank
 117, PIO, TACKn, InOut, , SB_LVCMOS, Pull Up, Simple Input Output Tristatable by Enable, topBank
-118, PIO, nREGSPACE, Output, , SB_LVCMOS, No Pull Up, Simple Output, topBank
-119, PIO, nBUFEN, Output, , SB_LVCMOS, No Pull Up, Simple Output, topBank
+118, PIO, REGSPACEn, Output, , SB_LVCMOS, No Pull Up, Simple Output, topBank
+119, PIO, BUFENn, Output, , SB_LVCMOS, No Pull Up, Simple Output, topBank
 120, PIO, not used, , , , , , topBank
 121, PIO, not used, , , , , , topBank
 122, PIO, CLKCIA, Output, , SB_LVCMOS, No Pull Up, Simple Output, topBank
 123, VCCIO_0, not used, , , , , , topBank
-124, PIO, nROMEN, Output, , SB_LVCMOS, No Pull Up, Simple Output, topBank
+124, PIO, ROMENn, Output, , SB_LVCMOS, No Pull Up, Simple Output, topBank
 125, PIO, not used, , , , , , topBank
 126, AVDD_TOP, not used, , , , , , UnknownBank
 127, AGND_TOP, not used, , , , , , UnknownBank

@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:45:10
 
-* File Generated:     Dec 13 2024 16:28:56
+* File Generated:     Dec 21 2024 14:05:50
 
 * Purpose:            Router runtime info
 
@@ -19,12 +19,13 @@ I1203: Reading Design U409_TOP
 I1202: Reading Architecture of device iCE40HX4K
 Info-1404: Inferred PLL generated clock at pll/PLLOUTCORE
 Info-1404: Inferred PLL generated clock at pll/PLLOUTGLOBAL
-Warning-1034: Found non-unate timing arc, from pin "in3" to pin "ltout" of instance "U409_TRANSFER_ACK.CIA_TACK_EN_RNO_0_LC_10_10_5", in the clock network. Converting the timing arc to positive-unate
+Warning-1034: Found non-unate timing arc, from pin "in3" to pin "ltout" of instance "U409_TRANSFER_ACK.CIA_TACK_EN_RNO_0_LC_9_9_6", in the clock network. Converting the timing arc to positive-unate
 I1209: Started routing
-I1223: Total Nets : 221 
-I1212: Iteration  1 :    62 unrouted : 0 seconds
-I1212: Iteration  2 :     9 unrouted : 1 seconds
-I1212: Iteration  3 :     0 unrouted : 0 seconds
+I1223: Total Nets : 222 
+I1212: Iteration  1 :    65 unrouted : 0 seconds
+I1212: Iteration  2 :    17 unrouted : 1 seconds
+I1212: Iteration  3 :     3 unrouted : 0 seconds
+I1212: Iteration  4 :     0 unrouted : 0 seconds
 I1215: Routing is successful
 I1206: Completed routing
 I1204: Writing Design U409_TOP

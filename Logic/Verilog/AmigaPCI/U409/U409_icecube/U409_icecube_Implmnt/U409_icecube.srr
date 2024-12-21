@@ -3,7 +3,7 @@
 #OS: Windows 8 6.2
 #Hostname: JASON-LAB
 
-# Fri Dec 13 16:28:37 2024
+# Sat Dec 21 14:05:26 2024
 
 #Implementation: U409_icecube_Implmnt
 
@@ -27,7 +27,7 @@ Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys softwa
 @I::"D:\AmigaPCI\U409\U409_TOP.v" (library work)
 @I::"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v" (library work)
 Verilog syntax check successful!
-File D:\AmigaPCI\U409\U409_TRANSFER_ACK.v changed - recompiling
+File D:\AmigaPCI\U409\U409_TOP.v changed - recompiling
 Selecting top level module U409_TOP
 @N: CG364 :"C:\lscc\iCEcube2.2020.12\synpbase\lib\generic\sb_ice40.v":698:7:698:19|Synthesizing module SB_PLL40_CORE in library work.
 
@@ -49,14 +49,14 @@ Selecting top level module U409_TOP
 @W: CG781 :"D:\AmigaPCI\U409\U409_TOP.v":69:2:69:4|Input SCLK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
 @W: CG781 :"D:\AmigaPCI\U409\U409_TOP.v":69:2:69:4|Input LATCHINPUTVALUE on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
 @N: CL159 :"D:\AmigaPCI\U409\U409_TOP.v":38:54:38:56|Input RnW is unused.
+@N: CL159 :"D:\AmigaPCI\U409\U409_TOP.v":38:59:38:61|Input TT0 is unused.
+@N: CL159 :"D:\AmigaPCI\U409\U409_TOP.v":38:64:38:66|Input TT1 is unused.
+@N: CL159 :"D:\AmigaPCI\U409\U409_TOP.v":38:69:38:73|Input LBENn is unused.
 @W: CL246 :"D:\AmigaPCI\U409\U409_ADDRESS_DECODE.v":43:17:43:17|Input port bits 15 to 14 of A[31:1] are unused. Assign logic for all port bits or change the input port size.
 @W: CL246 :"D:\AmigaPCI\U409\U409_ADDRESS_DECODE.v":43:17:43:17|Input port bits 11 to 1 of A[31:1] are unused. Assign logic for all port bits or change the input port size.
-@N: CL159 :"D:\AmigaPCI\U409\U409_ADDRESS_DECODE.v":42:35:42:37|Input TT0 is unused.
-@N: CL159 :"D:\AmigaPCI\U409\U409_ADDRESS_DECODE.v":42:40:42:42|Input TT1 is unused.
-@N: CL159 :"D:\AmigaPCI\U409\U409_ADDRESS_DECODE.v":42:45:42:49|Input LBENn is unused.
 @N: CL189 :"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v":85:0:85:5|Register bit ROM_TACK_COUNTER[2] is always 0.
 @W: CL260 :"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v":85:0:85:5|Pruning register bit 2 of ROM_TACK_COUNTER[2:0]. If this is not the intended behavior, drive the input with valid values, or an input from the top level.
-@N: CL201 :"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v":139:0:139:5|Trying to extract state machine for register CIA_STATE.
+@N: CL201 :"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v":119:0:119:5|Trying to extract state machine for register CIA_STATE.
 Extracted state machine for register CIA_STATE
 State machine has 4 reachable states with original encodings of:
    00
@@ -75,7 +75,7 @@ At c_ver Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Fri Dec 13 16:28:37 2024
+# Sat Dec 21 14:05:26 2024
 
 ###########################################################]
 Synopsys Netlist Linker, version comp2016q3p1, Build 141R, built Dec  5 2016
@@ -88,7 +88,7 @@ At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Fri Dec 13 16:28:37 2024
+# Sat Dec 21 14:05:26 2024
 
 ###########################################################]
 @END
@@ -98,7 +98,7 @@ At c_hdl Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Fri Dec 13 16:28:37 2024
+# Sat Dec 21 14:05:26 2024
 
 ###########################################################]
 Synopsys Netlist Linker, version comp2016q3p1, Build 141R, built Dec  5 2016
@@ -112,12 +112,12 @@ At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Fri Dec 13 16:28:39 2024
+# Sat Dec 21 14:05:27 2024
 
 ###########################################################]
 Pre-mapping Report
 
-# Fri Dec 13 16:28:39 2024
+# Sat Dec 21 14:05:27 2024
 
 Synopsys Lattice Technology Pre-mapping, Version maplat, Build 1612R, Built Dec  5 2016 10:31:39
 Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
@@ -131,13 +131,13 @@ Printing clock  summary report in "D:\AmigaPCI\U409\U409_icecube\U409_icecube_Im
 @N: MF248 |Running in 64-bit mode.
 @N: MF666 |Clock conversion enabled. (Command "set_option -fix_gated_and_generated_clocks 1" in the project file.)
 
-Design Input Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 100MB peak: 102MB)
+Design Input Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 99MB peak: 102MB)
 
 
-Mapper Initialization Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 100MB peak: 102MB)
+Mapper Initialization Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 99MB peak: 102MB)
 
 
-Start loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 101MB peak: 102MB)
+Start loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 100MB peak: 102MB)
 
 
 Finished loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 101MB peak: 103MB)
@@ -175,7 +175,7 @@ original code -> new code
    01 -> 01
    10 -> 10
    11 -> 11
-@N: MO225 :"d:\amigapci\u409\u409_transfer_ack.v":139:0:139:5|There are no possible illegal states for state machine CIA_STATE[3:0] (in view: work.U409_TRANSFER_ACK(verilog)); safe FSM implementation is not required.
+@N: MO225 :"d:\amigapci\u409\u409_transfer_ack.v":119:0:119:5|There are no possible illegal states for state machine CIA_STATE[3:0] (in view: work.U409_TRANSFER_ACK(verilog)); safe FSM implementation is not required.
 Encoding state machine TACK_COUNTER[2:0] (in view: work.U409_TRANSFER_ACK(verilog))
 original code -> new code
    000 -> 00
@@ -191,12 +191,12 @@ Pre-mapping successful!
 At Mapper Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 47MB peak: 133MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
-# Fri Dec 13 16:28:39 2024
+# Sat Dec 21 14:05:28 2024
 
 ###########################################################]
 Map & Optimize Report
 
-# Fri Dec 13 16:28:39 2024
+# Sat Dec 21 14:05:28 2024
 
 Synopsys Lattice Technology Mapper, Version maplat, Build 1612R, Built Dec  5 2016 10:31:39
 Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
@@ -241,7 +241,7 @@ original code -> new code
    01 -> 01
    10 -> 10
    11 -> 11
-@N: MO225 :"d:\amigapci\u409\u409_transfer_ack.v":139:0:139:5|There are no possible illegal states for state machine CIA_STATE[3:0] (in view: work.U409_TRANSFER_ACK(verilog)); safe FSM implementation is not required.
+@N: MO225 :"d:\amigapci\u409\u409_transfer_ack.v":119:0:119:5|There are no possible illegal states for state machine CIA_STATE[3:0] (in view: work.U409_TRANSFER_ACK(verilog)); safe FSM implementation is not required.
 Encoding state machine TACK_COUNTER[2:0] (in view: work.U409_TRANSFER_ACK(verilog))
 original code -> new code
    000 -> 00
@@ -343,7 +343,7 @@ Start final timing analysis (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:0
 
 
 ##### START OF TIMING REPORT #####[
-# Timing Report written on Fri Dec 13 16:28:40 2024
+# Timing Report written on Sat Dec 21 14:05:29 2024
 #
 
 
@@ -848,6 +848,6 @@ Mapper successful!
 At Mapper Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 27MB peak: 135MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
-# Fri Dec 13 16:28:40 2024
+# Sat Dec 21 14:05:29 2024
 
 ###########################################################]

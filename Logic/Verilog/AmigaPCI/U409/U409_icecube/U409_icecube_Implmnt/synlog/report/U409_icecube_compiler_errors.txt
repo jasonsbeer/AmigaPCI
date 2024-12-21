@@ -1,2 +1,2 @@
-@E: CS179 :"D:\AmigaPCI\U409\U409_CIA.v":62:7:62:16|Assignment target CIA_ENABLE must be a net type
+@E: CS168 :"D:\AmigaPCI\U409\U409_TOP.v":131:15:131:15|Port RAMSPACEn does not exist
 

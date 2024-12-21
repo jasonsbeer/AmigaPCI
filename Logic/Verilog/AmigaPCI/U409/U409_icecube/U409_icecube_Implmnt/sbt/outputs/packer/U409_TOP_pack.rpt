@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:31:51
 
-* File Generated:     Dec 13 2024 16:28:56
+* File Generated:     Dec 21 2024 14:05:50
 
 * Purpose:            General info of design implementation
 
@@ -93,15 +93,15 @@ Detailed I/O Info:
     Output Pins: 
     Pin Number  Direction  IO Standard  Pull Up  IO Bank  IO Function                                Signal Name
     ----------  ---------  -----------  -------  -------  -----------                                -----------
-    48          Output     SB_LVCMOS    No       2        Simple Output                              nRAMSPACE  
+    48          Output     SB_LVCMOS    No       2        Simple Output                              RAMSPACEn  
     55          Output     SB_LVCMOS    No       2        Simple Output                              TICK60     
     56          Output     SB_LVCMOS    No       2        Simple Output                              TICK50     
-    78          Output     SB_LVCMOS    No       1        Simple Output                              nCIACS0    
-    79          Output     SB_LVCMOS    No       1        Simple Output                              nCIACS1    
-    118         Output     SB_LVCMOS    No       0        Simple Output                              nREGSPACE  
-    119         Output     SB_LVCMOS    No       0        Simple Output                              nBUFEN     
+    78          Output     SB_LVCMOS    No       1        Simple Output                              CIACS0n    
+    79          Output     SB_LVCMOS    No       1        Simple Output                              CIACS1n    
+    118         Output     SB_LVCMOS    No       0        Simple Output                              REGSPACEn  
+    119         Output     SB_LVCMOS    No       0        Simple Output                              BUFENn     
     122         Output     SB_LVCMOS    No       0        Simple Output                              CLKCIA     
-    124         Output     SB_LVCMOS    No       0        Simple Output                              nROMEN     
+    124         Output     SB_LVCMOS    No       0        Simple Output                              ROMENn     
     135         Output     SB_LVCMOS    Yes      0        Simple Output                              PORTSIZE   
 
     Inoutput Pins: 

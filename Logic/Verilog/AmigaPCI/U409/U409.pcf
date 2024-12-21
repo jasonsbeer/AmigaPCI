@@ -67,12 +67,12 @@ set_io LBENn    125
 
 #ADDRESS SPACE SIGNALS
 set_io OVL       81
-set_io nRAMSPACE 48
-set_io nCIACS0   78
-set_io nCIACS1   79
-set_io nREGSPACE 118
-set_io nBUFEN    119
-set_io nROMEN    124
+set_io RAMSPACEn 48
+set_io CIACS0n   78
+set_io CIACS1n   79
+set_io REGSPACEn 118
+set_io BUFENn    119
+set_io ROMENn    124
 #set_io RTCENn    80
 #set_io CPUCONFn  130
 

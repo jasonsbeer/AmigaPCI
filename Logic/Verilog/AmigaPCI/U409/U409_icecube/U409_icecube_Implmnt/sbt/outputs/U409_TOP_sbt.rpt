@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:31:51
 
-* File Generated:     Dec 13 2024 16:28:56
+* File Generated:     Dec 21 2024 14:05:50
 
 * Purpose:            General info of design implementation
 
@@ -93,15 +93,15 @@ Detailed I/O Info:
     Output Pins: 
     Pin Number  Direction  IO Standard  Pull Up  IO Bank  IO Function                                Signal Name
     ----------  ---------  -----------  -------  -------  -----------                                -----------
-    48          Output     SB_LVCMOS    No       2        Simple Output                              nRAMSPACE  
+    48          Output     SB_LVCMOS    No       2        Simple Output                              RAMSPACEn  
     55          Output     SB_LVCMOS    No       2        Simple Output                              TICK60     
     56          Output     SB_LVCMOS    No       2        Simple Output                              TICK50     
-    78          Output     SB_LVCMOS    No       1        Simple Output                              nCIACS0    
-    79          Output     SB_LVCMOS    No       1        Simple Output                              nCIACS1    
-    118         Output     SB_LVCMOS    No       0        Simple Output                              nREGSPACE  
-    119         Output     SB_LVCMOS    No       0        Simple Output                              nBUFEN     
+    78          Output     SB_LVCMOS    No       1        Simple Output                              CIACS0n    
+    79          Output     SB_LVCMOS    No       1        Simple Output                              CIACS1n    
+    118         Output     SB_LVCMOS    No       0        Simple Output                              REGSPACEn  
+    119         Output     SB_LVCMOS    No       0        Simple Output                              BUFENn     
     122         Output     SB_LVCMOS    No       0        Simple Output                              CLKCIA     
-    124         Output     SB_LVCMOS    No       0        Simple Output                              nROMEN     
+    124         Output     SB_LVCMOS    No       0        Simple Output                              ROMENn     
     135         Output     SB_LVCMOS    Yes      0        Simple Output                              PORTSIZE   
 
     Inoutput Pins: 
@@ -124,9 +124,9 @@ Router Summary:
 
 Routing Resource Utilization:
 -----------------------------
-              Local line of tile     1076 out of 146184      0.736059%
-                          Span 4      170 out of  29696      0.572468%
-                         Span 12       85 out of   5632      1.50923%
+              Local line of tile     1084 out of 146184      0.741531%
+                          Span 4      173 out of  29696      0.58257%
+                         Span 12       88 out of   5632      1.5625%
                   Global network        3 out of      8      37.5%
       Vertical Inter-LUT Connect       27 out of   6720      0.401786%
 

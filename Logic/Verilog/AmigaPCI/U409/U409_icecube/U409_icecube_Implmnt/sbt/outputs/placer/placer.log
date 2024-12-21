@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:55:50
 
-* File Generated:     Dec 13 2024 16:28:42
+* File Generated:     Dec 21 2024 14:05:36
 
 * Purpose:            
 
@@ -118,13 +118,13 @@ Device Utilization Summary after Packing
 I2088: Phase 3, elapsed time : 0.3 (sec)
 
 Phase 4
-I2088: Phase 4, elapsed time : 0.1 (sec)
+I2088: Phase 4, elapsed time : 0.2 (sec)
 
 Phase 5
 I2088: Phase 5, elapsed time : 0.1 (sec)
 
 Phase 6
-I2088: Phase 6, elapsed time : 12.1 (sec)
+I2088: Phase 6, elapsed time : 12.2 (sec)
 
 Final Design Statistics
     Number of LUTs      	:	149
@@ -160,11 +160,11 @@ analysis after routing.
                      Clock Summary 
 =====================================================================
 Number of clocks: 5
-Clock: CLK28_IN | Frequency: 281.73 MHz | Target: 28.64 MHz
+Clock: CLK28_IN | Frequency: 281.69 MHz | Target: 28.64 MHz
 Clock: CLK40_IN | Frequency: N/A | Target: 40.00 MHz
-Clock: CLK6 | Frequency: 188.01 MHz | Target: 6.00 MHz
+Clock: CLK6 | Frequency: 188.09 MHz | Target: 6.00 MHz
 Clock: pll/PLLOUTCORE | Frequency: N/A | Target: 80.00 MHz
-Clock: pll/PLLOUTGLOBAL | Frequency: 177.94 MHz | Target: 80.00 MHz
+Clock: pll/PLLOUTGLOBAL | Frequency: 177.86 MHz | Target: 80.00 MHz
 
 =====================================================================
                      End of Clock Summary
@@ -172,5 +172,5 @@ Clock: pll/PLLOUTGLOBAL | Frequency: 177.94 MHz | Target: 80.00 MHz
 
 I2054: Placement of design completed successfully
 
-I2076: Placer run-time: 13.0 sec.
+I2076: Placer run-time: 13.2 sec.
 

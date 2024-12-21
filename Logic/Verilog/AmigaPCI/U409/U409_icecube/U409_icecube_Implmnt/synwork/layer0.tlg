@@ -19,14 +19,14 @@ Selecting top level module U409_TOP
 @W: CG781 :"D:\AmigaPCI\U409\U409_TOP.v":69:2:69:4|Input SCLK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
 @W: CG781 :"D:\AmigaPCI\U409\U409_TOP.v":69:2:69:4|Input LATCHINPUTVALUE on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
 @N: CL159 :"D:\AmigaPCI\U409\U409_TOP.v":38:54:38:56|Input RnW is unused.
+@N: CL159 :"D:\AmigaPCI\U409\U409_TOP.v":38:59:38:61|Input TT0 is unused.
+@N: CL159 :"D:\AmigaPCI\U409\U409_TOP.v":38:64:38:66|Input TT1 is unused.
+@N: CL159 :"D:\AmigaPCI\U409\U409_TOP.v":38:69:38:73|Input LBENn is unused.
 @W: CL246 :"D:\AmigaPCI\U409\U409_ADDRESS_DECODE.v":43:17:43:17|Input port bits 15 to 14 of A[31:1] are unused. Assign logic for all port bits or change the input port size.
 @W: CL246 :"D:\AmigaPCI\U409\U409_ADDRESS_DECODE.v":43:17:43:17|Input port bits 11 to 1 of A[31:1] are unused. Assign logic for all port bits or change the input port size.
-@N: CL159 :"D:\AmigaPCI\U409\U409_ADDRESS_DECODE.v":42:35:42:37|Input TT0 is unused.
-@N: CL159 :"D:\AmigaPCI\U409\U409_ADDRESS_DECODE.v":42:40:42:42|Input TT1 is unused.
-@N: CL159 :"D:\AmigaPCI\U409\U409_ADDRESS_DECODE.v":42:45:42:49|Input LBENn is unused.
 @N: CL189 :"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v":85:0:85:5|Register bit ROM_TACK_COUNTER[2] is always 0.
 @W: CL260 :"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v":85:0:85:5|Pruning register bit 2 of ROM_TACK_COUNTER[2:0]. If this is not the intended behavior, drive the input with valid values, or an input from the top level.
-@N: CL201 :"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v":139:0:139:5|Trying to extract state machine for register CIA_STATE.
+@N: CL201 :"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v":119:0:119:5|Trying to extract state machine for register CIA_STATE.
 Extracted state machine for register CIA_STATE
 State machine has 4 reachable states with original encodings of:
    00
