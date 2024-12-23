@@ -14,7 +14,7 @@ SB_PLL40_CORE   1 use
 VCC             4 uses
 SB_LUT4         146 uses
 
-I/O ports: 52
+I/O ports: 48
 I/O primitives: 35
 SB_GB_IO       2 uses
 SB_IO          33 uses

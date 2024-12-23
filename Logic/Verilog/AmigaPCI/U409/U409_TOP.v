@@ -22,22 +22,23 @@ Module Name: U409_TOP
 Project Name: AmigaPCI
 Target Devices: iCE40-HX4K-TQ144
 
-Description: ADDRESS DECODE, TRANSFER ACK, AUTOCONFIG
+Description: ADDRESS DECODE, ROM, TRANSFER ACK, AUTOCONFIG
 
 Revision History:
     XXXX
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
+TO BUILD WITH APIO: apio build --top-module U409_TOP --fpga iCE40-HX4K-TQ144
 
 iceprog D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\sbt\outputs\bitmap\U409_TOP_bitmap.bin
 */
 
 module U409_TOP (
 
-    input CLK40_IN, CLK6, CLK28_IN, RESETn, TSn, OVL, RnW, TT0, TT1, LBENn,
+    input CLK40_IN, CLK6, CLK28_IN, RESETn, TSn, OVL,
     input [31:1] A,
 
-    output ROMENn, BUFENn, TICK60, TICK50, CLKCIA, CIACS0n, CIACS1n, RAMSPACEn, REGSPACEn,
+    output nROMEN, nBUFEN, TICK60, TICK50, CLKCIA, nCIACS0, nCIACS1, nRAMSPACE, nREGSPACE,
     output PORTSIZE,
 
     inout TACKn
@@ -79,7 +80,8 @@ SB_PLL40_CORE #(
 
 wire ROMENm;
 wire CIA_SPACEm;
-wire AGNUS_SPACE;
+//wire AGNUS_SPACE;
+wire AGNUS_SPACE = !nRAMSPACE || !nREGSPACE;
 wire CIA_ENABLEm;
 
 U409_TRANSFER_ACK U409_TRANSFER_ACK (
@@ -92,27 +94,30 @@ U409_TRANSFER_ACK U409_TRANSFER_ACK (
     .CIA_ENABLE (CIA_ENABLEm),
     .CLKCIA (CLKCIA),
     .AGNUS_SPACE (AGNUS_SPACE),
-
+    //.nRAMSPACE (nRAMSPACE),
+    //.nREGSPACE (nREGSPACE),
+    
     //OUTPUTS
     .TACKn (TACKn)
 );
 
 ////////////////////////////
-// DATA BUFFER ENABLE TOP /
-//////////////////////////
+// DATA BUFFER ENABLE TOP //
+////////////////////////////
 
 U409_DATA_BUFFERS U409_DATA_BUFFERS (
     .AGNUS_SPACE (AGNUS_SPACE),
-    .BUFENn (BUFENn)
+    .nBUFEN (nBUFEN)
 );
 
 ////////////////////////
-// ADDRESS DECODE TOP /
-//////////////////////
+// ADDRESS DECODE TOP //
+////////////////////////
 
-assign ROMENn = ~ROMENm;
-assign AGNUS_SPACE = !RAMSPACEn || !REGSPACEn;
-assign PORTSIZE = CIA_SPACEm || !REGSPACEn; //CLK_SPACE
+assign nROMEN = ~ROMENm;
+//assign AGNUS_SPACE = !nRAMSPACE || !nREGSPACE;
+//PORTSIZE WILL NEED TO HI-Z!
+assign PORTSIZE = CIA_SPACEm || !nREGSPACE;
 
 U409_ADDRESS_DECODE U409_ADDRESS_DECODE (
     //INPUTS
@@ -127,15 +132,15 @@ U409_ADDRESS_DECODE U409_ADDRESS_DECODE (
     //OUTPUTS
     .ROMEN (ROMENm),
     .CIA_SPACE (CIA_SPACEm),
-    .CIACS0n (CIACS0n),
-    .CIACS1n (CIACS1n),
-    .RAMSPACEn (RAMSPACEn),
-    .REGSPACEn (REGSPACEn)
+    .nCIACS0 (nCIACS0),
+    .nCIACS1 (nCIACS1),
+    .nRAMSPACE (nRAMSPACE),
+    .nREGSPACE (nREGSPACE)
 );
 
 ////////////////////
-// TICK CLOCK TOP /
-//////////////////
+// TICK CLOCK TOP //
+////////////////////
 
 U409_TICK U409_TICK (
     .CLK6 (CLK6),
@@ -144,8 +149,8 @@ U409_TICK U409_TICK (
 );
 
 ///////////////////
-// CIA CLOCK TOP /
-/////////////////
+// CIA CLOCK TOP //
+///////////////////
 
 U409_CIA U409_CIA (
     .CLK28_IN (CLK28_IN),

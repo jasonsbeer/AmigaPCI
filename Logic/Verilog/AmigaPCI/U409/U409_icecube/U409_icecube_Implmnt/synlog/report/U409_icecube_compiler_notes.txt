@@ -7,10 +7,6 @@
 @N: CG364 :"D:\AmigaPCI\U409\U409_TICK.v":35:7:35:15|Synthesizing module U409_TICK in library work.
 @N: CG364 :"D:\AmigaPCI\U409\U409_CIA.v":35:7:35:14|Synthesizing module U409_CIA in library work.
 @N: CG364 :"D:\AmigaPCI\U409\U409_TOP.v":36:7:36:14|Synthesizing module U409_TOP in library work.
-@N: CL159 :"D:\AmigaPCI\U409\U409_TOP.v":38:54:38:56|Input RnW is unused.
-@N: CL159 :"D:\AmigaPCI\U409\U409_TOP.v":38:59:38:61|Input TT0 is unused.
-@N: CL159 :"D:\AmigaPCI\U409\U409_TOP.v":38:64:38:66|Input TT1 is unused.
-@N: CL159 :"D:\AmigaPCI\U409\U409_TOP.v":38:69:38:73|Input LBENn is unused.
 @N: CL189 :"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v":85:0:85:5|Register bit ROM_TACK_COUNTER[2] is always 0.
 @N: CL201 :"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v":119:0:119:5|Trying to extract state machine for register CIA_STATE.
 @N: CL201 :"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v":50:0:50:5|Trying to extract state machine for register TACK_COUNTER.

@@ -9,8 +9,8 @@ Selecting top level module U712_TOP
 
 @N: CG364 :"D:\AmigaPCI\U712\U712_CHIP_RAM.v":1:7:1:19|Synthesizing module U712_CHIP_RAM in library work.
 
-@W: CL265 :"D:\AmigaPCI\U712\U712_CHIP_RAM.v":150:0:150:5|Removing unused bit 9 of DMA_ROW_ADDRESS[9:0]. Either assign all bits or reduce the width of the signal.
-@W: CL265 :"D:\AmigaPCI\U712\U712_CHIP_RAM.v":150:0:150:5|Removing unused bit 9 of DMA_COL_ADDRESS[9:0]. Either assign all bits or reduce the width of the signal.
+@W: CL265 :"D:\AmigaPCI\U712\U712_CHIP_RAM.v":155:0:155:5|Removing unused bit 9 of DMA_ROW_ADDRESS[9:0]. Either assign all bits or reduce the width of the signal.
+@W: CL265 :"D:\AmigaPCI\U712\U712_CHIP_RAM.v":155:0:155:5|Removing unused bit 9 of DMA_COL_ADDRESS[9:0]. Either assign all bits or reduce the width of the signal.
 @N: CG364 :"D:\AmigaPCI\U712\U712_BYTE_ENABLE.v":1:7:1:22|Synthesizing module U712_BYTE_ENABLE in library work.
 
 @N: CG364 :"D:\AmigaPCI\U712\U712_TOP.v":4:7:4:14|Synthesizing module U712_TOP in library work.

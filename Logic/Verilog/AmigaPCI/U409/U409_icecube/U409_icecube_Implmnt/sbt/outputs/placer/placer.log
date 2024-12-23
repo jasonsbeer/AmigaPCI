@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:55:50
 
-* File Generated:     Dec 21 2024 14:05:36
+* File Generated:     Dec 23 2024 16:31:22
 
 * Purpose:            
 
@@ -37,19 +37,15 @@ W2715: Warning for set_io Constraint: Ignoring pin assignment for A[8], as it is
 W2715: Warning for set_io Constraint: Ignoring pin assignment for A[1], as it is not connected to any PAD
 W2715: Warning for set_io Constraint: Ignoring pin assignment for A[11], as it is not connected to any PAD
 W2715: Warning for set_io Constraint: Ignoring pin assignment for A[3], as it is not connected to any PAD
+W2715: Warning for set_io Constraint: Ignoring pin assignment for A[4], as it is not connected to any PAD
 W2715: Warning for set_io Constraint: Ignoring pin assignment for A[5], as it is not connected to any PAD
 W2715: Warning for set_io Constraint: Ignoring pin assignment for A[15], as it is not connected to any PAD
 W2715: Warning for set_io Constraint: Ignoring pin assignment for A[6], as it is not connected to any PAD
 W2715: Warning for set_io Constraint: Ignoring pin assignment for A[14], as it is not connected to any PAD
 W2715: Warning for set_io Constraint: Ignoring pin assignment for A[7], as it is not connected to any PAD
-W2715: Warning for set_io Constraint: Ignoring pin assignment for LBENn, as it is not connected to any PAD
-W2715: Warning for set_io Constraint: Ignoring pin assignment for TT0, as it is not connected to any PAD
-W2715: Warning for set_io Constraint: Ignoring pin assignment for TT1, as it is not connected to any PAD
 W2715: Warning for set_io Constraint: Ignoring pin assignment for A[9], as it is not connected to any PAD
 W2715: Warning for set_io Constraint: Ignoring pin assignment for A[2], as it is not connected to any PAD
 W2715: Warning for set_io Constraint: Ignoring pin assignment for A[10], as it is not connected to any PAD
-W2715: Warning for set_io Constraint: Ignoring pin assignment for A[4], as it is not connected to any PAD
-W2715: Warning for set_io Constraint: Ignoring pin assignment for RnW, as it is not connected to any PAD
 
 Input Design Statistics
     Number of LUTs      	:	146
@@ -118,13 +114,13 @@ Device Utilization Summary after Packing
 I2088: Phase 3, elapsed time : 0.3 (sec)
 
 Phase 4
-I2088: Phase 4, elapsed time : 0.2 (sec)
+I2088: Phase 4, elapsed time : 0.1 (sec)
 
 Phase 5
 I2088: Phase 5, elapsed time : 0.1 (sec)
 
 Phase 6
-I2088: Phase 6, elapsed time : 12.2 (sec)
+I2088: Phase 6, elapsed time : 11.9 (sec)
 
 Final Design Statistics
     Number of LUTs      	:	149
@@ -141,7 +137,7 @@ Final Design Statistics
 
 Device Utilization Summary
     LogicCells                  :	152/3520
-    PLBs                        :	41/440
+    PLBs                        :	38/440
     BRAMs                       :	0/20
     IOs and GBIOs               :	35/107
     PLLs                        :	1/2
@@ -162,9 +158,9 @@ analysis after routing.
 Number of clocks: 5
 Clock: CLK28_IN | Frequency: 281.69 MHz | Target: 28.64 MHz
 Clock: CLK40_IN | Frequency: N/A | Target: 40.00 MHz
-Clock: CLK6 | Frequency: 188.09 MHz | Target: 6.00 MHz
+Clock: CLK6 | Frequency: 188.02 MHz | Target: 6.00 MHz
 Clock: pll/PLLOUTCORE | Frequency: N/A | Target: 80.00 MHz
-Clock: pll/PLLOUTGLOBAL | Frequency: 177.86 MHz | Target: 80.00 MHz
+Clock: pll/PLLOUTGLOBAL | Frequency: 177.88 MHz | Target: 80.00 MHz
 
 =====================================================================
                      End of Clock Summary
@@ -172,5 +168,5 @@ Clock: pll/PLLOUTGLOBAL | Frequency: 177.86 MHz | Target: 80.00 MHz
 
 I2054: Placement of design completed successfully
 
-I2076: Placer run-time: 13.2 sec.
+I2076: Placer run-time: 12.8 sec.
 

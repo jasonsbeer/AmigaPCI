@@ -1,2 +1,2 @@
-@E: CS168 :"D:\AmigaPCI\U409\U409_TOP.v":131:15:131:15|Port RAMSPACEn does not exist
+@E: CG906 :"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v":170:46:170:54|Reference to unknown variable nREGSPACE.
 

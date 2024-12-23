@@ -29,6 +29,7 @@ Revision History:
     16-JUN-2024 : FIX TICK FREQUENCY
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
+TO BUILD WITH APIO: apio build --top-module U409_TOP --fpga iCE40-HX4K-TQ144
 */
 
 module U409_TICK

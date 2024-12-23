@@ -1,5 +1,5 @@
-@W: CL265 :"D:\AmigaPCI\U712\U712_CHIP_RAM.v":150:0:150:5|Removing unused bit 9 of DMA_ROW_ADDRESS[9:0]. Either assign all bits or reduce the width of the signal.
-@W: CL265 :"D:\AmigaPCI\U712\U712_CHIP_RAM.v":150:0:150:5|Removing unused bit 9 of DMA_COL_ADDRESS[9:0]. Either assign all bits or reduce the width of the signal.
+@W: CL265 :"D:\AmigaPCI\U712\U712_CHIP_RAM.v":155:0:155:5|Removing unused bit 9 of DMA_ROW_ADDRESS[9:0]. Either assign all bits or reduce the width of the signal.
+@W: CL265 :"D:\AmigaPCI\U712\U712_CHIP_RAM.v":155:0:155:5|Removing unused bit 9 of DMA_COL_ADDRESS[9:0]. Either assign all bits or reduce the width of the signal.
 @W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":58:2:58:4|Input EXTFEEDBACK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
 @W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":58:2:58:4|Input DYNAMICDELAY on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
 @W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":58:2:58:4|Input BYPASS on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 

@@ -29,6 +29,7 @@ Revision History:
     09-JUN-2024 : FIX CIA CHIP SELECT ASSERTION TIMING
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
+TO BUILD WITH APIO: apio build --top-module U409_TOP --fpga iCE40-HX4K-TQ144
 */
 
 module U409_CIA
@@ -53,8 +54,6 @@ module U409_CIA
 //WE CAN SHORTEN THE READ CYCLES, TOO, WHICH MAY REQUIRE SOME EXPERIMENTATION.
 
 //CYCLES 0 - 23 ARE LOW CLOCK, 24 - 39 ARE HIGH CLOCK.
-
-//TBD: SHORTEN CYCLES.
 
 reg [5:0] CIA_CLK_COUNT;
 reg VMA;

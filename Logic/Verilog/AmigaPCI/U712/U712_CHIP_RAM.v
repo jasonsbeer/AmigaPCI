@@ -72,7 +72,7 @@ always @(negedge CLK80) begin
     if (!RESETn) begin
         REFRESH <= 0;
     end else begin
-        if (REFRESH_COUNTER >= REFRESH_DEFAULT) begin
+        if (REFRESH_COUNTER > REFRESH_DEFAULT) begin
             REFRESH <= 1;
         end else begin
             REFRESH <= 0;
@@ -94,6 +94,7 @@ end
 //TO DO - UPDATE BYTE ENABLE MODULE WITH CAS INFO FOR DMA CYCLES!
 
 reg [1:0] RAS_SYNC;
+reg [1:0] REF_SYNC;
 reg [1:0] CAS_SYNC;
 reg [1:0] DBR_SYNC;
 
@@ -102,10 +103,14 @@ wire CAS_AGNUSn = ~(!CASLn || !CASUn);
 
 always @(negedge CLK80) begin
     if (!RESETn) begin
+        REF_SYNC <= 2'b00;
         RAS_SYNC <= 2'b11;
         CAS_SYNC <= 2'b11;
         DBR_SYNC <= 2'b11;
     end else begin
+        REF_SYNC[1] <= REF_SYNC[0];
+        REF_SYNC[0] <= (!RAS0n && !RAS1n);
+
         RAS_SYNC[1] <= RAS_SYNC[0];
         RAS_SYNC[0] <= RAS_AGNUSn;
 
@@ -122,7 +127,7 @@ end
 ////////////////////////
 
 /*
-THIS IS THE AGNUS DRAM MULTIPLEXING. 
+THIS IS THE AGNUS DRAM MULTIPLEXING.
 MA9 ONLY EXISTS ON 8375 VARIANTS.
 8372A USES A19 TO DRIVE RAS.
 
@@ -177,9 +182,9 @@ always @(negedge CLK80) begin
         if (RAS_SYNC == 2'b10) begin DMA_ROW_ADDRESS <= DRA; end
         if (CAS_SYNC == 2'b10) begin DMA_COL_ADDRESS <= DRA; end
 
-        DMA_CYCLE_START <= (CAS_SYNC == 2'b10) || (DMA_CYCLE_START && !DMA_CYCLE);
+        DMA_CYCLE_START <= (RAS_SYNC == 2'b00 && REF_SYNC == 2'b00) || (DMA_CYCLE_START && !DMA_CYCLE);
         CPU_CYCLE_START <= (!TSn && !RAMSPACEn) || (CPU_CYCLE_START && !CPU_CYCLE);
-        REFRESH_CYCLE_START <= REFRESH && !CPU_CYCLE && !DMA_CYCLE;
+        REFRESH_CYCLE_START <= REFRESH && !CPU_CYCLE_START && !CPU_CYCLE && !DMA_CYCLE_START && !DMA_CYCLE;
 
         CRCSn <= SDRAM_CMD[3];
         RASn  <= SDRAM_CMD[2];
@@ -193,7 +198,7 @@ always @(negedge CLK80) begin
                                               {1'b0, RAS0n, DMA_ROW_ADDRESS[8:0]}; //1MB Agnus row address.
                                               //{1'b0, DMA_ROW_ADDRESS[9:0]} //2MB Agnus row address.
             READ, WRITE  : CMA <= CPU_CYCLE ? {3'b000, A[18], A[8:2]} : //1MB and 2MB column addresses are the same.
-                                              {3'b00, DMA_COL_ADDRESS[8:1]};
+                                              {3'b000, DMA_COL_ADDRESS[8:1]};
         endcase
 
         if (!SDRAM_CONFIGURED) begin
@@ -219,7 +224,8 @@ always @(negedge CLK80) begin
             endcase
         end else begin
             if (REFRESH_CYCLE_START || REFRESH_CYCLE) begin
-                //REFRESH CYCLE
+                //The refresh cycle gets priority, but we cannot interrupt
+                //an in-progress data transfer cycle.
                 case (SDRAM_COUNTER)
                     8'h00 : begin
                         SDRAM_CMD <= AUTOREFRESH;
@@ -259,7 +265,7 @@ always @(negedge CLK80) begin
                     end
                     8'h01 : begin
                         SDRAM_CMD <= NOP;
-                        CPU_TACK <= WRITE_CYCLE; //Assert _TACK earlier for write cycles.
+                        //CPU_TACK <= (CPU_CYCLE && WRITE_CYCLE); //Assert _TACK earlier for write cycles.
                     end
                     8'h02 : begin
                         CPU_TACK <= 0;
@@ -270,13 +276,21 @@ always @(negedge CLK80) begin
                         end
                     end
                     8'h03 : begin
-                        SDRAM_CMD <= PRECHARGE;
+                        SDRAM_CMD <= PRECHARGE;                 
                     end
                     8'h04 : begin
                         SDRAM_CMD <= NOP;
+                        /*if (WRITE_CYCLE) begin
+                            BANK0 <= 0;
+                            CPU_CYCLE <= 0;
+                            DMA_CYCLE <= 0;
+                            DBENn <= 1;
+                            SDRAM_COUNTER <= 8'h00;
+                        end*/
                     end
                     8'h05 : begin
-                        CPU_TACK <= (CPU_CYCLE && !WRITE_CYCLE); //Assert _TACK here for read cycles.
+                        //CPU_TACK <= (CPU_CYCLE && !WRITE_CYCLE); //Assert _TACK here for read cycles.
+                        CPU_TACK <= CPU_CYCLE;
                         CLK_EN <= WRITE_CYCLE;
                     end
                     8'h06 : begin

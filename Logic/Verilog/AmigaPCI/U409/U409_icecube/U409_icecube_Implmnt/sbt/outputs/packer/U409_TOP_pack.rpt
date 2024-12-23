@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:31:51
 
-* File Generated:     Dec 21 2024 14:05:50
+* File Generated:     Dec 23 2024 16:31:35
 
 * Purpose:            General info of design implementation
 
@@ -40,7 +40,7 @@ Logic Resource Utilization:
     Total Logic Cells: 152/3520
         Combinational Logic Cells: 84       out of   3520      2.38636%
         Sequential Logic Cells:    68       out of   3520      1.93182%
-        Logic Tiles:               41       out of   440       9.31818%
+        Logic Tiles:               38       out of   440       8.63636%
     Registers: 
         Logic Registers:           68       out of   3520      1.93182%
         IO Registers:              0        out of   880       0
@@ -93,15 +93,15 @@ Detailed I/O Info:
     Output Pins: 
     Pin Number  Direction  IO Standard  Pull Up  IO Bank  IO Function                                Signal Name
     ----------  ---------  -----------  -------  -------  -----------                                -----------
-    48          Output     SB_LVCMOS    No       2        Simple Output                              RAMSPACEn  
+    48          Output     SB_LVCMOS    No       2        Simple Output                              nRAMSPACE  
     55          Output     SB_LVCMOS    No       2        Simple Output                              TICK60     
     56          Output     SB_LVCMOS    No       2        Simple Output                              TICK50     
-    78          Output     SB_LVCMOS    No       1        Simple Output                              CIACS0n    
-    79          Output     SB_LVCMOS    No       1        Simple Output                              CIACS1n    
-    118         Output     SB_LVCMOS    No       0        Simple Output                              REGSPACEn  
-    119         Output     SB_LVCMOS    No       0        Simple Output                              BUFENn     
+    78          Output     SB_LVCMOS    No       1        Simple Output                              nCIACS0    
+    79          Output     SB_LVCMOS    No       1        Simple Output                              nCIACS1    
+    118         Output     SB_LVCMOS    No       0        Simple Output                              nREGSPACE  
+    119         Output     SB_LVCMOS    No       0        Simple Output                              nBUFEN     
     122         Output     SB_LVCMOS    No       0        Simple Output                              CLKCIA     
-    124         Output     SB_LVCMOS    No       0        Simple Output                              ROMENn     
+    124         Output     SB_LVCMOS    No       0        Simple Output                              nROMEN     
     135         Output     SB_LVCMOS    Yes      0        Simple Output                              PORTSIZE   
 
     Inoutput Pins: 

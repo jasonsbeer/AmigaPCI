@@ -33,52 +33,58 @@ Revision History:
     23-JUN-2024 : ADDED AUTOVECTOR
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
+TO BUILD WITH APIO: apio build --top-module U409_TOP --fpga iCE40-HX4K-TQ144
 */
 
 module U409_ADDRESS_DECODE
 (
 
-    input RESETn, OVL, CIA_ENABLE, //TT0, TT1, LBENn,
+    input RESETn, OVL, CIA_ENABLE,
     input [31:1] A,
-    output ROMEN, CIA_SPACE, CIACS0n, CIACS1n, RAMSPACEn, REGSPACEn
+    output ROMEN, CIA_SPACE, nCIACS0, nCIACS1, nRAMSPACE, nREGSPACE
 
 );
 
-///////////////////////////
-// ZORRO 2 ADDRESS SPACE /
-/////////////////////////
+////////////////////////////
+// ZORRO 2 ADDRESS SPACE //
+//////////////////////////
 
 //WE NEED TO KNOW WHICH ADDRESS SPACE WE ARE IN SO WE DON'T RESPOND INCORRECTLY.
 
-wire Z2_SPACE;
-assign Z2_SPACE = A[31:24] == 8'h00;
+wire Z2_SPACE = A[31:24] == 8'h00;
 
-////////////////
-// ROM ENABLE /
-//////////////
+/////////////////
+// ROM ENABLE //
+///////////////
 
 //ROM IS ENABLED AT THE RESET VECTOR $0000 0000 WHEN OVL IS ASSERTED (HIGH) AND AT $00F8 0000 - $00FF FFFF.
 //BECAUSE OUR IDE AUTOBOOT DRIVER ALSO RESIDES ON THE ROM, IT IS ENABLED WHEN WE ENTER THE IDE SPACE UNTIL THE FIRST WRITE TO THE IDE SPACE.
+//KICKSTART JUMPS TO THE HIROM ADDRESS SPACE BEFORE OVL IS NEGATED, SO WE DON'T CHECK FOR IT AT THE HIROM ADDRESS.
 
-assign ROMEN = (RESETn && Z2_SPACE && ((OVL && A[23:21] == 3'b000) || (A[23:19] == 5'b11111))); // || (IDE_ACCESS && !IDE_ENABLE)));
+//assign ROMEN = (RESETn && Z2_SPACE && ((OVL && A[23:21] == 3'b000) || (A[23:19] == 5'b11111))); // || (IDE_ACCESS && !IDE_ENABLE)));
+//assign ROMEN = RESETn && Z2_SPACE && (OVL ? (A[23:21] == 3'b000) : (A[23:19] == 5'b11111));
 
-///////////////////////
-// CIA ADDRESS SPACE /
-/////////////////////
+assign ROMEN   = RESETn && Z2_SPACE && (LOWROM || HIROM);
+wire   LOWROM  = A[23:21] == 3'b000 && OVL;
+wire   HIROM   = A[23:19] == 5'b11111;
+
+////////////////////////
+// CIA ADDRESS SPACE //
+//////////////////////
 
 assign CIA_SPACE = RESETn && Z2_SPACE && A[23:16] == 8'hBF;
-assign CIACS0n = ~(CIA_ENABLE && !A[12]);
-assign CIACS1n = ~(CIA_ENABLE && !A[13]);
+assign nCIACS0 = !(CIA_ENABLE && !A[12]);
+assign nCIACS1 = !(CIA_ENABLE && !A[13]);
 
-//////////////////
-// AGNUS SPACES /
-////////////////
+///////////////////
+// AGNUS SPACES //
+/////////////////
 
 //AGNUS CONTROLS ACCESS TO CHIPSET REGISTERS.
 //THESE SIGNALS ARE CONSUMED BY U712.
 
-assign RAMSPACEn = ~(Z2_SPACE && !OVL && A[23:21] == 3'b000);
-assign REGSPACEn = ~(Z2_SPACE && A[23:16] == 8'hDF); //ADD RANGER SPACE HERE, AS PER A3000 GARY
+assign nRAMSPACE = !(Z2_SPACE && !OVL && A[23:21] == 3'b000);
+assign nREGSPACE = !(Z2_SPACE && A[23:16] == 8'hDF);
 
 //////////////////////
 // AUTOVECTOR SPACE /
