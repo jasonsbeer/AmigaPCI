@@ -21,6 +21,10 @@ module U712_TOP (
 
 //SPECIAL ATTENTION
 //assign TBIn = 1; //TRANSFER BURST INHIBIT IS MISSING FROM THE REV 4 BOARD.
+//assign RAMENn = DRDENn;
+//assign RAMENn = DRDDIR;
+//assign RAMENn = DBDIR;
+//assign RAMENn = AWEn;
 
 ///////////////////
 // CLOCK FANOUT //

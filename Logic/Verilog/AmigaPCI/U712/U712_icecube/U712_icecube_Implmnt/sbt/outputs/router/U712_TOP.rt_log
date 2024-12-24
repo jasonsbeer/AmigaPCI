@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:45:10
 
-* File Generated:     Dec 23 2024 17:07:46
+* File Generated:     Dec 23 2024 21:58:01
 
 * Purpose:            Router runtime info
 
@@ -22,10 +22,10 @@ Info-1404: Inferred PLL generated clock at pll/PLLOUTCOREA
 Info-1404: Inferred PLL generated clock at pll/PLLOUTGLOBALB
 Info-1404: Inferred PLL generated clock at pll/PLLOUTGLOBALA
 I1209: Started routing
-I1223: Total Nets : 290 
-I1212: Iteration  1 :   113 unrouted : 1 seconds
-I1212: Iteration  2 :    27 unrouted : 1 seconds
-I1212: Iteration  3 :     6 unrouted : 0 seconds
+I1223: Total Nets : 301 
+I1212: Iteration  1 :    94 unrouted : 1 seconds
+I1212: Iteration  2 :    22 unrouted : 1 seconds
+I1212: Iteration  3 :     4 unrouted : 0 seconds
 I1212: Iteration  4 :     4 unrouted : 0 seconds
 I1212: Iteration  5 :     4 unrouted : 0 seconds
 I1212: Iteration  6 :     4 unrouted : 0 seconds
@@ -40,4 +40,4 @@ I1206: Completed routing
 I1204: Writing Design U712_TOP
 I1210: Writing routes
 I1218: Exiting the router
-I1224: Router run-time : 10 seconds
+I1224: Router run-time : 11 seconds

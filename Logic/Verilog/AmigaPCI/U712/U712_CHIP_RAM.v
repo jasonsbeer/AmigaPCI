@@ -21,7 +21,8 @@ module U712_CHIP_RAM (
 );
 
 //FOR TESTING
-assign RAMENn = RAMSPACEn;
+//assign RAMENn = RAMSPACEn;
+assign RAMENn = DMA_CYCLE;
 
 /////////////////
 // PARAMETERS //
@@ -94,7 +95,7 @@ end
 //TO DO - UPDATE BYTE ENABLE MODULE WITH CAS INFO FOR DMA CYCLES!
 
 reg [1:0] RAS_SYNC;
-reg [1:0] REF_SYNC;
+//reg [1:0] REF_SYNC;
 reg [1:0] CAS_SYNC;
 reg [1:0] DBR_SYNC;
 
@@ -103,13 +104,13 @@ wire CAS_AGNUSn = ~(!CASLn || !CASUn);
 
 always @(negedge CLK80) begin
     if (!RESETn) begin
-        REF_SYNC <= 2'b00;
+        //REF_SYNC <= 2'b00;
         RAS_SYNC <= 2'b11;
         CAS_SYNC <= 2'b11;
         DBR_SYNC <= 2'b11;
     end else begin
-        REF_SYNC[1] <= REF_SYNC[0];
-        REF_SYNC[0] <= (!RAS0n && !RAS1n);
+        //REF_SYNC[1] <= REF_SYNC[0];
+        //REF_SYNC[0] <= (!RAS0n && !RAS1n);
 
         RAS_SYNC[1] <= RAS_SYNC[0];
         RAS_SYNC[0] <= RAS_AGNUSn;
@@ -182,7 +183,8 @@ always @(negedge CLK80) begin
         if (RAS_SYNC == 2'b10) begin DMA_ROW_ADDRESS <= DRA; end
         if (CAS_SYNC == 2'b10) begin DMA_COL_ADDRESS <= DRA; end
 
-        DMA_CYCLE_START <= (RAS_SYNC == 2'b00 && REF_SYNC == 2'b00) || (DMA_CYCLE_START && !DMA_CYCLE);
+        //DMA_CYCLE_START <= (RAS_SYNC == 2'b00 && REF_SYNC == 2'b00) || (DMA_CYCLE_START && !DMA_CYCLE);
+        DMA_CYCLE_START <= (CAS_SYNC == 2'b10 || (DMA_CYCLE_START && !DMA_CYCLE));
         CPU_CYCLE_START <= (!TSn && !RAMSPACEn) || (CPU_CYCLE_START && !CPU_CYCLE);
         REFRESH_CYCLE_START <= REFRESH && !CPU_CYCLE_START && !CPU_CYCLE && !DMA_CYCLE_START && !DMA_CYCLE;
 
@@ -254,12 +256,12 @@ always @(negedge CLK80) begin
                         CLK_EN <= 1;
                         if ((CPU_CYCLE_START && DBR_SYNC == 2'b11) || DMA_CYCLE_START) begin
                             SDRAM_CMD <= BANKACTIVATE;
-                            CPU_CYCLE <= CPU_CYCLE_START && !DMA_CYCLE_START;
+                            CPU_CYCLE <= !DMA_CYCLE_START;
                             DMA_CYCLE <= DMA_CYCLE_START;
-                            DBENn <= ~(DMA_COL_ADDRESS[0] && DMA_CYCLE_START); //_DBEN is driven by DRA0 from the column address.
+                            DBENn <= !(DMA_COL_ADDRESS[0] && DMA_CYCLE_START); //_DBEN is driven by DRA0 from the column address.
                             SDRAM_COUNTER <= 8'h01;
-                            DBDIR <= ~AWEn;
-                            WRITE_CYCLE <= (DMA_CYCLE_START && !AWEn) || (CPU_CYCLE_START && !RnW);
+                            DBDIR <= !AWEn;
+                            WRITE_CYCLE <= DMA_CYCLE_START ? !AWEn : !RnW;
                             BANK0 <= (TWO_MB_EN && A[20]); //DMA_COL_ADDRESS[9]
                         end
                     end
@@ -297,8 +299,17 @@ always @(negedge CLK80) begin
                         CPU_TACK <= 0;
                     end
                     8'h07 : begin
+                        if (CPU_CYCLE) begin
+                            BANK0 <= 0;
+                            CPU_CYCLE <= 0;
+                            //DMA_CYCLE <= 0;
+                            //DBENn <= 1;
+                            SDRAM_COUNTER <= 8'h00;
+                        end
+                    end
+                    8'h09 : begin
                         BANK0 <= 0;
-                        CPU_CYCLE <= 0;
+                        //CPU_CYCLE <= 0;
                         DMA_CYCLE <= 0;
                         DBENn <= 1;
                         SDRAM_COUNTER <= 8'h00;
