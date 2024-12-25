@@ -78,8 +78,9 @@ end
 //////////////
 
 //WE DELAY ASSERTION OF _TACK BY 100ns TO SUPPORT SETUP TIME FOR THE ROM.
-
-localparam integer ROM_TACK_DELAY = 3; //5 is the appropriate delay for 100ns.
+//5 is the appropriate delay for 100ns.
+//I was using 3 successfully.
+localparam integer ROM_TACK_DELAY = 5;
 reg [2:0] ROM_TACK_COUNTER;
 reg  ROM_TACK_EN;
 always @(posedge CLK80) begin
@@ -163,13 +164,9 @@ end
 localparam DELAYED_TACK_DELAY = 8'hF9; //249 CLOCK CYCLES
 reg [7:0] DELAYED_TACK_COUNTER;
 reg DELAYED_TACK_EN;
-//reg [1:0]RAMSPACE;
-
-//wire DELAYED_TACK_RST = !TACKn || !RESETn;
+    
 wire DELAYED_TACK_RST = !TACKn || !RESETn || AGNUS_SPACE;
-//wire DELAYED_TACK_RST = !TACKn || !RESETn || !nREGSPACE; //WORKS!
-//wire DELAYED_TACK_RST = !TACKn || !RESETn || !nREGSPACE || !nRAMSPACE; //FAILS!
-
+    
 always @(posedge CLK80, posedge DELAYED_TACK_RST) begin
     if (DELAYED_TACK_RST) begin
         DELAYED_TACK_EN <= 0;
