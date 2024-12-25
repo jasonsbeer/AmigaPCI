@@ -57,7 +57,6 @@ localparam [7:0] REFRESH_DEFAULT = 8'h1B;   //d27
 //SINCE WE ARE JUMPING BETWEEN CLOCK DOMAINS, WE NEED TO HAVE
 //TWO PROCESSES TO ACCOMODATE THE JUMP.
 
-reg REFRESH;
 reg [7:0] REFRESH_COUNTER;
 wire REFRESH_RST = SDRAM_CMD == AUTOREFRESH ? 1 : 0;
 
@@ -69,14 +68,16 @@ always @(posedge C1, posedge REFRESH_RST) begin
     end
 end
 
+reg [1:0] REFRESH;
 always @(negedge CLK80) begin
     if (!RESETn) begin
-        REFRESH <= 0;
+        REFRESH <= 2'b00;
     end else begin
         if (REFRESH_COUNTER > REFRESH_DEFAULT) begin
-            REFRESH <= 1;
+            REFRESH[1] <= REFRESH[0];
+            REFRESH[0] <= 1'b1;
         end else begin
-            REFRESH <= 0;
+            REFRESH <= 2'b00;
         end
     end
 end
@@ -138,6 +139,13 @@ IN AGNUS 8372A, _RAS0 = A19. _RAS1 = A19 INVERSE.
     ----------------------------------------
 ROW: A19 A17 A16 A15 A14 A13 A12 A11 A10  A9
 COL: A20 A18  A8  A7  A6  A5  A4  A3  A2  A1
+
+AGNUS MULTIADAPTER ADDRESS SIGNAL CONFIGURATION
+
+      DRA9 DRA8 DRA7 DRA6 DRA5 DRA4 DRA3 DRA2 DRA1 DRA0
+      -------------------------------------------------
+8372A  MA8  MA7  MA6  MA5  MA4  MA3  MA2  MA1  MA0  X 
+8375   MA9  MA8  MA7  MA6  MA5  MA4  MA3  MA2  MA1  MA0
 */
 
 assign BANK1 = 0;
@@ -186,7 +194,7 @@ always @(negedge CLK80) begin
         //DMA_CYCLE_START <= (RAS_SYNC == 2'b00 && REF_SYNC == 2'b00) || (DMA_CYCLE_START && !DMA_CYCLE);
         DMA_CYCLE_START <= (CAS_SYNC == 2'b10 || (DMA_CYCLE_START && !DMA_CYCLE));
         CPU_CYCLE_START <= (!TSn && !RAMSPACEn) || (CPU_CYCLE_START && !CPU_CYCLE);
-        REFRESH_CYCLE_START <= REFRESH && !CPU_CYCLE_START && !CPU_CYCLE && !DMA_CYCLE_START && !DMA_CYCLE;
+        REFRESH_CYCLE_START <= REFRESH == 2'b11 && !CPU_CYCLE_START && !CPU_CYCLE && !DMA_CYCLE_START && !DMA_CYCLE;
 
         CRCSn <= SDRAM_CMD[3];
         RASn  <= SDRAM_CMD[2];

@@ -1,4 +1,4 @@
-# Mon Dec 23 21:57:38 2024
+# Wed Dec 25 14:30:15 2024
 
 Synopsys Lattice Technology Mapper, Version maplat, Build 1612R, Built Dec  5 2016 10:31:39
 Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
@@ -58,7 +58,7 @@ original code -> new code
 Starting factoring (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 132MB peak: 133MB)
 
 @W: BN132 :"d:\amigapci\u712\u712_reg_sm.v":38:0:38:5|Removing instance U712_REG_SM.DBR_SYNC[0] because it is equivalent to instance U712_CHIP_RAM.DBR_SYNC[0]. To keep the instance, apply constraint syn_preserve=1 on the instance.
-@W: BN132 :"d:\amigapci\u712\u712_chip_ram.v":105:0:105:5|Removing instance U712_CHIP_RAM.DBR_SYNC[1] because it is equivalent to instance U712_REG_SM.DBR_SYNC[1]. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: BN132 :"d:\amigapci\u712\u712_chip_ram.v":110:0:110:5|Removing instance U712_CHIP_RAM.DBR_SYNC[1] because it is equivalent to instance U712_REG_SM.DBR_SYNC[1]. To keep the instance, apply constraint syn_preserve=1 on the instance.
 
 Finished factoring (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 135MB peak: 136MB)
 
@@ -81,51 +81,51 @@ Finished generic timing optimizations - Pass 2 (Real Time elapsed 0h:00m:00s; CP
 Finished preparing to map (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 134MB peak: 136MB)
 
 
-Finished technology mapping (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 139MB peak: 141MB)
+Finished technology mapping (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 141MB peak: 143MB)
 
 Pass		 CPU time		Worst Slack		Luts / Registers
 ------------------------------------------------------------
-   1		0h:00m:00s		    -1.74ns		 200 /       100
+   1		0h:00m:00s		    -1.74ns		 190 /       101
 
 
 
 @A: BN291 :"d:\amigapci\u712\u712_reg_sm.v":38:0:38:5|Boundary register U712_REG_SM.REGENn_1 (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
-@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":156:0:156:5|Boundary register U712_CHIP_RAM.DMA_COL_ADDRESS[8] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
-@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":156:0:156:5|Boundary register U712_CHIP_RAM.DMA_COL_ADDRESS[7] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
-@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":156:0:156:5|Boundary register U712_CHIP_RAM.DMA_COL_ADDRESS[6] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
-@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":156:0:156:5|Boundary register U712_CHIP_RAM.DMA_COL_ADDRESS[5] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
-@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":156:0:156:5|Boundary register U712_CHIP_RAM.DMA_COL_ADDRESS[4] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
-@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":156:0:156:5|Boundary register U712_CHIP_RAM.DMA_COL_ADDRESS[3] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
-@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":156:0:156:5|Boundary register U712_CHIP_RAM.DMA_COL_ADDRESS[2] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
-@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":156:0:156:5|Boundary register U712_CHIP_RAM.DMA_COL_ADDRESS[1] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
-@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":156:0:156:5|Boundary register U712_CHIP_RAM.DMA_COL_ADDRESS[0] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
-@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":156:0:156:5|Boundary register U712_CHIP_RAM.DMA_ROW_ADDRESS[8] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
-@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":156:0:156:5|Boundary register U712_CHIP_RAM.DMA_ROW_ADDRESS[7] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
-@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":156:0:156:5|Boundary register U712_CHIP_RAM.DMA_ROW_ADDRESS[6] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
-@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":156:0:156:5|Boundary register U712_CHIP_RAM.DMA_ROW_ADDRESS[5] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
-@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":156:0:156:5|Boundary register U712_CHIP_RAM.DMA_ROW_ADDRESS[4] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
-@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":156:0:156:5|Boundary register U712_CHIP_RAM.DMA_ROW_ADDRESS[3] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
-@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":156:0:156:5|Boundary register U712_CHIP_RAM.DMA_ROW_ADDRESS[2] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
-@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":156:0:156:5|Boundary register U712_CHIP_RAM.DMA_ROW_ADDRESS[1] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
-@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":156:0:156:5|Boundary register U712_CHIP_RAM.DMA_ROW_ADDRESS[0] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
-@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":156:0:156:5|Boundary register U712_CHIP_RAM.CMA[10] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
-@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":156:0:156:5|Boundary register U712_CHIP_RAM.CMA[9] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
-@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":156:0:156:5|Boundary register U712_CHIP_RAM.CMA[8] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
-@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":156:0:156:5|Boundary register U712_CHIP_RAM.CMA[7] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
-@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":156:0:156:5|Boundary register U712_CHIP_RAM.CMA[6] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
-@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":156:0:156:5|Boundary register U712_CHIP_RAM.CMA[5] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
-@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":156:0:156:5|Boundary register U712_CHIP_RAM.CMA[4] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
-@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":156:0:156:5|Boundary register U712_CHIP_RAM.CMA[3] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
-@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":156:0:156:5|Boundary register U712_CHIP_RAM.CMA[2] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
-@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":156:0:156:5|Boundary register U712_CHIP_RAM.CMA[1] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
-@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":156:0:156:5|Boundary register U712_CHIP_RAM.CMA[0] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":161:0:161:5|Boundary register U712_CHIP_RAM.DMA_COL_ADDRESS[8] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":161:0:161:5|Boundary register U712_CHIP_RAM.DMA_COL_ADDRESS[7] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":161:0:161:5|Boundary register U712_CHIP_RAM.DMA_COL_ADDRESS[6] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":161:0:161:5|Boundary register U712_CHIP_RAM.DMA_COL_ADDRESS[5] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":161:0:161:5|Boundary register U712_CHIP_RAM.DMA_COL_ADDRESS[4] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":161:0:161:5|Boundary register U712_CHIP_RAM.DMA_COL_ADDRESS[3] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":161:0:161:5|Boundary register U712_CHIP_RAM.DMA_COL_ADDRESS[2] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":161:0:161:5|Boundary register U712_CHIP_RAM.DMA_COL_ADDRESS[1] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":161:0:161:5|Boundary register U712_CHIP_RAM.DMA_COL_ADDRESS[0] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":161:0:161:5|Boundary register U712_CHIP_RAM.DMA_ROW_ADDRESS[8] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":161:0:161:5|Boundary register U712_CHIP_RAM.DMA_ROW_ADDRESS[7] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":161:0:161:5|Boundary register U712_CHIP_RAM.DMA_ROW_ADDRESS[6] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":161:0:161:5|Boundary register U712_CHIP_RAM.DMA_ROW_ADDRESS[5] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":161:0:161:5|Boundary register U712_CHIP_RAM.DMA_ROW_ADDRESS[4] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":161:0:161:5|Boundary register U712_CHIP_RAM.DMA_ROW_ADDRESS[3] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":161:0:161:5|Boundary register U712_CHIP_RAM.DMA_ROW_ADDRESS[2] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":161:0:161:5|Boundary register U712_CHIP_RAM.DMA_ROW_ADDRESS[1] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":161:0:161:5|Boundary register U712_CHIP_RAM.DMA_ROW_ADDRESS[0] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":161:0:161:5|Boundary register U712_CHIP_RAM.CMA[10] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":161:0:161:5|Boundary register U712_CHIP_RAM.CMA[9] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":161:0:161:5|Boundary register U712_CHIP_RAM.CMA[8] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":161:0:161:5|Boundary register U712_CHIP_RAM.CMA[7] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":161:0:161:5|Boundary register U712_CHIP_RAM.CMA[6] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":161:0:161:5|Boundary register U712_CHIP_RAM.CMA[5] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":161:0:161:5|Boundary register U712_CHIP_RAM.CMA[4] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":161:0:161:5|Boundary register U712_CHIP_RAM.CMA[3] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":161:0:161:5|Boundary register U712_CHIP_RAM.CMA[2] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":161:0:161:5|Boundary register U712_CHIP_RAM.CMA[1] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":161:0:161:5|Boundary register U712_CHIP_RAM.CMA[0] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
 @N: FX1017 :"d:\amigapci\u712\u712_top.v":6:20:6:21|SB_GB inserted on the net C1_c.
 @N: FX1017 :|SB_GB inserted on the net RESETn_c_i.
 
-Finished technology timing optimizations and critical path resynthesis (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 140MB peak: 141MB)
+Finished technology timing optimizations and critical path resynthesis (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 141MB peak: 143MB)
 
 
-Finished restoring hierarchy (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 140MB peak: 141MB)
+Finished restoring hierarchy (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 141MB peak: 143MB)
 
 @N: MT611 :|Automatically generated clock U712_TOP|CLK40_OUT_derived_clock is not used and is being removed
 
@@ -136,8 +136,8 @@ Finished restoring hierarchy (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:
 #### START OF CLOCK OPTIMIZATION REPORT #####[
 
 1 non-gated/non-generated clock tree(s) driving 8 clock pin(s) of sequential element(s)
-1 gated/generated clock tree(s) driving 92 clock pin(s) of sequential element(s)
-0 instances converted, 92 sequential instances remain driven by gated/generated clocks
+1 gated/generated clock tree(s) driving 93 clock pin(s) of sequential element(s)
+0 instances converted, 93 sequential instances remain driven by gated/generated clocks
 
 ==================================== Non-Gated/Non-Generated Clocks ====================================
 Clock Tree ID     Driving Element     Drive Element Type     Fanout     Sample Instance                 
@@ -147,18 +147,18 @@ Clock Tree ID     Driving Element     Drive Element Type     Fanout     Sample I
 ====================================================================================================== Gated/Generated Clocks ======================================================================================================
 Clock Tree ID     Driving Element     Drive Element Type     Fanout     Sample Instance               Explanation                                                                                                                   
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-@K:CKID0001       pll                 SB_PLL40_2F_CORE       92         U712_CYCLE_TERM.TACK_OUTn     Gating structure creates improper gating logic. See the Gated Clocks description in the user guide for conversion requirements
+@K:CKID0001       pll                 SB_PLL40_2F_CORE       93         U712_CYCLE_TERM.TACK_OUTn     Gating structure creates improper gating logic. See the Gated Clocks description in the user guide for conversion requirements
 ====================================================================================================================================================================================================================================
 
 
 ##### END OF CLOCK OPTIMIZATION REPORT ######]
 
 
-Start Writing Netlists (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 114MB peak: 141MB)
+Start Writing Netlists (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 115MB peak: 143MB)
 
 Writing Analyst data base D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\synwork\U712_icecube_m.srm
 
-Finished Writing Netlist Databases (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 139MB peak: 141MB)
+Finished Writing Netlist Databases (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 141MB peak: 143MB)
 
 Writing EDIF Netlist and constraint files
 @N: BW103 |The default time unit for the Synopsys Constraint File (SDC or FDC) is 1ns.
@@ -166,10 +166,10 @@ Writing EDIF Netlist and constraint files
 @N: FX1056 |Writing EDF file: D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\U712_icecube.edf
 L-2016.09L+ice40
 
-Finished Writing EDIF Netlist and constraint files (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 140MB peak: 142MB)
+Finished Writing EDIF Netlist and constraint files (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 142MB peak: 144MB)
 
 
-Start final timing analysis (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 140MB peak: 142MB)
+Start final timing analysis (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 142MB peak: 144MB)
 
 @N: MT615 |Found clock CLK40_IN with period 25.00ns 
 @N: MT615 |Found clock C1 with period 279.33ns 
@@ -178,7 +178,7 @@ Start final timing analysis (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:0
 
 
 ##### START OF TIMING REPORT #####[
-# Timing Report written on Mon Dec 23 21:57:40 2024
+# Timing Report written on Wed Dec 25 14:30:17 2024
 #
 
 
@@ -198,21 +198,21 @@ Performance Summary
 *******************
 
 
-Worst slack in design: -4.529
+Worst slack in design: -4.690
 
                                      Requested     Estimated     Requested     Estimated                 Clock                       Clock           
 Starting Clock                       Frequency     Frequency     Period        Period        Slack       Type                        Group           
 -----------------------------------------------------------------------------------------------------------------------------------------------------
-C1                                   3.6 MHz       0.8 MHz       279.330       1230.415      -4.529      declared                    default_clkgroup
+C1                                   3.6 MHz       0.8 MHz       279.330       1264.292      -4.690      declared                    default_clkgroup
 C3                                   3.6 MHz       NA            279.330       NA            NA          declared                    default_clkgroup
 CLK40_IN                             40.0 MHz      NA            25.000        NA            DCM/PLL     declared                    default_clkgroup
-U712_TOP|CLK80_OUT_derived_clock     80.0 MHz      18.2 MHz      12.500        55.061        -2.443      derived (from CLK40_IN)     default_clkgroup
+U712_TOP|CLK80_OUT_derived_clock     80.0 MHz      17.7 MHz      12.500        56.577        -0.420      derived (from CLK40_IN)     default_clkgroup
 =====================================================================================================================================================
 @N: MT582 |Estimated period and frequency not reported for given clock unless the clock has at least one timing path which is not a false or a max delay path and that does not have excessive slack
 
 
-@W: MT116 |Paths from clock (U712_TOP|CLK80_OUT_derived_clock:r) to clock (C1:r) are overconstrained because the required time of 2.84 ns is too small.  
 @W: MT116 |Paths from clock (C1:r) to clock (U712_TOP|CLK80_OUT_derived_clock:r) are overconstrained because the required time of 1.33 ns is too small.  
+@W: MT116 |Paths from clock (U712_TOP|CLK80_OUT_derived_clock:r) to clock (C1:r) are overconstrained because the required time of 2.84 ns is too small.  
 
 
 
@@ -224,8 +224,8 @@ Clocks                                                              |    rise  t
 Starting                          Ending                            |  constraint  slack    |  constraint  slack  |  constraint  slack  |  constraint  slack
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
 C1                                C1                                |  279.330     274.543  |  No paths    -      |  No paths    -      |  No paths    -    
-C1                                U712_TOP|CLK80_OUT_derived_clock  |  1.330       -4.529   |  No paths    -      |  No paths    -      |  No paths    -    
-U712_TOP|CLK80_OUT_derived_clock  U712_TOP|CLK80_OUT_derived_clock  |  12.500      -2.444   |  No paths    -      |  No paths    -      |  No paths    -    
+C1                                U712_TOP|CLK80_OUT_derived_clock  |  1.330       -4.690   |  No paths    -      |  No paths    -      |  No paths    -    
+U712_TOP|CLK80_OUT_derived_clock  U712_TOP|CLK80_OUT_derived_clock  |  12.500      -0.420   |  No paths    -      |  No paths    -      |  No paths    -    
 ============================================================================================================================================================
  Note: 'No paths' indicates there are no paths in the design for that pair of clock edges.
        'Diff grp' indicates that paths exist but the starting clock and ending clock are in different clock groups.
@@ -252,12 +252,12 @@ Starting Points with Worst Slack
 Instance                             Reference     Type        Pin     Net                    Time        Slack  
                                      Clock                                                                       
 -----------------------------------------------------------------------------------------------------------------
-U712_CHIP_RAM.REFRESH_COUNTER[2]     C1            SB_DFFR     Q       REFRESH6lto2           0.540       -4.529 
-U712_CHIP_RAM.REFRESH_COUNTER[3]     C1            SB_DFFR     Q       REFRESH_COUNTER[3]     0.540       -4.487 
-U712_CHIP_RAM.REFRESH_COUNTER[4]     C1            SB_DFFR     Q       REFRESH_COUNTER[4]     0.540       -4.458 
-U712_CHIP_RAM.REFRESH_COUNTER[5]     C1            SB_DFFR     Q       REFRESH_COUNTER[5]     0.540       -4.395 
-U712_CHIP_RAM.REFRESH_COUNTER[6]     C1            SB_DFFR     Q       REFRESH_COUNTER[6]     0.540       -2.821 
-U712_CHIP_RAM.REFRESH_COUNTER[7]     C1            SB_DFFR     Q       REFRESH_COUNTER[7]     0.540       -2.800 
+U712_CHIP_RAM.REFRESH_COUNTER[2]     C1            SB_DFFR     Q       REFRESH9lto2           0.540       -4.690 
+U712_CHIP_RAM.REFRESH_COUNTER[5]     C1            SB_DFFR     Q       REFRESH_COUNTER[5]     0.540       -4.690 
+U712_CHIP_RAM.REFRESH_COUNTER[3]     C1            SB_DFFR     Q       REFRESH_COUNTER[3]     0.540       -4.641 
+U712_CHIP_RAM.REFRESH_COUNTER[6]     C1            SB_DFFR     Q       REFRESH_COUNTER[6]     0.540       -4.641 
+U712_CHIP_RAM.REFRESH_COUNTER[4]     C1            SB_DFFR     Q       REFRESH_COUNTER[4]     0.540       -4.620 
+U712_CHIP_RAM.REFRESH_COUNTER[7]     C1            SB_DFFR     Q       REFRESH_COUNTER[7]     0.540       -4.487 
 U712_CHIP_RAM.REFRESH_COUNTER[0]     C1            SB_DFFR     Q       REFRESH_COUNTER[0]     0.540       274.543
 U712_CHIP_RAM.REFRESH_COUNTER[1]     C1            SB_DFFR     Q       REFRESH_COUNTER[1]     0.540       274.683
 =================================================================================================================
@@ -266,20 +266,21 @@ U712_CHIP_RAM.REFRESH_COUNTER[1]     C1            SB_DFFR     Q       REFRESH_C
 Ending Points with Worst Slack
 ******************************
 
-                                     Starting                                                   Required            
-Instance                             Reference     Type        Pin     Net                      Time         Slack  
-                                     Clock                                                                          
---------------------------------------------------------------------------------------------------------------------
-U712_CHIP_RAM.REFRESH                C1            SB_DFF      D       REFRESH_0                1.225        -4.529 
-U712_CHIP_RAM.REFRESH_COUNTER[7]     C1            SB_DFFR     D       REFRESH_COUNTER_s[7]     279.224      274.543
-U712_CHIP_RAM.REFRESH_COUNTER[6]     C1            SB_DFFR     D       REFRESH_COUNTER_s[6]     279.224      274.683
-U712_CHIP_RAM.REFRESH_COUNTER[5]     C1            SB_DFFR     D       REFRESH_COUNTER_s[5]     279.224      274.824
-U712_CHIP_RAM.REFRESH_COUNTER[4]     C1            SB_DFFR     D       REFRESH_COUNTER_s[4]     279.224      274.964
-U712_CHIP_RAM.REFRESH_COUNTER[3]     C1            SB_DFFR     D       REFRESH_COUNTER_s[3]     279.224      275.104
-U712_CHIP_RAM.REFRESH_COUNTER[0]     C1            SB_DFFR     D       REFRESH_COUNTER_s[0]     279.224      275.179
-U712_CHIP_RAM.REFRESH_COUNTER[1]     C1            SB_DFFR     D       REFRESH_COUNTER_s[1]     279.224      275.179
-U712_CHIP_RAM.REFRESH_COUNTER[2]     C1            SB_DFFR     D       REFRESH_COUNTER_s[2]     279.224      275.179
-====================================================================================================================
+                                     Starting                                                    Required            
+Instance                             Reference     Type         Pin     Net                      Time         Slack  
+                                     Clock                                                                           
+---------------------------------------------------------------------------------------------------------------------
+U712_CHIP_RAM.REFRESH[0]             C1            SB_DFFSR     D       REFRESH9_0_i             1.225        -4.690 
+U712_CHIP_RAM.REFRESH[1]             C1            SB_DFFSR     D       REFRESHc                 1.225        -4.690 
+U712_CHIP_RAM.REFRESH_COUNTER[7]     C1            SB_DFFR      D       REFRESH_COUNTER_s[7]     279.224      274.543
+U712_CHIP_RAM.REFRESH_COUNTER[6]     C1            SB_DFFR      D       REFRESH_COUNTER_s[6]     279.224      274.683
+U712_CHIP_RAM.REFRESH_COUNTER[5]     C1            SB_DFFR      D       REFRESH_COUNTER_s[5]     279.224      274.824
+U712_CHIP_RAM.REFRESH_COUNTER[4]     C1            SB_DFFR      D       REFRESH_COUNTER_s[4]     279.224      274.964
+U712_CHIP_RAM.REFRESH_COUNTER[3]     C1            SB_DFFR      D       REFRESH_COUNTER_s[3]     279.224      275.104
+U712_CHIP_RAM.REFRESH_COUNTER[0]     C1            SB_DFFR      D       REFRESH_COUNTER_s[0]     279.224      275.179
+U712_CHIP_RAM.REFRESH_COUNTER[1]     C1            SB_DFFR      D       REFRESH_COUNTER_s[1]     279.224      275.179
+U712_CHIP_RAM.REFRESH_COUNTER[2]     C1            SB_DFFR      D       REFRESH_COUNTER_s[2]     279.224      275.179
+=====================================================================================================================
 
 
 
@@ -293,30 +294,30 @@ Path information for path number 1:
     + Clock delay at ending point:           0.000 (ideal)
     = Required time:                         1.225
 
-    - Propagation time:                      5.753
+    - Propagation time:                      5.915
     - Clock delay at starting point:         0.000 (ideal)
-    = Slack (critical) :                     -4.529
+    = Slack (critical) :                     -4.690
 
     Number of logic level(s):                2
     Starting point:                          U712_CHIP_RAM.REFRESH_COUNTER[2] / Q
-    Ending point:                            U712_CHIP_RAM.REFRESH / D
+    Ending point:                            U712_CHIP_RAM.REFRESH[1] / D
     The start point is clocked by            C1 [rising] on pin C
     The end   point is clocked by            U712_TOP|CLK80_OUT_derived_clock [rising] on pin C
 
-Instance / Net                                   Pin      Pin               Arrival     No. of    
-Name                                 Type        Name     Dir     Delay     Time        Fan Out(s)
---------------------------------------------------------------------------------------------------
-U712_CHIP_RAM.REFRESH_COUNTER[2]     SB_DFFR     Q        Out     0.540     0.540       -         
-REFRESH6lto2                         Net         -        -       1.599     -           3         
-U712_CHIP_RAM.REFRESH_RNO_0          SB_LUT4     I0       In      -         2.139       -         
-U712_CHIP_RAM.REFRESH_RNO_0          SB_LUT4     O        Out     0.449     2.588       -         
-REFRESH_r_1                          Net         -        -       1.371     -           1         
-U712_CHIP_RAM.REFRESH_RNO            SB_LUT4     I3       In      -         3.959       -         
-U712_CHIP_RAM.REFRESH_RNO            SB_LUT4     O        Out     0.287     4.246       -         
-REFRESH_0                            Net         -        -       1.507     -           1         
-U712_CHIP_RAM.REFRESH                SB_DFF      D        In      -         5.753       -         
-==================================================================================================
-Total path delay (propagation time + setup) of 5.859 is 1.382(23.6%) logic and 4.477(76.4%) route.
+Instance / Net                                    Pin      Pin               Arrival     No. of    
+Name                                 Type         Name     Dir     Delay     Time        Fan Out(s)
+---------------------------------------------------------------------------------------------------
+U712_CHIP_RAM.REFRESH_COUNTER[2]     SB_DFFR      Q        Out     0.540     0.540       -         
+REFRESH9lto2                         Net          -        -       1.599     -           4         
+U712_CHIP_RAM.REFRESH_RNO_0[1]       SB_LUT4      I0       In      -         2.139       -         
+U712_CHIP_RAM.REFRESH_RNO_0[1]       SB_LUT4      O        Out     0.449     2.588       -         
+REFRESH9lt7                          Net          -        -       1.371     -           1         
+U712_CHIP_RAM.REFRESH_RNO[1]         SB_LUT4      I0       In      -         3.959       -         
+U712_CHIP_RAM.REFRESH_RNO[1]         SB_LUT4      O        Out     0.449     4.408       -         
+REFRESHc                             Net          -        -       1.507     -           1         
+U712_CHIP_RAM.REFRESH[1]             SB_DFFSR     D        In      -         5.915       -         
+===================================================================================================
+Total path delay (propagation time + setup) of 6.020 is 1.543(25.6%) logic and 4.477(74.4%) route.
 Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
 
 
@@ -326,30 +327,30 @@ Path information for path number 2:
     + Clock delay at ending point:           0.000 (ideal)
     = Required time:                         1.225
 
-    - Propagation time:                      5.711
+    - Propagation time:                      5.915
     - Clock delay at starting point:         0.000 (ideal)
-    = Slack (non-critical) :                 -4.486
+    = Slack (critical) :                     -4.690
 
     Number of logic level(s):                2
-    Starting point:                          U712_CHIP_RAM.REFRESH_COUNTER[3] / Q
-    Ending point:                            U712_CHIP_RAM.REFRESH / D
+    Starting point:                          U712_CHIP_RAM.REFRESH_COUNTER[5] / Q
+    Ending point:                            U712_CHIP_RAM.REFRESH[0] / D
     The start point is clocked by            C1 [rising] on pin C
     The end   point is clocked by            U712_TOP|CLK80_OUT_derived_clock [rising] on pin C
 
-Instance / Net                                   Pin      Pin               Arrival     No. of    
-Name                                 Type        Name     Dir     Delay     Time        Fan Out(s)
---------------------------------------------------------------------------------------------------
-U712_CHIP_RAM.REFRESH_COUNTER[3]     SB_DFFR     Q        Out     0.540     0.540       -         
-REFRESH_COUNTER[3]                   Net         -        -       1.599     -           3         
-U712_CHIP_RAM.REFRESH_RNO_0          SB_LUT4     I1       In      -         2.139       -         
-U712_CHIP_RAM.REFRESH_RNO_0          SB_LUT4     O        Out     0.379     2.518       -         
-REFRESH_r_1                          Net         -        -       1.371     -           1         
-U712_CHIP_RAM.REFRESH_RNO            SB_LUT4     I3       In      -         3.889       -         
-U712_CHIP_RAM.REFRESH_RNO            SB_LUT4     O        Out     0.316     4.204       -         
-REFRESH_0                            Net         -        -       1.507     -           1         
-U712_CHIP_RAM.REFRESH                SB_DFF      D        In      -         5.711       -         
-==================================================================================================
-Total path delay (propagation time + setup) of 5.816 is 1.340(23.0%) logic and 4.477(77.0%) route.
+Instance / Net                                            Pin      Pin               Arrival     No. of    
+Name                                         Type         Name     Dir     Delay     Time        Fan Out(s)
+-----------------------------------------------------------------------------------------------------------
+U712_CHIP_RAM.REFRESH_COUNTER[5]             SB_DFFR      Q        Out     0.540     0.540       -         
+REFRESH_COUNTER[5]                           Net          -        -       1.599     -           3         
+U712_CHIP_RAM.REFRESH_COUNTER_RNILI9L[5]     SB_LUT4      I0       In      -         2.139       -         
+U712_CHIP_RAM.REFRESH_COUNTER_RNILI9L[5]     SB_LUT4      O        Out     0.449     2.588       -         
+REFRESH9lto7_0                               Net          -        -       1.371     -           2         
+U712_CHIP_RAM.REFRESH_RNO[0]                 SB_LUT4      I0       In      -         3.959       -         
+U712_CHIP_RAM.REFRESH_RNO[0]                 SB_LUT4      O        Out     0.449     4.408       -         
+REFRESH9_0_i                                 Net          -        -       1.507     -           1         
+U712_CHIP_RAM.REFRESH[0]                     SB_DFFSR     D        In      -         5.915       -         
+===========================================================================================================
+Total path delay (propagation time + setup) of 6.020 is 1.543(25.6%) logic and 4.477(74.4%) route.
 Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
 
 
@@ -359,30 +360,30 @@ Path information for path number 3:
     + Clock delay at ending point:           0.000 (ideal)
     = Required time:                         1.225
 
-    - Propagation time:                      5.683
+    - Propagation time:                      5.865
     - Clock delay at starting point:         0.000 (ideal)
-    = Slack (non-critical) :                 -4.458
+    = Slack (non-critical) :                 -4.641
 
     Number of logic level(s):                2
-    Starting point:                          U712_CHIP_RAM.REFRESH_COUNTER[4] / Q
-    Ending point:                            U712_CHIP_RAM.REFRESH / D
+    Starting point:                          U712_CHIP_RAM.REFRESH_COUNTER[3] / Q
+    Ending point:                            U712_CHIP_RAM.REFRESH[1] / D
     The start point is clocked by            C1 [rising] on pin C
     The end   point is clocked by            U712_TOP|CLK80_OUT_derived_clock [rising] on pin C
 
-Instance / Net                                   Pin      Pin               Arrival     No. of    
-Name                                 Type        Name     Dir     Delay     Time        Fan Out(s)
---------------------------------------------------------------------------------------------------
-U712_CHIP_RAM.REFRESH_COUNTER[4]     SB_DFFR     Q        Out     0.540     0.540       -         
-REFRESH_COUNTER[4]                   Net         -        -       1.599     -           3         
-U712_CHIP_RAM.REFRESH_RNO_0          SB_LUT4     I2       In      -         2.139       -         
-U712_CHIP_RAM.REFRESH_RNO_0          SB_LUT4     O        Out     0.351     2.490       -         
-REFRESH_r_1                          Net         -        -       1.371     -           1         
-U712_CHIP_RAM.REFRESH_RNO            SB_LUT4     I3       In      -         3.861       -         
-U712_CHIP_RAM.REFRESH_RNO            SB_LUT4     O        Out     0.316     4.176       -         
-REFRESH_0                            Net         -        -       1.507     -           1         
-U712_CHIP_RAM.REFRESH                SB_DFF      D        In      -         5.683       -         
-==================================================================================================
-Total path delay (propagation time + setup) of 5.788 is 1.311(22.7%) logic and 4.477(77.3%) route.
+Instance / Net                                    Pin      Pin               Arrival     No. of    
+Name                                 Type         Name     Dir     Delay     Time        Fan Out(s)
+---------------------------------------------------------------------------------------------------
+U712_CHIP_RAM.REFRESH_COUNTER[3]     SB_DFFR      Q        Out     0.540     0.540       -         
+REFRESH_COUNTER[3]                   Net          -        -       1.599     -           4         
+U712_CHIP_RAM.REFRESH_RNO_0[1]       SB_LUT4      I1       In      -         2.139       -         
+U712_CHIP_RAM.REFRESH_RNO_0[1]       SB_LUT4      O        Out     0.400     2.539       -         
+REFRESH9lt7                          Net          -        -       1.371     -           1         
+U712_CHIP_RAM.REFRESH_RNO[1]         SB_LUT4      I0       In      -         3.910       -         
+U712_CHIP_RAM.REFRESH_RNO[1]         SB_LUT4      O        Out     0.449     4.359       -         
+REFRESHc                             Net          -        -       1.507     -           1         
+U712_CHIP_RAM.REFRESH[1]             SB_DFFSR     D        In      -         5.865       -         
+===================================================================================================
+Total path delay (propagation time + setup) of 5.971 is 1.494(25.0%) logic and 4.477(75.0%) route.
 Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
 
 
@@ -392,30 +393,30 @@ Path information for path number 4:
     + Clock delay at ending point:           0.000 (ideal)
     = Required time:                         1.225
 
-    - Propagation time:                      5.620
+    - Propagation time:                      5.865
     - Clock delay at starting point:         0.000 (ideal)
-    = Slack (non-critical) :                 -4.395
+    = Slack (non-critical) :                 -4.641
 
     Number of logic level(s):                2
-    Starting point:                          U712_CHIP_RAM.REFRESH_COUNTER[5] / Q
-    Ending point:                            U712_CHIP_RAM.REFRESH / D
+    Starting point:                          U712_CHIP_RAM.REFRESH_COUNTER[6] / Q
+    Ending point:                            U712_CHIP_RAM.REFRESH[0] / D
     The start point is clocked by            C1 [rising] on pin C
     The end   point is clocked by            U712_TOP|CLK80_OUT_derived_clock [rising] on pin C
 
-Instance / Net                                   Pin      Pin               Arrival     No. of    
-Name                                 Type        Name     Dir     Delay     Time        Fan Out(s)
---------------------------------------------------------------------------------------------------
-U712_CHIP_RAM.REFRESH_COUNTER[5]     SB_DFFR     Q        Out     0.540     0.540       -         
-REFRESH_COUNTER[5]                   Net         -        -       1.599     -           3         
-U712_CHIP_RAM.REFRESH_RNO_0          SB_LUT4     I3       In      -         2.139       -         
-U712_CHIP_RAM.REFRESH_RNO_0          SB_LUT4     O        Out     0.287     2.426       -         
-REFRESH_r_1                          Net         -        -       1.371     -           1         
-U712_CHIP_RAM.REFRESH_RNO            SB_LUT4     I3       In      -         3.797       -         
-U712_CHIP_RAM.REFRESH_RNO            SB_LUT4     O        Out     0.316     4.113       -         
-REFRESH_0                            Net         -        -       1.507     -           1         
-U712_CHIP_RAM.REFRESH                SB_DFF      D        In      -         5.620       -         
-==================================================================================================
-Total path delay (propagation time + setup) of 5.725 is 1.248(21.8%) logic and 4.477(78.2%) route.
+Instance / Net                                            Pin      Pin               Arrival     No. of    
+Name                                         Type         Name     Dir     Delay     Time        Fan Out(s)
+-----------------------------------------------------------------------------------------------------------
+U712_CHIP_RAM.REFRESH_COUNTER[6]             SB_DFFR      Q        Out     0.540     0.540       -         
+REFRESH_COUNTER[6]                           Net          -        -       1.599     -           3         
+U712_CHIP_RAM.REFRESH_COUNTER_RNILI9L[5]     SB_LUT4      I1       In      -         2.139       -         
+U712_CHIP_RAM.REFRESH_COUNTER_RNILI9L[5]     SB_LUT4      O        Out     0.400     2.539       -         
+REFRESH9lto7_0                               Net          -        -       1.371     -           2         
+U712_CHIP_RAM.REFRESH_RNO[0]                 SB_LUT4      I0       In      -         3.910       -         
+U712_CHIP_RAM.REFRESH_RNO[0]                 SB_LUT4      O        Out     0.449     4.359       -         
+REFRESH9_0_i                                 Net          -        -       1.507     -           1         
+U712_CHIP_RAM.REFRESH[0]                     SB_DFFSR     D        In      -         5.865       -         
+===========================================================================================================
+Total path delay (propagation time + setup) of 5.971 is 1.494(25.0%) logic and 4.477(75.0%) route.
 Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
 
 
@@ -425,27 +426,30 @@ Path information for path number 5:
     + Clock delay at ending point:           0.000 (ideal)
     = Required time:                         1.225
 
-    - Propagation time:                      4.046
+    - Propagation time:                      5.845
     - Clock delay at starting point:         0.000 (ideal)
-    = Slack (non-critical) :                 -2.821
+    = Slack (non-critical) :                 -4.620
 
-    Number of logic level(s):                1
-    Starting point:                          U712_CHIP_RAM.REFRESH_COUNTER[6] / Q
-    Ending point:                            U712_CHIP_RAM.REFRESH / D
+    Number of logic level(s):                2
+    Starting point:                          U712_CHIP_RAM.REFRESH_COUNTER[4] / Q
+    Ending point:                            U712_CHIP_RAM.REFRESH[1] / D
     The start point is clocked by            C1 [rising] on pin C
     The end   point is clocked by            U712_TOP|CLK80_OUT_derived_clock [rising] on pin C
 
-Instance / Net                                   Pin      Pin               Arrival     No. of    
-Name                                 Type        Name     Dir     Delay     Time        Fan Out(s)
---------------------------------------------------------------------------------------------------
-U712_CHIP_RAM.REFRESH_COUNTER[6]     SB_DFFR     Q        Out     0.540     0.540       -         
-REFRESH_COUNTER[6]                   Net         -        -       1.599     -           3         
-U712_CHIP_RAM.REFRESH_RNO            SB_LUT4     I1       In      -         2.139       -         
-U712_CHIP_RAM.REFRESH_RNO            SB_LUT4     O        Out     0.400     2.539       -         
-REFRESH_0                            Net         -        -       1.507     -           1         
-U712_CHIP_RAM.REFRESH                SB_DFF      D        In      -         4.046       -         
-==================================================================================================
-Total path delay (propagation time + setup) of 4.151 is 1.045(25.2%) logic and 3.106(74.8%) route.
+Instance / Net                                    Pin      Pin               Arrival     No. of    
+Name                                 Type         Name     Dir     Delay     Time        Fan Out(s)
+---------------------------------------------------------------------------------------------------
+U712_CHIP_RAM.REFRESH_COUNTER[4]     SB_DFFR      Q        Out     0.540     0.540       -         
+REFRESH_COUNTER[4]                   Net          -        -       1.599     -           4         
+U712_CHIP_RAM.REFRESH_RNO_0[1]       SB_LUT4      I2       In      -         2.139       -         
+U712_CHIP_RAM.REFRESH_RNO_0[1]       SB_LUT4      O        Out     0.379     2.518       -         
+REFRESH9lt7                          Net          -        -       1.371     -           1         
+U712_CHIP_RAM.REFRESH_RNO[1]         SB_LUT4      I0       In      -         3.889       -         
+U712_CHIP_RAM.REFRESH_RNO[1]         SB_LUT4      O        Out     0.449     4.338       -         
+REFRESHc                             Net          -        -       1.507     -           1         
+U712_CHIP_RAM.REFRESH[1]             SB_DFFSR     D        In      -         5.845       -         
+===================================================================================================
+Total path delay (propagation time + setup) of 5.950 is 1.473(24.8%) logic and 4.477(75.2%) route.
 Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
 
 
@@ -460,41 +464,41 @@ Detailed Report for Clock: U712_TOP|CLK80_OUT_derived_clock
 Starting Points with Worst Slack
 ********************************
 
-                                      Starting                                                                        Arrival           
-Instance                              Reference                            Type       Pin     Net                     Time        Slack 
-                                      Clock                                                                                             
-----------------------------------------------------------------------------------------------------------------------------------------
-U712_CHIP_RAM.REFRESH_CYCLE           U712_TOP|CLK80_OUT_derived_clock     SB_DFF     Q       REFRESH_CYCLE           0.540       -2.443
-U712_CHIP_RAM.REFRESH_CYCLE_START     U712_TOP|CLK80_OUT_derived_clock     SB_DFF     Q       REFRESH_CYCLE_START     0.540       -2.437
-U712_CHIP_RAM.SDRAM_CONFIGURED        U712_TOP|CLK80_OUT_derived_clock     SB_DFF     Q       SDRAM_CONFIGURED        0.540       -2.408
-U712_CHIP_RAM.SDRAM_COUNTER[1]        U712_TOP|CLK80_OUT_derived_clock     SB_DFF     Q       SDRAM_COUNTER[1]        0.540       -0.638
-U712_CHIP_RAM.SDRAM_COUNTER[4]        U712_TOP|CLK80_OUT_derived_clock     SB_DFF     Q       SDRAM_COUNTER[4]        0.540       -0.638
-U712_CHIP_RAM.SDRAM_COUNTER[2]        U712_TOP|CLK80_OUT_derived_clock     SB_DFF     Q       SDRAM_COUNTER[2]        0.540       -0.617
-U712_CHIP_RAM.SDRAM_COUNTER[3]        U712_TOP|CLK80_OUT_derived_clock     SB_DFF     Q       SDRAM_COUNTER[3]        0.540       -0.589
-U712_CHIP_RAM.SDRAM_COUNTER[5]        U712_TOP|CLK80_OUT_derived_clock     SB_DFF     Q       SDRAM_COUNTER[5]        0.540       -0.589
-U712_CHIP_RAM.SDRAM_COUNTER[6]        U712_TOP|CLK80_OUT_derived_clock     SB_DFF     Q       SDRAM_COUNTER[6]        0.540       -0.568
-U712_CHIP_RAM.SDRAM_COUNTER[7]        U712_TOP|CLK80_OUT_derived_clock     SB_DFF     Q       SDRAM_COUNTER[7]        0.540       -0.504
-========================================================================================================================================
+                                      Starting                                                                          Arrival           
+Instance                              Reference                            Type         Pin     Net                     Time        Slack 
+                                      Clock                                                                                               
+------------------------------------------------------------------------------------------------------------------------------------------
+U712_CHIP_RAM.SDRAM_COUNTER[1]        U712_TOP|CLK80_OUT_derived_clock     SB_DFF       Q       SDRAM_COUNTER[1]        0.540       -0.420
+U712_CHIP_RAM.SDRAM_COUNTER[2]        U712_TOP|CLK80_OUT_derived_clock     SB_DFF       Q       SDRAM_COUNTER[2]        0.540       -0.420
+U712_CHIP_RAM.SDRAM_COUNTER[3]        U712_TOP|CLK80_OUT_derived_clock     SB_DFF       Q       SDRAM_COUNTER[3]        0.540       -0.413
+U712_CHIP_RAM.REFRESH_CYCLE           U712_TOP|CLK80_OUT_derived_clock     SB_DFFSR     Q       REFRESH_CYCLE           0.540       -0.371
+U712_CHIP_RAM.REFRESH_CYCLE_START     U712_TOP|CLK80_OUT_derived_clock     SB_DFFSR     Q       REFRESH_CYCLE_START     0.540       -0.343
+U712_CHIP_RAM.SDRAM_COUNTER[4]        U712_TOP|CLK80_OUT_derived_clock     SB_DFF       Q       SDRAM_COUNTER[4]        0.540       1.203 
+U712_CHIP_RAM.CPU_CYCLE_START         U712_TOP|CLK80_OUT_derived_clock     SB_DFFSR     Q       CPU_CYCLE_START         0.540       1.252 
+U712_CHIP_RAM.SDRAM_COUNTER[5]        U712_TOP|CLK80_OUT_derived_clock     SB_DFF       Q       SDRAM_COUNTER[5]        0.540       1.252 
+U712_CHIP_RAM.SDRAM_COUNTER[6]        U712_TOP|CLK80_OUT_derived_clock     SB_DFF       Q       SDRAM_COUNTER[6]        0.540       1.273 
+U712_CHIP_RAM.DBR_SYNC[0]             U712_TOP|CLK80_OUT_derived_clock     SB_DFFSS     Q       DBR_SYNC[0]             0.540       1.301 
+==========================================================================================================================================
 
 
 Ending Points with Worst Slack
 ******************************
 
-                                   Starting                                                                           Required           
-Instance                           Reference                            Type         Pin     Net                      Time         Slack 
-                                   Clock                                                                                                 
------------------------------------------------------------------------------------------------------------------------------------------
-U712_CHIP_RAM.SDRAM_COUNTER[1]     U712_TOP|CLK80_OUT_derived_clock     SB_DFF       D       SDRAM_COUNTER_RNO[1]     12.395       -2.443
-U712_CHIP_RAM.SDRAM_COUNTER[2]     U712_TOP|CLK80_OUT_derived_clock     SB_DFF       D       SDRAM_COUNTER_RNO[2]     12.395       -2.443
-U712_CHIP_RAM.SDRAM_COUNTER[3]     U712_TOP|CLK80_OUT_derived_clock     SB_DFF       D       SDRAM_COUNTER_RNO[3]     12.395       -2.443
-U712_CHIP_RAM.SDRAM_CMD[3]         U712_TOP|CLK80_OUT_derived_clock     SB_DFF       D       SDRAM_CMD_2              12.395       -0.638
-U712_CHIP_RAM.SDRAM_CMD[1]         U712_TOP|CLK80_OUT_derived_clock     SB_DFF       D       SDRAM_CMD_0              12.395       -0.631
-U712_CHIP_RAM.DBENn                U712_TOP|CLK80_OUT_derived_clock     SB_DFFSS     D       DBENn                    12.395       -0.364
-U712_CHIP_RAM.DMA_CYCLE            U712_TOP|CLK80_OUT_derived_clock     SB_DFFSR     D       DMA_CYCLE_en             12.395       -0.364
-U712_CHIP_RAM.SDRAM_CMD[2]         U712_TOP|CLK80_OUT_derived_clock     SB_DFF       D       SDRAM_CMD_1              12.395       1.084 
-U712_CHIP_RAM.REFRESH_CYCLE        U712_TOP|CLK80_OUT_derived_clock     SB_DFF       D       REFRESH_CYCLE_1          12.395       1.182 
-U712_CHIP_RAM.SDRAM_CMD[0]         U712_TOP|CLK80_OUT_derived_clock     SB_DFF       D       SDRAM_CMD                12.395       1.217 
-=========================================================================================================================================
+                                   Starting                                                                             Required           
+Instance                           Reference                            Type         Pin     Net                        Time         Slack 
+                                   Clock                                                                                                   
+-------------------------------------------------------------------------------------------------------------------------------------------
+U712_CHIP_RAM.SDRAM_COUNTER[1]     U712_TOP|CLK80_OUT_derived_clock     SB_DFF       D       SDRAM_COUNTER_RNO[1]       12.395       -0.420
+U712_CHIP_RAM.SDRAM_COUNTER[2]     U712_TOP|CLK80_OUT_derived_clock     SB_DFF       D       SDRAM_COUNTER_RNO[2]       12.395       -0.420
+U712_CHIP_RAM.SDRAM_COUNTER[3]     U712_TOP|CLK80_OUT_derived_clock     SB_DFF       D       SDRAM_COUNTER_RNO[3]       12.395       -0.420
+U712_CHIP_RAM.SDRAM_CMD[1]         U712_TOP|CLK80_OUT_derived_clock     SB_DFF       D       SDRAM_CMD_0                12.395       1.189 
+U712_CHIP_RAM.SDRAM_CMD[0]         U712_TOP|CLK80_OUT_derived_clock     SB_DFF       D       SDRAM_CMD                  12.395       1.210 
+U712_CHIP_RAM.SDRAM_CMD[2]         U712_TOP|CLK80_OUT_derived_clock     SB_DFF       D       SDRAM_CMD_1                12.395       1.210 
+U712_CHIP_RAM.SDRAM_CMD_e_0[3]     U712_TOP|CLK80_OUT_derived_clock     SB_DFFE      E       SDRAM_CMD_3_sqmuxa_2_0     12.500       1.259 
+U712_CHIP_RAM.SDRAM_COUNTER[0]     U712_TOP|CLK80_OUT_derived_clock     SB_DFF       D       N_45_i                     12.395       1.273 
+U712_REG_SM.STATE_COUNT[3]         U712_TOP|CLK80_OUT_derived_clock     SB_DFFSR     D       STATE_COUNTc_1_i           12.395       2.841 
+U712_REG_SM.REG_CYCLE              U712_TOP|CLK80_OUT_derived_clock     SB_DFFSR     D       REG_CYCLE                  12.395       2.904 
+===========================================================================================================================================
 
 
 
@@ -508,45 +512,42 @@ Path information for path number 1:
     + Clock delay at ending point:           0.000 (ideal)
     = Required time:                         12.395
 
-    - Propagation time:                      14.838
+    - Propagation time:                      12.815
     - Clock delay at starting point:         0.000 (ideal)
-    = Slack (non-critical) :                 -2.444
+    = Slack (non-critical) :                 -0.420
 
-    Number of logic level(s):                7
-    Starting point:                          U712_CHIP_RAM.REFRESH_CYCLE / Q
+    Number of logic level(s):                6
+    Starting point:                          U712_CHIP_RAM.SDRAM_COUNTER[1] / Q
     Ending point:                            U712_CHIP_RAM.SDRAM_COUNTER[1] / D
     The start point is clocked by            U712_TOP|CLK80_OUT_derived_clock [rising] on pin C
     The end   point is clocked by            U712_TOP|CLK80_OUT_derived_clock [rising] on pin C
 
-Instance / Net                                              Pin      Pin               Arrival     No. of    
-Name                                            Type        Name     Dir     Delay     Time        Fan Out(s)
--------------------------------------------------------------------------------------------------------------
-U712_CHIP_RAM.REFRESH_CYCLE                     SB_DFF      Q        Out     0.540     0.540       -         
-REFRESH_CYCLE                                   Net         -        -       1.599     -           4         
-U712_CHIP_RAM.REFRESH_CYCLE_START_RNI27CG_0     SB_LUT4     I0       In      -         2.139       -         
-U712_CHIP_RAM.REFRESH_CYCLE_START_RNI27CG_0     SB_LUT4     O        Out     0.386     2.525       -         
-N_54                                            Net         -        -       1.371     -           3         
-U712_CHIP_RAM.SDRAM_COUNTER_RNIVE5T1[3]         SB_LUT4     I0       In      -         3.896       -         
-U712_CHIP_RAM.SDRAM_COUNTER_RNIVE5T1[3]         SB_LUT4     O        Out     0.449     4.345       -         
-N_92                                            Net         -        -       1.371     -           1         
-U712_CHIP_RAM.SDRAM_CONFIGURED_RNIN7BL3         SB_LUT4     I0       In      -         5.715       -         
-U712_CHIP_RAM.SDRAM_CONFIGURED_RNIN7BL3         SB_LUT4     O        Out     0.449     6.164       -         
-N_44                                            Net         -        -       1.371     -           2         
-U712_CHIP_RAM.SDRAM_COUNTER_RNIMMGI5[2]         SB_LUT4     I0       In      -         7.535       -         
-U712_CHIP_RAM.SDRAM_COUNTER_RNIMMGI5[2]         SB_LUT4     O        Out     0.449     7.984       -         
-N_55                                            Net         -        -       1.371     -           1         
-U712_CHIP_RAM.SDRAM_COUNTER_RNIP5G8C[2]         SB_LUT4     I0       In      -         9.355       -         
-U712_CHIP_RAM.SDRAM_COUNTER_RNIP5G8C[2]         SB_LUT4     O        Out     0.449     9.804       -         
-N_57                                            Net         -        -       1.371     -           1         
-U712_CHIP_RAM.SDRAM_COUNTER_RNIM9IMI[0]         SB_LUT4     I1       In      -         11.175      -         
-U712_CHIP_RAM.SDRAM_COUNTER_RNIM9IMI[0]         SB_LUT4     O        Out     0.400     11.575      -         
-N_46                                            Net         -        -       1.371     -           3         
-U712_CHIP_RAM.SDRAM_COUNTER_RNO[1]              SB_LUT4     I0       In      -         12.946      -         
-U712_CHIP_RAM.SDRAM_COUNTER_RNO[1]              SB_LUT4     O        Out     0.386     13.331      -         
-SDRAM_COUNTER_RNO[1]                            Net         -        -       1.507     -           1         
-U712_CHIP_RAM.SDRAM_COUNTER[1]                  SB_DFF      D        In      -         14.838      -         
-=============================================================================================================
-Total path delay (propagation time + setup) of 14.944 is 3.611(24.2%) logic and 11.332(75.8%) route.
+Instance / Net                                          Pin      Pin               Arrival     No. of    
+Name                                        Type        Name     Dir     Delay     Time        Fan Out(s)
+---------------------------------------------------------------------------------------------------------
+U712_CHIP_RAM.SDRAM_COUNTER[1]              SB_DFF      Q        Out     0.540     0.540       -         
+SDRAM_COUNTER[1]                            Net         -        -       1.599     -           18        
+U712_CHIP_RAM.SDRAM_COUNTER_RNIUFRT[3]      SB_LUT4     I0       In      -         2.139       -         
+U712_CHIP_RAM.SDRAM_COUNTER_RNIUFRT[3]      SB_LUT4     O        Out     0.449     2.588       -         
+N_438                                       Net         -        -       1.371     -           2         
+U712_CHIP_RAM.SDRAM_COUNTER_RNILE372[2]     SB_LUT4     I0       In      -         3.959       -         
+U712_CHIP_RAM.SDRAM_COUNTER_RNILE372[2]     SB_LUT4     O        Out     0.449     4.408       -         
+N_425                                       Net         -        -       1.371     -           3         
+U712_CHIP_RAM.SDRAM_COUNTER_RNI94U46[2]     SB_LUT4     I3       In      -         5.779       -         
+U712_CHIP_RAM.SDRAM_COUNTER_RNI94U46[2]     SB_LUT4     O        Out     0.316     6.094       -         
+N_302                                       Net         -        -       1.371     -           1         
+U712_CHIP_RAM.SDRAM_COUNTER_RNI6IFV8[0]     SB_LUT4     I1       In      -         7.465       -         
+U712_CHIP_RAM.SDRAM_COUNTER_RNI6IFV8[0]     SB_LUT4     O        Out     0.400     7.865       -         
+N_310                                       Net         -        -       1.371     -           2         
+U712_CHIP_RAM.SDRAM_COUNTER_RNIDCLTE[0]     SB_LUT4     I3       In      -         9.236       -         
+U712_CHIP_RAM.SDRAM_COUNTER_RNIDCLTE[0]     SB_LUT4     O        Out     0.316     9.552       -         
+N_46                                        Net         -        -       1.371     -           3         
+U712_CHIP_RAM.SDRAM_COUNTER_RNO[1]          SB_LUT4     I0       In      -         10.922      -         
+U712_CHIP_RAM.SDRAM_COUNTER_RNO[1]          SB_LUT4     O        Out     0.386     11.308      -         
+SDRAM_COUNTER_RNO[1]                        Net         -        -       1.507     -           1         
+U712_CHIP_RAM.SDRAM_COUNTER[1]              SB_DFF      D        In      -         12.815      -         
+=========================================================================================================
+Total path delay (propagation time + setup) of 12.920 is 2.959(22.9%) logic and 9.961(77.1%) route.
 Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
 
 
@@ -556,45 +557,42 @@ Path information for path number 2:
     + Clock delay at ending point:           0.000 (ideal)
     = Required time:                         12.395
 
-    - Propagation time:                      14.838
+    - Propagation time:                      12.815
     - Clock delay at starting point:         0.000 (ideal)
-    = Slack (non-critical) :                 -2.444
+    = Slack (non-critical) :                 -0.420
 
-    Number of logic level(s):                7
-    Starting point:                          U712_CHIP_RAM.REFRESH_CYCLE / Q
-    Ending point:                            U712_CHIP_RAM.SDRAM_COUNTER[3] / D
+    Number of logic level(s):                6
+    Starting point:                          U712_CHIP_RAM.SDRAM_COUNTER[2] / Q
+    Ending point:                            U712_CHIP_RAM.SDRAM_COUNTER[1] / D
     The start point is clocked by            U712_TOP|CLK80_OUT_derived_clock [rising] on pin C
     The end   point is clocked by            U712_TOP|CLK80_OUT_derived_clock [rising] on pin C
 
-Instance / Net                                              Pin      Pin               Arrival     No. of    
-Name                                            Type        Name     Dir     Delay     Time        Fan Out(s)
--------------------------------------------------------------------------------------------------------------
-U712_CHIP_RAM.REFRESH_CYCLE                     SB_DFF      Q        Out     0.540     0.540       -         
-REFRESH_CYCLE                                   Net         -        -       1.599     -           4         
-U712_CHIP_RAM.REFRESH_CYCLE_START_RNI27CG_0     SB_LUT4     I0       In      -         2.139       -         
-U712_CHIP_RAM.REFRESH_CYCLE_START_RNI27CG_0     SB_LUT4     O        Out     0.386     2.525       -         
-N_54                                            Net         -        -       1.371     -           3         
-U712_CHIP_RAM.SDRAM_COUNTER_RNIVE5T1[3]         SB_LUT4     I0       In      -         3.896       -         
-U712_CHIP_RAM.SDRAM_COUNTER_RNIVE5T1[3]         SB_LUT4     O        Out     0.449     4.345       -         
-N_92                                            Net         -        -       1.371     -           1         
-U712_CHIP_RAM.SDRAM_CONFIGURED_RNIN7BL3         SB_LUT4     I0       In      -         5.715       -         
-U712_CHIP_RAM.SDRAM_CONFIGURED_RNIN7BL3         SB_LUT4     O        Out     0.449     6.164       -         
-N_44                                            Net         -        -       1.371     -           2         
-U712_CHIP_RAM.SDRAM_COUNTER_RNIMMGI5[2]         SB_LUT4     I0       In      -         7.535       -         
-U712_CHIP_RAM.SDRAM_COUNTER_RNIMMGI5[2]         SB_LUT4     O        Out     0.449     7.984       -         
-N_55                                            Net         -        -       1.371     -           1         
-U712_CHIP_RAM.SDRAM_COUNTER_RNIP5G8C[2]         SB_LUT4     I0       In      -         9.355       -         
-U712_CHIP_RAM.SDRAM_COUNTER_RNIP5G8C[2]         SB_LUT4     O        Out     0.449     9.804       -         
-N_57                                            Net         -        -       1.371     -           1         
-U712_CHIP_RAM.SDRAM_COUNTER_RNIM9IMI[0]         SB_LUT4     I1       In      -         11.175      -         
-U712_CHIP_RAM.SDRAM_COUNTER_RNIM9IMI[0]         SB_LUT4     O        Out     0.400     11.575      -         
-N_46                                            Net         -        -       1.371     -           3         
-U712_CHIP_RAM.SDRAM_COUNTER_RNO[3]              SB_LUT4     I0       In      -         12.946      -         
-U712_CHIP_RAM.SDRAM_COUNTER_RNO[3]              SB_LUT4     O        Out     0.386     13.331      -         
-SDRAM_COUNTER_RNO[3]                            Net         -        -       1.507     -           1         
-U712_CHIP_RAM.SDRAM_COUNTER[3]                  SB_DFF      D        In      -         14.838      -         
-=============================================================================================================
-Total path delay (propagation time + setup) of 14.944 is 3.611(24.2%) logic and 11.332(75.8%) route.
+Instance / Net                                          Pin      Pin               Arrival     No. of    
+Name                                        Type        Name     Dir     Delay     Time        Fan Out(s)
+---------------------------------------------------------------------------------------------------------
+U712_CHIP_RAM.SDRAM_COUNTER[2]              SB_DFF      Q        Out     0.540     0.540       -         
+SDRAM_COUNTER[2]                            Net         -        -       1.599     -           11        
+U712_CHIP_RAM.SDRAM_COUNTER_RNIVGRT[2]      SB_LUT4     I0       In      -         2.139       -         
+U712_CHIP_RAM.SDRAM_COUNTER_RNIVGRT[2]      SB_LUT4     O        Out     0.386     2.525       -         
+N_273                                       Net         -        -       1.371     -           6         
+U712_CHIP_RAM.SDRAM_CONFIGURED_RNIVE5T1     SB_LUT4     I0       In      -         3.896       -         
+U712_CHIP_RAM.SDRAM_CONFIGURED_RNIVE5T1     SB_LUT4     O        Out     0.449     4.345       -         
+N_424                                       Net         -        -       1.371     -           2         
+U712_CHIP_RAM.SDRAM_COUNTER_RNI94U46[2]     SB_LUT4     I2       In      -         5.715       -         
+U712_CHIP_RAM.SDRAM_COUNTER_RNI94U46[2]     SB_LUT4     O        Out     0.379     6.094       -         
+N_302                                       Net         -        -       1.371     -           1         
+U712_CHIP_RAM.SDRAM_COUNTER_RNI6IFV8[0]     SB_LUT4     I1       In      -         7.465       -         
+U712_CHIP_RAM.SDRAM_COUNTER_RNI6IFV8[0]     SB_LUT4     O        Out     0.400     7.865       -         
+N_310                                       Net         -        -       1.371     -           2         
+U712_CHIP_RAM.SDRAM_COUNTER_RNIDCLTE[0]     SB_LUT4     I3       In      -         9.236       -         
+U712_CHIP_RAM.SDRAM_COUNTER_RNIDCLTE[0]     SB_LUT4     O        Out     0.316     9.552       -         
+N_46                                        Net         -        -       1.371     -           3         
+U712_CHIP_RAM.SDRAM_COUNTER_RNO[1]          SB_LUT4     I0       In      -         10.922      -         
+U712_CHIP_RAM.SDRAM_COUNTER_RNO[1]          SB_LUT4     O        Out     0.386     11.308      -         
+SDRAM_COUNTER_RNO[1]                        Net         -        -       1.507     -           1         
+U712_CHIP_RAM.SDRAM_COUNTER[1]              SB_DFF      D        In      -         12.815      -         
+=========================================================================================================
+Total path delay (propagation time + setup) of 12.920 is 2.959(22.9%) logic and 9.961(77.1%) route.
 Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
 
 
@@ -604,45 +602,42 @@ Path information for path number 3:
     + Clock delay at ending point:           0.000 (ideal)
     = Required time:                         12.395
 
-    - Propagation time:                      14.838
+    - Propagation time:                      12.815
     - Clock delay at starting point:         0.000 (ideal)
-    = Slack (non-critical) :                 -2.444
+    = Slack (non-critical) :                 -0.420
 
-    Number of logic level(s):                7
-    Starting point:                          U712_CHIP_RAM.REFRESH_CYCLE / Q
-    Ending point:                            U712_CHIP_RAM.SDRAM_COUNTER[2] / D
+    Number of logic level(s):                6
+    Starting point:                          U712_CHIP_RAM.SDRAM_COUNTER[1] / Q
+    Ending point:                            U712_CHIP_RAM.SDRAM_COUNTER[3] / D
     The start point is clocked by            U712_TOP|CLK80_OUT_derived_clock [rising] on pin C
     The end   point is clocked by            U712_TOP|CLK80_OUT_derived_clock [rising] on pin C
 
-Instance / Net                                              Pin      Pin               Arrival     No. of    
-Name                                            Type        Name     Dir     Delay     Time        Fan Out(s)
--------------------------------------------------------------------------------------------------------------
-U712_CHIP_RAM.REFRESH_CYCLE                     SB_DFF      Q        Out     0.540     0.540       -         
-REFRESH_CYCLE                                   Net         -        -       1.599     -           4         
-U712_CHIP_RAM.REFRESH_CYCLE_START_RNI27CG_0     SB_LUT4     I0       In      -         2.139       -         
-U712_CHIP_RAM.REFRESH_CYCLE_START_RNI27CG_0     SB_LUT4     O        Out     0.386     2.525       -         
-N_54                                            Net         -        -       1.371     -           3         
-U712_CHIP_RAM.SDRAM_COUNTER_RNIVE5T1[3]         SB_LUT4     I0       In      -         3.896       -         
-U712_CHIP_RAM.SDRAM_COUNTER_RNIVE5T1[3]         SB_LUT4     O        Out     0.449     4.345       -         
-N_92                                            Net         -        -       1.371     -           1         
-U712_CHIP_RAM.SDRAM_CONFIGURED_RNIN7BL3         SB_LUT4     I0       In      -         5.715       -         
-U712_CHIP_RAM.SDRAM_CONFIGURED_RNIN7BL3         SB_LUT4     O        Out     0.449     6.164       -         
-N_44                                            Net         -        -       1.371     -           2         
-U712_CHIP_RAM.SDRAM_COUNTER_RNIMMGI5[2]         SB_LUT4     I0       In      -         7.535       -         
-U712_CHIP_RAM.SDRAM_COUNTER_RNIMMGI5[2]         SB_LUT4     O        Out     0.449     7.984       -         
-N_55                                            Net         -        -       1.371     -           1         
-U712_CHIP_RAM.SDRAM_COUNTER_RNIP5G8C[2]         SB_LUT4     I0       In      -         9.355       -         
-U712_CHIP_RAM.SDRAM_COUNTER_RNIP5G8C[2]         SB_LUT4     O        Out     0.449     9.804       -         
-N_57                                            Net         -        -       1.371     -           1         
-U712_CHIP_RAM.SDRAM_COUNTER_RNIM9IMI[0]         SB_LUT4     I1       In      -         11.175      -         
-U712_CHIP_RAM.SDRAM_COUNTER_RNIM9IMI[0]         SB_LUT4     O        Out     0.400     11.575      -         
-N_46                                            Net         -        -       1.371     -           3         
-U712_CHIP_RAM.SDRAM_COUNTER_RNO[2]              SB_LUT4     I0       In      -         12.946      -         
-U712_CHIP_RAM.SDRAM_COUNTER_RNO[2]              SB_LUT4     O        Out     0.386     13.331      -         
-SDRAM_COUNTER_RNO[2]                            Net         -        -       1.507     -           1         
-U712_CHIP_RAM.SDRAM_COUNTER[2]                  SB_DFF      D        In      -         14.838      -         
-=============================================================================================================
-Total path delay (propagation time + setup) of 14.944 is 3.611(24.2%) logic and 11.332(75.8%) route.
+Instance / Net                                          Pin      Pin               Arrival     No. of    
+Name                                        Type        Name     Dir     Delay     Time        Fan Out(s)
+---------------------------------------------------------------------------------------------------------
+U712_CHIP_RAM.SDRAM_COUNTER[1]              SB_DFF      Q        Out     0.540     0.540       -         
+SDRAM_COUNTER[1]                            Net         -        -       1.599     -           18        
+U712_CHIP_RAM.SDRAM_COUNTER_RNIUFRT[3]      SB_LUT4     I0       In      -         2.139       -         
+U712_CHIP_RAM.SDRAM_COUNTER_RNIUFRT[3]      SB_LUT4     O        Out     0.449     2.588       -         
+N_438                                       Net         -        -       1.371     -           2         
+U712_CHIP_RAM.SDRAM_COUNTER_RNILE372[2]     SB_LUT4     I0       In      -         3.959       -         
+U712_CHIP_RAM.SDRAM_COUNTER_RNILE372[2]     SB_LUT4     O        Out     0.449     4.408       -         
+N_425                                       Net         -        -       1.371     -           3         
+U712_CHIP_RAM.SDRAM_COUNTER_RNI94U46[2]     SB_LUT4     I3       In      -         5.779       -         
+U712_CHIP_RAM.SDRAM_COUNTER_RNI94U46[2]     SB_LUT4     O        Out     0.316     6.094       -         
+N_302                                       Net         -        -       1.371     -           1         
+U712_CHIP_RAM.SDRAM_COUNTER_RNI6IFV8[0]     SB_LUT4     I1       In      -         7.465       -         
+U712_CHIP_RAM.SDRAM_COUNTER_RNI6IFV8[0]     SB_LUT4     O        Out     0.400     7.865       -         
+N_310                                       Net         -        -       1.371     -           2         
+U712_CHIP_RAM.SDRAM_COUNTER_RNIDCLTE[0]     SB_LUT4     I3       In      -         9.236       -         
+U712_CHIP_RAM.SDRAM_COUNTER_RNIDCLTE[0]     SB_LUT4     O        Out     0.316     9.552       -         
+N_46                                        Net         -        -       1.371     -           3         
+U712_CHIP_RAM.SDRAM_COUNTER_RNO[3]          SB_LUT4     I0       In      -         10.922      -         
+U712_CHIP_RAM.SDRAM_COUNTER_RNO[3]          SB_LUT4     O        Out     0.386     11.308      -         
+SDRAM_COUNTER_RNO[3]                        Net         -        -       1.507     -           1         
+U712_CHIP_RAM.SDRAM_COUNTER[3]              SB_DFF      D        In      -         12.815      -         
+=========================================================================================================
+Total path delay (propagation time + setup) of 12.920 is 2.959(22.9%) logic and 9.961(77.1%) route.
 Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
 
 
@@ -652,45 +647,42 @@ Path information for path number 4:
     + Clock delay at ending point:           0.000 (ideal)
     = Required time:                         12.395
 
-    - Propagation time:                      14.831
+    - Propagation time:                      12.815
     - Clock delay at starting point:         0.000 (ideal)
-    = Slack (non-critical) :                 -2.437
+    = Slack (non-critical) :                 -0.420
 
-    Number of logic level(s):                7
-    Starting point:                          U712_CHIP_RAM.REFRESH_CYCLE_START / Q
-    Ending point:                            U712_CHIP_RAM.SDRAM_COUNTER[1] / D
+    Number of logic level(s):                6
+    Starting point:                          U712_CHIP_RAM.SDRAM_COUNTER[1] / Q
+    Ending point:                            U712_CHIP_RAM.SDRAM_COUNTER[2] / D
     The start point is clocked by            U712_TOP|CLK80_OUT_derived_clock [rising] on pin C
     The end   point is clocked by            U712_TOP|CLK80_OUT_derived_clock [rising] on pin C
 
-Instance / Net                                              Pin      Pin               Arrival     No. of    
-Name                                            Type        Name     Dir     Delay     Time        Fan Out(s)
--------------------------------------------------------------------------------------------------------------
-U712_CHIP_RAM.REFRESH_CYCLE_START               SB_DFF      Q        Out     0.540     0.540       -         
-REFRESH_CYCLE_START                             Net         -        -       1.599     -           3         
-U712_CHIP_RAM.REFRESH_CYCLE_START_RNI27CG_0     SB_LUT4     I1       In      -         2.139       -         
-U712_CHIP_RAM.REFRESH_CYCLE_START_RNI27CG_0     SB_LUT4     O        Out     0.379     2.518       -         
-N_54                                            Net         -        -       1.371     -           3         
-U712_CHIP_RAM.SDRAM_COUNTER_RNIVE5T1[3]         SB_LUT4     I0       In      -         3.889       -         
-U712_CHIP_RAM.SDRAM_COUNTER_RNIVE5T1[3]         SB_LUT4     O        Out     0.449     4.338       -         
-N_92                                            Net         -        -       1.371     -           1         
-U712_CHIP_RAM.SDRAM_CONFIGURED_RNIN7BL3         SB_LUT4     I0       In      -         5.708       -         
-U712_CHIP_RAM.SDRAM_CONFIGURED_RNIN7BL3         SB_LUT4     O        Out     0.449     6.157       -         
-N_44                                            Net         -        -       1.371     -           2         
-U712_CHIP_RAM.SDRAM_COUNTER_RNIMMGI5[2]         SB_LUT4     I0       In      -         7.528       -         
-U712_CHIP_RAM.SDRAM_COUNTER_RNIMMGI5[2]         SB_LUT4     O        Out     0.449     7.977       -         
-N_55                                            Net         -        -       1.371     -           1         
-U712_CHIP_RAM.SDRAM_COUNTER_RNIP5G8C[2]         SB_LUT4     I0       In      -         9.348       -         
-U712_CHIP_RAM.SDRAM_COUNTER_RNIP5G8C[2]         SB_LUT4     O        Out     0.449     9.797       -         
-N_57                                            Net         -        -       1.371     -           1         
-U712_CHIP_RAM.SDRAM_COUNTER_RNIM9IMI[0]         SB_LUT4     I1       In      -         11.168      -         
-U712_CHIP_RAM.SDRAM_COUNTER_RNIM9IMI[0]         SB_LUT4     O        Out     0.400     11.568      -         
-N_46                                            Net         -        -       1.371     -           3         
-U712_CHIP_RAM.SDRAM_COUNTER_RNO[1]              SB_LUT4     I0       In      -         12.939      -         
-U712_CHIP_RAM.SDRAM_COUNTER_RNO[1]              SB_LUT4     O        Out     0.386     13.324      -         
-SDRAM_COUNTER_RNO[1]                            Net         -        -       1.507     -           1         
-U712_CHIP_RAM.SDRAM_COUNTER[1]                  SB_DFF      D        In      -         14.831      -         
-=============================================================================================================
-Total path delay (propagation time + setup) of 14.937 is 3.604(24.1%) logic and 11.332(75.9%) route.
+Instance / Net                                          Pin      Pin               Arrival     No. of    
+Name                                        Type        Name     Dir     Delay     Time        Fan Out(s)
+---------------------------------------------------------------------------------------------------------
+U712_CHIP_RAM.SDRAM_COUNTER[1]              SB_DFF      Q        Out     0.540     0.540       -         
+SDRAM_COUNTER[1]                            Net         -        -       1.599     -           18        
+U712_CHIP_RAM.SDRAM_COUNTER_RNIUFRT[3]      SB_LUT4     I0       In      -         2.139       -         
+U712_CHIP_RAM.SDRAM_COUNTER_RNIUFRT[3]      SB_LUT4     O        Out     0.449     2.588       -         
+N_438                                       Net         -        -       1.371     -           2         
+U712_CHIP_RAM.SDRAM_COUNTER_RNILE372[2]     SB_LUT4     I0       In      -         3.959       -         
+U712_CHIP_RAM.SDRAM_COUNTER_RNILE372[2]     SB_LUT4     O        Out     0.449     4.408       -         
+N_425                                       Net         -        -       1.371     -           3         
+U712_CHIP_RAM.SDRAM_COUNTER_RNI94U46[2]     SB_LUT4     I3       In      -         5.779       -         
+U712_CHIP_RAM.SDRAM_COUNTER_RNI94U46[2]     SB_LUT4     O        Out     0.316     6.094       -         
+N_302                                       Net         -        -       1.371     -           1         
+U712_CHIP_RAM.SDRAM_COUNTER_RNI6IFV8[0]     SB_LUT4     I1       In      -         7.465       -         
+U712_CHIP_RAM.SDRAM_COUNTER_RNI6IFV8[0]     SB_LUT4     O        Out     0.400     7.865       -         
+N_310                                       Net         -        -       1.371     -           2         
+U712_CHIP_RAM.SDRAM_COUNTER_RNIDCLTE[0]     SB_LUT4     I3       In      -         9.236       -         
+U712_CHIP_RAM.SDRAM_COUNTER_RNIDCLTE[0]     SB_LUT4     O        Out     0.316     9.552       -         
+N_46                                        Net         -        -       1.371     -           3         
+U712_CHIP_RAM.SDRAM_COUNTER_RNO[2]          SB_LUT4     I0       In      -         10.922      -         
+U712_CHIP_RAM.SDRAM_COUNTER_RNO[2]          SB_LUT4     O        Out     0.386     11.308      -         
+SDRAM_COUNTER_RNO[2]                        Net         -        -       1.507     -           1         
+U712_CHIP_RAM.SDRAM_COUNTER[2]              SB_DFF      D        In      -         12.815      -         
+=========================================================================================================
+Total path delay (propagation time + setup) of 12.920 is 2.959(22.9%) logic and 9.961(77.1%) route.
 Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
 
 
@@ -700,45 +692,42 @@ Path information for path number 5:
     + Clock delay at ending point:           0.000 (ideal)
     = Required time:                         12.395
 
-    - Propagation time:                      14.831
+    - Propagation time:                      12.815
     - Clock delay at starting point:         0.000 (ideal)
-    = Slack (non-critical) :                 -2.437
+    = Slack (non-critical) :                 -0.420
 
-    Number of logic level(s):                7
-    Starting point:                          U712_CHIP_RAM.REFRESH_CYCLE_START / Q
+    Number of logic level(s):                6
+    Starting point:                          U712_CHIP_RAM.SDRAM_COUNTER[2] / Q
     Ending point:                            U712_CHIP_RAM.SDRAM_COUNTER[3] / D
     The start point is clocked by            U712_TOP|CLK80_OUT_derived_clock [rising] on pin C
     The end   point is clocked by            U712_TOP|CLK80_OUT_derived_clock [rising] on pin C
 
-Instance / Net                                              Pin      Pin               Arrival     No. of    
-Name                                            Type        Name     Dir     Delay     Time        Fan Out(s)
--------------------------------------------------------------------------------------------------------------
-U712_CHIP_RAM.REFRESH_CYCLE_START               SB_DFF      Q        Out     0.540     0.540       -         
-REFRESH_CYCLE_START                             Net         -        -       1.599     -           3         
-U712_CHIP_RAM.REFRESH_CYCLE_START_RNI27CG_0     SB_LUT4     I1       In      -         2.139       -         
-U712_CHIP_RAM.REFRESH_CYCLE_START_RNI27CG_0     SB_LUT4     O        Out     0.379     2.518       -         
-N_54                                            Net         -        -       1.371     -           3         
-U712_CHIP_RAM.SDRAM_COUNTER_RNIVE5T1[3]         SB_LUT4     I0       In      -         3.889       -         
-U712_CHIP_RAM.SDRAM_COUNTER_RNIVE5T1[3]         SB_LUT4     O        Out     0.449     4.338       -         
-N_92                                            Net         -        -       1.371     -           1         
-U712_CHIP_RAM.SDRAM_CONFIGURED_RNIN7BL3         SB_LUT4     I0       In      -         5.708       -         
-U712_CHIP_RAM.SDRAM_CONFIGURED_RNIN7BL3         SB_LUT4     O        Out     0.449     6.157       -         
-N_44                                            Net         -        -       1.371     -           2         
-U712_CHIP_RAM.SDRAM_COUNTER_RNIMMGI5[2]         SB_LUT4     I0       In      -         7.528       -         
-U712_CHIP_RAM.SDRAM_COUNTER_RNIMMGI5[2]         SB_LUT4     O        Out     0.449     7.977       -         
-N_55                                            Net         -        -       1.371     -           1         
-U712_CHIP_RAM.SDRAM_COUNTER_RNIP5G8C[2]         SB_LUT4     I0       In      -         9.348       -         
-U712_CHIP_RAM.SDRAM_COUNTER_RNIP5G8C[2]         SB_LUT4     O        Out     0.449     9.797       -         
-N_57                                            Net         -        -       1.371     -           1         
-U712_CHIP_RAM.SDRAM_COUNTER_RNIM9IMI[0]         SB_LUT4     I1       In      -         11.168      -         
-U712_CHIP_RAM.SDRAM_COUNTER_RNIM9IMI[0]         SB_LUT4     O        Out     0.400     11.568      -         
-N_46                                            Net         -        -       1.371     -           3         
-U712_CHIP_RAM.SDRAM_COUNTER_RNO[3]              SB_LUT4     I0       In      -         12.939      -         
-U712_CHIP_RAM.SDRAM_COUNTER_RNO[3]              SB_LUT4     O        Out     0.386     13.324      -         
-SDRAM_COUNTER_RNO[3]                            Net         -        -       1.507     -           1         
-U712_CHIP_RAM.SDRAM_COUNTER[3]                  SB_DFF      D        In      -         14.831      -         
-=============================================================================================================
-Total path delay (propagation time + setup) of 14.937 is 3.604(24.1%) logic and 11.332(75.9%) route.
+Instance / Net                                          Pin      Pin               Arrival     No. of    
+Name                                        Type        Name     Dir     Delay     Time        Fan Out(s)
+---------------------------------------------------------------------------------------------------------
+U712_CHIP_RAM.SDRAM_COUNTER[2]              SB_DFF      Q        Out     0.540     0.540       -         
+SDRAM_COUNTER[2]                            Net         -        -       1.599     -           11        
+U712_CHIP_RAM.SDRAM_COUNTER_RNIVGRT[2]      SB_LUT4     I0       In      -         2.139       -         
+U712_CHIP_RAM.SDRAM_COUNTER_RNIVGRT[2]      SB_LUT4     O        Out     0.386     2.525       -         
+N_273                                       Net         -        -       1.371     -           6         
+U712_CHIP_RAM.SDRAM_CONFIGURED_RNIVE5T1     SB_LUT4     I0       In      -         3.896       -         
+U712_CHIP_RAM.SDRAM_CONFIGURED_RNIVE5T1     SB_LUT4     O        Out     0.449     4.345       -         
+N_424                                       Net         -        -       1.371     -           2         
+U712_CHIP_RAM.SDRAM_COUNTER_RNI94U46[2]     SB_LUT4     I2       In      -         5.715       -         
+U712_CHIP_RAM.SDRAM_COUNTER_RNI94U46[2]     SB_LUT4     O        Out     0.379     6.094       -         
+N_302                                       Net         -        -       1.371     -           1         
+U712_CHIP_RAM.SDRAM_COUNTER_RNI6IFV8[0]     SB_LUT4     I1       In      -         7.465       -         
+U712_CHIP_RAM.SDRAM_COUNTER_RNI6IFV8[0]     SB_LUT4     O        Out     0.400     7.865       -         
+N_310                                       Net         -        -       1.371     -           2         
+U712_CHIP_RAM.SDRAM_COUNTER_RNIDCLTE[0]     SB_LUT4     I3       In      -         9.236       -         
+U712_CHIP_RAM.SDRAM_COUNTER_RNIDCLTE[0]     SB_LUT4     O        Out     0.316     9.552       -         
+N_46                                        Net         -        -       1.371     -           3         
+U712_CHIP_RAM.SDRAM_COUNTER_RNO[3]          SB_LUT4     I0       In      -         10.922      -         
+U712_CHIP_RAM.SDRAM_COUNTER_RNO[3]          SB_LUT4     O        Out     0.386     11.308      -         
+SDRAM_COUNTER_RNO[3]                        Net         -        -       1.507     -           1         
+U712_CHIP_RAM.SDRAM_COUNTER[3]              SB_DFF      D        In      -         12.815      -         
+=========================================================================================================
+Total path delay (propagation time + setup) of 12.920 is 2.959(22.9%) logic and 9.961(77.1%) route.
 Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
 
 
@@ -748,10 +737,10 @@ Path delay compensated for clock skew. Clock skew is added to clock-to-out value
 Timing exceptions that could not be applied
 None
 
-Finished final timing analysis (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 141MB peak: 142MB)
+Finished final timing analysis (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 142MB peak: 144MB)
 
 
-Finished timing report (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 141MB peak: 142MB)
+Finished timing report (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 142MB peak: 144MB)
 
 ---------------------------------------
 Resource Usage Report for U712_TOP 
@@ -760,40 +749,41 @@ Mapping to part: ice40hx4ktq144
 Cell usage:
 GND             5 uses
 SB_CARRY        7 uses
-SB_DFF          30 uses
-SB_DFFESR       30 uses
+SB_DFF          11 uses
+SB_DFFE         1 use
+SB_DFFESR       29 uses
 SB_DFFESS       2 uses
 SB_DFFR         8 uses
-SB_DFFSR        8 uses
+SB_DFFSR        28 uses
 SB_DFFSS        22 uses
 SB_GB           2 uses
 SB_PLL40_2F_CORE  1 use
 VCC             5 uses
-SB_LUT4         191 uses
+SB_LUT4         181 uses
 
 I/O ports: 82
 I/O primitives: 80
 SB_IO          80 uses
 
 I/O Register bits:                  0
-Register bits not including I/Os:   100 (2%)
+Register bits not including I/Os:   101 (2%)
 Total load per clock:
    CLK40_IN: 1
    C1: 1
    C3: 1
-   U712_TOP|CLK80_OUT_derived_clock: 92
+   U712_TOP|CLK80_OUT_derived_clock: 93
 
 @S |Mapping Summary:
-Total  LUTs: 191 (5%)
+Total  LUTs: 181 (5%)
 
 Distribution of All Consumed LUTs = LUT4 
-Distribution of All Consumed Luts 191 = 191 
+Distribution of All Consumed Luts 181 = 181 
 
 Mapper successful!
 
-At Mapper Exit (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 28MB peak: 142MB)
+At Mapper Exit (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 28MB peak: 144MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
-# Mon Dec 23 21:57:40 2024
+# Wed Dec 25 14:30:17 2024
 
 ###########################################################]
