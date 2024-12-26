@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:31:51
 
-* File Generated:     Dec 25 2024 14:30:35
+* File Generated:     Dec 25 2024 22:03:52
 
 * Purpose:            General info of design implementation
 
@@ -27,27 +27,27 @@ Device Info:
 
 Design statistics:
 ------------------
-    FFs:                  101
-    LUTs:                 217
+    FFs:                  73
+    LUTs:                 157
     RAMs:                 0
-    IOBs:                 80
+    IOBs:                 66
     GBs:                  2
     PLLs:                 1
     Warm Boots:           0
 
 Logic Resource Utilization:
 ---------------------------
-    Total Logic Cells: 217/3520
-        Combinational Logic Cells: 116      out of   3520      3.29545%
-        Sequential Logic Cells:    101      out of   3520      2.86932%
-        Logic Tiles:               61       out of   440       13.8636%
+    Total Logic Cells: 157/3520
+        Combinational Logic Cells: 84       out of   3520      2.38636%
+        Sequential Logic Cells:    73       out of   3520      2.07386%
+        Logic Tiles:               55       out of   440       12.5%
     Registers: 
-        Logic Registers:           101      out of   3520      2.86932%
+        Logic Registers:           73       out of   3520      2.07386%
         IO Registers:              0        out of   880       0
     Block RAMs:                    0        out of   20        0%
     Warm Boots:                    0        out of   1         0%
     Pins:
-        Input Pins:                45       out of   107       42.0561%
+        Input Pins:                31       out of   107       28.972%
         Output Pins:               35       out of   107       32.7103%
         InOut Pins:                0        out of   107       0%
     Global Buffers:                2        out of   8         25%
@@ -56,8 +56,8 @@ Logic Resource Utilization:
 IO Bank Utilization:
 --------------------
     Bank 3: 25       out of   28        89.2857%
-    Bank 1: 27       out of   29        93.1034%
-    Bank 0: 13       out of   27        48.1481%
+    Bank 1: 14       out of   29        48.2759%
+    Bank 0: 12       out of   27        44.4444%
     Bank 2: 15       out of   23        65.2174%
 
 Detailed I/O Info:
@@ -89,22 +89,8 @@ Detailed I/O Info:
     33          Input      SB_LVCMOS    No       3        Simple Input                  A[18]      
     34          Input      SB_LVCMOS    No       3        Simple Input                  A[19]      
     41          Input      SB_LVCMOS    No       2        Simple Input                  REGSPACEn  
-    87          Input      SB_LVCMOS    No       1        Simple Input                  RAS1n      
-    88          Input      SB_LVCMOS    No       1        Simple Input                  RAS0n      
-    90          Input      SB_LVCMOS    No       1        Simple Input                  DRA[8]     
-    91          Input      SB_LVCMOS    No       1        Simple Input                  DRA[7]     
     94          Input      SB_LVCMOS    No       1        Simple Input                  RESETn     
-    95          Input      SB_LVCMOS    No       1        Simple Input                  DRA[6]     
-    96          Input      SB_LVCMOS    No       1        Simple Input                  DRA[5]     
-    97          Input      SB_LVCMOS    No       1        Simple Input                  DRA[4]     
-    98          Input      SB_LVCMOS    No       1        Simple Input                  DRA[3]     
-    99          Input      SB_LVCMOS    No       1        Simple Input                  DRA[2]     
-    101         Input      SB_LVCMOS    No       1        Simple Input                  DRA[1]     
-    102         Input      SB_LVCMOS    No       1        Simple Input                  DRA[0]     
-    104         Input      SB_LVCMOS    No       1        Simple Input                  CASLn      
-    105         Input      SB_LVCMOS    No       1        Simple Input                  CASUn      
     130         Input      SB_LVCMOS    No       0        Simple Input                  RAMSPACEn  
-    135         Input      SB_LVCMOS    No       0        Simple Input                  AWEn       
     136         Input      SB_LVCMOS    No       0        Simple Input                  TSn        
     138         Input      SB_LVCMOS    No       0        Simple Input                  DBRn       
     142         Input      SB_LVCMOS    No       0        Simple Input                  C1         
@@ -154,5 +140,5 @@ Detailed Global Buffer Info:
 ----------------------------
     Buffer Number  IO Bank  Driven By  Fanout  Signal Name   
     -------------  -------  ---------  ------  -----------   
-    4              0                   91      RESETn_c_i_g  
     3              3                   8       C1_c_g        
+    4              0                   56      RESETn_c_i_g  

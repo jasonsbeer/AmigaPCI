@@ -9,8 +9,6 @@ Selecting top level module U712_TOP
 
 @N: CG364 :"D:\AmigaPCI\U712\U712_CHIP_RAM.v":1:7:1:19|Synthesizing module U712_CHIP_RAM in library work.
 
-@W: CL265 :"D:\AmigaPCI\U712\U712_CHIP_RAM.v":161:0:161:5|Removing unused bit 9 of DMA_ROW_ADDRESS[9:0]. Either assign all bits or reduce the width of the signal.
-@W: CL265 :"D:\AmigaPCI\U712\U712_CHIP_RAM.v":161:0:161:5|Removing unused bit 9 of DMA_COL_ADDRESS[9:0]. Either assign all bits or reduce the width of the signal.
 @N: CG364 :"D:\AmigaPCI\U712\U712_BYTE_ENABLE.v":1:7:1:22|Synthesizing module U712_BYTE_ENABLE in library work.
 
 @N: CG364 :"D:\AmigaPCI\U712\U712_TOP.v":4:7:4:14|Synthesizing module U712_TOP in library work.
@@ -21,10 +19,12 @@ Selecting top level module U712_TOP
 @W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":62:2:62:4|Input SDI on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
 @W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":62:2:62:4|Input SCLK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
 @W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":62:2:62:4|Input LATCHINPUTVALUE on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@N: CL159 :"D:\AmigaPCI\U712\U712_TOP.v":7:48:7:51|Input AWEn is unused.
+@N: CL159 :"D:\AmigaPCI\U712\U712_TOP.v":7:54:7:58|Input RAS0n is unused.
+@N: CL159 :"D:\AmigaPCI\U712\U712_TOP.v":7:61:7:65|Input RAS1n is unused.
 @W: CL247 :"D:\AmigaPCI\U712\U712_CHIP_RAM.v":4:17:4:17|Input port bit 1 of A[20:1] is unused
 
-@W: CL247 :"D:\AmigaPCI\U712\U712_CHIP_RAM.v":5:16:5:18|Input port bit 9 of DRA[9:0] is unused
-
+@N: CL159 :"D:\AmigaPCI\U712\U712_CHIP_RAM.v":5:16:5:18|Input DRA is unused.
 @N: CL201 :"D:\AmigaPCI\U712\U712_CYCLE_TERM.v":22:0:22:5|Trying to extract state machine for register TACK_STATE.
 Extracted state machine for register TACK_STATE
 State machine has 5 reachable states with original encodings of:

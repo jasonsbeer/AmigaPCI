@@ -7,6 +7,10 @@
 @N: CG364 :"D:\AmigaPCI\U712\U712_CHIP_RAM.v":1:7:1:19|Synthesizing module U712_CHIP_RAM in library work.
 @N: CG364 :"D:\AmigaPCI\U712\U712_BYTE_ENABLE.v":1:7:1:22|Synthesizing module U712_BYTE_ENABLE in library work.
 @N: CG364 :"D:\AmigaPCI\U712\U712_TOP.v":4:7:4:14|Synthesizing module U712_TOP in library work.
+@N: CL159 :"D:\AmigaPCI\U712\U712_TOP.v":7:48:7:51|Input AWEn is unused.
+@N: CL159 :"D:\AmigaPCI\U712\U712_TOP.v":7:54:7:58|Input RAS0n is unused.
+@N: CL159 :"D:\AmigaPCI\U712\U712_TOP.v":7:61:7:65|Input RAS1n is unused.
+@N: CL159 :"D:\AmigaPCI\U712\U712_CHIP_RAM.v":5:16:5:18|Input DRA is unused.
 @N: CL201 :"D:\AmigaPCI\U712\U712_CYCLE_TERM.v":22:0:22:5|Trying to extract state machine for register TACK_STATE.
 @N: CL201 :"D:\AmigaPCI\U712\U712_REG_SM.v":38:0:38:5|Trying to extract state machine for register STATE_COUNT.
 @N|Running in 64-bit mode
