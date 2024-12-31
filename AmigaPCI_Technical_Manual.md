@@ -232,7 +232,7 @@ Bus Master devices are devices that control the AmigaPCI while initiating data t
 
 ### 3.3.2 Target Device
 
-A target device is any device that may be controlled by the bus master, such as memory. When addressed, the target device drives the data bus on reads, or latches the data on the data bus for writes. Each target device must terminate its cycles. Control registers or other memory mapped resources must be mapped at least 512k higher than $0800 000 or at least 512k over the highest RAM address. When the target device is on the Local Bus card, it will be necessary to isolate the data bus on the Local Bus card with tristating buffers. This will prevent bus contention with the buffers on the AmigaPCI.
+A target device is any device that may be controlled by the bus master, such as memory. When addressed, the target device drives the data bus on reads, or latches the data on the data bus for writes. Each target device must terminate its cycles. Control registers or other memory mapped resources must be mapped at least 512k higher than $0800 000 or at least 512k over the highest RAM address.
 
 ## 3.4 CPU Local Bus Signals
 
@@ -394,7 +394,7 @@ Pin|Signal|Pin|Signal|Pin|Signal
 
 ## 3.5 Signal Buffering
 
-It is possible to include RAM and AUTOCONFIG devices on the CPU Local Bus Card. When a RAM or AUTOCONFIG devices are present and actively addressed, **_LBEN** must be asserted. Assertion of this signal ensures proper enabling and direction of buffers on the AmigaPCI board. Failure to assert this signal properly will result in bus contention issues.
+It is recommended to implement buffers for the data bus of the CPU Local Bus Card. It is possible to implement target devices on the card. When the target device is on the Local Bus card, it will be necessary to isolate the data bus on the Local Bus card with tristate buffers. This will prevent bus contention with the AmigaPCI data bus.
 
 ## 3.6 Clocks
 
