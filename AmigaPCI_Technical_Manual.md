@@ -292,7 +292,7 @@ This TTL tolerant signal is driven by the bus master and tristated by inactive b
 This TTL tolerant bus is driven by the bus master and tristated by inactive bus masters. These are the MC68040/MC68060 transfer size signals. 
 
 **_TACK** (Transfer Acknowledge)
-This LVTTL signal is driven by the target device and tristated by inactive target devices. It signals the bus owner that the target device has completed the data transfer process for writes, or has driven the data bus with the requested data and the cycle can be safely terminated.
+This LVTTL signal is driven by the target device and tristated by inactive target devices. It signals the bus master that the target device has completed the data transfer process for writes, or has driven the data bus with the requested data and the cycle can be safely terminated.
 
 **_TBI** (Tranfer Burst Inhibit)
 This LVTTL signal is driven by the target device and tristated by inactive target devices. Inhibits a burst cycle in favor of individual data transfers. Asserted with **_TACK**.
@@ -321,10 +321,10 @@ This TTL tolerant bus is driven by the bus master and tristated by inactive bus 
 This TTL tolerant signal is driven by the bus master and tristated by inactive bus masters. Indicate the bus master is actively driving the bus. This signal must not be unecessarily held asserted as that will prevent other devices from becoming bus masters.
 
 **_BG** (Bus Grant)  
-This LVTTL is asserted by the bus arbitor. Assertion indicates the CPU Local Bus Device has control of the system bus. Unless bus lock (**_LOCK**) has been asserted by the bus master, **_BG** may be negated at any time. Negation indicates either the PCI Local Bridge has the bus (with assedrtion of **_BB**) or no device has the bus (**_BB** is negated). A bus master must not take control of the system bus until **_BB** has been negated. When no device has actively requested the bus, **_BG** is asserted.
+This LVTTL is asserted by the bus arbitor. Assertion indicates the CPU on the Local Bus Card has control of the system bus. Unless bus lock (**_LOCK**) has been asserted by the bus master, **_BG** may be negated at any time. Negation indicates either the PCI Local Bridge has the bus (with assedrtion of **_BB**) or no device has the bus (**_BB** is negated). A bus master must not take control of the system bus until **_BB** has been negated. When no device is actively requesting the bus, **_BG** is asserted.
 
 **_BR** (Bus Request)  
-This TTL tolerant signal is asserted by bus masters on the CPU Local Bus Card and tristated by inactive bus masters. Indicates an inactive bus master is requesting the bus. A bus master must not take control of the bus until it has been granted the bus by the assertion of **_BG** and the bus is not busy, as indicated by negation of **_BB**.
+This TTL tolerant signal is asserted by the CPU on the Local Bus Card and tristated by inactive bus masters. Indicates an inactive bus master is requesting the bus. A bus master must not take control of the bus until it has been granted the bus by the assertion of **_BG** and the bus is not busy, as indicated by negation of **_BB**.
 
 **_LOCK** (Bus Lock)  
 This TTL tolerant signal is driven by the bus master and tristated by inactive bus masters. Indicates a read-modify-write cycle is in progress, preventing the bus arbitor from granting the bus to a new device.
