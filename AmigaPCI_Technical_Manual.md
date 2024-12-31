@@ -199,7 +199,7 @@ The primary purpose of the CPU Local Bus Port is to provide a means to connect a
 
 ### 3.1.1 Fast Memory
 
-The Amiga memory map reserves the address ranges $0400 0000 - $07FF FFFF and $0800 0000 - $0FFF FFFF for fast memory. These two regions are treated differently by Kickstart. Any memory responding in these regions will be automatically sized and added to the Amiga memory pool with the highest priority available. These address ranges are fixed and are not part of the AUTOCONFIG space. If memory is present on the CPU Local Bus card, the memory controller must assert **_LBEN** when addressed and terminate cycles in this address range. 
+The Amiga memory map reserves the address ranges $0400 0000 - $07FF FFFF and $0800 0000 - $0FFF FFFF for fast memory. These two regions are treated differently by Kickstart. Any memory responding in these regions will be automatically sized and added to the Amiga memory pool with the highest priority available. These address ranges are fixed and are not part of the AUTOCONFIG space. 
 
 #### 3.1.1.1 Address Range $0400 0000 - $07FF FFFF
 
@@ -211,7 +211,7 @@ On startup, this range is scanned from $0800 0000 and upward, 1MB ($0010 0000) a
 
 ### 3.1.2 AUTOCONFIG Devices
 
-AUTOCONFIG devices may also be added via the CPU Local Bus Port by supplying the necessary AUTOCONFIG logic on the Local Bus Card. AUTOCONFIG devices on the CPU Local Bus port are configured first. Once the devices on the CPU Local Bus Card are configured, the **_CPUCONF** signal must be asserted. Failure to do so will prevent other devices on the AmigaPCI from being configured. If AUTOCONFIG devices are present on the CPU Local Bus card, the AUTOCONFIG device must assert **_LBEN** when addressed and terminate all cycles where the AUTOCONFIG device is addressed.
+AUTOCONFIG devices may also be added via the CPU Local Bus Port by supplying the necessary AUTOCONFIG logic on the Local Bus Card. AUTOCONFIG devices on the CPU Local Bus port are configured first. Once the devices on the CPU Local Bus Card are configured, the **_CPUCONF** signal must be asserted. Failure to do so will prevent other devices on the AmigaPCI from being configured. AUTOCONFIG devices must terminate the data transfer cycle when the AUTOCONFIG device is addressed.
 
 ## 3.2 Footprint and Connector
 
@@ -228,11 +228,11 @@ The AmigaPCI CPU Local Bus Port supplies signals to support master and target bu
 
 ### 3.3.1 Bus Master
 
-Bus Master devices are devices that control the AmigaPCI while initiating data transfers between devices on the AmigaPCI. Only one bus master may control the system at any time. Most of the time, the CPU is the bus master. It is also possible for the PCI Bridge to become the bus master when a PCI device initiates a DMA transfer cycle. When asserted, **_BG** indicates to the Local Bus Device that it has control of the bus. When negated, either the PCI Bridge is the bus master or no device is the bus master. The bus master will assert bus busy (**_BB**) when actively driving the bus. **_BB** will be negated any time the bus master is not actively driving the bus. Holding **_BB** asserted unecessarily will prevent other devices from becoming the bus master. Unless the bus master has asserted bus lock (**_LOCK**), bus grant may be negated at any time. However, a new device must not take control of the bus until the bus busy (**_BB**) signal has been negated.
+Bus Master devices are devices that control the AmigaPCI while initiating data transfers between devices on the AmigaPCI. Only one bus master may control the system at any time. Most of the time, the CPU is the bus master. It is also possible for the PCI Bridge to become the bus master when a PCI device initiates a DMA transfer cycle. When asserted, **_BG** indicates to the CPU that it has control of the bus. When negated, either the PCI Bridge is the bus master or no device is the bus master. The bus master will assert bus busy (**_BB**) when actively driving the bus. **_BB** will be negated any time the bus master is not actively driving the bus. Holding **_BB** asserted unecessarily will prevent other devices from becoming the bus master. Unless the bus master has asserted bus lock (**_LOCK**), bus grant may be negated at any time. However, a new device must not take control of the bus until the bus busy (**_BB**) signal has been negated.
 
 ### 3.3.2 Target Device
 
-A target device is any device that may be controlled by the bus master, such as memory. When addressed, the target device drives the data bus on reads, or latches the data on the data bus for writes. Each target device must terminate its cycles. Control registers or other memory mapped resources must be mapped at least 512k higher than $0800 000 or at least 512k over the highest RAM address.
+A target device is any device that may be controlled by the bus master, such as memory or a drive controller. When addressed, the target device drives the data bus on reads, or latches the data on the data bus for writes. Each target device must terminate its cycles. Control registers or other memory mapped resources must be mapped at least 512k higher than $0800 000 or at least 512k over the highest RAM address.
 
 ## 3.4 CPU Local Bus Signals
 
@@ -269,7 +269,7 @@ This LVTTL level signal is driven by the system reset logic and initiates a rese
 This TTL tolerant signal is driven by the CPU to initiate a reset of all logic and I/O on the AmigaPCI and CPU Local Bus Card, but not the CPU itself.
 
 **CDONE** (Configuration Done)
-This LVTTL signal is driven by configurable logic present on the local bus card. When LOW, holds the entire system in reset until such time as all programmable logic devices on the AmigaPCI system have configured.
+This LVTTL signal is driven by programmable logic devices (e.g. FPGA) on the local bus card. When LOW, holds the entire system in reset until such time as all programmable logic devices on the AmigaPCI system have configured. In the absence of programmable logic devices, this may be left unconnected.
 
 **_CPURST** (CPU Reset)
 This LVTTL signal is driven by the system reset logic and initiates a reset of the CPU. This signal is asserted in reponse to the push button or keyboard reset action.
@@ -283,7 +283,7 @@ This bus is driven by the bus master and tristated by inactive bus masters. The 
 This bus is driven by the bus master for writes and the target device for reads and tristated by inactive bus masters. The CPU Local Bus devices may drive this bus with either TTL or LVTTL level logic. However, the AmigaPCI drives this bus at TTL levels. As such, it is necessary that the CPU Local Bus Card devices be TTL, TTL tolerant, or use level shifting to convert the incoming TTL levels to the voltage required.
 
 **PORT** (Port Size)
-This LVTTL signal is driven by the target device and tristated by inactive target devices. Used to indicate the data bus width of the target device. Logic low (0) indicates a 32-bit port. Logic high (1) indicates a 16-bit port.
+This LVTTL signal is driven by the target device and tristated by inactive target devices. Strictly address driven. Used to indicate the data bus width of the target device. Logic low (0) indicates a 32-bit port. Logic high (1) indicates a 16-bit port.
 
 **R_W** (Read/Write)  
 This TTL tolerant signal is driven by the bus master and tristated by inactive bus masters.
@@ -292,7 +292,7 @@ This TTL tolerant signal is driven by the bus master and tristated by inactive b
 This TTL tolerant bus is driven by the bus master and tristated by inactive bus masters. These are the MC68040/MC68060 transfer size signals. 
 
 **_TACK** (Transfer Acknowledge)
-This LVTTL signal is driven by the target device and tristated by inactive target devices. It signals the CPU Local Bus device that the target device has is ready to complete the data transfer cycle.
+This LVTTL signal is driven by the target device and tristated by inactive target devices. It signals the bus owner that the target device has completed the data transfer process for writes, or has driven the data bus with the requested data and the cycle can be safely terminated.
 
 **_TBI** (Tranfer Burst Inhibit)
 This LVTTL signal is driven by the target device and tristated by inactive target devices. Inhibits a burst cycle in favor of individual data transfers. Asserted with **_TACK**.
@@ -340,10 +340,10 @@ The 40MHz LVTTL bus clock is generated on the CPU Local Bus Card and used to syn
 This LVTTL signal is driven by AUTOCONFIG logic on the CPU Local Bus Card. Indicates AUTOCONFIG devices on the CPU Local Bus card have been configured. AUTOCONFIG devices on the CPU Local Bus card are configured first. Once configured, asserting this signal allows devices on the AmigaPCI main board to be configured. In the absence of an AUTOCONFIG device, this may be left unconnected
 
 **_INT2** (Amiga Interupt 2)  
-This TTL signal is driven by target device on the CPU Local Bus Card. Open drain.
+This TTL signal is driven by a target device on the CPU Local Bus Card. Open drain.
 
 **_INT6** (Amiga Interupt 6)  
-This TTL signal is driven by target device on the CPU Local Bus Card. Open drain.
+This TTL signal is driven by a target device on the CPU Local Bus Card. Open drain.
 
 **IPL(2..0)** (Interupt Level)  
 This TTL bus is driven by the Amiga chipset.
@@ -394,7 +394,7 @@ Pin|Signal|Pin|Signal|Pin|Signal
 
 ## 3.5 Signal Buffering
 
-It is recommended to implement buffers for the data bus of the CPU Local Bus Card. It is possible to implement target devices on the card. When the target device is on the Local Bus card, it will be necessary to isolate the data bus on the Local Bus card with tristate buffers. This will prevent bus contention with the AmigaPCI data bus.
+It is recommended to implement buffers for the data bus of the CPU Local Bus Card. It is possible to implement target devices on the card. When the target device is on the Local Bus card during a CPU cycle, it will be necessary to isolate the data bus on the Local Bus card with tristate buffers. This will prevent bus contention with the AmigaPCI data bus. The buffers should remain enabled during PCI DMA cycles for target devices on the CPU Local Bus Card.
 
 ## 3.6 Clocks
 
@@ -444,8 +444,6 @@ Timebase Source|J208|1-2 VSYNC|Timebase driven by Agnus VSYNC.
 []()|[]()|2-3 TICK|Timebase driven by TICK.
 Sync Source|J303|1-2 HSYNC|Supplies HSYNC to pin 13 of the HD15 video port.
 []()|[]()|2-3 CSYNC|Supplies CSYNC to pin 13 of the HD15 video port.
-RAM Clock|J700|1-2 80MHz|Supplies 80MHz to SDRAM. Factory Default.
-[]()|[]()|2-3 40MHz|Supplies 40MHz to SDRAM.
 ATA Autoboot|J900|Short|ATA autoboot disabled.
 []()|[]()|Open|ATA autoboot enabled.
 Primary ATA Port Ultra Mode|J901|Short|Enable Ultra 2*** mode.
