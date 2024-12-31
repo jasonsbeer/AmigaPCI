@@ -17,17 +17,13 @@
 5) AmigaPCI refers to this specification or any implementation of this specification, in part or whole.
 6) CPU refers to the Motorola MC68040 or MC68060 processor, unless otherwise specified.
 
-**Revision History**  
+**Revision History**
+
+THIS IS A DRAFT AND SUBJECT TO CHANGE WITHOUT NOTICE.
+
 Revision|Date|Status
 -|-|-
-0.0|June 1, 2024|FIRST DRAFT
-0.1|July 3, 2024|Removed _TIP from CPU local bus connector.
-0.2|July 9, 2024|Changed clocks on CPU local bus connector.
-0.3|July 11, 2024|Added dynamic bus sizing to section 3. Modified CPU Local Bus signals.
-0.4|July 15, 2024|Added section 3.1. CPU Local Bus Card Devices
-0.5|July 16, 2024|Rework of Section 3.
-0.6|July 29, 2024|Added Section 4, Jumpers
-0.7|October 22, 2024|Updated sections 3.4, 3.6, and 3.7 with new termination signals and clock descriptions.
+
 
 <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://github.com/jasonsbeer/AmigaPCI">AmigaPCI Hardware Reference</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://github.com/jasonsbeer">Jason Neus</a> is licensed under <a href="https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">Creative Commons Attribution-NonCommercial 4.0 International<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt=""></a></p>
 
@@ -236,7 +232,7 @@ Bus Master devices are devices that control the AmigaPCI while initiating data t
 
 ### 3.3.2 Target Device
 
-A target device is any device that may be controlled by the bus master, such as memory. When addressed, the target device drives the data bus on reads, or latches the data on the data bus for writes. Each target device must terminate its cycles. Control registers or other memory mapped resources must be mapped at least 512k higher than $0800 000 or at least 512k over the highest RAM address.
+A target device is any device that may be controlled by the bus master, such as memory. When addressed, the target device drives the data bus on reads, or latches the data on the data bus for writes. Each target device must terminate its cycles. Control registers or other memory mapped resources must be mapped at least 512k higher than $0800 000 or at least 512k over the highest RAM address. When the target device is on the Local Bus card, it will be necessary to isolate the data bus on the Local Bus card with tristating buffers. This will prevent bus contention with the buffers on the AmigaPCI.
 
 ## 3.4 CPU Local Bus Signals
 
@@ -270,7 +266,10 @@ These signals are used to initialize the system. The CPU Local Bus device should
 This LVTTL level signal is driven by the system reset logic and initiates a reset of all logic and I/O on the AmigaPCI and CPU Local Bus Card, but not the CPU.
 
 **_RSTOUT**  (Reset Out)  
-This TTL tolerant signal is driven by the CPU to initiate a reset of all logic and I/O on the AmigaPCI. When driven, **_RESET** will assert as long as **_RSTOUT** is asserted.
+This TTL tolerant signal is driven by the CPU to initiate a reset of all logic and I/O on the AmigaPCI and CPU Local Bus Card, but not the CPU itself.
+
+**CDONE** (Configuration Done)
+This LVTTL signal is driven by configurable logic present on the local bus card. When LOW, holds the entire system in reset until such time as all programmable logic devices on the AmigaPCI system have configured.
 
 **_CPURST** (CPU Reset)
 This LVTTL signal is driven by the system reset logic and initiates a reset of the CPU. This signal is asserted in reponse to the push button or keyboard reset action.
@@ -349,9 +348,6 @@ This TTL signal is driven by target device on the CPU Local Bus Card. Open drain
 **IPL(2..0)** (Interupt Level)  
 This TTL bus is driven by the Amiga chipset.
 
-**_LBEN** (Local Bus Enabled)  
-This LVTTL signal is driven by a target device on the CPU Local Bus Card and tristated by inactive target devices on the CPU Local Bus Card. When the CPU Local Bus Card is addressed, this signal is asserted so the onboard signal buffers may be set correctly to avoid bus contention. Needed when memory or AUTOCONFIG devices are implemented on the CPU Local Bus card. In the absence of such devices, this may be left unconnected.
-
 **Table 3.4**. CPU Local Bus Pinout.
 Pin|Signal|Pin|Signal|Pin|Signal
 -|-|-|-|-|-
@@ -376,7 +372,7 @@ Pin|Signal|Pin|Signal|Pin|Signal
 **A19**|D25|**B19**|D19|**C19**|D23
 **A20**|D17|**B20**|D15|**C20**|D14
 **A21**|+3.3V|**B21**|_TACK|**C21**|_TEA
-**A22**|+5V|**B22**|_LBEN|**C22**|_BG
+**A22**|+5V|**B22**|CDONE|**C22**|_BG
 **A23**|_TBI|**B23**|_INT6|**C23**|_TCI
 **A24**|GND|**B24**|D18|**C24**|D13
 **A25**|+5V|**B25**|D16|**C25**|D12
