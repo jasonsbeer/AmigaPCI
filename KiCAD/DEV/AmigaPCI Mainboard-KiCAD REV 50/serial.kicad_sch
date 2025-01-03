@@ -9309,7 +9309,7 @@
 			)
 		)
 	)
-	(global_label "A[0..31]"
+	(global_label "A[31..0]"
 		(shape input)
 		(at 53.34 95.25 180)
 		(fields_autoplaced yes)
@@ -9393,7 +9393,7 @@
 			)
 		)
 	)
-	(global_label "D[0..31]"
+	(global_label "D[31..0]"
 		(shape bidirectional)
 		(at 53.34 63.5 180)
 		(fields_autoplaced yes)

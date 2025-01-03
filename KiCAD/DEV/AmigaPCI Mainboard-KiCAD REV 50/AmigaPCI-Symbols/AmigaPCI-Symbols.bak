@@ -2,6 +2,126 @@
 	(version 20231120)
 	(generator "kicad_symbol_editor")
 	(generator_version "8.0")
+	(symbol "+3V3SB"
+		(power)
+		(pin_numbers hide)
+		(pin_names
+			(offset 0) hide)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(property "Reference" "#PWR"
+			(at 0 -3.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3SB"
+			(at 0 3.556 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3V3\""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_keywords" "global power"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(symbol "+3V3SB_0_1"
+			(polyline
+				(pts
+					(xy -0.762 1.27) (xy 0 2.54)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0 0) (xy 0 2.54)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0 2.54) (xy 0.762 1.27)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "+3V3SB_1_1"
+			(pin power_in line
+				(at 0 0 90)
+				(length 0)
+				(name "~"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+	)
 	(symbol "+AUD"
 		(power)
 		(pin_names
@@ -3642,7 +3762,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(property "Reference" "U"
-			(at 35.56 10.16 0)
+			(at -1.27 41.91 0)
 			(effects
 				(font
 					(size 1.524 1.524)
@@ -3650,7 +3770,7 @@
 			)
 		)
 		(property "Value" "74LVC16646"
-			(at 35.56 7.62 0)
+			(at -1.27 39.37 0)
 			(effects
 				(font
 					(size 1.524 1.524)
@@ -3658,7 +3778,7 @@
 			)
 		)
 		(property "Footprint" "DL56"
-			(at 15.24 0 0)
+			(at -21.59 31.75 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3668,7 +3788,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 15.24 0 0)
+			(at -21.59 31.75 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3678,7 +3798,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 15.24 0 0)
+			(at -21.59 31.75 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3706,7 +3826,7 @@
 		)
 		(symbol "74LVC16646_0_1"
 			(pin input line
-				(at 15.24 0 0)
+				(at -21.59 31.75 0)
 				(length 7.62)
 				(name "1DIR"
 					(effects
@@ -3724,7 +3844,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at 15.24 -22.86 0)
+				(at -21.59 8.89 0)
 				(length 7.62)
 				(name "1A5"
 					(effects
@@ -3742,7 +3862,7 @@
 				)
 			)
 			(pin power_in line
-				(at 15.24 -25.4 0)
+				(at -21.59 6.35 0)
 				(length 7.62)
 				(name "GND"
 					(effects
@@ -3760,7 +3880,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at 15.24 -27.94 0)
+				(at -21.59 3.81 0)
 				(length 7.62)
 				(name "1A6"
 					(effects
@@ -3778,7 +3898,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at 15.24 -30.48 0)
+				(at -21.59 1.27 0)
 				(length 7.62)
 				(name "1A7"
 					(effects
@@ -3796,7 +3916,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at 15.24 -33.02 0)
+				(at -21.59 -1.27 0)
 				(length 7.62)
 				(name "1A8"
 					(effects
@@ -3814,7 +3934,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at 15.24 -35.56 0)
+				(at -21.59 -3.81 0)
 				(length 7.62)
 				(name "2A1"
 					(effects
@@ -3832,7 +3952,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at 15.24 -38.1 0)
+				(at -21.59 -6.35 0)
 				(length 7.62)
 				(name "2A2"
 					(effects
@@ -3850,7 +3970,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at 15.24 -40.64 0)
+				(at -21.59 -8.89 0)
 				(length 7.62)
 				(name "2A3"
 					(effects
@@ -3868,7 +3988,7 @@
 				)
 			)
 			(pin power_in line
-				(at 15.24 -43.18 0)
+				(at -21.59 -11.43 0)
 				(length 7.62)
 				(name "GND"
 					(effects
@@ -3886,7 +4006,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at 15.24 -45.72 0)
+				(at -21.59 -13.97 0)
 				(length 7.62)
 				(name "2A4"
 					(effects
@@ -3904,7 +4024,7 @@
 				)
 			)
 			(pin input line
-				(at 15.24 -2.54 0)
+				(at -21.59 29.21 0)
 				(length 7.62)
 				(name "1CLKAB"
 					(effects
@@ -3922,7 +4042,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at 15.24 -48.26 0)
+				(at -21.59 -16.51 0)
 				(length 7.62)
 				(name "2A5"
 					(effects
@@ -3940,7 +4060,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at 15.24 -50.8 0)
+				(at -21.59 -19.05 0)
 				(length 7.62)
 				(name "2A6"
 					(effects
@@ -3958,7 +4078,7 @@
 				)
 			)
 			(pin power_in line
-				(at 15.24 -53.34 0)
+				(at -21.59 -21.59 0)
 				(length 7.62)
 				(name "VCC"
 					(effects
@@ -3976,7 +4096,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at 15.24 -55.88 0)
+				(at -21.59 -24.13 0)
 				(length 7.62)
 				(name "2A7"
 					(effects
@@ -3994,7 +4114,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at 15.24 -58.42 0)
+				(at -21.59 -26.67 0)
 				(length 7.62)
 				(name "2A8"
 					(effects
@@ -4012,7 +4132,7 @@
 				)
 			)
 			(pin power_in line
-				(at 15.24 -60.96 0)
+				(at -21.59 -29.21 0)
 				(length 7.62)
 				(name "GND"
 					(effects
@@ -4030,7 +4150,7 @@
 				)
 			)
 			(pin input line
-				(at 15.24 -63.5 0)
+				(at -21.59 -31.75 0)
 				(length 7.62)
 				(name "2SAB"
 					(effects
@@ -4048,7 +4168,7 @@
 				)
 			)
 			(pin input line
-				(at 15.24 -66.04 0)
+				(at -21.59 -34.29 0)
 				(length 7.62)
 				(name "2CLKAB"
 					(effects
@@ -4066,7 +4186,7 @@
 				)
 			)
 			(pin input line
-				(at 15.24 -68.58 0)
+				(at -21.59 -36.83 0)
 				(length 7.62)
 				(name "2DIR"
 					(effects
@@ -4084,7 +4204,7 @@
 				)
 			)
 			(pin input line
-				(at 57.15 -68.58 180)
+				(at 20.32 -36.83 180)
 				(length 7.62)
 				(name "*2OE"
 					(effects
@@ -4102,7 +4222,7 @@
 				)
 			)
 			(pin input line
-				(at 15.24 -5.08 0)
+				(at -21.59 26.67 0)
 				(length 7.62)
 				(name "1SAB"
 					(effects
@@ -4120,7 +4240,7 @@
 				)
 			)
 			(pin input line
-				(at 57.15 -66.04 180)
+				(at 20.32 -34.29 180)
 				(length 7.62)
 				(name "2CLKBA"
 					(effects
@@ -4138,7 +4258,7 @@
 				)
 			)
 			(pin input line
-				(at 57.15 -63.5 180)
+				(at 20.32 -31.75 180)
 				(length 7.62)
 				(name "2SBA"
 					(effects
@@ -4156,7 +4276,7 @@
 				)
 			)
 			(pin power_in line
-				(at 57.15 -60.96 180)
+				(at 20.32 -29.21 180)
 				(length 7.62)
 				(name "GND"
 					(effects
@@ -4174,7 +4294,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at 57.15 -58.42 180)
+				(at 20.32 -26.67 180)
 				(length 7.62)
 				(name "2B8"
 					(effects
@@ -4192,7 +4312,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at 57.15 -55.88 180)
+				(at 20.32 -24.13 180)
 				(length 7.62)
 				(name "2B7"
 					(effects
@@ -4210,7 +4330,7 @@
 				)
 			)
 			(pin power_in line
-				(at 57.15 -53.34 180)
+				(at 20.32 -21.59 180)
 				(length 7.62)
 				(name "VCC"
 					(effects
@@ -4228,7 +4348,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at 57.15 -50.8 180)
+				(at 20.32 -19.05 180)
 				(length 7.62)
 				(name "2B6"
 					(effects
@@ -4246,7 +4366,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at 57.15 -48.26 180)
+				(at 20.32 -16.51 180)
 				(length 7.62)
 				(name "2B5"
 					(effects
@@ -4264,7 +4384,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at 57.15 -45.72 180)
+				(at 20.32 -13.97 180)
 				(length 7.62)
 				(name "2B4"
 					(effects
@@ -4282,7 +4402,7 @@
 				)
 			)
 			(pin power_in line
-				(at 57.15 -43.18 180)
+				(at 20.32 -11.43 180)
 				(length 7.62)
 				(name "GND"
 					(effects
@@ -4300,7 +4420,7 @@
 				)
 			)
 			(pin power_in line
-				(at 15.24 -7.62 0)
+				(at -21.59 24.13 0)
 				(length 7.62)
 				(name "GND"
 					(effects
@@ -4318,7 +4438,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at 57.15 -40.64 180)
+				(at 20.32 -8.89 180)
 				(length 7.62)
 				(name "2B3"
 					(effects
@@ -4336,7 +4456,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at 57.15 -38.1 180)
+				(at 20.32 -6.35 180)
 				(length 7.62)
 				(name "2B2"
 					(effects
@@ -4354,7 +4474,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at 57.15 -35.56 180)
+				(at 20.32 -3.81 180)
 				(length 7.62)
 				(name "2B1"
 					(effects
@@ -4372,7 +4492,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at 57.15 -33.02 180)
+				(at 20.32 -1.27 180)
 				(length 7.62)
 				(name "1B8"
 					(effects
@@ -4390,7 +4510,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at 57.15 -30.48 180)
+				(at 20.32 1.27 180)
 				(length 7.62)
 				(name "1B7"
 					(effects
@@ -4408,7 +4528,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at 57.15 -27.94 180)
+				(at 20.32 3.81 180)
 				(length 7.62)
 				(name "1B6"
 					(effects
@@ -4426,7 +4546,7 @@
 				)
 			)
 			(pin power_in line
-				(at 57.15 -25.4 180)
+				(at 20.32 6.35 180)
 				(length 7.62)
 				(name "GND"
 					(effects
@@ -4444,7 +4564,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at 57.15 -22.86 180)
+				(at 20.32 8.89 180)
 				(length 7.62)
 				(name "1B5"
 					(effects
@@ -4462,7 +4582,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at 57.15 -20.32 180)
+				(at 20.32 11.43 180)
 				(length 7.62)
 				(name "1B4"
 					(effects
@@ -4480,7 +4600,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at 57.15 -17.78 180)
+				(at 20.32 13.97 180)
 				(length 7.62)
 				(name "1B3"
 					(effects
@@ -4498,7 +4618,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at 15.24 -10.16 0)
+				(at -21.59 21.59 0)
 				(length 7.62)
 				(name "1A1"
 					(effects
@@ -4516,7 +4636,7 @@
 				)
 			)
 			(pin power_in line
-				(at 57.15 -15.24 180)
+				(at 20.32 16.51 180)
 				(length 7.62)
 				(name "VCC"
 					(effects
@@ -4534,7 +4654,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at 57.15 -12.7 180)
+				(at 20.32 19.05 180)
 				(length 7.62)
 				(name "1B2"
 					(effects
@@ -4552,7 +4672,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at 57.15 -10.16 180)
+				(at 20.32 21.59 180)
 				(length 7.62)
 				(name "1B1"
 					(effects
@@ -4570,7 +4690,7 @@
 				)
 			)
 			(pin power_in line
-				(at 57.15 -7.62 180)
+				(at 20.32 24.13 180)
 				(length 7.62)
 				(name "GND"
 					(effects
@@ -4587,10 +4707,10 @@
 					)
 				)
 			)
-			(pin unspecified line
-				(at 57.15 -5.08 180)
+			(pin input line
+				(at 20.32 26.67 180)
 				(length 7.62)
-				(name "54"
+				(name "1SBA"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -4606,7 +4726,7 @@
 				)
 			)
 			(pin input line
-				(at 57.15 -2.54 180)
+				(at 20.32 29.21 180)
 				(length 7.62)
 				(name "1CLKBA"
 					(effects
@@ -4624,7 +4744,7 @@
 				)
 			)
 			(pin input line
-				(at 57.15 0 180)
+				(at 20.32 31.75 180)
 				(length 7.62)
 				(name "*1OE"
 					(effects
@@ -4642,7 +4762,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at 15.24 -12.7 0)
+				(at -21.59 19.05 0)
 				(length 7.62)
 				(name "1A2"
 					(effects
@@ -4660,7 +4780,7 @@
 				)
 			)
 			(pin power_in line
-				(at 15.24 -15.24 0)
+				(at -21.59 16.51 0)
 				(length 7.62)
 				(name "VCC"
 					(effects
@@ -4678,7 +4798,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at 15.24 -17.78 0)
+				(at -21.59 13.97 0)
 				(length 7.62)
 				(name "1A3"
 					(effects
@@ -4696,7 +4816,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at 15.24 -20.32 0)
+				(at -21.59 11.43 0)
 				(length 7.62)
 				(name "1A4"
 					(effects
@@ -4716,8 +4836,8 @@
 		)
 		(symbol "74LVC16646_1_1"
 			(rectangle
-				(start 22.86 5.08)
-				(end 49.53 -73.66)
+				(start -13.97 36.83)
+				(end 12.7 -41.91)
 				(stroke
 					(width 0)
 					(type default)

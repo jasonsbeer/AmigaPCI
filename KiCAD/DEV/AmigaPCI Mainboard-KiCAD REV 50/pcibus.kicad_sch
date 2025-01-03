@@ -24843,7 +24843,7 @@
 			)
 		)
 	)
-	(global_label "AD[31..0]"
+	(global_label "AD[0..31]"
 		(shape bidirectional)
 		(at 378.46 17.78 0)
 		(fields_autoplaced yes)

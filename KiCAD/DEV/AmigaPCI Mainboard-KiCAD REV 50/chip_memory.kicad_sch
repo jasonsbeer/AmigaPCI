@@ -10750,7 +10750,7 @@
 			)
 		)
 	)
-	(global_label "UDB[0..15]"
+	(global_label "UDB[15..0]"
 		(shape bidirectional)
 		(at 394.462 39.37 0)
 		(fields_autoplaced yes)
@@ -10813,7 +10813,7 @@
 			)
 		)
 	)
-	(global_label "LVD[0..31]"
+	(global_label "LVD[31..0]"
 		(shape bidirectional)
 		(at 47.244 33.274 180)
 		(fields_autoplaced yes)

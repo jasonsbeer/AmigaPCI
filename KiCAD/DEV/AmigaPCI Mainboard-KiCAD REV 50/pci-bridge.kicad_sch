@@ -4689,6 +4689,10 @@
 		(uuid "5fdc34e0-ed59-41b0-9252-7a912fb27fe5")
 	)
 	(no_connect
+		(at 123.19 135.89)
+		(uuid "60f22347-6f2b-41d0-8ad0-34233425de4a")
+	)
+	(no_connect
 		(at 273.05 66.04)
 		(uuid "72b471f0-1af8-45f5-a20e-e68afc50ab68")
 	)
@@ -14772,7 +14776,7 @@
 			)
 		)
 	)
-	(global_label "LVA[0..31]"
+	(global_label "LVA[31..0]"
 		(shape bidirectional)
 		(at 382.27 68.58 0)
 		(effects
@@ -15589,7 +15593,7 @@
 			)
 		)
 	)
-	(global_label "LVAD[31..0]"
+	(global_label "LVAD[0..31]"
 		(shape bidirectional)
 		(at 361.95 63.5 0)
 		(effects
@@ -15777,7 +15781,7 @@
 			)
 		)
 	)
-	(global_label "LVD[0..31]"
+	(global_label "LVD[31..0]"
 		(shape bidirectional)
 		(at 402.59 77.47 0)
 		(effects

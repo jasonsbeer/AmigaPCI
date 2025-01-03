@@ -9523,7 +9523,7 @@
 			)
 		)
 	)
-	(global_label "DRD[0..15]"
+	(global_label "DRD[15..0]"
 		(shape bidirectional)
 		(at 52.07 50.8 180)
 		(fields_autoplaced yes)
@@ -9754,7 +9754,7 @@
 			)
 		)
 	)
-	(global_label "RGA[1..8]"
+	(global_label "RGA[8..1]"
 		(shape input)
 		(at 53.34 100.33 180)
 		(fields_autoplaced yes)

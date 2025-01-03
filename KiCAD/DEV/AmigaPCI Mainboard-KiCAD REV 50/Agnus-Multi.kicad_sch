@@ -9340,7 +9340,7 @@
 		)
 		(uuid "f8e2d4c2-2a1a-4db8-92a5-da3096eb419a")
 	)
-	(global_label "RGA[1..8]"
+	(global_label "RGA[8..1]"
 		(shape output)
 		(at 43.18 217.17 180)
 		(fields_autoplaced yes)
@@ -9403,7 +9403,7 @@
 			)
 		)
 	)
-	(global_label "DRD[0..15]"
+	(global_label "DRD[15..0]"
 		(shape bidirectional)
 		(at 43.18 67.31 180)
 		(fields_autoplaced yes)
@@ -9466,7 +9466,7 @@
 			)
 		)
 	)
-	(global_label "A[0..31]"
+	(global_label "A[31..0]"
 		(shape input)
 		(at 43.18 118.11 180)
 		(fields_autoplaced yes)

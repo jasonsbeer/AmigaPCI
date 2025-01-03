@@ -11582,7 +11582,7 @@
 			)
 		)
 	)
-	(global_label "LVD[0..31]"
+	(global_label "LVD[31..0]"
 		(shape bidirectional)
 		(at 39.37 52.07 180)
 		(effects

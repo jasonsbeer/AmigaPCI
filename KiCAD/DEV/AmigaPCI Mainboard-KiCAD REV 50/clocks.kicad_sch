@@ -14012,7 +14012,7 @@
 			)
 		)
 	)
-	(global_label "LVAD[31..0]"
+	(global_label "LVAD[0..31]"
 		(shape bidirectional)
 		(at 314.96 40.64 180)
 		(fields_autoplaced yes)
@@ -14180,7 +14180,7 @@
 			)
 		)
 	)
-	(global_label "D[0..31]"
+	(global_label "D[31..0]"
 		(shape bidirectional)
 		(at 39.37 165.1 180)
 		(effects
@@ -14410,7 +14410,7 @@
 			)
 		)
 	)
-	(global_label "A[0..31]"
+	(global_label "A[31..0]"
 		(shape bidirectional)
 		(at 39.37 241.3 180)
 		(effects
@@ -14471,7 +14471,7 @@
 			)
 		)
 	)
-	(global_label "AD[31..0]"
+	(global_label "AD[0..31]"
 		(shape bidirectional)
 		(at 388.62 40.64 0)
 		(effects

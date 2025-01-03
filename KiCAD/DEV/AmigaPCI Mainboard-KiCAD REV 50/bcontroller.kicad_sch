@@ -10674,7 +10674,7 @@
 	)
 	(text "A BUS DATA IS ALWAYS LIVE.\nAD BUS DATA IS LATCHED\nDURING THE ADDRESS PHASE \nOF A PCI CYCLE."
 		(exclude_from_sim no)
-		(at 354.584 175.006 0)
+		(at 352.044 168.656 0)
 		(effects
 			(font
 				(size 2 2)
@@ -10695,6 +10695,17 @@
 			(justify left bottom)
 		)
 		(uuid "94721fa1-cb69-41e0-a9d9-feebed2bc68c")
+	)
+	(text "WE IMPLEMENT ADDRESS\nINVARIANCE. THIS MEANS\nTHE ADDRESS BUS IS PASSED \nTHROUGH WITH NO CHANGES."
+		(exclude_from_sim no)
+		(at 352.298 182.626 0)
+		(effects
+			(font
+				(size 2 2)
+			)
+			(justify left)
+		)
+		(uuid "953f8ce2-34b3-413b-8935-3f31c46d0454")
 	)
 	(text "J901"
 		(exclude_from_sim no)
@@ -13238,7 +13249,7 @@
 			)
 		)
 	)
-	(global_label "LVD[0..31]"
+	(global_label "LVD[31..0]"
 		(shape bidirectional)
 		(at 227.33 63.5 0)
 		(effects
@@ -13592,7 +13603,7 @@
 			)
 		)
 	)
-	(global_label "LVAD[31..0]"
+	(global_label "LVAD[0..31]"
 		(shape bidirectional)
 		(at 375.92 43.18 180)
 		(effects
@@ -14155,7 +14166,7 @@
 			)
 		)
 	)
-	(global_label "LVA[0..31]"
+	(global_label "LVA[31..0]"
 		(shape bidirectional)
 		(at 245.11 73.66 0)
 		(effects

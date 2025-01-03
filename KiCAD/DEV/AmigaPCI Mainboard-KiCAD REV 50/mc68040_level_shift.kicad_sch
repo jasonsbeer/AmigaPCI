@@ -15304,7 +15304,7 @@
 		)
 		(uuid "ff61e015-7525-4671-bfff-d5aed9f5fc61")
 	)
-	(global_label "LVD[0..31]"
+	(global_label "LVD[31..0]"
 		(shape bidirectional)
 		(at 93.98 35.56 0)
 		(effects
@@ -15491,7 +15491,7 @@
 			)
 		)
 	)
-	(global_label "A[0..31]"
+	(global_label "A[31..0]"
 		(shape bidirectional)
 		(at 182.88 43.18 0)
 		(effects
@@ -15784,7 +15784,7 @@
 			)
 		)
 	)
-	(global_label "LVA[0..31]"
+	(global_label "LVA[31..0]"
 		(shape bidirectional)
 		(at 182.88 35.56 0)
 		(effects
@@ -15993,7 +15993,7 @@
 			)
 		)
 	)
-	(global_label "UDB[0..15]"
+	(global_label "UDB[15..0]"
 		(shape bidirectional)
 		(at 326.39 41.91 180)
 		(fields_autoplaced yes)
@@ -16203,7 +16203,7 @@
 			)
 		)
 	)
-	(global_label "D[0..31]"
+	(global_label "D[31..0]"
 		(shape bidirectional)
 		(at 93.98 43.18 0)
 		(effects
@@ -16829,7 +16829,7 @@
 			)
 		)
 	)
-	(global_label "DRD[0..15]"
+	(global_label "DRD[15..0]"
 		(shape bidirectional)
 		(at 326.39 38.1 180)
 		(fields_autoplaced yes)

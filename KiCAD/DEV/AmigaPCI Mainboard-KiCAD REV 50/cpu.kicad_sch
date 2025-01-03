@@ -20603,7 +20603,7 @@
 			)
 		)
 	)
-	(global_label "D[0..31]"
+	(global_label "D[31..0]"
 		(shape bidirectional)
 		(at 318.77 31.75 0)
 		(effects
@@ -21230,7 +21230,7 @@
 			)
 		)
 	)
-	(global_label "LVA[0..31]"
+	(global_label "LVA[31..0]"
 		(shape bidirectional)
 		(at 39.37 143.51 180)
 		(effects
@@ -21856,7 +21856,7 @@
 			)
 		)
 	)
-	(global_label "A[0..31]"
+	(global_label "A[31..0]"
 		(shape bidirectional)
 		(at 318.77 132.08 0)
 		(effects

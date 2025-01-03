@@ -14545,7 +14545,7 @@
 			)
 		)
 	)
-	(global_label "A[0..31]"
+	(global_label "A[31..0]"
 		(shape input)
 		(at 37.846 96.266 180)
 		(effects
@@ -14754,7 +14754,7 @@
 			)
 		)
 	)
-	(global_label "D[0..31]"
+	(global_label "D[31..0]"
 		(shape bidirectional)
 		(at 37.846 67.056 180)
 		(effects
