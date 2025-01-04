@@ -10709,12 +10709,6 @@
 		(uuid "ac0b3b62-0646-4833-9001-c517b793f62f")
 	)
 	(junction
-		(at 139.7 55.88)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "b0720363-b8da-4259-bc57-ed02617d33f1")
-	)
-	(junction
 		(at 52.07 95.25)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -10749,12 +10743,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "bf0f36ca-31aa-4e76-abfa-1409b5595b0d")
-	)
-	(junction
-		(at 139.7 60.96)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "c1299561-2c9e-430e-aa7c-94cb683b8c87")
 	)
 	(junction
 		(at 158.75 50.8)
@@ -11533,16 +11521,6 @@
 			(type default)
 		)
 		(uuid "3967a27b-dc2e-44d8-a993-48eb78487a99")
-	)
-	(wire
-		(pts
-			(xy 130.81 55.88) (xy 139.7 55.88)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3a3dd32c-0135-487e-9dbb-80faf558d8da")
 	)
 	(wire
 		(pts
@@ -12456,7 +12434,7 @@
 	)
 	(wire
 		(pts
-			(xy 139.7 60.96) (xy 148.59 60.96)
+			(xy 130.81 60.96) (xy 148.59 60.96)
 		)
 		(stroke
 			(width 0)
@@ -12586,7 +12564,7 @@
 	)
 	(wire
 		(pts
-			(xy 139.7 55.88) (xy 148.59 55.88)
+			(xy 130.81 55.88) (xy 148.59 55.88)
 		)
 		(stroke
 			(width 0)
@@ -13263,16 +13241,6 @@
 			(type default)
 		)
 		(uuid "ef065044-acf1-4a0b-b747-8d1a806416dd")
-	)
-	(wire
-		(pts
-			(xy 130.81 60.96) (xy 139.7 60.96)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ef6f61c1-4467-42a4-8456-74c5b6a75775")
 	)
 	(wire
 		(pts
@@ -16086,7 +16054,7 @@
 				)
 			)
 		)
-		(property "Value" "150R"
+		(property "Value" "2k2"
 			(at 156.21 103.378 90)
 			(effects
 				(font
@@ -17195,7 +17163,7 @@
 				)
 			)
 		)
-		(property "Value" "510R"
+		(property "Value" "5k1"
 			(at 156.21 114.554 90)
 			(effects
 				(font
@@ -19344,7 +19312,7 @@
 				)
 			)
 		)
-		(property "Value" "510R"
+		(property "Value" "5k1"
 			(at 181.61 92.964 90)
 			(effects
 				(font
@@ -19867,76 +19835,6 @@
 			(project "AmigaPCI Mainboard"
 				(path "/72453515-27fe-4336-91f3-e3c8054f7767/4cb777ef-2899-49f4-b38f-a0c07d84fa7d"
 					(reference "C625")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "AmigaPCI-Symbols:CP_Small-Device")
-		(at 139.7 58.42 0)
-		(mirror y)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "947198ff-1e6f-4bed-b760-20d35eed4564")
-		(property "Reference" "C612"
-			(at 141.9352 59.5884 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "10uF"
-			(at 141.9352 57.277 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" "Capacitor_THT:CP_Radial_D5.0mm_P2.00mm"
-			(at 138.7348 62.23 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 139.7 58.42 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 139.7 58.42 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "daa1fcc4-dddb-4237-9eb5-89992bd1a717")
-		)
-		(pin "2"
-			(uuid "312d1f92-0eb5-4044-9034-f36a2b1c026f")
-		)
-		(instances
-			(project "AmigaPCI Mainboard"
-				(path "/72453515-27fe-4336-91f3-e3c8054f7767/4cb777ef-2899-49f4-b38f-a0c07d84fa7d"
-					(reference "C612")
 					(unit 1)
 				)
 			)
@@ -22036,7 +21934,7 @@
 				)
 			)
 		)
-		(property "Value" "68R"
+		(property "Value" "2k2"
 			(at 156.21 93.218 90)
 			(effects
 				(font

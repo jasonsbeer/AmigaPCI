@@ -2954,6 +2954,70 @@
       {
         "netclass": "Narrow",
         "pattern": "PORTSIZE"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/HID and User Ports/SWCLK"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/HID and User Ports/NRST"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_STMRST"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/HID and User Ports/_STMRSTA"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/HID and User Ports/USB5VEN"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "FANPWM"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "FANTACH"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/HID and User Ports/CONS_RX"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/HID and User Ports/CONS_TX"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/HID and User Ports/VMON1V2"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/HID and User Ports/VMON-12"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/HID and User Ports/VMON12"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/HID and User Ports/VMON5"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/HID and User Ports/VMON3V3"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/HID and User Ports/VMON5SB"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/HID and User Ports/POWER_LED"
       }
     ]
   },
@@ -3101,9 +3165,15 @@
           "label": "Description",
           "name": "Description",
           "show": false
+        },
+        {
+          "group_by": false,
+          "label": "PartNumber",
+          "name": "PartNumber",
+          "show": false
         }
       ],
-      "filter_string": "rn20*",
+      "filter_string": "j2*",
       "group_symbols": false,
       "name": "",
       "sort_asc": true,
