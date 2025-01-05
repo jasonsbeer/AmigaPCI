@@ -27,9 +27,9 @@ wire LLBE = ( A[1] &&  A[0]) || LW_TRANS || ( A[1] && SIZ[1]);
 //assign LMBEn = ~LMBE;
 //assign LLBEn = ~LLBE;
 
-assign CUUBEn = ~((UUBE && CPU_CYCLE) || (!CASUn && DMA_CYCLE && !DBENn));
-assign CUMBEn = ~((UMBE && CPU_CYCLE) || (!CASLn && DMA_CYCLE && !DBENn));
-assign CLMBEn = ~((LMBE && CPU_CYCLE) || (!CASUn && DMA_CYCLE && DBENn));
-assign CLLBEn = ~((LLBE && CPU_CYCLE) || (!CASLn && DMA_CYCLE && DBENn));
+assign CUUBEn = ~((UUBE && CPU_CYCLE) || (!CASUn && DMA_CYCLE &&  DBENn));
+assign CUMBEn = ~((UMBE && CPU_CYCLE) || (!CASLn && DMA_CYCLE &&  DBENn));
+assign CLMBEn = ~((LMBE && CPU_CYCLE) || (!CASUn && DMA_CYCLE && !DBENn));
+assign CLLBEn = ~((LLBE && CPU_CYCLE) || (!CASLn && DMA_CYCLE && !DBENn));
 
 endmodule
