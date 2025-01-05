@@ -9697,12 +9697,6 @@
 		(uuid "6994b7f7-d182-46f8-97a0-5e5dd593cfd5")
 	)
 	(junction
-		(at 368.3 185.42)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "6c7cf524-9835-469a-8fcb-22f70c040646")
-	)
-	(junction
 		(at 344.17 129.54)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -9713,12 +9707,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "83fcccaa-ac99-4996-8b7b-43d33272a32e")
-	)
-	(junction
-		(at 378.46 179.07)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "86bf7cec-4728-4fe2-99a6-1aa607eae0a2")
 	)
 	(junction
 		(at 129.54 254)
@@ -10426,16 +10414,6 @@
 	)
 	(wire
 		(pts
-			(xy 378.46 185.42) (xy 378.46 179.07)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "22585bc4-68b9-413d-9977-e711725f014b")
-	)
-	(wire
-		(pts
 			(xy 233.68 218.44) (xy 233.68 219.71)
 		)
 		(stroke
@@ -10816,7 +10794,7 @@
 	)
 	(wire
 		(pts
-			(xy 368.3 189.23) (xy 368.3 185.42)
+			(xy 368.3 179.07) (xy 368.3 182.88)
 		)
 		(stroke
 			(width 0)
@@ -11006,16 +10984,6 @@
 	)
 	(wire
 		(pts
-			(xy 378.46 179.07) (xy 381 179.07)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "419dd236-d02d-4236-afd0-f0301c6f5669")
-	)
-	(wire
-		(pts
 			(xy 102.87 58.42) (xy 102.87 82.55)
 		)
 		(stroke
@@ -11116,7 +11084,7 @@
 	)
 	(wire
 		(pts
-			(xy 377.19 179.07) (xy 378.46 179.07)
+			(xy 377.19 179.07) (xy 381 179.07)
 		)
 		(stroke
 			(width 0)
@@ -12056,16 +12024,6 @@
 	)
 	(wire
 		(pts
-			(xy 370.84 185.42) (xy 368.3 185.42)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "86aa80f7-e451-46f0-a5df-c5b0cd2bba2f")
-	)
-	(wire
-		(pts
 			(xy 214.63 248.92) (xy 214.63 250.19)
 		)
 		(stroke
@@ -12323,16 +12281,6 @@
 			(type default)
 		)
 		(uuid "9824142a-6ae2-4d41-8b4a-482230e6355a")
-	)
-	(wire
-		(pts
-			(xy 375.92 185.42) (xy 378.46 185.42)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "98cc968c-2903-4b7b-8248-c9ede94b2503")
 	)
 	(wire
 		(pts
@@ -12753,16 +12701,6 @@
 			(type default)
 		)
 		(uuid "b6770e13-5486-4919-9e13-52e4d4d901ea")
-	)
-	(wire
-		(pts
-			(xy 368.3 185.42) (xy 368.3 179.07)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b6f3a4a3-0abf-4164-981a-b840eac33ff6")
 	)
 	(wire
 		(pts
@@ -13972,7 +13910,7 @@
 	)
 	(rectangle
 		(start 361.95 166.624)
-		(end 400.304 194.818)
+		(end 400.304 191.262)
 		(stroke
 			(width 0)
 			(type default)
@@ -22688,7 +22626,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 368.3 189.23 0)
+		(at 368.3 182.88 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -22696,7 +22634,7 @@
 		(dnp no)
 		(uuid "aa702b71-ac2c-4a7e-aba3-496d55d5e290")
 		(property "Reference" "#PWR0352"
-			(at 368.3 195.58 0)
+			(at 368.3 189.23 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22705,7 +22643,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 368.427 193.6242 0)
+			(at 368.427 187.2742 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22713,7 +22651,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 368.3 189.23 0)
+			(at 368.3 182.88 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22722,7 +22660,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 368.3 189.23 0)
+			(at 368.3 182.88 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22731,7 +22669,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 368.3 189.23 0)
+			(at 368.3 182.88 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23089,75 +23027,6 @@
 			(project ""
 				(path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
 					(reference "#PWR0336")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:C_Small")
-		(at 373.38 185.42 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "b6060179-f0f8-4364-b740-486f8cd8b68f")
-		(property "Reference" "C242"
-			(at 374.142 186.69 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "22uF"
-			(at 374.396 188.468 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
-			(at 373.38 185.42 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 373.38 185.42 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 373.38 185.42 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "494ef3ac-6dc7-4ccf-a138-c9bef742ef11")
-		)
-		(pin "2"
-			(uuid "09ea2ac3-0b2e-49cf-bc99-1f048c6a3880")
-		)
-		(instances
-			(project "AmigaPCI Mainboard"
-				(path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
-					(reference "C242")
 					(unit 1)
 				)
 			)
