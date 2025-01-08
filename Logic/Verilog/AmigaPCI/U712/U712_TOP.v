@@ -7,7 +7,7 @@ module U712_TOP (
     input RnW, TSn, DBRn, REGSPACEn, RAMSPACEn, AWEn, RAS0n, RAS1n, CASLn, CASUn,
     input [1:0] SIZ,
     input [20:0] A,
-    input [9:0] DRA,
+    input [8:0] DRA,
 
     output CLK40C, CLKRAM,
     output LDSn, UDSn, ASn, REGENn, DBDIR,
@@ -25,6 +25,8 @@ module U712_TOP (
 //assign RAMENn = DRDDIR;
 //assign RAMENn = DBDIR;
 //assign RAMENn = AWEn;
+//assign RAMENn = DMA_CYCLEm;
+//assign RAMENn = VBENn;
 
 ///////////////////
 // CLOCK FANOUT //
@@ -107,7 +109,8 @@ wire DMA_CYCLEm;
 wire CPU_CYCLEm;
 
 U712_BUFFERS U712_BUFFERS (
-    .DBDIR (DBDIR),
+    //.DBDIR (DBDIR),
+    .AWEn (AWEn),
     .RnW (RnW),
     .DMA_CYCLE (DMA_CYCLEm),
     .VBENn (VBENn),
@@ -147,17 +150,18 @@ U712_CHIP_RAM U712_CHIP_RAM (
     //.CLK40 (CLK40),
     //.CLK7 (CLK7),
     .C1 (C1),
+    .C3 (C3),
     .RESETn (RESETn),
     .RAMSPACEn (RAMSPACEn),
     .TSn (TSn),
     .RnW (RnW),
     .TWO_MB_EN (TWO_MB_ENm),
     .DBRn (DBRn),
-    //.AWEn (AWEn),
-    //.RAS0n (RAS0n),
-    //.RAS1n (RAS1n),
-    //.CASLn (CASLn),
-    //.CASUn (CASUn),
+    .AWEn (AWEn),
+    .RAS0n (RAS0n),
+    .RAS1n (RAS1n),
+    .CASLn (CASLn),
+    .CASUn (CASUn),
     .A (A[20:1]),
     .DRA (DRA),
 

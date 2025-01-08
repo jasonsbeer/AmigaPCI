@@ -32,17 +32,29 @@ set_io A[18] 33
 set_io A[19] 34
 set_io A[20] 11
 
-#AGNUS ADDRESS BUS - INPUTS
-set_io DRA[0] 102
-set_io DRA[1] 101
-set_io DRA[2] 99
-set_io DRA[3] 98
-set_io DRA[4] 97
-set_io DRA[5] 96
-set_io DRA[6] 95
-set_io DRA[7] 91
-set_io DRA[8] 90
-set_io DRA[9] 106
+#AGNUS 8375 ADDRESS BUS - INPUTS
+#set_io DRA[0] 102
+#set_io DRA[1] 101
+#set_io DRA[2] 99
+#set_io DRA[3] 98
+#set_io DRA[4] 97
+#set_io DRA[5] 96
+#set_io DRA[6] 95
+#set_io DRA[7] 91
+#set_io DRA[8] 90
+#set_io DRA[9] 106
+
+#8372a
+set_io DRA[0] 101
+set_io DRA[1] 99
+set_io DRA[2] 98
+set_io DRA[3] 97
+set_io DRA[4] 96
+set_io DRA[5] 95
+set_io DRA[6] 91
+set_io DRA[7] 90
+set_io DRA[8] 106
+
 
 #SDRAM ADDRESS BUS - OUTPUTS
 set_io CMA[0]  55

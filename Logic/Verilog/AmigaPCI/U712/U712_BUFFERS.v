@@ -34,28 +34,26 @@ TO BUILD WITH APIO: apio build --top-module U712_TOP --fpga iCE40-HX4K-TQ144
 
 module U712_BUFFERS (
 
-    input DBDIR, RnW, DMA_CYCLE, REG_CYCLE, CPU_CYCLE,
+    input AWEn, RnW, DMA_CYCLE, REG_CYCLE, CPU_CYCLE,
     output VBENn, DRDENn, DRDDIR
 
 );
 
-/////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
 // CHIPSET CYCLE DATA BUFFER ENABLES AND DIRECTION //
-/////////////////////////////////////////////////////
+////////////////////////////////////////////////////
 
 //WE HAVE BUFFER TRANSCEIVERS WE NEED TO SET DURING CHIP REGISTER AND RAM CYCLES.
 //_VBEN IS ENABLED DURING CHIP SET REGISTER ACCESS AND CHIP RAM ACCESSES BUT WE MUST WAIT FOR DMA CYCLES TO END.
 //_DRDEN IS ENABLED DURING CPU CHIP SET REGISTER CYCLES AND DMA ACCESSES BUT NOT WHEN WE INSERT CPU CYCLES DURING DMA.
 
-//assign VBENn = ~((!REGSPACEn || !RAMSPACEn) && !DMA_CYCLE); //TURN OFF FOR PCI CYCLES AND AUTOCONFIG.
-//assign VBENn = !(!DMA_CYCLE && (REG_CYCLE || CPU_CYCLE));
+//CPU to RAM and chipset buffer enable.
 assign VBENn = !(REG_CYCLE || CPU_CYCLE);
 
-//assign DRDENn = ~(DMA_CYCLE || (!DMA_CYCLE && !REGSPACEn));
+//Chipset data bus enable.
 assign DRDENn = !(DMA_CYCLE || REG_CYCLE);
 
-//assign DRDDIR = (!REGSPACEn && !DMA_CYCLE && !RnW) || (DMA_CYCLE && !DBDIR); //SET WHEN DATA FLOWS TOWARDS CHIPSET.
-//DBDIR = 1 FOR WRITE CYCLES, 0 FOR READ CYCLES.
-assign DRDDIR = (REG_CYCLE && !RnW) || (DMA_CYCLE && !DBDIR); //SET WHEN DATA FLOWS TOWARDS CHIPSET.
+//Chipset data bus direction.
+assign DRDDIR = DMA_CYCLE ? AWEn : !RnW;
 
 endmodule

@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:55:50
 
-* File Generated:     Dec 25 2024 22:03:36
+* File Generated:     Jan 7 2025 17:54:45
 
 * Purpose:            
 
@@ -33,33 +33,19 @@ I2051: Reading of inputs for placer completed successfully
 
 I2053: Starting placement of the design
 =============================================================
-W2715: Warning for set_io Constraint: Ignoring pin assignment for DRA[5], as it is not connected to any PAD
-W2715: Warning for set_io Constraint: Ignoring pin assignment for DRA[0], as it is not connected to any PAD
-W2715: Warning for set_io Constraint: Ignoring pin assignment for DRA[9], as it is not connected to any PAD
-W2715: Warning for set_io Constraint: Ignoring pin assignment for DRA[6], as it is not connected to any PAD
-W2715: Warning for set_io Constraint: Ignoring pin assignment for CASLn, as it is not connected to any PAD
-W2715: Warning for set_io Constraint: Ignoring pin assignment for DRA[4], as it is not connected to any PAD
-W2715: Warning for set_io Constraint: Ignoring pin assignment for RAS0n, as it is not connected to any PAD
-W2715: Warning for set_io Constraint: Ignoring pin assignment for DRA[3], as it is not connected to any PAD
 W2715: Warning for set_io Constraint: Ignoring pin assignment for RAS1n, as it is not connected to any PAD
-W2715: Warning for set_io Constraint: Ignoring pin assignment for CASUn, as it is not connected to any PAD
-W2715: Warning for set_io Constraint: Ignoring pin assignment for DRA[8], as it is not connected to any PAD
-W2715: Warning for set_io Constraint: Ignoring pin assignment for DRA[1], as it is not connected to any PAD
-W2715: Warning for set_io Constraint: Ignoring pin assignment for DRA[7], as it is not connected to any PAD
 W2715: Warning for set_io Constraint: Ignoring pin assignment for A[20], as it is not connected to any PAD
-W2715: Warning for set_io Constraint: Ignoring pin assignment for AWEn, as it is not connected to any PAD
-W2715: Warning for set_io Constraint: Ignoring pin assignment for DRA[2], as it is not connected to any PAD
 
 Input Design Statistics
-    Number of LUTs      	:	141
-    Number of DFFs      	:	73
+    Number of LUTs      	:	185
+    Number of DFFs      	:	97
     Number of DFFs packed to IO	:	0
     Number of Carrys    	:	14
     Number of RAMs      	:	0
     Number of ROMs      	:	0
-    Number of IOs       	:	66
+    Number of IOs       	:	79
     Number of GBIOs     	:	0
-    Number of GBs       	:	2
+    Number of GBs       	:	3
     Number of WarmBoot  	:	0
     Number of PLLs      	:	1
 
@@ -68,16 +54,16 @@ Phase 1
 I2077: Start design legalization
 
 Design Legalization Statistics
-    Number of feedthru LUTs inserted to legalize input of DFFs     	:	14
+    Number of feedthru LUTs inserted to legalize input of DFFs     	:	34
     Number of feedthru LUTs inserted for LUTs driving multiple DFFs	:	0
-    Number of LUTs replicated for LUTs driving multiple DFFs       	:	1
+    Number of LUTs replicated for LUTs driving multiple DFFs       	:	2
     Number of feedthru LUTs inserted to legalize output of CARRYs  	:	0
     Number of feedthru LUTs inserted to legalize global signals    	:	0
     Number of feedthru CARRYs inserted to legalize input of CARRYs 	:	0
     Number of inserted LUTs to Legalize IOs with PIN_TYPE= 01xxxx  	:	0
     Number of inserted LUTs to Legalize IOs with PIN_TYPE= 10xxxx  	:	0
     Number of inserted LUTs to Legalize IOs with PIN_TYPE= 11xxxx  	:	0
-    Total LUTs inserted                                            	:	15
+    Total LUTs inserted                                            	:	36
     Total CARRYs inserted                                          	:	0
 
 
@@ -95,23 +81,23 @@ Info-1404: Inferred PLL generated clock at pll/PLLOUTGLOBALA
 Info-1404: Inferred PLL generated clock at pll/PLLOUTGLOBALB
 
 Design Statistics after Packing
-    Number of LUTs      	:	157
-    Number of DFFs      	:	73
+    Number of LUTs      	:	222
+    Number of DFFs      	:	97
     Number of DFFs packed to IO	:	0
     Number of Carrys    	:	14
 
 Device Utilization Summary after Packing
     Sequential LogicCells
-        LUT and DFF      	:	61
+        LUT and DFF      	:	85
         LUT, DFF and CARRY	:	12
     Combinational LogicCells
-        Only LUT         	:	82
+        Only LUT         	:	123
         CARRY Only       	:	0
         LUT with CARRY   	:	2
-    LogicCells                  :	157/3520
-    PLBs                        :	20/440
+    LogicCells                  :	222/3520
+    PLBs                        :	31/440
     BRAMs                       :	0/20
-    IOs and GBIOs               :	66/107
+    IOs and GBIOs               :	79/107
     PLLs                        :	1/2
 
 
@@ -121,29 +107,29 @@ Phase 4
 I2088: Phase 4, elapsed time : 0.2 (sec)
 
 Phase 5
-I2088: Phase 5, elapsed time : 0.1 (sec)
+I2088: Phase 5, elapsed time : 0.3 (sec)
 
 Phase 6
-I2088: Phase 6, elapsed time : 13.5 (sec)
+I2088: Phase 6, elapsed time : 14.8 (sec)
 
 Final Design Statistics
-    Number of LUTs      	:	157
-    Number of DFFs      	:	73
+    Number of LUTs      	:	222
+    Number of DFFs      	:	97
     Number of DFFs packed to IO	:	0
     Number of Carrys    	:	14
     Number of RAMs      	:	0
     Number of ROMs      	:	0
-    Number of IOs       	:	66
+    Number of IOs       	:	79
     Number of GBIOs     	:	0
-    Number of GBs       	:	2
+    Number of GBs       	:	3
     Number of WarmBoot  	:	0
     Number of PLLs      	:	1
 
 Device Utilization Summary
-    LogicCells                  :	157/3520
-    PLBs                        :	55/440
+    LogicCells                  :	222/3520
+    PLBs                        :	79/440
     BRAMs                       :	0/20
-    IOs and GBIOs               :	66/107
+    IOs and GBIOs               :	79/107
     PLLs                        :	1/2
 
 
@@ -165,7 +151,7 @@ Clock: C3 | Frequency: N/A | Target: 3.58 MHz
 Clock: CLK40_IN | Frequency: N/A | Target: 40.00 MHz
 Clock: pll/PLLOUTCOREA | Frequency: N/A | Target: 80.00 MHz
 Clock: pll/PLLOUTCOREB | Frequency: N/A | Target: 40.00 MHz
-Clock: pll/PLLOUTGLOBALA | Frequency: 168.33 MHz | Target: 80.00 MHz
+Clock: pll/PLLOUTGLOBALA | Frequency: 143.30 MHz | Target: 80.00 MHz
 Clock: pll/PLLOUTGLOBALB | Frequency: N/A | Target: 40.00 MHz
 
 =====================================================================
@@ -174,5 +160,5 @@ Clock: pll/PLLOUTGLOBALB | Frequency: N/A | Target: 40.00 MHz
 
 I2054: Placement of design completed successfully
 
-I2076: Placer run-time: 14.5 sec.
+I2076: Placer run-time: 16.0 sec.
 
