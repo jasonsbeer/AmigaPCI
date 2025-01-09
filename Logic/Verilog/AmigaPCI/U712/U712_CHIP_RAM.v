@@ -32,7 +32,7 @@ GitHub: https://github.com/jasonsbeer/AmigaPCI
 
 module U712_CHIP_RAM (
 
-    input CLK80, C1, C3, RESETn, RAMSPACEn, TSn, RnW, TWO_MB_EN, AWEn, RAS0n, CASLn, CASUn, DBRn,
+    input CLK80, C1, C3, RESETn, RAMSPACEn, TSn, RnW, TWO_MB_EN, AWEn, RAS0n, RAS1n, CASLn, CASUn, DBRn,
     input [20:2] A,
     input [9:0] DRA,
     input DBR_SYNC,
@@ -123,14 +123,20 @@ end
 
 reg [2:0] CAS_SYNC;
 wire CAS_AGNUSn = !(!CASLn || !CASUn);
+wire AGNUS_REFRESH = (!RAS0n && !RAS1n);
+reg [1:0] REFRESH_SYNC;
 
 always @(negedge CLK80) begin
     if (!RESETn) begin
         CAS_SYNC <= 3'b111;
+        REFRESH_SYNC <= 2'b00;
     end else begin
         CAS_SYNC[2] <= CAS_SYNC[1];
         CAS_SYNC[1] <= CAS_SYNC[0];
         CAS_SYNC[0] <= CAS_AGNUSn;
+
+        REFRESH_SYNC[1] <= REFRESH_SYNC[0];
+        REFRESH_SYNC[0] <= AGNUS_REFRESH;
     end
 end
 
@@ -289,7 +295,7 @@ always @(negedge CLK80) begin
                         //Counter h01 - h03 are refresh cycles.
                         SDRAM_CMD <= AUTOREFRESH;
                         SDRAM_COUNTER <= 8'h01; 
-                    end else if (CPU_CYCLE_START && DBR_SYNC) begin
+                    end else if (CPU_CYCLE_START && (DBR_SYNC || REFRESH_SYNC == 2'b11)) begin
                         //Counter h04 - h0F are CPU RAM cycles.
                         SDRAM_CMD <= BANKACTIVATE;
                         CPU_CYCLE <= 1;

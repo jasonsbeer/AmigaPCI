@@ -35,7 +35,7 @@ GitHub: https://github.com/jasonsbeer/AmigaPCI
 module U712_TOP (
 
     input CLK40_IN, C1, C3, RESETn,
-    input RnW, TSn, DBRn, REGSPACEn, RAMSPACEn, AWEn, RAS0n, CASLn, CASUn,
+    input RnW, TSn, DBRn, REGSPACEn, RAMSPACEn, AWEn, RAS0n, RAS1n, CASLn, CASUn,
     input [1:0] SIZ,
     input [20:0] A,
     input [9:0] DRA,
@@ -192,6 +192,7 @@ U712_CHIP_RAM U712_CHIP_RAM (
     .TWO_MB_EN (TWO_MB_ENm),
     .AWEn (AWEn),
     .RAS0n (RAS0n),
+    .RAS1n (RAS1n),
     .CASLn (CASLn),
     .CASUn (CASUn),
     .DBRn (DBRn),

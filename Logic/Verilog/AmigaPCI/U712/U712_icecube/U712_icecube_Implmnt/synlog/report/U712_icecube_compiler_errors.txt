@@ -1,2 +1,2 @@
-@E: CG906 :"D:\AmigaPCI\U712\U712_BYTE_ENABLE.v":71:23:71:24|Reference to unknown variable A0.
+@E: CG586 :"D:\AmigaPCI\U712\U712_CHIP_RAM.v":298:53:298:78|Illegal store to expression
 

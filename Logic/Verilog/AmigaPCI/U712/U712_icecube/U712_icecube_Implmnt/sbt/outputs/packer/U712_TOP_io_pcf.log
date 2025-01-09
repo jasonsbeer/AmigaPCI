@@ -1,3 +1,6 @@
+INPUT  TSn 	 location (6, 21, 1) 	 136 	 
+INPUT  DRA[2] 	 location (25, 15, 1) 	 99 	 
+INPUT  A[13] 	 location (0, 6, 0) 	 26 	 
 OUTPUT CLMBEn 	 location (25, 2, 0) 	 75 	 
 INPUT  AWEn 	 location (7, 21, 0) 	 135 	 
 INPUT  RESETn 	 location (25, 11, 0) 	 94 	 
@@ -22,6 +25,7 @@ OUTPUT CMA[5] 	 location (25, 4, 0) 	 79
 INPUT  CASUn 	 location (25, 18, 1) 	 104 	 
 INPUT  A[6] 	 location (0, 12, 1) 	 17 	 
 INPUT  A[15] 	 location (0, 3, 0) 	 29 	 
+INPUT  RAS1n 	 location (25, 9, 0) 	 88 	 
 OUTPUT DRDDIR 	 location (25, 20, 0) 	 107 	 
 INPUT  DRA[3] 	 location (25, 14, 1) 	 98 	 
 OUTPUT DBDIR 	 location (7, 0, 1) 	 43 	 
@@ -63,10 +67,7 @@ INPUT  CLK40_IN 	 location (0, 11, 0) 	 20
 INPUT  REGSPACEn 	 location (4, 0, 1) 	 41 	 
 OUTPUT CMA[4] 	 location (25, 3, 1) 	 78 	 
 INPUT  A[5] 	 location (0, 13, 0) 	 16 	 
-INPUT  TSn 	 location (6, 21, 1) 	 136 	 
-INPUT  DRA[2] 	 location (25, 15, 1) 	 99 	 
 OUTPUT CMA[3] 	 location (25, 2, 1) 	 76 	 
-INPUT  A[13] 	 location (0, 6, 0) 	 26 	 
 OUTPUT RASn 	 location (19, 0, 0) 	 61 	 
 INPUT  DRA[5] 	 location (25, 13, 1) 	 96 	 
 INPUT  A[3] 	 location (0, 17, 1) 	 9 	 

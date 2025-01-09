@@ -1,7 +1,7 @@
 @N: MF248 |Running in 64-bit mode.
 @N: MF666 |Clock conversion enabled. (Command "set_option -fix_gated_and_generated_clocks 1" in the project file.)
 @N: MT204 |Auto Constrain mode is disabled because clocks are defined in the SDC file
-@N: MO231 :"d:\amigapci\u712\u712_chip_ram.v":213:0:213:5|Found counter in view:work.U712_CHIP_RAM(verilog) instance SDRAM_COUNTER[7:0] 
+@N: MO231 :"d:\amigapci\u712\u712_chip_ram.v":219:0:219:5|Found counter in view:work.U712_CHIP_RAM(verilog) instance SDRAM_COUNTER[7:0] 
 @N: MO231 :"d:\amigapci\u712\u712_chip_ram.v":92:0:92:5|Found counter in view:work.U712_CHIP_RAM(verilog) instance REFRESH_COUNTER[7:0] 
 @N: FX1017 :"d:\amigapci\u712\u712_top.v":37:20:37:21|SB_GB inserted on the net C1_c.
 @N: FX1017 :"d:\amigapci\u712\u712_top.v":37:24:37:25|SB_GB inserted on the net C3_c.
