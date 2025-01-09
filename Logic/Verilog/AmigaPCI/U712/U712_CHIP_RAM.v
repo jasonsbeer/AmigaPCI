@@ -1,10 +1,43 @@
+/*
+LICENSE:
+
+This work is released under the Creative Commons Attribution-NonCommercial 4.0 International
+https://creativecommons.org/licenses/by-nc/4.0/
+
+You are free to:
+Share — copy and redistribute the material in any medium or format
+Adapt — remix, transform, and build upon the material
+The licensor cannot revoke these freedoms as long as you follow the license terms.
+
+Under the following terms:
+Attribution — You must give appropriate credit , provide a link to the license, and indicate if changes were made . You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
+NonCommercial — You may not use the material for commercial purposes.
+No additional restrictions — You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.
+
+RTL MODULE:
+
+Engineer: Jason Neus
+Design Name: U712
+Module Name: U712_CHIP_RAM
+Project Name: AmigaPCI
+Target Devices: iCE40-HX4K-TQ144
+
+Description: CHIP MEMORY SDRAM CONTROLLER
+
+Revision History:
+    08-JAN-2025 : HW REV 4.0 INITIAL RELEASE
+
+GitHub: https://github.com/jasonsbeer/AmigaPCI
+*/
+
 module U712_CHIP_RAM (
 
-    input CLK80, C1, C3, RESETn, RAMSPACEn, TSn, RnW, TWO_MB_EN, DBRn, AWEn, RAS0n, RAS1n, CASLn, CASUn, 
-    input [20:1] A,
-    input [8:0] DRA,
+    input CLK80, C1, C3, RESETn, RAMSPACEn, TSn, RnW, TWO_MB_EN, AWEn, RAS0n, CASLn, CASUn, DBRn,
+    input [20:2] A,
+    input [9:0] DRA,
+    input DBR_SYNC,
 
-    output BANK1, RAMENn,
+    output BANK1,
     output reg BANK0,
     output reg DBDIR,
     output reg CLK_EN,
@@ -19,13 +52,6 @@ module U712_CHIP_RAM (
     output reg [10:0]CMA
 
 );
-
-//FOR TESTING
-//assign RAMENn = RAMSPACEn;
-assign RAMENn = DMA_CYCLE;
-//assign RAMENn = CPU_CYCLE;
-//assign RAMENn = DMA_ROW_ADDRESS[0];
-//assign RAMENn = DMA_COL_ADDRESS[1];
 
 /////////////////
 // PARAMETERS //
@@ -96,23 +122,15 @@ end
 //INDICATE WHICH BYTES ARE ENABLED. CASL = D7-0, CASU = D15-8.
 
 reg [2:0] CAS_SYNC;
-reg [2:0] DBR_SYNC;
-
-//wire RAS_AGNUSn = !(!RAS0n || !RAS1n);
 wire CAS_AGNUSn = !(!CASLn || !CASUn);
 
 always @(negedge CLK80) begin
     if (!RESETn) begin
         CAS_SYNC <= 3'b111;
-        DBR_SYNC <= 3'b111;
     end else begin
         CAS_SYNC[2] <= CAS_SYNC[1];
         CAS_SYNC[1] <= CAS_SYNC[0];
         CAS_SYNC[0] <= CAS_AGNUSn;
-
-        DBR_SYNC[2] <= DBR_SYNC[1];
-        DBR_SYNC[1] <= DBR_SYNC[0];
-        DBR_SYNC[0] <= DBRn;
     end
 end
 
@@ -120,24 +138,36 @@ end
 // AGNUS DRAM ADDRESS LATCH //
 /////////////////////////////
 
-reg [8:0] DMA_ROW_ADDRESS;
+reg [9:0] DMA_ROW_ADDRESS;
 always @(posedge C3) begin
     if (!RESETn) begin
-        DMA_ROW_ADDRESS <= 9'b000000000;
+        DMA_ROW_ADDRESS <= 10'b0000000000;
     end else begin
         if (C1 && !DBRn) begin
-            DMA_ROW_ADDRESS <= DRA;
+            DMA_ROW_ADDRESS <= TWO_MB_EN ? DRA : { RAS0n, DRA[9:1] };
         end
     end
 end
 
-reg [8:0] DMA_COL_ADDRESS;
+reg [7:0] DMA_COL_ADDRESS;
+reg DMA_A1;
+reg DMA_A20;
 always @(negedge C1) begin
     if (!RESETn) begin
-        DMA_COL_ADDRESS <= 9'b000000000;
+        DMA_COL_ADDRESS <= 8'h00;
+        DMA_A1 <= 0;
+        DMA_A20 <= 0;
     end else begin
         if (C3 && !DBRn) begin
-            DMA_COL_ADDRESS <= DRA;
+            if (TWO_MB_EN) begin
+                DMA_COL_ADDRESS <= DRA[8:1];
+                DMA_A1 <= DRA[0];
+                DMA_A20 <= DRA[9];
+            end else begin
+                DMA_COL_ADDRESS <= DRA[9:2];
+                DMA_A1 <= DRA[1];
+                DMA_A20 <= 0;
+            end
         end
     end
 end
@@ -149,8 +179,6 @@ end
 /*
 THIS IS THE AGNUS DRAM MULTIPLEXING.
 MA9 ONLY EXISTS ON 8375 VARIANTS.
-8372A USES A19 TO DRIVE RAS.
-
 IN AGNUS 8372A, _RAS0 = A19. _RAS1 = A19 INVERSE.
 
      MA9 MA8 MA7 MA6 MA5 MA4 MA3 MA2 MA1 MA0
@@ -158,33 +186,17 @@ IN AGNUS 8372A, _RAS0 = A19. _RAS1 = A19 INVERSE.
 ROW: A19 A17 A16 A15 A14 A13 A12 A11 A10  A9
 COL: A20 A18  A8  A7  A6  A5  A4  A3  A2  A1
 
- 
-!CURRENT 8372A ONLY CONFIGURATION!
-
-     MA8 MA7 MA6 MA5 MA4 MA3 MA2 MA1 MA0
-    ------------------------------------
-ROW: A17 A16 A15 A14 A13 A12 A11 A10  A9
-COL: A18  A8  A7  A6  A5  A4  A3  A2  A1
-
-AGNUS MULTIADAPTER ADDRESS SIGNAL CONFIGURATION
-
-       DRA8 DRA7 DRA6 DRA5 DRA4 DRA3 DRA2 DRA1 DRA0
-      ---------------------------------------------
-8372A  MA8  MA7  MA6  MA5  MA4  MA3  MA2  MA1  MA0
-
-
-!IGNORE THE BELOW STUFF FOR NOW!
 AGNUS MULTIADAPTER ADDRESS SIGNAL CONFIGURATION
 
       DRA9 DRA8 DRA7 DRA6 DRA5 DRA4 DRA3 DRA2 DRA1 DRA0
       -------------------------------------------------
-8372A  MA8  MA7  MA6  MA5  MA4  MA3  MA2  MA1  MA0  X 
+8372A  MA8  MA7  MA6  MA5  MA4  MA3  MA2  MA1  MA0  x
 8375   MA9  MA8  MA7  MA6  MA5  MA4  MA3  MA2  MA1  MA0
 
            DRA9 DRA8 DRA7 DRA6 DRA5 DRA4 DRA3 DRA2 DRA1 DRA0
            -------------------------------------------------
-8372A ROW  A17  A16  A15  A14  A13  A12  A11  A10  A9   -
-      COL  A18  A8   A7   A6   A5   A4   A3   A2   A1   -
+8372A ROW  A17  A16  A15  A14  A13  A12  A11  A10  A9   x
+      COL  A18  A8   A7   A6   A5   A4   A3   A2   A1   x
 8375  ROW  A19  A17  A16  A15  A14  A13  A12  A11  A10  A9
       COL  A20  A18  A8   A7   A6   A5   A4   A3   A2   A1
 */
@@ -195,11 +207,8 @@ reg [3:0] SDRAM_CMD;
 reg SDRAM_CONFIGURED;
 reg [7:0] SDRAM_COUNTER;
 reg CPU_CYCLE_START;
-//reg [9:0] DMA_ROW_ADDRESS;
-//reg [9:0] DMA_COL_ADDRESS;
 reg DMA_CYCLE_START;
 reg WRITE_CYCLE;
-reg DMA_COL_START;
 
 always @(negedge CLK80) begin
     if (!RESETn) begin
@@ -209,9 +218,6 @@ always @(negedge CLK80) begin
         SDRAM_COUNTER <= 8'h00;
         DMA_CYCLE <= 0;
         DMA_CYCLE_START <= 0;
-        DMA_COL_START <= 0;
-        //DMA_ROW_ADDRESS <= 9'b000000000;
-        //DMA_COL_ADDRESS <= 9'b000000000;
         DBENn <= 1;
         WRITE_CYCLE <= 0;
         CPU_CYCLE <= 0;
@@ -227,10 +233,8 @@ always @(negedge CLK80) begin
     end else begin
 
         if (SDRAM_COUNTER != 8'h00) begin SDRAM_COUNTER ++; end
-        //if (RAS_SYNC == 2'b10) begin DMA_ROW_ADDRESS <= DRA; end
-        //if (CAS_SYNC == 2'b10) begin DMA_COL_ADDRESS <= DRA; end
 
-        DMA_CYCLE_START <= (CAS_SYNC[1:0] == 2'b10 || (DMA_CYCLE_START && !DMA_CYCLE));
+        DMA_CYCLE_START <= (CAS_SYNC == 3'b110 || (DMA_CYCLE_START && !DMA_CYCLE));
         CPU_CYCLE_START <= (!TSn && !RAMSPACEn) || (CPU_CYCLE_START && !CPU_CYCLE);
 
         CRCSn <= SDRAM_CMD[3];
@@ -242,11 +246,9 @@ always @(negedge CLK80) begin
             PRECHARGE    : CMA <= 11'b10000000000;
             MODEREGISTER : CMA <= 11'b00000100010; //CAS latency = 2, 4 word sequential bursts.
             BANKACTIVATE : CMA <= CPU_CYCLE ? {1'b0, A[19], A[17:9]} :
-                                              {1'b0, RAS0n, DMA_ROW_ADDRESS[8:0]}; //1MB Agnus row address.
-                                              //{1'b0, DMA_ROW_ADDRESS[9:0]} //2MB Agnus row address.
+                                              {1'b0, DMA_ROW_ADDRESS};                                              
             READ, WRITE  : CMA <= CPU_CYCLE ? {3'b000, A[18], A[8:2]} :
-                                              {3'b000, DMA_COL_ADDRESS[8:1]}; //1MB AGNUS. COL DRA1 (A1) drives the data bridge.
-                                              //{3'b000, DMA_COL_ADDRESS[9:1]}; //2MB AGNUS COL DRA0 (A1) drives the data bridge.
+                                              {3'b000, DMA_COL_ADDRESS};
         endcase
 
         if (!SDRAM_CONFIGURED) begin
@@ -281,13 +283,13 @@ always @(negedge CLK80) begin
                         SDRAM_COUNTER <= 8'h04;
                         WRITE_CYCLE <= !AWEn;
                         DBDIR <= !AWEn;
-                        DBENn <= !DMA_COL_ADDRESS[0];
-                        //BANK0 <= TWO_MB_EN ?  DMA_COL_ADDRESS[9] : 1'b0; //Driven by A20 for 2MB Agnus.
+                        DBENn <= !DMA_A1;
+                        BANK0 <= DMA_A20;
                     end else if (REFRESH) begin
                         //Counter h01 - h03 are refresh cycles.
                         SDRAM_CMD <= AUTOREFRESH;
                         SDRAM_COUNTER <= 8'h01; 
-                    end else if (CPU_CYCLE_START && DBR_SYNC[2:1] == 2'b11) begin
+                    end else if (CPU_CYCLE_START && DBR_SYNC) begin
                         //Counter h04 - h0F are CPU RAM cycles.
                         SDRAM_CMD <= BANKACTIVATE;
                         CPU_CYCLE <= 1;
@@ -301,22 +303,35 @@ always @(negedge CLK80) begin
                 end
                 8'h05 : begin
                     SDRAM_CMD <= WRITE_CYCLE ? WRITE : READ;
+                    CPU_TACK <= CPU_CYCLE && WRITE_CYCLE;
                 end
                 8'h06 : begin
-                    SDRAM_CMD <= PRECHARGE;                 
+                    SDRAM_CMD <= PRECHARGE;
+                    CPU_TACK <= 0;     
                 end
                 8'h08 : begin
-                    CPU_TACK <= CPU_CYCLE;
-                    CLK_EN <= WRITE_CYCLE;
+                    if (WRITE_CYCLE) begin
+                        CPU_CYCLE <= 0;
+                        DMA_CYCLE <= 0;
+                    end else begin
+                        CPU_TACK <= CPU_CYCLE;
+                        CLK_EN <= 0;
+                    end
                 end
                 8'h09 : begin
-                    CPU_TACK <= 0;
+                    if (WRITE_CYCLE) begin
+                        BANK0 <= 0;
+                        SDRAM_COUNTER <= 8'h00;
+                        DBENn <= 1;
+                    end else begin
+                        CPU_TACK <= 0;
+                    end
                 end
                 8'h0E : begin 
                     CPU_CYCLE <= 0;
                     DMA_CYCLE <= 0;
                 end
-                8'h0F : begin //End CPU cycle.
+                8'h0F : begin
                     //Negating CPU_CYCLE and asserting CLK_EN in the same clock causes instability.
                     BANK0 <= 0;
                     SDRAM_COUNTER <= 8'h00;

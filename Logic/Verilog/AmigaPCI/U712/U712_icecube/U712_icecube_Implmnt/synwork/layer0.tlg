@@ -1,30 +1,25 @@
 Selecting top level module U712_TOP
 @N: CG364 :"C:\lscc\iCEcube2.2020.12\synpbase\lib\generic\sb_ice40.v":870:7:870:22|Synthesizing module SB_PLL40_2F_CORE in library work.
 
-@N: CG364 :"D:\AmigaPCI\U712\U712_REG_SM.v":1:7:1:17|Synthesizing module U712_REG_SM in library work.
+@N: CG364 :"D:\AmigaPCI\U712\U712_REG_SM.v":33:7:33:17|Synthesizing module U712_REG_SM in library work.
 
-@N: CG364 :"D:\AmigaPCI\U712\U712_BUFFERS.v":35:7:35:18|Synthesizing module U712_BUFFERS in library work.
+@N: CG364 :"D:\AmigaPCI\U712\U712_BUFFERS.v":34:7:34:18|Synthesizing module U712_BUFFERS in library work.
 
-@N: CG364 :"D:\AmigaPCI\U712\U712_CYCLE_TERM.v":1:7:1:21|Synthesizing module U712_CYCLE_TERM in library work.
+@N: CG364 :"D:\AmigaPCI\U712\U712_CYCLE_TERM.v":33:7:33:21|Synthesizing module U712_CYCLE_TERM in library work.
 
-@N: CG364 :"D:\AmigaPCI\U712\U712_CHIP_RAM.v":1:7:1:19|Synthesizing module U712_CHIP_RAM in library work.
+@N: CG364 :"D:\AmigaPCI\U712\U712_CHIP_RAM.v":33:7:33:19|Synthesizing module U712_CHIP_RAM in library work.
 
-@W: CL169 :"D:\AmigaPCI\U712\U712_CHIP_RAM.v":204:0:204:5|Pruning unused register DMA_COL_START. Make sure that there are no unused intermediate registers.
-@W: CL265 :"D:\AmigaPCI\U712\U712_CHIP_RAM.v":104:0:104:5|Removing unused bit 2 of CAS_SYNC[2:0]. Either assign all bits or reduce the width of the signal.
-@N: CG364 :"D:\AmigaPCI\U712\U712_BYTE_ENABLE.v":1:7:1:22|Synthesizing module U712_BYTE_ENABLE in library work.
+@N: CG364 :"D:\AmigaPCI\U712\U712_BYTE_ENABLE.v":33:7:33:22|Synthesizing module U712_BYTE_ENABLE in library work.
 
-@N: CG364 :"D:\AmigaPCI\U712\U712_TOP.v":4:7:4:14|Synthesizing module U712_TOP in library work.
+@N: CG364 :"D:\AmigaPCI\U712\U712_TOP.v":35:7:35:14|Synthesizing module U712_TOP in library work.
 
-@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":64:2:64:4|Input EXTFEEDBACK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":64:2:64:4|Input DYNAMICDELAY on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":64:2:64:4|Input BYPASS on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":64:2:64:4|Input SDI on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":64:2:64:4|Input SCLK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":64:2:64:4|Input LATCHINPUTVALUE on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CL247 :"D:\AmigaPCI\U712\U712_CHIP_RAM.v":4:17:4:17|Input port bit 1 of A[20:1] is unused
-
-@N: CL159 :"D:\AmigaPCI\U712\U712_CHIP_RAM.v":3:84:3:88|Input RAS1n is unused.
-@N: CL201 :"D:\AmigaPCI\U712\U712_CYCLE_TERM.v":22:0:22:5|Trying to extract state machine for register TACK_STATE.
+@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":85:2:85:4|Input EXTFEEDBACK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":85:2:85:4|Input DYNAMICDELAY on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":85:2:85:4|Input BYPASS on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":85:2:85:4|Input SDI on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":85:2:85:4|Input SCLK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":85:2:85:4|Input LATCHINPUTVALUE on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@N: CL201 :"D:\AmigaPCI\U712\U712_CYCLE_TERM.v":54:0:54:5|Trying to extract state machine for register TACK_STATE.
 Extracted state machine for register TACK_STATE
 State machine has 5 reachable states with original encodings of:
    000
@@ -32,7 +27,7 @@ State machine has 5 reachable states with original encodings of:
    010
    011
    100
-@N: CL201 :"D:\AmigaPCI\U712\U712_REG_SM.v":38:0:38:5|Trying to extract state machine for register STATE_COUNT.
+@N: CL201 :"D:\AmigaPCI\U712\U712_REG_SM.v":64:0:64:5|Trying to extract state machine for register STATE_COUNT.
 Extracted state machine for register STATE_COUNT
 State machine has 7 reachable states with original encodings of:
    000

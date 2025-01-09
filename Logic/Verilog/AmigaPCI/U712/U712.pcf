@@ -1,11 +1,8 @@
 #CLOCKS
 set_io RESETn    94
-set_io CLK40C    21
+set_io CLK40_OUT 21
 set_io CLK40_IN  20
 set_io CLKRAM    38
-#set_io CLK7      93
-#set_io CLK40B   112
-#set_io CLK40D   115
 set_io C1        142
 set_io C3        143
 
@@ -32,29 +29,17 @@ set_io A[18] 33
 set_io A[19] 34
 set_io A[20] 11
 
-#AGNUS 8375 ADDRESS BUS - INPUTS
-#set_io DRA[0] 102
-#set_io DRA[1] 101
-#set_io DRA[2] 99
-#set_io DRA[3] 98
-#set_io DRA[4] 97
-#set_io DRA[5] 96
-#set_io DRA[6] 95
-#set_io DRA[7] 91
-#set_io DRA[8] 90
-#set_io DRA[9] 106
-
-#8372a
-set_io DRA[0] 101
-set_io DRA[1] 99
-set_io DRA[2] 98
-set_io DRA[3] 97
-set_io DRA[4] 96
-set_io DRA[5] 95
-set_io DRA[6] 91
-set_io DRA[7] 90
-set_io DRA[8] 106
-
+#AGNUS ADDRESS BUS - INPUTS
+set_io DRA[0] 102
+set_io DRA[1] 101
+set_io DRA[2] 99
+set_io DRA[3] 98
+set_io DRA[4] 97
+set_io DRA[5] 96
+set_io DRA[6] 95
+set_io DRA[7] 91
+set_io DRA[8] 90
+set_io DRA[9] 106
 
 #SDRAM ADDRESS BUS - OUTPUTS
 set_io CMA[0]  55
@@ -89,16 +74,18 @@ set_io DRDDIR    107
 set_io DRDENn    110
 
 #AGNUS
-set_io RAS1n     87  #INPUT - AGNUS RAS1
-set_io RAS0n     88  #INPUT - AGNUS RAS0
-set_io CASLn     104 #INPUT - AGNUS CASL
-set_io CASUn     105 #INPUT - AGNUS CASU
+#AGNUS RAS AND CAS SIGNALS ARE REVERSED ON REV4.0 BOARD.
+#THEY ARE BE FIXED ON THE REV5.0 BOARD.
+#set_io RAS1n     88  #INPUT - AGNUS RAS1
+set_io RAS0n     87  #INPUT - AGNUS RAS0
+set_io CASLn     105 #INPUT - AGNUS CASL
+set_io CASUn     104 #INPUT - AGNUS CASU
 set_io ASn       116
 set_io LDSn      117
 set_io UDSn      118
 set_io AWEn      135
 set_io DBRn      138
-set_io RAMENn    139
+#set_io RAMENn    139
 set_io REGENn    141 #OUTPUT - AGNUS REGISTER ENABLE
 set_io REGSPACEn 41  #INPUT - CHIPSET REGISTER ADDRESS SPACE
 

@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:31:51
 
-* File Generated:     Jan 7 2025 17:55:02
+* File Generated:     Jan 8 2025 20:41:53
 
 * Purpose:            Detailed IO and package pin info
 
@@ -39,7 +39,7 @@ Pin Number, Pin Type Name, Signal Name, Direction, Global Buffer, IO Standard, P
 18, PIO, A[7], Input, , SB_LVCMOS, No Pull Up, Simple Input, leftBank
 19, PIO, A[8], Input, , SB_LVCMOS, No Pull Up, Simple Input, leftBank
 20, PIO_GBIN, CLK40_IN, Input, , SB_LVCMOS, No Pull Up, Simple Input, leftBank
-21, PIO_GBIN, CLK40C, Output, , SB_LVCMOS, No Pull Up, Simple Output, leftBank
+21, PIO_GBIN, CLK40_OUT, Output, , SB_LVCMOS, No Pull Up, Simple Output, leftBank
 22, PIO, A[9], Input, , SB_LVCMOS, No Pull Up, Simple Input, leftBank
 23, PIO, A[10], Input, , SB_LVCMOS, No Pull Up, Simple Input, leftBank
 24, PIO, A[11], Input, , SB_LVCMOS, No Pull Up, Simple Input, leftBank
@@ -100,26 +100,26 @@ Pin Number, Pin Type Name, Signal Name, Direction, Global Buffer, IO Standard, P
 84, PIO, CLK_EN, Output, , SB_LVCMOS, No Pull Up, Simple Output, rightBank
 85, PIO, CUUBEn, Output, , SB_LVCMOS, No Pull Up, Simple Output, rightBank
 86, GND, not used, , , , , , UnknownBank
-87, PIO, not used, , , , , , rightBank
-88, PIO, RAS0n, Input, , SB_LVCMOS, No Pull Up, Simple Input, rightBank
+87, PIO, RAS0n, Input, , SB_LVCMOS, No Pull Up, Simple Input, rightBank
+88, PIO, not used, , , , , , rightBank
 89, VCCIO_1, not used, , , , , , rightBank
-90, PIO, DRA[7], Input, , SB_LVCMOS, No Pull Up, Simple Input, rightBank
-91, PIO, DRA[6], Input, , SB_LVCMOS, No Pull Up, Simple Input, rightBank
+90, PIO, DRA[8], Input, , SB_LVCMOS, No Pull Up, Simple Input, rightBank
+91, PIO, DRA[7], Input, , SB_LVCMOS, No Pull Up, Simple Input, rightBank
 92, VCC, not used, , , , , , UnknownBank
 93, PIO_GBIN, not used, , , , , , rightBank
 94, PIO_GBIN, RESETn, Input, , SB_LVCMOS, No Pull Up, Simple Input, rightBank
-95, PIO, DRA[5], Input, , SB_LVCMOS, No Pull Up, Simple Input, rightBank
-96, PIO, DRA[4], Input, , SB_LVCMOS, No Pull Up, Simple Input, rightBank
-97, PIO, DRA[3], Input, , SB_LVCMOS, No Pull Up, Simple Input, rightBank
-98, PIO, DRA[2], Input, , SB_LVCMOS, No Pull Up, Simple Input, rightBank
-99, PIO, DRA[1], Input, , SB_LVCMOS, No Pull Up, Simple Input, rightBank
+95, PIO, DRA[6], Input, , SB_LVCMOS, No Pull Up, Simple Input, rightBank
+96, PIO, DRA[5], Input, , SB_LVCMOS, No Pull Up, Simple Input, rightBank
+97, PIO, DRA[4], Input, , SB_LVCMOS, No Pull Up, Simple Input, rightBank
+98, PIO, DRA[3], Input, , SB_LVCMOS, No Pull Up, Simple Input, rightBank
+99, PIO, DRA[2], Input, , SB_LVCMOS, No Pull Up, Simple Input, rightBank
 100, VCCIO_1, not used, , , , , , rightBank
-101, PIO, DRA[0], Input, , SB_LVCMOS, No Pull Up, Simple Input, rightBank
+101, PIO, DRA[1], Input, , SB_LVCMOS, No Pull Up, Simple Input, rightBank
 102, PIO, not used, , , , , , rightBank
 103, GND, not used, , , , , , UnknownBank
-104, PIO, CASLn, Input, , SB_LVCMOS, No Pull Up, Simple Input, rightBank
-105, PIO, CASUn, Input, , SB_LVCMOS, No Pull Up, Simple Input, rightBank
-106, PIO, DRA[8], Input, , SB_LVCMOS, No Pull Up, Simple Input, rightBank
+104, PIO, CASUn, Input, , SB_LVCMOS, No Pull Up, Simple Input, rightBank
+105, PIO, CASLn, Input, , SB_LVCMOS, No Pull Up, Simple Input, rightBank
+106, PIO, DRA[9], Input, , SB_LVCMOS, No Pull Up, Simple Input, rightBank
 107, PIO, DRDDIR, Output, , SB_LVCMOS, No Pull Up, Simple Output, rightBank
 108, VPP_PUMP, not used, , , , , , UnknownBank
 109, VPP_DIRECT, not used, , , , , , UnknownBank
@@ -151,10 +151,10 @@ Pin Number, Pin Type Name, Signal Name, Direction, Global Buffer, IO Standard, P
 136, PIO, TSn, Input, , SB_LVCMOS, No Pull Up, Simple Input, topBank
 137, PIO, not used, , , , , , topBank
 138, PIO, DBRn, Input, , SB_LVCMOS, No Pull Up, Simple Input, topBank
-139, PIO, RAMENn, Output, , SB_LVCMOS, No Pull Up, Simple Output, topBank
+139, PIO, not used, , , , , , topBank
 140, GND, not used, , , , , , UnknownBank
 141, PIO, REGENn, Output, , SB_LVCMOS, No Pull Up, Simple Output, topBank
 142, PIO, C1, Input, , SB_LVCMOS, No Pull Up, Simple Input, topBank
 143, PIO, C3, Input, , SB_LVCMOS, No Pull Up, Simple Input, topBank
 144, PIO, RnW, Input, , SB_LVCMOS, No Pull Up, Simple Input, topBank
-Total Number of Used Pins, 79
+Total Number of Used Pins, 78

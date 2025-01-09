@@ -1,19 +1,50 @@
-//iceprog D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\sbt\outputs\bitmap\U712_TOP_bitmap.bin
+/*
+LICENSE:
 
+This work is released under the Creative Commons Attribution-NonCommercial 4.0 International
+https://creativecommons.org/licenses/by-nc/4.0/
+
+You are free to:
+Share — copy and redistribute the material in any medium or format
+Adapt — remix, transform, and build upon the material
+The licensor cannot revoke these freedoms as long as you follow the license terms.
+
+Under the following terms:
+Attribution — You must give appropriate credit , provide a link to the license, and indicate if changes were made . You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
+NonCommercial — You may not use the material for commercial purposes.
+No additional restrictions — You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.
+
+RTL MODULE:
+
+Engineer: Jason Neus
+Design Name: U712
+Module Name: U712_TOP
+Project Name: AmigaPCI
+Target Devices: iCE40-HX4K-TQ144
+
+Description: U712 AMIGA PCI FPGA
+
+Revision History:
+    08-JAN-2025 : HW REV 4.0 INITIAL RELEASE
+
+GitHub: https://github.com/jasonsbeer/AmigaPCI
+*/
+
+//iceprog D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\sbt\outputs\bitmap\U712_TOP_bitmap.bin
 
 module U712_TOP (
 
     input CLK40_IN, C1, C3, RESETn,
-    input RnW, TSn, DBRn, REGSPACEn, RAMSPACEn, AWEn, RAS0n, RAS1n, CASLn, CASUn,
+    input RnW, TSn, DBRn, REGSPACEn, RAMSPACEn, AWEn, RAS0n, CASLn, CASUn,
     input [1:0] SIZ,
     input [20:0] A,
-    input [8:0] DRA,
+    input [9:0] DRA,
 
-    output CLK40C, CLKRAM,
+    output CLK40_OUT, CLKRAM,
     output LDSn, UDSn, ASn, REGENn, DBDIR,
     output VBENn, DRDENn, DRDDIR,
-    output CRCSn, CLK_EN, BANK1, BANK0, RASn, CASn, WEn, RAMENn, DBENn, 
-    output [10:0]CMA,
+    output CRCSn, CLK_EN, BANK1, BANK0, RASn, CASn, WEn, DBENn,
+    output [10:0] CMA,
     output CUUBEn, CUMBEn, CLMBEn, CLLBEn,
 
     output TACKn
@@ -21,12 +52,6 @@ module U712_TOP (
 
 //SPECIAL ATTENTION
 //assign TBIn = 1; //TRANSFER BURST INHIBIT IS MISSING FROM THE REV 4 BOARD.
-//assign RAMENn = DRDENn;
-//assign RAMENn = DRDDIR;
-//assign RAMENn = DBDIR;
-//assign RAMENn = AWEn;
-//assign RAMENn = DMA_CYCLEm;
-//assign RAMENn = VBENn;
 
 ///////////////////
 // CLOCK FANOUT //
@@ -36,18 +61,14 @@ module U712_TOP (
 //WE DISTRIBUTE THE CLOCKS FROM THE PLL TO OTHER DEVICES ON THE AMIGAPCI. SINCE THIS PLL INVERTS THE CLOCK SIGNAL,
 //WE PHASE MATCH IT BEFORE PUTTING THE SIGNAL OUT.
 
-wire CLK40_OUT;
-wire CLK80_OUT;
+wire CLK40_PLL;
+wire CLK80_PLL;
 
-//assign CLK40B = !CLK40_OUT;
-assign CLK40C = ~CLK40_OUT;
-//assign CLK40D = !CLK40_OUT;
-wire   CLK40  = ~CLK40_OUT;
+assign CLK40_OUT = ~CLK40_PLL;
+wire   CLK40     = ~CLK40_PLL;
 
-wire   CLK80  = ~CLK80_OUT;
-assign CLKRAM = ~CLK80_OUT;
-//assign CLKRAM = ~CLK40_OUT;
-
+wire   CLK80  = ~CLK80_PLL;
+assign CLKRAM = ~CLK80_PLL;
 
 SB_PLL40_2F_CORE #(
     .DIVR (4'b0000),
@@ -65,11 +86,28 @@ SB_PLL40_2F_CORE #(
     .LOCK           (),
     .RESETB         (1'b1),
     .REFERENCECLK   (CLK40_IN),
-    .PLLOUTGLOBALA  (CLK80_OUT),
-    //.PLLOUTGLOBALB  (CLK40_OUT),
-    //.PLLOUTCOREA    (CLK80_OUT),
-    .PLLOUTCOREB    (CLK40_OUT)
+    .PLLOUTGLOBALA  (CLK80_PLL),
+    //.PLLOUTGLOBALB  (CLK40_PLL),
+    //.PLLOUTCOREA    (CLK80_PLL),
+    .PLLOUTCOREB    (CLK40_PLL)
 );
+
+///////////////////////
+// _DBR SYNCRONIZER //
+/////////////////////
+
+//WE NEED TO SAMPLE THE AGNUS' _DBR SIGNAL IN MUTIPLE
+//PROCESSES, SO WE HAVE THE SYNCRONIZER HERE.
+
+reg [1:0] DBR_SYNC;
+always @(negedge CLK80) begin
+    if (!RESETn) begin
+        DBR_SYNC <= 2'b11;
+    end else begin
+        DBR_SYNC[1] <= DBR_SYNC[0];
+        DBR_SYNC[0] <= DBRn;
+    end
+end
 
 ///////////////////////////////////
 // AGNUS MC68000 REGISTER CYCLE //
@@ -77,7 +115,7 @@ SB_PLL40_2F_CORE #(
 
 wire REG_TACK;
 wire REG_CYCLEm;
-//wire AGNUS_REFRESH = !RAS0n && !RAS1n;
+wire DS_ENm;
 
 U712_REG_SM U712_REG_SM (
     //INPUTS
@@ -87,18 +125,14 @@ U712_REG_SM U712_REG_SM (
     .RESETn (RESETn),
     .TSn (TSn),
     .REGSPACEn (REGSPACEn),
-    .RnW (RnW),
-    .DBRn (DBRn),
-    .SIZ0 (SIZ[0]),
-    .A0 (A[0]),
+    .DBR_SYNC (DBR_SYNC),
 
     //OUTPUTS
-    .LDSn (LDSn),
-    .UDSn (UDSn),
     .ASn (ASn),
     .REGENn (REGENn),
     .REG_TACK (REG_TACK),
-    .REG_CYCLE (REG_CYCLEm)
+    .REG_CYCLE (REG_CYCLEm),
+    .DS_EN (DS_ENm)
 );
 
 ///////////////////////////
@@ -109,15 +143,17 @@ wire DMA_CYCLEm;
 wire CPU_CYCLEm;
 
 U712_BUFFERS U712_BUFFERS (
-    //.DBDIR (DBDIR),
+    //INPUTS
     .AWEn (AWEn),
     .RnW (RnW),
     .DMA_CYCLE (DMA_CYCLEm),
+    .REG_CYCLE (REG_CYCLEm),
+    .CPU_CYCLE (CPU_CYCLEm),
+
+    //OUTPUTS
     .VBENn (VBENn),
     .DRDENn (DRDENn),
-    .DRDDIR (DRDDIR),
-    .REG_CYCLE (REG_CYCLEm),
-    .CPU_CYCLE (CPU_CYCLEm)
+    .DRDDIR (DRDDIR)
 );
 
 ////////////////////////////
@@ -147,8 +183,6 @@ wire TWO_MB_ENm = 0;
 U712_CHIP_RAM U712_CHIP_RAM (
     //INPUTS
     .CLK80 (CLK80),
-    //.CLK40 (CLK40),
-    //.CLK7 (CLK7),
     .C1 (C1),
     .C3 (C3),
     .RESETn (RESETn),
@@ -156,14 +190,14 @@ U712_CHIP_RAM U712_CHIP_RAM (
     .TSn (TSn),
     .RnW (RnW),
     .TWO_MB_EN (TWO_MB_ENm),
-    .DBRn (DBRn),
     .AWEn (AWEn),
     .RAS0n (RAS0n),
-    .RAS1n (RAS1n),
     .CASLn (CASLn),
     .CASUn (CASUn),
-    .A (A[20:1]),
+    .DBRn (DBRn),
+    .A (A[20:2]),
     .DRA (DRA),
+    .DBR_SYNC (DBR_SYNC[1]),
 
     //OUTPUTS
     .BANK1 (BANK1),
@@ -176,7 +210,6 @@ U712_CHIP_RAM U712_CHIP_RAM (
     .DMA_CYCLE (DMA_CYCLEm),
     .CPU_CYCLE (CPU_CYCLEm),
     .DBENn (DBENn),
-    .RAMENn (RAMENn),
     .DBDIR (DBDIR),
     .CPU_TACK (CPU_TACKm),
     .CMA (CMA)
@@ -193,6 +226,7 @@ U712_BYTE_ENABLE U712_BYTE_ENABLE (
     .CASLn (CASLn),
     .CASUn (CASUn),
     .DBENn (DBENn),
+    .DS_EN (DS_ENm),
     .A (A[1:0]),
     .SIZ (SIZ),
 
@@ -200,10 +234,12 @@ U712_BYTE_ENABLE U712_BYTE_ENABLE (
     .CUUBEn (CUUBEn),
     .CUMBEn (CUMBEn),
     .CLMBEn (CLMBEn),
-    .CLLBEn (CLLBEn)
+    .CLLBEn (CLLBEn),
     //.UUBEn (UUBEn),
     //.UMBEn (UMBEn),
     //.LMBEn (LMBEn),
-    //.LLBEn (LLBEn)
+    //.LLBEn (LLBEn),
+    .UDSn (UDSn),
+    .LDSn (LDSn)
 );
 endmodule

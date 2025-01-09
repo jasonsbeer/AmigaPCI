@@ -1,3 +1,2 @@
-@E: CS187 :"D:\AmigaPCI\U712\U712_CHIP_RAM.v":112:4:112:6|Expecting ;
-@E: CS187 :"D:\AmigaPCI\U712\U712_CHIP_RAM.v":363:0:363:8|Expecting endmodule
+@E: CG906 :"D:\AmigaPCI\U712\U712_BYTE_ENABLE.v":71:23:71:24|Reference to unknown variable A0.
 

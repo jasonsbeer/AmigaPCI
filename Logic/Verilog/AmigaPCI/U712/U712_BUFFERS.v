@@ -25,8 +25,7 @@ Target Devices: iCE40-HX4K-TQ144
 Description: CHIP SET BUFFERS
 
 Revision History:
-    09-JUN-2024 : INITIAL CODE
-    12-JUN-2024 : CHANGE BUFFER ENABLE TO DEAL WITH BUS CONTENTION
+    08-JAN-2025 : HW REV 4.0 INITIAL RELEASE
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 TO BUILD WITH APIO: apio build --top-module U712_TOP --fpga iCE40-HX4K-TQ144
