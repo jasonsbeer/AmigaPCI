@@ -6,7 +6,7 @@
 	(paper "B")
 	(title_block
 		(title "AMIGA PCI")
-		(date "2025-01-01")
+		(date "2025-01-10")
 		(rev "5.0")
 	)
 	(lib_symbols
@@ -17081,17 +17081,6 @@
 			(justify left bottom)
 		)
 		(uuid "5e100ea2-5f7b-4091-9d3b-78b46d883dab")
-	)
-	(text "ADD FPGA PULLUP\n_TA\n_TCI\n_TBI\n_TEA"
-		(exclude_from_sim no)
-		(at 358.902 74.676 0)
-		(effects
-			(font
-				(size 2 2)
-			)
-			(justify left)
-		)
-		(uuid "b5501630-620e-41fd-b25f-43d0b4511173")
 	)
 	(text "CHIP RAM CONTROLLER"
 		(exclude_from_sim no)

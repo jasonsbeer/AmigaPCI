@@ -6,7 +6,7 @@
 	(paper "USLedger")
 	(title_block
 		(title "AMIGA PCI")
-		(date "2025-01-01")
+		(date "2025-01-10")
 		(rev "5.0")
 	)
 	(lib_symbols
@@ -20422,16 +20422,6 @@
 		)
 		(uuid "1928d6af-3659-48db-9e71-96cdbec8f8b0")
 	)
-	(text "-> DMA RD ->\n-> CPU WR ->\n\n<- DMA WR <-\n<- CPU RD <-\n"
-		(exclude_from_sim no)
-		(at 365.506 94.742 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "25ed34ab-bcd9-4952-932a-850f994ac685")
-	)
 	(text "DESIGNED TO COMPLY WITH \nPCI REV 2.3 SPECS.\n+5V SIGNALING ENVIRONMENT \nCOMPATABLE WITH UNIVERSAL CARDS."
 		(exclude_from_sim no)
 		(at 358.902 248.92 0)
@@ -20454,16 +20444,6 @@
 		)
 		(uuid "a50961bf-7049-4dd2-85ee-d1c3039fb7a8")
 	)
-	(text "TARGET       INIT"
-		(exclude_from_sim no)
-		(at 347.98 65.278 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "ae82e2c1-c97d-4935-8dcc-a922a6b6a355")
-	)
 	(text "PULL ME!"
 		(exclude_from_sim no)
 		(at 350.52 229.87 0)
@@ -20474,6 +20454,18 @@
 			(justify left bottom)
 		)
 		(uuid "c23a8d4f-4203-4b9d-b5ba-394e43c98bc4")
+	)
+	(text "        ADDRESS PHASE     DATA PHASE\n        -------------     -------------\n        PAR     _PERR     PAR    _PERR\n---------------------------------------\nCPU WR  BRIDGE  PCI       BRIDGE PCI\nCPU RD  BRIDGE  PCI       PCI    BRIDGE\nDMA WR  PCI     BRIDGE    PCI    BRIDGE \nDMA RD  PCI     BRIDGE    BRIDGE PCI"
+		(exclude_from_sim no)
+		(at 371.094 81.28 0)
+		(effects
+			(font
+				(face "DejaVu Sans Mono")
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "efd77e38-6fcb-4ffe-83aa-f626afdbe4ca")
 	)
 	(label "_CBE1"
 		(at 124.46 166.37 180)

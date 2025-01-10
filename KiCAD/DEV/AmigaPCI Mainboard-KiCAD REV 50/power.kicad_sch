@@ -6,7 +6,7 @@
 	(paper "B")
 	(title_block
 		(title "AMIGA PCI")
-		(date "2025-01-01")
+		(date "2025-01-10")
 		(rev "5.0")
 	)
 	(lib_symbols
@@ -11233,10 +11233,6 @@
 	(no_connect
 		(at 281.94 85.09)
 		(uuid "77748615-3e5a-4c26-b3da-a9e10f5966a0")
-	)
-	(no_connect
-		(at 275.59 54.61)
-		(uuid "789166fd-a9b3-44d0-aad4-66ca71b68177")
 	)
 	(no_connect
 		(at 298.45 80.01)

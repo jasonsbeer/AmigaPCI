@@ -6,7 +6,7 @@
 	(paper "B")
 	(title_block
 		(title "AMIGA PCI")
-		(date "2025-01-01")
+		(date "2025-01-10")
 		(rev "5.0")
 	)
 	(lib_symbols
@@ -12234,17 +12234,6 @@
 			(justify left bottom)
 		)
 		(uuid "6bd47ab4-7e82-4047-9ab5-dcc45d3e0a3d")
-	)
-	(text "CN301 PIN 31 WAS -5V.\nTHIS HAS BEEN REMOVED."
-		(exclude_from_sim no)
-		(at 280.67 67.31 0)
-		(effects
-			(font
-				(size 2 2)
-			)
-			(justify left bottom)
-		)
-		(uuid "9665ca58-d24a-4c29-a798-19216b7109aa")
 	)
 	(text "C4 CLOCK"
 		(exclude_from_sim no)
