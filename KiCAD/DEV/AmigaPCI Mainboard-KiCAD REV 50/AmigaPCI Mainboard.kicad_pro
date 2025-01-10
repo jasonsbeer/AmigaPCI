@@ -3018,6 +3018,14 @@
       {
         "netclass": "Narrow",
         "pattern": "/HID and User Ports/POWER_LED"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "LATCHCLK"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "DMALATCH"
       }
     ]
   },

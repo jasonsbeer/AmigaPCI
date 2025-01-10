@@ -6825,6 +6825,236 @@
 				)
 			)
 		)
+		(symbol "AmigaPCI-Symbols:L79L05_SO8"
+			(pin_names
+				(offset 0.254)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "U"
+				(at -4.826 6.858 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "LM79L05"
+				(at -3.048 6.858 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
+				(at 0 -5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+						(italic yes)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://www.ti.com/lit/ds/symlink/lm79l.pdf?HQS=dis-dk-null-digikeymode-dsf-pf-null-wwe&ts=1736443216071"
+				(at 0.508 2.032 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Negative 100mA Linear Regulator, Fixed Output -5V, SO-8"
+				(at 0 4.826 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "Voltage Regulator 100mA Negative"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "SOIC?8*3.9x4.9mm*P1.27mm*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "L79L05_SO8_0_1"
+				(rectangle
+					(start -5.08 5.08)
+					(end 5.08 -5.08)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+			)
+			(symbol "L79L05_SO8_1_1"
+				(pin power_out line
+					(at -7.62 0 0)
+					(length 2.54)
+					(name "OUT"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 7.62 3.81 180)
+					(length 2.54)
+					(name "IN"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 7.62 1.27 180)
+					(length 2.54)
+					(name "IN"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin no_connect line
+					(at -5.08 -2.54 0)
+					(length 2.54) hide
+					(name "NC"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 0 -7.62 90)
+					(length 2.54)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 7.62 -1.27 180)
+					(length 2.54)
+					(name "IN"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 7.62 -3.81 180)
+					(length 2.54)
+					(name "IN"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin no_connect line
+					(at 5.08 -2.54 180)
+					(length 2.54) hide
+					(name "NC"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "8"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
 		(symbol "AmigaPCI-Symbols:MIC1232"
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -10137,6 +10367,102 @@
 				)
 			)
 		)
+		(symbol "power:-5V"
+			(power)
+			(pin_numbers hide)
+			(pin_names
+				(offset 0) hide)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "#PWR"
+				(at 0 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Value" "-5V"
+				(at 0 3.556 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Power symbol creates a global label with name \"-5V\""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "global power"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "-5V_0_0"
+				(pin power_in line
+					(at 0 0 90)
+					(length 0)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(symbol "-5V_0_1"
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 1.27) (xy 0.762 1.27) (xy 0 2.54) (xy -0.762 1.27) (xy 0 1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+			)
+		)
 		(symbol "power:GND"
 			(power)
 			(pin_names
@@ -10251,6 +10577,18 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "02161a0f-c1b6-450d-90c0-5401d8356208")
+	)
+	(junction
+		(at 243.84 101.6)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "079a100a-4ac2-4956-beb3-56f48ccd32ae")
+	)
+	(junction
+		(at 243.84 96.52)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "0c92ff82-d1cd-4458-8326-c3481d08ce96")
 	)
 	(junction
 		(at 290.83 69.85)
@@ -10481,6 +10819,12 @@
 		(uuid "5076d8fb-91e9-497c-afac-6453c3af9aa1")
 	)
 	(junction
+		(at 243.84 99.06)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "54719468-08ed-4dc6-8103-08ac0209452c")
+	)
+	(junction
 		(at 237.49 236.22)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -10491,6 +10835,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "579116e4-fef4-49c7-ac8a-182e16aa8eff")
+	)
+	(junction
+		(at 218.44 97.79)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "5a53b9a2-3951-40e6-acaf-c77432042967")
 	)
 	(junction
 		(at 312.42 152.4)
@@ -10805,6 +11155,12 @@
 		(uuid "eacc1cde-aebf-4ab2-abe4-bb2f8954625b")
 	)
 	(junction
+		(at 231.14 111.76)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "ebec7232-3873-49d8-87cb-afab85c11d62")
+	)
+	(junction
 		(at 325.12 160.02)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -10821,6 +11177,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "f5a17800-888e-43c0-a1f1-69dc0840c4d7")
+	)
+	(junction
+		(at 243.84 93.98)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f5a309f3-9df1-4b1f-a928-ff3cfaf176a6")
 	)
 	(junction
 		(at 257.81 152.4)
@@ -11524,6 +11886,16 @@
 	)
 	(wire
 		(pts
+			(xy 238.76 96.52) (xy 243.84 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3b3a70df-4ab7-4d7e-8e45-2939716e7563")
+	)
+	(wire
+		(pts
 			(xy 247.65 236.22) (xy 247.65 240.03)
 		)
 		(stroke
@@ -11551,6 +11923,16 @@
 			(type default)
 		)
 		(uuid "3c885a38-d3cb-4ac7-9dba-187e19720372")
+	)
+	(wire
+		(pts
+			(xy 231.14 111.76) (xy 243.84 111.76)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3d0559aa-cc91-4660-918b-5b4f2fdc3704")
 	)
 	(wire
 		(pts
@@ -11764,6 +12146,16 @@
 	)
 	(wire
 		(pts
+			(xy 238.76 93.98) (xy 243.84 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4d930abf-d9b1-4a2f-8aca-14dd8583eb2c")
+	)
+	(wire
+		(pts
 			(xy 130.81 170.18) (xy 135.89 170.18)
 		)
 		(stroke
@@ -11964,6 +12356,16 @@
 	)
 	(wire
 		(pts
+			(xy 243.84 111.76) (xy 243.84 110.49)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "614f1658-a875-4725-8fe8-3252c64f5e41")
+	)
+	(wire
+		(pts
 			(xy 92.71 49.53) (xy 92.71 50.8)
 		)
 		(stroke
@@ -12074,6 +12476,16 @@
 	)
 	(wire
 		(pts
+			(xy 231.14 113.03) (xy 231.14 111.76)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "68af799f-e3c7-4f14-a149-9b91caa1745c")
+	)
+	(wire
+		(pts
 			(xy 232.41 193.04) (xy 251.46 193.04)
 		)
 		(stroke
@@ -12114,6 +12526,16 @@
 	)
 	(wire
 		(pts
+			(xy 238.76 101.6) (xy 243.84 101.6)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6b440861-820c-44f4-bf97-0ec279ff5ed0")
+	)
+	(wire
+		(pts
 			(xy 227.33 236.22) (xy 227.33 240.03)
 		)
 		(stroke
@@ -12121,6 +12543,16 @@
 			(type default)
 		)
 		(uuid "6b9fb07b-b242-4a49-85f5-9a4d306fb330")
+	)
+	(wire
+		(pts
+			(xy 218.44 111.76) (xy 231.14 111.76)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6d594ea5-06d8-4b40-809c-283fbd9e735d")
 	)
 	(wire
 		(pts
@@ -12234,6 +12666,16 @@
 	)
 	(wire
 		(pts
+			(xy 243.84 93.98) (xy 243.84 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8055b693-3344-4e4f-b9fc-441eae1737f6")
+	)
+	(wire
+		(pts
 			(xy 36.83 170.18) (xy 50.8 170.18)
 		)
 		(stroke
@@ -12251,6 +12693,16 @@
 			(type default)
 		)
 		(uuid "8080bece-ebcb-4698-9b19-b9f69f7bae84")
+	)
+	(wire
+		(pts
+			(xy 218.44 105.41) (xy 218.44 97.79)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "82c8b823-3864-4394-9190-3889e8f5724e")
 	)
 	(wire
 		(pts
@@ -12321,6 +12773,16 @@
 			(type default)
 		)
 		(uuid "884a8ed2-148d-416f-b581-1694fb1fa8c7")
+	)
+	(wire
+		(pts
+			(xy 218.44 97.79) (xy 223.52 97.79)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "88538736-ce5d-44d4-8b38-82fdfae5b8c0")
 	)
 	(wire
 		(pts
@@ -12674,6 +13136,26 @@
 	)
 	(wire
 		(pts
+			(xy 243.84 90.17) (xy 243.84 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a5f865ce-f6d8-421b-a8c4-267a5cd9353b")
+	)
+	(wire
+		(pts
+			(xy 231.14 105.41) (xy 231.14 111.76)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a7572fb9-655d-4f67-9a5d-dd815252559d")
+	)
+	(wire
+		(pts
 			(xy 405.13 146.05) (xy 405.13 152.4)
 		)
 		(stroke
@@ -12701,6 +13183,26 @@
 			(type default)
 		)
 		(uuid "a8e7f67f-b56f-4226-9c41-a56c2ce0de91")
+	)
+	(wire
+		(pts
+			(xy 243.84 101.6) (xy 243.84 105.41)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a8ffc31c-b86e-429e-bbdf-de3dbe34535b")
+	)
+	(wire
+		(pts
+			(xy 238.76 99.06) (xy 243.84 99.06)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a97b0f9b-6978-4200-962d-edc38bb9d9f2")
 	)
 	(wire
 		(pts
@@ -12814,6 +13316,16 @@
 	)
 	(wire
 		(pts
+			(xy 243.84 99.06) (xy 243.84 101.6)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b781d8dc-f7a3-443b-8548-9efe4b00f61b")
+	)
+	(wire
+		(pts
 			(xy 132.08 44.45) (xy 140.97 44.45)
 		)
 		(stroke
@@ -12924,6 +13436,16 @@
 	)
 	(wire
 		(pts
+			(xy 243.84 96.52) (xy 243.84 99.06)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c8fff0ea-1403-4765-ac5c-501799a98fbe")
+	)
+	(wire
+		(pts
 			(xy 227.33 231.14) (xy 227.33 236.22)
 		)
 		(stroke
@@ -12951,6 +13473,16 @@
 			(type default)
 		)
 		(uuid "cdea8558-7547-47ba-88a8-ae21e96a7e27")
+	)
+	(wire
+		(pts
+			(xy 218.44 110.49) (xy 218.44 111.76)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ce948b6a-3e5d-40b6-886b-f276d43b4d6b")
 	)
 	(wire
 		(pts
@@ -13394,6 +13926,16 @@
 	)
 	(wire
 		(pts
+			(xy 218.44 90.17) (xy 218.44 97.79)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f8cf228e-3c80-47a5-8905-f0ce93ec721f")
+	)
+	(wire
+		(pts
 			(xy 104.14 49.53) (xy 104.14 50.8)
 		)
 		(stroke
@@ -13451,6 +13993,18 @@
 			(type default)
 		)
 		(uuid "ff26239c-973c-4b4f-92e1-22310b16052b")
+	)
+	(rectangle
+		(start 211.582 76.454)
+		(end 251.714 129.032)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill
+			(type none)
+		)
+		(uuid 10340d0f-5d60-404e-a524-062d6ee3d884)
 	)
 	(rectangle
 		(start 319.278 18.161)
@@ -13547,6 +14101,19 @@
 			(type none)
 		)
 		(uuid f3981e95-b14f-4539-9c72-0c9b0bc6f054)
+	)
+	(text "-5V POWER"
+		(exclude_from_sim no)
+		(at 216.916 83.058 0)
+		(effects
+			(font
+				(size 3 3)
+				(thickness 0.6)
+				(bold yes)
+			)
+			(justify left bottom)
+		)
+		(uuid "052a2f03-90c4-47d7-8f70-fba0e2067f4e")
 	)
 	(text "FAN HEADER"
 		(exclude_from_sim no)
@@ -13672,6 +14239,16 @@
 			(justify left bottom)
 		)
 		(uuid "a1232e9b-bfe9-4138-829a-8c4f28acd460")
+	)
+	(text "-5V power for video slot.\n8-SOIC footprint.\nAdd if necessary."
+		(exclude_from_sim no)
+		(at 231.14 123.444 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "b344f926-0090-48b9-b27f-6f7e25803121")
 	)
 	(text "+1V2 POWER"
 		(exclude_from_sim no)
@@ -14026,6 +14603,71 @@
 		)
 	)
 	(symbol
+		(lib_id "power:-5V")
+		(at 218.44 90.17 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00b1d42b-d92f-485d-ad15-8d68c0efcf94")
+		(property "Reference" "#PWR0305"
+			(at 218.44 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "-5V"
+			(at 218.44 86.614 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 218.44 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 218.44 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"-5V\""
+			(at 218.44 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "d2a57a06-91bc-45f5-aa58-db8e41ed9d65")
+		)
+		(instances
+			(project ""
+				(path "/72453515-27fe-4336-91f3-e3c8054f7767/4cb777ef-2899-49f4-b38f-a0c07d84fa7d"
+					(reference "#PWR0305")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Mechanical:MountingHole_Pad")
 		(at 250.19 220.98 270)
 		(unit 1)
@@ -14157,6 +14799,71 @@
 			(project "AmigaPCI Mainboard"
 				(path "/72453515-27fe-4336-91f3-e3c8054f7767/4cb777ef-2899-49f4-b38f-a0c07d84fa7d"
 					(reference "C613")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:-12V")
+		(at 243.84 90.17 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "05c72b58-5ba6-4577-94b6-e86a9af4e5d1")
+		(property "Reference" "#PWR0339"
+			(at 243.84 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "-12V"
+			(at 244.602 86.614 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 243.84 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 243.84 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 243.84 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "d53c5be3-cbad-44ed-a2a4-9efd2b4e646f")
+		)
+		(instances
+			(project "AmigaPCI Mainboard"
+				(path "/72453515-27fe-4336-91f3-e3c8054f7767/4cb777ef-2899-49f4-b38f-a0c07d84fa7d"
+					(reference "#PWR0339")
 					(unit 1)
 				)
 			)
@@ -16806,6 +17513,76 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:C_Small")
+		(at 243.84 107.95 0)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "4a352ece-ccbc-4e44-88dc-132aa2325a46")
+		(property "Reference" "C616"
+			(at 248.412 106.299 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "0.1uF"
+			(at 246.634 105.537 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 243.84 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 243.84 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 243.84 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "14d108d0-dc95-4943-8b63-6b83a201bba2")
+		)
+		(pin "2"
+			(uuid "deffcceb-87eb-4b47-8c5b-99303df6b08d")
+		)
+		(instances
+			(project "AmigaPCI Mainboard"
+				(path "/72453515-27fe-4336-91f3-e3c8054f7767/4cb777ef-2899-49f4-b38f-a0c07d84fa7d"
+					(reference "C616")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:C_Polarized")
 		(at 284.48 156.21 0)
 		(unit 1)
@@ -17208,6 +17985,75 @@
 			(project "AmigaPCI Mainboard"
 				(path "/72453515-27fe-4336-91f3-e3c8054f7767/4cb777ef-2899-49f4-b38f-a0c07d84fa7d"
 					(reference "R601")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C_Small")
+		(at 218.44 107.95 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "5d191ace-a68a-4cec-80b2-5f01d68f73ef")
+		(property "Reference" "C615"
+			(at 214.122 105.41 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "0.1uF"
+			(at 215.9 104.648 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 218.44 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 218.44 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 218.44 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "34aca49f-bded-4265-bb25-2338c91b11dc")
+		)
+		(pin "2"
+			(uuid "02be8473-f7f7-4c79-8576-8d8aa5309249")
+		)
+		(instances
+			(project "AmigaPCI Mainboard"
+				(path "/72453515-27fe-4336-91f3-e3c8054f7767/4cb777ef-2899-49f4-b38f-a0c07d84fa7d"
+					(reference "C615")
 					(unit 1)
 				)
 			)
@@ -17993,6 +18839,93 @@
 		)
 	)
 	(symbol
+		(lib_id "AmigaPCI-Symbols:L79L05_SO8")
+		(at 231.14 97.79 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "6cc4f0c6-755c-40a8-bf47-c0cc2d88a144")
+		(property "Reference" "U602"
+			(at 231.14 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "LM79L05"
+			(at 231.14 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
+			(at 231.14 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+					(italic yes)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/lm79l.pdf?HQS=dis-dk-null-digikeymode-dsf-pf-null-wwe&ts=1736443216071"
+			(at 231.648 95.758 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Negative 100mA Linear Regulator, Fixed Output -5V, SO-8"
+			(at 231.14 92.964 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "4"
+			(uuid "c423c3f7-8d50-4c59-b6af-da2d9d4cfe72")
+		)
+		(pin "3"
+			(uuid "6ab52a54-8318-4c27-8c64-bf2827dddd47")
+		)
+		(pin "6"
+			(uuid "ab975c10-94a9-4772-b6c7-2b53376ff228")
+		)
+		(pin "2"
+			(uuid "7cd58978-672e-4c7a-8f7c-379726780292")
+		)
+		(pin "8"
+			(uuid "92ff5948-3311-4f3f-a6e2-f3d02806d571")
+		)
+		(pin "5"
+			(uuid "2b64f863-4f76-4d41-b787-1de29ac36ab7")
+		)
+		(pin "1"
+			(uuid "f50abad0-665d-4e40-bf32-e4c70e50043c")
+		)
+		(pin "7"
+			(uuid "b858b8fb-cf03-484a-a36c-8f50b5046841")
+		)
+		(instances
+			(project ""
+				(path "/72453515-27fe-4336-91f3-e3c8054f7767/4cb777ef-2899-49f4-b38f-a0c07d84fa7d"
+					(reference "U602")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:C_Small")
 		(at 52.07 100.33 0)
 		(mirror x)
@@ -18295,6 +19228,72 @@
 			(project "AmigaPCI Mainboard"
 				(path "/72453515-27fe-4336-91f3-e3c8054f7767/4cb777ef-2899-49f4-b38f-a0c07d84fa7d"
 					(reference "C605")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 231.14 113.03 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "77b996e9-f142-4bb0-8aa0-2a7ddb544cdd")
+		(property "Reference" "#PWR0364"
+			(at 231.14 119.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 231.14 117.602 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 231.14 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 231.14 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 231.14 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "22dde0f0-7700-4148-a412-78a6acabdb64")
+		)
+		(instances
+			(project "AmigaPCI Mainboard"
+				(path "/72453515-27fe-4336-91f3-e3c8054f7767/4cb777ef-2899-49f4-b38f-a0c07d84fa7d"
+					(reference "#PWR0364")
 					(unit 1)
 				)
 			)
@@ -21539,109 +22538,6 @@
 				(path "/72453515-27fe-4336-91f3-e3c8054f7767/4cb777ef-2899-49f4-b38f-a0c07d84fa7d"
 					(reference "#PWR0304")
 					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "74xx:74LS08")
-		(at 283.21 54.61 180)
-		(unit 4)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "c4ab7954-12d3-49e9-b03a-be66e2596684")
-		(property "Reference" "U231"
-			(at 283.21 47.244 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "74LVC08"
-			(at 282.956 49.133 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Package_SO:TSSOP-14_4.4x5mm_P0.65mm"
-			(at 283.21 54.61 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "http://www.ti.com/lit/gpn/sn74LS08"
-			(at 283.21 54.61 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 283.21 54.61 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "035e926a-277c-4ffb-b6e1-e14f15e37002")
-		)
-		(pin "2"
-			(uuid "b68f6169-5c09-4e8a-8fab-74430826aea1")
-		)
-		(pin "3"
-			(uuid "aafe60ce-6aca-41bb-b849-ab192c40b67c")
-		)
-		(pin "4"
-			(uuid "305b5a7d-dd7f-414c-8069-8d2a4a696bd4")
-		)
-		(pin "5"
-			(uuid "d5a829d0-5e18-4430-b009-aa6b297ee377")
-		)
-		(pin "6"
-			(uuid "03672aff-594e-4608-a870-bb7678d880b3")
-		)
-		(pin "10"
-			(uuid "d7079478-063b-4253-bb39-c88ca3f66652")
-		)
-		(pin "8"
-			(uuid "6086603e-ef78-444e-a5d8-e397dcffe87f")
-		)
-		(pin "9"
-			(uuid "9d451f61-3b5a-4b24-a93d-70deef4e19df")
-		)
-		(pin "11"
-			(uuid "c29a8f7c-bf84-4f34-8e76-ac83fca105fe")
-		)
-		(pin "12"
-			(uuid "f1c75a62-1d87-4dee-9e1d-1f7e15523955")
-		)
-		(pin "13"
-			(uuid "53d1471d-120a-4465-9915-223d8ce08f06")
-		)
-		(pin "14"
-			(uuid "913e48ba-47ea-430c-9555-ff61ff7f0064")
-		)
-		(pin "7"
-			(uuid "c3b8d300-76c0-40be-8cac-285f1869c584")
-		)
-		(instances
-			(project "AmigaPCI Mainboard"
-				(path "/72453515-27fe-4336-91f3-e3c8054f7767/4cb777ef-2899-49f4-b38f-a0c07d84fa7d"
-					(reference "U231")
-					(unit 4)
 				)
 			)
 		)

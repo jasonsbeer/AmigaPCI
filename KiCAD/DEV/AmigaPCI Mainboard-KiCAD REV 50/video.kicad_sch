@@ -7294,6 +7294,102 @@
 				)
 			)
 		)
+		(symbol "power:-5V"
+			(power)
+			(pin_numbers hide)
+			(pin_names
+				(offset 0) hide)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "#PWR"
+				(at 0 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Value" "-5V"
+				(at 0 3.556 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Power symbol creates a global label with name \"-5V\""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "global power"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "-5V_0_0"
+				(pin power_in line
+					(at 0 0 90)
+					(length 0)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(symbol "-5V_0_1"
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 1.27) (xy 0.762 1.27) (xy 0 2.54) (xy -0.762 1.27) (xy 0 1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+			)
+		)
 		(symbol "power:GND"
 			(power)
 			(pin_names
@@ -7804,10 +7900,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "fb03fa6b-5a46-4d60-9df2-f66abcf7646c")
-	)
-	(no_connect
-		(at 287.02 106.68)
-		(uuid "0bb0b0ff-d7fe-46ac-ab9d-ad7b099bb702")
 	)
 	(no_connect
 		(at 213.36 104.14)
@@ -8854,16 +8946,6 @@
 			(type default)
 		)
 		(uuid "347fcd85-02f4-4117-8659-fec5eb21b83f")
-	)
-	(wire
-		(pts
-			(xy 314.96 88.9) (xy 314.96 100.33)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "34f6b958-f791-4b63-84ba-37d146a80485")
 	)
 	(wire
 		(pts
@@ -11137,6 +11219,16 @@
 	)
 	(wire
 		(pts
+			(xy 287.02 83.82) (xy 287.02 106.68)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cb8d0129-0c53-4092-a627-8154f6fe62a4")
+	)
+	(wire
+		(pts
 			(xy 40.64 95.25) (xy 48.26 95.25)
 		)
 		(stroke
@@ -11807,7 +11899,7 @@
 	)
 	(wire
 		(pts
-			(xy 314.96 83.82) (xy 314.96 82.55)
+			(xy 314.96 82.55) (xy 314.96 100.33)
 		)
 		(stroke
 			(width 0)
@@ -14934,6 +15026,71 @@
 		)
 	)
 	(symbol
+		(lib_id "power:-5V")
+		(at 287.02 83.82 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "2329804d-d8d0-461d-b7b9-f466a420d1d3")
+		(property "Reference" "#PWR0365"
+			(at 287.02 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "-5V"
+			(at 286.766 79.756 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 287.02 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 287.02 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"-5V\""
+			(at 287.02 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c972e916-7253-4a4f-b529-e4ab3302708a")
+		)
+		(instances
+			(project ""
+				(path "/72453515-27fe-4336-91f3-e3c8054f7767/34f2eda3-97b6-4f91-ad2d-01637d6f5405"
+					(reference "#PWR0365")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:C_Small")
 		(at 107.95 209.55 0)
 		(unit 1)
@@ -17481,75 +17638,6 @@
 			(project "AmigaPCI Mainboard"
 				(path "/72453515-27fe-4336-91f3-e3c8054f7767/34f2eda3-97b6-4f91-ad2d-01637d6f5405"
 					(reference "C306")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R_Small")
-		(at 314.96 86.36 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "8795261a-c277-43a8-ad9d-6a25c6d47062")
-		(property "Reference" "R306"
-			(at 316.4586 85.7163 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "10k"
-			(at 316.4586 87.6373 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 314.96 86.36 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 314.96 86.36 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 314.96 86.36 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "85f6bad7-d9f5-4aab-ac26-cc13c54dbe55")
-		)
-		(pin "2"
-			(uuid "6b94a5da-d5e3-4e7b-a210-33f0b2093d8b")
-		)
-		(instances
-			(project "AmigaPCI Mainboard"
-				(path "/72453515-27fe-4336-91f3-e3c8054f7767/34f2eda3-97b6-4f91-ad2d-01637d6f5405"
-					(reference "R306")
 					(unit 1)
 				)
 			)
