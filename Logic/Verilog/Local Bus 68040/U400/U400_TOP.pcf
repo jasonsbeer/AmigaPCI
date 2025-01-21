@@ -1,0 +1,76 @@
+#CLOCKS
+set_io RAMCLK 52
+set_io BCLK   53
+
+#DATA TRANSFER SIGNALS
+set_io RESETn 63
+set_io SIZ[1] 59
+set_io SIZ[0] 60
+set_io TSn    57
+set_io TAn    56
+set_io LBENn  54
+set_io RnW    51
+
+#SDRAM SIGNALS
+set_io CS1n     90
+set_io CS0n      9
+set_io CLKEN     1
+set_io BANK1     7
+set_io BANK0     8
+set_io RASn     10
+set_io CASn     12
+set_io WEn      13
+set_io EMA[0]   86
+set_io EMA[1]   85
+set_io EMA[2]   83
+set_io EMA[3]  100
+set_io EMA[4]   99
+set_io EMA[5]   97
+set_io EMA[6]   96
+set_io EMA[7]   95
+set_io EMA[8]   94
+set_io EMA[9]   93
+set_io EMA[10]  87
+set_io EMA[11]  89
+set_io EMA[12]  91
+
+#BYTE ENABLES
+set_io UUBEn 37
+set_io UMBEn 40
+set_io LMBEn 41
+set_io LLBEn 42
+
+#68040 ADDRESS SIGNALS
+set_io A[0]   3
+set_io A[1]   4
+set_io A[2]  78
+set_io A[3]  79
+set_io A[4]  55
+set_io A[5]  68
+set_io A[6]  69
+set_io A[7]  71
+set_io A[8]  72
+set_io A[9]  66
+set_io A[10] 73
+set_io A[11] 74
+set_io A[12] 82
+set_io A[13] 64
+set_io A[14] 80
+set_io A[15] 81
+set_io A[16] 15
+set_io A[17] 16
+set_io A[18] 19
+set_io A[19] 18
+set_io A[20] 20
+set_io A[21] 21
+set_io A[22] 28
+set_io A[23] 36
+set_io A[24] 24
+set_io A[25] 34
+set_io A[26] 29
+set_io A[27] 25
+set_io A[28] 30
+set_io A[29] 26
+set_io A[30] 33 
+set_io A[31] 27
+
