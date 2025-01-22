@@ -25,7 +25,7 @@ Target Devices: iCE40-HX4K-TQ144
 Description: DATA TRANSFER BYTE ENABLE SIGNALS
 
 Revision History:
-    08-JAN-2025 : HW REV 4.0 INITIAL RELEASE
+    21-JAN-2025 : HW REV 5.0 INITIAL RELEASE
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 */

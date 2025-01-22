@@ -25,19 +25,20 @@ Target Devices: iCE40-HX4K-TQ144
 Description: CHIP MEMORY SDRAM CONTROLLER
 
 Revision History:
-    08-JAN-2025 : HW REV 4.0 INITIAL RELEASE
+    21-JAN-2025 : HW REV 5.0 INITIAL RELEASE
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 */
 
 module U712_CHIP_RAM (
 
-    input CLK80, C1, C3, RESETn, RAMSPACEn, TSn, RnW, TWO_MB_EN, AWEn, RAS0n, RAS1n, CASLn, CASUn, DBRn,
+    input CLK80, C1, C3, RESETn, RAMSPACEn, TSn, RnW, AGNUS_REV,
+    input AWEn, RAS0n, RAS1n, CASLn, CASUn, DBRn,
     input [20:2] A,
     input [9:0] DRA,
     input DBR_SYNC,
 
-    output BANK1,
+    output BANK1, DMA_LATCH, LATCH_CLK,
     output reg BANK0,
     output reg DBDIR,
     output reg CLK_EN,
@@ -52,6 +53,13 @@ module U712_CHIP_RAM (
     output reg [10:0]CMA
 
 );
+
+//646 LATCH
+//FOR NOW, MAKE ALL DATA LIVE FOR TESTING.
+//THIS WILL MATCH THE BEHAVIOR OF THE 245 TRANSCEIVER THAT WAS IN REV 4.0.
+
+assign DMA_LATCH = 0;
+assign LATCH_CLK = 0;
 
 /////////////////
 // PARAMETERS //
@@ -150,7 +158,7 @@ always @(posedge C3) begin
         DMA_ROW_ADDRESS <= 10'b0000000000;
     end else begin
         if (C1 && !DBRn) begin
-            DMA_ROW_ADDRESS <= TWO_MB_EN ? DRA : { RAS0n, DRA[9:1] };
+            DMA_ROW_ADDRESS <= AGNUS_REV ? DRA : { RAS0n, DRA[9:1] };
         end
     end
 end
@@ -165,7 +173,7 @@ always @(negedge C1) begin
         DMA_A20 <= 0;
     end else begin
         if (C3 && !DBRn) begin
-            if (TWO_MB_EN) begin
+            if (AGNUS_REV) begin
                 DMA_COL_ADDRESS <= DRA[8:1];
                 DMA_A1 <= DRA[0];
                 DMA_A20 <= DRA[9];
@@ -224,6 +232,8 @@ always @(negedge CLK80) begin
         SDRAM_COUNTER <= 8'h00;
         DMA_CYCLE <= 0;
         DMA_CYCLE_START <= 0;
+        //LATCH_CLK <= 0;
+        //DMA_LATCH <= 0;
         DBENn <= 1;
         WRITE_CYCLE <= 0;
         CPU_CYCLE <= 0;
@@ -252,7 +262,7 @@ always @(negedge CLK80) begin
             PRECHARGE    : CMA <= 11'b10000000000;
             MODEREGISTER : CMA <= 11'b00000100010; //CAS latency = 2, 4 word sequential bursts.
             BANKACTIVATE : CMA <= CPU_CYCLE ? {1'b0, A[19], A[17:9]} :
-                                              {1'b0, DMA_ROW_ADDRESS};                                              
+                                              {1'b0, DMA_ROW_ADDRESS};
             READ, WRITE  : CMA <= CPU_CYCLE ? {3'b000, A[18], A[8:2]} :
                                               {3'b000, DMA_COL_ADDRESS};
         endcase
@@ -281,9 +291,8 @@ always @(negedge CLK80) begin
         end else begin
             case (SDRAM_COUNTER)
                 8'h00 : begin
-                    
                     if (DMA_CYCLE_START) begin
-                        //Counter h04 - h10 are DMA RAM cycles.
+                        //Counter h04 - h0F are DMA RAM cycles.
                         SDRAM_CMD <= BANKACTIVATE;
                         DMA_CYCLE <= 1;
                         SDRAM_COUNTER <= 8'h04;
@@ -291,17 +300,19 @@ always @(negedge CLK80) begin
                         DBDIR <= !AWEn;
                         DBENn <= !DMA_A1;
                         BANK0 <= DMA_A20;
+                        //LATCH_CLK <= 0;
+                        //DMA_LATCH <= AWEn;
                     end else if (REFRESH) begin
                         //Counter h01 - h03 are refresh cycles.
                         SDRAM_CMD <= AUTOREFRESH;
-                        SDRAM_COUNTER <= 8'h01; 
+                        SDRAM_COUNTER <= 8'h01;
                     end else if (CPU_CYCLE_START && (DBR_SYNC || REFRESH_SYNC == 2'b11)) begin
                         //Counter h04 - h0F are CPU RAM cycles.
                         SDRAM_CMD <= BANKACTIVATE;
                         CPU_CYCLE <= 1;
                         SDRAM_COUNTER <= 8'h04;
                         WRITE_CYCLE <= !RnW;
-                        BANK0 <= TWO_MB_EN ? A[20] : 1'b0;
+                        BANK0 <= AGNUS_REV ? A[20] : 1'b0;
                     end
                 end
                 8'h03 : begin //End refresh cycle.
@@ -313,7 +324,7 @@ always @(negedge CLK80) begin
                 end
                 8'h06 : begin
                     SDRAM_CMD <= PRECHARGE;
-                    CPU_TACK <= 0;     
+                    CPU_TACK <= 0;
                 end
                 8'h08 : begin
                     if (WRITE_CYCLE) begin
@@ -322,6 +333,9 @@ always @(negedge CLK80) begin
                     end else begin
                         CPU_TACK <= CPU_CYCLE;
                         CLK_EN <= 0;
+                        //LATCH DATA HERE FOR DMA READ CYCLES.
+                        //WE CAN THEN END THE DMA RAM CYCLE.
+                        //LATCH_CLK <= DMA_CYCLE;
                     end
                 end
                 8'h09 : begin
@@ -333,7 +347,7 @@ always @(negedge CLK80) begin
                         CPU_TACK <= 0;
                     end
                 end
-                8'h0E : begin 
+                8'h0E : begin
                     CPU_CYCLE <= 0;
                     DMA_CYCLE <= 0;
                 end

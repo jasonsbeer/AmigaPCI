@@ -1,10 +1,12 @@
 #CLOCKS
-set_io RESETn    94
-set_io CLK40_OUT 21
-set_io CLK40_IN  20
-set_io CLKRAM    38
-set_io C1        142
-set_io C3        143
+set_io RESETn      94
+set_io CLK40B_OUT 112
+set_io CLK40C_OUT  21
+set_io CLK40D_OUT 115
+set_io CLK40_IN    20
+set_io CLKRAM      38
+set_io C1         142
+set_io C3         143
 
 #CPU ADDRESS BUS - INPUTS
 set_io A[0]  12 -pullup yes
@@ -55,31 +57,29 @@ set_io CMA[9]  83
 set_io CMA[10] 56
 
 #DRAM CONTROL SIGNALS
-set_io CLLBEn    45
-set_io BANK1     49
-set_io BANK0     52
-set_io CRCSn     60 #OUTPUT - SDRAM CHIP SELECT SIGNAL
-set_io RASn      61 #OUTPUT - SDRAM RAS
-set_io CASn      62 #OUTPUT - SDRAM CAS
-set_io WEn       73 #OUTPUT - SDRAM WRITE ENABLE
-set_io CUMBEn    74
-set_io CLMBEn    75
+set_io CLLBEn     45
+set_io BANK1      49
+set_io BANK0      52
+set_io CRCSn      60 #OUTPUT - SDRAM CHIP SELECT SIGNAL
+set_io RASn       61 #OUTPUT - SDRAM RAS
+set_io CASn       62 #OUTPUT - SDRAM CAS
+set_io WEn        73 #OUTPUT - SDRAM WRITE ENABLE
+set_io CUMBEn     74
+set_io CLMBEn     75
 set_io CLK_EN     84 #OUTPUT - SDRAM CLOCK ENABLE
-set_io CUUBEn    85
-set_io DBENn     42 #OUTPUT - ENABLE FOR CHIPSET DATA BRIDGE
-set_io DBDIR     43
-set_io VBENn     44
+set_io CUUBEn     85
+set_io DBENn      42 #OUTPUT - ENABLE FOR CHIPSET DATA BRIDGE
+set_io DBDIR      43
+set_io VBENn      44
 set_io RAMSPACEn 130 #INPUT - CHIP RAM ADDRESS SPACE
 set_io DRDDIR    107
 set_io DRDENn    110
 
 #AGNUS
-#AGNUS RAS AND CAS SIGNALS ARE REVERSED ON REV4.0 BOARD.
-#THEY ARE BE FIXED ON THE REV5.0 BOARD.
-set_io RAS1n     88  #INPUT - AGNUS RAS1
-set_io RAS0n     87  #INPUT - AGNUS RAS0
-set_io CASLn     105 #INPUT - AGNUS CASL
+set_io RAS1n      88 #INPUT - AGNUS RAS1
+set_io RAS0n      87 #INPUT - AGNUS RAS0
 set_io CASUn     104 #INPUT - AGNUS CASU
+set_io CASLn     105 #INPUT - AGNUS CASL
 set_io ASn       116
 set_io LDSn      117
 set_io UDSn      118
@@ -87,14 +87,17 @@ set_io AWEn      135
 set_io DBRn      138
 #set_io RAMENn    139
 set_io REGENn    141 #OUTPUT - AGNUS REGISTER ENABLE
-set_io REGSPACEn 41  #INPUT - CHIPSET REGISTER ADDRESS SPACE
+set_io REGSPACEn  41 #INPUT - CHIPSET REGISTER ADDRESS SPACE
+set_io AGNUS_REV 114 #2MB or 1MB Agnus
+set_io LATCH_CLK 137
+set_io DMA_LATCH 134
 
 #DATA TRANSFER SIGNALS
-set_io SIZ[1]     1
-set_io SIZ[0]     2
+set_io SIZ[1]       1
+set_io SIZ[0]       2
 #set_io TT1        3
 #set_io TT0        4
-set_io TACKn      7
+set_io TACKn        7
 #set_io TBIn       39
 #set_io TCIn       64
 set_io TSn        136

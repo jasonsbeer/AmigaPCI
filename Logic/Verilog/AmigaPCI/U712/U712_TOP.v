@@ -25,7 +25,7 @@ Target Devices: iCE40-HX4K-TQ144
 Description: U712 AMIGA PCI FPGA
 
 Revision History:
-    08-JAN-2025 : HW REV 4.0 INITIAL RELEASE
+    21-JAN-2025 : HW REV 5.0 INITIAL RELEASE
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 */
@@ -35,23 +35,21 @@ GitHub: https://github.com/jasonsbeer/AmigaPCI
 module U712_TOP (
 
     input CLK40_IN, C1, C3, RESETn,
-    input RnW, TSn, DBRn, REGSPACEn, RAMSPACEn, AWEn, RAS0n, RAS1n, CASLn, CASUn,
+    input RnW, TSn, DBRn, REGSPACEn, RAMSPACEn, AWEn, RAS0n, RAS1n, CASLn, CASUn, AGNUS_REV,
     input [1:0] SIZ,
     input [20:0] A,
     input [9:0] DRA,
 
-    output CLK40_OUT, CLKRAM,
+    output CLK40B_OUT, CLK40C_OUT, CLK40D_OUT, CLKRAM,
     output LDSn, UDSn, ASn, REGENn, DBDIR,
     output VBENn, DRDENn, DRDDIR,
     output CRCSn, CLK_EN, BANK1, BANK0, RASn, CASn, WEn, DBENn,
+    output DMA_LATCH, LATCH_CLK,
     output [10:0] CMA,
     output CUUBEn, CUMBEn, CLMBEn, CLLBEn,
 
     output TACKn
 );
-
-//SPECIAL ATTENTION
-//assign TBIn = 1; //TRANSFER BURST INHIBIT IS MISSING FROM THE REV 4 BOARD.
 
 ///////////////////
 // CLOCK FANOUT //
@@ -64,8 +62,10 @@ module U712_TOP (
 wire CLK40_PLL;
 wire CLK80_PLL;
 
-assign CLK40_OUT = ~CLK40_PLL;
-wire   CLK40     = ~CLK40_PLL;
+assign CLK40B_OUT = ~CLK40_PLL;
+assign CLK40C_OUT = ~CLK40_PLL;
+assign CLK40D_OUT = ~CLK40_PLL;
+wire   CLK40      = ~CLK40_PLL;
 
 wire   CLK80  = ~CLK80_PLL;
 assign CLKRAM = ~CLK80_PLL;
@@ -178,8 +178,6 @@ U712_CYCLE_TERM U712_CYCLE_TERM (
 // CHIP RAM CYCLE //
 ///////////////////
 
-wire TWO_MB_ENm = 0;
-
 U712_CHIP_RAM U712_CHIP_RAM (
     //INPUTS
     .CLK80 (CLK80),
@@ -189,7 +187,7 @@ U712_CHIP_RAM U712_CHIP_RAM (
     .RAMSPACEn (RAMSPACEn),
     .TSn (TSn),
     .RnW (RnW),
-    .TWO_MB_EN (TWO_MB_ENm),
+    .AGNUS_REV (AGNUS_REV),
     .AWEn (AWEn),
     .RAS0n (RAS0n),
     .RAS1n (RAS1n),
@@ -202,6 +200,8 @@ U712_CHIP_RAM U712_CHIP_RAM (
 
     //OUTPUTS
     .BANK1 (BANK1),
+    .DMA_LATCH (DMA_LATCH),
+    .LATCH_CLK (LATCH_CLK),
     .BANK0 (BANK0),
     .CRCSn (CRCSn),
     .RASn (RASn),
