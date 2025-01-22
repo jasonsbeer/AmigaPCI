@@ -3,7 +3,7 @@ module U111_CYCLE_SM (
     input [1:0] SIZ,
     input [1:0] A_040,
 
-    output TAn, TBI_CPUn, TCI_CPUn,
+    output TAn, TBI_CPUn, TCI_CPUn, TEA_CPUn,
     output [1:0] A_AMIGA,
     output reg TSn,
 
@@ -41,6 +41,7 @@ assign TAn = TA_EN ? TACKn : 1'b1;
 //assign TBIn = PORTSIZE ? TACKn : 1'b1;
 assign TBI_CPUn = 0; //DISABLE ALL TRANSFER BURSTS.
 assign TCI_CPUn = 1; //ENABLE ALL TRANSFER CACHING.
+assign TEA_CPUn = 1;
 
 ////////////////////////
 // DATA PASS THROUGH //
@@ -140,7 +141,7 @@ always @(negedge CLK80) begin
                 A_OUT <= 1;
                 TA_EN <= 1;
                 if (CLK40) begin
-                    TS_EN <= 1;                    
+                    TS_EN <= 1;
                     CYCLE_STATE <= 4'h03;
                 end
             end

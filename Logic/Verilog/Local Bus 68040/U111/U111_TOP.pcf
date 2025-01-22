@@ -87,7 +87,7 @@ set_io RnW       97 -pullup yes
 #set_io TCIn     44 -pullup yes
 set_io TCI_CPUn 101 -pullup yes
 #set_io TEAn      43 -pullup yes
-#set_io TEA_CPUn 122 -pullup yes
+set_io TEA_CPUn 122 -pullup yes
 set_io TBI_CPUn      55
 
 #BUS ARBITRATION
