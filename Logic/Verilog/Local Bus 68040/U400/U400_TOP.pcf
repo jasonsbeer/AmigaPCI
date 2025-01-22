@@ -7,7 +7,7 @@ set_io RESETn 63
 set_io SIZ[1] 59
 set_io SIZ[0] 60
 set_io TSn    57
-set_io TAn    56
+set_io TACKn  56
 set_io LBENn  54
 set_io RnW    51
 

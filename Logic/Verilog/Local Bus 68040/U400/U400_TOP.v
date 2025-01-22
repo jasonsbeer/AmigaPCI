@@ -3,6 +3,7 @@ module U400_TOP (
     input [1:0] A,
     input [1:0] SIZ,
 
+    output TACKn,
     output UUBEn, UMBEn, LMBEn, LLBEn,
     output CS0n, CS1n, CLKEN, RASn, CASn, WEn
 
@@ -36,6 +37,17 @@ U400_BYTE_ENABLE U400_BYTE_ENABLE (
     .UMBEn (UMBEn),
     .LMBEn (LMBEn),
     .LLBEn (LLBEn)
+);
+
+////////////////////////
+// CYCLE TERMINATION //
+//////////////////////
+
+U400_CYCLE_TERM (
+
+    //OUTPUTS
+    .TACKn (TACKn)
+
 );
 
 endmodule
