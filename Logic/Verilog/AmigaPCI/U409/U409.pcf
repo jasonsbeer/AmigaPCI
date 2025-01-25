@@ -57,13 +57,14 @@ set_io A[31] 10  -pullup yes
 set_io PORTSIZE 135 -pullup yes
 set_io TACKn    117 -pullup yes
 set_io TSn      134
-#set_io TT0      138
-#set_io TT1      139
-#set_io RnW      142
-#set_io LBENn    125
-#set_io TM0      136
-#set_io TM1      137
-#set_io TM2      141
+set_io TT[0]    138
+set_io TT[1]    139
+#set_io ROM_DELAY xxx
+#set_io RnW     142
+#set_io LBENn   125
+#set_io TM0     136
+#set_io TM1     137
+#set_io TM2     141
 
 #ADDRESS SPACE SIGNALS
 set_io OVL       81

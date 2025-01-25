@@ -25,18 +25,18 @@ Target Devices: iCE40-HX4K-TQ144
 Description: ADDRESS DECODE, ROM, TRANSFER ACK, AUTOCONFIG
 
 Revision History:
-    XXXX
+    25-JAN-2025 : INITIAL REV 5.0 CODE
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
-TO BUILD WITH APIO: apio build --top-module U409_TOP --fpga iCE40-HX4K-TQ144
 
 iceprog D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\sbt\outputs\bitmap\U409_TOP_bitmap.bin
 */
 
 module U409_TOP (
 
-    input CLK40_IN, CLK6, CLK28_IN, RESETn, TSn, OVL,
+    input CLK40_IN, CLK6, CLK28_IN, RESETn, TSn, OVL, //ROM_DELAY
     input [31:1] A,
+    input [1:0] TT,
 
     output nROMEN, nBUFEN, TICK60, TICK50, CLKCIA, nCIACS0, nCIACS1, nRAMSPACE, nREGSPACE,
     output PORTSIZE,
@@ -78,11 +78,12 @@ SB_PLL40_CORE #(
 // TRANSFER ACK TOP //
 /////////////////////
 
+wire AUTOVECTORm;
 wire ROMENm;
 wire CIA_SPACEm;
-//wire AGNUS_SPACE;
 wire AGNUS_SPACE = !nRAMSPACE || !nREGSPACE;
 wire CIA_ENABLEm;
+wire ROM_DELAYm = 1;
 
 U409_TRANSFER_ACK U409_TRANSFER_ACK (
     //INPUTS
@@ -94,8 +95,8 @@ U409_TRANSFER_ACK U409_TRANSFER_ACK (
     .CIA_ENABLE (CIA_ENABLEm),
     .CLKCIA (CLKCIA),
     .AGNUS_SPACE (AGNUS_SPACE),
-    //.nRAMSPACE (nRAMSPACE),
-    //.nREGSPACE (nREGSPACE),
+    .AUTOVECTOR (AUTOVECTORm),
+    .ROM_DELAY (ROM_DELAYm),
     
     //OUTPUTS
     .TACKn (TACKn)
@@ -124,9 +125,7 @@ U409_ADDRESS_DECODE U409_ADDRESS_DECODE (
     .RESETn (RESETn),
     .OVL (OVL),
     .CIA_ENABLE (CIA_ENABLEm),
-    //.TT0 (TT0),
-    //.TT1 (TT1),
-    //.LBENn (LBENn),
+    .TT (TT),
     .A (A),
 
     //OUTPUTS
@@ -135,7 +134,8 @@ U409_ADDRESS_DECODE U409_ADDRESS_DECODE (
     .nCIACS0 (nCIACS0),
     .nCIACS1 (nCIACS1),
     .nRAMSPACE (nRAMSPACE),
-    .nREGSPACE (nREGSPACE)
+    .nREGSPACE (nREGSPACE),
+    .AUTOVECTOR (AUTOVECTORm)
 );
 
 ////////////////////

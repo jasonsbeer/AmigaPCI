@@ -25,14 +25,14 @@ Target Devices: iCE40-HX4K-TQ144
 Description: MC68040/MC68060 TRANSFER ACK
 
 Revision History:
-    XX-XXX-202X : INITIAL CODE
+    25-JAN-2025 : INITIAL REV 5.0 CODE
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 */
 
 module U409_TRANSFER_ACK (
 
-    input CLK80, CLK40, RESETn, TSn, ROMEN, CIA_ENABLE, CLKCIA, AGNUS_SPACE, //nRAMSPACE, nREGSPACE,
+    input CLK80, CLK40, RESETn, TSn, ROMEN, CIA_ENABLE, CLKCIA, AGNUS_SPACE, AUTOVECTOR, ROM_DELAY,
 
     inout TACKn
 
@@ -79,8 +79,9 @@ end
 
 //WE DELAY ASSERTION OF _TACK BY 100ns TO SUPPORT SETUP TIME FOR THE ROM.
 //5 is the appropriate delay for 100ns.
-//I was using 3 successfully.
-localparam integer ROM_TACK_DELAY = 5;
+
+wire ROM_TACK_DELAY = ROM_DELAY ? 5 : 1;
+
 reg [2:0] ROM_TACK_COUNTER;
 reg  ROM_TACK_EN;
 always @(posedge CLK80) begin
@@ -91,7 +92,7 @@ always @(posedge CLK80) begin
         if (ROM_TACK_COUNTER != 3'b000) begin ROM_TACK_COUNTER ++; end
         case (ROM_TACK_COUNTER)
         3'b000 : begin
-            if (!TSn && CLK40 && ROMEN) begin
+            if (CLK40 && !TSn && (ROMEN || AUTOVECTOR)) begin
                 ROM_TACK_COUNTER <= 3'b001;
             end else begin
                 ROM_TACK_EN <= 0;

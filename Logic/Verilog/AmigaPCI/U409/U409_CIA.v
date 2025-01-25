@@ -25,8 +25,7 @@ Target Devices: iCE40-HX4K-TQ144
 Description: CIA CLOCK
 
 Revision History:
-    06-JUN-2024 : INITIAL CODE
-    09-JUN-2024 : FIX CIA CHIP SELECT ASSERTION TIMING
+    25-JAN-2025 : INITIAL REV 5.0 CODE
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 TO BUILD WITH APIO: apio build --top-module U409_TOP --fpga iCE40-HX4K-TQ144

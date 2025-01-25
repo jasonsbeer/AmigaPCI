@@ -2,6 +2,7 @@ INPUT  A[21] 	 location (0, 13, 1) 	 15
 INPUT  A[30] 	 location (0, 17, 1) 	 9 	 
 INPUT  A[28] 	 location (0, 20, 0) 	 2 	 
 INPUT  A[19] 	 location (2, 0, 0) 	 37 	 
+INPUT  TT[0] 	 location (5, 21, 1) 	 138 	 
 INPUT  A[16] 	 location (0, 2, 0) 	 32 	 
 OUTPUT TICK50 	 location (18, 0, 0) 	 56 	 
 INPUT  A[26] 	 location (0, 19, 0) 	 4 	 
@@ -31,5 +32,6 @@ INOUT TACKn 	 location (21, 21, 1) 	 117
 INPUT  A[31] 	 location (0, 17, 0) 	 10 	 
 INPUT  A[27] 	 location (0, 15, 1) 	 11 	 
 OUTPUT nCIACS0 	 location (25, 3, 1) 	 78 	 
+INPUT  TT[1] 	 location (5, 21, 0) 	 139 	 
 OUTPUT PORTSIZE 	 location (7, 21, 0) 	 135 	 
 INPUT  A[17] 	 location (0, 1, 1) 	 33 	 

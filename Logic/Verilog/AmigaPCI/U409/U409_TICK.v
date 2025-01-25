@@ -25,11 +25,9 @@ Target Devices: iCE40-HX4K-TQ144
 Description: 50 AND 60Hz TICK CLOCKS
 
 Revision History:
-    06-JUN-2024 : INITIAL CODE
-    16-JUN-2024 : FIX TICK FREQUENCY
+    25-JAN-2025 : INITIAL REV 5.0 CODE
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
-TO BUILD WITH APIO: apio build --top-module U409_TOP --fpga iCE40-HX4K-TQ144
 */
 
 module U409_TICK

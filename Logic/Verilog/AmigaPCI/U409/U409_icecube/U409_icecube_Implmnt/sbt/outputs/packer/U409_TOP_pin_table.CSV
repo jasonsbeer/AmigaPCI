@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:31:51
 
-* File Generated:     Dec 23 2024 16:31:35
+* File Generated:     Jan 25 2025 11:06:19
 
 * Purpose:            Detailed IO and package pin info
 
@@ -150,11 +150,11 @@ Pin Number, Pin Type Name, Signal Name, Direction, Global Buffer, IO Standard, P
 135, PIO, PORTSIZE, Output, , SB_LVCMOS, Pull Up, Simple Output, topBank
 136, PIO, not used, , , , , , topBank
 137, PIO, not used, , , , , , topBank
-138, PIO, not used, , , , , , topBank
-139, PIO, not used, , , , , , topBank
+138, PIO, TT[0], Input, , SB_LVCMOS, No Pull Up, Simple Input, topBank
+139, PIO, TT[1], Input, , SB_LVCMOS, No Pull Up, Simple Input, topBank
 140, GND, not used, , , , , , UnknownBank
 141, PIO, not used, , , , , , topBank
 142, PIO, not used, , , , , , topBank
 143, PIO, not used, , , , , , topBank
 144, PIO, not used, , , , , , topBank
-Total Number of Used Pins, 35
+Total Number of Used Pins, 37

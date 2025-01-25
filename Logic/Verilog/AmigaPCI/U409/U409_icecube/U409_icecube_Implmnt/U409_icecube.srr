@@ -3,7 +3,7 @@
 #OS: Windows 8 6.2
 #Hostname: JASON-LAB
 
-# Mon Dec 23 16:31:11 2024
+# Sat Jan 25 11:05:59 2025
 
 #Implementation: U409_icecube_Implmnt
 
@@ -27,33 +27,34 @@ Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys softwa
 @I::"D:\AmigaPCI\U409\U409_TOP.v" (library work)
 @I::"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v" (library work)
 Verilog syntax check successful!
+File D:\AmigaPCI\U409\U409_ADDRESS_DECODE.v changed - recompiling
+File D:\AmigaPCI\U409\U409_CIA.v changed - recompiling
+File D:\AmigaPCI\U409\U409_DATA_BUFFERS.v changed - recompiling
+File D:\AmigaPCI\U409\U409_TICK.v changed - recompiling
 File D:\AmigaPCI\U409\U409_TOP.v changed - recompiling
-File D:\AmigaPCI\U409\U409_TRANSFER_ACK.v changed - recompiling
 Selecting top level module U409_TOP
 @N: CG364 :"C:\lscc\iCEcube2.2020.12\synpbase\lib\generic\sb_ice40.v":698:7:698:19|Synthesizing module SB_PLL40_CORE in library work.
 
 @N: CG364 :"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v":33:7:33:23|Synthesizing module U409_TRANSFER_ACK in library work.
 
-@N: CG364 :"D:\AmigaPCI\U409\U409_DATA_BUFFERS.v":35:7:35:23|Synthesizing module U409_DATA_BUFFERS in library work.
+@N: CG364 :"D:\AmigaPCI\U409\U409_DATA_BUFFERS.v":33:7:33:23|Synthesizing module U409_DATA_BUFFERS in library work.
 
-@N: CG364 :"D:\AmigaPCI\U409\U409_ADDRESS_DECODE.v":39:7:39:25|Synthesizing module U409_ADDRESS_DECODE in library work.
+@N: CG364 :"D:\AmigaPCI\U409\U409_ADDRESS_DECODE.v":33:7:33:25|Synthesizing module U409_ADDRESS_DECODE in library work.
 
-@N: CG364 :"D:\AmigaPCI\U409\U409_TICK.v":35:7:35:15|Synthesizing module U409_TICK in library work.
+@N: CG364 :"D:\AmigaPCI\U409\U409_TICK.v":33:7:33:15|Synthesizing module U409_TICK in library work.
 
-@N: CG364 :"D:\AmigaPCI\U409\U409_CIA.v":35:7:35:14|Synthesizing module U409_CIA in library work.
+@N: CG364 :"D:\AmigaPCI\U409\U409_CIA.v":34:7:34:14|Synthesizing module U409_CIA in library work.
 
-@N: CG364 :"D:\AmigaPCI\U409\U409_TOP.v":36:7:36:14|Synthesizing module U409_TOP in library work.
+@N: CG364 :"D:\AmigaPCI\U409\U409_TOP.v":35:7:35:14|Synthesizing module U409_TOP in library work.
 
 @W: CG781 :"D:\AmigaPCI\U409\U409_TOP.v":69:2:69:4|Input EXTFEEDBACK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
 @W: CG781 :"D:\AmigaPCI\U409\U409_TOP.v":69:2:69:4|Input DYNAMICDELAY on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
 @W: CG781 :"D:\AmigaPCI\U409\U409_TOP.v":69:2:69:4|Input SDI on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
 @W: CG781 :"D:\AmigaPCI\U409\U409_TOP.v":69:2:69:4|Input SCLK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
 @W: CG781 :"D:\AmigaPCI\U409\U409_TOP.v":69:2:69:4|Input LATCHINPUTVALUE on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CL246 :"D:\AmigaPCI\U409\U409_ADDRESS_DECODE.v":43:17:43:17|Input port bits 15 to 14 of A[31:1] are unused. Assign logic for all port bits or change the input port size.
-@W: CL246 :"D:\AmigaPCI\U409\U409_ADDRESS_DECODE.v":43:17:43:17|Input port bits 11 to 1 of A[31:1] are unused. Assign logic for all port bits or change the input port size.
-@N: CL189 :"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v":85:0:85:5|Register bit ROM_TACK_COUNTER[2] is always 0.
-@W: CL260 :"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v":85:0:85:5|Pruning register bit 2 of ROM_TACK_COUNTER[2:0]. If this is not the intended behavior, drive the input with valid values, or an input from the top level.
-@N: CL201 :"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v":119:0:119:5|Trying to extract state machine for register CIA_STATE.
+@W: CL246 :"D:\AmigaPCI\U409\U409_ADDRESS_DECODE.v":38:17:38:17|Input port bits 15 to 14 of A[31:1] are unused. Assign logic for all port bits or change the input port size.
+@W: CL246 :"D:\AmigaPCI\U409\U409_ADDRESS_DECODE.v":38:17:38:17|Input port bits 11 to 1 of A[31:1] are unused. Assign logic for all port bits or change the input port size.
+@N: CL201 :"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v":125:0:125:5|Trying to extract state machine for register CIA_STATE.
 Extracted state machine for register CIA_STATE
 State machine has 4 reachable states with original encodings of:
    00
@@ -66,26 +67,27 @@ State machine has 3 reachable states with original encodings of:
    000
    001
    010
+@N: CL159 :"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v":35:89:35:97|Input ROM_DELAY is unused.
 
-At c_ver Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 71MB peak: 72MB)
+At c_ver Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 70MB peak: 71MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Mon Dec 23 16:31:12 2024
+# Sat Jan 25 11:06:00 2025
 
 ###########################################################]
 Synopsys Netlist Linker, version comp2016q3p1, Build 141R, built Dec  5 2016
 @N|Running in 64-bit mode
-@N: NF107 :"D:\AmigaPCI\U409\U409_TOP.v":36:7:36:14|Selected library: work cell: U409_TOP view verilog as top level
-@N: NF107 :"D:\AmigaPCI\U409\U409_TOP.v":36:7:36:14|Selected library: work cell: U409_TOP view verilog as top level
+@N: NF107 :"D:\AmigaPCI\U409\U409_TOP.v":35:7:35:14|Selected library: work cell: U409_TOP view verilog as top level
+@N: NF107 :"D:\AmigaPCI\U409\U409_TOP.v":35:7:35:14|Selected library: work cell: U409_TOP view verilog as top level
 
 At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 67MB peak: 68MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Mon Dec 23 16:31:12 2024
+# Sat Jan 25 11:06:00 2025
 
 ###########################################################]
 @END
@@ -95,26 +97,26 @@ At c_hdl Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Mon Dec 23 16:31:12 2024
+# Sat Jan 25 11:06:00 2025
 
 ###########################################################]
 Synopsys Netlist Linker, version comp2016q3p1, Build 141R, built Dec  5 2016
 @N|Running in 64-bit mode
 File D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\synwork\U409_icecube_comp.srs changed - recompiling
-@N: NF107 :"D:\AmigaPCI\U409\U409_TOP.v":36:7:36:14|Selected library: work cell: U409_TOP view verilog as top level
-@N: NF107 :"D:\AmigaPCI\U409\U409_TOP.v":36:7:36:14|Selected library: work cell: U409_TOP view verilog as top level
+@N: NF107 :"D:\AmigaPCI\U409\U409_TOP.v":35:7:35:14|Selected library: work cell: U409_TOP view verilog as top level
+@N: NF107 :"D:\AmigaPCI\U409\U409_TOP.v":35:7:35:14|Selected library: work cell: U409_TOP view verilog as top level
 
 At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 67MB peak: 68MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Mon Dec 23 16:31:14 2024
+# Sat Jan 25 11:06:01 2025
 
 ###########################################################]
 Pre-mapping Report
 
-# Mon Dec 23 16:31:14 2024
+# Sat Jan 25 11:06:01 2025
 
 Synopsys Lattice Technology Pre-mapping, Version maplat, Build 1612R, Built Dec  5 2016 10:31:39
 Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
@@ -128,13 +130,13 @@ Printing clock  summary report in "D:\AmigaPCI\U409\U409_icecube\U409_icecube_Im
 @N: MF248 |Running in 64-bit mode.
 @N: MF666 |Clock conversion enabled. (Command "set_option -fix_gated_and_generated_clocks 1" in the project file.)
 
-Design Input Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 99MB peak: 102MB)
+Design Input Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 100MB peak: 102MB)
 
 
-Mapper Initialization Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 99MB peak: 102MB)
+Mapper Initialization Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 100MB peak: 102MB)
 
 
-Start loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 100MB peak: 102MB)
+Start loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 101MB peak: 102MB)
 
 
 Finished loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 101MB peak: 103MB)
@@ -157,8 +159,8 @@ Clock                                Frequency     Period        Type           
 -----------------------------------------------------------------------------------------------------------------------
 CLK6                                 6.0 MHz       166.667       declared                    default_clkgroup     36   
 CLK28_IN                             28.6 MHz      34.916        declared                    default_clkgroup     9    
-CLK40_IN                             40.0 MHz      25.000        declared                    default_clkgroup     48   
-U409_TOP|CLK80_OUT_derived_clock     80.0 MHz      12.500        derived (from CLK40_IN)     default_clkgroup     26   
+CLK40_IN                             40.0 MHz      25.000        declared                    default_clkgroup     46   
+U409_TOP|CLK80_OUT_derived_clock     80.0 MHz      12.500        derived (from CLK40_IN)     default_clkgroup     27   
 =======================================================================================================================
 
 Finished Pre Mapping Phase.
@@ -172,7 +174,7 @@ original code -> new code
    01 -> 01
    10 -> 10
    11 -> 11
-@N: MO225 :"d:\amigapci\u409\u409_transfer_ack.v":119:0:119:5|There are no possible illegal states for state machine CIA_STATE[3:0] (in view: work.U409_TRANSFER_ACK(verilog)); safe FSM implementation is not required.
+@N: MO225 :"d:\amigapci\u409\u409_transfer_ack.v":125:0:125:5|There are no possible illegal states for state machine CIA_STATE[3:0] (in view: work.U409_TRANSFER_ACK(verilog)); safe FSM implementation is not required.
 Encoding state machine TACK_COUNTER[2:0] (in view: work.U409_TRANSFER_ACK(verilog))
 original code -> new code
    000 -> 00
@@ -188,12 +190,12 @@ Pre-mapping successful!
 At Mapper Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 47MB peak: 133MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
-# Mon Dec 23 16:31:14 2024
+# Sat Jan 25 11:06:01 2025
 
 ###########################################################]
 Map & Optimize Report
 
-# Mon Dec 23 16:31:14 2024
+# Sat Jan 25 11:06:01 2025
 
 Synopsys Lattice Technology Mapper, Version maplat, Build 1612R, Built Dec  5 2016 10:31:39
 Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
@@ -238,7 +240,7 @@ original code -> new code
    01 -> 01
    10 -> 10
    11 -> 11
-@N: MO225 :"d:\amigapci\u409\u409_transfer_ack.v":119:0:119:5|There are no possible illegal states for state machine CIA_STATE[3:0] (in view: work.U409_TRANSFER_ACK(verilog)); safe FSM implementation is not required.
+@N: MO225 :"d:\amigapci\u409\u409_transfer_ack.v":125:0:125:5|There are no possible illegal states for state machine CIA_STATE[3:0] (in view: work.U409_TRANSFER_ACK(verilog)); safe FSM implementation is not required.
 Encoding state machine TACK_COUNTER[2:0] (in view: work.U409_TRANSFER_ACK(verilog))
 original code -> new code
    000 -> 00
@@ -257,37 +259,37 @@ Finished gated-clock and generated-clock conversion (Real Time elapsed 0h:00m:00
 Finished generic timing optimizations - Pass 1 (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 132MB peak: 133MB)
 
 
-Starting Early Timing Optimization (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 132MB peak: 133MB)
+Starting Early Timing Optimization (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 133MB peak: 133MB)
 
 
-Finished Early Timing Optimization (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 132MB peak: 133MB)
+Finished Early Timing Optimization (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 133MB peak: 133MB)
 
 
 Finished generic timing optimizations - Pass 2 (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 132MB peak: 133MB)
 
 
-Finished preparing to map (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 132MB peak: 133MB)
+Finished preparing to map (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 133MB peak: 133MB)
 
 
-Finished technology mapping (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 132MB peak: 133MB)
+Finished technology mapping (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 133MB peak: 134MB)
 
 Pass		 CPU time		Worst Slack		Luts / Registers
 ------------------------------------------------------------
-   1		0h:00m:00s		    -1.80ns		 144 /        68
-@N: FX271 :"d:\amigapci\u409\u409_cia.v":62:21:62:51|Replicating instance U409_CIA.g0 (in view: work.U409_TOP(verilog)) with 4 loads 1 time(s) to improve timing.
+   1		0h:00m:00s		    -1.80ns		 147 /        69
+@N: FX271 :"d:\amigapci\u409\u409_cia.v":61:21:61:51|Replicating instance U409_CIA.g0 (in view: work.U409_TOP(verilog)) with 4 loads 1 time(s) to improve timing.
 Timing driven replication report
 Added 0 Registers via timing driven replication
 Added 1 LUTs via timing driven replication
 
 
 
-@N: FX1016 :"d:\amigapci\u409\u409_top.v":38:20:38:23|SB_GB_IO inserted on the port CLK6.
-@N: FX1016 :"d:\amigapci\u409\u409_top.v":38:26:38:33|SB_GB_IO inserted on the port CLK28_IN.
+@N: FX1016 :"d:\amigapci\u409\u409_top.v":37:20:37:23|SB_GB_IO inserted on the port CLK6.
+@N: FX1016 :"d:\amigapci\u409\u409_top.v":37:26:37:33|SB_GB_IO inserted on the port CLK28_IN.
 
-Finished technology timing optimizations and critical path resynthesis (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 132MB peak: 133MB)
+Finished technology timing optimizations and critical path resynthesis (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 133MB peak: 134MB)
 
 
-Finished restoring hierarchy (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 132MB peak: 133MB)
+Finished restoring hierarchy (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 133MB peak: 134MB)
 
 
 
@@ -297,8 +299,8 @@ Finished restoring hierarchy (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:
 #### START OF CLOCK OPTIMIZATION REPORT #####[
 
 2 non-gated/non-generated clock tree(s) driving 45 clock pin(s) of sequential element(s)
-1 gated/generated clock tree(s) driving 23 clock pin(s) of sequential element(s)
-0 instances converted, 23 sequential instances remain driven by gated/generated clocks
+1 gated/generated clock tree(s) driving 24 clock pin(s) of sequential element(s)
+0 instances converted, 24 sequential instances remain driven by gated/generated clocks
 
 ================================= Non-Gated/Non-Generated Clocks =================================
 Clock Tree ID     Driving Element         Drive Element Type     Fanout     Sample Instance       
@@ -306,21 +308,21 @@ Clock Tree ID     Driving Element         Drive Element Type     Fanout     Samp
 @K:CKID0002       CLK6_ibuf_gb_io         SB_GB_IO               36         U409_TICK.COUNTER50[5]
 @K:CKID0003       CLK28_IN_ibuf_gb_io     SB_GB_IO               9          U409_CIA.CLKCIA       
 ==================================================================================================
-======================================================================================================== Gated/Generated Clocks ========================================================================================================
-Clock Tree ID     Driving Element     Drive Element Type     Fanout     Sample Instance                   Explanation                                                                                                                   
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-@K:CKID0001       pll                 SB_PLL40_CORE          23         U409_TRANSFER_ACK.ROM_TACK_EN     Gating structure creates improper gating logic. See the Gated Clocks description in the user guide for conversion requirements
-========================================================================================================================================================================================================================================
+======================================================================================================= Gated/Generated Clocks =======================================================================================================
+Clock Tree ID     Driving Element     Drive Element Type     Fanout     Sample Instance                 Explanation                                                                                                                   
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+@K:CKID0001       pll                 SB_PLL40_CORE          24         U409_TRANSFER_ACK.TACK_EN_i     Gating structure creates improper gating logic. See the Gated Clocks description in the user guide for conversion requirements
+======================================================================================================================================================================================================================================
 
 
 ##### END OF CLOCK OPTIMIZATION REPORT ######]
 
 
-Start Writing Netlists (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 107MB peak: 133MB)
+Start Writing Netlists (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 108MB peak: 134MB)
 
 Writing Analyst data base D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\synwork\U409_icecube_m.srm
 
-Finished Writing Netlist Databases (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 132MB peak: 134MB)
+Finished Writing Netlist Databases (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 133MB peak: 135MB)
 
 Writing EDIF Netlist and constraint files
 @N: BW103 |The default time unit for the Synopsys Constraint File (SDC or FDC) is 1ns.
@@ -328,10 +330,10 @@ Writing EDIF Netlist and constraint files
 @N: FX1056 |Writing EDF file: D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\U409_icecube.edf
 L-2016.09L+ice40
 
-Finished Writing EDIF Netlist and constraint files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 133MB peak: 135MB)
+Finished Writing EDIF Netlist and constraint files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 134MB peak: 136MB)
 
 
-Start final timing analysis (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 133MB peak: 135MB)
+Start final timing analysis (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 133MB peak: 136MB)
 
 @N: MT615 |Found clock CLK40_IN with period 25.00ns 
 @N: MT615 |Found clock CLK6 with period 166.67ns 
@@ -340,7 +342,7 @@ Start final timing analysis (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:0
 
 
 ##### START OF TIMING REPORT #####[
-# Timing Report written on Mon Dec 23 16:31:15 2024
+# Timing Report written on Sat Jan 25 11:06:02 2025
 #
 
 
@@ -504,8 +506,8 @@ Instance                      Reference     Type       Pin     Net              
                               Clock                                                                   
 ------------------------------------------------------------------------------------------------------
 U409_CIA.CIA_HOLD             CLK28_IN      SB_DFF     Q       CIA_HOLD             0.540       -3.679
-U409_CIA.CLKCIA               CLK28_IN      SB_DFF     Q       CLKCIA_c             0.540       -3.679
 U409_CIA.VMA                  CLK28_IN      SB_DFF     Q       VMA                  0.540       -3.630
+U409_CIA.CLKCIA               CLK28_IN      SB_DFF     Q       CLKCIA_c             0.540       -2.692
 U409_CIA.CIA_CLK_COUNT[0]     CLK28_IN      SB_DFF     Q       CIA_CLK_COUNT[0]     0.540       27.196
 U409_CIA.CIA_CLK_COUNT[2]     CLK28_IN      SB_DFF     Q       CIA_CLK_COUNT[2]     0.540       27.217
 U409_CIA.CIA_CLK_COUNT[1]     CLK28_IN      SB_DFF     Q       CIA_CLK_COUNT[1]     0.540       27.245
@@ -523,7 +525,7 @@ Instance                             Reference     Type          Pin     Net    
                                      Clock                                                                           
 ---------------------------------------------------------------------------------------------------------------------
 U409_TRANSFER_ACK.CIA_ENABLED[0]     CLK28_IN      SB_DFFNSR     D       CIA_ENABLEm_rep1         0.416        -3.679
-U409_TRANSFER_ACK.LASTCLK[0]         CLK28_IN      SB_DFFN       D       LASTCLK                  0.416        -3.679
+U409_TRANSFER_ACK.LASTCLK[0]         CLK28_IN      SB_DFFNSR     D       CLKCIA_c                 0.416        -2.692
 U409_CIA.CLKCIA                      CLK28_IN      SB_DFF        D       CLKCIA_0                 34.811       27.196
 U409_CIA.CIA_CLK_COUNT[5]            CLK28_IN      SB_DFF        D       CIA_CLK_COUNT_3[5]       34.811       28.730
 U409_CIA.VMA                         CLK28_IN      SB_DFF        D       VMA_0                    34.811       28.896
@@ -576,36 +578,6 @@ Path information for path number 2:
     + Clock delay at ending point:           0.000 (ideal)
     = Required time:                         0.416
 
-    - Propagation time:                      4.095
-    - Clock delay at starting point:         0.000 (ideal)
-    = Slack (critical) :                     -3.679
-
-    Number of logic level(s):                1
-    Starting point:                          U409_CIA.CLKCIA / Q
-    Ending point:                            U409_TRANSFER_ACK.LASTCLK[0] / D
-    The start point is clocked by            CLK28_IN [rising] on pin C
-    The end   point is clocked by            U409_TOP|CLK80_OUT_derived_clock [falling] on pin C
-
-Instance / Net                                   Pin      Pin               Arrival     No. of    
-Name                                 Type        Name     Dir     Delay     Time        Fan Out(s)
---------------------------------------------------------------------------------------------------
-U409_CIA.CLKCIA                      SB_DFF      Q        Out     0.540     0.540       -         
-CLKCIA_c                             Net         -        -       1.599     -           3         
-U409_TRANSFER_ACK.LASTCLK_RNO[0]     SB_LUT4     I0       In      -         2.139       -         
-U409_TRANSFER_ACK.LASTCLK_RNO[0]     SB_LUT4     O        Out     0.449     2.588       -         
-LASTCLK                              Net         -        -       1.507     -           1         
-U409_TRANSFER_ACK.LASTCLK[0]         SB_DFFN     D        In      -         4.095       -         
-==================================================================================================
-Total path delay (propagation time + setup) of 4.200 is 1.094(26.0%) logic and 3.106(74.0%) route.
-Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
-
-
-Path information for path number 3: 
-      Requested Period:                      0.521
-    - Setup time:                            0.105
-    + Clock delay at ending point:           0.000 (ideal)
-    = Required time:                         0.416
-
     - Propagation time:                      4.046
     - Clock delay at starting point:         0.000 (ideal)
     = Slack (non-critical) :                 -3.630
@@ -627,6 +599,33 @@ CIA_ENABLEm_rep1                     Net           -        -       1.507     - 
 U409_TRANSFER_ACK.CIA_ENABLED[0]     SB_DFFNSR     D        In      -         4.046       -         
 ====================================================================================================
 Total path delay (propagation time + setup) of 4.151 is 1.045(25.2%) logic and 3.106(74.8%) route.
+Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
+
+
+Path information for path number 3: 
+      Requested Period:                      0.521
+    - Setup time:                            0.105
+    + Clock delay at ending point:           0.000 (ideal)
+    = Required time:                         0.416
+
+    - Propagation time:                      3.108
+    - Clock delay at starting point:         0.000 (ideal)
+    = Slack (non-critical) :                 -2.692
+
+    Number of logic level(s):                0
+    Starting point:                          U409_CIA.CLKCIA / Q
+    Ending point:                            U409_TRANSFER_ACK.LASTCLK[0] / D
+    The start point is clocked by            CLK28_IN [rising] on pin C
+    The end   point is clocked by            U409_TOP|CLK80_OUT_derived_clock [falling] on pin C
+
+Instance / Net                                 Pin      Pin               Arrival     No. of    
+Name                             Type          Name     Dir     Delay     Time        Fan Out(s)
+------------------------------------------------------------------------------------------------
+U409_CIA.CLKCIA                  SB_DFF        Q        Out     0.540     0.540       -         
+CLKCIA_c                         Net           -        -       2.568     -           3         
+U409_TRANSFER_ACK.LASTCLK[0]     SB_DFFNSR     D        In      -         3.108       -         
+================================================================================================
+Total path delay (propagation time + setup) of 3.213 is 0.645(20.1%) logic and 2.568(79.9%) route.
 Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
 
 
@@ -713,41 +712,41 @@ Detailed Report for Clock: U409_TOP|CLK80_OUT_derived_clock
 Starting Points with Worst Slack
 ********************************
 
-                                              Starting                                                                              Arrival          
-Instance                                      Reference                            Type         Pin     Net                         Time        Slack
-                                              Clock                                                                                                  
------------------------------------------------------------------------------------------------------------------------------------------------------
-U409_TRANSFER_ACK.DELAYED_TACK_COUNTER[1]     U409_TOP|CLK80_OUT_derived_clock     SB_DFFNR     Q       DELAYED_TACK_COUNTER[1]     0.540       2.911
-U409_TRANSFER_ACK.DELAYED_TACK_COUNTER[2]     U409_TOP|CLK80_OUT_derived_clock     SB_DFFNR     Q       DELAYED_TACK_COUNTER[2]     0.540       2.960
-U409_TRANSFER_ACK.DELAYED_TACK_COUNTER[3]     U409_TOP|CLK80_OUT_derived_clock     SB_DFFNR     Q       DELAYED_TACK_COUNTER[3]     0.540       2.960
-U409_TRANSFER_ACK.DELAYED_TACK_COUNTER[4]     U409_TOP|CLK80_OUT_derived_clock     SB_DFFNR     Q       DELAYED_TACK_COUNTER[4]     0.540       3.009
-U409_TRANSFER_ACK.DELAYED_TACK_COUNTER[0]     U409_TOP|CLK80_OUT_derived_clock     SB_DFFNR     Q       DELAYED_TACK_COUNTER[0]     0.540       3.023
-U409_TRANSFER_ACK.DELAYED_TACK_COUNTER[5]     U409_TOP|CLK80_OUT_derived_clock     SB_DFFNR     Q       DELAYED_TACK_COUNTER[5]     0.540       3.030
-U409_TRANSFER_ACK.DELAYED_TACK_COUNTER[6]     U409_TOP|CLK80_OUT_derived_clock     SB_DFFNR     Q       DELAYED_TACK_COUNTER[6]     0.540       3.058
-U409_TRANSFER_ACK.DELAYED_TACK_COUNTER[7]     U409_TOP|CLK80_OUT_derived_clock     SB_DFFNR     Q       DELAYED_TACK_COUNTER[7]     0.540       3.093
-U409_TRANSFER_ACK.CIA_TACK_EN                 U409_TOP|CLK80_OUT_derived_clock     SB_DFFN      Q       CIA_TACK_EN                 0.540       4.731
-U409_TRANSFER_ACK.DELAYED_TACK_EN             U409_TOP|CLK80_OUT_derived_clock     SB_DFFNR     Q       DELAYED_TACK_EN             0.540       4.780
-=====================================================================================================================================================
+                                              Starting                                                                               Arrival          
+Instance                                      Reference                            Type          Pin     Net                         Time        Slack
+                                              Clock                                                                                                   
+------------------------------------------------------------------------------------------------------------------------------------------------------
+U409_TRANSFER_ACK.DELAYED_TACK_COUNTER[1]     U409_TOP|CLK80_OUT_derived_clock     SB_DFFNR      Q       DELAYED_TACK_COUNTER[1]     0.540       2.911
+U409_TRANSFER_ACK.DELAYED_TACK_COUNTER[2]     U409_TOP|CLK80_OUT_derived_clock     SB_DFFNR      Q       DELAYED_TACK_COUNTER[2]     0.540       2.960
+U409_TRANSFER_ACK.DELAYED_TACK_COUNTER[3]     U409_TOP|CLK80_OUT_derived_clock     SB_DFFNR      Q       DELAYED_TACK_COUNTER[3]     0.540       2.960
+U409_TRANSFER_ACK.DELAYED_TACK_COUNTER[4]     U409_TOP|CLK80_OUT_derived_clock     SB_DFFNR      Q       DELAYED_TACK_COUNTER[4]     0.540       3.009
+U409_TRANSFER_ACK.DELAYED_TACK_COUNTER[0]     U409_TOP|CLK80_OUT_derived_clock     SB_DFFNR      Q       DELAYED_TACK_COUNTER[0]     0.540       3.023
+U409_TRANSFER_ACK.DELAYED_TACK_COUNTER[5]     U409_TOP|CLK80_OUT_derived_clock     SB_DFFNR      Q       DELAYED_TACK_COUNTER[5]     0.540       3.030
+U409_TRANSFER_ACK.DELAYED_TACK_COUNTER[6]     U409_TOP|CLK80_OUT_derived_clock     SB_DFFNR      Q       DELAYED_TACK_COUNTER[6]     0.540       3.058
+U409_TRANSFER_ACK.DELAYED_TACK_COUNTER[7]     U409_TOP|CLK80_OUT_derived_clock     SB_DFFNR      Q       DELAYED_TACK_COUNTER[7]     0.540       3.093
+U409_TRANSFER_ACK.CIA_TACK_EN                 U409_TOP|CLK80_OUT_derived_clock     SB_DFFNSR     Q       CIA_TACK_EN                 0.540       4.731
+U409_TRANSFER_ACK.ROM_TACK_EN                 U409_TOP|CLK80_OUT_derived_clock     SB_DFFNSR     Q       ROM_TACK_EN                 0.540       4.780
+======================================================================================================================================================
 
 
 Ending Points with Worst Slack
 ******************************
 
-                                              Starting                                                                                  Required          
-Instance                                      Reference                            Type         Pin     Net                             Time         Slack
-                                              Clock                                                                                                       
-----------------------------------------------------------------------------------------------------------------------------------------------------------
-U409_TRANSFER_ACK.DELAYED_TACK_EN             U409_TOP|CLK80_OUT_derived_clock     SB_DFFNR     D       DELAYED_TACK_EN_0               12.395       4.710
-U409_TRANSFER_ACK.TACK_EN_i                   U409_TOP|CLK80_OUT_derived_clock     SB_DFFNE     D       TACK_COUNTER_nss_i[0]           12.395       4.731
-U409_TRANSFER_ACK.TACK_COUNTER[0]             U409_TOP|CLK80_OUT_derived_clock     SB_DFFN      D       TACK_COUNTER_nss[0]             12.395       4.801
-U409_TRANSFER_ACK.TACK_OUTn                   U409_TOP|CLK80_OUT_derived_clock     SB_DFFN      D       TACK_OUTn_0                     12.395       4.864
-U409_TRANSFER_ACK.CIA_TACK_EN                 U409_TOP|CLK80_OUT_derived_clock     SB_DFFN      D       CIA_TACK_EN_1                   12.395       4.892
-U409_TRANSFER_ACK.CIA_STATE[1]                U409_TOP|CLK80_OUT_derived_clock     SB_DFFN      D       CIA_STATE_nss[1]                12.395       4.955
-U409_TRANSFER_ACK.ROM_TACK_EN                 U409_TOP|CLK80_OUT_derived_clock     SB_DFFN      D       ROM_TACK_EN_1                   12.395       6.613
-U409_TRANSFER_ACK.DELAYED_TACK_COUNTER[2]     U409_TOP|CLK80_OUT_derived_clock     SB_DFFNR     D       DELAYED_TACK_COUNTER_RNO[2]     12.395       8.300
-U409_TRANSFER_ACK.CIA_ENABLED[1]              U409_TOP|CLK80_OUT_derived_clock     SB_DFFN      D       CIA_ENABLED                     12.395       8.349
-U409_TRANSFER_ACK.LASTCLK[1]                  U409_TOP|CLK80_OUT_derived_clock     SB_DFFN      D       LASTCLK_0                       12.395       8.349
-==========================================================================================================================================================
+                                              Starting                                                                                   Required          
+Instance                                      Reference                            Type          Pin     Net                             Time         Slack
+                                              Clock                                                                                                        
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+U409_TRANSFER_ACK.DELAYED_TACK_EN             U409_TOP|CLK80_OUT_derived_clock     SB_DFFNR      D       DELAYED_TACK_EN_0               12.395       4.710
+U409_TRANSFER_ACK.TACK_EN_i                   U409_TOP|CLK80_OUT_derived_clock     SB_DFFNE      D       TACK_COUNTER_nss_i[0]           12.395       4.731
+U409_TRANSFER_ACK.TACK_COUNTER[0]             U409_TOP|CLK80_OUT_derived_clock     SB_DFFN       D       TACK_COUNTER_nss[0]             12.395       4.801
+U409_TRANSFER_ACK.TACK_OUTn                   U409_TOP|CLK80_OUT_derived_clock     SB_DFFN       D       TACK_OUTn_0                     12.395       4.864
+U409_TRANSFER_ACK.CIA_STATE[1]                U409_TOP|CLK80_OUT_derived_clock     SB_DFFN       D       CIA_STATE_nss[1]                12.395       4.955
+U409_TRANSFER_ACK.CIA_TACK_EN                 U409_TOP|CLK80_OUT_derived_clock     SB_DFFNSR     D       CIA_TACK_EN_0                   12.395       6.662
+U409_TRANSFER_ACK.DELAYED_TACK_COUNTER[2]     U409_TOP|CLK80_OUT_derived_clock     SB_DFFNR      D       DELAYED_TACK_COUNTER_RNO[2]     12.395       8.300
+U409_TRANSFER_ACK.ROM_TACK_COUNTER[2]         U409_TOP|CLK80_OUT_derived_clock     SB_DFFNSR     D       ROM_TACK_COUNTER_RNO[2]         12.395       8.300
+U409_TRANSFER_ACK.TACK_COUNTER[1]             U409_TOP|CLK80_OUT_derived_clock     SB_DFFN       D       TACK_COUNTER_nss[1]             12.395       8.349
+U409_TRANSFER_ACK.TACK_EN_i                   U409_TOP|CLK80_OUT_derived_clock     SB_DFFNE      E       TACK_COUNTER_nss_en[0]          12.500       8.454
+===========================================================================================================================================================
 
 
 
@@ -800,10 +799,10 @@ Path delay compensated for clock skew. Clock skew is added to clock-to-out value
 Timing exceptions that could not be applied
 None
 
-Finished final timing analysis (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 133MB peak: 135MB)
+Finished final timing analysis (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 134MB peak: 136MB)
 
 
-Finished timing report (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 133MB peak: 135MB)
+Finished timing report (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 134MB peak: 136MB)
 
 ---------------------------------------
 Resource Usage Report for U409_TOP 
@@ -813,38 +812,38 @@ Cell usage:
 GND             4 uses
 SB_CARRY        34 uses
 SB_DFF          45 uses
-SB_DFFN         12 uses
+SB_DFFN         5 uses
 SB_DFFNE        1 use
 SB_DFFNR        9 uses
-SB_DFFNSR       1 use
+SB_DFFNSR       9 uses
 SB_PLL40_CORE   1 use
 VCC             4 uses
-SB_LUT4         146 uses
+SB_LUT4         148 uses
 
-I/O ports: 48
-I/O primitives: 35
+I/O ports: 50
+I/O primitives: 37
 SB_GB_IO       2 uses
-SB_IO          33 uses
+SB_IO          35 uses
 
 I/O Register bits:                  0
-Register bits not including I/Os:   68 (1%)
+Register bits not including I/Os:   69 (1%)
 Total load per clock:
    CLK40_IN: 1
    CLK6: 1
    CLK28_IN: 1
-   U409_TOP|CLK80_OUT_derived_clock: 23
+   U409_TOP|CLK80_OUT_derived_clock: 24
 
 @S |Mapping Summary:
-Total  LUTs: 146 (4%)
+Total  LUTs: 148 (4%)
 
 Distribution of All Consumed LUTs = LUT4 
-Distribution of All Consumed Luts 146 = 146 
+Distribution of All Consumed Luts 148 = 148 
 
 Mapper successful!
 
-At Mapper Exit (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 27MB peak: 135MB)
+At Mapper Exit (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 27MB peak: 136MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
-# Mon Dec 23 16:31:15 2024
+# Sat Jan 25 11:06:02 2025
 
 ###########################################################]

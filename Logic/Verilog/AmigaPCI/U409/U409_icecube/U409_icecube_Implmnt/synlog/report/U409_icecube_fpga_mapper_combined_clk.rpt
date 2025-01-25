@@ -6,8 +6,8 @@
 #### START OF CLOCK OPTIMIZATION REPORT #####[
 
 2 non-gated/non-generated clock tree(s) driving 45 clock pin(s) of sequential element(s)
-1 gated/generated clock tree(s) driving 23 clock pin(s) of sequential element(s)
-0 instances converted, 23 sequential instances remain driven by gated/generated clocks
+1 gated/generated clock tree(s) driving 24 clock pin(s) of sequential element(s)
+0 instances converted, 24 sequential instances remain driven by gated/generated clocks
 
 ================================= Non-Gated/Non-Generated Clocks =================================
 Clock Tree ID     Driving Element         Drive Element Type     Fanout     Sample Instance       
@@ -15,11 +15,11 @@ Clock Tree ID     Driving Element         Drive Element Type     Fanout     Samp
 @K:CKID0002       CLK6_ibuf_gb_io         SB_GB_IO               36         U409_TICK.COUNTER50[5]
 @K:CKID0003       CLK28_IN_ibuf_gb_io     SB_GB_IO               9          U409_CIA.CLKCIA       
 ==================================================================================================
-======================================================================================================== Gated/Generated Clocks ========================================================================================================
-Clock Tree ID     Driving Element     Drive Element Type     Fanout     Sample Instance                   Explanation                                                                                                                   
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-@K:CKID0001       pll                 SB_PLL40_CORE          23         U409_TRANSFER_ACK.ROM_TACK_EN     Gating structure creates improper gating logic. See the Gated Clocks description in the user guide for conversion requirements
-========================================================================================================================================================================================================================================
+======================================================================================================= Gated/Generated Clocks =======================================================================================================
+Clock Tree ID     Driving Element     Drive Element Type     Fanout     Sample Instance                 Explanation                                                                                                                   
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+@K:CKID0001       pll                 SB_PLL40_CORE          24         U409_TRANSFER_ACK.TACK_EN_i     Gating structure creates improper gating logic. See the Gated Clocks description in the user guide for conversion requirements
+======================================================================================================================================================================================================================================
 
 
 ##### END OF CLOCK OPTIMIZATION REPORT ######]
