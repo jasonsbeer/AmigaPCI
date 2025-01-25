@@ -1,7 +1,7 @@
 Selecting top level module U712_TOP
 @N: CG364 :"C:\lscc\iCEcube2.2020.12\synpbase\lib\generic\sb_ice40.v":870:7:870:22|Synthesizing module SB_PLL40_2F_CORE in library work.
 
-@N: CG364 :"D:\AmigaPCI\U712\U712_REG_SM.v":33:7:33:17|Synthesizing module U712_REG_SM in library work.
+@N: CG364 :"D:\AmigaPCI\U712\U712_REG_SM.v":34:7:34:17|Synthesizing module U712_REG_SM in library work.
 
 @N: CG364 :"D:\AmigaPCI\U712\U712_BUFFERS.v":34:7:34:18|Synthesizing module U712_BUFFERS in library work.
 
@@ -19,7 +19,7 @@ Selecting top level module U712_TOP
 @W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":85:2:85:4|Input SDI on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
 @W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":85:2:85:4|Input SCLK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
 @W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":85:2:85:4|Input LATCHINPUTVALUE on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@N: CL201 :"D:\AmigaPCI\U712\U712_CYCLE_TERM.v":54:0:54:5|Trying to extract state machine for register TACK_STATE.
+@N: CL201 :"D:\AmigaPCI\U712\U712_CYCLE_TERM.v":53:0:53:5|Trying to extract state machine for register TACK_STATE.
 Extracted state machine for register TACK_STATE
 State machine has 5 reachable states with original encodings of:
    000
@@ -27,13 +27,11 @@ State machine has 5 reachable states with original encodings of:
    010
    011
    100
-@N: CL201 :"D:\AmigaPCI\U712\U712_REG_SM.v":64:0:64:5|Trying to extract state machine for register STATE_COUNT.
+@N: CL201 :"D:\AmigaPCI\U712\U712_REG_SM.v":70:0:70:5|Trying to extract state machine for register STATE_COUNT.
 Extracted state machine for register STATE_COUNT
-State machine has 7 reachable states with original encodings of:
-   000
-   001
-   010
-   011
-   100
-   101
-   110
+State machine has 5 reachable states with original encodings of:
+   00000000
+   00000001
+   00000010
+   00000011
+   00000100

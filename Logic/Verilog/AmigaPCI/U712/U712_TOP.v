@@ -125,6 +125,8 @@ U712_REG_SM U712_REG_SM (
     .RESETn (RESETn),
     .TSn (TSn),
     .REGSPACEn (REGSPACEn),
+    .RnW (RnW),
+    .DBRn (DBRn),
     .DBR_SYNC (DBR_SYNC),
 
     //OUTPUTS

@@ -25,17 +25,18 @@ Target Devices: iCE40-HX4K-TQ144
 Description: CHIPSET REGISTER CYCLE STATE MACHINE
 
 Revision History:
-    21-JAN-2025 : HW REV 5.0 INITIAL RELEASE
+    21-JAN-2025 : HW REV 5.0 INITIAL RELEASE JN
+    25-JAN-2025 : Improved stability of register cycle state machine. JN
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 */
 
 module U712_REG_SM (
 
-    input CLK80, C1, C3, RESETn, TSn, REGSPACEn,
+    input CLK80, C1, C3, RESETn, TSn, REGSPACEn, RnW, DBRn,
     input [1:0] DBR_SYNC,
 
-    output ASn,
+    output reg ASn,
     output reg REGENn,
     output reg REG_TACK,
     output reg REG_CYCLE,
@@ -51,96 +52,89 @@ module U712_REG_SM (
 //WAIT STATES ARE INSERTED UNTIL SUCH TIME AS THIS CONDITION IS TRUE.
 //READ CYCLES OF ORIGINAL AMIGAS ARE LATCHED EARLY, IN STATE 5. WE DO THE SAME.
 
-reg [2:0]STATE_COUNT;
-reg REG_CYCLE_START;
-reg REG_CYCLE_GO;
-reg [2:0] C1_SYNC;
-reg [2:0] C3_SYNC;
+//ENABLE CHIPSET DATA BUFFERS ON C3.
+always @(posedge C3) begin
+    if (!RESETn) begin
+        REG_CYCLE <= 0;
+    end else begin
+        REG_CYCLE <= (!REGENn && DBRn);
+    end
+end
 
-assign ASn = REGENn;
+reg [7:0]STATE_COUNT;
+reg [1:0] C1_SYNC;
+reg [1:0] C3_SYNC;
+reg REG_CYCLE_START;
 
 //MC68000 STATE MACHINE
-
 always @(negedge CLK80) begin
     if (!RESETn) begin
 
+        ASn <= 1;
         DS_EN <= 0;
-        STATE_COUNT <= 3'b000;
-        REG_CYCLE <= 0;
-        REG_CYCLE_START <= 0;
-        REG_CYCLE_GO <= 0;
         REGENn <= 1;
+        STATE_COUNT <= 7'h00;
+        REG_CYCLE_START <= 0;
         REG_TACK <= 0;
-        C1_SYNC <= 3'b111;
-        C3_SYNC <= 3'b111;
+        C1_SYNC <= 2'b11;
+        C3_SYNC <= 2'b11;
 
     end else begin
 
-        C1_SYNC <= C1_SYNC << 1;
+        C1_SYNC[1] <= C1_SYNC[0];
         C1_SYNC[0] <= C1;
 
-        C3_SYNC <= C3_SYNC << 1;
+        C3_SYNC[1] <= C3_SYNC[0];
         C3_SYNC[0] <= C3;
 
         //The CPU can start a register cycle before the previous one has completed.
-        REG_CYCLE_START <= ((!TSn && !REGSPACEn) || (REG_CYCLE_START && !REG_CYCLE_GO));
+        REG_CYCLE_START <= ((!TSn && !REGSPACEn) || (REG_CYCLE_START && !REG_CYCLE));
 
         case (STATE_COUNT)
-
-            3'b000 : begin
-                if (REG_CYCLE_START) begin //CPU has initiated a cycle in the register space.
-                    STATE_COUNT <= 3'b001;
-                    REG_CYCLE_GO <= 1;
+            7'h00 : begin
+                REG_TACK <= 0;
+                if (REG_CYCLE_START && C1_SYNC == 2'b00 && C3_SYNC == 2'b11) begin
+                    //STATE 1
+                    REGENn <= 0;
+                    STATE_COUNT <= 7'h01;
                 end
             end
-
-            3'b001: //STATE 2
-                begin
-                    if (C1_SYNC == 3'b000 && C3_SYNC == 3'b110) begin
-                        REGENn <= 0; //Agnus register cycle enable.
-                        STATE_COUNT <= 3'b010;
-                        REG_CYCLE_GO <= 0;
-                    end
+            7'h01 : begin
+                if (C1 == 2'b00 && C3_SYNC == 2'b00) begin
+                    //STATE 2
+                    ASn <= 0;
+                    DS_EN <= RnW;
+                    STATE_COUNT <= 7'h02;
                 end
-
-            3'b010: //STATE 4
-                if (C1_SYNC == 3'b111 && C3_SYNC == 3'b001) begin
+            end
+            7'h02 : begin
+                if (C1_SYNC == 2'b11 && C3_SYNC == 2'b11) begin
+                    //STATE 4
                     DS_EN <= 1;
-                    STATE_COUNT <= 3'b011;
-                end
-
-            3'b011 : begin
-                //ADD WAITS UNTIL AND _DBR IS NEGATED AND WE ARE AT STATE 4.
-                if (DBR_SYNC == 2'b11 && C1_SYNC == 3'b111 && C3_SYNC == 3'b111) begin
-                    STATE_COUNT <= 3'b100;
-                    REG_CYCLE <= 1;
+                    if (DBR_SYNC == 2'b11) begin
+                        STATE_COUNT <= 7'h03;
+                    end
                 end
             end
-
-            3'b100: begin //STATE 5
-                if (C1_SYNC == 3'b111 && C3_SYNC == 3'b111) begin
-                    REG_TACK <= 1;
-                    STATE_COUNT <= 3'b101;
+            7'h03 : begin
+                if (C1_SYNC == 2'b00 && C3_SYNC == 2'b11) begin
+                    //STATE 5
+                    REG_TACK <= RnW;
+                    STATE_COUNT <= 7'h04;
                 end
             end
-
-            3'b101 : //STATE 6
-                begin
-                    REG_CYCLE <= 0;
+            7'h04 : begin
+                if (C1_SYNC == 2'b11 && C3_SYNC == 2'b00) begin
+                    //STATE 7
+                    REG_TACK <= !RnW;
+                    REGENn <= 1;
+                    ASn <= 1;
+                    DS_EN <= 0;
+                    STATE_COUNT <= 7'h00;
+                end else begin
                     REG_TACK <= 0;
-                    if (C1_SYNC == 3'b000 && C3_SYNC == 3'b000) begin
-                        STATE_COUNT <= 3'b110;
-                    end
                 end
-
-            3'b110 : //STATE 7
-                begin
-                    if (C1_SYNC == 3'b011 && C3_SYNC == 3'b000) begin
-                        STATE_COUNT <= 3'b000;
-                        DS_EN <= 0;
-                        REGENn <= 1;
-                    end
-                end
+            end
         endcase
     end
 end

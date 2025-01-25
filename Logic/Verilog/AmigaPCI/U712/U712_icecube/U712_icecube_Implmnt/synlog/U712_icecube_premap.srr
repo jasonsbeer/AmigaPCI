@@ -1,4 +1,4 @@
-# Wed Jan 08 22:54:19 2025
+# Sat Jan 25 09:53:24 2025
 
 Synopsys Lattice Technology Pre-mapping, Version maplat, Build 1612R, Built Dec  5 2016 10:31:39
 Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
@@ -39,11 +39,11 @@ Clock Summary
 Start                                Requested     Requested     Clock                       Clock                Clock
 Clock                                Frequency     Period        Type                        Group                Load 
 -----------------------------------------------------------------------------------------------------------------------
-C1                                   3.6 MHz       279.330       declared                    default_clkgroup     30   
-C3                                   3.6 MHz       279.330       declared                    default_clkgroup     22   
+C1                                   3.6 MHz       279.330       declared                    default_clkgroup     37   
+C3                                   3.6 MHz       279.330       declared                    default_clkgroup     23   
 CLK40_IN                             40.0 MHz      25.000        declared                    default_clkgroup     0    
 U712_TOP|CLK40_PLL_derived_clock     40.0 MHz      25.000        derived (from CLK40_IN)     default_clkgroup     6    
-U712_TOP|CLK80_PLL_derived_clock     80.0 MHz      12.500        derived (from CLK40_IN)     default_clkgroup     71   
+U712_TOP|CLK80_PLL_derived_clock     80.0 MHz      12.500        derived (from CLK40_IN)     default_clkgroup     67   
 =======================================================================================================================
 
 Finished Pre Mapping Phase.
@@ -51,15 +51,13 @@ Finished Pre Mapping Phase.
 
 Starting constraint checker (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
 
-Encoding state machine STATE_COUNT[6:0] (in view: work.U712_REG_SM(verilog))
+Encoding state machine STATE_COUNT[4:0] (in view: work.U712_REG_SM(verilog))
 original code -> new code
-   000 -> 0000001
-   001 -> 0000010
-   010 -> 0000100
-   011 -> 0001000
-   100 -> 0010000
-   101 -> 0100000
-   110 -> 1000000
+   00000000 -> 00001
+   00000001 -> 00010
+   00000010 -> 00100
+   00000011 -> 01000
+   00000100 -> 10000
 Encoding state machine TACK_STATE[4:0] (in view: work.U712_CYCLE_TERM(verilog))
 original code -> new code
    000 -> 00001
@@ -77,6 +75,6 @@ Pre-mapping successful!
 At Mapper Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 47MB peak: 133MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
-# Wed Jan 08 22:54:20 2025
+# Sat Jan 25 09:53:25 2025
 
 ###########################################################]

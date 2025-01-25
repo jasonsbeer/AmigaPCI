@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:31:51
 
-* File Generated:     Jan 8 2025 22:54:42
+* File Generated:     Jan 25 2025 09:53:47
 
 * Purpose:            Detailed IO and package pin info
 
@@ -29,7 +29,7 @@ Pin Number, Pin Type Name, Signal Name, Direction, Global Buffer, IO Standard, P
 8, PIO, A[2], Input, , SB_LVCMOS, No Pull Up, Simple Input, leftBank
 9, PIO, A[3], Input, , SB_LVCMOS, No Pull Up, Simple Input, leftBank
 10, PIO, A[1], Input, , SB_LVCMOS, No Pull Up, Simple Input, leftBank
-11, PIO, not used, , , , , , leftBank
+11, PIO, A[20], Input, , SB_LVCMOS, No Pull Up, Simple Input, leftBank
 12, PIO, A[0], Input, , SB_LVCMOS, Pull Up, Simple Input, leftBank
 13, GND, not used, , , , , , UnknownBank
 14, GND, not used, , , , , , UnknownBank
@@ -39,7 +39,7 @@ Pin Number, Pin Type Name, Signal Name, Direction, Global Buffer, IO Standard, P
 18, PIO, A[7], Input, , SB_LVCMOS, No Pull Up, Simple Input, leftBank
 19, PIO, A[8], Input, , SB_LVCMOS, No Pull Up, Simple Input, leftBank
 20, PIO_GBIN, CLK40_IN, Input, , SB_LVCMOS, No Pull Up, Simple Input, leftBank
-21, PIO_GBIN, CLK40_OUT, Output, , SB_LVCMOS, No Pull Up, Simple Output, leftBank
+21, PIO_GBIN, CLK40C_OUT, Output, , SB_LVCMOS, No Pull Up, Simple Output, leftBank
 22, PIO, A[9], Input, , SB_LVCMOS, No Pull Up, Simple Input, leftBank
 23, PIO, A[10], Input, , SB_LVCMOS, No Pull Up, Simple Input, leftBank
 24, PIO, A[11], Input, , SB_LVCMOS, No Pull Up, Simple Input, leftBank
@@ -115,7 +115,7 @@ Pin Number, Pin Type Name, Signal Name, Direction, Global Buffer, IO Standard, P
 99, PIO, DRA[2], Input, , SB_LVCMOS, No Pull Up, Simple Input, rightBank
 100, VCCIO_1, not used, , , , , , rightBank
 101, PIO, DRA[1], Input, , SB_LVCMOS, No Pull Up, Simple Input, rightBank
-102, PIO, not used, , , , , , rightBank
+102, PIO, DRA[0], Input, , SB_LVCMOS, No Pull Up, Simple Input, rightBank
 103, GND, not used, , , , , , UnknownBank
 104, PIO, CASUn, Input, , SB_LVCMOS, No Pull Up, Simple Input, rightBank
 105, PIO, CASLn, Input, , SB_LVCMOS, No Pull Up, Simple Input, rightBank
@@ -125,10 +125,10 @@ Pin Number, Pin Type Name, Signal Name, Direction, Global Buffer, IO Standard, P
 109, VPP_DIRECT, not used, , , , , , UnknownBank
 110, PIO, DRDENn, Output, , SB_LVCMOS, No Pull Up, Simple Output, topBank
 111, VCC, not used, , , , , , UnknownBank
-112, PIO, not used, , , , , , topBank
+112, PIO, CLK40B_OUT, Output, , SB_LVCMOS, No Pull Up, Simple Output, topBank
 113, PIO, not used, , , , , , topBank
-114, PIO, not used, , , , , , topBank
-115, PIO, not used, , , , , , topBank
+114, PIO, AGNUS_REV, Input, , SB_LVCMOS, No Pull Up, Simple Input, topBank
+115, PIO, CLK40D_OUT, Output, , SB_LVCMOS, No Pull Up, Simple Output, topBank
 116, PIO, ASn, Output, , SB_LVCMOS, No Pull Up, Simple Output, topBank
 117, PIO, LDSn, Output, , SB_LVCMOS, No Pull Up, Simple Output, topBank
 118, PIO, UDSn, Output, , SB_LVCMOS, No Pull Up, Simple Output, topBank
@@ -146,10 +146,10 @@ Pin Number, Pin Type Name, Signal Name, Direction, Global Buffer, IO Standard, P
 130, PIO, RAMSPACEn, Input, , SB_LVCMOS, No Pull Up, Simple Input, topBank
 131, VCCIO_0, not used, , , , , , topBank
 132, GND, not used, , , , , , UnknownBank
-134, PIO, not used, , , , , , topBank
+134, PIO, DMA_LATCH, Output, , SB_LVCMOS, No Pull Up, Simple Output, topBank
 135, PIO, AWEn, Input, , SB_LVCMOS, No Pull Up, Simple Input, topBank
 136, PIO, TSn, Input, , SB_LVCMOS, No Pull Up, Simple Input, topBank
-137, PIO, not used, , , , , , topBank
+137, PIO, LATCH_CLK, Output, , SB_LVCMOS, No Pull Up, Simple Output, topBank
 138, PIO, DBRn, Input, , SB_LVCMOS, No Pull Up, Simple Input, topBank
 139, PIO, not used, , , , , , topBank
 140, GND, not used, , , , , , UnknownBank
@@ -157,4 +157,4 @@ Pin Number, Pin Type Name, Signal Name, Direction, Global Buffer, IO Standard, P
 142, PIO, C1, Input, , SB_LVCMOS, No Pull Up, Simple Input, topBank
 143, PIO, C3, Input, , SB_LVCMOS, No Pull Up, Simple Input, topBank
 144, PIO, RnW, Input, , SB_LVCMOS, No Pull Up, Simple Input, topBank
-Total Number of Used Pins, 79
+Total Number of Used Pins, 86
