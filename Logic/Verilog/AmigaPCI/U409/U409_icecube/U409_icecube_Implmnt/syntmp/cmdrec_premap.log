@@ -1,14 +1,14 @@
 C:\lscc\iCEcube2.2020.12\synpbase\bin64\m_generic.exe  -prodtype  synplify_pro   -encrypt  -pro  -rundir  D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt   -part iCE40HX4K  -package TQ144    -maxfan 10000 -RWCheckOnRam 0 -pipe -fixgatedclocks 1 -fixgeneratedclocks 1 -summaryfile D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\synlog\report\U409_icecube_premap.xml  -oedif  D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\U409_icecube.edf  -conchk_prepass  D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\U409_icecube_cck.rpt   -autoconstraint  -freq 1.000   -tcl  D:\AmigaPCI\U409\U409_TOP.sdc  D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\synwork\U409_icecube_mult.srs  -flow prepass  -gcc_prepass  -osrd  D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\synwork\U409_icecube_prem.srd  -qsap  D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\U409_icecube.sap  -devicelib  C:\lscc\iCEcube2.2020.12\synpbase\lib\generic\sb_ice40.v  -ologparam  D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\syntmp\U409_icecube.plg  -osyn  D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\synwork\U409_icecube_prem.srd  -prjdir  D:\AmigaPCI\U409\U409_icecube\  -prjname  U409_icecube_syn  -log  D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\synlog\U409_icecube_premap.srr 
 rc:0 success:1 runtime:0
 file:D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\U409_icecube.edf|io:o|time:0|size:0|exec:0
-file:D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\U409_icecube_cck.rpt|io:o|time:1737824761|size:3494|exec:0
+file:D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\U409_icecube_cck.rpt|io:o|time:1737863899|size:3494|exec:0
 file:D:\AmigaPCI\U409\U409_TOP.sdc|io:i|time:1736391199|size:245|exec:0
-file:D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\synwork\U409_icecube_mult.srs|io:i|time:1737824761|size:6076|exec:0
-file:D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\synwork\U409_icecube_prem.srd|io:o|time:1737824761|size:19040|exec:0
-file:D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\U409_icecube.sap|io:o|time:1737824761|size:2145|exec:0
+file:D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\synwork\U409_icecube_mult.srs|io:i|time:1737863899|size:6070|exec:0
+file:D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\synwork\U409_icecube_prem.srd|io:o|time:1737863899|size:18582|exec:0
+file:D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\U409_icecube.sap|io:o|time:1737863899|size:2158|exec:0
 file:C:\lscc\iCEcube2.2020.12\synpbase\lib\generic\sb_ice40.v|io:i|time:1728534475|size:224837|exec:0
-file:D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\syntmp\U409_icecube.plg|io:o|time:1737824761|size:0|exec:0
-file:D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\synwork\U409_icecube_prem.srd|io:o|time:1737824761|size:19040|exec:0
-file:D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\synlog\U409_icecube_premap.srr|io:o|time:1737824761|size:4195|exec:0
+file:D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\syntmp\U409_icecube.plg|io:o|time:1737863899|size:0|exec:0
+file:D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\synwork\U409_icecube_prem.srd|io:o|time:1737863899|size:18582|exec:0
+file:D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\synlog\U409_icecube_premap.srr|io:o|time:1737863899|size:4195|exec:0
 file:C:\lscc\iCEcube2.2020.12\synpbase\bin\m_generic.exe|io:i|time:1728534473|size:17853440|exec:1
 file:C:\lscc\iCEcube2.2020.12\synpbase\bin64\m_generic.exe|io:i|time:1728534474|size:32355840|exec:1

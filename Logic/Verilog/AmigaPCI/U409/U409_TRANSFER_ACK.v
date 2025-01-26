@@ -80,7 +80,7 @@ end
 //WE DELAY ASSERTION OF _TACK BY 100ns TO SUPPORT SETUP TIME FOR THE ROM.
 //5 is the appropriate delay for 100ns.
 
-wire ROM_TACK_DELAY = ROM_DELAY ? 5 : 1;
+wire [3:0]ROM_TACK_DELAY = ROM_DELAY ? 4'h5 : 4'h1;
 
 reg [2:0] ROM_TACK_COUNTER;
 reg  ROM_TACK_EN;

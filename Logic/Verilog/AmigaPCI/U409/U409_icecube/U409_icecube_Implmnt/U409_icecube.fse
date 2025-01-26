@@ -1,15 +1,15 @@
 
-fsm_encoding {1012501251} sequential
+fsm_encoding {1012101211} sequential
 
-fsm_state_encoding {1012501251} 00 {00}
+fsm_state_encoding {1012101211} 00 {00}
 
-fsm_state_encoding {1012501251} 01 {01}
+fsm_state_encoding {1012101211} 01 {01}
 
-fsm_state_encoding {1012501251} 10 {10}
+fsm_state_encoding {1012101211} 10 {10}
 
-fsm_state_encoding {1012501251} 11 {11}
+fsm_state_encoding {1012101211} 11 {11}
 
-fsm_registers {1012501251} {CIA_STATE[1]}  {CIA_STATE[0]} 
+fsm_registers {1012101211} {CIA_STATE[1]}  {CIA_STATE[0]} 
 
 fsm_encoding {10500502} sequential
 

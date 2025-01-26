@@ -20,7 +20,7 @@ Selecting top level module U409_TOP
 @W: CG781 :"D:\AmigaPCI\U409\U409_TOP.v":69:2:69:4|Input LATCHINPUTVALUE on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
 @W: CL246 :"D:\AmigaPCI\U409\U409_ADDRESS_DECODE.v":38:17:38:17|Input port bits 15 to 14 of A[31:1] are unused. Assign logic for all port bits or change the input port size.
 @W: CL246 :"D:\AmigaPCI\U409\U409_ADDRESS_DECODE.v":38:17:38:17|Input port bits 11 to 1 of A[31:1] are unused. Assign logic for all port bits or change the input port size.
-@N: CL201 :"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v":125:0:125:5|Trying to extract state machine for register CIA_STATE.
+@N: CL201 :"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v":121:0:121:5|Trying to extract state machine for register CIA_STATE.
 Extracted state machine for register CIA_STATE
 State machine has 4 reachable states with original encodings of:
    00
@@ -33,4 +33,3 @@ State machine has 3 reachable states with original encodings of:
    000
    001
    010
-@N: CL159 :"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v":35:89:35:97|Input ROM_DELAY is unused.
