@@ -1,0 +1,14 @@
+OUTPUT WEn 	 location (0, 9, 0) 	 13 	 
+OUTPUT RASn 	 location (0, 10, 0) 	 10 	 
+OUTPUT LLBEn 	 location (10, 0, 1) 	 42 	 
+OUTPUT CS1n 	 location (6, 17, 1) 	 90 	 
+OUTPUT CS0n 	 location (0, 10, 1) 	 9 	 
+OUTPUT UUBEn 	 location (7, 0, 1) 	 37 	 
+OUTPUT UMBEn 	 location (9, 0, 1) 	 40 	 
+OUTPUT CASn 	 location (0, 9, 1) 	 12 	 
+INPUT  SIZ[0] 	 location (13, 8, 0) 	 60 	 
+OUTPUT CLKEN 	 location (0, 14, 1) 	 1 	 
+INPUT  A[1] 	 location (0, 13, 0) 	 4 	 
+INPUT  SIZ[1] 	 location (13, 7, 1) 	 59 	 
+OUTPUT LMBEn 	 location (10, 0, 0) 	 41 	 
+INPUT  A[0] 	 location (0, 13, 1) 	 3 	 

@@ -1,0 +1,10 @@
+C:\lscc\iCEcube2.2020.12\synpbase\bin64\c_hdl.exe  -osyn  D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\synwork\LBC_U400_comp.srs  -hdllog  D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\synlog\LBC_U400_compiler.srr  -encrypt  -mp  4  -verification_mode 0  -verilog  -prodtype  synplify_pro  -primux -fixsmult -infer_seqShift -ice -sdff_counter -nram -divnmod -nostructver   -I D:\LocalBus68040\U400\LBC_U400\  -I C:\lscc\iCEcube2.2020.12\synpbase\lib   -v2001  -devicelib  C:\lscc\iCEcube2.2020.12\synpbase\lib\generic\sb_ice40.v  -encrypt  -pro  -dmgen  D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\dm  -ui -fid2 -ram -sharing on -ll 2000 -autosm  -lib work D:\LocalBus68040\U400\U400_BYTE_ENABLE.v -lib work D:\LocalBus68040\U400\U400_SDRAM.v -lib work D:\LocalBus68040\U400\U400_TOP.v 
+rc:0 success:1 runtime:1
+file:D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\synwork\LBC_U400_comp.srs|io:o|time:1738427602|size:3673|exec:0
+file:D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\synlog\LBC_U400_compiler.srr|io:o|time:1738427602|size:3261|exec:0
+file:C:\lscc\iCEcube2.2020.12\synpbase\lib\generic\sb_ice40.v|io:i|time:1728534475|size:224837|exec:0
+file:D:\LocalBus68040\U400\U400_BYTE_ENABLE.v|io:i|time:1737819904|size:474|exec:0
+file:D:\LocalBus68040\U400\U400_SDRAM.v|io:i|time:1737819904|size:223|exec:0
+file:D:\LocalBus68040\U400\U400_TOP.v|io:i|time:1738427330|size:955|exec:0
+file:C:\lscc\iCEcube2.2020.12\synpbase\bin\c_hdl.exe|io:i|time:1728534472|size:1338368|exec:1
+file:C:\lscc\iCEcube2.2020.12\synpbase\bin64\c_hdl.exe|io:i|time:1728534473|size:1754112|exec:1

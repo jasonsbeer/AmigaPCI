@@ -1,0 +1,22 @@
+---------------------------------------
+Resource Usage Report for U400_TOP 
+
+Mapping to part: ice40hx1kvq100
+Cell usage:
+GND             1 use
+VCC             1 use
+SB_LUT4         4 uses
+
+I/O ports: 14
+I/O primitives: 14
+SB_IO          14 uses
+
+I/O Register bits:                  0
+Register bits not including I/Os:   0 (0%)
+
+@S |Mapping Summary:
+Total  LUTs: 4 (0%)
+
+Distribution of All Consumed LUTs = LUT4 
+Distribution of All Consumed Luts 4 = 4 
+

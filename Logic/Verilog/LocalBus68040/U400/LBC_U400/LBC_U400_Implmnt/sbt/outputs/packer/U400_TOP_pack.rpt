@@ -1,0 +1,86 @@
+* ******************************************************************************
+
+* iCEcube Report
+
+* Version:            2020.12.27943
+
+* Build Date:         Dec  9 2020 17:31:51
+
+* File Generated:     Feb 1 2025 10:33:31
+
+* Purpose:            General info of design implementation
+
+* Copyright (C) 2006-2010 by Lattice Semiconductor Corp. All rights reserved.
+
+* ******************************************************************************
+
+Synthesis/Placement Summary:
+----------------------------
+    Status:  Successful
+    Runtime: 0 seconds
+
+Device Info:
+------------
+    Device Family: iCE40
+    Device:        iCE40HX1K
+    Package:       VQ100
+
+Design statistics:
+------------------
+    FFs:                  0
+    LUTs:                 5
+    RAMs:                 0
+    IOBs:                 14
+    GBs:                  0
+    PLLs:                 0
+    Warm Boots:           0
+
+Logic Resource Utilization:
+---------------------------
+    Total Logic Cells: 5/1280
+        Combinational Logic Cells: 5        out of   1280      0.390625%
+        Sequential Logic Cells:    0        out of   1280      0%
+        Logic Tiles:               2        out of   160       1.25%
+    Registers: 
+        Logic Registers:           0        out of   1280      0%
+        IO Registers:              0        out of   560       0
+    Block RAMs:                    0        out of   16        0%
+    Warm Boots:                    0        out of   1         0%
+    Pins:
+        Input Pins:                4        out of   72        5.55556%
+        Output Pins:               10       out of   72        13.8889%
+        InOut Pins:                0        out of   72        0%
+    Global Buffers:                0        out of   8         0%
+    PLLs:                          0        out of   0       
+
+IO Bank Utilization:
+--------------------
+    Bank 3: 7        out of   18        38.8889%
+    Bank 1: 2        out of   19        10.5263%
+    Bank 0: 1        out of   19        5.26316%
+    Bank 2: 4        out of   16        25%
+
+Detailed I/O Info:
+------------------
+    Input Pins: 
+    Pin Number  Direction  IO Standard  Pull Up  IO Bank  IO Function    Signal Name
+    ----------  ---------  -----------  -------  -------  -----------    -----------
+    3           Input      SB_LVCMOS    No       3        Simple Input   A[0]    
+    4           Input      SB_LVCMOS    No       3        Simple Input   A[1]    
+    59          Input      SB_LVCMOS    No       1        Simple Input   SIZ[1]  
+    60          Input      SB_LVCMOS    No       1        Simple Input   SIZ[0]  
+
+    Output Pins: 
+    Pin Number  Direction  IO Standard  Pull Up  IO Bank  IO Function    Signal Name
+    ----------  ---------  -----------  -------  -------  -----------    -----------
+    1           Output     SB_LVCMOS    No       3        Simple Output  CLKEN   
+    9           Output     SB_LVCMOS    No       3        Simple Output  CS0n    
+    10          Output     SB_LVCMOS    No       3        Simple Output  RASn    
+    12          Output     SB_LVCMOS    No       3        Simple Output  CASn    
+    13          Output     SB_LVCMOS    No       3        Simple Output  WEn     
+    37          Output     SB_LVCMOS    No       2        Simple Output  UUBEn   
+    40          Output     SB_LVCMOS    No       2        Simple Output  UMBEn   
+    41          Output     SB_LVCMOS    No       2        Simple Output  LMBEn   
+    42          Output     SB_LVCMOS    No       2        Simple Output  LLBEn   
+    90          Output     SB_LVCMOS    No       0        Simple Output  CS1n    
+

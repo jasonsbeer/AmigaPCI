@@ -1,0 +1,9 @@
+@N|Running in 64-bit mode
+@N|Running in 64-bit mode
+@N: CG364 :"D:\LocalBus68040\U400\U400_SDRAM.v":1:7:1:16|Synthesizing module U400_SDRAM in library work.
+@N: CG364 :"D:\LocalBus68040\U400\U400_BYTE_ENABLE.v":1:7:1:22|Synthesizing module U400_BYTE_ENABLE in library work.
+@N: CG364 :"D:\LocalBus68040\U400\U400_TOP.v":3:7:3:14|Synthesizing module U400_TOP in library work.
+@N|Running in 64-bit mode
+@N: NF107 :"D:\LocalBus68040\U400\U400_TOP.v":3:7:3:14|Selected library: work cell: U400_TOP view verilog as top level
+@N: NF107 :"D:\LocalBus68040\U400\U400_TOP.v":3:7:3:14|Selected library: work cell: U400_TOP view verilog as top level
+

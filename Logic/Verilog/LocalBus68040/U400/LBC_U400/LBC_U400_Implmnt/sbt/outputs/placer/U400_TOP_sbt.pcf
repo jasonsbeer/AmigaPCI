@@ -1,0 +1,20 @@
+set_location U400_BYTE_ENABLE.LLBEn_0_i 9 5 0 # SB_LUT4 (LogicCell: U400_BYTE_ENABLE.LLBEn_0_i_LC_0)
+set_location U400_BYTE_ENABLE.LMBEn_0_i 9 5 1 # SB_LUT4 (LogicCell: U400_BYTE_ENABLE.LMBEn_0_i_LC_1)
+set_location U400_BYTE_ENABLE.UMBEn_0_i 9 5 2 # SB_LUT4 (LogicCell: U400_BYTE_ENABLE.UMBEn_0_i_LC_2)
+set_location U400_BYTE_ENABLE.UUBEn_0_i 9 5 3 # SB_LUT4 (LogicCell: U400_BYTE_ENABLE.UUBEn_0_i_LC_3)
+set_io A_ibuf[0] 0 13 1 # ICE_IO
+set_io A_ibuf[1] 0 13 0 # ICE_IO
+set_io CASn_obuf 0 9 1 # ICE_IO
+set_io CLKEN_obuf 0 14 1 # ICE_IO
+set_io CS0n_obuf 0 10 1 # ICE_IO
+set_io CS1n_obuf 6 17 1 # ICE_IO
+set_location GND -1 -1 -1 # GND
+set_io LLBEn_obuf 10 0 1 # ICE_IO
+set_io LMBEn_obuf 10 0 0 # ICE_IO
+set_io RASn_obuf 0 10 0 # ICE_IO
+set_io SIZ_ibuf[0] 13 8 0 # ICE_IO
+set_io SIZ_ibuf[1] 13 7 1 # ICE_IO
+set_io UMBEn_obuf 9 0 1 # ICE_IO
+set_io UUBEn_obuf 7 0 1 # ICE_IO
+set_io WEn_obuf 0 9 0 # ICE_IO
+set_location CONSTANT_ONE_LUT4 4 9 7 # SB_LUT4 (LogicCell: LC_4)

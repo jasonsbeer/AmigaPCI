@@ -1,0 +1,1870 @@
+# ******************************************************************************
+
+# iCEcube Static Timer
+
+# Version:            2020.12.27943
+
+# Build Date:         Dec  9 2020 17:33:20
+
+# File Generated:     Feb 1 2025 10:33:34
+
+# Purpose:            Timing Report with critical paths info
+
+# Copyright (C) 2006-2010 by Lattice Semiconductor Corp. All rights reserved.
+
+# ******************************************************************************
+
+Device: iCE40HX1K
+Derating factors (Best:Typical:Worst) :-  ( 0.563724 : 0.623363 : 0.701346 )
+Derating factor used to generate this timing report:  Worst
+Based on the following operating conditions 
+Junction Temperature(degree Celsius): 85
+Core Voltage(V): 1.14
+Process Corner:  Worst
+NOTE:
+Please check both worst-case and best-case scenarios for "Setup Times" 
+and "Hold Times" checks
+Maximum Operating Frequency is: N/A
+
+
+ #####################################################################
+                    3::Datasheet Report
+
+All values are in Picoseconds
+ =====================================================================
+
+                        3.1::Setup Times
+                        ----------------
+
+Data Port  Clock Port  Setup Times  Clock Reference:Phase  
+---------  ----------  -----------  ---------------------  
+
+
+                       3.2::Clock to Out
+                       -----------------
+
+Data Port  Clock Port  Clock to Out  Clock Reference:Phase  
+---------  ----------  ------------  ---------------------  
+
+
+                         3.3::Pad to Pad
+                         ---------------
+
+Port Name (Input)  Port Name (Output)  Pad to Pad  
+-----------------  ------------------  ----------  
+A[1]               LLBEn               9324        
+A[0]               LLBEn               9092        
+SIZ[1]             LLBEn               8272        
+SIZ[0]             LLBEn               8251        
+A[1]               LMBEn               9345        
+A[0]               LMBEn               8959        
+SIZ[0]             LMBEn               8384        
+SIZ[1]             LMBEn               8251        
+A[1]               UMBEn               9212        
+A[0]               UMBEn               8980        
+SIZ[1]             UMBEn               8160        
+SIZ[0]             UMBEn               8139        
+A[1]               UUBEn               9696        
+A[0]               UUBEn               9310        
+SIZ[0]             UUBEn               8735        
+SIZ[1]             UUBEn               8602        
+
+
+                         3.4::Hold Times
+                         ---------------
+
+Data Port  Clock Port  Hold Times  Clock Reference:Phase  
+---------  ----------  ----------  ---------------------  
+
+
+               3.5::Minimum Clock to Out
+               -------------------------
+
+Data Port  Clock Port  Minimum Clock to Out  Clock Reference:Phase  
+---------  ----------  --------------------  ---------------------  
+
+
+                 3.6::Minimum Pad To Pad
+                 -----------------------
+
+Port Name (Input)  Port Name (Output)  Minimum Pad To Pad  
+-----------------  ------------------  ------------------  
+SIZ[0]             LLBEn               7550                
+SIZ[1]             LLBEn               7592                
+A[0]               LLBEn               8434                
+A[1]               LLBEn               8714                
+SIZ[1]             LMBEn               7564                
+SIZ[0]             LMBEn               7648                
+A[0]               LMBEn               8335                
+A[1]               LMBEn               8742                
+SIZ[0]             UMBEn               7466                
+SIZ[1]             UMBEn               7508                
+A[0]               UMBEn               8349                
+A[1]               UMBEn               8630                
+SIZ[1]             UUBEn               7971                
+SIZ[0]             UUBEn               8055                
+A[0]               UUBEn               8742                
+A[1]               UUBEn               9149                
+
+ =====================================================================
+                    End of Datasheet Report
+ #####################################################################
+
+ #####################################################################
+                    6::Path Details for DataSheet
+ =====================================================================
+
+
+6.3::PI to PO Path Details              
+--------------------------------------------------
+
+6.3.1::Path details for port: LLBEn     
+--------------------------------------------------
+
+++++ Path 1 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Output Port      : LLBEn
+Input Port       : A[1]
+Pad to Pad Delay : 9324
+
+Pad to Pad Path
+pin name                                   model name                 delay  cummulative delay  edge  Fanout  
+-----------------------------------------  -------------------------  -----  -----------------  ----  ------  
+A[1]                                       U400_TOP                   0      0                  RISE  1       
+A_ibuf_1_iopad/PACKAGEPIN:in               IO_PAD                     0      0                  RISE  1       
+A_ibuf_1_iopad/DOUT                        IO_PAD                     510    510                RISE  1       
+A_ibuf_1_preio/PADIN                       PRE_IO_PIN_TYPE_000001     0      510                RISE  1       
+A_ibuf_1_preio/DIN0                        PRE_IO_PIN_TYPE_000001     617    1127               RISE  1       
+I__44/I                                    Odrv12                     0      1127               RISE  1       
+I__44/O                                    Odrv12                     491    1618               RISE  1       
+I__45/I                                    Span12Mux_v                0      1618               RISE  1       
+I__45/O                                    Span12Mux_v                491    2109               RISE  1       
+I__46/I                                    Sp12to4                    0      2109               RISE  1       
+I__46/O                                    Sp12to4                    428    2537               RISE  1       
+I__47/I                                    Span4Mux_h                 0      2537               RISE  1       
+I__47/O                                    Span4Mux_h                 302    2838               RISE  1       
+I__48/I                                    LocalMux                   0      2838               RISE  1       
+I__48/O                                    LocalMux                   330    3168               RISE  1       
+I__49/I                                    InMux                      0      3168               RISE  1       
+I__49/O                                    InMux                      259    3428               RISE  1       
+I__53/I                                    CascadeMux                 0      3428               RISE  1       
+I__53/O                                    CascadeMux                 0      3428               RISE  1       
+U400_BYTE_ENABLE.LLBEn_0_i_LC_9_5_0/in2    LogicCell40_SEQ_MODE_0000  0      3428               RISE  1       
+U400_BYTE_ENABLE.LLBEn_0_i_LC_9_5_0/lcout  LogicCell40_SEQ_MODE_0000  379    3806               RISE  1       
+I__69/I                                    Odrv4                      0      3806               RISE  1       
+I__69/O                                    Odrv4                      351    4157               RISE  1       
+I__70/I                                    Span4Mux_s2_v              0      4157               RISE  1       
+I__70/O                                    Span4Mux_s2_v              252    4409               RISE  1       
+I__71/I                                    LocalMux                   0      4409               RISE  1       
+I__71/O                                    LocalMux                   330    4739               RISE  1       
+I__72/I                                    IoInMux                    0      4739               RISE  1       
+I__72/O                                    IoInMux                    259    4999               RISE  1       
+LLBEn_obuf_preio/DOUT0                     PRE_IO_PIN_TYPE_011001     0      4999               RISE  1       
+LLBEn_obuf_preio/PADOUT                    PRE_IO_PIN_TYPE_011001     2237   7236               FALL  1       
+LLBEn_obuf_iopad/DIN                       IO_PAD                     0      7236               FALL  1       
+LLBEn_obuf_iopad/PACKAGEPIN:out            IO_PAD                     2088   9324               FALL  1       
+LLBEn                                      U400_TOP                   0      9324               FALL  1       
+
+++++ Path 2 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Output Port      : LLBEn
+Input Port       : A[0]
+Pad to Pad Delay : 9092
+
+Pad to Pad Path
+pin name                                   model name                 delay  cummulative delay  edge  Fanout  
+-----------------------------------------  -------------------------  -----  -----------------  ----  ------  
+A[0]                                       U400_TOP                   0      0                  RISE  1       
+A_ibuf_0_iopad/PACKAGEPIN:in               IO_PAD                     0      0                  RISE  1       
+A_ibuf_0_iopad/DOUT                        IO_PAD                     510    510                RISE  1       
+A_ibuf_0_preio/PADIN                       PRE_IO_PIN_TYPE_000001     0      510                RISE  1       
+A_ibuf_0_preio/DIN0                        PRE_IO_PIN_TYPE_000001     617    1127               RISE  1       
+I__27/I                                    Odrv12                     0      1127               RISE  1       
+I__27/O                                    Odrv12                     491    1618               RISE  1       
+I__28/I                                    Span12Mux_v                0      1618               RISE  1       
+I__28/O                                    Span12Mux_v                491    2109               RISE  1       
+I__29/I                                    Sp12to4                    0      2109               RISE  1       
+I__29/O                                    Sp12to4                    428    2537               RISE  1       
+I__30/I                                    LocalMux                   0      2537               RISE  1       
+I__30/O                                    LocalMux                   330    2867               RISE  1       
+I__31/I                                    InMux                      0      2867               RISE  1       
+I__31/O                                    InMux                      259    3126               RISE  1       
+U400_BYTE_ENABLE.LLBEn_0_i_LC_9_5_0/in0    LogicCell40_SEQ_MODE_0000  0      3126               RISE  1       
+U400_BYTE_ENABLE.LLBEn_0_i_LC_9_5_0/lcout  LogicCell40_SEQ_MODE_0000  449    3575               RISE  1       
+I__69/I                                    Odrv4                      0      3575               RISE  1       
+I__69/O                                    Odrv4                      351    3926               RISE  1       
+I__70/I                                    Span4Mux_s2_v              0      3926               RISE  1       
+I__70/O                                    Span4Mux_s2_v              252    4178               RISE  1       
+I__71/I                                    LocalMux                   0      4178               RISE  1       
+I__71/O                                    LocalMux                   330    4508               RISE  1       
+I__72/I                                    IoInMux                    0      4508               RISE  1       
+I__72/O                                    IoInMux                    259    4767               RISE  1       
+LLBEn_obuf_preio/DOUT0                     PRE_IO_PIN_TYPE_011001     0      4767               RISE  1       
+LLBEn_obuf_preio/PADOUT                    PRE_IO_PIN_TYPE_011001     2237   7004               FALL  1       
+LLBEn_obuf_iopad/DIN                       IO_PAD                     0      7004               FALL  1       
+LLBEn_obuf_iopad/PACKAGEPIN:out            IO_PAD                     2088   9092               FALL  1       
+LLBEn                                      U400_TOP                   0      9092               FALL  1       
+
+++++ Path 3 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Output Port      : LLBEn
+Input Port       : SIZ[1]
+Pad to Pad Delay : 8272
+
+Pad to Pad Path
+pin name                                   model name                 delay  cummulative delay  edge  Fanout  
+-----------------------------------------  -------------------------  -----  -----------------  ----  ------  
+SIZ[1]                                     U400_TOP                   0      0                  RISE  1       
+SIZ_ibuf_1_iopad/PACKAGEPIN:in             IO_PAD                     0      0                  RISE  1       
+SIZ_ibuf_1_iopad/DOUT                      IO_PAD                     510    510                RISE  1       
+SIZ_ibuf_1_preio/PADIN                     PRE_IO_PIN_TYPE_000001     0      510                RISE  1       
+SIZ_ibuf_1_preio/DIN0                      PRE_IO_PIN_TYPE_000001     617    1127               RISE  1       
+I__35/I                                    Odrv4                      0      1127               RISE  1       
+I__35/O                                    Odrv4                      351    1478               RISE  1       
+I__36/I                                    IoSpan4Mux                 0      1478               RISE  1       
+I__36/O                                    IoSpan4Mux                 288    1765               RISE  1       
+I__37/I                                    LocalMux                   0      1765               RISE  1       
+I__37/O                                    LocalMux                   330    2095               RISE  1       
+I__38/I                                    InMux                      0      2095               RISE  1       
+I__38/O                                    InMux                      259    2355               RISE  1       
+U400_BYTE_ENABLE.LLBEn_0_i_LC_9_5_0/in1    LogicCell40_SEQ_MODE_0000  0      2355               RISE  1       
+U400_BYTE_ENABLE.LLBEn_0_i_LC_9_5_0/lcout  LogicCell40_SEQ_MODE_0000  400    2754               RISE  1       
+I__69/I                                    Odrv4                      0      2754               RISE  1       
+I__69/O                                    Odrv4                      351    3105               RISE  1       
+I__70/I                                    Span4Mux_s2_v              0      3105               RISE  1       
+I__70/O                                    Span4Mux_s2_v              252    3357               RISE  1       
+I__71/I                                    LocalMux                   0      3357               RISE  1       
+I__71/O                                    LocalMux                   330    3687               RISE  1       
+I__72/I                                    IoInMux                    0      3687               RISE  1       
+I__72/O                                    IoInMux                    259    3947               RISE  1       
+LLBEn_obuf_preio/DOUT0                     PRE_IO_PIN_TYPE_011001     0      3947               RISE  1       
+LLBEn_obuf_preio/PADOUT                    PRE_IO_PIN_TYPE_011001     2237   6184               FALL  1       
+LLBEn_obuf_iopad/DIN                       IO_PAD                     0      6184               FALL  1       
+LLBEn_obuf_iopad/PACKAGEPIN:out            IO_PAD                     2088   8272               FALL  1       
+LLBEn                                      U400_TOP                   0      8272               FALL  1       
+
+++++ Path 4 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Output Port      : LLBEn
+Input Port       : SIZ[0]
+Pad to Pad Delay : 8251
+
+Pad to Pad Path
+pin name                                   model name                 delay  cummulative delay  edge  Fanout  
+-----------------------------------------  -------------------------  -----  -----------------  ----  ------  
+SIZ[0]                                     U400_TOP                   0      0                  RISE  1       
+SIZ_ibuf_0_iopad/PACKAGEPIN:in             IO_PAD                     0      0                  RISE  1       
+SIZ_ibuf_0_iopad/DOUT                      IO_PAD                     510    510                RISE  1       
+SIZ_ibuf_0_preio/PADIN                     PRE_IO_PIN_TYPE_000001     0      510                RISE  1       
+SIZ_ibuf_0_preio/DIN0                      PRE_IO_PIN_TYPE_000001     617    1127               RISE  1       
+I__55/I                                    Odrv4                      0      1127               RISE  1       
+I__55/O                                    Odrv4                      351    1478               RISE  1       
+I__56/I                                    Span4Mux_v                 0      1478               RISE  1       
+I__56/O                                    Span4Mux_v                 351    1829               RISE  1       
+I__57/I                                    LocalMux                   0      1829               RISE  1       
+I__57/O                                    LocalMux                   330    2158               RISE  1       
+I__58/I                                    InMux                      0      2158               RISE  1       
+I__58/O                                    InMux                      259    2418               RISE  1       
+U400_BYTE_ENABLE.LLBEn_0_i_LC_9_5_0/in3    LogicCell40_SEQ_MODE_0000  0      2418               RISE  1       
+U400_BYTE_ENABLE.LLBEn_0_i_LC_9_5_0/lcout  LogicCell40_SEQ_MODE_0000  316    2733               RISE  1       
+I__69/I                                    Odrv4                      0      2733               RISE  1       
+I__69/O                                    Odrv4                      351    3084               RISE  1       
+I__70/I                                    Span4Mux_s2_v              0      3084               RISE  1       
+I__70/O                                    Span4Mux_s2_v              252    3336               RISE  1       
+I__71/I                                    LocalMux                   0      3336               RISE  1       
+I__71/O                                    LocalMux                   330    3666               RISE  1       
+I__72/I                                    IoInMux                    0      3666               RISE  1       
+I__72/O                                    IoInMux                    259    3926               RISE  1       
+LLBEn_obuf_preio/DOUT0                     PRE_IO_PIN_TYPE_011001     0      3926               RISE  1       
+LLBEn_obuf_preio/PADOUT                    PRE_IO_PIN_TYPE_011001     2237   6163               FALL  1       
+LLBEn_obuf_iopad/DIN                       IO_PAD                     0      6163               FALL  1       
+LLBEn_obuf_iopad/PACKAGEPIN:out            IO_PAD                     2088   8251               FALL  1       
+LLBEn                                      U400_TOP                   0      8251               FALL  1       
+
+6.3.2::Path details for port: LMBEn     
+--------------------------------------------------
+
+++++ Path 1 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Output Port      : LMBEn
+Input Port       : A[1]
+Pad to Pad Delay : 9345
+
+Pad to Pad Path
+pin name                                   model name                 delay  cummulative delay  edge  Fanout  
+-----------------------------------------  -------------------------  -----  -----------------  ----  ------  
+A[1]                                       U400_TOP                   0      0                  RISE  1       
+A_ibuf_1_iopad/PACKAGEPIN:in               IO_PAD                     0      0                  RISE  1       
+A_ibuf_1_iopad/DOUT                        IO_PAD                     510    510                RISE  1       
+A_ibuf_1_preio/PADIN                       PRE_IO_PIN_TYPE_000001     0      510                RISE  1       
+A_ibuf_1_preio/DIN0                        PRE_IO_PIN_TYPE_000001     617    1127               RISE  1       
+I__44/I                                    Odrv12                     0      1127               RISE  1       
+I__44/O                                    Odrv12                     491    1618               RISE  1       
+I__45/I                                    Span12Mux_v                0      1618               RISE  1       
+I__45/O                                    Span12Mux_v                491    2109               RISE  1       
+I__46/I                                    Sp12to4                    0      2109               RISE  1       
+I__46/O                                    Sp12to4                    428    2537               RISE  1       
+I__47/I                                    Span4Mux_h                 0      2537               RISE  1       
+I__47/O                                    Span4Mux_h                 302    2838               RISE  1       
+I__48/I                                    LocalMux                   0      2838               RISE  1       
+I__48/O                                    LocalMux                   330    3168               RISE  1       
+I__50/I                                    InMux                      0      3168               RISE  1       
+I__50/O                                    InMux                      259    3428               RISE  1       
+U400_BYTE_ENABLE.LMBEn_0_i_LC_9_5_1/in1    LogicCell40_SEQ_MODE_0000  0      3428               RISE  1       
+U400_BYTE_ENABLE.LMBEn_0_i_LC_9_5_1/lcout  LogicCell40_SEQ_MODE_0000  400    3827               RISE  1       
+I__65/I                                    Odrv4                      0      3827               RISE  1       
+I__65/O                                    Odrv4                      351    4178               RISE  1       
+I__66/I                                    Span4Mux_s2_v              0      4178               RISE  1       
+I__66/O                                    Span4Mux_s2_v              252    4431               RISE  1       
+I__67/I                                    LocalMux                   0      4431               RISE  1       
+I__67/O                                    LocalMux                   330    4760               RISE  1       
+I__68/I                                    IoInMux                    0      4760               RISE  1       
+I__68/O                                    IoInMux                    259    5020               RISE  1       
+LMBEn_obuf_preio/DOUT0                     PRE_IO_PIN_TYPE_011001     0      5020               RISE  1       
+LMBEn_obuf_preio/PADOUT                    PRE_IO_PIN_TYPE_011001     2237   7257               FALL  1       
+LMBEn_obuf_iopad/DIN                       IO_PAD                     0      7257               FALL  1       
+LMBEn_obuf_iopad/PACKAGEPIN:out            IO_PAD                     2088   9345               FALL  1       
+LMBEn                                      U400_TOP                   0      9345               FALL  1       
+
+++++ Path 2 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Output Port      : LMBEn
+Input Port       : A[0]
+Pad to Pad Delay : 8959
+
+Pad to Pad Path
+pin name                                   model name                 delay  cummulative delay  edge  Fanout  
+-----------------------------------------  -------------------------  -----  -----------------  ----  ------  
+A[0]                                       U400_TOP                   0      0                  RISE  1       
+A_ibuf_0_iopad/PACKAGEPIN:in               IO_PAD                     0      0                  RISE  1       
+A_ibuf_0_iopad/DOUT                        IO_PAD                     510    510                RISE  1       
+A_ibuf_0_preio/PADIN                       PRE_IO_PIN_TYPE_000001     0      510                RISE  1       
+A_ibuf_0_preio/DIN0                        PRE_IO_PIN_TYPE_000001     617    1127               RISE  1       
+I__27/I                                    Odrv12                     0      1127               RISE  1       
+I__27/O                                    Odrv12                     491    1618               RISE  1       
+I__28/I                                    Span12Mux_v                0      1618               RISE  1       
+I__28/O                                    Span12Mux_v                491    2109               RISE  1       
+I__29/I                                    Sp12to4                    0      2109               RISE  1       
+I__29/O                                    Sp12to4                    428    2537               RISE  1       
+I__30/I                                    LocalMux                   0      2537               RISE  1       
+I__30/O                                    LocalMux                   330    2867               RISE  1       
+I__32/I                                    InMux                      0      2867               RISE  1       
+I__32/O                                    InMux                      259    3126               RISE  1       
+U400_BYTE_ENABLE.LMBEn_0_i_LC_9_5_1/in3    LogicCell40_SEQ_MODE_0000  0      3126               RISE  1       
+U400_BYTE_ENABLE.LMBEn_0_i_LC_9_5_1/lcout  LogicCell40_SEQ_MODE_0000  316    3442               RISE  1       
+I__65/I                                    Odrv4                      0      3442               RISE  1       
+I__65/O                                    Odrv4                      351    3792               RISE  1       
+I__66/I                                    Span4Mux_s2_v              0      3792               RISE  1       
+I__66/O                                    Span4Mux_s2_v              252    4045               RISE  1       
+I__67/I                                    LocalMux                   0      4045               RISE  1       
+I__67/O                                    LocalMux                   330    4374               RISE  1       
+I__68/I                                    IoInMux                    0      4374               RISE  1       
+I__68/O                                    IoInMux                    259    4634               RISE  1       
+LMBEn_obuf_preio/DOUT0                     PRE_IO_PIN_TYPE_011001     0      4634               RISE  1       
+LMBEn_obuf_preio/PADOUT                    PRE_IO_PIN_TYPE_011001     2237   6871               FALL  1       
+LMBEn_obuf_iopad/DIN                       IO_PAD                     0      6871               FALL  1       
+LMBEn_obuf_iopad/PACKAGEPIN:out            IO_PAD                     2088   8959               FALL  1       
+LMBEn                                      U400_TOP                   0      8959               FALL  1       
+
+++++ Path 3 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Output Port      : LMBEn
+Input Port       : SIZ[0]
+Pad to Pad Delay : 8384
+
+Pad to Pad Path
+pin name                                   model name                 delay  cummulative delay  edge  Fanout  
+-----------------------------------------  -------------------------  -----  -----------------  ----  ------  
+SIZ[0]                                     U400_TOP                   0      0                  RISE  1       
+SIZ_ibuf_0_iopad/PACKAGEPIN:in             IO_PAD                     0      0                  RISE  1       
+SIZ_ibuf_0_iopad/DOUT                      IO_PAD                     510    510                RISE  1       
+SIZ_ibuf_0_preio/PADIN                     PRE_IO_PIN_TYPE_000001     0      510                RISE  1       
+SIZ_ibuf_0_preio/DIN0                      PRE_IO_PIN_TYPE_000001     617    1127               RISE  1       
+I__55/I                                    Odrv4                      0      1127               RISE  1       
+I__55/O                                    Odrv4                      351    1478               RISE  1       
+I__56/I                                    Span4Mux_v                 0      1478               RISE  1       
+I__56/O                                    Span4Mux_v                 351    1829               RISE  1       
+I__57/I                                    LocalMux                   0      1829               RISE  1       
+I__57/O                                    LocalMux                   330    2158               RISE  1       
+I__59/I                                    InMux                      0      2158               RISE  1       
+I__59/O                                    InMux                      259    2418               RISE  1       
+U400_BYTE_ENABLE.LMBEn_0_i_LC_9_5_1/in0    LogicCell40_SEQ_MODE_0000  0      2418               RISE  1       
+U400_BYTE_ENABLE.LMBEn_0_i_LC_9_5_1/lcout  LogicCell40_SEQ_MODE_0000  449    2867               RISE  1       
+I__65/I                                    Odrv4                      0      2867               RISE  1       
+I__65/O                                    Odrv4                      351    3217               RISE  1       
+I__66/I                                    Span4Mux_s2_v              0      3217               RISE  1       
+I__66/O                                    Span4Mux_s2_v              252    3470               RISE  1       
+I__67/I                                    LocalMux                   0      3470               RISE  1       
+I__67/O                                    LocalMux                   330    3799               RISE  1       
+I__68/I                                    IoInMux                    0      3799               RISE  1       
+I__68/O                                    IoInMux                    259    4059               RISE  1       
+LMBEn_obuf_preio/DOUT0                     PRE_IO_PIN_TYPE_011001     0      4059               RISE  1       
+LMBEn_obuf_preio/PADOUT                    PRE_IO_PIN_TYPE_011001     2237   6296               FALL  1       
+LMBEn_obuf_iopad/DIN                       IO_PAD                     0      6296               FALL  1       
+LMBEn_obuf_iopad/PACKAGEPIN:out            IO_PAD                     2088   8384               FALL  1       
+LMBEn                                      U400_TOP                   0      8384               FALL  1       
+
+++++ Path 4 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Output Port      : LMBEn
+Input Port       : SIZ[1]
+Pad to Pad Delay : 8251
+
+Pad to Pad Path
+pin name                                   model name                 delay  cummulative delay  edge  Fanout  
+-----------------------------------------  -------------------------  -----  -----------------  ----  ------  
+SIZ[1]                                     U400_TOP                   0      0                  RISE  1       
+SIZ_ibuf_1_iopad/PACKAGEPIN:in             IO_PAD                     0      0                  RISE  1       
+SIZ_ibuf_1_iopad/DOUT                      IO_PAD                     510    510                RISE  1       
+SIZ_ibuf_1_preio/PADIN                     PRE_IO_PIN_TYPE_000001     0      510                RISE  1       
+SIZ_ibuf_1_preio/DIN0                      PRE_IO_PIN_TYPE_000001     617    1127               RISE  1       
+I__35/I                                    Odrv4                      0      1127               RISE  1       
+I__35/O                                    Odrv4                      351    1478               RISE  1       
+I__36/I                                    IoSpan4Mux                 0      1478               RISE  1       
+I__36/O                                    IoSpan4Mux                 288    1765               RISE  1       
+I__37/I                                    LocalMux                   0      1765               RISE  1       
+I__37/O                                    LocalMux                   330    2095               RISE  1       
+I__39/I                                    InMux                      0      2095               RISE  1       
+I__39/O                                    InMux                      259    2355               RISE  1       
+I__42/I                                    CascadeMux                 0      2355               RISE  1       
+I__42/O                                    CascadeMux                 0      2355               RISE  1       
+U400_BYTE_ENABLE.LMBEn_0_i_LC_9_5_1/in2    LogicCell40_SEQ_MODE_0000  0      2355               RISE  1       
+U400_BYTE_ENABLE.LMBEn_0_i_LC_9_5_1/lcout  LogicCell40_SEQ_MODE_0000  379    2733               RISE  1       
+I__65/I                                    Odrv4                      0      2733               RISE  1       
+I__65/O                                    Odrv4                      351    3084               RISE  1       
+I__66/I                                    Span4Mux_s2_v              0      3084               RISE  1       
+I__66/O                                    Span4Mux_s2_v              252    3336               RISE  1       
+I__67/I                                    LocalMux                   0      3336               RISE  1       
+I__67/O                                    LocalMux                   330    3666               RISE  1       
+I__68/I                                    IoInMux                    0      3666               RISE  1       
+I__68/O                                    IoInMux                    259    3926               RISE  1       
+LMBEn_obuf_preio/DOUT0                     PRE_IO_PIN_TYPE_011001     0      3926               RISE  1       
+LMBEn_obuf_preio/PADOUT                    PRE_IO_PIN_TYPE_011001     2237   6163               FALL  1       
+LMBEn_obuf_iopad/DIN                       IO_PAD                     0      6163               FALL  1       
+LMBEn_obuf_iopad/PACKAGEPIN:out            IO_PAD                     2088   8251               FALL  1       
+LMBEn                                      U400_TOP                   0      8251               FALL  1       
+
+6.3.3::Path details for port: UMBEn     
+--------------------------------------------------
+
+++++ Path 1 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Output Port      : UMBEn
+Input Port       : A[1]
+Pad to Pad Delay : 9212
+
+Pad to Pad Path
+pin name                                   model name                 delay  cummulative delay  edge  Fanout  
+-----------------------------------------  -------------------------  -----  -----------------  ----  ------  
+A[1]                                       U400_TOP                   0      0                  RISE  1       
+A_ibuf_1_iopad/PACKAGEPIN:in               IO_PAD                     0      0                  RISE  1       
+A_ibuf_1_iopad/DOUT                        IO_PAD                     510    510                RISE  1       
+A_ibuf_1_preio/PADIN                       PRE_IO_PIN_TYPE_000001     0      510                RISE  1       
+A_ibuf_1_preio/DIN0                        PRE_IO_PIN_TYPE_000001     617    1127               RISE  1       
+I__44/I                                    Odrv12                     0      1127               RISE  1       
+I__44/O                                    Odrv12                     491    1618               RISE  1       
+I__45/I                                    Span12Mux_v                0      1618               RISE  1       
+I__45/O                                    Span12Mux_v                491    2109               RISE  1       
+I__46/I                                    Sp12to4                    0      2109               RISE  1       
+I__46/O                                    Sp12to4                    428    2537               RISE  1       
+I__47/I                                    Span4Mux_h                 0      2537               RISE  1       
+I__47/O                                    Span4Mux_h                 302    2838               RISE  1       
+I__48/I                                    LocalMux                   0      2838               RISE  1       
+I__48/O                                    LocalMux                   330    3168               RISE  1       
+I__51/I                                    InMux                      0      3168               RISE  1       
+I__51/O                                    InMux                      259    3428               RISE  1       
+I__54/I                                    CascadeMux                 0      3428               RISE  1       
+I__54/O                                    CascadeMux                 0      3428               RISE  1       
+U400_BYTE_ENABLE.UMBEn_0_i_LC_9_5_2/in2    LogicCell40_SEQ_MODE_0000  0      3428               RISE  1       
+U400_BYTE_ENABLE.UMBEn_0_i_LC_9_5_2/lcout  LogicCell40_SEQ_MODE_0000  379    3806               RISE  1       
+I__62/I                                    Odrv12                     0      3806               RISE  1       
+I__62/O                                    Odrv12                     491    4297               RISE  1       
+I__63/I                                    LocalMux                   0      4297               RISE  1       
+I__63/O                                    LocalMux                   330    4627               RISE  1       
+I__64/I                                    IoInMux                    0      4627               RISE  1       
+I__64/O                                    IoInMux                    259    4886               RISE  1       
+UMBEn_obuf_preio/DOUT0                     PRE_IO_PIN_TYPE_011001     0      4886               RISE  1       
+UMBEn_obuf_preio/PADOUT                    PRE_IO_PIN_TYPE_011001     2237   7124               FALL  1       
+UMBEn_obuf_iopad/DIN                       IO_PAD                     0      7124               FALL  1       
+UMBEn_obuf_iopad/PACKAGEPIN:out            IO_PAD                     2088   9212               FALL  1       
+UMBEn                                      U400_TOP                   0      9212               FALL  1       
+
+++++ Path 2 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Output Port      : UMBEn
+Input Port       : A[0]
+Pad to Pad Delay : 8980
+
+Pad to Pad Path
+pin name                                   model name                 delay  cummulative delay  edge  Fanout  
+-----------------------------------------  -------------------------  -----  -----------------  ----  ------  
+A[0]                                       U400_TOP                   0      0                  RISE  1       
+A_ibuf_0_iopad/PACKAGEPIN:in               IO_PAD                     0      0                  RISE  1       
+A_ibuf_0_iopad/DOUT                        IO_PAD                     510    510                RISE  1       
+A_ibuf_0_preio/PADIN                       PRE_IO_PIN_TYPE_000001     0      510                RISE  1       
+A_ibuf_0_preio/DIN0                        PRE_IO_PIN_TYPE_000001     617    1127               RISE  1       
+I__27/I                                    Odrv12                     0      1127               RISE  1       
+I__27/O                                    Odrv12                     491    1618               RISE  1       
+I__28/I                                    Span12Mux_v                0      1618               RISE  1       
+I__28/O                                    Span12Mux_v                491    2109               RISE  1       
+I__29/I                                    Sp12to4                    0      2109               RISE  1       
+I__29/O                                    Sp12to4                    428    2537               RISE  1       
+I__30/I                                    LocalMux                   0      2537               RISE  1       
+I__30/O                                    LocalMux                   330    2867               RISE  1       
+I__33/I                                    InMux                      0      2867               RISE  1       
+I__33/O                                    InMux                      259    3126               RISE  1       
+U400_BYTE_ENABLE.UMBEn_0_i_LC_9_5_2/in0    LogicCell40_SEQ_MODE_0000  0      3126               RISE  1       
+U400_BYTE_ENABLE.UMBEn_0_i_LC_9_5_2/lcout  LogicCell40_SEQ_MODE_0000  449    3575               RISE  1       
+I__62/I                                    Odrv12                     0      3575               RISE  1       
+I__62/O                                    Odrv12                     491    4066               RISE  1       
+I__63/I                                    LocalMux                   0      4066               RISE  1       
+I__63/O                                    LocalMux                   330    4395               RISE  1       
+I__64/I                                    IoInMux                    0      4395               RISE  1       
+I__64/O                                    IoInMux                    259    4655               RISE  1       
+UMBEn_obuf_preio/DOUT0                     PRE_IO_PIN_TYPE_011001     0      4655               RISE  1       
+UMBEn_obuf_preio/PADOUT                    PRE_IO_PIN_TYPE_011001     2237   6892               FALL  1       
+UMBEn_obuf_iopad/DIN                       IO_PAD                     0      6892               FALL  1       
+UMBEn_obuf_iopad/PACKAGEPIN:out            IO_PAD                     2088   8980               FALL  1       
+UMBEn                                      U400_TOP                   0      8980               FALL  1       
+
+++++ Path 3 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Output Port      : UMBEn
+Input Port       : SIZ[1]
+Pad to Pad Delay : 8160
+
+Pad to Pad Path
+pin name                                   model name                 delay  cummulative delay  edge  Fanout  
+-----------------------------------------  -------------------------  -----  -----------------  ----  ------  
+SIZ[1]                                     U400_TOP                   0      0                  RISE  1       
+SIZ_ibuf_1_iopad/PACKAGEPIN:in             IO_PAD                     0      0                  RISE  1       
+SIZ_ibuf_1_iopad/DOUT                      IO_PAD                     510    510                RISE  1       
+SIZ_ibuf_1_preio/PADIN                     PRE_IO_PIN_TYPE_000001     0      510                RISE  1       
+SIZ_ibuf_1_preio/DIN0                      PRE_IO_PIN_TYPE_000001     617    1127               RISE  1       
+I__35/I                                    Odrv4                      0      1127               RISE  1       
+I__35/O                                    Odrv4                      351    1478               RISE  1       
+I__36/I                                    IoSpan4Mux                 0      1478               RISE  1       
+I__36/O                                    IoSpan4Mux                 288    1765               RISE  1       
+I__37/I                                    LocalMux                   0      1765               RISE  1       
+I__37/O                                    LocalMux                   330    2095               RISE  1       
+I__40/I                                    InMux                      0      2095               RISE  1       
+I__40/O                                    InMux                      259    2355               RISE  1       
+U400_BYTE_ENABLE.UMBEn_0_i_LC_9_5_2/in1    LogicCell40_SEQ_MODE_0000  0      2355               RISE  1       
+U400_BYTE_ENABLE.UMBEn_0_i_LC_9_5_2/lcout  LogicCell40_SEQ_MODE_0000  400    2754               RISE  1       
+I__62/I                                    Odrv12                     0      2754               RISE  1       
+I__62/O                                    Odrv12                     491    3245               RISE  1       
+I__63/I                                    LocalMux                   0      3245               RISE  1       
+I__63/O                                    LocalMux                   330    3575               RISE  1       
+I__64/I                                    IoInMux                    0      3575               RISE  1       
+I__64/O                                    IoInMux                    259    3834               RISE  1       
+UMBEn_obuf_preio/DOUT0                     PRE_IO_PIN_TYPE_011001     0      3834               RISE  1       
+UMBEn_obuf_preio/PADOUT                    PRE_IO_PIN_TYPE_011001     2237   6072               FALL  1       
+UMBEn_obuf_iopad/DIN                       IO_PAD                     0      6072               FALL  1       
+UMBEn_obuf_iopad/PACKAGEPIN:out            IO_PAD                     2088   8160               FALL  1       
+UMBEn                                      U400_TOP                   0      8160               FALL  1       
+
+++++ Path 4 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Output Port      : UMBEn
+Input Port       : SIZ[0]
+Pad to Pad Delay : 8139
+
+Pad to Pad Path
+pin name                                   model name                 delay  cummulative delay  edge  Fanout  
+-----------------------------------------  -------------------------  -----  -----------------  ----  ------  
+SIZ[0]                                     U400_TOP                   0      0                  RISE  1       
+SIZ_ibuf_0_iopad/PACKAGEPIN:in             IO_PAD                     0      0                  RISE  1       
+SIZ_ibuf_0_iopad/DOUT                      IO_PAD                     510    510                RISE  1       
+SIZ_ibuf_0_preio/PADIN                     PRE_IO_PIN_TYPE_000001     0      510                RISE  1       
+SIZ_ibuf_0_preio/DIN0                      PRE_IO_PIN_TYPE_000001     617    1127               RISE  1       
+I__55/I                                    Odrv4                      0      1127               RISE  1       
+I__55/O                                    Odrv4                      351    1478               RISE  1       
+I__56/I                                    Span4Mux_v                 0      1478               RISE  1       
+I__56/O                                    Span4Mux_v                 351    1829               RISE  1       
+I__57/I                                    LocalMux                   0      1829               RISE  1       
+I__57/O                                    LocalMux                   330    2158               RISE  1       
+I__60/I                                    InMux                      0      2158               RISE  1       
+I__60/O                                    InMux                      259    2418               RISE  1       
+U400_BYTE_ENABLE.UMBEn_0_i_LC_9_5_2/in3    LogicCell40_SEQ_MODE_0000  0      2418               RISE  1       
+U400_BYTE_ENABLE.UMBEn_0_i_LC_9_5_2/lcout  LogicCell40_SEQ_MODE_0000  316    2733               RISE  1       
+I__62/I                                    Odrv12                     0      2733               RISE  1       
+I__62/O                                    Odrv12                     491    3224               RISE  1       
+I__63/I                                    LocalMux                   0      3224               RISE  1       
+I__63/O                                    LocalMux                   330    3554               RISE  1       
+I__64/I                                    IoInMux                    0      3554               RISE  1       
+I__64/O                                    IoInMux                    259    3813               RISE  1       
+UMBEn_obuf_preio/DOUT0                     PRE_IO_PIN_TYPE_011001     0      3813               RISE  1       
+UMBEn_obuf_preio/PADOUT                    PRE_IO_PIN_TYPE_011001     2237   6051               FALL  1       
+UMBEn_obuf_iopad/DIN                       IO_PAD                     0      6051               FALL  1       
+UMBEn_obuf_iopad/PACKAGEPIN:out            IO_PAD                     2088   8139               FALL  1       
+UMBEn                                      U400_TOP                   0      8139               FALL  1       
+
+6.3.4::Path details for port: UUBEn     
+--------------------------------------------------
+
+++++ Path 1 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Output Port      : UUBEn
+Input Port       : A[1]
+Pad to Pad Delay : 9696
+
+Pad to Pad Path
+pin name                                   model name                 delay  cummulative delay  edge  Fanout  
+-----------------------------------------  -------------------------  -----  -----------------  ----  ------  
+A[1]                                       U400_TOP                   0      0                  RISE  1       
+A_ibuf_1_iopad/PACKAGEPIN:in               IO_PAD                     0      0                  RISE  1       
+A_ibuf_1_iopad/DOUT                        IO_PAD                     510    510                RISE  1       
+A_ibuf_1_preio/PADIN                       PRE_IO_PIN_TYPE_000001     0      510                RISE  1       
+A_ibuf_1_preio/DIN0                        PRE_IO_PIN_TYPE_000001     617    1127               RISE  1       
+I__44/I                                    Odrv12                     0      1127               RISE  1       
+I__44/O                                    Odrv12                     491    1618               RISE  1       
+I__45/I                                    Span12Mux_v                0      1618               RISE  1       
+I__45/O                                    Span12Mux_v                491    2109               RISE  1       
+I__46/I                                    Sp12to4                    0      2109               RISE  1       
+I__46/O                                    Sp12to4                    428    2537               RISE  1       
+I__47/I                                    Span4Mux_h                 0      2537               RISE  1       
+I__47/O                                    Span4Mux_h                 302    2838               RISE  1       
+I__48/I                                    LocalMux                   0      2838               RISE  1       
+I__48/O                                    LocalMux                   330    3168               RISE  1       
+I__52/I                                    InMux                      0      3168               RISE  1       
+I__52/O                                    InMux                      259    3428               RISE  1       
+U400_BYTE_ENABLE.UUBEn_0_i_LC_9_5_3/in1    LogicCell40_SEQ_MODE_0000  0      3428               RISE  1       
+U400_BYTE_ENABLE.UUBEn_0_i_LC_9_5_3/lcout  LogicCell40_SEQ_MODE_0000  400    3827               RISE  1       
+I__22/I                                    Odrv4                      0      3827               RISE  1       
+I__22/O                                    Odrv4                      351    4178               RISE  1       
+I__23/I                                    Span4Mux_s3_v              0      4178               RISE  1       
+I__23/O                                    Span4Mux_s3_v              316    4494               RISE  1       
+I__24/I                                    IoSpan4Mux                 0      4494               RISE  1       
+I__24/O                                    IoSpan4Mux                 288    4781               RISE  1       
+I__25/I                                    LocalMux                   0      4781               RISE  1       
+I__25/O                                    LocalMux                   330    5111               RISE  1       
+I__26/I                                    IoInMux                    0      5111               RISE  1       
+I__26/O                                    IoInMux                    259    5370               RISE  1       
+UUBEn_obuf_preio/DOUT0                     PRE_IO_PIN_TYPE_011001     0      5370               RISE  1       
+UUBEn_obuf_preio/PADOUT                    PRE_IO_PIN_TYPE_011001     2237   7608               FALL  1       
+UUBEn_obuf_iopad/DIN                       IO_PAD                     0      7608               FALL  1       
+UUBEn_obuf_iopad/PACKAGEPIN:out            IO_PAD                     2088   9696               FALL  1       
+UUBEn                                      U400_TOP                   0      9696               FALL  1       
+
+++++ Path 2 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Output Port      : UUBEn
+Input Port       : A[0]
+Pad to Pad Delay : 9310
+
+Pad to Pad Path
+pin name                                   model name                 delay  cummulative delay  edge  Fanout  
+-----------------------------------------  -------------------------  -----  -----------------  ----  ------  
+A[0]                                       U400_TOP                   0      0                  RISE  1       
+A_ibuf_0_iopad/PACKAGEPIN:in               IO_PAD                     0      0                  RISE  1       
+A_ibuf_0_iopad/DOUT                        IO_PAD                     510    510                RISE  1       
+A_ibuf_0_preio/PADIN                       PRE_IO_PIN_TYPE_000001     0      510                RISE  1       
+A_ibuf_0_preio/DIN0                        PRE_IO_PIN_TYPE_000001     617    1127               RISE  1       
+I__27/I                                    Odrv12                     0      1127               RISE  1       
+I__27/O                                    Odrv12                     491    1618               RISE  1       
+I__28/I                                    Span12Mux_v                0      1618               RISE  1       
+I__28/O                                    Span12Mux_v                491    2109               RISE  1       
+I__29/I                                    Sp12to4                    0      2109               RISE  1       
+I__29/O                                    Sp12to4                    428    2537               RISE  1       
+I__30/I                                    LocalMux                   0      2537               RISE  1       
+I__30/O                                    LocalMux                   330    2867               RISE  1       
+I__34/I                                    InMux                      0      2867               RISE  1       
+I__34/O                                    InMux                      259    3126               RISE  1       
+U400_BYTE_ENABLE.UUBEn_0_i_LC_9_5_3/in3    LogicCell40_SEQ_MODE_0000  0      3126               RISE  1       
+U400_BYTE_ENABLE.UUBEn_0_i_LC_9_5_3/lcout  LogicCell40_SEQ_MODE_0000  316    3442               RISE  1       
+I__22/I                                    Odrv4                      0      3442               RISE  1       
+I__22/O                                    Odrv4                      351    3792               RISE  1       
+I__23/I                                    Span4Mux_s3_v              0      3792               RISE  1       
+I__23/O                                    Span4Mux_s3_v              316    4108               RISE  1       
+I__24/I                                    IoSpan4Mux                 0      4108               RISE  1       
+I__24/O                                    IoSpan4Mux                 288    4395               RISE  1       
+I__25/I                                    LocalMux                   0      4395               RISE  1       
+I__25/O                                    LocalMux                   330    4725               RISE  1       
+I__26/I                                    IoInMux                    0      4725               RISE  1       
+I__26/O                                    IoInMux                    259    4985               RISE  1       
+UUBEn_obuf_preio/DOUT0                     PRE_IO_PIN_TYPE_011001     0      4985               RISE  1       
+UUBEn_obuf_preio/PADOUT                    PRE_IO_PIN_TYPE_011001     2237   7222               FALL  1       
+UUBEn_obuf_iopad/DIN                       IO_PAD                     0      7222               FALL  1       
+UUBEn_obuf_iopad/PACKAGEPIN:out            IO_PAD                     2088   9310               FALL  1       
+UUBEn                                      U400_TOP                   0      9310               FALL  1       
+
+++++ Path 3 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Output Port      : UUBEn
+Input Port       : SIZ[0]
+Pad to Pad Delay : 8735
+
+Pad to Pad Path
+pin name                                   model name                 delay  cummulative delay  edge  Fanout  
+-----------------------------------------  -------------------------  -----  -----------------  ----  ------  
+SIZ[0]                                     U400_TOP                   0      0                  RISE  1       
+SIZ_ibuf_0_iopad/PACKAGEPIN:in             IO_PAD                     0      0                  RISE  1       
+SIZ_ibuf_0_iopad/DOUT                      IO_PAD                     510    510                RISE  1       
+SIZ_ibuf_0_preio/PADIN                     PRE_IO_PIN_TYPE_000001     0      510                RISE  1       
+SIZ_ibuf_0_preio/DIN0                      PRE_IO_PIN_TYPE_000001     617    1127               RISE  1       
+I__55/I                                    Odrv4                      0      1127               RISE  1       
+I__55/O                                    Odrv4                      351    1478               RISE  1       
+I__56/I                                    Span4Mux_v                 0      1478               RISE  1       
+I__56/O                                    Span4Mux_v                 351    1829               RISE  1       
+I__57/I                                    LocalMux                   0      1829               RISE  1       
+I__57/O                                    LocalMux                   330    2158               RISE  1       
+I__61/I                                    InMux                      0      2158               RISE  1       
+I__61/O                                    InMux                      259    2418               RISE  1       
+U400_BYTE_ENABLE.UUBEn_0_i_LC_9_5_3/in0    LogicCell40_SEQ_MODE_0000  0      2418               RISE  1       
+U400_BYTE_ENABLE.UUBEn_0_i_LC_9_5_3/lcout  LogicCell40_SEQ_MODE_0000  449    2867               RISE  1       
+I__22/I                                    Odrv4                      0      2867               RISE  1       
+I__22/O                                    Odrv4                      351    3217               RISE  1       
+I__23/I                                    Span4Mux_s3_v              0      3217               RISE  1       
+I__23/O                                    Span4Mux_s3_v              316    3533               RISE  1       
+I__24/I                                    IoSpan4Mux                 0      3533               RISE  1       
+I__24/O                                    IoSpan4Mux                 288    3820               RISE  1       
+I__25/I                                    LocalMux                   0      3820               RISE  1       
+I__25/O                                    LocalMux                   330    4150               RISE  1       
+I__26/I                                    IoInMux                    0      4150               RISE  1       
+I__26/O                                    IoInMux                    259    4409               RISE  1       
+UUBEn_obuf_preio/DOUT0                     PRE_IO_PIN_TYPE_011001     0      4409               RISE  1       
+UUBEn_obuf_preio/PADOUT                    PRE_IO_PIN_TYPE_011001     2237   6647               FALL  1       
+UUBEn_obuf_iopad/DIN                       IO_PAD                     0      6647               FALL  1       
+UUBEn_obuf_iopad/PACKAGEPIN:out            IO_PAD                     2088   8735               FALL  1       
+UUBEn                                      U400_TOP                   0      8735               FALL  1       
+
+++++ Path 4 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Output Port      : UUBEn
+Input Port       : SIZ[1]
+Pad to Pad Delay : 8602
+
+Pad to Pad Path
+pin name                                   model name                 delay  cummulative delay  edge  Fanout  
+-----------------------------------------  -------------------------  -----  -----------------  ----  ------  
+SIZ[1]                                     U400_TOP                   0      0                  RISE  1       
+SIZ_ibuf_1_iopad/PACKAGEPIN:in             IO_PAD                     0      0                  RISE  1       
+SIZ_ibuf_1_iopad/DOUT                      IO_PAD                     510    510                RISE  1       
+SIZ_ibuf_1_preio/PADIN                     PRE_IO_PIN_TYPE_000001     0      510                RISE  1       
+SIZ_ibuf_1_preio/DIN0                      PRE_IO_PIN_TYPE_000001     617    1127               RISE  1       
+I__35/I                                    Odrv4                      0      1127               RISE  1       
+I__35/O                                    Odrv4                      351    1478               RISE  1       
+I__36/I                                    IoSpan4Mux                 0      1478               RISE  1       
+I__36/O                                    IoSpan4Mux                 288    1765               RISE  1       
+I__37/I                                    LocalMux                   0      1765               RISE  1       
+I__37/O                                    LocalMux                   330    2095               RISE  1       
+I__41/I                                    InMux                      0      2095               RISE  1       
+I__41/O                                    InMux                      259    2355               RISE  1       
+I__43/I                                    CascadeMux                 0      2355               RISE  1       
+I__43/O                                    CascadeMux                 0      2355               RISE  1       
+U400_BYTE_ENABLE.UUBEn_0_i_LC_9_5_3/in2    LogicCell40_SEQ_MODE_0000  0      2355               RISE  1       
+U400_BYTE_ENABLE.UUBEn_0_i_LC_9_5_3/lcout  LogicCell40_SEQ_MODE_0000  379    2733               RISE  1       
+I__22/I                                    Odrv4                      0      2733               RISE  1       
+I__22/O                                    Odrv4                      351    3084               RISE  1       
+I__23/I                                    Span4Mux_s3_v              0      3084               RISE  1       
+I__23/O                                    Span4Mux_s3_v              316    3400               RISE  1       
+I__24/I                                    IoSpan4Mux                 0      3400               RISE  1       
+I__24/O                                    IoSpan4Mux                 288    3687               RISE  1       
+I__25/I                                    LocalMux                   0      3687               RISE  1       
+I__25/O                                    LocalMux                   330    4017               RISE  1       
+I__26/I                                    IoInMux                    0      4017               RISE  1       
+I__26/O                                    IoInMux                    259    4276               RISE  1       
+UUBEn_obuf_preio/DOUT0                     PRE_IO_PIN_TYPE_011001     0      4276               RISE  1       
+UUBEn_obuf_preio/PADOUT                    PRE_IO_PIN_TYPE_011001     2237   6514               FALL  1       
+UUBEn_obuf_iopad/DIN                       IO_PAD                     0      6514               FALL  1       
+UUBEn_obuf_iopad/PACKAGEPIN:out            IO_PAD                     2088   8602               FALL  1       
+UUBEn                                      U400_TOP                   0      8602               FALL  1       
+
+6.6::Min PI to PO Path Details          
+--------------------------------------------------
+
+6.6.1::Path details for port: LLBEn     
+--------------------------------------------------
+
+++++ Path 1 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Output Port      : LLBEn
+Input Port       : SIZ[0]
+Pad to Pad Delay : 7550
+
+Pad to Pad Path
+pin name                                   model name                 delay  cummulative delay  edge  Fanout  
+-----------------------------------------  -------------------------  -----  -----------------  ----  ------  
+SIZ[0]                                     U400_TOP                   0      0                  FALL  1       
+SIZ_ibuf_0_iopad/PACKAGEPIN:in             IO_PAD                     0      0                  FALL  1       
+SIZ_ibuf_0_iopad/DOUT                      IO_PAD                     460    460                FALL  1       
+SIZ_ibuf_0_preio/PADIN                     PRE_IO_PIN_TYPE_000001     0      460                FALL  1       
+SIZ_ibuf_0_preio/DIN0                      PRE_IO_PIN_TYPE_000001     463    923                FALL  1       
+I__55/I                                    Odrv4                      0      923                FALL  1       
+I__55/O                                    Odrv4                      372    1295               FALL  1       
+I__56/I                                    Span4Mux_v                 0      1295               FALL  1       
+I__56/O                                    Span4Mux_v                 372    1666               FALL  1       
+I__57/I                                    LocalMux                   0      1666               FALL  1       
+I__57/O                                    LocalMux                   309    1975               FALL  1       
+I__58/I                                    InMux                      0      1975               FALL  1       
+I__58/O                                    InMux                      217    2192               FALL  1       
+U400_BYTE_ENABLE.LLBEn_0_i_LC_9_5_0/in3    LogicCell40_SEQ_MODE_0000  0      2192               FALL  1       
+U400_BYTE_ENABLE.LLBEn_0_i_LC_9_5_0/lcout  LogicCell40_SEQ_MODE_0000  288    2480               FALL  1       
+I__69/I                                    Odrv4                      0      2480               FALL  1       
+I__69/O                                    Odrv4                      372    2852               FALL  1       
+I__70/I                                    Span4Mux_s2_v              0      2852               FALL  1       
+I__70/O                                    Span4Mux_s2_v              252    3104               FALL  1       
+I__71/I                                    LocalMux                   0      3104               FALL  1       
+I__71/O                                    LocalMux                   309    3413               FALL  1       
+I__72/I                                    IoInMux                    0      3413               FALL  1       
+I__72/O                                    IoInMux                    217    3630               FALL  1       
+LLBEn_obuf_preio/DOUT0                     PRE_IO_PIN_TYPE_011001     0      3630               FALL  1       
+LLBEn_obuf_preio/PADOUT                    PRE_IO_PIN_TYPE_011001     2006   5636               RISE  1       
+LLBEn_obuf_iopad/DIN                       IO_PAD                     0      5636               RISE  1       
+LLBEn_obuf_iopad/PACKAGEPIN:out            IO_PAD                     1914   7550               RISE  1       
+LLBEn                                      U400_TOP                   0      7550               RISE  1       
+
+++++ Path 2 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Output Port      : LLBEn
+Input Port       : SIZ[1]
+Pad to Pad Delay : 7592
+
+Pad to Pad Path
+pin name                                   model name                 delay  cummulative delay  edge  Fanout  
+-----------------------------------------  -------------------------  -----  -----------------  ----  ------  
+SIZ[1]                                     U400_TOP                   0      0                  FALL  1       
+SIZ_ibuf_1_iopad/PACKAGEPIN:in             IO_PAD                     0      0                  FALL  1       
+SIZ_ibuf_1_iopad/DOUT                      IO_PAD                     460    460                FALL  1       
+SIZ_ibuf_1_preio/PADIN                     PRE_IO_PIN_TYPE_000001     0      460                FALL  1       
+SIZ_ibuf_1_preio/DIN0                      PRE_IO_PIN_TYPE_000001     463    923                FALL  1       
+I__35/I                                    Odrv4                      0      923                FALL  1       
+I__35/O                                    Odrv4                      372    1295               FALL  1       
+I__36/I                                    IoSpan4Mux                 0      1295               FALL  1       
+I__36/O                                    IoSpan4Mux                 323    1617               FALL  1       
+I__37/I                                    LocalMux                   0      1617               FALL  1       
+I__37/O                                    LocalMux                   309    1926               FALL  1       
+I__38/I                                    InMux                      0      1926               FALL  1       
+I__38/O                                    InMux                      217    2143               FALL  1       
+U400_BYTE_ENABLE.LLBEn_0_i_LC_9_5_0/in1    LogicCell40_SEQ_MODE_0000  0      2143               FALL  1       
+U400_BYTE_ENABLE.LLBEn_0_i_LC_9_5_0/lcout  LogicCell40_SEQ_MODE_0000  379    2522               FALL  1       
+I__69/I                                    Odrv4                      0      2522               FALL  1       
+I__69/O                                    Odrv4                      372    2894               FALL  1       
+I__70/I                                    Span4Mux_s2_v              0      2894               FALL  1       
+I__70/O                                    Span4Mux_s2_v              252    3146               FALL  1       
+I__71/I                                    LocalMux                   0      3146               FALL  1       
+I__71/O                                    LocalMux                   309    3455               FALL  1       
+I__72/I                                    IoInMux                    0      3455               FALL  1       
+I__72/O                                    IoInMux                    217    3672               FALL  1       
+LLBEn_obuf_preio/DOUT0                     PRE_IO_PIN_TYPE_011001     0      3672               FALL  1       
+LLBEn_obuf_preio/PADOUT                    PRE_IO_PIN_TYPE_011001     2006   5678               RISE  1       
+LLBEn_obuf_iopad/DIN                       IO_PAD                     0      5678               RISE  1       
+LLBEn_obuf_iopad/PACKAGEPIN:out            IO_PAD                     1914   7592               RISE  1       
+LLBEn                                      U400_TOP                   0      7592               RISE  1       
+
+++++ Path 3 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Output Port      : LLBEn
+Input Port       : A[0]
+Pad to Pad Delay : 8434
+
+Pad to Pad Path
+pin name                                   model name                 delay  cummulative delay  edge  Fanout  
+-----------------------------------------  -------------------------  -----  -----------------  ----  ------  
+A[0]                                       U400_TOP                   0      0                  FALL  1       
+A_ibuf_0_iopad/PACKAGEPIN:in               IO_PAD                     0      0                  FALL  1       
+A_ibuf_0_iopad/DOUT                        IO_PAD                     460    460                FALL  1       
+A_ibuf_0_preio/PADIN                       PRE_IO_PIN_TYPE_000001     0      460                FALL  1       
+A_ibuf_0_preio/DIN0                        PRE_IO_PIN_TYPE_000001     463    923                FALL  1       
+I__27/I                                    Odrv12                     0      923                FALL  1       
+I__27/O                                    Odrv12                     540    1463               FALL  1       
+I__28/I                                    Span12Mux_v                0      1463               FALL  1       
+I__28/O                                    Span12Mux_v                540    2003               FALL  1       
+I__29/I                                    Sp12to4                    0      2003               FALL  1       
+I__29/O                                    Sp12to4                    449    2452               FALL  1       
+I__30/I                                    LocalMux                   0      2452               FALL  1       
+I__30/O                                    LocalMux                   309    2760               FALL  1       
+I__31/I                                    InMux                      0      2760               FALL  1       
+I__31/O                                    InMux                      217    2978               FALL  1       
+U400_BYTE_ENABLE.LLBEn_0_i_LC_9_5_0/in0    LogicCell40_SEQ_MODE_0000  0      2978               FALL  1       
+U400_BYTE_ENABLE.LLBEn_0_i_LC_9_5_0/lcout  LogicCell40_SEQ_MODE_0000  386    3364               FALL  1       
+I__69/I                                    Odrv4                      0      3364               FALL  1       
+I__69/O                                    Odrv4                      372    3735               FALL  1       
+I__70/I                                    Span4Mux_s2_v              0      3735               FALL  1       
+I__70/O                                    Span4Mux_s2_v              252    3988               FALL  1       
+I__71/I                                    LocalMux                   0      3988               FALL  1       
+I__71/O                                    LocalMux                   309    4296               FALL  1       
+I__72/I                                    IoInMux                    0      4296               FALL  1       
+I__72/O                                    IoInMux                    217    4514               FALL  1       
+LLBEn_obuf_preio/DOUT0                     PRE_IO_PIN_TYPE_011001     0      4514               FALL  1       
+LLBEn_obuf_preio/PADOUT                    PRE_IO_PIN_TYPE_011001     2006   6520               RISE  1       
+LLBEn_obuf_iopad/DIN                       IO_PAD                     0      6520               RISE  1       
+LLBEn_obuf_iopad/PACKAGEPIN:out            IO_PAD                     1914   8434               RISE  1       
+LLBEn                                      U400_TOP                   0      8434               RISE  1       
+
+++++ Path 4 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Output Port      : LLBEn
+Input Port       : A[1]
+Pad to Pad Delay : 8714
+
+Pad to Pad Path
+pin name                                   model name                 delay  cummulative delay  edge  Fanout  
+-----------------------------------------  -------------------------  -----  -----------------  ----  ------  
+A[1]                                       U400_TOP                   0      0                  FALL  1       
+A_ibuf_1_iopad/PACKAGEPIN:in               IO_PAD                     0      0                  FALL  1       
+A_ibuf_1_iopad/DOUT                        IO_PAD                     460    460                FALL  1       
+A_ibuf_1_preio/PADIN                       PRE_IO_PIN_TYPE_000001     0      460                FALL  1       
+A_ibuf_1_preio/DIN0                        PRE_IO_PIN_TYPE_000001     463    923                FALL  1       
+I__44/I                                    Odrv12                     0      923                FALL  1       
+I__44/O                                    Odrv12                     540    1463               FALL  1       
+I__45/I                                    Span12Mux_v                0      1463               FALL  1       
+I__45/O                                    Span12Mux_v                540    2003               FALL  1       
+I__46/I                                    Sp12to4                    0      2003               FALL  1       
+I__46/O                                    Sp12to4                    449    2452               FALL  1       
+I__47/I                                    Span4Mux_h                 0      2452               FALL  1       
+I__47/O                                    Span4Mux_h                 316    2767               FALL  1       
+I__48/I                                    LocalMux                   0      2767               FALL  1       
+I__48/O                                    LocalMux                   309    3076               FALL  1       
+I__49/I                                    InMux                      0      3076               FALL  1       
+I__49/O                                    InMux                      217    3293               FALL  1       
+I__53/I                                    CascadeMux                 0      3293               FALL  1       
+I__53/O                                    CascadeMux                 0      3293               FALL  1       
+U400_BYTE_ENABLE.LLBEn_0_i_LC_9_5_0/in2    LogicCell40_SEQ_MODE_0000  0      3293               FALL  1       
+U400_BYTE_ENABLE.LLBEn_0_i_LC_9_5_0/lcout  LogicCell40_SEQ_MODE_0000  351    3644               FALL  1       
+I__69/I                                    Odrv4                      0      3644               FALL  1       
+I__69/O                                    Odrv4                      372    4016               FALL  1       
+I__70/I                                    Span4Mux_s2_v              0      4016               FALL  1       
+I__70/O                                    Span4Mux_s2_v              252    4268               FALL  1       
+I__71/I                                    LocalMux                   0      4268               FALL  1       
+I__71/O                                    LocalMux                   309    4577               FALL  1       
+I__72/I                                    IoInMux                    0      4577               FALL  1       
+I__72/O                                    IoInMux                    217    4794               FALL  1       
+LLBEn_obuf_preio/DOUT0                     PRE_IO_PIN_TYPE_011001     0      4794               FALL  1       
+LLBEn_obuf_preio/PADOUT                    PRE_IO_PIN_TYPE_011001     2006   6800               RISE  1       
+LLBEn_obuf_iopad/DIN                       IO_PAD                     0      6800               RISE  1       
+LLBEn_obuf_iopad/PACKAGEPIN:out            IO_PAD                     1914   8714               RISE  1       
+LLBEn                                      U400_TOP                   0      8714               RISE  1       
+
+6.6.2::Path details for port: LMBEn     
+--------------------------------------------------
+
+++++ Path 1 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Output Port      : LMBEn
+Input Port       : SIZ[1]
+Pad to Pad Delay : 7564
+
+Pad to Pad Path
+pin name                                   model name                 delay  cummulative delay  edge  Fanout  
+-----------------------------------------  -------------------------  -----  -----------------  ----  ------  
+SIZ[1]                                     U400_TOP                   0      0                  FALL  1       
+SIZ_ibuf_1_iopad/PACKAGEPIN:in             IO_PAD                     0      0                  FALL  1       
+SIZ_ibuf_1_iopad/DOUT                      IO_PAD                     460    460                FALL  1       
+SIZ_ibuf_1_preio/PADIN                     PRE_IO_PIN_TYPE_000001     0      460                FALL  1       
+SIZ_ibuf_1_preio/DIN0                      PRE_IO_PIN_TYPE_000001     463    923                FALL  1       
+I__35/I                                    Odrv4                      0      923                FALL  1       
+I__35/O                                    Odrv4                      372    1295               FALL  1       
+I__36/I                                    IoSpan4Mux                 0      1295               FALL  1       
+I__36/O                                    IoSpan4Mux                 323    1617               FALL  1       
+I__37/I                                    LocalMux                   0      1617               FALL  1       
+I__37/O                                    LocalMux                   309    1926               FALL  1       
+I__39/I                                    InMux                      0      1926               FALL  1       
+I__39/O                                    InMux                      217    2143               FALL  1       
+I__42/I                                    CascadeMux                 0      2143               FALL  1       
+I__42/O                                    CascadeMux                 0      2143               FALL  1       
+U400_BYTE_ENABLE.LMBEn_0_i_LC_9_5_1/in2    LogicCell40_SEQ_MODE_0000  0      2143               FALL  1       
+U400_BYTE_ENABLE.LMBEn_0_i_LC_9_5_1/lcout  LogicCell40_SEQ_MODE_0000  351    2494               FALL  1       
+I__65/I                                    Odrv4                      0      2494               FALL  1       
+I__65/O                                    Odrv4                      372    2866               FALL  1       
+I__66/I                                    Span4Mux_s2_v              0      2866               FALL  1       
+I__66/O                                    Span4Mux_s2_v              252    3118               FALL  1       
+I__67/I                                    LocalMux                   0      3118               FALL  1       
+I__67/O                                    LocalMux                   309    3427               FALL  1       
+I__68/I                                    IoInMux                    0      3427               FALL  1       
+I__68/O                                    IoInMux                    217    3644               FALL  1       
+LMBEn_obuf_preio/DOUT0                     PRE_IO_PIN_TYPE_011001     0      3644               FALL  1       
+LMBEn_obuf_preio/PADOUT                    PRE_IO_PIN_TYPE_011001     2006   5650               RISE  1       
+LMBEn_obuf_iopad/DIN                       IO_PAD                     0      5650               RISE  1       
+LMBEn_obuf_iopad/PACKAGEPIN:out            IO_PAD                     1914   7564               RISE  1       
+LMBEn                                      U400_TOP                   0      7564               RISE  1       
+
+++++ Path 2 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Output Port      : LMBEn
+Input Port       : SIZ[0]
+Pad to Pad Delay : 7648
+
+Pad to Pad Path
+pin name                                   model name                 delay  cummulative delay  edge  Fanout  
+-----------------------------------------  -------------------------  -----  -----------------  ----  ------  
+SIZ[0]                                     U400_TOP                   0      0                  FALL  1       
+SIZ_ibuf_0_iopad/PACKAGEPIN:in             IO_PAD                     0      0                  FALL  1       
+SIZ_ibuf_0_iopad/DOUT                      IO_PAD                     460    460                FALL  1       
+SIZ_ibuf_0_preio/PADIN                     PRE_IO_PIN_TYPE_000001     0      460                FALL  1       
+SIZ_ibuf_0_preio/DIN0                      PRE_IO_PIN_TYPE_000001     463    923                FALL  1       
+I__55/I                                    Odrv4                      0      923                FALL  1       
+I__55/O                                    Odrv4                      372    1295               FALL  1       
+I__56/I                                    Span4Mux_v                 0      1295               FALL  1       
+I__56/O                                    Span4Mux_v                 372    1666               FALL  1       
+I__57/I                                    LocalMux                   0      1666               FALL  1       
+I__57/O                                    LocalMux                   309    1975               FALL  1       
+I__59/I                                    InMux                      0      1975               FALL  1       
+I__59/O                                    InMux                      217    2192               FALL  1       
+U400_BYTE_ENABLE.LMBEn_0_i_LC_9_5_1/in0    LogicCell40_SEQ_MODE_0000  0      2192               FALL  1       
+U400_BYTE_ENABLE.LMBEn_0_i_LC_9_5_1/lcout  LogicCell40_SEQ_MODE_0000  386    2578               FALL  1       
+I__65/I                                    Odrv4                      0      2578               FALL  1       
+I__65/O                                    Odrv4                      372    2950               FALL  1       
+I__66/I                                    Span4Mux_s2_v              0      2950               FALL  1       
+I__66/O                                    Span4Mux_s2_v              252    3202               FALL  1       
+I__67/I                                    LocalMux                   0      3202               FALL  1       
+I__67/O                                    LocalMux                   309    3511               FALL  1       
+I__68/I                                    IoInMux                    0      3511               FALL  1       
+I__68/O                                    IoInMux                    217    3728               FALL  1       
+LMBEn_obuf_preio/DOUT0                     PRE_IO_PIN_TYPE_011001     0      3728               FALL  1       
+LMBEn_obuf_preio/PADOUT                    PRE_IO_PIN_TYPE_011001     2006   5734               RISE  1       
+LMBEn_obuf_iopad/DIN                       IO_PAD                     0      5734               RISE  1       
+LMBEn_obuf_iopad/PACKAGEPIN:out            IO_PAD                     1914   7648               RISE  1       
+LMBEn                                      U400_TOP                   0      7648               RISE  1       
+
+++++ Path 3 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Output Port      : LMBEn
+Input Port       : A[0]
+Pad to Pad Delay : 8335
+
+Pad to Pad Path
+pin name                                   model name                 delay  cummulative delay  edge  Fanout  
+-----------------------------------------  -------------------------  -----  -----------------  ----  ------  
+A[0]                                       U400_TOP                   0      0                  FALL  1       
+A_ibuf_0_iopad/PACKAGEPIN:in               IO_PAD                     0      0                  FALL  1       
+A_ibuf_0_iopad/DOUT                        IO_PAD                     460    460                FALL  1       
+A_ibuf_0_preio/PADIN                       PRE_IO_PIN_TYPE_000001     0      460                FALL  1       
+A_ibuf_0_preio/DIN0                        PRE_IO_PIN_TYPE_000001     463    923                FALL  1       
+I__27/I                                    Odrv12                     0      923                FALL  1       
+I__27/O                                    Odrv12                     540    1463               FALL  1       
+I__28/I                                    Span12Mux_v                0      1463               FALL  1       
+I__28/O                                    Span12Mux_v                540    2003               FALL  1       
+I__29/I                                    Sp12to4                    0      2003               FALL  1       
+I__29/O                                    Sp12to4                    449    2452               FALL  1       
+I__30/I                                    LocalMux                   0      2452               FALL  1       
+I__30/O                                    LocalMux                   309    2760               FALL  1       
+I__32/I                                    InMux                      0      2760               FALL  1       
+I__32/O                                    InMux                      217    2978               FALL  1       
+U400_BYTE_ENABLE.LMBEn_0_i_LC_9_5_1/in3    LogicCell40_SEQ_MODE_0000  0      2978               FALL  1       
+U400_BYTE_ENABLE.LMBEn_0_i_LC_9_5_1/lcout  LogicCell40_SEQ_MODE_0000  288    3265               FALL  1       
+I__65/I                                    Odrv4                      0      3265               FALL  1       
+I__65/O                                    Odrv4                      372    3637               FALL  1       
+I__66/I                                    Span4Mux_s2_v              0      3637               FALL  1       
+I__66/O                                    Span4Mux_s2_v              252    3890               FALL  1       
+I__67/I                                    LocalMux                   0      3890               FALL  1       
+I__67/O                                    LocalMux                   309    4198               FALL  1       
+I__68/I                                    IoInMux                    0      4198               FALL  1       
+I__68/O                                    IoInMux                    217    4416               FALL  1       
+LMBEn_obuf_preio/DOUT0                     PRE_IO_PIN_TYPE_011001     0      4416               FALL  1       
+LMBEn_obuf_preio/PADOUT                    PRE_IO_PIN_TYPE_011001     2006   6421               RISE  1       
+LMBEn_obuf_iopad/DIN                       IO_PAD                     0      6421               RISE  1       
+LMBEn_obuf_iopad/PACKAGEPIN:out            IO_PAD                     1914   8335               RISE  1       
+LMBEn                                      U400_TOP                   0      8335               RISE  1       
+
+++++ Path 4 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Output Port      : LMBEn
+Input Port       : A[1]
+Pad to Pad Delay : 8742
+
+Pad to Pad Path
+pin name                                   model name                 delay  cummulative delay  edge  Fanout  
+-----------------------------------------  -------------------------  -----  -----------------  ----  ------  
+A[1]                                       U400_TOP                   0      0                  FALL  1       
+A_ibuf_1_iopad/PACKAGEPIN:in               IO_PAD                     0      0                  FALL  1       
+A_ibuf_1_iopad/DOUT                        IO_PAD                     460    460                FALL  1       
+A_ibuf_1_preio/PADIN                       PRE_IO_PIN_TYPE_000001     0      460                FALL  1       
+A_ibuf_1_preio/DIN0                        PRE_IO_PIN_TYPE_000001     463    923                FALL  1       
+I__44/I                                    Odrv12                     0      923                FALL  1       
+I__44/O                                    Odrv12                     540    1463               FALL  1       
+I__45/I                                    Span12Mux_v                0      1463               FALL  1       
+I__45/O                                    Span12Mux_v                540    2003               FALL  1       
+I__46/I                                    Sp12to4                    0      2003               FALL  1       
+I__46/O                                    Sp12to4                    449    2452               FALL  1       
+I__47/I                                    Span4Mux_h                 0      2452               FALL  1       
+I__47/O                                    Span4Mux_h                 316    2767               FALL  1       
+I__48/I                                    LocalMux                   0      2767               FALL  1       
+I__48/O                                    LocalMux                   309    3076               FALL  1       
+I__50/I                                    InMux                      0      3076               FALL  1       
+I__50/O                                    InMux                      217    3293               FALL  1       
+U400_BYTE_ENABLE.LMBEn_0_i_LC_9_5_1/in1    LogicCell40_SEQ_MODE_0000  0      3293               FALL  1       
+U400_BYTE_ENABLE.LMBEn_0_i_LC_9_5_1/lcout  LogicCell40_SEQ_MODE_0000  379    3672               FALL  1       
+I__65/I                                    Odrv4                      0      3672               FALL  1       
+I__65/O                                    Odrv4                      372    4044               FALL  1       
+I__66/I                                    Span4Mux_s2_v              0      4044               FALL  1       
+I__66/O                                    Span4Mux_s2_v              252    4296               FALL  1       
+I__67/I                                    LocalMux                   0      4296               FALL  1       
+I__67/O                                    LocalMux                   309    4605               FALL  1       
+I__68/I                                    IoInMux                    0      4605               FALL  1       
+I__68/O                                    IoInMux                    217    4822               FALL  1       
+LMBEn_obuf_preio/DOUT0                     PRE_IO_PIN_TYPE_011001     0      4822               FALL  1       
+LMBEn_obuf_preio/PADOUT                    PRE_IO_PIN_TYPE_011001     2006   6828               RISE  1       
+LMBEn_obuf_iopad/DIN                       IO_PAD                     0      6828               RISE  1       
+LMBEn_obuf_iopad/PACKAGEPIN:out            IO_PAD                     1914   8742               RISE  1       
+LMBEn                                      U400_TOP                   0      8742               RISE  1       
+
+6.6.3::Path details for port: UMBEn     
+--------------------------------------------------
+
+++++ Path 1 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Output Port      : UMBEn
+Input Port       : SIZ[0]
+Pad to Pad Delay : 7466
+
+Pad to Pad Path
+pin name                                   model name                 delay  cummulative delay  edge  Fanout  
+-----------------------------------------  -------------------------  -----  -----------------  ----  ------  
+SIZ[0]                                     U400_TOP                   0      0                  FALL  1       
+SIZ_ibuf_0_iopad/PACKAGEPIN:in             IO_PAD                     0      0                  FALL  1       
+SIZ_ibuf_0_iopad/DOUT                      IO_PAD                     460    460                FALL  1       
+SIZ_ibuf_0_preio/PADIN                     PRE_IO_PIN_TYPE_000001     0      460                FALL  1       
+SIZ_ibuf_0_preio/DIN0                      PRE_IO_PIN_TYPE_000001     463    923                FALL  1       
+I__55/I                                    Odrv4                      0      923                FALL  1       
+I__55/O                                    Odrv4                      372    1295               FALL  1       
+I__56/I                                    Span4Mux_v                 0      1295               FALL  1       
+I__56/O                                    Span4Mux_v                 372    1666               FALL  1       
+I__57/I                                    LocalMux                   0      1666               FALL  1       
+I__57/O                                    LocalMux                   309    1975               FALL  1       
+I__60/I                                    InMux                      0      1975               FALL  1       
+I__60/O                                    InMux                      217    2192               FALL  1       
+U400_BYTE_ENABLE.UMBEn_0_i_LC_9_5_2/in3    LogicCell40_SEQ_MODE_0000  0      2192               FALL  1       
+U400_BYTE_ENABLE.UMBEn_0_i_LC_9_5_2/lcout  LogicCell40_SEQ_MODE_0000  288    2480               FALL  1       
+I__62/I                                    Odrv12                     0      2480               FALL  1       
+I__62/O                                    Odrv12                     540    3020               FALL  1       
+I__63/I                                    LocalMux                   0      3020               FALL  1       
+I__63/O                                    LocalMux                   309    3329               FALL  1       
+I__64/I                                    IoInMux                    0      3329               FALL  1       
+I__64/O                                    IoInMux                    217    3546               FALL  1       
+UMBEn_obuf_preio/DOUT0                     PRE_IO_PIN_TYPE_011001     0      3546               FALL  1       
+UMBEn_obuf_preio/PADOUT                    PRE_IO_PIN_TYPE_011001     2006   5552               RISE  1       
+UMBEn_obuf_iopad/DIN                       IO_PAD                     0      5552               RISE  1       
+UMBEn_obuf_iopad/PACKAGEPIN:out            IO_PAD                     1914   7466               RISE  1       
+UMBEn                                      U400_TOP                   0      7466               RISE  1       
+
+++++ Path 2 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Output Port      : UMBEn
+Input Port       : SIZ[1]
+Pad to Pad Delay : 7508
+
+Pad to Pad Path
+pin name                                   model name                 delay  cummulative delay  edge  Fanout  
+-----------------------------------------  -------------------------  -----  -----------------  ----  ------  
+SIZ[1]                                     U400_TOP                   0      0                  FALL  1       
+SIZ_ibuf_1_iopad/PACKAGEPIN:in             IO_PAD                     0      0                  FALL  1       
+SIZ_ibuf_1_iopad/DOUT                      IO_PAD                     460    460                FALL  1       
+SIZ_ibuf_1_preio/PADIN                     PRE_IO_PIN_TYPE_000001     0      460                FALL  1       
+SIZ_ibuf_1_preio/DIN0                      PRE_IO_PIN_TYPE_000001     463    923                FALL  1       
+I__35/I                                    Odrv4                      0      923                FALL  1       
+I__35/O                                    Odrv4                      372    1295               FALL  1       
+I__36/I                                    IoSpan4Mux                 0      1295               FALL  1       
+I__36/O                                    IoSpan4Mux                 323    1617               FALL  1       
+I__37/I                                    LocalMux                   0      1617               FALL  1       
+I__37/O                                    LocalMux                   309    1926               FALL  1       
+I__40/I                                    InMux                      0      1926               FALL  1       
+I__40/O                                    InMux                      217    2143               FALL  1       
+U400_BYTE_ENABLE.UMBEn_0_i_LC_9_5_2/in1    LogicCell40_SEQ_MODE_0000  0      2143               FALL  1       
+U400_BYTE_ENABLE.UMBEn_0_i_LC_9_5_2/lcout  LogicCell40_SEQ_MODE_0000  379    2522               FALL  1       
+I__62/I                                    Odrv12                     0      2522               FALL  1       
+I__62/O                                    Odrv12                     540    3062               FALL  1       
+I__63/I                                    LocalMux                   0      3062               FALL  1       
+I__63/O                                    LocalMux                   309    3371               FALL  1       
+I__64/I                                    IoInMux                    0      3371               FALL  1       
+I__64/O                                    IoInMux                    217    3588               FALL  1       
+UMBEn_obuf_preio/DOUT0                     PRE_IO_PIN_TYPE_011001     0      3588               FALL  1       
+UMBEn_obuf_preio/PADOUT                    PRE_IO_PIN_TYPE_011001     2006   5594               RISE  1       
+UMBEn_obuf_iopad/DIN                       IO_PAD                     0      5594               RISE  1       
+UMBEn_obuf_iopad/PACKAGEPIN:out            IO_PAD                     1914   7508               RISE  1       
+UMBEn                                      U400_TOP                   0      7508               RISE  1       
+
+++++ Path 3 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Output Port      : UMBEn
+Input Port       : A[0]
+Pad to Pad Delay : 8349
+
+Pad to Pad Path
+pin name                                   model name                 delay  cummulative delay  edge  Fanout  
+-----------------------------------------  -------------------------  -----  -----------------  ----  ------  
+A[0]                                       U400_TOP                   0      0                  FALL  1       
+A_ibuf_0_iopad/PACKAGEPIN:in               IO_PAD                     0      0                  FALL  1       
+A_ibuf_0_iopad/DOUT                        IO_PAD                     460    460                FALL  1       
+A_ibuf_0_preio/PADIN                       PRE_IO_PIN_TYPE_000001     0      460                FALL  1       
+A_ibuf_0_preio/DIN0                        PRE_IO_PIN_TYPE_000001     463    923                FALL  1       
+I__27/I                                    Odrv12                     0      923                FALL  1       
+I__27/O                                    Odrv12                     540    1463               FALL  1       
+I__28/I                                    Span12Mux_v                0      1463               FALL  1       
+I__28/O                                    Span12Mux_v                540    2003               FALL  1       
+I__29/I                                    Sp12to4                    0      2003               FALL  1       
+I__29/O                                    Sp12to4                    449    2452               FALL  1       
+I__30/I                                    LocalMux                   0      2452               FALL  1       
+I__30/O                                    LocalMux                   309    2760               FALL  1       
+I__33/I                                    InMux                      0      2760               FALL  1       
+I__33/O                                    InMux                      217    2978               FALL  1       
+U400_BYTE_ENABLE.UMBEn_0_i_LC_9_5_2/in0    LogicCell40_SEQ_MODE_0000  0      2978               FALL  1       
+U400_BYTE_ENABLE.UMBEn_0_i_LC_9_5_2/lcout  LogicCell40_SEQ_MODE_0000  386    3364               FALL  1       
+I__62/I                                    Odrv12                     0      3364               FALL  1       
+I__62/O                                    Odrv12                     540    3904               FALL  1       
+I__63/I                                    LocalMux                   0      3904               FALL  1       
+I__63/O                                    LocalMux                   309    4212               FALL  1       
+I__64/I                                    IoInMux                    0      4212               FALL  1       
+I__64/O                                    IoInMux                    217    4430               FALL  1       
+UMBEn_obuf_preio/DOUT0                     PRE_IO_PIN_TYPE_011001     0      4430               FALL  1       
+UMBEn_obuf_preio/PADOUT                    PRE_IO_PIN_TYPE_011001     2006   6435               RISE  1       
+UMBEn_obuf_iopad/DIN                       IO_PAD                     0      6435               RISE  1       
+UMBEn_obuf_iopad/PACKAGEPIN:out            IO_PAD                     1914   8349               RISE  1       
+UMBEn                                      U400_TOP                   0      8349               RISE  1       
+
+++++ Path 4 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Output Port      : UMBEn
+Input Port       : A[1]
+Pad to Pad Delay : 8630
+
+Pad to Pad Path
+pin name                                   model name                 delay  cummulative delay  edge  Fanout  
+-----------------------------------------  -------------------------  -----  -----------------  ----  ------  
+A[1]                                       U400_TOP                   0      0                  FALL  1       
+A_ibuf_1_iopad/PACKAGEPIN:in               IO_PAD                     0      0                  FALL  1       
+A_ibuf_1_iopad/DOUT                        IO_PAD                     460    460                FALL  1       
+A_ibuf_1_preio/PADIN                       PRE_IO_PIN_TYPE_000001     0      460                FALL  1       
+A_ibuf_1_preio/DIN0                        PRE_IO_PIN_TYPE_000001     463    923                FALL  1       
+I__44/I                                    Odrv12                     0      923                FALL  1       
+I__44/O                                    Odrv12                     540    1463               FALL  1       
+I__45/I                                    Span12Mux_v                0      1463               FALL  1       
+I__45/O                                    Span12Mux_v                540    2003               FALL  1       
+I__46/I                                    Sp12to4                    0      2003               FALL  1       
+I__46/O                                    Sp12to4                    449    2452               FALL  1       
+I__47/I                                    Span4Mux_h                 0      2452               FALL  1       
+I__47/O                                    Span4Mux_h                 316    2767               FALL  1       
+I__48/I                                    LocalMux                   0      2767               FALL  1       
+I__48/O                                    LocalMux                   309    3076               FALL  1       
+I__51/I                                    InMux                      0      3076               FALL  1       
+I__51/O                                    InMux                      217    3293               FALL  1       
+I__54/I                                    CascadeMux                 0      3293               FALL  1       
+I__54/O                                    CascadeMux                 0      3293               FALL  1       
+U400_BYTE_ENABLE.UMBEn_0_i_LC_9_5_2/in2    LogicCell40_SEQ_MODE_0000  0      3293               FALL  1       
+U400_BYTE_ENABLE.UMBEn_0_i_LC_9_5_2/lcout  LogicCell40_SEQ_MODE_0000  351    3644               FALL  1       
+I__62/I                                    Odrv12                     0      3644               FALL  1       
+I__62/O                                    Odrv12                     540    4184               FALL  1       
+I__63/I                                    LocalMux                   0      4184               FALL  1       
+I__63/O                                    LocalMux                   309    4493               FALL  1       
+I__64/I                                    IoInMux                    0      4493               FALL  1       
+I__64/O                                    IoInMux                    217    4710               FALL  1       
+UMBEn_obuf_preio/DOUT0                     PRE_IO_PIN_TYPE_011001     0      4710               FALL  1       
+UMBEn_obuf_preio/PADOUT                    PRE_IO_PIN_TYPE_011001     2006   6716               RISE  1       
+UMBEn_obuf_iopad/DIN                       IO_PAD                     0      6716               RISE  1       
+UMBEn_obuf_iopad/PACKAGEPIN:out            IO_PAD                     1914   8630               RISE  1       
+UMBEn                                      U400_TOP                   0      8630               RISE  1       
+
+6.6.4::Path details for port: UUBEn     
+--------------------------------------------------
+
+++++ Path 1 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Output Port      : UUBEn
+Input Port       : SIZ[1]
+Pad to Pad Delay : 7971
+
+Pad to Pad Path
+pin name                                   model name                 delay  cummulative delay  edge  Fanout  
+-----------------------------------------  -------------------------  -----  -----------------  ----  ------  
+SIZ[1]                                     U400_TOP                   0      0                  FALL  1       
+SIZ_ibuf_1_iopad/PACKAGEPIN:in             IO_PAD                     0      0                  FALL  1       
+SIZ_ibuf_1_iopad/DOUT                      IO_PAD                     460    460                FALL  1       
+SIZ_ibuf_1_preio/PADIN                     PRE_IO_PIN_TYPE_000001     0      460                FALL  1       
+SIZ_ibuf_1_preio/DIN0                      PRE_IO_PIN_TYPE_000001     463    923                FALL  1       
+I__35/I                                    Odrv4                      0      923                FALL  1       
+I__35/O                                    Odrv4                      372    1295               FALL  1       
+I__36/I                                    IoSpan4Mux                 0      1295               FALL  1       
+I__36/O                                    IoSpan4Mux                 323    1617               FALL  1       
+I__37/I                                    LocalMux                   0      1617               FALL  1       
+I__37/O                                    LocalMux                   309    1926               FALL  1       
+I__41/I                                    InMux                      0      1926               FALL  1       
+I__41/O                                    InMux                      217    2143               FALL  1       
+I__43/I                                    CascadeMux                 0      2143               FALL  1       
+I__43/O                                    CascadeMux                 0      2143               FALL  1       
+U400_BYTE_ENABLE.UUBEn_0_i_LC_9_5_3/in2    LogicCell40_SEQ_MODE_0000  0      2143               FALL  1       
+U400_BYTE_ENABLE.UUBEn_0_i_LC_9_5_3/lcout  LogicCell40_SEQ_MODE_0000  351    2494               FALL  1       
+I__22/I                                    Odrv4                      0      2494               FALL  1       
+I__22/O                                    Odrv4                      372    2866               FALL  1       
+I__23/I                                    Span4Mux_s3_v              0      2866               FALL  1       
+I__23/O                                    Span4Mux_s3_v              337    3202               FALL  1       
+I__24/I                                    IoSpan4Mux                 0      3202               FALL  1       
+I__24/O                                    IoSpan4Mux                 323    3525               FALL  1       
+I__25/I                                    LocalMux                   0      3525               FALL  1       
+I__25/O                                    LocalMux                   309    3833               FALL  1       
+I__26/I                                    IoInMux                    0      3833               FALL  1       
+I__26/O                                    IoInMux                    217    4051               FALL  1       
+UUBEn_obuf_preio/DOUT0                     PRE_IO_PIN_TYPE_011001     0      4051               FALL  1       
+UUBEn_obuf_preio/PADOUT                    PRE_IO_PIN_TYPE_011001     2006   6057               RISE  1       
+UUBEn_obuf_iopad/DIN                       IO_PAD                     0      6057               RISE  1       
+UUBEn_obuf_iopad/PACKAGEPIN:out            IO_PAD                     1914   7971               RISE  1       
+UUBEn                                      U400_TOP                   0      7971               RISE  1       
+
+++++ Path 2 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Output Port      : UUBEn
+Input Port       : SIZ[0]
+Pad to Pad Delay : 8055
+
+Pad to Pad Path
+pin name                                   model name                 delay  cummulative delay  edge  Fanout  
+-----------------------------------------  -------------------------  -----  -----------------  ----  ------  
+SIZ[0]                                     U400_TOP                   0      0                  FALL  1       
+SIZ_ibuf_0_iopad/PACKAGEPIN:in             IO_PAD                     0      0                  FALL  1       
+SIZ_ibuf_0_iopad/DOUT                      IO_PAD                     460    460                FALL  1       
+SIZ_ibuf_0_preio/PADIN                     PRE_IO_PIN_TYPE_000001     0      460                FALL  1       
+SIZ_ibuf_0_preio/DIN0                      PRE_IO_PIN_TYPE_000001     463    923                FALL  1       
+I__55/I                                    Odrv4                      0      923                FALL  1       
+I__55/O                                    Odrv4                      372    1295               FALL  1       
+I__56/I                                    Span4Mux_v                 0      1295               FALL  1       
+I__56/O                                    Span4Mux_v                 372    1666               FALL  1       
+I__57/I                                    LocalMux                   0      1666               FALL  1       
+I__57/O                                    LocalMux                   309    1975               FALL  1       
+I__61/I                                    InMux                      0      1975               FALL  1       
+I__61/O                                    InMux                      217    2192               FALL  1       
+U400_BYTE_ENABLE.UUBEn_0_i_LC_9_5_3/in0    LogicCell40_SEQ_MODE_0000  0      2192               FALL  1       
+U400_BYTE_ENABLE.UUBEn_0_i_LC_9_5_3/lcout  LogicCell40_SEQ_MODE_0000  386    2578               FALL  1       
+I__22/I                                    Odrv4                      0      2578               FALL  1       
+I__22/O                                    Odrv4                      372    2950               FALL  1       
+I__23/I                                    Span4Mux_s3_v              0      2950               FALL  1       
+I__23/O                                    Span4Mux_s3_v              337    3286               FALL  1       
+I__24/I                                    IoSpan4Mux                 0      3286               FALL  1       
+I__24/O                                    IoSpan4Mux                 323    3609               FALL  1       
+I__25/I                                    LocalMux                   0      3609               FALL  1       
+I__25/O                                    LocalMux                   309    3918               FALL  1       
+I__26/I                                    IoInMux                    0      3918               FALL  1       
+I__26/O                                    IoInMux                    217    4135               FALL  1       
+UUBEn_obuf_preio/DOUT0                     PRE_IO_PIN_TYPE_011001     0      4135               FALL  1       
+UUBEn_obuf_preio/PADOUT                    PRE_IO_PIN_TYPE_011001     2006   6141               RISE  1       
+UUBEn_obuf_iopad/DIN                       IO_PAD                     0      6141               RISE  1       
+UUBEn_obuf_iopad/PACKAGEPIN:out            IO_PAD                     1914   8055               RISE  1       
+UUBEn                                      U400_TOP                   0      8055               RISE  1       
+
+++++ Path 3 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Output Port      : UUBEn
+Input Port       : A[0]
+Pad to Pad Delay : 8742
+
+Pad to Pad Path
+pin name                                   model name                 delay  cummulative delay  edge  Fanout  
+-----------------------------------------  -------------------------  -----  -----------------  ----  ------  
+A[0]                                       U400_TOP                   0      0                  FALL  1       
+A_ibuf_0_iopad/PACKAGEPIN:in               IO_PAD                     0      0                  FALL  1       
+A_ibuf_0_iopad/DOUT                        IO_PAD                     460    460                FALL  1       
+A_ibuf_0_preio/PADIN                       PRE_IO_PIN_TYPE_000001     0      460                FALL  1       
+A_ibuf_0_preio/DIN0                        PRE_IO_PIN_TYPE_000001     463    923                FALL  1       
+I__27/I                                    Odrv12                     0      923                FALL  1       
+I__27/O                                    Odrv12                     540    1463               FALL  1       
+I__28/I                                    Span12Mux_v                0      1463               FALL  1       
+I__28/O                                    Span12Mux_v                540    2003               FALL  1       
+I__29/I                                    Sp12to4                    0      2003               FALL  1       
+I__29/O                                    Sp12to4                    449    2452               FALL  1       
+I__30/I                                    LocalMux                   0      2452               FALL  1       
+I__30/O                                    LocalMux                   309    2760               FALL  1       
+I__34/I                                    InMux                      0      2760               FALL  1       
+I__34/O                                    InMux                      217    2978               FALL  1       
+U400_BYTE_ENABLE.UUBEn_0_i_LC_9_5_3/in3    LogicCell40_SEQ_MODE_0000  0      2978               FALL  1       
+U400_BYTE_ENABLE.UUBEn_0_i_LC_9_5_3/lcout  LogicCell40_SEQ_MODE_0000  288    3265               FALL  1       
+I__22/I                                    Odrv4                      0      3265               FALL  1       
+I__22/O                                    Odrv4                      372    3637               FALL  1       
+I__23/I                                    Span4Mux_s3_v              0      3637               FALL  1       
+I__23/O                                    Span4Mux_s3_v              337    3974               FALL  1       
+I__24/I                                    IoSpan4Mux                 0      3974               FALL  1       
+I__24/O                                    IoSpan4Mux                 323    4296               FALL  1       
+I__25/I                                    LocalMux                   0      4296               FALL  1       
+I__25/O                                    LocalMux                   309    4605               FALL  1       
+I__26/I                                    IoInMux                    0      4605               FALL  1       
+I__26/O                                    IoInMux                    217    4822               FALL  1       
+UUBEn_obuf_preio/DOUT0                     PRE_IO_PIN_TYPE_011001     0      4822               FALL  1       
+UUBEn_obuf_preio/PADOUT                    PRE_IO_PIN_TYPE_011001     2006   6828               RISE  1       
+UUBEn_obuf_iopad/DIN                       IO_PAD                     0      6828               RISE  1       
+UUBEn_obuf_iopad/PACKAGEPIN:out            IO_PAD                     1914   8742               RISE  1       
+UUBEn                                      U400_TOP                   0      8742               RISE  1       
+
+++++ Path 4 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Output Port      : UUBEn
+Input Port       : A[1]
+Pad to Pad Delay : 9149
+
+Pad to Pad Path
+pin name                                   model name                 delay  cummulative delay  edge  Fanout  
+-----------------------------------------  -------------------------  -----  -----------------  ----  ------  
+A[1]                                       U400_TOP                   0      0                  FALL  1       
+A_ibuf_1_iopad/PACKAGEPIN:in               IO_PAD                     0      0                  FALL  1       
+A_ibuf_1_iopad/DOUT                        IO_PAD                     460    460                FALL  1       
+A_ibuf_1_preio/PADIN                       PRE_IO_PIN_TYPE_000001     0      460                FALL  1       
+A_ibuf_1_preio/DIN0                        PRE_IO_PIN_TYPE_000001     463    923                FALL  1       
+I__44/I                                    Odrv12                     0      923                FALL  1       
+I__44/O                                    Odrv12                     540    1463               FALL  1       
+I__45/I                                    Span12Mux_v                0      1463               FALL  1       
+I__45/O                                    Span12Mux_v                540    2003               FALL  1       
+I__46/I                                    Sp12to4                    0      2003               FALL  1       
+I__46/O                                    Sp12to4                    449    2452               FALL  1       
+I__47/I                                    Span4Mux_h                 0      2452               FALL  1       
+I__47/O                                    Span4Mux_h                 316    2767               FALL  1       
+I__48/I                                    LocalMux                   0      2767               FALL  1       
+I__48/O                                    LocalMux                   309    3076               FALL  1       
+I__52/I                                    InMux                      0      3076               FALL  1       
+I__52/O                                    InMux                      217    3293               FALL  1       
+U400_BYTE_ENABLE.UUBEn_0_i_LC_9_5_3/in1    LogicCell40_SEQ_MODE_0000  0      3293               FALL  1       
+U400_BYTE_ENABLE.UUBEn_0_i_LC_9_5_3/lcout  LogicCell40_SEQ_MODE_0000  379    3672               FALL  1       
+I__22/I                                    Odrv4                      0      3672               FALL  1       
+I__22/O                                    Odrv4                      372    4044               FALL  1       
+I__23/I                                    Span4Mux_s3_v              0      4044               FALL  1       
+I__23/O                                    Span4Mux_s3_v              337    4381               FALL  1       
+I__24/I                                    IoSpan4Mux                 0      4381               FALL  1       
+I__24/O                                    IoSpan4Mux                 323    4703               FALL  1       
+I__25/I                                    LocalMux                   0      4703               FALL  1       
+I__25/O                                    LocalMux                   309    5012               FALL  1       
+I__26/I                                    IoInMux                    0      5012               FALL  1       
+I__26/O                                    IoInMux                    217    5229               FALL  1       
+UUBEn_obuf_preio/DOUT0                     PRE_IO_PIN_TYPE_011001     0      5229               FALL  1       
+UUBEn_obuf_preio/PADOUT                    PRE_IO_PIN_TYPE_011001     2006   7235               RISE  1       
+UUBEn_obuf_iopad/DIN                       IO_PAD                     0      7235               RISE  1       
+UUBEn_obuf_iopad/PACKAGEPIN:out            IO_PAD                     1914   9149               RISE  1       
+UUBEn                                      U400_TOP                   0      9149               RISE  1       
+
+
+ =====================================================================
+                    End of Path Details for Datasheet
+ #####################################################################
+
+##################################################################### 
+                    Detailed Setup Report for all timing paths 
+===================================================================== 
+
+++++ Path 1 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+Path Begin       : A[1]
+Path End         : LLBEn
+Setup Constraint : +INF
+Path slack       : +INF
+
+End-of-path required time (ps)           +INF
+
+Launch Clock Arrival Time (DEFAULT:R#0)      0
++ Launch Clock Source Latency                0
++ Input Delay                                0
++ Data Path Delay                         9170
+---------------------------------------   ---- 
+End-of-path arrival time (ps)             9170
+ 
+Data path
+pin name                                   model name                 delay  cumulative delay  slack  edge  Fanout
+-----------------------------------------  -------------------------  -----  ----------------  -----  ----  ------
+A[1]                                       U400_TOP                       0                 0   +INF  RISE       1
+A_ibuf_1_iopad/PACKAGEPIN:in               IO_PAD                         0                 0   +INF  RISE       1
+A_ibuf_1_iopad/DOUT                        IO_PAD                       510               510   +INF  RISE       1
+A_ibuf_1_preio/PADIN                       PRE_IO_PIN_TYPE_000001         0               510   +INF  RISE       1
+A_ibuf_1_preio/DIN0                        PRE_IO_PIN_TYPE_000001       463               973   +INF  FALL       1
+I__44/I                                    Odrv12                         0               973   +INF  FALL       1
+I__44/O                                    Odrv12                       540              1513   +INF  FALL       1
+I__45/I                                    Span12Mux_v                    0              1513   +INF  FALL       1
+I__45/O                                    Span12Mux_v                  540              2053   +INF  FALL       1
+I__46/I                                    Sp12to4                        0              2053   +INF  FALL       1
+I__46/O                                    Sp12to4                      449              2502   +INF  FALL       1
+I__47/I                                    Span4Mux_h                     0              2502   +INF  FALL       1
+I__47/O                                    Span4Mux_h                   316              2817   +INF  FALL       1
+I__48/I                                    LocalMux                       0              2817   +INF  FALL       1
+I__48/O                                    LocalMux                     309              3126   +INF  FALL       1
+I__49/I                                    InMux                          0              3126   +INF  FALL       1
+I__49/O                                    InMux                        217              3343   +INF  FALL       1
+I__53/I                                    CascadeMux                     0              3343   +INF  FALL       1
+I__53/O                                    CascadeMux                     0              3343   +INF  FALL       1
+U400_BYTE_ENABLE.LLBEn_0_i_LC_9_5_0/in2    LogicCell40_SEQ_MODE_0000      0              3343   +INF  FALL       1
+U400_BYTE_ENABLE.LLBEn_0_i_LC_9_5_0/lcout  LogicCell40_SEQ_MODE_0000    351              3694   +INF  FALL       1
+I__69/I                                    Odrv4                          0              3694   +INF  FALL       1
+I__69/O                                    Odrv4                        372              4066   +INF  FALL       1
+I__70/I                                    Span4Mux_s2_v                  0              4066   +INF  FALL       1
+I__70/O                                    Span4Mux_s2_v                252              4318   +INF  FALL       1
+I__71/I                                    LocalMux                       0              4318   +INF  FALL       1
+I__71/O                                    LocalMux                     309              4627   +INF  FALL       1
+I__72/I                                    IoInMux                        0              4627   +INF  FALL       1
+I__72/O                                    IoInMux                      217              4844   +INF  FALL       1
+LLBEn_obuf_preio/DOUT0                     PRE_IO_PIN_TYPE_011001         0              4844   +INF  FALL       1
+LLBEn_obuf_preio/PADOUT                    PRE_IO_PIN_TYPE_011001      2237              7082   +INF  FALL       1
+LLBEn_obuf_iopad/DIN                       IO_PAD                         0              7082   +INF  FALL       1
+LLBEn_obuf_iopad/PACKAGEPIN:out            IO_PAD                      2088              9170   +INF  FALL       1
+LLBEn                                      U400_TOP                       0              9170   +INF  FALL       1
+
+
+++++ Path 2 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+Path Begin       : A[1]
+Path End         : LMBEn
+Setup Constraint : +INF
+Path slack       : +INF
+
+End-of-path required time (ps)           +INF
+
+Launch Clock Arrival Time (DEFAULT:R#0)      0
++ Launch Clock Source Latency                0
++ Input Delay                                0
++ Data Path Delay                         9148
+---------------------------------------   ---- 
+End-of-path arrival time (ps)             9148
+ 
+Data path
+pin name                                   model name                 delay  cumulative delay  slack  edge  Fanout
+-----------------------------------------  -------------------------  -----  ----------------  -----  ----  ------
+A[1]                                       U400_TOP                       0                 0   +INF  FALL       1
+A_ibuf_1_iopad/PACKAGEPIN:in               IO_PAD                         0                 0   +INF  FALL       1
+A_ibuf_1_iopad/DOUT                        IO_PAD                       460               460   +INF  FALL       1
+A_ibuf_1_preio/PADIN                       PRE_IO_PIN_TYPE_000001         0               460   +INF  FALL       1
+A_ibuf_1_preio/DIN0                        PRE_IO_PIN_TYPE_000001       463               923   +INF  FALL       1
+I__44/I                                    Odrv12                         0               923   +INF  FALL       1
+I__44/O                                    Odrv12                       540              1463   +INF  FALL       1
+I__45/I                                    Span12Mux_v                    0              1463   +INF  FALL       1
+I__45/O                                    Span12Mux_v                  540              2003   +INF  FALL       1
+I__46/I                                    Sp12to4                        0              2003   +INF  FALL       1
+I__46/O                                    Sp12to4                      449              2452   +INF  FALL       1
+I__47/I                                    Span4Mux_h                     0              2452   +INF  FALL       1
+I__47/O                                    Span4Mux_h                   316              2767   +INF  FALL       1
+I__48/I                                    LocalMux                       0              2767   +INF  FALL       1
+I__48/O                                    LocalMux                     309              3076   +INF  FALL       1
+I__50/I                                    InMux                          0              3076   +INF  FALL       1
+I__50/O                                    InMux                        217              3293   +INF  FALL       1
+U400_BYTE_ENABLE.LMBEn_0_i_LC_9_5_1/in1    LogicCell40_SEQ_MODE_0000      0              3293   +INF  FALL       1
+U400_BYTE_ENABLE.LMBEn_0_i_LC_9_5_1/lcout  LogicCell40_SEQ_MODE_0000    379              3672   +INF  FALL       1
+I__65/I                                    Odrv4                          0              3672   +INF  FALL       1
+I__65/O                                    Odrv4                        372              4044   +INF  FALL       1
+I__66/I                                    Span4Mux_s2_v                  0              4044   +INF  FALL       1
+I__66/O                                    Span4Mux_s2_v                252              4296   +INF  FALL       1
+I__67/I                                    LocalMux                       0              4296   +INF  FALL       1
+I__67/O                                    LocalMux                     309              4605   +INF  FALL       1
+I__68/I                                    IoInMux                        0              4605   +INF  FALL       1
+I__68/O                                    IoInMux                      217              4822   +INF  FALL       1
+LMBEn_obuf_preio/DOUT0                     PRE_IO_PIN_TYPE_011001         0              4822   +INF  FALL       1
+LMBEn_obuf_preio/PADOUT                    PRE_IO_PIN_TYPE_011001      2237              7060   +INF  FALL       1
+LMBEn_obuf_iopad/DIN                       IO_PAD                         0              7060   +INF  FALL       1
+LMBEn_obuf_iopad/PACKAGEPIN:out            IO_PAD                      2088              9148   +INF  FALL       1
+LMBEn                                      U400_TOP                       0              9148   +INF  FALL       1
+
+
+++++ Path 3 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+Path Begin       : A[0]
+Path End         : UMBEn
+Setup Constraint : +INF
+Path slack       : +INF
+
+End-of-path required time (ps)           +INF
+
+Launch Clock Arrival Time (DEFAULT:R#0)      0
++ Launch Clock Source Latency                0
++ Input Delay                                0
++ Data Path Delay                         8805
+---------------------------------------   ---- 
+End-of-path arrival time (ps)             8805
+ 
+Data path
+pin name                                   model name                 delay  cumulative delay  slack  edge  Fanout
+-----------------------------------------  -------------------------  -----  ----------------  -----  ----  ------
+A[0]                                       U400_TOP                       0                 0   +INF  RISE       1
+A_ibuf_0_iopad/PACKAGEPIN:in               IO_PAD                         0                 0   +INF  RISE       1
+A_ibuf_0_iopad/DOUT                        IO_PAD                       510               510   +INF  RISE       1
+A_ibuf_0_preio/PADIN                       PRE_IO_PIN_TYPE_000001         0               510   +INF  RISE       1
+A_ibuf_0_preio/DIN0                        PRE_IO_PIN_TYPE_000001       463               973   +INF  FALL       1
+I__27/I                                    Odrv12                         0               973   +INF  FALL       1
+I__27/O                                    Odrv12                       540              1513   +INF  FALL       1
+I__28/I                                    Span12Mux_v                    0              1513   +INF  FALL       1
+I__28/O                                    Span12Mux_v                  540              2053   +INF  FALL       1
+I__29/I                                    Sp12to4                        0              2053   +INF  FALL       1
+I__29/O                                    Sp12to4                      449              2502   +INF  FALL       1
+I__30/I                                    LocalMux                       0              2502   +INF  FALL       1
+I__30/O                                    LocalMux                     309              2810   +INF  FALL       1
+I__33/I                                    InMux                          0              2810   +INF  FALL       1
+I__33/O                                    InMux                        217              3028   +INF  FALL       1
+U400_BYTE_ENABLE.UMBEn_0_i_LC_9_5_2/in0    LogicCell40_SEQ_MODE_0000      0              3028   +INF  FALL       1
+U400_BYTE_ENABLE.UMBEn_0_i_LC_9_5_2/lcout  LogicCell40_SEQ_MODE_0000    386              3414   +INF  FALL       1
+I__62/I                                    Odrv12                         0              3414   +INF  FALL       1
+I__62/O                                    Odrv12                       540              3954   +INF  FALL       1
+I__63/I                                    LocalMux                       0              3954   +INF  FALL       1
+I__63/O                                    LocalMux                     309              4262   +INF  FALL       1
+I__64/I                                    IoInMux                        0              4262   +INF  FALL       1
+I__64/O                                    IoInMux                      217              4480   +INF  FALL       1
+UMBEn_obuf_preio/DOUT0                     PRE_IO_PIN_TYPE_011001         0              4480   +INF  FALL       1
+UMBEn_obuf_preio/PADOUT                    PRE_IO_PIN_TYPE_011001      2237              6717   +INF  FALL       1
+UMBEn_obuf_iopad/DIN                       IO_PAD                         0              6717   +INF  FALL       1
+UMBEn_obuf_iopad/PACKAGEPIN:out            IO_PAD                      2088              8805   +INF  FALL       1
+UMBEn                                      U400_TOP                       0              8805   +INF  FALL       1
+
+
+++++ Path 4 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+Path Begin       : A[0]
+Path End         : UUBEn
+Setup Constraint : +INF
+Path slack       : +INF
+
+End-of-path required time (ps)           +INF
+
+Launch Clock Arrival Time (DEFAULT:R#0)      0
++ Launch Clock Source Latency                0
++ Input Delay                                0
++ Data Path Delay                         9148
+---------------------------------------   ---- 
+End-of-path arrival time (ps)             9148
+ 
+Data path
+pin name                                   model name                 delay  cumulative delay  slack  edge  Fanout
+-----------------------------------------  -------------------------  -----  ----------------  -----  ----  ------
+A[0]                                       U400_TOP                       0                 0   +INF  FALL       1
+A_ibuf_0_iopad/PACKAGEPIN:in               IO_PAD                         0                 0   +INF  FALL       1
+A_ibuf_0_iopad/DOUT                        IO_PAD                       460               460   +INF  FALL       1
+A_ibuf_0_preio/PADIN                       PRE_IO_PIN_TYPE_000001         0               460   +INF  FALL       1
+A_ibuf_0_preio/DIN0                        PRE_IO_PIN_TYPE_000001       463               923   +INF  FALL       1
+I__27/I                                    Odrv12                         0               923   +INF  FALL       1
+I__27/O                                    Odrv12                       540              1463   +INF  FALL       1
+I__28/I                                    Span12Mux_v                    0              1463   +INF  FALL       1
+I__28/O                                    Span12Mux_v                  540              2003   +INF  FALL       1
+I__29/I                                    Sp12to4                        0              2003   +INF  FALL       1
+I__29/O                                    Sp12to4                      449              2452   +INF  FALL       1
+I__30/I                                    LocalMux                       0              2452   +INF  FALL       1
+I__30/O                                    LocalMux                     309              2760   +INF  FALL       1
+I__34/I                                    InMux                          0              2760   +INF  FALL       1
+I__34/O                                    InMux                        217              2978   +INF  FALL       1
+U400_BYTE_ENABLE.UUBEn_0_i_LC_9_5_3/in3    LogicCell40_SEQ_MODE_0000      0              2978   +INF  FALL       1
+U400_BYTE_ENABLE.UUBEn_0_i_LC_9_5_3/lcout  LogicCell40_SEQ_MODE_0000    288              3265   +INF  FALL       1
+I__22/I                                    Odrv4                          0              3265   +INF  FALL       1
+I__22/O                                    Odrv4                        372              3637   +INF  FALL       1
+I__23/I                                    Span4Mux_s3_v                  0              3637   +INF  FALL       1
+I__23/O                                    Span4Mux_s3_v                337              3974   +INF  FALL       1
+I__24/I                                    IoSpan4Mux                     0              3974   +INF  FALL       1
+I__24/O                                    IoSpan4Mux                   323              4296   +INF  FALL       1
+I__25/I                                    LocalMux                       0              4296   +INF  FALL       1
+I__25/O                                    LocalMux                     309              4605   +INF  FALL       1
+I__26/I                                    IoInMux                        0              4605   +INF  FALL       1
+I__26/O                                    IoInMux                      217              4822   +INF  FALL       1
+UUBEn_obuf_preio/DOUT0                     PRE_IO_PIN_TYPE_011001         0              4822   +INF  FALL       1
+UUBEn_obuf_preio/PADOUT                    PRE_IO_PIN_TYPE_011001      2237              7060   +INF  FALL       1
+UUBEn_obuf_iopad/DIN                       IO_PAD                         0              7060   +INF  FALL       1
+UUBEn_obuf_iopad/PACKAGEPIN:out            IO_PAD                      2088              9148   +INF  FALL       1
+UUBEn                                      U400_TOP                       0              9148   +INF  FALL       1
+
+===================================================================== 
+                    End of Detailed Setup Report for all timing paths 
+##################################################################### 
+
+##################################################################### 
+                    Detailed Hold Report for all timing paths 
+===================================================================== 
+
+++++ Path 1 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+Path Begin       : A[1]
+Path End         : LLBEn
+Hold Constraint  : -INF
+Path slack       : +INF
+
+End-of-path required time (ps)           +INF
+
+Launch Clock Arrival Time (DEFAULT:R#0)      0
++ Launch Clock Source Latency                0
++ Input Delay                                0
++ Data Path Delay                         9170
+---------------------------------------   ---- 
+End-of-path arrival time (ps)             9170
+ 
+Data path
+pin name                                   model name                 delay  cumulative delay  slack  edge  Fanout
+-----------------------------------------  -------------------------  -----  ----------------  -----  ----  ------
+A[1]                                       U400_TOP                       0                 0   +INF  RISE       1
+A_ibuf_1_iopad/PACKAGEPIN:in               IO_PAD                         0                 0   +INF  RISE       1
+A_ibuf_1_iopad/DOUT                        IO_PAD                       510               510   +INF  RISE       1
+A_ibuf_1_preio/PADIN                       PRE_IO_PIN_TYPE_000001         0               510   +INF  RISE       1
+A_ibuf_1_preio/DIN0                        PRE_IO_PIN_TYPE_000001       463               973   +INF  FALL       1
+I__44/I                                    Odrv12                         0               973   +INF  FALL       1
+I__44/O                                    Odrv12                       540              1513   +INF  FALL       1
+I__45/I                                    Span12Mux_v                    0              1513   +INF  FALL       1
+I__45/O                                    Span12Mux_v                  540              2053   +INF  FALL       1
+I__46/I                                    Sp12to4                        0              2053   +INF  FALL       1
+I__46/O                                    Sp12to4                      449              2502   +INF  FALL       1
+I__47/I                                    Span4Mux_h                     0              2502   +INF  FALL       1
+I__47/O                                    Span4Mux_h                   316              2817   +INF  FALL       1
+I__48/I                                    LocalMux                       0              2817   +INF  FALL       1
+I__48/O                                    LocalMux                     309              3126   +INF  FALL       1
+I__49/I                                    InMux                          0              3126   +INF  FALL       1
+I__49/O                                    InMux                        217              3343   +INF  FALL       1
+I__53/I                                    CascadeMux                     0              3343   +INF  FALL       1
+I__53/O                                    CascadeMux                     0              3343   +INF  FALL       1
+U400_BYTE_ENABLE.LLBEn_0_i_LC_9_5_0/in2    LogicCell40_SEQ_MODE_0000      0              3343   +INF  FALL       1
+U400_BYTE_ENABLE.LLBEn_0_i_LC_9_5_0/lcout  LogicCell40_SEQ_MODE_0000    351              3694   +INF  FALL       1
+I__69/I                                    Odrv4                          0              3694   +INF  FALL       1
+I__69/O                                    Odrv4                        372              4066   +INF  FALL       1
+I__70/I                                    Span4Mux_s2_v                  0              4066   +INF  FALL       1
+I__70/O                                    Span4Mux_s2_v                252              4318   +INF  FALL       1
+I__71/I                                    LocalMux                       0              4318   +INF  FALL       1
+I__71/O                                    LocalMux                     309              4627   +INF  FALL       1
+I__72/I                                    IoInMux                        0              4627   +INF  FALL       1
+I__72/O                                    IoInMux                      217              4844   +INF  FALL       1
+LLBEn_obuf_preio/DOUT0                     PRE_IO_PIN_TYPE_011001         0              4844   +INF  FALL       1
+LLBEn_obuf_preio/PADOUT                    PRE_IO_PIN_TYPE_011001      2237              7082   +INF  FALL       1
+LLBEn_obuf_iopad/DIN                       IO_PAD                         0              7082   +INF  FALL       1
+LLBEn_obuf_iopad/PACKAGEPIN:out            IO_PAD                      2088              9170   +INF  FALL       1
+LLBEn                                      U400_TOP                       0              9170   +INF  FALL       1
+
+
+++++ Path 2 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+Path Begin       : A[1]
+Path End         : LMBEn
+Hold Constraint  : -INF
+Path slack       : +INF
+
+End-of-path required time (ps)           +INF
+
+Launch Clock Arrival Time (DEFAULT:R#0)      0
++ Launch Clock Source Latency                0
++ Input Delay                                0
++ Data Path Delay                         9148
+---------------------------------------   ---- 
+End-of-path arrival time (ps)             9148
+ 
+Data path
+pin name                                   model name                 delay  cumulative delay  slack  edge  Fanout
+-----------------------------------------  -------------------------  -----  ----------------  -----  ----  ------
+A[1]                                       U400_TOP                       0                 0   +INF  FALL       1
+A_ibuf_1_iopad/PACKAGEPIN:in               IO_PAD                         0                 0   +INF  FALL       1
+A_ibuf_1_iopad/DOUT                        IO_PAD                       460               460   +INF  FALL       1
+A_ibuf_1_preio/PADIN                       PRE_IO_PIN_TYPE_000001         0               460   +INF  FALL       1
+A_ibuf_1_preio/DIN0                        PRE_IO_PIN_TYPE_000001       463               923   +INF  FALL       1
+I__44/I                                    Odrv12                         0               923   +INF  FALL       1
+I__44/O                                    Odrv12                       540              1463   +INF  FALL       1
+I__45/I                                    Span12Mux_v                    0              1463   +INF  FALL       1
+I__45/O                                    Span12Mux_v                  540              2003   +INF  FALL       1
+I__46/I                                    Sp12to4                        0              2003   +INF  FALL       1
+I__46/O                                    Sp12to4                      449              2452   +INF  FALL       1
+I__47/I                                    Span4Mux_h                     0              2452   +INF  FALL       1
+I__47/O                                    Span4Mux_h                   316              2767   +INF  FALL       1
+I__48/I                                    LocalMux                       0              2767   +INF  FALL       1
+I__48/O                                    LocalMux                     309              3076   +INF  FALL       1
+I__50/I                                    InMux                          0              3076   +INF  FALL       1
+I__50/O                                    InMux                        217              3293   +INF  FALL       1
+U400_BYTE_ENABLE.LMBEn_0_i_LC_9_5_1/in1    LogicCell40_SEQ_MODE_0000      0              3293   +INF  FALL       1
+U400_BYTE_ENABLE.LMBEn_0_i_LC_9_5_1/lcout  LogicCell40_SEQ_MODE_0000    379              3672   +INF  FALL       1
+I__65/I                                    Odrv4                          0              3672   +INF  FALL       1
+I__65/O                                    Odrv4                        372              4044   +INF  FALL       1
+I__66/I                                    Span4Mux_s2_v                  0              4044   +INF  FALL       1
+I__66/O                                    Span4Mux_s2_v                252              4296   +INF  FALL       1
+I__67/I                                    LocalMux                       0              4296   +INF  FALL       1
+I__67/O                                    LocalMux                     309              4605   +INF  FALL       1
+I__68/I                                    IoInMux                        0              4605   +INF  FALL       1
+I__68/O                                    IoInMux                      217              4822   +INF  FALL       1
+LMBEn_obuf_preio/DOUT0                     PRE_IO_PIN_TYPE_011001         0              4822   +INF  FALL       1
+LMBEn_obuf_preio/PADOUT                    PRE_IO_PIN_TYPE_011001      2237              7060   +INF  FALL       1
+LMBEn_obuf_iopad/DIN                       IO_PAD                         0              7060   +INF  FALL       1
+LMBEn_obuf_iopad/PACKAGEPIN:out            IO_PAD                      2088              9148   +INF  FALL       1
+LMBEn                                      U400_TOP                       0              9148   +INF  FALL       1
+
+
+++++ Path 3 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+Path Begin       : A[0]
+Path End         : UMBEn
+Hold Constraint  : -INF
+Path slack       : +INF
+
+End-of-path required time (ps)           +INF
+
+Launch Clock Arrival Time (DEFAULT:R#0)      0
++ Launch Clock Source Latency                0
++ Input Delay                                0
++ Data Path Delay                         8805
+---------------------------------------   ---- 
+End-of-path arrival time (ps)             8805
+ 
+Data path
+pin name                                   model name                 delay  cumulative delay  slack  edge  Fanout
+-----------------------------------------  -------------------------  -----  ----------------  -----  ----  ------
+A[0]                                       U400_TOP                       0                 0   +INF  RISE       1
+A_ibuf_0_iopad/PACKAGEPIN:in               IO_PAD                         0                 0   +INF  RISE       1
+A_ibuf_0_iopad/DOUT                        IO_PAD                       510               510   +INF  RISE       1
+A_ibuf_0_preio/PADIN                       PRE_IO_PIN_TYPE_000001         0               510   +INF  RISE       1
+A_ibuf_0_preio/DIN0                        PRE_IO_PIN_TYPE_000001       463               973   +INF  FALL       1
+I__27/I                                    Odrv12                         0               973   +INF  FALL       1
+I__27/O                                    Odrv12                       540              1513   +INF  FALL       1
+I__28/I                                    Span12Mux_v                    0              1513   +INF  FALL       1
+I__28/O                                    Span12Mux_v                  540              2053   +INF  FALL       1
+I__29/I                                    Sp12to4                        0              2053   +INF  FALL       1
+I__29/O                                    Sp12to4                      449              2502   +INF  FALL       1
+I__30/I                                    LocalMux                       0              2502   +INF  FALL       1
+I__30/O                                    LocalMux                     309              2810   +INF  FALL       1
+I__33/I                                    InMux                          0              2810   +INF  FALL       1
+I__33/O                                    InMux                        217              3028   +INF  FALL       1
+U400_BYTE_ENABLE.UMBEn_0_i_LC_9_5_2/in0    LogicCell40_SEQ_MODE_0000      0              3028   +INF  FALL       1
+U400_BYTE_ENABLE.UMBEn_0_i_LC_9_5_2/lcout  LogicCell40_SEQ_MODE_0000    386              3414   +INF  FALL       1
+I__62/I                                    Odrv12                         0              3414   +INF  FALL       1
+I__62/O                                    Odrv12                       540              3954   +INF  FALL       1
+I__63/I                                    LocalMux                       0              3954   +INF  FALL       1
+I__63/O                                    LocalMux                     309              4262   +INF  FALL       1
+I__64/I                                    IoInMux                        0              4262   +INF  FALL       1
+I__64/O                                    IoInMux                      217              4480   +INF  FALL       1
+UMBEn_obuf_preio/DOUT0                     PRE_IO_PIN_TYPE_011001         0              4480   +INF  FALL       1
+UMBEn_obuf_preio/PADOUT                    PRE_IO_PIN_TYPE_011001      2237              6717   +INF  FALL       1
+UMBEn_obuf_iopad/DIN                       IO_PAD                         0              6717   +INF  FALL       1
+UMBEn_obuf_iopad/PACKAGEPIN:out            IO_PAD                      2088              8805   +INF  FALL       1
+UMBEn                                      U400_TOP                       0              8805   +INF  FALL       1
+
+
+++++ Path 4 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+Path Begin       : A[0]
+Path End         : UUBEn
+Hold Constraint  : -INF
+Path slack       : +INF
+
+End-of-path required time (ps)           +INF
+
+Launch Clock Arrival Time (DEFAULT:R#0)      0
++ Launch Clock Source Latency                0
++ Input Delay                                0
++ Data Path Delay                         9148
+---------------------------------------   ---- 
+End-of-path arrival time (ps)             9148
+ 
+Data path
+pin name                                   model name                 delay  cumulative delay  slack  edge  Fanout
+-----------------------------------------  -------------------------  -----  ----------------  -----  ----  ------
+A[0]                                       U400_TOP                       0                 0   +INF  FALL       1
+A_ibuf_0_iopad/PACKAGEPIN:in               IO_PAD                         0                 0   +INF  FALL       1
+A_ibuf_0_iopad/DOUT                        IO_PAD                       460               460   +INF  FALL       1
+A_ibuf_0_preio/PADIN                       PRE_IO_PIN_TYPE_000001         0               460   +INF  FALL       1
+A_ibuf_0_preio/DIN0                        PRE_IO_PIN_TYPE_000001       463               923   +INF  FALL       1
+I__27/I                                    Odrv12                         0               923   +INF  FALL       1
+I__27/O                                    Odrv12                       540              1463   +INF  FALL       1
+I__28/I                                    Span12Mux_v                    0              1463   +INF  FALL       1
+I__28/O                                    Span12Mux_v                  540              2003   +INF  FALL       1
+I__29/I                                    Sp12to4                        0              2003   +INF  FALL       1
+I__29/O                                    Sp12to4                      449              2452   +INF  FALL       1
+I__30/I                                    LocalMux                       0              2452   +INF  FALL       1
+I__30/O                                    LocalMux                     309              2760   +INF  FALL       1
+I__34/I                                    InMux                          0              2760   +INF  FALL       1
+I__34/O                                    InMux                        217              2978   +INF  FALL       1
+U400_BYTE_ENABLE.UUBEn_0_i_LC_9_5_3/in3    LogicCell40_SEQ_MODE_0000      0              2978   +INF  FALL       1
+U400_BYTE_ENABLE.UUBEn_0_i_LC_9_5_3/lcout  LogicCell40_SEQ_MODE_0000    288              3265   +INF  FALL       1
+I__22/I                                    Odrv4                          0              3265   +INF  FALL       1
+I__22/O                                    Odrv4                        372              3637   +INF  FALL       1
+I__23/I                                    Span4Mux_s3_v                  0              3637   +INF  FALL       1
+I__23/O                                    Span4Mux_s3_v                337              3974   +INF  FALL       1
+I__24/I                                    IoSpan4Mux                     0              3974   +INF  FALL       1
+I__24/O                                    IoSpan4Mux                   323              4296   +INF  FALL       1
+I__25/I                                    LocalMux                       0              4296   +INF  FALL       1
+I__25/O                                    LocalMux                     309              4605   +INF  FALL       1
+I__26/I                                    IoInMux                        0              4605   +INF  FALL       1
+I__26/O                                    IoInMux                      217              4822   +INF  FALL       1
+UUBEn_obuf_preio/DOUT0                     PRE_IO_PIN_TYPE_011001         0              4822   +INF  FALL       1
+UUBEn_obuf_preio/PADOUT                    PRE_IO_PIN_TYPE_011001      2237              7060   +INF  FALL       1
+UUBEn_obuf_iopad/DIN                       IO_PAD                         0              7060   +INF  FALL       1
+UUBEn_obuf_iopad/PACKAGEPIN:out            IO_PAD                      2088              9148   +INF  FALL       1
+UUBEn                                      U400_TOP                       0              9148   +INF  FALL       1
+
+===================================================================== 
+                    End of Detailed Hold Report for all timing paths 
+##################################################################### 
+
+##################################################################### 
+                    End of Timing Report 
+##################################################################### 
+

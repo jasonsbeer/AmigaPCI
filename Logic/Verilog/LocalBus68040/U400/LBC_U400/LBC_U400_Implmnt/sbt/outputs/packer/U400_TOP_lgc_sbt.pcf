@@ -1,0 +1,20 @@
+set_location CONSTANT_ONE_LUT4 4 9 7 #SB_LUT4
+set_location U400_BYTE_ENABLE.UMBEn_0_i 9 5 2 #SB_LUT4
+set_location U400_BYTE_ENABLE.LMBEn_0_i 9 5 1 #SB_LUT4
+set_location GND -1 -1 -1 #GND
+set_location U400_BYTE_ENABLE.UUBEn_0_i 9 5 3 #SB_LUT4
+set_location U400_BYTE_ENABLE.LLBEn_0_i 9 5 0 #SB_LUT4
+set_io WEn 13
+set_io RASn 10
+set_io LLBEn 42
+set_io CS1n 90
+set_io CS0n 9
+set_io UUBEn 37
+set_io UMBEn 40
+set_io CASn 12
+set_io SIZ[0] 60
+set_io CLKEN 1
+set_io A[1] 4
+set_io SIZ[1] 59
+set_io LMBEn 41
+set_io A[0] 3
