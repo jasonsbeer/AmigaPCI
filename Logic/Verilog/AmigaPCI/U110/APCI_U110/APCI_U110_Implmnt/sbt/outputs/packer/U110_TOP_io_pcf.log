@@ -1,0 +1,7 @@
+OUTPUT TEAn 	 location (0, 17, 0) 	 10 	 
+OUTPUT IDELENn 	 location (25, 8, 1) 	 87 	 
+OUTPUT IDELATCH 	 location (25, 7, 1) 	 85 	 
+OUTPUT IDEHWENn 	 location (25, 14, 0) 	 97 	 
+OUTPUT BGn 	 location (25, 2, 0) 	 75 	 
+OUTPUT INT2n 	 location (18, 21, 0) 	 121 	 
+OUTPUT IDEHRENn 	 location (25, 9, 0) 	 88 	 

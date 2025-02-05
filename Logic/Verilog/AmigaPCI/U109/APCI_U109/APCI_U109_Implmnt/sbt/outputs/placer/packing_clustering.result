@@ -1,0 +1,2 @@
+ble_pack LC_0 {CONSTANT_ONE_LUT4}
+clb_pack PLB_0 {LC_0}

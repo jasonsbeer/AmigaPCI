@@ -51,6 +51,13 @@ module U712_TOP (
     output TACKn
 );
 
+//646 LATCH
+//FOR NOW, MAKE ALL DATA LIVE FOR TESTING.
+//THIS WILL MATCH THE BEHAVIOR OF THE 245 TRANSCEIVER THAT WAS IN REV 4.0.
+
+assign DMA_LATCH = 0;
+assign LATCH_CLK = 0;
+
 ///////////////////
 // CLOCK FANOUT //
 /////////////////
@@ -202,8 +209,6 @@ U712_CHIP_RAM U712_CHIP_RAM (
 
     //OUTPUTS
     .BANK1 (BANK1),
-    .DMA_LATCH (DMA_LATCH),
-    .LATCH_CLK (LATCH_CLK),
     .BANK0 (BANK0),
     .CRCSn (CRCSn),
     .RASn (RASn),

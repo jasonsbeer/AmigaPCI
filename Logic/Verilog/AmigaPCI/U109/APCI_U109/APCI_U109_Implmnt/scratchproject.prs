@@ -1,0 +1,70 @@
+#--  Synopsys, Inc.
+#--  Version L-2016.09L+ice40
+#--  Project file D:\AmigaPCI\U109\APCI_U109\APCI_U109_Implmnt\scratchproject.prs
+
+#project files
+add_file -verilog "D:/AmigaPCI/U109/U109_PCI_STATE_MACHINE.v"
+add_file -verilog "D:/AmigaPCI/U109/U109_TOP.v"
+add_file -constraint "D:/AmigaPCI/U109/U109_TOP.sdc"
+
+
+
+#implementation: "APCI_U109_Implmnt"
+impl -add D:\AmigaPCI\U109\APCI_U109\APCI_U109_Implmnt -type fpga
+
+#
+#implementation attributes
+
+set_option -vlog_std v2001
+set_option -project_relative_includes 1
+set_option -include_path {D:/AmigaPCI/U109/APCI_U109/}
+
+#device options
+set_option -technology SBTiCE40
+set_option -part iCE40HX4K
+set_option -package TQ144
+set_option -speed_grade ""
+set_option -part_companion ""
+
+#compilation/mapping options
+
+# hdl_compiler_options
+set_option -distributed_compile 0
+
+# mapper_without_write_options
+set_option -frequency auto
+set_option -srs_instrumentation 1
+
+# mapper_options
+set_option -write_verilog 0
+set_option -write_vhdl 0
+
+# Lattice iCE40
+set_option -maxfan 10000
+set_option -rw_check_on_ram 0
+set_option -disable_io_insertion 0
+set_option -pipe 1
+set_option -retiming 0
+set_option -update_models_cp 0
+set_option -fix_gated_and_generated_clocks 1
+set_option -run_prop_extract 1
+
+# NFilter
+set_option -no_sequential_opt 0
+
+# sequential_optimization_options
+set_option -symbolic_fsm_compiler 1
+
+# Compiler Options
+set_option -compiler_compatible 0
+set_option -resource_sharing 1
+
+# Compiler Options
+set_option -auto_infer_blackbox 0
+
+#automatic place and route (vendor) options
+set_option -write_apr_constraint 1
+
+#set result format/file last
+project -result_file "D:/AmigaPCI/U109/APCI_U109/APCI_U109_Implmnt/APCI_U109.edf"
+impl -active "APCI_U109_Implmnt"

@@ -1,0 +1,17 @@
+---------------------------------------
+Resource Usage Report for U110_TOP 
+
+Mapping to part: ice40hx4ktq144
+Cell usage:
+SB_LUT4         0 uses
+
+I/O ports: 7
+I/O primitives: 7
+SB_IO          7 uses
+
+I/O Register bits:                  0
+Register bits not including I/Os:   0 (0%)
+
+@S |Mapping Summary:
+Total  LUTs: 0 (0%)
+

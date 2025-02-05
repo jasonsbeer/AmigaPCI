@@ -1,0 +1,9 @@
+C:\lscc\iCEcube2.2020.12\synpbase\bin64\c_hdl.exe  -osyn  D:\AmigaPCI\U109\APCI_U109\APCI_U109_Implmnt\synwork\APCI_U109_comp.srs  -hdllog  D:\AmigaPCI\U109\APCI_U109\APCI_U109_Implmnt\synlog\APCI_U109_compiler.srr  -encrypt  -mp  4  -verification_mode 0  -verilog  -prodtype  synplify_pro  -primux -fixsmult -infer_seqShift -ice -sdff_counter -nram -divnmod -nostructver   -I D:\AmigaPCI\U109\APCI_U109\  -I C:\lscc\iCEcube2.2020.12\synpbase\lib   -v2001  -devicelib  C:\lscc\iCEcube2.2020.12\synpbase\lib\generic\sb_ice40.v  -encrypt  -pro  -dmgen  D:\AmigaPCI\U109\APCI_U109\APCI_U109_Implmnt\dm  -ui -fid2 -ram -sharing on -ll 2000 -autosm  -lib work D:\AmigaPCI\U109\U109_PCI_STATE_MACHINE.v -lib work D:\AmigaPCI\U109\U109_TOP.v 
+rc:0 success:1 runtime:1
+file:D:\AmigaPCI\U109\APCI_U109\APCI_U109_Implmnt\synwork\APCI_U109_comp.srs|io:o|time:1738512542|size:2134|exec:0
+file:D:\AmigaPCI\U109\APCI_U109\APCI_U109_Implmnt\synlog\APCI_U109_compiler.srr|io:o|time:1738512542|size:3151|exec:0
+file:C:\lscc\iCEcube2.2020.12\synpbase\lib\generic\sb_ice40.v|io:i|time:1728534475|size:224837|exec:0
+file:D:\AmigaPCI\U109\U109_PCI_STATE_MACHINE.v|io:i|time:1738512228|size:534|exec:0
+file:D:\AmigaPCI\U109\U109_TOP.v|io:i|time:1738512503|size:1827|exec:0
+file:C:\lscc\iCEcube2.2020.12\synpbase\bin\c_hdl.exe|io:i|time:1728534472|size:1338368|exec:1
+file:C:\lscc\iCEcube2.2020.12\synpbase\bin64\c_hdl.exe|io:i|time:1728534473|size:1754112|exec:1

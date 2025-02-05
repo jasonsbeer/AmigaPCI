@@ -1,4 +1,4 @@
-# Sat Jan 25 09:53:25 2025
+# Sun Feb 02 09:29:14 2025
 
 Synopsys Lattice Technology Mapper, Version maplat, Build 1612R, Built Dec  5 2016 10:31:39
 Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
@@ -44,8 +44,8 @@ original code -> new code
    00000010 -> 00100
    00000011 -> 01000
    00000100 -> 10000
-@N: MO231 :"d:\amigapci\u712\u712_chip_ram.v":227:0:227:5|Found counter in view:work.U712_CHIP_RAM(verilog) instance SDRAM_COUNTER[7:0] 
-@N: MO231 :"d:\amigapci\u712\u712_chip_ram.v":100:0:100:5|Found counter in view:work.U712_CHIP_RAM(verilog) instance REFRESH_COUNTER[7:0] 
+@N: MO231 :"d:\amigapci\u712\u712_chip_ram.v":220:0:220:5|Found counter in view:work.U712_CHIP_RAM(verilog) instance SDRAM_COUNTER[7:0] 
+@N: MO231 :"d:\amigapci\u712\u712_chip_ram.v":93:0:93:5|Found counter in view:work.U712_CHIP_RAM(verilog) instance REFRESH_COUNTER[7:0] 
 Encoding state machine TACK_STATE[4:0] (in view: work.U712_CYCLE_TERM(verilog))
 original code -> new code
    000 -> 00001
@@ -87,18 +87,18 @@ Pass		 CPU time		Worst Slack		Luts / Registers
 
 
 
-@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":227:0:227:5|Boundary register U712_CHIP_RAM.CLK_EN (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
-@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":227:0:227:5|Boundary register U712_CHIP_RAM.CMA[10] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
-@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":227:0:227:5|Boundary register U712_CHIP_RAM.CMA[9] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
-@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":227:0:227:5|Boundary register U712_CHIP_RAM.CMA[8] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
-@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":227:0:227:5|Boundary register U712_CHIP_RAM.CMA[7] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
-@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":227:0:227:5|Boundary register U712_CHIP_RAM.CMA[6] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
-@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":227:0:227:5|Boundary register U712_CHIP_RAM.CMA[5] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
-@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":227:0:227:5|Boundary register U712_CHIP_RAM.CMA[4] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
-@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":227:0:227:5|Boundary register U712_CHIP_RAM.CMA[3] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
-@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":227:0:227:5|Boundary register U712_CHIP_RAM.CMA[2] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
-@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":227:0:227:5|Boundary register U712_CHIP_RAM.CMA[1] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
-@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":227:0:227:5|Boundary register U712_CHIP_RAM.CMA[0] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":220:0:220:5|Boundary register U712_CHIP_RAM.CLK_EN (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":220:0:220:5|Boundary register U712_CHIP_RAM.CMA[10] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":220:0:220:5|Boundary register U712_CHIP_RAM.CMA[9] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":220:0:220:5|Boundary register U712_CHIP_RAM.CMA[8] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":220:0:220:5|Boundary register U712_CHIP_RAM.CMA[7] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":220:0:220:5|Boundary register U712_CHIP_RAM.CMA[6] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":220:0:220:5|Boundary register U712_CHIP_RAM.CMA[5] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":220:0:220:5|Boundary register U712_CHIP_RAM.CMA[4] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":220:0:220:5|Boundary register U712_CHIP_RAM.CMA[3] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":220:0:220:5|Boundary register U712_CHIP_RAM.CMA[2] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":220:0:220:5|Boundary register U712_CHIP_RAM.CMA[1] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\amigapci\u712\u712_chip_ram.v":220:0:220:5|Boundary register U712_CHIP_RAM.CMA[0] (in view: work.U712_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
 @N: FX1017 :"d:\amigapci\u712\u712_top.v":37:20:37:21|SB_GB inserted on the net C1_c.
 @N: FX1017 :"d:\amigapci\u712\u712_top.v":37:24:37:25|SB_GB inserted on the net C3_c.
 @N: FX1017 :|SB_GB inserted on the net RESETn_c_i.
@@ -140,7 +140,7 @@ Start Writing Netlists (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00
 
 Writing Analyst data base D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\synwork\U712_icecube_m.srm
 
-Finished Writing Netlist Databases (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 139MB peak: 141MB)
+Finished Writing Netlist Databases (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 139MB peak: 141MB)
 
 Writing EDIF Netlist and constraint files
 @N: BW103 |The default time unit for the Synopsys Constraint File (SDC or FDC) is 1ns.
@@ -151,7 +151,7 @@ L-2016.09L+ice40
 Finished Writing EDIF Netlist and constraint files (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 140MB peak: 142MB)
 
 
-Start final timing analysis (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 139MB peak: 142MB)
+Start final timing analysis (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 139MB peak: 142MB)
 
 @N: MT615 |Found clock CLK40_IN with period 25.00ns 
 @N: MT615 |Found clock C1 with period 279.33ns 
@@ -160,7 +160,7 @@ Start final timing analysis (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:0
 
 
 ##### START OF TIMING REPORT #####[
-# Timing Report written on Sat Jan 25 09:53:26 2025
+# Timing Report written on Sun Feb 02 09:29:15 2025
 #
 
 
@@ -771,7 +771,7 @@ U712_CHIP_RAM.BANK0_RNO_1                    SB_LUT4      O        Out     0.379
 N_293                                        Net          -        -       1.371     -           1         
 U712_CHIP_RAM.BANK0_RNO_0                    SB_LUT4      I0       In      -         7.528       -         
 U712_CHIP_RAM.BANK0_RNO_0                    SB_LUT4      O        Out     0.449     7.977       -         
-BANK0_RNO_0                                  Net          -        -       1.371     -           1         
+N_99                                         Net          -        -       1.371     -           1         
 U712_CHIP_RAM.BANK0_RNO                      SB_LUT4      I1       In      -         9.348       -         
 U712_CHIP_RAM.BANK0_RNO                      SB_LUT4      O        Out     0.400     9.748       -         
 BANK0                                        Net          -        -       1.507     -           1         
@@ -813,7 +813,7 @@ U712_CHIP_RAM.SDRAM_COUNTER_RNIOBA64[0]     SB_LUT4     O        Out     0.379  
 N_290                                       Net         -        -       1.371     -           3         
 U712_CHIP_RAM.SDRAM_COUNTER_RNIHUFGC[0]     SB_LUT4     I0       In      -         7.528       -         
 U712_CHIP_RAM.SDRAM_COUNTER_RNIHUFGC[0]     SB_LUT4     O        Out     0.386     7.914       -         
-N_183                                       Net         -        -       1.371     -           8         
+N_181                                       Net         -        -       1.371     -           8         
 U712_CHIP_RAM.SDRAM_COUNTER_RNO[0]          SB_LUT4     I0       In      -         9.285       -         
 U712_CHIP_RAM.SDRAM_COUNTER_RNO[0]          SB_LUT4     O        Out     0.449     9.734       -         
 SDRAM_COUNTER_lm[0]                         Net         -        -       1.507     -           1         
@@ -855,7 +855,7 @@ U712_CHIP_RAM.SDRAM_COUNTER_RNIOBA64[0]     SB_LUT4     O        Out     0.379  
 N_290                                       Net         -        -       1.371     -           3         
 U712_CHIP_RAM.SDRAM_COUNTER_RNIHUFGC[0]     SB_LUT4     I0       In      -         7.528       -         
 U712_CHIP_RAM.SDRAM_COUNTER_RNIHUFGC[0]     SB_LUT4     O        Out     0.386     7.914       -         
-N_183                                       Net         -        -       1.371     -           8         
+N_181                                       Net         -        -       1.371     -           8         
 U712_CHIP_RAM.SDRAM_COUNTER_RNO[6]          SB_LUT4     I0       In      -         9.285       -         
 U712_CHIP_RAM.SDRAM_COUNTER_RNO[6]          SB_LUT4     O        Out     0.449     9.734       -         
 SDRAM_COUNTER_lm[6]                         Net         -        -       1.507     -           1         
@@ -897,7 +897,7 @@ U712_CHIP_RAM.SDRAM_COUNTER_RNIOBA64[0]     SB_LUT4     O        Out     0.379  
 N_290                                       Net         -        -       1.371     -           3         
 U712_CHIP_RAM.SDRAM_COUNTER_RNIHUFGC[0]     SB_LUT4     I0       In      -         7.528       -         
 U712_CHIP_RAM.SDRAM_COUNTER_RNIHUFGC[0]     SB_LUT4     O        Out     0.386     7.914       -         
-N_183                                       Net         -        -       1.371     -           8         
+N_181                                       Net         -        -       1.371     -           8         
 U712_CHIP_RAM.SDRAM_COUNTER_RNO[5]          SB_LUT4     I0       In      -         9.285       -         
 U712_CHIP_RAM.SDRAM_COUNTER_RNO[5]          SB_LUT4     O        Out     0.449     9.734       -         
 SDRAM_COUNTER_lm[5]                         Net         -        -       1.507     -           1         
@@ -913,10 +913,10 @@ Path delay compensated for clock skew. Clock skew is added to clock-to-out value
 Timing exceptions that could not be applied
 None
 
-Finished final timing analysis (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 140MB peak: 142MB)
+Finished final timing analysis (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 140MB peak: 142MB)
 
 
-Finished timing report (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 140MB peak: 142MB)
+Finished timing report (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 140MB peak: 142MB)
 
 ---------------------------------------
 Resource Usage Report for U712_TOP 
@@ -959,9 +959,9 @@ Distribution of All Consumed Luts 195 = 195
 
 Mapper successful!
 
-At Mapper Exit (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 28MB peak: 142MB)
+At Mapper Exit (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 28MB peak: 142MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
-# Sat Jan 25 09:53:26 2025
+# Sun Feb 02 09:29:15 2025
 
 ###########################################################]

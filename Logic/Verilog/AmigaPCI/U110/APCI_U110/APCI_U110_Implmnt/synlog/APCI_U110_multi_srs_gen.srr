@@ -1,0 +1,14 @@
+Synopsys Netlist Linker, version comp2016q3p1, Build 141R, built Dec  5 2016
+@N|Running in 64-bit mode
+File D:\AmigaPCI\U110\APCI_U110\APCI_U110_Implmnt\synwork\APCI_U110_comp.srs changed - recompiling
+@N: NF107 :"D:\AmigaPCI\U110\U110_TOP.v":1:7:1:14|Selected library: work cell: U110_TOP view verilog as top level
+@N: NF107 :"D:\AmigaPCI\U110\U110_TOP.v":1:7:1:14|Selected library: work cell: U110_TOP view verilog as top level
+
+At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 67MB peak: 68MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+
+Process completed successfully.
+# Sun Feb 02 09:50:06 2025
+
+###########################################################]

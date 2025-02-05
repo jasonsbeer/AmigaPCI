@@ -1,15 +1,15 @@
 C:\lscc\iCEcube2.2020.12\synpbase\bin64\m_generic.exe  -prodtype  synplify_pro   -encrypt  -pro  -rundir  D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt   -part iCE40HX4K  -package TQ144    -maxfan 10000 -RWCheckOnRam 0 -pipe -fixgatedclocks 1 -fixgeneratedclocks 1 -summaryfile D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\synlog\report\U712_icecube_fpga_mapper.xml  -flow mapping  -multisrs  -oedif  D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\U712_icecube.edf   -autoconstraint  -freq 1.000   -tcl  D:\AmigaPCI\U712\U712_TOP.sdc  D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\synwork\U712_icecube_prem.srd  -sap  D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\U712_icecube.sap  -otap  D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\U712_icecube.tap  -omap  D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\U712_icecube.map  -devicelib  C:\lscc\iCEcube2.2020.12\synpbase\lib\generic\sb_ice40.v  -sap  D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\U712_icecube.sap  -ologparam  D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\syntmp\U712_icecube.plg  -osyn  D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\U712_icecube.srm  -prjdir  D:\AmigaPCI\U712\U712_icecube\  -prjname  U712_icecube_syn  -log  D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\synlog\U712_icecube_fpga_mapper.srr 
 rc:1 success:1 runtime:1
-file:D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\U712_icecube.edf|io:o|time:1737820406|size:226539|exec:0
+file:D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\U712_icecube.edf|io:o|time:1738510155|size:226544|exec:0
 file:D:\AmigaPCI\U712\U712_TOP.sdc|io:i|time:1737816910|size:276|exec:0
-file:D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\synwork\U712_icecube_prem.srd|io:i|time:1737820404|size:27145|exec:0
-file:D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\U712_icecube.sap|io:o|time:1737820405|size:2804|exec:0
+file:D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\synwork\U712_icecube_prem.srd|io:i|time:1738510154|size:28802|exec:0
+file:D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\U712_icecube.sap|io:o|time:1738510154|size:2804|exec:0
 file:D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\U712_icecube.tap|io:o|time:0|size:0|exec:0
-file:D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\U712_icecube.map|io:o|time:1737820406|size:28|exec:0
+file:D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\U712_icecube.map|io:o|time:1738510155|size:28|exec:0
 file:C:\lscc\iCEcube2.2020.12\synpbase\lib\generic\sb_ice40.v|io:i|time:1728534475|size:224837|exec:0
-file:D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\U712_icecube.sap|io:o|time:1737820405|size:2804|exec:0
-file:D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\syntmp\U712_icecube.plg|io:o|time:1737820406|size:1149|exec:0
-file:D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\U712_icecube.srm|io:o|time:1737820406|size:20101|exec:0
-file:D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\synlog\U712_icecube_fpga_mapper.srr|io:o|time:1737820406|size:68004|exec:0
+file:D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\U712_icecube.sap|io:o|time:1738510154|size:2804|exec:0
+file:D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\syntmp\U712_icecube.plg|io:o|time:1738510155|size:1149|exec:0
+file:D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\U712_icecube.srm|io:o|time:1738510155|size:20090|exec:0
+file:D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\synlog\U712_icecube_fpga_mapper.srr|io:o|time:1738510155|size:68002|exec:0
 file:C:\lscc\iCEcube2.2020.12\synpbase\bin\m_generic.exe|io:i|time:1728534473|size:17853440|exec:1
 file:C:\lscc\iCEcube2.2020.12\synpbase\bin64\m_generic.exe|io:i|time:1728534474|size:32355840|exec:1

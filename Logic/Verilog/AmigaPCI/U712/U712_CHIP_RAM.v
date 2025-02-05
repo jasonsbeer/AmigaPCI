@@ -38,7 +38,7 @@ module U712_CHIP_RAM (
     input [9:0] DRA,
     input DBR_SYNC,
 
-    output BANK1, DMA_LATCH, LATCH_CLK,
+    output BANK1,
     output reg BANK0,
     output reg DBDIR,
     output reg CLK_EN,
@@ -53,13 +53,6 @@ module U712_CHIP_RAM (
     output reg [10:0]CMA
 
 );
-
-//646 LATCH
-//FOR NOW, MAKE ALL DATA LIVE FOR TESTING.
-//THIS WILL MATCH THE BEHAVIOR OF THE 245 TRANSCEIVER THAT WAS IN REV 4.0.
-
-assign DMA_LATCH = 0;
-assign LATCH_CLK = 0;
 
 /////////////////
 // PARAMETERS //

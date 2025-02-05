@@ -6,7 +6,7 @@
 
 // Build Date:         Dec  9 2020 18:18:12
 
-// File Generated:     Jan 25 2025 09:54:02
+// File Generated:     Feb 2 2025 09:29:49
 
 // Purpose:            Post-Route Verilog/VHDL netlist for timing simulation
 
@@ -1698,25 +1698,25 @@ module U712_TOP (
     wire N__6437;
     wire N__6434;
     wire N__6429;
-    wire N__6428;
-    wire N__6427;
-    wire N__6424;
-    wire N__6421;
+    wire N__6426;
+    wire N__6425;
+    wire N__6422;
+    wire N__6419;
     wire N__6418;
-    wire N__6415;
-    wire N__6412;
-    wire N__6409;
+    wire N__6413;
+    wire N__6410;
+    wire N__6407;
     wire N__6404;
-    wire N__6401;
+    wire N__6399;
     wire N__6396;
-    wire N__6393;
+    wire N__6395;
     wire N__6392;
-    wire N__6389;
-    wire N__6388;
+    wire N__6391;
+    wire N__6390;
     wire N__6387;
     wire N__6384;
-    wire N__6381;
-    wire N__6376;
+    wire N__6379;
+    wire N__6372;
     wire N__6369;
     wire N__6368;
     wire N__6365;
@@ -2609,7 +2609,7 @@ module U712_TOP (
     wire REGENn_c;
     wire \U712_REG_SM.N_307 ;
     wire \U712_REG_SM.N_219 ;
-    wire \U712_REG_SM.N_40 ;
+    wire \U712_REG_SM.REG_TACK_RNOZ0Z_0 ;
     wire \U712_REG_SM.N_235 ;
     wire \U712_CHIP_RAM.un5_DMA_CYCLE_START_0_cascade_ ;
     wire \U712_REG_SM.N_225 ;
@@ -2623,12 +2623,12 @@ module U712_TOP (
     wire \U712_REG_SM.STATE_COUNT_srsts_i_i_0_0_3 ;
     wire \U712_REG_SM.STATE_COUNTZ0Z_4 ;
     wire \U712_REG_SM.C3_SYNCZ0Z_0 ;
-    wire N_42_i;
+    wire N_40_i;
     wire \U712_REG_SM.N_261 ;
     wire \U712_REG_SM.C1_SYNCZ0Z_0 ;
     wire \U712_REG_SM.C1_SYNCZ0Z_1 ;
     wire \U712_REG_SM.STATE_COUNTZ0Z_1 ;
-    wire N_43_i;
+    wire N_41_i;
     wire \U712_REG_SM.un1_ASn_0_sqmuxa_1_i_i_0_0 ;
     wire \U712_REG_SM.DS_EN_RNOZ0Z_0 ;
     wire \U712_REG_SM.N_314 ;
@@ -2665,7 +2665,7 @@ module U712_TOP (
     wire \U712_BYTE_ENABLE.N_327 ;
     wire CASUn_c;
     wire \U712_BYTE_ENABLE.N_319_cascade_ ;
-    wire N_45_i;
+    wire N_43_i;
     wire SIZ_c_1;
     wire \U712_BYTE_ENABLE.un1_CLLBEn_i_0_a3Z0Z_0 ;
     wire \U712_BYTE_ENABLE.N_321 ;
@@ -2683,12 +2683,12 @@ module U712_TOP (
     wire \U712_CHIP_RAM.N_359_cascade_ ;
     wire \U712_CHIP_RAM.un1_SDRAM_COUNTER44_2_0_cascade_ ;
     wire \U712_CHIP_RAM.N_290_cascade_ ;
-    wire \U712_CHIP_RAM.N_183_cascade_ ;
+    wire \U712_CHIP_RAM.N_181_cascade_ ;
     wire \U712_CHIP_RAM.SDRAM_COUNTER_0_sqmuxa_0_a4_0_a3_0 ;
     wire \U712_CHIP_RAM.N_216_cascade_ ;
     wire \U712_CHIP_RAM.un1_SDRAM_COUNTER44_0_0_a3_0_0 ;
     wire \U712_CHIP_RAM.SDRAM_COUNTER_s_2 ;
-    wire \U712_CHIP_RAM.N_183 ;
+    wire \U712_CHIP_RAM.N_181 ;
     wire \U712_CHIP_RAM.SDRAM_COUNTERe_0_i ;
     wire \U712_CHIP_RAM.N_204_cascade_ ;
     wire \U712_CHIP_RAM.N_279_1 ;
@@ -2709,7 +2709,7 @@ module U712_TOP (
     wire \U712_BYTE_ENABLE.N_322 ;
     wire \U712_BYTE_ENABLE.un1_CUMBEn_i_0_a3_0_0_cascade_ ;
     wire CASLn_c;
-    wire N_44_i;
+    wire N_42_i;
     wire REG_CYCLEm;
     wire DRDENn_c;
     wire A_c_8;
@@ -2736,7 +2736,7 @@ module U712_TOP (
     wire \U712_CHIP_RAM.N_352 ;
     wire \U712_CHIP_RAM.N_293_cascade_ ;
     wire \U712_CHIP_RAM.SDRAM_CMD_0_sqmuxa_1 ;
-    wire \U712_CHIP_RAM.BANK0_RNOZ0Z_0_cascade_ ;
+    wire \U712_CHIP_RAM.N_99_cascade_ ;
     wire \U712_CHIP_RAM.N_290 ;
     wire BANK0_c;
     wire TSn_c;
@@ -8649,64 +8649,64 @@ module U712_TOP (
             .I(DBR_SYNCZ0Z_1));
     InMux I__1213 (
             .O(N__6429),
-            .I(N__6424));
-    InMux I__1212 (
-            .O(N__6428),
-            .I(N__6421));
-    CascadeMux I__1211 (
-            .O(N__6427),
-            .I(N__6418));
-    LocalMux I__1210 (
-            .O(N__6424),
-            .I(N__6415));
+            .I(N__6426));
+    LocalMux I__1212 (
+            .O(N__6426),
+            .I(N__6422));
+    InMux I__1211 (
+            .O(N__6425),
+            .I(N__6419));
+    Span4Mux_v I__1210 (
+            .O(N__6422),
+            .I(N__6413));
     LocalMux I__1209 (
-            .O(N__6421),
-            .I(N__6412));
+            .O(N__6419),
+            .I(N__6413));
     InMux I__1208 (
             .O(N__6418),
-            .I(N__6409));
-    Span4Mux_v I__1207 (
-            .O(N__6415),
+            .I(N__6410));
+    Span4Mux_h I__1207 (
+            .O(N__6413),
+            .I(N__6407));
+    LocalMux I__1206 (
+            .O(N__6410),
             .I(N__6404));
-    Span4Mux_v I__1206 (
-            .O(N__6412),
-            .I(N__6404));
-    LocalMux I__1205 (
-            .O(N__6409),
-            .I(N__6401));
+    Odrv4 I__1205 (
+            .O(N__6407),
+            .I(\U712_CYCLE_TERM.TACK_STATEZ0Z_3 ));
     Odrv4 I__1204 (
             .O(N__6404),
             .I(\U712_CYCLE_TERM.TACK_STATEZ0Z_3 ));
-    Odrv4 I__1203 (
-            .O(N__6401),
-            .I(\U712_CYCLE_TERM.TACK_STATEZ0Z_3 ));
-    InMux I__1202 (
+    InMux I__1203 (
+            .O(N__6399),
+            .I(N__6396));
+    LocalMux I__1202 (
             .O(N__6396),
-            .I(N__6393));
-    LocalMux I__1201 (
-            .O(N__6393),
-            .I(N__6389));
-    InMux I__1200 (
+            .I(N__6392));
+    InMux I__1201 (
+            .O(N__6395),
+            .I(N__6387));
+    Span4Mux_h I__1200 (
             .O(N__6392),
             .I(N__6384));
-    Span4Mux_h I__1199 (
-            .O(N__6389),
-            .I(N__6381));
+    InMux I__1199 (
+            .O(N__6391),
+            .I(N__6379));
     InMux I__1198 (
-            .O(N__6388),
-            .I(N__6376));
-    InMux I__1197 (
+            .O(N__6390),
+            .I(N__6379));
+    LocalMux I__1197 (
             .O(N__6387),
-            .I(N__6376));
-    LocalMux I__1196 (
+            .I(\U712_CYCLE_TERM.TACK_STATEZ0Z_1 ));
+    Odrv4 I__1196 (
             .O(N__6384),
             .I(\U712_CYCLE_TERM.TACK_STATEZ0Z_1 ));
-    Odrv4 I__1195 (
-            .O(N__6381),
+    LocalMux I__1195 (
+            .O(N__6379),
             .I(\U712_CYCLE_TERM.TACK_STATEZ0Z_1 ));
-    LocalMux I__1194 (
-            .O(N__6376),
-            .I(\U712_CYCLE_TERM.TACK_STATEZ0Z_1 ));
+    CascadeMux I__1194 (
+            .O(N__6372),
+            .I(N__6369));
     InMux I__1193 (
             .O(N__6369),
             .I(N__6365));
@@ -9153,7 +9153,7 @@ module U712_TOP (
             .I(\U712_CHIP_RAM.SDRAM_CMD_0_sqmuxa_1 ));
     CascadeMux I__1045 (
             .O(N__5925),
-            .I(\U712_CHIP_RAM.BANK0_RNOZ0Z_0_cascade_ ));
+            .I(\U712_CHIP_RAM.N_99_cascade_ ));
     InMux I__1044 (
             .O(N__5922),
             .I(N__5918));
@@ -9765,7 +9765,7 @@ module U712_TOP (
             .I(N__5313));
     Odrv12 I__841 (
             .O(N__5313),
-            .I(N_44_i));
+            .I(N_42_i));
     InMux I__840 (
             .O(N__5310),
             .I(N__5307));
@@ -9960,7 +9960,7 @@ module U712_TOP (
             .I(\U712_CHIP_RAM.N_245 ));
     CascadeMux I__776 (
             .O(N__5118),
-            .I(\U712_CHIP_RAM.N_183_cascade_ ));
+            .I(\U712_CHIP_RAM.N_181_cascade_ ));
     InMux I__775 (
             .O(N__5115),
             .I(N__5112));
@@ -10017,13 +10017,13 @@ module U712_TOP (
             .I(N__5059));
     LocalMux I__757 (
             .O(N__5067),
-            .I(\U712_CHIP_RAM.N_183 ));
+            .I(\U712_CHIP_RAM.N_181 ));
     LocalMux I__756 (
             .O(N__5062),
-            .I(\U712_CHIP_RAM.N_183 ));
+            .I(\U712_CHIP_RAM.N_181 ));
     Odrv4 I__755 (
             .O(N__5059),
-            .I(\U712_CHIP_RAM.N_183 ));
+            .I(\U712_CHIP_RAM.N_181 ));
     CEMux I__754 (
             .O(N__5052),
             .I(N__5048));
@@ -10167,7 +10167,7 @@ module U712_TOP (
             .I(N__4911));
     Odrv12 I__707 (
             .O(N__4911),
-            .I(N_45_i));
+            .I(N_43_i));
     InMux I__706 (
             .O(N__4908),
             .I(N__4905));
@@ -10755,7 +10755,7 @@ module U712_TOP (
             .I(N__4323));
     Odrv12 I__511 (
             .O(N__4323),
-            .I(N_42_i));
+            .I(N_40_i));
     InMux I__510 (
             .O(N__4320),
             .I(N__4317));
@@ -10872,7 +10872,7 @@ module U712_TOP (
             .I(N__4206));
     Odrv12 I__472 (
             .O(N__4206),
-            .I(N_43_i));
+            .I(N_41_i));
     InMux I__471 (
             .O(N__4203),
             .I(N__4200));
@@ -11037,7 +11037,7 @@ module U712_TOP (
             .I(N__4041));
     LocalMux I__417 (
             .O(N__4041),
-            .I(\U712_REG_SM.N_40 ));
+            .I(\U712_REG_SM.REG_TACK_RNOZ0Z_0 ));
     CascadeMux I__416 (
             .O(N__4038),
             .I(N__4034));
@@ -11683,7 +11683,7 @@ module U712_TOP (
             .in0(_gnd_net_),
             .in1(_gnd_net_),
             .in2(_gnd_net_),
-            .in3(N__6428),
+            .in3(N__6429),
             .lcout(\U712_CYCLE_TERM.TACK_STATEZ0Z_4 ),
             .ltout(),
             .carryin(_gnd_net_),
@@ -11729,7 +11729,7 @@ module U712_TOP (
             .in1(N__4409),
             .in2(N__4062),
             .in3(N__4446),
-            .lcout(\U712_REG_SM.N_40 ),
+            .lcout(\U712_REG_SM.REG_TACK_RNOZ0Z_0 ),
             .ltout(),
             .carryin(_gnd_net_),
             .carryout(),
@@ -11976,15 +11976,15 @@ module U712_TOP (
             .clk(_gnd_net_),
             .ce(),
             .sr(_gnd_net_));
-    defparam \U712_BYTE_ENABLE.N_42_i_LC_6_11_3 .C_ON=1'b0;
-    defparam \U712_BYTE_ENABLE.N_42_i_LC_6_11_3 .SEQ_MODE=4'b0000;
-    defparam \U712_BYTE_ENABLE.N_42_i_LC_6_11_3 .LUT_INIT=16'b0000000000000111;
-    LogicCell40 \U712_BYTE_ENABLE.N_42_i_LC_6_11_3  (
+    defparam \U712_BYTE_ENABLE.N_40_i_LC_6_11_3 .C_ON=1'b0;
+    defparam \U712_BYTE_ENABLE.N_40_i_LC_6_11_3 .SEQ_MODE=4'b0000;
+    defparam \U712_BYTE_ENABLE.N_40_i_LC_6_11_3 .LUT_INIT=16'b0000000000000111;
+    LogicCell40 \U712_BYTE_ENABLE.N_40_i_LC_6_11_3  (
             .in0(N__4847),
             .in1(N__4872),
             .in2(N__5412),
             .in3(N__4584),
-            .lcout(N_42_i),
+            .lcout(N_40_i),
             .ltout(),
             .carryin(_gnd_net_),
             .carryout(),
@@ -12021,15 +12021,15 @@ module U712_TOP (
             .clk(_gnd_net_),
             .ce(),
             .sr(_gnd_net_));
-    defparam \U712_BYTE_ENABLE.N_43_i_LC_6_12_0 .C_ON=1'b0;
-    defparam \U712_BYTE_ENABLE.N_43_i_LC_6_12_0 .SEQ_MODE=4'b0000;
-    defparam \U712_BYTE_ENABLE.N_43_i_LC_6_12_0 .LUT_INIT=16'b0011001000110011;
-    LogicCell40 \U712_BYTE_ENABLE.N_43_i_LC_6_12_0  (
+    defparam \U712_BYTE_ENABLE.N_41_i_LC_6_12_0 .C_ON=1'b0;
+    defparam \U712_BYTE_ENABLE.N_41_i_LC_6_12_0 .SEQ_MODE=4'b0000;
+    defparam \U712_BYTE_ENABLE.N_41_i_LC_6_12_0 .LUT_INIT=16'b0011001000110011;
+    LogicCell40 \U712_BYTE_ENABLE.N_41_i_LC_6_12_0  (
             .in0(N__5465),
             .in1(N__4806),
             .in2(N__4975),
             .in3(N__6764),
-            .lcout(N_43_i),
+            .lcout(N_41_i),
             .ltout(),
             .carryin(_gnd_net_),
             .carryout(),
@@ -12071,7 +12071,7 @@ module U712_TOP (
     defparam \U712_CYCLE_TERM.TACK_STATE_1_LC_7_7_2 .LUT_INIT=16'b1100111110001000;
     LogicCell40 \U712_CYCLE_TERM.TACK_STATE_1_LC_7_7_2  (
             .in0(N__8817),
-            .in1(N__6388),
+            .in1(N__6391),
             .in2(N__4545),
             .in3(N__4742),
             .lcout(\U712_CYCLE_TERM.TACK_STATEZ0Z_1 ),
@@ -12085,7 +12085,7 @@ module U712_TOP (
     defparam \U712_CYCLE_TERM.TACK_STATE_0_LC_7_7_5 .SEQ_MODE=4'b1001;
     defparam \U712_CYCLE_TERM.TACK_STATE_0_LC_7_7_5 .LUT_INIT=16'b0101010001010000;
     LogicCell40 \U712_CYCLE_TERM.TACK_STATE_0_LC_7_7_5  (
-            .in0(N__6387),
+            .in0(N__6390),
             .in1(N__4716),
             .in2(N__4763),
             .in3(N__4781),
@@ -12115,10 +12115,10 @@ module U712_TOP (
     defparam \U712_CYCLE_TERM.TACK_OUTn_LC_7_8_5 .SEQ_MODE=4'b1001;
     defparam \U712_CYCLE_TERM.TACK_OUTn_LC_7_8_5 .LUT_INIT=16'b1111111111000100;
     LogicCell40 \U712_CYCLE_TERM.TACK_OUTn_LC_7_8_5  (
-            .in0(N__6392),
+            .in0(N__6395),
             .in1(N__4523),
             .in2(N__8826),
-            .in3(N__6429),
+            .in3(N__6425),
             .lcout(TACK_OUTn),
             .ltout(),
             .carryin(_gnd_net_),
@@ -12471,15 +12471,15 @@ module U712_TOP (
             .clk(_gnd_net_),
             .ce(),
             .sr(_gnd_net_));
-    defparam \U712_BYTE_ENABLE.N_45_i_LC_7_12_5 .C_ON=1'b0;
-    defparam \U712_BYTE_ENABLE.N_45_i_LC_7_12_5 .SEQ_MODE=4'b0000;
-    defparam \U712_BYTE_ENABLE.N_45_i_LC_7_12_5 .LUT_INIT=16'b0000000000001011;
-    LogicCell40 \U712_BYTE_ENABLE.N_45_i_LC_7_12_5  (
+    defparam \U712_BYTE_ENABLE.N_43_i_LC_7_12_5 .C_ON=1'b0;
+    defparam \U712_BYTE_ENABLE.N_43_i_LC_7_12_5 .SEQ_MODE=4'b0000;
+    defparam \U712_BYTE_ENABLE.N_43_i_LC_7_12_5 .LUT_INIT=16'b0000000000001011;
+    LogicCell40 \U712_BYTE_ENABLE.N_43_i_LC_7_12_5  (
             .in0(N__4976),
             .in1(N__5418),
             .in2(N__4932),
             .in3(N__4857),
-            .lcout(N_45_i),
+            .lcout(N_43_i),
             .ltout(),
             .carryin(_gnd_net_),
             .carryout(),
@@ -12580,9 +12580,9 @@ module U712_TOP (
     defparam \U712_CYCLE_TERM.TACK_STATE_RNO_0_0_LC_8_7_4 .SEQ_MODE=4'b0000;
     defparam \U712_CYCLE_TERM.TACK_STATE_RNO_0_0_LC_8_7_4 .LUT_INIT=16'b0000010100000101;
     LogicCell40 \U712_CYCLE_TERM.TACK_STATE_RNO_0_0_LC_8_7_4  (
-            .in0(N__6369),
+            .in0(N__6418),
             .in1(_gnd_net_),
-            .in2(N__6427),
+            .in2(N__6372),
             .in3(_gnd_net_),
             .lcout(\U712_CYCLE_TERM.TACK_STATE_srsts_0_i_a3_0_0_0 ),
             .ltout(),
@@ -12719,8 +12719,8 @@ module U712_TOP (
             .in1(N__8681),
             .in2(N__4980),
             .in3(N__5016),
-            .lcout(\U712_CHIP_RAM.N_183 ),
-            .ltout(\U712_CHIP_RAM.N_183_cascade_ ),
+            .lcout(\U712_CHIP_RAM.N_181 ),
+            .ltout(\U712_CHIP_RAM.N_181_cascade_ ),
             .carryin(_gnd_net_),
             .carryout(),
             .clk(_gnd_net_),
@@ -13041,15 +13041,15 @@ module U712_TOP (
             .clk(_gnd_net_),
             .ce(),
             .sr(_gnd_net_));
-    defparam \U712_BYTE_ENABLE.N_44_i_LC_8_12_4 .C_ON=1'b0;
-    defparam \U712_BYTE_ENABLE.N_44_i_LC_8_12_4 .SEQ_MODE=4'b0000;
-    defparam \U712_BYTE_ENABLE.N_44_i_LC_8_12_4 .LUT_INIT=16'b0001000100000001;
-    LogicCell40 \U712_BYTE_ENABLE.N_44_i_LC_8_12_4  (
+    defparam \U712_BYTE_ENABLE.N_42_i_LC_8_12_4 .C_ON=1'b0;
+    defparam \U712_BYTE_ENABLE.N_42_i_LC_8_12_4 .SEQ_MODE=4'b0000;
+    defparam \U712_BYTE_ENABLE.N_42_i_LC_8_12_4 .LUT_INIT=16'b0001000100000001;
+    LogicCell40 \U712_BYTE_ENABLE.N_42_i_LC_8_12_4  (
             .in0(N__5407),
             .in1(N__5391),
             .in2(N__5385),
             .in3(N__5371),
-            .lcout(N_44_i),
+            .lcout(N_42_i),
             .ltout(),
             .carryin(_gnd_net_),
             .carryout(),
@@ -13320,7 +13320,7 @@ module U712_TOP (
             .in2(N__5946),
             .in3(N__8952),
             .lcout(),
-            .ltout(\U712_CHIP_RAM.BANK0_RNOZ0Z_0_cascade_ ),
+            .ltout(\U712_CHIP_RAM.N_99_cascade_ ),
             .carryin(_gnd_net_),
             .carryout(),
             .clk(_gnd_net_),
@@ -13423,7 +13423,7 @@ module U712_TOP (
             .in0(_gnd_net_),
             .in1(N__8825),
             .in2(_gnd_net_),
-            .in3(N__6396),
+            .in3(N__6399),
             .lcout(\U712_CYCLE_TERM.TACK_STATEZ0Z_2 ),
             .ltout(),
             .carryin(_gnd_net_),

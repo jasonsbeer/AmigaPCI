@@ -1,0 +1,4 @@
+OUTPUT PCIDIR 	 location (0, 1, 0) 	 34 	 
+OUTPUT PCICYCLEn 	 location (0, 11, 1) 	 19 	 
+OUTPUT ALATCH 	 location (2, 0, 0) 	 37 	 
+OUTPUT ADLATCH 	 location (3, 0, 1) 	 39 	 

@@ -6,7 +6,7 @@
 
 -- Build Date:         Dec  9 2020 18:18:06
 
--- File Generated:     Jan 25 2025 09:54:02
+-- File Generated:     Feb 2 2025 09:29:50
 
 -- Purpose:            Post-Route Verilog/VHDL netlist for timing simulation
 
@@ -1666,25 +1666,25 @@ signal \N__6440\ : std_logic;
 signal \N__6437\ : std_logic;
 signal \N__6434\ : std_logic;
 signal \N__6429\ : std_logic;
-signal \N__6428\ : std_logic;
-signal \N__6427\ : std_logic;
-signal \N__6424\ : std_logic;
-signal \N__6421\ : std_logic;
+signal \N__6426\ : std_logic;
+signal \N__6425\ : std_logic;
+signal \N__6422\ : std_logic;
+signal \N__6419\ : std_logic;
 signal \N__6418\ : std_logic;
-signal \N__6415\ : std_logic;
-signal \N__6412\ : std_logic;
-signal \N__6409\ : std_logic;
+signal \N__6413\ : std_logic;
+signal \N__6410\ : std_logic;
+signal \N__6407\ : std_logic;
 signal \N__6404\ : std_logic;
-signal \N__6401\ : std_logic;
+signal \N__6399\ : std_logic;
 signal \N__6396\ : std_logic;
-signal \N__6393\ : std_logic;
+signal \N__6395\ : std_logic;
 signal \N__6392\ : std_logic;
-signal \N__6389\ : std_logic;
-signal \N__6388\ : std_logic;
+signal \N__6391\ : std_logic;
+signal \N__6390\ : std_logic;
 signal \N__6387\ : std_logic;
 signal \N__6384\ : std_logic;
-signal \N__6381\ : std_logic;
-signal \N__6376\ : std_logic;
+signal \N__6379\ : std_logic;
+signal \N__6372\ : std_logic;
 signal \N__6369\ : std_logic;
 signal \N__6368\ : std_logic;
 signal \N__6365\ : std_logic;
@@ -2577,7 +2577,7 @@ signal \U712_REG_SM.REG_CYCLE_STARTZ0\ : std_logic;
 signal \REGENn_c\ : std_logic;
 signal \U712_REG_SM.N_307\ : std_logic;
 signal \U712_REG_SM.N_219\ : std_logic;
-signal \U712_REG_SM.N_40\ : std_logic;
+signal \U712_REG_SM.REG_TACK_RNOZ0Z_0\ : std_logic;
 signal \U712_REG_SM.N_235\ : std_logic;
 signal \U712_CHIP_RAM.un5_DMA_CYCLE_START_0_cascade_\ : std_logic;
 signal \U712_REG_SM.N_225\ : std_logic;
@@ -2591,12 +2591,12 @@ signal \U712_REG_SM.STATE_COUNTZ0Z_3\ : std_logic;
 signal \U712_REG_SM.STATE_COUNT_srsts_i_i_0_0_3\ : std_logic;
 signal \U712_REG_SM.STATE_COUNTZ0Z_4\ : std_logic;
 signal \U712_REG_SM.C3_SYNCZ0Z_0\ : std_logic;
-signal \N_42_i\ : std_logic;
+signal \N_40_i\ : std_logic;
 signal \U712_REG_SM.N_261\ : std_logic;
 signal \U712_REG_SM.C1_SYNCZ0Z_0\ : std_logic;
 signal \U712_REG_SM.C1_SYNCZ0Z_1\ : std_logic;
 signal \U712_REG_SM.STATE_COUNTZ0Z_1\ : std_logic;
-signal \N_43_i\ : std_logic;
+signal \N_41_i\ : std_logic;
 signal \U712_REG_SM.un1_ASn_0_sqmuxa_1_i_i_0_0\ : std_logic;
 signal \U712_REG_SM.DS_EN_RNOZ0Z_0\ : std_logic;
 signal \U712_REG_SM.N_314\ : std_logic;
@@ -2633,7 +2633,7 @@ signal \U712_CHIP_RAM.CMA_esr_RNO_1Z0Z_2_cascade_\ : std_logic;
 signal \U712_BYTE_ENABLE.N_327\ : std_logic;
 signal \CASUn_c\ : std_logic;
 signal \U712_BYTE_ENABLE.N_319_cascade_\ : std_logic;
-signal \N_45_i\ : std_logic;
+signal \N_43_i\ : std_logic;
 signal \SIZ_c_1\ : std_logic;
 signal \U712_BYTE_ENABLE.un1_CLLBEn_i_0_a3Z0Z_0\ : std_logic;
 signal \U712_BYTE_ENABLE.N_321\ : std_logic;
@@ -2651,12 +2651,12 @@ signal \U712_CHIP_RAM.N_209_cascade_\ : std_logic;
 signal \U712_CHIP_RAM.N_359_cascade_\ : std_logic;
 signal \U712_CHIP_RAM.un1_SDRAM_COUNTER44_2_0_cascade_\ : std_logic;
 signal \U712_CHIP_RAM.N_290_cascade_\ : std_logic;
-signal \U712_CHIP_RAM.N_183_cascade_\ : std_logic;
+signal \U712_CHIP_RAM.N_181_cascade_\ : std_logic;
 signal \U712_CHIP_RAM.SDRAM_COUNTER_0_sqmuxa_0_a4_0_a3_0\ : std_logic;
 signal \U712_CHIP_RAM.N_216_cascade_\ : std_logic;
 signal \U712_CHIP_RAM.un1_SDRAM_COUNTER44_0_0_a3_0_0\ : std_logic;
 signal \U712_CHIP_RAM.SDRAM_COUNTER_s_2\ : std_logic;
-signal \U712_CHIP_RAM.N_183\ : std_logic;
+signal \U712_CHIP_RAM.N_181\ : std_logic;
 signal \U712_CHIP_RAM.SDRAM_COUNTERe_0_i\ : std_logic;
 signal \U712_CHIP_RAM.N_204_cascade_\ : std_logic;
 signal \U712_CHIP_RAM.N_279_1\ : std_logic;
@@ -2677,7 +2677,7 @@ signal \U712_BYTE_ENABLE.N_319\ : std_logic;
 signal \U712_BYTE_ENABLE.N_322\ : std_logic;
 signal \U712_BYTE_ENABLE.un1_CUMBEn_i_0_a3_0_0_cascade_\ : std_logic;
 signal \CASLn_c\ : std_logic;
-signal \N_44_i\ : std_logic;
+signal \N_42_i\ : std_logic;
 signal \REG_CYCLEm\ : std_logic;
 signal \DRDENn_c\ : std_logic;
 signal \A_c_8\ : std_logic;
@@ -2704,7 +2704,7 @@ signal \U712_CHIP_RAM.N_395\ : std_logic;
 signal \U712_CHIP_RAM.N_352\ : std_logic;
 signal \U712_CHIP_RAM.N_293_cascade_\ : std_logic;
 signal \U712_CHIP_RAM.SDRAM_CMD_0_sqmuxa_1\ : std_logic;
-signal \U712_CHIP_RAM.BANK0_RNOZ0Z_0_cascade_\ : std_logic;
+signal \U712_CHIP_RAM.N_99_cascade_\ : std_logic;
 signal \U712_CHIP_RAM.N_290\ : std_logic;
 signal \BANK0_c\ : std_logic;
 signal \TSn_c\ : std_logic;
@@ -13735,55 +13735,55 @@ begin
     \I__1213\ : InMux
     port map (
             O => \N__6429\,
-            I => \N__6424\
+            I => \N__6426\
         );
 
-    \I__1212\ : InMux
+    \I__1212\ : LocalMux
     port map (
-            O => \N__6428\,
-            I => \N__6421\
+            O => \N__6426\,
+            I => \N__6422\
         );
 
-    \I__1211\ : CascadeMux
+    \I__1211\ : InMux
     port map (
-            O => \N__6427\,
-            I => \N__6418\
+            O => \N__6425\,
+            I => \N__6419\
         );
 
-    \I__1210\ : LocalMux
+    \I__1210\ : Span4Mux_v
     port map (
-            O => \N__6424\,
-            I => \N__6415\
+            O => \N__6422\,
+            I => \N__6413\
         );
 
     \I__1209\ : LocalMux
     port map (
-            O => \N__6421\,
-            I => \N__6412\
+            O => \N__6419\,
+            I => \N__6413\
         );
 
     \I__1208\ : InMux
     port map (
             O => \N__6418\,
-            I => \N__6409\
+            I => \N__6410\
         );
 
-    \I__1207\ : Span4Mux_v
+    \I__1207\ : Span4Mux_h
     port map (
-            O => \N__6415\,
+            O => \N__6413\,
+            I => \N__6407\
+        );
+
+    \I__1206\ : LocalMux
+    port map (
+            O => \N__6410\,
             I => \N__6404\
         );
 
-    \I__1206\ : Span4Mux_v
+    \I__1205\ : Odrv4
     port map (
-            O => \N__6412\,
-            I => \N__6404\
-        );
-
-    \I__1205\ : LocalMux
-    port map (
-            O => \N__6409\,
-            I => \N__6401\
+            O => \N__6407\,
+            I => \U712_CYCLE_TERM.TACK_STATEZ0Z_3\
         );
 
     \I__1204\ : Odrv4
@@ -13792,64 +13792,64 @@ begin
             I => \U712_CYCLE_TERM.TACK_STATEZ0Z_3\
         );
 
-    \I__1203\ : Odrv4
+    \I__1203\ : InMux
     port map (
-            O => \N__6401\,
-            I => \U712_CYCLE_TERM.TACK_STATEZ0Z_3\
+            O => \N__6399\,
+            I => \N__6396\
         );
 
-    \I__1202\ : InMux
+    \I__1202\ : LocalMux
     port map (
             O => \N__6396\,
-            I => \N__6393\
+            I => \N__6392\
         );
 
-    \I__1201\ : LocalMux
+    \I__1201\ : InMux
     port map (
-            O => \N__6393\,
-            I => \N__6389\
+            O => \N__6395\,
+            I => \N__6387\
         );
 
-    \I__1200\ : InMux
+    \I__1200\ : Span4Mux_h
     port map (
             O => \N__6392\,
             I => \N__6384\
         );
 
-    \I__1199\ : Span4Mux_h
+    \I__1199\ : InMux
     port map (
-            O => \N__6389\,
-            I => \N__6381\
+            O => \N__6391\,
+            I => \N__6379\
         );
 
     \I__1198\ : InMux
     port map (
-            O => \N__6388\,
-            I => \N__6376\
+            O => \N__6390\,
+            I => \N__6379\
         );
 
-    \I__1197\ : InMux
+    \I__1197\ : LocalMux
     port map (
             O => \N__6387\,
-            I => \N__6376\
+            I => \U712_CYCLE_TERM.TACK_STATEZ0Z_1\
         );
 
-    \I__1196\ : LocalMux
+    \I__1196\ : Odrv4
     port map (
             O => \N__6384\,
             I => \U712_CYCLE_TERM.TACK_STATEZ0Z_1\
         );
 
-    \I__1195\ : Odrv4
+    \I__1195\ : LocalMux
     port map (
-            O => \N__6381\,
+            O => \N__6379\,
             I => \U712_CYCLE_TERM.TACK_STATEZ0Z_1\
         );
 
-    \I__1194\ : LocalMux
+    \I__1194\ : CascadeMux
     port map (
-            O => \N__6376\,
-            I => \U712_CYCLE_TERM.TACK_STATEZ0Z_1\
+            O => \N__6372\,
+            I => \N__6369\
         );
 
     \I__1193\ : InMux
@@ -14743,7 +14743,7 @@ begin
     \I__1045\ : CascadeMux
     port map (
             O => \N__5925\,
-            I => \U712_CHIP_RAM.BANK0_RNOZ0Z_0_cascade_\
+            I => \U712_CHIP_RAM.N_99_cascade_\
         );
 
     \I__1044\ : InMux
@@ -15967,7 +15967,7 @@ begin
     \I__841\ : Odrv12
     port map (
             O => \N__5313\,
-            I => \N_44_i\
+            I => \N_42_i\
         );
 
     \I__840\ : InMux
@@ -16357,7 +16357,7 @@ begin
     \I__776\ : CascadeMux
     port map (
             O => \N__5118\,
-            I => \U712_CHIP_RAM.N_183_cascade_\
+            I => \U712_CHIP_RAM.N_181_cascade_\
         );
 
     \I__775\ : InMux
@@ -16471,19 +16471,19 @@ begin
     \I__757\ : LocalMux
     port map (
             O => \N__5067\,
-            I => \U712_CHIP_RAM.N_183\
+            I => \U712_CHIP_RAM.N_181\
         );
 
     \I__756\ : LocalMux
     port map (
             O => \N__5062\,
-            I => \U712_CHIP_RAM.N_183\
+            I => \U712_CHIP_RAM.N_181\
         );
 
     \I__755\ : Odrv4
     port map (
             O => \N__5059\,
-            I => \U712_CHIP_RAM.N_183\
+            I => \U712_CHIP_RAM.N_181\
         );
 
     \I__754\ : CEMux
@@ -16771,7 +16771,7 @@ begin
     \I__707\ : Odrv12
     port map (
             O => \N__4911\,
-            I => \N_45_i\
+            I => \N_43_i\
         );
 
     \I__706\ : InMux
@@ -17947,7 +17947,7 @@ begin
     \I__511\ : Odrv12
     port map (
             O => \N__4323\,
-            I => \N_42_i\
+            I => \N_40_i\
         );
 
     \I__510\ : InMux
@@ -18181,7 +18181,7 @@ begin
     \I__472\ : Odrv12
     port map (
             O => \N__4206\,
-            I => \N_43_i\
+            I => \N_41_i\
         );
 
     \I__471\ : InMux
@@ -18511,7 +18511,7 @@ begin
     \I__417\ : LocalMux
     port map (
             O => \N__4041\,
-            I => \U712_REG_SM.N_40\
+            I => \U712_REG_SM.REG_TACK_RNOZ0Z_0\
         );
 
     \I__416\ : CascadeMux
@@ -19595,7 +19595,7 @@ begin
             in0 => \_gnd_net_\,
             in1 => \_gnd_net_\,
             in2 => \_gnd_net_\,
-            in3 => \N__6428\,
+            in3 => \N__6429\,
             lcout => \U712_CYCLE_TERM.TACK_STATEZ0Z_4\,
             ltout => OPEN,
             carryin => \_gnd_net_\,
@@ -19656,7 +19656,7 @@ begin
             in1 => \N__4409\,
             in2 => \N__4062\,
             in3 => \N__4446\,
-            lcout => \U712_REG_SM.N_40\,
+            lcout => \U712_REG_SM.REG_TACK_RNOZ0Z_0\,
             ltout => OPEN,
             carryin => \_gnd_net_\,
             carryout => OPEN,
@@ -19985,7 +19985,7 @@ begin
             sr => \_gnd_net_\
         );
 
-    \U712_BYTE_ENABLE.N_42_i_LC_6_11_3\ : LogicCell40
+    \U712_BYTE_ENABLE.N_40_i_LC_6_11_3\ : LogicCell40
     generic map (
             C_ON => '0',
             SEQ_MODE => "0000",
@@ -19996,7 +19996,7 @@ begin
             in1 => \N__4872\,
             in2 => \N__5412\,
             in3 => \N__4584\,
-            lcout => \N_42_i\,
+            lcout => \N_40_i\,
             ltout => OPEN,
             carryin => \_gnd_net_\,
             carryout => OPEN,
@@ -20045,7 +20045,7 @@ begin
             sr => \_gnd_net_\
         );
 
-    \U712_BYTE_ENABLE.N_43_i_LC_6_12_0\ : LogicCell40
+    \U712_BYTE_ENABLE.N_41_i_LC_6_12_0\ : LogicCell40
     generic map (
             C_ON => '0',
             SEQ_MODE => "0000",
@@ -20056,7 +20056,7 @@ begin
             in1 => \N__4806\,
             in2 => \N__4975\,
             in3 => \N__6764\,
-            lcout => \N_43_i\,
+            lcout => \N_41_i\,
             ltout => OPEN,
             carryin => \_gnd_net_\,
             carryout => OPEN,
@@ -20113,7 +20113,7 @@ begin
         )
     port map (
             in0 => \N__8817\,
-            in1 => \N__6388\,
+            in1 => \N__6391\,
             in2 => \N__4545\,
             in3 => \N__4742\,
             lcout => \U712_CYCLE_TERM.TACK_STATEZ0Z_1\,
@@ -20132,7 +20132,7 @@ begin
             LUT_INIT => "0101010001010000"
         )
     port map (
-            in0 => \N__6387\,
+            in0 => \N__6390\,
             in1 => \N__4716\,
             in2 => \N__4763\,
             in3 => \N__4781\,
@@ -20172,10 +20172,10 @@ begin
             LUT_INIT => "1111111111000100"
         )
     port map (
-            in0 => \N__6392\,
+            in0 => \N__6395\,
             in1 => \N__4523\,
             in2 => \N__8826\,
-            in3 => \N__6429\,
+            in3 => \N__6425\,
             lcout => \TACK_OUTn\,
             ltout => OPEN,
             carryin => \_gnd_net_\,
@@ -20645,7 +20645,7 @@ begin
             sr => \_gnd_net_\
         );
 
-    \U712_BYTE_ENABLE.N_45_i_LC_7_12_5\ : LogicCell40
+    \U712_BYTE_ENABLE.N_43_i_LC_7_12_5\ : LogicCell40
     generic map (
             C_ON => '0',
             SEQ_MODE => "0000",
@@ -20656,7 +20656,7 @@ begin
             in1 => \N__5418\,
             in2 => \N__4932\,
             in3 => \N__4857\,
-            lcout => \N_45_i\,
+            lcout => \N_43_i\,
             ltout => OPEN,
             carryin => \_gnd_net_\,
             carryout => OPEN,
@@ -20792,9 +20792,9 @@ begin
             LUT_INIT => "0000010100000101"
         )
     port map (
-            in0 => \N__6369\,
+            in0 => \N__6418\,
             in1 => \_gnd_net_\,
-            in2 => \N__6427\,
+            in2 => \N__6372\,
             in3 => \_gnd_net_\,
             lcout => \U712_CYCLE_TERM.TACK_STATE_srsts_0_i_a3_0_0_0\,
             ltout => OPEN,
@@ -20976,8 +20976,8 @@ begin
             in1 => \N__8681\,
             in2 => \N__4980\,
             in3 => \N__5016\,
-            lcout => \U712_CHIP_RAM.N_183\,
-            ltout => \U712_CHIP_RAM.N_183_cascade_\,
+            lcout => \U712_CHIP_RAM.N_181\,
+            ltout => \U712_CHIP_RAM.N_181_cascade_\,
             carryin => \_gnd_net_\,
             carryout => OPEN,
             clk => \_gnd_net_\,
@@ -21405,7 +21405,7 @@ begin
             sr => \_gnd_net_\
         );
 
-    \U712_BYTE_ENABLE.N_44_i_LC_8_12_4\ : LogicCell40
+    \U712_BYTE_ENABLE.N_42_i_LC_8_12_4\ : LogicCell40
     generic map (
             C_ON => '0',
             SEQ_MODE => "0000",
@@ -21416,7 +21416,7 @@ begin
             in1 => \N__5391\,
             in2 => \N__5385\,
             in3 => \N__5371\,
-            lcout => \N_44_i\,
+            lcout => \N_42_i\,
             ltout => OPEN,
             carryin => \_gnd_net_\,
             carryout => OPEN,
@@ -21777,7 +21777,7 @@ begin
             in2 => \N__5946\,
             in3 => \N__8952\,
             lcout => OPEN,
-            ltout => \U712_CHIP_RAM.BANK0_RNOZ0Z_0_cascade_\,
+            ltout => \U712_CHIP_RAM.N_99_cascade_\,
             carryin => \_gnd_net_\,
             carryout => OPEN,
             clk => \_gnd_net_\,
@@ -21915,7 +21915,7 @@ begin
             in0 => \_gnd_net_\,
             in1 => \N__8825\,
             in2 => \_gnd_net_\,
-            in3 => \N__6396\,
+            in3 => \N__6399\,
             lcout => \U712_CYCLE_TERM.TACK_STATEZ0Z_2\,
             ltout => OPEN,
             carryin => \_gnd_net_\,

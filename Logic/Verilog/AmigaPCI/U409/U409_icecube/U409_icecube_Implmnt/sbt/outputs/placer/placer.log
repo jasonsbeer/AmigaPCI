@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:55:50
 
-* File Generated:     Jan 25 2025 21:58:27
+* File Generated:     Feb 2 2025 09:33:49
 
 * Purpose:            
 
@@ -119,7 +119,7 @@ Phase 5
 I2088: Phase 5, elapsed time : 0.1 (sec)
 
 Phase 6
-I2088: Phase 6, elapsed time : 11.8 (sec)
+I2088: Phase 6, elapsed time : 12.1 (sec)
 
 Final Design Statistics
     Number of LUTs      	:	156
@@ -167,5 +167,5 @@ Clock: pll/PLLOUTGLOBAL | Frequency: 179.37 MHz | Target: 80.00 MHz
 
 I2054: Placement of design completed successfully
 
-I2076: Placer run-time: 12.7 sec.
+I2076: Placer run-time: 13.0 sec.
 

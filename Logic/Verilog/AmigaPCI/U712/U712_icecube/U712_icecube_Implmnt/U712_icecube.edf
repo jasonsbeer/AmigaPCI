@@ -4,7 +4,7 @@
   (keywordMap (keywordLevel 0))
   (status
     (written
-      (timeStamp 2025 1 25 9 53 26)
+      (timeStamp 2025 2 2 9 29 15)
       (author "Synopsys, Inc.")
       (program "Synplify Pro" (version "L-2016.09L+ice40, mapper maplat, Build 1612R"))
      )
@@ -447,26 +447,26 @@
            (port un1_UDSn_i_0_0 (direction OUTPUT))
            (port DS_ENm (direction INPUT))
            (port CPU_CYCLEm (direction INPUT))
-           (port N_45_i (direction OUTPUT))
            (port N_43_i (direction OUTPUT))
+           (port N_41_i (direction OUTPUT))
            (port DMA_CYCLEm (direction INPUT))
            (port DBENn_c (direction INPUT))
            (port CASUn_c (direction INPUT))
-           (port N_44_i (direction OUTPUT))
-           (port CASLn_c (direction INPUT))
            (port N_42_i (direction OUTPUT))
+           (port CASLn_c (direction INPUT))
+           (port N_40_i (direction OUTPUT))
          )
          (contents
-          (instance N_42_i (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+          (instance N_40_i (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
            (property LUT_INIT (string "0103"))
           )
-          (instance N_44_i (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+          (instance N_42_i (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
            (property LUT_INIT (string "0203"))
           )
-          (instance N_43_i (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+          (instance N_41_i (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
            (property LUT_INIT (string "00EF"))
           )
-          (instance N_45_i (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+          (instance N_43_i (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
            (property LUT_INIT (string "0203"))
           )
           (instance un1_CUMBEn_i_0_a3 (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
@@ -503,78 +503,78 @@
            (portRef I1 (instanceRef un1_CUUBEn_i_0_a3_1))
            (portRef I1 (instanceRef un1_CLMBEn_i_0_0))
            (portRef I0 (instanceRef un1_CUMBEn_i_0_a3))
-           (portRef I0 (instanceRef N_42_i))
+           (portRef I0 (instanceRef N_40_i))
           ))
           (net N_319 (joined
            (portRef O (instanceRef un1_CUUBEn_i_0_a3))
            (portRef I3 (instanceRef un1_CLMBEn_i_0_0))
-           (portRef I1 (instanceRef N_45_i))
-           (portRef I1 (instanceRef N_44_i))
+           (portRef I1 (instanceRef N_43_i))
            (portRef I1 (instanceRef N_42_i))
+           (portRef I1 (instanceRef N_40_i))
           ))
           (net N_327 (joined
            (portRef O (instanceRef un1_CLLBEn_i_0_a3_0))
-           (portRef I2 (instanceRef N_42_i))
+           (portRef I2 (instanceRef N_40_i))
           ))
           (net (rename un1_CLLBEn_i_0_a3Z0Z_0 "un1_CLLBEn_i_0_a3_0") (joined
            (portRef O (instanceRef un1_CLLBEn_i_0_a3_0_1))
            (portRef I1 (instanceRef un1_CUMBEn_i_0_a3))
+           (portRef I3 (instanceRef N_40_i))
+          ))
+          (net (rename N_40_iZ0 "N_40_i") (joined
+           (portRef O (instanceRef N_40_i))
+           (portRef N_40_i)
+          ))
+          (net (rename casln_c "CASLn_c") (joined
+           (portRef CASLn_c)
+           (portRef I0 (instanceRef un1_CLLBEn_i_0_a3_0))
+           (portRef I0 (instanceRef N_42_i))
+          ))
+          (net N_322 (joined
+           (portRef O (instanceRef un1_CUMBEn_i_0_a3))
+           (portRef I2 (instanceRef N_42_i))
+          ))
+          (net un1_CUMBEn_i_0_a3_0_0 (joined
+           (portRef O (instanceRef un1_CUUBEn_i_0_a3_0_0))
+           (portRef I3 (instanceRef N_43_i))
            (portRef I3 (instanceRef N_42_i))
           ))
           (net (rename N_42_iZ0 "N_42_i") (joined
            (portRef O (instanceRef N_42_i))
            (portRef N_42_i)
           ))
-          (net (rename casln_c "CASLn_c") (joined
-           (portRef CASLn_c)
-           (portRef I0 (instanceRef un1_CLLBEn_i_0_a3_0))
-           (portRef I0 (instanceRef N_44_i))
-          ))
-          (net N_322 (joined
-           (portRef O (instanceRef un1_CUMBEn_i_0_a3))
-           (portRef I2 (instanceRef N_44_i))
-          ))
-          (net un1_CUMBEn_i_0_a3_0_0 (joined
-           (portRef O (instanceRef un1_CUUBEn_i_0_a3_0_0))
-           (portRef I3 (instanceRef N_45_i))
-           (portRef I3 (instanceRef N_44_i))
-          ))
-          (net (rename N_44_iZ0 "N_44_i") (joined
-           (portRef O (instanceRef N_44_i))
-           (portRef N_44_i)
-          ))
           (net (rename casun_c "CASUn_c") (joined
            (portRef CASUn_c)
-           (portRef I0 (instanceRef N_45_i))
            (portRef I0 (instanceRef N_43_i))
+           (portRef I0 (instanceRef N_41_i))
           ))
           (net (rename dbenn_c "DBENn_c") (joined
            (portRef DBENn_c)
            (portRef I0 (instanceRef un1_CUUBEn_i_0_a3_0_0))
            (portRef I1 (instanceRef un1_CLLBEn_i_0_a3_0))
-           (portRef I1 (instanceRef N_43_i))
+           (portRef I1 (instanceRef N_41_i))
           ))
           (net (rename dma_cyclem "DMA_CYCLEm") (joined
            (portRef DMA_CYCLEm)
            (portRef I1 (instanceRef un1_CUUBEn_i_0_a3_0_0))
            (portRef I2 (instanceRef un1_CLLBEn_i_0_a3_0))
-           (portRef I2 (instanceRef N_43_i))
+           (portRef I2 (instanceRef N_41_i))
           ))
           (net (rename un1_CLMBEn_i_0Z0Z_0 "un1_CLMBEn_i_0_0") (joined
            (portRef O (instanceRef un1_CLMBEn_i_0_0))
-           (portRef I3 (instanceRef N_43_i))
+           (portRef I3 (instanceRef N_41_i))
+          ))
+          (net (rename N_41_iZ0 "N_41_i") (joined
+           (portRef O (instanceRef N_41_i))
+           (portRef N_41_i)
+          ))
+          (net N_321 (joined
+           (portRef O (instanceRef un1_CUUBEn_i_0_a3_1))
+           (portRef I2 (instanceRef N_43_i))
           ))
           (net (rename N_43_iZ0 "N_43_i") (joined
            (portRef O (instanceRef N_43_i))
            (portRef N_43_i)
-          ))
-          (net N_321 (joined
-           (portRef O (instanceRef un1_CUUBEn_i_0_a3_1))
-           (portRef I2 (instanceRef N_45_i))
-          ))
-          (net (rename N_45_iZ0 "N_45_i") (joined
-           (portRef O (instanceRef N_45_i))
-           (portRef N_45_i)
           ))
           (net (rename GNDZ0 "GND") (joined
            (portRef Y (instanceRef GND))
@@ -1363,7 +1363,7 @@
            (portRef I3 (instanceRef DMA_ROW_ADDRESS_esr_ctle_9))
            (portRef I1 (instanceRef SDRAM_COUNTER_RNO_7))
           ))
-          (net N_183 (joined
+          (net N_181 (joined
            (portRef O (instanceRef SDRAM_COUNTER_RNIHUFGC_0))
            (portRef I0 (instanceRef SDRAM_COUNTER_RNO_6))
            (portRef I0 (instanceRef SDRAM_COUNTER_RNO_5))
@@ -1997,7 +1997,7 @@
            (portRef I0 (instanceRef BANK0_RNO))
            (portRef BANK0_c)
           ))
-          (net (rename BANK0_RNOZ0Z_0 "BANK0_RNO_0") (joined
+          (net N_99 (joined
            (portRef O (instanceRef BANK0_RNO_0))
            (portRef I1 (instanceRef BANK0_RNO))
           ))
@@ -2319,7 +2319,7 @@
            (portRef O (instanceRef SDRAM_CMD_RNO_1_3))
            (portRef I3 (instanceRef SDRAM_CMD_RNO_3))
           ))
-          (net N_124 (joined
+          (net N_182 (joined
            (portRef O (instanceRef SDRAM_CMD_RNO_3))
            (portRef D (instanceRef SDRAM_CMD_3))
           ))
@@ -2348,7 +2348,7 @@
            (portRef I0 (instanceRef SDRAM_CMD_RNO_1_3))
            (portRef I1 (instanceRef SDRAM_CMD_RNO_2))
           ))
-          (net N_184 (joined
+          (net N_183 (joined
            (portRef O (instanceRef SDRAM_CMD_RNO_2))
            (portRef D (instanceRef SDRAM_CMD_2))
           ))
@@ -2360,7 +2360,7 @@
            (portRef O (instanceRef SDRAM_CMD_RNO_1_0))
            (portRef I2 (instanceRef SDRAM_CMD_RNO_0))
           ))
-          (net N_185 (joined
+          (net N_184 (joined
            (portRef O (instanceRef SDRAM_CMD_RNO_0))
            (portRef D (instanceRef SDRAM_CMD_0))
           ))
@@ -3170,7 +3170,7 @@
            (portRef O (instanceRef REGENn_RNO))
            (portRef D (instanceRef REGENn))
           ))
-          (net N_40 (joined
+          (net (rename REG_TACK_RNOZ0Z_0 "REG_TACK_RNO_0") (joined
            (portRef O (instanceRef REG_TACK_RNO_0))
            (portRef I0 (instanceRef REG_TACK_RNO))
           ))
@@ -3222,7 +3222,7 @@
            (portRef I2 (instanceRef STATE_COUNT_RNO_3))
            (portRef I3 (instanceRef STATE_COUNT_RNO_2))
           ))
-          (net N_97_i (joined
+          (net N_96_i (joined
            (portRef O (instanceRef STATE_COUNT_RNO_2))
            (portRef D (instanceRef STATE_COUNT_2))
           ))
@@ -3237,7 +3237,7 @@
            (portRef O (instanceRef STATE_COUNT_RNO_0_3))
            (portRef I3 (instanceRef STATE_COUNT_RNO_3))
           ))
-          (net N_99_i (joined
+          (net N_97_i (joined
            (portRef O (instanceRef STATE_COUNT_RNO_3))
            (portRef D (instanceRef STATE_COUNT_3))
           ))
@@ -4650,20 +4650,20 @@
            (portRef O (instanceRef RESETn_ibuf_RNIM9SF))
            (portRef USER_SIGNAL_TO_GLOBAL_BUFFER (instanceRef RESETn_ibuf_RNIM9SF_0))
           ))
+          (net N_40_i (joined
+           (portRef N_40_i (instanceRef U712_BYTE_ENABLE))
+           (portRef D_OUT_0 (instanceRef CLLBEn_obuf))
+          ))
+          (net N_41_i (joined
+           (portRef N_41_i (instanceRef U712_BYTE_ENABLE))
+           (portRef D_OUT_0 (instanceRef CLMBEn_obuf))
+          ))
           (net N_42_i (joined
            (portRef N_42_i (instanceRef U712_BYTE_ENABLE))
-           (portRef D_OUT_0 (instanceRef CLLBEn_obuf))
+           (portRef D_OUT_0 (instanceRef CUMBEn_obuf))
           ))
           (net N_43_i (joined
            (portRef N_43_i (instanceRef U712_BYTE_ENABLE))
-           (portRef D_OUT_0 (instanceRef CLMBEn_obuf))
-          ))
-          (net N_44_i (joined
-           (portRef N_44_i (instanceRef U712_BYTE_ENABLE))
-           (portRef D_OUT_0 (instanceRef CUMBEn_obuf))
-          ))
-          (net N_45_i (joined
-           (portRef N_45_i (instanceRef U712_BYTE_ENABLE))
            (portRef D_OUT_0 (instanceRef CUUBEn_obuf))
           ))
           (net CLK80_PLL_i_i (joined

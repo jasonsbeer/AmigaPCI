@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:44:35
 
-* File Generated:     Jan 25 2025 09:53:59
+* File Generated:     Feb 2 2025 09:29:47
 
 * Purpose:            Detailed routing info for each net
 
@@ -365,6 +365,13 @@ T_15_15_wire_logic_cluster/lc_6/in_3
 
 End 
 
+Net : U712_CHIP_RAM.CMA_esr_RNO_0Z0Z_1
+T_14_14_wire_logic_cluster/lc_0/out
+T_14_13_lc_trk_g0_0
+T_14_13_wire_logic_cluster/lc_3/in_1
+
+End 
+
 Net : U712_CHIP_RAM.DMA_COL_ADDRESSZ0Z_1
 T_17_15_wire_logic_cluster/lc_6/out
 T_17_14_sp4_v_t_44
@@ -374,19 +381,21 @@ T_14_14_wire_logic_cluster/lc_0/in_3
 
 End 
 
-Net : U712_CHIP_RAM.CMA_esr_RNO_0Z0Z_1
-T_14_14_wire_logic_cluster/lc_0/out
-T_14_13_lc_trk_g0_0
-T_14_13_wire_logic_cluster/lc_3/in_1
+Net : U712_CHIP_RAM.DMA_COL_ADDRESSZ0Z_6
+T_17_13_wire_logic_cluster/lc_7/out
+T_17_11_sp4_v_t_43
+T_14_11_sp4_h_l_0
+T_14_11_lc_trk_g0_5
+T_14_11_wire_logic_cluster/lc_4/in_3
 
 End 
 
-Net : U712_CHIP_RAM.DMA_COL_ADDRESSZ0Z_3
-T_17_17_wire_logic_cluster/lc_4/out
-T_17_15_sp4_v_t_37
-T_14_15_sp4_h_l_6
-T_15_15_lc_trk_g2_6
-T_15_15_wire_logic_cluster/lc_3/in_3
+Net : U712_CHIP_RAM.DMA_COL_ADDRESSZ0Z_4
+T_17_15_wire_logic_cluster/lc_0/out
+T_17_13_sp4_v_t_45
+T_14_13_sp4_h_l_2
+T_13_13_lc_trk_g1_2
+T_13_13_wire_logic_cluster/lc_6/in_3
 
 End 
 
@@ -411,28 +420,12 @@ T_15_12_wire_logic_cluster/lc_4/in_3
 
 End 
 
-Net : U712_CHIP_RAM.DMA_COL_ADDRESSZ0Z_6
-T_17_13_wire_logic_cluster/lc_7/out
-T_17_11_sp4_v_t_43
-T_14_11_sp4_h_l_0
-T_14_11_lc_trk_g0_5
-T_14_11_wire_logic_cluster/lc_4/in_3
-
-End 
-
-Net : U712_CHIP_RAM.DMA_COL_ADDRESSZ0Z_4
-T_17_15_wire_logic_cluster/lc_0/out
-T_17_13_sp4_v_t_45
-T_14_13_sp4_h_l_2
-T_13_13_lc_trk_g1_2
-T_13_13_wire_logic_cluster/lc_6/in_3
-
-End 
-
-Net : U712_CHIP_RAM.CMA_esr_RNO_0Z0Z_7
-T_15_15_wire_logic_cluster/lc_2/out
-T_15_14_lc_trk_g1_2
-T_15_14_wire_logic_cluster/lc_6/in_3
+Net : U712_CHIP_RAM.DMA_COL_ADDRESSZ0Z_3
+T_17_17_wire_logic_cluster/lc_4/out
+T_17_15_sp4_v_t_37
+T_14_15_sp4_h_l_6
+T_15_15_lc_trk_g2_6
+T_15_15_wire_logic_cluster/lc_3/in_3
 
 End 
 
@@ -441,6 +434,13 @@ T_17_15_wire_logic_cluster/lc_5/out
 T_16_15_sp4_h_l_2
 T_15_15_lc_trk_g1_2
 T_15_15_wire_logic_cluster/lc_2/in_3
+
+End 
+
+Net : U712_CHIP_RAM.CMA_esr_RNO_0Z0Z_7
+T_15_15_wire_logic_cluster/lc_2/out
+T_15_14_lc_trk_g1_2
+T_15_14_wire_logic_cluster/lc_6/in_3
 
 End 
 
@@ -692,7 +692,7 @@ T_16_15_wire_logic_cluster/lc_2/in_3
 
 End 
 
-Net : U712_CHIP_RAM.BANK0_RNOZ0Z_0_cascade_
+Net : U712_CHIP_RAM.N_99_cascade_
 T_13_15_wire_logic_cluster/lc_5/ltout
 T_13_15_wire_logic_cluster/lc_6/in_2
 
@@ -777,21 +777,21 @@ T_15_12_wire_logic_cluster/lc_6/in_1
 
 End 
 
-Net : U712_CHIP_RAM.DMA_ROW_ADDRESSZ0Z_6
-T_18_13_wire_logic_cluster/lc_3/out
-T_18_12_sp4_v_t_38
-T_15_12_sp4_h_l_3
-T_15_12_lc_trk_g1_6
-T_15_12_wire_logic_cluster/lc_4/in_1
-
-End 
-
 Net : U712_CHIP_RAM.DMA_ROW_ADDRESSZ0Z_4
 T_18_15_wire_logic_cluster/lc_4/out
 T_18_13_sp4_v_t_37
 T_15_13_sp4_h_l_0
 T_14_13_lc_trk_g1_0
 T_14_13_wire_logic_cluster/lc_2/in_1
+
+End 
+
+Net : U712_CHIP_RAM.DMA_ROW_ADDRESSZ0Z_6
+T_18_13_wire_logic_cluster/lc_3/out
+T_18_12_sp4_v_t_38
+T_15_12_sp4_h_l_3
+T_15_12_lc_trk_g1_6
+T_15_12_wire_logic_cluster/lc_4/in_1
 
 End 
 
@@ -814,19 +814,19 @@ T_14_12_wire_logic_cluster/lc_0/in_3
 
 End 
 
-Net : U712_CHIP_RAM.DMA_ROW_ADDRESSZ0Z_2
-T_18_14_wire_logic_cluster/lc_3/out
-T_16_14_sp4_h_l_3
-T_15_14_lc_trk_g1_3
-T_15_14_wire_logic_cluster/lc_3/in_1
-
-End 
-
 Net : U712_CHIP_RAM.DMA_ROW_ADDRESSZ0Z_3
 T_18_14_wire_logic_cluster/lc_0/out
 T_17_14_sp4_h_l_8
 T_16_14_lc_trk_g0_0
 T_16_14_wire_logic_cluster/lc_7/in_1
+
+End 
+
+Net : U712_CHIP_RAM.DMA_ROW_ADDRESSZ0Z_2
+T_18_14_wire_logic_cluster/lc_3/out
+T_16_14_sp4_h_l_3
+T_15_14_lc_trk_g1_3
+T_15_14_wire_logic_cluster/lc_3/in_1
 
 End 
 
@@ -983,13 +983,6 @@ T_11_15_wire_logic_cluster/lc_5/in_1
 
 End 
 
-Net : U712_CHIP_RAM.N_218
-T_10_15_wire_logic_cluster/lc_7/out
-T_11_16_lc_trk_g2_7
-T_11_16_wire_logic_cluster/lc_6/in_1
-
-End 
-
 Net : U712_CHIP_RAM.N_398
 T_11_16_wire_logic_cluster/lc_6/out
 T_12_16_lc_trk_g0_6
@@ -1095,6 +1088,13 @@ T_12_15_wire_logic_cluster/lc_7/out
 T_12_15_sp4_h_l_3
 T_14_15_lc_trk_g2_6
 T_14_15_wire_logic_cluster/lc_0/in_0
+
+End 
+
+Net : U712_CHIP_RAM.N_218
+T_10_15_wire_logic_cluster/lc_7/out
+T_11_16_lc_trk_g2_7
+T_11_16_wire_logic_cluster/lc_6/in_1
 
 End 
 
@@ -1620,7 +1620,7 @@ T_12_16_wire_logic_cluster/lc_4/in_3
 
 End 
 
-Net : U712_CHIP_RAM.N_183
+Net : U712_CHIP_RAM.N_181
 T_12_15_wire_logic_cluster/lc_1/out
 T_11_15_sp4_h_l_10
 T_11_15_lc_trk_g0_7
@@ -1671,6 +1671,13 @@ T_12_15_wire_logic_cluster/lc_2/in_0
 
 End 
 
+Net : U712_CHIP_RAM.REFRESH_SYNCZ0Z_1
+T_12_16_wire_logic_cluster/lc_7/out
+T_12_16_lc_trk_g1_7
+T_12_16_wire_logic_cluster/lc_0/in_0
+
+End 
+
 Net : DBR_SYNCZ0Z_1
 T_13_16_wire_logic_cluster/lc_3/out
 T_12_16_lc_trk_g2_3
@@ -1682,13 +1689,6 @@ T_9_16_sp4_h_l_2
 T_10_16_lc_trk_g3_2
 T_10_16_input_2_1
 T_10_16_wire_logic_cluster/lc_1/in_2
-
-End 
-
-Net : U712_CHIP_RAM.REFRESH_SYNCZ0Z_1
-T_12_16_wire_logic_cluster/lc_7/out
-T_12_16_lc_trk_g1_7
-T_12_16_wire_logic_cluster/lc_0/in_0
 
 End 
 
@@ -2097,7 +2097,7 @@ T_16_12_wire_logic_cluster/lc_0/cen
 
 End 
 
-Net : U712_CHIP_RAM.N_183_cascade_
+Net : U712_CHIP_RAM.N_181_cascade_
 T_12_15_wire_logic_cluster/lc_1/ltout
 T_12_15_wire_logic_cluster/lc_2/in_2
 
@@ -2225,6 +2225,18 @@ T_12_13_wire_logic_cluster/lc_3/in_2
 
 End 
 
+Net : CPU_TACKm
+T_11_16_wire_logic_cluster/lc_4/out
+T_12_12_sp4_v_t_44
+T_11_13_lc_trk_g3_4
+T_11_13_wire_logic_cluster/lc_1/in_0
+
+T_11_16_wire_logic_cluster/lc_4/out
+T_11_16_lc_trk_g2_4
+T_11_16_wire_logic_cluster/lc_4/in_0
+
+End 
+
 Net : U712_CYCLE_TERM.TACK_EN6_0
 T_11_13_wire_logic_cluster/lc_1/out
 T_12_13_lc_trk_g0_1
@@ -2237,18 +2249,6 @@ T_11_13_wire_logic_cluster/lc_5/in_3
 T_11_13_wire_logic_cluster/lc_1/out
 T_12_12_lc_trk_g2_1
 T_12_12_wire_logic_cluster/lc_4/in_3
-
-End 
-
-Net : CPU_TACKm
-T_11_16_wire_logic_cluster/lc_4/out
-T_12_12_sp4_v_t_44
-T_11_13_lc_trk_g3_4
-T_11_13_wire_logic_cluster/lc_1/in_0
-
-T_11_16_wire_logic_cluster/lc_4/out
-T_11_16_lc_trk_g2_4
-T_11_16_wire_logic_cluster/lc_4/in_0
 
 End 
 
@@ -2287,17 +2287,17 @@ T_10_17_wire_logic_cluster/lc_5/in_3
 
 End 
 
-Net : U712_CHIP_RAM.N_245
-T_11_17_wire_logic_cluster/lc_2/out
-T_12_17_lc_trk_g0_2
-T_12_17_wire_logic_cluster/lc_5/in_3
-
-End 
-
 Net : U712_CHIP_RAM.SDRAM_CMD_cnst_0_2_29_i_a2_i_1
 T_12_17_wire_logic_cluster/lc_5/out
 T_13_17_lc_trk_g1_5
 T_13_17_wire_logic_cluster/lc_6/in_0
+
+End 
+
+Net : U712_CHIP_RAM.N_245
+T_11_17_wire_logic_cluster/lc_2/out
+T_12_17_lc_trk_g0_2
+T_12_17_wire_logic_cluster/lc_5/in_3
 
 End 
 
@@ -2780,7 +2780,7 @@ T_13_17_wire_logic_cluster/lc_2/in_2
 
 End 
 
-Net : U712_REG_SM.N_40
+Net : U712_REG_SM.REG_TACK_RNOZ0Z_0
 T_10_14_wire_logic_cluster/lc_4/out
 T_10_13_lc_trk_g1_4
 T_10_13_input_2_5
@@ -2808,17 +2808,17 @@ T_12_15_wire_logic_cluster/lc_2/in_1
 
 End 
 
+Net : U712_REG_SM.STATE_COUNT_srsts_i_i_0_o2_1_1_3_cascade_
+T_10_16_wire_logic_cluster/lc_1/ltout
+T_10_16_wire_logic_cluster/lc_2/in_2
+
+End 
+
 Net : U712_REG_SM.N_259
 T_10_16_wire_logic_cluster/lc_2/out
 T_10_16_lc_trk_g2_2
 T_10_16_input_2_0
 T_10_16_wire_logic_cluster/lc_0/in_2
-
-End 
-
-Net : U712_REG_SM.STATE_COUNT_srsts_i_i_0_o2_1_1_3_cascade_
-T_10_16_wire_logic_cluster/lc_1/ltout
-T_10_16_wire_logic_cluster/lc_2/in_2
 
 End 
 
@@ -2943,18 +2943,12 @@ T_9_14_wire_logic_cluster/lc_2/in_2
 
 End 
 
-Net : U712_CYCLE_TERM.TACK_STATE_srsts_0_i_a3_0_0_0
-T_12_13_wire_logic_cluster/lc_4/out
-T_11_13_lc_trk_g2_4
-T_11_13_wire_logic_cluster/lc_5/in_1
-
-End 
-
 Net : U712_CYCLE_TERM.TACK_STATEZ0Z_2
 T_13_16_wire_logic_cluster/lc_5/out
 T_13_12_sp4_v_t_47
 T_12_13_lc_trk_g3_7
-T_12_13_wire_logic_cluster/lc_4/in_0
+T_12_13_input_2_4
+T_12_13_wire_logic_cluster/lc_4/in_2
 
 T_13_16_wire_logic_cluster/lc_5/out
 T_13_16_lc_trk_g0_5
@@ -2966,20 +2960,27 @@ Net : U712_CYCLE_TERM.TACK_STATEZ0Z_3
 T_13_16_wire_logic_cluster/lc_4/out
 T_13_12_sp4_v_t_45
 T_12_13_lc_trk_g3_5
-T_12_13_input_2_4
-T_12_13_wire_logic_cluster/lc_4/in_2
+T_12_13_wire_logic_cluster/lc_4/in_0
 
 T_13_16_wire_logic_cluster/lc_4/out
-T_12_16_sp4_h_l_0
-T_11_12_sp4_v_t_40
-T_10_13_lc_trk_g3_0
+T_14_14_sp4_v_t_36
+T_11_14_sp4_h_l_7
+T_10_10_sp4_v_t_42
+T_10_13_lc_trk_g1_2
 T_10_13_wire_logic_cluster/lc_0/in_3
 
 T_13_16_wire_logic_cluster/lc_4/out
-T_12_16_sp4_h_l_0
-T_11_12_sp4_v_t_37
-T_11_14_lc_trk_g2_0
+T_14_14_sp4_v_t_36
+T_11_14_sp4_h_l_7
+T_11_14_lc_trk_g0_2
 T_11_14_wire_logic_cluster/lc_5/in_3
+
+End 
+
+Net : U712_CYCLE_TERM.TACK_STATE_srsts_0_i_a3_0_0_0
+T_12_13_wire_logic_cluster/lc_4/out
+T_11_13_lc_trk_g2_4
+T_11_13_wire_logic_cluster/lc_5/in_1
 
 End 
 
@@ -3305,6 +3306,13 @@ T_29_33_wire_io_cluster/io_0/D_OUT_0
 
 End 
 
+Net : U712_CHIP_RAM.CAS_SYNCZ0Z_2
+T_11_14_wire_logic_cluster/lc_4/out
+T_10_15_lc_trk_g1_4
+T_10_15_wire_logic_cluster/lc_2/in_1
+
+End 
+
 Net : DS_ENm
 T_10_18_wire_logic_cluster/lc_7/out
 T_10_18_lc_trk_g1_7
@@ -3323,13 +3331,6 @@ T_13_18_sp4_h_l_6
 T_16_18_sp4_v_t_43
 T_15_21_lc_trk_g3_3
 T_15_21_wire_logic_cluster/lc_6/in_0
-
-End 
-
-Net : U712_CHIP_RAM.CAS_SYNCZ0Z_2
-T_11_14_wire_logic_cluster/lc_4/out
-T_10_15_lc_trk_g1_4
-T_10_15_wire_logic_cluster/lc_2/in_1
 
 End 
 
@@ -4678,7 +4679,7 @@ T_33_31_wire_io_cluster/io_0/D_OUT_0
 
 End 
 
-Net : N_42_i
+Net : N_40_i
 T_10_17_wire_logic_cluster/lc_3/out
 T_10_8_sp12_v_t_22
 T_10_0_span12_vert_14
@@ -4689,7 +4690,7 @@ T_12_0_wire_io_cluster/io_1/D_OUT_0
 
 End 
 
-Net : N_43_i
+Net : N_41_i
 T_10_18_wire_logic_cluster/lc_0/out
 T_10_14_sp12_v_t_23
 T_10_2_sp12_v_t_23
@@ -4700,7 +4701,7 @@ T_33_2_wire_io_cluster/io_0/D_OUT_0
 
 End 
 
-Net : N_44_i
+Net : N_42_i
 T_12_18_wire_logic_cluster/lc_4/out
 T_5_18_sp12_h_l_0
 T_17_18_sp12_h_l_0
@@ -4714,7 +4715,7 @@ T_33_1_wire_io_cluster/io_1/D_OUT_0
 
 End 
 
-Net : N_45_i
+Net : N_43_i
 T_11_18_wire_logic_cluster/lc_5/out
 T_11_11_sp12_v_t_22
 T_12_11_sp12_h_l_1

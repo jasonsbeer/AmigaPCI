@@ -1,0 +1,9 @@
+set_io BGn_obuf 25 2 0 # ICE_IO
+set_location GND -1 -1 -1 # GND
+set_io IDEHRENn_obuf 25 9 0 # ICE_IO
+set_io IDEHWENn_obuf 25 14 0 # ICE_IO
+set_io IDELATCH_obuf 25 7 1 # ICE_IO
+set_io IDELENn_obuf 25 8 1 # ICE_IO
+set_io INT2n_obuf 18 21 0 # ICE_IO
+set_io TEAn_obuf 0 17 0 # ICE_IO
+set_location CONSTANT_ONE_LUT4 20 12 0 # SB_LUT4 (LogicCell: LC_0)

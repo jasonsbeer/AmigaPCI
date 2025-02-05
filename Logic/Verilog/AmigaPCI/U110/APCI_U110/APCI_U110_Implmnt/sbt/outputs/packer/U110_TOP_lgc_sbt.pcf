@@ -1,0 +1,9 @@
+set_location CONSTANT_ONE_LUT4 20 12 0 #SB_LUT4
+set_location GND -1 -1 -1 #GND
+set_io TEAn 10
+set_io IDELENn 87
+set_io IDELATCH 85
+set_io IDEHWENn 97
+set_io BGn 75
+set_io INT2n 121
+set_io IDEHRENn 88

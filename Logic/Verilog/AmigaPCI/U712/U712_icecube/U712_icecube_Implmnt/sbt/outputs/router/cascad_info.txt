@@ -1,12 +1,11 @@
 [VIC]
 U712_BYTE_ENABLE.N_319_cascade_=ltout:in1
 U712_BYTE_ENABLE.un1_CUMBEn_i_0_a3_0_0_cascade_=ltout:in3
-U712_CHIP_RAM.BANK0_RNOZ0Z_0_cascade_=ltout:in1
 U712_CHIP_RAM.CMA_5_sn_N_5_mux_cascade_=ltout:in1
 U712_CHIP_RAM.CMA_esr_RNO_1Z0Z_2_cascade_=ltout:in1
 U712_CHIP_RAM.CMA_esr_RNO_1Z0Z_4_cascade_=ltout:in1
 U712_CHIP_RAM.DMA_COL_ADDRESSZ0Z10_cascade_=ltout:in1
-U712_CHIP_RAM.N_183_cascade_=ltout:in0
+U712_CHIP_RAM.N_181_cascade_=ltout:in0
 U712_CHIP_RAM.N_204_cascade_=ltout:in0
 U712_CHIP_RAM.N_205_cascade_=ltout:in0
 U712_CHIP_RAM.N_208_cascade_=ltout:in0
@@ -23,6 +22,7 @@ U712_CHIP_RAM.N_293_cascade_=ltout:in0
 U712_CHIP_RAM.N_342_cascade_=ltout:in0
 U712_CHIP_RAM.N_352_cascade_=ltout:in2
 U712_CHIP_RAM.N_359_cascade_=ltout:in1
+U712_CHIP_RAM.N_99_cascade_=ltout:in1
 U712_CHIP_RAM.SDRAM_CMD_3_sqmuxa_1_0_0_0_cascade_=ltout:in1
 U712_CHIP_RAM.SDRAM_CMD_3_sqmuxa_1_0_a3_1_1_cascade_=ltout:in3
 U712_CHIP_RAM.un1_SDRAM_COUNTER44_2_0_cascade_=ltout:in3

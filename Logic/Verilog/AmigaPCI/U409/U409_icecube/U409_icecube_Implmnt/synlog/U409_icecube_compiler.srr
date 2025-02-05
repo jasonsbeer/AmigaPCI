@@ -18,7 +18,9 @@ Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys softwa
 @I::"D:\AmigaPCI\U409\U409_TOP.v" (library work)
 @I::"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v" (library work)
 Verilog syntax check successful!
-File D:\AmigaPCI\U409\U409_TRANSFER_ACK.v changed - recompiling
+
+Compiler output is up to date.  No re-compile necessary
+
 Selecting top level module U409_TOP
 @N: CG364 :"C:\lscc\iCEcube2.2020.12\synpbase\lib\generic\sb_ice40.v":698:7:698:19|Synthesizing module SB_PLL40_CORE in library work.
 
@@ -55,12 +57,12 @@ State machine has 3 reachable states with original encodings of:
    001
    010
 
-At c_ver Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 70MB peak: 71MB)
+At c_ver Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 69MB peak: 70MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Sat Jan 25 21:58:17 2025
+# Sun Feb 02 09:33:45 2025
 
 ###########################################################]
 Synopsys Netlist Linker, version comp2016q3p1, Build 141R, built Dec  5 2016
@@ -73,7 +75,7 @@ At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Sat Jan 25 21:58:17 2025
+# Sun Feb 02 09:33:45 2025
 
 ###########################################################]
 @END
@@ -83,6 +85,6 @@ At c_hdl Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Sat Jan 25 21:58:17 2025
+# Sun Feb 02 09:33:45 2025
 
 ###########################################################]
