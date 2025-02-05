@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:55:50
 
-* File Generated:     Dec 19 2024 10:10:14
+* File Generated:     Feb 4 2025 21:49:49
 
 * Purpose:            
 
@@ -14,20 +14,20 @@
 
 * ******************************************************************************
 
-Executing : C:\lscc\iCEcube2.2020.12\sbt_backend\bin\win32\opt\sbtplacer.exe --des-lib D:/AmigaPCI/U111/U111_icecube/U111_icecube_Implmnt\sbt\netlist\oadb-U111_TOP --outdir D:/AmigaPCI/U111/U111_icecube/U111_icecube_Implmnt\sbt\outputs\placer --device-file C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P04.dev --package TQ144 --deviceMarketName iCE40HX4K --sdc-file D:/AmigaPCI/U111/U111_icecube/U111_icecube_Implmnt\sbt\Temp/sbt_temp.sdc --lib-file C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ice40HX8K.lib --effort_level std --out-sdc-file D:/AmigaPCI/U111/U111_icecube/U111_icecube_Implmnt\sbt\outputs\placer\U111_TOP_pl.sdc
+Executing : C:\lscc\iCEcube2.2020.12\sbt_backend\bin\win32\opt\sbtplacer.exe --des-lib D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\netlist\oadb-U111_TOP --outdir D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\outputs\placer --device-file C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P04.dev --package TQ144 --deviceMarketName iCE40HX4K --sdc-file D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\Temp/sbt_temp.sdc --lib-file C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ice40HX8K.lib --effort_level std --out-sdc-file D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\outputs\placer\U111_TOP_pl.sdc
 I2004: Option and Settings Summary
 =============================================================
 Device file          - C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P04.dev
 Package              - TQ144
-Design database      - D:/AmigaPCI/U111/U111_icecube/U111_icecube_Implmnt\sbt\netlist\oadb-U111_TOP
-SDC file             - D:/AmigaPCI/U111/U111_icecube/U111_icecube_Implmnt\sbt\Temp/sbt_temp.sdc
-Output directory     - D:/AmigaPCI/U111/U111_icecube/U111_icecube_Implmnt\sbt\outputs\placer
+Design database      - D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\netlist\oadb-U111_TOP
+SDC file             - D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\Temp/sbt_temp.sdc
+Output directory     - D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\outputs\placer
 Timing library       - C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ice40HX8K.lib
 Effort level         - std
 
 I2050: Starting reading inputs for placer
 =============================================================
-I2100: Reading design library: D:/AmigaPCI/U111/U111_icecube/U111_icecube_Implmnt\sbt\netlist\oadb-U111_TOP/BFPGA_DESIGN_ep
+I2100: Reading design library: D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\netlist\oadb-U111_TOP/BFPGA_DESIGN_ep
 I2065: Reading device file : C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P04.dev
 I2051: Reading of inputs for placer completed successfully
 
@@ -42,7 +42,7 @@ Input Design Statistics
     Number of Carrys    	:	0
     Number of RAMs      	:	0
     Number of ROMs      	:	0
-    Number of IOs       	:	89
+    Number of IOs       	:	90
     Number of GBIOs     	:	0
     Number of GBs       	:	0
     Number of WarmBoot  	:	0
@@ -98,7 +98,7 @@ Device Utilization Summary after Packing
     LogicCells                  :	91/3520
     PLBs                        :	12/440
     BRAMs                       :	0/20
-    IOs and GBIOs               :	89/107
+    IOs and GBIOs               :	90/107
     PLLs                        :	1/2
 
 
@@ -120,7 +120,7 @@ Final Design Statistics
     Number of Carrys    	:	0
     Number of RAMs      	:	0
     Number of ROMs      	:	0
-    Number of IOs       	:	89
+    Number of IOs       	:	90
     Number of GBIOs     	:	0
     Number of GBs       	:	0
     Number of WarmBoot  	:	0
@@ -128,9 +128,9 @@ Final Design Statistics
 
 Device Utilization Summary
     LogicCells                  :	91/3520
-    PLBs                        :	44/440
+    PLBs                        :	49/440
     BRAMs                       :	0/20
-    IOs and GBIOs               :	89/107
+    IOs and GBIOs               :	90/107
     PLLs                        :	1/2
 
 
@@ -150,7 +150,7 @@ Number of clocks: 5
 Clock: CLK40_IN | Frequency: N/A | Target: 40.00 MHz
 Clock: pll/PLLOUTCOREA | Frequency: N/A | Target: 80.00 MHz
 Clock: pll/PLLOUTCOREB | Frequency: N/A | Target: 40.00 MHz
-Clock: pll/PLLOUTGLOBALA | Frequency: 260.18 MHz | Target: 80.00 MHz
+Clock: pll/PLLOUTGLOBALA | Frequency: 260.05 MHz | Target: 80.00 MHz
 Clock: pll/PLLOUTGLOBALB | Frequency: N/A | Target: 40.00 MHz
 
 =====================================================================

@@ -1,7 +1,7 @@
-C:\lscc\iCEcube2.2020.12\synpbase\bin64\syn_nfilter.exe  -link  -multisrs  D:\AmigaPCI\U111\U111_icecube\U111_icecube_Implmnt\synwork\U111_icecube_comp.srs  -osyn  D:\AmigaPCI\U111\U111_icecube\U111_icecube_Implmnt\synwork\U111_icecube_mult.srs  -log  D:\AmigaPCI\U111\U111_icecube\U111_icecube_Implmnt\synlog\U111_icecube_multi_srs_gen.srr 
+C:\lscc\iCEcube2.2020.12\synpbase\bin64\syn_nfilter.exe  -link  -multisrs  D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\synwork\U111_icecube_comp.srs  -osyn  D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\synwork\U111_icecube_mult.srs  -log  D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\synlog\U111_icecube_multi_srs_gen.srr 
 rc:0 success:1 runtime:0
-file:D:\AmigaPCI\U111\U111_icecube\U111_icecube_Implmnt\synwork\U111_icecube_comp.srs|io:i|time:1734624609|size:12364|exec:0
-file:D:\AmigaPCI\U111\U111_icecube\U111_icecube_Implmnt\synwork\U111_icecube_mult.srs|io:o|time:1734624610|size:6287|exec:0
-file:D:\AmigaPCI\U111\U111_icecube\U111_icecube_Implmnt\synlog\U111_icecube_multi_srs_gen.srr|io:o|time:1734624610|size:748|exec:0
+file:D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\synwork\U111_icecube_comp.srs|io:i|time:1738727385|size:12596|exec:0
+file:D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\synwork\U111_icecube_mult.srs|io:o|time:1738727386|size:6357|exec:0
+file:D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\synlog\U111_icecube_multi_srs_gen.srr|io:o|time:1738727386|size:763|exec:0
 file:C:\lscc\iCEcube2.2020.12\synpbase\bin\syn_nfilter.exe|io:i|time:1728534473|size:3128320|exec:1
 file:C:\lscc\iCEcube2.2020.12\synpbase\bin64\syn_nfilter.exe|io:i|time:1728534475|size:3947520|exec:1

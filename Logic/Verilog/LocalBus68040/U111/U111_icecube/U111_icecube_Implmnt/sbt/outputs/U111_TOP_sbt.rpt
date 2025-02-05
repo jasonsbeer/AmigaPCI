@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:31:51
 
-* File Generated:     Dec 19 2024 10:10:23
+* File Generated:     Feb 4 2025 21:49:59
 
 * Purpose:            General info of design implementation
 
@@ -30,7 +30,7 @@ Design statistics:
     FFs:                  24
     LUTs:                 91
     RAMs:                 0
-    IOBs:                 89
+    IOBs:                 90
     GBs:                  0
     PLLs:                 1
     Warm Boots:           0
@@ -40,7 +40,7 @@ Logic Resource Utilization:
     Total Logic Cells: 91/3520
         Combinational Logic Cells: 67       out of   3520      1.90341%
         Sequential Logic Cells:    24       out of   3520      0.681818%
-        Logic Tiles:               44       out of   440       10%
+        Logic Tiles:               49       out of   440       11.1364%
     Registers: 
         Logic Registers:           24       out of   3520      0.681818%
         IO Registers:              0        out of   880       0
@@ -48,7 +48,7 @@ Logic Resource Utilization:
     Warm Boots:                    0        out of   1         0%
     Pins:
         Input Pins:                9        out of   107       8.41121%
-        Output Pins:               16       out of   107       14.9533%
+        Output Pins:               17       out of   107       15.8879%
         InOut Pins:                64       out of   107       59.8131%
     Global Buffers:                0        out of   8         0%
     PLLs:                          1        out of   2         50%
@@ -57,7 +57,7 @@ IO Bank Utilization:
 --------------------
     Bank 3: 27       out of   28        96.4286%
     Bank 1: 28       out of   29        96.5517%
-    Bank 0: 23       out of   27        85.1852%
+    Bank 0: 24       out of   27        88.8889%
     Bank 2: 11       out of   23        47.8261%
 
 Detailed I/O Info:
@@ -68,7 +68,7 @@ Detailed I/O Info:
     34          Input      SB_LVCMOS    No       3        Simple Input                               RESETn         
     37          Input      SB_LVCMOS    Yes      2        Simple Input                               A_040[0]       
     38          Input      SB_LVCMOS    Yes      2        Simple Input                               A_040[1]       
-    42          Input      SB_LVCMOS    Yes      2        Simple Input                               PORTSIZE       
+    42          Input      SB_LVCMOS    No       2        Simple Input                               PORTSIZE       
     47          Input      SB_LVCMOS    Yes      2        Simple Input                               TACKn          
     97          Input      SB_LVCMOS    Yes      1        Simple Input                               RnW            
     120         Input      SB_LVCMOS    Yes      0        Simple Input                               SIZ[1]         
@@ -84,12 +84,13 @@ Detailed I/O Info:
     45          Output     SB_LVCMOS    Yes      2        Simple Output                              TSn            
     49          Output     SB_LVCMOS    No       2        Simple Output                              CLK40B         
     52          Output     SB_LVCMOS    No       2        Simple Output                              CLKRAMB        
-    55          Output     SB_LVCMOS    No       2        Simple Output                              TBI_CPUn       
     56          Output     SB_LVCMOS    No       2        Simple Output                              CLKRAMA        
+    64          Output     SB_LVCMOS    No       2        Simple Output                              TBI_CPUn       
     93          Output     SB_LVCMOS    No       1        Simple Output                              CLK40A         
     94          Output     SB_LVCMOS    No       1        Simple Output                              CLK80_CPU      
-    101         Output     SB_LVCMOS    Yes      1        Simple Output                              TCI_CPUn       
+    101         Output     SB_LVCMOS    No       1        Simple Output                              TCI_CPUn       
     102         Output     SB_LVCMOS    Yes      1        Simple Output                              CPUBGn         
+    122         Output     SB_LVCMOS    No       0        Simple Output                              TEA_CPUn       
     124         Output     SB_LVCMOS    Yes      0        Simple Output                              TAn            
     134         Output     SB_LVCMOS    No       0        Simple Output                              DMAn           
     135         Output     SB_LVCMOS    No       0        Simple Output                              BUFENn         
@@ -172,9 +173,9 @@ Router Summary:
 
 Routing Resource Utilization:
 -----------------------------
-              Local line of tile     1019 out of 146184      0.697067%
-                          Span 4      489 out of  29696      1.64669%
-                         Span 12      390 out of   5632      6.92472%
+              Local line of tile     1028 out of 146184      0.703223%
+                          Span 4      517 out of  29696      1.74098%
+                         Span 12      374 out of   5632      6.64063%
                   Global network        2 out of      8      25%
-      Vertical Inter-LUT Connect        7 out of   6720      0.104167%
+      Vertical Inter-LUT Connect        5 out of   6720      0.0744048%
 

@@ -5,7 +5,7 @@ Max Top 5 critical clocks will be reported. For rest user needs to refer to Deta
 *******************************************************************************************-->
 <report_table display_priority="2" name="Timing Summary">
 <report_link name="Detailed report">
-<data>D:\AmigaPCI\U111\U111_icecube\U111_icecube_Implmnt\synlog\U111_icecube_fpga_mapper.srr</data>
+<data>D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\synlog\U111_icecube_fpga_mapper.srr</data>
 <title>START OF TIMING REPORT</title>
 </report_link>
 <row>

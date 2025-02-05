@@ -4,7 +4,7 @@
   (keywordMap (keywordLevel 0))
   (status
     (written
-      (timeStamp 2024 12 19 10 10 12)
+      (timeStamp 2025 2 4 21 49 47)
       (author "Synopsys, Inc.")
       (program "Synplify Pro" (version "L-2016.09L+ice40, mapper maplat, Build 1612R"))
      )
@@ -1426,6 +1426,7 @@
            (port TAn (direction OUTPUT))
            (port TBI_CPUn (direction OUTPUT))
            (port TCI_CPUn (direction OUTPUT))
+           (port TEA_CPUn (direction OUTPUT))
            (port CPUBGn (direction OUTPUT))
            (port BUFENn (direction OUTPUT))
            (port BUFDIR (direction OUTPUT))
@@ -1775,6 +1776,10 @@
            (property NEG_TRIGGER (string "0"))
            (property PIN_TYPE (string "011001"))
           )
+          (instance TEA_CPUn_obuf (viewRef PRIM (cellRef SB_IO (libraryRef sb_ice)))
+           (property NEG_TRIGGER (string "0"))
+           (property PIN_TYPE (string "011001"))
+          )
           (instance CPUBGn_obuf (viewRef PRIM (cellRef SB_IO (libraryRef sb_ice)))
            (property NEG_TRIGGER (string "0"))
            (property PIN_TYPE (string "011001"))
@@ -1821,6 +1826,7 @@
            (portRef Y (instanceRef VCC))
            (portRef RESETB (instanceRef pll))
            (portRef D_OUT_0 (instanceRef DMAn_obuf))
+           (portRef D_OUT_0 (instanceRef TEA_CPUn_obuf))
            (portRef D_OUT_0 (instanceRef TCI_CPUn_obuf))
           ))
           (net CLK80 (joined
@@ -1850,7 +1856,6 @@
            (portRef (member DYNAMICDELAY 7) (instanceRef pll))
            (portRef D_OUT_0 (instanceRef BUFENn_obuf))
            (portRef D_OUT_0 (instanceRef CPUBGn_obuf))
-           (portRef D_OUT_0 (instanceRef TBI_CPUn_obuf))
           ))
           (net (rename un1_D_UU_AMIGA_0 "un1_D_UU_AMIGA[0]") (joined
            (portRef (member un1_D_UU_AMIGA 7) (instanceRef U111_CYCLE_SM))
@@ -2741,6 +2746,10 @@
            (portRef PACKAGE_PIN (instanceRef TCI_CPUn_obuf))
            (portRef TCI_CPUn)
           ))
+          (net (rename tea_cpun "TEA_CPUn") (joined
+           (portRef PACKAGE_PIN (instanceRef TEA_CPUn_obuf))
+           (portRef TEA_CPUn)
+          ))
           (net (rename cpubgn "CPUBGn") (joined
            (portRef PACKAGE_PIN (instanceRef CPUBGn_obuf))
            (portRef CPUBGn)
@@ -2759,6 +2768,7 @@
           ))
           (net (rename U111_CYCLE_SM_TAn_0_i "U111_CYCLE_SM.TAn_0_i") (joined
            (portRef TAn_0_i (instanceRef U111_CYCLE_SM))
+           (portRef D_OUT_0 (instanceRef TBI_CPUn_obuf))
            (portRef D_OUT_0 (instanceRef TAn_obuf))
           ))
           (net RnW_c_i_0 (joined

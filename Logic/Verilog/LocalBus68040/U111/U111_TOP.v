@@ -1,3 +1,35 @@
+/*
+LICENSE:
+
+This work is released under the Creative Commons Attribution-NonCommercial 4.0 International
+https://creativecommons.org/licenses/by-nc/4.0/
+
+You are free to:
+Share — copy and redistribute the material in any medium or format
+Adapt — remix, transform, and build upon the material
+The licensor cannot revoke these freedoms as long as you follow the license terms.
+
+Under the following terms:
+Attribution — You must give appropriate credit , provide a link to the license, and indicate if changes were made . You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
+NonCommercial — You may not use the material for commercial purposes.
+No additional restrictions — You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.
+
+RTL MODULE:
+
+Engineer: Jason Neus
+Design Name: U111
+Module Name: U111_TOP
+Project Name: AmigaPCI
+Target Devices: iCE40-HX4K-TQ144
+
+Description: U111 AMIGA PCI LOCAL BUS CARD BUS SIZING FPGA
+
+Revision History:
+    xxx
+
+GitHub: https://github.com/jasonsbeer/AmigaPCI
+*/
+
 //iceprog D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\sbt\outputs\bitmap\U111_TOP_bitmap.bin
 
 module U111_TOP (
@@ -7,7 +39,7 @@ module U111_TOP (
 
     output [1:0] A_AMIGA,
     output CLK40A, CLK40B, CLK40C, CLK80_CPU, CLKRAMA, CLKRAMB,
-    output TSn, TAn, TBI_CPUn, TCI_CPUn, CPUBGn, BUFENn, BUFDIR, DMAn,
+    output TSn, TAn, TBI_CPUn, TCI_CPUn, TEA_CPUn, CPUBGn, BUFENn, BUFDIR, DMAn,
 
     inout [7:0] D_UU_040, //68040 DATA BUS
     inout [7:0] D_UM_040,
@@ -99,6 +131,7 @@ U111_CYCLE_SM U111_CYCLE_SM (
     .TAn (TAn),
     .TBI_CPUn (TBI_CPUn),
     .TCI_CPUn (TCI_CPUn),
+    .TEA_CPUn (TEA_CPUn),
     .A_AMIGA (A_AMIGA),
     .TSn (TSn),
 

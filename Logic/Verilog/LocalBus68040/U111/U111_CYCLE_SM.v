@@ -1,3 +1,35 @@
+/*
+LICENSE:
+
+This work is released under the Creative Commons Attribution-NonCommercial 4.0 International
+https://creativecommons.org/licenses/by-nc/4.0/
+
+You are free to:
+Share — copy and redistribute the material in any medium or format
+Adapt — remix, transform, and build upon the material
+The licensor cannot revoke these freedoms as long as you follow the license terms.
+
+Under the following terms:
+Attribution — You must give appropriate credit , provide a link to the license, and indicate if changes were made . You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
+NonCommercial — You may not use the material for commercial purposes.
+No additional restrictions — You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.
+
+RTL MODULE:
+
+Engineer: Jason Neus
+Design Name: U111
+Module Name: U111_CYCLE_SM
+Project Name: AmigaPCI
+Target Devices: iCE40-HX4K-TQ144
+
+Description: DATA TRANSFER CYCLE AND BUS SIZING STATE MACHINE
+
+Revision History:
+    xxx
+
+GitHub: https://github.com/jasonsbeer/AmigaPCI
+*/
+
 module U111_CYCLE_SM (
     input CLK80, CLK40, TS_CPUn, RESETn, RnW, PORTSIZE, TACKn,
     input [1:0] SIZ,
@@ -37,9 +69,8 @@ end
 //WE PASS THE _TACK SIGNAL THROUGH WHEN THE _TA OUTPUT IS ENABLED.
 //TRANSFER BURST INHIBIT IS ENABLED WHEN ADDRESSING A WORD PORT.
 
-assign TAn = TA_EN ? TACKn : 1'b1;
-//assign TBIn = PORTSIZE ? TACKn : 1'b1;
-assign TBI_CPUn = 0; //DISABLE ALL TRANSFER BURSTS.
+assign TAn = TA_EN ? TACKn : 1'b1; //THIS WILL NEED TO TRISTATE WHEN ACCESSING ONBOARD MEMORY.
+assign TBI_CPUn = TA_EN ? TACKn : 1'b1; //DISABLE ALL TRANSFER BURSTS.
 assign TCI_CPUn = 1; //ENABLE ALL TRANSFER CACHING.
 assign TEA_CPUn = 1;
 

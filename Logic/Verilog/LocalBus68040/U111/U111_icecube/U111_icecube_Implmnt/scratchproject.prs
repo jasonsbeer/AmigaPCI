@@ -1,24 +1,24 @@
 #--  Synopsys, Inc.
 #--  Version L-2016.09L+ice40
-#--  Project file D:\AmigaPCI\U111\U111_icecube\U111_icecube_Implmnt\scratchproject.prs
+#--  Project file D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\scratchproject.prs
 
 #project files
-add_file -verilog "D:/AmigaPCI/U111/U111_BUFFERS.v"
-add_file -verilog "D:/AmigaPCI/U111/U111_TOP.v"
-add_file -verilog "D:/AmigaPCI/U111/U111_CYCLE_SM.v"
-add_file -constraint "D:/AmigaPCI/U111/U111_TOP.sdc"
+add_file -verilog "D:/LocalBus68040/U111/U111_BUFFERS.v"
+add_file -verilog "D:/LocalBus68040/U111/U111_TOP.v"
+add_file -verilog "D:/LocalBus68040/U111/U111_CYCLE_SM.v"
+add_file -constraint "D:/LocalBus68040/U111/U111_TOP.sdc"
 
 
 
 #implementation: "U111_icecube_Implmnt"
-impl -add D:\AmigaPCI\U111\U111_icecube\U111_icecube_Implmnt -type fpga
+impl -add D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt -type fpga
 
 #
 #implementation attributes
 
 set_option -vlog_std v2001
 set_option -project_relative_includes 1
-set_option -include_path {D:/AmigaPCI/U111/U111_icecube/}
+set_option -include_path {D:/LocalBus68040/U111/U111_icecube/}
 
 #device options
 set_option -technology SBTiCE40
@@ -67,5 +67,5 @@ set_option -auto_infer_blackbox 0
 set_option -write_apr_constraint 1
 
 #set result format/file last
-project -result_file "D:/AmigaPCI/U111/U111_icecube/U111_icecube_Implmnt/U111_icecube.edf"
+project -result_file "D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt/U111_icecube.edf"
 impl -active "U111_icecube_Implmnt"

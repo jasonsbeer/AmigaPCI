@@ -5,7 +5,7 @@ The file contains the job information from mapper to be displayed as part of the
 *******************************************************************************************-->
 <job_run_status name="Mapper">
 <report_link name="Detailed report">
-<data>D:\AmigaPCI\U111\U111_icecube\U111_icecube_Implmnt\synlog\U111_icecube_premap.srr</data>
+<data>D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\synlog\U111_icecube_premap.srr</data>
 <title>Synopsys Lattice Technology Pre-mapping</title>
 </report_link>
 <job_status>
@@ -15,19 +15,19 @@ The file contains the job information from mapper to be displayed as part of the
 <info name="Notes">
 <data>4</data>
 <report_link name="more">
-<data>D:\AmigaPCI\U111\U111_icecube\U111_icecube_Implmnt\synlog\report\U111_icecube_premap_notes.txt</data>
+<data>D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\synlog\report\U111_icecube_premap_notes.txt</data>
 </report_link>
 </info>
 <info name="Warnings">
 <data>0</data>
 <report_link name="more">
-<data>D:\AmigaPCI\U111\U111_icecube\U111_icecube_Implmnt\synlog\report\U111_icecube_premap_warnings.txt</data>
+<data>D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\synlog\report\U111_icecube_premap_warnings.txt</data>
 </report_link>
 </info>
 <info name="Errors">
 <data>0</data>
 <report_link name="more">
-<data>D:\AmigaPCI\U111\U111_icecube\U111_icecube_Implmnt\synlog\report\U111_icecube_premap_errors.txt</data>
+<data>D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\synlog\report\U111_icecube_premap_errors.txt</data>
 </report_link>
 </info>
 <info name="CPU Time">
@@ -40,7 +40,7 @@ The file contains the job information from mapper to be displayed as part of the
 <data>133MB</data>
 </info>
 <info name="Date &amp; Time">
-<data type="timestamp">1734624611</data>
+<data type="timestamp">1738727386</data>
 </info>
 </job_info>
 </job_run_status>
