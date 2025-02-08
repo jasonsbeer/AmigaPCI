@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:45:10
 
-* File Generated:     Feb 2 2025 09:50:10
+* File Generated:     Feb 8 2025 11:04:40
 
 * Purpose:            Router runtime info
 
@@ -14,7 +14,7 @@
 
 * ******************************************************************************
 
-Executing : C:\lscc\iCEcube2.2020.12\sbt_backend\bin\win32\opt\sbrouter.exe C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P04.dev D:\AmigaPCI\U110\\APCI_U110\APCI_U110_Implmnt\sbt\netlist\oadb-U110_TOP C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ice40HX8K.lib D:\AmigaPCI\U110\\APCI_U110\APCI_U110_Implmnt\sbt\outputs\packer\U110_TOP_pk.sdc --outdir D:\AmigaPCI\U110\\APCI_U110\APCI_U110_Implmnt\sbt\outputs\router --sdf_file D:/AmigaPCI/U110//APCI_U110/APCI_U110_Implmnt\sbt\outputs\simulation_netlist\U110_TOP_sbt.sdf --pin_permutation 
+Executing : C:\lscc\iCEcube2.2020.12\sbt_backend\bin\win32\opt\sbrouter.exe C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P04.dev D:\AmigaPCI\U110\APCI_U110\APCI_U110_Implmnt\sbt\netlist\oadb-U110_TOP C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ice40HX8K.lib D:\AmigaPCI\U110\APCI_U110\APCI_U110_Implmnt\sbt\outputs\packer\U110_TOP_pk.sdc --outdir D:\AmigaPCI\U110\APCI_U110\APCI_U110_Implmnt\sbt\outputs\router --sdf_file D:/AmigaPCI/U110/APCI_U110/APCI_U110_Implmnt\sbt\outputs\simulation_netlist\U110_TOP_sbt.sdf --pin_permutation 
 I1203: Reading Design U110_TOP
 I1202: Reading Architecture of device iCE40HX4K
 I1209: Started routing

@@ -6,7 +6,7 @@
 
 -- Build Date:         Dec  9 2020 18:18:06
 
--- File Generated:     Feb 2 2025 09:50:19
+-- File Generated:     Feb 8 2025 11:04:49
 
 -- Purpose:            Post-Route Verilog/VHDL netlist for timing simulation
 
@@ -40,59 +40,55 @@ end U110_TOP;
 -- View name is \INTERFACE\
 architecture \INTERFACE\ of U110_TOP is
 
-signal \N__263\ : std_logic;
-signal \N__262\ : std_logic;
-signal \N__261\ : std_logic;
-signal \N__254\ : std_logic;
-signal \N__253\ : std_logic;
-signal \N__252\ : std_logic;
-signal \N__245\ : std_logic;
-signal \N__244\ : std_logic;
-signal \N__243\ : std_logic;
-signal \N__236\ : std_logic;
-signal \N__235\ : std_logic;
-signal \N__234\ : std_logic;
-signal \N__227\ : std_logic;
-signal \N__226\ : std_logic;
-signal \N__225\ : std_logic;
-signal \N__218\ : std_logic;
-signal \N__217\ : std_logic;
-signal \N__216\ : std_logic;
-signal \N__209\ : std_logic;
-signal \N__208\ : std_logic;
-signal \N__207\ : std_logic;
-signal \N__190\ : std_logic;
-signal \N__189\ : std_logic;
-signal \N__186\ : std_logic;
-signal \N__185\ : std_logic;
-signal \N__182\ : std_logic;
-signal \N__179\ : std_logic;
-signal \N__176\ : std_logic;
+signal \N__251\ : std_logic;
+signal \N__250\ : std_logic;
+signal \N__249\ : std_logic;
+signal \N__242\ : std_logic;
+signal \N__241\ : std_logic;
+signal \N__240\ : std_logic;
+signal \N__233\ : std_logic;
+signal \N__232\ : std_logic;
+signal \N__231\ : std_logic;
+signal \N__224\ : std_logic;
+signal \N__223\ : std_logic;
+signal \N__222\ : std_logic;
+signal \N__215\ : std_logic;
+signal \N__214\ : std_logic;
+signal \N__213\ : std_logic;
+signal \N__206\ : std_logic;
+signal \N__205\ : std_logic;
+signal \N__204\ : std_logic;
+signal \N__197\ : std_logic;
+signal \N__196\ : std_logic;
+signal \N__195\ : std_logic;
+signal \N__178\ : std_logic;
+signal \N__177\ : std_logic;
+signal \N__174\ : std_logic;
 signal \N__173\ : std_logic;
-signal \N__172\ : std_logic;
-signal \N__169\ : std_logic;
-signal \N__166\ : std_logic;
-signal \N__163\ : std_logic;
+signal \N__170\ : std_logic;
+signal \N__167\ : std_logic;
+signal \N__164\ : std_logic;
+signal \N__161\ : std_logic;
 signal \N__160\ : std_logic;
-signal \N__159\ : std_logic;
-signal \N__156\ : std_logic;
-signal \N__153\ : std_logic;
-signal \N__152\ : std_logic;
-signal \N__149\ : std_logic;
-signal \N__146\ : std_logic;
-signal \N__143\ : std_logic;
-signal \N__140\ : std_logic;
-signal \N__137\ : std_logic;
-signal \N__134\ : std_logic;
-signal \N__131\ : std_logic;
-signal \N__128\ : std_logic;
-signal \N__125\ : std_logic;
-signal \N__122\ : std_logic;
-signal \N__117\ : std_logic;
+signal \N__157\ : std_logic;
+signal \N__154\ : std_logic;
+signal \N__151\ : std_logic;
+signal \N__148\ : std_logic;
+signal \N__145\ : std_logic;
+signal \N__144\ : std_logic;
+signal \N__141\ : std_logic;
+signal \N__136\ : std_logic;
+signal \N__133\ : std_logic;
+signal \N__130\ : std_logic;
+signal \N__127\ : std_logic;
+signal \N__124\ : std_logic;
+signal \N__121\ : std_logic;
+signal \N__118\ : std_logic;
+signal \N__115\ : std_logic;
 signal \N__112\ : std_logic;
 signal \N__109\ : std_logic;
-signal \N__104\ : std_logic;
-signal \N__99\ : std_logic;
+signal \N__106\ : std_logic;
+signal \N__101\ : std_logic;
 signal \VCCG0\ : std_logic;
 signal \GNDG0\ : std_logic;
 signal \CONSTANT_ONE_NET\ : std_logic;
@@ -121,9 +117,9 @@ begin
             PULLUP => '0'
         )
     port map (
-            OE => \N__263\,
-            DIN => \N__262\,
-            DOUT => \N__261\,
+            OE => \N__251\,
+            DIN => \N__250\,
+            DOUT => \N__249\,
             PACKAGEPIN => \IDELATCH_wire\
         );
 
@@ -133,14 +129,14 @@ begin
             PIN_TYPE => "011001"
         )
     port map (
-            PADOEN => \N__263\,
-            PADOUT => \N__262\,
-            PADIN => \N__261\,
+            PADOEN => \N__251\,
+            PADOUT => \N__250\,
+            PADIN => \N__249\,
             CLOCKENABLE => 'H',
             DOUT1 => '0',
             OUTPUTENABLE => '0',
             DIN0 => OPEN,
-            DOUT0 => \N__185\,
+            DOUT0 => \GNDG0\,
             INPUTCLK => '0',
             LATCHINPUTVALUE => '0',
             DIN1 => OPEN,
@@ -153,9 +149,9 @@ begin
             PULLUP => '0'
         )
     port map (
-            OE => \N__254\,
-            DIN => \N__253\,
-            DOUT => \N__252\,
+            OE => \N__242\,
+            DIN => \N__241\,
+            DOUT => \N__240\,
             PACKAGEPIN => \TEAn_wire\
         );
 
@@ -165,14 +161,14 @@ begin
             PIN_TYPE => "011001"
         )
     port map (
-            PADOEN => \N__254\,
-            PADOUT => \N__253\,
-            PADIN => \N__252\,
+            PADOEN => \N__242\,
+            PADOUT => \N__241\,
+            PADIN => \N__240\,
             CLOCKENABLE => 'H',
             DOUT1 => '0',
             OUTPUTENABLE => '0',
             DIN0 => OPEN,
-            DOUT0 => \N__190\,
+            DOUT0 => \N__178\,
             INPUTCLK => '0',
             LATCHINPUTVALUE => '0',
             DIN1 => OPEN,
@@ -185,9 +181,9 @@ begin
             PULLUP => '0'
         )
     port map (
-            OE => \N__245\,
-            DIN => \N__244\,
-            DOUT => \N__243\,
+            OE => \N__233\,
+            DIN => \N__232\,
+            DOUT => \N__231\,
             PACKAGEPIN => \BGn_wire\
         );
 
@@ -197,9 +193,9 @@ begin
             PIN_TYPE => "011001"
         )
     port map (
-            PADOEN => \N__245\,
-            PADOUT => \N__244\,
-            PADIN => \N__243\,
+            PADOEN => \N__233\,
+            PADOUT => \N__232\,
+            PADIN => \N__231\,
             CLOCKENABLE => 'H',
             DOUT1 => '0',
             OUTPUTENABLE => '0',
@@ -217,9 +213,9 @@ begin
             PULLUP => '0'
         )
     port map (
-            OE => \N__236\,
-            DIN => \N__235\,
-            DOUT => \N__234\,
+            OE => \N__224\,
+            DIN => \N__223\,
+            DOUT => \N__222\,
             PACKAGEPIN => \IDEHRENn_wire\
         );
 
@@ -229,14 +225,14 @@ begin
             PIN_TYPE => "011001"
         )
     port map (
-            PADOEN => \N__236\,
-            PADOUT => \N__235\,
-            PADIN => \N__234\,
+            PADOEN => \N__224\,
+            PADOUT => \N__223\,
+            PADIN => \N__222\,
             CLOCKENABLE => 'H',
             DOUT1 => '0',
             OUTPUTENABLE => '0',
             DIN0 => OPEN,
-            DOUT0 => \N__159\,
+            DOUT0 => \N__144\,
             INPUTCLK => '0',
             LATCHINPUTVALUE => '0',
             DIN1 => OPEN,
@@ -249,9 +245,9 @@ begin
             PULLUP => '0'
         )
     port map (
-            OE => \N__227\,
-            DIN => \N__226\,
-            DOUT => \N__225\,
+            OE => \N__215\,
+            DIN => \N__214\,
+            DOUT => \N__213\,
             PACKAGEPIN => \IDEHWENn_wire\
         );
 
@@ -261,14 +257,14 @@ begin
             PIN_TYPE => "011001"
         )
     port map (
-            PADOEN => \N__227\,
-            PADOUT => \N__226\,
-            PADIN => \N__225\,
+            PADOEN => \N__215\,
+            PADOUT => \N__214\,
+            PADIN => \N__213\,
             CLOCKENABLE => 'H',
             DOUT1 => '0',
             OUTPUTENABLE => '0',
             DIN0 => OPEN,
-            DOUT0 => \N__172\,
+            DOUT0 => \N__160\,
             INPUTCLK => '0',
             LATCHINPUTVALUE => '0',
             DIN1 => OPEN,
@@ -281,9 +277,9 @@ begin
             PULLUP => '0'
         )
     port map (
-            OE => \N__218\,
-            DIN => \N__217\,
-            DOUT => \N__216\,
+            OE => \N__206\,
+            DIN => \N__205\,
+            DOUT => \N__204\,
             PACKAGEPIN => \IDELENn_wire\
         );
 
@@ -293,14 +289,14 @@ begin
             PIN_TYPE => "011001"
         )
     port map (
-            PADOEN => \N__218\,
-            PADOUT => \N__217\,
-            PADIN => \N__216\,
+            PADOEN => \N__206\,
+            PADOUT => \N__205\,
+            PADIN => \N__204\,
             CLOCKENABLE => 'H',
             DOUT1 => '0',
             OUTPUTENABLE => '0',
             DIN0 => OPEN,
-            DOUT0 => \N__152\,
+            DOUT0 => \N__177\,
             INPUTCLK => '0',
             LATCHINPUTVALUE => '0',
             DIN1 => OPEN,
@@ -313,9 +309,9 @@ begin
             PULLUP => '0'
         )
     port map (
-            OE => \N__209\,
-            DIN => \N__208\,
-            DOUT => \N__207\,
+            OE => \N__197\,
+            DIN => \N__196\,
+            DOUT => \N__195\,
             PACKAGEPIN => \INT2n_wire\
         );
 
@@ -325,209 +321,185 @@ begin
             PIN_TYPE => "011001"
         )
     port map (
-            PADOEN => \N__209\,
-            PADOUT => \N__208\,
-            PADIN => \N__207\,
+            PADOEN => \N__197\,
+            PADOUT => \N__196\,
+            PADIN => \N__195\,
             CLOCKENABLE => 'H',
             DOUT1 => '0',
             OUTPUTENABLE => '0',
             DIN0 => OPEN,
-            DOUT0 => \N__189\,
+            DOUT0 => \N__173\,
             INPUTCLK => '0',
             LATCHINPUTVALUE => '0',
             DIN1 => OPEN,
             OUTPUTCLK => '0'
         );
 
-    \I__42\ : IoInMux
+    \I__38\ : IoInMux
     port map (
-            O => \N__190\,
-            I => \N__186\
+            O => \N__178\,
+            I => \N__174\
         );
 
-    \I__41\ : IoInMux
+    \I__37\ : IoInMux
     port map (
-            O => \N__189\,
-            I => \N__182\
-        );
-
-    \I__40\ : LocalMux
-    port map (
-            O => \N__186\,
-            I => \N__179\
-        );
-
-    \I__39\ : IoInMux
-    port map (
-            O => \N__185\,
-            I => \N__176\
-        );
-
-    \I__38\ : LocalMux
-    port map (
-            O => \N__182\,
-            I => \N__173\
-        );
-
-    \I__37\ : IoSpan4Mux
-    port map (
-            O => \N__179\,
-            I => \N__169\
+            O => \N__177\,
+            I => \N__170\
         );
 
     \I__36\ : LocalMux
     port map (
-            O => \N__176\,
-            I => \N__166\
+            O => \N__174\,
+            I => \N__167\
         );
 
-    \I__35\ : Span4Mux_s1_v
+    \I__35\ : IoInMux
     port map (
             O => \N__173\,
-            I => \N__163\
+            I => \N__164\
         );
 
-    \I__34\ : IoInMux
+    \I__34\ : LocalMux
     port map (
-            O => \N__172\,
-            I => \N__160\
+            O => \N__170\,
+            I => \N__161\
         );
 
-    \I__33\ : Span4Mux_s0_h
+    \I__33\ : Span4Mux_s1_h
     port map (
-            O => \N__169\,
-            I => \N__156\
+            O => \N__167\,
+            I => \N__157\
         );
 
-    \I__32\ : Span4Mux_s3_h
+    \I__32\ : LocalMux
     port map (
-            O => \N__166\,
-            I => \N__153\
+            O => \N__164\,
+            I => \N__154\
         );
 
-    \I__31\ : Span4Mux_v
+    \I__31\ : IoSpan4Mux
     port map (
-            O => \N__163\,
-            I => \N__149\
+            O => \N__161\,
+            I => \N__151\
         );
 
-    \I__30\ : LocalMux
+    \I__30\ : IoInMux
     port map (
             O => \N__160\,
-            I => \N__146\
+            I => \N__148\
         );
 
-    \I__29\ : IoInMux
+    \I__29\ : Span4Mux_h
     port map (
-            O => \N__159\,
-            I => \N__143\
+            O => \N__157\,
+            I => \N__145\
         );
 
-    \I__28\ : Sp12to4
+    \I__28\ : IoSpan4Mux
     port map (
-            O => \N__156\,
-            I => \N__140\
+            O => \N__154\,
+            I => \N__141\
         );
 
-    \I__27\ : Span4Mux_v
+    \I__27\ : IoSpan4Mux
     port map (
-            O => \N__153\,
-            I => \N__137\
+            O => \N__151\,
+            I => \N__136\
         );
 
-    \I__26\ : IoInMux
+    \I__26\ : LocalMux
     port map (
-            O => \N__152\,
-            I => \N__134\
+            O => \N__148\,
+            I => \N__136\
         );
 
-    \I__25\ : Span4Mux_v
+    \I__25\ : Sp12to4
     port map (
-            O => \N__149\,
-            I => \N__131\
+            O => \N__145\,
+            I => \N__133\
         );
 
-    \I__24\ : IoSpan4Mux
+    \I__24\ : IoInMux
     port map (
-            O => \N__146\,
-            I => \N__128\
+            O => \N__144\,
+            I => \N__130\
         );
 
-    \I__23\ : LocalMux
+    \I__23\ : Span4Mux_s3_v
     port map (
-            O => \N__143\,
-            I => \N__125\
+            O => \N__141\,
+            I => \N__127\
         );
 
-    \I__22\ : Span12Mux_s11_h
+    \I__22\ : Span4Mux_s2_h
     port map (
-            O => \N__140\,
-            I => \N__122\
+            O => \N__136\,
+            I => \N__124\
         );
 
-    \I__21\ : Sp12to4
+    \I__21\ : Span12Mux_v
     port map (
-            O => \N__137\,
-            I => \N__117\
+            O => \N__133\,
+            I => \N__121\
         );
 
     \I__20\ : LocalMux
     port map (
-            O => \N__134\,
-            I => \N__117\
+            O => \N__130\,
+            I => \N__118\
         );
 
     \I__19\ : Span4Mux_v
     port map (
-            O => \N__131\,
+            O => \N__127\,
+            I => \N__115\
+        );
+
+    \I__18\ : Span4Mux_h
+    port map (
+            O => \N__124\,
             I => \N__112\
         );
 
-    \I__18\ : Span4Mux_s3_h
+    \I__17\ : Span12Mux_h
     port map (
-            O => \N__128\,
-            I => \N__112\
-        );
-
-    \I__17\ : Span4Mux_s3_h
-    port map (
-            O => \N__125\,
+            O => \N__121\,
             I => \N__109\
         );
 
-    \I__16\ : Span12Mux_h
+    \I__16\ : Span12Mux_s10_h
     port map (
-            O => \N__122\,
-            I => \N__104\
+            O => \N__118\,
+            I => \N__106\
         );
 
-    \I__15\ : Span12Mux_s8_h
+    \I__15\ : Span4Mux_v
     port map (
-            O => \N__117\,
-            I => \N__104\
+            O => \N__115\,
+            I => \N__101\
         );
 
     \I__14\ : Span4Mux_h
     port map (
             O => \N__112\,
-            I => \N__99\
+            I => \N__101\
         );
 
-    \I__13\ : Span4Mux_h
+    \I__13\ : Odrv12
     port map (
             O => \N__109\,
-            I => \N__99\
+            I => \CONSTANT_ONE_NET\
         );
 
     \I__12\ : Odrv12
     port map (
-            O => \N__104\,
+            O => \N__106\,
             I => \CONSTANT_ONE_NET\
         );
 
     \I__11\ : Odrv4
     port map (
-            O => \N__99\,
+            O => \N__101\,
             I => \CONSTANT_ONE_NET\
         );
 
@@ -546,7 +518,7 @@ begin
             Y => \_gnd_net_\
         );
 
-    \CONSTANT_ONE_LUT4_LC_20_12_0\ : LogicCell40
+    \CONSTANT_ONE_LUT4_LC_18_13_0\ : LogicCell40
     generic map (
             C_ON => '0',
             SEQ_MODE => "0000",

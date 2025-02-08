@@ -10,14 +10,14 @@ set_io CLKCIA   122
 set_io CLK40_IN 129
 
 #CPU DATA BUS
-#set_io D[24] 38
-#set_io D[25] 39
-#set_io D[26] 41
-#set_io D[27] 42
-#set_io D[28] 43
-#set_io D[29] 44
-#set_io D[30] 45
-#set_io D[31] 47
+#set_io D[0] 38 #D24
+#set_io D[1] 39 #D25
+#set_io D[2] 41 #D26
+#set_io D[3] 42 #D27
+#set_io D[4] 43 #D28
+#set_io D[5] 44 #D29
+#set_io D[6] 45 #D30
+#set_io D[7] 47 #D31
 
 #CPU ADDRESS BUS
 set_io A[1]  144 -pullup yes
@@ -54,7 +54,7 @@ set_io A[31] 10  -pullup yes
 
 #DATA TRANSFER SIGNALS
 #set_io nTCI     115 -pullup yes
-set_io PORTSIZE 135 -pullup yes
+set_io PORTSIZE 135
 set_io TACKn    117 -pullup yes
 set_io TSn      134
 set_io TT[0]    138

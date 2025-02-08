@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:31:51
 
-* File Generated:     Feb 2 2025 09:29:37
+* File Generated:     Feb 8 2025 11:10:18
 
 * Purpose:            General info of design implementation
 
@@ -17,7 +17,7 @@
 Synthesis/Placement Summary:
 ----------------------------
     Status:  Successful
-    Runtime: 1 seconds
+    Runtime: 0 seconds
 
 Device Info:
 ------------
@@ -28,19 +28,19 @@ Device Info:
 Design statistics:
 ------------------
     FFs:                  96
-    LUTs:                 222
+    LUTs:                 223
     RAMs:                 0
-    IOBs:                 86
+    IOBs:                 87
     GBs:                  3
     PLLs:                 1
     Warm Boots:           0
 
 Logic Resource Utilization:
 ---------------------------
-    Total Logic Cells: 222/3520
-        Combinational Logic Cells: 126      out of   3520      3.57955%
+    Total Logic Cells: 223/3520
+        Combinational Logic Cells: 127      out of   3520      3.60795%
         Sequential Logic Cells:    96       out of   3520      2.72727%
-        Logic Tiles:               75       out of   440       17.0455%
+        Logic Tiles:               72       out of   440       16.3636%
     Registers: 
         Logic Registers:           96       out of   3520      2.72727%
         IO Registers:              0        out of   880       0
@@ -48,7 +48,7 @@ Logic Resource Utilization:
     Warm Boots:                    0        out of   1         0%
     Pins:
         Input Pins:                48       out of   107       44.8598%
-        Output Pins:               38       out of   107       35.514%
+        Output Pins:               39       out of   107       36.4486%
         InOut Pins:                0        out of   107       0%
     Global Buffers:                3        out of   8         37.5%
     PLLs:                          1        out of   2         50%
@@ -57,7 +57,7 @@ IO Bank Utilization:
 --------------------
     Bank 3: 26       out of   28        92.8571%
     Bank 1: 28       out of   29        96.5517%
-    Bank 0: 17       out of   27        62.963%
+    Bank 0: 18       out of   27        66.6667%
     Bank 2: 15       out of   23        65.2174%
 
 Detailed I/O Info:
@@ -154,12 +154,13 @@ Detailed I/O Info:
     118         Output     SB_LVCMOS    No       0        Simple Output                 UDSn        
     134         Output     SB_LVCMOS    No       0        Simple Output                 DMA_LATCH   
     137         Output     SB_LVCMOS    No       0        Simple Output                 LATCH_CLK   
+    139         Output     SB_LVCMOS    No       0        Simple Output                 RAMENn      
     141         Output     SB_LVCMOS    No       0        Simple Output                 REGENn      
 
 Detailed Global Buffer Info:
 ----------------------------
     Buffer Number  IO Bank  Driven By  Fanout  Signal Name   
     -------------  -------  ---------  ------  -----------   
-    4              0                   76      RESETn_c_i_g  
-    3              3                   18      C1_c_g        
+    4              0                   75      RESETn_c_i_g  
+    3              3                   16      C1_c_g        
     1              0                   12      C3_c_g        

@@ -15,6 +15,9 @@ Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys softwa
 @I::"D:\LocalBus68040\U400\U400_SDRAM.v" (library work)
 @I::"D:\LocalBus68040\U400\U400_TOP.v" (library work)
 Verilog syntax check successful!
+
+Compiler output is up to date.  No re-compile necessary
+
 Selecting top level module U400_TOP
 @N: CG364 :"D:\LocalBus68040\U400\U400_SDRAM.v":1:7:1:16|Synthesizing module U400_SDRAM in library work.
 
@@ -28,7 +31,7 @@ At c_ver Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Sat Feb 01 10:33:22 2025
+# Sat Feb 08 11:30:40 2025
 
 ###########################################################]
 Synopsys Netlist Linker, version comp2016q3p1, Build 141R, built Dec  5 2016
@@ -41,7 +44,7 @@ At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Sat Feb 01 10:33:22 2025
+# Sat Feb 08 11:30:41 2025
 
 ###########################################################]
 @END
@@ -51,6 +54,6 @@ At c_hdl Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Sat Feb 01 10:33:22 2025
+# Sat Feb 08 11:30:41 2025
 
 ###########################################################]

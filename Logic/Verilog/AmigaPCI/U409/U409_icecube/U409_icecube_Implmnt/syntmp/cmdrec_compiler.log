@@ -1,13 +1,13 @@
 C:\lscc\iCEcube2.2020.12\synpbase\bin64\c_hdl.exe  -osyn  D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\synwork\U409_icecube_comp.srs  -hdllog  D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\synlog\U409_icecube_compiler.srr  -encrypt  -mp  4  -verification_mode 0  -verilog  -prodtype  synplify_pro  -primux -fixsmult -infer_seqShift -ice -sdff_counter -nram -divnmod -nostructver   -I D:\AmigaPCI\U409\U409_icecube\  -I C:\lscc\iCEcube2.2020.12\synpbase\lib   -v2001  -devicelib  C:\lscc\iCEcube2.2020.12\synpbase\lib\generic\sb_ice40.v  -encrypt  -pro  -dmgen  D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\dm  -ui -fid2 -ram -sharing on -ll 2000 -autosm  -lib work D:\AmigaPCI\U409\U409_ADDRESS_DECODE.v -lib work D:\AmigaPCI\U409\U409_CIA.v -lib work D:\AmigaPCI\U409\U409_DATA_BUFFERS.v -lib work D:\AmigaPCI\U409\U409_TICK.v -lib work D:\AmigaPCI\U409\U409_TOP.v -lib work D:\AmigaPCI\U409\U409_TRANSFER_ACK.v 
-rc:0 success:1 runtime:2
-file:D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\synwork\U409_icecube_comp.srs|io:o|time:1738510425|size:14868|exec:0
-file:D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\synlog\U409_icecube_compiler.srr|io:o|time:1738510425|size:5793|exec:0
+rc:0 success:1 runtime:1
+file:D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\synwork\U409_icecube_comp.srs|io:o|time:1739033982|size:14871|exec:0
+file:D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\synlog\U409_icecube_compiler.srr|io:o|time:1739033982|size:5793|exec:0
 file:C:\lscc\iCEcube2.2020.12\synpbase\lib\generic\sb_ice40.v|io:i|time:1728534475|size:224837|exec:0
-file:D:\AmigaPCI\U409\U409_ADDRESS_DECODE.v|io:i|time:1737824537|size:3284|exec:0
+file:D:\AmigaPCI\U409\U409_ADDRESS_DECODE.v|io:i|time:1739033509|size:3438|exec:0
 file:D:\AmigaPCI\U409\U409_CIA.v|io:i|time:1737824566|size:2804|exec:0
 file:D:\AmigaPCI\U409\U409_DATA_BUFFERS.v|io:i|time:1737824583|size:1823|exec:0
 file:D:\AmigaPCI\U409\U409_TICK.v|io:i|time:1737824594|size:1852|exec:0
-file:D:\AmigaPCI\U409\U409_TOP.v|io:i|time:1737824753|size:3991|exec:0
+file:D:\AmigaPCI\U409\U409_TOP.v|io:i|time:1739033573|size:4278|exec:0
 file:D:\AmigaPCI\U409\U409_TRANSFER_ACK.v|io:i|time:1737863842|size:5507|exec:0
 file:C:\lscc\iCEcube2.2020.12\synpbase\bin\c_hdl.exe|io:i|time:1728534472|size:1338368|exec:1
 file:C:\lscc\iCEcube2.2020.12\synpbase\bin64\c_hdl.exe|io:i|time:1728534473|size:1754112|exec:1

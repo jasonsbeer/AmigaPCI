@@ -6,7 +6,7 @@
 
 // Build Date:         Dec  9 2020 18:18:12
 
-// File Generated:     Feb 4 2025 21:50:11
+// File Generated:     Feb 8 2025 11:16:51
 
 // Purpose:            Post-Route Verilog/VHDL netlist for timing simulation
 
@@ -2537,6 +2537,7 @@ module U111_TOP (
             .LATCHINPUTVALUE(),
             .DIN1(),
             .OUTPUTCLK());
+    defparam TEA_CPUn_obuf_iopad.PULLUP=1'b1;
     IO_PAD TEA_CPUn_obuf_iopad (
             .OE(N__8209),
             .DIN(N__8208),
@@ -3412,6 +3413,7 @@ module U111_TOP (
             .LATCHINPUTVALUE(),
             .DIN1(),
             .OUTPUTCLK());
+    defparam TCI_CPUn_obuf_iopad.PULLUP=1'b1;
     IO_PAD TCI_CPUn_obuf_iopad (
             .OE(N__7831),
             .DIN(N__7830),
@@ -3890,6 +3892,7 @@ module U111_TOP (
             .LATCHINPUTVALUE(),
             .DIN1(),
             .OUTPUTCLK());
+    defparam PORTSIZE_ibuf_iopad.PULLUP=1'b1;
     IO_PAD PORTSIZE_ibuf_iopad (
             .OE(N__7624),
             .DIN(N__7623),

@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:31:51
 
-* File Generated:     Feb 2 2025 10:09:06
+* File Generated:     Feb 8 2025 11:14:26
 
 * Purpose:            General info of design implementation
 
@@ -25,7 +25,7 @@ Size: 24 X 20
 Design: U109_TOP
 Used Logic Cell: 1/3520
 Used Logic Tile: 1/440
-Used IO Cell:    4/176
+Used IO Cell:    68/176
 Used Bram Cell For iCE40: 0/20
 Used PLL For iCE40: 0/2
 Ram Cascading Used: 0
@@ -123,4 +123,4 @@ Maximum number of input pins per logic tile: 0
 Average number of input pins per logic tile: -1.#J
 
 ***** Run Time Info *****
-Run Time:  0
+Run Time:  1

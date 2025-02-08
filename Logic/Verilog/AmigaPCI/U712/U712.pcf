@@ -85,7 +85,7 @@ set_io LDSn      117
 set_io UDSn      118
 set_io AWEn      135
 set_io DBRn      138
-#set_io RAMENn    139
+set_io RAMENn    139
 set_io REGENn    141 #OUTPUT - AGNUS REGISTER ENABLE
 set_io REGSPACEn  41 #INPUT - CHIPSET REGISTER ADDRESS SPACE
 set_io AGNUS_REV 114 #2MB or 1MB Agnus

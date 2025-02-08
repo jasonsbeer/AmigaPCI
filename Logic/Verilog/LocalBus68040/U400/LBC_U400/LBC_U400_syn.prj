@@ -1,11 +1,11 @@
 #-- Synopsys, Inc.
 #-- Project file D:\LocalBus68040\U400\LBC_U400\LBC_U400_syn.prj
 #project files
-add_file -verilog -lib work "../U400_BYTE_ENABLE.v"
-add_file -verilog -lib work "../U400_SDRAM.v"
-add_file -verilog -lib work "../U400_TOP.v"
-add_file -constraint -lib work "../U400_TOP.sdc"
 
+add_file -verilog -lib work "../U400_BYTE_ENABLE.v" 
+add_file -verilog -lib work "../U400_SDRAM.v" 
+add_file -verilog -lib work "../U400_TOP.v" 
+add_file -constraint -lib work "../U400_TOP.sdc"
 #implementation: "LBC_U400_Implmnt"
 impl -add LBC_U400_Implmnt -type fpga
 
@@ -55,5 +55,5 @@ set_option -write_apr_constraint 1
 project -result_format "edif"
 project -result_file ./LBC_U400_Implmnt/LBC_U400.edf
 project -log_file "./LBC_U400_Implmnt/LBC_U400.srr"
-impl -active "LBC_U400_Implmnt"
+impl -active LBC_U400_Implmnt
 project -run synthesis -clean

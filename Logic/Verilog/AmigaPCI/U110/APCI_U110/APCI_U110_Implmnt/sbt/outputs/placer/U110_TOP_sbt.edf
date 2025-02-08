@@ -4,7 +4,7 @@
   (keywordMap (keywordLevel 0))
   (status 
     (written
-      (timeStamp 2025 1 2 09 50 09)
+      (timeStamp 2025 1 8 11 04 40)
       (author "Lattice Semiconductor Corp.")
       (program "SBT" (version "2020.12.27943"))
     ) 
@@ -99,7 +99,7 @@
           (instance (rename CONSTANT_ONE_LUT4 "CONSTANT_ONE_LUT4") 
              (viewRef INTERFACE (cellRef SB_LUT4 (libraryRef SBT_DESIGN))) 
             (property LUT_INIT (string "1111111111111111"))
-            (property LOCATION (string "20,12,0"))
+            (property LOCATION (string "18,13,0"))
           )
           (instance (rename VCC "VCC") 
              (viewRef INTERFACE (cellRef VCC (libraryRef SBT_DESIGN))) 
@@ -157,7 +157,6 @@
               (portRef DOUT0 (instanceRef TEAn_obuf))
               (portRef DOUT0 (instanceRef INT2n_obuf))
               (portRef DOUT0 (instanceRef IDELENn_obuf))
-              (portRef DOUT0 (instanceRef IDELATCH_obuf))
               (portRef DOUT0 (instanceRef IDEHWENn_obuf))
               (portRef DOUT0 (instanceRef IDEHRENn_obuf))
             )
@@ -195,6 +194,7 @@
           (net (rename GNDG0 "GNDG0") 
             (joined 
               (portRef Y (instanceRef GND))
+              (portRef DOUT0 (instanceRef IDELATCH_obuf))
               (portRef DOUT0 (instanceRef BGn_obuf))
             )
           )

@@ -6,7 +6,7 @@
 
 -- Build Date:         Dec  9 2020 18:18:06
 
--- File Generated:     Feb 2 2025 09:34:14
+-- File Generated:     Feb 8 2025 11:00:12
 
 -- Purpose:            Post-Route Verilog/VHDL netlist for timing simulation
 
@@ -2190,8 +2190,8 @@ begin
 
     \PORTSIZE_obuf_iopad\ : IO_PAD
     generic map (
-            PULLUP => '1',
-            IO_STANDARD => "SB_LVCMOS"
+            IO_STANDARD => "SB_LVCMOS",
+            PULLUP => '0'
         )
     port map (
             OE => \N__6417\,

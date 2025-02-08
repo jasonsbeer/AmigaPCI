@@ -4,7 +4,7 @@
   (keywordMap (keywordLevel 0))
   (status
     (written
-      (timeStamp 2025 2 2 9 50 8)
+      (timeStamp 2025 2 8 11 4 37)
       (author "Synopsys, Inc.")
       (program "Synplify Pro" (version "L-2016.09L+ice40, mapper maplat, Build 1612R"))
      )
@@ -124,10 +124,10 @@
           (net (rename GNDZ0 "GND") (joined
            (portRef Y (instanceRef GND))
            (portRef D_OUT_0 (instanceRef BGn_obuf))
+           (portRef D_OUT_0 (instanceRef IDELATCH_obuf))
           ))
           (net (rename VCCZ0 "VCC") (joined
            (portRef Y (instanceRef VCC))
-           (portRef D_OUT_0 (instanceRef IDELATCH_obuf))
            (portRef D_OUT_0 (instanceRef IDEHWENn_obuf))
            (portRef D_OUT_0 (instanceRef IDEHRENn_obuf))
            (portRef D_OUT_0 (instanceRef IDELENn_obuf))

@@ -7,5 +7,5 @@ Selecting top level module U110_TOP
 
 @N: CG364 :"D:\AmigaPCI\U110\U110_ARBITOR.v":1:7:1:18|Synthesizing module U110_ARBITOR in library work.
 
-@N: CG364 :"D:\AmigaPCI\U110\U110_TOP.v":1:7:1:14|Synthesizing module U110_TOP in library work.
+@N: CG364 :"D:\AmigaPCI\U110\U110_TOP.v":34:7:34:14|Synthesizing module U110_TOP in library work.
 

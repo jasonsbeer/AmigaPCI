@@ -1,14 +1,14 @@
 C:\lscc\iCEcube2.2020.12\synpbase\bin64\m_generic.exe  -prodtype  synplify_pro   -encrypt  -pro  -rundir  D:\AmigaPCI\U110\APCI_U110\APCI_U110_Implmnt   -part iCE40HX4K  -package TQ144    -maxfan 10000 -RWCheckOnRam 0 -pipe -fixgatedclocks 1 -fixgeneratedclocks 1 -summaryfile D:\AmigaPCI\U110\APCI_U110\APCI_U110_Implmnt\synlog\report\APCI_U110_premap.xml  -oedif  D:\AmigaPCI\U110\APCI_U110\APCI_U110_Implmnt\APCI_U110.edf  -conchk_prepass  D:\AmigaPCI\U110\APCI_U110\APCI_U110_Implmnt\APCI_U110_cck.rpt   -autoconstraint  -freq 1.000   -tcl  D:\AmigaPCI\U110\U110_TOP.sdc  D:\AmigaPCI\U110\APCI_U110\APCI_U110_Implmnt\synwork\APCI_U110_mult.srs  -flow prepass  -gcc_prepass  -osrd  D:\AmigaPCI\U110\APCI_U110\APCI_U110_Implmnt\synwork\APCI_U110_prem.srd  -qsap  D:\AmigaPCI\U110\APCI_U110\APCI_U110_Implmnt\APCI_U110.sap  -devicelib  C:\lscc\iCEcube2.2020.12\synpbase\lib\generic\sb_ice40.v  -ologparam  D:\AmigaPCI\U110\APCI_U110\APCI_U110_Implmnt\syntmp\APCI_U110.plg  -osyn  D:\AmigaPCI\U110\APCI_U110\APCI_U110_Implmnt\synwork\APCI_U110_prem.srd  -prjdir  D:\AmigaPCI\U110\APCI_U110\  -prjname  APCI_U110_syn  -log  D:\AmigaPCI\U110\APCI_U110\APCI_U110_Implmnt\synlog\APCI_U110_premap.srr 
-rc:0 success:1 runtime:1
+rc:0 success:1 runtime:0
 file:D:\AmigaPCI\U110\APCI_U110\APCI_U110_Implmnt\APCI_U110.edf|io:o|time:0|size:0|exec:0
-file:D:\AmigaPCI\U110\APCI_U110\APCI_U110_Implmnt\APCI_U110_cck.rpt|io:o|time:1738511407|size:2044|exec:0
+file:D:\AmigaPCI\U110\APCI_U110\APCI_U110_Implmnt\APCI_U110_cck.rpt|io:o|time:1739034276|size:2044|exec:0
 file:D:\AmigaPCI\U110\U110_TOP.sdc|io:i|time:1738511308|size:104|exec:0
-file:D:\AmigaPCI\U110\APCI_U110\APCI_U110_Implmnt\synwork\APCI_U110_mult.srs|io:i|time:1738511406|size:2547|exec:0
-file:D:\AmigaPCI\U110\APCI_U110\APCI_U110_Implmnt\synwork\APCI_U110_prem.srd|io:o|time:1738511407|size:1412|exec:0
-file:D:\AmigaPCI\U110\APCI_U110\APCI_U110_Implmnt\APCI_U110.sap|io:o|time:1738511407|size:117|exec:0
+file:D:\AmigaPCI\U110\APCI_U110\APCI_U110_Implmnt\synwork\APCI_U110_mult.srs|io:i|time:1739034276|size:2552|exec:0
+file:D:\AmigaPCI\U110\APCI_U110\APCI_U110_Implmnt\synwork\APCI_U110_prem.srd|io:o|time:1739034276|size:1427|exec:0
+file:D:\AmigaPCI\U110\APCI_U110\APCI_U110_Implmnt\APCI_U110.sap|io:o|time:1739034276|size:117|exec:0
 file:C:\lscc\iCEcube2.2020.12\synpbase\lib\generic\sb_ice40.v|io:i|time:1728534475|size:224837|exec:0
-file:D:\AmigaPCI\U110\APCI_U110\APCI_U110_Implmnt\syntmp\APCI_U110.plg|io:o|time:1738511406|size:0|exec:0
-file:D:\AmigaPCI\U110\APCI_U110\APCI_U110_Implmnt\synwork\APCI_U110_prem.srd|io:o|time:1738511407|size:1412|exec:0
-file:D:\AmigaPCI\U110\APCI_U110\APCI_U110_Implmnt\synlog\APCI_U110_premap.srr|io:o|time:1738511407|size:3755|exec:0
+file:D:\AmigaPCI\U110\APCI_U110\APCI_U110_Implmnt\syntmp\APCI_U110.plg|io:o|time:1739034276|size:0|exec:0
+file:D:\AmigaPCI\U110\APCI_U110\APCI_U110_Implmnt\synwork\APCI_U110_prem.srd|io:o|time:1739034276|size:1427|exec:0
+file:D:\AmigaPCI\U110\APCI_U110\APCI_U110_Implmnt\synlog\APCI_U110_premap.srr|io:o|time:1739034276|size:3755|exec:0
 file:C:\lscc\iCEcube2.2020.12\synpbase\bin\m_generic.exe|io:i|time:1728534473|size:17853440|exec:1
 file:C:\lscc\iCEcube2.2020.12\synpbase\bin64\m_generic.exe|io:i|time:1728534474|size:32355840|exec:1

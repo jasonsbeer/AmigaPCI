@@ -81,8 +81,8 @@ BitmapOscillatorFR=low
 BitmapEnableWarmBoot=yes
 BitmapDisableHeader=no
 BitmapSetSecurity=no
-BitmapSetNoUsedIONoPullup=no
+BitmapSetNoUsedIONoPullup=yes
 FloorPlannerShowFanInNets=yes
 FloorPlannerShowFanOutNets=yes
-HookTo3rdPartyTextEditor=
+HookTo3rdPartyTextEditor=no
 

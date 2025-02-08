@@ -33,8 +33,18 @@ iceprog D:\AmigaPCI\U109\APCI_U109\APCI_U109_Implmnt\sbt\outputs\bitmap\U109_TOP
 
 module U109_TOP (
 
-    output PCICYCLEn, ADLATCH, ALATCH, PCIDIR
+    output PCICYCLEn, ADLATCH, ALATCH, PCI_DIR,
     //output TACKn
+
+    input [7:0] DLL,
+    input [7:0] DLM,
+    input [7:0] DUM,
+    input [7:0] DUU,
+
+    output [7:0] AD0,
+    output [7:0] AD1,
+    output [7:0] AD2,
+    output [7:0] AD3
 
 );
 
@@ -48,8 +58,26 @@ U109_PCI_STATE_MACHINE U109_PCI_STATE_MACHINE (
     .PCICYCLEn (PCICYCLEn),
     .ADLATCH (ADLATCH),
     .ALATCH (ALATCH),
-    .PCIDIR (PCIDIR)
+    .PCI_DIR (PCI_DIR)
 
+);
+
+//////////////////
+// PCI BUFFERS //
+////////////////
+
+U109_BUFFERS U109_BUFFERS(
+    //INPUTS
+    .DUU (DUU),
+    .DUM (DUM),
+    .DLM (DLM),
+    .DLL (DLL),
+
+    //OUTPUTS
+    .AD0 (AD0),
+    .AD1 (AD1),
+    .AD2 (AD2),
+    .AD3 (AD3)
 );
 
 ////////////////////////

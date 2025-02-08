@@ -6,7 +6,7 @@
 
 // Build Date:         Dec  9 2020 18:18:12
 
-// File Generated:     Feb 2 2025 09:34:14
+// File Generated:     Feb 8 2025 11:00:12
 
 // Purpose:            Post-Route Verilog/VHDL netlist for timing simulation
 
@@ -1979,7 +1979,6 @@ module U409_TOP (
             .LATCHINPUTVALUE(),
             .DIN1(),
             .OUTPUTCLK());
-    defparam PORTSIZE_obuf_iopad.PULLUP=1'b1;
     IO_PAD PORTSIZE_obuf_iopad (
             .OE(N__6417),
             .DIN(N__6416),

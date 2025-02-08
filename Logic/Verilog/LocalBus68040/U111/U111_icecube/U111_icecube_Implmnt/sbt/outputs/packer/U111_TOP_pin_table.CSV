@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:31:51
 
-* File Generated:     Feb 4 2025 21:49:59
+* File Generated:     Feb 8 2025 11:16:39
 
 * Purpose:            Detailed IO and package pin info
 
@@ -58,7 +58,7 @@ Pin Number, Pin Type Name, Signal Name, Direction, Global Buffer, IO Standard, P
 39, PIO, A_AMIGA[0], Output, , SB_LVCMOS, Pull Up, Simple Output, bottomBank
 40, VCC, not used, , , , , , UnknownBank
 41, PIO, A_AMIGA[1], Output, , SB_LVCMOS, Pull Up, Simple Output, bottomBank
-42, PIO, PORTSIZE, Input, , SB_LVCMOS, No Pull Up, Simple Input, bottomBank
+42, PIO, PORTSIZE, Input, , SB_LVCMOS, Pull Up, Simple Input, bottomBank
 43, PIO, not used, , , , , , bottomBank
 44, PIO, not used, , , , , , bottomBank
 45, PIO, TSn, Output, , SB_LVCMOS, Pull Up, Simple Output, bottomBank
@@ -114,7 +114,7 @@ Pin Number, Pin Type Name, Signal Name, Direction, Global Buffer, IO Standard, P
 98, PIO, D_LM_040[6], InOut, , SB_LVCMOS, Pull Up, Simple Input Output Tristatable by Enable, rightBank
 99, PIO, D_LM_040[7], InOut, , SB_LVCMOS, Pull Up, Simple Input Output Tristatable by Enable, rightBank
 100, VCCIO_1, not used, , , , , , rightBank
-101, PIO, TCI_CPUn, Output, , SB_LVCMOS, No Pull Up, Simple Output, rightBank
+101, PIO, TCI_CPUn, Output, , SB_LVCMOS, Pull Up, Simple Output, rightBank
 102, PIO, CPUBGn, Output, , SB_LVCMOS, Pull Up, Simple Output, rightBank
 103, GND, not used, , , , , , UnknownBank
 104, PIO, D_UM_040[1], InOut, , SB_LVCMOS, Pull Up, Simple Input Output Tristatable by Enable, rightBank
@@ -135,7 +135,7 @@ Pin Number, Pin Type Name, Signal Name, Direction, Global Buffer, IO Standard, P
 119, PIO, D_UU_040[4], InOut, , SB_LVCMOS, Pull Up, Simple Input Output Tristatable by Enable, topBank
 120, PIO, SIZ[1], Input, , SB_LVCMOS, Pull Up, Simple Input, topBank
 121, PIO, SIZ[0], Input, , SB_LVCMOS, Pull Up, Simple Input, topBank
-122, PIO, TEA_CPUn, Output, , SB_LVCMOS, No Pull Up, Simple Output, topBank
+122, PIO, TEA_CPUn, Output, , SB_LVCMOS, Pull Up, Simple Output, topBank
 123, VCCIO_0, not used, , , , , , topBank
 124, PIO, TAn, Output, , SB_LVCMOS, Pull Up, Simple Output, topBank
 125, PIO, TS_CPUn, Input, , SB_LVCMOS, No Pull Up, Simple Input, topBank

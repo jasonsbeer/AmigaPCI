@@ -6,13 +6,433 @@
 
 * Build Date:         Dec  9 2020 17:44:35
 
-* File Generated:     Feb 2 2025 10:09:14
+* File Generated:     Feb 8 2025 11:14:34
 
 * Purpose:            Detailed routing info for each net
 
 * Copyright (C) 2006-2010 by Lattice Semiconductor Corp. All rights reserved.
 
 * ******************************************************************************
+
+Net : AD0_c_0
+T_33_21_wire_io_cluster/io_1/D_IN_0
+T_27_21_sp12_h_l_0
+T_15_21_sp12_h_l_0
+T_3_21_sp12_h_l_0
+T_2_21_sp12_v_t_23
+T_2_27_sp4_v_t_39
+T_0_31_span4_horz_31
+T_0_27_span4_vert_t_13
+T_0_30_lc_trk_g1_5
+T_0_30_wire_io_cluster/io_0/D_OUT_0
+
+End 
+
+Net : AD0_c_1
+T_33_23_wire_io_cluster/io_1/D_IN_0
+T_27_23_sp12_h_l_0
+T_15_23_sp12_h_l_0
+T_3_23_sp12_h_l_0
+T_4_23_sp4_h_l_3
+T_0_23_span4_horz_19
+T_0_23_span4_vert_t_15
+T_0_27_span4_vert_t_15
+T_0_30_lc_trk_g0_7
+T_0_30_wire_io_cluster/io_1/D_OUT_0
+
+End 
+
+Net : AD0_c_2
+T_33_27_wire_io_cluster/io_1/D_IN_0
+T_27_27_sp12_h_l_0
+T_15_27_sp12_h_l_0
+T_3_27_sp12_h_l_0
+T_4_27_sp4_h_l_3
+T_3_27_sp4_v_t_38
+T_3_31_sp4_v_t_38
+T_3_33_lc_trk_g0_3
+T_3_33_wire_io_cluster/io_1/D_OUT_0
+
+End 
+
+Net : AD0_c_3
+T_33_28_wire_io_cluster/io_0/D_IN_0
+T_29_28_sp12_h_l_0
+T_17_28_sp12_h_l_0
+T_5_28_sp12_h_l_0
+T_4_28_sp12_v_t_23
+T_4_33_lc_trk_g1_7
+T_4_33_wire_io_cluster/io_0/D_OUT_0
+
+End 
+
+Net : AD0_c_4
+T_33_29_wire_io_cluster/io_1/D_IN_0
+T_31_29_sp12_h_l_0
+T_19_29_sp12_h_l_0
+T_7_29_sp12_h_l_0
+T_6_29_sp4_h_l_1
+T_5_29_sp4_v_t_36
+T_1_33_span4_horz_r_0
+T_4_33_lc_trk_g1_4
+T_4_33_wire_io_cluster/io_1/D_OUT_0
+
+End 
+
+Net : AD0_c_5
+T_33_30_wire_io_cluster/io_0/D_IN_0
+T_29_30_sp12_h_l_0
+T_17_30_sp12_h_l_0
+T_5_30_sp12_h_l_0
+T_4_30_sp4_h_l_1
+T_7_30_sp4_v_t_43
+T_3_33_span4_horz_r_3
+T_6_33_lc_trk_g1_7
+T_6_33_wire_io_cluster/io_0/D_OUT_0
+
+End 
+
+Net : AD0_c_6
+T_33_30_wire_io_cluster/io_1/D_IN_0
+T_31_30_sp12_h_l_0
+T_19_30_sp12_h_l_0
+T_7_30_sp12_h_l_0
+T_6_30_sp4_h_l_1
+T_5_30_sp4_v_t_42
+T_5_33_lc_trk_g0_2
+T_5_33_wire_io_cluster/io_0/D_OUT_0
+
+End 
+
+Net : AD0_c_7
+T_0_4_wire_io_cluster/io_0/D_IN_0
+T_0_4_span12_horz_16
+T_4_4_sp12_v_t_23
+T_4_16_sp12_v_t_23
+T_4_22_sp4_v_t_39
+T_4_26_sp4_v_t_47
+T_4_30_sp4_v_t_43
+T_4_33_span4_horz_r_3
+T_6_33_lc_trk_g0_3
+T_6_33_wire_io_cluster/io_1/D_OUT_0
+
+End 
+
+Net : AD1_c_0
+T_33_15_wire_io_cluster/io_0/D_IN_0
+T_29_15_sp12_h_l_0
+T_17_15_sp12_h_l_0
+T_5_15_sp12_h_l_0
+T_4_15_sp12_v_t_23
+T_4_21_sp4_v_t_39
+T_0_25_span4_horz_7
+T_0_25_span4_vert_t_13
+T_0_28_lc_trk_g0_5
+T_0_28_wire_io_cluster/io_1/D_OUT_0
+
+End 
+
+Net : AD1_c_1
+T_33_15_wire_io_cluster/io_1/D_IN_0
+T_31_15_sp12_h_l_0
+T_19_15_sp12_h_l_0
+T_18_15_sp12_v_t_23
+T_7_27_sp12_h_l_0
+T_8_27_sp4_h_l_3
+T_7_27_sp4_v_t_38
+T_7_31_sp4_v_t_43
+T_7_33_lc_trk_g0_6
+T_7_33_wire_io_cluster/io_0/D_OUT_0
+
+End 
+
+Net : AD1_c_2
+T_33_16_wire_io_cluster/io_0/D_IN_0
+T_33_16_span12_horz_0
+T_21_16_sp12_h_l_0
+T_20_16_sp12_v_t_23
+T_9_28_sp12_h_l_0
+T_8_28_sp4_h_l_1
+T_7_28_sp4_v_t_42
+T_7_32_sp4_v_t_38
+T_7_33_lc_trk_g1_6
+T_7_33_wire_io_cluster/io_1/D_OUT_0
+
+End 
+
+Net : AD1_c_3
+T_33_16_wire_io_cluster/io_1/D_IN_0
+T_23_16_sp12_h_l_0
+T_11_16_sp12_h_l_0
+T_10_16_sp12_v_t_23
+T_10_22_sp4_v_t_39
+T_10_26_sp4_v_t_47
+T_10_30_sp4_v_t_43
+T_6_33_span4_horz_r_3
+T_8_33_lc_trk_g1_3
+T_8_33_wire_io_cluster/io_0/D_OUT_0
+
+End 
+
+Net : AD1_c_4
+T_33_17_wire_io_cluster/io_0/D_IN_0
+T_33_17_span12_horz_0
+T_21_17_sp12_h_l_0
+T_9_17_sp12_h_l_0
+T_8_17_sp12_v_t_23
+T_8_29_sp12_v_t_23
+T_8_33_lc_trk_g1_0
+T_8_33_wire_io_cluster/io_1/D_OUT_0
+
+End 
+
+Net : AD1_c_5
+T_33_19_wire_io_cluster/io_1/D_IN_0
+T_23_19_sp12_h_l_0
+T_22_19_sp12_v_t_23
+T_11_31_sp12_h_l_0
+T_12_31_sp4_h_l_3
+T_11_31_sp4_v_t_38
+T_11_33_lc_trk_g0_3
+T_11_33_wire_io_cluster/io_1/D_OUT_0
+
+End 
+
+Net : AD1_c_6
+T_33_20_wire_io_cluster/io_1/D_IN_0
+T_31_20_sp12_h_l_0
+T_30_20_sp12_v_t_23
+T_19_32_sp12_h_l_0
+T_20_32_sp4_h_l_3
+T_19_32_sp4_v_t_38
+T_19_33_lc_trk_g1_6
+T_19_33_wire_io_cluster/io_1/D_OUT_0
+
+End 
+
+Net : AD1_c_7
+T_33_21_wire_io_cluster/io_0/D_IN_0
+T_33_21_span12_horz_0
+T_21_21_sp12_h_l_0
+T_20_21_sp12_v_t_23
+T_20_33_lc_trk_g0_0
+T_20_33_wire_io_cluster/io_0/D_OUT_0
+
+End 
+
+Net : AD2_c_0
+T_33_4_wire_io_cluster/io_0/D_IN_0
+T_33_4_span12_horz_0
+T_32_4_sp12_v_t_23
+T_32_16_sp12_v_t_23
+T_21_28_sp12_h_l_0
+T_20_28_sp12_v_t_23
+T_20_33_lc_trk_g0_7
+T_20_33_wire_io_cluster/io_1/D_OUT_0
+
+End 
+
+Net : AD2_c_1
+T_33_4_wire_io_cluster/io_1/D_IN_0
+T_27_4_sp12_h_l_0
+T_26_4_sp12_v_t_23
+T_26_16_sp12_v_t_23
+T_26_22_sp4_v_t_39
+T_26_26_sp4_v_t_47
+T_26_30_sp4_v_t_43
+T_22_33_span4_horz_r_3
+T_25_33_lc_trk_g1_7
+T_25_33_wire_io_cluster/io_0/D_OUT_0
+
+End 
+
+Net : AD2_c_2
+T_33_5_wire_io_cluster/io_0/D_IN_0
+T_29_5_sp12_h_l_0
+T_28_5_sp12_v_t_23
+T_28_17_sp12_v_t_23
+T_28_23_sp4_v_t_39
+T_28_27_sp4_v_t_40
+T_28_31_sp4_v_t_36
+T_24_33_span4_horz_r_0
+T_26_33_lc_trk_g0_0
+T_26_33_wire_io_cluster/io_0/D_OUT_0
+
+End 
+
+Net : AD2_c_3
+T_33_5_wire_io_cluster/io_1/D_IN_0
+T_27_5_sp12_h_l_0
+T_26_5_sp12_v_t_23
+T_26_17_sp12_v_t_23
+T_26_29_sp12_v_t_23
+T_26_33_lc_trk_g1_0
+T_26_33_wire_io_cluster/io_1/D_OUT_0
+
+End 
+
+Net : AD2_c_4
+T_33_6_wire_io_cluster/io_0/D_IN_0
+T_29_6_sp12_h_l_0
+T_28_6_sp12_v_t_23
+T_28_18_sp12_v_t_23
+T_28_26_sp4_v_t_37
+T_28_30_sp4_v_t_37
+T_24_33_span4_horz_r_2
+T_27_33_lc_trk_g0_6
+T_27_33_wire_io_cluster/io_0/D_OUT_0
+
+End 
+
+Net : AD2_c_5
+T_33_6_wire_io_cluster/io_1/D_IN_0
+T_31_6_sp12_h_l_0
+T_30_6_sp12_v_t_23
+T_30_18_sp12_v_t_23
+T_30_24_sp4_v_t_39
+T_30_28_sp4_v_t_47
+T_30_32_sp4_v_t_43
+T_26_33_span4_horz_r_3
+T_28_33_lc_trk_g0_3
+T_28_33_wire_io_cluster/io_1/D_OUT_0
+
+End 
+
+Net : AD2_c_6
+T_33_10_wire_io_cluster/io_1/D_IN_0
+T_27_10_sp12_h_l_0
+T_26_10_sp12_v_t_23
+T_26_22_sp12_v_t_23
+T_26_26_sp4_v_t_41
+T_26_30_sp4_v_t_37
+T_26_33_span4_horz_r_2
+T_29_33_lc_trk_g0_6
+T_29_33_wire_io_cluster/io_0/D_OUT_0
+
+End 
+
+Net : AD2_c_7
+T_33_14_wire_io_cluster/io_1/D_IN_0
+T_33_13_span4_vert_t_14
+T_33_17_span4_vert_t_14
+T_33_21_span4_vert_t_14
+T_33_25_span4_vert_t_14
+T_30_29_sp4_h_l_0
+T_29_29_sp4_v_t_43
+T_29_33_lc_trk_g1_6
+T_29_33_wire_io_cluster/io_1/D_OUT_0
+
+End 
+
+Net : AD3_c_0
+T_28_0_wire_io_cluster/io_0/D_IN_0
+T_28_0_span12_vert_16
+T_28_9_sp12_v_t_23
+T_28_21_sp12_v_t_23
+T_28_25_sp4_v_t_41
+T_28_29_sp4_v_t_42
+T_28_33_span4_horz_r_1
+T_30_33_lc_trk_g1_1
+T_30_33_wire_io_cluster/io_0/D_OUT_0
+
+End 
+
+Net : AD3_c_1
+T_29_0_wire_io_cluster/io_0/D_IN_0
+T_29_0_span12_vert_8
+T_29_5_sp12_v_t_23
+T_29_17_sp12_v_t_23
+T_30_29_sp12_h_l_0
+T_31_29_sp4_h_l_3
+T_30_29_sp4_v_t_38
+T_30_33_lc_trk_g0_3
+T_30_33_wire_io_cluster/io_1/D_OUT_0
+
+End 
+
+Net : AD3_c_2
+T_29_0_wire_io_cluster/io_1/D_IN_0
+T_29_0_span12_vert_12
+T_29_7_sp12_v_t_23
+T_29_19_sp12_v_t_23
+T_29_27_sp4_v_t_37
+T_30_31_sp4_h_l_0
+T_30_33_span4_horz_r_2
+T_31_33_lc_trk_g0_6
+T_31_33_wire_io_cluster/io_0/D_OUT_0
+
+End 
+
+Net : AD3_c_3
+T_33_1_wire_io_cluster/io_0/D_IN_0
+T_33_1_span12_horz_0
+T_32_1_sp12_v_t_23
+T_32_13_sp12_v_t_23
+T_33_25_span12_horz_0
+T_32_25_sp4_h_l_1
+T_31_25_sp4_v_t_36
+T_31_29_sp4_v_t_36
+T_31_33_lc_trk_g0_1
+T_31_33_wire_io_cluster/io_1/D_OUT_0
+
+End 
+
+Net : AD3_c_4
+T_33_1_wire_io_cluster/io_1/D_IN_0
+T_27_1_sp12_h_l_0
+T_15_1_sp12_h_l_0
+T_14_1_sp12_v_t_23
+T_14_13_sp12_v_t_23
+T_3_25_sp12_h_l_0
+T_4_25_sp4_h_l_3
+T_0_25_span4_horz_19
+T_0_25_span4_vert_t_15
+T_0_28_lc_trk_g1_7
+T_0_28_wire_io_cluster/io_0/D_OUT_0
+
+End 
+
+Net : AD3_c_5
+T_33_2_wire_io_cluster/io_0/D_IN_0
+T_29_2_sp12_h_l_0
+T_17_2_sp12_h_l_0
+T_5_2_sp12_h_l_0
+T_4_2_sp12_v_t_23
+T_4_14_sp12_v_t_23
+T_4_20_sp4_v_t_39
+T_0_24_span4_horz_7
+T_0_24_span4_vert_t_13
+T_0_27_lc_trk_g0_5
+T_0_27_wire_io_cluster/io_1/D_OUT_0
+
+End 
+
+Net : AD3_c_6
+T_33_2_wire_io_cluster/io_1/D_IN_0
+T_27_2_sp12_h_l_0
+T_15_2_sp12_h_l_0
+T_14_2_sp12_v_t_23
+T_14_14_sp12_v_t_23
+T_3_26_sp12_h_l_0
+T_4_26_sp4_h_l_3
+T_0_26_span4_horz_19
+T_0_22_span4_vert_t_15
+T_0_25_lc_trk_g0_7
+T_0_25_wire_io_cluster/io_1/D_OUT_0
+
+End 
+
+Net : AD3_c_7
+T_33_3_wire_io_cluster/io_1/D_IN_0
+T_23_3_sp12_h_l_0
+T_11_3_sp12_h_l_0
+T_10_3_sp12_v_t_23
+T_10_15_sp12_v_t_23
+T_0_27_span12_horz_4
+T_0_27_lc_trk_g0_4
+T_0_27_wire_io_cluster/io_0/D_OUT_0
+
+End 
 
 Net : CONSTANT_ONE_NET
 T_5_17_wire_logic_cluster/lc_0/out

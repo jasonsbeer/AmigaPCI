@@ -40,6 +40,7 @@ module U409_TOP (
 
     output nROMEN, nBUFEN, TICK60, TICK50, CLKCIA, nCIACS0, nCIACS1, nRAMSPACE, nREGSPACE,
     output PORTSIZE,
+    //output [7:0] D,
 
     inout TACKn
 
@@ -102,19 +103,20 @@ U409_TRANSFER_ACK U409_TRANSFER_ACK (
     .TACKn (TACKn)
 );
 
-////////////////////////////
+/////////////////////////////
 // DATA BUFFER ENABLE TOP //
-////////////////////////////
+///////////////////////////
 
 U409_DATA_BUFFERS U409_DATA_BUFFERS (
     .AGNUS_SPACE (AGNUS_SPACE),
     .nBUFEN (nBUFEN)
 );
 
-////////////////////////
+/////////////////////////
 // ADDRESS DECODE TOP //
-////////////////////////
+///////////////////////
 
+//wire AUTOCONFIG_SPACEm;
 assign nROMEN = ~ROMENm;
 //assign AGNUS_SPACE = !nRAMSPACE || !nREGSPACE;
 //PORTSIZE WILL NEED TO HI-Z!
@@ -136,11 +138,12 @@ U409_ADDRESS_DECODE U409_ADDRESS_DECODE (
     .nRAMSPACE (nRAMSPACE),
     .nREGSPACE (nREGSPACE),
     .AUTOVECTOR (AUTOVECTORm)
+    //.AUTOCONFIG_SPACE (AUTOCONFIG_SPACEm)
 );
 
-////////////////////
+/////////////////////
 // TICK CLOCK TOP //
-////////////////////
+///////////////////
 
 U409_TICK U409_TICK (
     .CLK6 (CLK6),
@@ -148,9 +151,9 @@ U409_TICK U409_TICK (
     .TICK50 (TICK50)
 );
 
-///////////////////
+////////////////////
 // CIA CLOCK TOP //
-///////////////////
+//////////////////
 
 U409_CIA U409_CIA (
     .CLK28_IN (CLK28_IN),
@@ -159,5 +162,17 @@ U409_CIA U409_CIA (
     .CLKCIA (CLKCIA),
     .CIA_ENABLE (CIA_ENABLEm)
 );
+
+/////////////////
+// AUTOCONFIG //
+///////////////
+
+/*U409_AUTOCONFIG U409_AUTOCONFIG (
+    //INPUT
+    .AUTOCONFIG_SPACE (AUTOCONFIG_SPACEm),
+
+    //INPUT/OUTPUT
+    .D (D)
+);*/
 
 endmodule

@@ -1,3 +1,2 @@
-@E: CS187 :"D:\AmigaPCI\U409\U409_TOP.v":128:4:128:4|Expecting ,
-@E: CS187 :"D:\AmigaPCI\U409\U409_TOP.v":162:0:162:8|Expecting endmodule
+@E: CS168 :"D:\AmigaPCI\U409\U409_TOP.v":141:22:141:22|Port AUTOCONFIG_SPACE does not exist
 

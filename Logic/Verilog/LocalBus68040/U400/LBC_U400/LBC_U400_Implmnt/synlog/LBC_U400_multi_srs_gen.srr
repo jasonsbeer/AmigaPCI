@@ -1,5 +1,6 @@
 Synopsys Netlist Linker, version comp2016q3p1, Build 141R, built Dec  5 2016
 @N|Running in 64-bit mode
+File D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\synwork\LBC_U400_comp.srs changed - recompiling
 @N: NF107 :"D:\LocalBus68040\U400\U400_TOP.v":3:7:3:14|Selected library: work cell: U400_TOP view verilog as top level
 @N: NF107 :"D:\LocalBus68040\U400\U400_TOP.v":3:7:3:14|Selected library: work cell: U400_TOP view verilog as top level
 
@@ -8,6 +9,6 @@ At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Sat Feb 01 10:33:24 2025
+# Sat Feb 08 11:30:42 2025
 
 ###########################################################]

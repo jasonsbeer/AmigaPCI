@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:31:51
 
-* File Generated:     Feb 2 2025 09:34:03
+* File Generated:     Feb 8 2025 11:00:01
 
 * Purpose:            General info of design implementation
 
@@ -104,7 +104,7 @@ Detailed I/O Info:
     119         Output     SB_LVCMOS    No       0        Simple Output                              nBUFEN     
     122         Output     SB_LVCMOS    No       0        Simple Output                              CLKCIA     
     124         Output     SB_LVCMOS    No       0        Simple Output                              nROMEN     
-    135         Output     SB_LVCMOS    Yes      0        Simple Output                              PORTSIZE   
+    135         Output     SB_LVCMOS    No       0        Simple Output                              PORTSIZE   
 
     Inoutput Pins: 
     Pin Number  Direction  IO Standard  Pull Up  IO Bank  IO Function                                Signal Name
@@ -122,7 +122,7 @@ Detailed Global Buffer Info:
 Router Summary:
 ---------------
     Status:  Successful
-    Runtime: 9 seconds
+    Runtime: 10 seconds
 
 Routing Resource Utilization:
 -----------------------------

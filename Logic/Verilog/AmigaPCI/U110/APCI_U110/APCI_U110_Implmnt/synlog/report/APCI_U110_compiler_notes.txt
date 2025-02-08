@@ -4,8 +4,8 @@
 @N: CG364 :"D:\AmigaPCI\U110\U110_CYCLE_TERMINATION.v":1:7:1:28|Synthesizing module U110_CYCLE_TERMINATION in library work.
 @N: CG364 :"D:\AmigaPCI\U110\U110_BUFFERS.v":1:7:1:18|Synthesizing module U110_BUFFERS in library work.
 @N: CG364 :"D:\AmigaPCI\U110\U110_ARBITOR.v":1:7:1:18|Synthesizing module U110_ARBITOR in library work.
-@N: CG364 :"D:\AmigaPCI\U110\U110_TOP.v":1:7:1:14|Synthesizing module U110_TOP in library work.
+@N: CG364 :"D:\AmigaPCI\U110\U110_TOP.v":34:7:34:14|Synthesizing module U110_TOP in library work.
 @N|Running in 64-bit mode
-@N: NF107 :"D:\AmigaPCI\U110\U110_TOP.v":1:7:1:14|Selected library: work cell: U110_TOP view verilog as top level
-@N: NF107 :"D:\AmigaPCI\U110\U110_TOP.v":1:7:1:14|Selected library: work cell: U110_TOP view verilog as top level
+@N: NF107 :"D:\AmigaPCI\U110\U110_TOP.v":34:7:34:14|Selected library: work cell: U110_TOP view verilog as top level
+@N: NF107 :"D:\AmigaPCI\U110\U110_TOP.v":34:7:34:14|Selected library: work cell: U110_TOP view verilog as top level
 

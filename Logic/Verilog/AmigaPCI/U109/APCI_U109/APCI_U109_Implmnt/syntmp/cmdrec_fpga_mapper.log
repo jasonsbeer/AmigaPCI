@@ -1,15 +1,15 @@
 C:\lscc\iCEcube2.2020.12\synpbase\bin64\m_generic.exe  -prodtype  synplify_pro   -encrypt  -pro  -rundir  D:\AmigaPCI\U109\APCI_U109\APCI_U109_Implmnt   -part iCE40HX4K  -package TQ144    -maxfan 10000 -RWCheckOnRam 0 -pipe -fixgatedclocks 1 -fixgeneratedclocks 1 -summaryfile D:\AmigaPCI\U109\APCI_U109\APCI_U109_Implmnt\synlog\report\APCI_U109_fpga_mapper.xml  -flow mapping  -multisrs  -oedif  D:\AmigaPCI\U109\APCI_U109\APCI_U109_Implmnt\APCI_U109.edf   -autoconstraint  -freq 1.000   -tcl  D:\AmigaPCI\U109\U109_TOP.sdc  D:\AmigaPCI\U109\APCI_U109\APCI_U109_Implmnt\synwork\APCI_U109_prem.srd  -sap  D:\AmigaPCI\U109\APCI_U109\APCI_U109_Implmnt\APCI_U109.sap  -otap  D:\AmigaPCI\U109\APCI_U109\APCI_U109_Implmnt\APCI_U109.tap  -omap  D:\AmigaPCI\U109\APCI_U109\APCI_U109_Implmnt\APCI_U109.map  -devicelib  C:\lscc\iCEcube2.2020.12\synpbase\lib\generic\sb_ice40.v  -sap  D:\AmigaPCI\U109\APCI_U109\APCI_U109_Implmnt\APCI_U109.sap  -ologparam  D:\AmigaPCI\U109\APCI_U109\APCI_U109_Implmnt\syntmp\APCI_U109.plg  -osyn  D:\AmigaPCI\U109\APCI_U109\APCI_U109_Implmnt\APCI_U109.srm  -prjdir  D:\AmigaPCI\U109\APCI_U109\  -prjname  APCI_U109_syn  -log  D:\AmigaPCI\U109\APCI_U109\APCI_U109_Implmnt\synlog\APCI_U109_fpga_mapper.srr 
-rc:0 success:1 runtime:1
-file:D:\AmigaPCI\U109\APCI_U109\APCI_U109_Implmnt\APCI_U109.edf|io:o|time:1738512544|size:5135|exec:0
+rc:0 success:1 runtime:0
+file:D:\AmigaPCI\U109\APCI_U109\APCI_U109_Implmnt\APCI_U109.edf|io:o|time:1739034862|size:35316|exec:0
 file:D:\AmigaPCI\U109\U109_TOP.sdc|io:i|time:1738512268|size:102|exec:0
-file:D:\AmigaPCI\U109\APCI_U109\APCI_U109_Implmnt\synwork\APCI_U109_prem.srd|io:i|time:1738512543|size:1324|exec:0
-file:D:\AmigaPCI\U109\APCI_U109\APCI_U109_Implmnt\APCI_U109.sap|io:o|time:1738512543|size:117|exec:0
+file:D:\AmigaPCI\U109\APCI_U109\APCI_U109_Implmnt\synwork\APCI_U109_prem.srd|io:i|time:1739034861|size:2789|exec:0
+file:D:\AmigaPCI\U109\APCI_U109\APCI_U109_Implmnt\APCI_U109.sap|io:o|time:1739034861|size:117|exec:0
 file:D:\AmigaPCI\U109\APCI_U109\APCI_U109_Implmnt\APCI_U109.tap|io:o|time:0|size:0|exec:0
-file:D:\AmigaPCI\U109\APCI_U109\APCI_U109_Implmnt\APCI_U109.map|io:o|time:1738512544|size:28|exec:0
+file:D:\AmigaPCI\U109\APCI_U109\APCI_U109_Implmnt\APCI_U109.map|io:o|time:1739034862|size:28|exec:0
 file:C:\lscc\iCEcube2.2020.12\synpbase\lib\generic\sb_ice40.v|io:i|time:1728534475|size:224837|exec:0
-file:D:\AmigaPCI\U109\APCI_U109\APCI_U109_Implmnt\APCI_U109.sap|io:o|time:1738512543|size:117|exec:0
-file:D:\AmigaPCI\U109\APCI_U109\APCI_U109_Implmnt\syntmp\APCI_U109.plg|io:o|time:1738512544|size:237|exec:0
-file:D:\AmigaPCI\U109\APCI_U109\APCI_U109_Implmnt\APCI_U109.srm|io:o|time:1738512544|size:6561|exec:0
-file:D:\AmigaPCI\U109\APCI_U109\APCI_U109_Implmnt\synlog\APCI_U109_fpga_mapper.srr|io:o|time:1738512544|size:7311|exec:0
+file:D:\AmigaPCI\U109\APCI_U109\APCI_U109_Implmnt\APCI_U109.sap|io:o|time:1739034861|size:117|exec:0
+file:D:\AmigaPCI\U109\APCI_U109\APCI_U109_Implmnt\syntmp\APCI_U109.plg|io:o|time:1739034862|size:238|exec:0
+file:D:\AmigaPCI\U109\APCI_U109\APCI_U109_Implmnt\APCI_U109.srm|io:o|time:1739034862|size:8479|exec:0
+file:D:\AmigaPCI\U109\APCI_U109\APCI_U109_Implmnt\synlog\APCI_U109_fpga_mapper.srr|io:o|time:1739034862|size:7314|exec:0
 file:C:\lscc\iCEcube2.2020.12\synpbase\bin\m_generic.exe|io:i|time:1728534473|size:17853440|exec:1
 file:C:\lscc\iCEcube2.2020.12\synpbase\bin64\m_generic.exe|io:i|time:1728534474|size:32355840|exec:1

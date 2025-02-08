@@ -36,11 +36,11 @@ Selecting top level module U409_TOP
 
 @N: CG364 :"D:\AmigaPCI\U409\U409_TOP.v":35:7:35:14|Synthesizing module U409_TOP in library work.
 
-@W: CG781 :"D:\AmigaPCI\U409\U409_TOP.v":69:2:69:4|Input EXTFEEDBACK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG781 :"D:\AmigaPCI\U409\U409_TOP.v":69:2:69:4|Input DYNAMICDELAY on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG781 :"D:\AmigaPCI\U409\U409_TOP.v":69:2:69:4|Input SDI on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG781 :"D:\AmigaPCI\U409\U409_TOP.v":69:2:69:4|Input SCLK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG781 :"D:\AmigaPCI\U409\U409_TOP.v":69:2:69:4|Input LATCHINPUTVALUE on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\AmigaPCI\U409\U409_TOP.v":70:2:70:4|Input EXTFEEDBACK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\AmigaPCI\U409\U409_TOP.v":70:2:70:4|Input DYNAMICDELAY on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\AmigaPCI\U409\U409_TOP.v":70:2:70:4|Input SDI on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\AmigaPCI\U409\U409_TOP.v":70:2:70:4|Input SCLK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\AmigaPCI\U409\U409_TOP.v":70:2:70:4|Input LATCHINPUTVALUE on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
 @W: CL246 :"D:\AmigaPCI\U409\U409_ADDRESS_DECODE.v":38:17:38:17|Input port bits 15 to 14 of A[31:1] are unused. Assign logic for all port bits or change the input port size.
 @W: CL246 :"D:\AmigaPCI\U409\U409_ADDRESS_DECODE.v":38:17:38:17|Input port bits 11 to 1 of A[31:1] are unused. Assign logic for all port bits or change the input port size.
 @N: CL201 :"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v":121:0:121:5|Trying to extract state machine for register CIA_STATE.
@@ -62,7 +62,7 @@ At c_ver Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Sun Feb 02 09:33:45 2025
+# Sat Feb 08 10:59:42 2025
 
 ###########################################################]
 Synopsys Netlist Linker, version comp2016q3p1, Build 141R, built Dec  5 2016
@@ -75,7 +75,7 @@ At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Sun Feb 02 09:33:45 2025
+# Sat Feb 08 10:59:42 2025
 
 ###########################################################]
 @END
@@ -85,6 +85,6 @@ At c_hdl Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Sun Feb 02 09:33:45 2025
+# Sat Feb 08 10:59:42 2025
 
 ###########################################################]

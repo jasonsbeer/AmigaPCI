@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:31:51
 
-* File Generated:     Feb 2 2025 09:50:10
+* File Generated:     Feb 8 2025 11:04:40
 
 * Purpose:            General info of design implementation
 
@@ -14,7 +14,7 @@
 
 * ******************************************************************************
 
-Command Line: C:\lscc\iCEcube2.2020.12\sbt_backend\bin\win32\opt\packer.exe  C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P04.dev  D:/AmigaPCI/U110//APCI_U110/APCI_U110_Implmnt\sbt\netlist\oadb-U110_TOP  --package  TQ144  --outdir  D:/AmigaPCI/U110//APCI_U110/APCI_U110_Implmnt\sbt\outputs\packer  --translator  C:\lscc\iCEcube2.2020.12\sbt_backend\bin\sdc_translator.tcl  --src_sdc_file  D:/AmigaPCI/U110//APCI_U110/APCI_U110_Implmnt\sbt\outputs\placer\U110_TOP_pl.sdc  --dst_sdc_file  D:/AmigaPCI/U110//APCI_U110/APCI_U110_Implmnt\sbt\outputs\packer\U110_TOP_pk.sdc  --devicename  iCE40HX4K  
+Command Line: C:\lscc\iCEcube2.2020.12\sbt_backend\bin\win32\opt\packer.exe  C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P04.dev  D:/AmigaPCI/U110/APCI_U110/APCI_U110_Implmnt\sbt\netlist\oadb-U110_TOP  --package  TQ144  --outdir  D:/AmigaPCI/U110/APCI_U110/APCI_U110_Implmnt\sbt\outputs\packer  --translator  C:\lscc\iCEcube2.2020.12\sbt_backend\bin\sdc_translator.tcl  --src_sdc_file  D:/AmigaPCI/U110/APCI_U110/APCI_U110_Implmnt\sbt\outputs\placer\U110_TOP_pl.sdc  --dst_sdc_file  D:/AmigaPCI/U110/APCI_U110/APCI_U110_Implmnt\sbt\outputs\packer\U110_TOP_pk.sdc  --devicename  iCE40HX4K  
 
 ***** Device Info *****
 Chip: iCE40HX4K
@@ -45,8 +45,8 @@ Logic cell utilization per tile
 16|   0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0   
 15|   0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0   
 14|   0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0   
-13|   0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0   
-12|   0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0   
+13|   0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0   
+12|   0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0   
 11|   0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0   
 10|   0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0   
  9|   0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0   

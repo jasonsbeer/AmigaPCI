@@ -1,7 +1,7 @@
 @N: MF248 |Running in 64-bit mode.
 @N: MF666 |Clock conversion enabled. (Command "set_option -fix_gated_and_generated_clocks 1" in the project file.)
-@N: BN115 :"d:\amigapci\u110\u110_top.v":13:15:13:28|Removing instance U110_INTERRUPT (in view: work.U110_TOP(verilog)) of type view:work.U110_INTERRUPT(verilog) because it does not drive other instances.
-@N: BN115 :"d:\amigapci\u110\u110_top.v":24:23:24:44|Removing instance U110_CYCLE_TERMINATION (in view: work.U110_TOP(verilog)) of type view:work.U110_CYCLE_TERMINATION(verilog) because it does not drive other instances.
-@N: BN115 :"d:\amigapci\u110\u110_top.v":36:13:36:24|Removing instance U110_BUFFERS (in view: work.U110_TOP(verilog)) of type view:work.U110_BUFFERS(verilog) because it does not drive other instances.
-@N: BN115 :"d:\amigapci\u110\u110_top.v":51:13:51:24|Removing instance U110_ARBITOR (in view: work.U110_TOP(verilog)) of type view:work.U110_ARBITOR(verilog) because it does not drive other instances.
+@N: BN115 :"d:\amigapci\u110\u110_top.v":46:15:46:28|Removing instance U110_INTERRUPT (in view: work.U110_TOP(verilog)) of type view:work.U110_INTERRUPT(verilog) because it does not drive other instances.
+@N: BN115 :"d:\amigapci\u110\u110_top.v":57:23:57:44|Removing instance U110_CYCLE_TERMINATION (in view: work.U110_TOP(verilog)) of type view:work.U110_CYCLE_TERMINATION(verilog) because it does not drive other instances.
+@N: BN115 :"d:\amigapci\u110\u110_top.v":69:13:69:24|Removing instance U110_BUFFERS (in view: work.U110_TOP(verilog)) of type view:work.U110_BUFFERS(verilog) because it does not drive other instances.
+@N: BN115 :"d:\amigapci\u110\u110_top.v":84:13:84:24|Removing instance U110_ARBITOR (in view: work.U110_TOP(verilog)) of type view:work.U110_ARBITOR(verilog) because it does not drive other instances.
 @N: BN225 |Writing default property annotation file D:\AmigaPCI\U110\APCI_U110\APCI_U110_Implmnt\APCI_U110.sap.

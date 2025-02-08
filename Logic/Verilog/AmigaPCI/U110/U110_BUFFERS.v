@@ -5,12 +5,12 @@ module U110_BUFFERS (
 );
 
 //ATA BUFFERS
-//DISABLE EVERYTHING FORT NOW
+//DISABLE EVERYTHING FOR NOW
 
 assign IDELENn = 1;
 assign IDEHRENn = 1;
 assign IDEHWENn = 1;
-assign IDELATCH = 1;
+assign IDELATCH = 0;
 
 
 endmodule

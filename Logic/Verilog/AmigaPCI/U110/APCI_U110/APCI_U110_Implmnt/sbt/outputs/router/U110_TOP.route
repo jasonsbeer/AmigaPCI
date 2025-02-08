@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:44:35
 
-* File Generated:     Feb 2 2025 09:50:18
+* File Generated:     Feb 8 2025 11:04:48
 
 * Purpose:            Detailed routing info for each net
 
@@ -15,54 +15,47 @@
 * ******************************************************************************
 
 Net : CONSTANT_ONE_NET
-T_24_18_wire_logic_cluster/lc_0/out
-T_25_15_sp4_v_t_41
-T_26_15_sp4_h_l_4
-T_30_15_sp4_h_l_7
-T_33_15_lc_trk_g0_2
-T_33_15_wire_io_cluster/io_0/D_OUT_0
-
-T_24_18_wire_logic_cluster/lc_0/out
-T_25_15_sp4_v_t_41
-T_26_19_sp4_h_l_4
-T_30_19_sp4_h_l_0
-T_33_19_span4_vert_t_14
-T_33_21_lc_trk_g0_2
+T_22_19_wire_logic_cluster/lc_0/out
+T_22_17_sp4_v_t_45
+T_23_21_sp4_h_l_8
+T_27_21_sp4_h_l_4
+T_31_21_sp4_h_l_7
+T_33_21_lc_trk_g1_7
 T_33_21_wire_io_cluster/io_0/D_OUT_0
 
-T_24_18_wire_logic_cluster/lc_0/out
-T_24_14_sp12_v_t_23
-T_25_14_sp12_h_l_0
-T_33_14_lc_trk_g1_0
+T_22_19_wire_logic_cluster/lc_0/out
+T_22_15_sp12_v_t_23
+T_23_15_sp12_h_l_0
+T_33_15_lc_trk_g0_4
+T_33_15_wire_io_cluster/io_0/D_OUT_0
+
+T_22_19_wire_logic_cluster/lc_0/out
+T_22_17_sp4_v_t_45
+T_23_21_sp4_h_l_8
+T_27_21_sp4_h_l_4
+T_31_21_sp4_h_l_7
+T_33_17_span4_vert_t_13
+T_33_13_span4_vert_t_13
+T_33_14_lc_trk_g0_5
 T_33_14_wire_io_cluster/io_1/D_OUT_0
 
-T_24_18_wire_logic_cluster/lc_0/out
-T_25_15_sp4_v_t_41
-T_26_19_sp4_h_l_4
-T_25_19_sp4_v_t_47
-T_25_23_sp4_v_t_43
-T_25_27_sp4_v_t_43
-T_25_31_sp4_v_t_43
-T_25_33_lc_trk_g0_6
+T_22_19_wire_logic_cluster/lc_0/out
+T_22_17_sp4_v_t_45
+T_22_21_sp4_v_t_45
+T_22_25_sp4_v_t_41
+T_22_29_sp4_v_t_42
+T_22_33_span4_horz_r_1
+T_25_33_lc_trk_g1_5
 T_25_33_wire_io_cluster/io_0/D_OUT_0
 
-T_24_18_wire_logic_cluster/lc_0/out
-T_24_14_sp12_v_t_23
-T_25_14_sp12_h_l_0
-T_26_14_sp4_h_l_3
-T_29_10_sp4_v_t_38
-T_30_10_sp4_h_l_3
-T_33_10_lc_trk_g1_6
-T_33_10_wire_io_cluster/io_1/D_OUT_0
-
-T_24_18_wire_logic_cluster/lc_0/out
-T_24_14_sp12_v_t_23
-T_13_26_sp12_h_l_0
-T_0_26_span12_horz_0
-T_2_26_sp4_h_l_3
-T_0_26_span4_horz_43
-T_0_22_span4_vert_t_15
-T_0_25_lc_trk_g1_7
+T_22_19_wire_logic_cluster/lc_0/out
+T_19_19_sp12_h_l_0
+T_7_19_sp12_h_l_0
+T_6_19_sp12_v_t_23
+T_6_21_sp4_v_t_43
+T_3_25_sp4_h_l_11
+T_0_25_span4_horz_26
+T_0_25_lc_trk_g0_2
 T_0_25_wire_io_cluster/io_0/D_OUT_0
 
 End 

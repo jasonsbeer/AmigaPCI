@@ -38,6 +38,7 @@ module U409_ADDRESS_DECODE
     input [31:1] A,
     
     output ROMEN, CIA_SPACE, nCIACS0, nCIACS1, nRAMSPACE, nREGSPACE, AUTOVECTOR
+    //output AUTOCONFIG_SPACE
 
 );
 
@@ -91,11 +92,16 @@ assign nREGSPACE = !(Z2_SPACE && A[23:16] == 8'hDF);
 
 assign AUTOVECTOR = RESETn && TT[1] && TT[0] && A[31:16] == 16'hFFFF;
 
+///////////////////////
+// AUTOCONFIG SPACE //
+/////////////////////
+
+//assign AUTOCONFIG_SPACE = RESETn && A[31:16] == 16'hFF00;
+
 //YET TO BE IMPLEMENTED
 //ATA
 //PCI BRIDGE
 //CPU LOCAL BUS
 //RTC
-//AUTOCONFIG
 
 endmodule

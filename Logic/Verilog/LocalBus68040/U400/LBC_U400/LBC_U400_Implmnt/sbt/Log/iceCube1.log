@@ -1,0 +1,645 @@
+11:20:04 AM
+"C:\lscc\iCEcube2.2020.12\sbt_backend\bin\win32\opt\synpwrap\synpwrap.exe" -prj "LBC_U400_syn.prj" -log "LBC_U400_Implmnt/LBC_U400.srr"
+starting Synthesisrunning SynthesisCopyright (C) 1992-2014 Lattice Semiconductor Corporation. All rights reserved.
+
+==contents of LBC_U400_Implmnt/LBC_U400.srr
+#Build: Synplify Pro L-2016.09L+ice40, Build 077R, Dec  2 2016
+#install: C:\lscc\iCEcube2.2020.12\synpbase
+#OS: Windows 8 6.2
+#Hostname: JASON-LAB
+
+# Sat Feb 08 11:20:25 2025
+
+#Implementation: LBC_U400_Implmnt
+
+Synopsys HDL Compiler, version comp2016q3p1, Build 141R, built Dec  5 2016
+@N|Running in 64-bit mode
+Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
+
+Synopsys Verilog Compiler, version comp2016q3p1, Build 141R, built Dec  5 2016
+@N|Running in 64-bit mode
+Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
+
+@I::"C:\lscc\iCEcube2.2020.12\synpbase\lib\generic\sb_ice40.v" (library work)
+@I::"C:\lscc\iCEcube2.2020.12\synpbase\lib\vlog\hypermods.v" (library __hyper__lib__)
+@I::"C:\lscc\iCEcube2.2020.12\synpbase\lib\vlog\umr_capim.v" (library snps_haps)
+@I::"C:\lscc\iCEcube2.2020.12\synpbase\lib\vlog\scemi_objects.v" (library snps_haps)
+@I::"C:\lscc\iCEcube2.2020.12\synpbase\lib\vlog\scemi_pipes.svh" (library snps_haps)
+@I::"D:\LocalBus68040\U400\U400_BYTE_ENABLE.v" (library work)
+@I::"D:\LocalBus68040\U400\U400_SDRAM.v" (library work)
+@I::"D:\LocalBus68040\U400\U400_TOP.v" (library work)
+Verilog syntax check successful!
+File D:\LocalBus68040\U400\U400_TOP.v changed - recompiling
+Selecting top level module U400_TOP
+@N: CG364 :"D:\LocalBus68040\U400\U400_SDRAM.v":1:7:1:16|Synthesizing module U400_SDRAM in library work.
+
+@N: CG364 :"D:\LocalBus68040\U400\U400_BYTE_ENABLE.v":1:7:1:22|Synthesizing module U400_BYTE_ENABLE in library work.
+
+@N: CG364 :"D:\LocalBus68040\U400\U400_TOP.v":3:7:3:14|Synthesizing module U400_TOP in library work.
+
+
+At c_ver Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 69MB peak: 70MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+
+Process completed successfully.
+# Sat Feb 08 11:20:25 2025
+
+###########################################################]
+Synopsys Netlist Linker, version comp2016q3p1, Build 141R, built Dec  5 2016
+@N|Running in 64-bit mode
+@N: NF107 :"D:\LocalBus68040\U400\U400_TOP.v":3:7:3:14|Selected library: work cell: U400_TOP view verilog as top level
+@N: NF107 :"D:\LocalBus68040\U400\U400_TOP.v":3:7:3:14|Selected library: work cell: U400_TOP view verilog as top level
+
+At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 67MB peak: 68MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+
+Process completed successfully.
+# Sat Feb 08 11:20:25 2025
+
+###########################################################]
+@END
+
+At c_hdl Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 3MB peak: 4MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+
+Process completed successfully.
+# Sat Feb 08 11:20:26 2025
+
+###########################################################]
+Synopsys Netlist Linker, version comp2016q3p1, Build 141R, built Dec  5 2016
+@N|Running in 64-bit mode
+File D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\synwork\LBC_U400_comp.srs changed - recompiling
+@N: NF107 :"D:\LocalBus68040\U400\U400_TOP.v":3:7:3:14|Selected library: work cell: U400_TOP view verilog as top level
+@N: NF107 :"D:\LocalBus68040\U400\U400_TOP.v":3:7:3:14|Selected library: work cell: U400_TOP view verilog as top level
+
+At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 67MB peak: 68MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+
+Process completed successfully.
+# Sat Feb 08 11:20:27 2025
+
+###########################################################]
+Pre-mapping Report
+
+# Sat Feb 08 11:20:27 2025
+
+Synopsys Lattice Technology Pre-mapping, Version maplat, Build 1612R, Built Dec  5 2016 10:31:39
+Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
+Product Version L-2016.09L+ice40
+
+Mapper Startup Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 99MB peak: 99MB)
+
+Reading constraint file: D:\LocalBus68040\U400\U400_TOP.sdc
+@L: D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\LBC_U400_scck.rpt 
+Printing clock  summary report in "D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\LBC_U400_scck.rpt" file 
+@N: MF248 |Running in 64-bit mode.
+@N: MF666 |Clock conversion enabled. (Command "set_option -fix_gated_and_generated_clocks 1" in the project file.)
+
+Design Input Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 99MB peak: 101MB)
+
+
+Mapper Initialization Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 99MB peak: 101MB)
+
+
+Start loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 100MB peak: 101MB)
+
+
+Finished loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 100MB peak: 103MB)
+
+@N: BN115 :"d:\localbus68040\u400\u400_top.v":18:11:18:20|Removing instance U400_SDRAM (in view: work.U400_TOP(verilog)) of type view:work.U400_SDRAM(verilog) because it does not drive other instances.
+ICG Latch Removal Summary:
+Number of ICG latches removed:	0
+Number of ICG latches not removed:	0
+syn_allowed_resources : blockrams=16  set on top level netlist U400_TOP
+
+Finished netlist restructuring (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
+
+
+
+Clock Summary
+*****************
+
+Start     Requested     Requested     Clock     Clock     Clock
+Clock     Frequency     Period        Type      Group     Load 
+---------------------------------------------------------------
+===============================================================
+
+Finished Pre Mapping Phase.
+@N: BN225 |Writing default property annotation file D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\LBC_U400.sap.
+
+Starting constraint checker (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
+
+None
+None
+
+Finished constraint checker (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
+
+Pre-mapping successful!
+
+At Mapper Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 46MB peak: 133MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+# Sat Feb 08 11:20:27 2025
+
+###########################################################]
+Map & Optimize Report
+
+# Sat Feb 08 11:20:27 2025
+
+Synopsys Lattice Technology Mapper, Version maplat, Build 1612R, Built Dec  5 2016 10:31:39
+Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
+Product Version L-2016.09L+ice40
+
+Mapper Startup Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 99MB peak: 99MB)
+
+@N: MF248 |Running in 64-bit mode.
+@N: MF666 |Clock conversion enabled. (Command "set_option -fix_gated_and_generated_clocks 1" in the project file.)
+
+Design Input Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 98MB peak: 100MB)
+
+
+Mapper Initialization Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 98MB peak: 100MB)
+
+
+Start loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 100MB peak: 100MB)
+
+
+Finished loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 100MB peak: 102MB)
+
+
+
+Starting Optimization and Mapping (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
+
+
+Available hyper_sources - for debug and ip models
+	None Found
+
+@N: MT206 |Auto Constrain mode is enabled
+
+Finished RTL optimizations (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
+
+
+Starting factoring (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
+
+
+Finished factoring (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
+
+
+Finished gated-clock and generated-clock conversion (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
+
+
+Finished generic timing optimizations - Pass 1 (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
+
+
+Starting Early Timing Optimization (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
+
+
+Finished Early Timing Optimization (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
+
+
+Finished generic timing optimizations - Pass 2 (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
+
+
+Finished preparing to map (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
+
+
+Finished technology mapping (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
+
+Pass		 CPU time		Worst Slack		Luts / Registers
+------------------------------------------------------------
+   1		0h:00m:00s		100000.00ns		   4 /         0
+
+Finished technology timing optimizations and critical path resynthesis (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
+
+
+Finished restoring hierarchy (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
+
+
+
+@S |Clock Optimization Summary
+
+
+#### START OF CLOCK OPTIMIZATION REPORT #####[
+
+0 non-gated/non-generated clock tree(s) driving 0 clock pin(s) of sequential element(s)
+0 gated/generated clock tree(s) driving 0 clock pin(s) of sequential element(s)
+0 instances converted, 0 sequential instances remain driven by gated/generated clocks
+
+
+
+##### END OF CLOCK OPTIMIZATION REPORT ######]
+
+
+Start Writing Netlists (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 105MB peak: 133MB)
+
+Writing Analyst data base D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\synwork\LBC_U400_m.srm
+
+Finished Writing Netlist Databases (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 130MB peak: 133MB)
+
+Writing EDIF Netlist and constraint files
+@N: BW103 |The default time unit for the Synopsys Constraint File (SDC or FDC) is 1ns.
+@N: BW107 |Synopsys Constraint File capacitance units using default value of 1pF 
+@N: FX1056 |Writing EDF file: D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\LBC_U400.edf
+L-2016.09L+ice40
+
+Finished Writing EDIF Netlist and constraint files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
+
+
+Start final timing analysis (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
+
+
+
+##### START OF TIMING REPORT #####[
+# Timing Report written on Sat Feb 08 11:20:28 2025
+#
+
+
+Top view:               U400_TOP
+Requested Frequency:    1.0 MHz
+Wire load mode:         top
+Paths requested:        5
+Constraint File(s):    D:\LocalBus68040\U400\U400_TOP.sdc
+                       
+@N: MT320 |This timing report is an estimate of place and route data. For final timing results, use the FPGA vendor place and route report.
+
+@N: MT322 |Clock constraints include only register-to-register paths associated with each individual clock.
+
+
+
+Performance Summary
+*******************
+
+
+Worst slack in design: NA
+
+
+
+
+
+
+Clock Relationships
+*******************
+
+Clocks            |    rise  to  rise   |    fall  to  fall   |    rise  to  fall   |    fall  to  rise 
+--------------------------------------------------------------------------------------------------------
+Starting  Ending  |  constraint  slack  |  constraint  slack  |  constraint  slack  |  constraint  slack
+--------------------------------------------------------------------------------------------------------
+========================================================================================================
+ Note: 'No paths' indicates there are no paths in the design for that pair of clock edges.
+       'Diff grp' indicates that paths exist but the starting clock and ending clock are in different clock groups.
+
+
+
+Interface Information 
+*********************
+
+No IO constraint found
+
+
+##### END OF TIMING REPORT #####]
+
+Timing exceptions that could not be applied
+None
+
+Finished final timing analysis (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 132MB peak: 133MB)
+
+
+Finished timing report (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 132MB peak: 133MB)
+
+---------------------------------------
+Resource Usage Report for U400_TOP 
+
+Mapping to part: ice40hx1kvq100
+Cell usage:
+GND             1 use
+VCC             1 use
+SB_LUT4         4 uses
+
+I/O ports: 14
+I/O primitives: 14
+SB_IO          14 uses
+
+I/O Register bits:                  0
+Register bits not including I/Os:   0 (0%)
+Total load per clock:
+
+@S |Mapping Summary:
+Total  LUTs: 4 (0%)
+
+Distribution of All Consumed LUTs = LUT4 
+Distribution of All Consumed Luts 4 = 4 
+
+Mapper successful!
+
+At Mapper Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 25MB peak: 133MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+# Sat Feb 08 11:20:28 2025
+
+###########################################################]
+
+
+Synthesis exit by 0.
+Current Implementation LBC_U400_Implmnt its sbt path: D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt
+Synthesis succeed.
+Synthesis succeeded.
+Synthesis runtime 4 seconds
+
+
+"C:/lscc/iCEcube2.2020.12/sbt_backend/bin/win32/opt\edifparser.exe" "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P01.dev" "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt/LBC_U400.edf " "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\netlist" "-pVQ100" "-yD:/LocalBus68040/U400/U400_TOP.pcf " -c --devicename iCE40HX1K
+starting edif parserrunning edif parserLattice Semiconductor Corporation  Edif Parser
+Release:        2020.12.27943
+Build Date:     Dec  9 2020 17:30:22
+
+Parsing edif file: D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt/LBC_U400.edf...
+Parsing constraint file: D:/LocalBus68040/U400/U400_TOP.pcf ...
+Warning: pin RAMCLK doesn't exist in the design netlist.ignoring the set_io command on line 2 of file D:/LocalBus68040/U400/U400_TOP.pcf 
+Warning: pin BCLK doesn't exist in the design netlist.ignoring the set_io command on line 3 of file D:/LocalBus68040/U400/U400_TOP.pcf 
+Warning: pin RESETn doesn't exist in the design netlist.ignoring the set_io command on line 5 of file D:/LocalBus68040/U400/U400_TOP.pcf 
+Warning: pin TSn doesn't exist in the design netlist.ignoring the set_io command on line 8 of file D:/LocalBus68040/U400/U400_TOP.pcf 
+Warning: pin TAn doesn't exist in the design netlist.ignoring the set_io command on line 9 of file D:/LocalBus68040/U400/U400_TOP.pcf 
+Warning: pin LBENn doesn't exist in the design netlist.ignoring the set_io command on line 10 of file D:/LocalBus68040/U400/U400_TOP.pcf 
+Warning: pin RnW doesn't exist in the design netlist.ignoring the set_io command on line 11 of file D:/LocalBus68040/U400/U400_TOP.pcf 
+Warning: pin BANK1 doesn't exist in the design netlist.ignoring the set_io command on line 16 of file D:/LocalBus68040/U400/U400_TOP.pcf 
+Warning: pin BANK0 doesn't exist in the design netlist.ignoring the set_io command on line 17 of file D:/LocalBus68040/U400/U400_TOP.pcf 
+Warning: pin EMA[0] doesn't exist in the design netlist.ignoring the set_io command on line 21 of file D:/LocalBus68040/U400/U400_TOP.pcf 
+Warning: pin EMA[1] doesn't exist in the design netlist.ignoring the set_io command on line 22 of file D:/LocalBus68040/U400/U400_TOP.pcf 
+Warning: pin EMA[2] doesn't exist in the design netlist.ignoring the set_io command on line 23 of file D:/LocalBus68040/U400/U400_TOP.pcf 
+Warning: pin EMA[3] doesn't exist in the design netlist.ignoring the set_io command on line 24 of file D:/LocalBus68040/U400/U400_TOP.pcf 
+Warning: pin EMA[4] doesn't exist in the design netlist.ignoring the set_io command on line 25 of file D:/LocalBus68040/U400/U400_TOP.pcf 
+Warning: pin EMA[5] doesn't exist in the design netlist.ignoring the set_io command on line 26 of file D:/LocalBus68040/U400/U400_TOP.pcf 
+Warning: pin EMA[6] doesn't exist in the design netlist.ignoring the set_io command on line 27 of file D:/LocalBus68040/U400/U400_TOP.pcf 
+Warning: pin EMA[7] doesn't exist in the design netlist.ignoring the set_io command on line 28 of file D:/LocalBus68040/U400/U400_TOP.pcf 
+Warning: pin EMA[8] doesn't exist in the design netlist.ignoring the set_io command on line 29 of file D:/LocalBus68040/U400/U400_TOP.pcf 
+Warning: pin EMA[9] doesn't exist in the design netlist.ignoring the set_io command on line 30 of file D:/LocalBus68040/U400/U400_TOP.pcf 
+Warning: pin EMA[10] doesn't exist in the design netlist.ignoring the set_io command on line 31 of file D:/LocalBus68040/U400/U400_TOP.pcf 
+Warning: pin EMA[11] doesn't exist in the design netlist.ignoring the set_io command on line 32 of file D:/LocalBus68040/U400/U400_TOP.pcf 
+Warning: pin EMA[12] doesn't exist in the design netlist.ignoring the set_io command on line 33 of file D:/LocalBus68040/U400/U400_TOP.pcf 
+Warning: pin A[2] doesn't exist in the design netlist.ignoring the set_io command on line 42 of file D:/LocalBus68040/U400/U400_TOP.pcf 
+Warning: pin A[3] doesn't exist in the design netlist.ignoring the set_io command on line 43 of file D:/LocalBus68040/U400/U400_TOP.pcf 
+Warning: pin A[4] doesn't exist in the design netlist.ignoring the set_io command on line 44 of file D:/LocalBus68040/U400/U400_TOP.pcf 
+Warning: pin A[5] doesn't exist in the design netlist.ignoring the set_io command on line 45 of file D:/LocalBus68040/U400/U400_TOP.pcf 
+Warning: pin A[6] doesn't exist in the design netlist.ignoring the set_io command on line 46 of file D:/LocalBus68040/U400/U400_TOP.pcf 
+Warning: pin A[7] doesn't exist in the design netlist.ignoring the set_io command on line 47 of file D:/LocalBus68040/U400/U400_TOP.pcf 
+Warning: pin A[8] doesn't exist in the design netlist.ignoring the set_io command on line 48 of file D:/LocalBus68040/U400/U400_TOP.pcf 
+Warning: pin A[9] doesn't exist in the design netlist.ignoring the set_io command on line 49 of file D:/LocalBus68040/U400/U400_TOP.pcf 
+Warning: pin A[10] doesn't exist in the design netlist.ignoring the set_io command on line 50 of file D:/LocalBus68040/U400/U400_TOP.pcf 
+Warning: pin A[11] doesn't exist in the design netlist.ignoring the set_io command on line 51 of file D:/LocalBus68040/U400/U400_TOP.pcf 
+Warning: pin A[12] doesn't exist in the design netlist.ignoring the set_io command on line 52 of file D:/LocalBus68040/U400/U400_TOP.pcf 
+Warning: pin A[13] doesn't exist in the design netlist.ignoring the set_io command on line 53 of file D:/LocalBus68040/U400/U400_TOP.pcf 
+Warning: pin A[14] doesn't exist in the design netlist.ignoring the set_io command on line 54 of file D:/LocalBus68040/U400/U400_TOP.pcf 
+Warning: pin A[15] doesn't exist in the design netlist.ignoring the set_io command on line 55 of file D:/LocalBus68040/U400/U400_TOP.pcf 
+Warning: pin A[16] doesn't exist in the design netlist.ignoring the set_io command on line 56 of file D:/LocalBus68040/U400/U400_TOP.pcf 
+Warning: pin A[17] doesn't exist in the design netlist.ignoring the set_io command on line 57 of file D:/LocalBus68040/U400/U400_TOP.pcf 
+Warning: pin A[18] doesn't exist in the design netlist.ignoring the set_io command on line 58 of file D:/LocalBus68040/U400/U400_TOP.pcf 
+Warning: pin A[19] doesn't exist in the design netlist.ignoring the set_io command on line 59 of file D:/LocalBus68040/U400/U400_TOP.pcf 
+Warning: pin A[20] doesn't exist in the design netlist.ignoring the set_io command on line 60 of file D:/LocalBus68040/U400/U400_TOP.pcf 
+Warning: pin A[21] doesn't exist in the design netlist.ignoring the set_io command on line 61 of file D:/LocalBus68040/U400/U400_TOP.pcf 
+Warning: pin A[22] doesn't exist in the design netlist.ignoring the set_io command on line 62 of file D:/LocalBus68040/U400/U400_TOP.pcf 
+Warning: pin A[23] doesn't exist in the design netlist.ignoring the set_io command on line 63 of file D:/LocalBus68040/U400/U400_TOP.pcf 
+Warning: pin A[24] doesn't exist in the design netlist.ignoring the set_io command on line 64 of file D:/LocalBus68040/U400/U400_TOP.pcf 
+Warning: pin A[25] doesn't exist in the design netlist.ignoring the set_io command on line 65 of file D:/LocalBus68040/U400/U400_TOP.pcf 
+Warning: pin A[26] doesn't exist in the design netlist.ignoring the set_io command on line 66 of file D:/LocalBus68040/U400/U400_TOP.pcf 
+Warning: pin A[27] doesn't exist in the design netlist.ignoring the set_io command on line 67 of file D:/LocalBus68040/U400/U400_TOP.pcf 
+Warning: pin A[28] doesn't exist in the design netlist.ignoring the set_io command on line 68 of file D:/LocalBus68040/U400/U400_TOP.pcf 
+Warning: pin A[29] doesn't exist in the design netlist.ignoring the set_io command on line 69 of file D:/LocalBus68040/U400/U400_TOP.pcf 
+Warning: pin A[30] doesn't exist in the design netlist.ignoring the set_io command on line 70 of file D:/LocalBus68040/U400/U400_TOP.pcf 
+Warning: pin A[31] doesn't exist in the design netlist.ignoring the set_io command on line 71 of file D:/LocalBus68040/U400/U400_TOP.pcf 
+parse file D:/LocalBus68040/U400/U400_TOP.pcf  error. But they are ignored
+start to read sdc/scf file D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt/LBC_U400.scf
+sdc_reader OK D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt/LBC_U400.scf
+Stored edif netlist at D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\netlist\oadb-U400_TOP...
+
+write Timing Constraint to D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt/Temp/sbt_temp.sdc
+
+EDIF Parser succeeded
+Top module is: U400_TOP
+
+EDF Parser run-time: 0 (sec)
+edif parser succeed.
+
+
+"C:/lscc/iCEcube2.2020.12/sbt_backend/bin/win32/opt\sbtplacer.exe" --des-lib "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\netlist\oadb-U400_TOP" --outdir "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\placer" --device-file "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P01.dev" --package VQ100 --deviceMarketName iCE40HX1K --sdc-file "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\Temp/sbt_temp.sdc" --lib-file "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ice40HX1K.lib" --effort_level std --out-sdc-file "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\placer\U400_TOP_pl.sdc"
+starting placerrunning placerExecuting : C:\lscc\iCEcube2.2020.12\sbt_backend\bin\win32\opt\sbtplacer.exe --des-lib D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\netlist\oadb-U400_TOP --outdir D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\placer --device-file C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P01.dev --package VQ100 --deviceMarketName iCE40HX1K --sdc-file D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\Temp/sbt_temp.sdc --lib-file C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ice40HX1K.lib --effort_level std --out-sdc-file D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\placer\U400_TOP_pl.sdc
+Lattice Semiconductor Corporation  Placer
+Release:        2020.12.27943
+Build Date:     Dec  9 2020 17:55:52
+
+I2004: Option and Settings Summary
+=============================================================
+Device file          - C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P01.dev
+Package              - VQ100
+Design database      - D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\netlist\oadb-U400_TOP
+SDC file             - D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\Temp/sbt_temp.sdc
+Output directory     - D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\placer
+Timing library       - C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ice40HX1K.lib
+Effort level         - std
+
+I2050: Starting reading inputs for placer
+=============================================================
+I2100: Reading design library: D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\netlist\oadb-U400_TOP/BFPGA_DESIGN_ep
+I2065: Reading device file : C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P01.dev
+I2051: Reading of inputs for placer completed successfully
+
+I2053: Starting placement of the design
+=============================================================
+
+Input Design Statistics
+    Number of LUTs      	:	4
+    Number of DFFs      	:	0
+    Number of DFFs packed to IO	:	0
+    Number of Carrys    	:	0
+    Number of RAMs      	:	0
+    Number of ROMs      	:	0
+    Number of IOs       	:	14
+    Number of GBIOs     	:	0
+    Number of GBs       	:	0
+    Number of WarmBoot  	:	0
+    Number of PLLs      	:	0
+
+
+Phase 1
+I2077: Start design legalization
+
+Design Legalization Statistics
+    Number of feedthru LUTs inserted to legalize input of DFFs     	:	0
+    Number of feedthru LUTs inserted for LUTs driving multiple DFFs	:	0
+    Number of LUTs replicated for LUTs driving multiple DFFs       	:	0
+    Number of feedthru LUTs inserted to legalize output of CARRYs  	:	0
+    Number of feedthru LUTs inserted to legalize global signals    	:	0
+    Number of feedthru CARRYs inserted to legalize input of CARRYs 	:	0
+    Number of inserted LUTs to Legalize IOs with PIN_TYPE= 01xxxx  	:	0
+    Number of inserted LUTs to Legalize IOs with PIN_TYPE= 10xxxx  	:	0
+    Number of inserted LUTs to Legalize IOs with PIN_TYPE= 11xxxx  	:	0
+    Total LUTs inserted                                            	:	0
+    Total CARRYs inserted                                          	:	0
+
+
+I2078: Design legalization is completed successfully
+I2088: Phase 1, elapsed time : 0.0 (sec)
+
+
+Phase 2
+I2088: Phase 2, elapsed time : 0.0 (sec)
+
+Phase 3
+
+Design Statistics after Packing
+    Number of LUTs      	:	5
+    Number of DFFs      	:	0
+    Number of DFFs packed to IO	:	0
+    Number of Carrys    	:	0
+
+Device Utilization Summary after Packing
+    Sequential LogicCells
+        LUT and DFF      	:	0
+        LUT, DFF and CARRY	:	0
+    Combinational LogicCells
+        Only LUT         	:	5
+        CARRY Only       	:	0
+        LUT with CARRY   	:	0
+    LogicCells                  :	5/1280
+    PLBs                        :	1/160
+    BRAMs                       :	0/16
+    IOs and GBIOs               :	14/72
+    PLLs                        :	0/0
+
+
+I2088: Phase 3, elapsed time : 0.2 (sec)
+
+Phase 4
+W2659: No Constrained paths were found. The placer will run in non-timing driven mode.
+I2088: Phase 4, elapsed time : 0.1 (sec)
+
+Phase 5
+I2088: Phase 5, elapsed time : 0.0 (sec)
+
+Phase 6
+I2088: Phase 6, elapsed time : 0.1 (sec)
+
+Final Design Statistics
+    Number of LUTs      	:	5
+    Number of DFFs      	:	0
+    Number of DFFs packed to IO	:	0
+    Number of Carrys    	:	0
+    Number of RAMs      	:	0
+    Number of ROMs      	:	0
+    Number of IOs       	:	14
+    Number of GBIOs     	:	0
+    Number of GBs       	:	0
+    Number of WarmBoot  	:	0
+    Number of PLLs      	:	0
+
+Device Utilization Summary
+    LogicCells                  :	5/1280
+    PLBs                        :	2/160
+    BRAMs                       :	0/16
+    IOs and GBIOs               :	14/72
+    PLLs                        :	0/0
+
+
+I2054: Placement of design completed successfully
+
+I2076: Placer run-time: 0.6 sec.
+
+placer succeed.
+starting IPExporterrunning IPExporterIPExporter succeed.
+
+
+"C:/lscc/iCEcube2.2020.12/sbt_backend/bin/win32/opt\packer.exe" "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P01.dev" "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\netlist\oadb-U400_TOP" --package VQ100 --outdir "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\packer" --DRC_only  --translator "C:\lscc\iCEcube2.2020.12\sbt_backend\bin\sdc_translator.tcl" --src_sdc_file "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\placer\U400_TOP_pl.sdc" --dst_sdc_file "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\packer\U400_TOP_pk.sdc" --devicename iCE40HX1K
+starting packerrunning packerLattice Semiconductor Corporation  Packer
+Release:        2020.12.27943
+Build Date:     Dec  9 2020 17:32:13
+
+Begin Packing...
+initializing finish
+Total HPWL cost is 85
+used logic cells: 5
+Design Rule Checking Succeeded
+
+DRC Checker run-time: 0 (sec)
+packer succeed.
+
+
+"C:/lscc/iCEcube2.2020.12/sbt_backend/bin/win32/opt\packer.exe" "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P01.dev" "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\netlist\oadb-U400_TOP" --package VQ100 --outdir "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\packer" --translator "C:\lscc\iCEcube2.2020.12\sbt_backend\bin\sdc_translator.tcl" --src_sdc_file "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\placer\U400_TOP_pl.sdc" --dst_sdc_file "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\packer\U400_TOP_pk.sdc" --devicename iCE40HX1K
+starting packerrunning packerLattice Semiconductor Corporation  Packer
+Release:        2020.12.27943
+Build Date:     Dec  9 2020 17:32:13
+
+Begin Packing...
+initializing finish
+Total HPWL cost is 85
+used logic cells: 5
+Translating sdc file D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\placer\U400_TOP_pl.sdc...
+Translated sdc file is D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\packer\U400_TOP_pk.sdc
+Packer succeeded
+
+Packer run-time: 0 (sec)
+packer succeed.
+
+
+"C:\lscc\iCEcube2.2020.12\sbt_backend\bin\win32\opt\sbrouter.exe" "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P01.dev" "D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\sbt\netlist\oadb-U400_TOP" "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ice40HX1K.lib" "D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\sbt\outputs\packer\U400_TOP_pk.sdc" --outdir "D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\sbt\outputs\router" --sdf_file "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\simulation_netlist\U400_TOP_sbt.sdf" --pin_permutation
+starting routerrunning routerSJRouter....
+Executing : C:\lscc\iCEcube2.2020.12\sbt_backend\bin\win32\opt\sbrouter.exe C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P01.dev D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\sbt\netlist\oadb-U400_TOP C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ice40HX1K.lib D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\sbt\outputs\packer\U400_TOP_pk.sdc --outdir D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\sbt\outputs\router --sdf_file D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\simulation_netlist\U400_TOP_sbt.sdf --pin_permutation 
+Lattice Semiconductor Corporation  Router
+Release:        2020.12.27943
+Build Date:     Dec  9 2020 17:44:15
+
+I1203: Reading Design U400_TOP
+Read design time: 0
+I1202: Reading Architecture of device iCE40HX1K
+Read device time: 2
+I1209: Started routing
+I1223: Total Nets : 9 
+I1212: Iteration  1 :     3 unrouted : 0 seconds
+I1212: Iteration  2 :     0 unrouted : 0 seconds
+I1215: Routing is successful
+Routing time: 0
+I1206: Completed routing
+I1204: Writing Design U400_TOP
+Lib Closed
+I1210: Writing routes
+I1218: Exiting the router
+I1224: Router run-time : 2 seconds
+router succeed.
+
+"C:/lscc/iCEcube2.2020.12/sbt_backend/bin/win32/opt\netlister.exe" --verilog "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\simulation_netlist\U400_TOP_sbt.v" --vhdl "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt/sbt/outputs/simulation_netlist\U400_TOP_sbt.vhd" --lib "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\netlist\oadb-U400_TOP" --view rt --device "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P01.dev" --splitio  --in-sdc-file "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\packer\U400_TOP_pk.sdc" --out-sdc-file "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\netlister\U400_TOP_sbt.sdc"
+starting netlistrunning netlistLattice Semiconductor Corporation  Verilog & VHDL Netlister
+Release:        2020.12.27943
+Build Date:     Dec  9 2020 18:18:39
+
+Generating Verilog & VHDL netlist files ...
+Writing D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\simulation_netlist\U400_TOP_sbt.v
+Writing D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt/sbt/outputs/simulation_netlist\U400_TOP_sbt.vhd
+Netlister succeeded.
+
+Netlister run-time: 1 (sec)
+netlist succeed.
+
+
+"C:/lscc/iCEcube2.2020.12/sbt_backend/bin/win32/opt\sbtimer.exe" --des-lib "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\netlist\oadb-U400_TOP" --lib-file "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ice40HX1K.lib" --sdc-file "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\netlister\U400_TOP_sbt.sdc" --sdf-file "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\simulation_netlist\U400_TOP_sbt.sdf" --report-file "D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\sbt\outputs\timer\U400_TOP_timing.rpt" --device-file "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P01.dev" --timing-summary
+starting timerrunning timerExecuting : C:\lscc\iCEcube2.2020.12\sbt_backend\bin\win32\opt\sbtimer.exe --des-lib D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\netlist\oadb-U400_TOP --lib-file C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ice40HX1K.lib --sdc-file D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\netlister\U400_TOP_sbt.sdc --sdf-file D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\simulation_netlist\U400_TOP_sbt.sdf --report-file D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\sbt\outputs\timer\U400_TOP_timing.rpt --device-file C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P01.dev --timing-summary
+Lattice Semiconductor Corporation  Timer
+Release:        2020.12.27943
+Build Date:     Dec  9 2020 17:41:47
+
+Timer run-time: 0 seconds
+timer succeed.
+timer succeeded.
+
+
+"C:/lscc/iCEcube2.2020.12/sbt_backend/bin/win32/opt\bitmap.exe" "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P01.dev" --design "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\netlist\oadb-U400_TOP" --device_name iCE40HX1K --package VQ100 --outdir "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\bitmap" --low_power on --init_ram on --init_ram_bank 1111 --frequency low --warm_boot on --set_unused_io_nopullup
+starting bitmaprunning bitmapLattice Semiconductor Corporation  Bit Stream Generator
+Release:        2020.12.27943
+Build Date:     Dec  9 2020 18:17:40
+
+Bit Stream File Size: 257720 (251K 696 Bits)
+Bit Stream Generator succeeded
+
+Bitmap run-time: 1 (sec)
+bitmap succeed.
+11:21:03 AM

@@ -1,6 +1,6 @@
 module U109_PCI_STATE_MACHINE (
 
-    output PCICYCLEn, ADLATCH, ALATCH, PCIDIR
+    output PCICYCLEn, ADLATCH, ALATCH, PCI_DIR
 
 );
 
@@ -13,7 +13,7 @@ module U109_PCI_STATE_MACHINE (
 assign PCICYCLEn = 1; //Disables the A <-> AD address buffers.
 assign ADLATCH = 0;
 assign ALATCH = 0; //WE DON'T ACTUALLY NEED THIS, BUT ITS THERE.
-assign PCIDIR = 0;
+assign PCI_DIR = 0;
 
 
 endmodule

@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:55:50
 
-* File Generated:     Feb 2 2025 10:09:05
+* File Generated:     Feb 8 2025 11:14:24
 
 * Purpose:            
 
@@ -41,7 +41,7 @@ Input Design Statistics
     Number of Carrys    	:	0
     Number of RAMs      	:	0
     Number of ROMs      	:	0
-    Number of IOs       	:	4
+    Number of IOs       	:	68
     Number of GBIOs     	:	0
     Number of GBs       	:	0
     Number of WarmBoot  	:	0
@@ -92,14 +92,15 @@ Device Utilization Summary after Packing
     LogicCells                  :	1/3520
     PLBs                        :	1/440
     BRAMs                       :	0/20
-    IOs and GBIOs               :	4/107
+    IOs and GBIOs               :	68/107
     PLLs                        :	0/2
 
 
 I2088: Phase 3, elapsed time : 0.2 (sec)
 
 Phase 4
-I2088: Phase 4, elapsed time : 0.1 (sec)
+W2714: Invalid pin location 109 for IO DUU[7]. Assignment will be ignored
+I2088: Phase 4, elapsed time : 0.2 (sec)
 
 Phase 5
 I2088: Phase 5, elapsed time : 0.0 (sec)
@@ -114,7 +115,7 @@ Final Design Statistics
     Number of Carrys    	:	0
     Number of RAMs      	:	0
     Number of ROMs      	:	0
-    Number of IOs       	:	4
+    Number of IOs       	:	68
     Number of GBIOs     	:	0
     Number of GBs       	:	0
     Number of WarmBoot  	:	0
@@ -124,11 +125,11 @@ Device Utilization Summary
     LogicCells                  :	1/3520
     PLBs                        :	1/440
     BRAMs                       :	0/20
-    IOs and GBIOs               :	4/107
+    IOs and GBIOs               :	68/107
     PLLs                        :	0/2
 
 
 I2054: Placement of design completed successfully
 
-I2076: Placer run-time: 0.6 sec.
+I2076: Placer run-time: 0.7 sec.
 

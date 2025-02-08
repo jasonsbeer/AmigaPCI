@@ -32,7 +32,7 @@ Version=Lattice Semiconductor Corporation iCEcube - Release: 2020.12.27943 - Bui
 ProjectName=LBC_U400
 Vendor=SiliconBlue
 Synthesis=synplify
-ProjectVFiles=../U400_BYTE_ENABLE.v,../U400_SDRAM.v,../U400_TOP.v
+ProjectVFiles=../U400_BYTE_ENABLE.v=work,../U400_SDRAM.v=work,../U400_TOP.v=work
 ProjectCFiles=../U400_TOP.sdc
 CurImplementation=LBC_U400_Implmnt
 Implementations=LBC_U400_Implmnt
@@ -81,8 +81,8 @@ BitmapOscillatorFR=low
 BitmapEnableWarmBoot=yes
 BitmapDisableHeader=no
 BitmapSetSecurity=no
-BitmapSetNoUsedIONoPullup=no
+BitmapSetNoUsedIONoPullup=yes
 FloorPlannerShowFanInNets=yes
 FloorPlannerShowFanOutNets=yes
-HookTo3rdPartyTextEditor=
+HookTo3rdPartyTextEditor=no
 

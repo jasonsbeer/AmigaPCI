@@ -29,7 +29,7 @@ Selecting top level module U110_TOP
 
 @N: CG364 :"D:\AmigaPCI\U110\U110_ARBITOR.v":1:7:1:18|Synthesizing module U110_ARBITOR in library work.
 
-@N: CG364 :"D:\AmigaPCI\U110\U110_TOP.v":1:7:1:14|Synthesizing module U110_TOP in library work.
+@N: CG364 :"D:\AmigaPCI\U110\U110_TOP.v":34:7:34:14|Synthesizing module U110_TOP in library work.
 
 
 At c_ver Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 69MB peak: 70MB)
@@ -37,20 +37,20 @@ At c_ver Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Sun Feb 02 09:50:05 2025
+# Sat Feb 08 11:04:34 2025
 
 ###########################################################]
 Synopsys Netlist Linker, version comp2016q3p1, Build 141R, built Dec  5 2016
 @N|Running in 64-bit mode
-@N: NF107 :"D:\AmigaPCI\U110\U110_TOP.v":1:7:1:14|Selected library: work cell: U110_TOP view verilog as top level
-@N: NF107 :"D:\AmigaPCI\U110\U110_TOP.v":1:7:1:14|Selected library: work cell: U110_TOP view verilog as top level
+@N: NF107 :"D:\AmigaPCI\U110\U110_TOP.v":34:7:34:14|Selected library: work cell: U110_TOP view verilog as top level
+@N: NF107 :"D:\AmigaPCI\U110\U110_TOP.v":34:7:34:14|Selected library: work cell: U110_TOP view verilog as top level
 
 At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 67MB peak: 68MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Sun Feb 02 09:50:05 2025
+# Sat Feb 08 11:04:34 2025
 
 ###########################################################]
 @END
@@ -60,6 +60,6 @@ At c_hdl Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Sun Feb 02 09:50:05 2025
+# Sat Feb 08 11:04:34 2025
 
 ###########################################################]

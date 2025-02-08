@@ -48,8 +48,11 @@ module U712_TOP (
     output [10:0] CMA,
     output CUUBEn, CUMBEn, CLMBEn, CLLBEn,
 
+    output RAMENn,
     output TACKn
 );
+
+assign RAMENn = RAMSPACEn;
 
 //646 LATCH
 //FOR NOW, MAKE ALL DATA LIVE FOR TESTING.
