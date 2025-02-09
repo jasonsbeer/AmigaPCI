@@ -37,7 +37,7 @@ module U409_ADDRESS_DECODE
     input [1:0] TT,
     input [31:1] A,
     
-    output ROMEN, CIA_SPACE, nCIACS0, nCIACS1, nRAMSPACE, nREGSPACE, AUTOVECTOR
+    output ROMEN, CIA_SPACE, CIACS0n, CIACS1n, RAMSPACEn, REGSPACEn, AUTOVECTOR
     //output AUTOCONFIG_SPACE
 
 );
@@ -70,8 +70,8 @@ wire   HIROM   = A[23:19] == 5'b11111;
 //////////////////////
 
 assign CIA_SPACE = RESETn && Z2_SPACE && A[23:16] == 8'hBF;
-assign nCIACS0 = !(CIA_ENABLE && !A[12]);
-assign nCIACS1 = !(CIA_ENABLE && !A[13]);
+assign CIACS0n = !(CIA_ENABLE && !A[12]);
+assign CIACS1n = !(CIA_ENABLE && !A[13]);
 
 ///////////////////
 // AGNUS SPACES //
@@ -80,8 +80,8 @@ assign nCIACS1 = !(CIA_ENABLE && !A[13]);
 //AGNUS CONTROLS ACCESS TO CHIPSET REGISTERS.
 //THESE SIGNALS ARE CONSUMED BY U712.
 
-assign nRAMSPACE = !(Z2_SPACE && !OVL && A[23:21] == 3'b000);
-assign nREGSPACE = !(Z2_SPACE && A[23:16] == 8'hDF);
+assign RAMSPACEn = !(Z2_SPACE && !OVL && A[23:21] == 3'b000);
+assign REGSPACEn = !(Z2_SPACE && A[23:16] == 8'hDF);
 
 //////////////////////
 // AUTOVECTOR SPACE /

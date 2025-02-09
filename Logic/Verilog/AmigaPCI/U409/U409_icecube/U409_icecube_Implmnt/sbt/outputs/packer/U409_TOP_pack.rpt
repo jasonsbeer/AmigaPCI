@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:31:51
 
-* File Generated:     Feb 8 2025 11:00:01
+* File Generated:     Feb 9 2025 17:04:41
 
 * Purpose:            General info of design implementation
 
@@ -27,8 +27,8 @@ Device Info:
 
 Design statistics:
 ------------------
-    FFs:                  69
-    LUTs:                 156
+    FFs:                  72
+    LUTs:                 157
     RAMs:                 0
     IOBs:                 37
     GBs:                  2
@@ -37,12 +37,12 @@ Design statistics:
 
 Logic Resource Utilization:
 ---------------------------
-    Total Logic Cells: 159/3520
-        Combinational Logic Cells: 90       out of   3520      2.55682%
-        Sequential Logic Cells:    69       out of   3520      1.96023%
-        Logic Tiles:               51       out of   440       11.5909%
+    Total Logic Cells: 160/3520
+        Combinational Logic Cells: 88       out of   3520      2.5%
+        Sequential Logic Cells:    72       out of   3520      2.04545%
+        Logic Tiles:               45       out of   440       10.2273%
     Registers: 
-        Logic Registers:           69       out of   3520      1.96023%
+        Logic Registers:           72       out of   3520      2.04545%
         IO Registers:              0        out of   880       0
     Block RAMs:                    0        out of   20        0%
     Warm Boots:                    0        out of   1         0%
@@ -65,24 +65,24 @@ Detailed I/O Info:
     Input Pins: 
     Pin Number  Direction  IO Standard  Pull Up  IO Bank  IO Function                                Signal Name
     ----------  ---------  -----------  -------  -------  -----------                                -----------
-    2           Input      SB_LVCMOS    Yes      3        Simple Input                               A[28]      
-    3           Input      SB_LVCMOS    Yes      3        Simple Input                               A[22]      
-    4           Input      SB_LVCMOS    Yes      3        Simple Input                               A[26]      
-    7           Input      SB_LVCMOS    Yes      3        Simple Input                               A[29]      
-    8           Input      SB_LVCMOS    Yes      3        Simple Input                               A[24]      
-    9           Input      SB_LVCMOS    Yes      3        Simple Input                               A[30]      
-    10          Input      SB_LVCMOS    Yes      3        Simple Input                               A[31]      
-    11          Input      SB_LVCMOS    Yes      3        Simple Input                               A[27]      
-    12          Input      SB_LVCMOS    Yes      3        Simple Input                               A[25]      
-    15          Input      SB_LVCMOS    Yes      3        Simple Input                               A[21]      
-    16          Input      SB_LVCMOS    Yes      3        Simple Input                               A[23]      
-    17          Input      SB_LVCMOS    Yes      3        Simple Input                               A[20]      
-    26          Input      SB_LVCMOS    Yes      3        Simple Input                               A[12]      
-    28          Input      SB_LVCMOS    Yes      3        Simple Input                               A[13]      
-    32          Input      SB_LVCMOS    Yes      3        Simple Input                               A[16]      
-    33          Input      SB_LVCMOS    Yes      3        Simple Input                               A[17]      
-    34          Input      SB_LVCMOS    Yes      3        Simple Input                               A[18]      
-    37          Input      SB_LVCMOS    Yes      2        Simple Input                               A[19]      
+    2           Input      SB_LVCMOS    No       3        Simple Input                               A[28]      
+    3           Input      SB_LVCMOS    No       3        Simple Input                               A[22]      
+    4           Input      SB_LVCMOS    No       3        Simple Input                               A[26]      
+    7           Input      SB_LVCMOS    No       3        Simple Input                               A[29]      
+    8           Input      SB_LVCMOS    No       3        Simple Input                               A[24]      
+    9           Input      SB_LVCMOS    No       3        Simple Input                               A[30]      
+    10          Input      SB_LVCMOS    No       3        Simple Input                               A[31]      
+    11          Input      SB_LVCMOS    No       3        Simple Input                               A[27]      
+    12          Input      SB_LVCMOS    No       3        Simple Input                               A[25]      
+    15          Input      SB_LVCMOS    No       3        Simple Input                               A[21]      
+    16          Input      SB_LVCMOS    No       3        Simple Input                               A[23]      
+    17          Input      SB_LVCMOS    No       3        Simple Input                               A[20]      
+    26          Input      SB_LVCMOS    No       3        Simple Input                               A[12]      
+    28          Input      SB_LVCMOS    No       3        Simple Input                               A[13]      
+    32          Input      SB_LVCMOS    No       3        Simple Input                               A[16]      
+    33          Input      SB_LVCMOS    No       3        Simple Input                               A[17]      
+    34          Input      SB_LVCMOS    No       3        Simple Input                               A[18]      
+    37          Input      SB_LVCMOS    No       2        Simple Input                               A[19]      
     52          Input      SB_LVCMOS    No       2        Simple Input                               CLK6       
     62          Input      SB_LVCMOS    No       2        Simple Input                               RESETn     
     81          Input      SB_LVCMOS    No       1        Simple Input                               OVL        
@@ -95,15 +95,15 @@ Detailed I/O Info:
     Output Pins: 
     Pin Number  Direction  IO Standard  Pull Up  IO Bank  IO Function                                Signal Name
     ----------  ---------  -----------  -------  -------  -----------                                -----------
-    48          Output     SB_LVCMOS    No       2        Simple Output                              nRAMSPACE  
+    48          Output     SB_LVCMOS    No       2        Simple Output                              RAMSPACEn  
     55          Output     SB_LVCMOS    No       2        Simple Output                              TICK60     
     56          Output     SB_LVCMOS    No       2        Simple Output                              TICK50     
-    78          Output     SB_LVCMOS    No       1        Simple Output                              nCIACS0    
-    79          Output     SB_LVCMOS    No       1        Simple Output                              nCIACS1    
-    118         Output     SB_LVCMOS    No       0        Simple Output                              nREGSPACE  
-    119         Output     SB_LVCMOS    No       0        Simple Output                              nBUFEN     
+    78          Output     SB_LVCMOS    No       1        Simple Output                              CIACS0n    
+    79          Output     SB_LVCMOS    No       1        Simple Output                              CIACS1n    
+    118         Output     SB_LVCMOS    No       0        Simple Output                              REGSPACEn  
+    119         Output     SB_LVCMOS    No       0        Simple Output                              BUFENn     
     122         Output     SB_LVCMOS    No       0        Simple Output                              CLKCIA     
-    124         Output     SB_LVCMOS    No       0        Simple Output                              nROMEN     
+    124         Output     SB_LVCMOS    No       0        Simple Output                              ROMENn     
     135         Output     SB_LVCMOS    No       0        Simple Output                              PORTSIZE   
 
     Inoutput Pins: 

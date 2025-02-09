@@ -1,14 +1,14 @@
 Synopsys Netlist Linker, version comp2016q3p1, Build 141R, built Dec  5 2016
 @N|Running in 64-bit mode
 File D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\synwork\U409_icecube_comp.srs changed - recompiling
-@N: NF107 :"D:\AmigaPCI\U409\U409_TOP.v":35:7:35:14|Selected library: work cell: U409_TOP view verilog as top level
-@N: NF107 :"D:\AmigaPCI\U409\U409_TOP.v":35:7:35:14|Selected library: work cell: U409_TOP view verilog as top level
+@N: NF107 :"D:\AmigaPCI\U409\U409_TOP.v":36:7:36:14|Selected library: work cell: U409_TOP view verilog as top level
+@N: NF107 :"D:\AmigaPCI\U409\U409_TOP.v":36:7:36:14|Selected library: work cell: U409_TOP view verilog as top level
 
 At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 67MB peak: 68MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Sat Feb 08 10:59:43 2025
+# Sun Feb 09 17:04:25 2025
 
 ###########################################################]

@@ -20,37 +20,37 @@ set_io CLK40_IN 129
 #set_io D[7] 47 #D31
 
 #CPU ADDRESS BUS
-set_io A[1]  144 -pullup yes
-set_io A[2]  143 -pullup yes
-set_io A[3]  1   -pullup yes
-set_io A[4]  18  -pullup yes
-set_io A[5]  19  -pullup yes
-set_io A[6]  20  -pullup yes
-set_io A[7]  21  -pullup yes
-set_io A[8]  22  -pullup yes
-set_io A[9]  23  -pullup yes
-set_io A[10] 24  -pullup yes
-set_io A[11] 25  -pullup yes
-set_io A[12] 26  -pullup yes
-set_io A[13] 28  -pullup yes
-set_io A[14] 29  -pullup yes
-set_io A[15] 31  -pullup yes
-set_io A[16] 32  -pullup yes
-set_io A[17] 33  -pullup yes
-set_io A[18] 34  -pullup yes
-set_io A[19] 37  -pullup yes
-set_io A[20] 17  -pullup yes
-set_io A[21] 15  -pullup yes
-set_io A[22] 3   -pullup yes
-set_io A[23] 16  -pullup yes
-set_io A[24] 8   -pullup yes
-set_io A[25] 12  -pullup yes
-set_io A[26] 4   -pullup yes
-set_io A[27] 11  -pullup yes
-set_io A[28] 2   -pullup yes
-set_io A[29] 7   -pullup yes
-set_io A[30] 9   -pullup yes
-set_io A[31] 10  -pullup yes
+set_io A[1]  144
+set_io A[2]  143
+set_io A[3]  1 
+set_io A[4]  18
+set_io A[5]  19
+set_io A[6]  20
+set_io A[7]  21
+set_io A[8]  22
+set_io A[9]  23
+set_io A[10] 24
+set_io A[11] 25
+set_io A[12] 26
+set_io A[13] 28
+set_io A[14] 29
+set_io A[15] 31
+set_io A[16] 32
+set_io A[17] 33
+set_io A[18] 34
+set_io A[19] 37
+set_io A[20] 17
+set_io A[21] 15 
+set_io A[22] 3
+set_io A[23] 16
+set_io A[24] 8
+set_io A[25] 12
+set_io A[26] 4
+set_io A[27] 11
+set_io A[28] 2
+set_io A[29] 7
+set_io A[30] 9
+set_io A[31] 10
 
 #DATA TRANSFER SIGNALS
 #set_io nTCI     115 -pullup yes
@@ -68,12 +68,12 @@ set_io TT[1]    139
 
 #ADDRESS SPACE SIGNALS
 set_io OVL       81
-set_io nRAMSPACE 48
-set_io nCIACS0   78
-set_io nCIACS1   79
-set_io nREGSPACE 118
-set_io nBUFEN    119
-set_io nROMEN    124
+set_io RAMSPACEn 48
+set_io CIACS0n   78
+set_io CIACS1n   79
+set_io REGSPACEn 118
+set_io BUFENn    119
+set_io ROMENn    124
 #set_io RTCENn    80
 #set_io CPUCONFn  130
 

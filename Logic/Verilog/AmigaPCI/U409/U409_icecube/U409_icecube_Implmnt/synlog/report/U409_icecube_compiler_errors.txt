@@ -1,2 +1,4 @@
-@E: CS168 :"D:\AmigaPCI\U409\U409_TOP.v":141:22:141:22|Port AUTOCONFIG_SPACE does not exist
+@E: CG426 :"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v":93:8:93:13|Assignment target ROMENn must be of type reg or genvar
+@E: CG426 :"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v":100:16:100:21|Assignment target ROMENn must be of type reg or genvar
+@E: CG426 :"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v":111:12:111:17|Assignment target ROMENn must be of type reg or genvar
 

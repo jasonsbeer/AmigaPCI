@@ -34,6 +34,8 @@ module U409_TRANSFER_ACK (
 
     input CLK80, CLK40, RESETn, TSn, ROMEN, CIA_ENABLE, CLKCIA, AGNUS_SPACE, AUTOVECTOR, ROM_DELAY,
 
+    output reg ROMENn,
+
     inout TACKn
 
 );
@@ -54,7 +56,7 @@ always @(posedge CLK80) begin
     end else begin
         case (TACK_COUNTER)
         3'b000 : begin
-            if (ROM_TACK_EN || CIA_TACK_EN || DELAYED_TACK_EN) begin
+            if (ROM_TACK_EN || CIA_TACK_EN || IRQ_TACK_EN || DELAYED_TACK_EN) begin
                 TACK_COUNTER <= 3'b001;
                 TACK_EN <= 1;
                 TACK_OUTn <= 0;
@@ -74,7 +76,7 @@ always @(posedge CLK80) begin
 end
 
 ////////////////
-// ROM DELAY //
+// ROM CYCLE //
 //////////////
 
 //WE DELAY ASSERTION OF _TACK BY 100ns TO SUPPORT SETUP TIME FOR THE ROM.
@@ -83,25 +85,61 @@ end
 wire [3:0]ROM_TACK_DELAY = ROM_DELAY ? 4'h5 : 4'h1;
 
 reg [2:0] ROM_TACK_COUNTER;
-reg  ROM_TACK_EN;
+reg ROM_TACK_EN;
 always @(posedge CLK80) begin
     if (!RESETn) begin
         ROM_TACK_EN <= 0;
         ROM_TACK_COUNTER <= 3'b000;
+        ROMENn <= 1;
     end else begin
         if (ROM_TACK_COUNTER != 3'b000) begin ROM_TACK_COUNTER ++; end
         case (ROM_TACK_COUNTER)
-        3'b000 : begin
-            if (CLK40 && !TSn && (ROMEN || AUTOVECTOR)) begin
-                ROM_TACK_COUNTER <= 3'b001;
-            end else begin
+            3'b000 : begin
+                if (CLK40 && !TSn && ROMEN) begin
+                    ROM_TACK_COUNTER <= 3'b001;
+                    ROMENn <= 0;
+                end
+            end
+            ROM_TACK_DELAY : begin
+                ROM_TACK_EN <= 1;
+            end
+            ROM_TACK_DELAY + 1 : begin
                 ROM_TACK_EN <= 0;
             end
-        end
-        ROM_TACK_DELAY : begin
-            ROM_TACK_EN <= 1;
-            ROM_TACK_COUNTER <= 3'b000;
-        end
+            ROM_TACK_DELAY + 2 : begin
+                ROMENn <= 1;
+                ROM_TACK_COUNTER <= 3'b000;
+            end
+        endcase
+    end
+end
+
+////////////////
+// IRQ CYCLE //
+//////////////
+
+//EVERYTHING IS AUTOVECTORED. BECAUSE THERE IS NO DATA ACTUALLY
+//TRANSFERRED, WE USE THE SHORTEST CYCLE POSSIBLE. TWO CLOCKS.
+
+reg IRQ_TACK_COUNTER;
+reg IRQ_TACK_EN;
+always @(posedge CLK80) begin
+    if (!RESETn) begin
+        IRQ_TACK_COUNTER <= 1'b0;
+        IRQ_TACK_EN <= 0;
+    end else begin
+        case (IRQ_TACK_COUNTER)
+            1'b0 : begin
+                if (CLK40 && !TSn && AUTOVECTOR) begin
+                    IRQ_TACK_COUNTER <= 1'b1;
+                end else begin
+                    IRQ_TACK_EN <= 0;
+                end
+            end
+            1'b1 : begin
+                IRQ_TACK_EN <= 1;
+                IRQ_TACK_COUNTER <= 1'b0;
+            end
         endcase
     end
 end

@@ -6,10 +6,10 @@
 @N: CG364 :"D:\AmigaPCI\U409\U409_ADDRESS_DECODE.v":33:7:33:25|Synthesizing module U409_ADDRESS_DECODE in library work.
 @N: CG364 :"D:\AmigaPCI\U409\U409_TICK.v":33:7:33:15|Synthesizing module U409_TICK in library work.
 @N: CG364 :"D:\AmigaPCI\U409\U409_CIA.v":34:7:34:14|Synthesizing module U409_CIA in library work.
-@N: CG364 :"D:\AmigaPCI\U409\U409_TOP.v":35:7:35:14|Synthesizing module U409_TOP in library work.
-@N: CL201 :"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v":121:0:121:5|Trying to extract state machine for register CIA_STATE.
-@N: CL201 :"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v":50:0:50:5|Trying to extract state machine for register TACK_COUNTER.
+@N: CG364 :"D:\AmigaPCI\U409\U409_TOP.v":36:7:36:14|Synthesizing module U409_TOP in library work.
+@N: CL201 :"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v":159:0:159:5|Trying to extract state machine for register CIA_STATE.
+@N: CL201 :"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v":52:0:52:5|Trying to extract state machine for register TACK_COUNTER.
 @N|Running in 64-bit mode
-@N: NF107 :"D:\AmigaPCI\U409\U409_TOP.v":35:7:35:14|Selected library: work cell: U409_TOP view verilog as top level
-@N: NF107 :"D:\AmigaPCI\U409\U409_TOP.v":35:7:35:14|Selected library: work cell: U409_TOP view verilog as top level
+@N: NF107 :"D:\AmigaPCI\U409\U409_TOP.v":36:7:36:14|Selected library: work cell: U409_TOP view verilog as top level
+@N: NF107 :"D:\AmigaPCI\U409\U409_TOP.v":36:7:36:14|Selected library: work cell: U409_TOP view verilog as top level
 
