@@ -1,3 +1,5 @@
 @N: MF248 |Running in 64-bit mode.
 @N: MF666 |Clock conversion enabled. (Command "set_option -fix_gated_and_generated_clocks 1" in the project file.)
+@N: MO111 :"d:\amigapci\u712\u712_top.v":52:11:52:16|Tristate driver RAMENn (in view: work.U712_TOP(verilog)) on net RAMENn (in view: work.U712_TOP(verilog)) has its enable tied to GND.
+@N: MO111 :"d:\amigapci\u712\u712_top.v":52:11:52:16|Tristate driver RAMENn (in view: work.U712_TOP(verilog)) on net RAMENn (in view: work.U712_TOP(verilog)) has its enable tied to GND.
 @N: BN225 |Writing default property annotation file D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\U712_icecube.sap.

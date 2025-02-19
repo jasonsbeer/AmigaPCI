@@ -35,31 +35,38 @@ GitHub: https://github.com/jasonsbeer/AmigaPCI
 module U712_TOP (
 
     input CLK40_IN, C1, C3, RESETn,
-    input RnW, TSn, DBRn, REGSPACEn, RAMSPACEn, AWEn, RAS0n, RAS1n, CASLn, CASUn, AGNUS_REV,
+    input RnW, TSn, DBRn, REGSPACEn, RAMSPACEn, 
+    input AWEn, RAS0n, CASLn, CASUn, AGNUS_REV,
     input [1:0] SIZ,
     input [20:0] A,
     input [9:0] DRA,
 
     output CLK40B_OUT, CLK40C_OUT, CLK40D_OUT, CLKRAM,
     output LDSn, UDSn, ASn, REGENn, DBDIR,
-    output VBENn, DRDENn, DRDDIR,
+    output VBENn, DRDENn, DRDDIR, DMA_LATCH_EN, LATCH_CLK,
     output CRCSn, CLK_EN, BANK1, BANK0, RASn, CASn, WEn, DBENn,
-    output DMA_LATCH, LATCH_CLK,
     output [10:0] CMA,
     output CUUBEn, CUMBEn, CLMBEn, CLLBEn,
+    output UUBEn, UMBEn, LMBEn, LLBEn,
 
     output RAMENn,
     output TACKn
 );
 
-assign RAMENn = RAMSPACEn;
+//assign RAMENn = RAMSPACEn;
+//assign RAMENn = CPU_CYCLEm;
+//assign RAMENn = LATCH_CLK;
+//assign RAMENn = WRITE_CYCLEm;
+//assign RAMENn = REG_CYCLEm;
+//assign RAMENn = DMA_CYCLEm;
+//assign RAMENn = DMA_LATCH_EN;
 
 //646 LATCH
 //FOR NOW, MAKE ALL DATA LIVE FOR TESTING.
 //THIS WILL MATCH THE BEHAVIOR OF THE 245 TRANSCEIVER THAT WAS IN REV 4.0.
 
-assign DMA_LATCH = 0;
-assign LATCH_CLK = 0;
+//assign DMA_LATCH = 0;
+//assign LATCH_CLK = 0;
 
 ///////////////////
 // CLOCK FANOUT //
@@ -106,7 +113,7 @@ SB_PLL40_2F_CORE #(
 // _DBR SYNCRONIZER //
 /////////////////////
 
-//WE NEED TO SAMPLE THE AGNUS' _DBR SIGNAL IN MUTIPLE
+//WE NEED TO SAMPLE _DBR FROM AGNUS IN MUTIPLE
 //PROCESSES, SO WE HAVE THE SYNCRONIZER HERE.
 
 reg [1:0] DBR_SYNC;
@@ -151,21 +158,23 @@ U712_REG_SM U712_REG_SM (
 // CHIPSET DATA BUFFERS //
 /////////////////////////
 
-wire DMA_CYCLEm;
 wire CPU_CYCLEm;
+wire WRITE_CYCLEm;
 
 U712_BUFFERS U712_BUFFERS (
     //INPUTS
-    .AWEn (AWEn),
     .RnW (RnW),
-    .DMA_CYCLE (DMA_CYCLEm),
     .REG_CYCLE (REG_CYCLEm),
     .CPU_CYCLE (CPU_CYCLEm),
+    .CASUn (CASUn),
+    .CASLn (CASLn),
+    .WRITE_CYCLE (WRITE_CYCLEm),
 
     //OUTPUTS
     .VBENn (VBENn),
     .DRDENn (DRDENn),
-    .DRDDIR (DRDDIR)
+    .DRDDIR (DRDDIR),
+    .DMA_LATCH_EN (DMA_LATCH_EN)
 );
 
 ////////////////////////////
@@ -182,13 +191,16 @@ U712_CYCLE_TERM U712_CYCLE_TERM (
     .REG_TACK (REG_TACK),
     .CPU_TACK (CPU_TACKm),
 
-    //OUTPUTTS
+    //OUTPUTS
     .TACKn (TACKn)
 );
 
 /////////////////////
 // CHIP RAM CYCLE //
 ///////////////////
+
+wire DMA_CYCLEm;
+//wire [1:0] CAS_SYNC;
 
 U712_CHIP_RAM U712_CHIP_RAM (
     //INPUTS
@@ -202,9 +214,8 @@ U712_CHIP_RAM U712_CHIP_RAM (
     .AGNUS_REV (AGNUS_REV),
     .AWEn (AWEn),
     .RAS0n (RAS0n),
-    .RAS1n (RAS1n),
-    .CASLn (CASLn),
     .CASUn (CASUn),
+    .CASLn (CASLn),
     .DBRn (DBRn),
     .A (A[20:2]),
     .DRA (DRA),
@@ -223,7 +234,9 @@ U712_CHIP_RAM U712_CHIP_RAM (
     .DBENn (DBENn),
     .DBDIR (DBDIR),
     .CPU_TACK (CPU_TACKm),
-    .CMA (CMA)
+    .CMA (CMA),
+    .LATCH_CLK (LATCH_CLK),
+    .WRITE_CYCLE (WRITE_CYCLEm)
 );
 
 ///////////////////
@@ -246,10 +259,10 @@ U712_BYTE_ENABLE U712_BYTE_ENABLE (
     .CUMBEn (CUMBEn),
     .CLMBEn (CLMBEn),
     .CLLBEn (CLLBEn),
-    //.UUBEn (UUBEn),
-    //.UMBEn (UMBEn),
-    //.LMBEn (LMBEn),
-    //.LLBEn (LLBEn),
+    .UUBEn (UUBEn),
+    .UMBEn (UMBEn),
+    .LMBEn (LMBEn),
+    .LLBEn (LLBEn),
     .UDSn (UDSn),
     .LDSn (LDSn)
 );

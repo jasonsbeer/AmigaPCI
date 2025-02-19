@@ -2,8 +2,9 @@ OUTPUT RAMENn 	 location (5, 21, 0) 	 139
 OUTPUT CMA[4] 	 location (25, 3, 1) 	 78 	 
 INPUT  A[5] 	 location (0, 13, 0) 	 16 	 
 INPUT  TSn 	 location (6, 21, 1) 	 136 	 
+OUTPUT LMBEn 	 location (15, 21, 1) 	 122 	 
 INPUT  DRA[2] 	 location (25, 15, 1) 	 99 	 
-OUTPUT DMA_LATCH 	 location (7, 21, 1) 	 134 	 
+OUTPUT DMA_LATCH_EN 	 location (7, 21, 1) 	 134 	 
 INPUT  A[13] 	 location (0, 6, 0) 	 26 	 
 OUTPUT CLMBEn 	 location (25, 2, 0) 	 75 	 
 INPUT  AWEn 	 location (7, 21, 0) 	 135 	 
@@ -26,6 +27,7 @@ OUTPUT CLKRAM 	 location (2, 0, 1) 	 38
 OUTPUT CLK40D_OUT 	 location (22, 21, 1) 	 115 	 
 INPUT  C3 	 location (3, 21, 0) 	 143 	 
 OUTPUT ASn 	 location (22, 21, 0) 	 116 	 
+OUTPUT UUBEn 	 location (14, 21, 1) 	 125 	 
 OUTPUT LDSn 	 location (21, 21, 1) 	 117 	 
 OUTPUT LATCH_CLK 	 location (6, 21, 0) 	 137 	 
 INPUT  DRA[8] 	 location (25, 9, 1) 	 90 	 
@@ -33,7 +35,6 @@ OUTPUT CMA[5] 	 location (25, 4, 0) 	 79
 INPUT  CASUn 	 location (25, 18, 1) 	 104 	 
 INPUT  A[6] 	 location (0, 12, 1) 	 17 	 
 INPUT  A[15] 	 location (0, 3, 0) 	 29 	 
-INPUT  RAS1n 	 location (25, 9, 0) 	 88 	 
 OUTPUT DRDDIR 	 location (25, 20, 0) 	 107 	 
 INPUT  DRA[3] 	 location (25, 14, 1) 	 98 	 
 OUTPUT DBDIR 	 location (7, 0, 1) 	 43 	 
@@ -47,6 +48,7 @@ OUTPUT CMA[2] 	 location (11, 0, 1) 	 47
 OUTPUT CMA[10] 	 location (18, 0, 0) 	 56 	 
 OUTPUT BANK1 	 location (12, 0, 1) 	 49 	 
 INPUT  A[10] 	 location (0, 7, 1) 	 23 	 
+OUTPUT UMBEn 	 location (18, 21, 0) 	 121 	 
 INPUT  RAS0n 	 location (25, 8, 1) 	 87 	 
 INPUT  DRA[4] 	 location (25, 14, 0) 	 97 	 
 OUTPUT CMA[9] 	 location (25, 6, 0) 	 83 	 
@@ -66,6 +68,7 @@ INPUT  DRA[6] 	 location (25, 12, 1) 	 95
 INPUT  A[0] 	 location (0, 15, 0) 	 12 	 
 OUTPUT WEn 	 location (25, 1, 0) 	 73 	 
 OUTPUT REGENn 	 location (4, 21, 0) 	 141 	 
+OUTPUT LLBEn 	 location (15, 21, 0) 	 124 	 
 INPUT  DRA[9] 	 location (25, 19, 1) 	 106 	 
 INPUT  DBRn 	 location (5, 21, 1) 	 138 	 
 OUTPUT CMA[6] 	 location (25, 4, 1) 	 80 	 

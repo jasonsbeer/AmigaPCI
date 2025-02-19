@@ -37,7 +37,7 @@ module U712_BYTE_ENABLE (
     input [1:0] SIZ,
 
     output CUUBEn, CUMBEn, CLMBEn, CLLBEn,
-    //output UUBEn, UMBEn, LMBEn, LLBEn
+    output UUBEn, UMBEn, LMBEn, LLBEn,
     output UDSn, LDSn
 
 );
@@ -55,10 +55,10 @@ wire UMBE = (!A[1] &&  A[0]) || LW_TRANS || (!A[1] && SIZ[1]);
 wire LMBE = ( A[1] && !A[0]) || LW_TRANS;
 wire LLBE = ( A[1] &&  A[0]) || LW_TRANS || ( A[1] && SIZ[1]);
 
-//assign UUBEn = ~UUBE;
-//assign UMBEn = ~UMBE;
-//assign LMBEn = ~LMBE;
-//assign LLBEn = ~LLBE;
+assign UUBEn = ~UUBE;
+assign UMBEn = ~UMBE;
+assign LMBEn = ~LMBE;
+assign LLBEn = ~LLBE;
 
 assign CUUBEn = ~((UUBE && CPU_CYCLE) || (!CASUn && DMA_CYCLE && DBENn));
 assign CUMBEn = ~((UMBE && CPU_CYCLE) || (!CASLn && DMA_CYCLE && DBENn));

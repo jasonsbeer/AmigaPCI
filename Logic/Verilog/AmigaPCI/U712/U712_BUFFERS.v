@@ -33,8 +33,8 @@ TO BUILD WITH APIO: apio build --top-module U712_TOP --fpga iCE40-HX4K-TQ144
 
 module U712_BUFFERS (
 
-    input AWEn, RnW, DMA_CYCLE, REG_CYCLE, CPU_CYCLE,
-    output VBENn, DRDENn, DRDDIR
+    input RnW, REG_CYCLE, CPU_CYCLE, CASUn, CASLn, WRITE_CYCLE, 
+    output VBENn, DRDENn, DRDDIR, DMA_LATCH_EN
 
 );
 
@@ -46,6 +46,9 @@ module U712_BUFFERS (
 //_VBEN IS ENABLED DURING CHIP SET REGISTER ACCESS AND CHIP RAM ACCESSES BUT WE MUST WAIT FOR DMA CYCLES TO END.
 //_DRDEN IS ENABLED DURING CPU CHIP SET REGISTER CYCLES AND DMA ACCESSES BUT NOT WHEN WE INSERT CPU CYCLES DURING DMA.
 
+//When one of the Agnus CAS signals is asserted, there is an active DMA cycle in progress.
+wire DMA_CYCLE = (!CASUn || !CASLn);
+
 //CPU to RAM and chipset buffer enable.
 assign VBENn = !(REG_CYCLE || CPU_CYCLE);
 
@@ -53,6 +56,9 @@ assign VBENn = !(REG_CYCLE || CPU_CYCLE);
 assign DRDENn = !(DMA_CYCLE || REG_CYCLE);
 
 //Chipset data bus direction.
-assign DRDDIR = DMA_CYCLE ? AWEn : !RnW;
+assign DRDDIR = DMA_CYCLE ? !WRITE_CYCLE : !RnW;
+
+//Enable the latch clock (SAB=1) during DMA read or REG write cycles.
+assign DMA_LATCH_EN = (DMA_CYCLE && !WRITE_CYCLE);
 
 endmodule

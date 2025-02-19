@@ -26,6 +26,7 @@ Description: CHIP MEMORY SDRAM CONTROLLER
 
 Revision History:
     21-JAN-2025 : HW REV 5.0 INITIAL RELEASE
+    19-FEB-2025 : ENABLE LATCHING OF DRD BUS ON DMA READ CYCLES.
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 */
@@ -33,7 +34,7 @@ GitHub: https://github.com/jasonsbeer/AmigaPCI
 module U712_CHIP_RAM (
 
     input CLK80, C1, C3, RESETn, RAMSPACEn, TSn, RnW, AGNUS_REV,
-    input AWEn, RAS0n, RAS1n, CASLn, CASUn, DBRn,
+    input AWEn, RAS0n, CASLn, CASUn, DBRn,
     input [20:2] A,
     input [9:0] DRA,
     input DBR_SYNC,
@@ -50,7 +51,9 @@ module U712_CHIP_RAM (
     output reg CASn,
     output reg WEn,
     output reg CPU_TACK,
-    output reg [10:0]CMA
+    output reg [10:0]CMA,
+    output reg LATCH_CLK,
+    output reg WRITE_CYCLE
 
 );
 
@@ -111,36 +114,6 @@ always @(negedge CLK80) begin
     end
 end
 
-//////////////////////////
-// AGNUS SYNCHRONIZERS //
-////////////////////////
-
-//SYNCHRONIZE THE NECESSARY AGNUS SIGNALS HERE.
-//THESE ARE NECESSARY TO DRIVE DMA CYCLES AND PREVENT
-//CONTENTION OF RAM CYCLES. THE INDIVIDUAL RAS AND CAS SIGNALS
-//ARE MEANINGLESS FOR THIS SDRAM CONTROLLER, SO WE CAPTURE WHEN
-//EITHER SIGNAL IS ASSERTED. THE INDIVIDUAL CAS SIGNALS
-//INDICATE WHICH BYTES ARE ENABLED. CASL = D7-0, CASU = D15-8.
-
-reg [2:0] CAS_SYNC;
-wire CAS_AGNUSn = !(!CASLn || !CASUn);
-wire AGNUS_REFRESH = (!RAS0n && !RAS1n);
-reg [1:0] REFRESH_SYNC;
-
-always @(negedge CLK80) begin
-    if (!RESETn) begin
-        CAS_SYNC <= 3'b111;
-        REFRESH_SYNC <= 2'b00;
-    end else begin
-        CAS_SYNC[2] <= CAS_SYNC[1];
-        CAS_SYNC[1] <= CAS_SYNC[0];
-        CAS_SYNC[0] <= CAS_AGNUSn;
-
-        REFRESH_SYNC[1] <= REFRESH_SYNC[0];
-        REFRESH_SYNC[0] <= AGNUS_REFRESH;
-    end
-end
-
 ///////////////////////////////
 // AGNUS DRAM ADDRESS LATCH //
 /////////////////////////////
@@ -150,7 +123,7 @@ always @(posedge C3) begin
     if (!RESETn) begin
         DMA_ROW_ADDRESS <= 10'b0000000000;
     end else begin
-        if (C1 && !DBRn) begin
+        if (!DBRn) begin
             DMA_ROW_ADDRESS <= AGNUS_REV ? DRA : { RAS0n, DRA[9:1] };
         end
     end
@@ -165,7 +138,7 @@ always @(negedge C1) begin
         DMA_A1 <= 0;
         DMA_A20 <= 0;
     end else begin
-        if (C3 && !DBRn) begin
+        if (!DBRn) begin
             if (AGNUS_REV) begin
                 DMA_COL_ADDRESS <= DRA[8:1];
                 DMA_A1 <= DRA[0];
@@ -176,6 +149,22 @@ always @(negedge C1) begin
                 DMA_A20 <= 0;
             end
         end
+    end
+end
+
+/////////////////////////
+// AGNUS SYNCHRONIZER //
+///////////////////////
+
+//START OF A DMA CYCLE IS DEFINED AS ASSERTION OF ONE OR BOTH OF THE AGNUS _CASn SIGNALS.
+
+reg [1:0] CAS_SYNC;
+always @(negedge CLK80) begin
+    if (!RESETn) begin
+        CAS_SYNC <= 2'b00;
+    end else begin
+        CAS_SYNC[1] <= CAS_SYNC[0];
+        CAS_SYNC[0] <= (!CASUn || !CASLn);
     end
 end
 
@@ -215,7 +204,6 @@ reg SDRAM_CONFIGURED;
 reg [7:0] SDRAM_COUNTER;
 reg CPU_CYCLE_START;
 reg DMA_CYCLE_START;
-reg WRITE_CYCLE;
 
 always @(negedge CLK80) begin
     if (!RESETn) begin
@@ -224,10 +212,8 @@ always @(negedge CLK80) begin
         SDRAM_CONFIGURED <= 0;
         SDRAM_COUNTER <= 8'h00;
         DMA_CYCLE <= 0;
-        DMA_CYCLE_START <= 0;
-        //LATCH_CLK <= 0;
-        //DMA_LATCH <= 0;
         DBENn <= 1;
+        LATCH_CLK <= 0;
         WRITE_CYCLE <= 0;
         CPU_CYCLE <= 0;
         CPU_CYCLE_START <= 0;
@@ -243,7 +229,7 @@ always @(negedge CLK80) begin
 
         if (SDRAM_COUNTER != 8'h00) begin SDRAM_COUNTER ++; end
 
-        DMA_CYCLE_START <= (CAS_SYNC == 3'b110 || (DMA_CYCLE_START && !DMA_CYCLE));
+        DMA_CYCLE_START <= (CAS_SYNC == 2'b01 || (DMA_CYCLE_START && !DMA_CYCLE));
         CPU_CYCLE_START <= (!TSn && !RAMSPACEn) || (CPU_CYCLE_START && !CPU_CYCLE);
 
         CRCSn <= SDRAM_CMD[3];
@@ -270,10 +256,10 @@ always @(negedge CLK80) begin
                 8'h02 : begin
                     SDRAM_CMD <= MODEREGISTER;
                 end
-                8'h05, 8'h09 : begin
+                8'h05, 8'h08 : begin
                     SDRAM_CMD <= AUTOREFRESH; //REFRESH TAKES 60ns = 3 80MHz CLOCK CYCLES.
                 end
-                8'h0D : begin
+                8'h0A : begin
                     SDRAM_CONFIGURED <= 1;
                     SDRAM_COUNTER <= 8'h00;
                 end
@@ -288,69 +274,74 @@ always @(negedge CLK80) begin
                         //Counter h04 - h0F are DMA RAM cycles.
                         SDRAM_CMD <= BANKACTIVATE;
                         DMA_CYCLE <= 1;
-                        SDRAM_COUNTER <= 8'h04;
+                        SDRAM_COUNTER <= 8'h03;
                         WRITE_CYCLE <= !AWEn;
                         DBDIR <= !AWEn;
                         DBENn <= !DMA_A1;
                         BANK0 <= DMA_A20;
-                        //LATCH_CLK <= 0;
-                        //DMA_LATCH <= AWEn;
+                        LATCH_CLK <= 0;
                     end else if (REFRESH) begin
                         //Counter h01 - h03 are refresh cycles.
                         SDRAM_CMD <= AUTOREFRESH;
                         SDRAM_COUNTER <= 8'h01;
-                    end else if (CPU_CYCLE_START && (DBR_SYNC || REFRESH_SYNC == 2'b11)) begin
+                    //end else if (CPU_CYCLE_START && (DBR_SYNC || REFRESH_SYNC == 2'b11)) begin
+                    end else if (CPU_CYCLE_START && DBR_SYNC) begin
                         //Counter h04 - h0F are CPU RAM cycles.
                         SDRAM_CMD <= BANKACTIVATE;
                         CPU_CYCLE <= 1;
-                        SDRAM_COUNTER <= 8'h04;
+                        SDRAM_COUNTER <= 8'h03;
                         WRITE_CYCLE <= !RnW;
                         BANK0 <= AGNUS_REV ? A[20] : 1'b0;
                     end
                 end
-                8'h03 : begin //End refresh cycle.
+                8'h02 : begin //End refresh cycle.
                     SDRAM_COUNTER <= 8'h00;
                 end
-                8'h05 : begin
+                //SDRAM cycles start here.
+                8'h04 : begin
                     SDRAM_CMD <= WRITE_CYCLE ? WRITE : READ;
                     CPU_TACK <= CPU_CYCLE && WRITE_CYCLE;
                 end
-                8'h06 : begin
+                8'h05 : begin
                     SDRAM_CMD <= PRECHARGE;
                     CPU_TACK <= 0;
                 end
-                8'h08 : begin
+                8'h07 : begin
                     if (WRITE_CYCLE) begin
                         CPU_CYCLE <= 0;
                         DMA_CYCLE <= 0;
                     end else begin
                         CPU_TACK <= CPU_CYCLE;
-                        CLK_EN <= 0;
-                        //LATCH DATA HERE FOR DMA READ CYCLES.
-                        //WE CAN THEN END THE DMA RAM CYCLE.
-                        //LATCH_CLK <= DMA_CYCLE;
+                        CLK_EN <= !CPU_CYCLE;
                     end
                 end
-                8'h09 : begin
+                8'h08 : begin //All write cycles end here.
                     if (WRITE_CYCLE) begin
                         BANK0 <= 0;
                         SDRAM_COUNTER <= 8'h00;
                         DBENn <= 1;
                     end else begin
                         CPU_TACK <= 0;
+                        LATCH_CLK <= DMA_CYCLE;
                     end
                 end
-                8'h0E : begin
-                    CPU_CYCLE <= 0;
-                    DMA_CYCLE <= 0;
+                8'h09 : begin //DMA read cycles end here.
+                    if (DMA_CYCLE) begin
+                        DMA_CYCLE <= 0;
+                        LATCH_CLK <= 0;
+                        BANK0 <= 0;
+                        DBENn <= 1;
+                        SDRAM_COUNTER <= 8'h00;
+                    end
                 end
-                8'h0F : begin
-                    //Negating CPU_CYCLE and asserting CLK_EN in the same clock causes instability.
+                8'h0B : begin                   
+                    CLK_EN <= 1;
+                end
+                8'h0C : begin //CPU read cycles end here.
+                    CPU_CYCLE <= 0;
                     BANK0 <= 0;
                     SDRAM_COUNTER <= 8'h00;
-                    CLK_EN <= 1;
-                    DBENn <= 1;
-                end
+                end                
                 default : begin
                     SDRAM_CMD <= NOP;
                 end

@@ -1,2 +1,2 @@
-@E: CG586 :"D:\AmigaPCI\U712\U712_CHIP_RAM.v":298:53:298:78|Illegal store to expression
+@E: CS168 :"D:\AmigaPCI\U712\U712_TOP.v":217:11:217:11|Port RAS1n does not exist
 

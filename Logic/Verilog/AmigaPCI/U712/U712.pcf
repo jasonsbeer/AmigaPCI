@@ -9,7 +9,7 @@ set_io C1         142
 set_io C3         143
 
 #CPU ADDRESS BUS - INPUTS
-set_io A[0]  12 -pullup yes
+set_io A[0]  12
 set_io A[1]  10
 set_io A[2]  8
 set_io A[3]  9
@@ -76,21 +76,22 @@ set_io DRDDIR    107
 set_io DRDENn    110
 
 #AGNUS
-set_io RAS1n      88 #INPUT - AGNUS RAS1
-set_io RAS0n      87 #INPUT - AGNUS RAS0
-set_io CASUn     104 #INPUT - AGNUS CASU
-set_io CASLn     105 #INPUT - AGNUS CASL
-set_io ASn       116
-set_io LDSn      117
-set_io UDSn      118
-set_io AWEn      135
-set_io DBRn      138
-set_io RAMENn    139
-set_io REGENn    141 #OUTPUT - AGNUS REGISTER ENABLE
-set_io REGSPACEn  41 #INPUT - CHIPSET REGISTER ADDRESS SPACE
-set_io AGNUS_REV 114 #2MB or 1MB Agnus
-set_io LATCH_CLK 137
-set_io DMA_LATCH 134
+#set_io RAS1n         88 #INPUT -  AGNUS RAS1
+set_io RAS0n         87 #INPUT -  AGNUS RAS0
+set_io CASUn        104 #INPUT -  AGNUS CASU
+set_io CASLn        105 #INPUT -  AGNUS CASL
+set_io ASn          116 #OUTPUT - AGNUS ADDRESS STROBE
+set_io LDSn         117 #OUTPUT - AGNUS LOWER DATA STROBE
+set_io UDSn         118 #OUTPUT - AGNUS UPPER DATA STROBE
+set_io AWEn         135 #INPUT -  AGNUS WRITE ENABLE
+set_io DBRn         138 #INPUT -  AGNUS DATA BUS REQUEST
+set_io RAMENn       139 #OUTPUT - AGNUS CHIP RAM ENABLE (UNUSED, USEFUL FOR TESTING)
+set_io REGENn       141 #OUTPUT - AGNUS REGISTER ENABLE
+set_io REGSPACEn     41 #INPUT -  CHIPSET REGISTER ADDRESS SPACE
+set_io AGNUS_REV    114 #INPUT -  2MB or 1MB Agnus
+set_io DMA_LATCH_EN 134 #OUTPUT - ENABLE LATCHING ON U810
+set_io LATCH_CLK    137 #OUTPUT - LATCH CLOCK FOR U810
+
 
 #DATA TRANSFER SIGNALS
 set_io SIZ[1]       1
@@ -104,10 +105,10 @@ set_io TSn        136
 set_io RnW        144
 
 #BYTE ENABLES FOR PCI BUS CONTROLLER
-#set_io UMBEn      121
-#set_io LMBEn      122
-#set_io LLBEn      124
-#set_io UUBEn      125
+set_io UMBEn      121
+set_io LMBEn      122
+set_io LLBEn      124
+set_io UUBEn      125
 
 #ATA ADDRESS
 #set_io DA[2]      120
