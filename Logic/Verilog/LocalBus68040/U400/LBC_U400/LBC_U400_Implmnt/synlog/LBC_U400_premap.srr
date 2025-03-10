@@ -1,4 +1,4 @@
-# Sat Feb 08 11:30:42 2025
+# Sun Mar 09 18:37:24 2025
 
 Synopsys Lattice Technology Pre-mapping, Version maplat, Build 1612R, Built Dec  5 2016 10:31:39
 Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
@@ -12,18 +12,18 @@ Printing clock  summary report in "D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implm
 @N: MF248 |Running in 64-bit mode.
 @N: MF666 |Clock conversion enabled. (Command "set_option -fix_gated_and_generated_clocks 1" in the project file.)
 
-Design Input Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 99MB peak: 101MB)
+Design Input Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 100MB peak: 102MB)
 
 
-Mapper Initialization Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 99MB peak: 101MB)
+Mapper Initialization Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 100MB peak: 102MB)
 
 
-Start loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 100MB peak: 101MB)
+Start loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 101MB peak: 102MB)
 
 
-Finished loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 100MB peak: 103MB)
+Finished loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 101MB peak: 103MB)
 
-@N: BN115 :"d:\localbus68040\u400\u400_top.v":18:11:18:20|Removing instance U400_SDRAM (in view: work.U400_TOP(verilog)) of type view:work.U400_SDRAM(verilog) because it does not drive other instances.
+
 ICG Latch Removal Summary:
 Number of ICG latches removed:	0
 Number of ICG latches not removed:	0
@@ -36,16 +36,25 @@ Finished netlist restructuring (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0
 Clock Summary
 *****************
 
-Start     Requested     Requested     Clock     Clock     Clock
-Clock     Frequency     Period        Type      Group     Load 
----------------------------------------------------------------
-===============================================================
+Start     Requested     Requested     Clock        Clock                Clock
+Clock     Frequency     Period        Type         Group                Load 
+-----------------------------------------------------------------------------
+CLK40     40.0 MHz      25.000        declared     default_clkgroup     56   
+=============================================================================
 
 Finished Pre Mapping Phase.
 @N: BN225 |Writing default property annotation file D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\LBC_U400.sap.
 
 Starting constraint checker (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
 
+Encoding state machine TA_COUNTER[5:0] (in view: work.U400_SDRAM(verilog))
+original code -> new code
+   000000000 -> 000001
+   000000001 -> 000010
+   000000010 -> 000100
+   000000011 -> 001000
+   000000100 -> 010000
+   000000101 -> 100000
 None
 None
 
@@ -53,9 +62,9 @@ Finished constraint checker (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:0
 
 Pre-mapping successful!
 
-At Mapper Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 46MB peak: 133MB)
+At Mapper Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 47MB peak: 133MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
-# Sat Feb 08 11:30:42 2025
+# Sun Mar 09 18:37:25 2025
 
 ###########################################################]

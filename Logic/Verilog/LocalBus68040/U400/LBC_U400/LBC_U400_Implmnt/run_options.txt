@@ -1,13 +1,14 @@
 #--  Synopsys, Inc.
 #--  Version L-2016.09L+ice40
 #--  Project file D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\run_options.txt
-#--  Written on Sat Feb 08 11:30:40 2025
+#--  Written on Sun Mar 09 18:37:23 2025
 
 
 #project files
 add_file -verilog "../U400_BYTE_ENABLE.v"
 add_file -verilog "../U400_SDRAM.v"
 add_file -verilog "../U400_TOP.v"
+add_file -verilog "../U400_ADDRESS_DECODE.v"
 add_file -constraint "../U400_TOP.sdc"
 
 

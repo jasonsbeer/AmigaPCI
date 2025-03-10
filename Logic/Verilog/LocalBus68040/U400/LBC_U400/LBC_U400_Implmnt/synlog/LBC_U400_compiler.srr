@@ -14,37 +14,48 @@ Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys softwa
 @I::"D:\LocalBus68040\U400\U400_BYTE_ENABLE.v" (library work)
 @I::"D:\LocalBus68040\U400\U400_SDRAM.v" (library work)
 @I::"D:\LocalBus68040\U400\U400_TOP.v" (library work)
+@I::"D:\LocalBus68040\U400\U400_ADDRESS_DECODE.v" (library work)
 Verilog syntax check successful!
-
-Compiler output is up to date.  No re-compile necessary
-
+File D:\LocalBus68040\U400\U400_SDRAM.v changed - recompiling
 Selecting top level module U400_TOP
-@N: CG364 :"D:\LocalBus68040\U400\U400_SDRAM.v":1:7:1:16|Synthesizing module U400_SDRAM in library work.
+@N: CG364 :"D:\LocalBus68040\U400\U400_ADDRESS_DECODE.v":33:7:33:25|Synthesizing module U400_ADDRESS_DECODE in library work.
 
-@N: CG364 :"D:\LocalBus68040\U400\U400_BYTE_ENABLE.v":1:7:1:22|Synthesizing module U400_BYTE_ENABLE in library work.
+@N: CG364 :"D:\LocalBus68040\U400\U400_SDRAM.v":33:7:33:16|Synthesizing module U400_SDRAM in library work.
 
-@N: CG364 :"D:\LocalBus68040\U400\U400_TOP.v":3:7:3:14|Synthesizing module U400_TOP in library work.
+@N: CG364 :"D:\LocalBus68040\U400\U400_BYTE_ENABLE.v":33:7:33:22|Synthesizing module U400_BYTE_ENABLE in library work.
 
+@N: CG364 :"D:\LocalBus68040\U400\U400_TOP.v":34:7:34:14|Synthesizing module U400_TOP in library work.
 
-At c_ver Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 69MB peak: 70MB)
+@N: CL201 :"D:\LocalBus68040\U400\U400_SDRAM.v":100:0:100:5|Trying to extract state machine for register TA_COUNTER.
+Extracted state machine for register TA_COUNTER
+State machine has 6 reachable states with original encodings of:
+   000000000
+   000000001
+   000000010
+   000000011
+   000000100
+   000000101
+@W: CL246 :"D:\LocalBus68040\U400\U400_SDRAM.v":36:17:36:17|Input port bits 1 to 0 of A[26:0] are unused. Assign logic for all port bits or change the input port size.
+
+At c_ver Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 72MB peak: 73MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Sat Feb 08 11:30:40 2025
+# Sun Mar 09 18:37:23 2025
 
 ###########################################################]
 Synopsys Netlist Linker, version comp2016q3p1, Build 141R, built Dec  5 2016
 @N|Running in 64-bit mode
-@N: NF107 :"D:\LocalBus68040\U400\U400_TOP.v":3:7:3:14|Selected library: work cell: U400_TOP view verilog as top level
-@N: NF107 :"D:\LocalBus68040\U400\U400_TOP.v":3:7:3:14|Selected library: work cell: U400_TOP view verilog as top level
+@N: NF107 :"D:\LocalBus68040\U400\U400_TOP.v":34:7:34:14|Selected library: work cell: U400_TOP view verilog as top level
+@N: NF107 :"D:\LocalBus68040\U400\U400_TOP.v":34:7:34:14|Selected library: work cell: U400_TOP view verilog as top level
 
 At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 67MB peak: 68MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Sat Feb 08 11:30:41 2025
+# Sun Mar 09 18:37:23 2025
 
 ###########################################################]
 @END
@@ -54,6 +65,6 @@ At c_hdl Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Sat Feb 08 11:30:41 2025
+# Sun Mar 09 18:37:23 2025
 
 ###########################################################]

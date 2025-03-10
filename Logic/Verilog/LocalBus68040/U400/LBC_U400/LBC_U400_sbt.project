@@ -32,7 +32,7 @@ Version=Lattice Semiconductor Corporation iCEcube - Release: 2020.12.27943 - Bui
 ProjectName=LBC_U400
 Vendor=SiliconBlue
 Synthesis=synplify
-ProjectVFiles=../U400_BYTE_ENABLE.v=work,../U400_SDRAM.v=work,../U400_TOP.v=work
+ProjectVFiles=../U400_BYTE_ENABLE.v=work,../U400_SDRAM.v=work,../U400_TOP.v=work,../U400_ADDRESS_DECODE.v=work
 ProjectCFiles=../U400_TOP.sdc
 CurImplementation=LBC_U400_Implmnt
 Implementations=LBC_U400_Implmnt

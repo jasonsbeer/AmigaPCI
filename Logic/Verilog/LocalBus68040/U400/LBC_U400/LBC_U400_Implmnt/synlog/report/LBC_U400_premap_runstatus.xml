@@ -13,7 +13,7 @@ The file contains the job information from mapper to be displayed as part of the
 </job_status>
 <job_info>
 <info name="Notes">
-<data>4</data>
+<data>3</data>
 <report_link name="more">
 <data>D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\synlog\report\LBC_U400_premap_notes.txt</data>
 </report_link>
@@ -40,7 +40,7 @@ The file contains the job information from mapper to be displayed as part of the
 <data>133MB</data>
 </info>
 <info name="Date &amp; Time">
-<data type="timestamp">1739035842</data>
+<data type="timestamp">1741563445</data>
 </info>
 </job_info>
 </job_run_status>

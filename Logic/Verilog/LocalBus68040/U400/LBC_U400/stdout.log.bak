@@ -4,7 +4,7 @@ Running in Lattice mode
 Starting:    C:\lscc\iCEcube2.2020.12\synpbase\bin64\mbin\synbatch.exe
 Install:     C:\lscc\iCEcube2.2020.12\synpbase
 Hostname:    JASON-LAB
-Date:        Sat Feb 08 11:28:11 2025
+Date:        Sun Mar 09 18:32:42 2025
 Version:     L-2016.09L+ice40
 
 Arguments:   -product synplify_pro -batch LBC_U400_syn.prj
@@ -20,52 +20,52 @@ Running: LBC_U400_Implmnt in foreground
 Running LBC_U400_syn|LBC_U400_Implmnt
 
 Running: compile (Compile) on LBC_U400_syn|LBC_U400_Implmnt
-# Sat Feb 08 11:28:11 2025
+# Sun Mar 09 18:32:42 2025
 
 Running: compile_flow (Compile Process) on LBC_U400_syn|LBC_U400_Implmnt
-# Sat Feb 08 11:28:11 2025
+# Sun Mar 09 18:32:42 2025
 
 Running: compiler (Compile Input) on LBC_U400_syn|LBC_U400_Implmnt
-# Sat Feb 08 11:28:11 2025
+# Sun Mar 09 18:32:42 2025
 Copied D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\synwork\LBC_U400_comp.srs to D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\LBC_U400.srs
 
 compiler completed
-# Sat Feb 08 11:28:13 2025
+# Sun Mar 09 18:32:43 2025
 
 Return Code: 0
-Run Time:00h:00m:02s
+Run Time:00h:00m:01s
 
 Running: multi_srs_gen (Multi-srs Generator) on LBC_U400_syn|LBC_U400_Implmnt
-# Sat Feb 08 11:28:13 2025
+# Sun Mar 09 18:32:43 2025
 
 multi_srs_gen completed
-# Sat Feb 08 11:28:13 2025
+# Sun Mar 09 18:32:44 2025
 
 Return Code: 0
-Run Time:00h:00m:00s
+Run Time:00h:00m:01s
 Copied D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\synwork\LBC_U400_mult.srs to D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\LBC_U400.srs
 Complete: Compile Process on LBC_U400_syn|LBC_U400_Implmnt
 
 Running: premap (Pre-mapping) on LBC_U400_syn|LBC_U400_Implmnt
-# Sat Feb 08 11:28:13 2025
+# Sun Mar 09 18:32:44 2025
 
 premap completed
-# Sat Feb 08 11:28:13 2025
+# Sun Mar 09 18:32:44 2025
 
 Return Code: 0
 Run Time:00h:00m:00s
 Complete: Compile on LBC_U400_syn|LBC_U400_Implmnt
 
 Running: map (Map) on LBC_U400_syn|LBC_U400_Implmnt
-# Sat Feb 08 11:28:13 2025
+# Sun Mar 09 18:32:44 2025
 License granted for 4 parallel jobs
 
 Running: fpga_mapper (Map & Optimize) on LBC_U400_syn|LBC_U400_Implmnt
-# Sat Feb 08 11:28:13 2025
+# Sun Mar 09 18:32:44 2025
 Copied D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\synwork\LBC_U400_m.srm to D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\LBC_U400.srm
 
 fpga_mapper completed
-# Sat Feb 08 11:28:14 2025
+# Sun Mar 09 18:32:45 2025
 
 Return Code: 0
 Run Time:00h:00m:01s

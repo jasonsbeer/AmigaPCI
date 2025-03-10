@@ -28,18 +28,20 @@ Revision History:
     xxx
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
+iceprog D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\sbt\outputs\bitmap\U111_TOP_bitmap.bin
 */
-
-//iceprog D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\sbt\outputs\bitmap\U111_TOP_bitmap.bin
 
 module U111_TOP (
     input [1:0] A_040,
     input [1:0] SIZ,
-    input CLK40_IN, RESETn, TS_CPUn, RnW, BGn, PORTSIZE, TACKn,
+    input CLK40_IN, RESETn, TS_CPUn, RnW, BGn, PORTSIZE, LBENn,
 
     output [1:0] A_AMIGA,
     output CLK40A, CLK40B, CLK40C, CLK80_CPU, CLKRAMA, CLKRAMB,
-    output TSn, TAn, TBI_CPUn, TCI_CPUn, TEA_CPUn, CPUBGn, BUFENn, BUFDIR, DMAn,
+    output TSn, TBI_CPUn, TCI_CPUn, TEA_CPUn, CPUBGn, BUFENn, BUFDIR, DMAn,
+
+    inout TAn,
+    inout TACKn,
 
     inout [7:0] D_UU_040, //68040 DATA BUS
     inout [7:0] D_UM_040,
@@ -50,10 +52,6 @@ module U111_TOP (
     inout [7:0] D_UM_AMIGA,
     inout [7:0] D_LM_AMIGA,
     inout [7:0] D_LL_AMIGA
-
-    //testbench stuff
-    //, input CLK80, CLK40
-
 );
 
 ///////////////////////////////
@@ -71,8 +69,11 @@ assign CLK40A    = CLK40;
 assign CLK40B    = CLK40;
 assign CLK40C    = CLK40;
 assign CLK80_CPU = CLK80;
-assign CLKRAMA   = CLK80;
+//assign CLKRAMA   = CLK80;
 assign CLKRAMB   = CLK80;
+assign CLKRAMA   = CLK40;
+//assign CLKRAMB   = CLK40;
+
 
 SB_PLL40_2F_PAD #(
     .DIVR (4'b0000),
@@ -95,7 +96,7 @@ SB_PLL40_2F_PAD #(
 ////////////
 
 wire CYCLE_EN = 1;
-wire LBENn = 1;
+//wire LBENn = 1;
 
 U111_BUFFERS U111_BUFFERS (
     //INPUTS
@@ -124,6 +125,8 @@ U111_CYCLE_SM U111_CYCLE_SM (
     .RnW (RnW),
     .PORTSIZE (PORTSIZE),
     .TACKn (TACKn),
+    .BGn (BGn),
+    .LBENn (LBENn),
     .SIZ (SIZ),
     .A_040 (A_040),
 

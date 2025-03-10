@@ -1,0 +1,16 @@
+
+fsm_encoding {610001001} onehot
+
+fsm_state_encoding {610001001} 000000000 {000001}
+
+fsm_state_encoding {610001001} 000000001 {000010}
+
+fsm_state_encoding {610001001} 000000010 {000100}
+
+fsm_state_encoding {610001001} 000000011 {001000}
+
+fsm_state_encoding {610001001} 000000100 {010000}
+
+fsm_state_encoding {610001001} 000000101 {100000}
+
+fsm_registers {610001001} {TA_COUNTER[5]}  {TA_COUNTER[4]}  {TA_COUNTER[3]}  {TA_COUNTER[2]}  {TA_COUNTER[1]}  {TA_COUNTER[0]} 

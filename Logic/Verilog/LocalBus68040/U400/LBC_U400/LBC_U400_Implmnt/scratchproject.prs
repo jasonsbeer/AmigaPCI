@@ -6,6 +6,7 @@
 add_file -verilog "D:/LocalBus68040/U400/U400_BYTE_ENABLE.v"
 add_file -verilog "D:/LocalBus68040/U400/U400_SDRAM.v"
 add_file -verilog "D:/LocalBus68040/U400/U400_TOP.v"
+add_file -verilog "D:/LocalBus68040/U400/U400_ADDRESS_DECODE.v"
 add_file -constraint "D:/LocalBus68040/U400/U400_TOP.sdc"
 
 

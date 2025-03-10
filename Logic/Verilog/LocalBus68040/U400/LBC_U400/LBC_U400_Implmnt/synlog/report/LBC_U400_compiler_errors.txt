@@ -1,0 +1,3 @@
+@E: CS187 :"D:\LocalBus68040\U400\U400_SDRAM.v":323:20:323:23|Expecting ;
+@E: CS187 :"D:\LocalBus68040\U400\U400_SDRAM.v":358:0:358:8|Expecting endmodule
+

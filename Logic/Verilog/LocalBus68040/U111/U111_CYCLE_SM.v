@@ -31,13 +31,16 @@ GitHub: https://github.com/jasonsbeer/AmigaPCI
 */
 
 module U111_CYCLE_SM (
-    input CLK80, CLK40, TS_CPUn, RESETn, RnW, PORTSIZE, TACKn,
+    input CLK80, CLK40, TS_CPUn, RESETn, RnW, PORTSIZE, BGn, LBENn,
     input [1:0] SIZ,
     input [1:0] A_040,
 
-    output TAn, TBI_CPUn, TCI_CPUn, TEA_CPUn,
+    output TBI_CPUn, TCI_CPUn, TEA_CPUn,
     output [1:0] A_AMIGA,
     output reg TSn,
+
+    //input TACKn, output TAn,
+    inout TAn, inout TACKn,
 
     inout [7:0] D_UU_040, //68040 DATA BUS
     inout [7:0] D_UM_040,
@@ -54,11 +57,14 @@ module U111_CYCLE_SM (
 // TRANSFER START //
 ///////////////////
 
+//TRANSFER START WILL NEED TO BE PASSED THROUGH DURING PCI DMA CYCLES.
+//THIS LOGIC DOES NOT PASS _TS TO APCI DURING ON-BOARD MEMORY CYCLES.
+
 always @(negedge CLK40) begin
     if (!RESETn) begin
         TSn <= 1;
     end else begin
-        TSn <= ~TS_EN;
+        TSn <= !(TS_EN && LBENn);
     end
 end
 
@@ -68,9 +74,14 @@ end
 
 //WE PASS THE _TACK SIGNAL THROUGH WHEN THE _TA OUTPUT IS ENABLED.
 //TRANSFER BURST INHIBIT IS ENABLED WHEN ADDRESSING A WORD PORT.
+//_TA IS TRISTATE WHEN _LBEN IS ASSERTED DURING ON-BOARD MEMORY CYCLES.
+//_TA MUST BE PASSED THROUGH TO _TACK DURING PCI DMA CYCLES. (NOT IMPLEMENTED YET)
 
-assign TAn = TA_EN ? TACKn : 1'b1; //THIS WILL NEED TO TRISTATE WHEN ACCESSING ONBOARD MEMORY.
-assign TBI_CPUn = TA_EN ? TACKn : 1'b1; //DISABLE ALL TRANSFER BURSTS.
+assign TAn = TA_EN && LBENn ? TACKn : 1'bz;
+assign TACKn = !LBENn ? TAn : 1'bz;
+
+assign TBI_CPUn = TA_EN && LBENn ? TACKn : 1'b1; //Disable off-board burst transfers.
+
 assign TCI_CPUn = 1; //ENABLE ALL TRANSFER CACHING.
 assign TEA_CPUn = 1;
 
@@ -102,12 +113,18 @@ wire LW_TRANS = (SIZ == 2'b00 || SIZ == 2'b11 || !PORTSIZE);
 wire FLIP = (!LW_TRANS || LW_CYCLE) && A_AMIGA[1];
 //wire FLIP = ((!LW_TRANS && PORTSIZE) || LW_CYCLE) && A_AMIGA[1];
 
+//DURING CPU DRIVEN TRANSFER CYCLES TO THE APCI, BOTH THE CPU AND APCI DATA PORTS ARE "ACTIVE",
+//WITH ONE IN AND ONE OUT. DURING ACCESS TO ON-BOARD RAM (_LBEN IS ASSERTED), THE CPU SIDE OF THE BUFFERS ARE DISABLED.
+//THIS PREVENTS BOTH U111 AND THE SDRAM FROM DRIVING THE DATA BUS SIMULTANEOUSLY, WHICH IS BAD.
+//DURING PCI DRIVEN DMA CYCLES, BOTH THE CPU AND APCI PORTS ARE ACTIVE, BUT THE DIRECTION 
+//OF DATA MOVEMENT WILL BE REVERSED.
 
 //READS
-assign D_UU_040 = (RnW && LW_CYCLE) ? UU_LATCHED : RnW ? D_UU_AMIGA : 8'bzzzzzzzz;
-assign D_UM_040 = (RnW && LW_CYCLE) ? UM_LATCHED : RnW ? D_UM_AMIGA : 8'bzzzzzzzz;
-assign D_LM_040 = (RnW && FLIP) ? D_UU_AMIGA : RnW ? D_LM_AMIGA : 8'bzzzzzzzz;
-assign D_LL_040 = (RnW && FLIP) ? D_UM_AMIGA : RnW ? D_LL_AMIGA : 8'bzzzzzzzz;
+wire CPU_READ_EN = RnW && LBENn && !BGn;
+assign D_UU_040 = (CPU_READ_EN && LW_CYCLE) ? UU_LATCHED : CPU_READ_EN ? D_UU_AMIGA : 8'bzzzzzzzz;
+assign D_UM_040 = (CPU_READ_EN && LW_CYCLE) ? UM_LATCHED : CPU_READ_EN ? D_UM_AMIGA : 8'bzzzzzzzz;
+assign D_LM_040 = (CPU_READ_EN && FLIP)     ? D_UU_AMIGA : CPU_READ_EN ? D_LM_AMIGA : 8'bzzzzzzzz;
+assign D_LL_040 = (CPU_READ_EN && FLIP)     ? D_UM_AMIGA : CPU_READ_EN ? D_LL_AMIGA : 8'bzzzzzzzz;
 
 //ON WRITES, LM AND LL ARE ALWAYS PASSED THROUGH.
 assign D_UU_AMIGA = (!RnW && FLIP) ? D_LM_040 : !RnW ? D_UU_040 : 8'bzzzzzzzz;
@@ -146,12 +163,12 @@ always @(negedge CLK80) begin
     end else begin
 
         //Is this a long word cycle to a word port?
-        LW_CYCLE_START <= (TS_EN && PORTSIZE && LW_TRANS) || (LW_CYCLE_START && !LW_CYCLE);
+        LW_CYCLE_START <= (TS_EN && PORTSIZE && LW_TRANS && LBENn) || (LW_CYCLE_START && !LW_CYCLE);
 
         case (CYCLE_STATE)
 
             4'h00 : begin
-                TS_EN <= !TS_CPUn && CLK40; //Starts every cycle.
+                TS_EN <= !TS_CPUn && CLK40 && !BGn; //Starts every off-board cycle.
                 if (LW_CYCLE_START) begin
                     LW_CYCLE <= 1;
                     TA_EN <= 0;

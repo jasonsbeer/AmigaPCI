@@ -1,4 +1,3 @@
 @N: MF248 |Running in 64-bit mode.
 @N: MF666 |Clock conversion enabled. (Command "set_option -fix_gated_and_generated_clocks 1" in the project file.)
-@N: BN115 :"d:\localbus68040\u400\u400_top.v":18:11:18:20|Removing instance U400_SDRAM (in view: work.U400_TOP(verilog)) of type view:work.U400_SDRAM(verilog) because it does not drive other instances.
 @N: BN225 |Writing default property annotation file D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\LBC_U400.sap.

@@ -23,13 +23,13 @@ Max Top 5 critical clocks will be reported. For rest user needs to refer to Deta
 <row>
 <data>U111_TOP|CLK40_derived_clock</data>
 <data>40.0 MHz</data>
-<data>60.0 MHz</data>
+<data>60.3 MHz</data>
 <data>NA</data>
 </row>
 <row>
 <data>U111_TOP|CLK80_derived_clock</data>
 <data>80.0 MHz</data>
-<data>120.1 MHz</data>
-<data>2.079</data>
+<data>120.7 MHz</data>
+<data>2.100</data>
 </row>
 </report_table>

@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:31:51
 
-* File Generated:     Feb 8 2025 11:30:46
+* File Generated:     Mar 9 2025 18:37:46
 
 * Purpose:            General info of design implementation
 
@@ -23,92 +23,99 @@ Size: 12 X 16
 
 ***** Design Utilization Info *****
 Design: U400_TOP
-Used Logic Cell: 5/1280
-Used Logic Tile: 2/160
-Used IO Cell:    14/112
+Used Logic Cell: 153/1280
+Used Logic Tile: 45/160
+Used IO Cell:    65/112
 Used Bram Cell For iCE40: 0/16
 Used PLL For iCE40: 0/0
 Ram Cascading Used: 0
-Lut Cascading Used: 0
+Lut Cascading Used: 1
 
 ***** Clock Info *****
+Clock Domain: CLK40_c_g
+Clock Source: CLK40_ibuf_gb_io_gb_input 
+Clock Driver: CLK40_ibuf_gb_io_gb (ICE_GB)
+Driver Position: (0, 9, 0)
+Fanout to FF: 56
+Fanout to Tile: 25
+
 
 ***** Placement Info *****
 Logic cell utilization per tile
     . . . . + . . . . 1 . . . . 
    ----------------------------
 17|                             
-16|   0 0 0 0 0 0 0 0 0 0 0 0   
-15|   0 0 0 0 0 0 0 0 0 0 0 0   
-14|   0 0 0 0 0 0 0 0 0 0 0 0   
-13|   0 0 0 0 0 0 0 0 0 0 0 0   
+16|   0 0 0 0 0 0 0 2 2 0 0 0   
+15|   0 0 0 0 0 0 3 0 1 0 0 0   
+14|   0 0 0 0 2 0 0 0 0 0 0 0   
+13|   0 0 0 3 3 0 0 0 0 0 0 0   
 12|   0 0 0 0 0 0 0 0 0 0 0 0   
 11|   0 0 0 0 0 0 0 0 0 0 0 0   
-10|   0 0 0 0 0 0 0 0 0 0 0 0   
- 9|   0 0 0 1 0 0 0 0 0 0 0 0   
- 8|   0 0 0 0 0 0 0 0 0 0 0 0   
- 7|   0 0 0 0 0 0 0 0 0 0 0 0   
- 6|   0 0 0 0 0 0 0 0 0 0 0 0   
- 5|   0 0 0 0 0 0 0 0 4 0 0 0   
- 4|   0 0 0 0 0 0 0 0 0 0 0 0   
- 3|   0 0 0 0 0 0 0 0 0 0 0 0   
+10|   0 2 0 0 0 0 0 0 0 0 0 0   
+ 9|   0 3 0 0 0 0 0 0 0 0 0 0   
+ 8|   1 0 0 4 7 3 0 0 2 0 0 0   
+ 7|   1 1 0 6 7 6 2 0 0 0 0 0   
+ 6|   3 8 0 6 4 8 1 1 0 0 0 0   
+ 5|   4 5 0 1 8 8 4 3 0 0 0 0   
+ 4|   2 8 0 1 3 0 4 0 2 0 0 0   
+ 3|   1 0 0 2 1 0 0 0 2 0 0 0   
  2|   0 0 0 0 0 0 0 0 0 0 0 0   
- 1|   0 0 0 0 0 0 0 0 0 0 0 0   
+ 1|   0 0 0 2 0 0 0 0 0 0 0 0   
  0|                             
 
-Maximum number of Logic cells per logic tile: 4
-Average number of Logic cells per logic tile: 2.50
+Maximum number of Logic cells per logic tile: 8
+Average number of Logic cells per logic tile: 3.40
 
 ***** Input Pin Density Info *****
 Number of input nets per logic tile
      .  .  .  .  +  .  .  .  .  1  .  .  .  . 
    ------------------------------------------
 17|                                           
-16|     0  0  0  0  0  0  0  0  0  0  0  0    
-15|     0  0  0  0  0  0  0  0  0  0  0  0    
-14|     0  0  0  0  0  0  0  0  0  0  0  0    
-13|     0  0  0  0  0  0  0  0  0  0  0  0    
+16|     0  0  0  0  0  0  0  7  6  0  0  0    
+15|     0  0  0  0  0  0  8  0  4  0  0  0    
+14|     0  0  0  0  4  0  0  0  0  0  0  0    
+13|     0  0  0  8  9  0  0  0  0  0  0  0    
 12|     0  0  0  0  0  0  0  0  0  0  0  0    
 11|     0  0  0  0  0  0  0  0  0  0  0  0    
-10|     0  0  0  0  0  0  0  0  0  0  0  0    
- 9|     0  0  0  0  0  0  0  0  0  0  0  0    
- 8|     0  0  0  0  0  0  0  0  0  0  0  0    
- 7|     0  0  0  0  0  0  0  0  0  0  0  0    
- 6|     0  0  0  0  0  0  0  0  0  0  0  0    
- 5|     0  0  0  0  0  0  0  0  4  0  0  0    
- 4|     0  0  0  0  0  0  0  0  0  0  0  0    
- 3|     0  0  0  0  0  0  0  0  0  0  0  0    
+10|     0  4  0  0  0  0  0  0  0  0  0  0    
+ 9|     0  4  0  0  0  0  0  0  0  0  0  0    
+ 8|     1  0  0 13 18  8  0  0  6  0  0  0    
+ 7|     4  3  0 15 17 12  7  0  0  0  0  0    
+ 6|     8 17  0 14 15 17  4  4  0  0  0  0    
+ 5|    10 15  0  2 18 18 10  4  0  0  0  0    
+ 4|     2 16  0  4  8  0 10  0  5  0  0  0    
+ 3|     0  0  0  5  3  0  0  0  4  0  0  0    
  2|     0  0  0  0  0  0  0  0  0  0  0  0    
- 1|     0  0  0  0  0  0  0  0  0  0  0  0    
+ 1|     0  0  0  4  0  0  0  0  0  0  0  0    
  0|                                           
 
-Maximum number of input nets per logic tile: 4
-Average number of input nets per logic tile: 4.00
+Maximum number of input nets per logic tile: 18
+Average number of input nets per logic tile: 8.52
 
 Number of input pins per logic tile
      .  .  .  .  +  .  .  .  .  1  .  .  .  . 
    ------------------------------------------
 17|                                           
-16|     0  0  0  0  0  0  0  0  0  0  0  0    
-15|     0  0  0  0  0  0  0  0  0  0  0  0    
-14|     0  0  0  0  0  0  0  0  0  0  0  0    
-13|     0  0  0  0  0  0  0  0  0  0  0  0    
+16|     0  0  0  0  0  0  0  8  7  0  0  0    
+15|     0  0  0  0  0  0 12  0  4  0  0  0    
+14|     0  0  0  0  7  0  0  0  0  0  0  0    
+13|     0  0  0 12 11  0  0  0  0  0  0  0    
 12|     0  0  0  0  0  0  0  0  0  0  0  0    
 11|     0  0  0  0  0  0  0  0  0  0  0  0    
-10|     0  0  0  0  0  0  0  0  0  0  0  0    
- 9|     0  0  0  0  0  0  0  0  0  0  0  0    
- 8|     0  0  0  0  0  0  0  0  0  0  0  0    
- 7|     0  0  0  0  0  0  0  0  0  0  0  0    
- 6|     0  0  0  0  0  0  0  0  0  0  0  0    
- 5|     0  0  0  0  0  0  0  0 16  0  0  0    
- 4|     0  0  0  0  0  0  0  0  0  0  0  0    
- 3|     0  0  0  0  0  0  0  0  0  0  0  0    
+10|     0  5  0  0  0  0  0  0  0  0  0  0    
+ 9|     0  6  0  0  0  0  0  0  0  0  0  0    
+ 8|     1  0  0 15 25 11  0  0  6  0  0  0    
+ 7|     4  3  0 20 22 21  7  0  0  0  0  0    
+ 6|     9 27  0 19 16 21  4  4  0  0  0  0    
+ 5|    13 16  0  2 25 29 11  4  0  0  0  0    
+ 4|     3 16  0  4  9  0 11  0  5  0  0  0    
+ 3|     0  0  0  8  3  0  0  0  8  0  0  0    
  2|     0  0  0  0  0  0  0  0  0  0  0  0    
- 1|     0  0  0  0  0  0  0  0  0  0  0  0    
+ 1|     0  0  0  4  0  0  0  0  0  0  0  0    
  0|                                           
 
-Maximum number of input pins per logic tile: 16
-Average number of input pins per logic tile: 16.00
+Maximum number of input pins per logic tile: 29
+Average number of input pins per logic tile: 10.86
 
 ***** Run Time Info *****
 Run Time:  0

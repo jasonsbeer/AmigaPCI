@@ -3,9 +3,9 @@
 @N: CG364 :"C:\lscc\iCEcube2.2020.12\synpbase\lib\generic\sb_ice40.v":931:7:931:21|Synthesizing module SB_PLL40_2F_PAD in library work.
 @N: CG364 :"D:\LocalBus68040\U111\U111_BUFFERS.v":32:7:32:18|Synthesizing module U111_BUFFERS in library work.
 @N: CG364 :"D:\LocalBus68040\U111\U111_CYCLE_SM.v":33:7:33:19|Synthesizing module U111_CYCLE_SM in library work.
-@N: CG364 :"D:\LocalBus68040\U111\U111_TOP.v":35:7:35:14|Synthesizing module U111_TOP in library work.
-@N: CL201 :"D:\LocalBus68040\U111\U111_CYCLE_SM.v":136:0:136:5|Trying to extract state machine for register CYCLE_STATE.
+@N: CG364 :"D:\LocalBus68040\U111\U111_TOP.v":34:7:34:14|Synthesizing module U111_TOP in library work.
+@N: CL201 :"D:\LocalBus68040\U111\U111_CYCLE_SM.v":153:0:153:5|Trying to extract state machine for register CYCLE_STATE.
 @N|Running in 64-bit mode
-@N: NF107 :"D:\LocalBus68040\U111\U111_TOP.v":35:7:35:14|Selected library: work cell: U111_TOP view verilog as top level
-@N: NF107 :"D:\LocalBus68040\U111\U111_TOP.v":35:7:35:14|Selected library: work cell: U111_TOP view verilog as top level
+@N: NF107 :"D:\LocalBus68040\U111\U111_TOP.v":34:7:34:14|Selected library: work cell: U111_TOP view verilog as top level
+@N: NF107 :"D:\LocalBus68040\U111\U111_TOP.v":34:7:34:14|Selected library: work cell: U111_TOP view verilog as top level
 
