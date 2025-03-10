@@ -300,26 +300,23 @@ always @(negedge CLK80) begin
                 //SDRAM cycles start here.
                 8'h04 : begin
                     SDRAM_CMD <= WRITE_CYCLE ? WRITE : READ;
-                    CPU_TACK <= CPU_CYCLE && WRITE_CYCLE;
+                    CPU_TACK  <= CPU_CYCLE && WRITE_CYCLE;
                 end
                 8'h05 : begin
                     SDRAM_CMD <= PRECHARGE;
                     CPU_TACK <= 0;
                 end
                 8'h07 : begin
-                    if (WRITE_CYCLE) begin
-                        CPU_CYCLE <= 0;
-                        DMA_CYCLE <= 0;
-                    end else begin
-                        CPU_TACK <= CPU_CYCLE;
-                        CLK_EN <= !CPU_CYCLE;
-                    end
+                    CPU_TACK <=  (CPU_CYCLE && !WRITE_CYCLE);
+                    CLK_EN   <= !(CPU_CYCLE && !WRITE_CYCLE);
                 end
                 8'h08 : begin //All write cycles end here.
                     if (WRITE_CYCLE) begin
+                        CPU_CYCLE <= 0;
+                        DMA_CYCLE <= 0;
                         BANK0 <= 0;
-                        SDRAM_COUNTER <= 8'h00;
                         DBENn <= 1;
+                        SDRAM_COUNTER <= 8'h00;                        
                     end else begin
                         CPU_TACK <= 0;
                         LATCH_CLK <= DMA_CYCLE;
