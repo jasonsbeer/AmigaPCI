@@ -1,4 +1,4 @@
-# Sun Mar 09 18:37:25 2025
+# Mon Mar 10 20:31:51 2025
 
 Synopsys Lattice Technology Mapper, Version maplat, Build 1612R, Built Dec  5 2016 10:31:39
 Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
@@ -43,7 +43,7 @@ original code -> new code
    000000011 -> 001000
    000000100 -> 010000
    000000101 -> 100000
-@N: MO231 :"d:\localbus68040\u400\u400_sdram.v":158:0:158:5|Found counter in view:work.U400_SDRAM(verilog) instance SDRAM_COUNTER[7:0] 
+@N: MO231 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Found counter in view:work.U400_SDRAM(verilog) instance SDRAM_COUNTER[7:0] 
 
 Starting factoring (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
 
@@ -74,19 +74,19 @@ Finished technology mapping (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:0
 Pass		 CPU time		Worst Slack		Luts / Registers
 ------------------------------------------------------------
    1		0h:00m:00s		     6.63ns		 148 /        56
-@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":158:0:158:5|Boundary register U400_SDRAM.MA[12] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
-@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":158:0:158:5|Boundary register U400_SDRAM.MA[11] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
-@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":158:0:158:5|Boundary register U400_SDRAM.MA[10] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
-@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":158:0:158:5|Boundary register U400_SDRAM.MA[9] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
-@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":158:0:158:5|Boundary register U400_SDRAM.MA[8] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
-@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":158:0:158:5|Boundary register U400_SDRAM.MA[7] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
-@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":158:0:158:5|Boundary register U400_SDRAM.MA[6] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
-@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":158:0:158:5|Boundary register U400_SDRAM.MA[5] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
-@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":158:0:158:5|Boundary register U400_SDRAM.MA[4] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
-@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":158:0:158:5|Boundary register U400_SDRAM.MA[3] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
-@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":158:0:158:5|Boundary register U400_SDRAM.MA[2] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
-@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":158:0:158:5|Boundary register U400_SDRAM.MA[1] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
-@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":158:0:158:5|Boundary register U400_SDRAM.MA[0] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[12] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[11] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[10] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[9] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[8] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[7] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[6] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[5] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[4] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[3] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[2] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[1] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[0] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
 @N: FX1016 :"d:\localbus68040\u400\u400_top.v":36:10:36:14|SB_GB_IO inserted on the port CLK40.
 @N: FX1017 :|SB_GB inserted on the net RESETn_c_i.
 
@@ -137,7 +137,7 @@ Start final timing analysis (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:0
 
 
 ##### START OF TIMING REPORT #####[
-# Timing Report written on Sun Mar 09 18:37:26 2025
+# Timing Report written on Mon Mar 10 20:31:52 2025
 #
 
 
@@ -330,6 +330,6 @@ Mapper successful!
 At Mapper Exit (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 27MB peak: 144MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
-# Sun Mar 09 18:37:26 2025
+# Mon Mar 10 20:31:52 2025
 
 ###########################################################]

@@ -43,9 +43,9 @@ module U400_BYTE_ENABLE (
 //ACTIVATE BYTES OF INTEREST FOR EACH DATA TRANSFER.
 
 wire LW_TRANS = (!SIZ[1] && !SIZ[0]) || (SIZ[1] && SIZ[0]);
-assign UUBEn = ~(RAM_SPACE && ((!A[1] && !A[0]) || LW_TRANS));
-assign UMBEn = ~(RAM_SPACE && ((!A[1] &&  A[0]) || LW_TRANS || (!A[1] && SIZ[1])));
-assign LMBEn = ~(RAM_SPACE && (( A[1] && !A[0]) || LW_TRANS));
-assign LLBEn = ~(RAM_SPACE && (( A[1] &&  A[0]) || LW_TRANS || ( A[1] && SIZ[1])));
+assign UUBEn = !(RAM_SPACE && ((!A[1] && !A[0]) || LW_TRANS));
+assign UMBEn = !(RAM_SPACE && ((!A[1] &&  A[0]) || LW_TRANS || (!A[1] && SIZ[1])));
+assign LMBEn = !(RAM_SPACE && (( A[1] && !A[0]) || LW_TRANS));
+assign LLBEn = !(RAM_SPACE && (( A[1] &&  A[0]) || LW_TRANS || ( A[1] && SIZ[1])));
 
 endmodule

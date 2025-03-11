@@ -1,2 +1,2 @@
-@W: CL246 :"D:\LocalBus68040\U400\U400_SDRAM.v":36:17:36:17|Input port bits 1 to 0 of A[26:0] are unused. Assign logic for all port bits or change the input port size.
+@W: CL246 :"D:\LocalBus68040\U400\U400_SDRAM.v":37:17:37:17|Input port bits 1 to 0 of A[26:0] are unused. Assign logic for all port bits or change the input port size.
 

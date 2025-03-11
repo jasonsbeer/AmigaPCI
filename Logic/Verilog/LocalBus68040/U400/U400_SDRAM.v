@@ -94,6 +94,7 @@ end
 //////////////////////
 
 assign TAn = TA_EN ? TA_OUT : 1'bz;
+
 reg [8:0] TA_COUNTER;
 reg TA_EN;
 reg TA_OUT;

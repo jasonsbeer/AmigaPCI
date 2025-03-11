@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:31:51
 
-* File Generated:     Mar 9 2025 18:37:46
+* File Generated:     Mar 10 2025 20:32:08
 
 * Purpose:            General info of design implementation
 
@@ -118,8 +118,8 @@ Detailed I/O Info:
     40          Output     SB_LVCMOS    No       2        Simple Output                 UMBEn   
     41          Output     SB_LVCMOS    No       2        Simple Output                 LMBEn   
     42          Output     SB_LVCMOS    No       2        Simple Output                 LLBEn   
-    54          Output     SB_LVCMOS    No       1        Simple Output                 LBENn   
-    56          Output     SB_LVCMOS    Yes      1        Output Tristatable by Enable  TAn     
+    54          Output     SB_LVCMOS    Yes      1        Simple Output                 LBENn   
+    56          Output     SB_LVCMOS    No       1        Output Tristatable by Enable  TAn     
     83          Output     SB_LVCMOS    No       0        Simple Output                 MA[2]   
     85          Output     SB_LVCMOS    No       0        Simple Output                 MA[1]   
     86          Output     SB_LVCMOS    No       0        Simple Output                 MA[0]   

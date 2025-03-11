@@ -7,8 +7,8 @@ set_io RESETn 63
 set_io SIZ[1] 59
 set_io SIZ[0] 60
 set_io TSn    57
-set_io TAn    56 -pullup yes
-set_io LBENn  54
+set_io TAn    56
+set_io LBENn  54 -pullup yes
 set_io RnW    51
 
 #SDRAM SIGNALS

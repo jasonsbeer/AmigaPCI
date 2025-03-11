@@ -1,10 +1,10 @@
 @N|Running in 64-bit mode
 @N|Running in 64-bit mode
 @N: CG364 :"D:\LocalBus68040\U400\U400_ADDRESS_DECODE.v":33:7:33:25|Synthesizing module U400_ADDRESS_DECODE in library work.
-@N: CG364 :"D:\LocalBus68040\U400\U400_SDRAM.v":33:7:33:16|Synthesizing module U400_SDRAM in library work.
-@N: CG364 :"D:\LocalBus68040\U400\U400_BYTE_ENABLE.v":33:7:33:22|Synthesizing module U400_BYTE_ENABLE in library work.
+@N: CG364 :"D:\LocalBus68040\U400\U400_SDRAM.v":34:7:34:16|Synthesizing module U400_SDRAM in library work.
+@N: CG364 :"D:\LocalBus68040\U400\U400_BYTE_ENABLE.v":34:7:34:22|Synthesizing module U400_BYTE_ENABLE in library work.
 @N: CG364 :"D:\LocalBus68040\U400\U400_TOP.v":34:7:34:14|Synthesizing module U400_TOP in library work.
-@N: CL201 :"D:\LocalBus68040\U400\U400_SDRAM.v":100:0:100:5|Trying to extract state machine for register TA_COUNTER.
+@N: CL201 :"D:\LocalBus68040\U400\U400_SDRAM.v":102:0:102:5|Trying to extract state machine for register TA_COUNTER.
 @N|Running in 64-bit mode
 @N: NF107 :"D:\LocalBus68040\U400\U400_TOP.v":34:7:34:14|Selected library: work cell: U400_TOP view verilog as top level
 @N: NF107 :"D:\LocalBus68040\U400\U400_TOP.v":34:7:34:14|Selected library: work cell: U400_TOP view verilog as top level

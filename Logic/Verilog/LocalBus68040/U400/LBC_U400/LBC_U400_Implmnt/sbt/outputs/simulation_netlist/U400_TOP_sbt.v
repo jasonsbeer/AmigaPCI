@@ -6,7 +6,7 @@
 
 // Build Date:         Dec  9 2020 18:18:12
 
-// File Generated:     Mar 9 2025 18:37:50
+// File Generated:     Mar 10 2025 20:32:12
 
 // Purpose:            Post-Route Verilog/VHDL netlist for timing simulation
 
@@ -2683,7 +2683,6 @@ module U400_TOP (
             .LATCHINPUTVALUE(),
             .DIN1(),
             .OUTPUTCLK());
-    defparam TAn_obuft_iopad.PULLUP=1'b1;
     IO_PAD TAn_obuft_iopad (
             .OE(N__6864),
             .DIN(N__6863),
@@ -2784,6 +2783,7 @@ module U400_TOP (
             .LATCHINPUTVALUE(),
             .DIN1(),
             .OUTPUTCLK());
+    defparam LBENn_obuf_iopad.PULLUP=1'b1;
     IO_PAD LBENn_obuf_iopad (
             .OE(N__6819),
             .DIN(N__6818),
