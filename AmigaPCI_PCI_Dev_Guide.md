@@ -139,15 +139,30 @@ PCI cards designed specifically with support for the AmigaPCI will be configured
 
 During configuration, specifications such as the device manufacturer, product number, device capabilities, etc, are read from the device. Each PCI device is capable of supporting up to six base address registers (BAR0 - BAR5, between $10 - $24 in the configuration register). The required address space for each of the six possible registers are determined and presented to Amiga OS for assigning of base addresses in the 32-bit Zorro 3 address space. This is done through the normal Zorro 3 AUTOCONFIG procedure. As an example, if BAR0 requests 512k of configuration space, this request will be passed to Amiga OS as a Zorro 3 device requiring 512k of AUTOCONFIG space. Amiga OS will then assign a base address to this request. This assigned base address will be programmed into BAR0 of the target PCI device. This process repeats for BAR1 - BAR5 of the same PCI device. This procedure is then repeated for each PCI device installed. Once complete, each PCI device may be accessed by the assigned base address(es), just as any other AUTOCONFIG device. PCI target devices configured by the AUTOCONFIG process may only access memory and configuration spaces. Use of the I/O space is not recommended for new PCI designs* and is not supported.
 
-**NOTE:** PCI allows for 16-bit Product ID's. Amiga OS supports 8-bit Product ID's. The Product ID should be stored in the most significant byte of the least significant word of the Device ID field. Remember, PCI is little endian! So, this is bits 23 - 16 of register $00.  
+> [!NOTE]
+> **PCI allows for 16-bit Product ID's. Amiga OS supports 8-bit Product ID's. The Product ID should be stored in the most significant byte of the least significant word of the Device ID field. Remember, PCI is little endian! So, this is bits 23 - 16 of register $00.** 
 
 *PCI Local Bus Specification Revision 2.3. PCI Special Interest Group. Section 3.2.2. Addressing. pp. 27.
+
+#### 2.2.1.1 Configuration Space Header
+
+**TBD** - Identify a method for recognizing Amiga AUTOCONFIG compatable cards. One option may be to add address 0x40 to the configuration header. Another option might be to use one of the existing reserved areas, but that is possibly dangerous because we don't know what someone may put there out of lazyness.
 
 ### 2.2.2 AUTOCONFIG ROM Vector
 
 PCI devices may have onboard ROMs that enhance functionality, such as for auto booting. PCI ROMs may contain multiple images that support multiple architectures. During PCI configuration, the ROM address requirement is read from the PCI configuration header. This is then presented to the AUTOCONFIG process as a 16-bit ROM Vector, which is an offset from the base address where the ROM will respond. The Expansion ROM Base Address register is a 32-bit long word. Of these 32 bits, 10-0 are reserved. Of the remaining bits, Amiga OS can access bits 15-11. This allows ROM Vectors in the range of $0800 to $8000.
 
-**NOTE:** PCI allows for 32-bit ROM Vectors (ROM Base Address). Amiga OS supports 16-bit ROM Vectors. The ROM vector should be stored in the most significant bits of the Rom Base Address register. Remember, PCI is little endian! So, this is bits 15 - 0 of register $30.  
+> [!NOTE]
+> **PCI allows for 32-bit ROM Vectors (ROM Base Address). Amiga OS supports 16-bit ROM Vectors. The ROM vector should be stored in the most significant bits of the Rom Base Address register. Remember, PCI is little endian! So, this is bits 15 - 0 of register $30.**
+
+#### 2.2.2.1 PCI Data Structure
+
+The first 64KB of ROM space are designated as the PCI Data Structure.* To determine the target architecture of the ROM image, the value Code Type must be set. For Amiga 68K ROM images, the Code Type must be set to **0x7f**. All other values will be ignored. If this value is not set correctly, the ROM will not be loaded and may result in an AUTOCONFIG error.
+
+> [!NOTE]
+> **The Code Type value of 0x7f is an unofficial implementation of this register. By selecting a high value, it is expected this will never be officially assigned and should be safe far into the future.**
+
+*PCI Local Bus Specification Revision 2.3. PCI Special Interest Group. Section 6.3.1.2. PCI Data Structure Format. pp. 212.
 
 ### 2.2.3 AUTOCONFIG PCI Device Register Access
 
@@ -175,7 +190,7 @@ Examples:
 Table 2.2.3a. AUTOCONFIG Capable Slots.
 PCI Slot|Address Bit|Offset|Prometheus Compatable
 -|-|-|-
-0|AD[16]|$0001 0000|Yes
+0|AD[16]|$0001 0000|Yes*
 1|AD[17]|$0002 0000|Yes
 2|AD[18]|$0004 0000|Yes
 3|AD[19]|$0008 0000|Yes
