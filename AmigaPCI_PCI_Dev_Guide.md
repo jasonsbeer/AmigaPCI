@@ -145,12 +145,12 @@ During configuration, specifications such as the device manufacturer, product nu
 
 #### 2.2.1.1 Configuration Space Header
 
-To support the AUTOCONFIG process, we need to diffentiate x86-based PCI cards from Designed for Amiga 68K PCI cards. Ideally, we would use the 8-bit address space of the PCI Configuration Space. Unfortunately, any byte aligned address from $40 to $FF could be occupied by the device capability list. Because we cannot know which addresses will be unused, we must rule out this address area. As a solution, address $0100 in the configuration space is designated to support Designed for Amiga 68K register information. 
+To support the AUTOCONFIG process, we need to diffentiate x86-based PCI cards from Designed for Amiga 68K PCI cards. Ideally, we would use the 8-bit address space of the PCI Configuration Space. Unfortunately, any byte aligned address from $40 to $FF could be occupied by the device capability list. Because we cannot know which addresses will be unused, we must rule out this address area. As a solution, address $0100 in the configuration space is designated to support Designed for Amiga 68K register information. All PCI configuration header rules still apply.
 
 Designed for Amiga 68K Configuration Space Register
 Bits|Description|Comment
 -|-|-
-7:0|Designed for Amiga 68K|Anything except $00 indicates an Amiga 68K device.
+7:0|Designed for Amiga 68K|Anything except $00 indicates an Amiga AUTOCONFIG device.
 15:8|Reserved|
 23:16|Reserved|
 31:24|Reserved|
