@@ -26,8 +26,7 @@ This document is a work in progress and is presented "as-is" with no waranty exp
 **Revision History**  
 Revision|Date|Status
 -|-|-
-0.0|June 1, 2024|FIRST DRAFT
-0.1|June 3, 2024|Fixed(?) Endianness Discussion
+0.0|xx|FIRST DRAFT
 </br>
 <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://github.com/jasonsbeer/AmigaPCI">AmigaPCI PCI Hardware Developer Reference</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://github.com/jasonsbeer">Jason Neus</a> is licensed under <a href="https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">Creative Commons Attribution-NonCommercial 4.0 International<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt=""></a></p>
 
@@ -146,7 +145,15 @@ During configuration, specifications such as the device manufacturer, product nu
 
 #### 2.2.1.1 Configuration Space Header
 
-**TBD** - Identify a method for recognizing Amiga AUTOCONFIG compatable cards. One option may be to add address 0x40 to the configuration header. Another option might be to use one of the existing reserved areas, but that is possibly dangerous because we don't know what someone may put there out of lazyness.
+To support the AUTOCONFIG process, we need to diffentiate x86-based PCI cards from Designed for Amiga 68K PCI cards. Ideally, we would use the 8-bit address space of the PCI Configuration Space. Unfortunately, any byte aligned address from $40 to $FF could be occupied by the device capability list. Because we cannot know which addresses will be unused, we must rule out this address area. As a solution, address $0100 in the configuration space is designated to support Designed for Amiga 68K register information. 
+
+Designed for Amiga 68K Configuration Space Register
+Bits|Description|Comment
+-|-|-
+7:0|Designed for Amiga 68K|Anything except $00 indicates an Amiga 68K device.
+15:8|Reserved|
+23:16|Reserved|
+31:24|Reserved|
 
 ### 2.2.2 AUTOCONFIG ROM Vector
 
