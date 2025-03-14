@@ -8237,6 +8237,12 @@
 		(uuid "31de3dc5-b935-4a3d-a0ec-80f0a109f890")
 	)
 	(junction
+		(at 392.43 91.44)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "35c8c955-705e-4c16-aa93-a1b105078ff8")
+	)
+	(junction
 		(at 151.13 50.8)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -8259,6 +8265,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "44091a84-d4aa-4ded-8f40-2edfc68f8ffd")
+	)
+	(junction
+		(at 389.89 91.44)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "44669c61-8239-4376-8f6b-a6180210a6a1")
 	)
 	(junction
 		(at 68.58 223.52)
@@ -8355,6 +8367,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "5818c0fc-cfaf-4846-81a0-8802ea3187f4")
+	)
+	(junction
+		(at 394.97 91.44)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "5aded1b8-16be-4b5d-a167-9d5830f3849b")
 	)
 	(junction
 		(at 129.54 48.26)
@@ -10906,6 +10924,16 @@
 		)
 		(uuid "190720ca-8fd5-4bf4-99d2-8b2274032e0d")
 	)
+	(wire
+		(pts
+			(xy 394.97 111.76) (xy 394.97 105.41)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1985a2c3-de06-4052-a122-7372407c1dd6")
+	)
 	(bus
 		(pts
 			(xy 41.91 226.06) (xy 41.91 228.6)
@@ -11245,6 +11273,16 @@
 			(type default)
 		)
 		(uuid "286cf9b7-f020-4bcc-a57e-c57c84a88b7b")
+	)
+	(wire
+		(pts
+			(xy 392.43 111.76) (xy 392.43 105.41)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "288a5129-a727-4a9d-86ad-390605f61b9c")
 	)
 	(bus
 		(pts
@@ -12978,6 +13016,16 @@
 	)
 	(wire
 		(pts
+			(xy 389.89 91.44) (xy 392.43 91.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6d17f744-bb31-4a0d-9ac7-9389fa1a553e")
+	)
+	(wire
+		(pts
 			(xy 134.62 119.38) (xy 125.73 119.38)
 		)
 		(stroke
@@ -13375,6 +13423,16 @@
 			(type default)
 		)
 		(uuid "7b3b0976-85d9-40a8-8588-ae326989024d")
+	)
+	(wire
+		(pts
+			(xy 397.51 91.44) (xy 394.97 91.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7bb15647-bff0-48e8-8163-409c52d5a30f")
 	)
 	(wire
 		(pts
@@ -14115,6 +14173,16 @@
 			(type default)
 		)
 		(uuid "95bfc059-4e88-4bef-a570-17864bcff60c")
+	)
+	(wire
+		(pts
+			(xy 397.51 97.79) (xy 397.51 91.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "95d2404c-97b1-4df2-a96e-903b35206045")
 	)
 	(wire
 		(pts
@@ -15105,6 +15173,16 @@
 			(type default)
 		)
 		(uuid "b7d0bbe8-5cf1-4d09-be76-3588ba5c3db6")
+	)
+	(wire
+		(pts
+			(xy 394.97 91.44) (xy 394.97 97.79)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b832f6c9-8764-421c-9249-4db6bc22453b")
 	)
 	(wire
 		(pts
@@ -16548,6 +16626,16 @@
 	)
 	(wire
 		(pts
+			(xy 392.43 91.44) (xy 394.97 91.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ec1886a3-28b9-4f38-baec-03b1063e8081")
+	)
+	(wire
+		(pts
 			(xy 247.65 191.77) (xy 242.57 191.77)
 		)
 		(stroke
@@ -16798,6 +16886,16 @@
 	)
 	(wire
 		(pts
+			(xy 392.43 91.44) (xy 392.43 97.79)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f4f80494-793f-4e5f-8121-2945728fcf86")
+	)
+	(wire
+		(pts
 			(xy 304.8 100.33) (xy 309.88 100.33)
 		)
 		(stroke
@@ -17038,6 +17136,16 @@
 	)
 	(wire
 		(pts
+			(xy 397.51 111.76) (xy 397.51 105.41)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fea81b7b-e2f1-4a90-9942-4045a9068e67")
+	)
+	(wire
+		(pts
 			(xy 250.19 171.45) (xy 250.19 179.07)
 		)
 		(stroke
@@ -17143,6 +17251,16 @@
 			(justify left bottom)
 		)
 		(uuid "fba3b3b9-b14e-450f-9658-0970e3f86026")
+	)
+	(label "_IPL1"
+		(at 394.97 111.76 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "000e830d-f80a-470e-95d6-1e54ef5b4f1b")
 	)
 	(label "D10"
 		(at 304.8 64.77 0)
@@ -17273,6 +17391,16 @@
 			(justify left bottom)
 		)
 		(uuid "0fdccdce-caef-4ee7-a427-d41cf2b1da23")
+	)
+	(label "_IPL0"
+		(at 392.43 111.76 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "100582d2-11c0-4d87-9fa6-728a04f2909f")
 	)
 	(label "A30"
 		(at 304.8 213.36 0)
@@ -17733,6 +17861,16 @@
 			(justify left bottom)
 		)
 		(uuid "33b1b675-f0e7-4337-9e66-c6e49369cd93")
+	)
+	(label "_IPL2"
+		(at 397.51 111.76 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "33c0e661-d134-40c6-9a93-08486583fe5b")
 	)
 	(label "CMA2"
 		(at 66.04 119.38 0)
@@ -22148,6 +22286,76 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R")
+		(at 397.51 101.6 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "1838e94e-1a17-4b79-aec3-9dcda3db4299")
+		(property "Reference" "R271"
+			(at 396.24 98.552 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "2k7"
+			(at 397.51 103.632 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 399.288 101.6 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 397.51 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 397.51 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "6054b0b4-ca0e-4dbc-bf76-15edf4df0685")
+		)
+		(pin "2"
+			(uuid "83e37e31-911e-4cc8-8013-1c35636c00e1")
+		)
+		(instances
+			(project "AmigaPCI Mainboard"
+				(path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
+					(reference "R271")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "AmigaPCI-Symbols:ICE40HX4K-TQ144")
 		(at 100.33 129.54 0)
 		(unit 1)
@@ -23971,6 +24179,76 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R")
+		(at 394.97 101.6 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "7e926373-1604-4643-b640-1df6d2a6302c")
+		(property "Reference" "R270"
+			(at 393.7 98.552 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "2k7"
+			(at 394.97 103.632 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 396.748 101.6 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 394.97 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 394.97 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "1079bacd-d350-4d9c-9fbe-71517d4506ff")
+		)
+		(pin "2"
+			(uuid "fb640d1b-8cad-4c41-9cc4-10f1353fea97")
+		)
+		(instances
+			(project "AmigaPCI Mainboard"
+				(path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
+					(reference "R270")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:R_Network08")
 		(at 325.12 187.96 270)
 		(unit 1)
@@ -24262,6 +24540,76 @@
 			(project "AmigaPCI Mainboard"
 				(path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
 					(reference "R200")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 392.43 101.6 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "92232ce4-3b02-43f5-bc89-a63d6bc03552")
+		(property "Reference" "R269"
+			(at 391.16 98.552 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "2k7"
+			(at 392.43 103.632 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 394.208 101.6 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 392.43 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 392.43 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "2285503e-b40c-48fb-8cff-7cc2808040e5")
+		)
+		(pin "2"
+			(uuid "a2ad07d8-6a2c-4991-a543-d7fa505afe5a")
+		)
+		(instances
+			(project "AmigaPCI Mainboard"
+				(path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
+					(reference "R269")
 					(unit 1)
 				)
 			)

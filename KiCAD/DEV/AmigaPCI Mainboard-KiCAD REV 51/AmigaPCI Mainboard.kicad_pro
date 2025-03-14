@@ -1420,7 +1420,7 @@
         "pattern": "_INT3"
       },
       {
-        "netclass": "Default",
+        "netclass": "PWR",
         "pattern": "AUDIO"
       },
       {
