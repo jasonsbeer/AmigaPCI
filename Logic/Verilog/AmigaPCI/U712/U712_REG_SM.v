@@ -27,112 +27,130 @@ Description: CHIPSET REGISTER CYCLE STATE MACHINE
 Revision History:
     21-JAN-2025 : HW REV 5.0 INITIAL RELEASE JN
     25-JAN-2025 : Improved stability of register cycle state machine. JN
+    16-MAR-2025 : Added latching to write cycles.
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 */
 
-module U712_REG_SM (
+module U712_REG_SM
+(
+ input CLK40, C1, C3, RESETn, TSn, REGSPACEn, RnW, DBRn, UDS, LDS,
 
-    input CLK80, C1, C3, RESETn, TSn, REGSPACEn, RnW, DBRn,
-    input [1:0] DBR_SYNC,
+ output reg ASn,
+ output reg REGENn,
+ output reg LATCH_REG,
+ output reg REG_TACK,
+ output reg REG_CYCLE,
+ output reg REG_CPU_CYCLE,
+ output reg REG_WRITE_CYCLE,
+ output reg UDSn,
+ output reg LDSn
 
-    output reg ASn,
-    output reg REGENn,
-    output reg REG_TACK,
-    output reg REG_CYCLE,
-    output reg DS_EN
 );
 
-///////////////////
-// AGNUS CYCLES //
-/////////////////
+///////////////////////////
+// REGISTER CYCLE START //
+/////////////////////////
 
-//WE CREATE A MC68000 COMPATIBLE CYCLE FOR CPU DRIVEN AGNUS CYCLES.
-//AT STATE 4 (C1 && C3), IF _DBR IS NEGATED, WE CAN PROCEED. OTHERWISE,
-//WAIT STATES ARE INSERTED UNTIL SUCH TIME AS THIS CONDITION IS TRUE.
-//READ CYCLES OF ORIGINAL AMIGAS ARE LATCHED EARLY, IN STATE 5. WE DO THE SAME.
+reg REG_CYCLE_START;
 
-//ENABLE CHIPSET DATA BUFFERS ON C3.
-always @(posedge C3) begin
+always @(posedge CLK40) begin
     if (!RESETn) begin
-        REG_CYCLE <= 0;
+        REG_CYCLE_START <= 0;
     end else begin
-        REG_CYCLE <= (!REGENn && DBRn);
+        REG_CYCLE_START <= ((!TSn && !REGSPACEn) || (REG_CYCLE_START && !CYCLE_RUN));
     end
 end
 
-reg [7:0]STATE_COUNT;
+/////////////////////////////
+// CHIPSET REGISTER CYCLE //
+///////////////////////////
+
 reg [1:0] C1_SYNC;
 reg [1:0] C3_SYNC;
-reg REG_CYCLE_START;
+reg [1:0] DBR_SYNC;
+reg [3:0] STATE_COUNTER;
+reg CYCLE_RUN;
 
-//MC68000 STATE MACHINE
-always @(negedge CLK80) begin
+always @(posedge CLK40) begin
     if (!RESETn) begin
-
+        C1_SYNC <= 2'b00;
+        C3_SYNC <= 2'b00;
+        DBR_SYNC <= 2'b00;
+        STATE_COUNTER <= 4'h0;
+        REG_CYCLE <= 0;
         ASn <= 1;
-        DS_EN <= 0;
         REGENn <= 1;
-        STATE_COUNT <= 7'h00;
-        REG_CYCLE_START <= 0;
+        LATCH_REG <= 0;
         REG_TACK <= 0;
-        C1_SYNC <= 2'b11;
-        C3_SYNC <= 2'b11;
-
+        REG_CYCLE <= 0;
+        REG_CPU_CYCLE <= 0;
+        REG_WRITE_CYCLE <= 1;
+        CYCLE_RUN <= 0;
+        UDSn <= 1;
+        LDSn <= 1;
     end else begin
 
-        C1_SYNC[1] <= C1_SYNC[0];
-        C1_SYNC[0] <= C1;
+        C1_SYNC[1] <= C1_SYNC[0]; C1_SYNC[0] <= C1;
+        C3_SYNC[1] <= C3_SYNC[0]; C3_SYNC[0] <= C3;
+        DBR_SYNC[1] <= DBR_SYNC[0]; DBR_SYNC[0] <= DBRn;
 
-        C3_SYNC[1] <= C3_SYNC[0];
-        C3_SYNC[0] <= C3;
-
-        //The CPU can start a register cycle before the previous one has completed.
-        REG_CYCLE_START <= ((!TSn && !REGSPACEn) || (REG_CYCLE_START && !REG_CYCLE));
-
-        case (STATE_COUNT)
-            7'h00 : begin
-                REG_TACK <= 0;
-                if (REG_CYCLE_START && C1_SYNC == 2'b00 && C3_SYNC == 2'b11) begin
-                    //STATE 1
-                    REGENn <= 0;
-                    STATE_COUNT <= 7'h01;
-                end
-            end
-            7'h01 : begin
-                if (C1 == 2'b00 && C3_SYNC == 2'b00) begin
-                    //STATE 2
+        case (STATE_COUNTER)
+            4'h0 : begin
+                //Start during 68k State 2.
+                if (REG_CYCLE_START && !C1_SYNC[1] && C3_SYNC[1]) begin
                     ASn <= 0;
-                    DS_EN <= RnW;
-                    STATE_COUNT <= 7'h02;
+                    UDSn <= !(RnW && UDS);
+                    LDSn <= !(RnW && LDS);
+                    REG_WRITE_CYCLE <= !RnW;
+                    CYCLE_RUN <= 1;
+                    STATE_COUNTER <= 4'h1;
                 end
             end
-            7'h02 : begin
-                if (C1_SYNC == 2'b11 && C3_SYNC == 2'b11) begin
-                    //STATE 4
-                    DS_EN <= 1;
-                    if (DBR_SYNC == 2'b11) begin
-                        STATE_COUNT <= 7'h03;
-                    end
+            4'h1 : begin
+                REGENn <= 0;
+                CYCLE_RUN <= 0;
+                STATE_COUNTER <= 4'h2;
+            end
+            4'h2 : begin
+                //Wait for State 4.
+                UDSn <= !UDSn ? 0 : !(UDS && C1_SYNC[1] && !C3_SYNC[1]);
+                LDSn <= !LDSn ? 0 : !(LDS && C1_SYNC[1] && !C3_SYNC[1]);
+                if (C1_SYNC[1] && !C3_SYNC[1] && DBR_SYNC[1]) begin
+                    REG_CPU_CYCLE <= 1;
+                    REG_CYCLE <= 1;
+                    REG_TACK  <= REG_WRITE_CYCLE; //TACK write cycles here.
+                    STATE_COUNTER <= 4'h3;
                 end
             end
-            7'h03 : begin
-                if (C1_SYNC == 2'b00 && C3_SYNC == 2'b11) begin
-                    //STATE 5
-                    REG_TACK <= RnW;
-                    STATE_COUNT <= 7'h04;
-                end
+            4'h3 : begin
+                LATCH_REG <= REG_WRITE_CYCLE;
+                REG_TACK <= 0;
+                STATE_COUNTER <= 4'h4;
             end
-            7'h04 : begin
-                if (C1_SYNC == 2'b11 && C3_SYNC == 2'b00) begin
-                    //STATE 7
-                    REG_TACK <= !RnW;
+            4'h4 : begin
+                REG_CPU_CYCLE <= !REG_WRITE_CYCLE;
+                STATE_COUNTER <= 4'h5;
+            end
+            4'h5 : begin
+                STATE_COUNTER <= 4'h6;
+            end
+            4'h6 : begin
+                REG_TACK <= !REG_WRITE_CYCLE; //TACK read cycles here, right before or at State 6.
+                STATE_COUNTER <= 4'h7;
+            end
+            4'h7 : begin //6
+                //Wait for State 7.
+                REG_TACK <= 0;
+                if (!C1_SYNC[1] && !C3_SYNC[1]) begin
                     REGENn <= 1;
                     ASn <= 1;
-                    DS_EN <= 0;
-                    STATE_COUNT <= 7'h00;
-                end else begin
-                    REG_TACK <= 0;
+                    UDSn <= 1;
+                    LDSn <= 1;
+                    LATCH_REG <= 0;
+                    REG_CPU_CYCLE <= 0;                
+                    REG_CYCLE <= 0;
+                    STATE_COUNTER <= 4'h0;
                 end
             end
         endcase
@@ -140,4 +158,3 @@ always @(negedge CLK80) begin
 end
 
 endmodule
-

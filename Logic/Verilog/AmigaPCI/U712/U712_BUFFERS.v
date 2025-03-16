@@ -33,8 +33,8 @@ TO BUILD WITH APIO: apio build --top-module U712_TOP --fpga iCE40-HX4K-TQ144
 
 module U712_BUFFERS (
 
-    input RnW, REG_CYCLE, CPU_CYCLE, CASUn, CASLn, WRITE_CYCLE, 
-    output VBENn, DRDENn, DRDDIR, DMA_LATCH_EN
+    input RnW, REG_CYCLE, REG_CPU_CYCLE, REG_WRITE_CYCLE, CPU_CYCLE, CASUn, CASLn, WRITE_CYCLE, LATCH_RAM, LATCH_REG,
+    output VBENn, DRDENn, DRDDIR, DMA_LATCH_EN, LATCH_CLK
 
 );
 
@@ -50,15 +50,20 @@ module U712_BUFFERS (
 wire DMA_CYCLE = (!CASUn || !CASLn);
 
 //CPU to RAM and chipset buffer enable.
-assign VBENn = !(REG_CYCLE || CPU_CYCLE);
+//Only enable while the CPU has an active interest in the cycle.
+assign VBENn = !(REG_CPU_CYCLE || CPU_CYCLE);
 
-//Chipset data bus enable.
+//Chipset data bus enable. _OE on 646 transceiver.
 assign DRDENn = !(DMA_CYCLE || REG_CYCLE);
 
 //Chipset data bus direction.
 assign DRDDIR = DMA_CYCLE ? !WRITE_CYCLE : !RnW;
 
 //Enable the latch clock (SAB=1) during DMA read or REG write cycles.
-assign DMA_LATCH_EN = (DMA_CYCLE && !WRITE_CYCLE);
+//Register write cycles must be held until the 68K cycle is complete.
+assign DMA_LATCH_EN = ((DMA_CYCLE && !WRITE_CYCLE) || (REG_WRITE_CYCLE));
+
+//Pass the latch clock signal.
+assign LATCH_CLK = LATCH_REG || LATCH_RAM;
 
 endmodule

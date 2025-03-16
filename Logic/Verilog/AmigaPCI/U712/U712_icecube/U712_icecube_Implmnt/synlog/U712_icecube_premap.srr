@@ -1,4 +1,4 @@
-# Wed Feb 19 19:25:34 2025
+# Sun Mar 16 18:12:12 2025
 
 Synopsys Lattice Technology Pre-mapping, Version maplat, Build 1612R, Built Dec  5 2016 10:31:39
 Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
@@ -23,7 +23,6 @@ Start loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00
 
 Finished loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 101MB peak: 104MB)
 
-@N: MO111 :"d:\amigapci\u712\u712_top.v":52:11:52:16|Tristate driver RAMENn (in view: work.U712_TOP(verilog)) on net RAMENn (in view: work.U712_TOP(verilog)) has its enable tied to GND.
 
 ICG Latch Removal Summary:
 Number of ICG latches removed:	0
@@ -40,26 +39,28 @@ Clock Summary
 Start                                Requested     Requested     Clock                       Clock                Clock
 Clock                                Frequency     Period        Type                        Group                Load 
 -----------------------------------------------------------------------------------------------------------------------
-C1                                   3.6 MHz       279.330       declared                    default_clkgroup     27   
-C3                                   3.6 MHz       279.330       declared                    default_clkgroup     13   
+C1                                   3.6 MHz       279.330       declared                    default_clkgroup     20   
+C3                                   3.6 MHz       279.330       declared                    default_clkgroup     12   
 CLK40_IN                             40.0 MHz      25.000        declared                    default_clkgroup     0    
-U712_TOP|CLK40_PLL_derived_clock     40.0 MHz      25.000        derived (from CLK40_IN)     default_clkgroup     6    
-U712_TOP|CLK80_PLL_derived_clock     80.0 MHz      12.500        derived (from CLK40_IN)     default_clkgroup     65   
+U712_TOP|CLK40_PLL_derived_clock     40.0 MHz      25.000        derived (from CLK40_IN)     default_clkgroup     31   
+U712_TOP|CLK80_PLL_derived_clock     80.0 MHz      12.500        derived (from CLK40_IN)     default_clkgroup     51   
 =======================================================================================================================
 
 Finished Pre Mapping Phase.
-@N: MO111 :"d:\amigapci\u712\u712_top.v":52:11:52:16|Tristate driver RAMENn (in view: work.U712_TOP(verilog)) on net RAMENn (in view: work.U712_TOP(verilog)) has its enable tied to GND.
 @N: BN225 |Writing default property annotation file D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\U712_icecube.sap.
 
 Starting constraint checker (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
 
-Encoding state machine STATE_COUNT[4:0] (in view: work.U712_REG_SM(verilog))
+Encoding state machine STATE_COUNTER[7:0] (in view: work.U712_REG_SM(verilog))
 original code -> new code
-   00000000 -> 00001
-   00000001 -> 00010
-   00000010 -> 00100
-   00000011 -> 01000
-   00000100 -> 10000
+   0000 -> 00000001
+   0001 -> 00000010
+   0010 -> 00000100
+   0011 -> 00001000
+   0100 -> 00010000
+   0101 -> 00100000
+   0110 -> 01000000
+   0111 -> 10000000
 Encoding state machine TACK_STATE[4:0] (in view: work.U712_CYCLE_TERM(verilog))
 original code -> new code
    000 -> 00001
@@ -77,6 +78,6 @@ Pre-mapping successful!
 At Mapper Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 47MB peak: 133MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
-# Wed Feb 19 19:25:35 2025
+# Sun Mar 16 18:12:13 2025
 
 ###########################################################]

@@ -5,21 +5,22 @@
 
 #### START OF CLOCK OPTIMIZATION REPORT #####[
 
-2 non-gated/non-generated clock tree(s) driving 29 clock pin(s) of sequential element(s)
-1 gated/generated clock tree(s) driving 65 clock pin(s) of sequential element(s)
-0 instances converted, 65 sequential instances remain driven by gated/generated clocks
+2 non-gated/non-generated clock tree(s) driving 28 clock pin(s) of sequential element(s)
+2 gated/generated clock tree(s) driving 76 clock pin(s) of sequential element(s)
+0 instances converted, 76 sequential instances remain driven by gated/generated clocks
 
 ====================================== Non-Gated/Non-Generated Clocks ======================================
 Clock Tree ID     Driving Element     Drive Element Type     Fanout     Sample Instance                     
 ------------------------------------------------------------------------------------------------------------
-@K:CKID0002       C1_ibuf             SB_IO                  18         U712_CHIP_RAM.REFRESH_COUNTER[7]    
-@K:CKID0003       C3_ibuf             SB_IO                  11         U712_CHIP_RAM.DMA_ROW_ADDRESS_esr[9]
+@K:CKID0003       C1_ibuf             SB_IO                  18         U712_CHIP_RAM.REFRESH_COUNTER[7]    
+@K:CKID0004       C3_ibuf             SB_IO                  10         U712_CHIP_RAM.DMA_ROW_ADDRESS_esr[9]
 ============================================================================================================
-================================================================================================= Gated/Generated Clocks =================================================================================================
-Clock Tree ID     Driving Element     Drive Element Type     Fanout     Sample Instance     Explanation                                                                                                                   
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-@K:CKID0001       pll                 SB_PLL40_2F_CORE       65         DBR_SYNC[0]         Gating structure creates improper gating logic. See the Gated Clocks description in the user guide for conversion requirements
-==========================================================================================================================================================================================================================
+================================================================================================== Gated/Generated Clocks ===================================================================================================
+Clock Tree ID     Driving Element     Drive Element Type     Fanout     Sample Instance        Explanation                                                                                                                   
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+@K:CKID0001       pll                 SB_PLL40_2F_CORE       51         DBR_SYNC[0]            Gating structure creates improper gating logic. See the Gated Clocks description in the user guide for conversion requirements
+@K:CKID0002       pll                 SB_PLL40_2F_CORE       25         U712_REG_SM.REGENn     Gating structure creates improper gating logic. See the Gated Clocks description in the user guide for conversion requirements
+=============================================================================================================================================================================================================================
 
 
 ##### END OF CLOCK OPTIMIZATION REPORT ######]

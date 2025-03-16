@@ -12,7 +12,7 @@ The file contains the area information from mapper to be displayed as part of th
 <data>90</data>
 </parameter>
 <parameter tooltip="Total FLOPS used" name="FLOPS">
-<data>94</data>
+<data>104</data>
 </parameter>
 <parameter tcl_name="v_ram" tooltip="Total RAMS used" name="RAMS">
 <data>0</data>
@@ -21,6 +21,6 @@ The file contains the area information from mapper to be displayed as part of th
 <data>14</data>
 </parameter>
 <parameter tcl_name="total_luts" tooltip="Total LUTS used" name="LUTS">
-<data>220</data>
+<data>213</data>
 </parameter>
 </report_table>

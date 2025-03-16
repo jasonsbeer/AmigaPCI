@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:31:51
 
-* File Generated:     Feb 19 2025 19:26:01
+* File Generated:     Mar 16 2025 18:12:32
 
 * Purpose:            General info of design implementation
 
@@ -27,22 +27,22 @@ Device Info:
 
 Design statistics:
 ------------------
-    FFs:                  94
-    LUTs:                 242
+    FFs:                  104
+    LUTs:                 240
     RAMs:                 0
     IOBs:                 90
-    GBs:                  4
+    GBs:                  5
     PLLs:                 1
     Warm Boots:           0
 
 Logic Resource Utilization:
 ---------------------------
-    Total Logic Cells: 242/3520
-        Combinational Logic Cells: 148      out of   3520      4.20455%
-        Sequential Logic Cells:    94       out of   3520      2.67045%
+    Total Logic Cells: 240/3520
+        Combinational Logic Cells: 136      out of   3520      3.86364%
+        Sequential Logic Cells:    104      out of   3520      2.95455%
         Logic Tiles:               75       out of   440       17.0455%
     Registers: 
-        Logic Registers:           94       out of   3520      2.67045%
+        Logic Registers:           104      out of   3520      2.95455%
         IO Registers:              0        out of   880       0
     Block RAMs:                    0        out of   20        0%
     Warm Boots:                    0        out of   1         0%
@@ -50,7 +50,7 @@ Logic Resource Utilization:
         Input Pins:                47       out of   107       43.9252%
         Output Pins:               43       out of   107       40.1869%
         InOut Pins:                0        out of   107       0%
-    Global Buffers:                4        out of   8         50%
+    Global Buffers:                5        out of   8         62.5%
     PLLs:                          1        out of   2         50%
 
 IO Bank Utilization:
@@ -157,14 +157,15 @@ Detailed I/O Info:
     125         Output     SB_LVCMOS    No       0        Simple Output                 UUBEn         
     134         Output     SB_LVCMOS    No       0        Simple Output                 DMA_LATCH_EN  
     137         Output     SB_LVCMOS    No       0        Simple Output                 LATCH_CLK     
-    139         Output     SB_LVCMOS    No       0        Output Tristatable by Enable  RAMENn        
+    139         Output     SB_LVCMOS    No       0        Simple Output                 RAMENn        
     141         Output     SB_LVCMOS    No       0        Simple Output                 REGENn        
 
 Detailed Global Buffer Info:
 ----------------------------
     Buffer Number  IO Bank  Driven By  Fanout  Signal Name   
     -------------  -------  ---------  ------  -----------   
-    4              0                   65      RESETn_c_i_g  
-    1              0                   19      C1_c_g        
+    1              0                   14      C1_c_g        
+    2              1                   9       CLK40_PLL_g   
+    4              0                   75      RESETn_c_i_g  
     3              3                   19      DBRn_c_i_0_g  
-    7              1                   11      C3_c_g        
+    7              1                   10      C3_c_g        

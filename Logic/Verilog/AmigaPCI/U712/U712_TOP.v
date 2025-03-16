@@ -28,9 +28,9 @@ Revision History:
     21-JAN-2025 : HW REV 5.0 INITIAL RELEASE
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
-*/
 
-//iceprog D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\sbt\outputs\bitmap\U712_TOP_bitmap.bin
+iceprog D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\sbt\outputs\bitmap\U712_TOP_bitmap.bin
+*/
 
 module U712_TOP (
 
@@ -49,24 +49,18 @@ module U712_TOP (
     output CUUBEn, CUMBEn, CLMBEn, CLLBEn,
     output UUBEn, UMBEn, LMBEn, LLBEn,
 
-    output RAMENn,
+    //output RAMENn,
     output TACKn
 );
 
 //assign RAMENn = RAMSPACEn;
-//assign RAMENn = CPU_CYCLEm;
+//assign RAMENn = REGSPACEn;
+//assign RAMENn = CPU_CYCLE;
 //assign RAMENn = LATCH_CLK;
-//assign RAMENn = WRITE_CYCLEm;
-//assign RAMENn = REG_CYCLEm;
-//assign RAMENn = DMA_CYCLEm;
+//assign RAMENn = WRITE_CYCLE;
+//assign RAMENn = REG_CYCLE;
+//assign RAMENn = DMA_CYCLE;
 //assign RAMENn = DMA_LATCH_EN;
-
-//646 LATCH
-//FOR NOW, MAKE ALL DATA LIVE FOR TESTING.
-//THIS WILL MATCH THE BEHAVIOR OF THE 245 TRANSCEIVER THAT WAS IN REV 4.0.
-
-//assign DMA_LATCH = 0;
-//assign LATCH_CLK = 0;
 
 ///////////////////
 // CLOCK FANOUT //
@@ -131,12 +125,15 @@ end
 /////////////////////////////////
 
 wire REG_TACK;
-wire REG_CYCLEm;
-wire DS_ENm;
+wire REG_CYCLE;
+wire DS_EN;
+wire LATCH_REG;
+wire UDS;
+wire LDS;
 
 U712_REG_SM U712_REG_SM (
     //INPUTS
-    .CLK80 (CLK80),
+    .CLK40 (CLK40),
     .C1 (C1),
     .C3 (C3),
     .RESETn (RESETn),
@@ -144,44 +141,55 @@ U712_REG_SM U712_REG_SM (
     .REGSPACEn (REGSPACEn),
     .RnW (RnW),
     .DBRn (DBRn),
-    .DBR_SYNC (DBR_SYNC),
+    .UDS (UDS),
+    .LDS (LDS),
 
     //OUTPUTS
     .ASn (ASn),
     .REGENn (REGENn),
+    .LATCH_REG (LATCH_REG),
     .REG_TACK (REG_TACK),
-    .REG_CYCLE (REG_CYCLEm),
-    .DS_EN (DS_ENm)
+    .REG_CYCLE (REG_CYCLE),
+    .REG_CPU_CYCLE (REG_CPU_CYCLE),
+    .REG_WRITE_CYCLE (REG_WRITE_CYCLE),
+    .UDSn (UDSn),
+    .LDSn (LDSn)
 );
 
 ///////////////////////////
 // CHIPSET DATA BUFFERS //
 /////////////////////////
 
-wire CPU_CYCLEm;
-wire WRITE_CYCLEm;
+wire CPU_CYCLE;
+wire WRITE_CYCLE;
+wire LATCH_RAM;
 
 U712_BUFFERS U712_BUFFERS (
     //INPUTS
     .RnW (RnW),
-    .REG_CYCLE (REG_CYCLEm),
-    .CPU_CYCLE (CPU_CYCLEm),
+    .REG_CYCLE (REG_CYCLE),
+    .CPU_CYCLE (CPU_CYCLE),
+    .REG_CPU_CYCLE (REG_CPU_CYCLE),
+    .REG_WRITE_CYCLE (REG_WRITE_CYCLE),
     .CASUn (CASUn),
     .CASLn (CASLn),
-    .WRITE_CYCLE (WRITE_CYCLEm),
+    .WRITE_CYCLE (WRITE_CYCLE),
+    .LATCH_RAM (LATCH_RAM),
+    .LATCH_REG (LATCH_REG),
 
     //OUTPUTS
     .VBENn (VBENn),
     .DRDENn (DRDENn),
     .DRDDIR (DRDDIR),
-    .DMA_LATCH_EN (DMA_LATCH_EN)
+    .DMA_LATCH_EN (DMA_LATCH_EN),
+    .LATCH_CLK (LATCH_CLK)
 );
 
 ////////////////////////////
 // CPU CYCLE TERMINATION //
 //////////////////////////
 
-wire CPU_TACKm;
+wire CPU_TACK;
 
 U712_CYCLE_TERM U712_CYCLE_TERM (
     //INPUTS
@@ -189,7 +197,7 @@ U712_CYCLE_TERM U712_CYCLE_TERM (
     .CLK40 (CLK40),
     .RESETn (RESETn),
     .REG_TACK (REG_TACK),
-    .CPU_TACK (CPU_TACKm),
+    .CPU_TACK (CPU_TACK),
 
     //OUTPUTS
     .TACKn (TACKn)
@@ -199,8 +207,7 @@ U712_CYCLE_TERM U712_CYCLE_TERM (
 // CHIP RAM CYCLE //
 ///////////////////
 
-wire DMA_CYCLEm;
-//wire [1:0] CAS_SYNC;
+wire DMA_CYCLE;
 
 U712_CHIP_RAM U712_CHIP_RAM (
     //INPUTS
@@ -229,14 +236,14 @@ U712_CHIP_RAM U712_CHIP_RAM (
     .CASn (CASn),
     .WEn (WEn),
     .CLK_EN (CLK_EN),
-    .DMA_CYCLE (DMA_CYCLEm),
-    .CPU_CYCLE (CPU_CYCLEm),
+    .DMA_CYCLE (DMA_CYCLE),
+    .CPU_CYCLE (CPU_CYCLE),
     .DBENn (DBENn),
     .DBDIR (DBDIR),
-    .CPU_TACK (CPU_TACKm),
+    .CPU_TACK (CPU_TACK),
     .CMA (CMA),
-    .LATCH_CLK (LATCH_CLK),
-    .WRITE_CYCLE (WRITE_CYCLEm)
+    .LATCH_RAM (LATCH_RAM),
+    .WRITE_CYCLE (WRITE_CYCLE)
 );
 
 ///////////////////
@@ -245,12 +252,11 @@ U712_CHIP_RAM U712_CHIP_RAM (
 
 U712_BYTE_ENABLE U712_BYTE_ENABLE (
     //INPUTS
-    .CPU_CYCLE (CPU_CYCLEm),
-    .DMA_CYCLE (DMA_CYCLEm),
+    .CPU_CYCLE (CPU_CYCLE),
+    .DMA_CYCLE (DMA_CYCLE),
     .CASLn (CASLn),
     .CASUn (CASUn),
     .DBENn (DBENn),
-    .DS_EN (DS_ENm),
     .A (A[1:0]),
     .SIZ (SIZ),
 
@@ -263,7 +269,7 @@ U712_BYTE_ENABLE U712_BYTE_ENABLE (
     .UMBEn (UMBEn),
     .LMBEn (LMBEn),
     .LLBEn (LLBEn),
-    .UDSn (UDSn),
-    .LDSn (LDSn)
+    .UDS (UDS),
+    .LDS (LDS)
 );
 endmodule

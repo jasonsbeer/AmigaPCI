@@ -32,13 +32,13 @@ GitHub: https://github.com/jasonsbeer/AmigaPCI
 
 module U712_BYTE_ENABLE (
 
-    input CPU_CYCLE, DMA_CYCLE, CASLn, CASUn, DBENn, DS_EN,
+    input CPU_CYCLE, DMA_CYCLE, CASLn, CASUn, DBENn,
     input [1:0] A,
     input [1:0] SIZ,
 
     output CUUBEn, CUMBEn, CLMBEn, CLLBEn,
     output UUBEn, UMBEn, LMBEn, LLBEn,
-    output UDSn, LDSn
+    output UDS, LDS
 
 );
 
@@ -66,10 +66,7 @@ assign CLMBEn = ~((LMBE && CPU_CYCLE) || (!CASUn && DMA_CYCLE && !DBENn));
 assign CLLBEn = ~((LLBE && CPU_CYCLE) || (!CASLn && DMA_CYCLE && !DBENn));
 
 //THESE ARE FOR 16-BIT (MC68000) CHIPSET DATA TRANSFERS.
-wire UDS = (SIZ[0] && !A[0]) || !SIZ[0];
-wire LDS = (SIZ[0] &&  A[0]) || !SIZ[0];
-
-assign UDSn = !(DS_EN && UDS);
-assign LDSn = !(DS_EN && LDS);
+assign UDS = (SIZ[0] && !A[0]) || !SIZ[0];
+assign LDS = (SIZ[0] &&  A[0]) || !SIZ[0];
 
 endmodule
