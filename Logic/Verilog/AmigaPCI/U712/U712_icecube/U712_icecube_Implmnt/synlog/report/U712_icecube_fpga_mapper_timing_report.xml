@@ -42,6 +42,6 @@ Max Top 5 critical clocks will be reported. For rest user needs to refer to Deta
 <data>U712_TOP|CLK80_PLL_derived_clock</data>
 <data>80.0 MHz</data>
 <data>3.0 MHz</data>
-<data>-0.687</data>
+<data>-0.483</data>
 </row>
 </report_table>

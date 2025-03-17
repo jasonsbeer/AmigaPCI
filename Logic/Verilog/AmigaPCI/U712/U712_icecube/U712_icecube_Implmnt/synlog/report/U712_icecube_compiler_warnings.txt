@@ -4,5 +4,4 @@
 @W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":96:2:96:4|Input SDI on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
 @W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":96:2:96:4|Input SCLK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
 @W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":96:2:96:4|Input LATCHINPUTVALUE on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG360 :"D:\AmigaPCI\U712\U712_TOP.v":129:5:129:9|Removing wire DS_EN, as there is no assignment to it.
 

@@ -6,30 +6,30 @@ Cell usage:
 GND             5 uses
 SB_CARRY        14 uses
 SB_DFF          13 uses
-SB_DFFE         12 uses
+SB_DFFE         8 uses
 SB_DFFESR       23 uses
-SB_DFFESS       1 use
+SB_DFFESS       2 uses
 SB_DFFNESR      9 uses
 SB_DFFNSR       20 uses
 SB_DFFNSS       6 uses
 SB_DFFR         8 uses
 SB_DFFSR        1 use
-SB_DFFSS        11 uses
+SB_DFFSS        14 uses
 SB_GB           5 uses
 SB_PLL40_2F_CORE  1 use
 VCC             5 uses
-SB_LUT4         213 uses
+SB_LUT4         219 uses
 
-I/O ports: 90
-I/O primitives: 90
-SB_IO          90 uses
+I/O ports: 89
+I/O primitives: 89
+SB_IO          89 uses
 
 I/O Register bits:                  0
 Register bits not including I/Os:   104 (2%)
 
 @S |Mapping Summary:
-Total  LUTs: 213 (6%)
+Total  LUTs: 219 (6%)
 
 Distribution of All Consumed LUTs = LUT4 
-Distribution of All Consumed Luts 213 = 213 
+Distribution of All Consumed Luts 219 = 219 
 

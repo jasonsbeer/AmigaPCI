@@ -126,7 +126,6 @@ end
 
 wire REG_TACK;
 wire REG_CYCLE;
-wire DS_EN;
 wire LATCH_REG;
 wire UDS;
 wire LDS;

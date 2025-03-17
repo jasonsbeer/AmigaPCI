@@ -49,21 +49,22 @@ module U712_BYTE_ENABLE (
 //ACTIVATE BYTES OF INTEREST FOR EACH DATA TRANSFER.
 //THESE ARE FOR 32-BIT TRANSFERS.
 
-wire LW_TRANS = (!SIZ[1] && !SIZ[0]) || (SIZ[1] && SIZ[0]);
+//wire LW_TRANS = (!SIZ[1] && !SIZ[0]) || (SIZ[1] && SIZ[0]);
+wire LW_TRANS = (SIZ[1] == SIZ[0]);
 wire UUBE = (!A[1] && !A[0]) || LW_TRANS;
 wire UMBE = (!A[1] &&  A[0]) || LW_TRANS || (!A[1] && SIZ[1]);
 wire LMBE = ( A[1] && !A[0]) || LW_TRANS;
 wire LLBE = ( A[1] &&  A[0]) || LW_TRANS || ( A[1] && SIZ[1]);
 
-assign UUBEn = ~UUBE;
-assign UMBEn = ~UMBE;
-assign LMBEn = ~LMBE;
-assign LLBEn = ~LLBE;
+assign UUBEn = !UUBE;
+assign UMBEn = !UMBE;
+assign LMBEn = !LMBE;
+assign LLBEn = !LLBE;
 
-assign CUUBEn = ~((UUBE && CPU_CYCLE) || (!CASUn && DMA_CYCLE && DBENn));
-assign CUMBEn = ~((UMBE && CPU_CYCLE) || (!CASLn && DMA_CYCLE && DBENn));
-assign CLMBEn = ~((LMBE && CPU_CYCLE) || (!CASUn && DMA_CYCLE && !DBENn));
-assign CLLBEn = ~((LLBE && CPU_CYCLE) || (!CASLn && DMA_CYCLE && !DBENn));
+assign CUUBEn = !((UUBE && CPU_CYCLE) || (!CASUn && DMA_CYCLE && DBENn));
+assign CUMBEn = !((UMBE && CPU_CYCLE) || (!CASLn && DMA_CYCLE && DBENn));
+assign CLMBEn = !((LMBE && CPU_CYCLE) || (!CASUn && DMA_CYCLE && !DBENn));
+assign CLLBEn = !((LLBE && CPU_CYCLE) || (!CASLn && DMA_CYCLE && !DBENn));
 
 //THESE ARE FOR 16-BIT (MC68000) CHIPSET DATA TRANSFERS.
 assign UDS = (SIZ[0] && !A[0]) || !SIZ[0];
