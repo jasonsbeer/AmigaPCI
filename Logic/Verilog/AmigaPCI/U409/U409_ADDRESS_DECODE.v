@@ -56,8 +56,10 @@ wire Z2_SPACE = RESETn && A[31:24] == 8'h00;
 // TRANSFER ACCESS TYPE //
 /////////////////////////
 
+//DEFINE THE ACCESS TYPE SO WE DON'T RESPOND TO MMU SCANS.
+
+wire ACCESS = TM[1] != TM[0];
 wire DATA_ACCESS = !TM[1] &&  TM[0];
-wire CODE_ACCESS =  TM[1] && !TM[0];
 
 /////////////////
 // ROM ENABLE //
@@ -71,7 +73,7 @@ wire CODE_ACCESS =  TM[1] && !TM[0];
 //assign ROMEN = (RESETn && Z2_SPACE && ((OVL && A[23:21] == 3'b000) || (A[23:19] == 5'b11111))); // || (IDE_ACCESS && !IDE_ENABLE)));
 //assign ROMEN = RESETn && Z2_SPACE && (OVL ? (A[23:21] == 3'b000) : (A[23:19] == 5'b11111));
 
-assign ROMEN   = Z2_SPACE && (LOWROM || HIROM) && (DATA_ACCESS || CODE_ACCESS);
+assign ROMEN   = Z2_SPACE && (LOWROM || HIROM) && ACCESS;
 wire   LOWROM  = A[23:21] == 3'b000 && OVL;
 wire   HIROM   = A[23:19] == 5'b11111;
 
@@ -94,12 +96,12 @@ assign CIACS1n = !(CIA_ENABLE && !A[13]);
 //CHIP RAM IS VISIBLE IN THE DATA OR CODE SPACE.
 //REGISTERS ARE VISIBLE IN THE DATA SPACE.
 
-assign RAMSPACEn = !(Z2_SPACE && !OVL && (DATA_ACCESS || CODE_ACCESS) && A[23:21] == 3'b000);
+assign RAMSPACEn = !(Z2_SPACE && !OVL && ACCESS && A[23:21] == 3'b000);
 assign REGSPACEn = !(Z2_SPACE && DATA_ACCESS && A[23:16] == 8'hDF);
 
-//////////////////////
-// AUTOVECTOR SPACE /
-////////////////////
+///////////////////////
+// AUTOVECTOR SPACE //
+/////////////////////
 
 //IN THE EVENT OF A INTERRUPT CYCLE, WE NEED TO TERMINATE THE CYCLE BY ASSERTING _TA.
 //ALL INTERRUPT REQUESTS ARE SERVICED BY AUTOVECTORING.
@@ -112,7 +114,7 @@ assign AUTOVECTOR = RESETn && TT[1] && TT[0] && A[31:16] == 16'hFFFF;
 
 //AUTOCONFIG IS VISIBLE IN THE DATA AND CODE SAPCE.
 
-//assign AUTOCONFIG_SPACE = RESETn && (DATA_ACCESS || CODE_ACCESS) && A[31:16] == 16'hFF00;
+//assign AUTOCONFIG_SPACE = RESETn && ACCESS && A[31:16] == 16'hFF00;
 
 //////////////////////
 // REAL TIME CLOCK //
