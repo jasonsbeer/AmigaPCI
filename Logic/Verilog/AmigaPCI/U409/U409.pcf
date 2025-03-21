@@ -1,12 +1,12 @@
 
 #CLOCKS
-set_io RESETn   62
-#set_io CLK7_IN  49
-set_io CLK6     52
-set_io TICK60   55
-set_io TICK50   56
-set_io CLK28_IN 94
-set_io CLKCIA   122
+set_io RESETn    62
+#set_io CLK7_IN   49
+set_io CLK6      52
+set_io TICK60    55
+set_io TICK50    56
+set_io CLK28_IN  94
+set_io CLK_CIA  122
 set_io CLK40_IN 129
 
 #CPU DATA BUS
@@ -53,18 +53,18 @@ set_io A[30] 9
 set_io A[31] 10
 
 #DATA TRANSFER SIGNALS
-#set_io nTCI     115 -pullup yes
+#set_io nTCI     115
 set_io PORTSIZE 135
-set_io TACKn    117 -pullup yes
+set_io TACKn    117
 set_io TSn      134
 set_io TT[0]    138
 set_io TT[1]    139
 #set_io ROM_DELAY xxx
-#set_io RnW     142
-#set_io LBENn   125
-#set_io TM0     136
-#set_io TM1     137
-#set_io TM2     141
+#set_io RnW      142
+#set_io LBENn    125
+set_io TM[0]    136
+set_io TM[1]    137
+#set_io TM2      141
 
 #ADDRESS SPACE SIGNALS
 set_io OVL       81

@@ -26,6 +26,7 @@ Description: ADDRESS DECODE
 
 Revision History:
     25-JAN-2025 : INITIAL REV 5.0 CODE
+    20-MAR-2025 : Add data and code access type conditions. JN
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 */
@@ -35,6 +36,7 @@ module U409_ADDRESS_DECODE
 
     input RESETn, OVL, CIA_ENABLE,
     input [1:0] TT,
+    input [1:0] TM,
     input [31:1] A,
     
     output ROMEN, CIA_SPACE, CIACS0n, CIACS1n, RAMSPACEn, REGSPACEn, AUTOVECTOR
@@ -48,7 +50,14 @@ module U409_ADDRESS_DECODE
 
 //WE NEED TO KNOW WHICH ADDRESS SPACE WE ARE IN SO WE DON'T RESPOND INCORRECTLY.
 
-wire Z2_SPACE = A[31:24] == 8'h00;
+wire Z2_SPACE = RESETn && A[31:24] == 8'h00;
+
+///////////////////////////
+// TRANSFER ACCESS TYPE //
+/////////////////////////
+
+wire DATA_ACCESS = !TM[1] &&  TM[0];
+wire CODE_ACCESS =  TM[1] && !TM[0];
 
 /////////////////
 // ROM ENABLE //
@@ -57,11 +66,12 @@ wire Z2_SPACE = A[31:24] == 8'h00;
 //ROM IS ENABLED AT THE RESET VECTOR $0000 0000 WHEN OVL IS ASSERTED (HIGH) AND AT $00F8 0000 - $00FF FFFF.
 //BECAUSE OUR IDE AUTOBOOT DRIVER ALSO RESIDES ON THE ROM, IT IS ENABLED WHEN WE ENTER THE IDE SPACE UNTIL THE FIRST WRITE TO THE IDE SPACE.
 //KICKSTART JUMPS TO THE HIROM ADDRESS SPACE BEFORE OVL IS NEGATED, SO WE DON'T CHECK FOR IT AT THE HIROM ADDRESS.
+//THE ROM IS VISIBLE IN THE CODE AND DATA SPACE.
 
 //assign ROMEN = (RESETn && Z2_SPACE && ((OVL && A[23:21] == 3'b000) || (A[23:19] == 5'b11111))); // || (IDE_ACCESS && !IDE_ENABLE)));
 //assign ROMEN = RESETn && Z2_SPACE && (OVL ? (A[23:21] == 3'b000) : (A[23:19] == 5'b11111));
 
-assign ROMEN   = RESETn && Z2_SPACE && (LOWROM || HIROM);
+assign ROMEN   = Z2_SPACE && (LOWROM || HIROM) && (DATA_ACCESS || CODE_ACCESS);
 wire   LOWROM  = A[23:21] == 3'b000 && OVL;
 wire   HIROM   = A[23:19] == 5'b11111;
 
@@ -69,7 +79,9 @@ wire   HIROM   = A[23:19] == 5'b11111;
 // CIA ADDRESS SPACE //
 //////////////////////
 
-assign CIA_SPACE = RESETn && Z2_SPACE && A[23:16] == 8'hBF;
+//THE CIAs ARE VISIBILE IN THE DATA SPACE.
+
+assign CIA_SPACE = Z2_SPACE && DATA_ACCESS && A[23:16] == 8'hBF;
 assign CIACS0n = !(CIA_ENABLE && !A[12]);
 assign CIACS1n = !(CIA_ENABLE && !A[13]);
 
@@ -79,9 +91,11 @@ assign CIACS1n = !(CIA_ENABLE && !A[13]);
 
 //AGNUS CONTROLS ACCESS TO CHIPSET REGISTERS.
 //THESE SIGNALS ARE CONSUMED BY U712.
+//CHIP RAM IS VISIBLE IN THE DATA OR CODE SPACE.
+//REGISTERS ARE VISIBLE IN THE DATA SPACE.
 
-assign RAMSPACEn = !(Z2_SPACE && !OVL && A[23:21] == 3'b000);
-assign REGSPACEn = !(Z2_SPACE && A[23:16] == 8'hDF);
+assign RAMSPACEn = !(Z2_SPACE && !OVL && (DATA_ACCESS || CODE_ACCESS) && A[23:21] == 3'b000);
+assign REGSPACEn = !(Z2_SPACE && DATA_ACCESS && A[23:16] == 8'hDF);
 
 //////////////////////
 // AUTOVECTOR SPACE /
@@ -96,12 +110,18 @@ assign AUTOVECTOR = RESETn && TT[1] && TT[0] && A[31:16] == 16'hFFFF;
 // AUTOCONFIG SPACE //
 /////////////////////
 
-//assign AUTOCONFIG_SPACE = RESETn && A[31:16] == 16'hFF00;
+//AUTOCONFIG IS VISIBLE IN THE DATA AND CODE SAPCE.
+
+//assign AUTOCONFIG_SPACE = RESETn && (DATA_ACCESS || CODE_ACCESS) && A[31:16] == 16'hFF00;
+
+//////////////////////
+// REAL TIME CLOCK //
+/////////////////////
+
+//THE REAL TIME CLOCK IS VISIBILE IN THE DATA SPACE.
 
 //YET TO BE IMPLEMENTED
 //ATA
 //PCI BRIDGE
-//CPU LOCAL BUS
-//RTC
 
 endmodule

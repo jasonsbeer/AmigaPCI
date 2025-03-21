@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:31:51
 
-* File Generated:     Feb 9 2025 17:04:41
+* File Generated:     Mar 20 2025 20:31:13
 
 * Purpose:            Detailed IO and package pin info
 
@@ -130,12 +130,12 @@ Pin Number, Pin Type Name, Signal Name, Direction, Global Buffer, IO Standard, P
 114, PIO, not used, , , , , , topBank
 115, PIO, not used, , , , , , topBank
 116, PIO, not used, , , , , , topBank
-117, PIO, TACKn, InOut, , SB_LVCMOS, Pull Up, Simple Input Output Tristatable by Enable, topBank
+117, PIO, TACKn, InOut, , SB_LVCMOS, No Pull Up, Simple Input Output Tristatable by Enable, topBank
 118, PIO, REGSPACEn, Output, , SB_LVCMOS, No Pull Up, Simple Output, topBank
 119, PIO, BUFENn, Output, , SB_LVCMOS, No Pull Up, Simple Output, topBank
 120, PIO, not used, , , , , , topBank
 121, PIO, not used, , , , , , topBank
-122, PIO, CLKCIA, Output, , SB_LVCMOS, No Pull Up, Simple Output, topBank
+122, PIO, CLK_CIA, Output, , SB_LVCMOS, No Pull Up, Simple Output, topBank
 123, VCCIO_0, not used, , , , , , topBank
 124, PIO, ROMENn, Output, , SB_LVCMOS, No Pull Up, Simple Output, topBank
 125, PIO, not used, , , , , , topBank
@@ -148,8 +148,8 @@ Pin Number, Pin Type Name, Signal Name, Direction, Global Buffer, IO Standard, P
 132, GND, not used, , , , , , UnknownBank
 134, PIO, TSn, Input, , SB_LVCMOS, No Pull Up, Simple Input, topBank
 135, PIO, PORTSIZE, Output, , SB_LVCMOS, No Pull Up, Simple Output, topBank
-136, PIO, not used, , , , , , topBank
-137, PIO, not used, , , , , , topBank
+136, PIO, TM[0], Input, , SB_LVCMOS, No Pull Up, Simple Input, topBank
+137, PIO, TM[1], Input, , SB_LVCMOS, No Pull Up, Simple Input, topBank
 138, PIO, TT[0], Input, , SB_LVCMOS, No Pull Up, Simple Input, topBank
 139, PIO, TT[1], Input, , SB_LVCMOS, No Pull Up, Simple Input, topBank
 140, GND, not used, , , , , , UnknownBank
@@ -157,4 +157,4 @@ Pin Number, Pin Type Name, Signal Name, Direction, Global Buffer, IO Standard, P
 142, PIO, not used, , , , , , topBank
 143, PIO, not used, , , , , , topBank
 144, PIO, not used, , , , , , topBank
-Total Number of Used Pins, 37
+Total Number of Used Pins, 39

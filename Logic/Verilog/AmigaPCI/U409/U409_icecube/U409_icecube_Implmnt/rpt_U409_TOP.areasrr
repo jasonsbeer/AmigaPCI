@@ -9,26 +9,26 @@ Part:			ICE40HX4KTQ144 (Lattice)
 SEQUENTIAL ELEMENTS
 Name      Total elements     Utilization     Notes
 --------------------------------------------------
-FLOPS     72                 100 %                
+FLOPS     74                 100 %                
 ==================================================
-Total SEQUENTIAL ELEMENTS in the block U409_TOP:	72 (23.53 % Utilization)
+Total SEQUENTIAL ELEMENTS in the block U409_TOP:	74 (22.63 % Utilization)
 
 
 COMBINATIONAL LOGIC
 Name       Total elements     Utilization     Notes
 ---------------------------------------------------
-LUTS       151                100 %                
-CARRYS     34                 100 %                
+LUTS       166                100 %                
+CARRYS     36                 100 %                
 ===================================================
-Total COMBINATIONAL LOGIC in the block U409_TOP:	185 (60.46 % Utilization)
+Total COMBINATIONAL LOGIC in the block U409_TOP:	202 (61.77 % Utilization)
 
 
 IO PADS
 Name     Total elements     Utilization     Notes
 -------------------------------------------------
-PADS     37                 100 %                
+PADS     39                 100 %                
 =================================================
-Total IO PADS in the block U409_TOP:	37 (12.09 % Utilization)
+Total IO PADS in the block U409_TOP:	39 (11.93 % Utilization)
 
 -------------------------------------------------------------------------
 ########   Utilization report for  cell:   U409_ADDRESS_DECODE   ########
@@ -38,9 +38,9 @@ Instance path:   U409_TOP.U409_ADDRESS_DECODE
 COMBINATIONAL LOGIC
 Name     Total elements     Utilization     Notes
 -------------------------------------------------
-LUTS     16                 10.6 %               
+LUTS     14                 8.43 %               
 =================================================
-Total COMBINATIONAL LOGIC in the block U409_TOP.U409_ADDRESS_DECODE:	16 (5.23 % Utilization)
+Total COMBINATIONAL LOGIC in the block U409_TOP.U409_ADDRESS_DECODE:	14 (4.28 % Utilization)
 
 --------------------------------------------------------------
 ########   Utilization report for  cell:   U409_CIA   ########
@@ -50,18 +50,18 @@ Instance path:   U409_TOP.U409_CIA
 SEQUENTIAL ELEMENTS
 Name      Total elements     Utilization     Notes
 --------------------------------------------------
-FLOPS     9                  12.5 %               
+FLOPS     10                 13.5 %               
 ==================================================
-Total SEQUENTIAL ELEMENTS in the block U409_TOP.U409_CIA:	9 (2.94 % Utilization)
+Total SEQUENTIAL ELEMENTS in the block U409_TOP.U409_CIA:	10 (3.06 % Utilization)
 
 
 COMBINATIONAL LOGIC
 Name       Total elements     Utilization     Notes
 ---------------------------------------------------
-LUTS       23                 15.2 %               
-CARRYS     4                  11.8 %               
+LUTS       25                 15.1 %               
+CARRYS     6                  16.7 %               
 ===================================================
-Total COMBINATIONAL LOGIC in the block U409_TOP.U409_CIA:	27 (8.82 % Utilization)
+Total COMBINATIONAL LOGIC in the block U409_TOP.U409_CIA:	31 (9.48 % Utilization)
 
 ---------------------------------------------------------------
 ########   Utilization report for  cell:   U409_TICK   ########
@@ -71,18 +71,18 @@ Instance path:   U409_TOP.U409_TICK
 SEQUENTIAL ELEMENTS
 Name      Total elements     Utilization     Notes
 --------------------------------------------------
-FLOPS     36                 50 %                 
+FLOPS     36                 48.6 %               
 ==================================================
-Total SEQUENTIAL ELEMENTS in the block U409_TOP.U409_TICK:	36 (11.76 % Utilization)
+Total SEQUENTIAL ELEMENTS in the block U409_TOP.U409_TICK:	36 (11.01 % Utilization)
 
 
 COMBINATIONAL LOGIC
 Name       Total elements     Utilization     Notes
 ---------------------------------------------------
-LUTS       59                 39.1 %               
-CARRYS     30                 88.2 %               
+LUTS       59                 35.5 %               
+CARRYS     30                 83.3 %               
 ===================================================
-Total COMBINATIONAL LOGIC in the block U409_TOP.U409_TICK:	89 (29.08 % Utilization)
+Total COMBINATIONAL LOGIC in the block U409_TOP.U409_TICK:	89 (27.22 % Utilization)
 
 -----------------------------------------------------------------------
 ########   Utilization report for  cell:   U409_TRANSFER_ACK   ########
@@ -92,17 +92,17 @@ Instance path:   U409_TOP.U409_TRANSFER_ACK
 SEQUENTIAL ELEMENTS
 Name      Total elements     Utilization     Notes
 --------------------------------------------------
-FLOPS     27                 37.5 %               
+FLOPS     28                 37.8 %               
 ==================================================
-Total SEQUENTIAL ELEMENTS in the block U409_TOP.U409_TRANSFER_ACK:	27 (8.82 % Utilization)
+Total SEQUENTIAL ELEMENTS in the block U409_TOP.U409_TRANSFER_ACK:	28 (8.56 % Utilization)
 
 
 COMBINATIONAL LOGIC
 Name     Total elements     Utilization     Notes
 -------------------------------------------------
-LUTS     51                 33.8 %               
+LUTS     66                 39.8 %               
 =================================================
-Total COMBINATIONAL LOGIC in the block U409_TOP.U409_TRANSFER_ACK:	51 (16.67 % Utilization)
+Total COMBINATIONAL LOGIC in the block U409_TOP.U409_TRANSFER_ACK:	66 (20.18 % Utilization)
 
 
 ##### END OF AREA REPORT #####]

@@ -26,6 +26,7 @@ Description: CIA CLOCK
 
 Revision History:
     25-JAN-2025 : INITIAL REV 5.0 CODE
+    20-MAR-2025 : Fixed back to back cycles. JN
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 TO BUILD WITH APIO: apio build --top-module U409_TOP --fpga iCE40-HX4K-TQ144
@@ -33,8 +34,8 @@ TO BUILD WITH APIO: apio build --top-module U409_TOP --fpga iCE40-HX4K-TQ144
 
 module U409_CIA
 (
-    input CLK28_IN, CIA_SPACE, //RnW
-    output reg CLKCIA,
+    input CLK28_IN, RESETn, CIA_SPACE,
+    output reg CLK_CIA,
     output CIA_ENABLE
 );
 
@@ -54,25 +55,32 @@ module U409_CIA
 
 //CYCLES 0 - 23 ARE LOW CLOCK, 24 - 39 ARE HIGH CLOCK.
 
-reg [5:0] CIA_CLK_COUNT;
-reg VMA;
-reg CIA_HOLD;
+assign CIA_ENABLE = RESETn && VMA;
 
-assign CIA_ENABLE = (CIA_SPACE && (VMA || CIA_HOLD));
+reg [7:0] CIA_CLK_COUNT;
+reg VMA;
 
 always @(posedge CLK28_IN) begin
-    if (CIA_CLK_COUNT == 6'b100111) begin
-        CIA_CLK_COUNT <= 6'b000000;
-    end else begin 
-        CIA_CLK_COUNT <= CIA_CLK_COUNT + 1;
+
+    if (CIA_CLK_COUNT == 8'h27) begin
+        CIA_CLK_COUNT <= 8'h00;
+    end else begin
+        CIA_CLK_COUNT ++;
     end
 
-    CIA_HOLD <= CIA_ENABLE;
-
-    case (CIA_CLK_COUNT)
-        6'b000000 : begin CLKCIA <= 0; end
-        6'b010011 : VMA <= 1;
-        6'b011000 : begin CLKCIA <= 1; VMA <= 0; end
+	case (CIA_CLK_COUNT)
+		8'h00 : begin
+			CLK_CIA <= 0;
+        end
+        8'h03 : begin
+            VMA <= 0; //Hold the chip select until the cycle has been TACKed.
+        end
+        8'h11 : begin //13
+            VMA <= CIA_SPACE;
+        end
+        8'h18 : begin
+            CLK_CIA <= 1;
+        end
     endcase
 end
 

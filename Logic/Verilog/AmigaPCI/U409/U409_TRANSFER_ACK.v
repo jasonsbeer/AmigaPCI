@@ -26,13 +26,14 @@ Description: MC68040/MC68060 TRANSFER ACK
 
 Revision History:
     25-JAN-2025 : INITIAL REV 5.0 CODE
+    09-FEB-2025 : SEPERATED ROM AND AUTOVECTOR CYCLE ACKS
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 */
 
 module U409_TRANSFER_ACK (
 
-    input CLK80, CLK40, RESETn, TSn, ROMEN, CIA_ENABLE, CLKCIA, AGNUS_SPACE, AUTOVECTOR, ROM_DELAY,
+    input CLK80, CLK40, RESETn, TSn, ROMEN, CIA_ENABLE, CLK_CIA, AGNUS_SPACE, AUTOVECTOR, ROM_DELAY,
 
     output reg ROMENn,
 
@@ -48,28 +49,32 @@ reg TACK_EN;
 reg TACK_OUTn;
 assign TACKn = TACK_EN ? TACK_OUTn : 1'bz;
 
-reg [2:0] TACK_COUNTER;
+reg [3:0] TACK_COUNTER;
 always @(posedge CLK80) begin
     if (!RESETn) begin
         TACK_EN <= 0;
-        TACK_COUNTER <= 3'b000;
+        TACK_COUNTER <= 4'h00;
     end else begin
         case (TACK_COUNTER)
-        3'b000 : begin
+        4'h00 : begin
             if (ROM_TACK_EN || CIA_TACK_EN || IRQ_TACK_EN || DELAYED_TACK_EN) begin
-                TACK_COUNTER <= 3'b001;
+                TACK_COUNTER <= 4'h01;
                 TACK_EN <= 1;
                 TACK_OUTn <= 0;
-            end else begin
-                TACK_EN <= 0;
-            end
+            end //else begin
+                //TACK_EN <= 0;
+            //end
         end
-        3'b001 : begin
-            TACK_COUNTER <= 3'b010;
+        4'h01 : begin
+            TACK_COUNTER <= 4'h02;
         end
-        3'b010 : begin
-            TACK_COUNTER <= 3'b000;
+        4'h02 : begin
             TACK_OUTn <= 1;
+            TACK_COUNTER <= 4'h03;
+        end
+        4'h03 : begin
+            TACK_EN <= 0;
+            TACK_COUNTER <= 4'h00;
         end
         endcase
     end
@@ -84,19 +89,19 @@ end
 
 wire [3:0]ROM_TACK_DELAY = ROM_DELAY ? 4'h5 : 4'h1;
 
-reg [2:0] ROM_TACK_COUNTER;
+reg [3:0] ROM_TACK_COUNTER;
 reg ROM_TACK_EN;
 always @(posedge CLK80) begin
     if (!RESETn) begin
         ROM_TACK_EN <= 0;
-        ROM_TACK_COUNTER <= 3'b000;
+        ROM_TACK_COUNTER <= 4'h0;
         ROMENn <= 1;
     end else begin
-        if (ROM_TACK_COUNTER != 3'b000) begin ROM_TACK_COUNTER ++; end
+        if (ROM_TACK_COUNTER != 4'h0) begin ROM_TACK_COUNTER ++; end
         case (ROM_TACK_COUNTER)
-            3'b000 : begin
+            4'h0 : begin
                 if (CLK40 && !TSn && ROMEN) begin
-                    ROM_TACK_COUNTER <= 3'b001;
+                    ROM_TACK_COUNTER <= 4'h1;
                     ROMENn <= 0;
                 end
             end
@@ -106,9 +111,9 @@ always @(posedge CLK80) begin
             ROM_TACK_DELAY + 1 : begin
                 ROM_TACK_EN <= 0;
             end
-            ROM_TACK_DELAY + 2 : begin
+            ROM_TACK_DELAY + 4 : begin
                 ROMENn <= 1;
-                ROM_TACK_COUNTER <= 3'b000;
+                ROM_TACK_COUNTER <= 4'h0;
             end
         endcase
     end
@@ -164,7 +169,7 @@ always @(posedge CLK80) begin
         CIA_STATE <= 2'b00;
     end else begin
         LASTCLK[1] <= LASTCLK[0];
-        LASTCLK[0] <= CLKCIA;
+        LASTCLK[0] <= CLK_CIA;
 
         CIA_ENABLED[1] <= CIA_ENABLED[0];
         CIA_ENABLED[0] <= CIA_ENABLE;
@@ -191,6 +196,27 @@ always @(posedge CLK80) begin
         endcase
     end
 end
+
+/*reg [2:0] CIA_CLK_SYNC;
+reg [1:0] CIA_ENABLED_SYNC;
+reg CIA_TACK_EN;
+
+always @(posedge CLK40) begin
+    if (!RESETn) begin
+        CIA_TACK_EN <= 0;
+        CIA_CLK_SYNC <= 3'b000;
+        CIA_ENABLED_SYNC <= 2'b00;
+    end else begin
+        CIA_CLK_SYNC[2] <= CIA_CLK_SYNC[1];
+        CIA_CLK_SYNC[1] <= CIA_CLK_SYNC[0];
+        CIA_CLK_SYNC[0] <= CLK_CIA;
+
+        CIA_ENABLED_SYNC[1] <= CIA_ENABLED_SYNC[0];
+        CIA_ENABLED_SYNC[0] <= CIA_ENABLE;
+
+        CIA_TACK_EN <= CIA_CLK_SYNC[1] && !CIA_CLK_SYNC[0] && CIA_ENABLED_SYNC[1];
+    end
+end*/
 
 //////////////////////////
 // UNRESPONSIVE CYCLES //

@@ -4,28 +4,28 @@ Resource Usage Report for U409_TOP
 Mapping to part: ice40hx4ktq144
 Cell usage:
 GND             4 uses
-SB_CARRY        34 uses
-SB_DFF          45 uses
+SB_CARRY        36 uses
+SB_DFF          46 uses
 SB_DFFN         6 uses
 SB_DFFNE        1 use
 SB_DFFNR        9 uses
-SB_DFFNSR       10 uses
+SB_DFFNSR       11 uses
 SB_DFFNSS       1 use
 SB_PLL40_CORE   1 use
 VCC             4 uses
-SB_LUT4         151 uses
+SB_LUT4         166 uses
 
-I/O ports: 50
-I/O primitives: 37
+I/O ports: 52
+I/O primitives: 39
 SB_GB_IO       2 uses
-SB_IO          35 uses
+SB_IO          37 uses
 
 I/O Register bits:                  0
-Register bits not including I/Os:   72 (2%)
+Register bits not including I/Os:   74 (2%)
 
 @S |Mapping Summary:
-Total  LUTs: 151 (4%)
+Total  LUTs: 166 (4%)
 
 Distribution of All Consumed LUTs = LUT4 
-Distribution of All Consumed Luts 151 = 151 
+Distribution of All Consumed Luts 166 = 166 
 

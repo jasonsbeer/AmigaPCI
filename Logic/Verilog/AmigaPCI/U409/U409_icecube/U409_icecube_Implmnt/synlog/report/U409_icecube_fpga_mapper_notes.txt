@@ -1,8 +1,9 @@
 @N: MF248 |Running in 64-bit mode.
 @N: MF666 |Clock conversion enabled. (Command "set_option -fix_gated_and_generated_clocks 1" in the project file.)
 @N: MT204 |Auto Constrain mode is disabled because clocks are defined in the SDC file
-@N: MO225 :"d:\amigapci\u409\u409_transfer_ack.v":159:0:159:5|There are no possible illegal states for state machine CIA_STATE[3:0] (in view: work.U409_TRANSFER_ACK(verilog)); safe FSM implementation is not required.
-@N: FX271 :"d:\amigapci\u409\u409_cia.v":61:21:61:51|Replicating instance U409_CIA.g0 (in view: work.U409_TOP(verilog)) with 4 loads 1 time(s) to improve timing.
+@N: MO225 :"d:\amigapci\u409\u409_transfer_ack.v":53:0:53:5|There are no possible illegal states for state machine TACK_COUNTER[3:0] (in view: work.U409_TRANSFER_ACK(verilog)); safe FSM implementation is not required.
+@N: MO225 :"d:\amigapci\u409\u409_transfer_ack.v":164:0:164:5|There are no possible illegal states for state machine CIA_STATE[3:0] (in view: work.U409_TRANSFER_ACK(verilog)); safe FSM implementation is not required.
+@N: FX271 :"d:\amigapci\u409\u409_cia.v":58:20:58:33|Replicating instance U409_CIA.CIA_ENABLE (in view: work.U409_TOP(verilog)) with 3 loads 1 time(s) to improve timing.
 @N: FX1016 :"d:\amigapci\u409\u409_top.v":38:20:38:23|SB_GB_IO inserted on the port CLK6.
 @N: FX1016 :"d:\amigapci\u409\u409_top.v":38:26:38:33|SB_GB_IO inserted on the port CLK28_IN.
 @N: BW103 |The default time unit for the Synopsys Constraint File (SDC or FDC) is 1ns.

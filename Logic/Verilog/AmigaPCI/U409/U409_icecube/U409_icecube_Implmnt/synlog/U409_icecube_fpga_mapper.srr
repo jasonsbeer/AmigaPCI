@@ -1,4 +1,4 @@
-# Sun Feb 09 17:04:25 2025
+# Thu Mar 20 20:30:56 2025
 
 Synopsys Lattice Technology Mapper, Version maplat, Build 1612R, Built Dec  5 2016 10:31:39
 Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
@@ -37,18 +37,20 @@ Available hyper_sources - for debug and ip models
 
 Finished RTL optimizations (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
 
-Encoding state machine TACK_COUNTER[2:0] (in view: work.U409_TRANSFER_ACK(verilog))
+Encoding state machine TACK_COUNTER[3:0] (in view: work.U409_TRANSFER_ACK(verilog))
 original code -> new code
-   000 -> 00
-   001 -> 01
-   010 -> 10
+   0000 -> 00
+   0001 -> 01
+   0010 -> 10
+   0011 -> 11
+@N: MO225 :"d:\amigapci\u409\u409_transfer_ack.v":53:0:53:5|There are no possible illegal states for state machine TACK_COUNTER[3:0] (in view: work.U409_TRANSFER_ACK(verilog)); safe FSM implementation is not required.
 Encoding state machine CIA_STATE[3:0] (in view: work.U409_TRANSFER_ACK(verilog))
 original code -> new code
    00 -> 00
    01 -> 01
    10 -> 10
    11 -> 11
-@N: MO225 :"d:\amigapci\u409\u409_transfer_ack.v":159:0:159:5|There are no possible illegal states for state machine CIA_STATE[3:0] (in view: work.U409_TRANSFER_ACK(verilog)); safe FSM implementation is not required.
+@N: MO225 :"d:\amigapci\u409\u409_transfer_ack.v":164:0:164:5|There are no possible illegal states for state machine CIA_STATE[3:0] (in view: work.U409_TRANSFER_ACK(verilog)); safe FSM implementation is not required.
 
 Starting factoring (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
 
@@ -74,12 +76,12 @@ Finished generic timing optimizations - Pass 2 (Real Time elapsed 0h:00m:00s; CP
 Finished preparing to map (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 133MB peak: 133MB)
 
 
-Finished technology mapping (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 133MB peak: 134MB)
+Finished technology mapping (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 135MB peak: 137MB)
 
 Pass		 CPU time		Worst Slack		Luts / Registers
 ------------------------------------------------------------
-   1		0h:00m:00s		    -1.80ns		 148 /        72
-@N: FX271 :"d:\amigapci\u409\u409_cia.v":61:21:61:51|Replicating instance U409_CIA.g0 (in view: work.U409_TOP(verilog)) with 4 loads 1 time(s) to improve timing.
+   1		0h:00m:00s		    -1.80ns		 169 /        74
+@N: FX271 :"d:\amigapci\u409\u409_cia.v":58:20:58:33|Replicating instance U409_CIA.CIA_ENABLE (in view: work.U409_TOP(verilog)) with 3 loads 1 time(s) to improve timing.
 Timing driven replication report
 Added 0 Registers via timing driven replication
 Added 1 LUTs via timing driven replication
@@ -89,10 +91,10 @@ Added 1 LUTs via timing driven replication
 @N: FX1016 :"d:\amigapci\u409\u409_top.v":38:20:38:23|SB_GB_IO inserted on the port CLK6.
 @N: FX1016 :"d:\amigapci\u409\u409_top.v":38:26:38:33|SB_GB_IO inserted on the port CLK28_IN.
 
-Finished technology timing optimizations and critical path resynthesis (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 133MB peak: 134MB)
+Finished technology timing optimizations and critical path resynthesis (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 135MB peak: 137MB)
 
 
-Finished restoring hierarchy (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 133MB peak: 134MB)
+Finished restoring hierarchy (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 135MB peak: 137MB)
 
 
 
@@ -101,31 +103,31 @@ Finished restoring hierarchy (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:
 
 #### START OF CLOCK OPTIMIZATION REPORT #####[
 
-2 non-gated/non-generated clock tree(s) driving 45 clock pin(s) of sequential element(s)
-1 gated/generated clock tree(s) driving 27 clock pin(s) of sequential element(s)
-0 instances converted, 27 sequential instances remain driven by gated/generated clocks
+2 non-gated/non-generated clock tree(s) driving 46 clock pin(s) of sequential element(s)
+1 gated/generated clock tree(s) driving 28 clock pin(s) of sequential element(s)
+0 instances converted, 28 sequential instances remain driven by gated/generated clocks
 
 ================================= Non-Gated/Non-Generated Clocks =================================
 Clock Tree ID     Driving Element         Drive Element Type     Fanout     Sample Instance       
 --------------------------------------------------------------------------------------------------
 @K:CKID0002       CLK6_ibuf_gb_io         SB_GB_IO               36         U409_TICK.COUNTER50[5]
-@K:CKID0003       CLK28_IN_ibuf_gb_io     SB_GB_IO               9          U409_CIA.CLKCIA       
+@K:CKID0003       CLK28_IN_ibuf_gb_io     SB_GB_IO               10         U409_CIA.CLK_CIA      
 ==================================================================================================
 ===================================================================================================== Gated/Generated Clocks ======================================================================================================
 Clock Tree ID     Driving Element     Drive Element Type     Fanout     Sample Instance              Explanation                                                                                                                   
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-@K:CKID0001       pll                 SB_PLL40_CORE          27         U409_TRANSFER_ACK.ROMENn     Gating structure creates improper gating logic. See the Gated Clocks description in the user guide for conversion requirements
+@K:CKID0001       pll                 SB_PLL40_CORE          28         U409_TRANSFER_ACK.ROMENn     Gating structure creates improper gating logic. See the Gated Clocks description in the user guide for conversion requirements
 ===================================================================================================================================================================================================================================
 
 
 ##### END OF CLOCK OPTIMIZATION REPORT ######]
 
 
-Start Writing Netlists (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 108MB peak: 134MB)
+Start Writing Netlists (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 110MB peak: 137MB)
 
 Writing Analyst data base D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\synwork\U409_icecube_m.srm
 
-Finished Writing Netlist Databases (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 133MB peak: 135MB)
+Finished Writing Netlist Databases (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 135MB peak: 137MB)
 
 Writing EDIF Netlist and constraint files
 @N: BW103 |The default time unit for the Synopsys Constraint File (SDC or FDC) is 1ns.
@@ -133,10 +135,10 @@ Writing EDIF Netlist and constraint files
 @N: FX1056 |Writing EDF file: D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\U409_icecube.edf
 L-2016.09L+ice40
 
-Finished Writing EDIF Netlist and constraint files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 134MB peak: 136MB)
+Finished Writing EDIF Netlist and constraint files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 136MB peak: 138MB)
 
 
-Start final timing analysis (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 134MB peak: 136MB)
+Start final timing analysis (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 136MB peak: 138MB)
 
 @N: MT615 |Found clock CLK40_IN with period 25.00ns 
 @N: MT615 |Found clock CLK6 with period 166.67ns 
@@ -145,7 +147,7 @@ Start final timing analysis (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:0
 
 
 ##### START OF TIMING REPORT #####[
-# Timing Report written on Sun Feb 09 17:04:26 2025
+# Timing Report written on Thu Mar 20 20:30:57 2025
 #
 
 
@@ -165,15 +167,15 @@ Performance Summary
 *******************
 
 
-Worst slack in design: -3.679
+Worst slack in design: -3.630
 
                                      Requested     Estimated     Requested     Estimated                 Clock                       Clock           
 Starting Clock                       Frequency     Frequency     Period        Period        Slack       Type                        Group           
 -----------------------------------------------------------------------------------------------------------------------------------------------------
 CLK6                                 6.0 MHz       131.0 MHz     166.667       7.636         159.030     declared                    default_clkgroup
-CLK28_IN                             28.6 MHz      3.6 MHz       34.916        281.420       -3.679      declared                    default_clkgroup
+CLK28_IN                             28.6 MHz      3.6 MHz       34.916        278.130       -3.630      declared                    default_clkgroup
 CLK40_IN                             40.0 MHz      NA            25.000        NA            DCM/PLL     declared                    default_clkgroup
-U409_TOP|CLK80_OUT_derived_clock     80.0 MHz      9.9 MHz       12.500        100.748       2.911       derived (from CLK40_IN)     default_clkgroup
+U409_TOP|CLK80_OUT_derived_clock     80.0 MHz      10.0 MHz      12.500        99.571        2.904       derived (from CLK40_IN)     default_clkgroup
 =====================================================================================================================================================
 @N: MT582 |Estimated period and frequency not reported for given clock unless the clock has at least one timing path which is not a false or a max delay path and that does not have excessive slack
 
@@ -190,9 +192,9 @@ Clocks                                                              |    rise  t
 Starting                          Ending                            |  constraint  slack    |  constraint  slack  |  constraint  slack   |  constraint  slack
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
 CLK6                              CLK6                              |  166.667     159.030  |  No paths    -      |  No paths    -       |  No paths    -    
-CLK28_IN                          CLK28_IN                          |  34.916      27.196   |  No paths    -      |  No paths    -       |  No paths    -    
-CLK28_IN                          U409_TOP|CLK80_OUT_derived_clock  |  No paths    -        |  No paths    -      |  0.521       -3.679  |  No paths    -    
-U409_TOP|CLK80_OUT_derived_clock  U409_TOP|CLK80_OUT_derived_clock  |  No paths    -        |  12.500      2.911  |  No paths    -       |  No paths    -    
+CLK28_IN                          CLK28_IN                          |  34.916      27.140   |  No paths    -      |  No paths    -       |  No paths    -    
+CLK28_IN                          U409_TOP|CLK80_OUT_derived_clock  |  No paths    -        |  No paths    -      |  0.521       -3.630  |  No paths    -    
+U409_TOP|CLK80_OUT_derived_clock  U409_TOP|CLK80_OUT_derived_clock  |  No paths    -        |  12.500      2.904  |  No paths    -       |  No paths    -    
 =============================================================================================================================================================
  Note: 'No paths' indicates there are no paths in the design for that pair of clock edges.
        'Diff grp' indicates that paths exist but the starting clock and ending clock are in different clock groups.
@@ -308,15 +310,16 @@ Starting Points with Worst Slack
 Instance                      Reference     Type       Pin     Net                  Time        Slack 
                               Clock                                                                   
 ------------------------------------------------------------------------------------------------------
-U409_CIA.CIA_HOLD             CLK28_IN      SB_DFF     Q       CIA_HOLD             0.540       -3.679
 U409_CIA.VMA                  CLK28_IN      SB_DFF     Q       VMA                  0.540       -3.630
-U409_CIA.CLKCIA               CLK28_IN      SB_DFF     Q       CLKCIA_c             0.540       -2.692
-U409_CIA.CIA_CLK_COUNT[0]     CLK28_IN      SB_DFF     Q       CIA_CLK_COUNT[0]     0.540       27.196
-U409_CIA.CIA_CLK_COUNT[2]     CLK28_IN      SB_DFF     Q       CIA_CLK_COUNT[2]     0.540       27.217
-U409_CIA.CIA_CLK_COUNT[1]     CLK28_IN      SB_DFF     Q       CIA_CLK_COUNT[1]     0.540       27.245
-U409_CIA.CIA_CLK_COUNT[3]     CLK28_IN      SB_DFF     Q       CIA_CLK_COUNT[3]     0.540       27.266
-U409_CIA.CIA_CLK_COUNT[4]     CLK28_IN      SB_DFF     Q       CIA_CLK_COUNT[4]     0.540       27.266
-U409_CIA.CIA_CLK_COUNT[5]     CLK28_IN      SB_DFF     Q       CIA_CLK_COUNT[5]     0.540       27.287
+U409_CIA.CLK_CIA              CLK28_IN      SB_DFF     Q       CLK_CIA_c            0.540       -2.692
+U409_CIA.CIA_CLK_COUNT[3]     CLK28_IN      SB_DFF     Q       CIA_CLK_COUNT[3]     0.540       27.140
+U409_CIA.CIA_CLK_COUNT[2]     CLK28_IN      SB_DFF     Q       CIA_CLK_COUNT[2]     0.540       27.189
+U409_CIA.CIA_CLK_COUNT[6]     CLK28_IN      SB_DFF     Q       CIA_CLK_COUNT[6]     0.540       27.189
+U409_CIA.CIA_CLK_COUNT[7]     CLK28_IN      SB_DFF     Q       CIA_CLK_COUNT[7]     0.540       27.210
+U409_CIA.CIA_CLK_COUNT[4]     CLK28_IN      SB_DFF     Q       CIA_CLK_COUNT[4]     0.540       27.217
+U409_CIA.CIA_CLK_COUNT[5]     CLK28_IN      SB_DFF     Q       CIA_CLK_COUNT[5]     0.540       27.245
+U409_CIA.CIA_CLK_COUNT[1]     CLK28_IN      SB_DFF     Q       CIA_CLK_COUNT[1]     0.540       27.259
+U409_CIA.CIA_CLK_COUNT[0]     CLK28_IN      SB_DFF     Q       CIA_CLK_COUNT[0]     0.540       27.280
 ======================================================================================================
 
 
@@ -327,16 +330,16 @@ Ending Points with Worst Slack
 Instance                             Reference     Type          Pin     Net                      Time         Slack 
                                      Clock                                                                           
 ---------------------------------------------------------------------------------------------------------------------
-U409_TRANSFER_ACK.CIA_ENABLED[0]     CLK28_IN      SB_DFFNSR     D       CIA_ENABLEm_rep1         0.416        -3.679
-U409_TRANSFER_ACK.LASTCLK[0]         CLK28_IN      SB_DFFNSR     D       CLKCIA_c                 0.416        -2.692
-U409_CIA.CLKCIA                      CLK28_IN      SB_DFF        D       CLKCIA_0                 34.811       27.196
-U409_CIA.CIA_CLK_COUNT[5]            CLK28_IN      SB_DFF        D       CIA_CLK_COUNT_3[5]       34.811       28.730
-U409_CIA.VMA                         CLK28_IN      SB_DFF        D       VMA_0                    34.811       28.896
-U409_CIA.CIA_CLK_COUNT[3]            CLK28_IN      SB_DFF        D       CIA_CLK_COUNT_3[3]       34.811       28.995
+U409_TRANSFER_ACK.CIA_ENABLED[0]     CLK28_IN      SB_DFFNSR     D       CIA_ENABLE_rep1          0.416        -3.630
+U409_TRANSFER_ACK.LASTCLK[0]         CLK28_IN      SB_DFFNSR     D       CLK_CIA_c                0.416        -2.692
+U409_CIA.CIA_CLK_COUNT[3]            CLK28_IN      SB_DFF        D       CIA_CLK_COUNT_3[3]       34.811       27.140
+U409_CIA.CIA_CLK_COUNT[5]            CLK28_IN      SB_DFF        D       CIA_CLK_COUNT_3[5]       34.811       27.140
+U409_CIA.VMA                         CLK28_IN      SB_DFF        D       VMA_0                    34.811       27.210
+U409_CIA.CLK_CIA                     CLK28_IN      SB_DFF        D       CLK_CIA_0                34.811       27.224
+U409_CIA.CIA_CLK_COUNT[7]            CLK28_IN      SB_DFF        D       CIA_CLK_COUNT_RNO[7]     34.811       30.270
+U409_CIA.CIA_CLK_COUNT[6]            CLK28_IN      SB_DFF        D       CIA_CLK_COUNT_RNO[6]     34.811       30.410
 U409_CIA.CIA_CLK_COUNT[4]            CLK28_IN      SB_DFF        D       CIA_CLK_COUNT_RNO[4]     34.811       30.691
 U409_CIA.CIA_CLK_COUNT[0]            CLK28_IN      SB_DFF        D       CIA_CLK_COUNT_i[0]       34.811       30.716
-U409_CIA.CIA_HOLD                    CLK28_IN      SB_DFF        D       CIA_ENABLEm              34.811       30.716
-U409_CIA.CIA_CLK_COUNT[1]            CLK28_IN      SB_DFF        D       CIA_CLK_COUNT_RNO[1]     34.811       30.765
 =====================================================================================================================
 
 
@@ -351,39 +354,9 @@ Path information for path number 1:
     + Clock delay at ending point:           0.000 (ideal)
     = Required time:                         0.416
 
-    - Propagation time:                      4.095
-    - Clock delay at starting point:         0.000 (ideal)
-    = Slack (critical) :                     -3.679
-
-    Number of logic level(s):                1
-    Starting point:                          U409_CIA.CIA_HOLD / Q
-    Ending point:                            U409_TRANSFER_ACK.CIA_ENABLED[0] / D
-    The start point is clocked by            CLK28_IN [rising] on pin C
-    The end   point is clocked by            U409_TOP|CLK80_OUT_derived_clock [falling] on pin C
-
-Instance / Net                                     Pin      Pin               Arrival     No. of    
-Name                                 Type          Name     Dir     Delay     Time        Fan Out(s)
-----------------------------------------------------------------------------------------------------
-U409_CIA.CIA_HOLD                    SB_DFF        Q        Out     0.540     0.540       -         
-CIA_HOLD                             Net           -        -       1.599     -           2         
-U409_CIA.CIA_HOLD_RNIFVN95           SB_LUT4       I0       In      -         2.139       -         
-U409_CIA.CIA_HOLD_RNIFVN95           SB_LUT4       O        Out     0.449     2.588       -         
-CIA_ENABLEm_rep1                     Net           -        -       1.507     -           1         
-U409_TRANSFER_ACK.CIA_ENABLED[0]     SB_DFFNSR     D        In      -         4.095       -         
-====================================================================================================
-Total path delay (propagation time + setup) of 4.200 is 1.094(26.0%) logic and 3.106(74.0%) route.
-Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
-
-
-Path information for path number 2: 
-      Requested Period:                      0.521
-    - Setup time:                            0.105
-    + Clock delay at ending point:           0.000 (ideal)
-    = Required time:                         0.416
-
     - Propagation time:                      4.046
     - Clock delay at starting point:         0.000 (ideal)
-    = Slack (non-critical) :                 -3.630
+    = Slack (critical) :                     -3.630
 
     Number of logic level(s):                1
     Starting point:                          U409_CIA.VMA / Q
@@ -396,16 +369,16 @@ Name                                 Type          Name     Dir     Delay     Ti
 ----------------------------------------------------------------------------------------------------
 U409_CIA.VMA                         SB_DFF        Q        Out     0.540     0.540       -         
 VMA                                  Net           -        -       1.599     -           3         
-U409_CIA.CIA_HOLD_RNIFVN95           SB_LUT4       I1       In      -         2.139       -         
-U409_CIA.CIA_HOLD_RNIFVN95           SB_LUT4       O        Out     0.400     2.539       -         
-CIA_ENABLEm_rep1                     Net           -        -       1.507     -           1         
+U409_CIA.VMA_RNI692L                 SB_LUT4       I1       In      -         2.139       -         
+U409_CIA.VMA_RNI692L                 SB_LUT4       O        Out     0.400     2.539       -         
+CIA_ENABLE_rep1                      Net           -        -       1.507     -           1         
 U409_TRANSFER_ACK.CIA_ENABLED[0]     SB_DFFNSR     D        In      -         4.046       -         
 ====================================================================================================
 Total path delay (propagation time + setup) of 4.151 is 1.045(25.2%) logic and 3.106(74.8%) route.
 Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
 
 
-Path information for path number 3: 
+Path information for path number 2: 
       Requested Period:                      0.521
     - Setup time:                            0.105
     + Clock delay at ending point:           0.000 (ideal)
@@ -416,7 +389,7 @@ Path information for path number 3:
     = Slack (non-critical) :                 -2.692
 
     Number of logic level(s):                0
-    Starting point:                          U409_CIA.CLKCIA / Q
+    Starting point:                          U409_CIA.CLK_CIA / Q
     Ending point:                            U409_TRANSFER_ACK.LASTCLK[0] / D
     The start point is clocked by            CLK28_IN [rising] on pin C
     The end   point is clocked by            U409_TOP|CLK80_OUT_derived_clock [falling] on pin C
@@ -424,11 +397,47 @@ Path information for path number 3:
 Instance / Net                                 Pin      Pin               Arrival     No. of    
 Name                             Type          Name     Dir     Delay     Time        Fan Out(s)
 ------------------------------------------------------------------------------------------------
-U409_CIA.CLKCIA                  SB_DFF        Q        Out     0.540     0.540       -         
-CLKCIA_c                         Net           -        -       2.568     -           3         
+U409_CIA.CLK_CIA                 SB_DFF        Q        Out     0.540     0.540       -         
+CLK_CIA_c                        Net           -        -       2.568     -           4         
 U409_TRANSFER_ACK.LASTCLK[0]     SB_DFFNSR     D        In      -         3.108       -         
 ================================================================================================
 Total path delay (propagation time + setup) of 3.213 is 0.645(20.1%) logic and 2.568(79.9%) route.
+Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
+
+
+Path information for path number 3: 
+      Requested Period:                      34.916
+    - Setup time:                            0.105
+    + Clock delay at ending point:           0.000 (ideal)
+    = Required time:                         34.811
+
+    - Propagation time:                      7.671
+    - Clock delay at starting point:         0.000 (ideal)
+    = Slack (non-critical) :                 27.140
+
+    Number of logic level(s):                3
+    Starting point:                          U409_CIA.CIA_CLK_COUNT[3] / Q
+    Ending point:                            U409_CIA.CIA_CLK_COUNT[3] / D
+    The start point is clocked by            CLK28_IN [rising] on pin C
+    The end   point is clocked by            CLK28_IN [rising] on pin C
+
+Instance / Net                                     Pin      Pin               Arrival     No. of    
+Name                                   Type        Name     Dir     Delay     Time        Fan Out(s)
+----------------------------------------------------------------------------------------------------
+U409_CIA.CIA_CLK_COUNT[3]              SB_DFF      Q        Out     0.540     0.540       -         
+CIA_CLK_COUNT[3]                       Net         -        -       1.599     -           4         
+U409_CIA.CIA_CLK_COUNT_RNIMC921[7]     SB_LUT4     I0       In      -         2.139       -         
+U409_CIA.CIA_CLK_COUNT_RNIMC921[7]     SB_LUT4     O        Out     0.449     2.588       -         
+N_91                                   Net         -        -       1.371     -           3         
+U409_CIA.CIA_CLK_COUNT_RNICTDR2[0]     SB_LUT4     I0       In      -         3.959       -         
+U409_CIA.CIA_CLK_COUNT_RNICTDR2[0]     SB_LUT4     O        Out     0.449     4.408       -         
+CIA_CLK_COUNT11                        Net         -        -       1.371     -           2         
+U409_CIA.CIA_CLK_COUNT_RNO[3]          SB_LUT4     I0       In      -         5.779       -         
+U409_CIA.CIA_CLK_COUNT_RNO[3]          SB_LUT4     O        Out     0.386     6.164       -         
+CIA_CLK_COUNT_3[3]                     Net         -        -       1.507     -           1         
+U409_CIA.CIA_CLK_COUNT[3]              SB_DFF      D        In      -         7.671       -         
+====================================================================================================
+Total path delay (propagation time + setup) of 7.777 is 1.929(24.8%) logic and 5.848(75.2%) route.
 Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
 
 
@@ -438,33 +447,33 @@ Path information for path number 4:
     + Clock delay at ending point:           0.000 (ideal)
     = Required time:                         34.811
 
-    - Propagation time:                      7.615
+    - Propagation time:                      7.671
     - Clock delay at starting point:         0.000 (ideal)
-    = Slack (non-critical) :                 27.196
+    = Slack (non-critical) :                 27.140
 
     Number of logic level(s):                3
-    Starting point:                          U409_CIA.CIA_CLK_COUNT[0] / Q
-    Ending point:                            U409_CIA.CLKCIA / D
+    Starting point:                          U409_CIA.CIA_CLK_COUNT[3] / Q
+    Ending point:                            U409_CIA.CIA_CLK_COUNT[5] / D
     The start point is clocked by            CLK28_IN [rising] on pin C
     The end   point is clocked by            CLK28_IN [rising] on pin C
 
-Instance / Net                            Pin      Pin               Arrival     No. of    
-Name                          Type        Name     Dir     Delay     Time        Fan Out(s)
--------------------------------------------------------------------------------------------
-U409_CIA.CIA_CLK_COUNT[0]     SB_DFF      Q        Out     0.540     0.540       -         
-CIA_CLK_COUNT[0]              Net         -        -       1.599     -           8         
-U409_CIA.CLKCIA_RNO_2         SB_LUT4     I0       In      -         2.139       -         
-U409_CIA.CLKCIA_RNO_2         SB_LUT4     O        Out     0.449     2.588       -         
-N_20                          Net         -        -       1.371     -           1         
-U409_CIA.CLKCIA_RNO_0         SB_LUT4     I1       In      -         3.959       -         
-U409_CIA.CLKCIA_RNO_0         SB_LUT4     O        Out     0.400     4.359       -         
-CLKCIA                        Net         -        -       1.371     -           1         
-U409_CIA.CLKCIA_RNO           SB_LUT4     I2       In      -         5.729       -         
-U409_CIA.CLKCIA_RNO           SB_LUT4     O        Out     0.379     6.108       -         
-CLKCIA_0                      Net         -        -       1.507     -           1         
-U409_CIA.CLKCIA               SB_DFF      D        In      -         7.615       -         
-===========================================================================================
-Total path delay (propagation time + setup) of 7.720 is 1.872(24.3%) logic and 5.848(75.7%) route.
+Instance / Net                                     Pin      Pin               Arrival     No. of    
+Name                                   Type        Name     Dir     Delay     Time        Fan Out(s)
+----------------------------------------------------------------------------------------------------
+U409_CIA.CIA_CLK_COUNT[3]              SB_DFF      Q        Out     0.540     0.540       -         
+CIA_CLK_COUNT[3]                       Net         -        -       1.599     -           4         
+U409_CIA.CIA_CLK_COUNT_RNIMC921[7]     SB_LUT4     I0       In      -         2.139       -         
+U409_CIA.CIA_CLK_COUNT_RNIMC921[7]     SB_LUT4     O        Out     0.449     2.588       -         
+N_91                                   Net         -        -       1.371     -           3         
+U409_CIA.CIA_CLK_COUNT_RNICTDR2[0]     SB_LUT4     I0       In      -         3.959       -         
+U409_CIA.CIA_CLK_COUNT_RNICTDR2[0]     SB_LUT4     O        Out     0.449     4.408       -         
+CIA_CLK_COUNT11                        Net         -        -       1.371     -           2         
+U409_CIA.CIA_CLK_COUNT_RNO[5]          SB_LUT4     I0       In      -         5.779       -         
+U409_CIA.CIA_CLK_COUNT_RNO[5]          SB_LUT4     O        Out     0.386     6.164       -         
+CIA_CLK_COUNT_3[5]                     Net         -        -       1.507     -           1         
+U409_CIA.CIA_CLK_COUNT[5]              SB_DFF      D        In      -         7.671       -         
+====================================================================================================
+Total path delay (propagation time + setup) of 7.777 is 1.929(24.8%) logic and 5.848(75.2%) route.
 Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
 
 
@@ -474,13 +483,13 @@ Path information for path number 5:
     + Clock delay at ending point:           0.000 (ideal)
     = Required time:                         34.811
 
-    - Propagation time:                      7.594
+    - Propagation time:                      7.622
     - Clock delay at starting point:         0.000 (ideal)
-    = Slack (non-critical) :                 27.217
+    = Slack (non-critical) :                 27.189
 
     Number of logic level(s):                3
     Starting point:                          U409_CIA.CIA_CLK_COUNT[2] / Q
-    Ending point:                            U409_CIA.CLKCIA / D
+    Ending point:                            U409_CIA.CIA_CLK_COUNT[3] / D
     The start point is clocked by            CLK28_IN [rising] on pin C
     The end   point is clocked by            CLK28_IN [rising] on pin C
 
@@ -488,19 +497,19 @@ Instance / Net                                     Pin      Pin               Ar
 Name                                   Type        Name     Dir     Delay     Time        Fan Out(s)
 ----------------------------------------------------------------------------------------------------
 U409_CIA.CIA_CLK_COUNT[2]              SB_DFF      Q        Out     0.540     0.540       -         
-CIA_CLK_COUNT[2]                       Net         -        -       1.599     -           5         
-U409_CIA.CIA_CLK_COUNT_RNIH7921[5]     SB_LUT4     I0       In      -         2.139       -         
-U409_CIA.CIA_CLK_COUNT_RNIH7921[5]     SB_LUT4     O        Out     0.449     2.588       -         
-CLKCIA8_0_a2_0                         Net         -        -       1.371     -           2         
-U409_CIA.CLKCIA_RNO_0                  SB_LUT4     I2       In      -         3.959       -         
-U409_CIA.CLKCIA_RNO_0                  SB_LUT4     O        Out     0.379     4.338       -         
-CLKCIA                                 Net         -        -       1.371     -           1         
-U409_CIA.CLKCIA_RNO                    SB_LUT4     I2       In      -         5.708       -         
-U409_CIA.CLKCIA_RNO                    SB_LUT4     O        Out     0.379     6.087       -         
-CLKCIA_0                               Net         -        -       1.507     -           1         
-U409_CIA.CLKCIA                        SB_DFF      D        In      -         7.594       -         
+CIA_CLK_COUNT[2]                       Net         -        -       1.599     -           4         
+U409_CIA.CIA_CLK_COUNT_RNIH7921[2]     SB_LUT4     I0       In      -         2.139       -         
+U409_CIA.CIA_CLK_COUNT_RNIH7921[2]     SB_LUT4     O        Out     0.449     2.588       -         
+CIA_CLK_COUNT11_0_a2_2                 Net         -        -       1.371     -           1         
+U409_CIA.CIA_CLK_COUNT_RNICTDR2[0]     SB_LUT4     I1       In      -         3.959       -         
+U409_CIA.CIA_CLK_COUNT_RNICTDR2[0]     SB_LUT4     O        Out     0.400     4.359       -         
+CIA_CLK_COUNT11                        Net         -        -       1.371     -           2         
+U409_CIA.CIA_CLK_COUNT_RNO[3]          SB_LUT4     I0       In      -         5.729       -         
+U409_CIA.CIA_CLK_COUNT_RNO[3]          SB_LUT4     O        Out     0.386     6.115       -         
+CIA_CLK_COUNT_3[3]                     Net         -        -       1.507     -           1         
+U409_CIA.CIA_CLK_COUNT[3]              SB_DFF      D        In      -         7.622       -         
 ====================================================================================================
-Total path delay (propagation time + setup) of 7.699 is 1.851(24.0%) logic and 5.848(76.0%) route.
+Total path delay (propagation time + setup) of 7.727 is 1.879(24.3%) logic and 5.848(75.7%) route.
 Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
 
 
@@ -519,16 +528,16 @@ Starting Points with Worst Slack
 Instance                                      Reference                            Type          Pin     Net                         Time        Slack
                                               Clock                                                                                                   
 ------------------------------------------------------------------------------------------------------------------------------------------------------
-U409_TRANSFER_ACK.DELAYED_TACK_COUNTER[0]     U409_TOP|CLK80_OUT_derived_clock     SB_DFFNR      Q       DELAYED_TACK_COUNTER[0]     0.540       2.911
-U409_TRANSFER_ACK.DELAYED_TACK_COUNTER[1]     U409_TOP|CLK80_OUT_derived_clock     SB_DFFNR      Q       DELAYED_TACK_COUNTER[1]     0.540       2.960
-U409_TRANSFER_ACK.DELAYED_TACK_COUNTER[3]     U409_TOP|CLK80_OUT_derived_clock     SB_DFFNR      Q       DELAYED_TACK_COUNTER[3]     0.540       2.960
-U409_TRANSFER_ACK.DELAYED_TACK_COUNTER[5]     U409_TOP|CLK80_OUT_derived_clock     SB_DFFNR      Q       DELAYED_TACK_COUNTER[5]     0.540       2.960
-U409_TRANSFER_ACK.DELAYED_TACK_COUNTER[4]     U409_TOP|CLK80_OUT_derived_clock     SB_DFFNR      Q       DELAYED_TACK_COUNTER[4]     0.540       2.981
-U409_TRANSFER_ACK.DELAYED_TACK_COUNTER[2]     U409_TOP|CLK80_OUT_derived_clock     SB_DFFNR      Q       DELAYED_TACK_COUNTER[2]     0.540       3.009
-U409_TRANSFER_ACK.DELAYED_TACK_COUNTER[6]     U409_TOP|CLK80_OUT_derived_clock     SB_DFFNR      Q       DELAYED_TACK_COUNTER[6]     0.540       3.009
-U409_TRANSFER_ACK.DELAYED_TACK_COUNTER[7]     U409_TOP|CLK80_OUT_derived_clock     SB_DFFNR      Q       DELAYED_TACK_COUNTER[7]     0.540       3.044
-U409_TRANSFER_ACK.CIA_TACK_EN                 U409_TOP|CLK80_OUT_derived_clock     SB_DFFNSR     Q       CIA_TACK_EN                 0.540       4.857
-U409_TRANSFER_ACK.LASTCLK[0]                  U409_TOP|CLK80_OUT_derived_clock     SB_DFFNSR     Q       LASTCLK[0]                  0.540       4.857
+U409_TRANSFER_ACK.DELAYED_TACK_COUNTER[1]     U409_TOP|CLK80_OUT_derived_clock     SB_DFFNR      Q       DELAYED_TACK_COUNTER[1]     0.540       2.904
+U409_TRANSFER_ACK.DELAYED_TACK_COUNTER[2]     U409_TOP|CLK80_OUT_derived_clock     SB_DFFNR      Q       DELAYED_TACK_COUNTER[2]     0.540       2.953
+U409_TRANSFER_ACK.DELAYED_TACK_COUNTER[3]     U409_TOP|CLK80_OUT_derived_clock     SB_DFFNR      Q       DELAYED_TACK_COUNTER[3]     0.540       3.002
+U409_TRANSFER_ACK.DELAYED_TACK_COUNTER[4]     U409_TOP|CLK80_OUT_derived_clock     SB_DFFNR      Q       DELAYED_TACK_COUNTER[4]     0.540       3.051
+U409_TRANSFER_ACK.DELAYED_TACK_COUNTER[5]     U409_TOP|CLK80_OUT_derived_clock     SB_DFFNR      Q       DELAYED_TACK_COUNTER[5]     0.540       3.072
+U409_TRANSFER_ACK.DELAYED_TACK_COUNTER[7]     U409_TOP|CLK80_OUT_derived_clock     SB_DFFNR      Q       DELAYED_TACK_COUNTER[7]     0.540       3.135
+U409_TRANSFER_ACK.CIA_STATE[0]                U409_TOP|CLK80_OUT_derived_clock     SB_DFFN       Q       CIA_STATE[0]                0.540       4.710
+U409_TRANSFER_ACK.CIA_ENABLED[0]              U409_TOP|CLK80_OUT_derived_clock     SB_DFFNSR     Q       CIA_ENABLED[0]              0.540       4.731
+U409_TRANSFER_ACK.CIA_STATE[1]                U409_TOP|CLK80_OUT_derived_clock     SB_DFFN       Q       CIA_STATE[1]                0.540       4.759
+U409_TRANSFER_ACK.CIA_ENABLED[1]              U409_TOP|CLK80_OUT_derived_clock     SB_DFFNSR     Q       CIA_ENABLED[1]              0.540       4.780
 ======================================================================================================================================================
 
 
@@ -539,16 +548,16 @@ Ending Points with Worst Slack
 Instance                                      Reference                            Type          Pin     Net                             Time         Slack
                                               Clock                                                                                                        
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
-U409_TRANSFER_ACK.DELAYED_TACK_EN             U409_TOP|CLK80_OUT_derived_clock     SB_DFFNR      D       DELAYED_TACK_EN_0               12.395       4.710
-U409_TRANSFER_ACK.TACK_OUTn                   U409_TOP|CLK80_OUT_derived_clock     SB_DFFN       D       TACK_OUTn_0                     12.395       4.857
-U409_TRANSFER_ACK.CIA_STATE[1]                U409_TOP|CLK80_OUT_derived_clock     SB_DFFN       D       CIA_STATE_nss[1]                12.395       4.955
-U409_TRANSFER_ACK.TACK_EN_i                   U409_TOP|CLK80_OUT_derived_clock     SB_DFFNE      D       TACK_COUNTER_nss_i[0]           12.395       6.480
-U409_TRANSFER_ACK.ROMENn                      U409_TOP|CLK80_OUT_derived_clock     SB_DFFNSS     D       ROMENn                          12.395       6.578
-U409_TRANSFER_ACK.TACK_COUNTER[0]             U409_TOP|CLK80_OUT_derived_clock     SB_DFFN       D       TACK_COUNTER_nss[0]             12.395       6.641
-U409_TRANSFER_ACK.CIA_TACK_EN                 U409_TOP|CLK80_OUT_derived_clock     SB_DFFNSR     D       CIA_TACK_EN_0                   12.395       6.662
+U409_TRANSFER_ACK.DELAYED_TACK_EN             U409_TOP|CLK80_OUT_derived_clock     SB_DFFNR      D       DELAYED_TACK_EN_0               12.395       2.911
+U409_TRANSFER_ACK.TACK_OUTn                   U409_TOP|CLK80_OUT_derived_clock     SB_DFFN       D       TACK_OUTn_0                     12.395       4.801
+U409_TRANSFER_ACK.CIA_STATE[1]                U409_TOP|CLK80_OUT_derived_clock     SB_DFFN       D       CIA_STATE_nss[1]                12.395       6.480
+U409_TRANSFER_ACK.TACK_EN_i                   U409_TOP|CLK80_OUT_derived_clock     SB_DFFNE      D       TACK_OUTn_0_sqmuxa_0_i          12.395       6.529
+U409_TRANSFER_ACK.TACK_COUNTER[0]             U409_TOP|CLK80_OUT_derived_clock     SB_DFFN       D       TACK_COUNTER_nss[0]             12.395       6.550
+U409_TRANSFER_ACK.ROM_TACK_EN                 U409_TOP|CLK80_OUT_derived_clock     SB_DFFNSR     D       ROM_TACK_EN_0                   12.395       6.613
+U409_TRANSFER_ACK.TACK_EN_i                   U409_TOP|CLK80_OUT_derived_clock     SB_DFFNE      E       TACK_OUTn_0_sqmuxa_0_en         12.500       6.656
 U409_TRANSFER_ACK.DELAYED_TACK_COUNTER[2]     U409_TOP|CLK80_OUT_derived_clock     SB_DFFNR      D       DELAYED_TACK_COUNTER_RNO[2]     12.395       8.300
-U409_TRANSFER_ACK.ROM_TACK_COUNTER[1]         U409_TOP|CLK80_OUT_derived_clock     SB_DFFNSR     D       ROM_TACK_COUNTER_RNO[1]         12.395       8.300
-U409_TRANSFER_ACK.ROM_TACK_COUNTER[2]         U409_TOP|CLK80_OUT_derived_clock     SB_DFFNSR     D       ROM_TACK_COUNTER_6[2]           12.395       8.300
+U409_TRANSFER_ACK.ROM_TACK_COUNTER[1]         U409_TOP|CLK80_OUT_derived_clock     SB_DFFNSR     D       ROM_TACK_COUNTER_6[1]           12.395       8.300
+U409_TRANSFER_ACK.ROM_TACK_COUNTER[2]         U409_TOP|CLK80_OUT_derived_clock     SB_DFFNSR     D       N_21_i_i                        12.395       8.300
 ===========================================================================================================================================================
 
 
@@ -563,36 +572,36 @@ Path information for path number 1:
     + Clock delay at ending point:           0.000 (ideal)
     = Required time:                         12.395
 
-    - Propagation time:                      9.484
+    - Propagation time:                      9.491
     - Clock delay at starting point:         0.000 (ideal)
-    = Slack (non-critical) :                 2.911
+    = Slack (non-critical) :                 2.904
 
     Number of logic level(s):                4
-    Starting point:                          U409_TRANSFER_ACK.DELAYED_TACK_COUNTER[0] / Q
-    Ending point:                            U409_TRANSFER_ACK.DELAYED_TACK_COUNTER[3] / D
+    Starting point:                          U409_TRANSFER_ACK.DELAYED_TACK_COUNTER[1] / Q
+    Ending point:                            U409_TRANSFER_ACK.DELAYED_TACK_COUNTER[0] / D
     The start point is clocked by            U409_TOP|CLK80_OUT_derived_clock [falling] on pin C
     The end   point is clocked by            U409_TOP|CLK80_OUT_derived_clock [falling] on pin C
 
 Instance / Net                                                      Pin      Pin               Arrival     No. of    
 Name                                                   Type         Name     Dir     Delay     Time        Fan Out(s)
 ---------------------------------------------------------------------------------------------------------------------
-U409_TRANSFER_ACK.DELAYED_TACK_COUNTER[0]              SB_DFFNR     Q        Out     0.540     0.540       -         
-DELAYED_TACK_COUNTER[0]                                Net          -        -       1.599     -           6         
-U409_TRANSFER_ACK.DELAYED_TACK_COUNTER_RNIQ4KM1[7]     SB_LUT4      I0       In      -         2.139       -         
-U409_TRANSFER_ACK.DELAYED_TACK_COUNTER_RNIQ4KM1[7]     SB_LUT4      O        Out     0.449     2.588       -         
-DELAYED_TACK_COUNTER22_2                               Net          -        -       1.371     -           1         
-U409_TRANSFER_ACK.DELAYED_TACK_COUNTER_RNIK98D3[2]     SB_LUT4      I0       In      -         3.959       -         
-U409_TRANSFER_ACK.DELAYED_TACK_COUNTER_RNIK98D3[2]     SB_LUT4      O        Out     0.449     4.408       -         
-DELAYED_TACK_COUNTER22                                 Net          -        -       1.371     -           2         
-U409_TRANSFER_ACK.DELAYED_TACK_COUNTER_RNIRGA77[2]     SB_LUT4      I0       In      -         5.779       -         
-U409_TRANSFER_ACK.DELAYED_TACK_COUNTER_RNIRGA77[2]     SB_LUT4      O        Out     0.449     6.227       -         
-un1_DELAYED_TACK_COUNTER23_0                           Net          -        -       1.371     -           6         
-U409_TRANSFER_ACK.DELAYED_TACK_COUNTER_RNO[3]          SB_LUT4      I1       In      -         7.598       -         
-U409_TRANSFER_ACK.DELAYED_TACK_COUNTER_RNO[3]          SB_LUT4      O        Out     0.379     7.977       -         
-DELAYED_TACK_COUNTER_5[3]                              Net          -        -       1.507     -           1         
-U409_TRANSFER_ACK.DELAYED_TACK_COUNTER[3]              SB_DFFNR     D        In      -         9.484       -         
+U409_TRANSFER_ACK.DELAYED_TACK_COUNTER[1]              SB_DFFNR     Q        Out     0.540     0.540       -         
+DELAYED_TACK_COUNTER[1]                                Net          -        -       1.599     -           5         
+U409_TRANSFER_ACK.DELAYED_TACK_COUNTER_RNI9U9R[2]      SB_LUT4      I0       In      -         2.139       -         
+U409_TRANSFER_ACK.DELAYED_TACK_COUNTER_RNI9U9R[2]      SB_LUT4      O        Out     0.449     2.588       -         
+DELAYED_TACK_COUNTER21_4                               Net          -        -       1.371     -           2         
+U409_TRANSFER_ACK.DELAYED_TACK_COUNTER_RNIG5942[7]     SB_LUT4      I0       In      -         3.959       -         
+U409_TRANSFER_ACK.DELAYED_TACK_COUNTER_RNIG5942[7]     SB_LUT4      O        Out     0.449     4.408       -         
+N_54_4                                                 Net          -        -       1.371     -           3         
+U409_TRANSFER_ACK.DELAYED_TACK_COUNTER_RNIK98D3[5]     SB_LUT4      I0       In      -         5.779       -         
+U409_TRANSFER_ACK.DELAYED_TACK_COUNTER_RNIK98D3[5]     SB_LUT4      O        Out     0.449     6.227       -         
+DELAYED_TACK_COUNTER_RNIK98D3[5]                       Net          -        -       1.371     -           2         
+U409_TRANSFER_ACK.DELAYED_TACK_COUNTER_RNO[0]          SB_LUT4      I0       In      -         7.598       -         
+U409_TRANSFER_ACK.DELAYED_TACK_COUNTER_RNO[0]          SB_LUT4      O        Out     0.386     7.984       -         
+DELAYED_TACK_COUNTER_5[0]                              Net          -        -       1.507     -           1         
+U409_TRANSFER_ACK.DELAYED_TACK_COUNTER[0]              SB_DFFNR     D        In      -         9.491       -         
 =====================================================================================================================
-Total path delay (propagation time + setup) of 9.589 is 2.370(24.7%) logic and 7.219(75.3%) route.
+Total path delay (propagation time + setup) of 9.596 is 2.377(24.8%) logic and 7.219(75.2%) route.
 Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
 
 
@@ -602,10 +611,10 @@ Path delay compensated for clock skew. Clock skew is added to clock-to-out value
 Timing exceptions that could not be applied
 None
 
-Finished final timing analysis (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 134MB peak: 136MB)
+Finished final timing analysis (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 136MB peak: 138MB)
 
 
-Finished timing report (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 134MB peak: 136MB)
+Finished timing report (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 136MB peak: 138MB)
 
 ---------------------------------------
 Resource Usage Report for U409_TOP 
@@ -613,41 +622,41 @@ Resource Usage Report for U409_TOP
 Mapping to part: ice40hx4ktq144
 Cell usage:
 GND             4 uses
-SB_CARRY        34 uses
-SB_DFF          45 uses
+SB_CARRY        36 uses
+SB_DFF          46 uses
 SB_DFFN         6 uses
 SB_DFFNE        1 use
 SB_DFFNR        9 uses
-SB_DFFNSR       10 uses
+SB_DFFNSR       11 uses
 SB_DFFNSS       1 use
 SB_PLL40_CORE   1 use
 VCC             4 uses
-SB_LUT4         151 uses
+SB_LUT4         166 uses
 
-I/O ports: 50
-I/O primitives: 37
+I/O ports: 52
+I/O primitives: 39
 SB_GB_IO       2 uses
-SB_IO          35 uses
+SB_IO          37 uses
 
 I/O Register bits:                  0
-Register bits not including I/Os:   72 (2%)
+Register bits not including I/Os:   74 (2%)
 Total load per clock:
    CLK40_IN: 1
    CLK6: 1
    CLK28_IN: 1
-   U409_TOP|CLK80_OUT_derived_clock: 27
+   U409_TOP|CLK80_OUT_derived_clock: 28
 
 @S |Mapping Summary:
-Total  LUTs: 151 (4%)
+Total  LUTs: 166 (4%)
 
 Distribution of All Consumed LUTs = LUT4 
-Distribution of All Consumed Luts 151 = 151 
+Distribution of All Consumed Luts 166 = 166 
 
 Mapper successful!
 
-At Mapper Exit (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 27MB peak: 136MB)
+At Mapper Exit (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 27MB peak: 138MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
-# Sun Feb 09 17:04:26 2025
+# Thu Mar 20 20:30:57 2025
 
 ###########################################################]

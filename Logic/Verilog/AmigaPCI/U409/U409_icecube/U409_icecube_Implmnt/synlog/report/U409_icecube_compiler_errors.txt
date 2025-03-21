@@ -1,4 +1,2 @@
-@E: CG426 :"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v":93:8:93:13|Assignment target ROMENn must be of type reg or genvar
-@E: CG426 :"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v":100:16:100:21|Assignment target ROMENn must be of type reg or genvar
-@E: CG426 :"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v":111:12:111:17|Assignment target ROMENn must be of type reg or genvar
+@E: CS168 :"D:\AmigaPCI\U409\U409_TOP.v":105:12:105:12|Port ROMENn does not exist
 

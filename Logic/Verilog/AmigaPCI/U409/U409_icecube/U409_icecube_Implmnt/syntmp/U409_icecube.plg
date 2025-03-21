@@ -1,4 +1,4 @@
-@P:  Worst Slack : -3.679
+@P:  Worst Slack : -3.630
 @P:  CLK6 - Estimated Frequency : 131.0 MHz
 @P:  CLK6 - Requested Frequency : 6.0 MHz
 @P:  CLK6 - Estimated Period : 7.636
@@ -6,22 +6,22 @@
 @P:  CLK6 - Slack : 159.030
 @P:  CLK28_IN - Estimated Frequency : 3.6 MHz
 @P:  CLK28_IN - Requested Frequency : 28.6 MHz
-@P:  CLK28_IN - Estimated Period : 281.420
+@P:  CLK28_IN - Estimated Period : 278.130
 @P:  CLK28_IN - Requested Period : 34.916
-@P:  CLK28_IN - Slack : -3.679
+@P:  CLK28_IN - Slack : -3.630
 @P:  CLK40_IN - Estimated Frequency : NA
 @P:  CLK40_IN - Requested Frequency : 40.0 MHz
 @P:  CLK40_IN - Estimated Period : NA
 @P:  CLK40_IN - Requested Period : 25.000
 @P:  CLK40_IN - Slack : NA
-@P:  U409_TOP|CLK80_OUT_derived_clock - Estimated Frequency : 9.9 MHz
+@P:  U409_TOP|CLK80_OUT_derived_clock - Estimated Frequency : 10.0 MHz
 @P:  U409_TOP|CLK80_OUT_derived_clock - Requested Frequency : 80.0 MHz
-@P:  U409_TOP|CLK80_OUT_derived_clock - Estimated Period : 100.748
+@P:  U409_TOP|CLK80_OUT_derived_clock - Estimated Period : 99.571
 @P:  U409_TOP|CLK80_OUT_derived_clock - Requested Period : 12.500
-@P:  U409_TOP|CLK80_OUT_derived_clock - Slack : 2.911
+@P:  U409_TOP|CLK80_OUT_derived_clock - Slack : 2.904
 @P: U409_TOP Part : ice40hx4ktq144
-@P: U409_TOP I/O primitives : 37
+@P: U409_TOP I/O primitives : 39
 @P: U409_TOP I/O Register bits : 0
-@P: U409_TOP Register bits (Non I/O) : 72 (2%)
-@P: U409_TOP Total Luts : 151 (4%)
+@P: U409_TOP Register bits (Non I/O) : 74 (2%)
+@P: U409_TOP Total Luts : 166 (4%)
 @P:  CPU Time : 0h:00m:00s
