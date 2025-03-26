@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:31:51
 
-* File Generated:     Mar 25 2025 18:06:51
+* File Generated:     Mar 25 2025 20:16:58
 
 * Purpose:            General info of design implementation
 
@@ -27,8 +27,8 @@ Device Info:
 
 Design statistics:
 ------------------
-    FFs:                  104
-    LUTs:                 239
+    FFs:                  106
+    LUTs:                 240
     RAMs:                 0
     IOBs:                 89
     GBs:                  5
@@ -38,11 +38,11 @@ Design statistics:
 Logic Resource Utilization:
 ---------------------------
     Total Logic Cells: 240/3520
-        Combinational Logic Cells: 136      out of   3520      3.86364%
-        Sequential Logic Cells:    104      out of   3520      2.95455%
-        Logic Tiles:               70       out of   440       15.9091%
+        Combinational Logic Cells: 134      out of   3520      3.80682%
+        Sequential Logic Cells:    106      out of   3520      3.01136%
+        Logic Tiles:               73       out of   440       16.5909%
     Registers: 
-        Logic Registers:           104      out of   3520      2.95455%
+        Logic Registers:           106      out of   3520      3.01136%
         IO Registers:              0        out of   880       0
     Block RAMs:                    0        out of   20        0%
     Warm Boots:                    0        out of   1         0%
@@ -164,8 +164,8 @@ Detailed Global Buffer Info:
     Buffer Number  IO Bank  Driven By  Fanout  Signal Name   
     -------------  -------  ---------  ------  -----------   
     2              1                   10      CLK40_PLL_g   
-    4              0                   87      RESETn_c_i_g  
-    1              0                   13      C1_c_g        
+    4              0                   90      RESETn_c_i_g  
+    1              0                   16      C1_c_g        
     3              3                   19      DBRn_c_i_0_g  
     7              1                   10      C3_c_g        
 
@@ -173,13 +173,13 @@ Detailed Global Buffer Info:
 Router Summary:
 ---------------
     Status:  Successful
-    Runtime: 11 seconds
+    Runtime: 12 seconds
 
 Routing Resource Utilization:
 -----------------------------
-              Local line of tile     1920 out of 146184      1.31341%
-                          Span 4      472 out of  29696      1.58944%
-                         Span 12      247 out of   5632      4.38565%
+              Local line of tile     1983 out of 146184      1.35651%
+                          Span 4      483 out of  29696      1.62648%
+                         Span 12      240 out of   5632      4.26136%
                   Global network        6 out of      8      75%
-      Vertical Inter-LUT Connect       45 out of   6720      0.669643%
+      Vertical Inter-LUT Connect       46 out of   6720      0.684524%
 

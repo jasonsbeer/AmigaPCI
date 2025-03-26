@@ -27,7 +27,8 @@ Description: CHIPSET REGISTER CYCLE STATE MACHINE
 Revision History:
     21-JAN-2025 : HW REV 5.0 INITIAL RELEASE JN
     25-JAN-2025 : Improved stability of register cycle state machine. JN
-    16-MAR-2025 : Added latching to write cycles.
+    16-MAR-2025 : Added latching to write cycles. JN
+    25-MAR-2025 : Modified register state machine to hold signals into state 7. JN
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 */
@@ -129,7 +130,7 @@ always @(posedge CLK40) begin
                 STATE_COUNTER <= 4'h4;
             end
             4'h4 : begin
-                REG_CPU_CYCLE <= !REG_WRITE_CYCLE;
+                REG_CPU_CYCLE <= !REG_WRITE_CYCLE; //LET GO OF VB BUFFER after latching data in write cycle.
                 STATE_COUNTER <= 4'h5;
             end
             4'h5 : begin
@@ -139,19 +140,26 @@ always @(posedge CLK40) begin
                 REG_TACK <= !REG_WRITE_CYCLE; //TACK read cycles here, right before or at State 6.
                 STATE_COUNTER <= 4'h7;
             end
-            4'h7 : begin //6
-                //Wait for State 7.
+            7'h7 : begin
                 REG_TACK <= 0;
+                STATE_COUNTER <= 4'h8;
+            end
+            4'h8 : begin
+                //Wait for State 7.
+                REG_CYCLE <= REG_WRITE_CYCLE; //Let go of DRD buffers for read cycles.
                 if (!C1_SYNC[1] && !C3_SYNC[1]) begin
-                    REGENn <= 1;
-                    ASn <= 1;
-                    UDSn <= 1;
-                    LDSn <= 1;
-                    LATCH_REG <= 0;
-                    REG_CPU_CYCLE <= 0;                
-                    REG_CYCLE <= 0;
-                    STATE_COUNTER <= 4'h0;
+                    REG_CPU_CYCLE <= 0;
+                    REG_CYCLE <= 0;  //Let go of DRD buffers for write cycles.
+                    STATE_COUNTER <= 4'h9;
                 end
+            end
+            4'h9 : begin
+                REGENn <= 1;
+                ASn <= 1;
+                UDSn <= 1;
+                LDSn <= 1;
+                LATCH_REG <= 0;
+                STATE_COUNTER <= 4'h0;
             end
         endcase
     end

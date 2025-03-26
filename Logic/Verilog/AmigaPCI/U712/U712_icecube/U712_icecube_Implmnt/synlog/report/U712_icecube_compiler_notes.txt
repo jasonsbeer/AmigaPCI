@@ -5,7 +5,7 @@
 @N: CG364 :"D:\AmigaPCI\U712\U712_BUFFERS.v":35:7:35:18|Synthesizing module U712_BUFFERS in library work.
 @N: CG364 :"D:\AmigaPCI\U712\U712_CYCLE_TERM.v":33:7:33:21|Synthesizing module U712_CYCLE_TERM in library work.
 @N: CG364 :"D:\AmigaPCI\U712\U712_CHIP_RAM.v":34:7:34:19|Synthesizing module U712_CHIP_RAM in library work.
-@N: CG364 :"D:\AmigaPCI\U712\U712_BYTE_ENABLE.v":33:7:33:22|Synthesizing module U712_BYTE_ENABLE in library work.
+@N: CG364 :"D:\AmigaPCI\U712\U712_BYTE_ENABLE.v":34:7:34:22|Synthesizing module U712_BYTE_ENABLE in library work.
 @N: CG364 :"D:\AmigaPCI\U712\U712_TOP.v":35:7:35:14|Synthesizing module U712_TOP in library work.
 @N: CL201 :"D:\AmigaPCI\U712\U712_CYCLE_TERM.v":53:0:53:5|Trying to extract state machine for register TACK_STATE.
 @N: CL159 :"D:\AmigaPCI\U712\U712_BUFFERS.v":37:10:37:12|Input RnW is unused.
