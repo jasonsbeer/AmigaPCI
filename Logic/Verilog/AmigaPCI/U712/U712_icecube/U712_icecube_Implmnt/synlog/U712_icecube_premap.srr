@@ -1,4 +1,4 @@
-# Tue Mar 25 20:16:33 2025
+# Fri Mar 28 22:03:42 2025
 
 Synopsys Lattice Technology Pre-mapping, Version maplat, Build 1612R, Built Dec  5 2016 10:31:39
 Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
@@ -23,6 +23,8 @@ Start loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00
 
 Finished loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 101MB peak: 104MB)
 
+@W: BN132 :"d:\amigapci\u712\u712_reg_sm.v":61:0:61:5|Removing sequential instance U712_REG_SM.REGENn because it is equivalent to instance U712_REG_SM.ASn. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@N: MO111 :"d:\amigapci\u712\u712_top.v":52:11:52:16|Tristate driver RAMENn (in view: work.U712_TOP(verilog)) on net RAMENn (in view: work.U712_TOP(verilog)) has its enable tied to GND.
 
 ICG Latch Removal Summary:
 Number of ICG latches removed:	0
@@ -39,30 +41,26 @@ Clock Summary
 Start                                Requested     Requested     Clock                       Clock                Clock
 Clock                                Frequency     Period        Type                        Group                Load 
 -----------------------------------------------------------------------------------------------------------------------
-C1                                   3.6 MHz       279.330       declared                    default_clkgroup     20   
+C1                                   3.6 MHz       279.330       declared                    default_clkgroup     27   
 C3                                   3.6 MHz       279.330       declared                    default_clkgroup     12   
 CLK40_IN                             40.0 MHz      25.000        declared                    default_clkgroup     0    
-U712_TOP|CLK40_PLL_derived_clock     40.0 MHz      25.000        derived (from CLK40_IN)     default_clkgroup     33   
-U712_TOP|CLK80_PLL_derived_clock     80.0 MHz      12.500        derived (from CLK40_IN)     default_clkgroup     51   
+U712_TOP|CLK40_PLL_derived_clock     40.0 MHz      25.000        derived (from CLK40_IN)     default_clkgroup     6    
+U712_TOP|CLK80_PLL_derived_clock     80.0 MHz      12.500        derived (from CLK40_IN)     default_clkgroup     64   
 =======================================================================================================================
 
 Finished Pre Mapping Phase.
+@N: MO111 :"d:\amigapci\u712\u712_top.v":52:11:52:16|Tristate driver RAMENn (in view: work.U712_TOP(verilog)) on net RAMENn (in view: work.U712_TOP(verilog)) has its enable tied to GND.
 @N: BN225 |Writing default property annotation file D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\U712_icecube.sap.
 
 Starting constraint checker (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
 
-Encoding state machine STATE_COUNTER[9:0] (in view: work.U712_REG_SM(verilog))
+Encoding state machine STATE_COUNT[3:0] (in view: work.U712_REG_SM(verilog))
 original code -> new code
-   0000 -> 0000000001
-   0001 -> 0000000010
-   0010 -> 0000000100
-   0011 -> 0000001000
-   0100 -> 0000010000
-   0101 -> 0000100000
-   0110 -> 0001000000
-   0111 -> 0010000000
-   1000 -> 0100000000
-   1001 -> 1000000000
+   00000000 -> 00
+   00000001 -> 01
+   00000010 -> 10
+   00000011 -> 11
+@N: MO225 :"d:\amigapci\u712\u712_reg_sm.v":61:0:61:5|There are no possible illegal states for state machine STATE_COUNT[3:0] (in view: work.U712_REG_SM(verilog)); safe FSM implementation is not required.
 Encoding state machine TACK_STATE[4:0] (in view: work.U712_CYCLE_TERM(verilog))
 original code -> new code
    000 -> 00001
@@ -77,9 +75,9 @@ Finished constraint checker (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:0
 
 Pre-mapping successful!
 
-At Mapper Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 47MB peak: 133MB)
+At Mapper Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 48MB peak: 133MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
-# Tue Mar 25 20:16:34 2025
+# Fri Mar 28 22:03:43 2025
 
 ###########################################################]

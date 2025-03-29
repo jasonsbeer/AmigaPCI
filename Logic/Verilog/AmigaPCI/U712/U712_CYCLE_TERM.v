@@ -52,7 +52,7 @@ reg [2:0] TACK_STATE;
 
 always @(negedge CLK80) begin
     if (!RESETn) begin
-        TACK_EN <= 0;
+        TACK_EN <=0;
         TACK_OUTn <= 1;
         TACK_STATE <= 3'b000;
     end else begin

@@ -26,7 +26,6 @@ Description: CHIP SET BUFFERS
 
 Revision History:
     21-JAN-2025 : HW REV 5.0 INITIAL RELEASE
-    17-MAR-2025 : Changed 646 direction and enable logic to fix Paula DMA crash.
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 TO BUILD WITH APIO: apio build --top-module U712_TOP --fpga iCE40-HX4K-TQ144
@@ -34,8 +33,8 @@ TO BUILD WITH APIO: apio build --top-module U712_TOP --fpga iCE40-HX4K-TQ144
 
 module U712_BUFFERS (
 
-    input RnW, REG_CYCLE, REG_CPU_CYCLE, REG_WRITE_CYCLE, CPU_CYCLE, CASUn, CASLn, WRITE_CYCLE, LATCH_RAM, LATCH_REG,
-    output VBENn, DRDENn, DRDDIR, DMA_LATCH_EN, LATCH_CLK
+    input RnW, REG_CYCLE, CPU_CYCLE, CASUn, CASLn, WRITE_CYCLE, 
+    output VBENn, DRDENn, DRDDIR, DMA_LATCH_EN
 
 );
 
@@ -51,20 +50,16 @@ module U712_BUFFERS (
 wire DMA_CYCLE = (!CASUn || !CASLn);
 
 //CPU to RAM and chipset buffer enable.
-//Only enable while the CPU has an active interest in the cycle.
-assign VBENn = !(REG_CPU_CYCLE || CPU_CYCLE);
+assign VBENn = !(REG_CYCLE || CPU_CYCLE);
 
-//Chipset data bus enable. _OE on 646 transceiver.
+//Chipset data bus enable.
 assign DRDENn = !(DMA_CYCLE || REG_CYCLE);
 
 //Chipset data bus direction.
-assign DRDDIR = REG_CYCLE ? REG_WRITE_CYCLE : !WRITE_CYCLE;
+//assign DRDDIR = DMA_CYCLE ? !WRITE_CYCLE : !RnW;
+assign DRDDIR = REG_CYCLE ? !RnW : !WRITE_CYCLE;
 
 //Enable the latch clock (SAB=1) during DMA read or REG write cycles.
-//Register write cycles must be held until the 68K cycle is complete.
-assign DMA_LATCH_EN = REG_CYCLE ? REG_WRITE_CYCLE : !WRITE_CYCLE;
-
-//Pass the latch clock signal.
-assign LATCH_CLK = LATCH_REG || LATCH_RAM;
+assign DMA_LATCH_EN = (DMA_CYCLE && !WRITE_CYCLE);
 
 endmodule
