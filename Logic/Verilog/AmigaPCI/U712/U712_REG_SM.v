@@ -52,7 +52,7 @@ module U712_REG_SM (
 //WAIT STATES ARE INSERTED UNTIL SUCH TIME AS THIS CONDITION IS TRUE.
 //READ CYCLES OF ORIGINAL AMIGAS ARE LATCHED EARLY, IN STATE 5. WE DO THE SAME.
 
-reg [7:0]STATE_COUNT;
+reg [3:0]STATE_COUNT;
 reg [1:0] C1_SYNC;
 reg [1:0] C3_SYNC;
 reg REG_CYCLE_START;
@@ -60,16 +60,14 @@ reg REG_CYCLE_START;
 //MC68000 STATE MACHINE
 always @(negedge CLK80) begin
     if (!RESETn) begin
-
         ASn <= 1;
         DS_EN <= 0;
         REGENn <= 1;
-        STATE_COUNT <= 7'h00;
+        STATE_COUNT <= 4'h0;
         REG_CYCLE_START <= 0;
         REG_TACK <= 0;
         C1_SYNC <= 2'b11;
         C3_SYNC <= 2'b11;
-
     end else begin
 
         C1_SYNC[1] <= C1_SYNC[0];
@@ -82,41 +80,48 @@ always @(negedge CLK80) begin
         REG_CYCLE_START <= ((!TSn && !REGSPACEn) || (REG_CYCLE_START && !REG_CYCLE));
 
         case (STATE_COUNT)
-            7'h00 : begin
+            4'h0 : begin
                 REG_TACK <= 0;
-                if (REG_CYCLE_START && C1 == 2'b00 && C3_SYNC == 2'b00) begin
+                if (REG_CYCLE_START && !C1_SYNC[1] && C3_SYNC[1]) begin
+                    //STATE 1
+                    //We start here, otherwise it crashes?
+                    STATE_COUNT <= 4'h1;
+                end
+            end
+            4'h1 : begin
+                if (!C1_SYNC[1] && !C3_SYNC[1]) begin
                     //STATE 2
-                    REGENn <= 0;
                     ASn <= 0;
-                    DS_EN <= 1;
-                    STATE_COUNT <= 7'h01;
+                    REGENn <= 0;
+                    DS_EN <= RnW;
+                    STATE_COUNT <= 4'h2;
                 end
             end
-            7'h01 : begin
-                if (C1_SYNC == 2'b11 && C3_SYNC == 2'b11) begin
+            4'h2 : begin
+                //REGENn <= 0;
+                DS_EN <= 1'b1 ? 1'b1 : C1_SYNC[1] && C3_SYNC[1];
+                if (DBR_SYNC[1] && C1_SYNC[1] && C3_SYNC[1]) begin
                     //STATE 4
-                    if (DBR_SYNC == 2'b11) begin
-                        REG_CYCLE <= 1;
-                        STATE_COUNT <= 7'h02;
-                    end
+                    REG_CYCLE <= 1;
+                    STATE_COUNT <= 4'h3;
                 end
             end
-            7'h02 : begin
-                if (C1_SYNC == 2'b00 && C3_SYNC == 2'b11) begin
+            4'h3 : begin
+                if (!C1_SYNC[1] && C3_SYNC[1]) begin
                     //STATE 5
                     REG_TACK <= RnW;
-                    STATE_COUNT <= 7'h03;
+                    STATE_COUNT <= 4'h4;
                 end
             end
-            7'h03 : begin
-                if (C1_SYNC == 2'b11 && C3_SYNC == 2'b00) begin
+            4'h4 : begin
+                if (C1_SYNC[1] && !C3_SYNC[1]) begin
                     //STATE 7
-                    REG_TACK <= !RnW;
                     REG_CYCLE <= 0;
+                    REG_TACK <= !RnW;
                     REGENn <= 1;
                     ASn <= 1;
                     DS_EN <= 0;
-                    STATE_COUNT <= 7'h00;
+                    STATE_COUNT <= 4'h0;
                 end else begin
                     REG_TACK <= 0;
                 end

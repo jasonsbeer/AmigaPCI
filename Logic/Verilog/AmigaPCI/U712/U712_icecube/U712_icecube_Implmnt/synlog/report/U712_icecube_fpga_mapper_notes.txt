@@ -1,8 +1,6 @@
 @N: MF248 |Running in 64-bit mode.
 @N: MF666 |Clock conversion enabled. (Command "set_option -fix_gated_and_generated_clocks 1" in the project file.)
-@N: MO111 :"d:\amigapci\u712\u712_top.v":52:11:52:16|Tristate driver RAMENn (in view: work.U712_TOP(verilog)) on net RAMENn (in view: work.U712_TOP(verilog)) has its enable tied to GND.
 @N: MT204 |Auto Constrain mode is disabled because clocks are defined in the SDC file
-@N: MO225 :"d:\amigapci\u712\u712_reg_sm.v":61:0:61:5|There are no possible illegal states for state machine STATE_COUNT[3:0] (in view: work.U712_REG_SM(verilog)); safe FSM implementation is not required.
 @N: MO231 :"d:\amigapci\u712\u712_chip_ram.v":208:0:208:5|Found counter in view:work.U712_CHIP_RAM(verilog) instance SDRAM_COUNTER[7:0] 
 @N: MO231 :"d:\amigapci\u712\u712_chip_ram.v":96:0:96:5|Found counter in view:work.U712_CHIP_RAM(verilog) instance REFRESH_COUNTER[7:0] 
 @N: FX1017 :"d:\amigapci\u712\u712_top.v":37:20:37:21|SB_GB inserted on the net C1_c.

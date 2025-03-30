@@ -69,7 +69,7 @@ localparam [3:0] READ            = 4'b0101;
 localparam [3:0] WRITE           = 4'b0100;
 localparam [3:0] AUTOREFRESH     = 4'b0001;
 localparam [3:0] MODEREGISTER    = 4'b0000;
-localparam [7:0] REFRESH_DEFAULT = 8'h1A;   //d27 $1b
+localparam [7:0] REFRESH_DEFAULT = 8'h1B;   //d27 $1b
 
 //////////////////////
 // REFRESH COUNTER //
@@ -256,10 +256,10 @@ always @(negedge CLK80) begin
                 8'h02 : begin
                     SDRAM_CMD <= MODEREGISTER;
                 end
-                8'h05, 8'h08 : begin
-                    SDRAM_CMD <= AUTOREFRESH; //REFRESH TAKES 60ns = 3 80MHz CLOCK CYCLES.
+                8'h05, 8'h0A : begin
+                    SDRAM_CMD <= AUTOREFRESH; //REFRESH TAKES 60ns = 4.8 80MHz CLOCK CYCLES.
                 end
-                8'h0A : begin
+                8'h0F : begin
                     SDRAM_CONFIGURED <= 1;
                     SDRAM_COUNTER <= 8'h00;
                 end
@@ -274,7 +274,7 @@ always @(negedge CLK80) begin
                         //Counter h04 - h0F are DMA RAM cycles.
                         SDRAM_CMD <= BANKACTIVATE;
                         DMA_CYCLE <= 1;
-                        SDRAM_COUNTER <= 8'h03;
+                        SDRAM_COUNTER <= 8'h05;
                         WRITE_CYCLE <= !AWEn;
                         DBDIR <= !AWEn;
                         DBENn <= !DMA_A1;
@@ -289,28 +289,28 @@ always @(negedge CLK80) begin
                         //Counter h04 - h0F are CPU RAM cycles.
                         SDRAM_CMD <= BANKACTIVATE;
                         CPU_CYCLE <= 1;
-                        SDRAM_COUNTER <= 8'h03;
+                        SDRAM_COUNTER <= 8'h05;
                         WRITE_CYCLE <= !RnW;
                         BANK0 <= AGNUS_REV ? A[20] : 1'b0;
                     end
                 end
-                8'h02 : begin //End refresh cycle.
+                8'h04 : begin //End refresh cycle.
                     SDRAM_COUNTER <= 8'h00;
                 end
                 //SDRAM cycles start here.
-                8'h04 : begin
+                8'h06 : begin
                     SDRAM_CMD <= WRITE_CYCLE ? WRITE : READ;
                     CPU_TACK  <= CPU_CYCLE && WRITE_CYCLE;
                 end
-                8'h05 : begin
+                8'h07 : begin
                     SDRAM_CMD <= PRECHARGE;
                     CPU_TACK <= 0;
                 end
-                8'h07 : begin
+                8'h09 : begin
                     CPU_TACK <=  (CPU_CYCLE && !WRITE_CYCLE);
                     CLK_EN   <= !(CPU_CYCLE && !WRITE_CYCLE);
                 end
-                8'h08 : begin //All write cycles end here.
+                8'h0A : begin //All write cycles end here.
                     if (WRITE_CYCLE) begin
                         CPU_CYCLE <= 0;
                         DMA_CYCLE <= 0;
@@ -322,7 +322,7 @@ always @(negedge CLK80) begin
                         LATCH_CLK <= DMA_CYCLE;
                     end
                 end
-                8'h09 : begin //DMA read cycles end here.
+                8'h0B : begin //DMA read cycles end here.
                     if (DMA_CYCLE) begin
                         DMA_CYCLE <= 0;
                         LATCH_CLK <= 0;
@@ -331,10 +331,10 @@ always @(negedge CLK80) begin
                         SDRAM_COUNTER <= 8'h00;
                     end
                 end
-                8'h0B : begin                   
+                8'h0D : begin                   
                     CLK_EN <= 1;
                 end
-                8'h0C : begin //CPU read cycles end here.
+                8'h0E : begin //CPU read cycles end here.
                     CPU_CYCLE <= 0;
                     BANK0 <= 0;
                     SDRAM_COUNTER <= 8'h00;

@@ -56,8 +56,8 @@ assign VBENn = !(REG_CYCLE || CPU_CYCLE);
 assign DRDENn = !(DMA_CYCLE || REG_CYCLE);
 
 //Chipset data bus direction.
-//assign DRDDIR = DMA_CYCLE ? !WRITE_CYCLE : !RnW;
-assign DRDDIR = REG_CYCLE ? !RnW : !WRITE_CYCLE;
+assign DRDDIR = DMA_CYCLE ? !WRITE_CYCLE : !RnW;
+//assign DRDDIR = REG_CYCLE ? !RnW : !WRITE_CYCLE;
 
 //Enable the latch clock (SAB=1) during DMA read or REG write cycles.
 assign DMA_LATCH_EN = (DMA_CYCLE && !WRITE_CYCLE);

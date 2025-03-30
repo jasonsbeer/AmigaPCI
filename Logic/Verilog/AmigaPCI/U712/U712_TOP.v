@@ -60,6 +60,7 @@ module U712_TOP (
 //assign RAMENn = REG_CYCLEm;
 //assign RAMENn = DMA_CYCLEm;
 //assign RAMENn = DMA_LATCH_EN;
+assign RAMENn = DRDENn;
 
 //646 LATCH
 //FOR NOW, MAKE ALL DATA LIVE FOR TESTING.
