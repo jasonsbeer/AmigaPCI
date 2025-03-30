@@ -28,9 +28,9 @@ Revision History:
     21-JAN-2025 : HW REV 5.0 INITIAL RELEASE
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
-*/
 
-//iceprog D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\sbt\outputs\bitmap\U712_TOP_bitmap.bin
+iceprog D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\sbt\outputs\bitmap\U712_TOP_bitmap.bin
+*/
 
 module U712_TOP (
 
@@ -49,25 +49,9 @@ module U712_TOP (
     output CUUBEn, CUMBEn, CLMBEn, CLLBEn,
     output UUBEn, UMBEn, LMBEn, LLBEn,
 
-    output RAMENn,
+    //output RAMENn,
     output TACKn
 );
-
-//assign RAMENn = RAMSPACEn;
-//assign RAMENn = CPU_CYCLEm;
-//assign RAMENn = LATCH_CLK;
-//assign RAMENn = WRITE_CYCLEm;
-//assign RAMENn = REG_CYCLEm;
-//assign RAMENn = DMA_CYCLEm;
-//assign RAMENn = DMA_LATCH_EN;
-assign RAMENn = DRDENn;
-
-//646 LATCH
-//FOR NOW, MAKE ALL DATA LIVE FOR TESTING.
-//THIS WILL MATCH THE BEHAVIOR OF THE 245 TRANSCEIVER THAT WAS IN REV 4.0.
-
-//assign DMA_LATCH = 0;
-//assign LATCH_CLK = 0;
 
 ///////////////////
 // CLOCK FANOUT //
@@ -114,7 +98,7 @@ SB_PLL40_2F_CORE #(
 // _DBR SYNCRONIZER //
 /////////////////////
 
-//WE NEED TO SAMPLE _DBR FROM AGNUS IN MUTIPLE
+//WE NEED TO SAMPLE _DBR FROM AGNUS IN MULTIPLE
 //PROCESSES, SO WE HAVE THE SYNCRONIZER HERE.
 
 reg [1:0] DBR_SYNC;

@@ -26,6 +26,7 @@ Description: DATA TRANSFER BYTE ENABLE SIGNALS
 
 Revision History:
     21-JAN-2025 : HW REV 5.0 INITIAL RELEASE
+    30-MAR-2025 : Made byte enables more stringent. JN
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 */
@@ -49,25 +50,27 @@ module U712_BYTE_ENABLE (
 //ACTIVATE BYTES OF INTEREST FOR EACH DATA TRANSFER.
 //THESE ARE FOR 32-BIT TRANSFERS.
 
-wire LW_TRANS = (!SIZ[1] && !SIZ[0]) || (SIZ[1] && SIZ[0]);
-wire UUBE = (!A[1] && !A[0]) || LW_TRANS;
-wire UMBE = (!A[1] &&  A[0]) || LW_TRANS || (!A[1] && SIZ[1]);
+wire LW_TRANS = (SIZ[1] ==  SIZ[0]);
+wire WD_TRANS = (SIZ[1] && !SIZ[0]);
+
+wire UUBE = (!A[1] && !A[0]);
+wire UMBE = (!A[1] &&  A[0]) || LW_TRANS || (!A[1] && WD_TRANS);
 wire LMBE = ( A[1] && !A[0]) || LW_TRANS;
-wire LLBE = ( A[1] &&  A[0]) || LW_TRANS || ( A[1] && SIZ[1]);
+wire LLBE = ( A[1] &&  A[0]) || LW_TRANS || ( A[1] && WD_TRANS);
 
-assign UUBEn = ~UUBE;
-assign UMBEn = ~UMBE;
-assign LMBEn = ~LMBE;
-assign LLBEn = ~LLBE;
+assign UUBEn = !UUBE;
+assign UMBEn = !UMBE;
+assign LMBEn = !LMBE;
+assign LLBEn = !LLBE;
 
-assign CUUBEn = ~((UUBE && CPU_CYCLE) || (!CASUn && DMA_CYCLE && DBENn));
-assign CUMBEn = ~((UMBE && CPU_CYCLE) || (!CASLn && DMA_CYCLE && DBENn));
-assign CLMBEn = ~((LMBE && CPU_CYCLE) || (!CASUn && DMA_CYCLE && !DBENn));
-assign CLLBEn = ~((LLBE && CPU_CYCLE) || (!CASLn && DMA_CYCLE && !DBENn));
+assign CUUBEn = !((UUBE && CPU_CYCLE) || (!CASUn && DMA_CYCLE && DBENn));
+assign CUMBEn = !((UMBE && CPU_CYCLE) || (!CASLn && DMA_CYCLE && DBENn));
+assign CLMBEn = !((LMBE && CPU_CYCLE) || (!CASUn && DMA_CYCLE && !DBENn));
+assign CLLBEn = !((LLBE && CPU_CYCLE) || (!CASLn && DMA_CYCLE && !DBENn));
 
 //THESE ARE FOR 16-BIT (MC68000) CHIPSET DATA TRANSFERS.
-wire UDS = (SIZ[0] && !A[0]) || !SIZ[0];
-wire LDS = (SIZ[0] &&  A[0]) || !SIZ[0];
+assign UDS = !A[0] ;
+assign LDS =  A[0] || WD_TRANS || LW_TRANS;
 
 assign UDSn = !(DS_EN && UDS);
 assign LDSn = !(DS_EN && LDS);

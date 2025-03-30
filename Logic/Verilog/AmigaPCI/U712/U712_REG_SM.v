@@ -27,6 +27,7 @@ Description: CHIPSET REGISTER CYCLE STATE MACHINE
 Revision History:
     21-JAN-2025 : HW REV 5.0 INITIAL RELEASE JN
     25-JAN-2025 : Improved stability of register cycle state machine. JN
+    29-MAR-2025 : Narrowed buffer enable from State 4 to about 1/2 of State 7. JN
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 */
@@ -84,7 +85,8 @@ always @(negedge CLK80) begin
                 REG_TACK <= 0;
                 if (REG_CYCLE_START && !C1_SYNC[1] && C3_SYNC[1]) begin
                     //STATE 1
-                    //We start here, otherwise it crashes?
+                    //We need to start here, otherwise we risk missing the
+                    //falling S3 edge, which causes problems.
                     STATE_COUNT <= 4'h1;
                 end
             end
@@ -98,7 +100,6 @@ always @(negedge CLK80) begin
                 end
             end
             4'h2 : begin
-                //REGENn <= 0;
                 DS_EN <= 1'b1 ? 1'b1 : C1_SYNC[1] && C3_SYNC[1];
                 if (DBR_SYNC[1] && C1_SYNC[1] && C3_SYNC[1]) begin
                     //STATE 4

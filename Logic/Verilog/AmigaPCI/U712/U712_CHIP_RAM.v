@@ -27,6 +27,8 @@ Description: CHIP MEMORY SDRAM CONTROLLER
 Revision History:
     21-JAN-2025 : HW REV 5.0 INITIAL RELEASE
     19-FEB-2025 : ENABLE LATCHING OF DRD BUS ON DMA READ CYCLES.
+    30-MAR-2025 : Hold DMA cycles 25ns longer into State 7. JN
+                  Fixed refresh cycle wait times. JN
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 */
@@ -69,7 +71,7 @@ localparam [3:0] READ            = 4'b0101;
 localparam [3:0] WRITE           = 4'b0100;
 localparam [3:0] AUTOREFRESH     = 4'b0001;
 localparam [3:0] MODEREGISTER    = 4'b0000;
-localparam [7:0] REFRESH_DEFAULT = 8'h1B;   //d27 $1b
+localparam [7:0] REFRESH_DEFAULT = 8'h1A;   //d27 $1b
 
 //////////////////////
 // REFRESH COUNTER //
@@ -271,7 +273,7 @@ always @(negedge CLK80) begin
             case (SDRAM_COUNTER)
                 8'h00 : begin
                     if (DMA_CYCLE_START) begin
-                        //Counter h04 - h0F are DMA RAM cycles.
+                        //Counter h06 - h0E are DMA RAM cycles.
                         SDRAM_CMD <= BANKACTIVATE;
                         DMA_CYCLE <= 1;
                         SDRAM_COUNTER <= 8'h05;
@@ -281,12 +283,11 @@ always @(negedge CLK80) begin
                         BANK0 <= DMA_A20;
                         LATCH_CLK <= 0;
                     end else if (REFRESH) begin
-                        //Counter h01 - h03 are refresh cycles.
+                        //Counter h01 - h04 are refresh cycles.
                         SDRAM_CMD <= AUTOREFRESH;
                         SDRAM_COUNTER <= 8'h01;
-                    //end else if (CPU_CYCLE_START && (DBR_SYNC || REFRESH_SYNC == 2'b11)) begin
                     end else if (CPU_CYCLE_START && DBR_SYNC) begin
-                        //Counter h04 - h0F are CPU RAM cycles.
+                        //Counter h06 - h0E are CPU RAM cycles.
                         SDRAM_CMD <= BANKACTIVATE;
                         CPU_CYCLE <= 1;
                         SDRAM_COUNTER <= 8'h05;
@@ -322,17 +323,17 @@ always @(negedge CLK80) begin
                         LATCH_CLK <= DMA_CYCLE;
                     end
                 end
-                8'h0B : begin //DMA read cycles end here.
+                8'h0D : begin
                     if (DMA_CYCLE) begin
+                        //DMA cycles end here.
                         DMA_CYCLE <= 0;
                         LATCH_CLK <= 0;
                         BANK0 <= 0;
                         DBENn <= 1;
                         SDRAM_COUNTER <= 8'h00;
+                    end else begin               
+                        CLK_EN <= 1;
                     end
-                end
-                8'h0D : begin                   
-                    CLK_EN <= 1;
                 end
                 8'h0E : begin //CPU read cycles end here.
                     CPU_CYCLE <= 0;
