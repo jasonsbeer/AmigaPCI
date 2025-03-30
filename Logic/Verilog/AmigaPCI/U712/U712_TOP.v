@@ -49,9 +49,11 @@ module U712_TOP (
     output CUUBEn, CUMBEn, CLMBEn, CLLBEn,
     output UUBEn, UMBEn, LMBEn, LLBEn,
 
-    //output RAMENn,
+    output RAMENn,
     output TACKn
 );
+
+assign RAMENn = REGSPACEn;
 
 ///////////////////
 // CLOCK FANOUT //

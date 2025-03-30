@@ -28,6 +28,7 @@ Revision History:
     21-JAN-2025 : HW REV 5.0 INITIAL RELEASE JN
     25-JAN-2025 : Improved stability of register cycle state machine. JN
     29-MAR-2025 : Narrowed buffer enable from State 4 to about 1/2 of State 7. JN
+    30-MAR-2025 : Fixed state machine start reset. JN
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 */
@@ -57,6 +58,7 @@ reg [3:0]STATE_COUNT;
 reg [1:0] C1_SYNC;
 reg [1:0] C3_SYNC;
 reg REG_CYCLE_START;
+reg START_RST;
 
 //MC68000 STATE MACHINE
 always @(negedge CLK80) begin
@@ -69,6 +71,7 @@ always @(negedge CLK80) begin
         REG_TACK <= 0;
         C1_SYNC <= 2'b11;
         C3_SYNC <= 2'b11;
+        START_RST <= 0;
     end else begin
 
         C1_SYNC[1] <= C1_SYNC[0];
@@ -78,7 +81,7 @@ always @(negedge CLK80) begin
         C3_SYNC[0] <= C3;
 
         //The CPU can start a register cycle before the previous one has completed.
-        REG_CYCLE_START <= ((!TSn && !REGSPACEn) || (REG_CYCLE_START && !REG_CYCLE));
+        REG_CYCLE_START <= ((!TSn && !REGSPACEn) || (REG_CYCLE_START && !START_RST));
 
         case (STATE_COUNT)
             4'h0 : begin
@@ -87,10 +90,12 @@ always @(negedge CLK80) begin
                     //STATE 1
                     //We need to start here, otherwise we risk missing the
                     //falling S3 edge, which causes problems.
+                    START_RST <= 1;
                     STATE_COUNT <= 4'h1;
                 end
             end
             4'h1 : begin
+                START_RST <= 0;
                 if (!C1_SYNC[1] && !C3_SYNC[1]) begin
                     //STATE 2
                     ASn <= 0;

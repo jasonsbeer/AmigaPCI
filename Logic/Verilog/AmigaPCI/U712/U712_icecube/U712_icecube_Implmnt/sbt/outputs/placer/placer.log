@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:55:50
 
-* File Generated:     Mar 30 2025 11:25:43
+* File Generated:     Mar 30 2025 12:31:20
 
 * Purpose:            
 
@@ -35,13 +35,13 @@ I2053: Starting placement of the design
 =============================================================
 
 Input Design Statistics
-    Number of LUTs      	:	210
-    Number of DFFs      	:	93
+    Number of LUTs      	:	225
+    Number of DFFs      	:	94
     Number of DFFs packed to IO	:	0
     Number of Carrys    	:	14
     Number of RAMs      	:	0
     Number of ROMs      	:	0
-    Number of IOs       	:	89
+    Number of IOs       	:	90
     Number of GBIOs     	:	0
     Number of GBs       	:	4
     Number of WarmBoot  	:	0
@@ -52,16 +52,16 @@ Phase 1
 I2077: Start design legalization
 
 Design Legalization Statistics
-    Number of feedthru LUTs inserted to legalize input of DFFs     	:	11
+    Number of feedthru LUTs inserted to legalize input of DFFs     	:	10
     Number of feedthru LUTs inserted for LUTs driving multiple DFFs	:	0
-    Number of LUTs replicated for LUTs driving multiple DFFs       	:	11
+    Number of LUTs replicated for LUTs driving multiple DFFs       	:	10
     Number of feedthru LUTs inserted to legalize output of CARRYs  	:	0
     Number of feedthru LUTs inserted to legalize global signals    	:	0
     Number of feedthru CARRYs inserted to legalize input of CARRYs 	:	0
     Number of inserted LUTs to Legalize IOs with PIN_TYPE= 01xxxx  	:	0
     Number of inserted LUTs to Legalize IOs with PIN_TYPE= 10xxxx  	:	0
     Number of inserted LUTs to Legalize IOs with PIN_TYPE= 11xxxx  	:	0
-    Total LUTs inserted                                            	:	22
+    Total LUTs inserted                                            	:	20
     Total CARRYs inserted                                          	:	0
 
 
@@ -79,23 +79,23 @@ Info-1404: Inferred PLL generated clock at pll/PLLOUTGLOBALA
 Info-1404: Inferred PLL generated clock at pll/PLLOUTGLOBALB
 
 Design Statistics after Packing
-    Number of LUTs      	:	233
-    Number of DFFs      	:	93
+    Number of LUTs      	:	246
+    Number of DFFs      	:	94
     Number of DFFs packed to IO	:	0
     Number of Carrys    	:	14
 
 Device Utilization Summary after Packing
     Sequential LogicCells
-        LUT and DFF      	:	81
+        LUT and DFF      	:	82
         LUT, DFF and CARRY	:	12
     Combinational LogicCells
-        Only LUT         	:	138
+        Only LUT         	:	150
         CARRY Only       	:	0
         LUT with CARRY   	:	2
-    LogicCells                  :	233/3520
-    PLBs                        :	35/440
+    LogicCells                  :	246/3520
+    PLBs                        :	36/440
     BRAMs                       :	0/20
-    IOs and GBIOs               :	89/107
+    IOs and GBIOs               :	90/107
     PLLs                        :	1/2
 
 
@@ -105,29 +105,29 @@ Phase 4
 I2088: Phase 4, elapsed time : 0.2 (sec)
 
 Phase 5
-I2088: Phase 5, elapsed time : 0.6 (sec)
+I2088: Phase 5, elapsed time : 0.3 (sec)
 
 Phase 6
-I2088: Phase 6, elapsed time : 15.0 (sec)
+I2088: Phase 6, elapsed time : 18.5 (sec)
 
 Final Design Statistics
-    Number of LUTs      	:	233
-    Number of DFFs      	:	93
+    Number of LUTs      	:	246
+    Number of DFFs      	:	94
     Number of DFFs packed to IO	:	0
     Number of Carrys    	:	14
     Number of RAMs      	:	0
     Number of ROMs      	:	0
-    Number of IOs       	:	89
+    Number of IOs       	:	90
     Number of GBIOs     	:	0
     Number of GBs       	:	4
     Number of WarmBoot  	:	0
     Number of PLLs      	:	1
 
 Device Utilization Summary
-    LogicCells                  :	233/3520
-    PLBs                        :	90/440
+    LogicCells                  :	246/3520
+    PLBs                        :	85/440
     BRAMs                       :	0/20
-    IOs and GBIOs               :	89/107
+    IOs and GBIOs               :	90/107
     PLLs                        :	1/2
 
 
@@ -149,7 +149,7 @@ Clock: C3 | Frequency: N/A | Target: 3.58 MHz
 Clock: CLK40_IN | Frequency: N/A | Target: 40.00 MHz
 Clock: pll/PLLOUTCOREA | Frequency: N/A | Target: 80.00 MHz
 Clock: pll/PLLOUTCOREB | Frequency: N/A | Target: 40.00 MHz
-Clock: pll/PLLOUTGLOBALA | Frequency: 132.92 MHz | Target: 80.00 MHz
+Clock: pll/PLLOUTGLOBALA | Frequency: 132.32 MHz | Target: 80.00 MHz
 Clock: pll/PLLOUTGLOBALB | Frequency: N/A | Target: 40.00 MHz
 
 =====================================================================
@@ -158,5 +158,5 @@ Clock: pll/PLLOUTGLOBALB | Frequency: N/A | Target: 40.00 MHz
 
 I2054: Placement of design completed successfully
 
-I2076: Placer run-time: 16.6 sec.
+I2076: Placer run-time: 19.8 sec.
 

@@ -1,1 +1,1 @@
-@W: BN132 :"d:\amigapci\u712\u712_reg_sm.v":62:0:62:5|Removing sequential instance U712_REG_SM.REGENn because it is equivalent to instance U712_REG_SM.ASn. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: BN132 :"d:\amigapci\u712\u712_reg_sm.v":63:0:63:5|Removing sequential instance U712_REG_SM.REGENn because it is equivalent to instance U712_REG_SM.ASn. To keep the instance, apply constraint syn_preserve=1 on the instance.

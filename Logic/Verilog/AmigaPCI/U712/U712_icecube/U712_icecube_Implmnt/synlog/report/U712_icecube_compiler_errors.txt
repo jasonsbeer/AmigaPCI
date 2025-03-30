@@ -1,3 +1,2 @@
-@E: CS187 :"D:\AmigaPCI\U712\U712_REG_SM.v":123:16:123:17|Expecting ;
-@E: CS187 :"D:\AmigaPCI\U712\U712_REG_SM.v":156:0:156:8|Expecting endmodule
+@E: CG906 :"D:\AmigaPCI\U712\U712_REG_SM.v":82:72:82:82|Reference to unknown variable STATE_COUNY.
 
