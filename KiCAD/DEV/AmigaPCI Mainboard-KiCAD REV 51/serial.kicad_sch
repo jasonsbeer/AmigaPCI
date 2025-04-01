@@ -6,7 +6,7 @@
 	(paper "B")
 	(title_block
 		(title "AMIGA PCI")
-		(date "2025-03-12")
+		(date "2025-03-31")
 		(rev "5.1")
 	)
 	(lib_symbols
@@ -2688,6 +2688,299 @@
 						)
 					)
 					(number "50"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "AmigaPCI-Symbols:ESDS452"
+			(pin_names
+				(offset 1.016) hide)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "D"
+				(at 0 5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "ESDS452"
+				(at 0.508 -8.382 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+				(at -0.508 -1.524 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://www.ti.com/lit/ds/symlink/esds452.pdf?ts=1721984995680&ref_url=https%253A%252F%252Fwww.ti.com%252Fproduct%252FESDS452%253Fbm-verify%253DAAQAAAAJ______nQhGVU8Z7eml6g06MJuArerdvJtlpRaKwiN17ps8vFamsVh9Deep4BlrW-_1vhdIBHtFgC600C9KSNvCvgF1TA6XVnmqO6NzUdcOnPB_IbBBz5PIgcb1iF26LLkd4hSzpXb7XP5O0ZJem4qGA-OWwlFOQ8t6R0Dwj4b2Mqz7D9PsKtEyen7EAoX2d8CCHMZSyWQK7JCx3bNlGbpJwrkKM8-R9gjxNQaPp_awuITtiI-ZY5aaGhGoeYUvxemcfvvUOgHLEny18MLiXg9qNxe5jWEjSKfZXhvgtOXClxiOJWKWTXdbh6_g_QH9Zz74bPT_3qNB1HY2y-YOkT0H6Eh-vV69KinIhE6w6QJUZMBf1w1Q"
+				(at 0.254 -1.524 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "ESD protection diode"
+				(at 0.508 -1.27 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "diode TVS ESD"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "D*SOD?923*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "ESDS452_0_1"
+				(polyline
+					(pts
+						(xy -6.35 -1.27) (xy -3.81 -1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 -3.81) (xy 0 -3.81)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 1.27) (xy 0 1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 6.35 -3.81) (xy 2.54 -3.81)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 6.35 1.27) (xy 2.54 1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 -3.81) (xy -3.81 -3.81) (xy -3.81 -1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 1.27) (xy -3.81 1.27) (xy -3.81 -1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 -5.08) (xy 1.27 -3.81) (xy -1.27 -2.54) (xy -1.27 -5.08)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 0) (xy 1.27 1.27) (xy -1.27 2.54) (xy -1.27 0)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.778 -2.54) (xy 1.27 -2.54) (xy 1.27 -5.08) (xy 0.762 -5.08)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.778 2.54) (xy 1.27 2.54) (xy 1.27 0) (xy 0.762 0)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.81 -2.54) (xy 3.81 -5.08) (xy 1.27 -3.81) (xy 3.81 -2.54)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.81 2.54) (xy 3.81 0) (xy 1.27 1.27) (xy 3.81 2.54)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "ESDS452_1_1"
+				(rectangle
+					(start -6.35 3.81)
+					(end 6.35 -6.35)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin passive line
+					(at 8.89 1.27 180)
+					(length 2.54)
+					(name "IO1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 8.89 -3.81 180)
+					(length 2.54)
+					(name "IO2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -8.89 -1.27 0)
+					(length 2.54)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -6806,6 +7099,10 @@
 		(uuid "07731d0a-92fd-4752-ad90-c56bcc7824f7")
 	)
 	(no_connect
+		(at 267.97 80.01)
+		(uuid "090d6e9d-3085-47bf-a4fe-5d12d984b47b")
+	)
+	(no_connect
 		(at 341.63 182.88)
 		(uuid "522c2217-94b8-4ea0-8d4e-4d62c20adfc4")
 	)
@@ -7447,6 +7744,16 @@
 	)
 	(wire
 		(pts
+			(xy 297.18 77.47) (xy 306.07 77.47)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2a815e55-d448-41c9-b699-f8b2d6deeb39")
+	)
+	(wire
+		(pts
 			(xy 99.06 109.22) (xy 106.68 109.22)
 		)
 		(stroke
@@ -7544,6 +7851,16 @@
 			(type default)
 		)
 		(uuid "35e8d604-78ce-4c2d-9835-874154f1fcf7")
+	)
+	(wire
+		(pts
+			(xy 267.97 80.01) (xy 279.4 80.01)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "37fa8d3f-4a09-486e-ae61-b5941d9acd10")
 	)
 	(wire
 		(pts
@@ -8337,6 +8654,16 @@
 	)
 	(wire
 		(pts
+			(xy 306.07 77.47) (xy 306.07 87.63)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b28c65e3-fb3c-465b-94bb-da3d87014204")
+	)
+	(wire
+		(pts
 			(xy 134.62 147.32) (xy 175.26 147.32)
 		)
 		(stroke
@@ -8594,6 +8921,16 @@
 			(type default)
 		)
 		(uuid "d59b89cc-d9dd-45c1-b52e-70abb4f6263a")
+	)
+	(wire
+		(pts
+			(xy 267.97 74.93) (xy 279.4 74.93)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d6427a26-bc99-426c-9836-69b1e4035de1")
 	)
 	(wire
 		(pts
@@ -9156,6 +9493,17 @@
 			(justify right bottom)
 		)
 		(uuid "bccc3ed7-afcd-4717-8c78-c204daf76952")
+	)
+	(label "PSEL"
+		(at 267.97 74.93 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(bold yes)
+			)
+			(justify right bottom)
+		)
+		(uuid "bf71db73-9d37-433e-b82a-d72d054c10fe")
 	)
 	(label "DSR"
 		(at 106.68 109.22 180)
@@ -13328,6 +13676,142 @@
 			(project "2000ATX"
 				(path "/bb595301-1c72-49dc-ac6f-007419f3a7fd/00000000-0000-0000-0000-00006065650a"
 					(reference "U301")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AmigaPCI-Symbols:ESDS452")
+		(at 288.29 76.2 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "d7b74b17-aebd-4a5c-a997-ed774945bbea")
+		(property "Reference" "D211"
+			(at 297.688 83.058 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "ESDS452"
+			(at 299.466 81.026 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "AmigaPCI:SOT-23"
+			(at 288.798 77.724 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/esds452.pdf?ts=1721984995680&ref_url=https%253A%252F%252Fwww.ti.com%252Fproduct%252FESDS452%253Fbm-verify%253DAAQAAAAJ______nQhGVU8Z7eml6g06MJuArerdvJtlpRaKwiN17ps8vFamsVh9Deep4BlrW-_1vhdIBHtFgC600C9KSNvCvgF1TA6XVnmqO6NzUdcOnPB_IbBBz5PIgcb1iF26LLkd4hSzpXb7XP5O0ZJem4qGA-OWwlFOQ8t6R0Dwj4b2Mqz7D9PsKtEyen7EAoX2d8CCHMZSyWQK7JCx3bNlGbpJwrkKM8-R9gjxNQaPp_awuITtiI-ZY5aaGhGoeYUvxemcfvvUOgHLEny18MLiXg9qNxe5jWEjSKfZXhvgtOXClxiOJWKWTXdbh6_g_QH9Zz74bPT_3qNB1HY2y-YOkT0H6Eh-vV69KinIhE6w6QJUZMBf1w1Q"
+			(at 288.036 77.724 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "ESD protection diode"
+			(at 287.782 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "ab9c0599-d883-42cd-8cc3-e0672542a655")
+		)
+		(pin "3"
+			(uuid "aa27daf5-3959-442f-a7f2-d5deb60151e3")
+		)
+		(pin "1"
+			(uuid "f52bb51e-5f87-4403-927e-89499f986d13")
+		)
+		(instances
+			(project "AmigaPCI Mainboard"
+				(path "/72453515-27fe-4336-91f3-e3c8054f7767/70231775-58c2-469a-996a-fc3c3a4a8de1"
+					(reference "D211")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 306.07 87.63 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "d856383c-7dee-4050-b281-69c00e577fc7")
+		(property "Reference" "#PWR373"
+			(at 306.07 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 306.197 92.0242 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 306.07 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 306.07 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 306.07 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "96100af2-6676-4500-92bb-e517b7ee720a")
+		)
+		(instances
+			(project "AmigaPCI Mainboard"
+				(path "/72453515-27fe-4336-91f3-e3c8054f7767/70231775-58c2-469a-996a-fc3c3a4a8de1"
+					(reference "#PWR373")
 					(unit 1)
 				)
 			)

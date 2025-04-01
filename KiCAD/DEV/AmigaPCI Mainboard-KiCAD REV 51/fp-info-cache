@@ -1,4 +1,4 @@
-24652019632066641
+24653763099103917
 AmigaPCI
 2x18_P2.54mm_Horizontal
 Samtec HLE .100" Tiger Beam Cost-effective Single Beam Socket Strip, HLE-150-02-xx-DV-TE, 50 Pins per row (http://suddendocs.samtec.com/prints/hle-1xx-02-xx-dv-xe-xx-mkt.pdf, http://suddendocs.samtec.com/prints/hle-thru.pdf), generated with kicad-footprint-generator
@@ -181,6 +181,13 @@ socket 72-pin DRAM simm module
 0
 75
 75
+AmigaPCI
+SOT-23
+SOT, 3 Pin (JEDEC TO-236 Var AB https://www.jedec.org/document_search?search_api_views_fulltext=TO-236), generated with kicad-footprint-generator ipc_gullwing_generator.py
+SOT TO_SOT_SMD
+0
+3
+3
 AmigaPCI
 TSOP-II-50_20.95x10.16mm_P0.8mm
 50-lead TSOP typ II package

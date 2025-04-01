@@ -6,7 +6,7 @@
 	(paper "B")
 	(title_block
 		(title "AMIGA PCI")
-		(date "2025-03-12")
+		(date "2025-03-31")
 		(rev "5.1")
 	)
 	(lib_symbols
@@ -9739,6 +9739,12 @@
 		(uuid "0e4f3ec8-bab9-45ed-be13-32a83d67d957")
 	)
 	(junction
+		(at 217.17 87.63)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "0ee15dbf-e82d-4329-b118-62a9d5f20a0a")
+	)
+	(junction
 		(at 210.566 251.206)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -9763,7 +9769,7 @@
 		(uuid "21ddd3f6-44e3-4157-8f5a-19440747c3bb")
 	)
 	(junction
-		(at 217.17 90.17)
+		(at 217.17 76.2)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "24de26bb-7015-4899-96af-81e20e7dfb78")
@@ -9911,6 +9917,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "8a9996a9-8e81-4104-b89d-a4f330b2ce4b")
+	)
+	(junction
+		(at 217.17 99.06)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "90995024-c7e6-4218-9bf1-7f2fc6e873c5")
 	)
 	(junction
 		(at 192.786 251.206)
@@ -10063,7 +10075,7 @@
 		(uuid "e2921fd6-c787-46b6-8268-2324e024842e")
 	)
 	(junction
-		(at 217.17 67.31)
+		(at 217.17 53.34)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "e32f7910-ffbd-4f78-be35-a559c43d4339")
@@ -10105,7 +10117,7 @@
 		(uuid "f1c8a89c-476c-42f1-96e1-b730367bd1e9")
 	)
 	(junction
-		(at 217.17 78.74)
+		(at 217.17 64.77)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "f2048977-6577-4f49-a37b-2682f3a8cd34")
@@ -10514,6 +10526,16 @@
 	)
 	(wire
 		(pts
+			(xy 208.28 99.06) (xy 217.17 99.06)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "129c827e-00d0-40c4-82f6-7a52f6201b6f")
+	)
+	(wire
+		(pts
 			(xy 399.415 64.897) (xy 405.765 64.897)
 		)
 		(stroke
@@ -10624,7 +10646,7 @@
 	)
 	(wire
 		(pts
-			(xy 218.44 38.1) (xy 213.36 38.1)
+			(xy 218.44 24.13) (xy 213.36 24.13)
 		)
 		(stroke
 			(width 0)
@@ -10694,7 +10716,7 @@
 	)
 	(wire
 		(pts
-			(xy 217.17 78.74) (xy 217.17 90.17)
+			(xy 217.17 64.77) (xy 217.17 76.2)
 		)
 		(stroke
 			(width 0)
@@ -10724,7 +10746,7 @@
 	)
 	(wire
 		(pts
-			(xy 179.07 64.77) (xy 190.5 64.77)
+			(xy 179.07 50.8) (xy 190.5 50.8)
 		)
 		(stroke
 			(width 0)
@@ -10734,7 +10756,7 @@
 	)
 	(wire
 		(pts
-			(xy 217.17 90.17) (xy 217.17 100.33)
+			(xy 217.17 76.2) (xy 217.17 87.63)
 		)
 		(stroke
 			(width 0)
@@ -10784,7 +10806,7 @@
 	)
 	(wire
 		(pts
-			(xy 179.07 87.63) (xy 190.5 87.63)
+			(xy 179.07 73.66) (xy 190.5 73.66)
 		)
 		(stroke
 			(width 0)
@@ -10834,7 +10856,7 @@
 	)
 	(wire
 		(pts
-			(xy 217.17 55.88) (xy 217.17 67.31)
+			(xy 217.17 41.91) (xy 217.17 53.34)
 		)
 		(stroke
 			(width 0)
@@ -10944,7 +10966,7 @@
 	)
 	(wire
 		(pts
-			(xy 179.07 76.2) (xy 190.5 76.2)
+			(xy 179.07 62.23) (xy 190.5 62.23)
 		)
 		(stroke
 			(width 0)
@@ -11004,6 +11026,16 @@
 	)
 	(wire
 		(pts
+			(xy 179.07 90.17) (xy 190.5 90.17)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "33a6b859-0156-4753-86ee-9023ea692769")
+	)
+	(wire
+		(pts
 			(xy 225.806 167.386) (xy 225.806 172.466)
 		)
 		(stroke
@@ -11054,7 +11086,7 @@
 	)
 	(wire
 		(pts
-			(xy 208.28 90.17) (xy 217.17 90.17)
+			(xy 208.28 76.2) (xy 217.17 76.2)
 		)
 		(stroke
 			(width 0)
@@ -11414,7 +11446,7 @@
 	)
 	(wire
 		(pts
-			(xy 177.8 38.1) (xy 182.88 38.1)
+			(xy 177.8 24.13) (xy 182.88 24.13)
 		)
 		(stroke
 			(width 0)
@@ -11461,6 +11493,16 @@
 			(type default)
 		)
 		(uuid "5e425377-5608-447f-9ff6-f304ab2cde07")
+	)
+	(wire
+		(pts
+			(xy 179.07 96.52) (xy 190.5 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5f35a52c-b440-4dd7-aaa5-0b5580ba004b")
 	)
 	(wire
 		(pts
@@ -11554,7 +11596,7 @@
 	)
 	(wire
 		(pts
-			(xy 179.07 92.71) (xy 190.5 92.71)
+			(xy 179.07 78.74) (xy 190.5 78.74)
 		)
 		(stroke
 			(width 0)
@@ -11794,7 +11836,7 @@
 	)
 	(wire
 		(pts
-			(xy 217.17 67.31) (xy 217.17 78.74)
+			(xy 217.17 53.34) (xy 217.17 64.77)
 		)
 		(stroke
 			(width 0)
@@ -11861,6 +11903,16 @@
 			(type default)
 		)
 		(uuid "7c49f112-ddff-4cec-a210-778729124222")
+	)
+	(wire
+		(pts
+			(xy 208.28 87.63) (xy 217.17 87.63)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7c67c055-6c04-482b-9f60-91b375490795")
 	)
 	(wire
 		(pts
@@ -12244,6 +12296,16 @@
 	)
 	(wire
 		(pts
+			(xy 179.07 85.09) (xy 190.5 85.09)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "960003d0-1d80-458f-9a87-a2327d7b3013")
+	)
+	(wire
+		(pts
 			(xy 27.94 137.287) (xy 27.94 140.843)
 		)
 		(stroke
@@ -12404,7 +12466,7 @@
 	)
 	(wire
 		(pts
-			(xy 179.07 53.34) (xy 190.5 53.34)
+			(xy 179.07 39.37) (xy 190.5 39.37)
 		)
 		(stroke
 			(width 0)
@@ -12414,7 +12476,7 @@
 	)
 	(wire
 		(pts
-			(xy 179.07 58.42) (xy 190.5 58.42)
+			(xy 179.07 44.45) (xy 190.5 44.45)
 		)
 		(stroke
 			(width 0)
@@ -12504,6 +12566,16 @@
 	)
 	(wire
 		(pts
+			(xy 217.17 87.63) (xy 217.17 99.06)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a9e75ac5-a544-4652-ba1c-67c67b816538")
+	)
+	(wire
+		(pts
 			(xy 45.466 83.566) (xy 68.326 83.566)
 		)
 		(stroke
@@ -12531,6 +12603,16 @@
 			(type default)
 		)
 		(uuid "ae0a6f3b-20da-4fc2-8a87-9479d52e44e3")
+	)
+	(wire
+		(pts
+			(xy 179.07 101.6) (xy 190.5 101.6)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ae465090-b778-4f08-9295-1fc96b16168d")
 	)
 	(wire
 		(pts
@@ -12654,7 +12736,7 @@
 	)
 	(wire
 		(pts
-			(xy 179.07 81.28) (xy 190.5 81.28)
+			(xy 179.07 67.31) (xy 190.5 67.31)
 		)
 		(stroke
 			(width 0)
@@ -12904,7 +12986,7 @@
 	)
 	(wire
 		(pts
-			(xy 208.28 78.74) (xy 217.17 78.74)
+			(xy 208.28 64.77) (xy 217.17 64.77)
 		)
 		(stroke
 			(width 0)
@@ -12944,7 +13026,7 @@
 	)
 	(wire
 		(pts
-			(xy 208.28 55.88) (xy 217.17 55.88)
+			(xy 208.28 41.91) (xy 217.17 41.91)
 		)
 		(stroke
 			(width 0)
@@ -13034,7 +13116,7 @@
 	)
 	(wire
 		(pts
-			(xy 208.28 67.31) (xy 217.17 67.31)
+			(xy 208.28 53.34) (xy 217.17 53.34)
 		)
 		(stroke
 			(width 0)
@@ -13304,6 +13386,16 @@
 	)
 	(wire
 		(pts
+			(xy 217.17 99.06) (xy 217.17 109.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "eeec32f7-b59e-410a-a929-3269e1ad7f56")
+	)
+	(wire
+		(pts
 			(xy 192.786 235.966) (xy 192.786 225.806)
 		)
 		(stroke
@@ -13334,7 +13426,7 @@
 	)
 	(wire
 		(pts
-			(xy 179.07 69.85) (xy 190.5 69.85)
+			(xy 179.07 55.88) (xy 190.5 55.88)
 		)
 		(stroke
 			(width 0)
@@ -13774,7 +13866,7 @@
 		(uuid "08a8c61c-eaaa-4982-bad1-1901e1008320")
 	)
 	(label "D3"
-		(at 179.07 69.85 180)
+		(at 179.07 55.88 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -13814,6 +13906,17 @@
 			(justify right bottom)
 		)
 		(uuid "0e21ee63-da1e-4a9f-8410-5fb31b919c8d")
+	)
+	(label "_FIR1"
+		(at 179.07 96.52 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(bold yes)
+			)
+			(justify right bottom)
+		)
+		(uuid "10c92f70-2d74-457b-ad8a-87f531dae2b7")
 	)
 	(label "SEL1"
 		(at 367.284 165.1 180)
@@ -13867,7 +13970,7 @@
 		(uuid "1a510f24-650f-4957-8161-7115943cd569")
 	)
 	(label "D1"
-		(at 179.07 58.42 180)
+		(at 179.07 44.45 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -13907,6 +14010,17 @@
 		)
 		(uuid "2966f93e-df59-4e78-8d28-102e21663121")
 	)
+	(label "PBUSY"
+		(at 179.07 85.09 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(bold yes)
+			)
+			(justify right bottom)
+		)
+		(uuid "31ad88e8-9666-4ee5-9c37-930fe16a262a")
+	)
 	(label "_IORST"
 		(at 115.062 238.506 0)
 		(effects
@@ -13928,7 +14042,7 @@
 		(uuid "395fa8ee-40b5-46e3-a5f5-04009baec2d7")
 	)
 	(label "D0"
-		(at 179.07 53.34 180)
+		(at 179.07 39.37 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -14254,7 +14368,7 @@
 		(uuid "96e72f01-c3e3-4527-8b2c-925147d7423c")
 	)
 	(label "D4"
-		(at 179.07 76.2 180)
+		(at 179.07 62.23 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -14286,7 +14400,7 @@
 		(uuid "9e9c54b7-d6c9-43dc-a675-af249b2ca687")
 	)
 	(label "D7"
-		(at 179.07 92.71 180)
+		(at 179.07 78.74 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -14307,7 +14421,7 @@
 		(uuid "a195fe25-c417-453f-ab52-7f52d2029fe9")
 	)
 	(label "D2"
-		(at 179.07 64.77 180)
+		(at 179.07 50.8 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -14328,7 +14442,7 @@
 		(uuid "a3241112-b1a0-4d75-8242-74718dfbdbf3")
 	)
 	(label "D6"
-		(at 179.07 87.63 180)
+		(at 179.07 73.66 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -14399,7 +14513,7 @@
 		(uuid "af26db52-aa21-45b6-a0a8-ba20d9df6ced")
 	)
 	(label "D5"
-		(at 179.07 81.28 180)
+		(at 179.07 67.31 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -14499,6 +14613,28 @@
 			(justify left bottom)
 		)
 		(uuid "c7731c6c-1f2c-446d-888e-fdede05d9142")
+	)
+	(label "PPOUT"
+		(at 179.07 90.17 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(bold yes)
+			)
+			(justify right bottom)
+		)
+		(uuid "ca735a19-f4fd-4957-91b9-3442d4cecdcf")
+	)
+	(label "_FIR0"
+		(at 179.07 101.6 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(bold yes)
+			)
+			(justify right bottom)
+		)
+		(uuid "cde3685d-ec2a-4881-9884-09590d4541cc")
 	)
 	(label "POUT"
 		(at 209.931 180.086 180)
@@ -15250,7 +15386,7 @@
 	)
 	(global_label "R_WA"
 		(shape output)
-		(at 218.44 38.1 0)
+		(at 218.44 24.13 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -15259,7 +15395,7 @@
 		)
 		(uuid "9f186a7e-82fa-401b-85db-1c40d6c41992")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 226.568 38.354 0)
+			(at 226.568 24.384 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15395,7 +15531,7 @@
 	)
 	(global_label "R_W"
 		(shape input)
-		(at 177.8 38.1 180)
+		(at 177.8 24.13 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -15404,7 +15540,7 @@
 		)
 		(uuid "d37abe89-454a-4b20-aec7-d8b7395bd1ee")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 171.704 38.1 0)
+			(at 171.704 24.13 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15667,6 +15803,77 @@
 			(project "2000ATX"
 				(path "/bb595301-1c72-49dc-ac6f-007419f3a7fd/00000000-0000-0000-0000-000060df4324"
 					(reference "#PWR0373")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AmigaPCI-Symbols:ESDS452")
+		(at 199.39 97.79 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "0923eecb-43ce-407c-b1dd-935e63877f11")
+		(property "Reference" "D212"
+			(at 208.788 104.648 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "ESDS452"
+			(at 210.566 102.616 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "AmigaPCI:SOT-23"
+			(at 199.898 99.314 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/esds452.pdf?ts=1721984995680&ref_url=https%253A%252F%252Fwww.ti.com%252Fproduct%252FESDS452%253Fbm-verify%253DAAQAAAAJ______nQhGVU8Z7eml6g06MJuArerdvJtlpRaKwiN17ps8vFamsVh9Deep4BlrW-_1vhdIBHtFgC600C9KSNvCvgF1TA6XVnmqO6NzUdcOnPB_IbBBz5PIgcb1iF26LLkd4hSzpXb7XP5O0ZJem4qGA-OWwlFOQ8t6R0Dwj4b2Mqz7D9PsKtEyen7EAoX2d8CCHMZSyWQK7JCx3bNlGbpJwrkKM8-R9gjxNQaPp_awuITtiI-ZY5aaGhGoeYUvxemcfvvUOgHLEny18MLiXg9qNxe5jWEjSKfZXhvgtOXClxiOJWKWTXdbh6_g_QH9Zz74bPT_3qNB1HY2y-YOkT0H6Eh-vV69KinIhE6w6QJUZMBf1w1Q"
+			(at 199.136 99.314 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "ESD protection diode"
+			(at 198.882 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "e4917063-f714-435e-b817-823c86aeea35")
+		)
+		(pin "3"
+			(uuid "80bc21d7-0805-4ad3-8d12-d6879d4d29d6")
+		)
+		(pin "1"
+			(uuid "902fe880-fd23-4b83-9736-7c8c044e2cad")
+		)
+		(instances
+			(project "AmigaPCI Mainboard"
+				(path "/72453515-27fe-4336-91f3-e3c8054f7767/64185471-b9ae-4a50-a046-7157e86a04d0"
+					(reference "D212")
 					(unit 1)
 				)
 			)
@@ -16256,6 +16463,142 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 217.17 109.22 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "23759d1e-10bd-4440-92ad-cb97ea73b915")
+		(property "Reference" "#PWR374"
+			(at 217.17 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 217.297 113.6142 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 217.17 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 217.17 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 217.17 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "4152d155-f915-4fdb-87fa-91e442ad7a9d")
+		)
+		(instances
+			(project "AmigaPCI Mainboard"
+				(path "/72453515-27fe-4336-91f3-e3c8054f7767/64185471-b9ae-4a50-a046-7157e86a04d0"
+					(reference "#PWR374")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AmigaPCI-Symbols:ESDS452")
+		(at 199.39 86.36 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "23de48f6-8d4b-4c8e-8c13-7f17e931d3fc")
+		(property "Reference" "D210"
+			(at 208.788 93.218 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "ESDS452"
+			(at 210.566 91.186 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "AmigaPCI:SOT-23"
+			(at 199.898 87.884 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/esds452.pdf?ts=1721984995680&ref_url=https%253A%252F%252Fwww.ti.com%252Fproduct%252FESDS452%253Fbm-verify%253DAAQAAAAJ______nQhGVU8Z7eml6g06MJuArerdvJtlpRaKwiN17ps8vFamsVh9Deep4BlrW-_1vhdIBHtFgC600C9KSNvCvgF1TA6XVnmqO6NzUdcOnPB_IbBBz5PIgcb1iF26LLkd4hSzpXb7XP5O0ZJem4qGA-OWwlFOQ8t6R0Dwj4b2Mqz7D9PsKtEyen7EAoX2d8CCHMZSyWQK7JCx3bNlGbpJwrkKM8-R9gjxNQaPp_awuITtiI-ZY5aaGhGoeYUvxemcfvvUOgHLEny18MLiXg9qNxe5jWEjSKfZXhvgtOXClxiOJWKWTXdbh6_g_QH9Zz74bPT_3qNB1HY2y-YOkT0H6Eh-vV69KinIhE6w6QJUZMBf1w1Q"
+			(at 199.136 87.884 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "ESD protection diode"
+			(at 198.882 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "08a4521f-d1b8-421d-ad8c-c60c27b5eba0")
+		)
+		(pin "3"
+			(uuid "9e9e657d-2b79-408c-8e32-6501121ee76b")
+		)
+		(pin "1"
+			(uuid "cc51a084-5de9-4a65-8944-84eaa8306f9a")
+		)
+		(instances
+			(project "AmigaPCI Mainboard"
+				(path "/72453515-27fe-4336-91f3-e3c8054f7767/64185471-b9ae-4a50-a046-7157e86a04d0"
+					(reference "D210")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:C_Small")
 		(at 175.006 238.506 180)
 		(unit 1)
@@ -16705,7 +17048,8 @@
 	)
 	(symbol
 		(lib_id "AmigaPCI-Symbols:ESDS452")
-		(at 199.39 57.15 180)
+		(at 199.39 40.64 0)
+		(mirror y)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -16713,7 +17057,7 @@
 		(dnp no)
 		(uuid "386f6ed1-905e-4d3f-9983-bd5878f2e1ca")
 		(property "Reference" "D206"
-			(at 208.788 50.292 0)
+			(at 208.788 47.498 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16721,15 +17065,15 @@
 			)
 		)
 		(property "Value" "ESDS452"
-			(at 210.566 52.324 0)
+			(at 210.566 45.466 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
-			(at 199.898 55.626 0)
+		(property "Footprint" "AmigaPCI:SOT-23"
+			(at 199.898 42.164 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16738,7 +17082,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/esds452.pdf?ts=1721984995680&ref_url=https%253A%252F%252Fwww.ti.com%252Fproduct%252FESDS452%253Fbm-verify%253DAAQAAAAJ______nQhGVU8Z7eml6g06MJuArerdvJtlpRaKwiN17ps8vFamsVh9Deep4BlrW-_1vhdIBHtFgC600C9KSNvCvgF1TA6XVnmqO6NzUdcOnPB_IbBBz5PIgcb1iF26LLkd4hSzpXb7XP5O0ZJem4qGA-OWwlFOQ8t6R0Dwj4b2Mqz7D9PsKtEyen7EAoX2d8CCHMZSyWQK7JCx3bNlGbpJwrkKM8-R9gjxNQaPp_awuITtiI-ZY5aaGhGoeYUvxemcfvvUOgHLEny18MLiXg9qNxe5jWEjSKfZXhvgtOXClxiOJWKWTXdbh6_g_QH9Zz74bPT_3qNB1HY2y-YOkT0H6Eh-vV69KinIhE6w6QJUZMBf1w1Q"
-			(at 199.136 55.626 0)
+			(at 199.136 42.164 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16747,7 +17091,7 @@
 			)
 		)
 		(property "Description" "ESD protection diode"
-			(at 198.882 55.88 0)
+			(at 198.882 41.91 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17030,7 +17374,7 @@
 	)
 	(symbol
 		(lib_id "74xx:74LS04")
-		(at 190.5 38.1 0)
+		(at 190.5 24.13 0)
 		(unit 4)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -17038,7 +17382,7 @@
 		(dnp no)
 		(uuid "465596b7-ec9f-4aa9-9921-0c75f52545f1")
 		(property "Reference" "U219"
-			(at 190.5 30.0482 0)
+			(at 190.5 16.0782 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17046,7 +17390,7 @@
 			)
 		)
 		(property "Value" "74AHCT04"
-			(at 190.5 32.3596 0)
+			(at 190.5 18.3896 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17054,7 +17398,7 @@
 			)
 		)
 		(property "Footprint" "Package_SO:TSSOP-14_4.4x5mm_P0.65mm"
-			(at 190.5 38.1 0)
+			(at 190.5 24.13 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17063,7 +17407,7 @@
 			)
 		)
 		(property "Datasheet" "http://www.ti.com/lit/gpn/sn74LS04"
-			(at 190.5 38.1 0)
+			(at 190.5 24.13 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17072,7 +17416,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 190.5 38.1 0)
+			(at 190.5 24.13 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18804,71 +19148,6 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
-		(at 217.17 100.33 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "7f07bc2c-90e3-4038-ae0a-ebbe816d3060")
-		(property "Reference" "#PWR372"
-			(at 217.17 106.68 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 217.297 104.7242 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 217.17 100.33 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 217.17 100.33 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 217.17 100.33 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "8d658cdc-0e02-499d-b710-a9d9c5487a21")
-		)
-		(instances
-			(project "AmigaPCI Mainboard"
-				(path "/72453515-27fe-4336-91f3-e3c8054f7767/64185471-b9ae-4a50-a046-7157e86a04d0"
-					(reference "#PWR372")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "74xx:74LS03")
 		(at 304.038 54.102 0)
 		(unit 4)
@@ -19154,7 +19433,8 @@
 	)
 	(symbol
 		(lib_id "AmigaPCI-Symbols:ESDS452")
-		(at 199.39 80.01 180)
+		(at 199.39 63.5 0)
+		(mirror y)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -19162,7 +19442,7 @@
 		(dnp no)
 		(uuid "86336270-5d9f-4eb3-acfb-4b610e96e57a")
 		(property "Reference" "D208"
-			(at 208.788 73.152 0)
+			(at 208.788 70.358 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19170,15 +19450,15 @@
 			)
 		)
 		(property "Value" "ESDS452"
-			(at 210.566 75.184 0)
+			(at 210.566 68.326 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
-			(at 199.898 78.486 0)
+		(property "Footprint" "AmigaPCI:SOT-23"
+			(at 199.898 65.024 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19187,7 +19467,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/esds452.pdf?ts=1721984995680&ref_url=https%253A%252F%252Fwww.ti.com%252Fproduct%252FESDS452%253Fbm-verify%253DAAQAAAAJ______nQhGVU8Z7eml6g06MJuArerdvJtlpRaKwiN17ps8vFamsVh9Deep4BlrW-_1vhdIBHtFgC600C9KSNvCvgF1TA6XVnmqO6NzUdcOnPB_IbBBz5PIgcb1iF26LLkd4hSzpXb7XP5O0ZJem4qGA-OWwlFOQ8t6R0Dwj4b2Mqz7D9PsKtEyen7EAoX2d8CCHMZSyWQK7JCx3bNlGbpJwrkKM8-R9gjxNQaPp_awuITtiI-ZY5aaGhGoeYUvxemcfvvUOgHLEny18MLiXg9qNxe5jWEjSKfZXhvgtOXClxiOJWKWTXdbh6_g_QH9Zz74bPT_3qNB1HY2y-YOkT0H6Eh-vV69KinIhE6w6QJUZMBf1w1Q"
-			(at 199.136 78.486 0)
+			(at 199.136 65.024 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19196,7 +19476,7 @@
 			)
 		)
 		(property "Description" "ESD protection diode"
-			(at 198.882 78.74 0)
+			(at 198.882 64.77 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19410,7 +19690,8 @@
 	)
 	(symbol
 		(lib_id "AmigaPCI-Symbols:ESDS452")
-		(at 199.39 68.58 180)
+		(at 199.39 52.07 0)
+		(mirror y)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -19418,7 +19699,7 @@
 		(dnp no)
 		(uuid "94f42fcb-2983-44d3-9e9f-a2da512cbaa6")
 		(property "Reference" "D207"
-			(at 208.788 61.722 0)
+			(at 208.788 58.928 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19426,15 +19707,15 @@
 			)
 		)
 		(property "Value" "ESDS452"
-			(at 210.566 63.754 0)
+			(at 210.566 56.896 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
-			(at 199.898 67.056 0)
+		(property "Footprint" "AmigaPCI:SOT-23"
+			(at 199.898 53.594 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19443,7 +19724,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/esds452.pdf?ts=1721984995680&ref_url=https%253A%252F%252Fwww.ti.com%252Fproduct%252FESDS452%253Fbm-verify%253DAAQAAAAJ______nQhGVU8Z7eml6g06MJuArerdvJtlpRaKwiN17ps8vFamsVh9Deep4BlrW-_1vhdIBHtFgC600C9KSNvCvgF1TA6XVnmqO6NzUdcOnPB_IbBBz5PIgcb1iF26LLkd4hSzpXb7XP5O0ZJem4qGA-OWwlFOQ8t6R0Dwj4b2Mqz7D9PsKtEyen7EAoX2d8CCHMZSyWQK7JCx3bNlGbpJwrkKM8-R9gjxNQaPp_awuITtiI-ZY5aaGhGoeYUvxemcfvvUOgHLEny18MLiXg9qNxe5jWEjSKfZXhvgtOXClxiOJWKWTXdbh6_g_QH9Zz74bPT_3qNB1HY2y-YOkT0H6Eh-vV69KinIhE6w6QJUZMBf1w1Q"
-			(at 199.136 67.056 0)
+			(at 199.136 53.594 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19452,7 +19733,7 @@
 			)
 		)
 		(property "Description" "ESD protection diode"
-			(at 198.882 67.31 0)
+			(at 198.882 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19736,7 +20017,8 @@
 	)
 	(symbol
 		(lib_id "AmigaPCI-Symbols:ESDS452")
-		(at 199.39 91.44 180)
+		(at 199.39 74.93 0)
+		(mirror y)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -19744,7 +20026,7 @@
 		(dnp no)
 		(uuid "a490beaf-5d6f-441f-b7f7-e58fb59b54a4")
 		(property "Reference" "D209"
-			(at 208.788 84.582 0)
+			(at 208.788 81.788 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19752,15 +20034,15 @@
 			)
 		)
 		(property "Value" "ESDS452"
-			(at 210.566 86.614 0)
+			(at 210.566 79.756 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
-			(at 199.898 89.916 0)
+		(property "Footprint" "AmigaPCI:SOT-23"
+			(at 199.898 76.454 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19769,7 +20051,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/esds452.pdf?ts=1721984995680&ref_url=https%253A%252F%252Fwww.ti.com%252Fproduct%252FESDS452%253Fbm-verify%253DAAQAAAAJ______nQhGVU8Z7eml6g06MJuArerdvJtlpRaKwiN17ps8vFamsVh9Deep4BlrW-_1vhdIBHtFgC600C9KSNvCvgF1TA6XVnmqO6NzUdcOnPB_IbBBz5PIgcb1iF26LLkd4hSzpXb7XP5O0ZJem4qGA-OWwlFOQ8t6R0Dwj4b2Mqz7D9PsKtEyen7EAoX2d8CCHMZSyWQK7JCx3bNlGbpJwrkKM8-R9gjxNQaPp_awuITtiI-ZY5aaGhGoeYUvxemcfvvUOgHLEny18MLiXg9qNxe5jWEjSKfZXhvgtOXClxiOJWKWTXdbh6_g_QH9Zz74bPT_3qNB1HY2y-YOkT0H6Eh-vV69KinIhE6w6QJUZMBf1w1Q"
-			(at 199.136 89.916 0)
+			(at 199.136 76.454 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19778,7 +20060,7 @@
 			)
 		)
 		(property "Description" "ESD protection diode"
-			(at 198.882 90.17 0)
+			(at 198.882 76.2 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20357,7 +20639,7 @@
 	)
 	(symbol
 		(lib_id "74xx:74LS04")
-		(at 205.74 38.1 0)
+		(at 205.74 24.13 0)
 		(unit 6)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -20365,7 +20647,7 @@
 		(dnp no)
 		(uuid "e87fec3c-9276-47f5-871a-94a1caa3281d")
 		(property "Reference" "U219"
-			(at 205.486 29.845 0)
+			(at 205.486 15.875 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20373,7 +20655,7 @@
 			)
 		)
 		(property "Value" "74AHCT04"
-			(at 205.994 32.258 0)
+			(at 205.994 18.288 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20381,7 +20663,7 @@
 			)
 		)
 		(property "Footprint" "Package_SO:TSSOP-14_4.4x5mm_P0.65mm"
-			(at 205.74 38.1 0)
+			(at 205.74 24.13 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20390,7 +20672,7 @@
 			)
 		)
 		(property "Datasheet" "http://www.ti.com/lit/gpn/sn74LS04"
-			(at 205.74 38.1 0)
+			(at 205.74 24.13 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20399,7 +20681,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 205.74 38.1 0)
+			(at 205.74 24.13 0)
 			(effects
 				(font
 					(size 1.27 1.27)
