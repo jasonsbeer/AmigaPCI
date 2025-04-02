@@ -6,7 +6,7 @@
 	(paper "B")
 	(title_block
 		(title "AMIGA PCI")
-		(date "2025-03-31")
+		(date "2025-04-01")
 		(rev "5.1")
 	)
 	(lib_symbols
@@ -4767,6 +4767,10 @@
 	(no_connect
 		(at 222.25 99.06)
 		(uuid "c851cf9e-ec5e-45e5-b944-f4f9610f52e8")
+	)
+	(no_connect
+		(at 123.19 115.57)
+		(uuid "cc5d3d32-d061-4ea9-a17a-020259aae7a8")
 	)
 	(no_connect
 		(at 213.36 167.64)
@@ -15030,27 +15034,6 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
-			)
-		)
-	)
-	(global_label "ALATCH"
-		(shape output)
-		(at 123.19 115.57 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "48e6566c-fe39-4bd0-9907-cae991faaa77")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 132.9486 115.57 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
 			)
 		)
 	)

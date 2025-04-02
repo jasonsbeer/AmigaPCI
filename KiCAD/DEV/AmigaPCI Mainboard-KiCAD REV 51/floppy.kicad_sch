@@ -6,7 +6,7 @@
 	(paper "B")
 	(title_block
 		(title "AMIGA PCI")
-		(date "2025-03-31")
+		(date "2025-04-01")
 		(rev "5.1")
 	)
 	(lib_symbols

@@ -6,7 +6,7 @@
 	(paper "B")
 	(title_block
 		(title "AMIGA PCI")
-		(date "2025-03-31")
+		(date "2025-04-01")
 		(rev "5.1")
 	)
 	(lib_symbols
@@ -5802,6 +5802,10 @@
 		(uuid "87e296f5-1a74-4a3c-8b6c-7030252fae0c")
 	)
 	(no_connect
+		(at 147.32 226.06)
+		(uuid "93505506-4253-48d8-be64-66012adfad9d")
+	)
+	(no_connect
 		(at 78.74 88.9)
 		(uuid "9a5bbceb-1e60-4ce1-a707-c5584c3f24e0")
 	)
@@ -9606,16 +9610,6 @@
 	)
 	(wire
 		(pts
-			(xy 341.63 116.84) (xy 353.06 116.84)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "af82b243-06ec-424f-8660-6eef954d71bb")
-	)
-	(wire
-		(pts
 			(xy 170.18 72.39) (xy 170.18 68.58)
 		)
 		(stroke
@@ -11003,16 +10997,6 @@
 		)
 		(uuid "11e39966-420c-4c70-ba08-7c7cc1d97f95")
 	)
-	(label "ALATCH"
-		(at 341.63 208.28 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "11e56bf7-4a50-42a7-87c4-bd864b35941c")
-	)
 	(label "3V3"
 		(at 299.72 55.88 180)
 		(effects
@@ -11373,16 +11357,6 @@
 		)
 		(uuid "3e2cb192-1b55-4784-a718-6cde9719b0ee")
 	)
-	(label "ALATCH"
-		(at 341.63 116.84 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "3e8f60ca-9cfb-489a-a393-224c381a1d83")
-	)
 	(label "LVA7"
 		(at 226.06 102.87 0)
 		(effects
@@ -11412,6 +11386,16 @@
 			(justify right bottom)
 		)
 		(uuid "438c8df9-a800-40dc-aab1-9957d253f5fe")
+	)
+	(label "GND"
+		(at 341.63 53.34 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "44521a94-171e-4d7e-86bf-4de55a3616ce")
 	)
 	(label "LVA23"
 		(at 341.63 73.66 0)
@@ -11853,6 +11837,16 @@
 		)
 		(uuid "7632ad0b-828b-48c4-8e5e-20ec496786a9")
 	)
+	(label "GND"
+		(at 341.63 116.84 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "76a5fc51-f38f-403a-ab10-ff7a49f9e674")
+	)
 	(label "LVA19"
 		(at 78.74 104.14 0)
 		(effects
@@ -12273,16 +12267,6 @@
 		)
 		(uuid "9f8a7053-681f-41fa-99d1-92938a4c5190")
 	)
-	(label "ALATCH"
-		(at 341.63 144.78 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "9fa2c00b-5393-415b-981d-790a943eef5c")
-	)
 	(label "GND"
 		(at 341.63 203.2 0)
 		(effects
@@ -12412,6 +12396,16 @@
 			(justify left bottom)
 		)
 		(uuid "adf0fb15-dde6-41d2-a529-9987f3a852f9")
+	)
+	(label "GND"
+		(at 341.63 144.78 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "b0937562-694d-42df-838f-ea6dab9e76a6")
 	)
 	(label "LVA11"
 		(at 78.74 187.96 0)
@@ -12742,6 +12736,16 @@
 			(justify left bottom)
 		)
 		(uuid "d1ddd041-5e62-4159-bb36-4be9bf2006b7")
+	)
+	(label "GND"
+		(at 341.63 208.28 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "d27d2158-bb54-421c-a377-ea5fd8e0ef56")
 	)
 	(label "LVA28"
 		(at 78.74 144.78 0)
@@ -13102,16 +13106,6 @@
 			(justify left bottom)
 		)
 		(uuid "fbac93f1-3bc1-4d69-bd2a-5a67e6ea430e")
-	)
-	(label "ALATCH"
-		(at 341.63 53.34 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "fc50c727-3af5-445e-a97d-64ae1202abf4")
 	)
 	(label "LVAD10"
 		(at 395 78.74 180)
@@ -13579,27 +13573,6 @@
 			)
 		)
 	)
-	(global_label "ALATCH"
-		(shape input)
-		(at 353.06 116.84 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "56870e8b-7f19-487e-b56f-d2e618907e35")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 362.8186 116.84 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-	)
 	(global_label "PIO_S1"
 		(shape output)
 		(at 147.32 127 0)
@@ -13948,27 +13921,6 @@
 		(uuid "c93fe844-e974-46be-979a-5947516db40c")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 156.0504 218.44 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-	)
-	(global_label "LVTM2"
-		(shape input)
-		(at 147.32 226.06 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "ce6f2126-49bf-49ca-a41d-51f01a9928dd")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 156.0504 226.06 0)
 			(effects
 				(font
 					(size 1.27 1.27)

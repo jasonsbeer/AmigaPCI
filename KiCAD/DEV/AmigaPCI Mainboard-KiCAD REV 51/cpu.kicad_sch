@@ -6,7 +6,7 @@
 	(paper "B")
 	(title_block
 		(title "AMIGA PCI")
-		(date "2025-03-31")
+		(date "2025-04-01")
 		(rev "5.1")
 	)
 	(lib_symbols
@@ -8471,6 +8471,12 @@
 		(uuid "756cd51e-cedc-4ac1-a642-46a69f333f96")
 	)
 	(junction
+		(at 222.25 140.97)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "7eba481f-2a04-445a-a318-dade920d0874")
+	)
+	(junction
 		(at 68.58 213.36)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -8715,10 +8721,6 @@
 	(no_connect
 		(at 59.69 99.06)
 		(uuid "756b30f2-662e-40a1-8b63-0902be8efefd")
-	)
-	(no_connect
-		(at 134.62 172.72)
-		(uuid "7cabfb07-741c-403d-8856-2ecbeba778f3")
 	)
 	(no_connect
 		(at 125.73 83.82)
@@ -10456,7 +10458,7 @@
 	)
 	(wire
 		(pts
-			(xy 222.25 123.19) (xy 222.25 176.53)
+			(xy 222.25 123.19) (xy 222.25 140.97)
 		)
 		(stroke
 			(width 0)
@@ -11163,16 +11165,6 @@
 			(type default)
 		)
 		(uuid "24e84135-2dad-4c4e-9c15-5a84d0568f5b")
-	)
-	(wire
-		(pts
-			(xy 208.28 140.97) (xy 229.87 140.97)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "259b85a1-994c-4874-b999-6b7af0c6115c")
 	)
 	(wire
 		(pts
@@ -12186,7 +12178,7 @@
 	)
 	(wire
 		(pts
-			(xy 134.62 172.72) (xy 125.73 172.72)
+			(xy 125.73 172.72) (xy 144.78 172.72)
 		)
 		(stroke
 			(width 0)
@@ -14836,6 +14828,16 @@
 	)
 	(wire
 		(pts
+			(xy 222.25 140.97) (xy 222.25 176.53)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "adedd396-6ee6-4d8e-820c-49d10ec5f2b2")
+	)
+	(wire
+		(pts
 			(xy 68.58 210.82) (xy 74.93 210.82)
 		)
 		(stroke
@@ -16583,6 +16585,16 @@
 			(type default)
 		)
 		(uuid "e7c5d932-4d60-4a1d-80f9-bee2397a1a9d")
+	)
+	(wire
+		(pts
+			(xy 222.25 140.97) (xy 229.87 140.97)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e8a727f4-6bc7-4911-acb6-d498c2c15500")
 	)
 	(wire
 		(pts
@@ -20513,24 +20525,23 @@
 			)
 		)
 	)
-	(global_label "TM2"
+	(global_label "_BLS"
 		(shape output)
-		(at 208.28 140.97 180)
-		(fields_autoplaced yes)
+		(at 144.78 172.72 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify right)
+			(justify left)
 		)
-		(uuid "538a299a-460e-4568-a287-1a2bca5d9c1e")
+		(uuid "54006cbf-e7b2-41b8-960b-672505ace445")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 201.6663 140.97 0)
+			(at 152.4 172.72 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify right)
+				(justify left)
 			)
 		)
 	)

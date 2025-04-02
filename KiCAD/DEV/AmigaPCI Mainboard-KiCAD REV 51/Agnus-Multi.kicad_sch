@@ -6,7 +6,7 @@
 	(paper "B")
 	(title_block
 		(title "AMIGA PCI")
-		(date "2025-03-31")
+		(date "2025-04-01")
 		(rev "5.1")
 	)
 	(lib_symbols
@@ -7941,7 +7941,7 @@
 	)
 	(wire
 		(pts
-			(xy 231.14 63.5) (xy 231.14 55.88)
+			(xy 231.14 53.34) (xy 231.14 63.5)
 		)
 		(stroke
 			(width 0)
@@ -8138,6 +8138,16 @@
 			(type default)
 		)
 		(uuid "c590c09b-d166-4c8b-99a8-b0aaea787246")
+	)
+	(wire
+		(pts
+			(xy 43.18 53.34) (xy 231.14 53.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c5d80ad2-c519-4f2c-bdba-f3bba702fd36")
 	)
 	(wire
 		(pts
@@ -9107,16 +9117,6 @@
 		)
 		(uuid "6699619e-05d3-4808-84f2-6312e84eaa94")
 	)
-	(label "_BLS"
-		(at 231.14 63.5 90)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "66d00894-67c3-49c6-9f71-f3a584dbcbdd")
-	)
 	(label "DRD3"
 		(at 205.74 99.06 0)
 		(effects
@@ -9797,6 +9797,27 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+			)
+		)
+	)
+	(global_label "_BLS"
+		(shape input)
+		(at 43.18 53.34 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.2954 1.2954)
+			)
+			(justify right)
+		)
+		(uuid "3e8a2520-36d3-4289-b0b1-ea8b251094a2")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 35.5708 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
 			)
 		)
 	)
@@ -13256,72 +13277,6 @@
 			(project "2000ATX"
 				(path "/bb595301-1c72-49dc-ac6f-007419f3a7fd/00000000-0000-0000-0000-000061252a60"
 					(reference "#PWR0356")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:+5V")
-		(at 231.14 55.88 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "99864030-bb88-4b92-bff4-5df66646ddf7")
-		(property "Reference" "#PWR0340"
-			(at 231.14 59.69 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+5V"
-			(at 231.14 51.308 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 231.14 55.88 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 231.14 55.88 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 231.14 55.88 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "67a6bbf6-989f-4563-b99d-87e3f9869c78")
-		)
-		(instances
-			(project "AmigaPCI Mainboard"
-				(path "/72453515-27fe-4336-91f3-e3c8054f7767/2b6a6f7b-f16f-448f-a082-ded618631c29"
-					(reference "#PWR0340")
 					(unit 1)
 				)
 			)

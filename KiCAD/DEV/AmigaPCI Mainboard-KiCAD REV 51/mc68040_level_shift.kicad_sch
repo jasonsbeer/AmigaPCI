@@ -6,7 +6,7 @@
 	(paper "B")
 	(title_block
 		(title "AMIGA PCI")
-		(date "2025-03-31")
+		(date "2025-04-01")
 		(rev "5.1")
 	)
 	(lib_symbols
@@ -15737,6 +15737,16 @@
 		)
 		(uuid "7ef0b430-d0c3-4c3f-aa50-b19fac6acb89")
 	)
+	(label "GND"
+		(at 234.95 170.18 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "7f47864e-b108-4e93-af1d-1103370d3ff6")
+	)
 	(label "UDB5"
 		(at 336.55 85.09 0)
 		(effects
@@ -16656,6 +16666,16 @@
 			(justify left bottom)
 		)
 		(uuid "dcaabc6c-67f5-4b3d-9e7f-c4ba1e3a296c")
+	)
+	(label "GND"
+		(at 275.59 170.18 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "dcc73212-3ebd-49ac-9246-2b41820174b4")
 	)
 	(label "LVA29"
 		(at 120.65 157.48 0)
@@ -17875,27 +17895,6 @@
 			)
 		)
 	)
-	(global_label "TM2"
-		(shape bidirectional)
-		(at 275.59 170.18 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "7c0df86f-77de-4e4d-92da-2dbea8f0d619")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 283.315 170.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-	)
 	(global_label "DMALATCH"
 		(shape input)
 		(at 322.58 135.89 180)
@@ -18347,27 +18346,6 @@
 		(uuid "db8522fc-78ea-4f9e-a23f-f4dbb8a7a9f5")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 312.4171 133.35 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-	)
-	(global_label "LVTM2"
-		(shape bidirectional)
-		(at 234.95 170.18 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "dc6c0793-70ff-4d25-9465-a880bb8cf8fc")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 225.1083 170.18 0)
 			(effects
 				(font
 					(size 1.27 1.27)
