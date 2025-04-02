@@ -306,8 +306,8 @@ This LVTTL signal is driven by the target device and tristated by inactive targe
 **TT(1..0)** (Transfer Type)  
 This TTL tolerant bus is driven by the bus master and tristated by inactive bus masters. These are the MC68040/MC68060 transfer type signals.
 
-**TM(2..0)** (Transfer Modifiers)  
-This TTL tolerant bus is driven by the bus master and tristated by inactive bus masters. These are the MC68040/MC68060 transfer modifier signals. 
+**TM(1..0)** (Transfer Modifiers)  
+This TTL tolerant bus is driven by the bus master and tristated by inactive bus masters. These are the MC68040/MC68060 transfer modifier signals.
 
 **_TS** (Transfer Start)  
 This TTL tolerant signal is driven by the bus master and tristated by inactive bus masters. Indicates the start of a data transfer cycle.
@@ -363,7 +363,7 @@ Pin|Signal|Pin|Signal|Pin|Signal
 **A10**|A11|**B10**|A10|**C10**|GND
 **A11**|_BR|**B11**|_LOCK|**C11**|_CPURST
 **A12**|TM0|**B12**|R_W|**C12**|TM1
-**A13**|TM2|**B13**|D28|**C13**|+3.3V
+**A13**|GND|**B13**|D28|**C13**|+3.3V
 **A14**|D26|**B14**|D24|**C14**|+3.3V
 **A15**|D31|**B15**|D30|**C15**|D21
 **A16**|D29|**B16**|D27|**C16**|SIZ0
@@ -394,7 +394,7 @@ Pin|Signal|Pin|Signal|Pin|Signal
 
 ## 3.5 Signal Buffering
 
-It is recommended to implement buffers for the data bus of the CPU Local Bus Card. It is possible to implement target devices on the card. When the target device is on the Local Bus card during a CPU cycle, it will be necessary to isolate the data bus on the Local Bus card with tristate buffers. This will prevent bus contention with the AmigaPCI data bus. The buffers should remain enabled during PCI DMA cycles for target devices on the CPU Local Bus Card.
+It is necessary to implement buffers for the data bus of the CPU Local Bus Card. It is possible to implement target devices on the card. When the target device is on the Local Bus card during a CPU cycle, it will be necessary to isolate the data bus on the Local Bus card with tristate buffers. This will prevent bus contention with the AmigaPCI data bus. The buffers should remain enabled during PCI DMA cycles for target devices on the CPU Local Bus Card.
 
 ## 3.6 Clocks
 
