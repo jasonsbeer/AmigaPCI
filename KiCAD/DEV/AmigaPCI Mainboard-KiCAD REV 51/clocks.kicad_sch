@@ -10339,7 +10339,7 @@
 		)
 		(uuid "1dd4888c-d9b7-40c8-ab30-e79e659470dd")
 	)
-	(label "_WEB"
+	(label "R_WC"
 		(at 360.68 143.51 180)
 		(effects
 			(font
@@ -10929,7 +10929,7 @@
 		)
 		(uuid "8c82e310-e241-4129-a24a-fa2460800345")
 	)
-	(label "_WEB"
+	(label "R_WC"
 		(at 381 48.26 0)
 		(effects
 			(font
@@ -11049,7 +11049,7 @@
 		)
 		(uuid "a0e8a834-1f29-4f75-bdb3-3a3f04cc480c")
 	)
-	(label "_WEB"
+	(label "R_WC"
 		(at 360.68 66.04 180)
 		(effects
 			(font
@@ -11119,7 +11119,7 @@
 		)
 		(uuid "b1191044-d2af-4290-b5e3-61c6c32fde49")
 	)
-	(label "_WEB"
+	(label "R_WC"
 		(at 360.68 105.41 180)
 		(effects
 			(font
@@ -11389,7 +11389,7 @@
 		)
 		(uuid "dd2f9b5d-9355-4804-8c41-ce5cd760c460")
 	)
-	(label "_WEB"
+	(label "R_WC"
 		(at 360.68 180.34 180)
 		(effects
 			(font
@@ -12079,7 +12079,7 @@
 			)
 		)
 	)
-	(global_label "_WEB"
+	(global_label "R_WC"
 		(shape input)
 		(at 391.16 48.26 0)
 		(effects

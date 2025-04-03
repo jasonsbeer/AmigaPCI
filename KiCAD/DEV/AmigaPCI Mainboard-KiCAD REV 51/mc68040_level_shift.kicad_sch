@@ -17058,7 +17058,7 @@
 			)
 		)
 	)
-	(global_label "_WEB"
+	(global_label "R_WC"
 		(shape bidirectional)
 		(at 234.95 160.02 180)
 		(effects
@@ -18209,7 +18209,7 @@
 			)
 		)
 	)
-	(global_label "_WEA"
+	(global_label "R_WB"
 		(shape bidirectional)
 		(at 275.59 160.02 0)
 		(effects
@@ -18417,7 +18417,7 @@
 			)
 		)
 	)
-	(global_label "_WEA"
+	(global_label "R_WB"
 		(shape bidirectional)
 		(at 234.95 157.48 180)
 		(effects

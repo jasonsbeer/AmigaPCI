@@ -10572,7 +10572,7 @@
 			)
 		)
 	)
-	(global_label "_WEA"
+	(global_label "R_WB"
 		(shape input)
 		(at 46.99 142.24 180)
 		(fields_autoplaced yes)

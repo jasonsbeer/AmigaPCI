@@ -6590,6 +6590,16 @@
 	)
 	(wire
 		(pts
+			(xy 148.59 111.76) (xy 151.13 111.76)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0407ba5e-e5c8-4b33-95d2-f7dbaf377f53")
+	)
+	(wire
+		(pts
 			(xy 209.55 95.25) (xy 215.9 95.25)
 		)
 		(stroke
@@ -6917,6 +6927,16 @@
 			(type default)
 		)
 		(uuid "14a2e326-31ae-4391-8a93-252e0bfa884e")
+	)
+	(wire
+		(pts
+			(xy 179.07 203.2) (xy 138.43 203.2)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "14bd8ab0-bbef-4cc8-9409-1b81209ad24d")
 	)
 	(bus
 		(pts
@@ -8440,7 +8460,7 @@
 	)
 	(wire
 		(pts
-			(xy 138.43 106.68) (xy 147.32 106.68)
+			(xy 138.43 106.68) (xy 140.97 106.68)
 		)
 		(stroke
 			(width 0)
@@ -9300,7 +9320,7 @@
 	)
 	(wire
 		(pts
-			(xy 138.43 111.76) (xy 147.32 111.76)
+			(xy 138.43 111.76) (xy 140.97 111.76)
 		)
 		(stroke
 			(width 0)
@@ -9990,6 +10010,16 @@
 	)
 	(wire
 		(pts
+			(xy 148.59 109.22) (xy 151.13 109.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c92ff85a-1774-43a4-af23-4a9b98abb536")
+	)
+	(wire
+		(pts
 			(xy 226.06 125.73) (xy 237.49 125.73)
 		)
 		(stroke
@@ -10310,6 +10340,16 @@
 	)
 	(wire
 		(pts
+			(xy 148.59 106.68) (xy 151.13 106.68)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e047cfff-8ae5-43e2-b92f-833fb08ab9ae")
+	)
+	(wire
+		(pts
 			(xy 138.43 50.8) (xy 142.24 50.8)
 		)
 		(stroke
@@ -10370,7 +10410,7 @@
 	)
 	(wire
 		(pts
-			(xy 147.32 203.2) (xy 138.43 203.2)
+			(xy 189.23 203.2) (xy 186.69 203.2)
 		)
 		(stroke
 			(width 0)
@@ -10420,7 +10460,7 @@
 	)
 	(wire
 		(pts
-			(xy 138.43 109.22) (xy 147.32 109.22)
+			(xy 138.43 109.22) (xy 140.97 109.22)
 		)
 		(stroke
 			(width 0)
@@ -13387,7 +13427,7 @@
 	)
 	(global_label "_ROMEN"
 		(shape output)
-		(at 147.32 203.2 0)
+		(at 189.23 203.2 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -13397,7 +13437,7 @@
 		)
 		(uuid "25acfe3b-940b-4a62-b7fa-21b9d9ccedda")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 157.8042 203.2 0)
+			(at 199.7142 203.2 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13763,7 +13803,7 @@
 	)
 	(global_label "_CIACS0"
 		(shape output)
-		(at 147.32 106.68 0)
+		(at 151.13 106.68 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -13773,7 +13813,7 @@
 		)
 		(uuid "9bdeb592-3619-4745-a776-44cb460ebb6d")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 157.9252 106.68 0)
+			(at 161.7352 106.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13847,7 +13887,7 @@
 	)
 	(global_label "_RTCEN"
 		(shape output)
-		(at 147.32 111.76 0)
+		(at 151.13 111.76 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -13857,7 +13897,7 @@
 		)
 		(uuid "a7dadc47-389d-4839-96c1-4f4f7ad9690f")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 157.2599 111.76 0)
+			(at 161.0699 111.76 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13929,7 +13969,7 @@
 			)
 		)
 	)
-	(global_label "_WEA"
+	(global_label "R_WB"
 		(shape input)
 		(at 147.32 228.6 0)
 		(fields_autoplaced yes)
@@ -13952,7 +13992,7 @@
 	)
 	(global_label "_CIACS1"
 		(shape output)
-		(at 147.32 109.22 0)
+		(at 151.13 109.22 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -13962,7 +14002,7 @@
 		)
 		(uuid "e0065aaf-ce35-4059-aa75-bd0043bb85b3")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 157.9252 109.22 0)
+			(at 161.7352 109.22 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15658,6 +15698,75 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R")
+		(at 182.88 203.2 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "60362369-53f3-4a6e-b288-7f9e128606a3")
+		(property "Reference" "R272"
+			(at 180.34 205.486 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "22R"
+			(at 184.658 203.2 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 182.88 204.978 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 182.88 203.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 182.88 203.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "8eed7c90-649f-435a-8857-c469df64bbba")
+		)
+		(pin "2"
+			(uuid "7b699045-93d9-4a92-a29d-2f65718b27ab")
+		)
+		(instances
+			(project "AmigaPCI Mainboard"
+				(path "/72453515-27fe-4336-91f3-e3c8054f7767/62a07d55-3759-49a3-8a3f-631cb4902a24"
+					(reference "R272")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:+3V3")
 		(at 147.32 55.88 0)
 		(unit 1)
@@ -16627,6 +16736,75 @@
 			(project "AmigaPCI Mainboard"
 				(path "/72453515-27fe-4336-91f3-e3c8054f7767/62a07d55-3759-49a3-8a3f-631cb4902a24"
 					(reference "#PWR0129")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 144.78 111.76 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "9a665828-5458-47b5-99d6-2eeb8feeb42e")
+		(property "Reference" "R275"
+			(at 136.906 113.03 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "22R"
+			(at 146.558 111.76 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 144.78 113.538 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 144.78 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 144.78 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "44b17643-42bf-4e80-9c95-0752cbbe66c9")
+		)
+		(pin "2"
+			(uuid "ebec1f5c-cd58-4c0b-82c3-79329162f7cf")
+		)
+		(instances
+			(project "AmigaPCI Mainboard"
+				(path "/72453515-27fe-4336-91f3-e3c8054f7767/62a07d55-3759-49a3-8a3f-631cb4902a24"
+					(reference "R275")
 					(unit 1)
 				)
 			)
@@ -17647,6 +17825,75 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R")
+		(at 144.78 109.22 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "c6785114-be88-47de-b8f8-0434eb4c180c")
+		(property "Reference" "R274"
+			(at 136.906 110.49 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "22R"
+			(at 146.558 109.22 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 144.78 110.998 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 144.78 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 144.78 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "936b0561-f870-4aeb-9798-081c82b1e0b1")
+		)
+		(pin "2"
+			(uuid "575559be-a81d-4f3a-9200-12c19fb2619a")
+		)
+		(instances
+			(project "AmigaPCI Mainboard"
+				(path "/72453515-27fe-4336-91f3-e3c8054f7767/62a07d55-3759-49a3-8a3f-631cb4902a24"
+					(reference "R274")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:+3V3")
 		(at 35.56 53.34 0)
 		(unit 1)
@@ -18016,6 +18263,76 @@
 			(project "AmigaPCI Mainboard"
 				(path "/72453515-27fe-4336-91f3-e3c8054f7767/62a07d55-3759-49a3-8a3f-631cb4902a24"
 					(reference "U112")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 144.78 106.68 90)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "d3f7eed2-c354-4cc8-9391-541d97b1591d")
+		(property "Reference" "R273"
+			(at 136.906 107.95 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "22R"
+			(at 146.558 106.68 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 144.78 104.902 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 144.78 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 144.78 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "943a1bd4-9cf4-4545-a491-cea61c458461")
+		)
+		(pin "2"
+			(uuid "79facfba-2473-472b-99fe-058baabd7164")
+		)
+		(instances
+			(project "AmigaPCI Mainboard"
+				(path "/72453515-27fe-4336-91f3-e3c8054f7767/62a07d55-3759-49a3-8a3f-631cb4902a24"
+					(reference "R273")
 					(unit 1)
 				)
 			)

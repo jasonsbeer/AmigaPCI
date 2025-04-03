@@ -15120,7 +15120,7 @@
 			)
 		)
 	)
-	(global_label "_WEB"
+	(global_label "R_WC"
 		(shape bidirectional)
 		(at 213.36 119.38 180)
 		(fields_autoplaced yes)
@@ -15330,7 +15330,7 @@
 			)
 		)
 	)
-	(global_label "_WEB"
+	(global_label "R_WC"
 		(shape input)
 		(at 121.92 186.69 0)
 		(fields_autoplaced yes)

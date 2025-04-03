@@ -3038,6 +3038,22 @@
       {
         "netclass": "Narrow",
         "pattern": "/Agnus Multiadapter/VBB"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "R_WB"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "R_WC"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "RESET"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "ATA_LED"
       }
     ]
   },
