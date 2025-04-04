@@ -6,7 +6,7 @@
 	(paper "B")
 	(title_block
 		(title "AMIGA PCI")
-		(date "2025-04-01")
+		(date "2025-04-03")
 		(rev "5.1")
 	)
 	(lib_symbols
@@ -23319,7 +23319,7 @@
 				)
 			)
 		)
-		(property "Value" "2k2"
+		(property "Value" "2k"
 			(at 156.21 93.218 90)
 			(effects
 				(font
