@@ -33,7 +33,7 @@ GitHub: https://github.com/jasonsbeer/AmigaPCI
 
 module U409_TRANSFER_ACK (
 
-    input CLK80, CLK40, RESETn, TSn, ROMEN, CIA_ENABLE, CLK_CIA, AGNUS_SPACE, AUTOVECTOR, ROM_DELAY,
+    input CLK80, CLK40, RESETn, TSn, ROMEN, CIA_ENABLE, CLK_CIA, AGNUS_SPACE, AUTOVECTOR, ROM_DELAY, RTC_ENn,
 
     output reg ROMENn,
 
@@ -135,7 +135,7 @@ always @(posedge CLK80) begin
     end else begin
         case (IRQ_TACK_COUNTER)
             1'b0 : begin
-                if (CLK40 && !TSn && AUTOVECTOR) begin
+                if (CLK40 && !TSn && (AUTOVECTOR || !RTC_ENn)) begin
                     IRQ_TACK_COUNTER <= 1'b1;
                 end else begin
                     IRQ_TACK_EN <= 0;
@@ -196,27 +196,6 @@ always @(posedge CLK80) begin
         endcase
     end
 end
-
-/*reg [2:0] CIA_CLK_SYNC;
-reg [1:0] CIA_ENABLED_SYNC;
-reg CIA_TACK_EN;
-
-always @(posedge CLK40) begin
-    if (!RESETn) begin
-        CIA_TACK_EN <= 0;
-        CIA_CLK_SYNC <= 3'b000;
-        CIA_ENABLED_SYNC <= 2'b00;
-    end else begin
-        CIA_CLK_SYNC[2] <= CIA_CLK_SYNC[1];
-        CIA_CLK_SYNC[1] <= CIA_CLK_SYNC[0];
-        CIA_CLK_SYNC[0] <= CLK_CIA;
-
-        CIA_ENABLED_SYNC[1] <= CIA_ENABLED_SYNC[0];
-        CIA_ENABLED_SYNC[0] <= CIA_ENABLE;
-
-        CIA_TACK_EN <= CIA_CLK_SYNC[1] && !CIA_CLK_SYNC[0] && CIA_ENABLED_SYNC[1];
-    end
-end*/
 
 //////////////////////////
 // UNRESPONSIVE CYCLES //

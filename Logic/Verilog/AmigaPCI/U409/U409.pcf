@@ -74,7 +74,7 @@ set_io CIACS1n   79
 set_io REGSPACEn 118
 set_io BUFENn    119
 set_io ROMENn    124
-#set_io RTCENn    80
+set_io RTC_ENn    80
 #set_io CPUCONFn  130
 
 #PCI BRIDGE

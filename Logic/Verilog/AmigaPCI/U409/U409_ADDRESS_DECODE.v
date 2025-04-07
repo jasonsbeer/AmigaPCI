@@ -27,7 +27,7 @@ Description: ADDRESS DECODE
 Revision History:
     25-JAN-2025 : INITIAL REV 5.0 CODE
     20-MAR-2025 : Add data and code access type conditions. JN
-    07-APR-2025 : Add real time clock address. JN
+    07-APR-2025 : Add Ranger, RTC, and AUTOCONFIG address spaces. JN
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 */
@@ -40,8 +40,7 @@ module U409_ADDRESS_DECODE
     input [1:0] TM,
     input [31:1] A,
     
-    output ROMEN, CIA_SPACE, CIACS0n, CIACS1n, RAMSPACEn, REGSPACEn, AUTOVECTOR
-    //output AUTOCONFIG_SPACE
+    output ROMEN, CIA_SPACE, CIACS0n, CIACS1n, RAMSPACEn, REGSPACEn, AUTOVECTOR, RTC_ENn, AUTOCONFIG_SPACE
 
 );
 
@@ -101,9 +100,9 @@ assign CIACS1n = !(CIA_ENABLE && !A[13]);
 //RANGER RAM DOES NOT WORK, WHICH IS FINE, BECAUSE WE DON'T HAVE ANY.
 
 assign RAMSPACEn = !(Z2_SPACE && !OVL && EITH_ACCESS && A[23:21] == 3'b000);
-assign REGSPACEn = !(Z2_SPACE && DATA_ACCESS && (REGISTER_SPACE || RANGER_SPACE);
+assign REGSPACEn = !(Z2_SPACE && DATA_ACCESS && (REGISTER_SPACE || RANGER_SPACE));
 wire REGISTER_SPACE = A[23:16] == 8'hDF;
-wire RANGER_SPACE = A[23:19] = 4'hC;
+wire RANGER_SPACE = A[23:19] == 4'hC;
 
 ///////////////////////
 // AUTOVECTOR SPACE //
@@ -119,17 +118,17 @@ assign AUTOVECTOR = RESETn && TT[1] && TT[0] && A[31:16] == 16'hFFFF;
 /////////////////////
 
 //AUTOCONFIG IS VISIBLE IN THE DATA AND CODE SAPCE.
-//assign AUTOCONFIG_SPACE = RESETn && EITH_ACCESS && A[31:16] == 16'hFF00;
+assign AUTOCONFIG_SPACE = RESETn && EITH_ACCESS && A[31:16] == 16'hFF00;
 
 //////////////////////
 // REAL TIME CLOCK //
 ////////////////////
 
 //THE REAL TIME CLOCK IS VISIBILE IN THE DATA SPACE.
-//assign RTC_EN = Z2_SPACE && DATA_ACCESS && A[23:16] = 8'hDC.
+assign RTC_ENn = !(Z2_SPACE && DATA_ACCESS && A[23:16] == 8'hDC);
 
 //YET TO BE IMPLEMENTED
 //ATA
-//PCI BRIDGE
+//PCI BRIDGE via AUTOCONFIG
 
 endmodule

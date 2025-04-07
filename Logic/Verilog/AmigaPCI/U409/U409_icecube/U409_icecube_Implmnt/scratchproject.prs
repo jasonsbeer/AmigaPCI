@@ -9,6 +9,7 @@ add_file -verilog "D:/AmigaPCI/U409/U409_DATA_BUFFERS.v"
 add_file -verilog "D:/AmigaPCI/U409/U409_TICK.v"
 add_file -verilog "D:/AmigaPCI/U409/U409_TOP.v"
 add_file -verilog "D:/AmigaPCI/U409/U409_TRANSFER_ACK.v"
+add_file -verilog "D:/AmigaPCI/U409/U409_AUTOCONFIG.v"
 add_file -constraint "D:/AmigaPCI/U409/U409_TOP.sdc"
 
 

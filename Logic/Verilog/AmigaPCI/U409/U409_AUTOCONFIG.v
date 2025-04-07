@@ -31,12 +31,11 @@ GitHub: https://github.com/jasonsbeer/AmigaPCI
 */
 
 module U409_AUTOCONFIG (
-    input AUTOCONFIG_SPACE,
+    input AUTOCONFIG_SPACE, RnW,
 
     output [7:0] D
 );
 
-
-assign D = AUTOCONFIG_SPACE ? 8'h00 : 8'bzzzzzzzz;
+assign D = (AUTOCONFIG_SPACE && RnW) ? 8'h00 : 8'bzzzzzzzz;
 
 endmodule

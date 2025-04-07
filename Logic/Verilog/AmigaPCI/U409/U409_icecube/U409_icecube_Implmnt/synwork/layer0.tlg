@@ -5,11 +5,13 @@ Selecting top level module U409_TOP
 
 @N: CG364 :"D:\AmigaPCI\U409\U409_DATA_BUFFERS.v":33:7:33:23|Synthesizing module U409_DATA_BUFFERS in library work.
 
-@N: CG364 :"D:\AmigaPCI\U409\U409_ADDRESS_DECODE.v":34:7:34:25|Synthesizing module U409_ADDRESS_DECODE in library work.
+@N: CG364 :"D:\AmigaPCI\U409\U409_ADDRESS_DECODE.v":35:7:35:25|Synthesizing module U409_ADDRESS_DECODE in library work.
 
 @N: CG364 :"D:\AmigaPCI\U409\U409_TICK.v":33:7:33:15|Synthesizing module U409_TICK in library work.
 
 @N: CG364 :"D:\AmigaPCI\U409\U409_CIA.v":35:7:35:14|Synthesizing module U409_CIA in library work.
+
+@N: CG364 :"D:\AmigaPCI\U409\U409_AUTOCONFIG.v":33:7:33:21|Synthesizing module U409_AUTOCONFIG in library work.
 
 @N: CG364 :"D:\AmigaPCI\U409\U409_TOP.v":36:7:36:14|Synthesizing module U409_TOP in library work.
 
@@ -18,8 +20,9 @@ Selecting top level module U409_TOP
 @W: CG781 :"D:\AmigaPCI\U409\U409_TOP.v":72:2:72:4|Input SDI on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
 @W: CG781 :"D:\AmigaPCI\U409\U409_TOP.v":72:2:72:4|Input SCLK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
 @W: CG781 :"D:\AmigaPCI\U409\U409_TOP.v":72:2:72:4|Input LATCHINPUTVALUE on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CL246 :"D:\AmigaPCI\U409\U409_ADDRESS_DECODE.v":40:17:40:17|Input port bits 15 to 14 of A[31:1] are unused. Assign logic for all port bits or change the input port size.
-@W: CL246 :"D:\AmigaPCI\U409\U409_ADDRESS_DECODE.v":40:17:40:17|Input port bits 11 to 1 of A[31:1] are unused. Assign logic for all port bits or change the input port size.
+@W: CL156 :"D:\AmigaPCI\U409\U409_TOP.v":184:10:184:12|*Input RnW to expression [instance] has undriven bits; assigning undriven bits to 0.  Simulation mismatch possible. Assign all bits of the input.
+@W: CL246 :"D:\AmigaPCI\U409\U409_ADDRESS_DECODE.v":41:17:41:17|Input port bits 15 to 14 of A[31:1] are unused. Assign logic for all port bits or change the input port size.
+@W: CL246 :"D:\AmigaPCI\U409\U409_ADDRESS_DECODE.v":41:17:41:17|Input port bits 11 to 1 of A[31:1] are unused. Assign logic for all port bits or change the input port size.
 @N: CL201 :"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v":53:0:53:5|Trying to extract state machine for register TACK_COUNTER.
 Extracted state machine for register TACK_COUNTER
 State machine has 4 reachable states with original encodings of:

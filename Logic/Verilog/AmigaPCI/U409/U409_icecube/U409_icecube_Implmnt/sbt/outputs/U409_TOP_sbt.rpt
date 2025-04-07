@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:31:51
 
-* File Generated:     Mar 20 2025 20:31:13
+* File Generated:     Apr 7 2025 15:46:45
 
 * Purpose:            General info of design implementation
 
@@ -17,7 +17,7 @@
 Synthesis/Placement Summary:
 ----------------------------
     Status:  Successful
-    Runtime: 1 seconds
+    Runtime: 0 seconds
 
 Device Info:
 ------------
@@ -28,19 +28,19 @@ Device Info:
 Design statistics:
 ------------------
     FFs:                  74
-    LUTs:                 170
+    LUTs:                 178
     RAMs:                 0
-    IOBs:                 39
+    IOBs:                 48
     GBs:                  2
     PLLs:                 1
     Warm Boots:           0
 
 Logic Resource Utilization:
 ---------------------------
-    Total Logic Cells: 172/3520
-        Combinational Logic Cells: 98       out of   3520      2.78409%
+    Total Logic Cells: 181/3520
+        Combinational Logic Cells: 107      out of   3520      3.03977%
         Sequential Logic Cells:    74       out of   3520      2.10227%
-        Logic Tiles:               52       out of   440       11.8182%
+        Logic Tiles:               53       out of   440       12.0455%
     Registers: 
         Logic Registers:           74       out of   3520      2.10227%
         IO Registers:              0        out of   880       0
@@ -48,16 +48,16 @@ Logic Resource Utilization:
     Warm Boots:                    0        out of   1         0%
     Pins:
         Input Pins:                28       out of   107       26.1682%
-        Output Pins:               10       out of   107       9.34579%
+        Output Pins:               19       out of   107       17.757%
         InOut Pins:                1        out of   107       0.934579%
     Global Buffers:                2        out of   8         25%
     PLLs:                          1        out of   2         50%
 
 IO Bank Utilization:
 --------------------
-    Bank 3: 17       out of   28        60.7143%
-    Bank 1: 4        out of   29        13.7931%
-    Bank 0: 12       out of   27        44.4444%
+    Bank 3: 21       out of   28        75%
+    Bank 1: 5        out of   29        17.2414%
+    Bank 0: 16       out of   27        59.2593%
     Bank 2: 6        out of   23        26.087%
 
 Detailed I/O Info:
@@ -97,16 +97,25 @@ Detailed I/O Info:
     Output Pins: 
     Pin Number  Direction  IO Standard  Pull Up  IO Bank  IO Function                                Signal Name
     ----------  ---------  -----------  -------  -------  -----------                                -----------
+    1           Output     SB_LVCMOS    No       3        Output Tristatable by Enable               D[3]       
+    22          Output     SB_LVCMOS    No       3        Output Tristatable by Enable               D[2]       
+    25          Output     SB_LVCMOS    No       3        Output Tristatable by Enable               D[1]       
+    31          Output     SB_LVCMOS    No       3        Output Tristatable by Enable               D[0]       
     48          Output     SB_LVCMOS    No       2        Simple Output                              RAMSPACEn  
     55          Output     SB_LVCMOS    No       2        Simple Output                              TICK60     
     56          Output     SB_LVCMOS    No       2        Simple Output                              TICK50     
     78          Output     SB_LVCMOS    No       1        Simple Output                              CIACS0n    
     79          Output     SB_LVCMOS    No       1        Simple Output                              CIACS1n    
+    80          Output     SB_LVCMOS    No       1        Simple Output                              RTC_ENn    
     118         Output     SB_LVCMOS    No       0        Simple Output                              REGSPACEn  
     119         Output     SB_LVCMOS    No       0        Simple Output                              BUFENn     
+    121         Output     SB_LVCMOS    No       0        Output Tristatable by Enable               D[7]       
     122         Output     SB_LVCMOS    No       0        Simple Output                              CLK_CIA    
     124         Output     SB_LVCMOS    No       0        Simple Output                              ROMENn     
+    128         Output     SB_LVCMOS    No       0        Output Tristatable by Enable               D[6]       
+    130         Output     SB_LVCMOS    No       0        Output Tristatable by Enable               D[5]       
     135         Output     SB_LVCMOS    No       0        Simple Output                              PORTSIZE   
+    144         Output     SB_LVCMOS    No       0        Output Tristatable by Enable               D[4]       
 
     Inoutput Pins: 
     Pin Number  Direction  IO Standard  Pull Up  IO Bank  IO Function                                Signal Name
@@ -128,9 +137,9 @@ Router Summary:
 
 Routing Resource Utilization:
 -----------------------------
-              Local line of tile     1297 out of 146184      0.887238%
-                          Span 4      228 out of  29696      0.76778%
-                         Span 12       79 out of   5632      1.4027%
+              Local line of tile     1325 out of 146184      0.906392%
+                          Span 4      182 out of  29696      0.612877%
+                         Span 12      103 out of   5632      1.82884%
                   Global network        3 out of      8      37.5%
-      Vertical Inter-LUT Connect       27 out of   6720      0.401786%
+      Vertical Inter-LUT Connect       33 out of   6720      0.491071%
 
