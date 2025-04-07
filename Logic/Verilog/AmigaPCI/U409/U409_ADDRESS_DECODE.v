@@ -27,6 +27,7 @@ Description: ADDRESS DECODE
 Revision History:
     25-JAN-2025 : INITIAL REV 5.0 CODE
     20-MAR-2025 : Add data and code access type conditions. JN
+    07-APR-2025 : Add real time clock address. JN
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 */
@@ -58,8 +59,8 @@ wire Z2_SPACE = RESETn && A[31:24] == 8'h00;
 
 //DEFINE THE ACCESS TYPE SO WE DON'T RESPOND TO MMU SCANS.
 
-wire ACCESS = TM[1] != TM[0];
-wire DATA_ACCESS = !TM[1] &&  TM[0];
+wire EITH_ACCESS = TM[1] != TM[0];
+wire DATA_ACCESS = !TM[1] && TM[0];
 
 /////////////////
 // ROM ENABLE //
@@ -73,7 +74,7 @@ wire DATA_ACCESS = !TM[1] &&  TM[0];
 //assign ROMEN = (RESETn && Z2_SPACE && ((OVL && A[23:21] == 3'b000) || (A[23:19] == 5'b11111))); // || (IDE_ACCESS && !IDE_ENABLE)));
 //assign ROMEN = RESETn && Z2_SPACE && (OVL ? (A[23:21] == 3'b000) : (A[23:19] == 5'b11111));
 
-assign ROMEN   = Z2_SPACE && (LOWROM || HIROM) && ACCESS;
+assign ROMEN   = Z2_SPACE && (LOWROM || HIROM) && EITH_ACCESS;
 wire   LOWROM  = A[23:21] == 3'b000 && OVL;
 wire   HIROM   = A[23:19] == 5'b11111;
 
@@ -96,7 +97,7 @@ assign CIACS1n = !(CIA_ENABLE && !A[13]);
 //CHIP RAM IS VISIBLE IN THE DATA OR CODE SPACE.
 //REGISTERS ARE VISIBLE IN THE DATA SPACE.
 
-assign RAMSPACEn = !(Z2_SPACE && !OVL && ACCESS && A[23:21] == 3'b000);
+assign RAMSPACEn = !(Z2_SPACE && !OVL && EITH_ACCESS && A[23:21] == 3'b000);
 assign REGSPACEn = !(Z2_SPACE && DATA_ACCESS && A[23:16] == 8'hDF);
 
 ///////////////////////
@@ -113,14 +114,14 @@ assign AUTOVECTOR = RESETn && TT[1] && TT[0] && A[31:16] == 16'hFFFF;
 /////////////////////
 
 //AUTOCONFIG IS VISIBLE IN THE DATA AND CODE SAPCE.
-
-//assign AUTOCONFIG_SPACE = RESETn && ACCESS && A[31:16] == 16'hFF00;
+//assign AUTOCONFIG_SPACE = RESETn && EITH_ACCESS && A[31:16] == 16'hFF00;
 
 //////////////////////
 // REAL TIME CLOCK //
-/////////////////////
+////////////////////
 
 //THE REAL TIME CLOCK IS VISIBILE IN THE DATA SPACE.
+//assign RTC_EN = Z2_SPACE && DATA_ACCESS && A[23:16] = 8'hDC.
 
 //YET TO BE IMPLEMENTED
 //ATA
