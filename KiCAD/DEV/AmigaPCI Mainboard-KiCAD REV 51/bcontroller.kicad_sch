@@ -6,7 +6,7 @@
 	(paper "B")
 	(title_block
 		(title "AMIGA PCI")
-		(date "2025-04-03")
+		(date "2025-04-07")
 		(rev "5.1")
 	)
 	(lib_symbols
@@ -10878,9 +10878,9 @@
 		)
 		(uuid "14365a4d-0947-4d29-b194-32781cf9daa5")
 	)
-	(text "A BUS DATA IS ALWAYS LIVE.\nAD BUS DATA IS LATCHED\nDURING THE ADDRESS PHASE \nOF A PCI CYCLE."
+	(text "A BUS IS ALWAYS LIVE.\nAD BUS IS LATCHED\nDURING THE ADDRESS PHASE \nOF A PCI CYCLE."
 		(exclude_from_sim no)
-		(at 352.044 168.656 0)
+		(at 354.076 175.514 0)
 		(effects
 			(font
 				(size 2 2)
@@ -10901,17 +10901,6 @@
 			(justify left bottom)
 		)
 		(uuid "94721fa1-cb69-41e0-a9d9-feebed2bc68c")
-	)
-	(text "WE IMPLEMENT ADDRESS\nINVARIANCE. THIS MEANS\nTHE ADDRESS BUS IS PASSED \nTHROUGH WITH NO CHANGES."
-		(exclude_from_sim no)
-		(at 352.298 182.626 0)
-		(effects
-			(font
-				(size 2 2)
-			)
-			(justify left)
-		)
-		(uuid "953f8ce2-34b3-413b-8935-3f31c46d0454")
 	)
 	(text "J901"
 		(exclude_from_sim no)

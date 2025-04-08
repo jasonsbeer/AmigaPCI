@@ -3054,6 +3054,10 @@
       {
         "netclass": "Default",
         "pattern": "ATA_LED"
+      },
+      {
+        "netclass": "PCI",
+        "pattern": "PAR"
       }
     ]
   },
