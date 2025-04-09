@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:31:51
 
-* File Generated:     Apr 7 2025 15:46:45
+* File Generated:     Apr 8 2025 19:03:54
 
 * Purpose:            General info of design implementation
 
@@ -55,10 +55,10 @@ Logic Resource Utilization:
 
 IO Bank Utilization:
 --------------------
-    Bank 3: 21       out of   28        75%
+    Bank 3: 17       out of   28        60.7143%
     Bank 1: 5        out of   29        17.2414%
-    Bank 0: 16       out of   27        59.2593%
-    Bank 2: 6        out of   23        26.087%
+    Bank 0: 12       out of   27        44.4444%
+    Bank 2: 14       out of   23        60.8696%
 
 Detailed I/O Info:
 ------------------
@@ -97,10 +97,14 @@ Detailed I/O Info:
     Output Pins: 
     Pin Number  Direction  IO Standard  Pull Up  IO Bank  IO Function                                Signal Name
     ----------  ---------  -----------  -------  -------  -----------                                -----------
-    1           Output     SB_LVCMOS    No       3        Output Tristatable by Enable               D[3]       
-    22          Output     SB_LVCMOS    No       3        Output Tristatable by Enable               D[2]       
-    25          Output     SB_LVCMOS    No       3        Output Tristatable by Enable               D[1]       
-    31          Output     SB_LVCMOS    No       3        Output Tristatable by Enable               D[0]       
+    38          Output     SB_LVCMOS    No       2        Output Tristatable by Enable               D[0]       
+    39          Output     SB_LVCMOS    No       2        Output Tristatable by Enable               D[1]       
+    41          Output     SB_LVCMOS    No       2        Output Tristatable by Enable               D[2]       
+    42          Output     SB_LVCMOS    No       2        Output Tristatable by Enable               D[3]       
+    43          Output     SB_LVCMOS    No       2        Output Tristatable by Enable               D[4]       
+    44          Output     SB_LVCMOS    No       2        Output Tristatable by Enable               D[5]       
+    45          Output     SB_LVCMOS    No       2        Output Tristatable by Enable               D[6]       
+    47          Output     SB_LVCMOS    No       2        Output Tristatable by Enable               D[7]       
     48          Output     SB_LVCMOS    No       2        Simple Output                              RAMSPACEn  
     55          Output     SB_LVCMOS    No       2        Simple Output                              TICK60     
     56          Output     SB_LVCMOS    No       2        Simple Output                              TICK50     
@@ -109,13 +113,9 @@ Detailed I/O Info:
     80          Output     SB_LVCMOS    No       1        Simple Output                              RTC_ENn    
     118         Output     SB_LVCMOS    No       0        Simple Output                              REGSPACEn  
     119         Output     SB_LVCMOS    No       0        Simple Output                              BUFENn     
-    121         Output     SB_LVCMOS    No       0        Output Tristatable by Enable               D[7]       
     122         Output     SB_LVCMOS    No       0        Simple Output                              CLK_CIA    
     124         Output     SB_LVCMOS    No       0        Simple Output                              ROMENn     
-    128         Output     SB_LVCMOS    No       0        Output Tristatable by Enable               D[6]       
-    130         Output     SB_LVCMOS    No       0        Output Tristatable by Enable               D[5]       
     135         Output     SB_LVCMOS    No       0        Simple Output                              PORTSIZE   
-    144         Output     SB_LVCMOS    No       0        Output Tristatable by Enable               D[4]       
 
     Inoutput Pins: 
     Pin Number  Direction  IO Standard  Pull Up  IO Bank  IO Function                                Signal Name
@@ -133,7 +133,7 @@ Detailed Global Buffer Info:
 Router Summary:
 ---------------
     Status:  Successful
-    Runtime: 9 seconds
+    Runtime: 10 seconds
 
 Routing Resource Utilization:
 -----------------------------

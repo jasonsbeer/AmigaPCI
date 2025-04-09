@@ -21,9 +21,6 @@ IO_Tile_3_33
 
  (2 6)  (152 535)  (152 535)  IO control bit: IOUP_REN_0
 
- (16 10)  (130 539)  (130 539)  IOB_1 IO Functioning bit
- (17 13)  (131 541)  (131 541)  IOB_1 IO Functioning bit
- (17 14)  (131 543)  (131 543)  IOB_1 IO Functioning bit
 
 
 IO_Tile_4_33
@@ -123,9 +120,6 @@ IO_Tile_11_33
 
  (2 6)  (572 535)  (572 535)  IO control bit: BIOUP_REN_0
 
- (16 10)  (550 539)  (550 539)  IOB_1 IO Functioning bit
- (17 13)  (551 541)  (551 541)  IOB_1 IO Functioning bit
- (17 14)  (551 543)  (551 543)  IOB_1 IO Functioning bit
 
 
 IO_Tile_12_33
@@ -175,11 +169,8 @@ IO_Tile_16_33
 
 IO_Tile_17_33
 
- (16 0)  (878 528)  (878 528)  IOB_0 IO Functioning bit
  (3 1)  (901 529)  (901 529)  IO control bit: GIOUP0_REN_1
 
- (17 3)  (879 530)  (879 530)  IOB_0 IO Functioning bit
- (17 4)  (879 532)  (879 532)  IOB_0 IO Functioning bit
  (2 6)  (900 535)  (900 535)  IO control bit: GIOUP0_REN_0
 
 
@@ -262,11 +253,8 @@ IO_Tile_24_33
 
 IO_Tile_25_33
 
- (16 0)  (1310 528)  (1310 528)  IOB_0 IO Functioning bit
  (3 1)  (1333 529)  (1333 529)  IO control bit: IOUP_REN_1
 
- (17 3)  (1311 530)  (1311 530)  IOB_0 IO Functioning bit
- (17 4)  (1311 532)  (1311 532)  IOB_0 IO Functioning bit
  (2 6)  (1332 535)  (1332 535)  IO control bit: IOUP_REN_0
 
 
@@ -456,9 +444,6 @@ IO_Tile_0_30
 
  (3 9)  (14 489)  (14 489)  IO control bit: IOLEFT_IE_0
 
- (16 10)  (1 490)  (1 490)  IOB_1 IO Functioning bit
- (17 13)  (0 493)  (0 493)  IOB_1 IO Functioning bit
- (17 14)  (0 494)  (0 494)  IOB_1 IO Functioning bit
 
 
 LogicTile_2_30
@@ -2622,11 +2607,8 @@ IO_Tile_33_17
 
 IO_Tile_0_16
 
- (16 0)  (1 256)  (1 256)  IOB_0 IO Functioning bit
  (3 1)  (14 257)  (14 257)  IO control bit: GIOLEFT1_REN_1
 
- (17 3)  (0 259)  (0 259)  IOB_0 IO Functioning bit
- (17 4)  (0 260)  (0 260)  IOB_0 IO Functioning bit
  (2 6)  (15 262)  (15 262)  IO control bit: GIOLEFT1_REN_0
 
 
@@ -4332,9 +4314,6 @@ IO_Tile_0_11
 
  (3 9)  (14 185)  (14 185)  IO control bit: IOLEFT_IE_0
 
- (16 10)  (1 186)  (1 186)  IOB_1 IO Functioning bit
- (17 13)  (0 189)  (0 189)  IOB_1 IO Functioning bit
- (17 14)  (0 190)  (0 190)  IOB_1 IO Functioning bit
 
 
 LogicTile_4_11
@@ -6076,9 +6055,6 @@ IO_Tile_0_5
 
  (3 9)  (14 89)  (14 89)  IO control bit: IOLEFT_IE_0
 
- (16 10)  (1 90)  (1 90)  IOB_1 IO Functioning bit
- (17 13)  (0 93)  (0 93)  IOB_1 IO Functioning bit
- (17 14)  (0 94)  (0 94)  IOB_1 IO Functioning bit
 
 
 LogicTile_6_5
@@ -6353,6 +6329,9 @@ IO_Tile_4_0
 
  (3 9)  (207 6)  (207 6)  IO control bit: IODOWN_IE_0
 
+ (16 10)  (184 4)  (184 4)  IOB_1 IO Functioning bit
+ (17 13)  (185 2)  (185 2)  IOB_1 IO Functioning bit
+ (17 14)  (185 0)  (185 0)  IOB_1 IO Functioning bit
 
 
 IO_Tile_5_0
@@ -6369,6 +6348,9 @@ IO_Tile_6_0
 
  (2 6)  (314 8)  (314 8)  IO control bit: BIODOWN_REN_0
 
+ (16 10)  (292 4)  (292 4)  IOB_1 IO Functioning bit
+ (17 13)  (293 2)  (293 2)  IOB_1 IO Functioning bit
+ (17 14)  (293 0)  (293 0)  IOB_1 IO Functioning bit
 
 
 IO_Tile_7_0
@@ -6377,12 +6359,18 @@ IO_Tile_7_0
 
  (2 6)  (368 8)  (368 8)  IO control bit: BIODOWN_REN_0
 
+ (16 10)  (346 4)  (346 4)  IOB_1 IO Functioning bit
+ (17 13)  (347 2)  (347 2)  IOB_1 IO Functioning bit
+ (17 14)  (347 0)  (347 0)  IOB_1 IO Functioning bit
 
 
 IO_Tile_8_0
 
+ (16 0)  (400 15)  (400 15)  IOB_0 IO Functioning bit
  (3 1)  (423 14)  (423 14)  IO control bit: BIODOWN_REN_1
 
+ (17 3)  (401 13)  (401 13)  IOB_0 IO Functioning bit
+ (17 4)  (401 11)  (401 11)  IOB_0 IO Functioning bit
  (2 6)  (422 8)  (422 8)  IO control bit: BIODOWN_REN_0
 
 
@@ -6409,14 +6397,23 @@ IO_Tile_11_0
 
  (2 6)  (572 8)  (572 8)  IO control bit: BIODOWN_REN_0
 
+ (16 10)  (550 4)  (550 4)  IOB_1 IO Functioning bit
+ (17 13)  (551 2)  (551 2)  IOB_1 IO Functioning bit
+ (17 14)  (551 0)  (551 0)  IOB_1 IO Functioning bit
 
 
 IO_Tile_12_0
 
+ (16 0)  (604 15)  (604 15)  IOB_0 IO Functioning bit
  (3 1)  (627 14)  (627 14)  IO control bit: BIODOWN_REN_1
 
+ (17 3)  (605 13)  (605 13)  IOB_0 IO Functioning bit
+ (17 4)  (605 11)  (605 11)  IOB_0 IO Functioning bit
  (2 6)  (626 8)  (626 8)  IO control bit: BIODOWN_REN_0
 
+ (16 10)  (604 4)  (604 4)  IOB_1 IO Functioning bit
+ (17 13)  (605 2)  (605 2)  IOB_1 IO Functioning bit
+ (17 14)  (605 0)  (605 0)  IOB_1 IO Functioning bit
 
 
 IO_Tile_13_0
@@ -6463,6 +6460,9 @@ IO_Tile_15_0
 
  (2 6)  (788 8)  (788 8)  IO control bit: IODOWN_REN_0
 
+ (16 10)  (766 4)  (766 4)  IOB_1 IO Functioning bit
+ (17 13)  (767 2)  (767 2)  IOB_1 IO Functioning bit
+ (17 14)  (767 0)  (767 0)  IOB_1 IO Functioning bit
 
 
 IO_Tile_16_0

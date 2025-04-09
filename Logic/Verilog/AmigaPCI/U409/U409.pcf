@@ -10,14 +10,14 @@ set_io CLK_CIA  122
 set_io CLK40_IN 129
 
 #CPU DATA BUS
-#set_io D[0] 38 #D24
-#set_io D[1] 39 #D25
-#set_io D[2] 41 #D26
-#set_io D[3] 42 #D27
-#set_io D[4] 43 #D28
-#set_io D[5] 44 #D29
-#set_io D[6] 45 #D30
-#set_io D[7] 47 #D31
+set_io D[0] 38 #D24
+set_io D[1] 39 #D25
+set_io D[2] 41 #D26
+set_io D[3] 42 #D27
+set_io D[4] 43 #D28
+set_io D[5] 44 #D29
+set_io D[6] 45 #D30
+set_io D[7] 47 #D31
 
 #CPU ADDRESS BUS
 set_io A[1]  144
