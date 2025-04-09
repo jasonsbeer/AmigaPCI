@@ -1,8 +1,8 @@
-@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":89:2:89:4|Input EXTFEEDBACK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":89:2:89:4|Input DYNAMICDELAY on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":89:2:89:4|Input BYPASS on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":89:2:89:4|Input SDI on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":89:2:89:4|Input SCLK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":89:2:89:4|Input LATCHINPUTVALUE on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CL247 :"D:\AmigaPCI\U712\U712_REG_SM.v":38:16:38:23|Input port bit 0 of DBR_SYNC[1:0] is unused
+@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":88:2:88:4|Input EXTFEEDBACK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":88:2:88:4|Input DYNAMICDELAY on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":88:2:88:4|Input BYPASS on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":88:2:88:4|Input SDI on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":88:2:88:4|Input SCLK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":88:2:88:4|Input LATCHINPUTVALUE on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CL247 :"D:\AmigaPCI\U712\U712_REG_SM.v":39:16:39:23|Input port bit 0 of DBR_SYNC[1:0] is unused
 

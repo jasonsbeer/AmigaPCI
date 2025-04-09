@@ -1,3 +1,6 @@
+INPUT  DRA[9] 	 location (25, 19, 1) 	 106 	 
+INPUT  DBRn 	 location (5, 21, 1) 	 138 	 
+INPUT  A[14] 	 location (0, 3, 1) 	 28 	 
 OUTPUT RAMENn 	 location (5, 21, 0) 	 139 	 
 OUTPUT CMA[4] 	 location (25, 3, 1) 	 78 	 
 INPUT  A[5] 	 location (0, 13, 0) 	 16 	 
@@ -22,6 +25,7 @@ OUTPUT CLK40B_OUT 	 location (24, 21, 0) 	 112
 INPUT  A[17] 	 location (0, 2, 0) 	 32 	 
 OUTPUT VBENn 	 location (8, 0, 0) 	 44 	 
 INPUT  DRA[1] 	 location (25, 16, 1) 	 101 	 
+OUTPUT DA[2] 	 location (19, 21, 0) 	 120 	 
 OUTPUT CUMBEn 	 location (25, 1, 1) 	 74 	 
 OUTPUT CLKRAM 	 location (2, 0, 1) 	 38 	 
 OUTPUT CLK40D_OUT 	 location (22, 21, 1) 	 115 	 
@@ -51,6 +55,7 @@ INPUT  A[10] 	 location (0, 7, 1) 	 23
 OUTPUT UMBEn 	 location (18, 21, 0) 	 121 	 
 INPUT  RAS0n 	 location (25, 8, 1) 	 87 	 
 INPUT  DRA[4] 	 location (25, 14, 0) 	 97 	 
+OUTPUT DA[1] 	 location (13, 21, 0) 	 128 	 
 OUTPUT CMA[9] 	 location (25, 6, 0) 	 83 	 
 INPUT  A[2] 	 location (0, 18, 0) 	 8 	 
 INPUT  A[19] 	 location (0, 1, 0) 	 34 	 
@@ -62,6 +67,8 @@ OUTPUT CLK40C_OUT 	 location (0, 10, 1) 	 21
 INPUT  CASLn 	 location (25, 19, 0) 	 105 	 
 INPUT  A[9] 	 location (0, 10, 0) 	 22 	 
 INPUT  A[16] 	 location (0, 2, 1) 	 31 	 
+OUTPUT TCIn 	 location (22, 0, 1) 	 64 	 
+OUTPUT TBIn 	 location (3, 0, 1) 	 39 	 
 INPUT  SIZ[1] 	 location (0, 20, 1) 	 1 	 
 INPUT  RAMSPACEn 	 location (9, 21, 1) 	 130 	 
 INPUT  DRA[6] 	 location (25, 12, 1) 	 95 	 
@@ -69,11 +76,8 @@ INPUT  A[0] 	 location (0, 15, 0) 	 12
 OUTPUT WEn 	 location (25, 1, 0) 	 73 	 
 OUTPUT REGENn 	 location (4, 21, 0) 	 141 	 
 OUTPUT LLBEn 	 location (15, 21, 0) 	 124 	 
-INPUT  DRA[9] 	 location (25, 19, 1) 	 106 	 
-INPUT  DBRn 	 location (5, 21, 1) 	 138 	 
 OUTPUT CMA[6] 	 location (25, 4, 1) 	 80 	 
 INPUT  A[7] 	 location (0, 12, 0) 	 18 	 
-INPUT  A[14] 	 location (0, 3, 1) 	 28 	 
 INPUT  DRA[0] 	 location (25, 17, 0) 	 102 	 
 INPUT  CLK40_IN 	 location (0, 11, 0) 	 20 	 
 INPUT  REGSPACEn 	 location (4, 0, 1) 	 41 	 
@@ -85,6 +89,7 @@ INPUT  A[18] 	 location (0, 1, 1) 	 33
 INPUT  AGNUS_REV 	 location (23, 21, 0) 	 114 	 
 INPUT  A[11] 	 location (0, 7, 0) 	 24 	 
 OUTPUT TACKn 	 location (0, 18, 1) 	 7 	 
+OUTPUT DA[0] 	 location (12, 21, 1) 	 129 	 
 INPUT  C1 	 location (3, 21, 1) 	 142 	 
 OUTPUT CMA[7] 	 location (25, 5, 0) 	 81 	 
 INPUT  A[8] 	 location (0, 11, 1) 	 19 	 

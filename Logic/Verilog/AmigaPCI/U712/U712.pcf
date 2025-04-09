@@ -11,8 +11,8 @@ set_io C3         143
 #CPU ADDRESS BUS - INPUTS
 set_io A[0]  12
 set_io A[1]  10
-set_io A[2]  8
-set_io A[3]  9
+set_io A[2]   8
+set_io A[3]   9
 set_io A[4]  15
 set_io A[5]  16
 set_io A[6]  17
@@ -34,13 +34,13 @@ set_io A[20] 11
 #AGNUS ADDRESS BUS - INPUTS
 set_io DRA[0] 102
 set_io DRA[1] 101
-set_io DRA[2] 99
-set_io DRA[3] 98
-set_io DRA[4] 97
-set_io DRA[5] 96
-set_io DRA[6] 95
-set_io DRA[7] 91
-set_io DRA[8] 90
+set_io DRA[2]  99
+set_io DRA[3]  98
+set_io DRA[4]  97
+set_io DRA[5]  96
+set_io DRA[6]  95
+set_io DRA[7]  91
+set_io DRA[8]  90
 set_io DRA[9] 106
 
 #SDRAM ADDRESS BUS - OUTPUTS
@@ -94,15 +94,15 @@ set_io LATCH_CLK    137 #OUTPUT - LATCH CLOCK FOR U810
 
 
 #DATA TRANSFER SIGNALS
-set_io SIZ[1]       1
-set_io SIZ[0]       2
-#set_io TT1        3
-#set_io TT0        4
-set_io TACKn        7
-#set_io TBIn       39
-#set_io TCIn       64
-set_io TSn        136
-set_io RnW        144
+set_io SIZ[1]   1
+set_io SIZ[0]   2
+#set_io TT1      3
+#set_io TT0      4
+set_io TACKn    7
+set_io TBIn    39
+set_io TCIn    64
+set_io TSn    136
+set_io RnW    144
 
 #BYTE ENABLES FOR PCI BUS CONTROLLER
 set_io UMBEn      121
@@ -111,6 +111,6 @@ set_io LLBEn      124
 set_io UUBEn      125
 
 #ATA ADDRESS
-#set_io DA[2]      120
-#set_io DA[1]      128
-#set_io DA[0]      129
+set_io DA[2]      120
+set_io DA[1]      128
+set_io DA[0]      129

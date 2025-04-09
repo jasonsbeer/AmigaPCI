@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:31:51
 
-* File Generated:     Mar 30 2025 12:31:40
+* File Generated:     Apr 8 2025 19:54:28
 
 * Purpose:            Detailed IO and package pin info
 
@@ -55,7 +55,7 @@ Pin Number, Pin Type Name, Signal Name, Direction, Global Buffer, IO Standard, P
 34, PIO, A[19], Input, , SB_LVCMOS, No Pull Up, Simple Input, leftBank
 37, PIO, not used, , , , , , bottomBank
 38, PIO, CLKRAM, Output, , SB_LVCMOS, No Pull Up, Simple Output, bottomBank
-39, PIO, not used, , , , , , bottomBank
+39, PIO, TBIn, Output, , SB_LVCMOS, No Pull Up, Simple Output, bottomBank
 40, VCC, not used, , , , , , UnknownBank
 41, PIO, REGSPACEn, Input, , SB_LVCMOS, No Pull Up, Simple Input, bottomBank
 42, PIO, DBENn, Output, , SB_LVCMOS, No Pull Up, Simple Output, bottomBank
@@ -77,7 +77,7 @@ Pin Number, Pin Type Name, Signal Name, Direction, Global Buffer, IO Standard, P
 61, PIO, RASn, Output, , SB_LVCMOS, No Pull Up, Simple Output, bottomBank
 62, PIO, CASn, Output, , SB_LVCMOS, No Pull Up, Simple Output, bottomBank
 63, PIO, not used, , , , , , bottomBank
-64, PIO, not used, , , , , , bottomBank
+64, PIO, TCIn, Output, , SB_LVCMOS, No Pull Up, Simple Output, bottomBank
 65, CDONE, not used, , , , , , bottomBank
 66, CRESET_B, not used, , , , , , bottomBank
 67, SPI_SO, not used, , , , , , bottomBank
@@ -133,7 +133,7 @@ Pin Number, Pin Type Name, Signal Name, Direction, Global Buffer, IO Standard, P
 117, PIO, LDSn, Output, , SB_LVCMOS, No Pull Up, Simple Output, topBank
 118, PIO, UDSn, Output, , SB_LVCMOS, No Pull Up, Simple Output, topBank
 119, PIO, not used, , , , , , topBank
-120, PIO, not used, , , , , , topBank
+120, PIO, DA[2], Output, , SB_LVCMOS, No Pull Up, Simple Output, topBank
 121, PIO, UMBEn, Output, , SB_LVCMOS, No Pull Up, Simple Output, topBank
 122, PIO, LMBEn, Output, , SB_LVCMOS, No Pull Up, Simple Output, topBank
 123, VCCIO_0, not used, , , , , , topBank
@@ -141,8 +141,8 @@ Pin Number, Pin Type Name, Signal Name, Direction, Global Buffer, IO Standard, P
 125, PIO, UUBEn, Output, , SB_LVCMOS, No Pull Up, Simple Output, topBank
 126, AVDD_TOP, not used, , , , , , UnknownBank
 127, AGND_TOP, not used, , , , , , UnknownBank
-128, PIO_GBIN, not used, , , , , , topBank
-129, PIO_GBIN, not used, , , , , , topBank
+128, PIO_GBIN, DA[1], Output, , SB_LVCMOS, No Pull Up, Simple Output, topBank
+129, PIO_GBIN, DA[0], Output, , SB_LVCMOS, No Pull Up, Simple Output, topBank
 130, PIO, RAMSPACEn, Input, , SB_LVCMOS, No Pull Up, Simple Input, topBank
 131, VCCIO_0, not used, , , , , , topBank
 132, GND, not used, , , , , , UnknownBank
@@ -157,4 +157,4 @@ Pin Number, Pin Type Name, Signal Name, Direction, Global Buffer, IO Standard, P
 142, PIO, C1, Input, , SB_LVCMOS, No Pull Up, Simple Input, topBank
 143, PIO, C3, Input, , SB_LVCMOS, No Pull Up, Simple Input, topBank
 144, PIO, RnW, Input, , SB_LVCMOS, No Pull Up, Simple Input, topBank
-Total Number of Used Pins, 90
+Total Number of Used Pins, 95

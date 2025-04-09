@@ -1,7 +1,7 @@
 C:\lscc\iCEcube2.2020.12\synpbase\bin64\syn_nfilter.exe  -link  -multisrs  D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\synwork\U712_icecube_comp.srs  -osyn  D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\synwork\U712_icecube_mult.srs  -log  D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\synlog\U712_icecube_multi_srs_gen.srr 
 rc:0 success:1 runtime:0
-file:D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\synwork\U712_icecube_comp.srs|io:i|time:1743355875|size:22450|exec:0
-file:D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\synwork\U712_icecube_mult.srs|io:o|time:1743355876|size:7737|exec:0
-file:D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\synlog\U712_icecube_multi_srs_gen.srr|io:o|time:1743355876|size:752|exec:0
+file:D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\synwork\U712_icecube_comp.srs|io:i|time:1744160043|size:22960|exec:0
+file:D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\synwork\U712_icecube_mult.srs|io:o|time:1744160045|size:7878|exec:0
+file:D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\synlog\U712_icecube_multi_srs_gen.srr|io:o|time:1744160045|size:752|exec:0
 file:C:\lscc\iCEcube2.2020.12\synpbase\bin\syn_nfilter.exe|io:i|time:1728534473|size:3128320|exec:1
 file:C:\lscc\iCEcube2.2020.12\synpbase\bin64\syn_nfilter.exe|io:i|time:1728534475|size:3947520|exec:1

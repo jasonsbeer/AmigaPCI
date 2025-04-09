@@ -35,7 +35,7 @@ GitHub: https://github.com/jasonsbeer/AmigaPCI
 
 module U712_REG_SM (
 
-    input CLK80, C1, C3, RESETn, TSn, REGSPACEn, RnW, DBRn,
+    input CLK80, C1, C3, RESETn, TSn, REGSPACEn, RnW,
     input [1:0] DBR_SYNC,
 
     output reg ASn,

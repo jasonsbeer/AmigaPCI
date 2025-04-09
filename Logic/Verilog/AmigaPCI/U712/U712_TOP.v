@@ -48,12 +48,11 @@ module U712_TOP (
     output [10:0] CMA,
     output CUUBEn, CUMBEn, CLMBEn, CLLBEn,
     output UUBEn, UMBEn, LMBEn, LLBEn,
-
-    output RAMENn,
-    output TACKn
+    output RAMENn,TACKn, TBIn, TCIn,
+    output [2:0] DA
 );
 
-assign RAMENn = REGSPACEn;
+assign RAMENn = RAMSPACEn;
 
 ///////////////////
 // CLOCK FANOUT //
@@ -130,7 +129,6 @@ U712_REG_SM U712_REG_SM (
     .TSn (TSn),
     .REGSPACEn (REGSPACEn),
     .RnW (RnW),
-    .DBRn (DBRn),
     .DBR_SYNC (DBR_SYNC),
 
     //OUTPUTS
@@ -179,7 +177,9 @@ U712_CYCLE_TERM U712_CYCLE_TERM (
     .CPU_TACK (CPU_TACKm),
 
     //OUTPUTS
-    .TACKn (TACKn)
+    .TACKn (TACKn),
+    .TBIn (TBIn), 
+    .TCIn (TCIn)
 );
 
 /////////////////////
@@ -253,4 +253,11 @@ U712_BYTE_ENABLE U712_BYTE_ENABLE (
     .UDSn (UDSn),
     .LDSn (LDSn)
 );
+
+//////////////////
+// ATA ADDRESS //
+////////////////
+
+assign DA = A[11:9];
+
 endmodule

@@ -26,13 +26,14 @@ Description: CYCLE TERMINATION STATE MACHINE
 
 Revision History:
     21-JAN-2025 : HW REV 5.0 INITIAL RELEASE
+    08-MAR-2025 : Add _TBI and _TCI. JN
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 */
 
 module U712_CYCLE_TERM (
     input CLK80, CLK40, RESETn, REG_TACK, CPU_TACK,
-    output TACKn
+    output TACKn, TBIn, TCIn
 );
 
 
@@ -40,45 +41,52 @@ module U712_CYCLE_TERM (
 // MC68040 TRANSFER ACK //
 /////////////////////////
 
-//ASSERT DSACK TO TERMINATE DATA TRANSFER CYCLE.
+//ASSERT _TACK, _TBI, and _TCI TO TERMINATE DATA TRANSFER CYCLE.
+//WE DON'T ALLOW CACHING IN THE CHIP RAM SPACE AND WE DON'T SUPPORT
+//BURST TRANSFERS TO CHIP RAM OR REGISTER SPACES.
 
 assign TACKn = TACK_EN ? TACK_OUTn : 1'bz;
-//assign TBIn = TACK_EN ? TBI_OUT : 1'bz;
+assign TBIn = TACK_EN ? TACK_OUTn : 1'b1;
+assign TCIn = TACK_EN && RAM_CYCLE ? TACK_OUTn : 1'b1;
 
 //DSACK STATE MACHINE
 reg TACK_OUTn;
 reg TACK_EN;
-reg [2:0] TACK_STATE;
+reg RAM_CYCLE;
+reg [3:0] TACK_STATE;
 
 always @(negedge CLK80) begin
     if (!RESETn) begin
         TACK_EN <=0;
         TACK_OUTn <= 1;
-        TACK_STATE <= 3'b000;
+        RAM_CYCLE <= 0;
+        TACK_STATE <= 4'h0;
     end else begin
         case (TACK_STATE)
-            3'b000 : begin
+            4'h0 : begin
                 if (REG_TACK || CPU_TACK) begin
                     TACK_EN <= 1;
-                    TACK_STATE <= 3'b001;
+                    RAM_CYCLE <= CPU_TACK;
+                    TACK_STATE <= 4'h1;
                 end
             end
-            3'b001 : begin
+            4'h1 : begin
                 if (CLK40) begin
-                    TACK_STATE <= 3'b010;
+                    TACK_STATE <= 4'h2;
                     TACK_OUTn <= 0;
                 end
             end
-            3'b010 : begin
-                TACK_STATE <= 3'b011;
+            4'h2 : begin
+                TACK_STATE <= 4'h3;
             end
-            3'b011 : begin
+            4'h3 : begin
                 TACK_OUTn <= 1;
-                TACK_STATE <= 3'b100;
+                TACK_STATE <= 4'h4;
             end
-            3'b100 : begin
+            4'h4 : begin
                 TACK_EN <= 0;
-                TACK_STATE <= 3'b000;
+                RAM_CYCLE <= 0;
+                TACK_STATE <= 4'h0;
             end
         endcase
     end
