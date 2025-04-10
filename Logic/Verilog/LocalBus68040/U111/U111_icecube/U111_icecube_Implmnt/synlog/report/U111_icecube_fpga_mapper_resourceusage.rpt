@@ -8,19 +8,19 @@ SB_DFFN         7 uses
 SB_DFFNESR      16 uses
 SB_DFFNSS       1 use
 VCC             1 use
-SB_LUT4         78 uses
+SB_LUT4         77 uses
 
-I/O ports: 93
-I/O primitives: 93
-SB_IO          92 uses
+I/O ports: 96
+I/O primitives: 96
+SB_IO          95 uses
 SB_PLL40_2F_PAD 1 use
 
 I/O Register bits:                  0
 Register bits not including I/Os:   24 (0%)
 
 @S |Mapping Summary:
-Total  LUTs: 78 (2%)
+Total  LUTs: 77 (2%)
 
 Distribution of All Consumed LUTs = LUT4 
-Distribution of All Consumed Luts 78 = 78 
+Distribution of All Consumed Luts 77 = 77 
 

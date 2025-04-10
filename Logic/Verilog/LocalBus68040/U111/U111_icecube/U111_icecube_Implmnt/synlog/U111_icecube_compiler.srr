@@ -15,9 +15,7 @@ Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys softwa
 @I::"D:\LocalBus68040\U111\U111_TOP.v" (library work)
 @I::"D:\LocalBus68040\U111\U111_CYCLE_SM.v" (library work)
 Verilog syntax check successful!
-
-Compiler output is up to date.  No re-compile necessary
-
+File D:\LocalBus68040\U111\U111_CYCLE_SM.v changed - recompiling
 Selecting top level module U111_TOP
 @N: CG364 :"C:\lscc\iCEcube2.2020.12\synpbase\lib\generic\sb_ice40.v":931:7:931:21|Synthesizing module SB_PLL40_2F_PAD in library work.
 
@@ -27,14 +25,14 @@ Selecting top level module U111_TOP
 
 @N: CG364 :"D:\LocalBus68040\U111\U111_TOP.v":34:7:34:14|Synthesizing module U111_TOP in library work.
 
-@W: CG781 :"D:\LocalBus68040\U111\U111_TOP.v":90:2:90:4|Input EXTFEEDBACK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG781 :"D:\LocalBus68040\U111\U111_TOP.v":90:2:90:4|Input DYNAMICDELAY on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG781 :"D:\LocalBus68040\U111\U111_TOP.v":90:2:90:4|Input BYPASS on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG781 :"D:\LocalBus68040\U111\U111_TOP.v":90:2:90:4|Input SDI on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG781 :"D:\LocalBus68040\U111\U111_TOP.v":90:2:90:4|Input SCLK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG781 :"D:\LocalBus68040\U111\U111_TOP.v":90:2:90:4|Input LATCHINPUTVALUE on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG1273 :"D:\LocalBus68040\U111\U111_TOP.v":93:21:93:28|An input port (port CLK40_IN) is the target of an assignment - please check if this is intentional
-@N: CL201 :"D:\LocalBus68040\U111\U111_CYCLE_SM.v":153:0:153:5|Trying to extract state machine for register CYCLE_STATE.
+@W: CG781 :"D:\LocalBus68040\U111\U111_TOP.v":86:2:86:4|Input EXTFEEDBACK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\LocalBus68040\U111\U111_TOP.v":86:2:86:4|Input DYNAMICDELAY on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\LocalBus68040\U111\U111_TOP.v":86:2:86:4|Input BYPASS on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\LocalBus68040\U111\U111_TOP.v":86:2:86:4|Input SDI on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\LocalBus68040\U111\U111_TOP.v":86:2:86:4|Input SCLK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\LocalBus68040\U111\U111_TOP.v":86:2:86:4|Input LATCHINPUTVALUE on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG1273 :"D:\LocalBus68040\U111\U111_TOP.v":89:21:89:28|An input port (port CLK40_IN) is the target of an assignment - please check if this is intentional
+@N: CL201 :"D:\LocalBus68040\U111\U111_CYCLE_SM.v":154:0:154:5|Trying to extract state machine for register CYCLE_STATE.
 Extracted state machine for register CYCLE_STATE
 State machine has 4 reachable states with original encodings of:
    0000
@@ -42,12 +40,12 @@ State machine has 4 reachable states with original encodings of:
    0010
    0011
 
-At c_ver Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 69MB peak: 70MB)
+At c_ver Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 71MB peak: 72MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Sun Mar 09 18:42:35 2025
+# Wed Apr 09 20:28:38 2025
 
 ###########################################################]
 Synopsys Netlist Linker, version comp2016q3p1, Build 141R, built Dec  5 2016
@@ -60,7 +58,7 @@ At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Sun Mar 09 18:42:35 2025
+# Wed Apr 09 20:28:38 2025
 
 ###########################################################]
 @END
@@ -70,6 +68,6 @@ At c_hdl Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Sun Mar 09 18:42:35 2025
+# Wed Apr 09 20:28:38 2025
 
 ###########################################################]

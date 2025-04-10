@@ -34,7 +34,7 @@ iceprog D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\sbt\outputs\bitm
 module U111_TOP (
     input [1:0] A_040,
     input [1:0] SIZ,
-    input CLK40_IN, RESETn, TS_CPUn, RnW, BGn, PORTSIZE, LBENn,
+    input CLK40_IN, RESETn, TS_CPUn, RnW, BGn, PORTSIZE, LBENn, TBIn, TCIn, TEAn,
 
     output [1:0] A_AMIGA,
     output CLK40A, CLK40B, CLK40C, CLK80_CPU, CLKRAMA, CLKRAMB,
@@ -96,7 +96,6 @@ SB_PLL40_2F_PAD #(
 ////////////
 
 wire CYCLE_EN = 1;
-//wire LBENn = 1;
 
 U111_BUFFERS U111_BUFFERS (
     //INPUTS
@@ -127,6 +126,9 @@ U111_CYCLE_SM U111_CYCLE_SM (
     .TACKn (TACKn),
     .BGn (BGn),
     .LBENn (LBENn),
+    .TBIn (TBIn),
+    .TCIn (TCIn), 
+    .TEAn (TEAn),
     .SIZ (SIZ),
     .A_040 (A_040),
 

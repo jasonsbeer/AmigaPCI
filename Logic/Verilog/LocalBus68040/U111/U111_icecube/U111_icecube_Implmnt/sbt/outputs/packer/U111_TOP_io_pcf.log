@@ -2,6 +2,7 @@ INOUT D_UU_AMIGA[3] 	 location (2, 21, 1) 	 144
 INOUT D_LL_AMIGA[4] 	 location (0, 3, 0) 	 29 	 
 INOUT D_LL_040[1] 	 location (25, 2, 0) 	 75 	 
 INOUT D_LM_AMIGA[6] 	 location (0, 17, 1) 	 9 	 
+INPUT  TEAn 	 location (7, 0, 1) 	 43 	 
 INPUT  A_040[1] 	 location (2, 0, 1) 	 38 	 
 OUTPUT TSn 	 location (8, 0, 1) 	 45 	 
 INOUT D_UM_AMIGA[0] 	 location (0, 12, 1) 	 17 	 
@@ -64,6 +65,8 @@ INOUT D_UM_AMIGA[5] 	 location (4, 21, 0) 	 141
 INOUT D_UM_040[3] 	 location (25, 19, 1) 	 106 	 
 INOUT D_LL_040[3] 	 location (25, 1, 0) 	 73 	 
 OUTPUT CLK40A 	 location (25, 10, 1) 	 93 	 
+INPUT  TCIn 	 location (8, 0, 0) 	 44 	 
+INPUT  TBIn 	 location (17, 0, 1) 	 55 	 
 INPUT  SIZ[1] 	 location (19, 21, 0) 	 120 	 
 INOUT D_UU_AMIGA[4] 	 location (6, 21, 0) 	 137 	 
 INOUT D_UU_040[2] 	 location (20, 21, 0) 	 118 	 

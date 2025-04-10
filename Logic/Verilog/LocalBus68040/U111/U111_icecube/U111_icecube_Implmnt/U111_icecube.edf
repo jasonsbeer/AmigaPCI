@@ -4,7 +4,7 @@
   (keywordMap (keywordLevel 0))
   (status
     (written
-      (timeStamp 2025 3 9 18 42 38)
+      (timeStamp 2025 4 9 20 28 41)
       (author "Synopsys, Inc.")
       (program "Synplify Pro" (version "L-2016.09L+ice40, mapper maplat, Build 1612R"))
      )
@@ -187,7 +187,6 @@
            (port TAn_1_i (direction OUTPUT))
            (port CPU_READ_EN_i (direction OUTPUT))
            (port BGn_c (direction INPUT))
-           (port TBI_CPUn_0_i (direction OUTPUT))
            (port RnW_c (direction INPUT))
            (port TACKn_in (direction INPUT))
            (port PORTSIZE_c (direction INPUT))
@@ -360,9 +359,6 @@
           (instance (rename CYCLE_STATE_RNO_1 "CYCLE_STATE_RNO[1]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
            (property LUT_INIT (string "8A20"))
           )
-          (instance TA_EN_RNI4SHG (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
-           (property LUT_INIT (string "DFDF"))
-          )
           (instance CPU_READ_EN_i (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
            (property LUT_INIT (string "4040"))
           )
@@ -455,9 +451,9 @@
           )
           (instance LW_CYCLE (viewRef PRIM (cellRef SB_DFFN (libraryRef sb_ice)))
           )
-          (instance (rename CYCLE_STATE_0 "CYCLE_STATE[0]") (viewRef PRIM (cellRef SB_DFFN (libraryRef sb_ice)))
-          )
           (instance (rename CYCLE_STATE_1 "CYCLE_STATE[1]") (viewRef PRIM (cellRef SB_DFFN (libraryRef sb_ice)))
+          )
+          (instance (rename CYCLE_STATE_0 "CYCLE_STATE[0]") (viewRef PRIM (cellRef SB_DFFN (libraryRef sb_ice)))
           )
           (instance TSn (viewRef PRIM (cellRef SB_DFFN (libraryRef sb_ice)))
           )
@@ -487,8 +483,8 @@
            (portRef C (instanceRef TA_EN))
            (portRef C (instanceRef A_OUT))
            (portRef C (instanceRef TS_EN))
-           (portRef C (instanceRef CYCLE_STATE_1))
            (portRef C (instanceRef CYCLE_STATE_0))
+           (portRef C (instanceRef CYCLE_STATE_1))
            (portRef C (instanceRef LW_CYCLE))
            (portRef C (instanceRef UM_LATCHED_nesr_7))
            (portRef C (instanceRef UM_LATCHED_nesr_6))
@@ -722,7 +718,6 @@
            (portRef I3 (instanceRef CYCLE_STATE_RNIULFD_0))
            (portRef I3 (instanceRef LW_TRANS))
            (portRef I3 (instanceRef CPU_READ_EN_i))
-           (portRef I3 (instanceRef TA_EN_RNI4SHG))
            (portRef I3 (instanceRef CYCLE_STATE_RNIGD9C1_0))
            (portRef I3 (instanceRef A_OUT_RNO))
            (portRef I2 (instanceRef A_OUT_RNO))
@@ -1184,7 +1179,7 @@
            (portRef O (instanceRef LW_CYCLE_RNITCQV1))
            (portRef (member un1_D_UU_040 7))
           ))
-          (net N_75_0 (joined
+          (net N_73_0 (joined
            (portRef O (instanceRef TS_EN_RNO_0))
            (portRef I1 (instanceRef TS_EN_RNO))
           ))
@@ -1207,7 +1202,6 @@
            (portRef I0 (instanceRef TSn_RNO))
            (portRef I0 (instanceRef TA_EN_RNIVCEG))
            (portRef I1 (instanceRef CPU_READ_EN_i))
-           (portRef I0 (instanceRef TA_EN_RNI4SHG))
            (portRef I0 (instanceRef LW_CYCLE_START_RNO_0))
           ))
           (net (rename portsize_c "PORTSIZE_c") (joined
@@ -1253,7 +1247,6 @@
            (portRef TACKn_in)
            (portRef I1 (instanceRef LW_CYCLE_RNO_1))
            (portRef I0 (instanceRef CYCLE_STATE_RNIULFD_0))
-           (portRef I1 (instanceRef TA_EN_RNI4SHG))
            (portRef I1 (instanceRef CYCLE_STATE_RNO_1))
            (portRef I1 (instanceRef CYCLE_STATE_RNO_0))
           ))
@@ -1269,7 +1262,7 @@
            (portRef I0 (instanceRef TA_EN_RNO))
            (portRef I2 (instanceRef CYCLE_STATE_RNO_0))
           ))
-          (net N_97 (joined
+          (net N_95 (joined
            (portRef O (instanceRef CYCLE_STATE_RNO_0_0))
            (portRef I3 (instanceRef CYCLE_STATE_RNO_0))
           ))
@@ -1293,7 +1286,6 @@
           (net (rename TA_ENZ0 "TA_EN") (joined
            (portRef Q (instanceRef TA_EN))
            (portRef I1 (instanceRef TA_EN_RNIVCEG))
-           (portRef I2 (instanceRef TA_EN_RNI4SHG))
            (portRef I3 (instanceRef TA_EN_RNO))
           ))
           (net TA_EN_0 (joined
@@ -1308,10 +1300,6 @@
           (net (rename CYCLE_STATE_nss_1 "CYCLE_STATE_nss[1]") (joined
            (portRef O (instanceRef CYCLE_STATE_RNO_1))
            (portRef D (instanceRef CYCLE_STATE_1))
-          ))
-          (net (rename tbi_cpun_0_i "TBI_CPUn_0_i") (joined
-           (portRef O (instanceRef TA_EN_RNI4SHG))
-           (portRef TBI_CPUn_0_i)
           ))
           (net (rename bgn_c "BGn_c") (joined
            (portRef BGn_c)
@@ -1468,6 +1456,9 @@
            (port BGn (direction INPUT))
            (port PORTSIZE (direction INPUT))
            (port LBENn (direction INPUT))
+           (port TBIn (direction INPUT))
+           (port TCIn (direction INPUT))
+           (port TEAn (direction INPUT))
            (port CLK40A (direction OUTPUT))
            (port CLK40B (direction OUTPUT))
            (port CLK40C (direction OUTPUT))
@@ -1532,6 +1523,18 @@
            (property PIN_TYPE (string "000001"))
           )
           (instance LBENn_ibuf (viewRef PRIM (cellRef SB_IO (libraryRef sb_ice)))
+           (property NEG_TRIGGER (string "0"))
+           (property PIN_TYPE (string "000001"))
+          )
+          (instance TBIn_ibuf (viewRef PRIM (cellRef SB_IO (libraryRef sb_ice)))
+           (property NEG_TRIGGER (string "0"))
+           (property PIN_TYPE (string "000001"))
+          )
+          (instance TCIn_ibuf (viewRef PRIM (cellRef SB_IO (libraryRef sb_ice)))
+           (property NEG_TRIGGER (string "0"))
+           (property PIN_TYPE (string "000001"))
+          )
+          (instance TEAn_ibuf (viewRef PRIM (cellRef SB_IO (libraryRef sb_ice)))
            (property NEG_TRIGGER (string "0"))
            (property PIN_TYPE (string "000001"))
           )
@@ -1893,8 +1896,6 @@
            (portRef Y (instanceRef VCC))
            (portRef RESETB (instanceRef pll))
            (portRef D_OUT_0 (instanceRef DMAn_obuf))
-           (portRef D_OUT_0 (instanceRef TEA_CPUn_obuf))
-           (portRef D_OUT_0 (instanceRef TCI_CPUn_obuf))
           ))
           (net CLK80 (joined
            (portRef CLK80 (instanceRef U111_CYCLE_SM))
@@ -2198,6 +2199,30 @@
           (net (rename lbenn "LBENn") (joined
            (portRef PACKAGE_PIN (instanceRef LBENn_ibuf))
            (portRef LBENn)
+          ))
+          (net TBIn_c (joined
+           (portRef D_IN_0 (instanceRef TBIn_ibuf))
+           (portRef D_OUT_0 (instanceRef TBI_CPUn_obuf))
+          ))
+          (net (rename tbin "TBIn") (joined
+           (portRef PACKAGE_PIN (instanceRef TBIn_ibuf))
+           (portRef TBIn)
+          ))
+          (net TCIn_c (joined
+           (portRef D_IN_0 (instanceRef TCIn_ibuf))
+           (portRef D_OUT_0 (instanceRef TCI_CPUn_obuf))
+          ))
+          (net (rename tcin "TCIn") (joined
+           (portRef PACKAGE_PIN (instanceRef TCIn_ibuf))
+           (portRef TCIn)
+          ))
+          (net TEAn_c (joined
+           (portRef D_IN_0 (instanceRef TEAn_ibuf))
+           (portRef D_OUT_0 (instanceRef TEA_CPUn_obuf))
+          ))
+          (net (rename tean "TEAn") (joined
+           (portRef PACKAGE_PIN (instanceRef TEAn_ibuf))
+           (portRef TEAn)
           ))
           (net (rename tan "TAn") (joined
            (portRef PACKAGE_PIN (instanceRef TAn_iobuf))
@@ -2823,10 +2848,6 @@
           (net LBENn_c_i (joined
            (portRef O (instanceRef BUFENn_obuf_RNO))
            (portRef D_OUT_0 (instanceRef BUFENn_obuf))
-          ))
-          (net (rename U111_CYCLE_SM_TBI_CPUn_0_i "U111_CYCLE_SM.TBI_CPUn_0_i") (joined
-           (portRef TBI_CPUn_0_i (instanceRef U111_CYCLE_SM))
-           (portRef D_OUT_0 (instanceRef TBI_CPUn_obuf))
           ))
           (net CPU_READ_EN_i (joined
            (portRef CPU_READ_EN_i (instanceRef U111_CYCLE_SM))

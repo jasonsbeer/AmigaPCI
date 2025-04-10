@@ -31,7 +31,7 @@ GitHub: https://github.com/jasonsbeer/AmigaPCI
 */
 
 module U111_CYCLE_SM (
-    input CLK80, CLK40, TS_CPUn, RESETn, RnW, PORTSIZE, BGn, LBENn,
+    input CLK80, CLK40, TS_CPUn, RESETn, RnW, PORTSIZE, BGn, LBENn, TBIn, TCIn, TEAn,
     input [1:0] SIZ,
     input [1:0] A_040,
 
@@ -58,6 +58,7 @@ module U111_CYCLE_SM (
 ///////////////////
 
 //TRANSFER START WILL NEED TO BE PASSED THROUGH DURING PCI DMA CYCLES.
+//HI-Z THIS DURING PCI DMA AND LISTEN FOR _TS FROM THE BRIDGE.
 //THIS LOGIC DOES NOT PASS _TS TO APCI DURING ON-BOARD MEMORY CYCLES.
 
 always @(negedge CLK40) begin
@@ -80,10 +81,10 @@ end
 assign TAn = TA_EN && LBENn ? TACKn : 1'bz;
 assign TACKn = !LBENn ? TAn : 1'bz;
 
-assign TBI_CPUn = TA_EN && LBENn ? TACKn : 1'b1; //Disable off-board burst transfers.
-
-assign TCI_CPUn = 1; //ENABLE ALL TRANSFER CACHING.
-assign TEA_CPUn = 1;
+//assign TBI_CPUn = TA_EN && LBENn ? TACKn : 1'b1; //Disable off-board burst transfers.
+assign TBI_CPUn = TBIn;
+assign TCI_CPUn = TCIn;
+assign TEA_CPUn = TEAn;
 
 ////////////////////////
 // DATA PASS THROUGH //
@@ -157,7 +158,7 @@ always @(negedge CLK80) begin
         LW_CYCLE <= 0;
         CYCLE_STATE <= 4'h00;
         TA_EN <= 1;
-        A_OUT <= 2'b00;
+        A_OUT <= 0;
         UU_LATCHED <= 8'h00;
         UM_LATCHED <= 8'h00;
     end else begin

@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:55:50
 
-* File Generated:     Mar 9 2025 18:42:40
+* File Generated:     Apr 9 2025 20:28:43
 
 * Purpose:            
 
@@ -35,13 +35,13 @@ I2053: Starting placement of the design
 =============================================================
 
 Input Design Statistics
-    Number of LUTs      	:	78
+    Number of LUTs      	:	77
     Number of DFFs      	:	24
     Number of DFFs packed to IO	:	0
     Number of Carrys    	:	0
     Number of RAMs      	:	0
     Number of ROMs      	:	0
-    Number of IOs       	:	92
+    Number of IOs       	:	95
     Number of GBIOs     	:	0
     Number of GBs       	:	0
     Number of WarmBoot  	:	0
@@ -77,11 +77,11 @@ Info-1404: Inferred PLL generated clock at pll/PLLOUTCOREA
 Info-1404: Inferred PLL generated clock at pll/PLLOUTCOREB
 Info-1404: Inferred PLL generated clock at pll/PLLOUTGLOBALA
 Info-1404: Inferred PLL generated clock at pll/PLLOUTGLOBALB
-Warning-1034: Found non-unate timing arc, from pin "in3" to pin "lcout" of instance "GB_BUFFER_CLK80_THRU_LUT4_0_LC_94", in the clock network. Converting the timing arc to positive-unate
-Warning-1034: Found non-unate timing arc, from pin "in3" to pin "lcout" of instance "GB_BUFFER_CLK40_THRU_LUT4_0_LC_95", in the clock network. Converting the timing arc to positive-unate
+Warning-1034: Found non-unate timing arc, from pin "in3" to pin "lcout" of instance "GB_BUFFER_CLK80_THRU_LUT4_0_LC_93", in the clock network. Converting the timing arc to positive-unate
+Warning-1034: Found non-unate timing arc, from pin "in3" to pin "lcout" of instance "GB_BUFFER_CLK40_THRU_LUT4_0_LC_94", in the clock network. Converting the timing arc to positive-unate
 
 Design Statistics after Packing
-    Number of LUTs      	:	97
+    Number of LUTs      	:	96
     Number of DFFs      	:	24
     Number of DFFs packed to IO	:	0
     Number of Carrys    	:	0
@@ -91,45 +91,45 @@ Device Utilization Summary after Packing
         LUT and DFF      	:	24
         LUT, DFF and CARRY	:	0
     Combinational LogicCells
-        Only LUT         	:	73
+        Only LUT         	:	72
         CARRY Only       	:	0
         LUT with CARRY   	:	0
-    LogicCells                  :	97/3520
-    PLBs                        :	13/440
+    LogicCells                  :	96/3520
+    PLBs                        :	12/440
     BRAMs                       :	0/20
-    IOs and GBIOs               :	92/107
+    IOs and GBIOs               :	95/107
     PLLs                        :	1/2
 
 
 I2088: Phase 3, elapsed time : 0.3 (sec)
 
 Phase 4
-I2088: Phase 4, elapsed time : 0.2 (sec)
+I2088: Phase 4, elapsed time : 0.3 (sec)
 
 Phase 5
-I2088: Phase 5, elapsed time : 0.0 (sec)
+I2088: Phase 5, elapsed time : 0.1 (sec)
 
 Phase 6
-I2088: Phase 6, elapsed time : 7.5 (sec)
+I2088: Phase 6, elapsed time : 11.9 (sec)
 
 Final Design Statistics
-    Number of LUTs      	:	97
+    Number of LUTs      	:	96
     Number of DFFs      	:	24
     Number of DFFs packed to IO	:	0
     Number of Carrys    	:	0
     Number of RAMs      	:	0
     Number of ROMs      	:	0
-    Number of IOs       	:	92
+    Number of IOs       	:	95
     Number of GBIOs     	:	0
     Number of GBs       	:	0
     Number of WarmBoot  	:	0
     Number of PLLs      	:	1
 
 Device Utilization Summary
-    LogicCells                  :	97/3520
-    PLBs                        :	42/440
+    LogicCells                  :	96/3520
+    PLBs                        :	39/440
     BRAMs                       :	0/20
-    IOs and GBIOs               :	92/107
+    IOs and GBIOs               :	95/107
     PLLs                        :	1/2
 
 
@@ -149,7 +149,7 @@ Number of clocks: 5
 Clock: CLK40_IN | Frequency: N/A | Target: 40.00 MHz
 Clock: pll/PLLOUTCOREA | Frequency: N/A | Target: 80.00 MHz
 Clock: pll/PLLOUTCOREB | Frequency: N/A | Target: 40.00 MHz
-Clock: pll/PLLOUTGLOBALA | Frequency: 260.18 MHz | Target: 80.00 MHz
+Clock: pll/PLLOUTGLOBALA | Frequency: 240.24 MHz | Target: 80.00 MHz
 Clock: pll/PLLOUTGLOBALB | Frequency: N/A | Target: 40.00 MHz
 
 =====================================================================
@@ -158,5 +158,5 @@ Clock: pll/PLLOUTGLOBALB | Frequency: N/A | Target: 40.00 MHz
 
 I2054: Placement of design completed successfully
 
-I2076: Placer run-time: 8.5 sec.
+I2076: Placer run-time: 12.9 sec.
 

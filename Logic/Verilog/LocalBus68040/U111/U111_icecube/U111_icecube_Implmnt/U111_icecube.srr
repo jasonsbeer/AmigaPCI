@@ -3,7 +3,7 @@
 #OS: Windows 8 6.2
 #Hostname: JASON-LAB
 
-# Sun Mar 09 18:42:35 2025
+# Wed Apr 09 20:28:38 2025
 
 #Implementation: U111_icecube_Implmnt
 
@@ -24,9 +24,7 @@ Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys softwa
 @I::"D:\LocalBus68040\U111\U111_TOP.v" (library work)
 @I::"D:\LocalBus68040\U111\U111_CYCLE_SM.v" (library work)
 Verilog syntax check successful!
-
-Compiler output is up to date.  No re-compile necessary
-
+File D:\LocalBus68040\U111\U111_CYCLE_SM.v changed - recompiling
 Selecting top level module U111_TOP
 @N: CG364 :"C:\lscc\iCEcube2.2020.12\synpbase\lib\generic\sb_ice40.v":931:7:931:21|Synthesizing module SB_PLL40_2F_PAD in library work.
 
@@ -36,14 +34,14 @@ Selecting top level module U111_TOP
 
 @N: CG364 :"D:\LocalBus68040\U111\U111_TOP.v":34:7:34:14|Synthesizing module U111_TOP in library work.
 
-@W: CG781 :"D:\LocalBus68040\U111\U111_TOP.v":90:2:90:4|Input EXTFEEDBACK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG781 :"D:\LocalBus68040\U111\U111_TOP.v":90:2:90:4|Input DYNAMICDELAY on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG781 :"D:\LocalBus68040\U111\U111_TOP.v":90:2:90:4|Input BYPASS on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG781 :"D:\LocalBus68040\U111\U111_TOP.v":90:2:90:4|Input SDI on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG781 :"D:\LocalBus68040\U111\U111_TOP.v":90:2:90:4|Input SCLK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG781 :"D:\LocalBus68040\U111\U111_TOP.v":90:2:90:4|Input LATCHINPUTVALUE on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG1273 :"D:\LocalBus68040\U111\U111_TOP.v":93:21:93:28|An input port (port CLK40_IN) is the target of an assignment - please check if this is intentional
-@N: CL201 :"D:\LocalBus68040\U111\U111_CYCLE_SM.v":153:0:153:5|Trying to extract state machine for register CYCLE_STATE.
+@W: CG781 :"D:\LocalBus68040\U111\U111_TOP.v":86:2:86:4|Input EXTFEEDBACK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\LocalBus68040\U111\U111_TOP.v":86:2:86:4|Input DYNAMICDELAY on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\LocalBus68040\U111\U111_TOP.v":86:2:86:4|Input BYPASS on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\LocalBus68040\U111\U111_TOP.v":86:2:86:4|Input SDI on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\LocalBus68040\U111\U111_TOP.v":86:2:86:4|Input SCLK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\LocalBus68040\U111\U111_TOP.v":86:2:86:4|Input LATCHINPUTVALUE on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG1273 :"D:\LocalBus68040\U111\U111_TOP.v":89:21:89:28|An input port (port CLK40_IN) is the target of an assignment - please check if this is intentional
+@N: CL201 :"D:\LocalBus68040\U111\U111_CYCLE_SM.v":154:0:154:5|Trying to extract state machine for register CYCLE_STATE.
 Extracted state machine for register CYCLE_STATE
 State machine has 4 reachable states with original encodings of:
    0000
@@ -51,12 +49,12 @@ State machine has 4 reachable states with original encodings of:
    0010
    0011
 
-At c_ver Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 69MB peak: 70MB)
+At c_ver Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 71MB peak: 72MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Sun Mar 09 18:42:35 2025
+# Wed Apr 09 20:28:38 2025
 
 ###########################################################]
 Synopsys Netlist Linker, version comp2016q3p1, Build 141R, built Dec  5 2016
@@ -69,7 +67,7 @@ At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Sun Mar 09 18:42:35 2025
+# Wed Apr 09 20:28:38 2025
 
 ###########################################################]
 @END
@@ -79,7 +77,7 @@ At c_hdl Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Sun Mar 09 18:42:35 2025
+# Wed Apr 09 20:28:38 2025
 
 ###########################################################]
 Synopsys Netlist Linker, version comp2016q3p1, Build 141R, built Dec  5 2016
@@ -93,12 +91,12 @@ At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Sun Mar 09 18:42:36 2025
+# Wed Apr 09 20:28:39 2025
 
 ###########################################################]
 Pre-mapping Report
 
-# Sun Mar 09 18:42:37 2025
+# Wed Apr 09 20:28:40 2025
 
 Synopsys Lattice Technology Pre-mapping, Version maplat, Build 1612R, Built Dec  5 2016 10:31:39
 Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
@@ -155,7 +153,7 @@ original code -> new code
    0001 -> 01
    0010 -> 10
    0011 -> 11
-@N: MO225 :"d:\localbus68040\u111\u111_cycle_sm.v":153:0:153:5|There are no possible illegal states for state machine CYCLE_STATE[3:0] (in view: work.U111_CYCLE_SM(verilog)); safe FSM implementation is not required.
+@N: MO225 :"d:\localbus68040\u111\u111_cycle_sm.v":154:0:154:5|There are no possible illegal states for state machine CYCLE_STATE[3:0] (in view: work.U111_CYCLE_SM(verilog)); safe FSM implementation is not required.
 None
 None
 
@@ -166,12 +164,12 @@ Pre-mapping successful!
 At Mapper Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 47MB peak: 133MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
-# Sun Mar 09 18:42:37 2025
+# Wed Apr 09 20:28:40 2025
 
 ###########################################################]
 Map & Optimize Report
 
-# Sun Mar 09 18:42:37 2025
+# Wed Apr 09 20:28:40 2025
 
 Synopsys Lattice Technology Mapper, Version maplat, Build 1612R, Built Dec  5 2016 10:31:39
 Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
@@ -214,7 +212,7 @@ original code -> new code
    0001 -> 01
    0010 -> 10
    0011 -> 11
-@N: MO225 :"d:\localbus68040\u111\u111_cycle_sm.v":153:0:153:5|There are no possible illegal states for state machine CYCLE_STATE[3:0] (in view: work.U111_CYCLE_SM(verilog)); safe FSM implementation is not required.
+@N: MO225 :"d:\localbus68040\u111\u111_cycle_sm.v":154:0:154:5|There are no possible illegal states for state machine CYCLE_STATE[3:0] (in view: work.U111_CYCLE_SM(verilog)); safe FSM implementation is not required.
 
 Starting factoring (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
 
@@ -244,7 +242,7 @@ Finished technology mapping (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:0
 
 Pass		 CPU time		Worst Slack		Luts / Registers
 ------------------------------------------------------------
-   1		0h:00m:00s		     4.56ns		  80 /        24
+   1		0h:00m:00s		     4.56ns		  79 /        24
 
 Finished technology timing optimizations and critical path resynthesis (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 132MB peak: 133MB)
 
@@ -296,7 +294,7 @@ Start final timing analysis (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:0
 
 
 ##### START OF TIMING REPORT #####[
-# Timing Report written on Sun Mar 09 18:42:38 2025
+# Timing Report written on Wed Apr 09 20:28:41 2025
 #
 
 
@@ -452,11 +450,11 @@ SB_DFFN         7 uses
 SB_DFFNESR      16 uses
 SB_DFFNSS       1 use
 VCC             1 use
-SB_LUT4         78 uses
+SB_LUT4         77 uses
 
-I/O ports: 93
-I/O primitives: 93
-SB_IO          92 uses
+I/O ports: 96
+I/O primitives: 96
+SB_IO          95 uses
 SB_PLL40_2F_PAD 1 use
 
 I/O Register bits:                  0
@@ -467,16 +465,16 @@ Total load per clock:
    U111_TOP|CLK40_derived_clock: 6
 
 @S |Mapping Summary:
-Total  LUTs: 78 (2%)
+Total  LUTs: 77 (2%)
 
 Distribution of All Consumed LUTs = LUT4 
-Distribution of All Consumed Luts 78 = 78 
+Distribution of All Consumed Luts 77 = 77 
 
 Mapper successful!
 
 At Mapper Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 26MB peak: 134MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
-# Sun Mar 09 18:42:38 2025
+# Wed Apr 09 20:28:41 2025
 
 ###########################################################]

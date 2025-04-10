@@ -1,3 +1,2 @@
-@E: CS187 :"D:\LocalBus68040\U111\U111_TOP.v":128:4:128:4|Expecting ,
-@E: CS187 :"D:\LocalBus68040\U111\U111_TOP.v":151:0:151:8|Expecting endmodule
+@E: CG906 :"D:\LocalBus68040\U111\U111_CYCLE_SM.v":85:18:85:21|Reference to unknown variable TBIn.
 
