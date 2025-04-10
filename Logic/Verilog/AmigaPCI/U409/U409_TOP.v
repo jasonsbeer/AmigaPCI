@@ -56,7 +56,7 @@ module U409_TOP (
 
 wire CLK80_OUT;
 wire CLK40 = CLK40_IN;
-wire CLK80 = ~CLK80_OUT;
+wire CLK80 = !CLK80_OUT;
 
 SB_PLL40_CORE #(
     .DIVR (4'b0000),

@@ -1,4 +1,4 @@
-# Tue Apr 08 19:03:31 2025
+# Wed Apr 09 19:24:58 2025
 
 Synopsys Lattice Technology Mapper, Version maplat, Build 1612R, Built Dec  5 2016 10:31:39
 Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
@@ -135,7 +135,7 @@ Start Writing Netlists (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00
 
 Writing Analyst data base D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\synwork\U409_icecube_m.srm
 
-Finished Writing Netlist Databases (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 136MB peak: 138MB)
+Finished Writing Netlist Databases (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 136MB peak: 138MB)
 
 Writing EDIF Netlist and constraint files
 @N: BW103 |The default time unit for the Synopsys Constraint File (SDC or FDC) is 1ns.
@@ -155,7 +155,7 @@ Start final timing analysis (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:0
 
 
 ##### START OF TIMING REPORT #####[
-# Timing Report written on Tue Apr 08 19:03:32 2025
+# Timing Report written on Wed Apr 09 19:24:59 2025
 #
 
 
@@ -666,6 +666,6 @@ Mapper successful!
 At Mapper Exit (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 28MB peak: 138MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
-# Tue Apr 08 19:03:32 2025
+# Wed Apr 09 19:24:59 2025
 
 ###########################################################]

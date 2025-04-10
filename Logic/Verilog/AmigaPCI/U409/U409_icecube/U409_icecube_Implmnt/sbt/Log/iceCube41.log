@@ -1,4 +1,4 @@
-7:02:23 PM
+7:24:52 PM
 "C:\lscc\iCEcube2.2020.12\sbt_backend\bin\win32\opt\synpwrap\synpwrap.exe" -prj "U409_icecube_syn.prj" -log "U409_icecube_Implmnt/U409_icecube.srr"
 starting Synthesisrunning SynthesisCopyright (C) 1992-2014 Lattice Semiconductor Corporation. All rights reserved.
 
@@ -8,7 +8,7 @@ starting Synthesisrunning SynthesisCopyright (C) 1992-2014 Lattice Semiconductor
 #OS: Windows 8 6.2
 #Hostname: JASON-LAB
 
-# Tue Apr 08 19:03:28 2025
+# Wed Apr 09 19:24:55 2025
 
 #Implementation: U409_icecube_Implmnt
 
@@ -33,7 +33,7 @@ Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys softwa
 @I::"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v" (library work)
 @I::"D:\AmigaPCI\U409\U409_AUTOCONFIG.v" (library work)
 Verilog syntax check successful!
-File D:\AmigaPCI\U409\U409_ADDRESS_DECODE.v changed - recompiling
+File D:\AmigaPCI\U409\U409_TOP.v changed - recompiling
 Selecting top level module U409_TOP
 @N: CG364 :"C:\lscc\iCEcube2.2020.12\synpbase\lib\generic\sb_ice40.v":698:7:698:19|Synthesizing module SB_PLL40_CORE in library work.
 
@@ -79,7 +79,7 @@ At c_ver Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Tue Apr 08 19:03:29 2025
+# Wed Apr 09 19:24:56 2025
 
 ###########################################################]
 Synopsys Netlist Linker, version comp2016q3p1, Build 141R, built Dec  5 2016
@@ -92,7 +92,7 @@ At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Tue Apr 08 19:03:29 2025
+# Wed Apr 09 19:24:56 2025
 
 ###########################################################]
 @END
@@ -102,7 +102,7 @@ At c_hdl Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Tue Apr 08 19:03:29 2025
+# Wed Apr 09 19:24:56 2025
 
 ###########################################################]
 Synopsys Netlist Linker, version comp2016q3p1, Build 141R, built Dec  5 2016
@@ -116,12 +116,12 @@ At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Tue Apr 08 19:03:30 2025
+# Wed Apr 09 19:24:57 2025
 
 ###########################################################]
 Pre-mapping Report
 
-# Tue Apr 08 19:03:30 2025
+# Wed Apr 09 19:24:57 2025
 
 Synopsys Lattice Technology Pre-mapping, Version maplat, Build 1612R, Built Dec  5 2016 10:31:39
 Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
@@ -208,12 +208,12 @@ Pre-mapping successful!
 At Mapper Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 47MB peak: 133MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
-# Tue Apr 08 19:03:31 2025
+# Wed Apr 09 19:24:58 2025
 
 ###########################################################]
 Map & Optimize Report
 
-# Tue Apr 08 19:03:31 2025
+# Wed Apr 09 19:24:58 2025
 
 Synopsys Lattice Technology Mapper, Version maplat, Build 1612R, Built Dec  5 2016 10:31:39
 Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
@@ -350,7 +350,7 @@ Start Writing Netlists (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00
 
 Writing Analyst data base D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\synwork\U409_icecube_m.srm
 
-Finished Writing Netlist Databases (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 136MB peak: 138MB)
+Finished Writing Netlist Databases (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 136MB peak: 138MB)
 
 Writing EDIF Netlist and constraint files
 @N: BW103 |The default time unit for the Synopsys Constraint File (SDC or FDC) is 1ns.
@@ -370,7 +370,7 @@ Start final timing analysis (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:0
 
 
 ##### START OF TIMING REPORT #####[
-# Timing Report written on Tue Apr 08 19:03:32 2025
+# Timing Report written on Wed Apr 09 19:24:59 2025
 #
 
 
@@ -881,7 +881,7 @@ Mapper successful!
 At Mapper Exit (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 28MB peak: 138MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
-# Tue Apr 08 19:03:32 2025
+# Wed Apr 09 19:24:59 2025
 
 ###########################################################]
 
@@ -917,7 +917,7 @@ write Timing Constraint to D:/AmigaPCI/U409/U409_icecube/U409_icecube_Implmnt\sb
 EDIF Parser succeeded
 Top module is: U409_TOP
 
-EDF Parser run-time: 4 (sec)
+EDF Parser run-time: 0 (sec)
 edif parser succeed.
 
 
@@ -945,19 +945,6 @@ I2051: Reading of inputs for placer completed successfully
 
 I2053: Starting placement of the design
 =============================================================
-W2715: Warning for set_io Constraint: Ignoring pin assignment for A[8], as it is not connected to any PAD
-W2715: Warning for set_io Constraint: Ignoring pin assignment for A[1], as it is not connected to any PAD
-W2715: Warning for set_io Constraint: Ignoring pin assignment for A[11], as it is not connected to any PAD
-W2715: Warning for set_io Constraint: Ignoring pin assignment for A[3], as it is not connected to any PAD
-W2715: Warning for set_io Constraint: Ignoring pin assignment for A[5], as it is not connected to any PAD
-W2715: Warning for set_io Constraint: Ignoring pin assignment for A[14], as it is not connected to any PAD
-W2715: Warning for set_io Constraint: Ignoring pin assignment for A[7], as it is not connected to any PAD
-W2715: Warning for set_io Constraint: Ignoring pin assignment for A[9], as it is not connected to any PAD
-W2715: Warning for set_io Constraint: Ignoring pin assignment for A[2], as it is not connected to any PAD
-W2715: Warning for set_io Constraint: Ignoring pin assignment for A[10], as it is not connected to any PAD
-W2715: Warning for set_io Constraint: Ignoring pin assignment for A[4], as it is not connected to any PAD
-W2715: Warning for set_io Constraint: Ignoring pin assignment for A[15], as it is not connected to any PAD
-W2715: Warning for set_io Constraint: Ignoring pin assignment for A[6], as it is not connected to any PAD
 
 Input Design Statistics
     Number of LUTs      	:	170
@@ -993,6 +980,19 @@ Design Legalization Statistics
 I2078: Design legalization is completed successfully
 I2088: Phase 1, elapsed time : 0.0 (sec)
 
+W2715: Warning for set_io Constraint: Ignoring pin assignment for A[8], as it is not connected to any PAD
+W2715: Warning for set_io Constraint: Ignoring pin assignment for A[1], as it is not connected to any PAD
+W2715: Warning for set_io Constraint: Ignoring pin assignment for A[11], as it is not connected to any PAD
+W2715: Warning for set_io Constraint: Ignoring pin assignment for A[3], as it is not connected to any PAD
+W2715: Warning for set_io Constraint: Ignoring pin assignment for A[5], as it is not connected to any PAD
+W2715: Warning for set_io Constraint: Ignoring pin assignment for A[14], as it is not connected to any PAD
+W2715: Warning for set_io Constraint: Ignoring pin assignment for A[7], as it is not connected to any PAD
+W2715: Warning for set_io Constraint: Ignoring pin assignment for A[9], as it is not connected to any PAD
+W2715: Warning for set_io Constraint: Ignoring pin assignment for A[2], as it is not connected to any PAD
+W2715: Warning for set_io Constraint: Ignoring pin assignment for A[10], as it is not connected to any PAD
+W2715: Warning for set_io Constraint: Ignoring pin assignment for A[4], as it is not connected to any PAD
+W2715: Warning for set_io Constraint: Ignoring pin assignment for A[15], as it is not connected to any PAD
+W2715: Warning for set_io Constraint: Ignoring pin assignment for A[6], as it is not connected to any PAD
 
 Phase 2
 I2088: Phase 2, elapsed time : 0.0 (sec)
@@ -1031,7 +1031,7 @@ Phase 5
 I2088: Phase 5, elapsed time : 0.2 (sec)
 
 Phase 6
-I2088: Phase 6, elapsed time : 14.5 (sec)
+I2088: Phase 6, elapsed time : 14.6 (sec)
 
 Final Design Statistics
     Number of LUTs      	:	178
@@ -1079,7 +1079,7 @@ Clock: pll/PLLOUTGLOBAL | Frequency: 181.02 MHz | Target: 80.00 MHz
 
 I2054: Placement of design completed successfully
 
-I2076: Placer run-time: 15.5 sec.
+I2076: Placer run-time: 15.7 sec.
 
 placer succeed.
 starting IPExporterrunning IPExporterIPExporter succeed.
@@ -1096,7 +1096,7 @@ Total HPWL cost is 794
 used logic cells: 181
 Design Rule Checking Succeeded
 
-DRC Checker run-time: 0 (sec)
+DRC Checker run-time: 1 (sec)
 packer succeed.
 
 
@@ -1126,15 +1126,15 @@ Release:        2020.12.27943
 Build Date:     Dec  9 2020 17:44:15
 
 I1203: Reading Design U409_TOP
-Read design time: 1
+Read design time: 0
 I1202: Reading Architecture of device iCE40HX4K
 Info-1404: Inferred PLL generated clock at pll/PLLOUTCORE
 Info-1404: Inferred PLL generated clock at pll/PLLOUTGLOBAL
-Read device time: 7
+Read device time: 8
 I1209: Started routing
 I1223: Total Nets : 259 
 I1212: Iteration  1 :    56 unrouted : 1 seconds
-I1212: Iteration  2 :     6 unrouted : 0 seconds
+I1212: Iteration  2 :     6 unrouted : 1 seconds
 I1212: Iteration  3 :     0 unrouted : 0 seconds
 I1215: Routing is successful
 Routing time: 2
@@ -1184,4 +1184,4 @@ Bit Stream Generator succeeded
 
 Bitmap run-time: 1 (sec)
 bitmap succeed.
-7:14:44 PM
+7:31:21 PM
