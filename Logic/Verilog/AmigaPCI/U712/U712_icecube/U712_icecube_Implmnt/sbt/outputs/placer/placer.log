@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:55:50
 
-* File Generated:     Apr 8 2025 19:54:08
+* File Generated:     Apr 9 2025 19:17:20
 
 * Purpose:            
 
@@ -35,7 +35,7 @@ I2053: Starting placement of the design
 =============================================================
 
 Input Design Statistics
-    Number of LUTs      	:	219
+    Number of LUTs      	:	217
     Number of DFFs      	:	95
     Number of DFFs packed to IO	:	0
     Number of Carrys    	:	14
@@ -79,7 +79,7 @@ Info-1404: Inferred PLL generated clock at pll/PLLOUTGLOBALA
 Info-1404: Inferred PLL generated clock at pll/PLLOUTGLOBALB
 
 Design Statistics after Packing
-    Number of LUTs      	:	241
+    Number of LUTs      	:	239
     Number of DFFs      	:	95
     Number of DFFs packed to IO	:	0
     Number of Carrys    	:	14
@@ -89,11 +89,11 @@ Device Utilization Summary after Packing
         LUT and DFF      	:	83
         LUT, DFF and CARRY	:	12
     Combinational LogicCells
-        Only LUT         	:	144
-        CARRY Only       	:	0
-        LUT with CARRY   	:	2
-    LogicCells                  :	241/3520
-    PLBs                        :	35/440
+        Only LUT         	:	143
+        CARRY Only       	:	1
+        LUT with CARRY   	:	1
+    LogicCells                  :	240/3520
+    PLBs                        :	33/440
     BRAMs                       :	0/20
     IOs and GBIOs               :	95/107
     PLLs                        :	1/2
@@ -105,13 +105,13 @@ Phase 4
 I2088: Phase 4, elapsed time : 0.2 (sec)
 
 Phase 5
-I2088: Phase 5, elapsed time : 0.3 (sec)
+I2088: Phase 5, elapsed time : 0.4 (sec)
 
 Phase 6
-I2088: Phase 6, elapsed time : 17.8 (sec)
+I2088: Phase 6, elapsed time : 15.7 (sec)
 
 Final Design Statistics
-    Number of LUTs      	:	241
+    Number of LUTs      	:	239
     Number of DFFs      	:	95
     Number of DFFs packed to IO	:	0
     Number of Carrys    	:	14
@@ -124,8 +124,8 @@ Final Design Statistics
     Number of PLLs      	:	1
 
 Device Utilization Summary
-    LogicCells                  :	241/3520
-    PLBs                        :	88/440
+    LogicCells                  :	240/3520
+    PLBs                        :	81/440
     BRAMs                       :	0/20
     IOs and GBIOs               :	95/107
     PLLs                        :	1/2
@@ -149,7 +149,7 @@ Clock: C3 | Frequency: N/A | Target: 3.58 MHz
 Clock: CLK40_IN | Frequency: N/A | Target: 40.00 MHz
 Clock: pll/PLLOUTCOREA | Frequency: N/A | Target: 80.00 MHz
 Clock: pll/PLLOUTCOREB | Frequency: N/A | Target: 40.00 MHz
-Clock: pll/PLLOUTGLOBALA | Frequency: 122.54 MHz | Target: 80.00 MHz
+Clock: pll/PLLOUTGLOBALA | Frequency: 130.95 MHz | Target: 80.00 MHz
 Clock: pll/PLLOUTGLOBALB | Frequency: N/A | Target: 40.00 MHz
 
 =====================================================================
@@ -158,5 +158,5 @@ Clock: pll/PLLOUTGLOBALB | Frequency: N/A | Target: 40.00 MHz
 
 I2054: Placement of design completed successfully
 
-I2076: Placer run-time: 19.2 sec.
+I2076: Placer run-time: 17.1 sec.
 

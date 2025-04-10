@@ -46,8 +46,8 @@ module U712_CYCLE_TERM (
 //BURST TRANSFERS TO CHIP RAM OR REGISTER SPACES.
 
 assign TACKn = TACK_EN ? TACK_OUTn : 1'bz;
-assign TBIn = TACK_EN ? TACK_OUTn : 1'b1;
-assign TCIn = TACK_EN && RAM_CYCLE ? TACK_OUTn : 1'b1;
+assign TBIn  = TACK_EN ? TACK_OUTn : 1'bz;
+assign TCIn  = TACK_EN && RAM_CYCLE ? TACK_OUTn : 1'b1;
 
 //DSACK STATE MACHINE
 reg TACK_OUTn;

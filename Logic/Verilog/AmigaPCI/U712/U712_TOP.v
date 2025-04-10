@@ -65,13 +65,13 @@ assign RAMENn = RAMSPACEn;
 wire CLK40_PLL;
 wire CLK80_PLL;
 
-assign CLK40B_OUT = ~CLK40_PLL;
-assign CLK40C_OUT = ~CLK40_PLL;
-assign CLK40D_OUT = ~CLK40_PLL;
-wire   CLK40      = ~CLK40_PLL;
+assign CLK40B_OUT = !CLK40_PLL;
+assign CLK40C_OUT = !CLK40_PLL;
+assign CLK40D_OUT = !CLK40_PLL;
+wire   CLK40      = !CLK40_PLL;
 
-wire   CLK80  = ~CLK80_PLL;
-assign CLKRAM = ~CLK80_PLL;
+wire   CLK80  = !CLK80_PLL;
+assign CLKRAM = !CLK80_PLL;
 
 SB_PLL40_2F_CORE #(
     .DIVR (4'b0000),
