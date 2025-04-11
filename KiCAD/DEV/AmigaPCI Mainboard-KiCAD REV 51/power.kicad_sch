@@ -6,7 +6,7 @@
 	(paper "B")
 	(title_block
 		(title "AMIGA PCI")
-		(date "2025-04-07")
+		(date "2025-04-10")
 		(rev "5.1")
 	)
 	(lib_symbols
@@ -11405,6 +11405,12 @@
 		(uuid "d1cf7597-2403-4079-9e6a-5da873cfd2e3")
 	)
 	(junction
+		(at 90.17 219.71)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "d460fd2a-c2a0-4d29-8c50-8ec0af1eeff1")
+	)
+	(junction
 		(at 405.13 152.4)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -11995,6 +12001,16 @@
 			(type default)
 		)
 		(uuid "2e370f2a-e643-4ed6-a723-05cf0e4134db")
+	)
+	(wire
+		(pts
+			(xy 101.6 219.71) (xy 90.17 219.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2e562527-ffce-4eda-a488-13b0977454ba")
 	)
 	(wire
 		(pts
@@ -12845,6 +12861,16 @@
 			(type default)
 		)
 		(uuid "718e7124-5949-473a-89b6-7e09762c6563")
+	)
+	(wire
+		(pts
+			(xy 101.6 218.44) (xy 101.6 219.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7202b71e-b3cb-466e-9775-5cd29a17d530")
 	)
 	(wire
 		(pts
@@ -13948,6 +13974,16 @@
 	)
 	(wire
 		(pts
+			(xy 90.17 219.71) (xy 90.17 217.17)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e5738f29-593e-49b0-9f65-52631ef5d23e")
+	)
+	(wire
+		(pts
 			(xy 82.55 39.37) (xy 92.71 39.37)
 		)
 		(stroke
@@ -14048,7 +14084,7 @@
 	)
 	(wire
 		(pts
-			(xy 90.17 220.98) (xy 90.17 217.17)
+			(xy 90.17 222.25) (xy 90.17 219.71)
 		)
 		(stroke
 			(width 0)
@@ -14739,7 +14775,7 @@
 	)
 	(global_label "_RSTBTN"
 		(shape input)
-		(at 90.17 220.98 270)
+		(at 90.17 222.25 270)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -14749,7 +14785,7 @@
 		)
 		(uuid "59b8344d-6a57-4bb6-a42c-ee82ea4ff1d2")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 90.17 231.948 90)
+			(at 90.17 233.218 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15819,6 +15855,76 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R")
+		(at 101.6 214.63 0)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "14ce4317-a0f7-4eb6-a721-bc0cf57a09ff")
+		(property "Reference" "R227"
+			(at 99.314 212.344 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1k"
+			(at 101.6 213.36 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 99.822 214.63 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 101.6 214.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 101.6 214.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "b8149c14-c2ae-457b-8f4f-15c0d20f2563")
+		)
+		(pin "2"
+			(uuid "2d1ac02d-991d-432b-a281-5951dfdc026d")
+		)
+		(instances
+			(project "AmigaPCI Mainboard"
+				(path "/72453515-27fe-4336-91f3-e3c8054f7767/4cb777ef-2899-49f4-b38f-a0c07d84fa7d"
+					(reference "R227")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:C_Polarized")
 		(at 325.12 156.21 0)
 		(unit 1)
@@ -15883,6 +15989,72 @@
 			(project "AmigaPCI Mainboard"
 				(path "/72453515-27fe-4336-91f3-e3c8054f7767/4cb777ef-2899-49f4-b38f-a0c07d84fa7d"
 					(reference "C114")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_name "+3V3_1")
+		(lib_id "power:+3V3")
+		(at 101.6 210.82 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "17c3ef5b-2fd2-4edf-adc1-e81fe7f33701")
+		(property "Reference" "#PWR199"
+			(at 101.6 214.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 101.6 206.756 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 101.6 210.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 101.6 210.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3V3\""
+			(at 101.6 210.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "ee8c2ab0-b65e-4393-a100-70db65f1f312")
+		)
+		(instances
+			(project "AmigaPCI Mainboard"
+				(path "/72453515-27fe-4336-91f3-e3c8054f7767/4cb777ef-2899-49f4-b38f-a0c07d84fa7d"
+					(reference "#PWR199")
 					(unit 1)
 				)
 			)

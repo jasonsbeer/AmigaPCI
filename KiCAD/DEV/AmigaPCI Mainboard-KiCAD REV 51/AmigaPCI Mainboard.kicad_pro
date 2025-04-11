@@ -3058,6 +3058,10 @@
       {
         "netclass": "PCI",
         "pattern": "PAR"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_ADEN"
       }
     ]
   },
