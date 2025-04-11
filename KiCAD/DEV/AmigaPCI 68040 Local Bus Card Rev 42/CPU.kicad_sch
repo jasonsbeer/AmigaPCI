@@ -6,7 +6,7 @@
 	(paper "B")
 	(title_block
 		(title "AmigaPCI 68040 Local Bus Card")
-		(date "2025-04-03")
+		(date "2025-04-10")
 		(rev "4.2")
 	)
 	(lib_symbols
@@ -5452,6 +5452,10 @@
 		(uuid "05395923-508f-4d63-95d8-a0333f078b34")
 	)
 	(no_connect
+		(at 64.77 149.86)
+		(uuid "0b1670b6-d5f0-4ac0-9401-c38b373a832c")
+	)
+	(no_connect
 		(at 64.77 144.78)
 		(uuid "1643d949-3cc1-41ed-9fff-ac08dfb2f9ae")
 	)
@@ -5484,8 +5488,8 @@
 		(uuid "43c9a4f3-322c-42c6-b045-305609e0ec09")
 	)
 	(no_connect
-		(at 64.77 142.24)
-		(uuid "52fbb9f4-06c0-4fee-aa7a-214e34207c71")
+		(at 64.77 152.4)
+		(uuid "528ed1e8-ad57-45cd-ae5a-642780432881")
 	)
 	(no_connect
 		(at 64.77 147.32)
@@ -6109,16 +6113,6 @@
 	)
 	(wire
 		(pts
-			(xy 35.56 152.4) (xy 64.77 152.4)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "003147ed-ecf1-46f2-8e63-18bfe9159668")
-	)
-	(wire
-		(pts
 			(xy 236.22 158.75) (xy 238.76 158.75)
 		)
 		(stroke
@@ -6326,16 +6320,6 @@
 			(type default)
 		)
 		(uuid "0b738353-da5f-43ee-b4ca-418db452a47a")
-	)
-	(wire
-		(pts
-			(xy 35.56 149.86) (xy 64.77 149.86)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "0c088cc6-e8d4-4cc8-a154-160cd3222cf1")
 	)
 	(wire
 		(pts
@@ -7156,6 +7140,16 @@
 			(type default)
 		)
 		(uuid "3d04d9dc-274f-4f45-b826-ca90b36387c4")
+	)
+	(wire
+		(pts
+			(xy 35.56 142.24) (xy 64.77 142.24)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3dd51487-848d-4346-9323-58b4cf627936")
 	)
 	(wire
 		(pts
@@ -11432,6 +11426,27 @@
 			)
 		)
 	)
+	(global_label "TM2"
+		(shape output)
+		(at 35.56 142.24 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "b3033c77-0124-428e-aab0-9e49d1f74cc0")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 28.9463 142.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+	)
 	(global_label "TM1"
 		(shape output)
 		(at 35.56 139.7 180)
@@ -11491,27 +11506,6 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
-			)
-		)
-	)
-	(global_label "UPA0"
-		(shape output)
-		(at 35.56 149.86 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "c0d56251-3da5-4794-b4cd-3a803cbf8e66")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 27.7556 149.86 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
 			)
 		)
 	)
@@ -11596,27 +11590,6 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
-			)
-		)
-	)
-	(global_label "UPA1"
-		(shape output)
-		(at 35.56 152.4 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "d580d8f5-0fd5-4eda-bb8a-213290e8fcf7")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 27.7556 152.4 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
 			)
 		)
 	)
