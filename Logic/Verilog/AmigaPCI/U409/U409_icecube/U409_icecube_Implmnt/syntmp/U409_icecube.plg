@@ -23,5 +23,5 @@
 @P: U409_TOP I/O primitives : 48
 @P: U409_TOP I/O Register bits : 0
 @P: U409_TOP Register bits (Non I/O) : 74 (2%)
-@P: U409_TOP Total Luts : 170 (4%)
+@P: U409_TOP Total Luts : 172 (4%)
 @P:  CPU Time : 0h:00m:00s

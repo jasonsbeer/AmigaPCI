@@ -102,7 +102,7 @@ assign CIACS1n = !(CIA_ENABLE && !A[13]);
 assign RAMSPACEn = !(Z2_SPACE && !OVL && EITH_ACCESS && A[23:21] == 3'b000);
 assign REGSPACEn = !(Z2_SPACE && DATA_ACCESS && (REGISTER_SPACE || RANGER_SPACE));
 wire REGISTER_SPACE = A[23:16] == 8'hDF;
-wire RANGER_SPACE = A[23:19] == 4'hC;
+wire RANGER_SPACE = A[23:20] == 4'hC;
 
 ///////////////////////
 // AUTOVECTOR SPACE //
