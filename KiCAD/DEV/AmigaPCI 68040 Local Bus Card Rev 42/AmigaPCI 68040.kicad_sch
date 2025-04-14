@@ -6,7 +6,7 @@
 	(paper "A")
 	(title_block
 		(title "AmigaPCI 68040 Local Bus Card")
-		(date "2025-04-03")
+		(date "2025-04-10")
 		(rev "4.2")
 	)
 	(lib_symbols)

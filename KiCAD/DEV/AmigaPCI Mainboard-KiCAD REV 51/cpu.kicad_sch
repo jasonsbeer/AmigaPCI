@@ -6,7 +6,7 @@
 	(paper "B")
 	(title_block
 		(title "AMIGA PCI")
-		(date "2025-04-07")
+		(date "2025-04-10")
 		(rev "5.1")
 	)
 	(lib_symbols
@@ -9030,10 +9030,10 @@
 		(uuid "3f3cb376-924c-49ad-9ca8-d1e0b0ad7a55")
 	)
 	(junction
-		(at 360.68 38.1)
+		(at 250.19 151.13)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "44091a84-d4aa-4ded-8f40-2edfc68f8ffd")
+		(uuid "47534f8c-4557-460c-a6ca-8ed7835e0bf9")
 	)
 	(junction
 		(at 378.46 38.1)
@@ -9156,12 +9156,6 @@
 		(uuid "5e519763-48b3-4dae-a049-cece57beb7a3")
 	)
 	(junction
-		(at 363.22 38.1)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "5e85cab6-9996-40f7-a9ed-29c69b2a4c40")
-	)
-	(junction
 		(at 212.09 146.05)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -9240,12 +9234,6 @@
 		(uuid "756cd51e-cedc-4ac1-a642-46a69f333f96")
 	)
 	(junction
-		(at 222.25 140.97)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "7eba481f-2a04-445a-a318-dade920d0874")
-	)
-	(junction
 		(at 68.58 213.36)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -9256,6 +9244,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "869cf9f0-0287-4f24-8c8c-61b6fa8fa6e3")
+	)
+	(junction
+		(at 250.19 146.05)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "8923b15c-6f97-45b9-8455-4c15cfb5ac1d")
 	)
 	(junction
 		(at 375.92 38.1)
@@ -10685,16 +10679,6 @@
 	)
 	(wire
 		(pts
-			(xy 242.57 146.05) (xy 264.16 146.05)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "08be028c-81c2-43e6-89e1-ba2f8f0ef574")
-	)
-	(wire
-		(pts
 			(xy 68.58 215.9) (xy 74.93 215.9)
 		)
 		(stroke
@@ -10712,16 +10696,6 @@
 			(type default)
 		)
 		(uuid "09a88943-9677-4b6d-bb3d-a557dd1389ad")
-	)
-	(wire
-		(pts
-			(xy 222.25 123.19) (xy 222.25 140.97)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "09bffb65-ac12-4515-8eb9-8410ceb56e6f")
 	)
 	(wire
 		(pts
@@ -10772,16 +10746,6 @@
 			(type default)
 		)
 		(uuid "0c139600-92fd-41d7-bf48-7f0b62de33d3")
-	)
-	(wire
-		(pts
-			(xy 358.14 44.45) (xy 358.14 38.1)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "0c2d8e5d-1cf4-4235-b4cb-593c987dec0b")
 	)
 	(wire
 		(pts
@@ -10872,16 +10836,6 @@
 			(type default)
 		)
 		(uuid "0e29e657-326c-4d32-b3ce-0eb3822addc0")
-	)
-	(wire
-		(pts
-			(xy 358.14 38.1) (xy 360.68 38.1)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "0efe272b-f86e-4782-b6a7-364c3109843f")
 	)
 	(wire
 		(pts
@@ -11405,16 +11359,6 @@
 	)
 	(wire
 		(pts
-			(xy 360.68 38.1) (xy 360.68 44.45)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "25ef1c4a-16a6-4d96-adbb-8428340ea8a4")
-	)
-	(wire
-		(pts
 			(xy 242.57 52.07) (xy 264.16 52.07)
 		)
 		(stroke
@@ -11522,6 +11466,16 @@
 			(type default)
 		)
 		(uuid "298b390b-e318-4d73-afc8-f0f23b98f57e")
+	)
+	(wire
+		(pts
+			(xy 250.19 146.05) (xy 250.19 151.13)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "29c34c49-86eb-403b-860f-73ac4dae8c1d")
 	)
 	(wire
 		(pts
@@ -12535,6 +12489,16 @@
 	)
 	(wire
 		(pts
+			(xy 242.57 151.13) (xy 250.19 151.13)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "51697350-190d-4b87-b7a7-078acf658d3c")
+	)
+	(wire
+		(pts
 			(xy 309.88 142.24) (xy 312.42 142.24)
 		)
 		(stroke
@@ -12592,16 +12556,6 @@
 			(type default)
 		)
 		(uuid "548d8f7c-6b4a-493a-8933-d81e9954b0f9")
-	)
-	(wire
-		(pts
-			(xy 360.68 52.07) (xy 360.68 58.42)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "54f017b6-b517-47ce-aa26-d23512ef96b6")
 	)
 	(wire
 		(pts
@@ -13753,16 +13707,6 @@
 		)
 		(uuid "7cbe3b52-77f8-418f-a48f-0bf929b6b6a9")
 	)
-	(wire
-		(pts
-			(xy 360.68 38.1) (xy 363.22 38.1)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "7cf58cc2-96df-449f-9255-def0905558af")
-	)
 	(bus
 		(pts
 			(xy 326.39 46.99) (xy 326.39 49.53)
@@ -14445,6 +14389,16 @@
 	)
 	(wire
 		(pts
+			(xy 208.28 140.97) (xy 229.87 140.97)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "957e0483-84ba-43bf-ac28-8ea3f3e36f08")
+	)
+	(wire
+		(pts
 			(xy 44.45 226.06) (xy 53.34 226.06)
 		)
 		(stroke
@@ -15105,7 +15059,7 @@
 	)
 	(wire
 		(pts
-			(xy 250.19 118.11) (xy 250.19 171.45)
+			(xy 250.19 118.11) (xy 250.19 146.05)
 		)
 		(stroke
 			(width 0)
@@ -15125,7 +15079,7 @@
 	)
 	(wire
 		(pts
-			(xy 222.25 140.97) (xy 222.25 176.53)
+			(xy 222.25 123.19) (xy 222.25 176.53)
 		)
 		(stroke
 			(width 0)
@@ -15502,6 +15456,16 @@
 			(type default)
 		)
 		(uuid "b87b126f-965f-408e-8a7b-50f31a2cf8be")
+	)
+	(wire
+		(pts
+			(xy 250.19 151.13) (xy 250.19 171.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b88e619c-79aa-4f2f-9523-df76bce29756")
 	)
 	(bus
 		(pts
@@ -16553,16 +16517,6 @@
 		)
 		(uuid "dfc2695d-07d0-4f6f-9dc9-2ade7474234c")
 	)
-	(wire
-		(pts
-			(xy 358.14 52.07) (xy 358.14 58.42)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e0267c2c-9ea0-405b-b2c6-d4b30be16ce9")
-	)
 	(bus
 		(pts
 			(xy 326.39 107.95) (xy 326.39 110.49)
@@ -16875,13 +16829,13 @@
 	)
 	(wire
 		(pts
-			(xy 222.25 140.97) (xy 229.87 140.97)
+			(xy 242.57 146.05) (xy 250.19 146.05)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "e8a727f4-6bc7-4911-acb6-d498c2c15500")
+		(uuid "e7f0ecda-214a-4316-be6f-2764ac09c5f0")
 	)
 	(wire
 		(pts
@@ -16892,16 +16846,6 @@
 			(type default)
 		)
 		(uuid "e91229fc-954d-44a2-9c65-b9ceb663bfe0")
-	)
-	(wire
-		(pts
-			(xy 242.57 151.13) (xy 264.16 151.13)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e99bc5c9-2093-415e-a939-8c7b613e00ab")
 	)
 	(wire
 		(pts
@@ -17777,16 +17721,6 @@
 			(justify left bottom)
 		)
 		(uuid "122c6223-e686-4805-9b3f-5de6ba9257d2")
-	)
-	(label "UPA1"
-		(at 358.14 58.42 90)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "128d2416-ae5c-4c0f-a5d4-e118c69f5f58")
 	)
 	(label "_BB"
 		(at 386.08 58.42 90)
@@ -19428,16 +19362,6 @@
 		)
 		(uuid "e6bcf903-e513-4a42-a4a8-119b80385263")
 	)
-	(label "UPA0"
-		(at 360.68 58.42 90)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "e787847c-3b66-4fe9-bd4a-a6743e4ed47b")
-	)
 	(label "A14"
 		(at 328.93 110.49 0)
 		(effects
@@ -20968,27 +20892,6 @@
 			)
 		)
 	)
-	(global_label "UPA1"
-		(shape output)
-		(at 264.16 151.13 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "6eac7d03-d3e1-495e-8dc5-bafd274943d8")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 272.0438 151.13 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-	)
 	(global_label "_LVDEVSEL"
 		(shape bidirectional)
 		(at 328.93 194.31 180)
@@ -21231,6 +21134,27 @@
 		(uuid "87f5839a-043e-48ee-aa31-673d5c6b8091")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 57.4494 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+	)
+	(global_label "TM2"
+		(shape output)
+		(at 208.28 140.97 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "89bd1497-e507-4c79-8ae5-dd783d3ee66d")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 201.6663 140.97 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21819,27 +21743,6 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
-			)
-		)
-	)
-	(global_label "UPA0"
-		(shape output)
-		(at 264.16 146.05 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "bc7bccfa-7f6b-4187-bb75-976e0210d097")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 272.0438 146.05 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
 			)
 		)
 	)
@@ -27436,76 +27339,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:R")
-		(at 358.14 48.26 0)
-		(mirror y)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "d6234539-32be-4f19-b5ae-33ab5ccd8ba8")
-		(property "Reference" "R227"
-			(at 356.87 45.212 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "2k7"
-			(at 358.14 50.292 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 359.918 48.26 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 358.14 48.26 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 358.14 48.26 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "b68b8536-fdbe-4712-84d9-56e8ec39d5ef")
-		)
-		(pin "2"
-			(uuid "2595f32a-752c-4228-b849-b65d29678497")
-		)
-		(instances
-			(project "AmigaPCI Mainboard"
-				(path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
-					(reference "R227")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:GND")
 		(at 250.19 207.01 0)
 		(mirror y)
@@ -28040,76 +27873,6 @@
 			(project "AmigaPCI Mainboard"
 				(path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
 					(reference "#PWR0316")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R")
-		(at 360.68 48.26 0)
-		(mirror y)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "e9313151-1adc-4a00-815c-f3c60d0d6099")
-		(property "Reference" "R228"
-			(at 359.41 45.212 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "2k7"
-			(at 360.68 50.292 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 362.458 48.26 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 360.68 48.26 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 360.68 48.26 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "9d532451-f90d-408e-b001-1fdd4d4075de")
-		)
-		(pin "2"
-			(uuid "ca28604a-c131-4e53-bf94-e6d15c1a4efe")
-		)
-		(instances
-			(project "AmigaPCI Mainboard"
-				(path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
-					(reference "R228")
 					(unit 1)
 				)
 			)

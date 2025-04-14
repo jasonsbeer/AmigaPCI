@@ -292,7 +292,7 @@ This TTL tolerant signal is driven by the bus master and tristated by inactive b
 This TTL tolerant bus is driven by the bus master and tristated by inactive bus masters. These are the MC68040/MC68060 transfer size signals. 
 
 **_TACK** (Transfer Acknowledge)
-This LVTTL signal is driven by the target device and tristated by inactive target devices. It signals the bus master that the target device has completed the data transfer process for writes, or has driven the data bus with the requested data and the cycle can be safely terminated.
+This LVTTL signal is driven by the target device and tristated by inactive target devices. It signals the bus master that the target device has completed the data transfer process for writes, or has driven the data bus with the requested data and the cycle can be safely terminated. Equivalent to the _TA signal.
 
 **_TBI** (Tranfer Burst Inhibit)
 This LVTTL signal is driven by the target device and tristated by inactive target devices. Inhibits a burst cycle in favor of individual data transfers. Asserted with **_TACK**.
@@ -306,14 +306,11 @@ This LVTTL signal is driven by the target device and tristated by inactive targe
 **TT(1..0)** (Transfer Type)  
 This TTL tolerant bus is driven by the bus master and tristated by inactive bus masters. These are the MC68040/MC68060 transfer type signals.
 
-**TM(1..0)** (Transfer Modifiers)  
+**TM(2..0)** (Transfer Modifiers)  
 This TTL tolerant bus is driven by the bus master and tristated by inactive bus masters. These are the MC68040/MC68060 transfer modifier signals.
 
 **_TS** (Transfer Start)  
 This TTL tolerant signal is driven by the bus master and tristated by inactive bus masters. Indicates the start of a data transfer cycle.
-
-**UPA(1..0)** (User Programmable Attribute)  
-This TTL tolerant bus is driven by the bus master and tristated by inactive bus masters. An address bus extension, these signals are used by the PCI Bridge to enable access to the parallel address spaces of the PCI Local Bus.
 
 ### 3.4.4 Bus Arbitration Signals
 
@@ -363,7 +360,7 @@ Pin|Signal|Pin|Signal|Pin|Signal
 **A10**|A11|**B10**|A10|**C10**|GND
 **A11**|_BR|**B11**|_LOCK|**C11**|_CPURST
 **A12**|TM0|**B12**|R_W|**C12**|TM1
-**A13**|GND|**B13**|D28|**C13**|+3.3V
+**A13**|TM2|**B13**|D28|**C13**|+3.3V
 **A14**|D26|**B14**|D24|**C14**|+3.3V
 **A15**|D31|**B15**|D30|**C15**|D21
 **A16**|D29|**B16**|D27|**C16**|SIZ0
@@ -383,8 +380,8 @@ Pin|Signal|Pin|Signal|Pin|Signal
 **A30**|GND|**B30**|D6|**C30**|D5
 **A31**|D2|**B31**|D4|**C31**|D1
 **A32**|D0|**B32**|D3|**C32**|TT0
-**A33**|+5V|**B33**|TT1|**C33**|UPA0
-**A34**|+3.3V|**B34**|UPA1|**C34**|_RSTOUT
+**A33**|+5V|**B33**|TT1|**C33**|GND
+**A34**|+3.3V|**B34**|GND|**C34**|_RSTOUT
 **A35**|A22|**B35**|A26|**C35**|A28
 **A36**|A24|**B36**|A30|**C36**|A29
 **A37**|GND|**B37**|A31|**C37**|A27
