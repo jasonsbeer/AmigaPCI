@@ -3,7 +3,7 @@
 #OS: Windows 8 6.2
 #Hostname: JASON-LAB
 
-# Wed Apr 09 20:28:38 2025
+# Sat Apr 19 16:00:49 2025
 
 #Implementation: U111_icecube_Implmnt
 
@@ -34,27 +34,29 @@ Selecting top level module U111_TOP
 
 @N: CG364 :"D:\LocalBus68040\U111\U111_TOP.v":34:7:34:14|Synthesizing module U111_TOP in library work.
 
-@W: CG781 :"D:\LocalBus68040\U111\U111_TOP.v":86:2:86:4|Input EXTFEEDBACK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG781 :"D:\LocalBus68040\U111\U111_TOP.v":86:2:86:4|Input DYNAMICDELAY on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG781 :"D:\LocalBus68040\U111\U111_TOP.v":86:2:86:4|Input BYPASS on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG781 :"D:\LocalBus68040\U111\U111_TOP.v":86:2:86:4|Input SDI on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG781 :"D:\LocalBus68040\U111\U111_TOP.v":86:2:86:4|Input SCLK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG781 :"D:\LocalBus68040\U111\U111_TOP.v":86:2:86:4|Input LATCHINPUTVALUE on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG1273 :"D:\LocalBus68040\U111\U111_TOP.v":89:21:89:28|An input port (port CLK40_IN) is the target of an assignment - please check if this is intentional
-@N: CL201 :"D:\LocalBus68040\U111\U111_CYCLE_SM.v":154:0:154:5|Trying to extract state machine for register CYCLE_STATE.
+@W: CG781 :"D:\LocalBus68040\U111\U111_TOP.v":87:2:87:4|Input EXTFEEDBACK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\LocalBus68040\U111\U111_TOP.v":87:2:87:4|Input DYNAMICDELAY on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\LocalBus68040\U111\U111_TOP.v":87:2:87:4|Input BYPASS on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\LocalBus68040\U111\U111_TOP.v":87:2:87:4|Input SDI on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\LocalBus68040\U111\U111_TOP.v":87:2:87:4|Input SCLK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\LocalBus68040\U111\U111_TOP.v":87:2:87:4|Input LATCHINPUTVALUE on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@N: CL201 :"D:\LocalBus68040\U111\U111_CYCLE_SM.v":152:0:152:5|Trying to extract state machine for register CYCLE_STATE.
 Extracted state machine for register CYCLE_STATE
-State machine has 4 reachable states with original encodings of:
+State machine has 6 reachable states with original encodings of:
    0000
    0001
    0010
    0011
+   0100
+   0101
+@N: CL159 :"D:\LocalBus68040\U111\U111_CYCLE_SM.v":34:10:34:14|Input CLK80 is unused.
 
 At c_ver Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 71MB peak: 72MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Wed Apr 09 20:28:38 2025
+# Sat Apr 19 16:00:49 2025
 
 ###########################################################]
 Synopsys Netlist Linker, version comp2016q3p1, Build 141R, built Dec  5 2016
@@ -67,7 +69,7 @@ At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Wed Apr 09 20:28:38 2025
+# Sat Apr 19 16:00:49 2025
 
 ###########################################################]
 @END
@@ -77,7 +79,7 @@ At c_hdl Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Wed Apr 09 20:28:38 2025
+# Sat Apr 19 16:00:49 2025
 
 ###########################################################]
 Synopsys Netlist Linker, version comp2016q3p1, Build 141R, built Dec  5 2016
@@ -91,12 +93,12 @@ At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Wed Apr 09 20:28:39 2025
+# Sat Apr 19 16:00:50 2025
 
 ###########################################################]
 Pre-mapping Report
 
-# Wed Apr 09 20:28:40 2025
+# Sat Apr 19 16:00:50 2025
 
 Synopsys Lattice Technology Pre-mapping, Version maplat, Build 1612R, Built Dec  5 2016 10:31:39
 Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
@@ -138,8 +140,8 @@ Start                            Requested     Requested     Clock              
 Clock                            Frequency     Period        Type                        Group                Load 
 -------------------------------------------------------------------------------------------------------------------
 CLK40_IN                         40.0 MHz      25.000        declared                    default_clkgroup     0    
-U111_TOP|CLK40_derived_clock     40.0 MHz      25.000        derived (from CLK40_IN)     default_clkgroup     7    
-U111_TOP|CLK80_derived_clock     80.0 MHz      12.500        derived (from CLK40_IN)     default_clkgroup     25   
+U111_TOP|CLK40_derived_clock     40.0 MHz      25.000        derived (from CLK40_IN)     default_clkgroup     35   
+U111_TOP|CLK80_derived_clock     80.0 MHz      12.500        derived (from CLK40_IN)     default_clkgroup     0    
 ===================================================================================================================
 
 Finished Pre Mapping Phase.
@@ -147,29 +149,30 @@ Finished Pre Mapping Phase.
 
 Starting constraint checker (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
 
-Encoding state machine CYCLE_STATE[3:0] (in view: work.U111_CYCLE_SM(verilog))
+Encoding state machine CYCLE_STATE[5:0] (in view: work.U111_CYCLE_SM(verilog))
 original code -> new code
-   0000 -> 00
-   0001 -> 01
-   0010 -> 10
-   0011 -> 11
-@N: MO225 :"d:\localbus68040\u111\u111_cycle_sm.v":154:0:154:5|There are no possible illegal states for state machine CYCLE_STATE[3:0] (in view: work.U111_CYCLE_SM(verilog)); safe FSM implementation is not required.
+   0000 -> 000001
+   0001 -> 000010
+   0010 -> 000100
+   0011 -> 001000
+   0100 -> 010000
+   0101 -> 100000
 None
 None
 
-Finished constraint checker (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
+Finished constraint checker (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 132MB peak: 133MB)
 
 Pre-mapping successful!
 
 At Mapper Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 47MB peak: 133MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
-# Wed Apr 09 20:28:40 2025
+# Sat Apr 19 16:00:51 2025
 
 ###########################################################]
 Map & Optimize Report
 
-# Wed Apr 09 20:28:40 2025
+# Sat Apr 19 16:00:51 2025
 
 Synopsys Lattice Technology Mapper, Version maplat, Build 1612R, Built Dec  5 2016 10:31:39
 Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
@@ -206,13 +209,14 @@ Available hyper_sources - for debug and ip models
 
 Finished RTL optimizations (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
 
-Encoding state machine CYCLE_STATE[3:0] (in view: work.U111_CYCLE_SM(verilog))
+Encoding state machine CYCLE_STATE[5:0] (in view: work.U111_CYCLE_SM(verilog))
 original code -> new code
-   0000 -> 00
-   0001 -> 01
-   0010 -> 10
-   0011 -> 11
-@N: MO225 :"d:\localbus68040\u111\u111_cycle_sm.v":154:0:154:5|There are no possible illegal states for state machine CYCLE_STATE[3:0] (in view: work.U111_CYCLE_SM(verilog)); safe FSM implementation is not required.
+   0000 -> 000001
+   0001 -> 000010
+   0010 -> 000100
+   0011 -> 001000
+   0100 -> 010000
+   0101 -> 100000
 
 Starting factoring (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
 
@@ -242,13 +246,16 @@ Finished technology mapping (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:0
 
 Pass		 CPU time		Worst Slack		Luts / Registers
 ------------------------------------------------------------
-   1		0h:00m:00s		     4.56ns		  79 /        24
+   1		0h:00m:00s		    10.71ns		  96 /        98
+@N: FX1017 :|SB_GB inserted on the net RESETn_c_i.
+@N: FX1017 :|SB_GB inserted on the net U111_CYCLE_SM.CYCLE_STATE_0[0].
 
-Finished technology timing optimizations and critical path resynthesis (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 132MB peak: 133MB)
+Finished technology timing optimizations and critical path resynthesis (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 133MB peak: 134MB)
 
 
-Finished restoring hierarchy (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 132MB peak: 133MB)
+Finished restoring hierarchy (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 133MB peak: 134MB)
 
+@N: MT611 :|Automatically generated clock U111_TOP|CLK80_derived_clock is not used and is being removed
 
 
 @S |Clock Optimization Summary
@@ -256,26 +263,25 @@ Finished restoring hierarchy (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:
 
 #### START OF CLOCK OPTIMIZATION REPORT #####[
 
-2 non-gated/non-generated clock tree(s) driving 24 clock pin(s) of sequential element(s)
+1 non-gated/non-generated clock tree(s) driving 98 clock pin(s) of sequential element(s)
 0 gated/generated clock tree(s) driving 0 clock pin(s) of sequential element(s)
 0 instances converted, 0 sequential instances remain driven by gated/generated clocks
 
-================================== Non-Gated/Non-Generated Clocks ==================================
-Clock Tree ID     Driving Element     Drive Element Type     Fanout     Sample Instance             
-----------------------------------------------------------------------------------------------------
-@K:CKID0001       pll                 SB_PLL40_2F_PAD        23         U111_CYCLE_SM.LW_CYCLE_START
-@K:CKID0002       pll                 SB_PLL40_2F_PAD        1          U111_CYCLE_SM.TSn           
-====================================================================================================
+============================ Non-Gated/Non-Generated Clocks =============================
+Clock Tree ID     Driving Element     Drive Element Type     Fanout     Sample Instance  
+-----------------------------------------------------------------------------------------
+@K:CKID0001       pll                 SB_PLL40_2F_PAD        98         U111_CYCLE_SM.TSn
+=========================================================================================
 
 
 ##### END OF CLOCK OPTIMIZATION REPORT ######]
 
 
-Start Writing Netlists (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 106MB peak: 133MB)
+Start Writing Netlists (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 107MB peak: 134MB)
 
 Writing Analyst data base D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\synwork\U111_icecube_m.srm
 
-Finished Writing Netlist Databases (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
+Finished Writing Netlist Databases (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 132MB peak: 134MB)
 
 Writing EDIF Netlist and constraint files
 @N: BW103 |The default time unit for the Synopsys Constraint File (SDC or FDC) is 1ns.
@@ -283,18 +289,17 @@ Writing EDIF Netlist and constraint files
 @N: FX1056 |Writing EDF file: D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\U111_icecube.edf
 L-2016.09L+ice40
 
-Finished Writing EDIF Netlist and constraint files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 132MB peak: 134MB)
+Finished Writing EDIF Netlist and constraint files (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 134MB peak: 136MB)
 
 
-Start final timing analysis (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 133MB peak: 134MB)
+Start final timing analysis (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 134MB peak: 136MB)
 
 @N: MT615 |Found clock CLK40_IN with period 25.00ns 
 @N: MT615 |Found clock U111_TOP|CLK40_derived_clock with period 25.00ns 
-@N: MT615 |Found clock U111_TOP|CLK80_derived_clock with period 12.50ns 
 
 
 ##### START OF TIMING REPORT #####[
-# Timing Report written on Wed Apr 09 20:28:41 2025
+# Timing Report written on Sat Apr 19 16:00:52 2025
 #
 
 
@@ -314,14 +319,13 @@ Performance Summary
 *******************
 
 
-Worst slack in design: 2.100
+Worst slack in design: 8.229
 
                                  Requested     Estimated     Requested     Estimated                 Clock                       Clock           
 Starting Clock                   Frequency     Frequency     Period        Period        Slack       Type                        Group           
 -------------------------------------------------------------------------------------------------------------------------------------------------
 CLK40_IN                         40.0 MHz      NA            25.000        NA            DCM/PLL     declared                    default_clkgroup
-U111_TOP|CLK40_derived_clock     40.0 MHz      60.3 MHz      25.000        16.573        NA          derived (from CLK40_IN)     default_clkgroup
-U111_TOP|CLK80_derived_clock     80.0 MHz      120.7 MHz     12.500        8.286         2.100       derived (from CLK40_IN)     default_clkgroup
+U111_TOP|CLK40_derived_clock     40.0 MHz      119.3 MHz     25.000        8.382         8.229       derived (from CLK40_IN)     default_clkgroup
 =================================================================================================================================================
 @N: MT582 |Estimated period and frequency not reported for given clock unless the clock has at least one timing path which is not a false or a max delay path and that does not have excessive slack
 
@@ -332,13 +336,12 @@ U111_TOP|CLK80_derived_clock     80.0 MHz      120.7 MHz     12.500        8.286
 Clock Relationships
 *******************
 
-Clocks                                                      |    rise  to  rise   |    fall  to  fall   |    rise  to  fall   |    fall  to  rise 
---------------------------------------------------------------------------------------------------------------------------------------------------
-Starting                      Ending                        |  constraint  slack  |  constraint  slack  |  constraint  slack  |  constraint  slack
---------------------------------------------------------------------------------------------------------------------------------------------------
-U111_TOP|CLK80_derived_clock  U111_TOP|CLK80_derived_clock  |  No paths    -      |  12.500      4.955  |  No paths    -      |  No paths    -    
-U111_TOP|CLK80_derived_clock  U111_TOP|CLK40_derived_clock  |  No paths    -      |  6.230       2.100  |  No paths    -      |  No paths    -    
-==================================================================================================================================================
+Clocks                                                      |    rise  to  rise    |    fall  to  fall   |    rise  to  fall   |    fall  to  rise 
+---------------------------------------------------------------------------------------------------------------------------------------------------
+Starting                      Ending                        |  constraint  slack   |  constraint  slack  |  constraint  slack  |  constraint  slack
+---------------------------------------------------------------------------------------------------------------------------------------------------
+U111_TOP|CLK40_derived_clock  U111_TOP|CLK40_derived_clock  |  25.000      17.329  |  No paths    -      |  12.380      8.229  |  No paths    -    
+===================================================================================================================================================
  Note: 'No paths' indicates there are no paths in the design for that pair of clock edges.
        'Diff grp' indicates that paths exist but the starting clock and ending clock are in different clock groups.
 
@@ -352,7 +355,7 @@ No IO constraint found
 
 
 ====================================
-Detailed Report for Clock: U111_TOP|CLK80_derived_clock
+Detailed Report for Clock: U111_TOP|CLK40_derived_clock
 ====================================
 
 
@@ -360,38 +363,41 @@ Detailed Report for Clock: U111_TOP|CLK80_derived_clock
 Starting Points with Worst Slack
 ********************************
 
-                                 Starting                                                                  Arrival          
-Instance                         Reference                        Type          Pin     Net                Time        Slack
+                                 Starting                                                                 Arrival           
+Instance                         Reference                        Type         Pin     Net                Time        Slack 
                                  Clock                                                                                      
 ----------------------------------------------------------------------------------------------------------------------------
-U111_CYCLE_SM.TS_EN              U111_TOP|CLK80_derived_clock     SB_DFFN       Q       TS_EN              0.540       2.100
-U111_CYCLE_SM.CYCLE_STATE[0]     U111_TOP|CLK80_derived_clock     SB_DFFN       Q       CYCLE_STATE[0]     0.540       4.955
-U111_CYCLE_SM.CYCLE_STATE[1]     U111_TOP|CLK80_derived_clock     SB_DFFN       Q       CYCLE_STATE[1]     0.540       4.976
-U111_CYCLE_SM.A_OUT              U111_TOP|CLK80_derived_clock     SB_DFFN       Q       A_OUT              0.540       6.529
-U111_CYCLE_SM.LW_CYCLE_START     U111_TOP|CLK80_derived_clock     SB_DFFN       Q       LW_CYCLE_START     0.540       6.578
-U111_CYCLE_SM.LW_CYCLE           U111_TOP|CLK80_derived_clock     SB_DFFN       Q       LW_CYCLE           0.540       6.613
-U111_CYCLE_SM.TA_EN              U111_TOP|CLK80_derived_clock     SB_DFFNSS     Q       TA_EN              0.540       8.433
+U111_CYCLE_SM.TS_EN              U111_TOP|CLK40_derived_clock     SB_DFFSR     Q       TS_EN              0.540       8.229 
+U111_CYCLE_SM.CYCLE_STATE[5]     U111_TOP|CLK40_derived_clock     SB_DFF       Q       CYCLE_STATE[5]     0.540       17.329
+U111_CYCLE_SM.BURST              U111_TOP|CLK40_derived_clock     SB_DFFSR     Q       BURST              0.540       17.357
+U111_CYCLE_SM.CYCLE_STATE[0]     U111_TOP|CLK40_derived_clock     SB_DFF       Q       CYCLE_STATE[0]     0.540       17.357
+U111_CYCLE_SM.CYCLE_STATE[2]     U111_TOP|CLK40_derived_clock     SB_DFF       Q       CYCLE_STATE[2]     0.540       17.378
+U111_CYCLE_SM.BURST_COUNT[0]     U111_TOP|CLK40_derived_clock     SB_DFFSR     Q       BURST_COUNT[0]     0.540       17.525
+U111_CYCLE_SM.BURST_COUNT[1]     U111_TOP|CLK40_derived_clock     SB_DFFSR     Q       BURST_COUNT[1]     0.540       17.588
+U111_CYCLE_SM.CYCLE_STATE[1]     U111_TOP|CLK40_derived_clock     SB_DFF       Q       CYCLE_STATE[1]     0.540       19.099
+U111_CYCLE_SM.LW_TRANS           U111_TOP|CLK40_derived_clock     SB_DFFSR     Q       LW_TRANS           0.540       19.099
+U111_CYCLE_SM.CYCLE_STATE[3]     U111_TOP|CLK40_derived_clock     SB_DFF       Q       CYCLE_STATE[3]     0.540       19.113
 ============================================================================================================================
 
 
 Ending Points with Worst Slack
 ******************************
 
-                                     Starting                                                                           Required          
-Instance                             Reference                        Type           Pin     Net                        Time         Slack
-                                     Clock                                                                                                
-------------------------------------------------------------------------------------------------------------------------------------------
-U111_CYCLE_SM.TSn                    U111_TOP|CLK80_derived_clock     SB_DFFN        D       TSn                        6.125        2.100
-U111_CYCLE_SM.UM_LATCHED_nesr[0]     U111_TOP|CLK80_derived_clock     SB_DFFNESR     E       CYCLE_STATE_0_sqmuxa_0     12.500       4.955
-U111_CYCLE_SM.UM_LATCHED_nesr[1]     U111_TOP|CLK80_derived_clock     SB_DFFNESR     E       CYCLE_STATE_0_sqmuxa_0     12.500       4.955
-U111_CYCLE_SM.UM_LATCHED_nesr[2]     U111_TOP|CLK80_derived_clock     SB_DFFNESR     E       CYCLE_STATE_0_sqmuxa_0     12.500       4.955
-U111_CYCLE_SM.UM_LATCHED_nesr[3]     U111_TOP|CLK80_derived_clock     SB_DFFNESR     E       CYCLE_STATE_0_sqmuxa_0     12.500       4.955
-U111_CYCLE_SM.UM_LATCHED_nesr[4]     U111_TOP|CLK80_derived_clock     SB_DFFNESR     E       CYCLE_STATE_0_sqmuxa_0     12.500       4.955
-U111_CYCLE_SM.UM_LATCHED_nesr[5]     U111_TOP|CLK80_derived_clock     SB_DFFNESR     E       CYCLE_STATE_0_sqmuxa_0     12.500       4.955
-U111_CYCLE_SM.UM_LATCHED_nesr[6]     U111_TOP|CLK80_derived_clock     SB_DFFNESR     E       CYCLE_STATE_0_sqmuxa_0     12.500       4.955
-U111_CYCLE_SM.UM_LATCHED_nesr[7]     U111_TOP|CLK80_derived_clock     SB_DFFNESR     E       CYCLE_STATE_0_sqmuxa_0     12.500       4.955
-U111_CYCLE_SM.UU_LATCHED_nesr[0]     U111_TOP|CLK80_derived_clock     SB_DFFNESR     E       CYCLE_STATE_0_sqmuxa_0     12.500       4.955
-==========================================================================================================================================
+                                    Starting                                                                          Required           
+Instance                            Reference                        Type          Pin     Net                        Time         Slack 
+                                    Clock                                                                                                
+-----------------------------------------------------------------------------------------------------------------------------------------
+U111_CYCLE_SM.TSn                   U111_TOP|CLK40_derived_clock     SB_DFFN       D       TSn                        12.275       8.229 
+U111_CYCLE_SM.TS_EN                 U111_TOP|CLK40_derived_clock     SB_DFFSR      D       TS_EN_1                    24.895       17.329
+U111_CYCLE_SM.BURST_COUNT[1]        U111_TOP|CLK40_derived_clock     SB_DFFSR      D       BURST_COUNT_6[1]           24.895       17.357
+U111_CYCLE_SM.CYCLE_STATE[0]        U111_TOP|CLK40_derived_clock     SB_DFF        D       CYCLE_STATE_nss_0_i[0]     24.895       17.357
+U111_CYCLE_SM.LATCH_EN              U111_TOP|CLK40_derived_clock     SB_DFFSR      D       LATCH_EN_0                 24.895       17.364
+U111_CYCLE_SM.UM_LATCHED_esr[0]     U111_TOP|CLK40_derived_clock     SB_DFFESR     E       N_159_0                    25.000       17.476
+U111_CYCLE_SM.UM_LATCHED_esr[1]     U111_TOP|CLK40_derived_clock     SB_DFFESR     E       N_159_0                    25.000       17.476
+U111_CYCLE_SM.UM_LATCHED_esr[2]     U111_TOP|CLK40_derived_clock     SB_DFFESR     E       N_159_0                    25.000       17.476
+U111_CYCLE_SM.UM_LATCHED_esr[3]     U111_TOP|CLK40_derived_clock     SB_DFFESR     E       N_159_0                    25.000       17.476
+U111_CYCLE_SM.UM_LATCHED_esr[4]     U111_TOP|CLK40_derived_clock     SB_DFFESR     E       N_159_0                    25.000       17.476
+=========================================================================================================================================
 
 
 
@@ -400,32 +406,32 @@ Worst Path Information
 
 
 Path information for path number 1: 
-      Requested Period:                      6.230
+      Requested Period:                      12.380
     - Setup time:                            0.105
     + Clock delay at ending point:           0.000 (ideal)
-    = Required time:                         6.125
+    = Required time:                         12.275
 
-    - Propagation time:                      4.025
+    - Propagation time:                      4.046
     - Clock delay at starting point:         0.000 (ideal)
-    = Slack (critical) :                     2.100
+    = Slack (critical) :                     8.229
 
     Number of logic level(s):                1
     Starting point:                          U111_CYCLE_SM.TS_EN / Q
     Ending point:                            U111_CYCLE_SM.TSn / D
-    The start point is clocked by            U111_TOP|CLK80_derived_clock [falling] on pin C
+    The start point is clocked by            U111_TOP|CLK40_derived_clock [rising] on pin C
     The end   point is clocked by            U111_TOP|CLK40_derived_clock [falling] on pin C
 
-Instance / Net                        Pin      Pin               Arrival     No. of    
-Name                      Type        Name     Dir     Delay     Time        Fan Out(s)
----------------------------------------------------------------------------------------
-U111_CYCLE_SM.TS_EN       SB_DFFN     Q        Out     0.540     0.540       -         
-TS_EN                     Net         -        -       1.599     -           3         
-U111_CYCLE_SM.TSn_RNO     SB_LUT4     I2       In      -         2.139       -         
-U111_CYCLE_SM.TSn_RNO     SB_LUT4     O        Out     0.379     2.518       -         
-TSn                       Net         -        -       1.507     -           1         
-U111_CYCLE_SM.TSn         SB_DFFN     D        In      -         4.025       -         
-=======================================================================================
-Total path delay (propagation time + setup) of 4.130 is 1.024(24.8%) logic and 3.106(75.2%) route.
+Instance / Net                         Pin      Pin               Arrival     No. of    
+Name                      Type         Name     Dir     Delay     Time        Fan Out(s)
+----------------------------------------------------------------------------------------
+U111_CYCLE_SM.TS_EN       SB_DFFSR     Q        Out     0.540     0.540       -         
+TS_EN                     Net          -        -       1.599     -           2         
+U111_CYCLE_SM.TSn_RNO     SB_LUT4      I1       In      -         2.139       -         
+U111_CYCLE_SM.TSn_RNO     SB_LUT4      O        Out     0.400     2.539       -         
+TSn                       Net          -        -       1.507     -           1         
+U111_CYCLE_SM.TSn         SB_DFFN      D        In      -         4.046       -         
+========================================================================================
+Total path delay (propagation time + setup) of 4.151 is 1.045(25.2%) logic and 3.106(74.8%) route.
 Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
 
 
@@ -435,10 +441,10 @@ Path delay compensated for clock skew. Clock skew is added to clock-to-out value
 Timing exceptions that could not be applied
 None
 
-Finished final timing analysis (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 133MB peak: 134MB)
+Finished final timing analysis (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 134MB peak: 136MB)
 
 
-Finished timing report (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 133MB peak: 134MB)
+Finished timing report (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 134MB peak: 136MB)
 
 ---------------------------------------
 Resource Usage Report for U111_TOP 
@@ -446,11 +452,14 @@ Resource Usage Report for U111_TOP
 Mapping to part: ice40hx4ktq144
 Cell usage:
 GND             1 use
-SB_DFFN         7 uses
-SB_DFFNESR      16 uses
-SB_DFFNSS       1 use
+SB_DFF          6 uses
+SB_DFFESR       17 uses
+SB_DFFESS       64 uses
+SB_DFFN         1 use
+SB_DFFSR        10 uses
+SB_GB           2 uses
 VCC             1 use
-SB_LUT4         77 uses
+SB_LUT4         159 uses
 
 I/O ports: 96
 I/O primitives: 96
@@ -458,23 +467,22 @@ SB_IO          95 uses
 SB_PLL40_2F_PAD 1 use
 
 I/O Register bits:                  0
-Register bits not including I/Os:   24 (0%)
+Register bits not including I/Os:   98 (2%)
 Total load per clock:
    CLK40_IN: 1
-   U111_TOP|CLK80_derived_clock: 25
-   U111_TOP|CLK40_derived_clock: 6
+   U111_TOP|CLK40_derived_clock: 102
 
 @S |Mapping Summary:
-Total  LUTs: 77 (2%)
+Total  LUTs: 159 (4%)
 
 Distribution of All Consumed LUTs = LUT4 
-Distribution of All Consumed Luts 77 = 77 
+Distribution of All Consumed Luts 159 = 159 
 
 Mapper successful!
 
-At Mapper Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 26MB peak: 134MB)
+At Mapper Exit (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 27MB peak: 136MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
-# Wed Apr 09 20:28:41 2025
+# Sat Apr 19 16:00:52 2025
 
 ###########################################################]

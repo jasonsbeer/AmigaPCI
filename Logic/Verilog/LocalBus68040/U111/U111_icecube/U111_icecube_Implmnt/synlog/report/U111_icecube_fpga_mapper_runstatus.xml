@@ -13,7 +13,7 @@ The file contains the job information from mapper to be displayed as part of the
 </job_status>
 <job_info>
 <info name="Notes">
-<data>13</data>
+<data>14</data>
 <report_link name="more">
 <data>D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\synlog\report\U111_icecube_fpga_mapper_notes.txt</data>
 </report_link>
@@ -34,13 +34,13 @@ The file contains the job information from mapper to be displayed as part of the
 <data>0h:00m:00s</data>
 </info>
 <info name="Real Time">
-<data>0h:00m:00s</data>
+<data>0h:00m:01s</data>
 </info>
 <info name="Peak Memory">
-<data>134MB</data>
+<data>136MB</data>
 </info>
 <info name="Date &amp; Time">
-<data type="timestamp">1744248521</data>
+<data type="timestamp">1745096452</data>
 </info>
 </job_info>
 </job_run_status>

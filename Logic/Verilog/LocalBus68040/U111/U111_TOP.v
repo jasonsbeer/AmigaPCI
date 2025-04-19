@@ -65,6 +65,7 @@ module U111_TOP (
 wire CLK80;
 wire CLK40;
 
+wire CLK40_PAD = CLK40_IN;
 assign CLK40A    = CLK40;
 assign CLK40B    = CLK40;
 assign CLK40C    = CLK40;
@@ -86,7 +87,7 @@ SB_PLL40_2F_PAD #(
 ) pll (
     .LOCK           (),
     .RESETB         (1'b1),
-    .PACKAGEPIN     (CLK40_IN),
+    .PACKAGEPIN     (CLK40_PAD),
     .PLLOUTGLOBALA  (CLK80),
     .PLLOUTGLOBALB  (CLK40)
 );
@@ -96,6 +97,7 @@ SB_PLL40_2F_PAD #(
 ////////////
 
 wire CYCLE_EN = 1;
+//wire LBENn = 1;
 
 U111_BUFFERS U111_BUFFERS (
     //INPUTS
@@ -127,7 +129,7 @@ U111_CYCLE_SM U111_CYCLE_SM (
     .BGn (BGn),
     .LBENn (LBENn),
     .TBIn (TBIn),
-    .TCIn (TCIn), 
+    .TCIn (TCIn),
     .TEAn (TEAn),
     .SIZ (SIZ),
     .A_040 (A_040),

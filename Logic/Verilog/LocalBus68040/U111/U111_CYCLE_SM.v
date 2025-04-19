@@ -25,7 +25,7 @@ Target Devices: iCE40-HX4K-TQ144
 Description: DATA TRANSFER CYCLE AND BUS SIZING STATE MACHINE
 
 Revision History:
-    xxx
+    19-APR-2025 New bus sizing state machine. JN
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 */
@@ -39,7 +39,6 @@ module U111_CYCLE_SM (
     output [1:0] A_AMIGA,
     output reg TSn,
 
-    //input TACKn, output TAn,
     inout TAn, inout TACKn,
 
     inout [7:0] D_UU_040, //68040 DATA BUS
@@ -58,14 +57,13 @@ module U111_CYCLE_SM (
 ///////////////////
 
 //TRANSFER START WILL NEED TO BE PASSED THROUGH DURING PCI DMA CYCLES.
-//HI-Z THIS DURING PCI DMA AND LISTEN FOR _TS FROM THE BRIDGE.
-//THIS LOGIC DOES NOT PASS _TS TO APCI DURING ON-BOARD MEMORY CYCLES.
+//WE DO NOT PASS _TS TO APCI DURING ON-BOARD MEMORY CYCLES.
 
 always @(negedge CLK40) begin
     if (!RESETn) begin
         TSn <= 1;
     end else begin
-        TSn <= !(TS_EN && LBENn);
+        TSn <= !TS_EN;
     end
 end
 
@@ -76,12 +74,11 @@ end
 //WE PASS THE _TACK SIGNAL THROUGH WHEN THE _TA OUTPUT IS ENABLED.
 //TRANSFER BURST INHIBIT IS ENABLED WHEN ADDRESSING A WORD PORT.
 //_TA IS TRISTATE WHEN _LBEN IS ASSERTED DURING ON-BOARD MEMORY CYCLES.
-//_TA MUST BE PASSED THROUGH TO _TACK DURING PCI DMA CYCLES. (NOT IMPLEMENTED YET)
+//_TA MUST BE PASSED THROUGH TO _TACK DURING PCI DMA CYCLES.
 
-assign TAn = TA_EN && LBENn ? TACKn : 1'bz;
+assign TAn = !TA_DIS && LBENn ? TACKn : 1'bz;
 assign TACKn = !LBENn ? TAn : 1'bz;
 
-//assign TBI_CPUn = TA_EN && LBENn ? TACKn : 1'b1; //Disable off-board burst transfers.
 assign TBI_CPUn = TBIn;
 assign TCI_CPUn = TCIn;
 assign TEA_CPUn = TEAn;
@@ -90,48 +87,40 @@ assign TEA_CPUn = TEAn;
 // DATA PASS THROUGH //
 //////////////////////
 
-//WE LOOK FOR INSTANCES WHERE THE ADDRESS OFFSET IS $2 (A1 = 1) WHEN TRANSFERING
-//DATA TO A WORD PORT. WHEN THIS HAPPENS, WE NEED TO PUT THE DATA AT
-//OFFSET $0, BECAUSE THIS IS WHERE THE APCI HAS ITS WORD PORTS MAPPED.
-//WHEN WE HAVE A LONG WORD TRANSFER TO A WORD PORT, WE NEED TO BREAK UP THE 
-//SINGLE CPU CYCLE INTO TWO CYCLES, ONE FOR EACH WORD OF THE LONG WORD.
-//FOR A READ CYCLE, WE NEED TO LATCH THE DATA ON THE FIRST CYCLE AND PRESENT
-//IT AT OFFSET $0. ALL LONGWORD TRANSFERS, AS DEFINED BY THE SIZ BUS,
-//ARE ALIGNED AT OFFSET $0. UNALIGNED TRANSFERS USE A COMBINATION OF WORD AND 
-//BYTE TRANSFERS. THE SECOND WORD OF THE LONG WORD TRANSFER IS PASSED THROUGH
-//LIVE AFTER "FLIPPING" THE DATA BUS, PRESENTING THE DATA TO THE CPU AT OFFSET $2.
-//WRITE CYCLES USE LIVE DATA USING THE SAME "FLIP" ON THE SECOND CYCLE,
-//JUST GOING THE OTHER WAY.
-
-//DRIVE ADDRESS BITS 1-0 DURING CPU CYCLES.
-assign A_AMIGA = LW_CYCLE ? {A_OUT, 1'b0} : A_040;
-
-//IS THIS A LONG WORD TRANSFER CYCLE?
-wire LW_TRANS = (SIZ == 2'b00 || SIZ == 2'b11 || !PORTSIZE);
-//wire LW_TRANS = (SIZ == 2'b00 || SIZ == 2'b11);
-
-//WHEN TRANSFERRING A BYTE OR WORD
-wire FLIP = (!LW_TRANS || LW_CYCLE) && A_AMIGA[1];
-//wire FLIP = ((!LW_TRANS && PORTSIZE) || LW_CYCLE) && A_AMIGA[1];
-
-//DURING CPU DRIVEN TRANSFER CYCLES TO THE APCI, BOTH THE CPU AND APCI DATA PORTS ARE "ACTIVE",
-//WITH ONE IN AND ONE OUT. DURING ACCESS TO ON-BOARD RAM (_LBEN IS ASSERTED), THE CPU SIDE OF THE BUFFERS ARE DISABLED.
-//THIS PREVENTS BOTH U111 AND THE SDRAM FROM DRIVING THE DATA BUS SIMULTANEOUSLY, WHICH IS BAD.
-//DURING PCI DRIVEN DMA CYCLES, BOTH THE CPU AND APCI PORTS ARE ACTIVE, BUT THE DIRECTION 
-//OF DATA MOVEMENT WILL BE REVERSED.
-
 //READS
-wire CPU_READ_EN = RnW && LBENn && !BGn;
-assign D_UU_040 = (CPU_READ_EN && LW_CYCLE) ? UU_LATCHED : CPU_READ_EN ? D_UU_AMIGA : 8'bzzzzzzzz;
-assign D_UM_040 = (CPU_READ_EN && LW_CYCLE) ? UM_LATCHED : CPU_READ_EN ? D_UM_AMIGA : 8'bzzzzzzzz;
-assign D_LM_040 = (CPU_READ_EN && FLIP)     ? D_UU_AMIGA : CPU_READ_EN ? D_LM_AMIGA : 8'bzzzzzzzz;
-assign D_LL_040 = (CPU_READ_EN && FLIP)     ? D_UM_AMIGA : CPU_READ_EN ? D_LL_AMIGA : 8'bzzzzzzzz;
+assign D_UU_040 = READ_CYCLE_ACTIVE ? (LATCH_EN  ? UU_LATCHED : D_UU_AMIGA) : 8'bzzzzzzzz;
+assign D_UM_040 = READ_CYCLE_ACTIVE ? (LATCH_EN  ? UM_LATCHED : D_UM_AMIGA) : 8'bzzzzzzzz;
+assign D_LM_040 = READ_CYCLE_ACTIVE ? (FLIP_WORD ? D_UU_AMIGA : D_LM_AMIGA) : 8'bzzzzzzzz;
+assign D_LL_040 = READ_CYCLE_ACTIVE ? (FLIP_WORD ? D_UM_AMIGA : D_LL_AMIGA) : 8'bzzzzzzzz;
 
-//ON WRITES, LM AND LL ARE ALWAYS PASSED THROUGH.
-assign D_UU_AMIGA = (!RnW && FLIP) ? D_LM_040 : !RnW ? D_UU_040 : 8'bzzzzzzzz;
-assign D_UM_AMIGA = (!RnW && FLIP) ? D_LL_040 : !RnW ? D_UM_040 : 8'bzzzzzzzz;
-assign D_LM_AMIGA = !RnW ? D_LM_040 : 8'bzzzzzzzz;
-assign D_LL_AMIGA = !RnW ? D_LL_040 : 8'bzzzzzzzz;
+//WRITES
+assign D_UU_AMIGA = WRITE_CYCLE_ACTIVE ? (FLIP_WORD ? D_LM_040 : D_UU_040) : 8'bzzzzzzzz;
+assign D_UM_AMIGA = WRITE_CYCLE_ACTIVE ? (FLIP_WORD ? D_LL_040 : D_UM_040) : 8'bzzzzzzzz;
+assign D_LM_AMIGA = WRITE_CYCLE_ACTIVE ? D_LM_040 : 8'bzzzzzzzz;
+assign D_LL_AMIGA = WRITE_CYCLE_ACTIVE ? D_LL_040 : 8'bzzzzzzzz;
+
+//These are for the bus sizing state machine.
+wire [7:0] UU_AMIGA_IN = D_UU_AMIGA;
+wire [7:0] UM_AMIGA_IN = D_UM_AMIGA;
+
+/////////////////////////
+// BUS SIZING ADDRESS //
+///////////////////////
+
+//THE ADDRESS BUS DEFAULTS TO THE CPU ASSERTED ADDRESS. WE CHANGE IT TO $2 WHEN
+//IN THE SECOND CYCLE OF A LONG WORD TO WORD PORT DATA TRANSFER.
+
+assign A_AMIGA = A2_EN ? 2'b10 : A_040;
+
+////////////////////////
+// TERMINATION TYPES //
+//////////////////////
+
+//{TACKn, TEAn}
+localparam [1:0] TERM_NORMAL = 2'b01;
+localparam [1:0] TERM_RETRY  = 2'b00;
+localparam [1:0] TERM_ERROR  = 2'b10;
+localparam [1:0] TERM_WAIT   = 2'b11;
 
 ////////////////////////////////////////
 // DATA TRANSFER CYCLE STATE MACHINE //
@@ -139,67 +128,115 @@ assign D_LL_AMIGA = !RnW ? D_LL_040 : 8'bzzzzzzzz;
 
 //DURING LONG WORD TRANSFERS TO WORD PORTS, WE NEED TO TAKE
 //OVER THE CYCLE FROM THE CPU. WE CREATE TWO LOCAL CYCLES FROM ONE CPU
-//CYCLE. THE FIRST CYCLE TRANSFERS THE HIGH WORD. THE SECOND CYCLE
-//TRANSFERS THE LOWER WORD.
+//CYCLE. THE FIRST CYCLE TRANSFERS THE HIGH WORD (ADDRESS 0). THE SECOND CYCLE
+//TRANSFERS THE LOWER WORD (ADDRESS 2). CYCLES AGAINST LIKE PORTS AT ADDRESS 0
+//ARE SIMPLY PASSED THROUGH. CYCLES AGAINST LIKE PORTS AT ADDRESS 2 ARE "FLIPPED"
+//SO THE WORD APPEARS ON THE CORRECT BYTE LANES.
 
 reg TS_EN;
-reg TA_EN;
-reg LW_CYCLE;
-reg LW_CYCLE_START;
-reg A_OUT;
+reg TA_DIS;
+reg LATCH_EN;
+reg PORT_MISMATCH;
+reg READ_CYCLE_ACTIVE;
+reg WRITE_CYCLE_ACTIVE;
+reg FLIP_WORD;
+reg A2_EN;
+reg BURST;
+reg LW_TRANS;
+
 reg [3:0] CYCLE_STATE;
 reg [7:0] UU_LATCHED;
 reg [7:0] UM_LATCHED;
+reg [1:0] BURST_COUNT;
 
-always @(negedge CLK80) begin
+always @(posedge CLK40) begin
     if (!RESETn) begin
         TS_EN <= 0;
-        LW_CYCLE_START <= 0;
-        LW_CYCLE <= 0;
-        CYCLE_STATE <= 4'h00;
-        TA_EN <= 1;
-        A_OUT <= 0;
+        PORT_MISMATCH <= 0;
+        LATCH_EN <= 0;
+        READ_CYCLE_ACTIVE <= 0;
+        WRITE_CYCLE_ACTIVE <= 0;        
+        TA_DIS <= 0;
+        FLIP_WORD <= 0;
+        A2_EN <= 0;
+        LW_TRANS <= 0;
+        BURST <= 0;
+        CYCLE_STATE <= 4'h0;
+        BURST_COUNT <= 2'b00;
         UU_LATCHED <= 8'h00;
         UM_LATCHED <= 8'h00;
     end else begin
 
-        //Is this a long word cycle to a word port?
-        LW_CYCLE_START <= (TS_EN && PORTSIZE && LW_TRANS && LBENn) || (LW_CYCLE_START && !LW_CYCLE);
-
         case (CYCLE_STATE)
 
-            4'h00 : begin
-                TS_EN <= !TS_CPUn && CLK40 && !BGn; //Starts every off-board cycle.
-                if (LW_CYCLE_START) begin
-                    LW_CYCLE <= 1;
-                    TA_EN <= 0;
-                    A_OUT <= 0;
-                    CYCLE_STATE <= 4'h01;
-                end
-            end
-            4'h01 : begin
-                //Wait for assertion of _TACK and latch the upper word for read cycles.
-                if (!TACKn) begin
-                    UU_LATCHED <= RnW ? D_UU_AMIGA : 8'h00;
-                    UM_LATCHED <= RnW ? D_UM_AMIGA : 8'h00;
-                    CYCLE_STATE <= 4'h02;
-                end
-            end
-            4'h02 : begin
-                //Start the second word transfer cycle.
-                A_OUT <= 1;
-                TA_EN <= 1;
-                if (CLK40) begin
+            4'h0 : begin
+                if (!TS_CPUn && !BGn && LBENn) begin
                     TS_EN <= 1;
-                    CYCLE_STATE <= 4'h03;
+                    LATCH_EN <= 0;
+                    READ_CYCLE_ACTIVE <= RnW;
+                    WRITE_CYCLE_ACTIVE <= !RnW;
+                    LW_TRANS <= SIZ[1] == SIZ[0];
+                    BURST <= (SIZ == 2'b11);
+                    BURST_COUNT <= 2'b00;
+                    CYCLE_STATE <= 4'h1;
+                end else begin
+                    READ_CYCLE_ACTIVE <= 0;
+                    WRITE_CYCLE_ACTIVE <= 0;
                 end
             end
-            4'h03 : begin
+            4'h1 : begin
                 TS_EN <= 0;
-                if (!TACKn) begin
-                    CYCLE_STATE <= 4'h00;
-                    LW_CYCLE <= 0;
-                end
+                PORT_MISMATCH <= (PORTSIZE && LW_TRANS);
+                TA_DIS <= (PORTSIZE && LW_TRANS);
+                FLIP_WORD <= (PORTSIZE && A_040[1]); //Flip the position of the words when at address $2.
+                CYCLE_STATE <= 4'h2;
+            end
+            4'h2 : begin
+                case ({TACKn, TEAn})
+                    TERM_NORMAL : begin
+                        CYCLE_STATE <= PORT_MISMATCH ? 4'h3 : (!BURST || !TBIn || BURST_COUNT == 2'h4 ? 4'h0 : 4'h2);
+                        BURST_COUNT <= BURST ? BURST_COUNT + 1 : 2'b00;
+                        //Keep an eye on these latches. This use case where we read a long word from a word
+                        //port cannot be tested in DIAGROM.
+                        UU_LATCHED <= READ_CYCLE_ACTIVE ? UU_AMIGA_IN : 8'h00;
+                        UM_LATCHED <= READ_CYCLE_ACTIVE ? UM_AMIGA_IN : 8'h00;
+                    end
+                    TERM_RETRY : begin
+                        //Consider tha case where PORT_MISMATCH is true.
+                        CYCLE_STATE <= 4'h0;
+                    end
+                    TERM_ERROR : begin
+                        //Consider tha case where PORT_MISMATCH is true.
+                        CYCLE_STATE <= 4'h0;
+                    end
+                endcase
+            end
+            4'h3 : begin
+                LATCH_EN <= READ_CYCLE_ACTIVE;
+                A2_EN <= 1;
+                TS_EN <= 1;
+                TA_DIS <= 0;
+                FLIP_WORD <= 1;
+                CYCLE_STATE <= 4'h4;
+            end
+            4'h4 : begin
+                TS_EN <= 0;
+                CYCLE_STATE <= 4'h5;
+            end
+            4'h5 : begin
+                case ({TACKn, TEAn})
+                    TERM_NORMAL : begin
+                        CYCLE_STATE <= BURST ? 4'h1 : 4'h0;
+                        TS_EN <= BURST;
+                        A2_EN <= 0;
+                    end
+                    TERM_RETRY : begin
+                        CYCLE_STATE <= 4'h0;
+                    end
+                    TERM_ERROR : begin
+                        CYCLE_STATE <= 4'h0;
+                    end
+                endcase
             end
 
         endcase

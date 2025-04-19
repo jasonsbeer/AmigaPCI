@@ -1,2 +1,2 @@
-@E: CG906 :"D:\LocalBus68040\U111\U111_CYCLE_SM.v":85:18:85:21|Reference to unknown variable TBIn.
+@E: CG288 :"D:\LocalBus68040\U111\U111_CYCLE_SM.v":97:81:97:81|Expecting delimiter: , or ;
 

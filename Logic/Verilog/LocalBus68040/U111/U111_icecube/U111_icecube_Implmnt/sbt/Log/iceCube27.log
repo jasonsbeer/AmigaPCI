@@ -1,4 +1,4 @@
-8:28:34 PM
+7:44:20 PM
 "C:\lscc\iCEcube2.2020.12\sbt_backend\bin\win32\opt\synpwrap\synpwrap.exe" -prj "U111_icecube_syn.prj" -log "U111_icecube_Implmnt/U111_icecube.srr"
 starting Synthesisrunning SynthesisCopyright (C) 1992-2014 Lattice Semiconductor Corporation. All rights reserved.
 
@@ -8,7 +8,7 @@ starting Synthesisrunning SynthesisCopyright (C) 1992-2014 Lattice Semiconductor
 #OS: Windows 8 6.2
 #Hostname: JASON-LAB
 
-# Wed Apr 09 20:28:38 2025
+# Mon Mar 10 19:44:23 2025
 
 #Implementation: U111_icecube_Implmnt
 
@@ -29,7 +29,7 @@ Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys softwa
 @I::"D:\LocalBus68040\U111\U111_TOP.v" (library work)
 @I::"D:\LocalBus68040\U111\U111_CYCLE_SM.v" (library work)
 Verilog syntax check successful!
-File D:\LocalBus68040\U111\U111_CYCLE_SM.v changed - recompiling
+File D:\LocalBus68040\U111\U111_TOP.v changed - recompiling
 Selecting top level module U111_TOP
 @N: CG364 :"C:\lscc\iCEcube2.2020.12\synpbase\lib\generic\sb_ice40.v":931:7:931:21|Synthesizing module SB_PLL40_2F_PAD in library work.
 
@@ -46,7 +46,7 @@ Selecting top level module U111_TOP
 @W: CG781 :"D:\LocalBus68040\U111\U111_TOP.v":86:2:86:4|Input SCLK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
 @W: CG781 :"D:\LocalBus68040\U111\U111_TOP.v":86:2:86:4|Input LATCHINPUTVALUE on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
 @W: CG1273 :"D:\LocalBus68040\U111\U111_TOP.v":89:21:89:28|An input port (port CLK40_IN) is the target of an assignment - please check if this is intentional
-@N: CL201 :"D:\LocalBus68040\U111\U111_CYCLE_SM.v":154:0:154:5|Trying to extract state machine for register CYCLE_STATE.
+@N: CL201 :"D:\LocalBus68040\U111\U111_CYCLE_SM.v":153:0:153:5|Trying to extract state machine for register CYCLE_STATE.
 Extracted state machine for register CYCLE_STATE
 State machine has 4 reachable states with original encodings of:
    0000
@@ -59,7 +59,7 @@ At c_ver Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Wed Apr 09 20:28:38 2025
+# Mon Mar 10 19:44:23 2025
 
 ###########################################################]
 Synopsys Netlist Linker, version comp2016q3p1, Build 141R, built Dec  5 2016
@@ -72,7 +72,7 @@ At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Wed Apr 09 20:28:38 2025
+# Mon Mar 10 19:44:24 2025
 
 ###########################################################]
 @END
@@ -82,7 +82,7 @@ At c_hdl Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Wed Apr 09 20:28:38 2025
+# Mon Mar 10 19:44:24 2025
 
 ###########################################################]
 Synopsys Netlist Linker, version comp2016q3p1, Build 141R, built Dec  5 2016
@@ -96,12 +96,12 @@ At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Wed Apr 09 20:28:39 2025
+# Mon Mar 10 19:44:25 2025
 
 ###########################################################]
 Pre-mapping Report
 
-# Wed Apr 09 20:28:40 2025
+# Mon Mar 10 19:44:25 2025
 
 Synopsys Lattice Technology Pre-mapping, Version maplat, Build 1612R, Built Dec  5 2016 10:31:39
 Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
@@ -158,7 +158,7 @@ original code -> new code
    0001 -> 01
    0010 -> 10
    0011 -> 11
-@N: MO225 :"d:\localbus68040\u111\u111_cycle_sm.v":154:0:154:5|There are no possible illegal states for state machine CYCLE_STATE[3:0] (in view: work.U111_CYCLE_SM(verilog)); safe FSM implementation is not required.
+@N: MO225 :"d:\localbus68040\u111\u111_cycle_sm.v":153:0:153:5|There are no possible illegal states for state machine CYCLE_STATE[3:0] (in view: work.U111_CYCLE_SM(verilog)); safe FSM implementation is not required.
 None
 None
 
@@ -169,12 +169,12 @@ Pre-mapping successful!
 At Mapper Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 47MB peak: 133MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
-# Wed Apr 09 20:28:40 2025
+# Mon Mar 10 19:44:25 2025
 
 ###########################################################]
 Map & Optimize Report
 
-# Wed Apr 09 20:28:40 2025
+# Mon Mar 10 19:44:25 2025
 
 Synopsys Lattice Technology Mapper, Version maplat, Build 1612R, Built Dec  5 2016 10:31:39
 Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
@@ -217,7 +217,7 @@ original code -> new code
    0001 -> 01
    0010 -> 10
    0011 -> 11
-@N: MO225 :"d:\localbus68040\u111\u111_cycle_sm.v":154:0:154:5|There are no possible illegal states for state machine CYCLE_STATE[3:0] (in view: work.U111_CYCLE_SM(verilog)); safe FSM implementation is not required.
+@N: MO225 :"d:\localbus68040\u111\u111_cycle_sm.v":153:0:153:5|There are no possible illegal states for state machine CYCLE_STATE[3:0] (in view: work.U111_CYCLE_SM(verilog)); safe FSM implementation is not required.
 
 Starting factoring (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
 
@@ -247,7 +247,7 @@ Finished technology mapping (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:0
 
 Pass		 CPU time		Worst Slack		Luts / Registers
 ------------------------------------------------------------
-   1		0h:00m:00s		     4.56ns		  79 /        24
+   1		0h:00m:00s		     4.56ns		  80 /        24
 
 Finished technology timing optimizations and critical path resynthesis (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 132MB peak: 133MB)
 
@@ -299,7 +299,7 @@ Start final timing analysis (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:0
 
 
 ##### START OF TIMING REPORT #####[
-# Timing Report written on Wed Apr 09 20:28:41 2025
+# Timing Report written on Mon Mar 10 19:44:26 2025
 #
 
 
@@ -455,11 +455,11 @@ SB_DFFN         7 uses
 SB_DFFNESR      16 uses
 SB_DFFNSS       1 use
 VCC             1 use
-SB_LUT4         77 uses
+SB_LUT4         78 uses
 
-I/O ports: 96
-I/O primitives: 96
-SB_IO          95 uses
+I/O ports: 93
+I/O primitives: 93
+SB_IO          92 uses
 SB_PLL40_2F_PAD 1 use
 
 I/O Register bits:                  0
@@ -470,17 +470,17 @@ Total load per clock:
    U111_TOP|CLK40_derived_clock: 6
 
 @S |Mapping Summary:
-Total  LUTs: 77 (2%)
+Total  LUTs: 78 (2%)
 
 Distribution of All Consumed LUTs = LUT4 
-Distribution of All Consumed Luts 77 = 77 
+Distribution of All Consumed Luts 78 = 78 
 
 Mapper successful!
 
 At Mapper Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 26MB peak: 134MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
-# Wed Apr 09 20:28:41 2025
+# Mon Mar 10 19:44:26 2025
 
 ###########################################################]
 
@@ -538,13 +538,13 @@ I2053: Starting placement of the design
 =============================================================
 
 Input Design Statistics
-    Number of LUTs      	:	77
+    Number of LUTs      	:	78
     Number of DFFs      	:	24
     Number of DFFs packed to IO	:	0
     Number of Carrys    	:	0
     Number of RAMs      	:	0
     Number of ROMs      	:	0
-    Number of IOs       	:	95
+    Number of IOs       	:	92
     Number of GBIOs     	:	0
     Number of GBs       	:	0
     Number of WarmBoot  	:	0
@@ -580,9 +580,11 @@ Info-1404: Inferred PLL generated clock at pll/PLLOUTCOREA
 Info-1404: Inferred PLL generated clock at pll/PLLOUTCOREB
 Info-1404: Inferred PLL generated clock at pll/PLLOUTGLOBALA
 Info-1404: Inferred PLL generated clock at pll/PLLOUTGLOBALB
+Warning-1034: Found non-unate timing arc, from pin "in3" to pin "lcout" of instance "GB_BUFFER_CLK80_THRU_LUT4_0_LC_94", in the clock network. Converting the timing arc to positive-unate
+Warning-1034: Found non-unate timing arc, from pin "in3" to pin "lcout" of instance "GB_BUFFER_CLK40_THRU_LUT4_0_LC_95", in the clock network. Converting the timing arc to positive-unate
 
 Design Statistics after Packing
-    Number of LUTs      	:	96
+    Number of LUTs      	:	97
     Number of DFFs      	:	24
     Number of DFFs packed to IO	:	0
     Number of Carrys    	:	0
@@ -592,47 +594,45 @@ Device Utilization Summary after Packing
         LUT and DFF      	:	24
         LUT, DFF and CARRY	:	0
     Combinational LogicCells
-        Only LUT         	:	72
+        Only LUT         	:	73
         CARRY Only       	:	0
         LUT with CARRY   	:	0
-    LogicCells                  :	96/3520
-    PLBs                        :	12/440
+    LogicCells                  :	97/3520
+    PLBs                        :	13/440
     BRAMs                       :	0/20
-    IOs and GBIOs               :	95/107
+    IOs and GBIOs               :	92/107
     PLLs                        :	1/2
 
 
 I2088: Phase 3, elapsed time : 0.3 (sec)
 
 Phase 4
-Warning-1034: Found non-unate timing arc, from pin "in3" to pin "lcout" of instance "GB_BUFFER_CLK80_THRU_LUT4_0_LC_93", in the clock network. Converting the timing arc to positive-unate
-Warning-1034: Found non-unate timing arc, from pin "in3" to pin "lcout" of instance "GB_BUFFER_CLK40_THRU_LUT4_0_LC_94", in the clock network. Converting the timing arc to positive-unate
-I2088: Phase 4, elapsed time : 0.3 (sec)
+I2088: Phase 4, elapsed time : 0.2 (sec)
 
 Phase 5
-I2088: Phase 5, elapsed time : 0.1 (sec)
+I2088: Phase 5, elapsed time : 0.0 (sec)
 
 Phase 6
-I2088: Phase 6, elapsed time : 11.9 (sec)
+I2088: Phase 6, elapsed time : 7.7 (sec)
 
 Final Design Statistics
-    Number of LUTs      	:	96
+    Number of LUTs      	:	97
     Number of DFFs      	:	24
     Number of DFFs packed to IO	:	0
     Number of Carrys    	:	0
     Number of RAMs      	:	0
     Number of ROMs      	:	0
-    Number of IOs       	:	95
+    Number of IOs       	:	92
     Number of GBIOs     	:	0
     Number of GBs       	:	0
     Number of WarmBoot  	:	0
     Number of PLLs      	:	1
 
 Device Utilization Summary
-    LogicCells                  :	96/3520
-    PLBs                        :	39/440
+    LogicCells                  :	97/3520
+    PLBs                        :	42/440
     BRAMs                       :	0/20
-    IOs and GBIOs               :	95/107
+    IOs and GBIOs               :	92/107
     PLLs                        :	1/2
 
 
@@ -652,7 +652,7 @@ Number of clocks: 5
 Clock: CLK40_IN | Frequency: N/A | Target: 40.00 MHz
 Clock: pll/PLLOUTCOREA | Frequency: N/A | Target: 80.00 MHz
 Clock: pll/PLLOUTCOREB | Frequency: N/A | Target: 40.00 MHz
-Clock: pll/PLLOUTGLOBALA | Frequency: 240.24 MHz | Target: 80.00 MHz
+Clock: pll/PLLOUTGLOBALA | Frequency: 260.18 MHz | Target: 80.00 MHz
 Clock: pll/PLLOUTGLOBALB | Frequency: N/A | Target: 40.00 MHz
 
 =====================================================================
@@ -661,7 +661,7 @@ Clock: pll/PLLOUTGLOBALB | Frequency: N/A | Target: 40.00 MHz
 
 I2054: Placement of design completed successfully
 
-I2076: Placer run-time: 12.9 sec.
+I2076: Placer run-time: 8.5 sec.
 
 placer succeed.
 starting IPExporterrunning IPExporterIPExporter succeed.
@@ -674,8 +674,8 @@ Build Date:     Dec  9 2020 17:32:13
 
 Begin Packing...
 initializing finish
-Total HPWL cost is 2610
-used logic cells: 96
+Total HPWL cost is 2560
+used logic cells: 97
 Design Rule Checking Succeeded
 
 DRC Checker run-time: 0 (sec)
@@ -689,8 +689,8 @@ Build Date:     Dec  9 2020 17:32:13
 
 Begin Packing...
 initializing finish
-Total HPWL cost is 2610
-used logic cells: 96
+Total HPWL cost is 2560
+used logic cells: 97
 Translating sdc file D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\outputs\placer\U111_TOP_pl.sdc...
 Translated sdc file is D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\outputs\packer\U111_TOP_pk.sdc
 oaInterface::GetInstName pInst NULL
@@ -714,19 +714,19 @@ Info-1404: Inferred PLL generated clock at pll/PLLOUTCOREB
 Info-1404: Inferred PLL generated clock at pll/PLLOUTCOREA
 Info-1404: Inferred PLL generated clock at pll/PLLOUTGLOBALB
 Info-1404: Inferred PLL generated clock at pll/PLLOUTGLOBALA
-Read device time: 9
+Read device time: 7
 I1209: Started routing
-I1223: Total Nets : 179 
-I1212: Iteration  1 :    40 unrouted : 3 seconds
+I1223: Total Nets : 178 
+I1212: Iteration  1 :    30 unrouted : 2 seconds
 I1212: Iteration  2 :     0 unrouted : 1 seconds
 I1215: Routing is successful
-Routing time: 5
+Routing time: 3
 I1206: Completed routing
 I1204: Writing Design U111_TOP
 Lib Closed
 I1210: Writing routes
 I1218: Exiting the router
-I1224: Router run-time : 14 seconds
+I1224: Router run-time : 10 seconds
 router succeed.
 
 "C:/lscc/iCEcube2.2020.12/sbt_backend/bin/win32/opt\netlister.exe" --verilog "D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\outputs\simulation_netlist\U111_TOP_sbt.v" --vhdl "D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt/sbt/outputs/simulation_netlist\U111_TOP_sbt.vhd" --lib "D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\netlist\oadb-U111_TOP" --view rt --device "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P04.dev" --splitio  --in-sdc-file "D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\outputs\packer\U111_TOP_pk.sdc" --out-sdc-file "D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\outputs\netlister\U111_TOP_sbt.sdc"
@@ -739,7 +739,7 @@ Writing D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\outputs\simu
 Writing D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt/sbt/outputs/simulation_netlist\U111_TOP_sbt.vhd
 Netlister succeeded.
 
-Netlister run-time: 2 (sec)
+Netlister run-time: 1 (sec)
 netlist succeed.
 
 
@@ -772,5 +772,1558 @@ Build Date:     Dec  9 2020 18:17:40
 Bit Stream File Size: 1080760 (1M 31K 440 Bits)
 Bit Stream Generator succeeded
 
-Bitmap run-time: 2 (sec)
+Bitmap run-time: 1 (sec)
 bitmap succeed.
+"C:\lscc\iCEcube2.2020.12\sbt_backend\bin\win32\opt\synpwrap\synpwrap.exe" -prj "U111_icecube_syn.prj" -log "U111_icecube_Implmnt/U111_icecube.srr"
+starting Synthesisrunning SynthesisCopyright (C) 1992-2014 Lattice Semiconductor Corporation. All rights reserved.
+
+==contents of U111_icecube_Implmnt/U111_icecube.srr
+#Build: Synplify Pro L-2016.09L+ice40, Build 077R, Dec  2 2016
+#install: C:\lscc\iCEcube2.2020.12\synpbase
+#OS: Windows 8 6.2
+#Hostname: JASON-LAB
+
+# Mon Mar 10 19:46:09 2025
+
+#Implementation: U111_icecube_Implmnt
+
+Synopsys HDL Compiler, version comp2016q3p1, Build 141R, built Dec  5 2016
+@N|Running in 64-bit mode
+Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
+
+Synopsys Verilog Compiler, version comp2016q3p1, Build 141R, built Dec  5 2016
+@N|Running in 64-bit mode
+Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
+
+@I::"C:\lscc\iCEcube2.2020.12\synpbase\lib\generic\sb_ice40.v" (library work)
+@I::"C:\lscc\iCEcube2.2020.12\synpbase\lib\vlog\hypermods.v" (library __hyper__lib__)
+@I::"C:\lscc\iCEcube2.2020.12\synpbase\lib\vlog\umr_capim.v" (library snps_haps)
+@I::"C:\lscc\iCEcube2.2020.12\synpbase\lib\vlog\scemi_objects.v" (library snps_haps)
+@I::"C:\lscc\iCEcube2.2020.12\synpbase\lib\vlog\scemi_pipes.svh" (library snps_haps)
+@I::"D:\LocalBus68040\U111\U111_BUFFERS.v" (library work)
+@I::"D:\LocalBus68040\U111\U111_TOP.v" (library work)
+@I::"D:\LocalBus68040\U111\U111_CYCLE_SM.v" (library work)
+Verilog syntax check successful!
+File D:\LocalBus68040\U111\U111_TOP.v changed - recompiling
+Selecting top level module U111_TOP
+@N: CG364 :"C:\lscc\iCEcube2.2020.12\synpbase\lib\generic\sb_ice40.v":931:7:931:21|Synthesizing module SB_PLL40_2F_PAD in library work.
+
+@N: CG364 :"D:\LocalBus68040\U111\U111_BUFFERS.v":32:7:32:18|Synthesizing module U111_BUFFERS in library work.
+
+@N: CG364 :"D:\LocalBus68040\U111\U111_CYCLE_SM.v":33:7:33:19|Synthesizing module U111_CYCLE_SM in library work.
+
+@N: CG364 :"D:\LocalBus68040\U111\U111_TOP.v":34:7:34:14|Synthesizing module U111_TOP in library work.
+
+@W: CG781 :"D:\LocalBus68040\U111\U111_TOP.v":88:2:88:4|Input EXTFEEDBACK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\LocalBus68040\U111\U111_TOP.v":88:2:88:4|Input DYNAMICDELAY on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\LocalBus68040\U111\U111_TOP.v":88:2:88:4|Input BYPASS on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\LocalBus68040\U111\U111_TOP.v":88:2:88:4|Input SDI on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\LocalBus68040\U111\U111_TOP.v":88:2:88:4|Input SCLK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\LocalBus68040\U111\U111_TOP.v":88:2:88:4|Input LATCHINPUTVALUE on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG1273 :"D:\LocalBus68040\U111\U111_TOP.v":91:21:91:28|An input port (port CLK40_IN) is the target of an assignment - please check if this is intentional
+@N: CL201 :"D:\LocalBus68040\U111\U111_CYCLE_SM.v":153:0:153:5|Trying to extract state machine for register CYCLE_STATE.
+Extracted state machine for register CYCLE_STATE
+State machine has 4 reachable states with original encodings of:
+   0000
+   0001
+   0010
+   0011
+
+At c_ver Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 71MB peak: 72MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+
+Process completed successfully.
+# Mon Mar 10 19:46:09 2025
+
+###########################################################]
+Synopsys Netlist Linker, version comp2016q3p1, Build 141R, built Dec  5 2016
+@N|Running in 64-bit mode
+@N: NF107 :"D:\LocalBus68040\U111\U111_TOP.v":34:7:34:14|Selected library: work cell: U111_TOP view verilog as top level
+@N: NF107 :"D:\LocalBus68040\U111\U111_TOP.v":34:7:34:14|Selected library: work cell: U111_TOP view verilog as top level
+
+At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 67MB peak: 68MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+
+Process completed successfully.
+# Mon Mar 10 19:46:09 2025
+
+###########################################################]
+@END
+
+At c_hdl Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 3MB peak: 4MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+
+Process completed successfully.
+# Mon Mar 10 19:46:09 2025
+
+###########################################################]
+Synopsys Netlist Linker, version comp2016q3p1, Build 141R, built Dec  5 2016
+@N|Running in 64-bit mode
+File D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\synwork\U111_icecube_comp.srs changed - recompiling
+@N: NF107 :"D:\LocalBus68040\U111\U111_TOP.v":34:7:34:14|Selected library: work cell: U111_TOP view verilog as top level
+@N: NF107 :"D:\LocalBus68040\U111\U111_TOP.v":34:7:34:14|Selected library: work cell: U111_TOP view verilog as top level
+
+At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 67MB peak: 68MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+
+Process completed successfully.
+# Mon Mar 10 19:46:10 2025
+
+###########################################################]
+Pre-mapping Report
+
+# Mon Mar 10 19:46:10 2025
+
+Synopsys Lattice Technology Pre-mapping, Version maplat, Build 1612R, Built Dec  5 2016 10:31:39
+Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
+Product Version L-2016.09L+ice40
+
+Mapper Startup Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 99MB peak: 99MB)
+
+Reading constraint file: D:\LocalBus68040\U111\U111_TOP.sdc
+@L: D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\U111_icecube_scck.rpt 
+Printing clock  summary report in "D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\U111_icecube_scck.rpt" file 
+@N: MF248 |Running in 64-bit mode.
+@N: MF666 |Clock conversion enabled. (Command "set_option -fix_gated_and_generated_clocks 1" in the project file.)
+
+Design Input Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 100MB peak: 102MB)
+
+
+Mapper Initialization Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 100MB peak: 102MB)
+
+
+Start loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 101MB peak: 102MB)
+
+
+Finished loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 101MB peak: 104MB)
+
+@W: MO112 :"d:\localbus68040\u111\u111_cycle_sm.v":81:16:81:34|Deleting tristate instance un2_TACKn (in view: work.U111_TOP(verilog)) on net TACKn (in view: work.U111_TOP(verilog)) because its enable is connected to 0.
+
+ICG Latch Removal Summary:
+Number of ICG latches removed:	0
+Number of ICG latches not removed:	0
+syn_allowed_resources : blockrams=20  set on top level netlist U111_TOP
+
+Finished netlist restructuring (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
+
+
+
+Clock Summary
+*****************
+
+Start                            Requested     Requested     Clock                       Clock                Clock
+Clock                            Frequency     Period        Type                        Group                Load 
+-------------------------------------------------------------------------------------------------------------------
+CLK40_IN                         40.0 MHz      25.000        declared                    default_clkgroup     0    
+U111_TOP|CLK40_derived_clock     40.0 MHz      25.000        derived (from CLK40_IN)     default_clkgroup     7    
+U111_TOP|CLK80_derived_clock     80.0 MHz      12.500        derived (from CLK40_IN)     default_clkgroup     25   
+===================================================================================================================
+
+Finished Pre Mapping Phase.
+@N: BN225 |Writing default property annotation file D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\U111_icecube.sap.
+
+Starting constraint checker (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
+
+Encoding state machine CYCLE_STATE[3:0] (in view: work.U111_CYCLE_SM(verilog))
+original code -> new code
+   0000 -> 00
+   0001 -> 01
+   0010 -> 10
+   0011 -> 11
+@N: MO225 :"d:\localbus68040\u111\u111_cycle_sm.v":153:0:153:5|There are no possible illegal states for state machine CYCLE_STATE[3:0] (in view: work.U111_CYCLE_SM(verilog)); safe FSM implementation is not required.
+None
+None
+
+Finished constraint checker (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
+
+Pre-mapping successful!
+
+At Mapper Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 47MB peak: 133MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+# Mon Mar 10 19:46:11 2025
+
+###########################################################]
+Map & Optimize Report
+
+# Mon Mar 10 19:46:11 2025
+
+Synopsys Lattice Technology Mapper, Version maplat, Build 1612R, Built Dec  5 2016 10:31:39
+Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
+Product Version L-2016.09L+ice40
+
+Mapper Startup Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 99MB peak: 99MB)
+
+@N: MF248 |Running in 64-bit mode.
+@N: MF666 |Clock conversion enabled. (Command "set_option -fix_gated_and_generated_clocks 1" in the project file.)
+
+Design Input Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 98MB peak: 100MB)
+
+
+Mapper Initialization Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 98MB peak: 100MB)
+
+
+Start loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 100MB peak: 100MB)
+
+
+Finished loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 100MB peak: 102MB)
+
+
+
+Starting Optimization and Mapping (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
+
+
+Available hyper_sources - for debug and ip models
+	None Found
+
+@N: MT204 |Auto Constrain mode is disabled because clocks are defined in the SDC file
+
+            CLK40_IN
+
+
+Finished RTL optimizations (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
+
+Encoding state machine CYCLE_STATE[3:0] (in view: work.U111_CYCLE_SM(verilog))
+original code -> new code
+   0000 -> 00
+   0001 -> 01
+   0010 -> 10
+   0011 -> 11
+@N: MO225 :"d:\localbus68040\u111\u111_cycle_sm.v":153:0:153:5|There are no possible illegal states for state machine CYCLE_STATE[3:0] (in view: work.U111_CYCLE_SM(verilog)); safe FSM implementation is not required.
+
+Starting factoring (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
+
+
+Finished factoring (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 132MB peak: 133MB)
+
+
+Finished gated-clock and generated-clock conversion (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
+
+
+Finished generic timing optimizations - Pass 1 (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
+
+
+Starting Early Timing Optimization (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
+
+
+Finished Early Timing Optimization (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
+
+
+Finished generic timing optimizations - Pass 2 (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
+
+
+Finished preparing to map (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
+
+
+Finished technology mapping (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
+
+Pass		 CPU time		Worst Slack		Luts / Registers
+------------------------------------------------------------
+   1		0h:00m:00s		     4.56ns		  78 /        24
+
+Finished technology timing optimizations and critical path resynthesis (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 132MB peak: 133MB)
+
+
+Finished restoring hierarchy (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 132MB peak: 133MB)
+
+
+
+@S |Clock Optimization Summary
+
+
+#### START OF CLOCK OPTIMIZATION REPORT #####[
+
+2 non-gated/non-generated clock tree(s) driving 24 clock pin(s) of sequential element(s)
+0 gated/generated clock tree(s) driving 0 clock pin(s) of sequential element(s)
+0 instances converted, 0 sequential instances remain driven by gated/generated clocks
+
+================================== Non-Gated/Non-Generated Clocks ==================================
+Clock Tree ID     Driving Element     Drive Element Type     Fanout     Sample Instance             
+----------------------------------------------------------------------------------------------------
+@K:CKID0001       pll                 SB_PLL40_2F_PAD        23         U111_CYCLE_SM.LW_CYCLE_START
+@K:CKID0002       pll                 SB_PLL40_2F_PAD        1          U111_CYCLE_SM.TSn           
+====================================================================================================
+
+
+##### END OF CLOCK OPTIMIZATION REPORT ######]
+
+
+Start Writing Netlists (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 106MB peak: 133MB)
+
+Writing Analyst data base D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\synwork\U111_icecube_m.srm
+
+Finished Writing Netlist Databases (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 130MB peak: 133MB)
+
+Writing EDIF Netlist and constraint files
+@N: BW103 |The default time unit for the Synopsys Constraint File (SDC or FDC) is 1ns.
+@N: BW107 |Synopsys Constraint File capacitance units using default value of 1pF 
+@N: FX1056 |Writing EDF file: D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\U111_icecube.edf
+L-2016.09L+ice40
+
+Finished Writing EDIF Netlist and constraint files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 132MB peak: 134MB)
+
+
+Start final timing analysis (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 132MB peak: 134MB)
+
+@N: MT615 |Found clock CLK40_IN with period 25.00ns 
+@N: MT615 |Found clock U111_TOP|CLK40_derived_clock with period 25.00ns 
+@N: MT615 |Found clock U111_TOP|CLK80_derived_clock with period 12.50ns 
+
+
+##### START OF TIMING REPORT #####[
+# Timing Report written on Mon Mar 10 19:46:12 2025
+#
+
+
+Top view:               U111_TOP
+Requested Frequency:    40.0 MHz
+Wire load mode:         top
+Paths requested:        5
+Constraint File(s):    D:\LocalBus68040\U111\U111_TOP.sdc
+                       
+@N: MT320 |This timing report is an estimate of place and route data. For final timing results, use the FPGA vendor place and route report.
+
+@N: MT322 |Clock constraints include only register-to-register paths associated with each individual clock.
+
+
+
+Performance Summary
+*******************
+
+
+Worst slack in design: 2.079
+
+                                 Requested     Estimated     Requested     Estimated                 Clock                       Clock           
+Starting Clock                   Frequency     Frequency     Period        Period        Slack       Type                        Group           
+-------------------------------------------------------------------------------------------------------------------------------------------------
+CLK40_IN                         40.0 MHz      NA            25.000        NA            DCM/PLL     declared                    default_clkgroup
+U111_TOP|CLK40_derived_clock     40.0 MHz      60.0 MHz      25.000        16.657        NA          derived (from CLK40_IN)     default_clkgroup
+U111_TOP|CLK80_derived_clock     80.0 MHz      120.1 MHz     12.500        8.329         2.079       derived (from CLK40_IN)     default_clkgroup
+=================================================================================================================================================
+@N: MT582 |Estimated period and frequency not reported for given clock unless the clock has at least one timing path which is not a false or a max delay path and that does not have excessive slack
+
+
+
+
+
+Clock Relationships
+*******************
+
+Clocks                                                      |    rise  to  rise   |    fall  to  fall   |    rise  to  fall   |    fall  to  rise 
+--------------------------------------------------------------------------------------------------------------------------------------------------
+Starting                      Ending                        |  constraint  slack  |  constraint  slack  |  constraint  slack  |  constraint  slack
+--------------------------------------------------------------------------------------------------------------------------------------------------
+U111_TOP|CLK80_derived_clock  U111_TOP|CLK80_derived_clock  |  No paths    -      |  12.500      4.955  |  No paths    -      |  No paths    -    
+U111_TOP|CLK80_derived_clock  U111_TOP|CLK40_derived_clock  |  No paths    -      |  6.230       2.079  |  No paths    -      |  No paths    -    
+==================================================================================================================================================
+ Note: 'No paths' indicates there are no paths in the design for that pair of clock edges.
+       'Diff grp' indicates that paths exist but the starting clock and ending clock are in different clock groups.
+
+
+
+Interface Information 
+*********************
+
+No IO constraint found
+
+
+
+====================================
+Detailed Report for Clock: U111_TOP|CLK80_derived_clock
+====================================
+
+
+
+Starting Points with Worst Slack
+********************************
+
+                                 Starting                                                                  Arrival          
+Instance                         Reference                        Type          Pin     Net                Time        Slack
+                                 Clock                                                                                      
+----------------------------------------------------------------------------------------------------------------------------
+U111_CYCLE_SM.TS_EN              U111_TOP|CLK80_derived_clock     SB_DFFN       Q       TS_EN              0.540       2.079
+U111_CYCLE_SM.CYCLE_STATE[0]     U111_TOP|CLK80_derived_clock     SB_DFFN       Q       CYCLE_STATE[0]     0.540       4.955
+U111_CYCLE_SM.CYCLE_STATE[1]     U111_TOP|CLK80_derived_clock     SB_DFFN       Q       CYCLE_STATE[1]     0.540       4.976
+U111_CYCLE_SM.A_OUT              U111_TOP|CLK80_derived_clock     SB_DFFN       Q       A_OUT              0.540       6.529
+U111_CYCLE_SM.LW_CYCLE_START     U111_TOP|CLK80_derived_clock     SB_DFFN       Q       LW_CYCLE_START     0.540       6.578
+U111_CYCLE_SM.LW_CYCLE           U111_TOP|CLK80_derived_clock     SB_DFFN       Q       LW_CYCLE           0.540       6.613
+U111_CYCLE_SM.TA_EN              U111_TOP|CLK80_derived_clock     SB_DFFNSS     Q       TAn_1              0.540       8.300
+============================================================================================================================
+
+
+Ending Points with Worst Slack
+******************************
+
+                                     Starting                                                                           Required          
+Instance                             Reference                        Type           Pin     Net                        Time         Slack
+                                     Clock                                                                                                
+------------------------------------------------------------------------------------------------------------------------------------------
+U111_CYCLE_SM.TSn                    U111_TOP|CLK80_derived_clock     SB_DFFN        D       TSn                        6.125        2.079
+U111_CYCLE_SM.UM_LATCHED_nesr[0]     U111_TOP|CLK80_derived_clock     SB_DFFNESR     E       CYCLE_STATE_0_sqmuxa_0     12.500       4.955
+U111_CYCLE_SM.UM_LATCHED_nesr[1]     U111_TOP|CLK80_derived_clock     SB_DFFNESR     E       CYCLE_STATE_0_sqmuxa_0     12.500       4.955
+U111_CYCLE_SM.UM_LATCHED_nesr[2]     U111_TOP|CLK80_derived_clock     SB_DFFNESR     E       CYCLE_STATE_0_sqmuxa_0     12.500       4.955
+U111_CYCLE_SM.UM_LATCHED_nesr[3]     U111_TOP|CLK80_derived_clock     SB_DFFNESR     E       CYCLE_STATE_0_sqmuxa_0     12.500       4.955
+U111_CYCLE_SM.UM_LATCHED_nesr[4]     U111_TOP|CLK80_derived_clock     SB_DFFNESR     E       CYCLE_STATE_0_sqmuxa_0     12.500       4.955
+U111_CYCLE_SM.UM_LATCHED_nesr[5]     U111_TOP|CLK80_derived_clock     SB_DFFNESR     E       CYCLE_STATE_0_sqmuxa_0     12.500       4.955
+U111_CYCLE_SM.UM_LATCHED_nesr[6]     U111_TOP|CLK80_derived_clock     SB_DFFNESR     E       CYCLE_STATE_0_sqmuxa_0     12.500       4.955
+U111_CYCLE_SM.UM_LATCHED_nesr[7]     U111_TOP|CLK80_derived_clock     SB_DFFNESR     E       CYCLE_STATE_0_sqmuxa_0     12.500       4.955
+U111_CYCLE_SM.UU_LATCHED_nesr[0]     U111_TOP|CLK80_derived_clock     SB_DFFNESR     E       CYCLE_STATE_0_sqmuxa_0     12.500       4.955
+==========================================================================================================================================
+
+
+
+Worst Path Information
+***********************
+
+
+Path information for path number 1: 
+      Requested Period:                      6.230
+    - Setup time:                            0.105
+    + Clock delay at ending point:           0.000 (ideal)
+    = Required time:                         6.125
+
+    - Propagation time:                      4.046
+    - Clock delay at starting point:         0.000 (ideal)
+    = Slack (critical) :                     2.079
+
+    Number of logic level(s):                1
+    Starting point:                          U111_CYCLE_SM.TS_EN / Q
+    Ending point:                            U111_CYCLE_SM.TSn / D
+    The start point is clocked by            U111_TOP|CLK80_derived_clock [falling] on pin C
+    The end   point is clocked by            U111_TOP|CLK40_derived_clock [falling] on pin C
+
+Instance / Net                        Pin      Pin               Arrival     No. of    
+Name                      Type        Name     Dir     Delay     Time        Fan Out(s)
+---------------------------------------------------------------------------------------
+U111_CYCLE_SM.TS_EN       SB_DFFN     Q        Out     0.540     0.540       -         
+TS_EN                     Net         -        -       1.599     -           3         
+U111_CYCLE_SM.TSn_RNO     SB_LUT4     I1       In      -         2.139       -         
+U111_CYCLE_SM.TSn_RNO     SB_LUT4     O        Out     0.400     2.539       -         
+TSn                       Net         -        -       1.507     -           1         
+U111_CYCLE_SM.TSn         SB_DFFN     D        In      -         4.046       -         
+=======================================================================================
+Total path delay (propagation time + setup) of 4.151 is 1.045(25.2%) logic and 3.106(74.8%) route.
+Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
+
+
+
+##### END OF TIMING REPORT #####]
+
+Timing exceptions that could not be applied
+None
+
+Finished final timing analysis (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 133MB peak: 134MB)
+
+
+Finished timing report (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 133MB peak: 134MB)
+
+---------------------------------------
+Resource Usage Report for U111_TOP 
+
+Mapping to part: ice40hx4ktq144
+Cell usage:
+GND             1 use
+SB_DFFN         7 uses
+SB_DFFNESR      16 uses
+SB_DFFNSS       1 use
+VCC             1 use
+SB_LUT4         74 uses
+
+I/O ports: 92
+I/O primitives: 92
+SB_IO          91 uses
+SB_PLL40_2F_PAD 1 use
+
+I/O Register bits:                  0
+Register bits not including I/Os:   24 (0%)
+Total load per clock:
+   CLK40_IN: 1
+   U111_TOP|CLK80_derived_clock: 25
+   U111_TOP|CLK40_derived_clock: 6
+
+@S |Mapping Summary:
+Total  LUTs: 74 (2%)
+
+Distribution of All Consumed LUTs = LUT4 
+Distribution of All Consumed Luts 74 = 74 
+
+Mapper successful!
+
+At Mapper Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 27MB peak: 134MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+# Mon Mar 10 19:46:12 2025
+
+###########################################################]
+
+
+Synthesis exit by 0.
+Current Implementation U111_icecube_Implmnt its sbt path: D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt
+Synthesis succeed.
+Synthesis succeeded.
+Synthesis runtime 4 seconds
+
+
+"C:/lscc/iCEcube2.2020.12/sbt_backend/bin/win32/opt\edifparser.exe" "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P04.dev" "D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt/U111_icecube.edf " "D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\netlist" "-pTQ144" "-yD:/LocalBus68040/U111/U111_TOP.pcf " -c --devicename iCE40HX4K
+starting edif parserrunning edif parserLattice Semiconductor Corporation  Edif Parser
+Release:        2020.12.27943
+Build Date:     Dec  9 2020 17:30:22
+
+Parsing edif file: D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt/U111_icecube.edf...
+Parsing constraint file: D:/LocalBus68040/U111/U111_TOP.pcf ...
+start to read sdc/scf file D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt/U111_icecube.scf
+sdc_reader OK D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt/U111_icecube.scf
+Stored edif netlist at D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\netlist\oadb-U111_TOP...
+
+write Timing Constraint to D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt/Temp/sbt_temp.sdc
+
+EDIF Parser succeeded
+Top module is: U111_TOP
+
+EDF Parser run-time: 0 (sec)
+edif parser succeed.
+
+
+"C:/lscc/iCEcube2.2020.12/sbt_backend/bin/win32/opt\sbtplacer.exe" --des-lib "D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\netlist\oadb-U111_TOP" --outdir "D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\outputs\placer" --device-file "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P04.dev" --package TQ144 --deviceMarketName iCE40HX4K --sdc-file "D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\Temp/sbt_temp.sdc" --lib-file "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ice40HX8K.lib" --effort_level std --out-sdc-file "D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\outputs\placer\U111_TOP_pl.sdc"
+starting placerrunning placerExecuting : C:\lscc\iCEcube2.2020.12\sbt_backend\bin\win32\opt\sbtplacer.exe --des-lib D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\netlist\oadb-U111_TOP --outdir D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\outputs\placer --device-file C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P04.dev --package TQ144 --deviceMarketName iCE40HX4K --sdc-file D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\Temp/sbt_temp.sdc --lib-file C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ice40HX8K.lib --effort_level std --out-sdc-file D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\outputs\placer\U111_TOP_pl.sdc
+Lattice Semiconductor Corporation  Placer
+Release:        2020.12.27943
+Build Date:     Dec  9 2020 17:55:52
+
+I2004: Option and Settings Summary
+=============================================================
+Device file          - C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P04.dev
+Package              - TQ144
+Design database      - D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\netlist\oadb-U111_TOP
+SDC file             - D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\Temp/sbt_temp.sdc
+Output directory     - D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\outputs\placer
+Timing library       - C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ice40HX8K.lib
+Effort level         - std
+
+I2050: Starting reading inputs for placer
+=============================================================
+I2100: Reading design library: D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\netlist\oadb-U111_TOP/BFPGA_DESIGN_ep
+I2065: Reading device file : C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P04.dev
+I2051: Reading of inputs for placer completed successfully
+
+I2053: Starting placement of the design
+=============================================================
+
+Input Design Statistics
+    Number of LUTs      	:	74
+    Number of DFFs      	:	24
+    Number of DFFs packed to IO	:	0
+    Number of Carrys    	:	0
+    Number of RAMs      	:	0
+    Number of ROMs      	:	0
+    Number of IOs       	:	91
+    Number of GBIOs     	:	0
+    Number of GBs       	:	0
+    Number of WarmBoot  	:	0
+    Number of PLLs      	:	1
+
+
+Phase 1
+I2077: Start design legalization
+
+Design Legalization Statistics
+    Number of feedthru LUTs inserted to legalize input of DFFs     	:	16
+    Number of feedthru LUTs inserted for LUTs driving multiple DFFs	:	0
+    Number of LUTs replicated for LUTs driving multiple DFFs       	:	0
+    Number of feedthru LUTs inserted to legalize output of CARRYs  	:	0
+    Number of feedthru LUTs inserted to legalize global signals    	:	2
+    Number of feedthru CARRYs inserted to legalize input of CARRYs 	:	0
+    Number of inserted LUTs to Legalize IOs with PIN_TYPE= 01xxxx  	:	0
+    Number of inserted LUTs to Legalize IOs with PIN_TYPE= 10xxxx  	:	0
+    Number of inserted LUTs to Legalize IOs with PIN_TYPE= 11xxxx  	:	0
+    Total LUTs inserted                                            	:	18
+    Total CARRYs inserted                                          	:	0
+
+
+I2078: Design legalization is completed successfully
+I2088: Phase 1, elapsed time : 0.0 (sec)
+
+
+Phase 2
+I2088: Phase 2, elapsed time : 0.0 (sec)
+
+Phase 3
+Info-1404: Inferred PLL generated clock at pll/PLLOUTCOREA
+Info-1404: Inferred PLL generated clock at pll/PLLOUTCOREB
+Info-1404: Inferred PLL generated clock at pll/PLLOUTGLOBALA
+Info-1404: Inferred PLL generated clock at pll/PLLOUTGLOBALB
+Warning-1034: Found non-unate timing arc, from pin "in3" to pin "lcout" of instance "GB_BUFFER_CLK80_THRU_LUT4_0_LC_90", in the clock network. Converting the timing arc to positive-unate
+Warning-1034: Found non-unate timing arc, from pin "in3" to pin "lcout" of instance "GB_BUFFER_CLK40_THRU_LUT4_0_LC_91", in the clock network. Converting the timing arc to positive-unate
+
+Design Statistics after Packing
+    Number of LUTs      	:	93
+    Number of DFFs      	:	24
+    Number of DFFs packed to IO	:	0
+    Number of Carrys    	:	0
+
+Device Utilization Summary after Packing
+    Sequential LogicCells
+        LUT and DFF      	:	24
+        LUT, DFF and CARRY	:	0
+    Combinational LogicCells
+        Only LUT         	:	69
+        CARRY Only       	:	0
+        LUT with CARRY   	:	0
+    LogicCells                  :	93/3520
+    PLBs                        :	13/440
+    BRAMs                       :	0/20
+    IOs and GBIOs               :	91/107
+    PLLs                        :	1/2
+
+
+I2088: Phase 3, elapsed time : 0.3 (sec)
+
+Phase 4
+I2088: Phase 4, elapsed time : 0.2 (sec)
+
+Phase 5
+I2088: Phase 5, elapsed time : 0.0 (sec)
+
+Phase 6
+I2088: Phase 6, elapsed time : 8.7 (sec)
+
+Final Design Statistics
+    Number of LUTs      	:	93
+    Number of DFFs      	:	24
+    Number of DFFs packed to IO	:	0
+    Number of Carrys    	:	0
+    Number of RAMs      	:	0
+    Number of ROMs      	:	0
+    Number of IOs       	:	91
+    Number of GBIOs     	:	0
+    Number of GBs       	:	0
+    Number of WarmBoot  	:	0
+    Number of PLLs      	:	1
+
+Device Utilization Summary
+    LogicCells                  :	93/3520
+    PLBs                        :	57/440
+    BRAMs                       :	0/20
+    IOs and GBIOs               :	91/107
+    PLLs                        :	1/2
+
+
+
+#####################################################################
+Placement Timing Summary
+
+The timing summary is based on estimated routing delays after
+placement. For final timing report, please carry out the timing
+analysis after routing.
+=====================================================================
+
+#####################################################################
+                     Clock Summary 
+=====================================================================
+Number of clocks: 5
+Clock: CLK40_IN | Frequency: N/A | Target: 40.00 MHz
+Clock: pll/PLLOUTCOREA | Frequency: N/A | Target: 80.00 MHz
+Clock: pll/PLLOUTCOREB | Frequency: N/A | Target: 40.00 MHz
+Clock: pll/PLLOUTGLOBALA | Frequency: 260.05 MHz | Target: 80.00 MHz
+Clock: pll/PLLOUTGLOBALB | Frequency: N/A | Target: 40.00 MHz
+
+=====================================================================
+                     End of Clock Summary
+#####################################################################
+
+I2054: Placement of design completed successfully
+
+I2076: Placer run-time: 9.6 sec.
+
+placer succeed.
+starting IPExporterrunning IPExporterIPExporter succeed.
+
+
+"C:/lscc/iCEcube2.2020.12/sbt_backend/bin/win32/opt\packer.exe" "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P04.dev" "D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\netlist\oadb-U111_TOP" --package TQ144 --outdir "D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\outputs\packer" --DRC_only  --translator "C:\lscc\iCEcube2.2020.12\sbt_backend\bin\sdc_translator.tcl" --src_sdc_file "D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\outputs\placer\U111_TOP_pl.sdc" --dst_sdc_file "D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\outputs\packer\U111_TOP_pk.sdc" --devicename iCE40HX4K
+starting packerrunning packerLattice Semiconductor Corporation  Packer
+Release:        2020.12.27943
+Build Date:     Dec  9 2020 17:32:13
+
+Begin Packing...
+initializing finish
+Total HPWL cost is 2513
+used logic cells: 93
+Design Rule Checking Succeeded
+
+DRC Checker run-time: 1 (sec)
+packer succeed.
+
+
+"C:/lscc/iCEcube2.2020.12/sbt_backend/bin/win32/opt\packer.exe" "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P04.dev" "D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\netlist\oadb-U111_TOP" --package TQ144 --outdir "D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\outputs\packer" --translator "C:\lscc\iCEcube2.2020.12\sbt_backend\bin\sdc_translator.tcl" --src_sdc_file "D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\outputs\placer\U111_TOP_pl.sdc" --dst_sdc_file "D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\outputs\packer\U111_TOP_pk.sdc" --devicename iCE40HX4K
+starting packerrunning packerLattice Semiconductor Corporation  Packer
+Release:        2020.12.27943
+Build Date:     Dec  9 2020 17:32:13
+
+Begin Packing...
+initializing finish
+Total HPWL cost is 2513
+used logic cells: 93
+Translating sdc file D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\outputs\placer\U111_TOP_pl.sdc...
+Translated sdc file is D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\outputs\packer\U111_TOP_pk.sdc
+oaInterface::GetInstName pInst NULL
+Packer succeeded
+
+Packer run-time: 0 (sec)
+packer succeed.
+
+
+"C:\lscc\iCEcube2.2020.12\sbt_backend\bin\win32\opt\sbrouter.exe" "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P04.dev" "D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\sbt\netlist\oadb-U111_TOP" "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ice40HX8K.lib" "D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\sbt\outputs\packer\U111_TOP_pk.sdc" --outdir "D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\sbt\outputs\router" --sdf_file "D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\outputs\simulation_netlist\U111_TOP_sbt.sdf" --pin_permutation
+starting routerrunning routerSJRouter....
+Executing : C:\lscc\iCEcube2.2020.12\sbt_backend\bin\win32\opt\sbrouter.exe C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P04.dev D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\sbt\netlist\oadb-U111_TOP C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ice40HX8K.lib D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\sbt\outputs\packer\U111_TOP_pk.sdc --outdir D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\sbt\outputs\router --sdf_file D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\outputs\simulation_netlist\U111_TOP_sbt.sdf --pin_permutation 
+Lattice Semiconductor Corporation  Router
+Release:        2020.12.27943
+Build Date:     Dec  9 2020 17:44:15
+
+I1203: Reading Design U111_TOP
+Read design time: 0
+I1202: Reading Architecture of device iCE40HX4K
+Info-1404: Inferred PLL generated clock at pll/PLLOUTCOREB
+Info-1404: Inferred PLL generated clock at pll/PLLOUTCOREA
+Info-1404: Inferred PLL generated clock at pll/PLLOUTGLOBALB
+Info-1404: Inferred PLL generated clock at pll/PLLOUTGLOBALA
+Read device time: 7
+I1209: Started routing
+I1223: Total Nets : 171 
+I1212: Iteration  1 :    45 unrouted : 2 seconds
+I1212: Iteration  2 :     5 unrouted : 0 seconds
+I1212: Iteration  3 :     0 unrouted : 0 seconds
+I1215: Routing is successful
+Routing time: 3
+I1206: Completed routing
+I1204: Writing Design U111_TOP
+Lib Closed
+I1210: Writing routes
+I1218: Exiting the router
+I1224: Router run-time : 10 seconds
+router succeed.
+
+"C:/lscc/iCEcube2.2020.12/sbt_backend/bin/win32/opt\netlister.exe" --verilog "D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\outputs\simulation_netlist\U111_TOP_sbt.v" --vhdl "D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt/sbt/outputs/simulation_netlist\U111_TOP_sbt.vhd" --lib "D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\netlist\oadb-U111_TOP" --view rt --device "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P04.dev" --splitio  --in-sdc-file "D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\outputs\packer\U111_TOP_pk.sdc" --out-sdc-file "D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\outputs\netlister\U111_TOP_sbt.sdc"
+starting netlistrunning netlistLattice Semiconductor Corporation  Verilog & VHDL Netlister
+Release:        2020.12.27943
+Build Date:     Dec  9 2020 18:18:39
+
+Generating Verilog & VHDL netlist files ...
+Writing D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\outputs\simulation_netlist\U111_TOP_sbt.v
+Writing D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt/sbt/outputs/simulation_netlist\U111_TOP_sbt.vhd
+Netlister succeeded.
+
+Netlister run-time: 1 (sec)
+netlist succeed.
+
+
+"C:/lscc/iCEcube2.2020.12/sbt_backend/bin/win32/opt\sbtimer.exe" --des-lib "D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\netlist\oadb-U111_TOP" --lib-file "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ice40HX8K.lib" --sdc-file "D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\outputs\netlister\U111_TOP_sbt.sdc" --sdf-file "D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\outputs\simulation_netlist\U111_TOP_sbt.sdf" --report-file "D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\sbt\outputs\timer\U111_TOP_timing.rpt" --device-file "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P04.dev" --timing-summary
+starting timerrunning timerExecuting : C:\lscc\iCEcube2.2020.12\sbt_backend\bin\win32\opt\sbtimer.exe --des-lib D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\netlist\oadb-U111_TOP --lib-file C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ice40HX8K.lib --sdc-file D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\outputs\netlister\U111_TOP_sbt.sdc --sdf-file D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\outputs\simulation_netlist\U111_TOP_sbt.sdf --report-file D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\sbt\outputs\timer\U111_TOP_timing.rpt --device-file C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P04.dev --timing-summary
+Lattice Semiconductor Corporation  Timer
+Release:        2020.12.27943
+Build Date:     Dec  9 2020 17:41:47
+
+Info-1404: Inferred PLL generated clock at pll_pll/PLLOUTCOREB
+Info-1404: Inferred PLL generated clock at pll_pll/PLLOUTCOREA
+Info-1404: Inferred PLL generated clock at pll_pll/PLLOUTGLOBALB
+Info-1404: Inferred PLL generated clock at pll_pll/PLLOUTGLOBALA
+Warning-1034: Found non-unate timing arc, from pin "DOUT0" to pin "PADOUT" of instance "CLK40C_obuf_preio", in the clock network. Converting the timing arc to positive-unate
+Warning-1034: Found non-unate timing arc, from pin "DOUT0" to pin "PADOUT" of instance "CLK80_CPU_obuf_preio", in the clock network. Converting the timing arc to positive-unate
+Warning-1034: Found non-unate timing arc, from pin "DOUT0" to pin "PADOUT" of instance "CLKRAMB_obuf_preio", in the clock network. Converting the timing arc to positive-unate
+Warning-1034: Found non-unate timing arc, from pin "DOUT0" to pin "PADOUT" of instance "CLKRAMA_obuf_preio", in the clock network. Converting the timing arc to positive-unate
+Warning-1034: Found non-unate timing arc, from pin "DOUT0" to pin "PADOUT" of instance "CLK40A_obuf_preio", in the clock network. Converting the timing arc to positive-unate
+Warning-1034: Found non-unate timing arc, from pin "DOUT0" to pin "PADOUT" of instance "CLK40B_obuf_preio", in the clock network. Converting the timing arc to positive-unate
+Timer run-time: 3 seconds
+timer succeed.
+timer succeeded.
+
+
+"C:/lscc/iCEcube2.2020.12/sbt_backend/bin/win32/opt\bitmap.exe" "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P04.dev" --design "D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\netlist\oadb-U111_TOP" --device_name iCE40HX4K --package TQ144 --outdir "D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\outputs\bitmap" --low_power on --init_ram on --init_ram_bank 1111 --frequency low --warm_boot on --set_unused_io_nopullup
+starting bitmaprunning bitmapLattice Semiconductor Corporation  Bit Stream Generator
+Release:        2020.12.27943
+Build Date:     Dec  9 2020 18:17:40
+
+Bit Stream File Size: 1080760 (1M 31K 440 Bits)
+Bit Stream Generator succeeded
+
+Bitmap run-time: 1 (sec)
+bitmap succeed.
+"C:\lscc\iCEcube2.2020.12\sbt_backend\bin\win32\opt\synpwrap\synpwrap.exe" -prj "U111_icecube_syn.prj" -log "U111_icecube_Implmnt/U111_icecube.srr"
+starting Synthesisrunning SynthesisCopyright (C) 1992-2014 Lattice Semiconductor Corporation. All rights reserved.
+
+==contents of U111_icecube_Implmnt/U111_icecube.srr
+#Build: Synplify Pro L-2016.09L+ice40, Build 077R, Dec  2 2016
+#install: C:\lscc\iCEcube2.2020.12\synpbase
+#OS: Windows 8 6.2
+#Hostname: JASON-LAB
+
+# Mon Mar 10 19:57:30 2025
+
+#Implementation: U111_icecube_Implmnt
+
+Synopsys HDL Compiler, version comp2016q3p1, Build 141R, built Dec  5 2016
+@N|Running in 64-bit mode
+Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
+
+Synopsys Verilog Compiler, version comp2016q3p1, Build 141R, built Dec  5 2016
+@N|Running in 64-bit mode
+Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
+
+@I::"C:\lscc\iCEcube2.2020.12\synpbase\lib\generic\sb_ice40.v" (library work)
+@I::"C:\lscc\iCEcube2.2020.12\synpbase\lib\vlog\hypermods.v" (library __hyper__lib__)
+@I::"C:\lscc\iCEcube2.2020.12\synpbase\lib\vlog\umr_capim.v" (library snps_haps)
+@I::"C:\lscc\iCEcube2.2020.12\synpbase\lib\vlog\scemi_objects.v" (library snps_haps)
+@I::"C:\lscc\iCEcube2.2020.12\synpbase\lib\vlog\scemi_pipes.svh" (library snps_haps)
+@I::"D:\LocalBus68040\U111\U111_BUFFERS.v" (library work)
+@I::"D:\LocalBus68040\U111\U111_TOP.v" (library work)
+@I::"D:\LocalBus68040\U111\U111_CYCLE_SM.v" (library work)
+Verilog syntax check successful!
+File D:\LocalBus68040\U111\U111_TOP.v changed - recompiling
+Selecting top level module U111_TOP
+@N: CG364 :"C:\lscc\iCEcube2.2020.12\synpbase\lib\generic\sb_ice40.v":931:7:931:21|Synthesizing module SB_PLL40_2F_PAD in library work.
+
+@N: CG364 :"D:\LocalBus68040\U111\U111_BUFFERS.v":32:7:32:18|Synthesizing module U111_BUFFERS in library work.
+
+@N: CG364 :"D:\LocalBus68040\U111\U111_CYCLE_SM.v":33:7:33:19|Synthesizing module U111_CYCLE_SM in library work.
+
+@N: CG364 :"D:\LocalBus68040\U111\U111_TOP.v":34:7:34:14|Synthesizing module U111_TOP in library work.
+
+@W: CG781 :"D:\LocalBus68040\U111\U111_TOP.v":86:2:86:4|Input EXTFEEDBACK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\LocalBus68040\U111\U111_TOP.v":86:2:86:4|Input DYNAMICDELAY on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\LocalBus68040\U111\U111_TOP.v":86:2:86:4|Input BYPASS on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\LocalBus68040\U111\U111_TOP.v":86:2:86:4|Input SDI on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\LocalBus68040\U111\U111_TOP.v":86:2:86:4|Input SCLK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\LocalBus68040\U111\U111_TOP.v":86:2:86:4|Input LATCHINPUTVALUE on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG1273 :"D:\LocalBus68040\U111\U111_TOP.v":89:21:89:28|An input port (port CLK40_IN) is the target of an assignment - please check if this is intentional
+@N: CL201 :"D:\LocalBus68040\U111\U111_CYCLE_SM.v":153:0:153:5|Trying to extract state machine for register CYCLE_STATE.
+Extracted state machine for register CYCLE_STATE
+State machine has 4 reachable states with original encodings of:
+   0000
+   0001
+   0010
+   0011
+
+At c_ver Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 71MB peak: 72MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+
+Process completed successfully.
+# Mon Mar 10 19:57:30 2025
+
+###########################################################]
+Synopsys Netlist Linker, version comp2016q3p1, Build 141R, built Dec  5 2016
+@N|Running in 64-bit mode
+@N: NF107 :"D:\LocalBus68040\U111\U111_TOP.v":34:7:34:14|Selected library: work cell: U111_TOP view verilog as top level
+@N: NF107 :"D:\LocalBus68040\U111\U111_TOP.v":34:7:34:14|Selected library: work cell: U111_TOP view verilog as top level
+
+At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 67MB peak: 68MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+
+Process completed successfully.
+# Mon Mar 10 19:57:31 2025
+
+###########################################################]
+@END
+
+At c_hdl Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 3MB peak: 4MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+
+Process completed successfully.
+# Mon Mar 10 19:57:31 2025
+
+###########################################################]
+Synopsys Netlist Linker, version comp2016q3p1, Build 141R, built Dec  5 2016
+@N|Running in 64-bit mode
+File D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\synwork\U111_icecube_comp.srs changed - recompiling
+@N: NF107 :"D:\LocalBus68040\U111\U111_TOP.v":34:7:34:14|Selected library: work cell: U111_TOP view verilog as top level
+@N: NF107 :"D:\LocalBus68040\U111\U111_TOP.v":34:7:34:14|Selected library: work cell: U111_TOP view verilog as top level
+
+At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 67MB peak: 68MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+
+Process completed successfully.
+# Mon Mar 10 19:57:32 2025
+
+###########################################################]
+Pre-mapping Report
+
+# Mon Mar 10 19:57:32 2025
+
+Synopsys Lattice Technology Pre-mapping, Version maplat, Build 1612R, Built Dec  5 2016 10:31:39
+Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
+Product Version L-2016.09L+ice40
+
+Mapper Startup Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 99MB peak: 99MB)
+
+Reading constraint file: D:\LocalBus68040\U111\U111_TOP.sdc
+@L: D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\U111_icecube_scck.rpt 
+Printing clock  summary report in "D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\U111_icecube_scck.rpt" file 
+@N: MF248 |Running in 64-bit mode.
+@N: MF666 |Clock conversion enabled. (Command "set_option -fix_gated_and_generated_clocks 1" in the project file.)
+
+Design Input Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 100MB peak: 102MB)
+
+
+Mapper Initialization Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 100MB peak: 102MB)
+
+
+Start loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 101MB peak: 102MB)
+
+
+Finished loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 101MB peak: 104MB)
+
+
+ICG Latch Removal Summary:
+Number of ICG latches removed:	0
+Number of ICG latches not removed:	0
+syn_allowed_resources : blockrams=20  set on top level netlist U111_TOP
+
+Finished netlist restructuring (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
+
+
+
+Clock Summary
+*****************
+
+Start                            Requested     Requested     Clock                       Clock                Clock
+Clock                            Frequency     Period        Type                        Group                Load 
+-------------------------------------------------------------------------------------------------------------------
+CLK40_IN                         40.0 MHz      25.000        declared                    default_clkgroup     0    
+U111_TOP|CLK40_derived_clock     40.0 MHz      25.000        derived (from CLK40_IN)     default_clkgroup     7    
+U111_TOP|CLK80_derived_clock     80.0 MHz      12.500        derived (from CLK40_IN)     default_clkgroup     25   
+===================================================================================================================
+
+Finished Pre Mapping Phase.
+@N: BN225 |Writing default property annotation file D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\U111_icecube.sap.
+
+Starting constraint checker (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
+
+Encoding state machine CYCLE_STATE[3:0] (in view: work.U111_CYCLE_SM(verilog))
+original code -> new code
+   0000 -> 00
+   0001 -> 01
+   0010 -> 10
+   0011 -> 11
+@N: MO225 :"d:\localbus68040\u111\u111_cycle_sm.v":153:0:153:5|There are no possible illegal states for state machine CYCLE_STATE[3:0] (in view: work.U111_CYCLE_SM(verilog)); safe FSM implementation is not required.
+None
+None
+
+Finished constraint checker (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
+
+Pre-mapping successful!
+
+At Mapper Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 47MB peak: 133MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+# Mon Mar 10 19:57:32 2025
+
+###########################################################]
+Map & Optimize Report
+
+# Mon Mar 10 19:57:32 2025
+
+Synopsys Lattice Technology Mapper, Version maplat, Build 1612R, Built Dec  5 2016 10:31:39
+Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
+Product Version L-2016.09L+ice40
+
+Mapper Startup Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 99MB peak: 99MB)
+
+@N: MF248 |Running in 64-bit mode.
+@N: MF666 |Clock conversion enabled. (Command "set_option -fix_gated_and_generated_clocks 1" in the project file.)
+
+Design Input Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 98MB peak: 100MB)
+
+
+Mapper Initialization Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 98MB peak: 100MB)
+
+
+Start loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 100MB peak: 100MB)
+
+
+Finished loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 100MB peak: 102MB)
+
+
+
+Starting Optimization and Mapping (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
+
+
+Available hyper_sources - for debug and ip models
+	None Found
+
+@N: MT204 |Auto Constrain mode is disabled because clocks are defined in the SDC file
+
+            CLK40_IN
+
+
+Finished RTL optimizations (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
+
+Encoding state machine CYCLE_STATE[3:0] (in view: work.U111_CYCLE_SM(verilog))
+original code -> new code
+   0000 -> 00
+   0001 -> 01
+   0010 -> 10
+   0011 -> 11
+@N: MO225 :"d:\localbus68040\u111\u111_cycle_sm.v":153:0:153:5|There are no possible illegal states for state machine CYCLE_STATE[3:0] (in view: work.U111_CYCLE_SM(verilog)); safe FSM implementation is not required.
+
+Starting factoring (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
+
+
+Finished factoring (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 132MB peak: 133MB)
+
+
+Finished gated-clock and generated-clock conversion (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
+
+
+Finished generic timing optimizations - Pass 1 (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 132MB peak: 133MB)
+
+
+Starting Early Timing Optimization (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 132MB peak: 133MB)
+
+
+Finished Early Timing Optimization (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 132MB peak: 133MB)
+
+
+Finished generic timing optimizations - Pass 2 (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 132MB peak: 133MB)
+
+
+Finished preparing to map (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 132MB peak: 133MB)
+
+
+Finished technology mapping (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 132MB peak: 133MB)
+
+Pass		 CPU time		Worst Slack		Luts / Registers
+------------------------------------------------------------
+   1		0h:00m:00s		     4.56ns		  80 /        24
+
+Finished technology timing optimizations and critical path resynthesis (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 132MB peak: 133MB)
+
+
+Finished restoring hierarchy (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 132MB peak: 133MB)
+
+
+
+@S |Clock Optimization Summary
+
+
+#### START OF CLOCK OPTIMIZATION REPORT #####[
+
+2 non-gated/non-generated clock tree(s) driving 24 clock pin(s) of sequential element(s)
+0 gated/generated clock tree(s) driving 0 clock pin(s) of sequential element(s)
+0 instances converted, 0 sequential instances remain driven by gated/generated clocks
+
+================================== Non-Gated/Non-Generated Clocks ==================================
+Clock Tree ID     Driving Element     Drive Element Type     Fanout     Sample Instance             
+----------------------------------------------------------------------------------------------------
+@K:CKID0001       pll                 SB_PLL40_2F_PAD        23         U111_CYCLE_SM.LW_CYCLE_START
+@K:CKID0002       pll                 SB_PLL40_2F_PAD        1          U111_CYCLE_SM.TSn           
+====================================================================================================
+
+
+##### END OF CLOCK OPTIMIZATION REPORT ######]
+
+
+Start Writing Netlists (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 106MB peak: 133MB)
+
+Writing Analyst data base D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\synwork\U111_icecube_m.srm
+
+Finished Writing Netlist Databases (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
+
+Writing EDIF Netlist and constraint files
+@N: BW103 |The default time unit for the Synopsys Constraint File (SDC or FDC) is 1ns.
+@N: BW107 |Synopsys Constraint File capacitance units using default value of 1pF 
+@N: FX1056 |Writing EDF file: D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\U111_icecube.edf
+L-2016.09L+ice40
+
+Finished Writing EDIF Netlist and constraint files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 132MB peak: 134MB)
+
+
+Start final timing analysis (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 133MB peak: 134MB)
+
+@N: MT615 |Found clock CLK40_IN with period 25.00ns 
+@N: MT615 |Found clock U111_TOP|CLK40_derived_clock with period 25.00ns 
+@N: MT615 |Found clock U111_TOP|CLK80_derived_clock with period 12.50ns 
+
+
+##### START OF TIMING REPORT #####[
+# Timing Report written on Mon Mar 10 19:57:33 2025
+#
+
+
+Top view:               U111_TOP
+Requested Frequency:    40.0 MHz
+Wire load mode:         top
+Paths requested:        5
+Constraint File(s):    D:\LocalBus68040\U111\U111_TOP.sdc
+                       
+@N: MT320 |This timing report is an estimate of place and route data. For final timing results, use the FPGA vendor place and route report.
+
+@N: MT322 |Clock constraints include only register-to-register paths associated with each individual clock.
+
+
+
+Performance Summary
+*******************
+
+
+Worst slack in design: 2.100
+
+                                 Requested     Estimated     Requested     Estimated                 Clock                       Clock           
+Starting Clock                   Frequency     Frequency     Period        Period        Slack       Type                        Group           
+-------------------------------------------------------------------------------------------------------------------------------------------------
+CLK40_IN                         40.0 MHz      NA            25.000        NA            DCM/PLL     declared                    default_clkgroup
+U111_TOP|CLK40_derived_clock     40.0 MHz      60.3 MHz      25.000        16.573        NA          derived (from CLK40_IN)     default_clkgroup
+U111_TOP|CLK80_derived_clock     80.0 MHz      120.7 MHz     12.500        8.286         2.100       derived (from CLK40_IN)     default_clkgroup
+=================================================================================================================================================
+@N: MT582 |Estimated period and frequency not reported for given clock unless the clock has at least one timing path which is not a false or a max delay path and that does not have excessive slack
+
+
+
+
+
+Clock Relationships
+*******************
+
+Clocks                                                      |    rise  to  rise   |    fall  to  fall   |    rise  to  fall   |    fall  to  rise 
+--------------------------------------------------------------------------------------------------------------------------------------------------
+Starting                      Ending                        |  constraint  slack  |  constraint  slack  |  constraint  slack  |  constraint  slack
+--------------------------------------------------------------------------------------------------------------------------------------------------
+U111_TOP|CLK80_derived_clock  U111_TOP|CLK80_derived_clock  |  No paths    -      |  12.500      4.955  |  No paths    -      |  No paths    -    
+U111_TOP|CLK80_derived_clock  U111_TOP|CLK40_derived_clock  |  No paths    -      |  6.230       2.100  |  No paths    -      |  No paths    -    
+==================================================================================================================================================
+ Note: 'No paths' indicates there are no paths in the design for that pair of clock edges.
+       'Diff grp' indicates that paths exist but the starting clock and ending clock are in different clock groups.
+
+
+
+Interface Information 
+*********************
+
+No IO constraint found
+
+
+
+====================================
+Detailed Report for Clock: U111_TOP|CLK80_derived_clock
+====================================
+
+
+
+Starting Points with Worst Slack
+********************************
+
+                                 Starting                                                                  Arrival          
+Instance                         Reference                        Type          Pin     Net                Time        Slack
+                                 Clock                                                                                      
+----------------------------------------------------------------------------------------------------------------------------
+U111_CYCLE_SM.TS_EN              U111_TOP|CLK80_derived_clock     SB_DFFN       Q       TS_EN              0.540       2.100
+U111_CYCLE_SM.CYCLE_STATE[0]     U111_TOP|CLK80_derived_clock     SB_DFFN       Q       CYCLE_STATE[0]     0.540       4.955
+U111_CYCLE_SM.CYCLE_STATE[1]     U111_TOP|CLK80_derived_clock     SB_DFFN       Q       CYCLE_STATE[1]     0.540       4.976
+U111_CYCLE_SM.A_OUT              U111_TOP|CLK80_derived_clock     SB_DFFN       Q       A_OUT              0.540       6.529
+U111_CYCLE_SM.LW_CYCLE_START     U111_TOP|CLK80_derived_clock     SB_DFFN       Q       LW_CYCLE_START     0.540       6.578
+U111_CYCLE_SM.LW_CYCLE           U111_TOP|CLK80_derived_clock     SB_DFFN       Q       LW_CYCLE           0.540       6.613
+U111_CYCLE_SM.TA_EN              U111_TOP|CLK80_derived_clock     SB_DFFNSS     Q       TA_EN              0.540       8.433
+============================================================================================================================
+
+
+Ending Points with Worst Slack
+******************************
+
+                                     Starting                                                                           Required          
+Instance                             Reference                        Type           Pin     Net                        Time         Slack
+                                     Clock                                                                                                
+------------------------------------------------------------------------------------------------------------------------------------------
+U111_CYCLE_SM.TSn                    U111_TOP|CLK80_derived_clock     SB_DFFN        D       TSn                        6.125        2.100
+U111_CYCLE_SM.UM_LATCHED_nesr[0]     U111_TOP|CLK80_derived_clock     SB_DFFNESR     E       CYCLE_STATE_0_sqmuxa_0     12.500       4.955
+U111_CYCLE_SM.UM_LATCHED_nesr[1]     U111_TOP|CLK80_derived_clock     SB_DFFNESR     E       CYCLE_STATE_0_sqmuxa_0     12.500       4.955
+U111_CYCLE_SM.UM_LATCHED_nesr[2]     U111_TOP|CLK80_derived_clock     SB_DFFNESR     E       CYCLE_STATE_0_sqmuxa_0     12.500       4.955
+U111_CYCLE_SM.UM_LATCHED_nesr[3]     U111_TOP|CLK80_derived_clock     SB_DFFNESR     E       CYCLE_STATE_0_sqmuxa_0     12.500       4.955
+U111_CYCLE_SM.UM_LATCHED_nesr[4]     U111_TOP|CLK80_derived_clock     SB_DFFNESR     E       CYCLE_STATE_0_sqmuxa_0     12.500       4.955
+U111_CYCLE_SM.UM_LATCHED_nesr[5]     U111_TOP|CLK80_derived_clock     SB_DFFNESR     E       CYCLE_STATE_0_sqmuxa_0     12.500       4.955
+U111_CYCLE_SM.UM_LATCHED_nesr[6]     U111_TOP|CLK80_derived_clock     SB_DFFNESR     E       CYCLE_STATE_0_sqmuxa_0     12.500       4.955
+U111_CYCLE_SM.UM_LATCHED_nesr[7]     U111_TOP|CLK80_derived_clock     SB_DFFNESR     E       CYCLE_STATE_0_sqmuxa_0     12.500       4.955
+U111_CYCLE_SM.UU_LATCHED_nesr[0]     U111_TOP|CLK80_derived_clock     SB_DFFNESR     E       CYCLE_STATE_0_sqmuxa_0     12.500       4.955
+==========================================================================================================================================
+
+
+
+Worst Path Information
+***********************
+
+
+Path information for path number 1: 
+      Requested Period:                      6.230
+    - Setup time:                            0.105
+    + Clock delay at ending point:           0.000 (ideal)
+    = Required time:                         6.125
+
+    - Propagation time:                      4.025
+    - Clock delay at starting point:         0.000 (ideal)
+    = Slack (critical) :                     2.100
+
+    Number of logic level(s):                1
+    Starting point:                          U111_CYCLE_SM.TS_EN / Q
+    Ending point:                            U111_CYCLE_SM.TSn / D
+    The start point is clocked by            U111_TOP|CLK80_derived_clock [falling] on pin C
+    The end   point is clocked by            U111_TOP|CLK40_derived_clock [falling] on pin C
+
+Instance / Net                        Pin      Pin               Arrival     No. of    
+Name                      Type        Name     Dir     Delay     Time        Fan Out(s)
+---------------------------------------------------------------------------------------
+U111_CYCLE_SM.TS_EN       SB_DFFN     Q        Out     0.540     0.540       -         
+TS_EN                     Net         -        -       1.599     -           3         
+U111_CYCLE_SM.TSn_RNO     SB_LUT4     I2       In      -         2.139       -         
+U111_CYCLE_SM.TSn_RNO     SB_LUT4     O        Out     0.379     2.518       -         
+TSn                       Net         -        -       1.507     -           1         
+U111_CYCLE_SM.TSn         SB_DFFN     D        In      -         4.025       -         
+=======================================================================================
+Total path delay (propagation time + setup) of 4.130 is 1.024(24.8%) logic and 3.106(75.2%) route.
+Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
+
+
+
+##### END OF TIMING REPORT #####]
+
+Timing exceptions that could not be applied
+None
+
+Finished final timing analysis (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 133MB peak: 134MB)
+
+
+Finished timing report (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 133MB peak: 134MB)
+
+---------------------------------------
+Resource Usage Report for U111_TOP 
+
+Mapping to part: ice40hx4ktq144
+Cell usage:
+GND             1 use
+SB_DFFN         7 uses
+SB_DFFNESR      16 uses
+SB_DFFNSS       1 use
+VCC             1 use
+SB_LUT4         78 uses
+
+I/O ports: 93
+I/O primitives: 93
+SB_IO          92 uses
+SB_PLL40_2F_PAD 1 use
+
+I/O Register bits:                  0
+Register bits not including I/Os:   24 (0%)
+Total load per clock:
+   CLK40_IN: 1
+   U111_TOP|CLK80_derived_clock: 25
+   U111_TOP|CLK40_derived_clock: 6
+
+@S |Mapping Summary:
+Total  LUTs: 78 (2%)
+
+Distribution of All Consumed LUTs = LUT4 
+Distribution of All Consumed Luts 78 = 78 
+
+Mapper successful!
+
+At Mapper Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 26MB peak: 134MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+# Mon Mar 10 19:57:33 2025
+
+###########################################################]
+
+
+Synthesis exit by 0.
+Current Implementation U111_icecube_Implmnt its sbt path: D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt
+Synthesis succeed.
+Synthesis succeeded.
+Synthesis runtime 4 seconds
+
+
+"C:/lscc/iCEcube2.2020.12/sbt_backend/bin/win32/opt\edifparser.exe" "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P04.dev" "D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt/U111_icecube.edf " "D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\netlist" "-pTQ144" "-yD:/LocalBus68040/U111/U111_TOP.pcf " -c --devicename iCE40HX4K
+starting edif parserrunning edif parserLattice Semiconductor Corporation  Edif Parser
+Release:        2020.12.27943
+Build Date:     Dec  9 2020 17:30:22
+
+Parsing edif file: D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt/U111_icecube.edf...
+Parsing constraint file: D:/LocalBus68040/U111/U111_TOP.pcf ...
+start to read sdc/scf file D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt/U111_icecube.scf
+sdc_reader OK D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt/U111_icecube.scf
+Stored edif netlist at D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\netlist\oadb-U111_TOP...
+
+write Timing Constraint to D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt/Temp/sbt_temp.sdc
+
+EDIF Parser succeeded
+Top module is: U111_TOP
+
+EDF Parser run-time: 0 (sec)
+edif parser succeed.
+
+
+"C:/lscc/iCEcube2.2020.12/sbt_backend/bin/win32/opt\sbtplacer.exe" --des-lib "D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\netlist\oadb-U111_TOP" --outdir "D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\outputs\placer" --device-file "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P04.dev" --package TQ144 --deviceMarketName iCE40HX4K --sdc-file "D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\Temp/sbt_temp.sdc" --lib-file "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ice40HX8K.lib" --effort_level std --out-sdc-file "D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\outputs\placer\U111_TOP_pl.sdc"
+starting placerrunning placerExecuting : C:\lscc\iCEcube2.2020.12\sbt_backend\bin\win32\opt\sbtplacer.exe --des-lib D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\netlist\oadb-U111_TOP --outdir D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\outputs\placer --device-file C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P04.dev --package TQ144 --deviceMarketName iCE40HX4K --sdc-file D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\Temp/sbt_temp.sdc --lib-file C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ice40HX8K.lib --effort_level std --out-sdc-file D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\outputs\placer\U111_TOP_pl.sdc
+Lattice Semiconductor Corporation  Placer
+Release:        2020.12.27943
+Build Date:     Dec  9 2020 17:55:52
+
+I2004: Option and Settings Summary
+=============================================================
+Device file          - C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P04.dev
+Package              - TQ144
+Design database      - D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\netlist\oadb-U111_TOP
+SDC file             - D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\Temp/sbt_temp.sdc
+Output directory     - D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\outputs\placer
+Timing library       - C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ice40HX8K.lib
+Effort level         - std
+
+I2050: Starting reading inputs for placer
+=============================================================
+I2100: Reading design library: D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\netlist\oadb-U111_TOP/BFPGA_DESIGN_ep
+I2065: Reading device file : C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P04.dev
+I2051: Reading of inputs for placer completed successfully
+
+I2053: Starting placement of the design
+=============================================================
+
+Input Design Statistics
+    Number of LUTs      	:	78
+    Number of DFFs      	:	24
+    Number of DFFs packed to IO	:	0
+    Number of Carrys    	:	0
+    Number of RAMs      	:	0
+    Number of ROMs      	:	0
+    Number of IOs       	:	92
+    Number of GBIOs     	:	0
+    Number of GBs       	:	0
+    Number of WarmBoot  	:	0
+    Number of PLLs      	:	1
+
+
+Phase 1
+I2077: Start design legalization
+
+Design Legalization Statistics
+    Number of feedthru LUTs inserted to legalize input of DFFs     	:	16
+    Number of feedthru LUTs inserted for LUTs driving multiple DFFs	:	0
+    Number of LUTs replicated for LUTs driving multiple DFFs       	:	0
+    Number of feedthru LUTs inserted to legalize output of CARRYs  	:	0
+    Number of feedthru LUTs inserted to legalize global signals    	:	2
+    Number of feedthru CARRYs inserted to legalize input of CARRYs 	:	0
+    Number of inserted LUTs to Legalize IOs with PIN_TYPE= 01xxxx  	:	0
+    Number of inserted LUTs to Legalize IOs with PIN_TYPE= 10xxxx  	:	0
+    Number of inserted LUTs to Legalize IOs with PIN_TYPE= 11xxxx  	:	0
+    Total LUTs inserted                                            	:	18
+    Total CARRYs inserted                                          	:	0
+
+
+I2078: Design legalization is completed successfully
+I2088: Phase 1, elapsed time : 0.0 (sec)
+
+
+Phase 2
+I2088: Phase 2, elapsed time : 0.0 (sec)
+
+Phase 3
+Info-1404: Inferred PLL generated clock at pll/PLLOUTCOREA
+Info-1404: Inferred PLL generated clock at pll/PLLOUTCOREB
+Info-1404: Inferred PLL generated clock at pll/PLLOUTGLOBALA
+Info-1404: Inferred PLL generated clock at pll/PLLOUTGLOBALB
+Warning-1034: Found non-unate timing arc, from pin "in3" to pin "lcout" of instance "GB_BUFFER_CLK80_THRU_LUT4_0_LC_94", in the clock network. Converting the timing arc to positive-unate
+Warning-1034: Found non-unate timing arc, from pin "in3" to pin "lcout" of instance "GB_BUFFER_CLK40_THRU_LUT4_0_LC_95", in the clock network. Converting the timing arc to positive-unate
+
+Design Statistics after Packing
+    Number of LUTs      	:	97
+    Number of DFFs      	:	24
+    Number of DFFs packed to IO	:	0
+    Number of Carrys    	:	0
+
+Device Utilization Summary after Packing
+    Sequential LogicCells
+        LUT and DFF      	:	24
+        LUT, DFF and CARRY	:	0
+    Combinational LogicCells
+        Only LUT         	:	73
+        CARRY Only       	:	0
+        LUT with CARRY   	:	0
+    LogicCells                  :	97/3520
+    PLBs                        :	13/440
+    BRAMs                       :	0/20
+    IOs and GBIOs               :	92/107
+    PLLs                        :	1/2
+
+
+I2088: Phase 3, elapsed time : 0.3 (sec)
+
+Phase 4
+I2088: Phase 4, elapsed time : 0.2 (sec)
+
+Phase 5
+I2088: Phase 5, elapsed time : 0.0 (sec)
+
+Phase 6
+I2088: Phase 6, elapsed time : 7.7 (sec)
+
+Final Design Statistics
+    Number of LUTs      	:	97
+    Number of DFFs      	:	24
+    Number of DFFs packed to IO	:	0
+    Number of Carrys    	:	0
+    Number of RAMs      	:	0
+    Number of ROMs      	:	0
+    Number of IOs       	:	92
+    Number of GBIOs     	:	0
+    Number of GBs       	:	0
+    Number of WarmBoot  	:	0
+    Number of PLLs      	:	1
+
+Device Utilization Summary
+    LogicCells                  :	97/3520
+    PLBs                        :	42/440
+    BRAMs                       :	0/20
+    IOs and GBIOs               :	92/107
+    PLLs                        :	1/2
+
+
+
+#####################################################################
+Placement Timing Summary
+
+The timing summary is based on estimated routing delays after
+placement. For final timing report, please carry out the timing
+analysis after routing.
+=====================================================================
+
+#####################################################################
+                     Clock Summary 
+=====================================================================
+Number of clocks: 5
+Clock: CLK40_IN | Frequency: N/A | Target: 40.00 MHz
+Clock: pll/PLLOUTCOREA | Frequency: N/A | Target: 80.00 MHz
+Clock: pll/PLLOUTCOREB | Frequency: N/A | Target: 40.00 MHz
+Clock: pll/PLLOUTGLOBALA | Frequency: 260.18 MHz | Target: 80.00 MHz
+Clock: pll/PLLOUTGLOBALB | Frequency: N/A | Target: 40.00 MHz
+
+=====================================================================
+                     End of Clock Summary
+#####################################################################
+
+I2054: Placement of design completed successfully
+
+I2076: Placer run-time: 8.6 sec.
+
+placer succeed.
+starting IPExporterrunning IPExporterIPExporter succeed.
+
+
+"C:/lscc/iCEcube2.2020.12/sbt_backend/bin/win32/opt\packer.exe" "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P04.dev" "D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\netlist\oadb-U111_TOP" --package TQ144 --outdir "D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\outputs\packer" --DRC_only  --translator "C:\lscc\iCEcube2.2020.12\sbt_backend\bin\sdc_translator.tcl" --src_sdc_file "D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\outputs\placer\U111_TOP_pl.sdc" --dst_sdc_file "D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\outputs\packer\U111_TOP_pk.sdc" --devicename iCE40HX4K
+starting packerrunning packerLattice Semiconductor Corporation  Packer
+Release:        2020.12.27943
+Build Date:     Dec  9 2020 17:32:13
+
+Begin Packing...
+initializing finish
+Total HPWL cost is 2560
+used logic cells: 97
+Design Rule Checking Succeeded
+
+DRC Checker run-time: 0 (sec)
+packer succeed.
+
+
+"C:/lscc/iCEcube2.2020.12/sbt_backend/bin/win32/opt\packer.exe" "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P04.dev" "D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\netlist\oadb-U111_TOP" --package TQ144 --outdir "D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\outputs\packer" --translator "C:\lscc\iCEcube2.2020.12\sbt_backend\bin\sdc_translator.tcl" --src_sdc_file "D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\outputs\placer\U111_TOP_pl.sdc" --dst_sdc_file "D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\outputs\packer\U111_TOP_pk.sdc" --devicename iCE40HX4K
+starting packerrunning packerLattice Semiconductor Corporation  Packer
+Release:        2020.12.27943
+Build Date:     Dec  9 2020 17:32:13
+
+Begin Packing...
+initializing finish
+Total HPWL cost is 2560
+used logic cells: 97
+Translating sdc file D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\outputs\placer\U111_TOP_pl.sdc...
+Translated sdc file is D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\outputs\packer\U111_TOP_pk.sdc
+oaInterface::GetInstName pInst NULL
+Packer succeeded
+
+Packer run-time: 1 (sec)
+packer succeed.
+
+
+"C:\lscc\iCEcube2.2020.12\sbt_backend\bin\win32\opt\sbrouter.exe" "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P04.dev" "D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\sbt\netlist\oadb-U111_TOP" "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ice40HX8K.lib" "D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\sbt\outputs\packer\U111_TOP_pk.sdc" --outdir "D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\sbt\outputs\router" --sdf_file "D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\outputs\simulation_netlist\U111_TOP_sbt.sdf" --pin_permutation
+starting routerrunning routerSJRouter....
+Executing : C:\lscc\iCEcube2.2020.12\sbt_backend\bin\win32\opt\sbrouter.exe C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P04.dev D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\sbt\netlist\oadb-U111_TOP C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ice40HX8K.lib D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\sbt\outputs\packer\U111_TOP_pk.sdc --outdir D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\sbt\outputs\router --sdf_file D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\outputs\simulation_netlist\U111_TOP_sbt.sdf --pin_permutation 
+Lattice Semiconductor Corporation  Router
+Release:        2020.12.27943
+Build Date:     Dec  9 2020 17:44:15
+
+I1203: Reading Design U111_TOP
+Read design time: 0
+I1202: Reading Architecture of device iCE40HX4K
+Info-1404: Inferred PLL generated clock at pll/PLLOUTCOREB
+Info-1404: Inferred PLL generated clock at pll/PLLOUTCOREA
+Info-1404: Inferred PLL generated clock at pll/PLLOUTGLOBALB
+Info-1404: Inferred PLL generated clock at pll/PLLOUTGLOBALA
+Read device time: 7
+I1209: Started routing
+I1223: Total Nets : 178 
+I1212: Iteration  1 :    30 unrouted : 2 seconds
+I1212: Iteration  2 :     0 unrouted : 1 seconds
+I1215: Routing is successful
+Routing time: 3
+I1206: Completed routing
+I1204: Writing Design U111_TOP
+Lib Closed
+I1210: Writing routes
+I1218: Exiting the router
+I1224: Router run-time : 10 seconds
+router succeed.
+
+"C:/lscc/iCEcube2.2020.12/sbt_backend/bin/win32/opt\netlister.exe" --verilog "D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\outputs\simulation_netlist\U111_TOP_sbt.v" --vhdl "D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt/sbt/outputs/simulation_netlist\U111_TOP_sbt.vhd" --lib "D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\netlist\oadb-U111_TOP" --view rt --device "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P04.dev" --splitio  --in-sdc-file "D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\outputs\packer\U111_TOP_pk.sdc" --out-sdc-file "D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\outputs\netlister\U111_TOP_sbt.sdc"
+starting netlistrunning netlistLattice Semiconductor Corporation  Verilog & VHDL Netlister
+Release:        2020.12.27943
+Build Date:     Dec  9 2020 18:18:39
+
+Generating Verilog & VHDL netlist files ...
+Writing D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\outputs\simulation_netlist\U111_TOP_sbt.v
+Writing D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt/sbt/outputs/simulation_netlist\U111_TOP_sbt.vhd
+Netlister succeeded.
+
+Netlister run-time: 1 (sec)
+netlist succeed.
+
+
+"C:/lscc/iCEcube2.2020.12/sbt_backend/bin/win32/opt\sbtimer.exe" --des-lib "D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\netlist\oadb-U111_TOP" --lib-file "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ice40HX8K.lib" --sdc-file "D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\outputs\netlister\U111_TOP_sbt.sdc" --sdf-file "D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\outputs\simulation_netlist\U111_TOP_sbt.sdf" --report-file "D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\sbt\outputs\timer\U111_TOP_timing.rpt" --device-file "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P04.dev" --timing-summary
+starting timerrunning timerExecuting : C:\lscc\iCEcube2.2020.12\sbt_backend\bin\win32\opt\sbtimer.exe --des-lib D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\netlist\oadb-U111_TOP --lib-file C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ice40HX8K.lib --sdc-file D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\outputs\netlister\U111_TOP_sbt.sdc --sdf-file D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\outputs\simulation_netlist\U111_TOP_sbt.sdf --report-file D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\sbt\outputs\timer\U111_TOP_timing.rpt --device-file C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P04.dev --timing-summary
+Lattice Semiconductor Corporation  Timer
+Release:        2020.12.27943
+Build Date:     Dec  9 2020 17:41:47
+
+Info-1404: Inferred PLL generated clock at pll_pll/PLLOUTCOREB
+Info-1404: Inferred PLL generated clock at pll_pll/PLLOUTCOREA
+Info-1404: Inferred PLL generated clock at pll_pll/PLLOUTGLOBALB
+Info-1404: Inferred PLL generated clock at pll_pll/PLLOUTGLOBALA
+Warning-1034: Found non-unate timing arc, from pin "DOUT0" to pin "PADOUT" of instance "CLK40A_obuf_preio", in the clock network. Converting the timing arc to positive-unate
+Warning-1034: Found non-unate timing arc, from pin "DOUT0" to pin "PADOUT" of instance "CLK40C_obuf_preio", in the clock network. Converting the timing arc to positive-unate
+Warning-1034: Found non-unate timing arc, from pin "DOUT0" to pin "PADOUT" of instance "CLK80_CPU_obuf_preio", in the clock network. Converting the timing arc to positive-unate
+Warning-1034: Found non-unate timing arc, from pin "DOUT0" to pin "PADOUT" of instance "CLKRAMB_obuf_preio", in the clock network. Converting the timing arc to positive-unate
+Warning-1034: Found non-unate timing arc, from pin "DOUT0" to pin "PADOUT" of instance "CLKRAMA_obuf_preio", in the clock network. Converting the timing arc to positive-unate
+Warning-1034: Found non-unate timing arc, from pin "DOUT0" to pin "PADOUT" of instance "CLK40B_obuf_preio", in the clock network. Converting the timing arc to positive-unate
+Timer run-time: 3 seconds
+timer succeed.
+timer succeeded.
+
+
+"C:/lscc/iCEcube2.2020.12/sbt_backend/bin/win32/opt\bitmap.exe" "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P04.dev" --design "D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\netlist\oadb-U111_TOP" --device_name iCE40HX4K --package TQ144 --outdir "D:/LocalBus68040/U111/U111_icecube/U111_icecube_Implmnt\sbt\outputs\bitmap" --low_power on --init_ram on --init_ram_bank 1111 --frequency low --warm_boot on --set_unused_io_nopullup
+starting bitmaprunning bitmapLattice Semiconductor Corporation  Bit Stream Generator
+Release:        2020.12.27943
+Build Date:     Dec  9 2020 18:17:40
+
+Bit Stream File Size: 1080760 (1M 31K 440 Bits)
+Bit Stream Generator succeeded
+
+Bitmap run-time: 1 (sec)
+bitmap succeed.
+8:00:02 PM

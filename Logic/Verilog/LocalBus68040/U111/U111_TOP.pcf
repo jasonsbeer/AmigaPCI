@@ -77,29 +77,29 @@ set_io  D_UU_AMIGA[7] 143 #-pullup yes #DB31
 
 #DATA TRANSFER SIGALS
 set_io TS_CPUn  125
-set_io TSn       45
-set_io TAn      124 -pullup yes
-set_io TACKn     47
-set_io PORTSIZE  42
-set_io SIZ[1]   120 -pullup yes
-set_io SIZ[0]   121 -pullup yes
-set_io RnW       97 -pullup yes
-set_io TCIn      44
-set_io TCI_CPUn 101
-set_io TEAn      43
-set_io TEA_CPUn 122
+set_io TSn       45 #-pullup yes
+set_io TAn      124 #-pullup yes
+set_io TACKn     47 -pullup yes
+set_io PORTSIZE  42 #-pullup yes
+set_io SIZ[1]   120 #-pullup yes
+set_io SIZ[0]   121 #-pullup yes
+set_io RnW       97 #-pullup yes
+set_io TCIn     44
+set_io TCI_CPUn 101 #-pullup yes
+set_io TEAn      43 -pullup yes
+set_io TEA_CPUn 122 #-pullup yes
 set_io TBIn      55
 set_io TBI_CPUn  64
 
 #BUS ARBITRATION
-set_io RESETn  34
-set_io CPUBGn 102
+set_io RESETn 34
+set_io CPUBGn 102 -pullup yes
 set_io BUFENn 135
 set_io BUFDIR 136
-set_io BGn     96
+set_io BGn    96  -pullup yes
 #set_io BBn    130 -pullup yes
 set_io DMAn   134
-set_io LBENn   48
+set_io LBENn  48
 
 #ADDRESS
 set_io A_040[0]   37 -pullup yes
