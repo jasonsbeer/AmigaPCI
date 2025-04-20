@@ -1,13 +1,13 @@
 C:\lscc\iCEcube2.2020.12\synpbase\bin64\c_hdl.exe  -osyn  D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\synwork\U712_icecube_comp.srs  -hdllog  D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\synlog\U712_icecube_compiler.srr  -encrypt  -mp  4  -verification_mode 0  -verilog  -prodtype  synplify_pro  -primux -fixsmult -infer_seqShift -ice -sdff_counter -nram -divnmod -nostructver   -I D:\AmigaPCI\U712\U712_icecube\  -I C:\lscc\iCEcube2.2020.12\synpbase\lib   -v2001  -devicelib  C:\lscc\iCEcube2.2020.12\synpbase\lib\generic\sb_ice40.v  -encrypt  -pro  -dmgen  D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\dm  -ui -fid2 -ram -sharing on -ll 2000 -autosm  -lib work D:\AmigaPCI\U712\U712_BUFFERS.v -lib work D:\AmigaPCI\U712\U712_REG_SM.v -lib work D:\AmigaPCI\U712\U712_TOP.v -lib work D:\AmigaPCI\U712\U712_BYTE_ENABLE.v -lib work D:\AmigaPCI\U712\U712_CHIP_RAM.v -lib work D:\AmigaPCI\U712\U712_CYCLE_TERM.v 
 rc:0 success:1 runtime:2
-file:D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\synwork\U712_icecube_comp.srs|io:o|time:1744244236|size:23011|exec:0
-file:D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\synlog\U712_icecube_compiler.srr|io:o|time:1744244236|size:5820|exec:0
+file:D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\synwork\U712_icecube_comp.srs|io:o|time:1745161239|size:22890|exec:0
+file:D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\synlog\U712_icecube_compiler.srr|io:o|time:1745161239|size:5713|exec:0
 file:C:\lscc\iCEcube2.2020.12\synpbase\lib\generic\sb_ice40.v|io:i|time:1728534475|size:224837|exec:0
 file:D:\AmigaPCI\U712\U712_BUFFERS.v|io:i|time:1743295236|size:2390|exec:0
-file:D:\AmigaPCI\U712\U712_REG_SM.v|io:i|time:1744159019|size:4387|exec:0
-file:D:\AmigaPCI\U712\U712_TOP.v|io:i|time:1744244223|size:6045|exec:0
-file:D:\AmigaPCI\U712\U712_BYTE_ENABLE.v|io:i|time:1744157613|size:2532|exec:0
+file:D:\AmigaPCI\U712\U712_REG_SM.v|io:i|time:1745161180|size:4701|exec:0
+file:D:\AmigaPCI\U712\U712_TOP.v|io:i|time:1745161230|size:6073|exec:0
+file:D:\AmigaPCI\U712\U712_BYTE_ENABLE.v|io:i|time:1745160593|size:2516|exec:0
 file:D:\AmigaPCI\U712\U712_CHIP_RAM.v|io:i|time:1743351612|size:11018|exec:0
-file:D:\AmigaPCI\U712\U712_CYCLE_TERM.v|io:i|time:1744244009|size:2770|exec:0
+file:D:\AmigaPCI\U712\U712_CYCLE_TERM.v|io:i|time:1745161105|size:2601|exec:0
 file:C:\lscc\iCEcube2.2020.12\synpbase\bin\c_hdl.exe|io:i|time:1728534472|size:1338368|exec:1
 file:C:\lscc\iCEcube2.2020.12\synpbase\bin64\c_hdl.exe|io:i|time:1728534473|size:1754112|exec:1

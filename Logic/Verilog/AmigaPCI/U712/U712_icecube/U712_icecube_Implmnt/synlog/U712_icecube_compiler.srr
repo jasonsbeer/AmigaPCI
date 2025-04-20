@@ -18,12 +18,12 @@ Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys softwa
 @I::"D:\AmigaPCI\U712\U712_CHIP_RAM.v" (library work)
 @I::"D:\AmigaPCI\U712\U712_CYCLE_TERM.v" (library work)
 Verilog syntax check successful!
+File D:\AmigaPCI\U712\U712_REG_SM.v changed - recompiling
 File D:\AmigaPCI\U712\U712_TOP.v changed - recompiling
-File D:\AmigaPCI\U712\U712_CYCLE_TERM.v changed - recompiling
 Selecting top level module U712_TOP
 @N: CG364 :"C:\lscc\iCEcube2.2020.12\synpbase\lib\generic\sb_ice40.v":870:7:870:22|Synthesizing module SB_PLL40_2F_CORE in library work.
 
-@N: CG364 :"D:\AmigaPCI\U712\U712_REG_SM.v":36:7:36:17|Synthesizing module U712_REG_SM in library work.
+@N: CG364 :"D:\AmigaPCI\U712\U712_REG_SM.v":37:7:37:17|Synthesizing module U712_REG_SM in library work.
 
 @N: CG364 :"D:\AmigaPCI\U712\U712_BUFFERS.v":34:7:34:18|Synthesizing module U712_BUFFERS in library work.
 
@@ -41,7 +41,7 @@ Selecting top level module U712_TOP
 @W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":88:2:88:4|Input SDI on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
 @W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":88:2:88:4|Input SCLK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
 @W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":88:2:88:4|Input LATCHINPUTVALUE on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@N: CL201 :"D:\AmigaPCI\U712\U712_CYCLE_TERM.v":58:0:58:5|Trying to extract state machine for register TACK_STATE.
+@N: CL201 :"D:\AmigaPCI\U712\U712_CYCLE_TERM.v":56:0:56:5|Trying to extract state machine for register TACK_STATE.
 Extracted state machine for register TACK_STATE
 State machine has 5 reachable states with original encodings of:
    0000
@@ -49,7 +49,7 @@ State machine has 5 reachable states with original encodings of:
    0010
    0011
    0100
-@N: CL201 :"D:\AmigaPCI\U712\U712_REG_SM.v":64:0:64:5|Trying to extract state machine for register STATE_COUNT.
+@N: CL201 :"D:\AmigaPCI\U712\U712_REG_SM.v":67:0:67:5|Trying to extract state machine for register STATE_COUNT.
 Extracted state machine for register STATE_COUNT
 State machine has 5 reachable states with original encodings of:
    0000
@@ -57,15 +57,13 @@ State machine has 5 reachable states with original encodings of:
    0010
    0011
    0100
-@W: CL247 :"D:\AmigaPCI\U712\U712_REG_SM.v":39:16:39:23|Input port bit 0 of DBR_SYNC[1:0] is unused
-
 
 At c_ver Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 73MB peak: 79MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Wed Apr 09 19:17:16 2025
+# Sun Apr 20 10:00:38 2025
 
 ###########################################################]
 Synopsys Netlist Linker, version comp2016q3p1, Build 141R, built Dec  5 2016
@@ -78,7 +76,7 @@ At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Wed Apr 09 19:17:16 2025
+# Sun Apr 20 10:00:39 2025
 
 ###########################################################]
 @END
@@ -88,6 +86,6 @@ At c_hdl Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Wed Apr 09 19:17:16 2025
+# Sun Apr 20 10:00:39 2025
 
 ###########################################################]

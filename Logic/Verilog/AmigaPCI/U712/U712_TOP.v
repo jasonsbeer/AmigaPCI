@@ -118,7 +118,8 @@ end
 
 wire REG_TACK;
 wire REG_CYCLEm;
-wire DS_ENm;
+wire UDS;
+wire LDS;
 
 U712_REG_SM U712_REG_SM (
     //INPUTS
@@ -129,14 +130,17 @@ U712_REG_SM U712_REG_SM (
     .TSn (TSn),
     .REGSPACEn (REGSPACEn),
     .RnW (RnW),
-    .DBR_SYNC (DBR_SYNC),
+    .UDS (UDS), 
+    .LDS (LDS),
+    .DBR_SYNC (DBR_SYNC[1]),
 
     //OUTPUTS
     .ASn (ASn),
     .REGENn (REGENn),
     .REG_TACK (REG_TACK),
     .REG_CYCLE (REG_CYCLEm),
-    .DS_EN (DS_ENm)
+    .UDSn (UDSn), 
+    .LDSn (LDSn)
 );
 
 ///////////////////////////
@@ -187,7 +191,6 @@ U712_CYCLE_TERM U712_CYCLE_TERM (
 ///////////////////
 
 wire DMA_CYCLEm;
-//wire [1:0] CAS_SYNC;
 
 U712_CHIP_RAM U712_CHIP_RAM (
     //INPUTS
@@ -237,7 +240,7 @@ U712_BYTE_ENABLE U712_BYTE_ENABLE (
     .CASLn (CASLn),
     .CASUn (CASUn),
     .DBENn (DBENn),
-    .DS_EN (DS_ENm),
+    .RnW (RnW),
     .A (A[1:0]),
     .SIZ (SIZ),
 
@@ -250,8 +253,8 @@ U712_BYTE_ENABLE U712_BYTE_ENABLE (
     .UMBEn (UMBEn),
     .LMBEn (LMBEn),
     .LLBEn (LLBEn),
-    .UDSn (UDSn),
-    .LDSn (LDSn)
+    .UDS (UDS), 
+    .LDS (LDS)
 );
 
 //////////////////

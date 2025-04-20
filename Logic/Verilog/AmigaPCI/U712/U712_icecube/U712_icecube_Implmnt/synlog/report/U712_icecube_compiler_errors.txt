@@ -1,2 +1,3 @@
-@E: CG906 :"D:\AmigaPCI\U712\U712_REG_SM.v":82:72:82:82|Reference to unknown variable STATE_COUNY.
+@E: CG358 :"D:\AmigaPCI\U712\U712_TOP.v":146:0:146:0|Expecting '.' or '.*'
+@E: CS187 :"D:\AmigaPCI\U712\U712_TOP.v":146:1:146:1|Expecting (
 

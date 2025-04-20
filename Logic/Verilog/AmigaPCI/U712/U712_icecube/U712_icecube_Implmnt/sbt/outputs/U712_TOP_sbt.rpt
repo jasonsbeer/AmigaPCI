@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:31:51
 
-* File Generated:     Apr 9 2025 19:17:38
+* File Generated:     Apr 20 2025 10:01:05
 
 * Purpose:            General info of design implementation
 
@@ -17,7 +17,7 @@
 Synthesis/Placement Summary:
 ----------------------------
     Status:  Successful
-    Runtime: 0 seconds
+    Runtime: 1 seconds
 
 Device Info:
 ------------
@@ -27,8 +27,8 @@ Device Info:
 
 Design statistics:
 ------------------
-    FFs:                  95
-    LUTs:                 239
+    FFs:                  97
+    LUTs:                 238
     RAMs:                 0
     IOBs:                 95
     GBs:                  4
@@ -37,12 +37,12 @@ Design statistics:
 
 Logic Resource Utilization:
 ---------------------------
-    Total Logic Cells: 240/3520
-        Combinational Logic Cells: 145      out of   3520      4.11932%
-        Sequential Logic Cells:    95       out of   3520      2.69886%
+    Total Logic Cells: 238/3520
+        Combinational Logic Cells: 141      out of   3520      4.00568%
+        Sequential Logic Cells:    97       out of   3520      2.75568%
         Logic Tiles:               81       out of   440       18.4091%
     Registers: 
-        Logic Registers:           95       out of   3520      2.69886%
+        Logic Registers:           97       out of   3520      2.75568%
         IO Registers:              0        out of   880       0
     Block RAMs:                    0        out of   20        0%
     Warm Boots:                    0        out of   1         0%
@@ -133,7 +133,7 @@ Detailed I/O Info:
     60          Output     SB_LVCMOS    No       2        Simple Output                 CRCSn         
     61          Output     SB_LVCMOS    No       2        Simple Output                 RASn          
     62          Output     SB_LVCMOS    No       2        Simple Output                 CASn          
-    64          Output     SB_LVCMOS    No       2        Simple Output                 TCIn          
+    64          Output     SB_LVCMOS    No       2        Output Tristatable by Enable  TCIn          
     73          Output     SB_LVCMOS    No       1        Simple Output                 WEn           
     74          Output     SB_LVCMOS    No       1        Simple Output                 CUMBEn        
     75          Output     SB_LVCMOS    No       1        Simple Output                 CLMBEn        
@@ -170,7 +170,7 @@ Detailed Global Buffer Info:
     Buffer Number  IO Bank  Driven By  Fanout  Signal Name   
     -------------  -------  ---------  ------  -----------   
     1              0                   15      C1_c_g        
-    4              0                   61      RESETn_c_i_g  
+    4              0                   63      RESETn_c_i_g  
     3              3                   19      DBRn_c_i_0_g  
     7              1                   10      C3_c_g        
 
@@ -182,9 +182,9 @@ Router Summary:
 
 Routing Resource Utilization:
 -----------------------------
-              Local line of tile     1954 out of 146184      1.33667%
-                          Span 4      500 out of  29696      1.68373%
-                         Span 12      258 out of   5632      4.58097%
+              Local line of tile     1943 out of 146184      1.32915%
+                          Span 4      504 out of  29696      1.6972%
+                         Span 12      234 out of   5632      4.15483%
                   Global network        5 out of      8      62.5%
-      Vertical Inter-LUT Connect       42 out of   6720      0.625%
+      Vertical Inter-LUT Connect       46 out of   6720      0.684524%
 

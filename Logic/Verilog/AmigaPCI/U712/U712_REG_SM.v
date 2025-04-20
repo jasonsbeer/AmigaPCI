@@ -29,20 +29,22 @@ Revision History:
     25-JAN-2025 : Improved stability of register cycle state machine. JN
     29-MAR-2025 : Narrowed buffer enable from State 4 to about 1/2 of State 7. JN
     30-MAR-2025 : Fixed state machine start reset. JN
+    18-APR-2025 : Add _xDS signals driven directly by state machine. JN
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 */
 
 module U712_REG_SM (
 
-    input CLK80, C1, C3, RESETn, TSn, REGSPACEn, RnW,
-    input [1:0] DBR_SYNC,
+    input CLK80, C1, C3, RESETn, TSn, REGSPACEn, RnW, UDS, LDS,
+    input DBR_SYNC,
 
     output reg ASn,
     output reg REGENn,
     output reg REG_TACK,
     output reg REG_CYCLE,
-    output reg DS_EN
+    output reg UDSn, 
+    output reg LDSn
 );
 
 ///////////////////
@@ -59,12 +61,12 @@ reg [1:0] C1_SYNC;
 reg [1:0] C3_SYNC;
 reg REG_CYCLE_START;
 reg START_RST;
+reg WRITE_CYCLE;
 
 //MC68000 STATE MACHINE
 always @(negedge CLK80) begin
     if (!RESETn) begin
         ASn <= 1;
-        DS_EN <= 0;
         REGENn <= 1;
         STATE_COUNT <= 4'h0;
         REG_CYCLE_START <= 0;
@@ -72,6 +74,9 @@ always @(negedge CLK80) begin
         C1_SYNC <= 2'b11;
         C3_SYNC <= 2'b11;
         START_RST <= 0;
+        UDSn <= 1;
+        LDSn <= 1;
+        WRITE_CYCLE <= 0;
     end else begin
 
         C1_SYNC[1] <= C1_SYNC[0];
@@ -86,12 +91,17 @@ always @(negedge CLK80) begin
         case (STATE_COUNT)
             4'h0 : begin
                 REG_TACK <= 0;
-                if (REG_CYCLE_START && !C1_SYNC[1] && C3_SYNC[1]) begin
+                if (!C1_SYNC[1] && C3_SYNC[1]) begin
                     //STATE 1
                     //We need to start here, otherwise we risk missing the
-                    //falling S3 edge, which causes problems.
-                    START_RST <= 1;
-                    STATE_COUNT <= 4'h1;
+                    //falling S2 edge, which causes problems.
+                    if (REG_CYCLE_START) begin
+                        START_RST <= 1;
+                        STATE_COUNT <= 4'h1;
+                        WRITE_CYCLE <= !RnW;
+                    end else begin
+                        REGENn <= 1;
+                    end
                 end
             end
             4'h1 : begin
@@ -100,13 +110,13 @@ always @(negedge CLK80) begin
                     //STATE 2
                     ASn <= 0;
                     REGENn <= 0;
-                    DS_EN <= RnW;
+                    UDSn <= !UDS;
+                    LDSn <= !LDS;
                     STATE_COUNT <= 4'h2;
                 end
             end
             4'h2 : begin
-                DS_EN <= 1'b1 ? 1'b1 : C1_SYNC[1] && C3_SYNC[1];
-                if (DBR_SYNC[1] && C1_SYNC[1] && C3_SYNC[1]) begin
+                if (DBR_SYNC && C1_SYNC[1] && C3_SYNC[1]) begin
                     //STATE 4
                     REG_CYCLE <= 1;
                     STATE_COUNT <= 4'h3;
@@ -115,7 +125,7 @@ always @(negedge CLK80) begin
             4'h3 : begin
                 if (!C1_SYNC[1] && C3_SYNC[1]) begin
                     //STATE 5
-                    REG_TACK <= RnW;
+                    REG_TACK <= !WRITE_CYCLE;
                     STATE_COUNT <= 4'h4;
                 end
             end
@@ -123,10 +133,10 @@ always @(negedge CLK80) begin
                 if (C1_SYNC[1] && !C3_SYNC[1]) begin
                     //STATE 7
                     REG_CYCLE <= 0;
-                    REG_TACK <= !RnW;
-                    REGENn <= 1;
+                    REG_TACK <= WRITE_CYCLE;
                     ASn <= 1;
-                    DS_EN <= 0;
+                    UDSn <= 1;
+                    LDSn <= 1;
                     STATE_COUNT <= 4'h0;
                 end else begin
                     REG_TACK <= 0;

@@ -27,19 +27,20 @@ Description: DATA TRANSFER BYTE ENABLE SIGNALS
 Revision History:
     21-JAN-2025 : HW REV 5.0 INITIAL RELEASE
     30-MAR-2025 : Made byte enables more stringent. JN
+    18-APR-2025 : Moved _xDS to the register state machine. JN
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 */
 
 module U712_BYTE_ENABLE (
 
-    input CPU_CYCLE, DMA_CYCLE, CASLn, CASUn, DBENn, DS_EN,
+    input CPU_CYCLE, DMA_CYCLE, CASLn, CASUn, DBENn, RnW, //DS_EN,
     input [1:0] A,
     input [1:0] SIZ,
 
     output CUUBEn, CUMBEn, CLMBEn, CLLBEn,
     output UUBEn, UMBEn, LMBEn, LLBEn,
-    output UDSn, LDSn
+    output UDS, LDS
 
 );
 
@@ -69,10 +70,7 @@ assign CLMBEn = !((LMBE && CPU_CYCLE) || (!CASUn && DMA_CYCLE && !DBENn));
 assign CLLBEn = !((LLBE && CPU_CYCLE) || (!CASLn && DMA_CYCLE && !DBENn));
 
 //THESE ARE FOR 16-BIT (MC68000) CHIPSET DATA TRANSFERS.
-assign UDS = !A[0] || LW_TRANS;
-assign LDS =  A[0] || WD_TRANS || LW_TRANS;
-
-assign UDSn = !(DS_EN && UDS);
-assign LDSn = !(DS_EN && LDS);
+assign UDS = RnW || (!A[0] || LW_TRANS);
+assign LDS = RnW || ( A[0] || WD_TRANS || LW_TRANS);
 
 endmodule
