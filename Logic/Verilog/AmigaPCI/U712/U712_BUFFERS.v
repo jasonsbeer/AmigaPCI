@@ -33,7 +33,7 @@ TO BUILD WITH APIO: apio build --top-module U712_TOP --fpga iCE40-HX4K-TQ144
 
 module U712_BUFFERS (
 
-    input RnW, REG_CYCLE, CPU_CYCLE, CASUn, CASLn, WRITE_CYCLE, 
+    input RnW, REG_CYCLE, CPU_CYCLE, CASUn, CASLn, WRITE_CYCLE,
     output VBENn, DRDENn, DRDDIR, DMA_LATCH_EN
 
 );
@@ -59,7 +59,7 @@ assign DRDENn = !(DMA_CYCLE || REG_CYCLE);
 assign DRDDIR = DMA_CYCLE ? !WRITE_CYCLE : !RnW;
 //assign DRDDIR = REG_CYCLE ? !RnW : !WRITE_CYCLE;
 
-//Enable the latch clock (SAB=1) during DMA read or REG write cycles.
+//Enable the latch clock (SAB=1) during DMA read cycles.
 assign DMA_LATCH_EN = (DMA_CYCLE && !WRITE_CYCLE);
 
 endmodule

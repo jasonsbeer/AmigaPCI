@@ -92,6 +92,7 @@ always @(negedge CLK80) begin
             4'h0 : begin
                 REG_TACK <= 0;
                 if (!C1_SYNC[1] && C3_SYNC[1]) begin
+                    //REGENn <= 1;
                     //STATE 1
                     //We need to start here, otherwise we risk missing the
                     //falling S2 edge, which causes problems.
@@ -133,6 +134,7 @@ always @(negedge CLK80) begin
                 if (C1_SYNC[1] && !C3_SYNC[1]) begin
                     //STATE 7
                     REG_CYCLE <= 0;
+                    //REGENn <= 1;
                     REG_TACK <= WRITE_CYCLE;
                     ASn <= 1;
                     UDSn <= 1;

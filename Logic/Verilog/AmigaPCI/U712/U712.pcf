@@ -76,7 +76,7 @@ set_io DRDDIR    107
 set_io DRDENn    110
 
 #AGNUS
-#set_io RAS1n         88 #INPUT -  AGNUS RAS1
+set_io RAS1n         88 #INPUT -  AGNUS RAS1
 set_io RAS0n         87 #INPUT -  AGNUS RAS0
 set_io CASUn        104 #INPUT -  AGNUS CASU
 set_io CASLn        105 #INPUT -  AGNUS CASL

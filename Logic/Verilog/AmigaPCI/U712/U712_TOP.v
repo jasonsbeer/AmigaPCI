@@ -36,7 +36,7 @@ module U712_TOP (
 
     input CLK40_IN, C1, C3, RESETn,
     input RnW, TSn, DBRn, REGSPACEn, RAMSPACEn, 
-    input AWEn, RAS0n, CASLn, CASUn, AGNUS_REV,
+    input AWEn, RAS1n, RAS0n, CASLn, CASUn, AGNUS_REV,
     input [1:0] SIZ,
     input [20:0] A,
     input [9:0] DRA,
@@ -149,6 +149,7 @@ U712_REG_SM U712_REG_SM (
 
 wire CPU_CYCLEm;
 wire WRITE_CYCLEm;
+wire DMA_CYCLEm;
 
 U712_BUFFERS U712_BUFFERS (
     //INPUTS
@@ -190,7 +191,7 @@ U712_CYCLE_TERM U712_CYCLE_TERM (
 // CHIP RAM CYCLE //
 ///////////////////
 
-wire DMA_CYCLEm;
+//wire DMA_CYCLEm;
 
 U712_CHIP_RAM U712_CHIP_RAM (
     //INPUTS
@@ -203,6 +204,7 @@ U712_CHIP_RAM U712_CHIP_RAM (
     .RnW (RnW),
     .AGNUS_REV (AGNUS_REV),
     .AWEn (AWEn),
+    .RAS1n (RAS1n),
     .RAS0n (RAS0n),
     .CASUn (CASUn),
     .CASLn (CASLn),

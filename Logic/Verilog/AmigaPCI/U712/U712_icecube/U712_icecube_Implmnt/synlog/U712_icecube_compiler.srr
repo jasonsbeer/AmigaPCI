@@ -18,8 +18,7 @@ Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys softwa
 @I::"D:\AmigaPCI\U712\U712_CHIP_RAM.v" (library work)
 @I::"D:\AmigaPCI\U712\U712_CYCLE_TERM.v" (library work)
 Verilog syntax check successful!
-File D:\AmigaPCI\U712\U712_REG_SM.v changed - recompiling
-File D:\AmigaPCI\U712\U712_TOP.v changed - recompiling
+File D:\AmigaPCI\U712\U712_CHIP_RAM.v changed - recompiling
 Selecting top level module U712_TOP
 @N: CG364 :"C:\lscc\iCEcube2.2020.12\synpbase\lib\generic\sb_ice40.v":870:7:870:22|Synthesizing module SB_PLL40_2F_CORE in library work.
 
@@ -27,11 +26,11 @@ Selecting top level module U712_TOP
 
 @N: CG364 :"D:\AmigaPCI\U712\U712_BUFFERS.v":34:7:34:18|Synthesizing module U712_BUFFERS in library work.
 
-@N: CG364 :"D:\AmigaPCI\U712\U712_CYCLE_TERM.v":34:7:34:21|Synthesizing module U712_CYCLE_TERM in library work.
+@N: CG364 :"D:\AmigaPCI\U712\U712_CYCLE_TERM.v":35:7:35:21|Synthesizing module U712_CYCLE_TERM in library work.
 
 @N: CG364 :"D:\AmigaPCI\U712\U712_CHIP_RAM.v":36:7:36:19|Synthesizing module U712_CHIP_RAM in library work.
 
-@N: CG364 :"D:\AmigaPCI\U712\U712_BYTE_ENABLE.v":34:7:34:22|Synthesizing module U712_BYTE_ENABLE in library work.
+@N: CG364 :"D:\AmigaPCI\U712\U712_BYTE_ENABLE.v":35:7:35:22|Synthesizing module U712_BYTE_ENABLE in library work.
 
 @N: CG364 :"D:\AmigaPCI\U712\U712_TOP.v":35:7:35:14|Synthesizing module U712_TOP in library work.
 
@@ -41,7 +40,8 @@ Selecting top level module U712_TOP
 @W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":88:2:88:4|Input SDI on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
 @W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":88:2:88:4|Input SCLK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
 @W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":88:2:88:4|Input LATCHINPUTVALUE on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@N: CL201 :"D:\AmigaPCI\U712\U712_CYCLE_TERM.v":56:0:56:5|Trying to extract state machine for register TACK_STATE.
+@N: CL159 :"D:\AmigaPCI\U712\U712_CHIP_RAM.v":39:16:39:20|Input RAS1n is unused.
+@N: CL201 :"D:\AmigaPCI\U712\U712_CYCLE_TERM.v":57:0:57:5|Trying to extract state machine for register TACK_STATE.
 Extracted state machine for register TACK_STATE
 State machine has 5 reachable states with original encodings of:
    0000
@@ -63,7 +63,7 @@ At c_ver Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Sun Apr 20 10:00:38 2025
+# Mon Apr 28 13:13:14 2025
 
 ###########################################################]
 Synopsys Netlist Linker, version comp2016q3p1, Build 141R, built Dec  5 2016
@@ -76,7 +76,7 @@ At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Sun Apr 20 10:00:39 2025
+# Mon Apr 28 13:13:15 2025
 
 ###########################################################]
 @END
@@ -86,6 +86,6 @@ At c_hdl Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Sun Apr 20 10:00:39 2025
+# Mon Apr 28 13:13:15 2025
 
 ###########################################################]

@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:31:51
 
-* File Generated:     Apr 20 2025 10:01:05
+* File Generated:     Apr 28 2025 13:13:37
 
 * Purpose:            General info of design implementation
 
@@ -17,7 +17,7 @@
 Synthesis/Placement Summary:
 ----------------------------
     Status:  Successful
-    Runtime: 1 seconds
+    Runtime: 0 seconds
 
 Device Info:
 ------------
@@ -27,8 +27,8 @@ Device Info:
 
 Design statistics:
 ------------------
-    FFs:                  97
-    LUTs:                 238
+    FFs:                  106
+    LUTs:                 252
     RAMs:                 0
     IOBs:                 95
     GBs:                  4
@@ -37,12 +37,12 @@ Design statistics:
 
 Logic Resource Utilization:
 ---------------------------
-    Total Logic Cells: 238/3520
-        Combinational Logic Cells: 141      out of   3520      4.00568%
-        Sequential Logic Cells:    97       out of   3520      2.75568%
-        Logic Tiles:               81       out of   440       18.4091%
+    Total Logic Cells: 253/3520
+        Combinational Logic Cells: 147      out of   3520      4.17614%
+        Sequential Logic Cells:    106      out of   3520      3.01136%
+        Logic Tiles:               92       out of   440       20.9091%
     Registers: 
-        Logic Registers:           97       out of   3520      2.75568%
+        Logic Registers:           106      out of   3520      3.01136%
         IO Registers:              0        out of   880       0
     Block RAMs:                    0        out of   20        0%
     Warm Boots:                    0        out of   1         0%
@@ -169,7 +169,7 @@ Detailed Global Buffer Info:
 ----------------------------
     Buffer Number  IO Bank  Driven By  Fanout  Signal Name   
     -------------  -------  ---------  ------  -----------   
-    1              0                   15      C1_c_g        
-    4              0                   63      RESETn_c_i_g  
+    1              0                   16      C1_c_g        
+    4              0                   62      RESETn_c_i_g  
     3              3                   19      DBRn_c_i_0_g  
     7              1                   10      C3_c_g        

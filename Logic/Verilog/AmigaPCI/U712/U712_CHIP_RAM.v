@@ -29,6 +29,7 @@ Revision History:
     19-FEB-2025 : ENABLE LATCHING OF DRD BUS ON DMA READ CYCLES.
     30-MAR-2025 : Hold DMA cycles 25ns longer into State 7. JN
                   Fixed refresh cycle wait times. JN
+    28-APR-2025 : Improved chip ram speeds. JN
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 */
@@ -36,7 +37,7 @@ GitHub: https://github.com/jasonsbeer/AmigaPCI
 module U712_CHIP_RAM (
 
     input CLK80, C1, C3, RESETn, RAMSPACEn, TSn, RnW, AGNUS_REV,
-    input AWEn, RAS0n, CASLn, CASUn, DBRn,
+    input AWEn, RAS1n, RAS0n, CASLn, CASUn, DBRn,
     input [20:2] A,
     input [9:0] DRA,
     input DBR_SYNC,
@@ -159,14 +160,39 @@ end
 ///////////////////////
 
 //START OF A DMA CYCLE IS DEFINED AS ASSERTION OF ONE OR BOTH OF THE AGNUS _CASn SIGNALS.
+//WE ALSO OPEN SOME OF THE DMA CLOCK CYCLES FOR THE CPU TO USE.
 
 reg [1:0] CAS_SYNC;
+reg [7:0] DBR_COUNT;
+reg CPU_CYCLE_DISABLE;
+
+localparam MAX_COUNT = 8'h60;
+
 always @(negedge CLK80) begin
     if (!RESETn) begin
         CAS_SYNC <= 2'b00;
+        CPU_CYCLE_DISABLE <= 0;
+        DBR_COUNT <= 8'h0;
     end else begin
         CAS_SYNC[1] <= CAS_SYNC[0];
         CAS_SYNC[0] <= (!CASUn || !CASLn);
+
+        if (DBR_SYNC) begin
+            //Fire at will when DBR is negated.
+            DBR_COUNT <= 8'h0;
+            CPU_CYCLE_DISABLE <= 0;
+        end else begin 
+            if (!CAS_SYNC[1]) begin
+                //We reclaim a few clocks from DMA cycles to run CPU chip RAM cycles.
+                //We insert these cycles in the time between Agnus' negation of CAS and assertion of RAS.
+                DBR_COUNT <= DBR_COUNT + 1;
+                CPU_CYCLE_DISABLE <= CPU_CYCLE_DISABLE || (DBR_COUNT < MAX_COUNT);
+            end else begin
+                //If CAS is asserted, reset the counter.
+                DBR_COUNT <= 8'h0;
+                CPU_CYCLE_DISABLE <= 0;
+            end
+        end
     end
 end
 
@@ -272,7 +298,7 @@ always @(negedge CLK80) begin
         end else begin
             case (SDRAM_COUNTER)
                 8'h00 : begin
-                    if (DMA_CYCLE_START) begin
+                    if (CAS_SYNC == 2'b01 || DMA_CYCLE_START) begin
                         //Counter h06 - h0E are DMA RAM cycles.
                         SDRAM_CMD <= BANKACTIVATE;
                         DMA_CYCLE <= 1;
@@ -281,12 +307,11 @@ always @(negedge CLK80) begin
                         DBDIR <= !AWEn;
                         DBENn <= !DMA_A1;
                         BANK0 <= DMA_A20;
-                        LATCH_CLK <= 0;
                     end else if (REFRESH) begin
                         //Counter h01 - h04 are refresh cycles.
                         SDRAM_CMD <= AUTOREFRESH;
                         SDRAM_COUNTER <= 8'h01;
-                    end else if (CPU_CYCLE_START && DBR_SYNC) begin
+                    end else if (CPU_CYCLE_START && !CPU_CYCLE_DISABLE) begin
                         //Counter h06 - h0E are CPU RAM cycles.
                         SDRAM_CMD <= BANKACTIVATE;
                         CPU_CYCLE <= 1;
@@ -306,40 +331,31 @@ always @(negedge CLK80) begin
                 8'h07 : begin
                     SDRAM_CMD <= PRECHARGE;
                     CPU_TACK <= 0;
+                    BANK0 <= 0;
                 end
                 8'h09 : begin
                     CPU_TACK <=  (CPU_CYCLE && !WRITE_CYCLE);
-                    CLK_EN   <= !(CPU_CYCLE && !WRITE_CYCLE);
+                    CLK_EN   <= !(CPU_CYCLE && !WRITE_CYCLE);                  
                 end
                 8'h0A : begin //All write cycles end here.
                     if (WRITE_CYCLE) begin
                         CPU_CYCLE <= 0;
                         DMA_CYCLE <= 0;
-                        BANK0 <= 0;
                         DBENn <= 1;
                         SDRAM_COUNTER <= 8'h00;                        
                     end else begin
                         CPU_TACK <= 0;
-                        LATCH_CLK <= DMA_CYCLE;
+                        LATCH_CLK <= DMA_CYCLE;                       
                     end
                 end
-                8'h0D : begin
-                    if (DMA_CYCLE) begin
-                        //DMA cycles end here.
-                        DMA_CYCLE <= 0;
-                        LATCH_CLK <= 0;
-                        BANK0 <= 0;
-                        DBENn <= 1;
-                        SDRAM_COUNTER <= 8'h00;
-                    end else begin               
-                        CLK_EN <= 1;
-                    end
-                end
-                8'h0E : begin //CPU read cycles end here.
+                8'h0B : begin
+                    DMA_CYCLE <= 0;
+                    LATCH_CLK <= 0;
+                    DBENn <= 1;
+                    CLK_EN <= 1;
                     CPU_CYCLE <= 0;
-                    BANK0 <= 0;
                     SDRAM_COUNTER <= 8'h00;
-                end                
+                end
                 default : begin
                     SDRAM_CMD <= NOP;
                 end
