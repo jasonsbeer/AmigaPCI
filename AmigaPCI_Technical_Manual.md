@@ -433,12 +433,15 @@ Agnus Part|J204|Short|Agnus 8372A Installed.
 []()|[]()|Open|Agnus 8375 Installed.
 Agnus Video Mode|J205|Short|PAL 8375 Installed.
 []()|[]()|Open|NTSC 8375 or any 8372A** Installed.
-Agnus Vbb|J206|Short|Vbb Agnus installed.
-[]()|[]()|Open|Non-Vbb Agnus Installed.
+Agnus Vbb|J206|1-2 Vbb|Agnus 8375 Vbb Only.
+[]()|[]()|2-3 Non-Vbb|Agnus 8372A and 8375 non-Vbb.
 TICK Frequency|J207|1-2 50Hz|PAL
 []()|[]()|2-3 60HZ|NTSC
 Timebase Source|J208|1-2 VSYNC|Timebase driven by Agnus VSYNC.
 []()|[]()|2-3 TICK|Timebase driven by TICK.
+STM Boot Mode|J209|Open|Factory default.
+Agnus Data/GND|J210|Short|Agnus 8372A
+[]()|[]()|Open|Agnus 8375
 Sync Source|J303|1-2 HSYNC|Supplies HSYNC to pin 13 of the HD15 video port.
 []()|[]()|2-3 CSYNC|Supplies CSYNC to pin 13 of the HD15 video port.
 ATA Autoboot|J900|Short|ATA autoboot disabled.
