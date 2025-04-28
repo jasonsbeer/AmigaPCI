@@ -6,7 +6,7 @@
 	(paper "B")
 	(title_block
 		(title "AMIGA PCI")
-		(date "2025-04-24")
+		(date "2025-04-28")
 		(rev "6.0")
 	)
 	(lib_symbols
@@ -9234,6 +9234,12 @@
 		(uuid "756cd51e-cedc-4ac1-a642-46a69f333f96")
 	)
 	(junction
+		(at 386.08 68.58)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "7e7afafa-180e-49b9-ae59-270d59441bbe")
+	)
+	(junction
 		(at 68.58 213.36)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -9322,6 +9328,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "9d5f9557-614f-4254-9cfe-925640256bdd")
+	)
+	(junction
+		(at 388.62 68.58)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "a201918a-79ff-4b1f-9afa-e7b3b2b6cb2b")
 	)
 	(junction
 		(at 393.7 68.58)
@@ -9520,10 +9532,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "fe1545ad-c1e8-44eb-b2d6-7e24bc05018f")
-	)
-	(no_connect
-		(at 134.62 187.96)
-		(uuid "3b982930-a55c-44bc-b66c-8efe701c2c77")
 	)
 	(no_connect
 		(at 74.93 50.8)
@@ -11599,6 +11607,16 @@
 	)
 	(wire
 		(pts
+			(xy 383.54 68.58) (xy 386.08 68.58)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2ef2ec09-d684-4882-9973-75cfb37692f9")
+	)
+	(wire
+		(pts
 			(xy 44.45 210.82) (xy 53.34 210.82)
 		)
 		(stroke
@@ -12129,6 +12147,16 @@
 	)
 	(wire
 		(pts
+			(xy 383.54 88.9) (xy 383.54 82.55)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "408c1ab1-6c3e-482f-b178-a58af348220e")
+	)
+	(wire
+		(pts
 			(xy 74.93 142.24) (xy 66.04 142.24)
 		)
 		(stroke
@@ -12576,6 +12604,16 @@
 			(type default)
 		)
 		(uuid "55a562f4-5028-4d5b-8d19-da65545fab6e")
+	)
+	(wire
+		(pts
+			(xy 386.08 88.9) (xy 386.08 82.55)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "56018f25-8cc5-4292-a380-f9b99d9b6b7b")
 	)
 	(wire
 		(pts
@@ -14539,6 +14577,16 @@
 	)
 	(wire
 		(pts
+			(xy 386.08 68.58) (xy 386.08 74.93)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9b42d855-1fd7-4174-b273-9143b18e6235")
+	)
+	(wire
+		(pts
 			(xy 66.04 139.7) (xy 74.93 139.7)
 		)
 		(stroke
@@ -14596,6 +14644,16 @@
 			(type default)
 		)
 		(uuid "9c674834-e7b6-459c-a82f-14055832e615")
+	)
+	(wire
+		(pts
+			(xy 383.54 68.58) (xy 383.54 74.93)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9c9aa702-9125-47b5-a709-2778de0a659c")
 	)
 	(wire
 		(pts
@@ -17107,6 +17165,16 @@
 		)
 		(uuid "f1551178-49cc-406e-8bd0-cc8405e03abb")
 	)
+	(wire
+		(pts
+			(xy 386.08 68.58) (xy 388.62 68.58)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f16dda5b-1f0a-4c6f-a56b-31257a1be054")
+	)
 	(bus
 		(pts
 			(xy 300.99 82.55) (xy 300.99 80.01)
@@ -18252,6 +18320,16 @@
 		)
 		(uuid "60759fdd-3fbf-459a-b273-e8ad67c3e3f1")
 	)
+	(label "_TBI"
+		(at 383.54 88.9 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "6087d306-025f-49cb-891d-747c2228c502")
+	)
 	(label "D21"
 		(at 303.53 92.71 0)
 		(effects
@@ -19152,6 +19230,16 @@
 		)
 		(uuid "d1bc1e32-81d8-43d7-a755-7c155912c31e")
 	)
+	(label "_TEA"
+		(at 386.08 88.9 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "d2668657-b56f-4a83-9077-69603f16f253")
+	)
 	(label "A23"
 		(at 328.93 57.15 0)
 		(effects
@@ -19838,6 +19926,27 @@
 		(uuid "1f9e814c-a6ff-4f0e-a13b-0cdc4dfac8e8")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 148.3095 175.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "_AWEN"
+		(shape output)
+		(at 134.62 187.96 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "227a6771-e563-4e10-8bee-0670ec1af20a")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 143.5923 187.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -25368,6 +25477,76 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R")
+		(at 386.08 78.74 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "7f536741-2ed4-4791-97b5-14be051ed4c9")
+		(property "Reference" "R277"
+			(at 384.81 75.692 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "2k7"
+			(at 386.08 80.772 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 387.858 78.74 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 386.08 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 386.08 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "2eacabf8-60a6-4f37-8c81-47c6e33f256f")
+		)
+		(pin "2"
+			(uuid "42f2c602-e837-448f-bed9-8fe36b8f63f3")
+		)
+		(instances
+			(project "AmigaPCI Mainboard"
+				(path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
+					(reference "R277")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:R_Network08")
 		(at 339.09 90.17 270)
 		(unit 1)
@@ -29012,6 +29191,76 @@
 			(project "AmigaPCI Mainboard"
 				(path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
 					(reference "#PWR0169")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 383.54 78.74 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "fad67ccc-7b44-485d-b510-d4deff430fb3")
+		(property "Reference" "R278"
+			(at 382.27 75.692 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "2k7"
+			(at 383.54 80.772 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 385.318 78.74 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 383.54 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 383.54 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "11c646fc-901e-4d8b-8721-4a09551513e1")
+		)
+		(pin "2"
+			(uuid "38a0adfa-1556-4174-9d41-edbd976edef5")
+		)
+		(instances
+			(project "AmigaPCI Mainboard"
+				(path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
+					(reference "R278")
 					(unit 1)
 				)
 			)

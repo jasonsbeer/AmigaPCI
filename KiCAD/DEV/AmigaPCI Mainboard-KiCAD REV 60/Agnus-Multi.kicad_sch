@@ -6,7 +6,7 @@
 	(paper "B")
 	(title_block
 		(title "AMIGA PCI")
-		(date "2025-04-24")
+		(date "2025-04-28")
 		(rev "6.0")
 	)
 	(lib_symbols
@@ -8964,7 +8964,7 @@
 		)
 		(uuid "d1e8d9a3-9ddc-4548-a9f0-2d4351729e94")
 	)
-	(text "J211"
+	(text "J210"
 		(exclude_from_sim no)
 		(at 213.36 232.41 90)
 		(effects
@@ -10053,7 +10053,7 @@
 			)
 		)
 	)
-	(global_label "R_WA"
+	(global_label "_AWEN"
 		(shape input)
 		(at 43.18 184.15 180)
 		(fields_autoplaced yes)
@@ -10065,7 +10065,7 @@
 		)
 		(uuid "48facada-1e7b-4719-bad7-c06be812a2b4")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 35.4172 184.15 0)
+			(at 34.2077 184.15 0)
 			(effects
 				(font
 					(size 1.27 1.27)

@@ -3070,6 +3070,10 @@
       {
         "netclass": "Narrow",
         "pattern": "/Agnus Multiadapter/ACLK"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_AWEN"
       }
     ]
   },
