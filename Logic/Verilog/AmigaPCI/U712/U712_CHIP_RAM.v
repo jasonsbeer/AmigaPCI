@@ -30,6 +30,7 @@ Revision History:
     30-MAR-2025 : Hold DMA cycles 25ns longer into State 7. JN
                   Fixed refresh cycle wait times. JN
     28-APR-2025 : Improved chip ram speeds. JN
+    05-MAY-2025 : Modified DMA cycle timing. JN
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 */
@@ -43,7 +44,7 @@ module U712_CHIP_RAM (
     input DBR_SYNC,
 
     output BANK1,
-    output reg BANK0,
+    output BANK0,
     output reg DBDIR,
     output reg CLK_EN,
     output reg DMA_CYCLE,
@@ -56,7 +57,7 @@ module U712_CHIP_RAM (
     output reg CPU_TACK,
     output reg [10:0]CMA,
     output reg LATCH_CLK,
-    output reg WRITE_CYCLE
+    output reg DMA_WRITE_CYCLE
 
 );
 
@@ -72,7 +73,7 @@ localparam [3:0] READ            = 4'b0101;
 localparam [3:0] WRITE           = 4'b0100;
 localparam [3:0] AUTOREFRESH     = 4'b0001;
 localparam [3:0] MODEREGISTER    = 4'b0000;
-localparam [7:0] REFRESH_DEFAULT = 8'h1A;   //d27 $1b
+localparam [7:0] REFRESH_DEFAULT = 8'h19;   //d27 $1b
 
 //////////////////////
 // REFRESH COUNTER //
@@ -132,24 +133,20 @@ always @(posedge C3) begin
     end
 end
 
-reg [7:0] DMA_COL_ADDRESS;
+reg [8:0] DMA_COL_ADDRESS;
 reg DMA_A1;
-reg DMA_A20;
 always @(negedge C1) begin
     if (!RESETn) begin
         DMA_COL_ADDRESS <= 8'h00;
         DMA_A1 <= 0;
-        DMA_A20 <= 0;
     end else begin
         if (!DBRn) begin
             if (AGNUS_REV) begin
-                DMA_COL_ADDRESS <= DRA[8:1];
+                DMA_COL_ADDRESS <= DRA[9:1];
                 DMA_A1 <= DRA[0];
-                DMA_A20 <= DRA[9];
             end else begin
-                DMA_COL_ADDRESS <= DRA[9:2];
+                DMA_COL_ADDRESS <= {1'b0, DRA[9:2]};
                 DMA_A1 <= DRA[1];
-                DMA_A20 <= 0;
             end
         end
     end
@@ -163,34 +160,42 @@ end
 //WE ALSO OPEN SOME OF THE DMA CLOCK CYCLES FOR THE CPU TO USE.
 
 reg [1:0] CAS_SYNC;
+reg [4:0] RAS_SYNC;
 reg [7:0] DBR_COUNT;
-reg CPU_CYCLE_DISABLE;
+reg RAM_CYCLE_DISABLE;
 
-localparam MAX_COUNT = 8'h60;
+localparam MAX_COUNT = 8'h01;
 
 always @(negedge CLK80) begin
     if (!RESETn) begin
-        CAS_SYNC <= 2'b00;
-        CPU_CYCLE_DISABLE <= 0;
+        CAS_SYNC <= 2'b0;
+        RAS_SYNC <= 5'b0;
+        RAM_CYCLE_DISABLE <= 0;
         DBR_COUNT <= 8'h0;
     end else begin
+        RAS_SYNC[4] <= RAS_SYNC[3];
+        RAS_SYNC[3] <= RAS_SYNC[2];
+        RAS_SYNC[2] <= RAS_SYNC[1];
+        RAS_SYNC[1] <= RAS_SYNC[0];
+        RAS_SYNC[0] <= RAS1n != RAS0n;
+
         CAS_SYNC[1] <= CAS_SYNC[0];
         CAS_SYNC[0] <= (!CASUn || !CASLn);
 
         if (DBR_SYNC) begin
             //Fire at will when DBR is negated.
             DBR_COUNT <= 8'h0;
-            CPU_CYCLE_DISABLE <= 0;
+            RAM_CYCLE_DISABLE <= 0;
         end else begin 
             if (!CAS_SYNC[1]) begin
                 //We reclaim a few clocks from DMA cycles to run CPU chip RAM cycles.
                 //We insert these cycles in the time between Agnus' negation of CAS and assertion of RAS.
                 DBR_COUNT <= DBR_COUNT + 1;
-                CPU_CYCLE_DISABLE <= CPU_CYCLE_DISABLE || (DBR_COUNT < MAX_COUNT);
+                RAM_CYCLE_DISABLE <= RAM_CYCLE_DISABLE || !(DBR_COUNT < MAX_COUNT);
             end else begin
                 //If CAS is asserted, reset the counter.
                 DBR_COUNT <= 8'h0;
-                CPU_CYCLE_DISABLE <= 0;
+                RAM_CYCLE_DISABLE <= 0;
             end
         end
     end
@@ -226,26 +231,31 @@ AGNUS MULTIADAPTER ADDRESS SIGNAL CONFIGURATION
 */
 
 assign BANK1 = 0;
+assign BANK0 = 0;
 
 reg [3:0] SDRAM_CMD;
-reg SDRAM_CONFIGURED;
 reg [7:0] SDRAM_COUNTER;
+reg [8:0] CPU_COL_ADDRESS;
+
+reg SDRAM_CONFIGURED;
 reg CPU_CYCLE_START;
 reg DMA_CYCLE_START;
+reg WRITE_CYCLE;
 
 always @(negedge CLK80) begin
     if (!RESETn) begin
-        BANK0 <= 0;
         SDRAM_CMD <= NOP;
         SDRAM_CONFIGURED <= 0;
         SDRAM_COUNTER <= 8'h00;
         DMA_CYCLE <= 0;
         DBENn <= 1;
         LATCH_CLK <= 0;
+        DMA_CYCLE_START <= 0;
+        DMA_WRITE_CYCLE <= 0;
         WRITE_CYCLE <= 0;
         CPU_CYCLE <= 0;
         CPU_CYCLE_START <= 0;
-        CMA <= 11'b00000000000;
+        CMA <= 11'b0;
         CPU_TACK <= 0;
         DBDIR <= 1;
         CLK_EN <= 1;
@@ -253,11 +263,12 @@ always @(negedge CLK80) begin
         RASn <= 1;
         CASn <= 1;
         WEn <= 1;
+        CPU_COL_ADDRESS <= 9'b0;
     end else begin
 
         if (SDRAM_COUNTER != 8'h00) begin SDRAM_COUNTER ++; end
 
-        DMA_CYCLE_START <= (CAS_SYNC == 2'b01 || (DMA_CYCLE_START && !DMA_CYCLE));
+        DMA_CYCLE_START <= (RAS_SYNC[4:3] == 2'b11 && !CAS_SYNC[1] || (DMA_CYCLE_START && !DMA_CYCLE));
         CPU_CYCLE_START <= (!TSn && !RAMSPACEn) || (CPU_CYCLE_START && !CPU_CYCLE);
 
         CRCSn <= SDRAM_CMD[3];
@@ -270,8 +281,8 @@ always @(negedge CLK80) begin
             MODEREGISTER : CMA <= 11'b00000100010; //CAS latency = 2, 4 word sequential bursts.
             BANKACTIVATE : CMA <= CPU_CYCLE ? {1'b0, A[19], A[17:9]} :
                                               {1'b0, DMA_ROW_ADDRESS};
-            READ, WRITE  : CMA <= CPU_CYCLE ? {3'b000, A[18], A[8:2]} :
-                                              {3'b000, DMA_COL_ADDRESS};
+            READ, WRITE  : CMA <= CPU_CYCLE ? {2'b00, CPU_COL_ADDRESS} :
+                                              {2'b00, DMA_COL_ADDRESS};
         endcase
 
         if (!SDRAM_CONFIGURED) begin
@@ -298,26 +309,26 @@ always @(negedge CLK80) begin
         end else begin
             case (SDRAM_COUNTER)
                 8'h00 : begin
-                    if (CAS_SYNC == 2'b01 || DMA_CYCLE_START) begin
+                    if (DMA_CYCLE_START) begin
                         //Counter h06 - h0E are DMA RAM cycles.
                         SDRAM_CMD <= BANKACTIVATE;
                         DMA_CYCLE <= 1;
                         SDRAM_COUNTER <= 8'h05;
+                        DMA_WRITE_CYCLE <= !AWEn;
                         WRITE_CYCLE <= !AWEn;
                         DBDIR <= !AWEn;
                         DBENn <= !DMA_A1;
-                        BANK0 <= DMA_A20;
-                    end else if (REFRESH) begin
+                    end else if (REFRESH && !RAM_CYCLE_DISABLE) begin
                         //Counter h01 - h04 are refresh cycles.
                         SDRAM_CMD <= AUTOREFRESH;
                         SDRAM_COUNTER <= 8'h01;
-                    end else if (CPU_CYCLE_START && !CPU_CYCLE_DISABLE) begin
+                    end else if (CPU_CYCLE_START && !RAM_CYCLE_DISABLE) begin
                         //Counter h06 - h0E are CPU RAM cycles.
                         SDRAM_CMD <= BANKACTIVATE;
                         CPU_CYCLE <= 1;
                         SDRAM_COUNTER <= 8'h05;
                         WRITE_CYCLE <= !RnW;
-                        BANK0 <= AGNUS_REV ? A[20] : 1'b0;
+                        CPU_COL_ADDRESS <= AGNUS_REV ? {A[20], A[18], A[8:2]} : {1'b0, A[18], A[8:2]};
                     end
                 end
                 8'h04 : begin //End refresh cycle.
@@ -331,11 +342,10 @@ always @(negedge CLK80) begin
                 8'h07 : begin
                     SDRAM_CMD <= PRECHARGE;
                     CPU_TACK <= 0;
-                    BANK0 <= 0;
                 end
                 8'h09 : begin
                     CPU_TACK <=  (CPU_CYCLE && !WRITE_CYCLE);
-                    CLK_EN   <= !(CPU_CYCLE && !WRITE_CYCLE);                  
+                    CLK_EN   <= !(CPU_CYCLE && !WRITE_CYCLE);
                 end
                 8'h0A : begin //All write cycles end here.
                     if (WRITE_CYCLE) begin
@@ -345,12 +355,12 @@ always @(negedge CLK80) begin
                         SDRAM_COUNTER <= 8'h00;                        
                     end else begin
                         CPU_TACK <= 0;
-                        LATCH_CLK <= DMA_CYCLE;                       
+                        LATCH_CLK <= DMA_CYCLE; //We really should latch this on the previous rising edge.                 
                     end
                 end
                 8'h0B : begin
                     DMA_CYCLE <= 0;
-                    LATCH_CLK <= 0;
+                    LATCH_CLK <= 0;                
                     DBENn <= 1;
                     CLK_EN <= 1;
                     CPU_CYCLE <= 0;

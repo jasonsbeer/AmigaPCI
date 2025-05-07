@@ -48,11 +48,9 @@ module U712_TOP (
     output [10:0] CMA,
     output CUUBEn, CUMBEn, CLMBEn, CLLBEn,
     output UUBEn, UMBEn, LMBEn, LLBEn,
-    output RAMENn,TACKn, TBIn, TCIn,
+    output TACKn, TBIn, TCIn,
     output [2:0] DA
 );
-
-assign RAMENn = RAMSPACEn;
 
 ///////////////////
 // CLOCK FANOUT //
@@ -148,8 +146,7 @@ U712_REG_SM U712_REG_SM (
 /////////////////////////
 
 wire CPU_CYCLEm;
-wire WRITE_CYCLEm;
-wire DMA_CYCLEm;
+wire DMA_WRITE_CYCLE;
 
 U712_BUFFERS U712_BUFFERS (
     //INPUTS
@@ -158,7 +155,7 @@ U712_BUFFERS U712_BUFFERS (
     .CPU_CYCLE (CPU_CYCLEm),
     .CASUn (CASUn),
     .CASLn (CASLn),
-    .WRITE_CYCLE (WRITE_CYCLEm),
+    .DMA_WRITE_CYCLE (DMA_WRITE_CYCLE),
 
     //OUTPUTS
     .VBENn (VBENn),
@@ -191,7 +188,7 @@ U712_CYCLE_TERM U712_CYCLE_TERM (
 // CHIP RAM CYCLE //
 ///////////////////
 
-//wire DMA_CYCLEm;
+wire DMA_CYCLEm;
 
 U712_CHIP_RAM U712_CHIP_RAM (
     //INPUTS
@@ -228,7 +225,7 @@ U712_CHIP_RAM U712_CHIP_RAM (
     .CPU_TACK (CPU_TACKm),
     .CMA (CMA),
     .LATCH_CLK (LATCH_CLK),
-    .WRITE_CYCLE (WRITE_CYCLEm)
+    .DMA_WRITE_CYCLE (DMA_WRITE_CYCLE)
 );
 
 ///////////////////

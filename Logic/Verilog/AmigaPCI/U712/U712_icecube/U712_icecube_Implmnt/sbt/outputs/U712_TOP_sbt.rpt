@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:31:51
 
-* File Generated:     Apr 28 2025 13:13:37
+* File Generated:     May 6 2025 20:26:10
 
 * Purpose:            General info of design implementation
 
@@ -27,27 +27,27 @@ Device Info:
 
 Design statistics:
 ------------------
-    FFs:                  106
-    LUTs:                 252
+    FFs:                  120
+    LUTs:                 258
     RAMs:                 0
-    IOBs:                 95
+    IOBs:                 96
     GBs:                  4
     PLLs:                 1
     Warm Boots:           0
 
 Logic Resource Utilization:
 ---------------------------
-    Total Logic Cells: 253/3520
-        Combinational Logic Cells: 147      out of   3520      4.17614%
-        Sequential Logic Cells:    106      out of   3520      3.01136%
+    Total Logic Cells: 259/3520
+        Combinational Logic Cells: 139      out of   3520      3.94886%
+        Sequential Logic Cells:    120      out of   3520      3.40909%
         Logic Tiles:               92       out of   440       20.9091%
     Registers: 
-        Logic Registers:           106      out of   3520      3.01136%
+        Logic Registers:           120      out of   3520      3.40909%
         IO Registers:              0        out of   880       0
     Block RAMs:                    0        out of   20        0%
     Warm Boots:                    0        out of   1         0%
     Pins:
-        Input Pins:                47       out of   107       43.9252%
+        Input Pins:                48       out of   107       44.8598%
         Output Pins:               48       out of   107       44.8598%
         InOut Pins:                0        out of   107       0%
     Global Buffers:                4        out of   8         50%
@@ -56,7 +56,7 @@ Logic Resource Utilization:
 IO Bank Utilization:
 --------------------
     Bank 3: 26       out of   28        92.8571%
-    Bank 1: 27       out of   29        93.1034%
+    Bank 1: 28       out of   29        96.5517%
     Bank 0: 25       out of   27        92.5926%
     Bank 2: 17       out of   23        73.913%
 
@@ -91,6 +91,7 @@ Detailed I/O Info:
     34          Input      SB_LVCMOS    No       3        Simple Input                  A[19]         
     41          Input      SB_LVCMOS    No       2        Simple Input                  REGSPACEn     
     87          Input      SB_LVCMOS    No       1        Simple Input                  RAS0n         
+    88          Input      SB_LVCMOS    No       1        Simple Input                  RAS1n         
     90          Input      SB_LVCMOS    No       1        Simple Input                  DRA[8]        
     91          Input      SB_LVCMOS    No       1        Simple Input                  DRA[7]        
     94          Input      SB_LVCMOS    No       1        Simple Input                  RESETn        
@@ -170,7 +171,7 @@ Detailed Global Buffer Info:
     Buffer Number  IO Bank  Driven By  Fanout  Signal Name   
     -------------  -------  ---------  ------  -----------   
     1              0                   16      C1_c_g        
-    4              0                   62      RESETn_c_i_g  
+    4              0                   76      RESETn_c_i_g  
     3              3                   19      DBRn_c_i_0_g  
     7              1                   10      C3_c_g        
 
@@ -178,13 +179,13 @@ Detailed Global Buffer Info:
 Router Summary:
 ---------------
     Status:  Successful
-    Runtime: 10 seconds
+    Runtime: 11 seconds
 
 Routing Resource Utilization:
 -----------------------------
-              Local line of tile     2060 out of 146184      1.40918%
-                          Span 4      479 out of  29696      1.61301%
-                         Span 12      267 out of   5632      4.74077%
+              Local line of tile     2079 out of 146184      1.42218%
+                          Span 4      518 out of  29696      1.74434%
+                         Span 12      269 out of   5632      4.77628%
                   Global network        5 out of      8      62.5%
-      Vertical Inter-LUT Connect       38 out of   6720      0.565476%
+      Vertical Inter-LUT Connect       41 out of   6720      0.610119%
 

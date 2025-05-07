@@ -39,6 +39,7 @@ OUTPUT CMA[5] 	 location (25, 4, 0) 	 79
 INPUT  CASUn 	 location (25, 18, 1) 	 104 	 
 INPUT  A[6] 	 location (0, 12, 1) 	 17 	 
 INPUT  A[15] 	 location (0, 3, 0) 	 29 	 
+INPUT  RAS1n 	 location (25, 9, 0) 	 88 	 
 OUTPUT DRDDIR 	 location (25, 20, 0) 	 107 	 
 INPUT  DRA[3] 	 location (25, 14, 1) 	 98 	 
 OUTPUT DBDIR 	 location (7, 0, 1) 	 43 	 

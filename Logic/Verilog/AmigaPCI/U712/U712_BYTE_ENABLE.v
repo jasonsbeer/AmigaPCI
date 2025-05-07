@@ -34,7 +34,7 @@ GitHub: https://github.com/jasonsbeer/AmigaPCI
 
 module U712_BYTE_ENABLE (
 
-    input CPU_CYCLE, DMA_CYCLE, CASLn, CASUn, DBENn, RnW, //DS_EN,
+    input CPU_CYCLE, DMA_CYCLE, CASLn, CASUn, DBENn, RnW,
     input [1:0] A,
     input [1:0] SIZ,
 

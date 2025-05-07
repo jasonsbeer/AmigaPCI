@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:31:51
 
-* File Generated:     Apr 28 2025 13:13:37
+* File Generated:     May 6 2025 20:26:10
 
 * Purpose:            Detailed IO and package pin info
 
@@ -101,7 +101,7 @@ Pin Number, Pin Type Name, Signal Name, Direction, Global Buffer, IO Standard, P
 85, PIO, CUUBEn, Output, , SB_LVCMOS, No Pull Up, Simple Output, rightBank
 86, GND, not used, , , , , , UnknownBank
 87, PIO, RAS0n, Input, , SB_LVCMOS, No Pull Up, Simple Input, rightBank
-88, PIO, not used, , , , , , rightBank
+88, PIO, RAS1n, Input, , SB_LVCMOS, No Pull Up, Simple Input, rightBank
 89, VCCIO_1, not used, , , , , , rightBank
 90, PIO, DRA[8], Input, , SB_LVCMOS, No Pull Up, Simple Input, rightBank
 91, PIO, DRA[7], Input, , SB_LVCMOS, No Pull Up, Simple Input, rightBank
@@ -157,4 +157,4 @@ Pin Number, Pin Type Name, Signal Name, Direction, Global Buffer, IO Standard, P
 142, PIO, C1, Input, , SB_LVCMOS, No Pull Up, Simple Input, topBank
 143, PIO, C3, Input, , SB_LVCMOS, No Pull Up, Simple Input, topBank
 144, PIO, RnW, Input, , SB_LVCMOS, No Pull Up, Simple Input, topBank
-Total Number of Used Pins, 95
+Total Number of Used Pins, 96

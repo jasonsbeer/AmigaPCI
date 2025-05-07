@@ -26,6 +26,7 @@ Description: CHIP SET BUFFERS
 
 Revision History:
     21-JAN-2025 : HW REV 5.0 INITIAL RELEASE
+    05-MAZ-2025 : Condition _DRDEN on CPU_CYCLE. JN
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 TO BUILD WITH APIO: apio build --top-module U712_TOP --fpga iCE40-HX4K-TQ144
@@ -33,7 +34,7 @@ TO BUILD WITH APIO: apio build --top-module U712_TOP --fpga iCE40-HX4K-TQ144
 
 module U712_BUFFERS (
 
-    input RnW, REG_CYCLE, CPU_CYCLE, CASUn, CASLn, WRITE_CYCLE,
+    input RnW, REG_CYCLE, CPU_CYCLE, CASUn, CASLn, DMA_WRITE_CYCLE,
     output VBENn, DRDENn, DRDDIR, DMA_LATCH_EN
 
 );
@@ -53,13 +54,12 @@ wire DMA_CYCLE = (!CASUn || !CASLn);
 assign VBENn = !(REG_CYCLE || CPU_CYCLE);
 
 //Chipset data bus enable.
-assign DRDENn = !(DMA_CYCLE || REG_CYCLE);
+assign DRDENn = !((DMA_CYCLE && !CPU_CYCLE) || REG_CYCLE);
 
 //Chipset data bus direction.
-assign DRDDIR = DMA_CYCLE ? !WRITE_CYCLE : !RnW;
-//assign DRDDIR = REG_CYCLE ? !RnW : !WRITE_CYCLE;
+assign DRDDIR = DMA_CYCLE ? !DMA_WRITE_CYCLE : !RnW;
 
 //Enable the latch clock (SAB=1) during DMA read cycles.
-assign DMA_LATCH_EN = (DMA_CYCLE && !WRITE_CYCLE);
+assign DMA_LATCH_EN = (DMA_CYCLE && !DMA_WRITE_CYCLE);
 
 endmodule
