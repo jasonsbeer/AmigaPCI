@@ -18,6 +18,9 @@ Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys softwa
 @I::"D:\AmigaPCI\U712\U712_CHIP_RAM.v" (library work)
 @I::"D:\AmigaPCI\U712\U712_CYCLE_TERM.v" (library work)
 Verilog syntax check successful!
+File D:\AmigaPCI\U712\U712_REG_SM.v changed - recompiling
+File D:\AmigaPCI\U712\U712_TOP.v changed - recompiling
+File D:\AmigaPCI\U712\U712_BYTE_ENABLE.v changed - recompiling
 File D:\AmigaPCI\U712\U712_CHIP_RAM.v changed - recompiling
 Selecting top level module U712_TOP
 @N: CG364 :"C:\lscc\iCEcube2.2020.12\synpbase\lib\generic\sb_ice40.v":870:7:870:22|Synthesizing module SB_PLL40_2F_CORE in library work.
@@ -34,12 +37,12 @@ Selecting top level module U712_TOP
 
 @N: CG364 :"D:\AmigaPCI\U712\U712_TOP.v":35:7:35:14|Synthesizing module U712_TOP in library work.
 
-@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":90:2:90:4|Input EXTFEEDBACK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":90:2:90:4|Input DYNAMICDELAY on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":90:2:90:4|Input BYPASS on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":90:2:90:4|Input SDI on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":90:2:90:4|Input SCLK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":90:2:90:4|Input LATCHINPUTVALUE on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":86:2:86:4|Input EXTFEEDBACK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":86:2:86:4|Input DYNAMICDELAY on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":86:2:86:4|Input BYPASS on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":86:2:86:4|Input SDI on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":86:2:86:4|Input SCLK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":86:2:86:4|Input LATCHINPUTVALUE on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
 @N: CL201 :"D:\AmigaPCI\U712\U712_CYCLE_TERM.v":57:0:57:5|Trying to extract state machine for register TACK_STATE.
 Extracted state machine for register TACK_STATE
 State machine has 5 reachable states with original encodings of:
@@ -62,7 +65,7 @@ At c_ver Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Tue May 06 20:25:46 2025
+# Thu May 08 19:38:49 2025
 
 ###########################################################]
 Synopsys Netlist Linker, version comp2016q3p1, Build 141R, built Dec  5 2016
@@ -75,7 +78,7 @@ At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Tue May 06 20:25:46 2025
+# Thu May 08 19:38:49 2025
 
 ###########################################################]
 @END
@@ -85,6 +88,6 @@ At c_hdl Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Tue May 06 20:25:46 2025
+# Thu May 08 19:38:49 2025
 
 ###########################################################]

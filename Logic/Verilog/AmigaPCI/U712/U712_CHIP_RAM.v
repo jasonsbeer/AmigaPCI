@@ -268,7 +268,7 @@ always @(negedge CLK80) begin
 
         if (SDRAM_COUNTER != 8'h00) begin SDRAM_COUNTER ++; end
 
-        DMA_CYCLE_START <= (RAS_SYNC[4:3] == 2'b11 && !CAS_SYNC[1] || (DMA_CYCLE_START && !DMA_CYCLE));
+        DMA_CYCLE_START <= ((RAS_SYNC[4:3] == 2'b11 && !CAS_SYNC[1]) || (DMA_CYCLE_START && !DMA_CYCLE));
         CPU_CYCLE_START <= (!TSn && !RAMSPACEn) || (CPU_CYCLE_START && !CPU_CYCLE);
 
         CRCSn <= SDRAM_CMD[3];

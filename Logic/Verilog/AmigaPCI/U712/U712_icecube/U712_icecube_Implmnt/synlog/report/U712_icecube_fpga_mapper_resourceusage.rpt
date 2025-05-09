@@ -19,9 +19,9 @@ SB_PLL40_2F_CORE  1 use
 VCC             5 uses
 SB_LUT4         228 uses
 
-I/O ports: 96
-I/O primitives: 96
-SB_IO          96 uses
+I/O ports: 95
+I/O primitives: 95
+SB_IO          95 uses
 
 I/O Register bits:                  0
 Register bits not including I/Os:   120 (3%)

@@ -4,7 +4,7 @@
   (keywordMap (keywordLevel 0))
   (status
     (written
-      (timeStamp 2025 5 6 20 25 49)
+      (timeStamp 2025 5 8 19 38 52)
       (author "Synopsys, Inc.")
       (program "Synplify Pro" (version "L-2016.09L+ice40, mapper maplat, Build 1612R"))
      )
@@ -562,7 +562,7 @@
            (port N_202_i (direction OUTPUT))
            (port CPU_CYCLEm (direction OUTPUT))
            (port CASLn_c (direction INPUT))
-           (port RAMENn_c (direction OUTPUT))
+           (port LATCH_CLK_c (direction OUTPUT))
            (port CPU_TACKm (direction OUTPUT))
            (port DBDIR_c (direction OUTPUT))
            (port DMA_WRITE_CYCLE (direction OUTPUT))
@@ -2341,10 +2341,10 @@
            (portRef O (instanceRef CMA_esr_RNO_0_8))
            (portRef I2 (instanceRef CMA_esr_RNO_8))
           ))
-          (net (rename ramenn_c "RAMENn_c") (joined
+          (net (rename latch_clk_c "LATCH_CLK_c") (joined
            (portRef Q (instanceRef LATCH_CLK))
            (portRef I0 (instanceRef LATCH_CLK_RNO))
-           (portRef RAMENn_c)
+           (portRef LATCH_CLK_c)
           ))
           (net LATCH_CLK_6 (joined
            (portRef O (instanceRef LATCH_CLK_RNO_0))
@@ -4108,7 +4108,6 @@
            (port UMBEn (direction OUTPUT))
            (port LMBEn (direction OUTPUT))
            (port LLBEn (direction OUTPUT))
-           (port RAMENn (direction OUTPUT))
            (port TACKn (direction OUTPUT))
            (port TBIn (direction OUTPUT))
            (port TCIn (direction OUTPUT))
@@ -4485,10 +4484,6 @@
            (property PIN_TYPE (string "011001"))
           )
           (instance LLBEn_obuf (viewRef PRIM (cellRef SB_IO (libraryRef sb_ice)))
-           (property NEG_TRIGGER (string "0"))
-           (property PIN_TYPE (string "011001"))
-          )
-          (instance RAMENn_obuf (viewRef PRIM (cellRef SB_IO (libraryRef sb_ice)))
            (property NEG_TRIGGER (string "0"))
            (property PIN_TYPE (string "011001"))
           )
@@ -5118,6 +5113,10 @@
            (portRef PACKAGE_PIN (instanceRef DMA_LATCH_EN_obuf))
            (portRef DMA_LATCH_EN)
           ))
+          (net LATCH_CLK_c (joined
+           (portRef LATCH_CLK_c (instanceRef U712_CHIP_RAM))
+           (portRef D_OUT_0 (instanceRef LATCH_CLK_obuf))
+          ))
           (net (rename latch_clk "LATCH_CLK") (joined
            (portRef PACKAGE_PIN (instanceRef LATCH_CLK_obuf))
            (portRef LATCH_CLK)
@@ -5298,15 +5297,6 @@
           (net (rename llben "LLBEn") (joined
            (portRef PACKAGE_PIN (instanceRef LLBEn_obuf))
            (portRef LLBEn)
-          ))
-          (net RAMENn_c (joined
-           (portRef RAMENn_c (instanceRef U712_CHIP_RAM))
-           (portRef D_OUT_0 (instanceRef RAMENn_obuf))
-           (portRef D_OUT_0 (instanceRef LATCH_CLK_obuf))
-          ))
-          (net (rename ramenn "RAMENn") (joined
-           (portRef PACKAGE_PIN (instanceRef RAMENn_obuf))
-           (portRef RAMENn)
           ))
           (net (rename da_0 "DA[0]") (joined
            (portRef PACKAGE_PIN (instanceRef DA_obuf_0))

@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:55:50
 
-* File Generated:     May 6 2025 20:25:51
+* File Generated:     May 8 2025 19:38:59
 
 * Purpose:            
 
@@ -41,7 +41,7 @@ Input Design Statistics
     Number of Carrys    	:	20
     Number of RAMs      	:	0
     Number of ROMs      	:	0
-    Number of IOs       	:	96
+    Number of IOs       	:	95
     Number of GBIOs     	:	0
     Number of GBs       	:	4
     Number of WarmBoot  	:	0
@@ -70,7 +70,7 @@ I2088: Phase 1, elapsed time : 0.0 (sec)
 
 
 Phase 2
-I2088: Phase 2, elapsed time : 0.0 (sec)
+I2088: Phase 2, elapsed time : 0.1 (sec)
 
 Phase 3
 Info-1404: Inferred PLL generated clock at pll/PLLOUTCOREA
@@ -95,7 +95,7 @@ Device Utilization Summary after Packing
     LogicCells                  :	259/3520
     PLBs                        :	37/440
     BRAMs                       :	0/20
-    IOs and GBIOs               :	96/107
+    IOs and GBIOs               :	95/107
     PLLs                        :	1/2
 
 
@@ -108,7 +108,7 @@ Phase 5
 I2088: Phase 5, elapsed time : 0.3 (sec)
 
 Phase 6
-I2088: Phase 6, elapsed time : 16.9 (sec)
+I2088: Phase 6, elapsed time : 16.3 (sec)
 
 Final Design Statistics
     Number of LUTs      	:	258
@@ -117,7 +117,7 @@ Final Design Statistics
     Number of Carrys    	:	20
     Number of RAMs      	:	0
     Number of ROMs      	:	0
-    Number of IOs       	:	96
+    Number of IOs       	:	95
     Number of GBIOs     	:	0
     Number of GBs       	:	4
     Number of WarmBoot  	:	0
@@ -125,9 +125,9 @@ Final Design Statistics
 
 Device Utilization Summary
     LogicCells                  :	259/3520
-    PLBs                        :	92/440
+    PLBs                        :	86/440
     BRAMs                       :	0/20
-    IOs and GBIOs               :	96/107
+    IOs and GBIOs               :	95/107
     PLLs                        :	1/2
 
 
@@ -149,7 +149,7 @@ Clock: C3 | Frequency: N/A | Target: 3.58 MHz
 Clock: CLK40_IN | Frequency: N/A | Target: 40.00 MHz
 Clock: pll/PLLOUTCOREA | Frequency: N/A | Target: 80.00 MHz
 Clock: pll/PLLOUTCOREB | Frequency: N/A | Target: 40.00 MHz
-Clock: pll/PLLOUTGLOBALA | Frequency: 144.33 MHz | Target: 80.00 MHz
+Clock: pll/PLLOUTGLOBALA | Frequency: 146.73 MHz | Target: 80.00 MHz
 Clock: pll/PLLOUTGLOBALB | Frequency: N/A | Target: 40.00 MHz
 
 =====================================================================
@@ -158,5 +158,5 @@ Clock: pll/PLLOUTGLOBALB | Frequency: N/A | Target: 40.00 MHz
 
 I2054: Placement of design completed successfully
 
-I2076: Placer run-time: 18.3 sec.
+I2076: Placer run-time: 17.7 sec.
 

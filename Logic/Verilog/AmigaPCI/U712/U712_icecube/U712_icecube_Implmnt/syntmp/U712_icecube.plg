@@ -20,8 +20,8 @@
 @P:  U712_TOP|CLK80_PLL_derived_clock - Requested Period : 12.500
 @P:  U712_TOP|CLK80_PLL_derived_clock - Slack : 1.021
 @P: U712_TOP Part : ice40hx4ktq144
-@P: U712_TOP I/O primitives : 96
+@P: U712_TOP I/O primitives : 95
 @P: U712_TOP I/O Register bits : 0
 @P: U712_TOP Register bits (Non I/O) : 120 (3%)
 @P: U712_TOP Total Luts : 228 (6%)
-@P:  CPU Time : 0h:00m:01s
+@P:  CPU Time : 0h:00m:00s

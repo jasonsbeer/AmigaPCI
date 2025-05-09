@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:31:51
 
-* File Generated:     May 6 2025 20:26:10
+* File Generated:     May 8 2025 19:39:17
 
 * Purpose:            General info of design implementation
 
@@ -30,7 +30,7 @@ Design statistics:
     FFs:                  120
     LUTs:                 258
     RAMs:                 0
-    IOBs:                 96
+    IOBs:                 95
     GBs:                  4
     PLLs:                 1
     Warm Boots:           0
@@ -40,7 +40,7 @@ Logic Resource Utilization:
     Total Logic Cells: 259/3520
         Combinational Logic Cells: 139      out of   3520      3.94886%
         Sequential Logic Cells:    120      out of   3520      3.40909%
-        Logic Tiles:               92       out of   440       20.9091%
+        Logic Tiles:               86       out of   440       19.5455%
     Registers: 
         Logic Registers:           120      out of   3520      3.40909%
         IO Registers:              0        out of   880       0
@@ -48,7 +48,7 @@ Logic Resource Utilization:
     Warm Boots:                    0        out of   1         0%
     Pins:
         Input Pins:                48       out of   107       44.8598%
-        Output Pins:               48       out of   107       44.8598%
+        Output Pins:               47       out of   107       43.9252%
         InOut Pins:                0        out of   107       0%
     Global Buffers:                4        out of   8         50%
     PLLs:                          1        out of   2         50%
@@ -57,7 +57,7 @@ IO Bank Utilization:
 --------------------
     Bank 3: 26       out of   28        92.8571%
     Bank 1: 28       out of   29        96.5517%
-    Bank 0: 25       out of   27        92.5926%
+    Bank 0: 24       out of   27        88.8889%
     Bank 2: 17       out of   23        73.913%
 
 Detailed I/O Info:
@@ -163,14 +163,13 @@ Detailed I/O Info:
     129         Output     SB_LVCMOS    No       0        Simple Output                 DA[0]         
     134         Output     SB_LVCMOS    No       0        Simple Output                 DMA_LATCH_EN  
     137         Output     SB_LVCMOS    No       0        Simple Output                 LATCH_CLK     
-    139         Output     SB_LVCMOS    No       0        Simple Output                 RAMENn        
     141         Output     SB_LVCMOS    No       0        Simple Output                 REGENn        
 
 Detailed Global Buffer Info:
 ----------------------------
     Buffer Number  IO Bank  Driven By  Fanout  Signal Name   
     -------------  -------  ---------  ------  -----------   
-    1              0                   16      C1_c_g        
+    1              0                   15      C1_c_g        
     4              0                   76      RESETn_c_i_g  
     3              3                   19      DBRn_c_i_0_g  
     7              1                   10      C3_c_g        

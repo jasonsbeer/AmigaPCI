@@ -3,7 +3,7 @@
 #OS: Windows 8 6.2
 #Hostname: JASON-LAB
 
-# Tue May 06 20:25:46 2025
+# Thu May 08 19:38:48 2025
 
 #Implementation: U712_icecube_Implmnt
 
@@ -27,6 +27,9 @@ Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys softwa
 @I::"D:\AmigaPCI\U712\U712_CHIP_RAM.v" (library work)
 @I::"D:\AmigaPCI\U712\U712_CYCLE_TERM.v" (library work)
 Verilog syntax check successful!
+File D:\AmigaPCI\U712\U712_REG_SM.v changed - recompiling
+File D:\AmigaPCI\U712\U712_TOP.v changed - recompiling
+File D:\AmigaPCI\U712\U712_BYTE_ENABLE.v changed - recompiling
 File D:\AmigaPCI\U712\U712_CHIP_RAM.v changed - recompiling
 Selecting top level module U712_TOP
 @N: CG364 :"C:\lscc\iCEcube2.2020.12\synpbase\lib\generic\sb_ice40.v":870:7:870:22|Synthesizing module SB_PLL40_2F_CORE in library work.
@@ -43,12 +46,12 @@ Selecting top level module U712_TOP
 
 @N: CG364 :"D:\AmigaPCI\U712\U712_TOP.v":35:7:35:14|Synthesizing module U712_TOP in library work.
 
-@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":90:2:90:4|Input EXTFEEDBACK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":90:2:90:4|Input DYNAMICDELAY on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":90:2:90:4|Input BYPASS on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":90:2:90:4|Input SDI on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":90:2:90:4|Input SCLK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":90:2:90:4|Input LATCHINPUTVALUE on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":86:2:86:4|Input EXTFEEDBACK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":86:2:86:4|Input DYNAMICDELAY on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":86:2:86:4|Input BYPASS on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":86:2:86:4|Input SDI on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":86:2:86:4|Input SCLK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":86:2:86:4|Input LATCHINPUTVALUE on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
 @N: CL201 :"D:\AmigaPCI\U712\U712_CYCLE_TERM.v":57:0:57:5|Trying to extract state machine for register TACK_STATE.
 Extracted state machine for register TACK_STATE
 State machine has 5 reachable states with original encodings of:
@@ -71,7 +74,7 @@ At c_ver Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Tue May 06 20:25:46 2025
+# Thu May 08 19:38:49 2025
 
 ###########################################################]
 Synopsys Netlist Linker, version comp2016q3p1, Build 141R, built Dec  5 2016
@@ -84,7 +87,7 @@ At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Tue May 06 20:25:46 2025
+# Thu May 08 19:38:49 2025
 
 ###########################################################]
 @END
@@ -94,7 +97,7 @@ At c_hdl Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Tue May 06 20:25:46 2025
+# Thu May 08 19:38:49 2025
 
 ###########################################################]
 Synopsys Netlist Linker, version comp2016q3p1, Build 141R, built Dec  5 2016
@@ -108,12 +111,12 @@ At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Tue May 06 20:25:47 2025
+# Thu May 08 19:38:50 2025
 
 ###########################################################]
 Pre-mapping Report
 
-# Tue May 06 20:25:48 2025
+# Thu May 08 19:38:51 2025
 
 Synopsys Lattice Technology Pre-mapping, Version maplat, Build 1612R, Built Dec  5 2016 10:31:39
 Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
@@ -190,12 +193,12 @@ Pre-mapping successful!
 At Mapper Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 47MB peak: 133MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
-# Tue May 06 20:25:48 2025
+# Thu May 08 19:38:51 2025
 
 ###########################################################]
 Map & Optimize Report
 
-# Tue May 06 20:25:48 2025
+# Thu May 08 19:38:51 2025
 
 Synopsys Lattice Technology Mapper, Version maplat, Build 1612R, Built Dec  5 2016 10:31:39
 Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
@@ -345,7 +348,7 @@ Start Writing Netlists (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00
 
 Writing Analyst data base D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\synwork\U712_icecube_m.srm
 
-Finished Writing Netlist Databases (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 137MB peak: 139MB)
+Finished Writing Netlist Databases (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 137MB peak: 139MB)
 
 Writing EDIF Netlist and constraint files
 @N: BW103 |The default time unit for the Synopsys Constraint File (SDC or FDC) is 1ns.
@@ -356,7 +359,7 @@ L-2016.09L+ice40
 Finished Writing EDIF Netlist and constraint files (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 139MB peak: 141MB)
 
 
-Start final timing analysis (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 138MB peak: 141MB)
+Start final timing analysis (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 138MB peak: 141MB)
 
 @N: MT615 |Found clock CLK40_IN with period 25.00ns 
 @N: MT615 |Found clock C1 with period 279.33ns 
@@ -365,7 +368,7 @@ Start final timing analysis (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:0
 
 
 ##### START OF TIMING REPORT #####[
-# Timing Report written on Tue May 06 20:25:49 2025
+# Timing Report written on Thu May 08 19:38:53 2025
 #
 
 
@@ -957,10 +960,10 @@ Path delay compensated for clock skew. Clock skew is added to clock-to-out value
 Timing exceptions that could not be applied
 None
 
-Finished final timing analysis (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 138MB peak: 141MB)
+Finished final timing analysis (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 138MB peak: 141MB)
 
 
-Finished timing report (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 138MB peak: 141MB)
+Finished timing report (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 138MB peak: 141MB)
 
 ---------------------------------------
 Resource Usage Report for U712_TOP 
@@ -983,9 +986,9 @@ SB_PLL40_2F_CORE  1 use
 VCC             5 uses
 SB_LUT4         228 uses
 
-I/O ports: 96
-I/O primitives: 96
-SB_IO          96 uses
+I/O ports: 95
+I/O primitives: 95
+SB_IO          95 uses
 
 I/O Register bits:                  0
 Register bits not including I/Os:   120 (3%)
@@ -1003,9 +1006,9 @@ Distribution of All Consumed Luts 228 = 228
 
 Mapper successful!
 
-At Mapper Exit (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 28MB peak: 141MB)
+At Mapper Exit (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 28MB peak: 141MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
-# Tue May 06 20:25:49 2025
+# Thu May 08 19:38:53 2025
 
 ###########################################################]
