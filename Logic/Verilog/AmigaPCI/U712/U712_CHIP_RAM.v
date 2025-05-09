@@ -160,7 +160,7 @@ end
 //WE ALSO OPEN SOME OF THE DMA CLOCK CYCLES FOR THE CPU TO USE.
 
 reg [1:0] CAS_SYNC;
-reg [4:0] RAS_SYNC;
+reg [5:0] RAS_SYNC;
 reg [7:0] DBR_COUNT;
 reg RAM_CYCLE_DISABLE;
 
@@ -173,6 +173,7 @@ always @(negedge CLK80) begin
         RAM_CYCLE_DISABLE <= 0;
         DBR_COUNT <= 8'h0;
     end else begin
+        RAS_SYNC[5] <= RAS_SYNC[4];
         RAS_SYNC[4] <= RAS_SYNC[3];
         RAS_SYNC[3] <= RAS_SYNC[2];
         RAS_SYNC[2] <= RAS_SYNC[1];
@@ -268,7 +269,7 @@ always @(negedge CLK80) begin
 
         if (SDRAM_COUNTER != 8'h00) begin SDRAM_COUNTER ++; end
 
-        DMA_CYCLE_START <= ((RAS_SYNC[4:3] == 2'b11 && !CAS_SYNC[1]) || (DMA_CYCLE_START && !DMA_CYCLE));
+        DMA_CYCLE_START <= ((RAS_SYNC[5:4] == 2'b11 && !CAS_SYNC[1]) || (DMA_CYCLE_START && !DMA_CYCLE));
         CPU_CYCLE_START <= (!TSn && !RAMSPACEn) || (CPU_CYCLE_START && !CPU_CYCLE);
 
         CRCSn <= SDRAM_CMD[3];
@@ -310,7 +311,7 @@ always @(negedge CLK80) begin
             case (SDRAM_COUNTER)
                 8'h00 : begin
                     if (DMA_CYCLE_START) begin
-                        //Counter h06 - h0E are DMA RAM cycles.
+                        //Counter h05 - h0B handle DMA and CPU RAM cycles.
                         SDRAM_CMD <= BANKACTIVATE;
                         DMA_CYCLE <= 1;
                         SDRAM_COUNTER <= 8'h05;
@@ -323,7 +324,6 @@ always @(negedge CLK80) begin
                         SDRAM_CMD <= AUTOREFRESH;
                         SDRAM_COUNTER <= 8'h01;
                     end else if (CPU_CYCLE_START && !RAM_CYCLE_DISABLE) begin
-                        //Counter h06 - h0E are CPU RAM cycles.
                         SDRAM_CMD <= BANKACTIVATE;
                         CPU_CYCLE <= 1;
                         SDRAM_COUNTER <= 8'h05;
@@ -344,8 +344,8 @@ always @(negedge CLK80) begin
                     CPU_TACK <= 0;
                 end
                 8'h09 : begin
-                    CPU_TACK <=  (CPU_CYCLE && !WRITE_CYCLE);
-                    CLK_EN   <= !(CPU_CYCLE && !WRITE_CYCLE);
+                    CPU_TACK <= (CPU_CYCLE && !WRITE_CYCLE);
+                    CLK_EN <= WRITE_CYCLE;
                 end
                 8'h0A : begin //All write cycles end here.
                     if (WRITE_CYCLE) begin
@@ -355,7 +355,7 @@ always @(negedge CLK80) begin
                         SDRAM_COUNTER <= 8'h00;                        
                     end else begin
                         CPU_TACK <= 0;
-                        LATCH_CLK <= DMA_CYCLE; //We really should latch this on the previous rising edge.                 
+                        LATCH_CLK <= DMA_CYCLE;                
                     end
                 end
                 8'h0B : begin
