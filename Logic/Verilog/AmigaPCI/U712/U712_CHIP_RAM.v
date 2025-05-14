@@ -31,6 +31,7 @@ Revision History:
                   Fixed refresh cycle wait times. JN
     28-APR-2025 : Improved chip ram speeds. JN
     05-MAY-2025 : Modified DMA cycle timing. JN
+    13-MAY-2025 : Fixed stability issue with DMA cycles. JN
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 */
@@ -156,22 +157,15 @@ end
 // AGNUS SYNCHRONIZER //
 ///////////////////////
 
-//START OF A DMA CYCLE IS DEFINED AS ASSERTION OF ONE OR BOTH OF THE AGNUS _CASn SIGNALS.
-//WE ALSO OPEN SOME OF THE DMA CLOCK CYCLES FOR THE CPU TO USE.
+//START OF A DMA CYCLE IS DEFINED AS ASSERTION OF AT LEAST ONE AGNUS _CASn SIGNALS.
 
 reg [1:0] CAS_SYNC;
 reg [5:0] RAS_SYNC;
-reg [7:0] DBR_COUNT;
-reg RAM_CYCLE_DISABLE;
-
-localparam MAX_COUNT = 8'h01;
 
 always @(negedge CLK80) begin
     if (!RESETn) begin
         CAS_SYNC <= 2'b0;
-        RAS_SYNC <= 5'b0;
-        RAM_CYCLE_DISABLE <= 0;
-        DBR_COUNT <= 8'h0;
+        RAS_SYNC <= 6'b0;
     end else begin
         RAS_SYNC[5] <= RAS_SYNC[4];
         RAS_SYNC[4] <= RAS_SYNC[3];
@@ -182,21 +176,35 @@ always @(negedge CLK80) begin
 
         CAS_SYNC[1] <= CAS_SYNC[0];
         CAS_SYNC[0] <= (!CASUn || !CASLn);
+    end
+end
 
+/////////////////////////////////
+// OPEN RAM CYCLES DURING DMA //
+///////////////////////////////
+
+//WE INSERT CPU CHIP RAM CYCLES DURING DMA. WE SNEAK IN
+//BETWEEN AGNUS ASSERTION OF _CASx.
+
+reg RAM_CYCLE_DISABLE;
+reg [3:0] CAS_COUNTER;
+localparam CAS_CNT = 4'h9; //9 is good.
+
+always @(negedge CLK80) begin
+    if (!RESETn) begin
+        RAM_CYCLE_DISABLE <= 0;
+        CAS_COUNTER <= 4'h0;
+    end else begin
         if (DBR_SYNC) begin
-            //Fire at will when DBR is negated.
-            DBR_COUNT <= 8'h0;
-            RAM_CYCLE_DISABLE <= 0;
-        end else begin 
-            if (!CAS_SYNC[1]) begin
-                //We reclaim a few clocks from DMA cycles to run CPU chip RAM cycles.
-                //We insert these cycles in the time between Agnus' negation of CAS and assertion of RAS.
-                DBR_COUNT <= DBR_COUNT + 1;
-                RAM_CYCLE_DISABLE <= RAM_CYCLE_DISABLE || !(DBR_COUNT < MAX_COUNT);
+            //Wait until CAS is negated before starting a ram cycle.
+            RAM_CYCLE_DISABLE <= CAS_SYNC[1];
+        end else begin
+            if (CAS_SYNC[1]) begin
+                CAS_COUNTER ++;
+                RAM_CYCLE_DISABLE <= CAS_COUNTER == CAS_CNT ? 0 : 1;
             end else begin
-                //If CAS is asserted, reset the counter.
-                DBR_COUNT <= 8'h0;
-                RAM_CYCLE_DISABLE <= 0;
+                CAS_COUNTER <= 4'h0;
+                RAM_CYCLE_DISABLE <= 1;
             end
         end
     end
@@ -311,7 +319,7 @@ always @(negedge CLK80) begin
             case (SDRAM_COUNTER)
                 8'h00 : begin
                     if (DMA_CYCLE_START) begin
-                        //Counter h05 - h0B handle DMA and CPU RAM cycles.
+                        //States h05 - h0B handle DMA cycles.
                         SDRAM_CMD <= BANKACTIVATE;
                         DMA_CYCLE <= 1;
                         SDRAM_COUNTER <= 8'h05;
@@ -320,15 +328,15 @@ always @(negedge CLK80) begin
                         DBDIR <= !AWEn;
                         DBENn <= !DMA_A1;
                     end else if (REFRESH && !RAM_CYCLE_DISABLE) begin
-                        //Counter h01 - h04 are refresh cycles.
+                        //States h01 - h04 are refresh cycles.
                         SDRAM_CMD <= AUTOREFRESH;
                         SDRAM_COUNTER <= 8'h01;
                     end else if (CPU_CYCLE_START && !RAM_CYCLE_DISABLE) begin
+                        //States h05 - h0E handle CPU cycles.
                         SDRAM_CMD <= BANKACTIVATE;
                         CPU_CYCLE <= 1;
                         SDRAM_COUNTER <= 8'h05;
                         WRITE_CYCLE <= !RnW;
-                        CPU_COL_ADDRESS <= AGNUS_REV ? {A[20], A[18], A[8:2]} : {1'b0, A[18], A[8:2]};
                     end
                 end
                 8'h04 : begin //End refresh cycle.
@@ -336,16 +344,23 @@ always @(negedge CLK80) begin
                 end
                 //SDRAM cycles start here.
                 8'h06 : begin
-                    SDRAM_CMD <= WRITE_CYCLE ? WRITE : READ;
-                    CPU_TACK  <= CPU_CYCLE && WRITE_CYCLE;
+                    CPU_COL_ADDRESS <= AGNUS_REV ? {A[20], A[18], A[8:2]} : {1'b0, A[18], A[8:2]};
+                    if (WRITE_CYCLE) begin
+                        SDRAM_CMD <= WRITE;
+                        CPU_TACK  <= CPU_CYCLE;
+                    end else begin
+                        SDRAM_CMD <= READ;
+                    end
                 end
                 8'h07 : begin
                     SDRAM_CMD <= PRECHARGE;
                     CPU_TACK <= 0;
                 end
                 8'h09 : begin
-                    CPU_TACK <= (CPU_CYCLE && !WRITE_CYCLE);
-                    CLK_EN <= WRITE_CYCLE;
+                    if (!WRITE_CYCLE && CPU_CYCLE) begin
+                        CPU_TACK <= 1;
+                        CLK_EN <= 0;
+                    end
                 end
                 8'h0A : begin //All write cycles end here.
                     if (WRITE_CYCLE) begin
@@ -358,10 +373,15 @@ always @(negedge CLK80) begin
                         LATCH_CLK <= DMA_CYCLE;                
                     end
                 end
-                8'h0B : begin
-                    DMA_CYCLE <= 0;
-                    LATCH_CLK <= 0;                
-                    DBENn <= 1;
+                8'h0B : begin //End DMA read cycles.
+                    if (DMA_CYCLE) begin
+                        DMA_CYCLE <= 0;
+                        LATCH_CLK <= 0;            
+                        DBENn <= 1;
+                        SDRAM_COUNTER <= 8'h00;
+                    end
+                end
+                8'h0E : begin //End CPU read cycles.
                     CLK_EN <= 1;
                     CPU_CYCLE <= 0;
                     SDRAM_COUNTER <= 8'h00;

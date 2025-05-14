@@ -4,20 +4,20 @@ Resource Usage Report for U712_TOP
 Mapping to part: ice40hx4ktq144
 Cell usage:
 GND             5 uses
-SB_CARRY        20 uses
-SB_DFF          27 uses
+SB_CARRY        17 uses
+SB_DFF          36 uses
 SB_DFFE         8 uses
-SB_DFFESR       22 uses
+SB_DFFESR       32 uses
 SB_DFFESS       2 uses
 SB_DFFNESR      9 uses
 SB_DFFNSR       1 use
 SB_DFFR         8 uses
-SB_DFFSR        22 uses
-SB_DFFSS        22 uses
+SB_DFFSR        7 uses
+SB_DFFSS        18 uses
 SB_GB           4 uses
 SB_PLL40_2F_CORE  1 use
 VCC             5 uses
-SB_LUT4         238 uses
+SB_LUT4         234 uses
 
 I/O ports: 95
 I/O primitives: 95
@@ -27,8 +27,8 @@ I/O Register bits:                  0
 Register bits not including I/Os:   121 (3%)
 
 @S |Mapping Summary:
-Total  LUTs: 238 (6%)
+Total  LUTs: 234 (6%)
 
 Distribution of All Consumed LUTs = LUT4 
-Distribution of All Consumed Luts 238 = 238 
+Distribution of All Consumed Luts 234 = 234 
 

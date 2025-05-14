@@ -1,3 +1,2 @@
-@E: CG342 :"D:\AmigaPCI\U712\U712_CHIP_RAM.v":261:8:261:22|Expecting target variable, found CPU_ROW_ADDRESS -- possible misspelling
-@E: CS187 :"D:\AmigaPCI\U712\U712_CHIP_RAM.v":378:0:378:8|Expecting endmodule
+@E: CS101 :"D:\AmigaPCI\U712\U712_CHIP_RAM.v":60:15:60:29|Index 2 is out of range for variable CAS_SYNC
 

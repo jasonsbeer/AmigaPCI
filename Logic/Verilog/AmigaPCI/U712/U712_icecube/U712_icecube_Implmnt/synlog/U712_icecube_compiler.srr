@@ -18,17 +18,19 @@ Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys softwa
 @I::"D:\AmigaPCI\U712\U712_CHIP_RAM.v" (library work)
 @I::"D:\AmigaPCI\U712\U712_CYCLE_TERM.v" (library work)
 Verilog syntax check successful!
+File D:\AmigaPCI\U712\U712_BUFFERS.v changed - recompiling
+File D:\AmigaPCI\U712\U712_TOP.v changed - recompiling
 File D:\AmigaPCI\U712\U712_CHIP_RAM.v changed - recompiling
 Selecting top level module U712_TOP
 @N: CG364 :"C:\lscc\iCEcube2.2020.12\synpbase\lib\generic\sb_ice40.v":870:7:870:22|Synthesizing module SB_PLL40_2F_CORE in library work.
 
-@N: CG364 :"D:\AmigaPCI\U712\U712_REG_SM.v":37:7:37:17|Synthesizing module U712_REG_SM in library work.
+@N: CG364 :"D:\AmigaPCI\U712\U712_REG_SM.v":38:7:38:17|Synthesizing module U712_REG_SM in library work.
 
 @N: CG364 :"D:\AmigaPCI\U712\U712_BUFFERS.v":35:7:35:18|Synthesizing module U712_BUFFERS in library work.
 
 @N: CG364 :"D:\AmigaPCI\U712\U712_CYCLE_TERM.v":35:7:35:21|Synthesizing module U712_CYCLE_TERM in library work.
 
-@N: CG364 :"D:\AmigaPCI\U712\U712_CHIP_RAM.v":38:7:38:19|Synthesizing module U712_CHIP_RAM in library work.
+@N: CG364 :"D:\AmigaPCI\U712\U712_CHIP_RAM.v":39:7:39:19|Synthesizing module U712_CHIP_RAM in library work.
 
 @N: CG364 :"D:\AmigaPCI\U712\U712_BYTE_ENABLE.v":35:7:35:22|Synthesizing module U712_BYTE_ENABLE in library work.
 
@@ -48,21 +50,25 @@ State machine has 5 reachable states with original encodings of:
    0010
    0011
    0100
-@N: CL201 :"D:\AmigaPCI\U712\U712_REG_SM.v":67:0:67:5|Trying to extract state machine for register STATE_COUNT.
+@N: CL201 :"D:\AmigaPCI\U712\U712_REG_SM.v":68:0:68:5|Trying to extract state machine for register STATE_COUNT.
 Extracted state machine for register STATE_COUNT
-State machine has 5 reachable states with original encodings of:
+State machine has 9 reachable states with original encodings of:
    0000
    0001
    0010
    0011
    0100
+   0101
+   0110
+   0111
+   1000
 
-At c_ver Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 74MB peak: 79MB)
+At c_ver Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 74MB peak: 80MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Thu May 08 19:58:25 2025
+# Tue May 13 19:08:09 2025
 
 ###########################################################]
 Synopsys Netlist Linker, version comp2016q3p1, Build 141R, built Dec  5 2016
@@ -75,7 +81,7 @@ At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Thu May 08 19:58:25 2025
+# Tue May 13 19:08:10 2025
 
 ###########################################################]
 @END
@@ -85,6 +91,6 @@ At c_hdl Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Thu May 08 19:58:25 2025
+# Tue May 13 19:08:10 2025
 
 ###########################################################]

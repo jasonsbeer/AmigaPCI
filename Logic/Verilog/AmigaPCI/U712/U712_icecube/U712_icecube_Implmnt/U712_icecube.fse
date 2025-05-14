@@ -1,17 +1,25 @@
 
-fsm_encoding {6670672} onehot
+fsm_encoding {6680682} onehot
 
-fsm_state_encoding {6670672} 0000 {00001}
+fsm_state_encoding {6680682} 0000 {000000001}
 
-fsm_state_encoding {6670672} 0001 {00010}
+fsm_state_encoding {6680682} 0001 {000000010}
 
-fsm_state_encoding {6670672} 0010 {00100}
+fsm_state_encoding {6680682} 0010 {000000100}
 
-fsm_state_encoding {6670672} 0011 {01000}
+fsm_state_encoding {6680682} 0011 {000001000}
 
-fsm_state_encoding {6670672} 0100 {10000}
+fsm_state_encoding {6680682} 0100 {000010000}
 
-fsm_registers {6670672} {STATE_COUNT[4]}  {STATE_COUNT[3]}  {STATE_COUNT[2]}  {STATE_COUNT[1]}  {STATE_COUNT[0]} 
+fsm_state_encoding {6680682} 0101 {000100000}
+
+fsm_state_encoding {6680682} 0110 {001000000}
+
+fsm_state_encoding {6680682} 0111 {010000000}
+
+fsm_state_encoding {6680682} 1000 {100000000}
+
+fsm_registers {6680682} {STATE_COUNT[8]}  {STATE_COUNT[7]}  {STATE_COUNT[6]}  {STATE_COUNT[5]}  {STATE_COUNT[4]}  {STATE_COUNT[3]}  {STATE_COUNT[2]}  {STATE_COUNT[1]}  {STATE_COUNT[0]} 
 
 fsm_encoding {10570571} onehot
 

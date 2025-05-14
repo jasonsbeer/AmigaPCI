@@ -30,6 +30,7 @@ Revision History:
     29-MAR-2025 : Narrowed buffer enable from State 4 to about 1/2 of State 7. JN
     30-MAR-2025 : Fixed state machine start reset. JN
     18-APR-2025 : Add _xDS signals driven directly by state machine. JN
+    10-MAY-2025 : Release VBEN right after ready cycle TACK. JN
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 */
@@ -129,7 +130,20 @@ always @(negedge CLK80) begin
                     STATE_COUNT <= 4'h4;
                 end
             end
-            4'h4 : begin
+            4'h4 : begin                
+                STATE_COUNT <= 4'h5;
+            end
+            4'h5 : begin
+                REG_TACK <= 0;
+                STATE_COUNT <= 4'h6;
+            end
+            4'h6 : begin
+                STATE_COUNT <= 4'h7;
+            end
+            4'h7 : begin
+                STATE_COUNT <= 4'h8;
+            end
+            4'h8 : begin
                 if (C1_SYNC[1] && !C3_SYNC[1]) begin
                     //STATE 7
                     REG_CYCLE <= 0;
@@ -139,7 +153,8 @@ always @(negedge CLK80) begin
                     LDSn <= 1;
                     STATE_COUNT <= 4'h0;
                 end else begin
-                    REG_TACK <= 0;
+                    //REG_TACK <= 0;
+                    REG_CYCLE <= WRITE_CYCLE; //Release VBEN buffers after TACKing a read cycle.
                 end
             end
         endcase
