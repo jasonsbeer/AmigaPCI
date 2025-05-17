@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:31:51
 
-* File Generated:     May 13 2025 19:08:35
+* File Generated:     May 16 2025 17:23:26
 
 * Purpose:            General info of design implementation
 
@@ -40,7 +40,7 @@ Logic Resource Utilization:
     Total Logic Cells: 264/3520
         Combinational Logic Cells: 143      out of   3520      4.0625%
         Sequential Logic Cells:    121      out of   3520      3.4375%
-        Logic Tiles:               82       out of   440       18.6364%
+        Logic Tiles:               91       out of   440       20.6818%
     Registers: 
         Logic Registers:           121      out of   3520      3.4375%
         IO Registers:              0        out of   880       0
@@ -169,7 +169,7 @@ Detailed Global Buffer Info:
 ----------------------------
     Buffer Number  IO Bank  Driven By  Fanout  Signal Name   
     -------------  -------  ---------  ------  -----------   
-    1              0                   12      C1_c_g        
-    4              0                   77      RESETn_c_i_g  
+    1              0                   14      C1_c_g        
+    4              0                   76      RESETn_c_i_g  
     3              3                   19      DBRn_c_i_0_g  
     7              1                   10      C3_c_g        

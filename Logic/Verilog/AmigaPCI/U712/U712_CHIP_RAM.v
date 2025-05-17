@@ -333,6 +333,7 @@ always @(negedge CLK80) begin
                         SDRAM_COUNTER <= 8'h01;
                     end else if (CPU_CYCLE_START && !RAM_CYCLE_DISABLE) begin
                         //States h05 - h0E handle CPU cycles.
+                        CPU_COL_ADDRESS <= AGNUS_REV ? {A[20], A[18], A[8:2]} : {1'b0, A[18], A[8:2]};
                         SDRAM_CMD <= BANKACTIVATE;
                         CPU_CYCLE <= 1;
                         SDRAM_COUNTER <= 8'h05;
@@ -344,7 +345,7 @@ always @(negedge CLK80) begin
                 end
                 //SDRAM cycles start here.
                 8'h06 : begin
-                    CPU_COL_ADDRESS <= AGNUS_REV ? {A[20], A[18], A[8:2]} : {1'b0, A[18], A[8:2]};
+                    //CPU_COL_ADDRESS <= AGNUS_REV ? {A[20], A[18], A[8:2]} : {1'b0, A[18], A[8:2]};
                     if (WRITE_CYCLE) begin
                         SDRAM_CMD <= WRITE;
                         CPU_TACK  <= CPU_CYCLE;
