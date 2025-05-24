@@ -1124,7 +1124,7 @@
         "pattern": "_PACK"
       },
       {
-        "netclass": "Default",
+        "netclass": "Narrow",
         "pattern": "CLKCIA"
       },
       {
@@ -3074,6 +3074,26 @@
       {
         "netclass": "Narrow",
         "pattern": "_AWEN"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/Power and Spares/_KBRSTH"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/HID and User Ports/DA16"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/HID and User Ports/DA17"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/HID and User Ports/DA18"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/HID and User Ports/DA19"
       }
     ]
   },
