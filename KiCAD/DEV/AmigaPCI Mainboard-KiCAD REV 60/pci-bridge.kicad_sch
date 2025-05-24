@@ -3360,128 +3360,6 @@
 				)
 			)
 		)
-		(symbol "Device:R_Small"
-			(pin_numbers hide)
-			(pin_names
-				(offset 0.254) hide)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "R"
-				(at 0.762 0.508 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Value" "R_Small"
-				(at 0.762 -1.016 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "~"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Resistor, small symbol"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "R resistor"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "R_*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "R_Small_0_1"
-				(rectangle
-					(start -0.762 1.778)
-					(end 0.762 -1.778)
-					(stroke
-						(width 0.2032)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "R_Small_1_1"
-				(pin passive line
-					(at 0 2.54 270)
-					(length 0.762)
-					(name "~"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -2.54 90)
-					(length 0.762)
-					(name "~"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-		)
 		(symbol "Memory_Flash:W25X20CLSN"
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -4107,12 +3985,6 @@
 		(uuid "12829ed5-b98c-4a2a-9253-91290e37a874")
 	)
 	(junction
-		(at 313.69 160.02)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "12e9f988-cdc7-4482-b8cd-34b796743a6f")
-	)
-	(junction
 		(at 213.36 71.12)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -4371,12 +4243,6 @@
 		(uuid "83dc251c-a3fc-4df7-b622-60d00e47805d")
 	)
 	(junction
-		(at 320.04 143.51)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "84fad09a-a157-455c-9a39-7eb5249fa158")
-	)
-	(junction
 		(at 289.56 60.96)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -4467,12 +4333,6 @@
 		(uuid "acd00bbc-f32f-4b90-abc7-77791ec06c16")
 	)
 	(junction
-		(at 325.12 154.94)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "adfa1563-54b5-4682-83a0-ea2cd0350e18")
-	)
-	(junction
 		(at 279.4 228.6)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -4501,12 +4361,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "b5bb6eee-2d7c-454d-8776-5bd2ca803903")
-	)
-	(junction
-		(at 320.04 157.48)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "b5cdae35-d6fb-4aa6-9455-6c003afefe8d")
 	)
 	(junction
 		(at 148.59 74.93)
@@ -4569,7 +4423,7 @@
 		(uuid "cf71c79c-f459-4899-a5ca-959c0c7cd467")
 	)
 	(junction
-		(at 322.58 175.26)
+		(at 322.58 173.99)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "cfc19d70-12ca-42d9-becd-f34d15369ae7")
@@ -5992,16 +5846,6 @@
 	)
 	(wire
 		(pts
-			(xy 273.05 157.48) (xy 320.04 157.48)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "0a1b2bdc-26c5-4a52-a294-986960dcfb67")
-	)
-	(wire
-		(pts
 			(xy 218.44 55.88) (xy 218.44 58.42)
 		)
 		(stroke
@@ -6762,16 +6606,6 @@
 	)
 	(wire
 		(pts
-			(xy 273.05 160.02) (xy 313.69 160.02)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "2bc4e283-557b-4af2-8a42-b939fdaaafbc")
-	)
-	(wire
-		(pts
 			(xy 292.1 43.18) (xy 294.64 43.18)
 		)
 		(stroke
@@ -6982,7 +6816,7 @@
 	)
 	(wire
 		(pts
-			(xy 322.58 175.26) (xy 320.04 175.26)
+			(xy 322.58 173.99) (xy 320.04 173.99)
 		)
 		(stroke
 			(width 0)
@@ -7172,7 +7006,7 @@
 	)
 	(wire
 		(pts
-			(xy 322.58 157.48) (xy 320.04 157.48)
+			(xy 273.05 157.48) (xy 322.58 157.48)
 		)
 		(stroke
 			(width 0)
@@ -7269,16 +7103,6 @@
 			(type default)
 		)
 		(uuid "3cfb144e-1dc7-4e8d-b8b9-079369319b45")
-	)
-	(wire
-		(pts
-			(xy 325.12 143.51) (xy 320.04 143.51)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3d304dec-421c-4665-b224-65c304e2b9a3")
 	)
 	(wire
 		(pts
@@ -7972,7 +7796,7 @@
 	)
 	(wire
 		(pts
-			(xy 325.12 175.26) (xy 325.12 172.72)
+			(xy 325.12 173.99) (xy 325.12 172.72)
 		)
 		(stroke
 			(width 0)
@@ -8022,7 +7846,7 @@
 	)
 	(wire
 		(pts
-			(xy 322.58 172.72) (xy 322.58 175.26)
+			(xy 322.58 172.72) (xy 322.58 173.99)
 		)
 		(stroke
 			(width 0)
@@ -9652,26 +9476,6 @@
 	)
 	(wire
 		(pts
-			(xy 320.04 143.51) (xy 320.04 147.32)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "907af925-55b1-43d7-9470-242cb71a963d")
-	)
-	(wire
-		(pts
-			(xy 320.04 152.4) (xy 320.04 157.48)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "909dba39-6dd4-4051-8e10-bce35fd5efa0")
-	)
-	(wire
-		(pts
 			(xy 151.13 68.58) (xy 151.13 71.12)
 		)
 		(stroke
@@ -9719,16 +9523,6 @@
 			(type default)
 		)
 		(uuid "90f1bdce-a69d-4be9-95c0-c0e59ba46517")
-	)
-	(wire
-		(pts
-			(xy 325.12 152.4) (xy 325.12 154.94)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "913b49dd-6a38-44ad-883d-f77cc4a28485")
 	)
 	(bus
 		(pts
@@ -10062,7 +9856,7 @@
 	)
 	(wire
 		(pts
-			(xy 320.04 160.02) (xy 313.69 160.02)
+			(xy 273.05 160.02) (xy 320.04 160.02)
 		)
 		(stroke
 			(width 0)
@@ -10502,16 +10296,6 @@
 	)
 	(wire
 		(pts
-			(xy 313.69 152.4) (xy 313.69 160.02)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "adbfaba6-e5ac-4b8a-827d-b0fc8df4aff3")
-	)
-	(wire
-		(pts
 			(xy 342.9 119.38) (xy 354.33 119.38)
 		)
 		(stroke
@@ -10572,7 +10356,7 @@
 	)
 	(wire
 		(pts
-			(xy 322.58 175.26) (xy 325.12 175.26)
+			(xy 322.58 173.99) (xy 325.12 173.99)
 		)
 		(stroke
 			(width 0)
@@ -11102,6 +10886,16 @@
 	)
 	(wire
 		(pts
+			(xy 322.58 175.26) (xy 322.58 173.99)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c85aff01-4c0f-4ae7-9d6a-3a8b25305e76")
+	)
+	(wire
+		(pts
 			(xy 342.9 96.52) (xy 354.33 96.52)
 		)
 		(stroke
@@ -11402,16 +11196,6 @@
 	)
 	(wire
 		(pts
-			(xy 313.69 143.51) (xy 313.69 147.32)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d21a86d5-ae46-47a2-ba7a-72b8ebf70cbd")
-	)
-	(wire
-		(pts
 			(xy 342.9 77.47) (xy 354.33 77.47)
 		)
 		(stroke
@@ -11592,7 +11376,7 @@
 	)
 	(wire
 		(pts
-			(xy 320.04 172.72) (xy 320.04 175.26)
+			(xy 320.04 172.72) (xy 320.04 173.99)
 		)
 		(stroke
 			(width 0)
@@ -11949,16 +11733,6 @@
 			(type default)
 		)
 		(uuid "e4c6fb0c-0880-4ab5-93e5-69a9d6960d0f")
-	)
-	(wire
-		(pts
-			(xy 320.04 143.51) (xy 313.69 143.51)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e52d6c3c-8d8e-492f-9ae4-d2b0d82dbc8d")
 	)
 	(wire
 		(pts
@@ -12439,16 +12213,6 @@
 			(type default)
 		)
 		(uuid "f82d8976-c200-4c37-b038-1d8068fbf9ef")
-	)
-	(wire
-		(pts
-			(xy 325.12 147.32) (xy 325.12 143.51)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f9122b00-3882-4396-b2b0-257a36fda814")
 	)
 	(bus
 		(pts
@@ -18049,76 +17813,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:R_Small")
-		(at 313.69 149.86 0)
-		(mirror y)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "85fab622-bce9-41f7-af29-c9a2daafa530")
-		(property "Reference" "R153"
-			(at 315.976 152.4 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "10k"
-			(at 313.69 151.638 90)
-			(effects
-				(font
-					(size 1 1)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 313.69 149.86 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 313.69 149.86 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 313.69 149.86 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "53bf3e28-6382-47ad-a601-2cb6b715d306")
-		)
-		(pin "2"
-			(uuid "aceaabb2-0e09-4d8d-9367-0e7f34ec00c6")
-		)
-		(instances
-			(project "AmigaPCI Mainboard"
-				(path "/72453515-27fe-4336-91f3-e3c8054f7767/c71cba2c-aa10-44ea-a37d-abe4b67b6d89"
-					(reference "R153")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:C_Small")
 		(at 25.4 109.22 0)
 		(mirror y)
@@ -19851,76 +19545,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:R_Small")
-		(at 325.12 149.86 0)
-		(mirror y)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "b5dc8f00-c543-4bbd-8530-a27a37df96f3")
-		(property "Reference" "R151"
-			(at 327.406 152.4 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "10k"
-			(at 325.12 151.384 90)
-			(effects
-				(font
-					(size 1 1)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 325.12 149.86 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 325.12 149.86 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 325.12 149.86 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "44b15983-c198-40d4-9b0f-d4025c44f4bb")
-		)
-		(pin "2"
-			(uuid "5cb8ccea-35be-41fc-9734-729b9d43f147")
-		)
-		(instances
-			(project "AmigaPCI Mainboard"
-				(path "/72453515-27fe-4336-91f3-e3c8054f7767/c71cba2c-aa10-44ea-a37d-abe4b67b6d89"
-					(reference "R151")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:C_Small")
 		(at 45.72 62.23 270)
 		(mirror x)
@@ -20262,76 +19886,6 @@
 			(project "AmigaPCI Mainboard"
 				(path "/72453515-27fe-4336-91f3-e3c8054f7767/c71cba2c-aa10-44ea-a37d-abe4b67b6d89"
 					(reference "#PWR0322")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R_Small")
-		(at 320.04 149.86 0)
-		(mirror y)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "d7ead32a-c0c4-4e05-a9c6-eed780b581ca")
-		(property "Reference" "R152"
-			(at 322.072 152.4 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "10k"
-			(at 320.04 151.257 90)
-			(effects
-				(font
-					(size 1 1)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 320.04 149.86 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 320.04 149.86 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 320.04 149.86 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "9487ae85-7e2e-4e71-9a61-efaea403208b")
-		)
-		(pin "2"
-			(uuid "7246027f-0fd8-4628-a237-e340af62450c")
-		)
-		(instances
-			(project "AmigaPCI Mainboard"
-				(path "/72453515-27fe-4336-91f3-e3c8054f7767/c71cba2c-aa10-44ea-a37d-abe4b67b6d89"
-					(reference "R152")
 					(unit 1)
 				)
 			)
@@ -21024,73 +20578,6 @@
 			(project "AmigaPCI Mainboard"
 				(path "/72453515-27fe-4336-91f3-e3c8054f7767/c71cba2c-aa10-44ea-a37d-abe4b67b6d89"
 					(reference "C129")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:+3V3")
-		(at 320.04 143.51 0)
-		(mirror y)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "efa107c0-46db-4f11-8d15-4365a9666083")
-		(property "Reference" "#PWR0149"
-			(at 320.04 147.32 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+3V3"
-			(at 320.04 138.43 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 320.04 143.51 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 320.04 143.51 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 320.04 143.51 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "dbe04a95-dd81-4078-bf58-044980535d9e")
-		)
-		(instances
-			(project "AmigaPCI Mainboard"
-				(path "/72453515-27fe-4336-91f3-e3c8054f7767/c71cba2c-aa10-44ea-a37d-abe4b67b6d89"
-					(reference "#PWR0149")
 					(unit 1)
 				)
 			)
