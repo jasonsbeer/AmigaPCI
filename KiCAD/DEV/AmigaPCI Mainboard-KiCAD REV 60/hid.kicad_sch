@@ -11472,7 +11472,7 @@
 	)
 	(wire
 		(pts
-			(xy 234.95 92.71) (xy 245.11 92.71)
+			(xy 212.09 92.71) (xy 245.11 92.71)
 		)
 		(stroke
 			(width 0)
@@ -13882,7 +13882,7 @@
 	)
 	(wire
 		(pts
-			(xy 234.95 90.17) (xy 245.11 90.17)
+			(xy 212.09 90.17) (xy 245.11 90.17)
 		)
 		(stroke
 			(width 0)
@@ -14799,7 +14799,7 @@
 		(uuid "536fffe8-6cf9-43ef-8355-6aa31694f931")
 	)
 	(label "CONS_RX"
-		(at 234.95 97.79 0)
+		(at 234.95 95.25 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -15199,7 +15199,7 @@
 		(uuid "942cdca3-99a4-4202-943d-65317650f99b")
 	)
 	(label "CONS_TX"
-		(at 234.95 95.25 0)
+		(at 234.95 97.79 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -15439,7 +15439,7 @@
 		(uuid "c16f9006-b49b-439c-b29f-3a085c74906f")
 	)
 	(label "CONS_RX"
-		(at 299.72 176.53 0)
+		(at 299.72 173.99 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -15689,7 +15689,7 @@
 		(uuid "ea1b3f09-1233-451f-bad1-4c8a84b59f37")
 	)
 	(label "CONS_TX"
-		(at 299.72 173.99 0)
+		(at 299.72 176.53 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -15860,7 +15860,7 @@
 	)
 	(global_label "_KBCLK"
 		(shape output)
-		(at 234.95 92.71 180)
+		(at 212.09 92.71 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -15870,7 +15870,7 @@
 		)
 		(uuid "1255b33c-6bd1-4789-97e8-fc69cced89c0")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 224.9685 92.71 0)
+			(at 202.1085 92.71 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16359,7 +16359,7 @@
 	)
 	(global_label "KBData"
 		(shape output)
-		(at 234.95 90.17 180)
+		(at 212.09 90.17 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -16369,7 +16369,7 @@
 		)
 		(uuid "ed8fe363-7625-4cb7-9577-564a865bcfbb")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 225.2105 90.17 0)
+			(at 202.3505 90.17 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17891,58 +17891,58 @@
 			)
 		)
 		(pin "1"
-			(uuid "758a0c2c-32e2-4faa-83e1-a10b92bb59f4")
+			(uuid "758a0c2c-32e2-4faa-83e1-a10b92bb59f5")
 		)
 		(pin "11"
-			(uuid "59445bc1-1d52-4c54-8d5f-b1bd492e6738")
+			(uuid "59445bc1-1d52-4c54-8d5f-b1bd492e6739")
 		)
 		(pin "12"
-			(uuid "2d473ee9-041d-4326-96dd-9b258f070025")
+			(uuid "2d473ee9-041d-4326-96dd-9b258f070026")
 		)
 		(pin "13"
-			(uuid "9dbf79e2-ccf7-4821-9aff-4eae3cd85f89")
+			(uuid "9dbf79e2-ccf7-4821-9aff-4eae3cd85f8a")
 		)
 		(pin "14"
-			(uuid "86fb26d3-82d8-4662-9d0c-c88f783ca78b")
+			(uuid "86fb26d3-82d8-4662-9d0c-c88f783ca78c")
 		)
 		(pin "15"
-			(uuid "257a9836-a70f-4cf6-b986-6710759ef8db")
+			(uuid "257a9836-a70f-4cf6-b986-6710759ef8dc")
 		)
 		(pin "16"
-			(uuid "3e1f361d-4cce-48e8-98e0-c0d2a9fcf3f7")
+			(uuid "3e1f361d-4cce-48e8-98e0-c0d2a9fcf3f8")
 		)
 		(pin "17"
-			(uuid "d118aced-41d1-4307-8d53-c4b6d0ea6a0a")
+			(uuid "d118aced-41d1-4307-8d53-c4b6d0ea6a0b")
 		)
 		(pin "18"
-			(uuid "9949c846-379b-4511-87fd-8b5d434e8eb8")
+			(uuid "9949c846-379b-4511-87fd-8b5d434e8eb9")
 		)
 		(pin "19"
-			(uuid "b4f9e9ee-fc34-4aea-9fb0-6f64c227d784")
+			(uuid "b4f9e9ee-fc34-4aea-9fb0-6f64c227d785")
 		)
 		(pin "2"
-			(uuid "132bd672-f5b0-4223-8e98-d6720d20b59a")
+			(uuid "132bd672-f5b0-4223-8e98-d6720d20b59b")
 		)
 		(pin "3"
-			(uuid "c7bcbdff-16d6-4dbc-97e5-7e2a5204d2a5")
+			(uuid "c7bcbdff-16d6-4dbc-97e5-7e2a5204d2a6")
 		)
 		(pin "4"
-			(uuid "b4cb9e2c-e638-432d-a87d-8f2a183830fe")
+			(uuid "b4cb9e2c-e638-432d-a87d-8f2a183830ff")
 		)
 		(pin "5"
-			(uuid "6e7e27bb-bdfd-420d-8878-28cf9e46f271")
+			(uuid "6e7e27bb-bdfd-420d-8878-28cf9e46f272")
 		)
 		(pin "6"
-			(uuid "44233d33-973d-479d-8e86-753311dfbd9e")
+			(uuid "44233d33-973d-479d-8e86-753311dfbd9f")
 		)
 		(pin "7"
-			(uuid "c38e4f29-768a-4f82-8301-f0ce26068364")
+			(uuid "c38e4f29-768a-4f82-8301-f0ce26068365")
 		)
 		(pin "8"
-			(uuid "ab48276f-c60f-4bbb-b25c-89d08a1c04d4")
+			(uuid "ab48276f-c60f-4bbb-b25c-89d08a1c04d5")
 		)
 		(pin "9"
-			(uuid "868e2b88-94b7-4f53-9bd3-93baf7cd1c46")
+			(uuid "868e2b88-94b7-4f53-9bd3-93baf7cd1c47")
 		)
 		(pin "10"
 			(uuid "268a0ac2-d8b8-4b87-8861-42b3fb8e7d27")
@@ -18689,8 +18689,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "DEBUG"
-			(at 307.848 167.894 0)
+		(property "Value" "STM DEBUG"
+			(at 303.276 167.894 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21459,10 +21459,10 @@
 			(uuid "832ff730-5c71-491f-b420-df010228d693")
 		)
 		(pin "10"
-			(uuid "117868f1-6b90-4ae5-aa8f-c3531312cb67")
+			(uuid "117868f1-6b90-4ae5-aa8f-c3531312cb68")
 		)
 		(pin "20"
-			(uuid "c29b49ff-bb5a-4ac3-88b4-eaf868827c45")
+			(uuid "c29b49ff-bb5a-4ac3-88b4-eaf868827c46")
 		)
 		(instances
 			(project "AmigaPCI Mainboard"
