@@ -6478,7 +6478,7 @@
 	)
 	(wire
 		(pts
-			(xy 293.37 156.21) (xy 293.37 179.07)
+			(xy 297.18 177.8) (xy 297.18 179.07)
 		)
 		(stroke
 			(width 0)
@@ -7658,7 +7658,7 @@
 	)
 	(wire
 		(pts
-			(xy 287.02 179.07) (xy 293.37 179.07)
+			(xy 287.02 179.07) (xy 297.18 179.07)
 		)
 		(stroke
 			(width 0)
@@ -11045,7 +11045,7 @@
 	)
 	(symbol
 		(lib_id "power:+5V")
-		(at 293.37 156.21 0)
+		(at 297.18 177.8 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -11053,7 +11053,7 @@
 		(dnp no)
 		(uuid "342ae30c-edef-4906-9e27-e0bd4b0b2733")
 		(property "Reference" "#PWR016"
-			(at 293.37 160.02 0)
+			(at 297.18 181.61 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11062,7 +11062,7 @@
 			)
 		)
 		(property "Value" "+5V"
-			(at 293.751 151.8158 0)
+			(at 297.561 173.4058 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11070,7 +11070,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 293.37 156.21 0)
+			(at 297.18 177.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11079,7 +11079,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 293.37 156.21 0)
+			(at 297.18 177.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11088,7 +11088,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 293.37 156.21 0)
+			(at 297.18 177.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
