@@ -6,7 +6,7 @@
 	(paper "B")
 	(title_block
 		(title "AMIGA PCI")
-		(date "2025-05-24")
+		(date "2025-05-27")
 		(rev "6.0")
 	)
 	(lib_symbols
@@ -14302,7 +14302,7 @@
 			)
 		)
 	)
-	(global_label "AT0"
+	(global_label "PCIAT0"
 		(shape input)
 		(at 281.94 129.54 0)
 		(fields_autoplaced yes)
@@ -14314,7 +14314,7 @@
 		)
 		(uuid "03c24aa1-5727-4250-acfc-450d26926502")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 288.1909 129.54 0)
+			(at 291.3357 129.54 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16058,7 +16058,7 @@
 			)
 		)
 	)
-	(global_label "AT1"
+	(global_label "PCIAT1"
 		(shape input)
 		(at 281.94 132.08 0)
 		(fields_autoplaced yes)
@@ -16070,7 +16070,7 @@
 		)
 		(uuid "e2bf0bff-f6ae-467f-9bb8-798a2f1decf1")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 288.1909 132.08 0)
+			(at 291.3357 132.08 0)
 			(effects
 				(font
 					(size 1.27 1.27)

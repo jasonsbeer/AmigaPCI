@@ -3106,6 +3106,14 @@
       {
         "netclass": "Narrow",
         "pattern": "/Master Control/J902"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "PCIAT0"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "PCIAT1"
       }
     ]
   },

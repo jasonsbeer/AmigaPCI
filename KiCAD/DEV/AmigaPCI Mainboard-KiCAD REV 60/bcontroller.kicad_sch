@@ -6,7 +6,7 @@
 	(paper "B")
 	(title_block
 		(title "AMIGA PCI")
-		(date "2025-05-24")
+		(date "2025-05-27")
 		(rev "6.0")
 	)
 	(lib_symbols
@@ -10708,9 +10708,9 @@
 		)
 		(uuid "0d0bc367-8a80-4e25-a9a4-6318650486c0")
 	)
-	(text "A BUS IS ALWAYS LIVE.\nAD BUS IS LATCHED\nDURING THE ADDRESS PHASE \nOF A PCI CYCLE."
+	(text "68040 ADDRESS BUS IS LIVE.\nAD BUS IS LATCHED\nDURING THE ADDRESS PHASE \nOF A PCI CYCLE."
 		(exclude_from_sim no)
-		(at 354.076 175.514 0)
+		(at 349.504 176.784 0)
 		(effects
 			(font
 				(size 2 2)
@@ -13924,7 +13924,7 @@
 			)
 		)
 	)
-	(global_label "AT0"
+	(global_label "PCIAT0"
 		(shape output)
 		(at 149.86 99.06 0)
 		(fields_autoplaced yes)
@@ -13936,7 +13936,7 @@
 		)
 		(uuid "e407d00f-fceb-4056-8361-fd7a294d15d9")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 156.1109 99.06 0)
+			(at 159.2557 99.06 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14007,7 +14007,7 @@
 			)
 		)
 	)
-	(global_label "AT1"
+	(global_label "PCIAT1"
 		(shape output)
 		(at 149.86 96.52 0)
 		(fields_autoplaced yes)
@@ -14019,7 +14019,7 @@
 		)
 		(uuid "f60bebb8-4b1e-434f-953b-4aeed0f2229e")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 156.1109 96.52 0)
+			(at 159.2557 96.52 0)
 			(effects
 				(font
 					(size 1.27 1.27)
