@@ -3114,6 +3114,22 @@
       {
         "netclass": "Narrow",
         "pattern": "PCIAT1"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/HID and User Ports/ST1"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/HID and User Ports/ST0"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "ST0"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "ST1"
       }
     ]
   },
