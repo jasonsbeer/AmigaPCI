@@ -4,7 +4,7 @@
   (keywordMap (keywordLevel 0))
   (status
     (written
-      (timeStamp 2025 4 19 16 0 52)
+      (timeStamp 2025 5 31 14 22 13)
       (author "Synopsys, Inc.")
       (program "Synplify Pro" (version "L-2016.09L+ice40, mapper maplat, Build 1612R"))
      )
@@ -200,12 +200,12 @@
            (port (array (rename D_LL_AMIGA_in "D_LL_AMIGA_in[7:0]") 8) (direction INPUT))
            (port (array (rename un2_D_LM_AMIGA "un2_D_LM_AMIGA[7:0]") 8) (direction OUTPUT))
            (port (array (rename D_LM_AMIGA_in "D_LM_AMIGA_in[7:0]") 8) (direction INPUT))
-           (port (array (rename un1_D_UU_040 "un1_D_UU_040[7:0]") 8) (direction OUTPUT))
-           (port (array (rename D_UU_040_in "D_UU_040_in[7:0]") 8) (direction INPUT))
-           (port (array (rename D_LM_040_in "D_LM_040_in[7:0]") 8) (direction INPUT))
            (port (array (rename un1_D_UM_040 "un1_D_UM_040[7:0]") 8) (direction OUTPUT))
            (port (array (rename D_UM_040_in "D_UM_040_in[7:0]") 8) (direction INPUT))
            (port (array (rename D_LL_040_in "D_LL_040_in[7:0]") 8) (direction INPUT))
+           (port (array (rename un1_D_UU_040 "un1_D_UU_040[7:0]") 8) (direction OUTPUT))
+           (port (array (rename D_UU_040_in "D_UU_040_in[7:0]") 8) (direction INPUT))
+           (port (array (rename D_LM_040_in "D_LM_040_in[7:0]") 8) (direction INPUT))
            (port (array (rename SIZ_c "SIZ_c[1:0]") 2) (direction INPUT))
            (port (array (rename D_UM_AMIGA_in "D_UM_AMIGA_in[7:0]") 8) (direction INPUT))
            (port (array (rename D_UU_AMIGA_in "D_UU_AMIGA_in[7:0]") 8) (direction INPUT))
@@ -214,9 +214,9 @@
            (port TSn_c (direction OUTPUT))
            (port RnW_c (direction INPUT))
            (port PORTSIZE_c (direction INPUT))
-           (port TBIn_c (direction INPUT))
            (port TS_CPUn_c (direction INPUT))
            (port BGn_c (direction INPUT))
+           (port TBIn_c (direction INPUT))
            (port TAn_1_i (direction OUTPUT))
            (port LBENn_c (direction INPUT))
            (port TACKn_in (direction INPUT))
@@ -462,20 +462,17 @@
           (instance (rename CYCLE_STATE_RNO_0 "CYCLE_STATE_RNO[0]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
            (property LUT_INIT (string "FF37"))
           )
-          (instance TS_EN_RNO (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
-           (property LUT_INIT (string "E4FF"))
-          )
           (instance (rename CYCLE_STATE_RNO_1 "CYCLE_STATE_RNO[1]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
            (property LUT_INIT (string "AA80"))
           )
           (instance LATCH_EN_RNO (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
            (property LUT_INIT (string "F022"))
           )
-          (instance (rename BURST_COUNT_RNO_1 "BURST_COUNT_RNO[1]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
-           (property LUT_INIT (string "60C0"))
+          (instance TS_EN_RNO (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "E4FF"))
           )
-          (instance TS_EN_RNO_0 (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
-           (property LUT_INIT (string "0301"))
+          (instance (rename BURST_COUNT_RNO_1 "BURST_COUNT_RNO[1]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "006C"))
           )
           (instance (rename CYCLE_STATE_RNO_0_0 "CYCLE_STATE_RNO_0[0]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
            (property LUT_INIT (string "0A02"))
@@ -489,14 +486,14 @@
           (instance A2_EN_RNO (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
            (property LUT_INIT (string "CECE"))
           )
-          (instance (rename CYCLE_STATE_RNIC4111_3 "CYCLE_STATE_RNIC4111[3]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
-           (property LUT_INIT (string "1111"))
+          (instance (rename BURST_COUNT_RNO_0 "BURST_COUNT_RNO[0]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "0606"))
           )
           (instance (rename CYCLE_STATE_RNO_5 "CYCLE_STATE_RNO[5]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
            (property LUT_INIT (string "A888"))
           )
-          (instance (rename BURST_COUNT_RNO_0_1 "BURST_COUNT_RNO_0[1]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
-           (property LUT_INIT (string "0B0B"))
+          (instance (rename CYCLE_STATE_RNIC4111_3 "CYCLE_STATE_RNIC4111[3]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "1111"))
           )
           (instance READ_CYCLE_ACTIVE_esr_RNIPC3B1 (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
            (property LUT_INIT (string "7373"))
@@ -507,20 +504,14 @@
           (instance FLIP_WORD_RNO (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
            (property LUT_INIT (string "FE54"))
           )
-          (instance (rename CYCLE_STATE_RNO_3 "CYCLE_STATE_RNO[3]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
-           (property LUT_INIT (string "8080"))
+          (instance TS_EN_RNO_0 (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "1101"))
           )
           (instance (rename CYCLE_STATE_RNO_2_0 "CYCLE_STATE_RNO_2[0]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
            (property LUT_INIT (string "0004"))
           )
-          (instance TS_EN_RNO_2 (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
-           (property LUT_INIT (string "B0B0"))
-          )
-          (instance (rename CYCLE_STATE_RNIGD6K_2 "CYCLE_STATE_RNIGD6K[2]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
-           (property LUT_INIT (string "4040"))
-          )
-          (instance (rename CYCLE_STATE_RNIJG6K_5 "CYCLE_STATE_RNIJG6K[5]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
-           (property LUT_INIT (string "4040"))
+          (instance (rename CYCLE_STATE_RNO_3 "CYCLE_STATE_RNO[3]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "8080"))
           )
           (instance A2_EN_RNIB97G (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
            (property LUT_INIT (string "EEEE"))
@@ -528,64 +519,64 @@
           (instance TA_DIS_RNICJKJ (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
            (property LUT_INIT (string "2222"))
           )
-          (instance TS_EN6 (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
-           (property LUT_INIT (string "0404"))
-          )
-          (instance (rename BURST_COUNT_RNIFDQV_1 "BURST_COUNT_RNIFDQV[1]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
-           (property LUT_INIT (string "8880"))
+          (instance TS_EN_RNO_1 (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "0002"))
           )
           (instance (rename CYCLE_STATE_RNO_3_0 "CYCLE_STATE_RNO_3[0]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
            (property LUT_INIT (string "1010"))
           )
-          (instance TS_EN_RNO_1 (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
-           (property LUT_INIT (string "0002"))
+          (instance (rename BURST_COUNT_RNIFDQV_1 "BURST_COUNT_RNIFDQV[1]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "0888"))
           )
-          (instance FLIP_WORD_RNIHFPK (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
-           (property LUT_INIT (string "ACAC"))
+          (instance (rename CYCLE_STATE_RNO_4_0 "CYCLE_STATE_RNO_4[0]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "0404"))
           )
           (instance FLIP_WORD_RNI8QN01 (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
            (property LUT_INIT (string "ACAC"))
           )
-          (instance FLIP_WORD_RNIASN01 (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+          (instance FLIP_WORD_RNIHFPK (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
            (property LUT_INIT (string "ACAC"))
           )
           (instance FLIP_WORD_RNIJHPK (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
            (property LUT_INIT (string "ACAC"))
           )
-          (instance FLIP_WORD_RNILJPK (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+          (instance FLIP_WORD_RNIASN01 (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
            (property LUT_INIT (string "ACAC"))
           )
           (instance FLIP_WORD_RNICUN01 (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
            (property LUT_INIT (string "ACAC"))
           )
-          (instance FLIP_WORD_RNIE0O01 (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+          (instance FLIP_WORD_RNILJPK (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
            (property LUT_INIT (string "ACAC"))
           )
           (instance FLIP_WORD_RNINLPK (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
            (property LUT_INIT (string "ACAC"))
           )
-          (instance FLIP_WORD_RNIPNPK (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+          (instance FLIP_WORD_RNIE0O01 (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
            (property LUT_INIT (string "ACAC"))
           )
           (instance FLIP_WORD_RNIG2O01 (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
            (property LUT_INIT (string "ACAC"))
           )
-          (instance FLIP_WORD_RNII4O01 (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+          (instance FLIP_WORD_RNIPNPK (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
            (property LUT_INIT (string "ACAC"))
           )
           (instance FLIP_WORD_RNIRPPK (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
            (property LUT_INIT (string "ACAC"))
           )
-          (instance FLIP_WORD_RNITRPK (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+          (instance FLIP_WORD_RNII4O01 (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
            (property LUT_INIT (string "ACAC"))
           )
           (instance FLIP_WORD_RNIK6O01 (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
            (property LUT_INIT (string "ACAC"))
           )
-          (instance FLIP_WORD_RNIM8O01 (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+          (instance FLIP_WORD_RNITRPK (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
            (property LUT_INIT (string "ACAC"))
           )
           (instance FLIP_WORD_RNIVTPK (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "ACAC"))
+          )
+          (instance FLIP_WORD_RNIM8O01 (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
            (property LUT_INIT (string "ACAC"))
           )
           (instance FLIP_WORD_RNILUI41 (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
@@ -684,20 +675,23 @@
           (instance (rename UM_LATCHED_esr_RNIC9FL_0 "UM_LATCHED_esr_RNIC9FL[0]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
            (property LUT_INIT (string "E2E2"))
           )
-          (instance TA_DIS_RNO_0 (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+          (instance A2_EN_RNIA87G (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "2222"))
+          )
+          (instance (rename CYCLE_STATE_RNO_1_0 "CYCLE_STATE_RNO_1[0]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "1111"))
+          )
+          (instance TS_EN_RNO_2 (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "4444"))
+          )
+          (instance (rename CYCLE_STATE_RNO_4 "CYCLE_STATE_RNO[4]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
            (property LUT_INIT (string "8888"))
           )
           (instance FLIP_WORD_RNO_0 (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
            (property LUT_INIT (string "8888"))
           )
-          (instance (rename CYCLE_STATE_RNO_4 "CYCLE_STATE_RNO[4]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+          (instance TA_DIS_RNO_0 (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
            (property LUT_INIT (string "8888"))
-          )
-          (instance (rename CYCLE_STATE_RNO_1_0 "CYCLE_STATE_RNO_1[0]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
-           (property LUT_INIT (string "1111"))
-          )
-          (instance A2_EN_RNIA87G (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
-           (property LUT_INIT (string "2222"))
           )
           (instance (rename CYCLE_STATE_RNO_0_5 "CYCLE_STATE_RNO_0[5]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
            (property LUT_INIT (string "8888"))
@@ -720,14 +714,17 @@
           (instance (rename CYCLE_STATE_RNIDUAQ_0 "CYCLE_STATE_RNIDUAQ[0]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
            (property LUT_INIT (string "0020"))
           )
+          (instance (rename CYCLE_STATE_RNIJG6K_5 "CYCLE_STATE_RNIJG6K[5]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "0808"))
+          )
+          (instance (rename CYCLE_STATE_RNIGD6K_2 "CYCLE_STATE_RNIGD6K[2]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
+           (property LUT_INIT (string "0808"))
+          )
           (instance PORT_MISMATCH_RNO (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
            (property LUT_INIT (string "E222"))
           )
           (instance READ_CYCLE_ACTIVE_5_i (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
            (property LUT_INIT (string "FBFF"))
-          )
-          (instance (rename BURST_COUNT_RNO_0 "BURST_COUNT_RNO[0]") (viewRef PRIM (cellRef SB_LUT4 (libraryRef sb_ice)))
-           (property LUT_INIT (string "0604"))
           )
           (instance (rename BURST_COUNT_0 "BURST_COUNT[0]") (viewRef PRIM (cellRef SB_DFFSR (libraryRef sb_ice)))
           )
@@ -1056,7 +1053,7 @@
            (portRef R (instanceRef UU_LATCHED_esr_1))
            (portRef R (instanceRef UU_LATCHED_esr_0))
           ))
-          (net N_159_0 (joined
+          (net BURST_COUNT_0_sqmuxa_0 (joined
            (portRef O (instanceRef CYCLE_STATE_RNI9Q9V1_2))
            (portRef E (instanceRef UM_LATCHED_esr_7))
            (portRef E (instanceRef UM_LATCHED_esr_6))
@@ -1217,20 +1214,24 @@
           ))
           (net (rename GNDZ0 "GND") (joined
            (portRef Y (instanceRef GND))
+           (portRef I3 (instanceRef CYCLE_STATE_RNIGD6K_2))
+           (portRef I3 (instanceRef CYCLE_STATE_RNIJG6K_5))
            (portRef I3 (instanceRef TSn_RNO))
            (portRef I2 (instanceRef TSn_RNO))
            (portRef I3 (instanceRef CYCLE_STATE_RNO_0_5))
            (portRef I2 (instanceRef CYCLE_STATE_RNO_0_5))
-           (portRef I3 (instanceRef A2_EN_RNIA87G))
-           (portRef I2 (instanceRef A2_EN_RNIA87G))
-           (portRef I3 (instanceRef CYCLE_STATE_RNO_1_0))
-           (portRef I2 (instanceRef CYCLE_STATE_RNO_1_0))
-           (portRef I3 (instanceRef CYCLE_STATE_RNO_4))
-           (portRef I2 (instanceRef CYCLE_STATE_RNO_4))
-           (portRef I3 (instanceRef FLIP_WORD_RNO_0))
-           (portRef I2 (instanceRef FLIP_WORD_RNO_0))
            (portRef I3 (instanceRef TA_DIS_RNO_0))
            (portRef I2 (instanceRef TA_DIS_RNO_0))
+           (portRef I3 (instanceRef FLIP_WORD_RNO_0))
+           (portRef I2 (instanceRef FLIP_WORD_RNO_0))
+           (portRef I3 (instanceRef CYCLE_STATE_RNO_4))
+           (portRef I2 (instanceRef CYCLE_STATE_RNO_4))
+           (portRef I3 (instanceRef TS_EN_RNO_2))
+           (portRef I2 (instanceRef TS_EN_RNO_2))
+           (portRef I3 (instanceRef CYCLE_STATE_RNO_1_0))
+           (portRef I2 (instanceRef CYCLE_STATE_RNO_1_0))
+           (portRef I3 (instanceRef A2_EN_RNIA87G))
+           (portRef I2 (instanceRef A2_EN_RNIA87G))
            (portRef I3 (instanceRef UM_LATCHED_esr_RNIC9FL_0))
            (portRef I3 (instanceRef UU_LATCHED_esr_RNIUR6Q_1))
            (portRef I3 (instanceRef UM_LATCHED_esr_RNIGDFL_2))
@@ -1263,49 +1264,45 @@
            (portRef I3 (instanceRef FLIP_WORD_RNIALT71))
            (portRef I3 (instanceRef FLIP_WORD_RNICNT71))
            (portRef I3 (instanceRef FLIP_WORD_RNILUI41))
-           (portRef I3 (instanceRef FLIP_WORD_RNIVTPK))
            (portRef I3 (instanceRef FLIP_WORD_RNIM8O01))
-           (portRef I3 (instanceRef FLIP_WORD_RNIK6O01))
+           (portRef I3 (instanceRef FLIP_WORD_RNIVTPK))
            (portRef I3 (instanceRef FLIP_WORD_RNITRPK))
-           (portRef I3 (instanceRef FLIP_WORD_RNIRPPK))
+           (portRef I3 (instanceRef FLIP_WORD_RNIK6O01))
            (portRef I3 (instanceRef FLIP_WORD_RNII4O01))
-           (portRef I3 (instanceRef FLIP_WORD_RNIG2O01))
+           (portRef I3 (instanceRef FLIP_WORD_RNIRPPK))
            (portRef I3 (instanceRef FLIP_WORD_RNIPNPK))
-           (portRef I3 (instanceRef FLIP_WORD_RNINLPK))
+           (portRef I3 (instanceRef FLIP_WORD_RNIG2O01))
            (portRef I3 (instanceRef FLIP_WORD_RNIE0O01))
-           (portRef I3 (instanceRef FLIP_WORD_RNICUN01))
+           (portRef I3 (instanceRef FLIP_WORD_RNINLPK))
            (portRef I3 (instanceRef FLIP_WORD_RNILJPK))
-           (portRef I3 (instanceRef FLIP_WORD_RNIJHPK))
+           (portRef I3 (instanceRef FLIP_WORD_RNICUN01))
            (portRef I3 (instanceRef FLIP_WORD_RNIASN01))
-           (portRef I3 (instanceRef FLIP_WORD_RNI8QN01))
+           (portRef I3 (instanceRef FLIP_WORD_RNIJHPK))
            (portRef I3 (instanceRef FLIP_WORD_RNIHFPK))
+           (portRef I3 (instanceRef FLIP_WORD_RNI8QN01))
+           (portRef I3 (instanceRef CYCLE_STATE_RNO_4_0))
            (portRef I3 (instanceRef CYCLE_STATE_RNO_3_0))
-           (portRef I3 (instanceRef TS_EN6))
            (portRef I3 (instanceRef TA_DIS_RNICJKJ))
            (portRef I2 (instanceRef TA_DIS_RNICJKJ))
            (portRef I3 (instanceRef A2_EN_RNIB97G))
            (portRef I2 (instanceRef A2_EN_RNIB97G))
-           (portRef I3 (instanceRef CYCLE_STATE_RNIJG6K_5))
-           (portRef I3 (instanceRef CYCLE_STATE_RNIGD6K_2))
-           (portRef I3 (instanceRef TS_EN_RNO_2))
            (portRef I3 (instanceRef CYCLE_STATE_RNO_3))
            (portRef I3 (instanceRef READ_CYCLE_ACTIVE_esr_RNIPC3B1))
-           (portRef I3 (instanceRef BURST_COUNT_RNO_0_1))
            (portRef I3 (instanceRef CYCLE_STATE_RNIC4111_3))
            (portRef I2 (instanceRef CYCLE_STATE_RNIC4111_3))
+           (portRef I3 (instanceRef BURST_COUNT_RNO_0))
            (portRef I3 (instanceRef A2_EN_RNO))
            (portRef I3 (instanceRef CYCLE_STATE_RNIICIM_0))
            (portRef I0 (instanceRef CYCLE_STATE_RNIICIM_0))
            (portRef I3 (instanceRef CYCLE_STATE_RNI9Q9V1_2))
            (portRef I0 (instanceRef CYCLE_STATE_RNI9Q9V1_2))
           ))
-          (net (rename CYCLE_STATE_RNIGD6KZ0Z_2 "CYCLE_STATE_RNIGD6K[2]") (joined
+          (net BURST_COUNT_0_sqmuxa (joined
            (portRef O (instanceRef CYCLE_STATE_RNIGD6K_2))
-           (portRef I0 (instanceRef BURST_COUNT_RNO_0))
            (portRef I1 (instanceRef CYCLE_STATE_RNO_3))
            (portRef I2 (instanceRef READ_CYCLE_ACTIVE_esr_RNIPC3B1))
-           (portRef I1 (instanceRef BURST_COUNT_RNO_0_1))
-           (portRef I3 (instanceRef BURST_COUNT_RNO_1))
+           (portRef I1 (instanceRef BURST_COUNT_RNO_0))
+           (portRef I2 (instanceRef BURST_COUNT_RNO_1))
            (portRef I1 (instanceRef CYCLE_STATE_RNI9Q9V1_2))
           ))
           (net (rename UM_LATCHEDZ0Z_7 "UM_LATCHED[7]") (joined
@@ -1643,8 +1640,8 @@
           (net (rename CYCLE_STATEZ0Z_0 "CYCLE_STATE[0]") (joined
            (portRef Q (instanceRef CYCLE_STATE_0))
            (portRef I0 (instanceRef CYCLE_STATE_RNIDUAQ_0))
-           (portRef I1 (instanceRef CYCLE_STATE_RNO_0_0))
            (portRef I0 (instanceRef TS_EN_RNO_0))
+           (portRef I1 (instanceRef CYCLE_STATE_RNO_0_0))
            (portRef I1 (instanceRef LATCH_EN_RNO))
            (portRef I1 (instanceRef CYCLE_STATE_RNIICIM_0))
           ))
@@ -1654,10 +1651,10 @@
           ))
           (net (rename tean_c "TEAn_c") (joined
            (portRef TEAn_c)
+           (portRef I1 (instanceRef CYCLE_STATE_RNIGD6K_2))
+           (portRef I1 (instanceRef CYCLE_STATE_RNIJG6K_5))
            (portRef I1 (instanceRef CYCLE_STATE_RNO_0_2))
            (portRef I1 (instanceRef CYCLE_STATE_RNO_0_5))
-           (portRef I1 (instanceRef CYCLE_STATE_RNIJG6K_5))
-           (portRef I1 (instanceRef CYCLE_STATE_RNIGD6K_2))
            (portRef I1 (instanceRef TS_EN_RNO_2))
            (portRef I0 (instanceRef CYCLE_STATE_RNO_0))
           ))
@@ -1665,39 +1662,17 @@
            (portRef O (instanceRef CYCLE_STATE_RNO_0_0))
            (portRef I1 (instanceRef CYCLE_STATE_RNO_0))
           ))
-          (net N_142_0 (joined
+          (net N_124_0 (joined
            (portRef O (instanceRef CYCLE_STATE_RNO_1_0))
            (portRef I2 (instanceRef CYCLE_STATE_RNO_0))
           ))
-          (net N_149 (joined
+          (net N_132 (joined
            (portRef O (instanceRef CYCLE_STATE_RNO_2_0))
            (portRef I3 (instanceRef CYCLE_STATE_RNO_0))
           ))
           (net (rename CYCLE_STATE_nss_0_i_0 "CYCLE_STATE_nss_0_i[0]") (joined
            (portRef O (instanceRef CYCLE_STATE_RNO_0))
            (portRef D (instanceRef CYCLE_STATE_0))
-          ))
-          (net N_130_0 (joined
-           (portRef O (instanceRef TS_EN_RNO_0))
-           (portRef I0 (instanceRef TS_EN_RNO))
-          ))
-          (net (rename TS_ENZ0 "TS_EN") (joined
-           (portRef Q (instanceRef TS_EN))
-           (portRef I1 (instanceRef TSn_RNO))
-           (portRef I1 (instanceRef TS_EN_RNO))
-          ))
-          (net TS_EN_6 (joined
-           (portRef O (instanceRef TS_EN_RNO_1))
-           (portRef I2 (instanceRef TS_EN_RNO))
-          ))
-          (net un1_CYCLE_STATE_1_0 (joined
-           (portRef O (instanceRef CYCLE_STATE_RNIC4111_3))
-           (portRef I3 (instanceRef LATCH_EN_RNO))
-           (portRef I3 (instanceRef TS_EN_RNO))
-          ))
-          (net TS_EN_1 (joined
-           (portRef O (instanceRef TS_EN_RNO))
-           (portRef D (instanceRef TS_EN))
           ))
           (net (rename resetn_c "RESETn_c") (joined
            (portRef RESETn_c)
@@ -1712,26 +1687,24 @@
           ))
           (net (rename BURSTZ0 "BURST") (joined
            (portRef Q (instanceRef BURST))
-           (portRef I3 (instanceRef BURST_COUNT_RNO_0))
-           (portRef I0 (instanceRef TS_EN_RNO_1))
-           (portRef I1 (instanceRef CYCLE_STATE_RNO_3_0))
            (portRef I1 (instanceRef BURST_COUNT_RNIFDQV_1))
-           (portRef I0 (instanceRef BURST_COUNT_RNO_0_1))
+           (portRef I1 (instanceRef CYCLE_STATE_RNO_3_0))
+           (portRef I0 (instanceRef TS_EN_RNO_1))
            (portRef I2 (instanceRef BURST_RNO))
            (portRef I1 (instanceRef CYCLE_STATE_RNO_1))
           ))
-          (net N_160 (joined
+          (net N_144 (joined
            (portRef O (instanceRef CYCLE_STATE_RNIJG6K_5))
            (portRef I2 (instanceRef A2_EN_RNO))
            (portRef I2 (instanceRef CYCLE_STATE_RNO_1))
           ))
           (net READ_CYCLE_ACTIVE_0_sqmuxa (joined
            (portRef O (instanceRef CYCLE_STATE_RNIDUAQ_0))
-           (portRef I2 (instanceRef BURST_COUNT_RNO_0))
-           (portRef I2 (instanceRef BURST_COUNT_RNO_0_1))
            (portRef I1 (instanceRef CYCLE_STATE_RNIC4111_3))
+           (portRef I2 (instanceRef BURST_COUNT_RNO_0))
            (portRef I3 (instanceRef BURST_RNO))
            (portRef I3 (instanceRef LW_TRANS_RNO))
+           (portRef I3 (instanceRef BURST_COUNT_RNO_1))
            (portRef I3 (instanceRef CYCLE_STATE_RNO_1))
           ))
           (net (rename CYCLE_STATE_nss_0_i_1 "CYCLE_STATE_nss_0_i[1]") (joined
@@ -1758,14 +1731,36 @@
            (portRef I1 (instanceRef UU_LATCHED_esr_RNIA87Q_7))
            (portRef I2 (instanceRef LATCH_EN_RNO))
           ))
+          (net un1_CYCLE_STATE_0 (joined
+           (portRef O (instanceRef CYCLE_STATE_RNIC4111_3))
+           (portRef I3 (instanceRef TS_EN_RNO))
+           (portRef I3 (instanceRef LATCH_EN_RNO))
+          ))
           (net LATCH_EN_0 (joined
            (portRef O (instanceRef LATCH_EN_RNO))
            (portRef D (instanceRef LATCH_EN))
           ))
+          (net N_117_0 (joined
+           (portRef O (instanceRef TS_EN_RNO_0))
+           (portRef I0 (instanceRef TS_EN_RNO))
+          ))
+          (net (rename TS_ENZ0 "TS_EN") (joined
+           (portRef Q (instanceRef TS_EN))
+           (portRef I1 (instanceRef TSn_RNO))
+           (portRef I1 (instanceRef TS_EN_RNO))
+          ))
+          (net TS_EN_6 (joined
+           (portRef O (instanceRef TS_EN_RNO_1))
+           (portRef I2 (instanceRef TS_EN_RNO))
+          ))
+          (net TS_EN_1 (joined
+           (portRef O (instanceRef TS_EN_RNO))
+           (portRef D (instanceRef TS_EN))
+          ))
           (net (rename BURST_COUNTZ0Z_0 "BURST_COUNT[0]") (joined
            (portRef Q (instanceRef BURST_COUNT_0))
-           (portRef I1 (instanceRef BURST_COUNT_RNO_0))
            (portRef I2 (instanceRef BURST_COUNT_RNIFDQV_1))
+           (portRef I0 (instanceRef BURST_COUNT_RNO_0))
            (portRef I0 (instanceRef BURST_COUNT_RNO_1))
           ))
           (net (rename BURST_COUNTZ0Z_1 "BURST_COUNT[1]") (joined
@@ -1773,34 +1768,17 @@
            (portRef I3 (instanceRef BURST_COUNT_RNIFDQV_1))
            (portRef I1 (instanceRef BURST_COUNT_RNO_1))
           ))
-          (net N_132_0 (joined
-           (portRef O (instanceRef BURST_COUNT_RNO_0_1))
-           (portRef I2 (instanceRef BURST_COUNT_RNO_1))
-          ))
           (net (rename BURST_COUNT_6_1 "BURST_COUNT_6[1]") (joined
            (portRef O (instanceRef BURST_COUNT_RNO_1))
            (portRef D (instanceRef BURST_COUNT_1))
           ))
-          (net (rename CYCLE_STATEZ0Z_2 "CYCLE_STATE[2]") (joined
-           (portRef Q (instanceRef CYCLE_STATE_2))
-           (portRef I2 (instanceRef CYCLE_STATE_RNO_2))
-           (portRef I0 (instanceRef CYCLE_STATE_RNO_1_0))
-           (portRef I2 (instanceRef CYCLE_STATE_RNIGD6K_2))
-           (portRef I1 (instanceRef CYCLE_STATE_RNO_2_0))
-           (portRef I1 (instanceRef TS_EN_RNO_0))
-          ))
-          (net N_158 (joined
-           (portRef O (instanceRef TS_EN_RNO_2))
-           (portRef I2 (instanceRef TS_EN_RNO_0))
-          ))
-          (net (rename TS_ENZ0Z6 "TS_EN6") (joined
-           (portRef O (instanceRef TS_EN6))
-           (portRef I3 (instanceRef CYCLE_STATE_RNO_0_0))
-           (portRef I3 (instanceRef TS_EN_RNO_0))
-          ))
-          (net N_148 (joined
+          (net N_131 (joined
            (portRef O (instanceRef CYCLE_STATE_RNO_3_0))
            (portRef I2 (instanceRef CYCLE_STATE_RNO_0_0))
+          ))
+          (net TS_EN6 (joined
+           (portRef O (instanceRef CYCLE_STATE_RNO_4_0))
+           (portRef I3 (instanceRef CYCLE_STATE_RNO_0_0))
           ))
           (net (rename siz_c_0 "SIZ_c[0]") (joined
            (portRef (member SIZ_c 1))
@@ -1845,6 +1823,10 @@
            (portRef O (instanceRef A2_EN_RNO))
            (portRef D (instanceRef A2_EN))
           ))
+          (net (rename BURST_COUNT_6_0 "BURST_COUNT_6[0]") (joined
+           (portRef O (instanceRef BURST_COUNT_RNO_0))
+           (portRef D (instanceRef BURST_COUNT_0))
+          ))
           (net (rename CYCLE_STATEZ0Z_4 "CYCLE_STATE[4]") (joined
            (portRef Q (instanceRef CYCLE_STATE_4))
            (portRef I3 (instanceRef TS_EN_RNO_1))
@@ -1852,17 +1834,17 @@
           ))
           (net (rename CYCLE_STATEZ0Z_5 "CYCLE_STATE[5]") (joined
            (portRef Q (instanceRef CYCLE_STATE_5))
+           (portRef I0 (instanceRef CYCLE_STATE_RNIJG6K_5))
            (portRef I1 (instanceRef CYCLE_STATE_RNO_1_0))
            (portRef I2 (instanceRef CYCLE_STATE_RNO_3_0))
-           (portRef I2 (instanceRef CYCLE_STATE_RNIJG6K_5))
-           (portRef I2 (instanceRef TS_EN_RNO_2))
+           (portRef I2 (instanceRef TS_EN_RNO_0))
            (portRef I2 (instanceRef CYCLE_STATE_RNO_5))
           ))
           (net (rename CYCLE_STATE_srsts_i_o2_0_5 "CYCLE_STATE_srsts_i_o2_0[5]") (joined
            (portRef O (instanceRef CYCLE_STATE_RNO_0_5))
            (portRef I3 (instanceRef CYCLE_STATE_RNO_5))
           ))
-          (net N_120_0 (joined
+          (net N_107_0 (joined
            (portRef O (instanceRef CYCLE_STATE_RNO_5))
            (portRef D (instanceRef CYCLE_STATE_5))
           ))
@@ -1905,22 +1887,22 @@
            (portRef I2 (instanceRef FLIP_WORD_RNIALT71))
            (portRef I2 (instanceRef FLIP_WORD_RNICNT71))
            (portRef I2 (instanceRef FLIP_WORD_RNILUI41))
-           (portRef I2 (instanceRef FLIP_WORD_RNIVTPK))
            (portRef I2 (instanceRef FLIP_WORD_RNIM8O01))
-           (portRef I2 (instanceRef FLIP_WORD_RNIK6O01))
+           (portRef I2 (instanceRef FLIP_WORD_RNIVTPK))
            (portRef I2 (instanceRef FLIP_WORD_RNITRPK))
-           (portRef I2 (instanceRef FLIP_WORD_RNIRPPK))
+           (portRef I2 (instanceRef FLIP_WORD_RNIK6O01))
            (portRef I2 (instanceRef FLIP_WORD_RNII4O01))
-           (portRef I2 (instanceRef FLIP_WORD_RNIG2O01))
+           (portRef I2 (instanceRef FLIP_WORD_RNIRPPK))
            (portRef I2 (instanceRef FLIP_WORD_RNIPNPK))
-           (portRef I2 (instanceRef FLIP_WORD_RNINLPK))
+           (portRef I2 (instanceRef FLIP_WORD_RNIG2O01))
            (portRef I2 (instanceRef FLIP_WORD_RNIE0O01))
-           (portRef I2 (instanceRef FLIP_WORD_RNICUN01))
+           (portRef I2 (instanceRef FLIP_WORD_RNINLPK))
            (portRef I2 (instanceRef FLIP_WORD_RNILJPK))
-           (portRef I2 (instanceRef FLIP_WORD_RNIJHPK))
+           (portRef I2 (instanceRef FLIP_WORD_RNICUN01))
            (portRef I2 (instanceRef FLIP_WORD_RNIASN01))
-           (portRef I2 (instanceRef FLIP_WORD_RNI8QN01))
+           (portRef I2 (instanceRef FLIP_WORD_RNIJHPK))
            (portRef I2 (instanceRef FLIP_WORD_RNIHFPK))
+           (portRef I2 (instanceRef FLIP_WORD_RNI8QN01))
            (portRef I2 (instanceRef FLIP_WORD_RNO))
           ))
           (net FLIP_WORD_2 (joined
@@ -1931,31 +1913,43 @@
            (portRef O (instanceRef FLIP_WORD_RNO))
            (portRef D (instanceRef FLIP_WORD))
           ))
+          (net (rename CYCLE_STATEZ0Z_2 "CYCLE_STATE[2]") (joined
+           (portRef Q (instanceRef CYCLE_STATE_2))
+           (portRef I0 (instanceRef CYCLE_STATE_RNIGD6K_2))
+           (portRef I2 (instanceRef CYCLE_STATE_RNO_2))
+           (portRef I0 (instanceRef CYCLE_STATE_RNO_1_0))
+           (portRef I1 (instanceRef CYCLE_STATE_RNO_2_0))
+           (portRef I1 (instanceRef TS_EN_RNO_0))
+          ))
+          (net N_119_0 (joined
+           (portRef O (instanceRef TS_EN_RNO_2))
+           (portRef I3 (instanceRef TS_EN_RNO_0))
+          ))
+          (net (rename tackn_in "TACKn_in") (joined
+           (portRef TACKn_in)
+           (portRef I2 (instanceRef CYCLE_STATE_RNIGD6K_2))
+           (portRef I2 (instanceRef CYCLE_STATE_RNIJG6K_5))
+           (portRef I0 (instanceRef CYCLE_STATE_RNO_0_2))
+           (portRef I0 (instanceRef CYCLE_STATE_RNO_0_5))
+           (portRef I0 (instanceRef TS_EN_RNO_2))
+           (portRef I0 (instanceRef CYCLE_STATE_RNO_3_0))
+           (portRef I0 (instanceRef CYCLE_STATE_RNO_2_0))
+          ))
           (net (rename PORT_MISMATCHZ0 "PORT_MISMATCH") (joined
            (portRef Q (instanceRef PORT_MISMATCH))
            (portRef I0 (instanceRef PORT_MISMATCH_RNO))
            (portRef I2 (instanceRef CYCLE_STATE_RNO_0_2))
-           (portRef I2 (instanceRef CYCLE_STATE_RNO_2_0))
            (portRef I2 (instanceRef CYCLE_STATE_RNO_3))
-          ))
-          (net (rename CYCLE_STATE_nss_3 "CYCLE_STATE_nss[3]") (joined
-           (portRef O (instanceRef CYCLE_STATE_RNO_3))
-           (portRef D (instanceRef CYCLE_STATE_3))
-          ))
-          (net (rename tackn_in "TACKn_in") (joined
-           (portRef TACKn_in)
-           (portRef I0 (instanceRef CYCLE_STATE_RNO_0_2))
-           (portRef I0 (instanceRef CYCLE_STATE_RNO_0_5))
-           (portRef I0 (instanceRef CYCLE_STATE_RNO_3_0))
-           (portRef I0 (instanceRef CYCLE_STATE_RNIJG6K_5))
-           (portRef I0 (instanceRef CYCLE_STATE_RNIGD6K_2))
-           (portRef I0 (instanceRef TS_EN_RNO_2))
-           (portRef I0 (instanceRef CYCLE_STATE_RNO_2_0))
+           (portRef I2 (instanceRef CYCLE_STATE_RNO_2_0))
           ))
           (net un7_CYCLE_STATE_0 (joined
            (portRef O (instanceRef BURST_COUNT_RNIFDQV_1))
            (portRef I3 (instanceRef CYCLE_STATE_RNO_0_2))
            (portRef I3 (instanceRef CYCLE_STATE_RNO_2_0))
+          ))
+          (net (rename CYCLE_STATE_nss_3 "CYCLE_STATE_nss[3]") (joined
+           (portRef O (instanceRef CYCLE_STATE_RNO_3))
+           (portRef D (instanceRef CYCLE_STATE_3))
           ))
           (net (rename a_040_c_1 "A_040_c[1]") (joined
            (portRef (member A_040_c 0))
@@ -1972,12 +1966,16 @@
            (portRef I2 (instanceRef CYCLE_STATE_RNIDUAQ_0))
            (portRef I2 (instanceRef READ_CYCLE_ACTIVE_esr_RNO))
            (portRef I2 (instanceRef WRITE_CYCLE_ACTIVE_5_i))
-           (portRef I1 (instanceRef TS_EN6))
+           (portRef I1 (instanceRef CYCLE_STATE_RNO_4_0))
            (portRef I0 (instanceRef TA_DIS_RNICJKJ))
           ))
           (net (rename tan_1_i "TAn_1_i") (joined
            (portRef O (instanceRef TA_DIS_RNICJKJ))
            (portRef TAn_1_i)
+          ))
+          (net (rename tbin_c "TBIn_c") (joined
+           (portRef TBIn_c)
+           (portRef I0 (instanceRef BURST_COUNT_RNIFDQV_1))
           ))
           (net (rename bgn_c "BGn_c") (joined
            (portRef BGn_c)
@@ -1985,7 +1983,7 @@
            (portRef I3 (instanceRef CYCLE_STATE_RNIDUAQ_0))
            (portRef I3 (instanceRef READ_CYCLE_ACTIVE_esr_RNO))
            (portRef I3 (instanceRef WRITE_CYCLE_ACTIVE_5_i))
-           (portRef I0 (instanceRef TS_EN6))
+           (portRef I0 (instanceRef CYCLE_STATE_RNO_4_0))
           ))
           (net (rename ts_cpun_c "TS_CPUn_c") (joined
            (portRef TS_CPUn_c)
@@ -1993,23 +1991,7 @@
            (portRef I1 (instanceRef CYCLE_STATE_RNIDUAQ_0))
            (portRef I1 (instanceRef READ_CYCLE_ACTIVE_esr_RNO))
            (portRef I1 (instanceRef WRITE_CYCLE_ACTIVE_5_i))
-           (portRef I2 (instanceRef TS_EN6))
-          ))
-          (net (rename tbin_c "TBIn_c") (joined
-           (portRef TBIn_c)
-           (portRef I0 (instanceRef BURST_COUNT_RNIFDQV_1))
-          ))
-          (net (rename d_lm_040_in_0 "D_LM_040_in[0]") (joined
-           (portRef (member D_LM_040_in 7))
-           (portRef I0 (instanceRef FLIP_WORD_RNIHFPK))
-          ))
-          (net (rename d_uu_040_in_0 "D_UU_040_in[0]") (joined
-           (portRef (member D_UU_040_in 7))
-           (portRef I1 (instanceRef FLIP_WORD_RNIHFPK))
-          ))
-          (net (rename un1_d_uu_040_0 "un1_D_UU_040[0]") (joined
-           (portRef O (instanceRef FLIP_WORD_RNIHFPK))
-           (portRef (member un1_D_UU_040 7))
+           (portRef I2 (instanceRef CYCLE_STATE_RNO_4_0))
           ))
           (net (rename d_ll_040_in_0 "D_LL_040_in[0]") (joined
            (portRef (member D_LL_040_in 7))
@@ -2023,17 +2005,17 @@
            (portRef O (instanceRef FLIP_WORD_RNI8QN01))
            (portRef (member un1_D_UM_040 7))
           ))
-          (net (rename d_ll_040_in_1 "D_LL_040_in[1]") (joined
-           (portRef (member D_LL_040_in 6))
-           (portRef I0 (instanceRef FLIP_WORD_RNIASN01))
+          (net (rename d_lm_040_in_0 "D_LM_040_in[0]") (joined
+           (portRef (member D_LM_040_in 7))
+           (portRef I0 (instanceRef FLIP_WORD_RNIHFPK))
           ))
-          (net (rename d_um_040_in_1 "D_UM_040_in[1]") (joined
-           (portRef (member D_UM_040_in 6))
-           (portRef I1 (instanceRef FLIP_WORD_RNIASN01))
+          (net (rename d_uu_040_in_0 "D_UU_040_in[0]") (joined
+           (portRef (member D_UU_040_in 7))
+           (portRef I1 (instanceRef FLIP_WORD_RNIHFPK))
           ))
-          (net (rename un1_d_um_040_1 "un1_D_UM_040[1]") (joined
-           (portRef O (instanceRef FLIP_WORD_RNIASN01))
-           (portRef (member un1_D_UM_040 6))
+          (net (rename un1_d_uu_040_0 "un1_D_UU_040[0]") (joined
+           (portRef O (instanceRef FLIP_WORD_RNIHFPK))
+           (portRef (member un1_D_UU_040 7))
           ))
           (net (rename d_lm_040_in_1 "D_LM_040_in[1]") (joined
            (portRef (member D_LM_040_in 6))
@@ -2047,17 +2029,17 @@
            (portRef O (instanceRef FLIP_WORD_RNIJHPK))
            (portRef (member un1_D_UU_040 6))
           ))
-          (net (rename d_lm_040_in_2 "D_LM_040_in[2]") (joined
-           (portRef (member D_LM_040_in 5))
-           (portRef I0 (instanceRef FLIP_WORD_RNILJPK))
+          (net (rename d_ll_040_in_1 "D_LL_040_in[1]") (joined
+           (portRef (member D_LL_040_in 6))
+           (portRef I0 (instanceRef FLIP_WORD_RNIASN01))
           ))
-          (net (rename d_uu_040_in_2 "D_UU_040_in[2]") (joined
-           (portRef (member D_UU_040_in 5))
-           (portRef I1 (instanceRef FLIP_WORD_RNILJPK))
+          (net (rename d_um_040_in_1 "D_UM_040_in[1]") (joined
+           (portRef (member D_UM_040_in 6))
+           (portRef I1 (instanceRef FLIP_WORD_RNIASN01))
           ))
-          (net (rename un1_d_uu_040_2 "un1_D_UU_040[2]") (joined
-           (portRef O (instanceRef FLIP_WORD_RNILJPK))
-           (portRef (member un1_D_UU_040 5))
+          (net (rename un1_d_um_040_1 "un1_D_UM_040[1]") (joined
+           (portRef O (instanceRef FLIP_WORD_RNIASN01))
+           (portRef (member un1_D_UM_040 6))
           ))
           (net (rename d_ll_040_in_2 "D_LL_040_in[2]") (joined
            (portRef (member D_LL_040_in 5))
@@ -2071,17 +2053,17 @@
            (portRef O (instanceRef FLIP_WORD_RNICUN01))
            (portRef (member un1_D_UM_040 5))
           ))
-          (net (rename d_ll_040_in_3 "D_LL_040_in[3]") (joined
-           (portRef (member D_LL_040_in 4))
-           (portRef I0 (instanceRef FLIP_WORD_RNIE0O01))
+          (net (rename d_lm_040_in_2 "D_LM_040_in[2]") (joined
+           (portRef (member D_LM_040_in 5))
+           (portRef I0 (instanceRef FLIP_WORD_RNILJPK))
           ))
-          (net (rename d_um_040_in_3 "D_UM_040_in[3]") (joined
-           (portRef (member D_UM_040_in 4))
-           (portRef I1 (instanceRef FLIP_WORD_RNIE0O01))
+          (net (rename d_uu_040_in_2 "D_UU_040_in[2]") (joined
+           (portRef (member D_UU_040_in 5))
+           (portRef I1 (instanceRef FLIP_WORD_RNILJPK))
           ))
-          (net (rename un1_d_um_040_3 "un1_D_UM_040[3]") (joined
-           (portRef O (instanceRef FLIP_WORD_RNIE0O01))
-           (portRef (member un1_D_UM_040 4))
+          (net (rename un1_d_uu_040_2 "un1_D_UU_040[2]") (joined
+           (portRef O (instanceRef FLIP_WORD_RNILJPK))
+           (portRef (member un1_D_UU_040 5))
           ))
           (net (rename d_lm_040_in_3 "D_LM_040_in[3]") (joined
            (portRef (member D_LM_040_in 4))
@@ -2095,17 +2077,17 @@
            (portRef O (instanceRef FLIP_WORD_RNINLPK))
            (portRef (member un1_D_UU_040 4))
           ))
-          (net (rename d_lm_040_in_4 "D_LM_040_in[4]") (joined
-           (portRef (member D_LM_040_in 3))
-           (portRef I0 (instanceRef FLIP_WORD_RNIPNPK))
+          (net (rename d_ll_040_in_3 "D_LL_040_in[3]") (joined
+           (portRef (member D_LL_040_in 4))
+           (portRef I0 (instanceRef FLIP_WORD_RNIE0O01))
           ))
-          (net (rename d_uu_040_in_4 "D_UU_040_in[4]") (joined
-           (portRef (member D_UU_040_in 3))
-           (portRef I1 (instanceRef FLIP_WORD_RNIPNPK))
+          (net (rename d_um_040_in_3 "D_UM_040_in[3]") (joined
+           (portRef (member D_UM_040_in 4))
+           (portRef I1 (instanceRef FLIP_WORD_RNIE0O01))
           ))
-          (net (rename un1_d_uu_040_4 "un1_D_UU_040[4]") (joined
-           (portRef O (instanceRef FLIP_WORD_RNIPNPK))
-           (portRef (member un1_D_UU_040 3))
+          (net (rename un1_d_um_040_3 "un1_D_UM_040[3]") (joined
+           (portRef O (instanceRef FLIP_WORD_RNIE0O01))
+           (portRef (member un1_D_UM_040 4))
           ))
           (net (rename d_ll_040_in_4 "D_LL_040_in[4]") (joined
            (portRef (member D_LL_040_in 3))
@@ -2119,17 +2101,17 @@
            (portRef O (instanceRef FLIP_WORD_RNIG2O01))
            (portRef (member un1_D_UM_040 3))
           ))
-          (net (rename d_ll_040_in_5 "D_LL_040_in[5]") (joined
-           (portRef (member D_LL_040_in 2))
-           (portRef I0 (instanceRef FLIP_WORD_RNII4O01))
+          (net (rename d_lm_040_in_4 "D_LM_040_in[4]") (joined
+           (portRef (member D_LM_040_in 3))
+           (portRef I0 (instanceRef FLIP_WORD_RNIPNPK))
           ))
-          (net (rename d_um_040_in_5 "D_UM_040_in[5]") (joined
-           (portRef (member D_UM_040_in 2))
-           (portRef I1 (instanceRef FLIP_WORD_RNII4O01))
+          (net (rename d_uu_040_in_4 "D_UU_040_in[4]") (joined
+           (portRef (member D_UU_040_in 3))
+           (portRef I1 (instanceRef FLIP_WORD_RNIPNPK))
           ))
-          (net (rename un1_d_um_040_5 "un1_D_UM_040[5]") (joined
-           (portRef O (instanceRef FLIP_WORD_RNII4O01))
-           (portRef (member un1_D_UM_040 2))
+          (net (rename un1_d_uu_040_4 "un1_D_UU_040[4]") (joined
+           (portRef O (instanceRef FLIP_WORD_RNIPNPK))
+           (portRef (member un1_D_UU_040 3))
           ))
           (net (rename d_lm_040_in_5 "D_LM_040_in[5]") (joined
            (portRef (member D_LM_040_in 2))
@@ -2143,17 +2125,17 @@
            (portRef O (instanceRef FLIP_WORD_RNIRPPK))
            (portRef (member un1_D_UU_040 2))
           ))
-          (net (rename d_lm_040_in_6 "D_LM_040_in[6]") (joined
-           (portRef (member D_LM_040_in 1))
-           (portRef I0 (instanceRef FLIP_WORD_RNITRPK))
+          (net (rename d_ll_040_in_5 "D_LL_040_in[5]") (joined
+           (portRef (member D_LL_040_in 2))
+           (portRef I0 (instanceRef FLIP_WORD_RNII4O01))
           ))
-          (net (rename d_uu_040_in_6 "D_UU_040_in[6]") (joined
-           (portRef (member D_UU_040_in 1))
-           (portRef I1 (instanceRef FLIP_WORD_RNITRPK))
+          (net (rename d_um_040_in_5 "D_UM_040_in[5]") (joined
+           (portRef (member D_UM_040_in 2))
+           (portRef I1 (instanceRef FLIP_WORD_RNII4O01))
           ))
-          (net (rename un1_d_uu_040_6 "un1_D_UU_040[6]") (joined
-           (portRef O (instanceRef FLIP_WORD_RNITRPK))
-           (portRef (member un1_D_UU_040 1))
+          (net (rename un1_d_um_040_5 "un1_D_UM_040[5]") (joined
+           (portRef O (instanceRef FLIP_WORD_RNII4O01))
+           (portRef (member un1_D_UM_040 2))
           ))
           (net (rename d_ll_040_in_6 "D_LL_040_in[6]") (joined
            (portRef (member D_LL_040_in 1))
@@ -2167,17 +2149,17 @@
            (portRef O (instanceRef FLIP_WORD_RNIK6O01))
            (portRef (member un1_D_UM_040 1))
           ))
-          (net (rename d_ll_040_in_7 "D_LL_040_in[7]") (joined
-           (portRef (member D_LL_040_in 0))
-           (portRef I0 (instanceRef FLIP_WORD_RNIM8O01))
+          (net (rename d_lm_040_in_6 "D_LM_040_in[6]") (joined
+           (portRef (member D_LM_040_in 1))
+           (portRef I0 (instanceRef FLIP_WORD_RNITRPK))
           ))
-          (net (rename d_um_040_in_7 "D_UM_040_in[7]") (joined
-           (portRef (member D_UM_040_in 0))
-           (portRef I1 (instanceRef FLIP_WORD_RNIM8O01))
+          (net (rename d_uu_040_in_6 "D_UU_040_in[6]") (joined
+           (portRef (member D_UU_040_in 1))
+           (portRef I1 (instanceRef FLIP_WORD_RNITRPK))
           ))
-          (net (rename un1_d_um_040_7 "un1_D_UM_040[7]") (joined
-           (portRef O (instanceRef FLIP_WORD_RNIM8O01))
-           (portRef (member un1_D_UM_040 0))
+          (net (rename un1_d_uu_040_6 "un1_D_UU_040[6]") (joined
+           (portRef O (instanceRef FLIP_WORD_RNITRPK))
+           (portRef (member un1_D_UU_040 1))
           ))
           (net (rename d_lm_040_in_7 "D_LM_040_in[7]") (joined
            (portRef (member D_LM_040_in 0))
@@ -2190,6 +2172,18 @@
           (net (rename un1_d_uu_040_7 "un1_D_UU_040[7]") (joined
            (portRef O (instanceRef FLIP_WORD_RNIVTPK))
            (portRef (member un1_D_UU_040 0))
+          ))
+          (net (rename d_ll_040_in_7 "D_LL_040_in[7]") (joined
+           (portRef (member D_LL_040_in 0))
+           (portRef I0 (instanceRef FLIP_WORD_RNIM8O01))
+          ))
+          (net (rename d_um_040_in_7 "D_UM_040_in[7]") (joined
+           (portRef (member D_UM_040_in 0))
+           (portRef I1 (instanceRef FLIP_WORD_RNIM8O01))
+          ))
+          (net (rename un1_d_um_040_7 "un1_D_UM_040[7]") (joined
+           (portRef O (instanceRef FLIP_WORD_RNIM8O01))
+           (portRef (member un1_D_UM_040 0))
           ))
           (net (rename d_lm_amiga_in_7 "D_LM_AMIGA_in[7]") (joined
            (portRef (member D_LM_AMIGA_in 0))
@@ -2383,16 +2377,6 @@
            (portRef O (instanceRef UM_LATCHED_esr_RNIC9FL_0))
            (portRef (member un1_D_UM_AMIGA 7))
           ))
-          (net (rename portsize_c "PORTSIZE_c") (joined
-           (portRef PORTSIZE_c)
-           (portRef I3 (instanceRef PORT_MISMATCH_RNO))
-           (portRef I1 (instanceRef FLIP_WORD_RNO_0))
-           (portRef I0 (instanceRef TA_DIS_RNO_0))
-          ))
-          (net N_122_0 (joined
-           (portRef O (instanceRef CYCLE_STATE_RNO_4))
-           (portRef D (instanceRef CYCLE_STATE_4))
-          ))
           (net (rename a_040_c_0 "A_040_c[0]") (joined
            (portRef (member A_040_c 1))
            (portRef I0 (instanceRef A2_EN_RNIA87G))
@@ -2400,6 +2384,16 @@
           (net (rename a_amiga_c_0 "A_AMIGA_c_0") (joined
            (portRef O (instanceRef A2_EN_RNIA87G))
            (portRef A_AMIGA_c_0)
+          ))
+          (net N_109_0 (joined
+           (portRef O (instanceRef CYCLE_STATE_RNO_4))
+           (portRef D (instanceRef CYCLE_STATE_4))
+          ))
+          (net (rename portsize_c "PORTSIZE_c") (joined
+           (portRef PORTSIZE_c)
+           (portRef I3 (instanceRef PORT_MISMATCH_RNO))
+           (portRef I0 (instanceRef TA_DIS_RNO_0))
+           (portRef I1 (instanceRef FLIP_WORD_RNO_0))
           ))
           (net (rename TSnZ0 "TSn") (joined
            (portRef O (instanceRef TSn_RNO))
@@ -2409,7 +2403,7 @@
            (portRef O (instanceRef CYCLE_STATE_RNO_0_2))
            (portRef I3 (instanceRef CYCLE_STATE_RNO_2))
           ))
-          (net N_125_0 (joined
+          (net N_112_0 (joined
            (portRef O (instanceRef CYCLE_STATE_RNO_2))
            (portRef D (instanceRef CYCLE_STATE_2))
           ))
@@ -2422,10 +2416,6 @@
           (net PORT_MISMATCH_0 (joined
            (portRef O (instanceRef PORT_MISMATCH_RNO))
            (portRef D (instanceRef PORT_MISMATCH))
-          ))
-          (net (rename BURST_COUNT_6_0 "BURST_COUNT_6[0]") (joined
-           (portRef O (instanceRef BURST_COUNT_RNO_0))
-           (portRef D (instanceRef BURST_COUNT_0))
           ))
           (net (rename tsn_c "TSn_c") (joined
            (portRef Q (instanceRef TSn))
@@ -4313,259 +4303,259 @@
            (portRef WRITE_CYCLE_ACTIVE_i_ess (instanceRef U111_CYCLE_SM))
            (portRef I0 (instanceRef D_LL_AMIGA_iobuf_RNO_7))
           ))
-          (net N_243_i (joined
+          (net N_244_i (joined
            (portRef O (instanceRef D_LL_AMIGA_iobuf_RNO_7))
            (portRef OUTPUT_ENABLE (instanceRef D_LL_AMIGA_iobuf_7))
           ))
-          (net N_242_i (joined
+          (net N_243_i (joined
            (portRef O (instanceRef D_LL_AMIGA_iobuf_RNO_6))
            (portRef OUTPUT_ENABLE (instanceRef D_LL_AMIGA_iobuf_6))
           ))
-          (net N_241_i (joined
+          (net N_242_i (joined
            (portRef O (instanceRef D_LL_AMIGA_iobuf_RNO_5))
            (portRef OUTPUT_ENABLE (instanceRef D_LL_AMIGA_iobuf_5))
           ))
-          (net N_240_i (joined
+          (net N_241_i (joined
            (portRef O (instanceRef D_LL_AMIGA_iobuf_RNO_4))
            (portRef OUTPUT_ENABLE (instanceRef D_LL_AMIGA_iobuf_4))
           ))
-          (net N_239_i (joined
+          (net N_240_i (joined
            (portRef O (instanceRef D_LL_AMIGA_iobuf_RNO_3))
            (portRef OUTPUT_ENABLE (instanceRef D_LL_AMIGA_iobuf_3))
           ))
-          (net N_238_i (joined
+          (net N_239_i (joined
            (portRef O (instanceRef D_LL_AMIGA_iobuf_RNO_2))
            (portRef OUTPUT_ENABLE (instanceRef D_LL_AMIGA_iobuf_2))
           ))
-          (net N_237_i (joined
+          (net N_238_i (joined
            (portRef O (instanceRef D_LL_AMIGA_iobuf_RNO_1))
            (portRef OUTPUT_ENABLE (instanceRef D_LL_AMIGA_iobuf_1))
           ))
-          (net N_236_i (joined
+          (net N_237_i (joined
            (portRef O (instanceRef D_LL_AMIGA_iobuf_RNO_0))
            (portRef OUTPUT_ENABLE (instanceRef D_LL_AMIGA_iobuf_0))
           ))
-          (net N_235_i (joined
+          (net N_236_i (joined
            (portRef O (instanceRef D_LM_AMIGA_iobuf_RNO_7))
            (portRef OUTPUT_ENABLE (instanceRef D_LM_AMIGA_iobuf_7))
           ))
-          (net N_234_i (joined
+          (net N_235_i (joined
            (portRef O (instanceRef D_LM_AMIGA_iobuf_RNO_6))
            (portRef OUTPUT_ENABLE (instanceRef D_LM_AMIGA_iobuf_6))
           ))
-          (net N_233_i (joined
+          (net N_234_i (joined
            (portRef O (instanceRef D_LM_AMIGA_iobuf_RNO_5))
            (portRef OUTPUT_ENABLE (instanceRef D_LM_AMIGA_iobuf_5))
           ))
-          (net N_232_i (joined
+          (net N_233_i (joined
            (portRef O (instanceRef D_LM_AMIGA_iobuf_RNO_4))
            (portRef OUTPUT_ENABLE (instanceRef D_LM_AMIGA_iobuf_4))
           ))
-          (net N_231_i (joined
+          (net N_232_i (joined
            (portRef O (instanceRef D_LM_AMIGA_iobuf_RNO_3))
            (portRef OUTPUT_ENABLE (instanceRef D_LM_AMIGA_iobuf_3))
           ))
-          (net N_230_i (joined
+          (net N_231_i (joined
            (portRef O (instanceRef D_LM_AMIGA_iobuf_RNO_2))
            (portRef OUTPUT_ENABLE (instanceRef D_LM_AMIGA_iobuf_2))
           ))
-          (net N_229_i (joined
+          (net N_230_i (joined
            (portRef O (instanceRef D_LM_AMIGA_iobuf_RNO_1))
            (portRef OUTPUT_ENABLE (instanceRef D_LM_AMIGA_iobuf_1))
           ))
-          (net N_228_i (joined
+          (net N_229_i (joined
            (portRef O (instanceRef D_LM_AMIGA_iobuf_RNO_0))
            (portRef OUTPUT_ENABLE (instanceRef D_LM_AMIGA_iobuf_0))
           ))
-          (net N_227_i (joined
+          (net N_228_i (joined
            (portRef O (instanceRef D_UM_AMIGA_iobuf_RNO_7))
            (portRef OUTPUT_ENABLE (instanceRef D_UM_AMIGA_iobuf_7))
           ))
-          (net N_226_i (joined
+          (net N_227_i (joined
            (portRef O (instanceRef D_UM_AMIGA_iobuf_RNO_6))
            (portRef OUTPUT_ENABLE (instanceRef D_UM_AMIGA_iobuf_6))
           ))
-          (net N_225_i (joined
+          (net N_226_i (joined
            (portRef O (instanceRef D_UM_AMIGA_iobuf_RNO_5))
            (portRef OUTPUT_ENABLE (instanceRef D_UM_AMIGA_iobuf_5))
           ))
-          (net N_224_i (joined
+          (net N_225_i (joined
            (portRef O (instanceRef D_UM_AMIGA_iobuf_RNO_4))
            (portRef OUTPUT_ENABLE (instanceRef D_UM_AMIGA_iobuf_4))
           ))
-          (net N_223_i (joined
+          (net N_224_i (joined
            (portRef O (instanceRef D_UM_AMIGA_iobuf_RNO_3))
            (portRef OUTPUT_ENABLE (instanceRef D_UM_AMIGA_iobuf_3))
           ))
-          (net N_222_i (joined
+          (net N_223_i (joined
            (portRef O (instanceRef D_UM_AMIGA_iobuf_RNO_2))
            (portRef OUTPUT_ENABLE (instanceRef D_UM_AMIGA_iobuf_2))
           ))
-          (net N_221_i (joined
+          (net N_222_i (joined
            (portRef O (instanceRef D_UM_AMIGA_iobuf_RNO_1))
            (portRef OUTPUT_ENABLE (instanceRef D_UM_AMIGA_iobuf_1))
           ))
-          (net N_220_i (joined
+          (net N_221_i (joined
            (portRef O (instanceRef D_UM_AMIGA_iobuf_RNO_0))
            (portRef OUTPUT_ENABLE (instanceRef D_UM_AMIGA_iobuf_0))
           ))
-          (net N_219_i (joined
+          (net N_220_i (joined
            (portRef O (instanceRef D_UU_AMIGA_iobuf_RNO_7))
            (portRef OUTPUT_ENABLE (instanceRef D_UU_AMIGA_iobuf_7))
           ))
-          (net N_218_i (joined
+          (net N_219_i (joined
            (portRef O (instanceRef D_UU_AMIGA_iobuf_RNO_6))
            (portRef OUTPUT_ENABLE (instanceRef D_UU_AMIGA_iobuf_6))
           ))
-          (net N_217_i (joined
+          (net N_218_i (joined
            (portRef O (instanceRef D_UU_AMIGA_iobuf_RNO_5))
            (portRef OUTPUT_ENABLE (instanceRef D_UU_AMIGA_iobuf_5))
           ))
-          (net N_216_i (joined
+          (net N_217_i (joined
            (portRef O (instanceRef D_UU_AMIGA_iobuf_RNO_4))
            (portRef OUTPUT_ENABLE (instanceRef D_UU_AMIGA_iobuf_4))
           ))
-          (net N_215_i (joined
+          (net N_216_i (joined
            (portRef O (instanceRef D_UU_AMIGA_iobuf_RNO_3))
            (portRef OUTPUT_ENABLE (instanceRef D_UU_AMIGA_iobuf_3))
           ))
-          (net N_214_i (joined
+          (net N_215_i (joined
            (portRef O (instanceRef D_UU_AMIGA_iobuf_RNO_2))
            (portRef OUTPUT_ENABLE (instanceRef D_UU_AMIGA_iobuf_2))
           ))
-          (net N_213_i (joined
+          (net N_214_i (joined
            (portRef O (instanceRef D_UU_AMIGA_iobuf_RNO_1))
            (portRef OUTPUT_ENABLE (instanceRef D_UU_AMIGA_iobuf_1))
           ))
-          (net N_212_i (joined
+          (net N_213_i (joined
            (portRef O (instanceRef D_UU_AMIGA_iobuf_RNO_0))
            (portRef OUTPUT_ENABLE (instanceRef D_UU_AMIGA_iobuf_0))
           ))
-          (net N_211_i (joined
+          (net N_212_i (joined
            (portRef O (instanceRef D_LL_040_iobuf_RNO_7))
            (portRef OUTPUT_ENABLE (instanceRef D_LL_040_iobuf_7))
           ))
-          (net N_210_i (joined
+          (net N_211_i (joined
            (portRef O (instanceRef D_LL_040_iobuf_RNO_6))
            (portRef OUTPUT_ENABLE (instanceRef D_LL_040_iobuf_6))
           ))
-          (net N_209_i (joined
+          (net N_210_i (joined
            (portRef O (instanceRef D_LL_040_iobuf_RNO_5))
            (portRef OUTPUT_ENABLE (instanceRef D_LL_040_iobuf_5))
           ))
-          (net N_208_i (joined
+          (net N_209_i (joined
            (portRef O (instanceRef D_LL_040_iobuf_RNO_4))
            (portRef OUTPUT_ENABLE (instanceRef D_LL_040_iobuf_4))
           ))
-          (net N_207_i (joined
+          (net N_208_i (joined
            (portRef O (instanceRef D_LL_040_iobuf_RNO_3))
            (portRef OUTPUT_ENABLE (instanceRef D_LL_040_iobuf_3))
           ))
-          (net N_206_i (joined
+          (net N_207_i (joined
            (portRef O (instanceRef D_LL_040_iobuf_RNO_2))
            (portRef OUTPUT_ENABLE (instanceRef D_LL_040_iobuf_2))
           ))
-          (net N_205_i (joined
+          (net N_206_i (joined
            (portRef O (instanceRef D_LL_040_iobuf_RNO_1))
            (portRef OUTPUT_ENABLE (instanceRef D_LL_040_iobuf_1))
           ))
-          (net N_204_i (joined
+          (net N_205_i (joined
            (portRef O (instanceRef D_LL_040_iobuf_RNO_0))
            (portRef OUTPUT_ENABLE (instanceRef D_LL_040_iobuf_0))
           ))
-          (net N_203_i (joined
+          (net N_204_i (joined
            (portRef O (instanceRef D_LM_040_iobuf_RNO_7))
            (portRef OUTPUT_ENABLE (instanceRef D_LM_040_iobuf_7))
           ))
-          (net N_202_i (joined
+          (net N_203_i (joined
            (portRef O (instanceRef D_LM_040_iobuf_RNO_6))
            (portRef OUTPUT_ENABLE (instanceRef D_LM_040_iobuf_6))
           ))
-          (net N_201_i (joined
+          (net N_202_i (joined
            (portRef O (instanceRef D_LM_040_iobuf_RNO_5))
            (portRef OUTPUT_ENABLE (instanceRef D_LM_040_iobuf_5))
           ))
-          (net N_200_i (joined
+          (net N_201_i (joined
            (portRef O (instanceRef D_LM_040_iobuf_RNO_4))
            (portRef OUTPUT_ENABLE (instanceRef D_LM_040_iobuf_4))
           ))
-          (net N_199_i (joined
+          (net N_200_i (joined
            (portRef O (instanceRef D_LM_040_iobuf_RNO_3))
            (portRef OUTPUT_ENABLE (instanceRef D_LM_040_iobuf_3))
           ))
-          (net N_198_i (joined
+          (net N_199_i (joined
            (portRef O (instanceRef D_LM_040_iobuf_RNO_2))
            (portRef OUTPUT_ENABLE (instanceRef D_LM_040_iobuf_2))
           ))
-          (net N_197_i (joined
+          (net N_198_i (joined
            (portRef O (instanceRef D_LM_040_iobuf_RNO_1))
            (portRef OUTPUT_ENABLE (instanceRef D_LM_040_iobuf_1))
           ))
-          (net N_196_i (joined
+          (net N_197_i (joined
            (portRef O (instanceRef D_LM_040_iobuf_RNO_0))
            (portRef OUTPUT_ENABLE (instanceRef D_LM_040_iobuf_0))
           ))
-          (net N_195_i (joined
+          (net N_196_i (joined
            (portRef O (instanceRef D_UM_040_iobuf_RNO_7))
            (portRef OUTPUT_ENABLE (instanceRef D_UM_040_iobuf_7))
           ))
-          (net N_194_i (joined
+          (net N_195_i (joined
            (portRef O (instanceRef D_UM_040_iobuf_RNO_6))
            (portRef OUTPUT_ENABLE (instanceRef D_UM_040_iobuf_6))
           ))
-          (net N_193_i (joined
+          (net N_194_i (joined
            (portRef O (instanceRef D_UM_040_iobuf_RNO_5))
            (portRef OUTPUT_ENABLE (instanceRef D_UM_040_iobuf_5))
           ))
-          (net N_192_i (joined
+          (net N_193_i (joined
            (portRef O (instanceRef D_UM_040_iobuf_RNO_4))
            (portRef OUTPUT_ENABLE (instanceRef D_UM_040_iobuf_4))
           ))
-          (net N_191_i (joined
+          (net N_192_i (joined
            (portRef O (instanceRef D_UM_040_iobuf_RNO_3))
            (portRef OUTPUT_ENABLE (instanceRef D_UM_040_iobuf_3))
           ))
-          (net N_190_i (joined
+          (net N_191_i (joined
            (portRef O (instanceRef D_UM_040_iobuf_RNO_2))
            (portRef OUTPUT_ENABLE (instanceRef D_UM_040_iobuf_2))
           ))
-          (net N_189_i (joined
+          (net N_190_i (joined
            (portRef O (instanceRef D_UM_040_iobuf_RNO_1))
            (portRef OUTPUT_ENABLE (instanceRef D_UM_040_iobuf_1))
           ))
-          (net N_188_i (joined
+          (net N_189_i (joined
            (portRef O (instanceRef D_UM_040_iobuf_RNO_0))
            (portRef OUTPUT_ENABLE (instanceRef D_UM_040_iobuf_0))
           ))
-          (net N_187_i (joined
+          (net N_188_i (joined
            (portRef O (instanceRef D_UU_040_iobuf_RNO_7))
            (portRef OUTPUT_ENABLE (instanceRef D_UU_040_iobuf_7))
           ))
-          (net N_186_i (joined
+          (net N_187_i (joined
            (portRef O (instanceRef D_UU_040_iobuf_RNO_6))
            (portRef OUTPUT_ENABLE (instanceRef D_UU_040_iobuf_6))
           ))
-          (net N_185_i (joined
+          (net N_186_i (joined
            (portRef O (instanceRef D_UU_040_iobuf_RNO_5))
            (portRef OUTPUT_ENABLE (instanceRef D_UU_040_iobuf_5))
           ))
-          (net N_184_i (joined
+          (net N_185_i (joined
            (portRef O (instanceRef D_UU_040_iobuf_RNO_4))
            (portRef OUTPUT_ENABLE (instanceRef D_UU_040_iobuf_4))
           ))
-          (net N_183_i (joined
+          (net N_184_i (joined
            (portRef O (instanceRef D_UU_040_iobuf_RNO_3))
            (portRef OUTPUT_ENABLE (instanceRef D_UU_040_iobuf_3))
           ))
-          (net N_182_i (joined
+          (net N_183_i (joined
            (portRef O (instanceRef D_UU_040_iobuf_RNO_2))
            (portRef OUTPUT_ENABLE (instanceRef D_UU_040_iobuf_2))
           ))
-          (net N_181_i (joined
+          (net N_182_i (joined
            (portRef O (instanceRef D_UU_040_iobuf_RNO_1))
            (portRef OUTPUT_ENABLE (instanceRef D_UU_040_iobuf_1))
           ))
-          (net N_180_i (joined
+          (net N_181_i (joined
            (portRef O (instanceRef D_UU_040_iobuf_RNO_0))
            (portRef OUTPUT_ENABLE (instanceRef D_UU_040_iobuf_0))
           ))

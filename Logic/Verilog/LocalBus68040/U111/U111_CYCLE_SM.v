@@ -26,6 +26,7 @@ Description: DATA TRANSFER CYCLE AND BUS SIZING STATE MACHINE
 
 Revision History:
     19-APR-2025 New bus sizing state machine. JN
+    31-MAY-2025 Fixed burst cycle count value. JN
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 */
@@ -177,7 +178,7 @@ always @(posedge CLK40) begin
                     WRITE_CYCLE_ACTIVE <= !RnW;
                     LW_TRANS <= SIZ[1] == SIZ[0];
                     BURST <= (SIZ == 2'b11);
-                    BURST_COUNT <= 2'b00;
+                    BURST_COUNT <= 2'h0;
                     CYCLE_STATE <= 4'h1;
                 end else begin
                     READ_CYCLE_ACTIVE <= 0;
@@ -194,10 +195,8 @@ always @(posedge CLK40) begin
             4'h2 : begin
                 case ({TACKn, TEAn})
                     TERM_NORMAL : begin
-                        CYCLE_STATE <= PORT_MISMATCH ? 4'h3 : (!BURST || !TBIn || BURST_COUNT == 2'h4 ? 4'h0 : 4'h2);
-                        BURST_COUNT <= BURST ? BURST_COUNT + 1 : 2'b00;
-                        //Keep an eye on these latches. This use case where we read a long word from a word
-                        //port cannot be tested in DIAGROM.
+                        CYCLE_STATE <= PORT_MISMATCH ? 4'h3 : (!BURST || !TBIn || BURST_COUNT == 2'h3 ? 4'h0 : 4'h2);
+                        BURST_COUNT <= BURST_COUNT + 1;
                         UU_LATCHED <= READ_CYCLE_ACTIVE ? UU_AMIGA_IN : 8'h00;
                         UM_LATCHED <= READ_CYCLE_ACTIVE ? UM_AMIGA_IN : 8'h00;
                     end

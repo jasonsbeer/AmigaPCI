@@ -11,7 +11,7 @@ SB_DFFN         1 use
 SB_DFFSR        10 uses
 SB_GB           2 uses
 VCC             1 use
-SB_LUT4         159 uses
+SB_LUT4         158 uses
 
 I/O ports: 96
 I/O primitives: 96
@@ -22,8 +22,8 @@ I/O Register bits:                  0
 Register bits not including I/Os:   98 (2%)
 
 @S |Mapping Summary:
-Total  LUTs: 159 (4%)
+Total  LUTs: 158 (4%)
 
 Distribution of All Consumed LUTs = LUT4 
-Distribution of All Consumed Luts 159 = 159 
+Distribution of All Consumed Luts 158 = 158 
 

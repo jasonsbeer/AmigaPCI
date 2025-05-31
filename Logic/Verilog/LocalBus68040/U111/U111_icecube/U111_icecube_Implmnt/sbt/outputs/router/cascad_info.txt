@@ -1,12 +1,9 @@
 [VIC]
-U111_CYCLE_SM.CYCLE_STATE_RNIGD6KZ0Z_2_cascade_=ltout:in2
-U111_CYCLE_SM.CYCLE_STATE_srsts_0_1_0_cascade_=ltout:in1
+U111_CYCLE_SM.BURST_COUNT_0_sqmuxa_cascade_=ltout:in2
 U111_CYCLE_SM.CYCLE_STATE_srsts_i_1_2_cascade_=ltout:in3
 U111_CYCLE_SM.CYCLE_STATE_srsts_i_o2_0_5_cascade_=ltout:in3
-U111_CYCLE_SM.N_132_0_cascade_=ltout:in2
-U111_CYCLE_SM.N_148_cascade_=ltout:in2
-U111_CYCLE_SM.N_158_cascade_=ltout:in2
-U111_CYCLE_SM.N_160_cascade_=ltout:in2
-U111_CYCLE_SM.PORT_MISMATCH_2_cascade_=ltout:in2
+U111_CYCLE_SM.N_131_cascade_=ltout:in2
+U111_CYCLE_SM.N_132_cascade_=ltout:in3
+U111_CYCLE_SM.READ_CYCLE_ACTIVE_0_sqmuxa_cascade_=ltout:in1
 U111_CYCLE_SM.READ_CYCLE_ACTIVE_esr_RNIPC3BZ0Z1_cascade_=ltout:in2
 U111_CYCLE_SM.un7_CYCLE_STATE_0_cascade_=ltout:in3
