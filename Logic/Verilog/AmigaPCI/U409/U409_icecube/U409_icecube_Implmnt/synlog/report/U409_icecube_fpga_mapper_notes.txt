@@ -1,16 +1,8 @@
 @N: MF248 |Running in 64-bit mode.
 @N: MF666 |Clock conversion enabled. (Command "set_option -fix_gated_and_generated_clocks 1" in the project file.)
-@N: MO111 :"d:\amigapci\u409\u409_autoconfig.v":39:12:39:58|Tristate driver D_2[0] (in view: work.U409_TOP(verilog)) on net D[0] (in view: work.U409_TOP(verilog)) has its enable tied to GND.
-@N: MO111 :"d:\amigapci\u409\u409_autoconfig.v":39:12:39:58|Tristate driver D_2[1] (in view: work.U409_TOP(verilog)) on net D[1] (in view: work.U409_TOP(verilog)) has its enable tied to GND.
-@N: MO111 :"d:\amigapci\u409\u409_autoconfig.v":39:12:39:58|Tristate driver D_2[2] (in view: work.U409_TOP(verilog)) on net D[2] (in view: work.U409_TOP(verilog)) has its enable tied to GND.
-@N: MO111 :"d:\amigapci\u409\u409_autoconfig.v":39:12:39:58|Tristate driver D_2[3] (in view: work.U409_TOP(verilog)) on net D[3] (in view: work.U409_TOP(verilog)) has its enable tied to GND.
-@N: MO111 :"d:\amigapci\u409\u409_autoconfig.v":39:12:39:58|Tristate driver D_2[4] (in view: work.U409_TOP(verilog)) on net D[4] (in view: work.U409_TOP(verilog)) has its enable tied to GND.
-@N: MO111 :"d:\amigapci\u409\u409_autoconfig.v":39:12:39:58|Tristate driver D_2[5] (in view: work.U409_TOP(verilog)) on net D[5] (in view: work.U409_TOP(verilog)) has its enable tied to GND.
-@N: MO111 :"d:\amigapci\u409\u409_autoconfig.v":39:12:39:58|Tristate driver D_2[6] (in view: work.U409_TOP(verilog)) on net D[6] (in view: work.U409_TOP(verilog)) has its enable tied to GND.
-@N: MO111 :"d:\amigapci\u409\u409_autoconfig.v":39:12:39:58|Tristate driver D_2[7] (in view: work.U409_TOP(verilog)) on net D[7] (in view: work.U409_TOP(verilog)) has its enable tied to GND.
 @N: MT204 |Auto Constrain mode is disabled because clocks are defined in the SDC file
-@N: MO225 :"d:\amigapci\u409\u409_transfer_ack.v":53:0:53:5|There are no possible illegal states for state machine TACK_COUNTER[3:0] (in view: work.U409_TRANSFER_ACK(verilog)); safe FSM implementation is not required.
-@N: MO225 :"d:\amigapci\u409\u409_transfer_ack.v":164:0:164:5|There are no possible illegal states for state machine CIA_STATE[3:0] (in view: work.U409_TRANSFER_ACK(verilog)); safe FSM implementation is not required.
+@N: MO225 :"d:\amigapci\u409\u409_transfer_ack.v":61:0:61:5|There are no possible illegal states for state machine TACK_COUNTER[3:0] (in view: work.U409_TRANSFER_ACK(verilog)); safe FSM implementation is not required.
+@N: MO225 :"d:\amigapci\u409\u409_transfer_ack.v":176:0:176:5|There are no possible illegal states for state machine CIA_STATE[3:0] (in view: work.U409_TRANSFER_ACK(verilog)); safe FSM implementation is not required.
 @N: FX271 :"d:\amigapci\u409\u409_cia.v":58:20:58:33|Replicating instance U409_CIA.CIA_ENABLE (in view: work.U409_TOP(verilog)) with 3 loads 1 time(s) to improve timing.
 @N: FX1016 :"d:\amigapci\u409\u409_top.v":38:20:38:23|SB_GB_IO inserted on the port CLK6.
 @N: FX1016 :"d:\amigapci\u409\u409_top.v":38:26:38:33|SB_GB_IO inserted on the port CLK28_IN.

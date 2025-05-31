@@ -9,7 +9,7 @@ The file contains the area information from mapper to be displayed as part of th
 <title>Resource Usage</title>
 </report_link>
 <parameter tooltip="Total PADS used" name="PADS">
-<data>61</data>
+<data>64</data>
 </parameter>
 <parameter tooltip="Total FLOPS used" name="FLOPS">
 <data>74</data>

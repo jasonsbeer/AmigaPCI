@@ -1,4 +1,4 @@
-# Mon Apr 14 17:39:07 2025
+# Sat May 31 14:04:43 2025
 
 Synopsys Lattice Technology Pre-mapping, Version maplat, Build 1612R, Built Dec  5 2016 10:31:39
 Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
@@ -23,15 +23,6 @@ Start loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00
 
 Finished loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 101MB peak: 104MB)
 
-@N: MO111 :"d:\amigapci\u409\u409_autoconfig.v":39:12:39:58|Tristate driver D_2[7] (in view: work.U409_TOP(verilog)) on net D[7] (in view: work.U409_TOP(verilog)) has its enable tied to GND.
-@N: MO111 :"d:\amigapci\u409\u409_autoconfig.v":39:12:39:58|Tristate driver D_2[6] (in view: work.U409_TOP(verilog)) on net D[6] (in view: work.U409_TOP(verilog)) has its enable tied to GND.
-@N: MO111 :"d:\amigapci\u409\u409_autoconfig.v":39:12:39:58|Tristate driver D_2[5] (in view: work.U409_TOP(verilog)) on net D[5] (in view: work.U409_TOP(verilog)) has its enable tied to GND.
-@N: MO111 :"d:\amigapci\u409\u409_autoconfig.v":39:12:39:58|Tristate driver D_2[4] (in view: work.U409_TOP(verilog)) on net D[4] (in view: work.U409_TOP(verilog)) has its enable tied to GND.
-@N: MO111 :"d:\amigapci\u409\u409_autoconfig.v":39:12:39:58|Tristate driver D_2[3] (in view: work.U409_TOP(verilog)) on net D[3] (in view: work.U409_TOP(verilog)) has its enable tied to GND.
-@N: MO111 :"d:\amigapci\u409\u409_autoconfig.v":39:12:39:58|Tristate driver D_2[2] (in view: work.U409_TOP(verilog)) on net D[2] (in view: work.U409_TOP(verilog)) has its enable tied to GND.
-@N: MO111 :"d:\amigapci\u409\u409_autoconfig.v":39:12:39:58|Tristate driver D_2[1] (in view: work.U409_TOP(verilog)) on net D[1] (in view: work.U409_TOP(verilog)) has its enable tied to GND.
-@N: MO111 :"d:\amigapci\u409\u409_autoconfig.v":39:12:39:58|Tristate driver D_2[0] (in view: work.U409_TOP(verilog)) on net D[0] (in view: work.U409_TOP(verilog)) has its enable tied to GND.
-@N: BN115 :"d:\amigapci\u409\u409_top.v":181:16:181:30|Removing instance U409_AUTOCONFIG (in view: work.U409_TOP(verilog)) of type view:work.U409_AUTOCONFIG(verilog) because it does not drive other instances.
 
 ICG Latch Removal Summary:
 Number of ICG latches removed:	0
@@ -55,8 +46,6 @@ U409_TOP|CLK80_OUT_derived_clock     80.0 MHz      12.500        derived (from C
 =======================================================================================================================
 
 Finished Pre Mapping Phase.
-@N: MO111 :"d:\amigapci\u409\u409_autoconfig.v":39:12:39:58|Tristate driver D_2[0] (in view: work.U409_TOP(verilog)) on net D[0] (in view: work.U409_TOP(verilog)) has its enable tied to GND.
-@N: MO111 :"d:\amigapci\u409\u409_autoconfig.v":39:12:39:58|Tristate driver D_2[1] (in view: work.U409_TOP(verilog)) on net D[1] (in view: work.U409_TOP(verilog)) has its enable tied to GND.
 @N: BN225 |Writing default property annotation file D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\U409_icecube.sap.
 
 Starting constraint checker (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
@@ -67,24 +56,24 @@ original code -> new code
    0001 -> 01
    0010 -> 10
    0011 -> 11
-@N: MO225 :"d:\amigapci\u409\u409_transfer_ack.v":53:0:53:5|There are no possible illegal states for state machine TACK_COUNTER[3:0] (in view: work.U409_TRANSFER_ACK(verilog)); safe FSM implementation is not required.
+@N: MO225 :"d:\amigapci\u409\u409_transfer_ack.v":61:0:61:5|There are no possible illegal states for state machine TACK_COUNTER[3:0] (in view: work.U409_TRANSFER_ACK(verilog)); safe FSM implementation is not required.
 Encoding state machine CIA_STATE[3:0] (in view: work.U409_TRANSFER_ACK(verilog))
 original code -> new code
    00 -> 00
    01 -> 01
    10 -> 10
    11 -> 11
-@N: MO225 :"d:\amigapci\u409\u409_transfer_ack.v":164:0:164:5|There are no possible illegal states for state machine CIA_STATE[3:0] (in view: work.U409_TRANSFER_ACK(verilog)); safe FSM implementation is not required.
+@N: MO225 :"d:\amigapci\u409\u409_transfer_ack.v":176:0:176:5|There are no possible illegal states for state machine CIA_STATE[3:0] (in view: work.U409_TRANSFER_ACK(verilog)); safe FSM implementation is not required.
 None
 None
 
-Finished constraint checker (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
+Finished constraint checker (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 132MB peak: 133MB)
 
 Pre-mapping successful!
 
 At Mapper Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 47MB peak: 133MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
-# Mon Apr 14 17:39:08 2025
+# Sat May 31 14:04:44 2025
 
 ###########################################################]

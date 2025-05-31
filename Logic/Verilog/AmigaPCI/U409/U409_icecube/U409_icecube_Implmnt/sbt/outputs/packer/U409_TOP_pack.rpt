@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:31:51
 
-* File Generated:     Apr 14 2025 17:39:27
+* File Generated:     May 31 2025 14:05:04
 
 * Purpose:            General info of design implementation
 
@@ -28,27 +28,27 @@ Device Info:
 Design statistics:
 ------------------
     FFs:                  74
-    LUTs:                 176
+    LUTs:                 179
     RAMs:                 0
-    IOBs:                 48
+    IOBs:                 51
     GBs:                  2
     PLLs:                 1
     Warm Boots:           0
 
 Logic Resource Utilization:
 ---------------------------
-    Total Logic Cells: 179/3520
-        Combinational Logic Cells: 105      out of   3520      2.98295%
+    Total Logic Cells: 182/3520
+        Combinational Logic Cells: 108      out of   3520      3.06818%
         Sequential Logic Cells:    74       out of   3520      2.10227%
-        Logic Tiles:               51       out of   440       11.5909%
+        Logic Tiles:               57       out of   440       12.9545%
     Registers: 
         Logic Registers:           74       out of   3520      2.10227%
         IO Registers:              0        out of   880       0
     Block RAMs:                    0        out of   20        0%
     Warm Boots:                    0        out of   1         0%
     Pins:
-        Input Pins:                28       out of   107       26.1682%
-        Output Pins:               19       out of   107       17.757%
+        Input Pins:                29       out of   107       27.1028%
+        Output Pins:               21       out of   107       19.6262%
         InOut Pins:                1        out of   107       0.934579%
     Global Buffers:                2        out of   8         25%
     PLLs:                          1        out of   2         50%
@@ -57,7 +57,7 @@ IO Bank Utilization:
 --------------------
     Bank 3: 17       out of   28        60.7143%
     Bank 1: 5        out of   29        17.2414%
-    Bank 0: 12       out of   27        44.4444%
+    Bank 0: 15       out of   27        55.5556%
     Bank 2: 14       out of   23        60.8696%
 
 Detailed I/O Info:
@@ -93,6 +93,7 @@ Detailed I/O Info:
     137         Input      SB_LVCMOS    No       0        Simple Input                               TM[1]      
     138         Input      SB_LVCMOS    No       0        Simple Input                               TT[0]      
     139         Input      SB_LVCMOS    No       0        Simple Input                               TT[1]      
+    142         Input      SB_LVCMOS    No       0        Simple Input                               RnW        
 
     Output Pins: 
     Pin Number  Direction  IO Standard  Pull Up  IO Bank  IO Function                                Signal Name
@@ -111,6 +112,8 @@ Detailed I/O Info:
     78          Output     SB_LVCMOS    No       1        Simple Output                              CIACS0n    
     79          Output     SB_LVCMOS    No       1        Simple Output                              CIACS1n    
     80          Output     SB_LVCMOS    No       1        Simple Output                              RTC_ENn    
+    115         Output     SB_LVCMOS    No       0        Output Tristatable by Enable               TCIn       
+    116         Output     SB_LVCMOS    No       0        Output Tristatable by Enable               TBIn       
     118         Output     SB_LVCMOS    No       0        Simple Output                              REGSPACEn  
     119         Output     SB_LVCMOS    No       0        Simple Output                              BUFENn     
     122         Output     SB_LVCMOS    No       0        Simple Output                              CLK_CIA    

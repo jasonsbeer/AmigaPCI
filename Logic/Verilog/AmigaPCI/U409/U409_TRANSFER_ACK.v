@@ -26,15 +26,17 @@ Description: MC68040/MC68060 TRANSFER ACK
 
 Revision History:
     25-JAN-2025 : INITIAL REV 5.0 CODE
-    09-FEB-2025 : SEPERATED ROM AND AUTOVECTOR CYCLE ACKS
+    09-FEB-2025 : SEPERATED ROM AND AUTOVECTOR CYCLE ACKS JN
+    31-MAY-2028 : Added _TBI and _TCI assertion to cycle terminiations. JN
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 */
 
 module U409_TRANSFER_ACK (
 
-    input CLK80, CLK40, RESETn, TSn, ROMEN, CIA_ENABLE, CLK_CIA, AGNUS_SPACE, AUTOVECTOR, ROM_DELAY, RTC_ENn,
+    input CLK80, CLK40, RESETn, TSn, ROMEN, CIA_ENABLE, CLK_CIA, AGNUS_SPACE, AUTOVECTOR, ROM_DELAY, RTC_ENn, NOCACHE_SPACE,
 
+    output TBIn, TCIn,
     output reg ROMENn,
 
     inout TACKn
@@ -45,9 +47,15 @@ module U409_TRANSFER_ACK (
 // MC68040 TRANSFER ACK //
 /////////////////////////
 
+//None of the cycles U409 handles support bursts, so all cycles are terminated with a burst inhibit.
+//We do not want CIA space to be cached, so those cycles are terminated with a cache inhibit.
+
 reg TACK_EN;
 reg TACK_OUTn;
+
 assign TACKn = TACK_EN ? TACK_OUTn : 1'bz;
+assign TBIn  = TACK_EN ? TACK_OUTn : 1'bz;
+assign TCIn  = TACK_EN && NOCACHE_SPACE ? TACK_OUTn : 1'bz;
 
 reg [3:0] TACK_COUNTER;
 always @(posedge CLK80) begin
@@ -61,9 +69,7 @@ always @(posedge CLK80) begin
                 TACK_COUNTER <= 4'h01;
                 TACK_EN <= 1;
                 TACK_OUTn <= 0;
-            end //else begin
-                //TACK_EN <= 0;
-            //end
+            end
         end
         4'h01 : begin
             TACK_COUNTER <= 4'h02;
@@ -87,7 +93,13 @@ end
 //WE DELAY ASSERTION OF _TACK BY 100ns TO SUPPORT SETUP TIME FOR THE ROM.
 //5 is the appropriate delay for 100ns.
 
-wire [3:0]ROM_TACK_DELAY = ROM_DELAY ? 4'h5 : 4'h1;
+//4'h5 = 100ns
+//4'h9 = 150ns
+//4'hB = 200ns
+
+//wire [3:0]ROM_TACK_DELAY = ROM_DELAY ? 4'h5 : 4'h1;
+//wire [3:0]ROM_TACK_DELAY = ROM_DELAY ? 4'hB : 4'h5;
+wire [3:0] ROM_TACK_DELAY = ROM_DELAY ? 4'h8 : 4'h5;
 
 reg [3:0] ROM_TACK_COUNTER;
 reg ROM_TACK_EN;
@@ -204,6 +216,7 @@ end
 //END THE CYCLE WHEN THE CPU LOOKS FOR AN ADDRESS WE DON'T EXPLICITLY SUPPORT.
 //CIA CYCLES ARE THE LONGEST CYCLES WE SUPPORT, WHICH TAKE ~1us. WE WAIT A LITTLE
 //LONGER AND THEN ASSERT _TACK OURSELVES.
+//We can include the Fat Gary register to assert a bus error with this at a later time.
 
 localparam DELAYED_TACK_DELAY = 8'hF9; //249 CLOCK CYCLES
 reg [7:0] DELAYED_TACK_COUNTER;

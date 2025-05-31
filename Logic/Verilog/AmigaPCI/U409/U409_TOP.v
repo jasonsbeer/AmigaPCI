@@ -35,13 +35,13 @@ iceprog D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\sbt\outputs\bitmap\U4
 
 module U409_TOP (
 
-    input CLK40_IN, CLK6, CLK28_IN, RESETn, TSn, OVL, //ROM_DELAY
+    input CLK40_IN, CLK6, CLK28_IN, RESETn, TSn, OVL, RnW, //ROM_DELAY
     input [31:1] A,
     input [1:0] TT,
     input [1:0] TM,
 
     output ROMENn, BUFENn, TICK60, TICK50, CLK_CIA, CIACS0n, CIACS1n, RAMSPACEn, REGSPACEn, RTC_ENn,
-    output PORTSIZE,
+    output PORTSIZE, TBIn, TCIn,
     output [7:0] D,
 
     inout TACKn
@@ -77,15 +77,23 @@ SB_PLL40_CORE #(
     .BYPASS(1'b0)
 );
 
+///////////////////
+// SIGNAL WIRES //
+/////////////////
+
+wire AUTOCONFIG_SPACE;
+wire AUTOVECTOR;
+wire ROMEN;
+wire CIA_SPACE;
+wire CIA_ENABLE;
+
+wire AGNUS_SPACE = !RAMSPACEn || !REGSPACEn;
+wire NOCACHE_SPACE = CIA_SPACE || AUTOCONFIG_SPACE;
+
 ///////////////////////
 // TRANSFER ACK TOP //
 /////////////////////
 
-wire AUTOVECTOR;
-wire ROMEN;
-wire CIA_SPACE;
-wire AGNUS_SPACE = !RAMSPACEn || !REGSPACEn;
-wire CIA_ENABLE;
 wire ROM_DELAY = 1;
 
 U409_TRANSFER_ACK U409_TRANSFER_ACK (
@@ -101,8 +109,11 @@ U409_TRANSFER_ACK U409_TRANSFER_ACK (
     .AUTOVECTOR (AUTOVECTOR),
     .ROM_DELAY (ROM_DELAY),
     .RTC_ENn (RTC_ENn),
+    .NOCACHE_SPACE (NOCACHE_SPACE),
     
     //OUTPUTS
+    .TBIn (TBIn),
+    .TCIn (TCIn),
     .ROMENn (ROMENn),
 
     //INOUTS
@@ -112,8 +123,6 @@ U409_TRANSFER_ACK U409_TRANSFER_ACK (
 /////////////////////////////
 // DATA BUFFER ENABLE TOP //
 ///////////////////////////
-
-wire AUTOCONFIG_SPACE;
 
 U409_DATA_BUFFERS U409_DATA_BUFFERS (
     //INPUTS
