@@ -1,2 +1,3 @@
-@E: CG288 :"D:\LocalBus68040\U111\U111_CYCLE_SM.v":97:81:97:81|Expecting delimiter: , or ;
+@E: CG103 :"D:\LocalBus68040\U111\U111_CYCLE_SM.v":221:12:221:14|Expecting expression
+@E: CS187 :"D:\LocalBus68040\U111\U111_CYCLE_SM.v":273:0:273:8|Expecting endmodule
 

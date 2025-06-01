@@ -21,7 +21,7 @@ Selecting top level module U111_TOP
 
 @N: CG364 :"D:\LocalBus68040\U111\U111_BUFFERS.v":32:7:32:18|Synthesizing module U111_BUFFERS in library work.
 
-@N: CG364 :"D:\LocalBus68040\U111\U111_CYCLE_SM.v":33:7:33:19|Synthesizing module U111_CYCLE_SM in library work.
+@N: CG364 :"D:\LocalBus68040\U111\U111_CYCLE_SM.v":34:7:34:19|Synthesizing module U111_CYCLE_SM in library work.
 
 @N: CG364 :"D:\LocalBus68040\U111\U111_TOP.v":34:7:34:14|Synthesizing module U111_TOP in library work.
 
@@ -31,7 +31,7 @@ Selecting top level module U111_TOP
 @W: CG781 :"D:\LocalBus68040\U111\U111_TOP.v":87:2:87:4|Input SDI on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
 @W: CG781 :"D:\LocalBus68040\U111\U111_TOP.v":87:2:87:4|Input SCLK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
 @W: CG781 :"D:\LocalBus68040\U111\U111_TOP.v":87:2:87:4|Input LATCHINPUTVALUE on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@N: CL201 :"D:\LocalBus68040\U111\U111_CYCLE_SM.v":152:0:152:5|Trying to extract state machine for register CYCLE_STATE.
+@N: CL201 :"D:\LocalBus68040\U111\U111_CYCLE_SM.v":153:0:153:5|Trying to extract state machine for register CYCLE_STATE.
 Extracted state machine for register CYCLE_STATE
 State machine has 6 reachable states with original encodings of:
    0000
@@ -40,14 +40,15 @@ State machine has 6 reachable states with original encodings of:
    0011
    0100
    0101
-@N: CL159 :"D:\LocalBus68040\U111\U111_CYCLE_SM.v":34:10:34:14|Input CLK80 is unused.
+@N: CL159 :"D:\LocalBus68040\U111\U111_CYCLE_SM.v":35:10:35:14|Input CLK80 is unused.
+@N: CL159 :"D:\LocalBus68040\U111\U111_CYCLE_SM.v":35:56:35:58|Input BGn is unused.
 
 At c_ver Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 71MB peak: 72MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Sat May 31 14:22:10 2025
+# Sat May 31 15:09:20 2025
 
 ###########################################################]
 Synopsys Netlist Linker, version comp2016q3p1, Build 141R, built Dec  5 2016
@@ -60,7 +61,7 @@ At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Sat May 31 14:22:10 2025
+# Sat May 31 15:09:20 2025
 
 ###########################################################]
 @END
@@ -70,6 +71,6 @@ At c_hdl Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Sat May 31 14:22:10 2025
+# Sat May 31 15:09:20 2025
 
 ###########################################################]

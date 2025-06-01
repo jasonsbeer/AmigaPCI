@@ -3,7 +3,7 @@
 #OS: Windows 8 6.2
 #Hostname: JASON-LAB
 
-# Sat May 31 14:22:10 2025
+# Sat May 31 15:09:20 2025
 
 #Implementation: U111_icecube_Implmnt
 
@@ -30,7 +30,7 @@ Selecting top level module U111_TOP
 
 @N: CG364 :"D:\LocalBus68040\U111\U111_BUFFERS.v":32:7:32:18|Synthesizing module U111_BUFFERS in library work.
 
-@N: CG364 :"D:\LocalBus68040\U111\U111_CYCLE_SM.v":33:7:33:19|Synthesizing module U111_CYCLE_SM in library work.
+@N: CG364 :"D:\LocalBus68040\U111\U111_CYCLE_SM.v":34:7:34:19|Synthesizing module U111_CYCLE_SM in library work.
 
 @N: CG364 :"D:\LocalBus68040\U111\U111_TOP.v":34:7:34:14|Synthesizing module U111_TOP in library work.
 
@@ -40,7 +40,7 @@ Selecting top level module U111_TOP
 @W: CG781 :"D:\LocalBus68040\U111\U111_TOP.v":87:2:87:4|Input SDI on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
 @W: CG781 :"D:\LocalBus68040\U111\U111_TOP.v":87:2:87:4|Input SCLK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
 @W: CG781 :"D:\LocalBus68040\U111\U111_TOP.v":87:2:87:4|Input LATCHINPUTVALUE on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@N: CL201 :"D:\LocalBus68040\U111\U111_CYCLE_SM.v":152:0:152:5|Trying to extract state machine for register CYCLE_STATE.
+@N: CL201 :"D:\LocalBus68040\U111\U111_CYCLE_SM.v":153:0:153:5|Trying to extract state machine for register CYCLE_STATE.
 Extracted state machine for register CYCLE_STATE
 State machine has 6 reachable states with original encodings of:
    0000
@@ -49,14 +49,15 @@ State machine has 6 reachable states with original encodings of:
    0011
    0100
    0101
-@N: CL159 :"D:\LocalBus68040\U111\U111_CYCLE_SM.v":34:10:34:14|Input CLK80 is unused.
+@N: CL159 :"D:\LocalBus68040\U111\U111_CYCLE_SM.v":35:10:35:14|Input CLK80 is unused.
+@N: CL159 :"D:\LocalBus68040\U111\U111_CYCLE_SM.v":35:56:35:58|Input BGn is unused.
 
 At c_ver Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 71MB peak: 72MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Sat May 31 14:22:10 2025
+# Sat May 31 15:09:20 2025
 
 ###########################################################]
 Synopsys Netlist Linker, version comp2016q3p1, Build 141R, built Dec  5 2016
@@ -69,7 +70,7 @@ At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Sat May 31 14:22:10 2025
+# Sat May 31 15:09:20 2025
 
 ###########################################################]
 @END
@@ -79,7 +80,7 @@ At c_hdl Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Sat May 31 14:22:10 2025
+# Sat May 31 15:09:20 2025
 
 ###########################################################]
 Synopsys Netlist Linker, version comp2016q3p1, Build 141R, built Dec  5 2016
@@ -93,12 +94,12 @@ At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Sat May 31 14:22:12 2025
+# Sat May 31 15:09:21 2025
 
 ###########################################################]
 Pre-mapping Report
 
-# Sat May 31 14:22:12 2025
+# Sat May 31 15:09:21 2025
 
 Synopsys Lattice Technology Pre-mapping, Version maplat, Build 1612R, Built Dec  5 2016 10:31:39
 Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
@@ -167,12 +168,12 @@ Pre-mapping successful!
 At Mapper Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 47MB peak: 133MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
-# Sat May 31 14:22:12 2025
+# Sat May 31 15:09:22 2025
 
 ###########################################################]
 Map & Optimize Report
 
-# Sat May 31 14:22:12 2025
+# Sat May 31 15:09:22 2025
 
 Synopsys Lattice Technology Mapper, Version maplat, Build 1612R, Built Dec  5 2016 10:31:39
 Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
@@ -246,14 +247,12 @@ Finished technology mapping (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:0
 
 Pass		 CPU time		Worst Slack		Luts / Registers
 ------------------------------------------------------------
-   1		0h:00m:00s		    10.71ns		  95 /        98
-@N: FX1017 :|SB_GB inserted on the net RESETn_c_i.
-@N: FX1017 :|SB_GB inserted on the net U111_CYCLE_SM.CYCLE_STATE_0[0].
+   1		0h:00m:00s		    10.71ns		  95 /        35
 
-Finished technology timing optimizations and critical path resynthesis (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 133MB peak: 134MB)
+Finished technology timing optimizations and critical path resynthesis (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 132MB peak: 133MB)
 
 
-Finished restoring hierarchy (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 133MB peak: 134MB)
+Finished restoring hierarchy (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 132MB peak: 133MB)
 
 @N: MT611 :|Automatically generated clock U111_TOP|CLK80_derived_clock is not used and is being removed
 
@@ -263,14 +262,14 @@ Finished restoring hierarchy (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:
 
 #### START OF CLOCK OPTIMIZATION REPORT #####[
 
-1 non-gated/non-generated clock tree(s) driving 98 clock pin(s) of sequential element(s)
+1 non-gated/non-generated clock tree(s) driving 35 clock pin(s) of sequential element(s)
 0 gated/generated clock tree(s) driving 0 clock pin(s) of sequential element(s)
 0 instances converted, 0 sequential instances remain driven by gated/generated clocks
 
 ============================ Non-Gated/Non-Generated Clocks =============================
 Clock Tree ID     Driving Element     Drive Element Type     Fanout     Sample Instance  
 -----------------------------------------------------------------------------------------
-@K:CKID0001       pll                 SB_PLL40_2F_PAD        98         U111_CYCLE_SM.TSn
+@K:CKID0001       pll                 SB_PLL40_2F_PAD        35         U111_CYCLE_SM.TSn
 =========================================================================================
 
 
@@ -281,7 +280,7 @@ Start Writing Netlists (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00
 
 Writing Analyst data base D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\synwork\U111_icecube_m.srm
 
-Finished Writing Netlist Databases (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 132MB peak: 134MB)
+Finished Writing Netlist Databases (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 134MB)
 
 Writing EDIF Netlist and constraint files
 @N: BW103 |The default time unit for the Synopsys Constraint File (SDC or FDC) is 1ns.
@@ -289,17 +288,17 @@ Writing EDIF Netlist and constraint files
 @N: FX1056 |Writing EDF file: D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\U111_icecube.edf
 L-2016.09L+ice40
 
-Finished Writing EDIF Netlist and constraint files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 134MB peak: 136MB)
+Finished Writing EDIF Netlist and constraint files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 133MB peak: 135MB)
 
 
-Start final timing analysis (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 134MB peak: 136MB)
+Start final timing analysis (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 133MB peak: 135MB)
 
 @N: MT615 |Found clock CLK40_IN with period 25.00ns 
 @N: MT615 |Found clock U111_TOP|CLK40_derived_clock with period 25.00ns 
 
 
 ##### START OF TIMING REPORT #####[
-# Timing Report written on Sat May 31 14:22:13 2025
+# Timing Report written on Sat May 31 15:09:23 2025
 #
 
 
@@ -340,7 +339,7 @@ Clocks                                                      |    rise  to  rise 
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 Starting                      Ending                        |  constraint  slack   |  constraint  slack  |  constraint  slack  |  constraint  slack
 ---------------------------------------------------------------------------------------------------------------------------------------------------
-U111_TOP|CLK40_derived_clock  U111_TOP|CLK40_derived_clock  |  25.000      17.357  |  No paths    -      |  12.380      8.229  |  No paths    -    
+U111_TOP|CLK40_derived_clock  U111_TOP|CLK40_derived_clock  |  25.000      17.385  |  No paths    -      |  12.380      8.229  |  No paths    -    
 ===================================================================================================================================================
  Note: 'No paths' indicates there are no paths in the design for that pair of clock edges.
        'Diff grp' indicates that paths exist but the starting clock and ending clock are in different clock groups.
@@ -368,12 +367,12 @@ Instance                         Reference                        Type         P
                                  Clock                                                                                      
 ----------------------------------------------------------------------------------------------------------------------------
 U111_CYCLE_SM.TS_EN              U111_TOP|CLK40_derived_clock     SB_DFFSR     Q       TS_EN              0.540       8.229 
-U111_CYCLE_SM.BURST              U111_TOP|CLK40_derived_clock     SB_DFFSR     Q       BURST              0.540       17.357
-U111_CYCLE_SM.CYCLE_STATE[0]     U111_TOP|CLK40_derived_clock     SB_DFF       Q       CYCLE_STATE[0]     0.540       17.364
-U111_CYCLE_SM.CYCLE_STATE[5]     U111_TOP|CLK40_derived_clock     SB_DFF       Q       CYCLE_STATE[5]     0.540       17.378
-U111_CYCLE_SM.CYCLE_STATE[2]     U111_TOP|CLK40_derived_clock     SB_DFF       Q       CYCLE_STATE[2]     0.540       17.406
+U111_CYCLE_SM.CYCLE_STATE[2]     U111_TOP|CLK40_derived_clock     SB_DFF       Q       CYCLE_STATE[2]     0.540       17.385
+U111_CYCLE_SM.BURST              U111_TOP|CLK40_derived_clock     SB_DFFSR     Q       BURST              0.540       17.420
+U111_CYCLE_SM.CYCLE_STATE[5]     U111_TOP|CLK40_derived_clock     SB_DFF       Q       CYCLE_STATE[5]     0.540       17.441
 U111_CYCLE_SM.BURST_COUNT[0]     U111_TOP|CLK40_derived_clock     SB_DFFSR     Q       BURST_COUNT[0]     0.540       17.525
 U111_CYCLE_SM.BURST_COUNT[1]     U111_TOP|CLK40_derived_clock     SB_DFFSR     Q       BURST_COUNT[1]     0.540       17.588
+U111_CYCLE_SM.CYCLE_STATE[0]     U111_TOP|CLK40_derived_clock     SB_DFF       Q       CYCLE_STATE[0]     0.540       18.980
 U111_CYCLE_SM.CYCLE_STATE[1]     U111_TOP|CLK40_derived_clock     SB_DFF       Q       CYCLE_STATE[1]     0.540       19.099
 U111_CYCLE_SM.LW_TRANS           U111_TOP|CLK40_derived_clock     SB_DFFSR     Q       LW_TRANS           0.540       19.099
 U111_CYCLE_SM.CYCLE_STATE[3]     U111_TOP|CLK40_derived_clock     SB_DFF       Q       CYCLE_STATE[3]     0.540       19.113
@@ -388,15 +387,15 @@ Instance                            Reference                        Type       
                                     Clock                                                                                                
 -----------------------------------------------------------------------------------------------------------------------------------------
 U111_CYCLE_SM.TSn                   U111_TOP|CLK40_derived_clock     SB_DFFN       D       TSn                        12.275       8.229 
-U111_CYCLE_SM.CYCLE_STATE[0]        U111_TOP|CLK40_derived_clock     SB_DFF        D       CYCLE_STATE_nss_0_i[0]     24.895       17.357
-U111_CYCLE_SM.LATCH_EN              U111_TOP|CLK40_derived_clock     SB_DFFSR      D       LATCH_EN_0                 24.895       17.364
-U111_CYCLE_SM.TS_EN                 U111_TOP|CLK40_derived_clock     SB_DFFSR      D       TS_EN_1                    24.895       17.364
-U111_CYCLE_SM.UM_LATCHED_esr[0]     U111_TOP|CLK40_derived_clock     SB_DFFESR     E       BURST_COUNT_0_sqmuxa_0     25.000       17.406
-U111_CYCLE_SM.UM_LATCHED_esr[1]     U111_TOP|CLK40_derived_clock     SB_DFFESR     E       BURST_COUNT_0_sqmuxa_0     25.000       17.406
-U111_CYCLE_SM.UM_LATCHED_esr[2]     U111_TOP|CLK40_derived_clock     SB_DFFESR     E       BURST_COUNT_0_sqmuxa_0     25.000       17.406
-U111_CYCLE_SM.UM_LATCHED_esr[3]     U111_TOP|CLK40_derived_clock     SB_DFFESR     E       BURST_COUNT_0_sqmuxa_0     25.000       17.406
-U111_CYCLE_SM.UM_LATCHED_esr[4]     U111_TOP|CLK40_derived_clock     SB_DFFESR     E       BURST_COUNT_0_sqmuxa_0     25.000       17.406
-U111_CYCLE_SM.UM_LATCHED_esr[5]     U111_TOP|CLK40_derived_clock     SB_DFFESR     E       BURST_COUNT_0_sqmuxa_0     25.000       17.406
+U111_CYCLE_SM.UM_LATCHED_esr[0]     U111_TOP|CLK40_derived_clock     SB_DFFESR     E       BURST_COUNT_0_sqmuxa_0     25.000       17.385
+U111_CYCLE_SM.UM_LATCHED_esr[1]     U111_TOP|CLK40_derived_clock     SB_DFFESR     E       BURST_COUNT_0_sqmuxa_0     25.000       17.385
+U111_CYCLE_SM.UM_LATCHED_esr[2]     U111_TOP|CLK40_derived_clock     SB_DFFESR     E       BURST_COUNT_0_sqmuxa_0     25.000       17.385
+U111_CYCLE_SM.UM_LATCHED_esr[3]     U111_TOP|CLK40_derived_clock     SB_DFFESR     E       BURST_COUNT_0_sqmuxa_0     25.000       17.385
+U111_CYCLE_SM.UM_LATCHED_esr[4]     U111_TOP|CLK40_derived_clock     SB_DFFESR     E       BURST_COUNT_0_sqmuxa_0     25.000       17.385
+U111_CYCLE_SM.UM_LATCHED_esr[5]     U111_TOP|CLK40_derived_clock     SB_DFFESR     E       BURST_COUNT_0_sqmuxa_0     25.000       17.385
+U111_CYCLE_SM.UM_LATCHED_esr[6]     U111_TOP|CLK40_derived_clock     SB_DFFESR     E       BURST_COUNT_0_sqmuxa_0     25.000       17.385
+U111_CYCLE_SM.UM_LATCHED_esr[7]     U111_TOP|CLK40_derived_clock     SB_DFFESR     E       BURST_COUNT_0_sqmuxa_0     25.000       17.385
+U111_CYCLE_SM.UU_LATCHED_esr[0]     U111_TOP|CLK40_derived_clock     SB_DFFESR     E       BURST_COUNT_0_sqmuxa_0     25.000       17.385
 =========================================================================================================================================
 
 
@@ -441,10 +440,10 @@ Path delay compensated for clock skew. Clock skew is added to clock-to-out value
 Timing exceptions that could not be applied
 None
 
-Finished final timing analysis (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 134MB peak: 136MB)
+Finished final timing analysis (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 133MB peak: 135MB)
 
 
-Finished timing report (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 134MB peak: 136MB)
+Finished timing report (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 133MB peak: 135MB)
 
 ---------------------------------------
 Resource Usage Report for U111_TOP 
@@ -453,36 +452,34 @@ Mapping to part: ice40hx4ktq144
 Cell usage:
 GND             1 use
 SB_DFF          6 uses
-SB_DFFESR       17 uses
-SB_DFFESS       64 uses
+SB_DFFESR       16 uses
 SB_DFFN         1 use
-SB_DFFSR        10 uses
-SB_GB           2 uses
+SB_DFFSR        12 uses
 VCC             1 use
-SB_LUT4         158 uses
+SB_LUT4         93 uses
 
 I/O ports: 96
-I/O primitives: 96
-SB_IO          95 uses
+I/O primitives: 95
+SB_IO          94 uses
 SB_PLL40_2F_PAD 1 use
 
 I/O Register bits:                  0
-Register bits not including I/Os:   98 (2%)
+Register bits not including I/Os:   35 (0%)
 Total load per clock:
    CLK40_IN: 1
-   U111_TOP|CLK40_derived_clock: 102
+   U111_TOP|CLK40_derived_clock: 39
 
 @S |Mapping Summary:
-Total  LUTs: 158 (4%)
+Total  LUTs: 93 (2%)
 
 Distribution of All Consumed LUTs = LUT4 
-Distribution of All Consumed Luts 158 = 158 
+Distribution of All Consumed Luts 93 = 93 
 
 Mapper successful!
 
-At Mapper Exit (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 27MB peak: 136MB)
+At Mapper Exit (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 27MB peak: 135MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
-# Sat May 31 14:22:13 2025
+# Sat May 31 15:09:23 2025
 
 ###########################################################]

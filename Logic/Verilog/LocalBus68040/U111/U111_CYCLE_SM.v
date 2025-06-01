@@ -27,6 +27,7 @@ Description: DATA TRANSFER CYCLE AND BUS SIZING STATE MACHINE
 Revision History:
     19-APR-2025 New bus sizing state machine. JN
     31-MAY-2025 Fixed burst cycle count value. JN
+    31-MAY-2025 Fixed bus contention during on-board RAM cycle. JN
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 */
@@ -89,16 +90,16 @@ assign TEA_CPUn = TEAn;
 //////////////////////
 
 //READS
-assign D_UU_040 = READ_CYCLE_ACTIVE ? (LATCH_EN  ? UU_LATCHED : D_UU_AMIGA) : 8'bzzzzzzzz;
-assign D_UM_040 = READ_CYCLE_ACTIVE ? (LATCH_EN  ? UM_LATCHED : D_UM_AMIGA) : 8'bzzzzzzzz;
-assign D_LM_040 = READ_CYCLE_ACTIVE ? (FLIP_WORD ? D_UU_AMIGA : D_LM_AMIGA) : 8'bzzzzzzzz;
-assign D_LL_040 = READ_CYCLE_ACTIVE ? (FLIP_WORD ? D_UM_AMIGA : D_LL_AMIGA) : 8'bzzzzzzzz;
+assign D_UU_040 = READ_CYCLE_ACTIVE && LBENn ? (LATCH_EN  ? UU_LATCHED : D_UU_AMIGA) : 8'bzzzzzzzz;
+assign D_UM_040 = READ_CYCLE_ACTIVE && LBENn ? (LATCH_EN  ? UM_LATCHED : D_UM_AMIGA) : 8'bzzzzzzzz;
+assign D_LM_040 = READ_CYCLE_ACTIVE && LBENn ? (FLIP_WORD ? D_UU_AMIGA : D_LM_AMIGA) : 8'bzzzzzzzz;
+assign D_LL_040 = READ_CYCLE_ACTIVE && LBENn ? (FLIP_WORD ? D_UM_AMIGA : D_LL_AMIGA) : 8'bzzzzzzzz;
 
 //WRITES
-assign D_UU_AMIGA = WRITE_CYCLE_ACTIVE ? (FLIP_WORD ? D_LM_040 : D_UU_040) : 8'bzzzzzzzz;
-assign D_UM_AMIGA = WRITE_CYCLE_ACTIVE ? (FLIP_WORD ? D_LL_040 : D_UM_040) : 8'bzzzzzzzz;
-assign D_LM_AMIGA = WRITE_CYCLE_ACTIVE ? D_LM_040 : 8'bzzzzzzzz;
-assign D_LL_AMIGA = WRITE_CYCLE_ACTIVE ? D_LL_040 : 8'bzzzzzzzz;
+assign D_UU_AMIGA = WRITE_CYCLE_ACTIVE && LBENn ? (FLIP_WORD ? D_LM_040 : D_UU_040) : 8'bzzzzzzzz;
+assign D_UM_AMIGA = WRITE_CYCLE_ACTIVE && LBENn ? (FLIP_WORD ? D_LL_040 : D_UM_040) : 8'bzzzzzzzz;
+assign D_LM_AMIGA = WRITE_CYCLE_ACTIVE && LBENn ? D_LM_040 : 8'bzzzzzzzz;
+assign D_LL_AMIGA = WRITE_CYCLE_ACTIVE && LBENn ? D_LL_040 : 8'bzzzzzzzz;
 
 //These are for the bus sizing state machine.
 wire [7:0] UU_AMIGA_IN = D_UU_AMIGA;
@@ -171,7 +172,7 @@ always @(posedge CLK40) begin
         case (CYCLE_STATE)
 
             4'h0 : begin
-                if (!TS_CPUn && !BGn && LBENn) begin
+                if (!TS_CPUn) begin
                     TS_EN <= 1;
                     LATCH_EN <= 0;
                     READ_CYCLE_ACTIVE <= RnW;
@@ -184,6 +185,7 @@ always @(posedge CLK40) begin
                     READ_CYCLE_ACTIVE <= 0;
                     WRITE_CYCLE_ACTIVE <= 0;
                 end
+
             end
             4'h1 : begin
                 TS_EN <= 0;

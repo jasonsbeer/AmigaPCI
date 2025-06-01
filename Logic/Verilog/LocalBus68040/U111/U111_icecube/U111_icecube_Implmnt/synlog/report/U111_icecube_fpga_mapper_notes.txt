@@ -1,8 +1,6 @@
 @N: MF248 |Running in 64-bit mode.
 @N: MF666 |Clock conversion enabled. (Command "set_option -fix_gated_and_generated_clocks 1" in the project file.)
 @N: MT204 |Auto Constrain mode is disabled because clocks are defined in the SDC file
-@N: FX1017 :|SB_GB inserted on the net RESETn_c_i.
-@N: FX1017 :|SB_GB inserted on the net U111_CYCLE_SM.CYCLE_STATE_0[0].
 @N: MT611 :|Automatically generated clock U111_TOP|CLK80_derived_clock is not used and is being removed
 @N: BW103 |The default time unit for the Synopsys Constraint File (SDC or FDC) is 1ns.
 @N: BW107 |Synopsys Constraint File capacitance units using default value of 1pF 
