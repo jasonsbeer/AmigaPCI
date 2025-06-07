@@ -10,10 +10,10 @@ set_io CLK_CIA  122
 set_io CLK40_IN 129
 
 #CPU DATA BUS
-set_io D[0] 38 #D24
-set_io D[1] 39 #D25
-set_io D[2] 41 #D26
-set_io D[3] 42 #D27
+#set_io D[0] 38 #D24
+#set_io D[1] 39 #D25
+#set_io D[2] 41 #D26
+#set_io D[3] 42 #D27
 set_io D[4] 43 #D28
 set_io D[5] 44 #D29
 set_io D[6] 45 #D30
@@ -68,33 +68,33 @@ set_io TM[1]    137
 #set_io TM2      141
 
 #ADDRESS SPACE SIGNALS
-set_io OVL       81
-set_io RAMSPACEn 48
-set_io CIACS0n   78
-set_io CIACS1n   79
+set_io OVL        81
+set_io RAMSPACEn  48
+set_io CIACS0n    78
+set_io CIACS1n    79
 set_io REGSPACEn 118
 set_io BUFENn    119
 set_io ROMENn    124
 set_io RTC_ENn    80
-#set_io CPUCONFn  130
+set_io CPUCONFn  130
 
 #PCI BRIDGE
 #set_io BREGn     60
-#set_io CONFIGENn 61
-#set_io BENn      91
+set_io CONFIGENn  61
+set_io BRIDGE_ENn 91
 
 #PIO MODE DECODER/ATA
-#set_io PIO_P0 73
-#set_io PIO_P1 74
-#set_io PIO_P2 75
-#set_io PIO_S0 76
-#set_io PIO_S1 87
-#set_io PIO_S2 88
-#set_io ATAENn 90
+set_io PIO_P0 73
+set_io PIO_P1 74
+set_io PIO_P2 75
+set_io PIO_S0 76
+set_io PIO_S1 87
+set_io PIO_S2 88
+set_io ATA_ENn 90
 
 #ATA MODES
-#set_io AUTOBOOT 112 #ATA AUTOBOOT
-#set_io ULTRA_P  113 #SANDISK ULTRA MODE, PRIMARY PORT
-#set_io ULTRA_S  114 #SANDISK ULTRA MODE, SECONDARY PORT
+set_io AUTOBOOT    112 -pullup yes #ATA AUTOBOOT
+set_io ATA_MODE_P  113 -pullup yes #SANDISK ULTRA MODE, PRIMARY PORT
+set_io ATA_MODE_S  114 -pullup yes #SANDISK ULTRA MODE, SECONDARY PORT
 
 

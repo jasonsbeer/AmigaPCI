@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:55:50
 
-* File Generated:     May 31 2025 14:04:47
+* File Generated:     Jun 6 2025 19:30:32
 
 * Purpose:            
 
@@ -34,29 +34,22 @@ I2051: Reading of inputs for placer completed successfully
 I2053: Starting placement of the design
 =============================================================
 W2715: Warning for set_io Constraint: Ignoring pin assignment for A[8], as it is not connected to any PAD
-W2715: Warning for set_io Constraint: Ignoring pin assignment for A[1], as it is not connected to any PAD
 W2715: Warning for set_io Constraint: Ignoring pin assignment for A[11], as it is not connected to any PAD
-W2715: Warning for set_io Constraint: Ignoring pin assignment for A[3], as it is not connected to any PAD
-W2715: Warning for set_io Constraint: Ignoring pin assignment for A[5], as it is not connected to any PAD
 W2715: Warning for set_io Constraint: Ignoring pin assignment for A[14], as it is not connected to any PAD
-W2715: Warning for set_io Constraint: Ignoring pin assignment for A[7], as it is not connected to any PAD
 W2715: Warning for set_io Constraint: Ignoring pin assignment for A[9], as it is not connected to any PAD
-W2715: Warning for set_io Constraint: Ignoring pin assignment for A[2], as it is not connected to any PAD
 W2715: Warning for set_io Constraint: Ignoring pin assignment for A[10], as it is not connected to any PAD
-W2715: Warning for set_io Constraint: Ignoring pin assignment for A[4], as it is not connected to any PAD
 W2715: Warning for set_io Constraint: Ignoring pin assignment for A[15], as it is not connected to any PAD
-W2715: Warning for set_io Constraint: Ignoring pin assignment for A[6], as it is not connected to any PAD
 
 Input Design Statistics
-    Number of LUTs      	:	172
-    Number of DFFs      	:	74
+    Number of LUTs      	:	277
+    Number of DFFs      	:	101
     Number of DFFs packed to IO	:	0
     Number of Carrys    	:	36
     Number of RAMs      	:	0
     Number of ROMs      	:	0
-    Number of IOs       	:	49
-    Number of GBIOs     	:	2
-    Number of GBs       	:	0
+    Number of IOs       	:	64
+    Number of GBIOs     	:	3
+    Number of GBs       	:	1
     Number of WarmBoot  	:	0
     Number of PLLs      	:	1
 
@@ -65,16 +58,16 @@ Phase 1
 I2077: Start design legalization
 
 Design Legalization Statistics
-    Number of feedthru LUTs inserted to legalize input of DFFs     	:	5
+    Number of feedthru LUTs inserted to legalize input of DFFs     	:	4
     Number of feedthru LUTs inserted for LUTs driving multiple DFFs	:	0
-    Number of LUTs replicated for LUTs driving multiple DFFs       	:	1
+    Number of LUTs replicated for LUTs driving multiple DFFs       	:	0
     Number of feedthru LUTs inserted to legalize output of CARRYs  	:	0
-    Number of feedthru LUTs inserted to legalize global signals    	:	0
+    Number of feedthru LUTs inserted to legalize global signals    	:	1
     Number of feedthru CARRYs inserted to legalize input of CARRYs 	:	0
     Number of inserted LUTs to Legalize IOs with PIN_TYPE= 01xxxx  	:	0
     Number of inserted LUTs to Legalize IOs with PIN_TYPE= 10xxxx  	:	0
     Number of inserted LUTs to Legalize IOs with PIN_TYPE= 11xxxx  	:	0
-    Total LUTs inserted                                            	:	6
+    Total LUTs inserted                                            	:	5
     Total CARRYs inserted                                          	:	0
 
 
@@ -88,57 +81,58 @@ I2088: Phase 2, elapsed time : 0.0 (sec)
 Phase 3
 Info-1404: Inferred PLL generated clock at pll/PLLOUTCORE
 Info-1404: Inferred PLL generated clock at pll/PLLOUTGLOBAL
+Warning-1034: Found non-unate timing arc, from pin "in3" to pin "lcout" of instance "GB_BUFFER_CLK40_IN_c_g_THRU_LUT4_0_LC_281", in the clock network. Converting the timing arc to positive-unate
 
 Design Statistics after Packing
-    Number of LUTs      	:	179
-    Number of DFFs      	:	74
+    Number of LUTs      	:	283
+    Number of DFFs      	:	101
     Number of DFFs packed to IO	:	0
     Number of Carrys    	:	36
 
 Device Utilization Summary after Packing
     Sequential LogicCells
-        LUT and DFF      	:	56
+        LUT and DFF      	:	83
         LUT, DFF and CARRY	:	18
     Combinational LogicCells
-        Only LUT         	:	90
+        Only LUT         	:	167
         CARRY Only       	:	3
         LUT with CARRY   	:	15
-    LogicCells                  :	182/3520
-    PLBs                        :	25/440
+    LogicCells                  :	286/3520
+    PLBs                        :	38/440
     BRAMs                       :	0/20
-    IOs and GBIOs               :	51/107
+    IOs and GBIOs               :	67/107
     PLLs                        :	1/2
 
 
-I2088: Phase 3, elapsed time : 0.3 (sec)
+I2088: Phase 3, elapsed time : 0.5 (sec)
 
 Phase 4
 I2088: Phase 4, elapsed time : 0.2 (sec)
 
 Phase 5
-I2088: Phase 5, elapsed time : 0.1 (sec)
+I2088: Phase 5, elapsed time : 0.3 (sec)
 
 Phase 6
-I2088: Phase 6, elapsed time : 15.3 (sec)
+I2088: Phase 6, elapsed time : 19.5 (sec)
 
 Final Design Statistics
-    Number of LUTs      	:	179
-    Number of DFFs      	:	74
+    Number of LUTs      	:	283
+    Number of DFFs      	:	101
     Number of DFFs packed to IO	:	0
     Number of Carrys    	:	36
     Number of RAMs      	:	0
     Number of ROMs      	:	0
-    Number of IOs       	:	49
-    Number of GBIOs     	:	2
-    Number of GBs       	:	0
+    Number of IOs       	:	64
+    Number of GBIOs     	:	3
+    Number of GBs       	:	1
     Number of WarmBoot  	:	0
     Number of PLLs      	:	1
 
 Device Utilization Summary
-    LogicCells                  :	182/3520
-    PLBs                        :	57/440
+    LogicCells                  :	286/3520
+    PLBs                        :	73/440
     BRAMs                       :	0/20
-    IOs and GBIOs               :	51/107
+    IOs and GBIOs               :	67/107
     PLLs                        :	1/2
 
 
@@ -155,11 +149,11 @@ analysis after routing.
                      Clock Summary 
 =====================================================================
 Number of clocks: 5
-Clock: CLK28_IN | Frequency: 258.38 MHz | Target: 28.64 MHz
-Clock: CLK40_IN | Frequency: N/A | Target: 40.00 MHz
-Clock: CLK6 | Frequency: 179.82 MHz | Target: 6.00 MHz
+Clock: CLK28_IN | Frequency: 258.35 MHz | Target: 28.64 MHz
+Clock: CLK40_IN | Frequency: 112.15 MHz | Target: 40.00 MHz
+Clock: CLK6 | Frequency: 188.09 MHz | Target: 6.00 MHz
 Clock: pll/PLLOUTCORE | Frequency: N/A | Target: 80.00 MHz
-Clock: pll/PLLOUTGLOBAL | Frequency: 154.95 MHz | Target: 80.00 MHz
+Clock: pll/PLLOUTGLOBAL | Frequency: 180.82 MHz | Target: 80.00 MHz
 
 =====================================================================
                      End of Clock Summary
@@ -167,5 +161,5 @@ Clock: pll/PLLOUTGLOBAL | Frequency: 154.95 MHz | Target: 80.00 MHz
 
 I2054: Placement of design completed successfully
 
-I2076: Placer run-time: 16.4 sec.
+I2076: Placer run-time: 21.0 sec.
 

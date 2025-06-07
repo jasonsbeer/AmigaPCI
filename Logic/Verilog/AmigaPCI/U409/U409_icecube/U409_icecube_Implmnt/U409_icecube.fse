@@ -1,24 +1,32 @@
 
-fsm_encoding {10610611} sequential
+fsm_encoding {11940941} sequential
 
-fsm_state_encoding {10610611} 0000 {00}
+fsm_state_encoding {11940941} 0000 {0}
 
-fsm_state_encoding {10610611} 0001 {01}
+fsm_state_encoding {11940941} 0001 {1}
 
-fsm_state_encoding {10610611} 0010 {10}
+fsm_registers {11940941} {STATE[0]} 
 
-fsm_state_encoding {10610611} 0011 {11}
+fsm_encoding {10610612} sequential
 
-fsm_registers {10610611} {TACK_COUNTER[1]}  {TACK_COUNTER[0]} 
+fsm_state_encoding {10610612} 0000 {00}
 
-fsm_encoding {1017601762} sequential
+fsm_state_encoding {10610612} 0001 {01}
 
-fsm_state_encoding {1017601762} 00 {00}
+fsm_state_encoding {10610612} 0010 {10}
 
-fsm_state_encoding {1017601762} 01 {01}
+fsm_state_encoding {10610612} 0011 {11}
 
-fsm_state_encoding {1017601762} 10 {10}
+fsm_registers {10610612} {TACK_COUNTER[1]}  {TACK_COUNTER[0]} 
 
-fsm_state_encoding {1017601762} 11 {11}
+fsm_encoding {1017601763} sequential
 
-fsm_registers {1017601762} {CIA_STATE[1]}  {CIA_STATE[0]} 
+fsm_state_encoding {1017601763} 00 {00}
+
+fsm_state_encoding {1017601763} 01 {01}
+
+fsm_state_encoding {1017601763} 10 {10}
+
+fsm_state_encoding {1017601763} 11 {11}
+
+fsm_registers {1017601763} {CIA_STATE[1]}  {CIA_STATE[0]} 

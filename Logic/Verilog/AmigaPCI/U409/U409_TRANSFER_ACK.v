@@ -34,7 +34,7 @@ GitHub: https://github.com/jasonsbeer/AmigaPCI
 
 module U409_TRANSFER_ACK (
 
-    input CLK80, CLK40, RESETn, TSn, ROMEN, CIA_ENABLE, CLK_CIA, AGNUS_SPACE, AUTOVECTOR, ROM_DELAY, RTC_ENn, NOCACHE_SPACE,
+    input CLK80, CLK40, RESETn, TSn, ROMEN, CIA_ENABLE, CLK_CIA, AGNUS_SPACE, AUTOVECTOR, ROM_DELAY, RTC_ENn, NOCACHE_SPACE, AC_TACK,
 
     output TBIn, TCIn,
     output reg ROMENn,
@@ -65,7 +65,7 @@ always @(posedge CLK80) begin
     end else begin
         case (TACK_COUNTER)
         4'h00 : begin
-            if (ROM_TACK_EN || CIA_TACK_EN || IRQ_TACK_EN || DELAYED_TACK_EN) begin
+            if (ROM_TACK_EN || CIA_TACK_EN || IRQ_TACK_EN || DELAYED_TACK_EN || AC_TACK) begin
                 TACK_COUNTER <= 4'h01;
                 TACK_EN <= 1;
                 TACK_OUTn <= 0;

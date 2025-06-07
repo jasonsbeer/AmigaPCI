@@ -28,6 +28,7 @@ Revision History:
     25-JAN-2025 : INITIAL REV 5.0 CODE
     20-MAR-2025 : Add data and code access type conditions. JN
     07-APR-2025 : Add Ranger, RTC, and AUTOCONFIG address spaces. JN
+    06-JUN-2025 : Add PCI Bridge and ATA spaces. JN
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 */
@@ -35,12 +36,15 @@ GitHub: https://github.com/jasonsbeer/AmigaPCI
 module U409_ADDRESS_DECODE
 (
 
-    input RESETn, OVL, CIA_ENABLE,
+    input CLK40, RESETn, TSn, RnW, OVL, CIA_ENABLE, CONFIGENn,
     input [1:0] TT,
     input [1:0] TM,
     input [31:1] A,
+    input [3:0] BRIDGE_BASE,
+    input [7:0] ATA_BASE,
     
-    output ROMEN, CIA_SPACE, CIACS0n, CIACS1n, RAMSPACEn, REGSPACEn, AUTOVECTOR, RTC_ENn, AUTOCONFIG_SPACE
+    output ROMEN, CIA_SPACE, CIACS0n, CIACS1n, RAMSPACEn, REGSPACEn,
+    output AUTOVECTOR, RTC_ENn, AUTOCONFIG_SPACE, ATA_ENn, BRIDGE_ENn
 
 );
 
@@ -73,7 +77,7 @@ wire DATA_ACCESS = !TM[1] && TM[0];
 //THE ROM IS VISIBLE IN THE CODE AND DATA SPACE.
 
 //assign ROMEN = (RESETn && Z2_SPACE && ((OVL && A[23:21] == 3'b000) || (A[23:19] == 5'b11111))); // || (IDE_ACCESS && !IDE_ENABLE)));
-assign ROMEN   = Z2_SPACE && (LOWROM || HIROM) && EITH_ACCESS;
+assign ROMEN   = Z2_SPACE && (LOWROM || HIROM || ATA_ROM) && EITH_ACCESS;
 wire   LOWROM  = A[23:19] == 5'b00000 && OVL;
 wire   HIROM   = A[23:19] == 5'b11111;
 
@@ -121,7 +125,8 @@ assign AUTOVECTOR = RESETn && TT[1] && TT[0] && A[31:16] == 16'hFFFF;
 /////////////////////
 
 //AUTOCONFIG IS VISIBLE IN THE DATA AND CODE SAPCE.
-assign AUTOCONFIG_SPACE = RESETn && EITH_ACCESS && A[31:16] == 16'hFF00;
+//assign AUTOCONFIG_SPACE = RESETn && EITH_ACCESS && A[31:16] == 16'hFF00;
+assign AUTOCONFIG_SPACE = Z2_SPACE && EITH_ACCESS && A[23:16] == 8'hE8;
 
 //////////////////////
 // REAL TIME CLOCK //
@@ -131,9 +136,32 @@ assign AUTOCONFIG_SPACE = RESETn && EITH_ACCESS && A[31:16] == 16'hFF00;
 //$00DC 0000 - $00DD FFFF
 assign RTC_ENn = !(Z2_SPACE && DATA_ACCESS && A[23:17] == 7'b1101110);
 
+//////////
+// ATA //
+////////
 
-//YET TO BE IMPLEMENTED
-//ATA
-//PCI BRIDGE via AUTOCONFIG
+wire ATA_SPACE = !(Z2_SPACE && EITH_ACCESS && !CONFIGENn && A[23:16] == ATA_BASE); //128k
+wire ATA_ROM = ATA_SPACE && ATA_ROM_EN;
+assign ATA_ENn = !(ATA_SPACE && !ATA_ROM_EN);
+
+reg ATA_ROM_EN;
+always @(posedge CLK40) begin
+    if (!RESETn) begin
+        ATA_ROM_EN <= 1;
+    end else begin
+        if (ATA_SPACE && !TSn && ATA_ROM_EN) begin
+            ATA_ROM_EN <= RnW;
+        end
+    end
+end
+
+///////////////////////
+// PCI BRIDGE SPACE //
+/////////////////////
+
+//The _BRIDGE_EN signal is used for prometheus compatability.
+//Access to AUTOCONFIG PCI cards is accomplished strictly by the PCI device's AUTOCONFIG assigned base address.
+
+assign BRIDGE_ENn = !(RESETn && EITH_ACCESS && !CONFIGENn && A[31:28] == BRIDGE_BASE);
 
 endmodule

@@ -24,9 +24,7 @@ Target Devices: iCE40-HX4K-TQ144
 
 Description: ADDRESS DECODE, ROM, TRANSFER ACK, AUTOCONFIG
 
-Revision History:
-    25-JAN-2025 : INITIAL REV 5.0 CODE
-    09-FEB-2025 : FIXED ROM CYCLE STABILITY
+See individual modules for revision history.
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 
@@ -35,15 +33,15 @@ iceprog D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\sbt\outputs\bitmap\U4
 
 module U409_TOP (
 
-    input CLK40_IN, CLK6, CLK28_IN, RESETn, TSn, OVL, RnW, //ROM_DELAY
+    input CLK40_IN, CLK6, CLK28_IN, RESETn, TSn, OVL, RnW, AUTOBOOT, CPUCONFn, ATA_MODE_P, ATA_MODE_S,  //ROM_DELAY
     input [31:1] A,
     input [1:0] TT,
     input [1:0] TM,
 
     output ROMENn, BUFENn, TICK60, TICK50, CLK_CIA, CIACS0n, CIACS1n, RAMSPACEn, REGSPACEn, RTC_ENn,
-    output PORTSIZE, TBIn, TCIn,
-    output [7:0] D,
-
+    output PORTSIZE, TBIn, TCIn, CONFIGENn, ATA_ENn, BRIDGE_ENn, PIO_P0, PIO_P1, PIO_P2, PIO_S0, PIO_S1, PIO_S2,
+    
+    inout [7:4] D,
     inout TACKn
 
 );
@@ -86,9 +84,14 @@ wire AUTOVECTOR;
 wire ROMEN;
 wire CIA_SPACE;
 wire CIA_ENABLE;
+wire [3:0] BRIDGE_BASE;
+wire [7:0] ATA_BASE;
+wire [3:0] D_OUT;
+wire [3:0] D_IN = AUTOCONFIG_SPACE && !RnW ? D[7:4] : 4'h0;
 
 wire AGNUS_SPACE = !RAMSPACEn || !REGSPACEn;
 wire NOCACHE_SPACE = CIA_SPACE || AUTOCONFIG_SPACE;
+assign D = AUTOCONFIG_SPACE && RnW ? D_OUT : 4'bz;
 
 ///////////////////////
 // TRANSFER ACK TOP //
@@ -110,6 +113,7 @@ U409_TRANSFER_ACK U409_TRANSFER_ACK (
     .ROM_DELAY (ROM_DELAY),
     .RTC_ENn (RTC_ENn),
     .NOCACHE_SPACE (NOCACHE_SPACE),
+    .AC_TACK (AC_TACK),
     
     //OUTPUTS
     .TBIn (TBIn),
@@ -138,16 +142,22 @@ U409_DATA_BUFFERS U409_DATA_BUFFERS (
 ///////////////////////
 
 //Identify the 16-bit ports.
-assign PORTSIZE = CIA_SPACE || !REGSPACEn || !RTC_ENn;
+assign PORTSIZE = CIA_SPACE || !REGSPACEn || !RTC_ENn || AUTOCONFIG_SPACE;
 
 U409_ADDRESS_DECODE U409_ADDRESS_DECODE (
     //INPUTS
+    .CLK40 (CLK40),
     .RESETn (RESETn),
+    .TSn (TSn),
+    .RnW (RnW),
     .OVL (OVL),
     .CIA_ENABLE (CIA_ENABLE),
+    .CONFIGENn (CONFIGENn),
     .TT (TT),
     .TM (TM),
     .A (A),
+    .BRIDGE_BASE (BRIDGE_BASE),
+    .ATA_BASE (ATA_BASE),
 
     //OUTPUTS
     .ROMEN (ROMEN),
@@ -158,7 +168,9 @@ U409_ADDRESS_DECODE U409_ADDRESS_DECODE (
     .REGSPACEn (REGSPACEn),
     .AUTOVECTOR (AUTOVECTOR),
     .RTC_ENn (RTC_ENn),
-    .AUTOCONFIG_SPACE (AUTOCONFIG_SPACE)
+    .AUTOCONFIG_SPACE (AUTOCONFIG_SPACE),
+    .ATA_ENn (ATA_ENn),
+    .BRIDGE_ENn (BRIDGE_ENn)
 );
 
 /////////////////////
@@ -189,11 +201,35 @@ U409_CIA U409_CIA (
 
 U409_AUTOCONFIG U409_AUTOCONFIG (
     //INPUT
+    .CLK40,
+    .RESETn,
     .AUTOCONFIG_SPACE (AUTOCONFIG_SPACE),
     .RnW (RnW),
+    .TSn (TSn),
+    .AUTOBOOT (AUTOBOOT),
+    .CPUCONFn (CPUCONFn),
+    .D_IN (D_IN),
+    .A (A[7:1]),
 
-    //INPUT/OUTPUT
-    .D (D)
+    //OUTPUT
+    .BRIDGE_BASE (BRIDGE_BASE),
+    .ATA_BASE (ATA_BASE),
+    .D_OUT (D_OUT),
+    .CONFIGENn (CONFIGENn),
+    .AC_TACK (AC_TACK)
 );
+
+////////////////
+// ATA STUFF //
+//////////////
+
+//These are here for future use, as needed.
+
+assign PIO_P0 = ATA_MODE_P;
+assign PIO_P1 = 1'b1;
+assign PIO_P2 = 1'b1;
+assign PIO_S0 = ATA_MODE_S;
+assign PIO_S1 = 1'b1;
+assign PIO_S2 = 1'b1;
 
 endmodule

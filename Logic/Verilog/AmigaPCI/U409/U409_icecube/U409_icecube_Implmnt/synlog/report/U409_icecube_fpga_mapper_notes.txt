@@ -1,11 +1,14 @@
 @N: MF248 |Running in 64-bit mode.
 @N: MF666 |Clock conversion enabled. (Command "set_option -fix_gated_and_generated_clocks 1" in the project file.)
 @N: MT204 |Auto Constrain mode is disabled because clocks are defined in the SDC file
+@N: MO225 :"d:\amigapci\u409\u409_autoconfig.v":94:0:94:5|There are no possible illegal states for state machine STATE[1:0] (in view: work.U409_AUTOCONFIG(verilog)); safe FSM implementation is not required.
 @N: MO225 :"d:\amigapci\u409\u409_transfer_ack.v":61:0:61:5|There are no possible illegal states for state machine TACK_COUNTER[3:0] (in view: work.U409_TRANSFER_ACK(verilog)); safe FSM implementation is not required.
 @N: MO225 :"d:\amigapci\u409\u409_transfer_ack.v":176:0:176:5|There are no possible illegal states for state machine CIA_STATE[3:0] (in view: work.U409_TRANSFER_ACK(verilog)); safe FSM implementation is not required.
 @N: FX271 :"d:\amigapci\u409\u409_cia.v":58:20:58:33|Replicating instance U409_CIA.CIA_ENABLE (in view: work.U409_TOP(verilog)) with 3 loads 1 time(s) to improve timing.
-@N: FX1016 :"d:\amigapci\u409\u409_top.v":38:20:38:23|SB_GB_IO inserted on the port CLK6.
-@N: FX1016 :"d:\amigapci\u409\u409_top.v":38:26:38:33|SB_GB_IO inserted on the port CLK28_IN.
+@N: FX1016 :"d:\amigapci\u409\u409_top.v":36:20:36:23|SB_GB_IO inserted on the port CLK6.
+@N: FX1016 :"d:\amigapci\u409\u409_top.v":36:10:36:17|SB_GB_IO inserted on the port CLK40_IN.
+@N: FX1016 :"d:\amigapci\u409\u409_top.v":36:26:36:33|SB_GB_IO inserted on the port CLK28_IN.
+@N: FX1017 :|SB_GB inserted on the net RESETn_c_i.
 @N: BW103 |The default time unit for the Synopsys Constraint File (SDC or FDC) is 1ns.
 @N: BW107 |Synopsys Constraint File capacitance units using default value of 1pF 
 @N: FX1056 |Writing EDF file: D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\U409_icecube.edf
@@ -15,4 +18,3 @@
 @N: MT615 |Found clock U409_TOP|CLK80_OUT_derived_clock with period 12.50ns 
 @N: MT320 |This timing report is an estimate of place and route data. For final timing results, use the FPGA vendor place and route report.
 @N: MT322 |Clock constraints include only register-to-register paths associated with each individual clock.
-@N: MT582 |Estimated period and frequency not reported for given clock unless the clock has at least one timing path which is not a false or a max delay path and that does not have excessive slack

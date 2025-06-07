@@ -13,7 +13,7 @@ The file contains the job information from mapper to be displayed as part of the
 </job_status>
 <job_info>
 <info name="Notes">
-<data>18</data>
+<data>20</data>
 <report_link name="more">
 <data>D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\synlog\report\U409_icecube_fpga_mapper_notes.txt</data>
 </report_link>
@@ -31,16 +31,16 @@ The file contains the job information from mapper to be displayed as part of the
 </report_link>
 </info>
 <info name="CPU Time">
-<data>0h:00m:00s</data>
+<data>0h:00m:01s</data>
 </info>
 <info name="Real Time">
 <data>0h:00m:01s</data>
 </info>
 <info name="Peak Memory">
-<data>139MB</data>
+<data>150MB</data>
 </info>
 <info name="Date &amp; Time">
-<data type="timestamp">1748718285</data>
+<data type="timestamp">1749256231</data>
 </info>
 </job_info>
 </job_run_status>

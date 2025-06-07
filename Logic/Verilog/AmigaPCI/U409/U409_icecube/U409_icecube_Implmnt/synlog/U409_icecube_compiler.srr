@@ -19,9 +19,7 @@ Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys softwa
 @I::"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v" (library work)
 @I::"D:\AmigaPCI\U409\U409_AUTOCONFIG.v" (library work)
 Verilog syntax check successful!
-
-Compiler output is up to date.  No re-compile necessary
-
+File D:\AmigaPCI\U409\U409_TOP.v changed - recompiling
 Selecting top level module U409_TOP
 @N: CG364 :"C:\lscc\iCEcube2.2020.12\synpbase\lib\generic\sb_ice40.v":698:7:698:19|Synthesizing module SB_PLL40_CORE in library work.
 
@@ -29,7 +27,7 @@ Selecting top level module U409_TOP
 
 @N: CG364 :"D:\AmigaPCI\U409\U409_DATA_BUFFERS.v":33:7:33:23|Synthesizing module U409_DATA_BUFFERS in library work.
 
-@N: CG364 :"D:\AmigaPCI\U409\U409_ADDRESS_DECODE.v":35:7:35:25|Synthesizing module U409_ADDRESS_DECODE in library work.
+@N: CG364 :"D:\AmigaPCI\U409\U409_ADDRESS_DECODE.v":36:7:36:25|Synthesizing module U409_ADDRESS_DECODE in library work.
 
 @N: CG364 :"D:\AmigaPCI\U409\U409_TICK.v":33:7:33:15|Synthesizing module U409_TICK in library work.
 
@@ -37,15 +35,20 @@ Selecting top level module U409_TOP
 
 @N: CG364 :"D:\AmigaPCI\U409\U409_AUTOCONFIG.v":33:7:33:21|Synthesizing module U409_AUTOCONFIG in library work.
 
-@N: CG364 :"D:\AmigaPCI\U409\U409_TOP.v":36:7:36:14|Synthesizing module U409_TOP in library work.
+@N: CG364 :"D:\AmigaPCI\U409\U409_TOP.v":34:7:34:14|Synthesizing module U409_TOP in library work.
 
-@W: CG781 :"D:\AmigaPCI\U409\U409_TOP.v":72:2:72:4|Input EXTFEEDBACK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG781 :"D:\AmigaPCI\U409\U409_TOP.v":72:2:72:4|Input DYNAMICDELAY on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG781 :"D:\AmigaPCI\U409\U409_TOP.v":72:2:72:4|Input SDI on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG781 :"D:\AmigaPCI\U409\U409_TOP.v":72:2:72:4|Input SCLK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG781 :"D:\AmigaPCI\U409\U409_TOP.v":72:2:72:4|Input LATCHINPUTVALUE on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CL246 :"D:\AmigaPCI\U409\U409_ADDRESS_DECODE.v":41:17:41:17|Input port bits 15 to 14 of A[31:1] are unused. Assign logic for all port bits or change the input port size.
-@W: CL246 :"D:\AmigaPCI\U409\U409_ADDRESS_DECODE.v":41:17:41:17|Input port bits 11 to 1 of A[31:1] are unused. Assign logic for all port bits or change the input port size.
+@W: CG781 :"D:\AmigaPCI\U409\U409_TOP.v":70:2:70:4|Input EXTFEEDBACK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\AmigaPCI\U409\U409_TOP.v":70:2:70:4|Input DYNAMICDELAY on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\AmigaPCI\U409\U409_TOP.v":70:2:70:4|Input SDI on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\AmigaPCI\U409\U409_TOP.v":70:2:70:4|Input SCLK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\AmigaPCI\U409\U409_TOP.v":70:2:70:4|Input LATCHINPUTVALUE on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@N: CL201 :"D:\AmigaPCI\U409\U409_AUTOCONFIG.v":94:0:94:5|Trying to extract state machine for register STATE.
+Extracted state machine for register STATE
+State machine has 2 reachable states with original encodings of:
+   0000
+   0001
+@W: CL246 :"D:\AmigaPCI\U409\U409_ADDRESS_DECODE.v":42:17:42:17|Input port bits 15 to 14 of A[31:1] are unused. Assign logic for all port bits or change the input port size.
+@W: CL246 :"D:\AmigaPCI\U409\U409_ADDRESS_DECODE.v":42:17:42:17|Input port bits 11 to 1 of A[31:1] are unused. Assign logic for all port bits or change the input port size.
 @N: CL201 :"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v":61:0:61:5|Trying to extract state machine for register TACK_COUNTER.
 Extracted state machine for register TACK_COUNTER
 State machine has 4 reachable states with original encodings of:
@@ -61,25 +64,25 @@ State machine has 4 reachable states with original encodings of:
    10
    11
 
-At c_ver Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 69MB peak: 70MB)
+At c_ver Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 73MB peak: 74MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Sat May 31 14:04:42 2025
+# Fri Jun 06 19:30:27 2025
 
 ###########################################################]
 Synopsys Netlist Linker, version comp2016q3p1, Build 141R, built Dec  5 2016
 @N|Running in 64-bit mode
-@N: NF107 :"D:\AmigaPCI\U409\U409_TOP.v":36:7:36:14|Selected library: work cell: U409_TOP view verilog as top level
-@N: NF107 :"D:\AmigaPCI\U409\U409_TOP.v":36:7:36:14|Selected library: work cell: U409_TOP view verilog as top level
+@N: NF107 :"D:\AmigaPCI\U409\U409_TOP.v":34:7:34:14|Selected library: work cell: U409_TOP view verilog as top level
+@N: NF107 :"D:\AmigaPCI\U409\U409_TOP.v":34:7:34:14|Selected library: work cell: U409_TOP view verilog as top level
 
 At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 67MB peak: 68MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Sat May 31 14:04:42 2025
+# Fri Jun 06 19:30:27 2025
 
 ###########################################################]
 @END
@@ -89,6 +92,6 @@ At c_hdl Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Sat May 31 14:04:42 2025
+# Fri Jun 06 19:30:27 2025
 
 ###########################################################]
