@@ -43,33 +43,33 @@ module U409_AUTOCONFIG (
     output [3:0] D_OUT
 );
 
-/////////////////
-// PARAMETERS //
-///////////////
+  ////////////////
+ // PARAMETERS //
+////////////////
 
 localparam BRIDGE_PID = 8'd4;
 localparam LIDE_PID = 8'd3;
-localparam LIDE_OFFSET = 16'h2000;
+localparam LIDE_OFFSET = 16'h0;
 localparam MNF = 16'd600;
 localparam SERNUM = 32'd1;
 
-///////////////
-// DATA BUS //
-/////////////
+  //////////////
+ // DATA BUS //
+//////////////
 
 assign D_OUT = !LIDE_CONF   ? LIDE_OUT : 
                !BRIDGE_CONF ? BRIDGE_OUT : 4'hF;
 
-//////////////////
-// ADDRESS BUS //
-////////////////
+  /////////////////
+ // ADDRESS BUS //
+/////////////////
 
 //wire [7:0] AC_AD = {A[7:2], A[8], 1'b0}; //Z3 Registers
 wire [7:0] AC_AD = {A[7:1], 1'b0}; //Z2 Registers
 
-/////////////////////
-// TRANSFER START //
-///////////////////
+  ////////////////////
+ // TRANSFER START //
+////////////////////
 
 reg AC_START;
 
@@ -81,9 +81,9 @@ always @(posedge CLK40) begin
     end
 end
 
-/////////////////
-// AUTOCONFIG //
-///////////////
+  ////////////////
+ // AUTOCONFIG //
+////////////////
 
 reg LIDE_CONF;
 reg BRIDGE_CONF;

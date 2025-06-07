@@ -5,16 +5,16 @@ Mapping to part: ice40hx4ktq144
 Cell usage:
 GND             6 uses
 SB_CARRY        36 uses
-SB_DFF          47 uses
-SB_DFFN         10 uses
+SB_DFF          48 uses
+SB_DFFN         11 uses
+SB_DFFNESS      8 uses
 SB_DFFNR        9 uses
-SB_DFFNSR       20 uses
-SB_DFFNSS       14 uses
-SB_DFFSS        1 use
+SB_DFFNSR       19 uses
+SB_DFFNSS       6 uses
 SB_GB           1 use
 SB_PLL40_CORE   1 use
 VCC             6 uses
-SB_LUT4         277 uses
+SB_LUT4         252 uses
 
 I/O ports: 73
 I/O primitives: 67
@@ -25,8 +25,8 @@ I/O Register bits:                  0
 Register bits not including I/Os:   101 (2%)
 
 @S |Mapping Summary:
-Total  LUTs: 277 (7%)
+Total  LUTs: 252 (7%)
 
 Distribution of All Consumed LUTs = LUT4 
-Distribution of All Consumed Luts 277 = 277 
+Distribution of All Consumed Luts 252 = 252 
 

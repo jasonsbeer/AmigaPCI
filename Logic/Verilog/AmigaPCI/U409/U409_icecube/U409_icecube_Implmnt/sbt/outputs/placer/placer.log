@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:55:50
 
-* File Generated:     Jun 6 2025 19:30:32
+* File Generated:     Jun 7 2025 10:58:22
 
 * Purpose:            
 
@@ -41,7 +41,7 @@ W2715: Warning for set_io Constraint: Ignoring pin assignment for A[10], as it i
 W2715: Warning for set_io Constraint: Ignoring pin assignment for A[15], as it is not connected to any PAD
 
 Input Design Statistics
-    Number of LUTs      	:	277
+    Number of LUTs      	:	252
     Number of DFFs      	:	101
     Number of DFFs packed to IO	:	0
     Number of Carrys    	:	36
@@ -81,42 +81,42 @@ I2088: Phase 2, elapsed time : 0.0 (sec)
 Phase 3
 Info-1404: Inferred PLL generated clock at pll/PLLOUTCORE
 Info-1404: Inferred PLL generated clock at pll/PLLOUTGLOBAL
-Warning-1034: Found non-unate timing arc, from pin "in3" to pin "lcout" of instance "GB_BUFFER_CLK40_IN_c_g_THRU_LUT4_0_LC_281", in the clock network. Converting the timing arc to positive-unate
+Warning-1034: Found non-unate timing arc, from pin "in3" to pin "lcout" of instance "GB_BUFFER_CLK40_IN_c_g_THRU_LUT4_0_LC_256", in the clock network. Converting the timing arc to positive-unate
 
 Design Statistics after Packing
-    Number of LUTs      	:	283
+    Number of LUTs      	:	258
     Number of DFFs      	:	101
     Number of DFFs packed to IO	:	0
     Number of Carrys    	:	36
 
 Device Utilization Summary after Packing
     Sequential LogicCells
-        LUT and DFF      	:	83
-        LUT, DFF and CARRY	:	18
+        LUT and DFF      	:	81
+        LUT, DFF and CARRY	:	20
     Combinational LogicCells
-        Only LUT         	:	167
+        Only LUT         	:	144
         CARRY Only       	:	3
-        LUT with CARRY   	:	15
-    LogicCells                  :	286/3520
-    PLBs                        :	38/440
+        LUT with CARRY   	:	13
+    LogicCells                  :	261/3520
+    PLBs                        :	36/440
     BRAMs                       :	0/20
     IOs and GBIOs               :	67/107
     PLLs                        :	1/2
 
 
-I2088: Phase 3, elapsed time : 0.5 (sec)
+I2088: Phase 3, elapsed time : 0.4 (sec)
 
 Phase 4
 I2088: Phase 4, elapsed time : 0.2 (sec)
 
 Phase 5
-I2088: Phase 5, elapsed time : 0.3 (sec)
+I2088: Phase 5, elapsed time : 0.2 (sec)
 
 Phase 6
-I2088: Phase 6, elapsed time : 19.5 (sec)
+I2088: Phase 6, elapsed time : 14.9 (sec)
 
 Final Design Statistics
-    Number of LUTs      	:	283
+    Number of LUTs      	:	258
     Number of DFFs      	:	101
     Number of DFFs packed to IO	:	0
     Number of Carrys    	:	36
@@ -129,8 +129,8 @@ Final Design Statistics
     Number of PLLs      	:	1
 
 Device Utilization Summary
-    LogicCells                  :	286/3520
-    PLBs                        :	73/440
+    LogicCells                  :	261/3520
+    PLBs                        :	68/440
     BRAMs                       :	0/20
     IOs and GBIOs               :	67/107
     PLLs                        :	1/2
@@ -149,11 +149,11 @@ analysis after routing.
                      Clock Summary 
 =====================================================================
 Number of clocks: 5
-Clock: CLK28_IN | Frequency: 258.35 MHz | Target: 28.64 MHz
-Clock: CLK40_IN | Frequency: 112.15 MHz | Target: 40.00 MHz
-Clock: CLK6 | Frequency: 188.09 MHz | Target: 6.00 MHz
+Clock: CLK28_IN | Frequency: 229.33 MHz | Target: 28.64 MHz
+Clock: CLK40_IN | Frequency: 125.41 MHz | Target: 40.00 MHz
+Clock: CLK6 | Frequency: 188.02 MHz | Target: 6.00 MHz
 Clock: pll/PLLOUTCORE | Frequency: N/A | Target: 80.00 MHz
-Clock: pll/PLLOUTGLOBAL | Frequency: 180.82 MHz | Target: 80.00 MHz
+Clock: pll/PLLOUTGLOBAL | Frequency: 179.38 MHz | Target: 80.00 MHz
 
 =====================================================================
                      End of Clock Summary
@@ -161,5 +161,5 @@ Clock: pll/PLLOUTGLOBAL | Frequency: 180.82 MHz | Target: 80.00 MHz
 
 I2054: Placement of design completed successfully
 
-I2076: Placer run-time: 21.0 sec.
+I2076: Placer run-time: 16.2 sec.
 

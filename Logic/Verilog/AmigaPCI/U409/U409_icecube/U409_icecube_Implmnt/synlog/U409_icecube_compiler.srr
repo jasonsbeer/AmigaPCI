@@ -19,7 +19,8 @@ Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys softwa
 @I::"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v" (library work)
 @I::"D:\AmigaPCI\U409\U409_AUTOCONFIG.v" (library work)
 Verilog syntax check successful!
-File D:\AmigaPCI\U409\U409_TOP.v changed - recompiling
+File D:\AmigaPCI\U409\U409_ADDRESS_DECODE.v changed - recompiling
+File D:\AmigaPCI\U409\U409_AUTOCONFIG.v changed - recompiling
 Selecting top level module U409_TOP
 @N: CG364 :"C:\lscc\iCEcube2.2020.12\synpbase\lib\generic\sb_ice40.v":698:7:698:19|Synthesizing module SB_PLL40_CORE in library work.
 
@@ -49,6 +50,7 @@ State machine has 2 reachable states with original encodings of:
    0001
 @W: CL246 :"D:\AmigaPCI\U409\U409_ADDRESS_DECODE.v":42:17:42:17|Input port bits 15 to 14 of A[31:1] are unused. Assign logic for all port bits or change the input port size.
 @W: CL246 :"D:\AmigaPCI\U409\U409_ADDRESS_DECODE.v":42:17:42:17|Input port bits 11 to 1 of A[31:1] are unused. Assign logic for all port bits or change the input port size.
+@N: CL159 :"D:\AmigaPCI\U409\U409_ADDRESS_DECODE.v":39:25:39:27|Input TSn is unused.
 @N: CL201 :"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v":61:0:61:5|Trying to extract state machine for register TACK_COUNTER.
 Extracted state machine for register TACK_COUNTER
 State machine has 4 reachable states with original encodings of:
@@ -69,7 +71,7 @@ At c_ver Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Fri Jun 06 19:30:27 2025
+# Sat Jun 07 10:58:17 2025
 
 ###########################################################]
 Synopsys Netlist Linker, version comp2016q3p1, Build 141R, built Dec  5 2016
@@ -82,7 +84,7 @@ At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Fri Jun 06 19:30:27 2025
+# Sat Jun 07 10:58:17 2025
 
 ###########################################################]
 @END
@@ -92,6 +94,6 @@ At c_hdl Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Fri Jun 06 19:30:27 2025
+# Sat Jun 07 10:58:17 2025
 
 ###########################################################]
