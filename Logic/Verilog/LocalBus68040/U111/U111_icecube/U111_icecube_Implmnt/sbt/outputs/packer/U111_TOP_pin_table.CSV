@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:31:51
 
-* File Generated:     May 31 2025 15:09:36
+* File Generated:     Jun 12 2025 19:37:55
 
 * Purpose:            Detailed IO and package pin info
 
@@ -109,7 +109,7 @@ Pin Number, Pin Type Name, Signal Name, Direction, Global Buffer, IO Standard, P
 93, PIO_GBIN, CLK40A, Output, , SB_LVCMOS, No Pull Up, Simple Output, rightBank
 94, PIO_GBIN, CLK80_CPU, Output, , SB_LVCMOS, No Pull Up, Simple Output, rightBank
 95, PIO, D_UM_040[6], InOut, , SB_LVCMOS, No Pull Up, Simple Input Output Tristatable by Enable, rightBank
-96, PIO, not used, , , , , , rightBank
+96, PIO, BGn, Input, , SB_LVCMOS, Pull Up, Simple Input, rightBank
 97, PIO, RnW, Input, , SB_LVCMOS, No Pull Up, Simple Input, rightBank
 98, PIO, D_LM_040[6], InOut, , SB_LVCMOS, No Pull Up, Simple Input Output Tristatable by Enable, rightBank
 99, PIO, D_LM_040[7], InOut, , SB_LVCMOS, No Pull Up, Simple Input Output Tristatable by Enable, rightBank
@@ -157,4 +157,4 @@ Pin Number, Pin Type Name, Signal Name, Direction, Global Buffer, IO Standard, P
 142, PIO, D_UU_AMIGA[6], InOut, , SB_LVCMOS, No Pull Up, Simple Input Output Tristatable by Enable, topBank
 143, PIO, D_UU_AMIGA[7], InOut, , SB_LVCMOS, No Pull Up, Simple Input Output Tristatable by Enable, topBank
 144, PIO, D_UU_AMIGA[3], InOut, , SB_LVCMOS, No Pull Up, Simple Input Output Tristatable by Enable, topBank
-Total Number of Used Pins, 95
+Total Number of Used Pins, 96

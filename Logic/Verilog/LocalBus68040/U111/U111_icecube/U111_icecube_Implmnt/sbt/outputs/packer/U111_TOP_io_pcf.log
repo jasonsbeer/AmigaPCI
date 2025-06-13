@@ -93,3 +93,4 @@ INOUT D_UU_AMIGA[5] 	 location (0, 20, 1) 	 1
 INOUT D_UU_040[1] 	 location (25, 20, 0) 	 107 	 
 INOUT D_LM_AMIGA[3] 	 location (0, 11, 1) 	 19 	 
 INOUT D_LL_AMIGA[2] 	 location (0, 2, 1) 	 31 	 
+INPUT  BGn 	 location (25, 13, 1) 	 96 	 

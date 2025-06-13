@@ -4,7 +4,7 @@ Running in Lattice mode
 Starting:    C:\lscc\iCEcube2.2020.12\synpbase\bin64\mbin\synbatch.exe
 Install:     C:\lscc\iCEcube2.2020.12\synpbase
 Hostname:    JASON-LAB
-Date:        Sat May 31 15:09:20 2025
+Date:        Thu Jun 12 19:37:33 2025
 Version:     L-2016.09L+ice40
 
 Arguments:   -product synplify_pro -batch U111_icecube_syn.prj
@@ -20,26 +20,26 @@ Running: U111_icecube_Implmnt in foreground
 Running U111_icecube_syn|U111_icecube_Implmnt
 
 Running: compile (Compile) on U111_icecube_syn|U111_icecube_Implmnt
-# Sat May 31 15:09:20 2025
+# Thu Jun 12 19:37:33 2025
 
 Running: compile_flow (Compile Process) on U111_icecube_syn|U111_icecube_Implmnt
-# Sat May 31 15:09:20 2025
+# Thu Jun 12 19:37:33 2025
 
 Running: compiler (Compile Input) on U111_icecube_syn|U111_icecube_Implmnt
-# Sat May 31 15:09:20 2025
+# Thu Jun 12 19:37:33 2025
 Copied D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\synwork\U111_icecube_comp.srs to D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\U111_icecube.srs
 
 compiler completed
-# Sat May 31 15:09:21 2025
+# Thu Jun 12 19:37:34 2025
 
 Return Code: 0
 Run Time:00h:00m:01s
 
 Running: multi_srs_gen (Multi-srs Generator) on U111_icecube_syn|U111_icecube_Implmnt
-# Sat May 31 15:09:21 2025
+# Thu Jun 12 19:37:34 2025
 
 multi_srs_gen completed
-# Sat May 31 15:09:21 2025
+# Thu Jun 12 19:37:34 2025
 
 Return Code: 0
 Run Time:00h:00m:00s
@@ -47,25 +47,25 @@ Copied D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\synwork\U111_icec
 Complete: Compile Process on U111_icecube_syn|U111_icecube_Implmnt
 
 Running: premap (Pre-mapping) on U111_icecube_syn|U111_icecube_Implmnt
-# Sat May 31 15:09:21 2025
+# Thu Jun 12 19:37:34 2025
 
 premap completed
-# Sat May 31 15:09:22 2025
+# Thu Jun 12 19:37:35 2025
 
 Return Code: 0
 Run Time:00h:00m:01s
 Complete: Compile on U111_icecube_syn|U111_icecube_Implmnt
 
 Running: map (Map) on U111_icecube_syn|U111_icecube_Implmnt
-# Sat May 31 15:09:22 2025
+# Thu Jun 12 19:37:35 2025
 License granted for 4 parallel jobs
 
 Running: fpga_mapper (Map & Optimize) on U111_icecube_syn|U111_icecube_Implmnt
-# Sat May 31 15:09:22 2025
+# Thu Jun 12 19:37:35 2025
 Copied D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\synwork\U111_icecube_m.srm to D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\U111_icecube.srm
 
 fpga_mapper completed
-# Sat May 31 15:09:23 2025
+# Thu Jun 12 19:37:36 2025
 
 Return Code: 0
 Run Time:00h:00m:01s

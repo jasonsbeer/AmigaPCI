@@ -1,17 +1,17 @@
-@P:  Worst Slack : 8.229
+@P:  Worst Slack : 8.250
 @P:  CLK40_IN - Estimated Frequency : NA
 @P:  CLK40_IN - Requested Frequency : 40.0 MHz
 @P:  CLK40_IN - Estimated Period : NA
 @P:  CLK40_IN - Requested Period : 25.000
 @P:  CLK40_IN - Slack : NA
-@P:  U111_TOP|CLK40_derived_clock - Estimated Frequency : 119.3 MHz
+@P:  U111_TOP|CLK40_derived_clock - Estimated Frequency : 119.9 MHz
 @P:  U111_TOP|CLK40_derived_clock - Requested Frequency : 40.0 MHz
-@P:  U111_TOP|CLK40_derived_clock - Estimated Period : 8.382
+@P:  U111_TOP|CLK40_derived_clock - Estimated Period : 8.340
 @P:  U111_TOP|CLK40_derived_clock - Requested Period : 25.000
-@P:  U111_TOP|CLK40_derived_clock - Slack : 8.229
+@P:  U111_TOP|CLK40_derived_clock - Slack : 8.250
 @P: U111_TOP Part : ice40hx4ktq144
-@P: U111_TOP I/O primitives : 95
+@P: U111_TOP I/O primitives : 96
 @P: U111_TOP I/O Register bits : 0
-@P: U111_TOP Register bits (Non I/O) : 35 (0%)
-@P: U111_TOP Total Luts : 93 (2%)
+@P: U111_TOP Register bits (Non I/O) : 99 (2%)
+@P: U111_TOP Total Luts : 157 (4%)
 @P:  CPU Time : 0h:00m:00s

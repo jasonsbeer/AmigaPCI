@@ -5,9 +5,9 @@ Router Summary:
 
 Routing Resource Utilization:
 -----------------------------
-              Local line of tile     1096 out of 146184      0.74974%
-                          Span 4      545 out of  29696      1.83526%
-                         Span 12      375 out of   5632      6.65838%
-                  Global network        2 out of      8      25%
+              Local line of tile     1592 out of 146184      1.08904%
+                          Span 4      833 out of  29696      2.80509%
+                         Span 12      478 out of   5632      8.48722%
+                  Global network        4 out of      8      50%
       Vertical Inter-LUT Connect        8 out of   6720      0.119048%
 

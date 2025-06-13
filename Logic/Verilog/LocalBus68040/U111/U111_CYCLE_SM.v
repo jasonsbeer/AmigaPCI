@@ -25,9 +25,9 @@ Target Devices: iCE40-HX4K-TQ144
 Description: DATA TRANSFER CYCLE AND BUS SIZING STATE MACHINE
 
 Revision History:
-    19-APR-2025 New bus sizing state machine. JN
-    31-MAY-2025 Fixed burst cycle count value. JN
-    31-MAY-2025 Fixed bus contention during on-board RAM cycle. JN
+    19-APR-2025 : New bus sizing state machine. JN
+    31-MAY-2025 : Fixed burst cycle count value. JN
+    12-JUN-2025 : Fixed state machine crash when _LBEN is enabled. JN
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 */
@@ -65,7 +65,7 @@ always @(negedge CLK40) begin
     if (!RESETn) begin
         TSn <= 1;
     end else begin
-        TSn <= !TS_EN;
+        TSn <= !(TS_EN || (!TS_DELAY && LBENn));
     end
 end
 
@@ -90,16 +90,16 @@ assign TEA_CPUn = TEAn;
 //////////////////////
 
 //READS
-assign D_UU_040 = READ_CYCLE_ACTIVE && LBENn ? (LATCH_EN  ? UU_LATCHED : D_UU_AMIGA) : 8'bzzzzzzzz;
-assign D_UM_040 = READ_CYCLE_ACTIVE && LBENn ? (LATCH_EN  ? UM_LATCHED : D_UM_AMIGA) : 8'bzzzzzzzz;
-assign D_LM_040 = READ_CYCLE_ACTIVE && LBENn ? (FLIP_WORD ? D_UU_AMIGA : D_LM_AMIGA) : 8'bzzzzzzzz;
-assign D_LL_040 = READ_CYCLE_ACTIVE && LBENn ? (FLIP_WORD ? D_UM_AMIGA : D_LL_AMIGA) : 8'bzzzzzzzz;
+assign D_UU_040 = READ_CYCLE_ACTIVE ? (LATCH_EN  ? UU_LATCHED : D_UU_AMIGA) : 8'bzzzzzzzz;
+assign D_UM_040 = READ_CYCLE_ACTIVE ? (LATCH_EN  ? UM_LATCHED : D_UM_AMIGA) : 8'bzzzzzzzz;
+assign D_LM_040 = READ_CYCLE_ACTIVE ? (FLIP_WORD ? D_UU_AMIGA : D_LM_AMIGA) : 8'bzzzzzzzz;
+assign D_LL_040 = READ_CYCLE_ACTIVE ? (FLIP_WORD ? D_UM_AMIGA : D_LL_AMIGA) : 8'bzzzzzzzz;
 
 //WRITES
-assign D_UU_AMIGA = WRITE_CYCLE_ACTIVE && LBENn ? (FLIP_WORD ? D_LM_040 : D_UU_040) : 8'bzzzzzzzz;
-assign D_UM_AMIGA = WRITE_CYCLE_ACTIVE && LBENn ? (FLIP_WORD ? D_LL_040 : D_UM_040) : 8'bzzzzzzzz;
-assign D_LM_AMIGA = WRITE_CYCLE_ACTIVE && LBENn ? D_LM_040 : 8'bzzzzzzzz;
-assign D_LL_AMIGA = WRITE_CYCLE_ACTIVE && LBENn ? D_LL_040 : 8'bzzzzzzzz;
+assign D_UU_AMIGA = WRITE_CYCLE_ACTIVE ? (FLIP_WORD ? D_LM_040 : D_UU_040) : 8'bzzzzzzzz;
+assign D_UM_AMIGA = WRITE_CYCLE_ACTIVE ? (FLIP_WORD ? D_LL_040 : D_UM_040) : 8'bzzzzzzzz;
+assign D_LM_AMIGA = WRITE_CYCLE_ACTIVE ? D_LM_040 : 8'bzzzzzzzz;
+assign D_LL_AMIGA = WRITE_CYCLE_ACTIVE ? D_LL_040 : 8'bzzzzzzzz;
 
 //These are for the bus sizing state machine.
 wire [7:0] UU_AMIGA_IN = D_UU_AMIGA;
@@ -145,6 +145,7 @@ reg FLIP_WORD;
 reg A2_EN;
 reg BURST;
 reg LW_TRANS;
+reg TS_DELAY;
 
 reg [3:0] CYCLE_STATE;
 reg [7:0] UU_LATCHED;
@@ -167,13 +168,15 @@ always @(posedge CLK40) begin
         BURST_COUNT <= 2'b00;
         UU_LATCHED <= 8'h00;
         UM_LATCHED <= 8'h00;
+        TS_DELAY <= 1;
     end else begin
+
+        TS_DELAY <= TS_CPUn;
 
         case (CYCLE_STATE)
 
             4'h0 : begin
-                if (!TS_CPUn) begin
-                    TS_EN <= 1;
+                if (!TS_DELAY && !BGn && LBENn) begin
                     LATCH_EN <= 0;
                     READ_CYCLE_ACTIVE <= RnW;
                     WRITE_CYCLE_ACTIVE <= !RnW;
@@ -185,10 +188,8 @@ always @(posedge CLK40) begin
                     READ_CYCLE_ACTIVE <= 0;
                     WRITE_CYCLE_ACTIVE <= 0;
                 end
-
             end
             4'h1 : begin
-                TS_EN <= 0;
                 PORT_MISMATCH <= (PORTSIZE && LW_TRANS);
                 TA_DIS <= (PORTSIZE && LW_TRANS);
                 FLIP_WORD <= (PORTSIZE && A_040[1]); //Flip the position of the words when at address $2.
