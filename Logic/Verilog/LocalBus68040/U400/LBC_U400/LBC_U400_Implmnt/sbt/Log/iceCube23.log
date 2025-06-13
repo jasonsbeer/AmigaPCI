@@ -1,0 +1,3168 @@
+10:02:52 AM
+"C:\lscc\iCEcube2.2020.12\sbt_backend\bin\win32\opt\synpwrap\synpwrap.exe" -prj "LBC_U400_syn.prj" -log "LBC_U400_Implmnt/LBC_U400.srr"
+starting Synthesisrunning SynthesisCopyright (C) 1992-2014 Lattice Semiconductor Corporation. All rights reserved.
+
+==contents of LBC_U400_Implmnt/LBC_U400.srr
+#Build: Synplify Pro L-2016.09L+ice40, Build 077R, Dec  2 2016
+#install: C:\lscc\iCEcube2.2020.12\synpbase
+#OS: Windows 8 6.2
+#Hostname: JASON-LAB
+
+# Sat May 31 10:04:11 2025
+
+#Implementation: LBC_U400_Implmnt
+
+Synopsys HDL Compiler, version comp2016q3p1, Build 141R, built Dec  5 2016
+@N|Running in 64-bit mode
+Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
+
+Synopsys Verilog Compiler, version comp2016q3p1, Build 141R, built Dec  5 2016
+@N|Running in 64-bit mode
+Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
+
+@I::"C:\lscc\iCEcube2.2020.12\synpbase\lib\generic\sb_ice40.v" (library work)
+@I::"C:\lscc\iCEcube2.2020.12\synpbase\lib\vlog\hypermods.v" (library __hyper__lib__)
+@I::"C:\lscc\iCEcube2.2020.12\synpbase\lib\vlog\umr_capim.v" (library snps_haps)
+@I::"C:\lscc\iCEcube2.2020.12\synpbase\lib\vlog\scemi_objects.v" (library snps_haps)
+@I::"C:\lscc\iCEcube2.2020.12\synpbase\lib\vlog\scemi_pipes.svh" (library snps_haps)
+@I::"D:\LocalBus68040\U400\U400_BYTE_ENABLE.v" (library work)
+@I::"D:\LocalBus68040\U400\U400_SDRAM.v" (library work)
+@I::"D:\LocalBus68040\U400\U400_TOP.v" (library work)
+@I::"D:\LocalBus68040\U400\U400_ADDRESS_DECODE.v" (library work)
+Verilog syntax check successful!
+File D:\LocalBus68040\U400\U400_ADDRESS_DECODE.v changed - recompiling
+Selecting top level module U400_TOP
+@N: CG364 :"D:\LocalBus68040\U400\U400_ADDRESS_DECODE.v":33:7:33:25|Synthesizing module U400_ADDRESS_DECODE in library work.
+
+@N: CG364 :"D:\LocalBus68040\U400\U400_SDRAM.v":34:7:34:16|Synthesizing module U400_SDRAM in library work.
+
+@N: CG364 :"D:\LocalBus68040\U400\U400_BYTE_ENABLE.v":34:7:34:22|Synthesizing module U400_BYTE_ENABLE in library work.
+
+@N: CG364 :"D:\LocalBus68040\U400\U400_TOP.v":34:7:34:14|Synthesizing module U400_TOP in library work.
+
+@N: CL201 :"D:\LocalBus68040\U400\U400_SDRAM.v":102:0:102:5|Trying to extract state machine for register TA_COUNTER.
+Extracted state machine for register TA_COUNTER
+State machine has 6 reachable states with original encodings of:
+   000000000
+   000000001
+   000000010
+   000000011
+   000000100
+   000000101
+@W: CL246 :"D:\LocalBus68040\U400\U400_SDRAM.v":37:17:37:17|Input port bits 1 to 0 of A[26:0] are unused. Assign logic for all port bits or change the input port size.
+@N: CL159 :"D:\LocalBus68040\U400\U400_ADDRESS_DECODE.v":35:10:35:15|Input RESETn is unused.
+@N: CL159 :"D:\LocalBus68040\U400\U400_ADDRESS_DECODE.v":36:16:36:16|Input A is unused.
+
+At c_ver Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 72MB peak: 73MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+
+Process completed successfully.
+# Sat May 31 10:04:12 2025
+
+###########################################################]
+Synopsys Netlist Linker, version comp2016q3p1, Build 141R, built Dec  5 2016
+@N|Running in 64-bit mode
+@N: NF107 :"D:\LocalBus68040\U400\U400_TOP.v":34:7:34:14|Selected library: work cell: U400_TOP view verilog as top level
+@N: NF107 :"D:\LocalBus68040\U400\U400_TOP.v":34:7:34:14|Selected library: work cell: U400_TOP view verilog as top level
+
+At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 67MB peak: 68MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+
+Process completed successfully.
+# Sat May 31 10:04:12 2025
+
+###########################################################]
+@END
+
+At c_hdl Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 3MB peak: 4MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+
+Process completed successfully.
+# Sat May 31 10:04:12 2025
+
+###########################################################]
+Synopsys Netlist Linker, version comp2016q3p1, Build 141R, built Dec  5 2016
+@N|Running in 64-bit mode
+File D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\synwork\LBC_U400_comp.srs changed - recompiling
+@N: NF107 :"D:\LocalBus68040\U400\U400_TOP.v":34:7:34:14|Selected library: work cell: U400_TOP view verilog as top level
+@N: NF107 :"D:\LocalBus68040\U400\U400_TOP.v":34:7:34:14|Selected library: work cell: U400_TOP view verilog as top level
+
+At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 67MB peak: 68MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+
+Process completed successfully.
+# Sat May 31 10:04:13 2025
+
+###########################################################]
+Pre-mapping Report
+
+# Sat May 31 10:04:13 2025
+
+Synopsys Lattice Technology Pre-mapping, Version maplat, Build 1612R, Built Dec  5 2016 10:31:39
+Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
+Product Version L-2016.09L+ice40
+
+Mapper Startup Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 99MB peak: 99MB)
+
+Reading constraint file: D:\LocalBus68040\U400\U400_TOP.sdc
+@L: D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\LBC_U400_scck.rpt 
+Printing clock  summary report in "D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\LBC_U400_scck.rpt" file 
+@N: MF248 |Running in 64-bit mode.
+@N: MF666 |Clock conversion enabled. (Command "set_option -fix_gated_and_generated_clocks 1" in the project file.)
+
+Design Input Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 100MB peak: 102MB)
+
+
+Mapper Initialization Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 100MB peak: 102MB)
+
+
+Start loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 101MB peak: 102MB)
+
+
+Finished loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 101MB peak: 103MB)
+
+@N: BN115 :"d:\localbus68040\u400\u400_top.v":58:20:58:38|Removing instance U400_ADDRESS_DECODE (in view: work.U400_TOP(verilog)) of type view:work.U400_ADDRESS_DECODE(verilog) because it does not drive other instances.
+@N: BN115 :"d:\localbus68040\u400\u400_top.v":100:17:100:32|Removing instance U400_BYTE_ENABLE (in view: work.U400_TOP(verilog)) of type view:work.U400_BYTE_ENABLE(verilog) because it does not drive other instances.
+
+ICG Latch Removal Summary:
+Number of ICG latches removed:	0
+Number of ICG latches not removed:	0
+syn_allowed_resources : blockrams=16  set on top level netlist U400_TOP
+
+Finished netlist restructuring (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
+
+
+
+Clock Summary
+*****************
+
+Start     Requested     Requested     Clock        Clock                Clock
+Clock     Frequency     Period        Type         Group                Load 
+-----------------------------------------------------------------------------
+CLK40     40.0 MHz      25.000        declared     default_clkgroup     56   
+=============================================================================
+
+Finished Pre Mapping Phase.
+@N: BN225 |Writing default property annotation file D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\LBC_U400.sap.
+
+Starting constraint checker (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
+
+Encoding state machine TA_COUNTER[5:0] (in view: work.U400_SDRAM(verilog))
+original code -> new code
+   000000000 -> 000001
+   000000001 -> 000010
+   000000010 -> 000100
+   000000011 -> 001000
+   000000100 -> 010000
+   000000101 -> 100000
+None
+None
+
+Finished constraint checker (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
+
+Pre-mapping successful!
+
+At Mapper Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 47MB peak: 133MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+# Sat May 31 10:04:13 2025
+
+###########################################################]
+Map & Optimize Report
+
+# Sat May 31 10:04:14 2025
+
+Synopsys Lattice Technology Mapper, Version maplat, Build 1612R, Built Dec  5 2016 10:31:39
+Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
+Product Version L-2016.09L+ice40
+
+Mapper Startup Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 99MB peak: 99MB)
+
+@N: MF248 |Running in 64-bit mode.
+@N: MF666 |Clock conversion enabled. (Command "set_option -fix_gated_and_generated_clocks 1" in the project file.)
+
+Design Input Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 98MB peak: 100MB)
+
+
+Mapper Initialization Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 98MB peak: 100MB)
+
+
+Start loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 100MB peak: 100MB)
+
+
+Finished loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 100MB peak: 102MB)
+
+
+
+Starting Optimization and Mapping (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
+
+
+Available hyper_sources - for debug and ip models
+	None Found
+
+@N: MT204 |Auto Constrain mode is disabled because clocks are defined in the SDC file
+
+            CLK40
+
+
+Finished RTL optimizations (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
+
+Encoding state machine TA_COUNTER[5:0] (in view: work.U400_SDRAM(verilog))
+original code -> new code
+   000000000 -> 000001
+   000000001 -> 000010
+   000000010 -> 000100
+   000000011 -> 001000
+   000000100 -> 010000
+   000000101 -> 100000
+@N: MO231 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Found counter in view:work.U400_SDRAM(verilog) instance SDRAM_COUNTER[7:0] 
+
+Starting factoring (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
+
+
+Finished factoring (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 133MB peak: 134MB)
+
+
+Finished gated-clock and generated-clock conversion (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 132MB peak: 134MB)
+
+
+Finished generic timing optimizations - Pass 1 (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 133MB peak: 134MB)
+
+@N: BN362 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Removing sequential instance U400_SDRAM.RAM_CYCLE (in view: work.U400_TOP(verilog)) because it does not drive other instances.
+@N: BN362 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Removing sequential instance U400_SDRAM.WRITE_CYCLE (in view: work.U400_TOP(verilog)) because it does not drive other instances.
+@N: BN362 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Removing sequential instance U400_SDRAM.BURST (in view: work.U400_TOP(verilog)) because it does not drive other instances.
+@N: BN362 :"d:\localbus68040\u400\u400_sdram.v":102:0:102:5|Removing sequential instance U400_SDRAM.TA_COUNTER[3] (in view: work.U400_TOP(verilog)) because it does not drive other instances.
+@N: BN362 :"d:\localbus68040\u400\u400_sdram.v":102:0:102:5|Removing sequential instance U400_SDRAM.TA_COUNTER[4] (in view: work.U400_TOP(verilog)) because it does not drive other instances.
+@N: BN362 :"d:\localbus68040\u400\u400_sdram.v":102:0:102:5|Removing sequential instance U400_SDRAM.TA_COUNTER[5] (in view: work.U400_TOP(verilog)) because it does not drive other instances.
+@N: BN362 :"d:\localbus68040\u400\u400_sdram.v":84:0:84:5|Removing sequential instance U400_SDRAM.RAM_CYCLE_START (in view: work.U400_TOP(verilog)) because it does not drive other instances.
+
+Starting Early Timing Optimization (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 133MB peak: 134MB)
+
+
+Finished Early Timing Optimization (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 133MB peak: 134MB)
+
+
+Finished generic timing optimizations - Pass 2 (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 133MB peak: 134MB)
+
+
+Finished preparing to map (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 133MB peak: 134MB)
+
+@N: BN362 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Removing sequential instance U400_SDRAM.BANK1 (in view: work.U400_TOP(verilog)) because it does not drive other instances.
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.BANK1 (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@N: BN362 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Removing sequential instance U400_SDRAM.BANK0 (in view: work.U400_TOP(verilog)) because it does not drive other instances.
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.BANK0 (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+
+Finished technology mapping (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 135MB peak: 137MB)
+
+Pass		 CPU time		Worst Slack		Luts / Registers
+------------------------------------------------------------
+   1		0h:00m:00s		     8.78ns		 103 /        47
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[12] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[11] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[10] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[9] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[8] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[7] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[6] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[5] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[4] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[3] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[2] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[1] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[0] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@N: FX1016 :"d:\localbus68040\u400\u400_top.v":36:10:36:14|SB_GB_IO inserted on the port CLK40.
+@N: FX1017 :|SB_GB inserted on the net RESETn_c_i.
+
+Finished technology timing optimizations and critical path resynthesis (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 135MB peak: 137MB)
+
+
+Finished restoring hierarchy (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 136MB peak: 137MB)
+
+
+
+@S |Clock Optimization Summary
+
+
+#### START OF CLOCK OPTIMIZATION REPORT #####[
+
+1 non-gated/non-generated clock tree(s) driving 47 clock pin(s) of sequential element(s)
+0 gated/generated clock tree(s) driving 0 clock pin(s) of sequential element(s)
+0 instances converted, 0 sequential instances remain driven by gated/generated clocks
+
+============================= Non-Gated/Non-Generated Clocks =============================
+Clock Tree ID     Driving Element      Drive Element Type     Fanout     Sample Instance  
+------------------------------------------------------------------------------------------
+@K:CKID0001       CLK40_ibuf_gb_io     SB_GB_IO               47         U400_SDRAM.TA_OUT
+==========================================================================================
+
+
+##### END OF CLOCK OPTIMIZATION REPORT ######]
+
+
+Start Writing Netlists (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 110MB peak: 137MB)
+
+Writing Analyst data base D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\synwork\LBC_U400_m.srm
+
+Finished Writing Netlist Databases (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 135MB peak: 137MB)
+
+Writing EDIF Netlist and constraint files
+@N: BW103 |The default time unit for the Synopsys Constraint File (SDC or FDC) is 1ns.
+@N: BW107 |Synopsys Constraint File capacitance units using default value of 1pF 
+@N: FX1056 |Writing EDF file: D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\LBC_U400.edf
+L-2016.09L+ice40
+
+Finished Writing EDIF Netlist and constraint files (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 136MB peak: 138MB)
+
+
+Start final timing analysis (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 135MB peak: 138MB)
+
+@N: MT615 |Found clock CLK40 with period 25.00ns 
+
+
+##### START OF TIMING REPORT #####[
+# Timing Report written on Sat May 31 10:04:15 2025
+#
+
+
+Top view:               U400_TOP
+Requested Frequency:    40.0 MHz
+Wire load mode:         top
+Paths requested:        5
+Constraint File(s):    D:\LocalBus68040\U400\U400_TOP.sdc
+                       
+@N: MT320 |This timing report is an estimate of place and route data. For final timing results, use the FPGA vendor place and route report.
+
+@N: MT322 |Clock constraints include only register-to-register paths associated with each individual clock.
+
+
+
+Performance Summary
+*******************
+
+
+Worst slack in design: 6.480
+
+                   Requested     Estimated     Requested     Estimated               Clock        Clock           
+Starting Clock     Frequency     Frequency     Period        Period        Slack     Type         Group           
+------------------------------------------------------------------------------------------------------------------
+CLK40              40.0 MHz      76.0 MHz      25.000        13.166        6.480     declared     default_clkgroup
+==================================================================================================================
+
+
+
+
+
+Clock Relationships
+*******************
+
+Clocks            |    rise  to  rise    |    fall  to  fall    |    rise  to  fall   |    fall  to  rise 
+----------------------------------------------------------------------------------------------------------
+Starting  Ending  |  constraint  slack   |  constraint  slack   |  constraint  slack  |  constraint  slack
+----------------------------------------------------------------------------------------------------------
+CLK40     CLK40   |  25.000      19.029  |  25.000      11.834  |  No paths    -      |  12.500      6.480
+==========================================================================================================
+ Note: 'No paths' indicates there are no paths in the design for that pair of clock edges.
+       'Diff grp' indicates that paths exist but the starting clock and ending clock are in different clock groups.
+
+
+
+Interface Information 
+*********************
+
+No IO constraint found
+
+
+
+====================================
+Detailed Report for Clock: CLK40
+====================================
+
+
+
+Starting Points with Worst Slack
+********************************
+
+                                  Starting                                                   Arrival           
+Instance                          Reference     Type          Pin     Net                    Time        Slack 
+                                  Clock                                                                        
+---------------------------------------------------------------------------------------------------------------
+U400_SDRAM.TACK                   CLK40         SB_DFFNSR     Q       TACK                   0.540       6.480 
+U400_SDRAM.SDRAM_COUNTER[4]       CLK40         SB_DFFNE      Q       SDRAM_COUNTER[4]       0.540       11.834
+U400_SDRAM.SDRAM_COUNTER[5]       CLK40         SB_DFFNE      Q       SDRAM_COUNTER[5]       0.540       11.841
+U400_SDRAM.SDRAM_COUNTER[6]       CLK40         SB_DFFNE      Q       SDRAM_COUNTER[6]       0.540       11.869
+U400_SDRAM.SDRAM_COUNTER[7]       CLK40         SB_DFFNE      Q       SDRAM_COUNTER[7]       0.540       11.932
+U400_SDRAM.SDRAM_COUNTER[2]       CLK40         SB_DFFNE      Q       SDRAM_COUNTER[2]       0.540       13.640
+U400_SDRAM.SDRAM_COUNTER[3]       CLK40         SB_DFFNE      Q       SDRAM_COUNTER[3]       0.540       13.654
+U400_SDRAM.SDRAM_COUNTER[0]       CLK40         SB_DFFNE      Q       SDRAM_COUNTER[0]       0.540       13.703
+U400_SDRAM.REFRESH_COUNTER[3]     CLK40         SB_DFFNSR     Q       REFRESH_COUNTER[3]     0.540       13.857
+U400_SDRAM.REFRESH_COUNTER[4]     CLK40         SB_DFFNSR     Q       REFRESH_COUNTER[4]     0.540       13.871
+===============================================================================================================
+
+
+Ending Points with Worst Slack
+******************************
+
+                                Starting                                                    Required           
+Instance                        Reference     Type          Pin     Net                     Time         Slack 
+                                Clock                                                                          
+---------------------------------------------------------------------------------------------------------------
+U400_SDRAM.TA_EN_i              CLK40         SB_DFFSS      D       TA_EN_i_en_0            12.395       6.480 
+U400_SDRAM.TA_OUT               CLK40         SB_DFF        D       TA_OUT_0                12.395       6.480 
+U400_SDRAM.TA_COUNTER[1]        CLK40         SB_DFF        D       N_30_i                  12.395       6.543 
+U400_SDRAM.TA_COUNTER[0]        CLK40         SB_DFF        D       N_36                    12.395       8.349 
+U400_SDRAM.CS0_EN               CLK40         SB_DFFNSR     D       CS0_EN_1                24.895       11.834
+U400_SDRAM.CS1_EN               CLK40         SB_DFFNSR     D       CS1_EN_1                24.895       11.834
+U400_SDRAM.SDRAM_COUNTER[0]     CLK40         SB_DFFNE      D       SDRAM_COUNTER_lm[0]     24.895       11.834
+U400_SDRAM.SDRAM_COUNTER[1]     CLK40         SB_DFFNE      D       SDRAM_COUNTER_lm[1]     24.895       11.897
+U400_SDRAM.SDRAM_COUNTER[2]     CLK40         SB_DFFNE      D       SDRAM_COUNTER_lm[2]     24.895       11.897
+U400_SDRAM.SDRAM_COUNTER[3]     CLK40         SB_DFFNE      D       SDRAM_COUNTER_lm[3]     24.895       11.897
+===============================================================================================================
+
+
+
+Worst Path Information
+***********************
+
+
+Path information for path number 1: 
+      Requested Period:                      12.500
+    - Setup time:                            0.105
+    + Clock delay at ending point:           0.000 (ideal)
+    = Required time:                         12.395
+
+    - Propagation time:                      5.915
+    - Clock delay at starting point:         0.000 (ideal)
+    = Slack (critical) :                     6.480
+
+    Number of logic level(s):                2
+    Starting point:                          U400_SDRAM.TACK / Q
+    Ending point:                            U400_SDRAM.TA_EN_i / D
+    The start point is clocked by            CLK40 [falling] on pin C
+    The end   point is clocked by            CLK40 [rising] on pin C
+
+Instance / Net                                     Pin      Pin               Arrival     No. of    
+Name                                 Type          Name     Dir     Delay     Time        Fan Out(s)
+----------------------------------------------------------------------------------------------------
+U400_SDRAM.TACK                      SB_DFFNSR     Q        Out     0.540     0.540       -         
+TACK                                 Net           -        -       1.599     -           4         
+U400_SDRAM.TA_COUNTER_RNIPSFM[0]     SB_LUT4       I0       In      -         2.139       -         
+U400_SDRAM.TA_COUNTER_RNIPSFM[0]     SB_LUT4       O        Out     0.449     2.588       -         
+N_139                                Net           -        -       1.371     -           3         
+U400_SDRAM.TA_EN_i_RNO               SB_LUT4       I0       In      -         3.959       -         
+U400_SDRAM.TA_EN_i_RNO               SB_LUT4       O        Out     0.449     4.408       -         
+TA_EN_i_en_0                         Net           -        -       1.507     -           1         
+U400_SDRAM.TA_EN_i                   SB_DFFSS      D        In      -         5.915       -         
+====================================================================================================
+Total path delay (propagation time + setup) of 6.020 is 1.543(25.6%) logic and 4.477(74.4%) route.
+Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
+
+
+
+##### END OF TIMING REPORT #####]
+
+Timing exceptions that could not be applied
+None
+
+Finished final timing analysis (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 136MB peak: 138MB)
+
+
+Finished timing report (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 136MB peak: 138MB)
+
+---------------------------------------
+Resource Usage Report for U400_TOP 
+
+Mapping to part: ice40hx1kvq100
+Cell usage:
+GND             1 use
+SB_CARRY        14 uses
+SB_DFF          4 uses
+SB_DFFN         3 uses
+SB_DFFNE        8 uses
+SB_DFFNESR      13 uses
+SB_DFFNSR       13 uses
+SB_DFFNSS       5 uses
+SB_DFFSS        1 use
+SB_GB           1 use
+VCC             1 use
+SB_LUT4         97 uses
+
+I/O ports: 65
+I/O primitives: 54
+SB_GB_IO       1 use
+SB_IO          53 uses
+
+I/O Register bits:                  0
+Register bits not including I/Os:   47 (3%)
+Total load per clock:
+   CLK40: 1
+
+@S |Mapping Summary:
+Total  LUTs: 97 (7%)
+
+Distribution of All Consumed LUTs = LUT4 
+Distribution of All Consumed Luts 97 = 97 
+
+Mapper successful!
+
+At Mapper Exit (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 27MB peak: 138MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+# Sat May 31 10:04:15 2025
+
+###########################################################]
+
+
+Synthesis exit by 0.
+Current Implementation LBC_U400_Implmnt its sbt path: D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt
+Synthesis succeed.
+Synthesis succeeded.
+Synthesis runtime 5 seconds
+
+
+"C:/lscc/iCEcube2.2020.12/sbt_backend/bin/win32/opt\edifparser.exe" "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P01.dev" "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt/LBC_U400.edf " "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\netlist" "-pVQ100" "-yD:/LocalBus68040/U400/U400_TOP.pcf " -c --devicename iCE40HX1K
+starting edif parserrunning edif parserLattice Semiconductor Corporation  Edif Parser
+Release:        2020.12.27943
+Build Date:     Dec  9 2020 17:30:22
+
+Parsing edif file: D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt/LBC_U400.edf...
+Parsing constraint file: D:/LocalBus68040/U400/U400_TOP.pcf ...
+start to read sdc/scf file D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt/LBC_U400.scf
+sdc_reader OK D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt/LBC_U400.scf
+Stored edif netlist at D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\netlist\oadb-U400_TOP...
+
+write Timing Constraint to D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt/Temp/sbt_temp.sdc
+
+EDIF Parser succeeded
+Top module is: U400_TOP
+
+EDF Parser run-time: 5 (sec)
+edif parser succeed.
+
+
+"C:/lscc/iCEcube2.2020.12/sbt_backend/bin/win32/opt\sbtplacer.exe" --des-lib "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\netlist\oadb-U400_TOP" --outdir "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\placer" --device-file "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P01.dev" --package VQ100 --deviceMarketName iCE40HX1K --sdc-file "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\Temp/sbt_temp.sdc" --lib-file "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ice40HX1K.lib" --effort_level std --out-sdc-file "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\placer\U400_TOP_pl.sdc"
+starting placerrunning placerExecuting : C:\lscc\iCEcube2.2020.12\sbt_backend\bin\win32\opt\sbtplacer.exe --des-lib D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\netlist\oadb-U400_TOP --outdir D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\placer --device-file C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P01.dev --package VQ100 --deviceMarketName iCE40HX1K --sdc-file D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\Temp/sbt_temp.sdc --lib-file C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ice40HX1K.lib --effort_level std --out-sdc-file D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\placer\U400_TOP_pl.sdc
+Lattice Semiconductor Corporation  Placer
+Release:        2020.12.27943
+Build Date:     Dec  9 2020 17:55:52
+
+I2004: Option and Settings Summary
+=============================================================
+Device file          - C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P01.dev
+Package              - VQ100
+Design database      - D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\netlist\oadb-U400_TOP
+SDC file             - D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\Temp/sbt_temp.sdc
+Output directory     - D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\placer
+Timing library       - C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ice40HX1K.lib
+Effort level         - std
+
+I2050: Starting reading inputs for placer
+=============================================================
+I2100: Reading design library: D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\netlist\oadb-U400_TOP/BFPGA_DESIGN_ep
+I2065: Reading device file : C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P01.dev
+I2051: Reading of inputs for placer completed successfully
+
+I2053: Starting placement of the design
+=============================================================
+
+Input Design Statistics
+    Number of LUTs      	:	97
+    Number of DFFs      	:	47
+    Number of DFFs packed to IO	:	0
+    Number of Carrys    	:	14
+    Number of RAMs      	:	0
+    Number of ROMs      	:	0
+    Number of IOs       	:	53
+    Number of GBIOs     	:	1
+    Number of GBs       	:	1
+    Number of WarmBoot  	:	0
+    Number of PLLs      	:	0
+
+
+Phase 1
+I2077: Start design legalization
+
+Design Legalization Statistics
+    Number of feedthru LUTs inserted to legalize input of DFFs     	:	3
+    Number of feedthru LUTs inserted for LUTs driving multiple DFFs	:	0
+    Number of LUTs replicated for LUTs driving multiple DFFs       	:	0
+    Number of feedthru LUTs inserted to legalize output of CARRYs  	:	0
+    Number of feedthru LUTs inserted to legalize global signals    	:	0
+    Number of feedthru CARRYs inserted to legalize input of CARRYs 	:	0
+    Number of inserted LUTs to Legalize IOs with PIN_TYPE= 01xxxx  	:	0
+    Number of inserted LUTs to Legalize IOs with PIN_TYPE= 10xxxx  	:	0
+    Number of inserted LUTs to Legalize IOs with PIN_TYPE= 11xxxx  	:	0
+    Total LUTs inserted                                            	:	3
+    Total CARRYs inserted                                          	:	0
+
+
+I2078: Design legalization is completed successfully
+I2088: Phase 1, elapsed time : 0.0 (sec)
+
+
+Phase 2
+W2715: Warning for set_io Constraint: Ignoring pin assignment for A[1], as it is not connected to any PAD
+W2715: Warning for set_io Constraint: Ignoring pin assignment for A[27], as it is not connected to any PAD
+W2715: Warning for set_io Constraint: Ignoring pin assignment for A[31], as it is not connected to any PAD
+W2715: Warning for set_io Constraint: Ignoring pin assignment for SIZ[0], as it is not connected to any PAD
+W2715: Warning for set_io Constraint: Ignoring pin assignment for A[29], as it is not connected to any PAD
+W2715: Warning for set_io Constraint: Ignoring pin assignment for TSn, as it is not connected to any PAD
+W2715: Warning for set_io Constraint: Ignoring pin assignment for A[0], as it is not connected to any PAD
+W2715: Warning for set_io Constraint: Ignoring pin assignment for SIZ[1], as it is not connected to any PAD
+W2715: Warning for set_io Constraint: Ignoring pin assignment for A[28], as it is not connected to any PAD
+W2715: Warning for set_io Constraint: Ignoring pin assignment for A[30], as it is not connected to any PAD
+W2715: Warning for set_io Constraint: Ignoring pin assignment for RnW, as it is not connected to any PAD
+W2216: SB_GB_IO 'CLK40_ibuf_gb_io' is assigned to a non-GB pin '53'. Replacing it with SB_IO 'CLK40_ibuf_gb_io' and SB_GB 'CLK40_ibuf_gb_io_gb'
+I2088: Phase 2, elapsed time : 0.0 (sec)
+
+Phase 3
+Warning-1034: Found non-unate timing arc, from pin "PACKAGEPIN" to pin "DIN0" of instance "CLK40_ibuf_gb_io", in the clock network. Converting the timing arc to positive-unate
+
+Design Statistics after Packing
+    Number of LUTs      	:	101
+    Number of DFFs      	:	47
+    Number of DFFs packed to IO	:	0
+    Number of Carrys    	:	14
+
+Device Utilization Summary after Packing
+    Sequential LogicCells
+        LUT and DFF      	:	35
+        LUT, DFF and CARRY	:	12
+    Combinational LogicCells
+        Only LUT         	:	53
+        CARRY Only       	:	1
+        LUT with CARRY   	:	1
+    LogicCells                  :	102/1280
+    PLBs                        :	15/160
+    BRAMs                       :	0/16
+    IOs and GBIOs               :	54/72
+    PLLs                        :	0/0
+
+
+I2088: Phase 3, elapsed time : 0.3 (sec)
+
+Phase 4
+Warning: dangling IO A_ibuf_22
+Warning: dangling IO A_ibuf_21
+I2088: Phase 4, elapsed time : 0.1 (sec)
+
+Phase 5
+I2088: Phase 5, elapsed time : 0.1 (sec)
+
+Phase 6
+I2088: Phase 6, elapsed time : 12.2 (sec)
+
+Final Design Statistics
+    Number of LUTs      	:	101
+    Number of DFFs      	:	47
+    Number of DFFs packed to IO	:	0
+    Number of Carrys    	:	14
+    Number of RAMs      	:	0
+    Number of ROMs      	:	0
+    Number of IOs       	:	54
+    Number of GBIOs     	:	0
+    Number of GBs       	:	2
+    Number of WarmBoot  	:	0
+    Number of PLLs      	:	0
+
+Device Utilization Summary
+    LogicCells                  :	102/1280
+    PLBs                        :	32/160
+    BRAMs                       :	0/16
+    IOs and GBIOs               :	54/72
+    PLLs                        :	0/0
+
+
+
+#####################################################################
+Placement Timing Summary
+
+The timing summary is based on estimated routing delays after
+placement. For final timing report, please carry out the timing
+analysis after routing.
+=====================================================================
+
+#####################################################################
+                     Clock Summary 
+=====================================================================
+Number of clocks: 1
+Clock: CLK40 | Frequency: 146.15 MHz | Target: 40.00 MHz
+
+=====================================================================
+                     End of Clock Summary
+#####################################################################
+
+I2054: Placement of design completed successfully
+
+I2076: Placer run-time: 13.0 sec.
+
+placer succeed.
+starting IPExporterrunning IPExporterIPExporter succeed.
+
+
+"C:/lscc/iCEcube2.2020.12/sbt_backend/bin/win32/opt\packer.exe" "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P01.dev" "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\netlist\oadb-U400_TOP" --package VQ100 --outdir "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\packer" --DRC_only  --translator "C:\lscc\iCEcube2.2020.12\sbt_backend\bin\sdc_translator.tcl" --src_sdc_file "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\placer\U400_TOP_pl.sdc" --dst_sdc_file "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\packer\U400_TOP_pk.sdc" --devicename iCE40HX1K
+starting packerrunning packerLattice Semiconductor Corporation  Packer
+Release:        2020.12.27943
+Build Date:     Dec  9 2020 17:32:13
+
+Begin Packing...
+initializing finish
+Warning: dangling IO A_ibuf_22
+Warning: dangling IO A_ibuf_21
+Total HPWL cost is 529
+Warning: cannot find the IO pin Input/Output direction for A_ibuf_21 (ICE_IO)
+Warning: cannot find the IO pin Input/Output direction for A_ibuf_22 (ICE_IO)
+used logic cells: 102
+Design Rule Checking Succeeded
+
+DRC Checker run-time: 0 (sec)
+packer succeed.
+
+
+"C:/lscc/iCEcube2.2020.12/sbt_backend/bin/win32/opt\packer.exe" "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P01.dev" "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\netlist\oadb-U400_TOP" --package VQ100 --outdir "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\packer" --translator "C:\lscc\iCEcube2.2020.12\sbt_backend\bin\sdc_translator.tcl" --src_sdc_file "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\placer\U400_TOP_pl.sdc" --dst_sdc_file "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\packer\U400_TOP_pk.sdc" --devicename iCE40HX1K
+starting packerrunning packerLattice Semiconductor Corporation  Packer
+Release:        2020.12.27943
+Build Date:     Dec  9 2020 17:32:13
+
+Begin Packing...
+initializing finish
+Warning: dangling IO A_ibuf_22
+Warning: dangling IO A_ibuf_21
+Total HPWL cost is 529
+Warning: cannot find the IO pin Input/Output direction for A_ibuf_21 (ICE_IO)
+Warning: cannot find the IO pin Input/Output direction for A_ibuf_22 (ICE_IO)
+used logic cells: 102
+Translating sdc file D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\placer\U400_TOP_pl.sdc...
+Translated sdc file is D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\packer\U400_TOP_pk.sdc
+Warning: cannot find the IO pin Input/Output direction for A_ibuf_21 (ICE_IO)
+Warning: cannot find the IO pin Input/Output direction for A_ibuf_22 (ICE_IO)
+Packer succeeded
+
+Packer run-time: 0 (sec)
+packer succeed.
+
+
+"C:\lscc\iCEcube2.2020.12\sbt_backend\bin\win32\opt\sbrouter.exe" "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P01.dev" "D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\sbt\netlist\oadb-U400_TOP" "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ice40HX1K.lib" "D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\sbt\outputs\packer\U400_TOP_pk.sdc" --outdir "D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\sbt\outputs\router" --sdf_file "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\simulation_netlist\U400_TOP_sbt.sdf" --pin_permutation
+starting routerrunning routerSJRouter....
+Executing : C:\lscc\iCEcube2.2020.12\sbt_backend\bin\win32\opt\sbrouter.exe C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P01.dev D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\sbt\netlist\oadb-U400_TOP C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ice40HX1K.lib D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\sbt\outputs\packer\U400_TOP_pk.sdc --outdir D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\sbt\outputs\router --sdf_file D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\simulation_netlist\U400_TOP_sbt.sdf --pin_permutation 
+Lattice Semiconductor Corporation  Router
+Release:        2020.12.27943
+Build Date:     Dec  9 2020 17:44:15
+
+I1203: Reading Design U400_TOP
+Read design time: 0
+I1202: Reading Architecture of device iCE40HX1K
+Read device time: 2
+I1209: Started routing
+I1223: Total Nets : 154 
+I1212: Iteration  1 :    33 unrouted : 1 seconds
+I1212: Iteration  2 :     0 unrouted : 0 seconds
+I1215: Routing is successful
+Routing time: 1
+I1206: Completed routing
+I1204: Writing Design U400_TOP
+Lib Closed
+I1210: Writing routes
+I1218: Exiting the router
+I1224: Router run-time : 3 seconds
+router succeed.
+
+"C:/lscc/iCEcube2.2020.12/sbt_backend/bin/win32/opt\netlister.exe" --verilog "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\simulation_netlist\U400_TOP_sbt.v" --vhdl "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt/sbt/outputs/simulation_netlist\U400_TOP_sbt.vhd" --lib "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\netlist\oadb-U400_TOP" --view rt --device "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P01.dev" --splitio  --in-sdc-file "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\packer\U400_TOP_pk.sdc" --out-sdc-file "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\netlister\U400_TOP_sbt.sdc"
+starting netlistrunning netlistLattice Semiconductor Corporation  Verilog & VHDL Netlister
+Release:        2020.12.27943
+Build Date:     Dec  9 2020 18:18:39
+
+Generating Verilog & VHDL netlist files ...
+Writing D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\simulation_netlist\U400_TOP_sbt.v
+Writing D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt/sbt/outputs/simulation_netlist\U400_TOP_sbt.vhd
+Netlister succeeded.
+
+Netlister run-time: 1 (sec)
+netlist succeed.
+
+
+"C:/lscc/iCEcube2.2020.12/sbt_backend/bin/win32/opt\sbtimer.exe" --des-lib "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\netlist\oadb-U400_TOP" --lib-file "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ice40HX1K.lib" --sdc-file "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\netlister\U400_TOP_sbt.sdc" --sdf-file "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\simulation_netlist\U400_TOP_sbt.sdf" --report-file "D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\sbt\outputs\timer\U400_TOP_timing.rpt" --device-file "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P01.dev" --timing-summary
+starting timerrunning timerExecuting : C:\lscc\iCEcube2.2020.12\sbt_backend\bin\win32\opt\sbtimer.exe --des-lib D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\netlist\oadb-U400_TOP --lib-file C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ice40HX1K.lib --sdc-file D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\netlister\U400_TOP_sbt.sdc --sdf-file D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\simulation_netlist\U400_TOP_sbt.sdf --report-file D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\sbt\outputs\timer\U400_TOP_timing.rpt --device-file C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P01.dev --timing-summary
+Lattice Semiconductor Corporation  Timer
+Release:        2020.12.27943
+Build Date:     Dec  9 2020 17:41:47
+
+Warning-1034: Found non-unate timing arc, from pin "PADIN" to pin "DIN0" of instance "CLK40_ibuf_gb_io_preio", in the clock network. Converting the timing arc to positive-unate
+Timer run-time: 3 seconds
+timer succeed.
+timer succeeded.
+
+
+"C:/lscc/iCEcube2.2020.12/sbt_backend/bin/win32/opt\bitmap.exe" "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P01.dev" --design "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\netlist\oadb-U400_TOP" --device_name iCE40HX1K --package VQ100 --outdir "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\bitmap" --low_power on --init_ram on --init_ram_bank 1111 --frequency low --warm_boot on --set_unused_io_nopullup
+starting bitmaprunning bitmapLattice Semiconductor Corporation  Bit Stream Generator
+Release:        2020.12.27943
+Build Date:     Dec  9 2020 18:17:40
+
+Bit Stream File Size: 257720 (251K 696 Bits)
+Bit Stream Generator succeeded
+
+Bitmap run-time: 0 (sec)
+bitmap succeed.
+"C:\lscc\iCEcube2.2020.12\sbt_backend\bin\win32\opt\synpwrap\synpwrap.exe" -prj "LBC_U400_syn.prj" -log "LBC_U400_Implmnt/LBC_U400.srr"
+starting Synthesisrunning SynthesisCopyright (C) 1992-2014 Lattice Semiconductor Corporation. All rights reserved.
+
+==contents of LBC_U400_Implmnt/LBC_U400.srr
+#Build: Synplify Pro L-2016.09L+ice40, Build 077R, Dec  2 2016
+#install: C:\lscc\iCEcube2.2020.12\synpbase
+#OS: Windows 8 6.2
+#Hostname: JASON-LAB
+
+# Sat May 31 10:06:23 2025
+
+#Implementation: LBC_U400_Implmnt
+
+Synopsys HDL Compiler, version comp2016q3p1, Build 141R, built Dec  5 2016
+@N|Running in 64-bit mode
+Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
+
+Synopsys Verilog Compiler, version comp2016q3p1, Build 141R, built Dec  5 2016
+@N|Running in 64-bit mode
+Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
+
+@I::"C:\lscc\iCEcube2.2020.12\synpbase\lib\generic\sb_ice40.v" (library work)
+@I::"C:\lscc\iCEcube2.2020.12\synpbase\lib\vlog\hypermods.v" (library __hyper__lib__)
+@I::"C:\lscc\iCEcube2.2020.12\synpbase\lib\vlog\umr_capim.v" (library snps_haps)
+@I::"C:\lscc\iCEcube2.2020.12\synpbase\lib\vlog\scemi_objects.v" (library snps_haps)
+@I::"C:\lscc\iCEcube2.2020.12\synpbase\lib\vlog\scemi_pipes.svh" (library snps_haps)
+@I::"D:\LocalBus68040\U400\U400_BYTE_ENABLE.v" (library work)
+@I::"D:\LocalBus68040\U400\U400_SDRAM.v" (library work)
+@I::"D:\LocalBus68040\U400\U400_TOP.v" (library work)
+@I::"D:\LocalBus68040\U400\U400_ADDRESS_DECODE.v" (library work)
+Verilog syntax check successful!
+File D:\LocalBus68040\U400\U400_ADDRESS_DECODE.v changed - recompiling
+Selecting top level module U400_TOP
+@N: CG364 :"D:\LocalBus68040\U400\U400_ADDRESS_DECODE.v":33:7:33:25|Synthesizing module U400_ADDRESS_DECODE in library work.
+
+@N: CG364 :"D:\LocalBus68040\U400\U400_SDRAM.v":34:7:34:16|Synthesizing module U400_SDRAM in library work.
+
+@N: CG364 :"D:\LocalBus68040\U400\U400_BYTE_ENABLE.v":34:7:34:22|Synthesizing module U400_BYTE_ENABLE in library work.
+
+@N: CG364 :"D:\LocalBus68040\U400\U400_TOP.v":34:7:34:14|Synthesizing module U400_TOP in library work.
+
+@N: CL201 :"D:\LocalBus68040\U400\U400_SDRAM.v":102:0:102:5|Trying to extract state machine for register TA_COUNTER.
+Extracted state machine for register TA_COUNTER
+State machine has 6 reachable states with original encodings of:
+   000000000
+   000000001
+   000000010
+   000000011
+   000000100
+   000000101
+@W: CL246 :"D:\LocalBus68040\U400\U400_SDRAM.v":37:17:37:17|Input port bits 1 to 0 of A[26:0] are unused. Assign logic for all port bits or change the input port size.
+
+At c_ver Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 72MB peak: 73MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+
+Process completed successfully.
+# Sat May 31 10:06:23 2025
+
+###########################################################]
+Synopsys Netlist Linker, version comp2016q3p1, Build 141R, built Dec  5 2016
+@N|Running in 64-bit mode
+@N: NF107 :"D:\LocalBus68040\U400\U400_TOP.v":34:7:34:14|Selected library: work cell: U400_TOP view verilog as top level
+@N: NF107 :"D:\LocalBus68040\U400\U400_TOP.v":34:7:34:14|Selected library: work cell: U400_TOP view verilog as top level
+
+At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 67MB peak: 68MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+
+Process completed successfully.
+# Sat May 31 10:06:23 2025
+
+###########################################################]
+@END
+
+At c_hdl Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 3MB peak: 4MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+
+Process completed successfully.
+# Sat May 31 10:06:23 2025
+
+###########################################################]
+Synopsys Netlist Linker, version comp2016q3p1, Build 141R, built Dec  5 2016
+@N|Running in 64-bit mode
+File D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\synwork\LBC_U400_comp.srs changed - recompiling
+@N: NF107 :"D:\LocalBus68040\U400\U400_TOP.v":34:7:34:14|Selected library: work cell: U400_TOP view verilog as top level
+@N: NF107 :"D:\LocalBus68040\U400\U400_TOP.v":34:7:34:14|Selected library: work cell: U400_TOP view verilog as top level
+
+At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 67MB peak: 68MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+
+Process completed successfully.
+# Sat May 31 10:06:24 2025
+
+###########################################################]
+Pre-mapping Report
+
+# Sat May 31 10:06:24 2025
+
+Synopsys Lattice Technology Pre-mapping, Version maplat, Build 1612R, Built Dec  5 2016 10:31:39
+Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
+Product Version L-2016.09L+ice40
+
+Mapper Startup Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 99MB peak: 99MB)
+
+Reading constraint file: D:\LocalBus68040\U400\U400_TOP.sdc
+@L: D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\LBC_U400_scck.rpt 
+Printing clock  summary report in "D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\LBC_U400_scck.rpt" file 
+@N: MF248 |Running in 64-bit mode.
+@N: MF666 |Clock conversion enabled. (Command "set_option -fix_gated_and_generated_clocks 1" in the project file.)
+
+Design Input Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 100MB peak: 102MB)
+
+
+Mapper Initialization Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 100MB peak: 102MB)
+
+
+Start loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 101MB peak: 102MB)
+
+
+Finished loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 101MB peak: 103MB)
+
+
+ICG Latch Removal Summary:
+Number of ICG latches removed:	0
+Number of ICG latches not removed:	0
+syn_allowed_resources : blockrams=16  set on top level netlist U400_TOP
+
+Finished netlist restructuring (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
+
+
+
+Clock Summary
+*****************
+
+Start     Requested     Requested     Clock        Clock                Clock
+Clock     Frequency     Period        Type         Group                Load 
+-----------------------------------------------------------------------------
+CLK40     40.0 MHz      25.000        declared     default_clkgroup     56   
+=============================================================================
+
+Finished Pre Mapping Phase.
+@N: BN225 |Writing default property annotation file D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\LBC_U400.sap.
+
+Starting constraint checker (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
+
+Encoding state machine TA_COUNTER[5:0] (in view: work.U400_SDRAM(verilog))
+original code -> new code
+   000000000 -> 000001
+   000000001 -> 000010
+   000000010 -> 000100
+   000000011 -> 001000
+   000000100 -> 010000
+   000000101 -> 100000
+None
+None
+
+Finished constraint checker (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
+
+Pre-mapping successful!
+
+At Mapper Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 47MB peak: 133MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+# Sat May 31 10:06:25 2025
+
+###########################################################]
+Map & Optimize Report
+
+# Sat May 31 10:06:25 2025
+
+Synopsys Lattice Technology Mapper, Version maplat, Build 1612R, Built Dec  5 2016 10:31:39
+Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
+Product Version L-2016.09L+ice40
+
+Mapper Startup Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 99MB peak: 99MB)
+
+@N: MF248 |Running in 64-bit mode.
+@N: MF666 |Clock conversion enabled. (Command "set_option -fix_gated_and_generated_clocks 1" in the project file.)
+
+Design Input Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 98MB peak: 100MB)
+
+
+Mapper Initialization Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 98MB peak: 100MB)
+
+
+Start loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 100MB peak: 100MB)
+
+
+Finished loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 100MB peak: 102MB)
+
+
+
+Starting Optimization and Mapping (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
+
+
+Available hyper_sources - for debug and ip models
+	None Found
+
+@N: MT204 |Auto Constrain mode is disabled because clocks are defined in the SDC file
+
+            CLK40
+
+
+Finished RTL optimizations (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
+
+Encoding state machine TA_COUNTER[5:0] (in view: work.U400_SDRAM(verilog))
+original code -> new code
+   000000000 -> 000001
+   000000001 -> 000010
+   000000010 -> 000100
+   000000011 -> 001000
+   000000100 -> 010000
+   000000101 -> 100000
+@N: MO231 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Found counter in view:work.U400_SDRAM(verilog) instance SDRAM_COUNTER[7:0] 
+
+Starting factoring (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
+
+
+Finished factoring (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 133MB peak: 134MB)
+
+
+Finished gated-clock and generated-clock conversion (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 132MB peak: 134MB)
+
+
+Finished generic timing optimizations - Pass 1 (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 133MB peak: 134MB)
+
+
+Starting Early Timing Optimization (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 133MB peak: 134MB)
+
+
+Finished Early Timing Optimization (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 133MB peak: 134MB)
+
+
+Finished generic timing optimizations - Pass 2 (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 133MB peak: 134MB)
+
+
+Finished preparing to map (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 133MB peak: 134MB)
+
+
+Finished technology mapping (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 141MB peak: 143MB)
+
+Pass		 CPU time		Worst Slack		Luts / Registers
+------------------------------------------------------------
+   1		0h:00m:00s		     6.63ns		 148 /        56
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[12] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[11] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[10] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[9] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[8] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[7] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[6] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[5] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[4] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[3] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[2] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[1] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[0] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@N: FX1016 :"d:\localbus68040\u400\u400_top.v":36:10:36:14|SB_GB_IO inserted on the port CLK40.
+@N: FX1017 :|SB_GB inserted on the net RESETn_c_i.
+
+Finished technology timing optimizations and critical path resynthesis (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 141MB peak: 143MB)
+
+
+Finished restoring hierarchy (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 141MB peak: 143MB)
+
+
+
+@S |Clock Optimization Summary
+
+
+#### START OF CLOCK OPTIMIZATION REPORT #####[
+
+1 non-gated/non-generated clock tree(s) driving 56 clock pin(s) of sequential element(s)
+0 gated/generated clock tree(s) driving 0 clock pin(s) of sequential element(s)
+0 instances converted, 0 sequential instances remain driven by gated/generated clocks
+
+============================= Non-Gated/Non-Generated Clocks =============================
+Clock Tree ID     Driving Element      Drive Element Type     Fanout     Sample Instance  
+------------------------------------------------------------------------------------------
+@K:CKID0001       CLK40_ibuf_gb_io     SB_GB_IO               56         U400_SDRAM.TA_OUT
+==========================================================================================
+
+
+##### END OF CLOCK OPTIMIZATION REPORT ######]
+
+
+Start Writing Netlists (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 116MB peak: 143MB)
+
+Writing Analyst data base D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\synwork\LBC_U400_m.srm
+
+Finished Writing Netlist Databases (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 141MB peak: 143MB)
+
+Writing EDIF Netlist and constraint files
+@N: BW103 |The default time unit for the Synopsys Constraint File (SDC or FDC) is 1ns.
+@N: BW107 |Synopsys Constraint File capacitance units using default value of 1pF 
+@N: FX1056 |Writing EDF file: D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\LBC_U400.edf
+L-2016.09L+ice40
+
+Finished Writing EDIF Netlist and constraint files (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 142MB peak: 144MB)
+
+
+Start final timing analysis (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 141MB peak: 144MB)
+
+@N: MT615 |Found clock CLK40 with period 25.00ns 
+
+
+##### START OF TIMING REPORT #####[
+# Timing Report written on Sat May 31 10:06:26 2025
+#
+
+
+Top view:               U400_TOP
+Requested Frequency:    40.0 MHz
+Wire load mode:         top
+Paths requested:        5
+Constraint File(s):    D:\LocalBus68040\U400\U400_TOP.sdc
+                       
+@N: MT320 |This timing report is an estimate of place and route data. For final timing results, use the FPGA vendor place and route report.
+
+@N: MT322 |Clock constraints include only register-to-register paths associated with each individual clock.
+
+
+
+Performance Summary
+*******************
+
+
+Worst slack in design: 3.009
+
+                   Requested     Estimated     Requested     Estimated               Clock        Clock           
+Starting Clock     Frequency     Frequency     Period        Period        Slack     Type         Group           
+------------------------------------------------------------------------------------------------------------------
+CLK40              40.0 MHz      52.7 MHz      25.000        18.982        3.009     declared     default_clkgroup
+==================================================================================================================
+
+
+
+
+
+Clock Relationships
+*******************
+
+Clocks            |    rise  to  rise    |    fall  to  fall    |    rise  to  fall   |    fall  to  rise 
+----------------------------------------------------------------------------------------------------------
+Starting  Ending  |  constraint  slack   |  constraint  slack   |  constraint  slack  |  constraint  slack
+----------------------------------------------------------------------------------------------------------
+CLK40     CLK40   |  25.000      17.364  |  25.000      10.295  |  12.500      3.009  |  12.500      4.857
+==========================================================================================================
+ Note: 'No paths' indicates there are no paths in the design for that pair of clock edges.
+       'Diff grp' indicates that paths exist but the starting clock and ending clock are in different clock groups.
+
+
+
+Interface Information 
+*********************
+
+No IO constraint found
+
+
+
+====================================
+Detailed Report for Clock: CLK40
+====================================
+
+
+
+Starting Points with Worst Slack
+********************************
+
+                                  Starting                                                   Arrival           
+Instance                          Reference     Type          Pin     Net                    Time        Slack 
+                                  Clock                                                                        
+---------------------------------------------------------------------------------------------------------------
+U400_SDRAM.RAM_CYCLE_START        CLK40         SB_DFFSR      Q       RAM_CYCLE_START        0.540       3.009 
+U400_SDRAM.BURST                  CLK40         SB_DFFNSR     Q       BURST                  0.540       4.857 
+U400_SDRAM.TACK                   CLK40         SB_DFFNSR     Q       TACK                   0.540       6.529 
+U400_SDRAM.RAM_CYCLE              CLK40         SB_DFFNSR     Q       RAM_CYCLE              0.540       8.349 
+U400_SDRAM.SDRAM_COUNTER[4]       CLK40         SB_DFFNE      Q       SDRAM_COUNTER[4]       0.540       10.295
+U400_SDRAM.SDRAM_COUNTER[5]       CLK40         SB_DFFNE      Q       SDRAM_COUNTER[5]       0.540       10.302
+U400_SDRAM.SDRAM_COUNTER[6]       CLK40         SB_DFFNE      Q       SDRAM_COUNTER[6]       0.540       10.330
+U400_SDRAM.SDRAM_COUNTER[7]       CLK40         SB_DFFNE      Q       SDRAM_COUNTER[7]       0.540       10.393
+U400_SDRAM.REFRESH_COUNTER[3]     CLK40         SB_DFFNSR     Q       REFRESH_COUNTER[3]     0.540       11.953
+U400_SDRAM.REFRESH_COUNTER[4]     CLK40         SB_DFFNSR     Q       REFRESH_COUNTER[4]     0.540       12.003
+===============================================================================================================
+
+
+Ending Points with Worst Slack
+******************************
+
+                             Starting                                              Required          
+Instance                     Reference     Type          Pin     Net               Time         Slack
+                             Clock                                                                   
+-----------------------------------------------------------------------------------------------------
+U400_SDRAM.CS0_EN            CLK40         SB_DFFNSR     D       CS0_EN_1          12.395       3.009
+U400_SDRAM.CS1_EN            CLK40         SB_DFFNSR     D       CS1_EN_1          12.395       3.009
+U400_SDRAM.SDRAM_CMD[1]      CLK40         SB_DFFN       D       SDRAM_CMD_0       12.395       4.731
+U400_SDRAM.SDRAM_CMD[2]      CLK40         SB_DFFN       D       SDRAM_CMD_1       12.395       4.731
+U400_SDRAM.SDRAM_CMD[0]      CLK40         SB_DFFN       D       SDRAM_CMD         12.395       4.780
+U400_SDRAM.TA_EN_i           CLK40         SB_DFFSS      D       TA_EN_i_en_0      12.395       4.857
+U400_SDRAM.BANK0             CLK40         SB_DFFNSR     D       BANK0             12.395       4.913
+U400_SDRAM.BANK1             CLK40         SB_DFFNSR     D       BANK1             12.395       4.913
+U400_SDRAM.TA_OUT            CLK40         SB_DFFSS      D       TA_OUT_0          12.395       6.529
+U400_SDRAM.TA_COUNTER[0]     CLK40         SB_DFFSS      D       TA_COUNTERs_i     12.395       6.543
+=====================================================================================================
+
+
+
+Worst Path Information
+***********************
+
+
+Path information for path number 1: 
+      Requested Period:                      12.500
+    - Setup time:                            0.105
+    + Clock delay at ending point:           0.000 (ideal)
+    = Required time:                         12.395
+
+    - Propagation time:                      9.386
+    - Clock delay at starting point:         0.000 (ideal)
+    = Slack (critical) :                     3.009
+
+    Number of logic level(s):                4
+    Starting point:                          U400_SDRAM.RAM_CYCLE_START / Q
+    Ending point:                            U400_SDRAM.CS0_EN / D
+    The start point is clocked by            CLK40 [rising] on pin C
+    The end   point is clocked by            CLK40 [falling] on pin C
+
+Instance / Net                                         Pin      Pin               Arrival     No. of    
+Name                                     Type          Name     Dir     Delay     Time        Fan Out(s)
+--------------------------------------------------------------------------------------------------------
+U400_SDRAM.RAM_CYCLE_START               SB_DFFSR      Q        Out     0.540     0.540       -         
+RAM_CYCLE_START                          Net           -        -       1.599     -           9         
+U400_SDRAM.RAM_CYCLE_START_RNI8DRF2      SB_LUT4       I1       In      -         2.139       -         
+U400_SDRAM.RAM_CYCLE_START_RNI8DRF2      SB_LUT4       O        Out     0.400     2.539       -         
+N_72                                     Net           -        -       1.371     -           1         
+U400_SDRAM.SDRAM_CONFIGURED_RNI9NVF9     SB_LUT4       I0       In      -         3.910       -         
+U400_SDRAM.SDRAM_CONFIGURED_RNI9NVF9     SB_LUT4       O        Out     0.449     4.359       -         
+N_40                                     Net           -        -       1.371     -           2         
+U400_SDRAM.CS0_EN_RNO_0                  SB_LUT4       I1       In      -         5.729       -         
+U400_SDRAM.CS0_EN_RNO_0                  SB_LUT4       O        Out     0.400     6.129       -         
+CS0_EN_0                                 Net           -        -       1.371     -           1         
+U400_SDRAM.CS0_EN_RNO                    SB_LUT4       I2       In      -         7.500       -         
+U400_SDRAM.CS0_EN_RNO                    SB_LUT4       O        Out     0.379     7.879       -         
+CS0_EN_1                                 Net           -        -       1.507     -           1         
+U400_SDRAM.CS0_EN                        SB_DFFNSR     D        In      -         9.386       -         
+========================================================================================================
+Total path delay (propagation time + setup) of 9.491 is 2.272(23.9%) logic and 7.219(76.1%) route.
+Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
+
+
+
+##### END OF TIMING REPORT #####]
+
+Timing exceptions that could not be applied
+None
+
+Finished final timing analysis (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 141MB peak: 144MB)
+
+
+Finished timing report (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 141MB peak: 144MB)
+
+---------------------------------------
+Resource Usage Report for U400_TOP 
+
+Mapping to part: ice40hx1kvq100
+Cell usage:
+GND             3 uses
+SB_CARRY        14 uses
+SB_DFFN         3 uses
+SB_DFFNE        8 uses
+SB_DFFNESR      13 uses
+SB_DFFNSR       18 uses
+SB_DFFNSS       5 uses
+SB_DFFSR        6 uses
+SB_DFFSS        3 uses
+SB_GB           1 use
+VCC             3 uses
+SB_LUT4         144 uses
+
+I/O ports: 65
+I/O primitives: 65
+SB_GB_IO       1 use
+SB_IO          64 uses
+
+I/O Register bits:                  0
+Register bits not including I/Os:   56 (4%)
+Total load per clock:
+   CLK40: 1
+
+@S |Mapping Summary:
+Total  LUTs: 144 (11%)
+
+Distribution of All Consumed LUTs = LUT4 
+Distribution of All Consumed Luts 144 = 144 
+
+Mapper successful!
+
+At Mapper Exit (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 27MB peak: 144MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+# Sat May 31 10:06:26 2025
+
+###########################################################]
+
+
+Synthesis exit by 0.
+Current Implementation LBC_U400_Implmnt its sbt path: D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt
+Synthesis succeed.
+Synthesis succeeded.
+Synthesis runtime 4 seconds
+
+
+"C:/lscc/iCEcube2.2020.12/sbt_backend/bin/win32/opt\edifparser.exe" "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P01.dev" "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt/LBC_U400.edf " "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\netlist" "-pVQ100" "-yD:/LocalBus68040/U400/U400_TOP.pcf " -c --devicename iCE40HX1K
+starting edif parserrunning edif parserLattice Semiconductor Corporation  Edif Parser
+Release:        2020.12.27943
+Build Date:     Dec  9 2020 17:30:22
+
+Parsing edif file: D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt/LBC_U400.edf...
+Parsing constraint file: D:/LocalBus68040/U400/U400_TOP.pcf ...
+start to read sdc/scf file D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt/LBC_U400.scf
+sdc_reader OK D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt/LBC_U400.scf
+Stored edif netlist at D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\netlist\oadb-U400_TOP...
+
+write Timing Constraint to D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt/Temp/sbt_temp.sdc
+
+EDIF Parser succeeded
+Top module is: U400_TOP
+
+EDF Parser run-time: 1 (sec)
+edif parser succeed.
+
+
+"C:/lscc/iCEcube2.2020.12/sbt_backend/bin/win32/opt\sbtplacer.exe" --des-lib "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\netlist\oadb-U400_TOP" --outdir "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\placer" --device-file "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P01.dev" --package VQ100 --deviceMarketName iCE40HX1K --sdc-file "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\Temp/sbt_temp.sdc" --lib-file "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ice40HX1K.lib" --effort_level std --out-sdc-file "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\placer\U400_TOP_pl.sdc"
+starting placerrunning placerExecuting : C:\lscc\iCEcube2.2020.12\sbt_backend\bin\win32\opt\sbtplacer.exe --des-lib D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\netlist\oadb-U400_TOP --outdir D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\placer --device-file C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P01.dev --package VQ100 --deviceMarketName iCE40HX1K --sdc-file D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\Temp/sbt_temp.sdc --lib-file C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ice40HX1K.lib --effort_level std --out-sdc-file D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\placer\U400_TOP_pl.sdc
+Lattice Semiconductor Corporation  Placer
+Release:        2020.12.27943
+Build Date:     Dec  9 2020 17:55:52
+
+I2004: Option and Settings Summary
+=============================================================
+Device file          - C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P01.dev
+Package              - VQ100
+Design database      - D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\netlist\oadb-U400_TOP
+SDC file             - D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\Temp/sbt_temp.sdc
+Output directory     - D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\placer
+Timing library       - C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ice40HX1K.lib
+Effort level         - std
+
+I2050: Starting reading inputs for placer
+=============================================================
+I2100: Reading design library: D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\netlist\oadb-U400_TOP/BFPGA_DESIGN_ep
+I2065: Reading device file : C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P01.dev
+I2051: Reading of inputs for placer completed successfully
+
+I2053: Starting placement of the design
+=============================================================
+
+Input Design Statistics
+    Number of LUTs      	:	144
+    Number of DFFs      	:	56
+    Number of DFFs packed to IO	:	0
+    Number of Carrys    	:	14
+    Number of RAMs      	:	0
+    Number of ROMs      	:	0
+    Number of IOs       	:	64
+    Number of GBIOs     	:	1
+    Number of GBs       	:	1
+    Number of WarmBoot  	:	0
+    Number of PLLs      	:	0
+
+
+Phase 1
+I2077: Start design legalization
+
+Design Legalization Statistics
+    Number of feedthru LUTs inserted to legalize input of DFFs     	:	6
+    Number of feedthru LUTs inserted for LUTs driving multiple DFFs	:	0
+    Number of LUTs replicated for LUTs driving multiple DFFs       	:	1
+    Number of feedthru LUTs inserted to legalize output of CARRYs  	:	0
+    Number of feedthru LUTs inserted to legalize global signals    	:	0
+    Number of feedthru CARRYs inserted to legalize input of CARRYs 	:	0
+    Number of inserted LUTs to Legalize IOs with PIN_TYPE= 01xxxx  	:	0
+    Number of inserted LUTs to Legalize IOs with PIN_TYPE= 10xxxx  	:	0
+    Number of inserted LUTs to Legalize IOs with PIN_TYPE= 11xxxx  	:	0
+    Total LUTs inserted                                            	:	7
+    Total CARRYs inserted                                          	:	0
+
+
+I2078: Design legalization is completed successfully
+I2088: Phase 1, elapsed time : 0.0 (sec)
+
+
+Phase 2
+W2216: SB_GB_IO 'CLK40_ibuf_gb_io' is assigned to a non-GB pin '53'. Replacing it with SB_IO 'CLK40_ibuf_gb_io' and SB_GB 'CLK40_ibuf_gb_io_gb'
+I2088: Phase 2, elapsed time : 0.0 (sec)
+
+Phase 3
+Warning-1034: Found non-unate timing arc, from pin "PACKAGEPIN" to pin "DIN0" of instance "CLK40_ibuf_gb_io", in the clock network. Converting the timing arc to positive-unate
+
+Design Statistics after Packing
+    Number of LUTs      	:	152
+    Number of DFFs      	:	56
+    Number of DFFs packed to IO	:	0
+    Number of Carrys    	:	14
+
+Device Utilization Summary after Packing
+    Sequential LogicCells
+        LUT and DFF      	:	46
+        LUT, DFF and CARRY	:	10
+    Combinational LogicCells
+        Only LUT         	:	93
+        CARRY Only       	:	1
+        LUT with CARRY   	:	3
+    LogicCells                  :	153/1280
+    PLBs                        :	21/160
+    BRAMs                       :	0/16
+    IOs and GBIOs               :	65/72
+    PLLs                        :	0/0
+
+
+I2088: Phase 3, elapsed time : 0.3 (sec)
+
+Phase 4
+I2088: Phase 4, elapsed time : 0.1 (sec)
+
+Phase 5
+I2088: Phase 5, elapsed time : 0.1 (sec)
+
+Phase 6
+I2088: Phase 6, elapsed time : 14.7 (sec)
+
+Final Design Statistics
+    Number of LUTs      	:	152
+    Number of DFFs      	:	56
+    Number of DFFs packed to IO	:	0
+    Number of Carrys    	:	14
+    Number of RAMs      	:	0
+    Number of ROMs      	:	0
+    Number of IOs       	:	65
+    Number of GBIOs     	:	0
+    Number of GBs       	:	2
+    Number of WarmBoot  	:	0
+    Number of PLLs      	:	0
+
+Device Utilization Summary
+    LogicCells                  :	153/1280
+    PLBs                        :	45/160
+    BRAMs                       :	0/16
+    IOs and GBIOs               :	65/72
+    PLLs                        :	0/0
+
+
+
+#####################################################################
+Placement Timing Summary
+
+The timing summary is based on estimated routing delays after
+placement. For final timing report, please carry out the timing
+analysis after routing.
+=====================================================================
+
+#####################################################################
+                     Clock Summary 
+=====================================================================
+Number of clocks: 1
+Clock: CLK40 | Frequency: 102.76 MHz | Target: 40.00 MHz
+
+=====================================================================
+                     End of Clock Summary
+#####################################################################
+
+I2054: Placement of design completed successfully
+
+I2076: Placer run-time: 15.7 sec.
+
+placer succeed.
+starting IPExporterrunning IPExporterIPExporter succeed.
+
+
+"C:/lscc/iCEcube2.2020.12/sbt_backend/bin/win32/opt\packer.exe" "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P01.dev" "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\netlist\oadb-U400_TOP" --package VQ100 --outdir "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\packer" --DRC_only  --translator "C:\lscc\iCEcube2.2020.12\sbt_backend\bin\sdc_translator.tcl" --src_sdc_file "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\placer\U400_TOP_pl.sdc" --dst_sdc_file "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\packer\U400_TOP_pk.sdc" --devicename iCE40HX1K
+starting packerrunning packerLattice Semiconductor Corporation  Packer
+Release:        2020.12.27943
+Build Date:     Dec  9 2020 17:32:13
+
+Begin Packing...
+initializing finish
+Total HPWL cost is 823
+used logic cells: 153
+Design Rule Checking Succeeded
+
+DRC Checker run-time: 0 (sec)
+packer succeed.
+
+
+"C:/lscc/iCEcube2.2020.12/sbt_backend/bin/win32/opt\packer.exe" "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P01.dev" "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\netlist\oadb-U400_TOP" --package VQ100 --outdir "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\packer" --translator "C:\lscc\iCEcube2.2020.12\sbt_backend\bin\sdc_translator.tcl" --src_sdc_file "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\placer\U400_TOP_pl.sdc" --dst_sdc_file "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\packer\U400_TOP_pk.sdc" --devicename iCE40HX1K
+starting packerrunning packerLattice Semiconductor Corporation  Packer
+Release:        2020.12.27943
+Build Date:     Dec  9 2020 17:32:13
+
+Begin Packing...
+initializing finish
+Total HPWL cost is 823
+used logic cells: 153
+Translating sdc file D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\placer\U400_TOP_pl.sdc...
+Translated sdc file is D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\packer\U400_TOP_pk.sdc
+Packer succeeded
+
+Packer run-time: 0 (sec)
+packer succeed.
+
+
+"C:\lscc\iCEcube2.2020.12\sbt_backend\bin\win32\opt\sbrouter.exe" "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P01.dev" "D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\sbt\netlist\oadb-U400_TOP" "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ice40HX1K.lib" "D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\sbt\outputs\packer\U400_TOP_pk.sdc" --outdir "D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\sbt\outputs\router" --sdf_file "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\simulation_netlist\U400_TOP_sbt.sdf" --pin_permutation
+starting routerrunning routerSJRouter....
+Executing : C:\lscc\iCEcube2.2020.12\sbt_backend\bin\win32\opt\sbrouter.exe C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P01.dev D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\sbt\netlist\oadb-U400_TOP C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ice40HX1K.lib D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\sbt\outputs\packer\U400_TOP_pk.sdc --outdir D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\sbt\outputs\router --sdf_file D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\simulation_netlist\U400_TOP_sbt.sdf --pin_permutation 
+Lattice Semiconductor Corporation  Router
+Release:        2020.12.27943
+Build Date:     Dec  9 2020 17:44:15
+
+I1203: Reading Design U400_TOP
+Read design time: 0
+I1202: Reading Architecture of device iCE40HX1K
+Read device time: 2
+I1209: Started routing
+I1223: Total Nets : 220 
+I1212: Iteration  1 :    29 unrouted : 1 seconds
+I1212: Iteration  2 :     4 unrouted : 0 seconds
+I1212: Iteration  3 :     0 unrouted : 0 seconds
+I1215: Routing is successful
+Routing time: 1
+I1206: Completed routing
+I1204: Writing Design U400_TOP
+Lib Closed
+I1210: Writing routes
+I1218: Exiting the router
+I1224: Router run-time : 3 seconds
+router succeed.
+
+"C:/lscc/iCEcube2.2020.12/sbt_backend/bin/win32/opt\netlister.exe" --verilog "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\simulation_netlist\U400_TOP_sbt.v" --vhdl "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt/sbt/outputs/simulation_netlist\U400_TOP_sbt.vhd" --lib "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\netlist\oadb-U400_TOP" --view rt --device "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P01.dev" --splitio  --in-sdc-file "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\packer\U400_TOP_pk.sdc" --out-sdc-file "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\netlister\U400_TOP_sbt.sdc"
+starting netlistrunning netlistLattice Semiconductor Corporation  Verilog & VHDL Netlister
+Release:        2020.12.27943
+Build Date:     Dec  9 2020 18:18:39
+
+Generating Verilog & VHDL netlist files ...
+Writing D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\simulation_netlist\U400_TOP_sbt.v
+Writing D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt/sbt/outputs/simulation_netlist\U400_TOP_sbt.vhd
+Netlister succeeded.
+
+Netlister run-time: 2 (sec)
+netlist succeed.
+
+
+"C:/lscc/iCEcube2.2020.12/sbt_backend/bin/win32/opt\sbtimer.exe" --des-lib "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\netlist\oadb-U400_TOP" --lib-file "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ice40HX1K.lib" --sdc-file "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\netlister\U400_TOP_sbt.sdc" --sdf-file "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\simulation_netlist\U400_TOP_sbt.sdf" --report-file "D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\sbt\outputs\timer\U400_TOP_timing.rpt" --device-file "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P01.dev" --timing-summary
+starting timerrunning timerExecuting : C:\lscc\iCEcube2.2020.12\sbt_backend\bin\win32\opt\sbtimer.exe --des-lib D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\netlist\oadb-U400_TOP --lib-file C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ice40HX1K.lib --sdc-file D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\netlister\U400_TOP_sbt.sdc --sdf-file D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\simulation_netlist\U400_TOP_sbt.sdf --report-file D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\sbt\outputs\timer\U400_TOP_timing.rpt --device-file C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P01.dev --timing-summary
+Lattice Semiconductor Corporation  Timer
+Release:        2020.12.27943
+Build Date:     Dec  9 2020 17:41:47
+
+Warning-1034: Found non-unate timing arc, from pin "PADIN" to pin "DIN0" of instance "CLK40_ibuf_gb_io_preio", in the clock network. Converting the timing arc to positive-unate
+Timer run-time: 3 seconds
+timer succeed.
+timer succeeded.
+
+
+"C:/lscc/iCEcube2.2020.12/sbt_backend/bin/win32/opt\bitmap.exe" "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P01.dev" --design "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\netlist\oadb-U400_TOP" --device_name iCE40HX1K --package VQ100 --outdir "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\bitmap" --low_power on --init_ram on --init_ram_bank 1111 --frequency low --warm_boot on --set_unused_io_nopullup
+starting bitmaprunning bitmapLattice Semiconductor Corporation  Bit Stream Generator
+Release:        2020.12.27943
+Build Date:     Dec  9 2020 18:17:40
+
+Bit Stream File Size: 257720 (251K 696 Bits)
+Bit Stream Generator succeeded
+
+Bitmap run-time: 1 (sec)
+bitmap succeed.
+"C:\lscc\iCEcube2.2020.12\sbt_backend\bin\win32\opt\synpwrap\synpwrap.exe" -prj "LBC_U400_syn.prj" -log "LBC_U400_Implmnt/LBC_U400.srr"
+starting Synthesisrunning SynthesisCopyright (C) 1992-2014 Lattice Semiconductor Corporation. All rights reserved.
+
+==contents of LBC_U400_Implmnt/LBC_U400.srr
+#Build: Synplify Pro L-2016.09L+ice40, Build 077R, Dec  2 2016
+#install: C:\lscc\iCEcube2.2020.12\synpbase
+#OS: Windows 8 6.2
+#Hostname: JASON-LAB
+
+# Sat May 31 10:07:37 2025
+
+#Implementation: LBC_U400_Implmnt
+
+Synopsys HDL Compiler, version comp2016q3p1, Build 141R, built Dec  5 2016
+@N|Running in 64-bit mode
+Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
+
+Synopsys Verilog Compiler, version comp2016q3p1, Build 141R, built Dec  5 2016
+@N|Running in 64-bit mode
+Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
+
+@I::"C:\lscc\iCEcube2.2020.12\synpbase\lib\generic\sb_ice40.v" (library work)
+@I::"C:\lscc\iCEcube2.2020.12\synpbase\lib\vlog\hypermods.v" (library __hyper__lib__)
+@I::"C:\lscc\iCEcube2.2020.12\synpbase\lib\vlog\umr_capim.v" (library snps_haps)
+@I::"C:\lscc\iCEcube2.2020.12\synpbase\lib\vlog\scemi_objects.v" (library snps_haps)
+@I::"C:\lscc\iCEcube2.2020.12\synpbase\lib\vlog\scemi_pipes.svh" (library snps_haps)
+@I::"D:\LocalBus68040\U400\U400_BYTE_ENABLE.v" (library work)
+@I::"D:\LocalBus68040\U400\U400_SDRAM.v" (library work)
+@I::"D:\LocalBus68040\U400\U400_TOP.v" (library work)
+@I::"D:\LocalBus68040\U400\U400_ADDRESS_DECODE.v" (library work)
+Verilog syntax check successful!
+File D:\LocalBus68040\U400\U400_ADDRESS_DECODE.v changed - recompiling
+Selecting top level module U400_TOP
+@N: CG364 :"D:\LocalBus68040\U400\U400_ADDRESS_DECODE.v":33:7:33:25|Synthesizing module U400_ADDRESS_DECODE in library work.
+
+@N: CG364 :"D:\LocalBus68040\U400\U400_SDRAM.v":34:7:34:16|Synthesizing module U400_SDRAM in library work.
+
+@N: CG364 :"D:\LocalBus68040\U400\U400_BYTE_ENABLE.v":34:7:34:22|Synthesizing module U400_BYTE_ENABLE in library work.
+
+@N: CG364 :"D:\LocalBus68040\U400\U400_TOP.v":34:7:34:14|Synthesizing module U400_TOP in library work.
+
+@N: CL201 :"D:\LocalBus68040\U400\U400_SDRAM.v":102:0:102:5|Trying to extract state machine for register TA_COUNTER.
+Extracted state machine for register TA_COUNTER
+State machine has 6 reachable states with original encodings of:
+   000000000
+   000000001
+   000000010
+   000000011
+   000000100
+   000000101
+@W: CL246 :"D:\LocalBus68040\U400\U400_SDRAM.v":37:17:37:17|Input port bits 1 to 0 of A[26:0] are unused. Assign logic for all port bits or change the input port size.
+@N: CL159 :"D:\LocalBus68040\U400\U400_ADDRESS_DECODE.v":35:10:35:15|Input RESETn is unused.
+@N: CL159 :"D:\LocalBus68040\U400\U400_ADDRESS_DECODE.v":36:16:36:16|Input A is unused.
+
+At c_ver Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 72MB peak: 73MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+
+Process completed successfully.
+# Sat May 31 10:07:38 2025
+
+###########################################################]
+Synopsys Netlist Linker, version comp2016q3p1, Build 141R, built Dec  5 2016
+@N|Running in 64-bit mode
+@N: NF107 :"D:\LocalBus68040\U400\U400_TOP.v":34:7:34:14|Selected library: work cell: U400_TOP view verilog as top level
+@N: NF107 :"D:\LocalBus68040\U400\U400_TOP.v":34:7:34:14|Selected library: work cell: U400_TOP view verilog as top level
+
+At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 67MB peak: 68MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+
+Process completed successfully.
+# Sat May 31 10:07:38 2025
+
+###########################################################]
+@END
+
+At c_hdl Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 3MB peak: 4MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+
+Process completed successfully.
+# Sat May 31 10:07:38 2025
+
+###########################################################]
+Synopsys Netlist Linker, version comp2016q3p1, Build 141R, built Dec  5 2016
+@N|Running in 64-bit mode
+File D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\synwork\LBC_U400_comp.srs changed - recompiling
+@N: NF107 :"D:\LocalBus68040\U400\U400_TOP.v":34:7:34:14|Selected library: work cell: U400_TOP view verilog as top level
+@N: NF107 :"D:\LocalBus68040\U400\U400_TOP.v":34:7:34:14|Selected library: work cell: U400_TOP view verilog as top level
+
+At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 67MB peak: 68MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+
+Process completed successfully.
+# Sat May 31 10:07:39 2025
+
+###########################################################]
+Pre-mapping Report
+
+# Sat May 31 10:07:39 2025
+
+Synopsys Lattice Technology Pre-mapping, Version maplat, Build 1612R, Built Dec  5 2016 10:31:39
+Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
+Product Version L-2016.09L+ice40
+
+Mapper Startup Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 99MB peak: 99MB)
+
+Reading constraint file: D:\LocalBus68040\U400\U400_TOP.sdc
+@L: D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\LBC_U400_scck.rpt 
+Printing clock  summary report in "D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\LBC_U400_scck.rpt" file 
+@N: MF248 |Running in 64-bit mode.
+@N: MF666 |Clock conversion enabled. (Command "set_option -fix_gated_and_generated_clocks 1" in the project file.)
+
+Design Input Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 100MB peak: 102MB)
+
+
+Mapper Initialization Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 100MB peak: 102MB)
+
+
+Start loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 101MB peak: 102MB)
+
+
+Finished loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 101MB peak: 103MB)
+
+@N: BN115 :"d:\localbus68040\u400\u400_top.v":58:20:58:38|Removing instance U400_ADDRESS_DECODE (in view: work.U400_TOP(verilog)) of type view:work.U400_ADDRESS_DECODE(verilog) because it does not drive other instances.
+@N: BN115 :"d:\localbus68040\u400\u400_top.v":100:17:100:32|Removing instance U400_BYTE_ENABLE (in view: work.U400_TOP(verilog)) of type view:work.U400_BYTE_ENABLE(verilog) because it does not drive other instances.
+
+ICG Latch Removal Summary:
+Number of ICG latches removed:	0
+Number of ICG latches not removed:	0
+syn_allowed_resources : blockrams=16  set on top level netlist U400_TOP
+
+Finished netlist restructuring (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
+
+
+
+Clock Summary
+*****************
+
+Start     Requested     Requested     Clock        Clock                Clock
+Clock     Frequency     Period        Type         Group                Load 
+-----------------------------------------------------------------------------
+CLK40     40.0 MHz      25.000        declared     default_clkgroup     56   
+=============================================================================
+
+Finished Pre Mapping Phase.
+@N: BN225 |Writing default property annotation file D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\LBC_U400.sap.
+
+Starting constraint checker (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
+
+Encoding state machine TA_COUNTER[5:0] (in view: work.U400_SDRAM(verilog))
+original code -> new code
+   000000000 -> 000001
+   000000001 -> 000010
+   000000010 -> 000100
+   000000011 -> 001000
+   000000100 -> 010000
+   000000101 -> 100000
+None
+None
+
+Finished constraint checker (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
+
+Pre-mapping successful!
+
+At Mapper Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 47MB peak: 133MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+# Sat May 31 10:07:39 2025
+
+###########################################################]
+Map & Optimize Report
+
+# Sat May 31 10:07:39 2025
+
+Synopsys Lattice Technology Mapper, Version maplat, Build 1612R, Built Dec  5 2016 10:31:39
+Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
+Product Version L-2016.09L+ice40
+
+Mapper Startup Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 99MB peak: 99MB)
+
+@N: MF248 |Running in 64-bit mode.
+@N: MF666 |Clock conversion enabled. (Command "set_option -fix_gated_and_generated_clocks 1" in the project file.)
+
+Design Input Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 98MB peak: 100MB)
+
+
+Mapper Initialization Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 98MB peak: 100MB)
+
+
+Start loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 100MB peak: 100MB)
+
+
+Finished loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 100MB peak: 102MB)
+
+
+
+Starting Optimization and Mapping (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
+
+
+Available hyper_sources - for debug and ip models
+	None Found
+
+@N: MT204 |Auto Constrain mode is disabled because clocks are defined in the SDC file
+
+            CLK40
+
+
+Finished RTL optimizations (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
+
+Encoding state machine TA_COUNTER[5:0] (in view: work.U400_SDRAM(verilog))
+original code -> new code
+   000000000 -> 000001
+   000000001 -> 000010
+   000000010 -> 000100
+   000000011 -> 001000
+   000000100 -> 010000
+   000000101 -> 100000
+@N: MO231 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Found counter in view:work.U400_SDRAM(verilog) instance SDRAM_COUNTER[7:0] 
+
+Starting factoring (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
+
+
+Finished factoring (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 133MB peak: 134MB)
+
+
+Finished gated-clock and generated-clock conversion (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 132MB peak: 134MB)
+
+
+Finished generic timing optimizations - Pass 1 (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 133MB peak: 134MB)
+
+@N: BN362 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Removing sequential instance U400_SDRAM.RAM_CYCLE (in view: work.U400_TOP(verilog)) because it does not drive other instances.
+@N: BN362 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Removing sequential instance U400_SDRAM.WRITE_CYCLE (in view: work.U400_TOP(verilog)) because it does not drive other instances.
+@N: BN362 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Removing sequential instance U400_SDRAM.BURST (in view: work.U400_TOP(verilog)) because it does not drive other instances.
+@N: BN362 :"d:\localbus68040\u400\u400_sdram.v":102:0:102:5|Removing sequential instance U400_SDRAM.TA_COUNTER[3] (in view: work.U400_TOP(verilog)) because it does not drive other instances.
+@N: BN362 :"d:\localbus68040\u400\u400_sdram.v":102:0:102:5|Removing sequential instance U400_SDRAM.TA_COUNTER[4] (in view: work.U400_TOP(verilog)) because it does not drive other instances.
+@N: BN362 :"d:\localbus68040\u400\u400_sdram.v":102:0:102:5|Removing sequential instance U400_SDRAM.TA_COUNTER[5] (in view: work.U400_TOP(verilog)) because it does not drive other instances.
+@N: BN362 :"d:\localbus68040\u400\u400_sdram.v":84:0:84:5|Removing sequential instance U400_SDRAM.RAM_CYCLE_START (in view: work.U400_TOP(verilog)) because it does not drive other instances.
+
+Starting Early Timing Optimization (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 133MB peak: 134MB)
+
+
+Finished Early Timing Optimization (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 133MB peak: 134MB)
+
+
+Finished generic timing optimizations - Pass 2 (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 133MB peak: 134MB)
+
+
+Finished preparing to map (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 133MB peak: 134MB)
+
+@N: BN362 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Removing sequential instance U400_SDRAM.BANK1 (in view: work.U400_TOP(verilog)) because it does not drive other instances.
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.BANK1 (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@N: BN362 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Removing sequential instance U400_SDRAM.BANK0 (in view: work.U400_TOP(verilog)) because it does not drive other instances.
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.BANK0 (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+
+Finished technology mapping (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 135MB peak: 137MB)
+
+Pass		 CPU time		Worst Slack		Luts / Registers
+------------------------------------------------------------
+   1		0h:00m:00s		     8.78ns		 103 /        47
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[12] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[11] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[10] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[9] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[8] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[7] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[6] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[5] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[4] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[3] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[2] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[1] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[0] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@N: FX1016 :"d:\localbus68040\u400\u400_top.v":36:10:36:14|SB_GB_IO inserted on the port CLK40.
+@N: FX1017 :|SB_GB inserted on the net RESETn_c_i.
+
+Finished technology timing optimizations and critical path resynthesis (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 135MB peak: 137MB)
+
+
+Finished restoring hierarchy (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 136MB peak: 137MB)
+
+
+
+@S |Clock Optimization Summary
+
+
+#### START OF CLOCK OPTIMIZATION REPORT #####[
+
+1 non-gated/non-generated clock tree(s) driving 47 clock pin(s) of sequential element(s)
+0 gated/generated clock tree(s) driving 0 clock pin(s) of sequential element(s)
+0 instances converted, 0 sequential instances remain driven by gated/generated clocks
+
+============================= Non-Gated/Non-Generated Clocks =============================
+Clock Tree ID     Driving Element      Drive Element Type     Fanout     Sample Instance  
+------------------------------------------------------------------------------------------
+@K:CKID0001       CLK40_ibuf_gb_io     SB_GB_IO               47         U400_SDRAM.TA_OUT
+==========================================================================================
+
+
+##### END OF CLOCK OPTIMIZATION REPORT ######]
+
+
+Start Writing Netlists (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 110MB peak: 137MB)
+
+Writing Analyst data base D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\synwork\LBC_U400_m.srm
+
+Finished Writing Netlist Databases (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 135MB peak: 137MB)
+
+Writing EDIF Netlist and constraint files
+@N: BW103 |The default time unit for the Synopsys Constraint File (SDC or FDC) is 1ns.
+@N: BW107 |Synopsys Constraint File capacitance units using default value of 1pF 
+@N: FX1056 |Writing EDF file: D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\LBC_U400.edf
+L-2016.09L+ice40
+
+Finished Writing EDIF Netlist and constraint files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 136MB peak: 138MB)
+
+
+Start final timing analysis (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 135MB peak: 138MB)
+
+@N: MT615 |Found clock CLK40 with period 25.00ns 
+
+
+##### START OF TIMING REPORT #####[
+# Timing Report written on Sat May 31 10:07:41 2025
+#
+
+
+Top view:               U400_TOP
+Requested Frequency:    40.0 MHz
+Wire load mode:         top
+Paths requested:        5
+Constraint File(s):    D:\LocalBus68040\U400\U400_TOP.sdc
+                       
+@N: MT320 |This timing report is an estimate of place and route data. For final timing results, use the FPGA vendor place and route report.
+
+@N: MT322 |Clock constraints include only register-to-register paths associated with each individual clock.
+
+
+
+Performance Summary
+*******************
+
+
+Worst slack in design: 6.480
+
+                   Requested     Estimated     Requested     Estimated               Clock        Clock           
+Starting Clock     Frequency     Frequency     Period        Period        Slack     Type         Group           
+------------------------------------------------------------------------------------------------------------------
+CLK40              40.0 MHz      76.0 MHz      25.000        13.166        6.480     declared     default_clkgroup
+==================================================================================================================
+
+
+
+
+
+Clock Relationships
+*******************
+
+Clocks            |    rise  to  rise    |    fall  to  fall    |    rise  to  fall   |    fall  to  rise 
+----------------------------------------------------------------------------------------------------------
+Starting  Ending  |  constraint  slack   |  constraint  slack   |  constraint  slack  |  constraint  slack
+----------------------------------------------------------------------------------------------------------
+CLK40     CLK40   |  25.000      19.029  |  25.000      11.834  |  No paths    -      |  12.500      6.480
+==========================================================================================================
+ Note: 'No paths' indicates there are no paths in the design for that pair of clock edges.
+       'Diff grp' indicates that paths exist but the starting clock and ending clock are in different clock groups.
+
+
+
+Interface Information 
+*********************
+
+No IO constraint found
+
+
+
+====================================
+Detailed Report for Clock: CLK40
+====================================
+
+
+
+Starting Points with Worst Slack
+********************************
+
+                                  Starting                                                   Arrival           
+Instance                          Reference     Type          Pin     Net                    Time        Slack 
+                                  Clock                                                                        
+---------------------------------------------------------------------------------------------------------------
+U400_SDRAM.TACK                   CLK40         SB_DFFNSR     Q       TACK                   0.540       6.480 
+U400_SDRAM.SDRAM_COUNTER[4]       CLK40         SB_DFFNE      Q       SDRAM_COUNTER[4]       0.540       11.834
+U400_SDRAM.SDRAM_COUNTER[5]       CLK40         SB_DFFNE      Q       SDRAM_COUNTER[5]       0.540       11.841
+U400_SDRAM.SDRAM_COUNTER[6]       CLK40         SB_DFFNE      Q       SDRAM_COUNTER[6]       0.540       11.869
+U400_SDRAM.SDRAM_COUNTER[7]       CLK40         SB_DFFNE      Q       SDRAM_COUNTER[7]       0.540       11.932
+U400_SDRAM.SDRAM_COUNTER[2]       CLK40         SB_DFFNE      Q       SDRAM_COUNTER[2]       0.540       13.640
+U400_SDRAM.SDRAM_COUNTER[3]       CLK40         SB_DFFNE      Q       SDRAM_COUNTER[3]       0.540       13.654
+U400_SDRAM.SDRAM_COUNTER[0]       CLK40         SB_DFFNE      Q       SDRAM_COUNTER[0]       0.540       13.703
+U400_SDRAM.REFRESH_COUNTER[3]     CLK40         SB_DFFNSR     Q       REFRESH_COUNTER[3]     0.540       13.857
+U400_SDRAM.REFRESH_COUNTER[4]     CLK40         SB_DFFNSR     Q       REFRESH_COUNTER[4]     0.540       13.871
+===============================================================================================================
+
+
+Ending Points with Worst Slack
+******************************
+
+                                Starting                                                    Required           
+Instance                        Reference     Type          Pin     Net                     Time         Slack 
+                                Clock                                                                          
+---------------------------------------------------------------------------------------------------------------
+U400_SDRAM.TA_EN_i              CLK40         SB_DFFSS      D       TA_EN_i_en_0            12.395       6.480 
+U400_SDRAM.TA_OUT               CLK40         SB_DFF        D       TA_OUT_0                12.395       6.480 
+U400_SDRAM.TA_COUNTER[1]        CLK40         SB_DFF        D       N_30_i                  12.395       6.543 
+U400_SDRAM.TA_COUNTER[0]        CLK40         SB_DFF        D       N_36                    12.395       8.349 
+U400_SDRAM.CS0_EN               CLK40         SB_DFFNSR     D       CS0_EN_1                24.895       11.834
+U400_SDRAM.CS1_EN               CLK40         SB_DFFNSR     D       CS1_EN_1                24.895       11.834
+U400_SDRAM.SDRAM_COUNTER[0]     CLK40         SB_DFFNE      D       SDRAM_COUNTER_lm[0]     24.895       11.834
+U400_SDRAM.SDRAM_COUNTER[1]     CLK40         SB_DFFNE      D       SDRAM_COUNTER_lm[1]     24.895       11.897
+U400_SDRAM.SDRAM_COUNTER[2]     CLK40         SB_DFFNE      D       SDRAM_COUNTER_lm[2]     24.895       11.897
+U400_SDRAM.SDRAM_COUNTER[3]     CLK40         SB_DFFNE      D       SDRAM_COUNTER_lm[3]     24.895       11.897
+===============================================================================================================
+
+
+
+Worst Path Information
+***********************
+
+
+Path information for path number 1: 
+      Requested Period:                      12.500
+    - Setup time:                            0.105
+    + Clock delay at ending point:           0.000 (ideal)
+    = Required time:                         12.395
+
+    - Propagation time:                      5.915
+    - Clock delay at starting point:         0.000 (ideal)
+    = Slack (critical) :                     6.480
+
+    Number of logic level(s):                2
+    Starting point:                          U400_SDRAM.TACK / Q
+    Ending point:                            U400_SDRAM.TA_EN_i / D
+    The start point is clocked by            CLK40 [falling] on pin C
+    The end   point is clocked by            CLK40 [rising] on pin C
+
+Instance / Net                                     Pin      Pin               Arrival     No. of    
+Name                                 Type          Name     Dir     Delay     Time        Fan Out(s)
+----------------------------------------------------------------------------------------------------
+U400_SDRAM.TACK                      SB_DFFNSR     Q        Out     0.540     0.540       -         
+TACK                                 Net           -        -       1.599     -           4         
+U400_SDRAM.TA_COUNTER_RNIPSFM[0]     SB_LUT4       I0       In      -         2.139       -         
+U400_SDRAM.TA_COUNTER_RNIPSFM[0]     SB_LUT4       O        Out     0.449     2.588       -         
+N_139                                Net           -        -       1.371     -           3         
+U400_SDRAM.TA_EN_i_RNO               SB_LUT4       I0       In      -         3.959       -         
+U400_SDRAM.TA_EN_i_RNO               SB_LUT4       O        Out     0.449     4.408       -         
+TA_EN_i_en_0                         Net           -        -       1.507     -           1         
+U400_SDRAM.TA_EN_i                   SB_DFFSS      D        In      -         5.915       -         
+====================================================================================================
+Total path delay (propagation time + setup) of 6.020 is 1.543(25.6%) logic and 4.477(74.4%) route.
+Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
+
+
+
+##### END OF TIMING REPORT #####]
+
+Timing exceptions that could not be applied
+None
+
+Finished final timing analysis (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 136MB peak: 138MB)
+
+
+Finished timing report (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 136MB peak: 138MB)
+
+---------------------------------------
+Resource Usage Report for U400_TOP 
+
+Mapping to part: ice40hx1kvq100
+Cell usage:
+GND             1 use
+SB_CARRY        14 uses
+SB_DFF          4 uses
+SB_DFFN         3 uses
+SB_DFFNE        8 uses
+SB_DFFNESR      13 uses
+SB_DFFNSR       13 uses
+SB_DFFNSS       5 uses
+SB_DFFSS        1 use
+SB_GB           1 use
+VCC             1 use
+SB_LUT4         97 uses
+
+I/O ports: 65
+I/O primitives: 54
+SB_GB_IO       1 use
+SB_IO          53 uses
+
+I/O Register bits:                  0
+Register bits not including I/Os:   47 (3%)
+Total load per clock:
+   CLK40: 1
+
+@S |Mapping Summary:
+Total  LUTs: 97 (7%)
+
+Distribution of All Consumed LUTs = LUT4 
+Distribution of All Consumed Luts 97 = 97 
+
+Mapper successful!
+
+At Mapper Exit (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 27MB peak: 138MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+# Sat May 31 10:07:41 2025
+
+###########################################################]
+
+
+Synthesis exit by 0.
+Current Implementation LBC_U400_Implmnt its sbt path: D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt
+Synthesis succeed.
+Synthesis succeeded.
+Synthesis runtime 4 seconds
+
+
+"C:/lscc/iCEcube2.2020.12/sbt_backend/bin/win32/opt\edifparser.exe" "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P01.dev" "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt/LBC_U400.edf " "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\netlist" "-pVQ100" "-yD:/LocalBus68040/U400/U400_TOP.pcf " -c --devicename iCE40HX1K
+starting edif parserrunning edif parserLattice Semiconductor Corporation  Edif Parser
+Release:        2020.12.27943
+Build Date:     Dec  9 2020 17:30:22
+
+Parsing edif file: D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt/LBC_U400.edf...
+Parsing constraint file: D:/LocalBus68040/U400/U400_TOP.pcf ...
+start to read sdc/scf file D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt/LBC_U400.scf
+sdc_reader OK D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt/LBC_U400.scf
+Stored edif netlist at D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\netlist\oadb-U400_TOP...
+
+write Timing Constraint to D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt/Temp/sbt_temp.sdc
+
+EDIF Parser succeeded
+Top module is: U400_TOP
+
+EDF Parser run-time: 0 (sec)
+edif parser succeed.
+
+
+"C:/lscc/iCEcube2.2020.12/sbt_backend/bin/win32/opt\sbtplacer.exe" --des-lib "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\netlist\oadb-U400_TOP" --outdir "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\placer" --device-file "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P01.dev" --package VQ100 --deviceMarketName iCE40HX1K --sdc-file "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\Temp/sbt_temp.sdc" --lib-file "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ice40HX1K.lib" --effort_level std --out-sdc-file "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\placer\U400_TOP_pl.sdc"
+starting placerrunning placerExecuting : C:\lscc\iCEcube2.2020.12\sbt_backend\bin\win32\opt\sbtplacer.exe --des-lib D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\netlist\oadb-U400_TOP --outdir D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\placer --device-file C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P01.dev --package VQ100 --deviceMarketName iCE40HX1K --sdc-file D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\Temp/sbt_temp.sdc --lib-file C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ice40HX1K.lib --effort_level std --out-sdc-file D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\placer\U400_TOP_pl.sdc
+Lattice Semiconductor Corporation  Placer
+Release:        2020.12.27943
+Build Date:     Dec  9 2020 17:55:52
+
+I2004: Option and Settings Summary
+=============================================================
+Device file          - C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P01.dev
+Package              - VQ100
+Design database      - D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\netlist\oadb-U400_TOP
+SDC file             - D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\Temp/sbt_temp.sdc
+Output directory     - D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\placer
+Timing library       - C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ice40HX1K.lib
+Effort level         - std
+
+I2050: Starting reading inputs for placer
+=============================================================
+I2100: Reading design library: D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\netlist\oadb-U400_TOP/BFPGA_DESIGN_ep
+I2065: Reading device file : C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P01.dev
+I2051: Reading of inputs for placer completed successfully
+
+I2053: Starting placement of the design
+=============================================================
+
+Input Design Statistics
+    Number of LUTs      	:	97
+    Number of DFFs      	:	47
+    Number of DFFs packed to IO	:	0
+    Number of Carrys    	:	14
+    Number of RAMs      	:	0
+    Number of ROMs      	:	0
+    Number of IOs       	:	53
+    Number of GBIOs     	:	1
+    Number of GBs       	:	1
+    Number of WarmBoot  	:	0
+    Number of PLLs      	:	0
+
+
+Phase 1
+I2077: Start design legalization
+
+Design Legalization Statistics
+    Number of feedthru LUTs inserted to legalize input of DFFs     	:	3
+    Number of feedthru LUTs inserted for LUTs driving multiple DFFs	:	0
+    Number of LUTs replicated for LUTs driving multiple DFFs       	:	0
+    Number of feedthru LUTs inserted to legalize output of CARRYs  	:	0
+    Number of feedthru LUTs inserted to legalize global signals    	:	0
+    Number of feedthru CARRYs inserted to legalize input of CARRYs 	:	0
+    Number of inserted LUTs to Legalize IOs with PIN_TYPE= 01xxxx  	:	0
+    Number of inserted LUTs to Legalize IOs with PIN_TYPE= 10xxxx  	:	0
+    Number of inserted LUTs to Legalize IOs with PIN_TYPE= 11xxxx  	:	0
+    Total LUTs inserted                                            	:	3
+    Total CARRYs inserted                                          	:	0
+
+
+I2078: Design legalization is completed successfully
+I2088: Phase 1, elapsed time : 0.0 (sec)
+
+
+Phase 2
+I2088: Phase 2, elapsed time : 0.0 (sec)
+
+Phase 3
+W2715: Warning for set_io Constraint: Ignoring pin assignment for A[1], as it is not connected to any PAD
+W2715: Warning for set_io Constraint: Ignoring pin assignment for A[27], as it is not connected to any PAD
+W2715: Warning for set_io Constraint: Ignoring pin assignment for A[31], as it is not connected to any PAD
+W2715: Warning for set_io Constraint: Ignoring pin assignment for SIZ[0], as it is not connected to any PAD
+W2715: Warning for set_io Constraint: Ignoring pin assignment for A[29], as it is not connected to any PAD
+W2715: Warning for set_io Constraint: Ignoring pin assignment for TSn, as it is not connected to any PAD
+W2715: Warning for set_io Constraint: Ignoring pin assignment for A[0], as it is not connected to any PAD
+W2715: Warning for set_io Constraint: Ignoring pin assignment for SIZ[1], as it is not connected to any PAD
+W2715: Warning for set_io Constraint: Ignoring pin assignment for A[28], as it is not connected to any PAD
+W2715: Warning for set_io Constraint: Ignoring pin assignment for A[30], as it is not connected to any PAD
+W2715: Warning for set_io Constraint: Ignoring pin assignment for RnW, as it is not connected to any PAD
+W2216: SB_GB_IO 'CLK40_ibuf_gb_io' is assigned to a non-GB pin '53'. Replacing it with SB_IO 'CLK40_ibuf_gb_io' and SB_GB 'CLK40_ibuf_gb_io_gb'
+Warning-1034: Found non-unate timing arc, from pin "PACKAGEPIN" to pin "DIN0" of instance "CLK40_ibuf_gb_io", in the clock network. Converting the timing arc to positive-unate
+
+Design Statistics after Packing
+    Number of LUTs      	:	101
+    Number of DFFs      	:	47
+    Number of DFFs packed to IO	:	0
+    Number of Carrys    	:	14
+
+Device Utilization Summary after Packing
+    Sequential LogicCells
+        LUT and DFF      	:	35
+        LUT, DFF and CARRY	:	12
+    Combinational LogicCells
+        Only LUT         	:	53
+        CARRY Only       	:	1
+        LUT with CARRY   	:	1
+    LogicCells                  :	102/1280
+    PLBs                        :	15/160
+    BRAMs                       :	0/16
+    IOs and GBIOs               :	54/72
+    PLLs                        :	0/0
+
+
+I2088: Phase 3, elapsed time : 0.3 (sec)
+
+Phase 4
+Warning: dangling IO A_ibuf_22
+Warning: dangling IO A_ibuf_21
+I2088: Phase 4, elapsed time : 0.1 (sec)
+
+Phase 5
+I2088: Phase 5, elapsed time : 0.1 (sec)
+
+Phase 6
+I2088: Phase 6, elapsed time : 12.7 (sec)
+
+Final Design Statistics
+    Number of LUTs      	:	101
+    Number of DFFs      	:	47
+    Number of DFFs packed to IO	:	0
+    Number of Carrys    	:	14
+    Number of RAMs      	:	0
+    Number of ROMs      	:	0
+    Number of IOs       	:	54
+    Number of GBIOs     	:	0
+    Number of GBs       	:	2
+    Number of WarmBoot  	:	0
+    Number of PLLs      	:	0
+
+Device Utilization Summary
+    LogicCells                  :	102/1280
+    PLBs                        :	32/160
+    BRAMs                       :	0/16
+    IOs and GBIOs               :	54/72
+    PLLs                        :	0/0
+
+
+
+#####################################################################
+Placement Timing Summary
+
+The timing summary is based on estimated routing delays after
+placement. For final timing report, please carry out the timing
+analysis after routing.
+=====================================================================
+
+#####################################################################
+                     Clock Summary 
+=====================================================================
+Number of clocks: 1
+Clock: CLK40 | Frequency: 146.15 MHz | Target: 40.00 MHz
+
+=====================================================================
+                     End of Clock Summary
+#####################################################################
+
+I2054: Placement of design completed successfully
+
+I2076: Placer run-time: 13.6 sec.
+
+placer succeed.
+starting IPExporterrunning IPExporterIPExporter succeed.
+
+
+"C:/lscc/iCEcube2.2020.12/sbt_backend/bin/win32/opt\packer.exe" "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P01.dev" "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\netlist\oadb-U400_TOP" --package VQ100 --outdir "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\packer" --DRC_only  --translator "C:\lscc\iCEcube2.2020.12\sbt_backend\bin\sdc_translator.tcl" --src_sdc_file "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\placer\U400_TOP_pl.sdc" --dst_sdc_file "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\packer\U400_TOP_pk.sdc" --devicename iCE40HX1K
+starting packerrunning packerLattice Semiconductor Corporation  Packer
+Release:        2020.12.27943
+Build Date:     Dec  9 2020 17:32:13
+
+Begin Packing...
+initializing finish
+Warning: dangling IO A_ibuf_22
+Warning: dangling IO A_ibuf_21
+Total HPWL cost is 529
+Warning: cannot find the IO pin Input/Output direction for A_ibuf_21 (ICE_IO)
+Warning: cannot find the IO pin Input/Output direction for A_ibuf_22 (ICE_IO)
+used logic cells: 102
+Design Rule Checking Succeeded
+
+DRC Checker run-time: 0 (sec)
+packer succeed.
+
+
+"C:/lscc/iCEcube2.2020.12/sbt_backend/bin/win32/opt\packer.exe" "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P01.dev" "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\netlist\oadb-U400_TOP" --package VQ100 --outdir "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\packer" --translator "C:\lscc\iCEcube2.2020.12\sbt_backend\bin\sdc_translator.tcl" --src_sdc_file "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\placer\U400_TOP_pl.sdc" --dst_sdc_file "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\packer\U400_TOP_pk.sdc" --devicename iCE40HX1K
+starting packerrunning packerLattice Semiconductor Corporation  Packer
+Release:        2020.12.27943
+Build Date:     Dec  9 2020 17:32:13
+
+Begin Packing...
+initializing finish
+Warning: dangling IO A_ibuf_22
+Warning: dangling IO A_ibuf_21
+Total HPWL cost is 529
+Warning: cannot find the IO pin Input/Output direction for A_ibuf_21 (ICE_IO)
+Warning: cannot find the IO pin Input/Output direction for A_ibuf_22 (ICE_IO)
+used logic cells: 102
+Translating sdc file D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\placer\U400_TOP_pl.sdc...
+Translated sdc file is D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\packer\U400_TOP_pk.sdc
+Warning: cannot find the IO pin Input/Output direction for A_ibuf_21 (ICE_IO)
+Warning: cannot find the IO pin Input/Output direction for A_ibuf_22 (ICE_IO)
+Packer succeeded
+
+Packer run-time: 1 (sec)
+packer succeed.
+
+
+"C:\lscc\iCEcube2.2020.12\sbt_backend\bin\win32\opt\sbrouter.exe" "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P01.dev" "D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\sbt\netlist\oadb-U400_TOP" "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ice40HX1K.lib" "D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\sbt\outputs\packer\U400_TOP_pk.sdc" --outdir "D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\sbt\outputs\router" --sdf_file "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\simulation_netlist\U400_TOP_sbt.sdf" --pin_permutation
+starting routerrunning routerSJRouter....
+Executing : C:\lscc\iCEcube2.2020.12\sbt_backend\bin\win32\opt\sbrouter.exe C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P01.dev D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\sbt\netlist\oadb-U400_TOP C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ice40HX1K.lib D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\sbt\outputs\packer\U400_TOP_pk.sdc --outdir D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\sbt\outputs\router --sdf_file D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\simulation_netlist\U400_TOP_sbt.sdf --pin_permutation 
+Lattice Semiconductor Corporation  Router
+Release:        2020.12.27943
+Build Date:     Dec  9 2020 17:44:15
+
+I1203: Reading Design U400_TOP
+Read design time: 0
+I1202: Reading Architecture of device iCE40HX1K
+Read device time: 2
+I1209: Started routing
+I1223: Total Nets : 154 
+I1212: Iteration  1 :    33 unrouted : 0 seconds
+I1212: Iteration  2 :     0 unrouted : 0 seconds
+I1215: Routing is successful
+Routing time: 0
+I1206: Completed routing
+I1204: Writing Design U400_TOP
+Lib Closed
+I1210: Writing routes
+I1218: Exiting the router
+I1224: Router run-time : 2 seconds
+router succeed.
+
+"C:/lscc/iCEcube2.2020.12/sbt_backend/bin/win32/opt\netlister.exe" --verilog "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\simulation_netlist\U400_TOP_sbt.v" --vhdl "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt/sbt/outputs/simulation_netlist\U400_TOP_sbt.vhd" --lib "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\netlist\oadb-U400_TOP" --view rt --device "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P01.dev" --splitio  --in-sdc-file "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\packer\U400_TOP_pk.sdc" --out-sdc-file "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\netlister\U400_TOP_sbt.sdc"
+starting netlistrunning netlistLattice Semiconductor Corporation  Verilog & VHDL Netlister
+Release:        2020.12.27943
+Build Date:     Dec  9 2020 18:18:39
+
+Generating Verilog & VHDL netlist files ...
+Writing D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\simulation_netlist\U400_TOP_sbt.v
+Writing D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt/sbt/outputs/simulation_netlist\U400_TOP_sbt.vhd
+Netlister succeeded.
+
+Netlister run-time: 2 (sec)
+netlist succeed.
+
+
+"C:/lscc/iCEcube2.2020.12/sbt_backend/bin/win32/opt\sbtimer.exe" --des-lib "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\netlist\oadb-U400_TOP" --lib-file "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ice40HX1K.lib" --sdc-file "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\netlister\U400_TOP_sbt.sdc" --sdf-file "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\simulation_netlist\U400_TOP_sbt.sdf" --report-file "D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\sbt\outputs\timer\U400_TOP_timing.rpt" --device-file "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P01.dev" --timing-summary
+starting timerrunning timerExecuting : C:\lscc\iCEcube2.2020.12\sbt_backend\bin\win32\opt\sbtimer.exe --des-lib D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\netlist\oadb-U400_TOP --lib-file C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ice40HX1K.lib --sdc-file D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\netlister\U400_TOP_sbt.sdc --sdf-file D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\simulation_netlist\U400_TOP_sbt.sdf --report-file D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\sbt\outputs\timer\U400_TOP_timing.rpt --device-file C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P01.dev --timing-summary
+Lattice Semiconductor Corporation  Timer
+Release:        2020.12.27943
+Build Date:     Dec  9 2020 17:41:47
+
+Warning-1034: Found non-unate timing arc, from pin "PADIN" to pin "DIN0" of instance "CLK40_ibuf_gb_io_preio", in the clock network. Converting the timing arc to positive-unate
+Timer run-time: 2 seconds
+timer succeed.
+timer succeeded.
+
+
+"C:/lscc/iCEcube2.2020.12/sbt_backend/bin/win32/opt\bitmap.exe" "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P01.dev" --design "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\netlist\oadb-U400_TOP" --device_name iCE40HX1K --package VQ100 --outdir "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\bitmap" --low_power on --init_ram on --init_ram_bank 1111 --frequency low --warm_boot on --set_unused_io_nopullup
+starting bitmaprunning bitmapLattice Semiconductor Corporation  Bit Stream Generator
+Release:        2020.12.27943
+Build Date:     Dec  9 2020 18:17:40
+
+Bit Stream File Size: 257720 (251K 696 Bits)
+Bit Stream Generator succeeded
+
+Bitmap run-time: 1 (sec)
+bitmap succeed.
+"C:\lscc\iCEcube2.2020.12\sbt_backend\bin\win32\opt\synpwrap\synpwrap.exe" -prj "LBC_U400_syn.prj" -log "LBC_U400_Implmnt/LBC_U400.srr"
+starting Synthesisrunning SynthesisCopyright (C) 1992-2014 Lattice Semiconductor Corporation. All rights reserved.
+
+==contents of LBC_U400_Implmnt/LBC_U400.srr
+#Build: Synplify Pro L-2016.09L+ice40, Build 077R, Dec  2 2016
+#install: C:\lscc\iCEcube2.2020.12\synpbase
+#OS: Windows 8 6.2
+#Hostname: JASON-LAB
+
+# Sat May 31 10:09:48 2025
+
+#Implementation: LBC_U400_Implmnt
+
+Synopsys HDL Compiler, version comp2016q3p1, Build 141R, built Dec  5 2016
+@N|Running in 64-bit mode
+Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
+
+Synopsys Verilog Compiler, version comp2016q3p1, Build 141R, built Dec  5 2016
+@N|Running in 64-bit mode
+Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
+
+@I::"C:\lscc\iCEcube2.2020.12\synpbase\lib\generic\sb_ice40.v" (library work)
+@I::"C:\lscc\iCEcube2.2020.12\synpbase\lib\vlog\hypermods.v" (library __hyper__lib__)
+@I::"C:\lscc\iCEcube2.2020.12\synpbase\lib\vlog\umr_capim.v" (library snps_haps)
+@I::"C:\lscc\iCEcube2.2020.12\synpbase\lib\vlog\scemi_objects.v" (library snps_haps)
+@I::"C:\lscc\iCEcube2.2020.12\synpbase\lib\vlog\scemi_pipes.svh" (library snps_haps)
+@I::"D:\LocalBus68040\U400\U400_BYTE_ENABLE.v" (library work)
+@I::"D:\LocalBus68040\U400\U400_SDRAM.v" (library work)
+@I::"D:\LocalBus68040\U400\U400_TOP.v" (library work)
+@I::"D:\LocalBus68040\U400\U400_ADDRESS_DECODE.v" (library work)
+Verilog syntax check successful!
+File D:\LocalBus68040\U400\U400_ADDRESS_DECODE.v changed - recompiling
+Selecting top level module U400_TOP
+@N: CG364 :"D:\LocalBus68040\U400\U400_ADDRESS_DECODE.v":33:7:33:25|Synthesizing module U400_ADDRESS_DECODE in library work.
+
+@N: CG364 :"D:\LocalBus68040\U400\U400_SDRAM.v":34:7:34:16|Synthesizing module U400_SDRAM in library work.
+
+@N: CG364 :"D:\LocalBus68040\U400\U400_BYTE_ENABLE.v":34:7:34:22|Synthesizing module U400_BYTE_ENABLE in library work.
+
+@N: CG364 :"D:\LocalBus68040\U400\U400_TOP.v":34:7:34:14|Synthesizing module U400_TOP in library work.
+
+@N: CL201 :"D:\LocalBus68040\U400\U400_SDRAM.v":102:0:102:5|Trying to extract state machine for register TA_COUNTER.
+Extracted state machine for register TA_COUNTER
+State machine has 6 reachable states with original encodings of:
+   000000000
+   000000001
+   000000010
+   000000011
+   000000100
+   000000101
+@W: CL246 :"D:\LocalBus68040\U400\U400_SDRAM.v":37:17:37:17|Input port bits 1 to 0 of A[26:0] are unused. Assign logic for all port bits or change the input port size.
+
+At c_ver Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 72MB peak: 73MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+
+Process completed successfully.
+# Sat May 31 10:09:48 2025
+
+###########################################################]
+Synopsys Netlist Linker, version comp2016q3p1, Build 141R, built Dec  5 2016
+@N|Running in 64-bit mode
+@N: NF107 :"D:\LocalBus68040\U400\U400_TOP.v":34:7:34:14|Selected library: work cell: U400_TOP view verilog as top level
+@N: NF107 :"D:\LocalBus68040\U400\U400_TOP.v":34:7:34:14|Selected library: work cell: U400_TOP view verilog as top level
+
+At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 67MB peak: 68MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+
+Process completed successfully.
+# Sat May 31 10:09:48 2025
+
+###########################################################]
+@END
+
+At c_hdl Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 3MB peak: 4MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+
+Process completed successfully.
+# Sat May 31 10:09:48 2025
+
+###########################################################]
+Synopsys Netlist Linker, version comp2016q3p1, Build 141R, built Dec  5 2016
+@N|Running in 64-bit mode
+File D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\synwork\LBC_U400_comp.srs changed - recompiling
+@N: NF107 :"D:\LocalBus68040\U400\U400_TOP.v":34:7:34:14|Selected library: work cell: U400_TOP view verilog as top level
+@N: NF107 :"D:\LocalBus68040\U400\U400_TOP.v":34:7:34:14|Selected library: work cell: U400_TOP view verilog as top level
+
+At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 67MB peak: 68MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+
+Process completed successfully.
+# Sat May 31 10:09:49 2025
+
+###########################################################]
+Pre-mapping Report
+
+# Sat May 31 10:09:49 2025
+
+Synopsys Lattice Technology Pre-mapping, Version maplat, Build 1612R, Built Dec  5 2016 10:31:39
+Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
+Product Version L-2016.09L+ice40
+
+Mapper Startup Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 99MB peak: 99MB)
+
+Reading constraint file: D:\LocalBus68040\U400\U400_TOP.sdc
+@L: D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\LBC_U400_scck.rpt 
+Printing clock  summary report in "D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\LBC_U400_scck.rpt" file 
+@N: MF248 |Running in 64-bit mode.
+@N: MF666 |Clock conversion enabled. (Command "set_option -fix_gated_and_generated_clocks 1" in the project file.)
+
+Design Input Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 100MB peak: 102MB)
+
+
+Mapper Initialization Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 100MB peak: 102MB)
+
+
+Start loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 101MB peak: 102MB)
+
+
+Finished loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 101MB peak: 103MB)
+
+
+ICG Latch Removal Summary:
+Number of ICG latches removed:	0
+Number of ICG latches not removed:	0
+syn_allowed_resources : blockrams=16  set on top level netlist U400_TOP
+
+Finished netlist restructuring (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
+
+
+
+Clock Summary
+*****************
+
+Start     Requested     Requested     Clock        Clock                Clock
+Clock     Frequency     Period        Type         Group                Load 
+-----------------------------------------------------------------------------
+CLK40     40.0 MHz      25.000        declared     default_clkgroup     56   
+=============================================================================
+
+Finished Pre Mapping Phase.
+@N: BN225 |Writing default property annotation file D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\LBC_U400.sap.
+
+Starting constraint checker (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
+
+Encoding state machine TA_COUNTER[5:0] (in view: work.U400_SDRAM(verilog))
+original code -> new code
+   000000000 -> 000001
+   000000001 -> 000010
+   000000010 -> 000100
+   000000011 -> 001000
+   000000100 -> 010000
+   000000101 -> 100000
+None
+None
+
+Finished constraint checker (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
+
+Pre-mapping successful!
+
+At Mapper Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 47MB peak: 133MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+# Sat May 31 10:09:50 2025
+
+###########################################################]
+Map & Optimize Report
+
+# Sat May 31 10:09:50 2025
+
+Synopsys Lattice Technology Mapper, Version maplat, Build 1612R, Built Dec  5 2016 10:31:39
+Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
+Product Version L-2016.09L+ice40
+
+Mapper Startup Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 99MB peak: 99MB)
+
+@N: MF248 |Running in 64-bit mode.
+@N: MF666 |Clock conversion enabled. (Command "set_option -fix_gated_and_generated_clocks 1" in the project file.)
+
+Design Input Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 98MB peak: 100MB)
+
+
+Mapper Initialization Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 98MB peak: 100MB)
+
+
+Start loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 100MB peak: 100MB)
+
+
+Finished loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 100MB peak: 102MB)
+
+
+
+Starting Optimization and Mapping (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
+
+
+Available hyper_sources - for debug and ip models
+	None Found
+
+@N: MT204 |Auto Constrain mode is disabled because clocks are defined in the SDC file
+
+            CLK40
+
+
+Finished RTL optimizations (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
+
+Encoding state machine TA_COUNTER[5:0] (in view: work.U400_SDRAM(verilog))
+original code -> new code
+   000000000 -> 000001
+   000000001 -> 000010
+   000000010 -> 000100
+   000000011 -> 001000
+   000000100 -> 010000
+   000000101 -> 100000
+@N: MO231 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Found counter in view:work.U400_SDRAM(verilog) instance SDRAM_COUNTER[7:0] 
+
+Starting factoring (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
+
+
+Finished factoring (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 133MB peak: 134MB)
+
+
+Finished gated-clock and generated-clock conversion (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 132MB peak: 134MB)
+
+
+Finished generic timing optimizations - Pass 1 (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 133MB peak: 134MB)
+
+
+Starting Early Timing Optimization (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 133MB peak: 134MB)
+
+
+Finished Early Timing Optimization (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 133MB peak: 134MB)
+
+
+Finished generic timing optimizations - Pass 2 (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 133MB peak: 134MB)
+
+
+Finished preparing to map (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 133MB peak: 134MB)
+
+
+Finished technology mapping (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 141MB peak: 143MB)
+
+Pass		 CPU time		Worst Slack		Luts / Registers
+------------------------------------------------------------
+   1		0h:00m:00s		     6.63ns		 148 /        56
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[12] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[11] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[10] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[9] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[8] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[7] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[6] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[5] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[4] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[3] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[2] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[1] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[0] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@N: FX1016 :"d:\localbus68040\u400\u400_top.v":36:10:36:14|SB_GB_IO inserted on the port CLK40.
+@N: FX1017 :|SB_GB inserted on the net RESETn_c_i.
+
+Finished technology timing optimizations and critical path resynthesis (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 141MB peak: 143MB)
+
+
+Finished restoring hierarchy (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 141MB peak: 143MB)
+
+
+
+@S |Clock Optimization Summary
+
+
+#### START OF CLOCK OPTIMIZATION REPORT #####[
+
+1 non-gated/non-generated clock tree(s) driving 56 clock pin(s) of sequential element(s)
+0 gated/generated clock tree(s) driving 0 clock pin(s) of sequential element(s)
+0 instances converted, 0 sequential instances remain driven by gated/generated clocks
+
+============================= Non-Gated/Non-Generated Clocks =============================
+Clock Tree ID     Driving Element      Drive Element Type     Fanout     Sample Instance  
+------------------------------------------------------------------------------------------
+@K:CKID0001       CLK40_ibuf_gb_io     SB_GB_IO               56         U400_SDRAM.TA_OUT
+==========================================================================================
+
+
+##### END OF CLOCK OPTIMIZATION REPORT ######]
+
+
+Start Writing Netlists (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 116MB peak: 143MB)
+
+Writing Analyst data base D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\synwork\LBC_U400_m.srm
+
+Finished Writing Netlist Databases (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 141MB peak: 143MB)
+
+Writing EDIF Netlist and constraint files
+@N: BW103 |The default time unit for the Synopsys Constraint File (SDC or FDC) is 1ns.
+@N: BW107 |Synopsys Constraint File capacitance units using default value of 1pF 
+@N: FX1056 |Writing EDF file: D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\LBC_U400.edf
+L-2016.09L+ice40
+
+Finished Writing EDIF Netlist and constraint files (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 142MB peak: 144MB)
+
+
+Start final timing analysis (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 141MB peak: 144MB)
+
+@N: MT615 |Found clock CLK40 with period 25.00ns 
+
+
+##### START OF TIMING REPORT #####[
+# Timing Report written on Sat May 31 10:09:51 2025
+#
+
+
+Top view:               U400_TOP
+Requested Frequency:    40.0 MHz
+Wire load mode:         top
+Paths requested:        5
+Constraint File(s):    D:\LocalBus68040\U400\U400_TOP.sdc
+                       
+@N: MT320 |This timing report is an estimate of place and route data. For final timing results, use the FPGA vendor place and route report.
+
+@N: MT322 |Clock constraints include only register-to-register paths associated with each individual clock.
+
+
+
+Performance Summary
+*******************
+
+
+Worst slack in design: 3.009
+
+                   Requested     Estimated     Requested     Estimated               Clock        Clock           
+Starting Clock     Frequency     Frequency     Period        Period        Slack     Type         Group           
+------------------------------------------------------------------------------------------------------------------
+CLK40              40.0 MHz      52.7 MHz      25.000        18.982        3.009     declared     default_clkgroup
+==================================================================================================================
+
+
+
+
+
+Clock Relationships
+*******************
+
+Clocks            |    rise  to  rise    |    fall  to  fall    |    rise  to  fall   |    fall  to  rise 
+----------------------------------------------------------------------------------------------------------
+Starting  Ending  |  constraint  slack   |  constraint  slack   |  constraint  slack  |  constraint  slack
+----------------------------------------------------------------------------------------------------------
+CLK40     CLK40   |  25.000      17.364  |  25.000      10.295  |  12.500      3.009  |  12.500      4.857
+==========================================================================================================
+ Note: 'No paths' indicates there are no paths in the design for that pair of clock edges.
+       'Diff grp' indicates that paths exist but the starting clock and ending clock are in different clock groups.
+
+
+
+Interface Information 
+*********************
+
+No IO constraint found
+
+
+
+====================================
+Detailed Report for Clock: CLK40
+====================================
+
+
+
+Starting Points with Worst Slack
+********************************
+
+                                  Starting                                                   Arrival           
+Instance                          Reference     Type          Pin     Net                    Time        Slack 
+                                  Clock                                                                        
+---------------------------------------------------------------------------------------------------------------
+U400_SDRAM.RAM_CYCLE_START        CLK40         SB_DFFSR      Q       RAM_CYCLE_START        0.540       3.009 
+U400_SDRAM.BURST                  CLK40         SB_DFFNSR     Q       BURST                  0.540       4.857 
+U400_SDRAM.TACK                   CLK40         SB_DFFNSR     Q       TACK                   0.540       6.529 
+U400_SDRAM.RAM_CYCLE              CLK40         SB_DFFNSR     Q       RAM_CYCLE              0.540       8.349 
+U400_SDRAM.SDRAM_COUNTER[4]       CLK40         SB_DFFNE      Q       SDRAM_COUNTER[4]       0.540       10.295
+U400_SDRAM.SDRAM_COUNTER[5]       CLK40         SB_DFFNE      Q       SDRAM_COUNTER[5]       0.540       10.302
+U400_SDRAM.SDRAM_COUNTER[6]       CLK40         SB_DFFNE      Q       SDRAM_COUNTER[6]       0.540       10.330
+U400_SDRAM.SDRAM_COUNTER[7]       CLK40         SB_DFFNE      Q       SDRAM_COUNTER[7]       0.540       10.393
+U400_SDRAM.REFRESH_COUNTER[3]     CLK40         SB_DFFNSR     Q       REFRESH_COUNTER[3]     0.540       11.953
+U400_SDRAM.REFRESH_COUNTER[4]     CLK40         SB_DFFNSR     Q       REFRESH_COUNTER[4]     0.540       12.003
+===============================================================================================================
+
+
+Ending Points with Worst Slack
+******************************
+
+                             Starting                                              Required          
+Instance                     Reference     Type          Pin     Net               Time         Slack
+                             Clock                                                                   
+-----------------------------------------------------------------------------------------------------
+U400_SDRAM.CS0_EN            CLK40         SB_DFFNSR     D       CS0_EN_1          12.395       3.009
+U400_SDRAM.CS1_EN            CLK40         SB_DFFNSR     D       CS1_EN_1          12.395       3.009
+U400_SDRAM.SDRAM_CMD[1]      CLK40         SB_DFFN       D       SDRAM_CMD_0       12.395       4.731
+U400_SDRAM.SDRAM_CMD[2]      CLK40         SB_DFFN       D       SDRAM_CMD_1       12.395       4.731
+U400_SDRAM.SDRAM_CMD[0]      CLK40         SB_DFFN       D       SDRAM_CMD         12.395       4.780
+U400_SDRAM.TA_EN_i           CLK40         SB_DFFSS      D       TA_EN_i_en_0      12.395       4.857
+U400_SDRAM.BANK0             CLK40         SB_DFFNSR     D       BANK0             12.395       4.913
+U400_SDRAM.BANK1             CLK40         SB_DFFNSR     D       BANK1             12.395       4.913
+U400_SDRAM.TA_OUT            CLK40         SB_DFFSS      D       TA_OUT_0          12.395       6.529
+U400_SDRAM.TA_COUNTER[0]     CLK40         SB_DFFSS      D       TA_COUNTERs_i     12.395       6.543
+=====================================================================================================
+
+
+
+Worst Path Information
+***********************
+
+
+Path information for path number 1: 
+      Requested Period:                      12.500
+    - Setup time:                            0.105
+    + Clock delay at ending point:           0.000 (ideal)
+    = Required time:                         12.395
+
+    - Propagation time:                      9.386
+    - Clock delay at starting point:         0.000 (ideal)
+    = Slack (critical) :                     3.009
+
+    Number of logic level(s):                4
+    Starting point:                          U400_SDRAM.RAM_CYCLE_START / Q
+    Ending point:                            U400_SDRAM.CS0_EN / D
+    The start point is clocked by            CLK40 [rising] on pin C
+    The end   point is clocked by            CLK40 [falling] on pin C
+
+Instance / Net                                         Pin      Pin               Arrival     No. of    
+Name                                     Type          Name     Dir     Delay     Time        Fan Out(s)
+--------------------------------------------------------------------------------------------------------
+U400_SDRAM.RAM_CYCLE_START               SB_DFFSR      Q        Out     0.540     0.540       -         
+RAM_CYCLE_START                          Net           -        -       1.599     -           9         
+U400_SDRAM.RAM_CYCLE_START_RNI8DRF2      SB_LUT4       I1       In      -         2.139       -         
+U400_SDRAM.RAM_CYCLE_START_RNI8DRF2      SB_LUT4       O        Out     0.400     2.539       -         
+N_72                                     Net           -        -       1.371     -           1         
+U400_SDRAM.SDRAM_CONFIGURED_RNI9NVF9     SB_LUT4       I0       In      -         3.910       -         
+U400_SDRAM.SDRAM_CONFIGURED_RNI9NVF9     SB_LUT4       O        Out     0.449     4.359       -         
+N_40                                     Net           -        -       1.371     -           2         
+U400_SDRAM.CS0_EN_RNO_0                  SB_LUT4       I1       In      -         5.729       -         
+U400_SDRAM.CS0_EN_RNO_0                  SB_LUT4       O        Out     0.400     6.129       -         
+CS0_EN_0                                 Net           -        -       1.371     -           1         
+U400_SDRAM.CS0_EN_RNO                    SB_LUT4       I2       In      -         7.500       -         
+U400_SDRAM.CS0_EN_RNO                    SB_LUT4       O        Out     0.379     7.879       -         
+CS0_EN_1                                 Net           -        -       1.507     -           1         
+U400_SDRAM.CS0_EN                        SB_DFFNSR     D        In      -         9.386       -         
+========================================================================================================
+Total path delay (propagation time + setup) of 9.491 is 2.272(23.9%) logic and 7.219(76.1%) route.
+Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
+
+
+
+##### END OF TIMING REPORT #####]
+
+Timing exceptions that could not be applied
+None
+
+Finished final timing analysis (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 141MB peak: 144MB)
+
+
+Finished timing report (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 141MB peak: 144MB)
+
+---------------------------------------
+Resource Usage Report for U400_TOP 
+
+Mapping to part: ice40hx1kvq100
+Cell usage:
+GND             3 uses
+SB_CARRY        14 uses
+SB_DFFN         3 uses
+SB_DFFNE        8 uses
+SB_DFFNESR      13 uses
+SB_DFFNSR       18 uses
+SB_DFFNSS       5 uses
+SB_DFFSR        6 uses
+SB_DFFSS        3 uses
+SB_GB           1 use
+VCC             3 uses
+SB_LUT4         144 uses
+
+I/O ports: 65
+I/O primitives: 65
+SB_GB_IO       1 use
+SB_IO          64 uses
+
+I/O Register bits:                  0
+Register bits not including I/Os:   56 (4%)
+Total load per clock:
+   CLK40: 1
+
+@S |Mapping Summary:
+Total  LUTs: 144 (11%)
+
+Distribution of All Consumed LUTs = LUT4 
+Distribution of All Consumed Luts 144 = 144 
+
+Mapper successful!
+
+At Mapper Exit (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 27MB peak: 144MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+# Sat May 31 10:09:51 2025
+
+###########################################################]
+
+
+Synthesis exit by 0.
+Current Implementation LBC_U400_Implmnt its sbt path: D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt
+Synthesis succeed.
+Synthesis succeeded.
+Synthesis runtime 4 seconds
+
+
+"C:/lscc/iCEcube2.2020.12/sbt_backend/bin/win32/opt\edifparser.exe" "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P01.dev" "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt/LBC_U400.edf " "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\netlist" "-pVQ100" "-yD:/LocalBus68040/U400/U400_TOP.pcf " -c --devicename iCE40HX1K
+starting edif parserrunning edif parserLattice Semiconductor Corporation  Edif Parser
+Release:        2020.12.27943
+Build Date:     Dec  9 2020 17:30:22
+
+Parsing edif file: D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt/LBC_U400.edf...
+Parsing constraint file: D:/LocalBus68040/U400/U400_TOP.pcf ...
+start to read sdc/scf file D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt/LBC_U400.scf
+sdc_reader OK D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt/LBC_U400.scf
+Stored edif netlist at D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\netlist\oadb-U400_TOP...
+
+write Timing Constraint to D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt/Temp/sbt_temp.sdc
+
+EDIF Parser succeeded
+Top module is: U400_TOP
+
+EDF Parser run-time: 0 (sec)
+edif parser succeed.
+
+
+"C:/lscc/iCEcube2.2020.12/sbt_backend/bin/win32/opt\sbtplacer.exe" --des-lib "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\netlist\oadb-U400_TOP" --outdir "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\placer" --device-file "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P01.dev" --package VQ100 --deviceMarketName iCE40HX1K --sdc-file "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\Temp/sbt_temp.sdc" --lib-file "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ice40HX1K.lib" --effort_level std --out-sdc-file "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\placer\U400_TOP_pl.sdc"
+starting placerrunning placerExecuting : C:\lscc\iCEcube2.2020.12\sbt_backend\bin\win32\opt\sbtplacer.exe --des-lib D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\netlist\oadb-U400_TOP --outdir D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\placer --device-file C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P01.dev --package VQ100 --deviceMarketName iCE40HX1K --sdc-file D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\Temp/sbt_temp.sdc --lib-file C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ice40HX1K.lib --effort_level std --out-sdc-file D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\placer\U400_TOP_pl.sdc
+Lattice Semiconductor Corporation  Placer
+Release:        2020.12.27943
+Build Date:     Dec  9 2020 17:55:52
+
+I2004: Option and Settings Summary
+=============================================================
+Device file          - C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P01.dev
+Package              - VQ100
+Design database      - D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\netlist\oadb-U400_TOP
+SDC file             - D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\Temp/sbt_temp.sdc
+Output directory     - D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\placer
+Timing library       - C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ice40HX1K.lib
+Effort level         - std
+
+I2050: Starting reading inputs for placer
+=============================================================
+I2100: Reading design library: D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\netlist\oadb-U400_TOP/BFPGA_DESIGN_ep
+I2065: Reading device file : C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P01.dev
+I2051: Reading of inputs for placer completed successfully
+
+I2053: Starting placement of the design
+=============================================================
+
+Input Design Statistics
+    Number of LUTs      	:	144
+    Number of DFFs      	:	56
+    Number of DFFs packed to IO	:	0
+    Number of Carrys    	:	14
+    Number of RAMs      	:	0
+    Number of ROMs      	:	0
+    Number of IOs       	:	64
+    Number of GBIOs     	:	1
+    Number of GBs       	:	1
+    Number of WarmBoot  	:	0
+    Number of PLLs      	:	0
+
+
+Phase 1
+I2077: Start design legalization
+
+Design Legalization Statistics
+    Number of feedthru LUTs inserted to legalize input of DFFs     	:	6
+    Number of feedthru LUTs inserted for LUTs driving multiple DFFs	:	0
+    Number of LUTs replicated for LUTs driving multiple DFFs       	:	1
+    Number of feedthru LUTs inserted to legalize output of CARRYs  	:	0
+    Number of feedthru LUTs inserted to legalize global signals    	:	0
+    Number of feedthru CARRYs inserted to legalize input of CARRYs 	:	0
+    Number of inserted LUTs to Legalize IOs with PIN_TYPE= 01xxxx  	:	0
+    Number of inserted LUTs to Legalize IOs with PIN_TYPE= 10xxxx  	:	0
+    Number of inserted LUTs to Legalize IOs with PIN_TYPE= 11xxxx  	:	0
+    Total LUTs inserted                                            	:	7
+    Total CARRYs inserted                                          	:	0
+
+
+I2078: Design legalization is completed successfully
+I2088: Phase 1, elapsed time : 0.0 (sec)
+
+
+Phase 2
+W2216: SB_GB_IO 'CLK40_ibuf_gb_io' is assigned to a non-GB pin '53'. Replacing it with SB_IO 'CLK40_ibuf_gb_io' and SB_GB 'CLK40_ibuf_gb_io_gb'
+I2088: Phase 2, elapsed time : 0.0 (sec)
+
+Phase 3
+Warning-1034: Found non-unate timing arc, from pin "PACKAGEPIN" to pin "DIN0" of instance "CLK40_ibuf_gb_io", in the clock network. Converting the timing arc to positive-unate
+
+Design Statistics after Packing
+    Number of LUTs      	:	152
+    Number of DFFs      	:	56
+    Number of DFFs packed to IO	:	0
+    Number of Carrys    	:	14
+
+Device Utilization Summary after Packing
+    Sequential LogicCells
+        LUT and DFF      	:	46
+        LUT, DFF and CARRY	:	10
+    Combinational LogicCells
+        Only LUT         	:	93
+        CARRY Only       	:	1
+        LUT with CARRY   	:	3
+    LogicCells                  :	153/1280
+    PLBs                        :	21/160
+    BRAMs                       :	0/16
+    IOs and GBIOs               :	65/72
+    PLLs                        :	0/0
+
+
+I2088: Phase 3, elapsed time : 0.4 (sec)
+
+Phase 4
+I2088: Phase 4, elapsed time : 0.1 (sec)
+
+Phase 5
+I2088: Phase 5, elapsed time : 0.1 (sec)
+
+Phase 6
+I2088: Phase 6, elapsed time : 15.5 (sec)
+
+Final Design Statistics
+    Number of LUTs      	:	152
+    Number of DFFs      	:	56
+    Number of DFFs packed to IO	:	0
+    Number of Carrys    	:	14
+    Number of RAMs      	:	0
+    Number of ROMs      	:	0
+    Number of IOs       	:	65
+    Number of GBIOs     	:	0
+    Number of GBs       	:	2
+    Number of WarmBoot  	:	0
+    Number of PLLs      	:	0
+
+Device Utilization Summary
+    LogicCells                  :	153/1280
+    PLBs                        :	45/160
+    BRAMs                       :	0/16
+    IOs and GBIOs               :	65/72
+    PLLs                        :	0/0
+
+
+
+#####################################################################
+Placement Timing Summary
+
+The timing summary is based on estimated routing delays after
+placement. For final timing report, please carry out the timing
+analysis after routing.
+=====================================================================
+
+#####################################################################
+                     Clock Summary 
+=====================================================================
+Number of clocks: 1
+Clock: CLK40 | Frequency: 102.76 MHz | Target: 40.00 MHz
+
+=====================================================================
+                     End of Clock Summary
+#####################################################################
+
+I2054: Placement of design completed successfully
+
+I2076: Placer run-time: 16.5 sec.
+
+placer succeed.
+starting IPExporterrunning IPExporterIPExporter succeed.
+
+
+"C:/lscc/iCEcube2.2020.12/sbt_backend/bin/win32/opt\packer.exe" "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P01.dev" "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\netlist\oadb-U400_TOP" --package VQ100 --outdir "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\packer" --DRC_only  --translator "C:\lscc\iCEcube2.2020.12\sbt_backend\bin\sdc_translator.tcl" --src_sdc_file "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\placer\U400_TOP_pl.sdc" --dst_sdc_file "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\packer\U400_TOP_pk.sdc" --devicename iCE40HX1K
+starting packerrunning packerLattice Semiconductor Corporation  Packer
+Release:        2020.12.27943
+Build Date:     Dec  9 2020 17:32:13
+
+Begin Packing...
+initializing finish
+Total HPWL cost is 823
+used logic cells: 153
+Design Rule Checking Succeeded
+
+DRC Checker run-time: 1 (sec)
+packer succeed.
+
+
+"C:/lscc/iCEcube2.2020.12/sbt_backend/bin/win32/opt\packer.exe" "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P01.dev" "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\netlist\oadb-U400_TOP" --package VQ100 --outdir "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\packer" --translator "C:\lscc\iCEcube2.2020.12\sbt_backend\bin\sdc_translator.tcl" --src_sdc_file "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\placer\U400_TOP_pl.sdc" --dst_sdc_file "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\packer\U400_TOP_pk.sdc" --devicename iCE40HX1K
+starting packerrunning packerLattice Semiconductor Corporation  Packer
+Release:        2020.12.27943
+Build Date:     Dec  9 2020 17:32:13
+
+Begin Packing...
+initializing finish
+Total HPWL cost is 823
+used logic cells: 153
+Translating sdc file D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\placer\U400_TOP_pl.sdc...
+Translated sdc file is D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\packer\U400_TOP_pk.sdc
+Packer succeeded
+
+Packer run-time: 0 (sec)
+packer succeed.
+
+
+"C:\lscc\iCEcube2.2020.12\sbt_backend\bin\win32\opt\sbrouter.exe" "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P01.dev" "D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\sbt\netlist\oadb-U400_TOP" "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ice40HX1K.lib" "D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\sbt\outputs\packer\U400_TOP_pk.sdc" --outdir "D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\sbt\outputs\router" --sdf_file "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\simulation_netlist\U400_TOP_sbt.sdf" --pin_permutation
+starting routerrunning routerSJRouter....
+Executing : C:\lscc\iCEcube2.2020.12\sbt_backend\bin\win32\opt\sbrouter.exe C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P01.dev D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\sbt\netlist\oadb-U400_TOP C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ice40HX1K.lib D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\sbt\outputs\packer\U400_TOP_pk.sdc --outdir D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\sbt\outputs\router --sdf_file D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\simulation_netlist\U400_TOP_sbt.sdf --pin_permutation 
+Lattice Semiconductor Corporation  Router
+Release:        2020.12.27943
+Build Date:     Dec  9 2020 17:44:15
+
+I1203: Reading Design U400_TOP
+Read design time: 0
+I1202: Reading Architecture of device iCE40HX1K
+Read device time: 2
+I1209: Started routing
+I1223: Total Nets : 220 
+I1212: Iteration  1 :    29 unrouted : 1 seconds
+I1212: Iteration  2 :     4 unrouted : 0 seconds
+I1212: Iteration  3 :     0 unrouted : 0 seconds
+I1215: Routing is successful
+Routing time: 1
+I1206: Completed routing
+I1204: Writing Design U400_TOP
+Lib Closed
+I1210: Writing routes
+I1218: Exiting the router
+I1224: Router run-time : 3 seconds
+router succeed.
+
+"C:/lscc/iCEcube2.2020.12/sbt_backend/bin/win32/opt\netlister.exe" --verilog "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\simulation_netlist\U400_TOP_sbt.v" --vhdl "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt/sbt/outputs/simulation_netlist\U400_TOP_sbt.vhd" --lib "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\netlist\oadb-U400_TOP" --view rt --device "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P01.dev" --splitio  --in-sdc-file "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\packer\U400_TOP_pk.sdc" --out-sdc-file "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\netlister\U400_TOP_sbt.sdc"
+starting netlistrunning netlistLattice Semiconductor Corporation  Verilog & VHDL Netlister
+Release:        2020.12.27943
+Build Date:     Dec  9 2020 18:18:39
+
+Generating Verilog & VHDL netlist files ...
+Writing D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\simulation_netlist\U400_TOP_sbt.v
+Writing D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt/sbt/outputs/simulation_netlist\U400_TOP_sbt.vhd
+Netlister succeeded.
+
+Netlister run-time: 2 (sec)
+netlist succeed.
+
+
+"C:/lscc/iCEcube2.2020.12/sbt_backend/bin/win32/opt\sbtimer.exe" --des-lib "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\netlist\oadb-U400_TOP" --lib-file "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ice40HX1K.lib" --sdc-file "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\netlister\U400_TOP_sbt.sdc" --sdf-file "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\simulation_netlist\U400_TOP_sbt.sdf" --report-file "D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\sbt\outputs\timer\U400_TOP_timing.rpt" --device-file "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P01.dev" --timing-summary
+starting timerrunning timerExecuting : C:\lscc\iCEcube2.2020.12\sbt_backend\bin\win32\opt\sbtimer.exe --des-lib D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\netlist\oadb-U400_TOP --lib-file C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ice40HX1K.lib --sdc-file D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\netlister\U400_TOP_sbt.sdc --sdf-file D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\simulation_netlist\U400_TOP_sbt.sdf --report-file D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\sbt\outputs\timer\U400_TOP_timing.rpt --device-file C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P01.dev --timing-summary
+Lattice Semiconductor Corporation  Timer
+Release:        2020.12.27943
+Build Date:     Dec  9 2020 17:41:47
+
+Warning-1034: Found non-unate timing arc, from pin "PADIN" to pin "DIN0" of instance "CLK40_ibuf_gb_io_preio", in the clock network. Converting the timing arc to positive-unate
+Timer run-time: 3 seconds
+timer succeed.
+timer succeeded.
+
+
+"C:/lscc/iCEcube2.2020.12/sbt_backend/bin/win32/opt\bitmap.exe" "C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P01.dev" --design "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\netlist\oadb-U400_TOP" --device_name iCE40HX1K --package VQ100 --outdir "D:/LocalBus68040/U400/LBC_U400/LBC_U400_Implmnt\sbt\outputs\bitmap" --low_power on --init_ram on --init_ram_bank 1111 --frequency low --warm_boot on --set_unused_io_nopullup
+starting bitmaprunning bitmapLattice Semiconductor Corporation  Bit Stream Generator
+Release:        2020.12.27943
+Build Date:     Dec  9 2020 18:17:40
+
+Bit Stream File Size: 257720 (251K 696 Bits)
+Bit Stream Generator succeeded
+
+Bitmap run-time: 1 (sec)
+bitmap succeed.
+2:30:05 PM

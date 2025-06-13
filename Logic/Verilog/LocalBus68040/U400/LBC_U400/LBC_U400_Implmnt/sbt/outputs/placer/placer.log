@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:55:50
 
-* File Generated:     Mar 10 2025 20:31:53
+* File Generated:     Jun 12 2025 17:26:15
 
 * Purpose:            
 
@@ -35,7 +35,7 @@ I2053: Starting placement of the design
 =============================================================
 
 Input Design Statistics
-    Number of LUTs      	:	144
+    Number of LUTs      	:	152
     Number of DFFs      	:	56
     Number of DFFs packed to IO	:	0
     Number of Carrys    	:	14
@@ -53,16 +53,16 @@ I2077: Start design legalization
 W2216: SB_GB_IO 'CLK40_ibuf_gb_io' is assigned to a non-GB pin '53'. Replacing it with SB_IO 'CLK40_ibuf_gb_io' and SB_GB 'CLK40_ibuf_gb_io_gb'
 
 Design Legalization Statistics
-    Number of feedthru LUTs inserted to legalize input of DFFs     	:	6
+    Number of feedthru LUTs inserted to legalize input of DFFs     	:	3
     Number of feedthru LUTs inserted for LUTs driving multiple DFFs	:	0
-    Number of LUTs replicated for LUTs driving multiple DFFs       	:	1
+    Number of LUTs replicated for LUTs driving multiple DFFs       	:	0
     Number of feedthru LUTs inserted to legalize output of CARRYs  	:	0
     Number of feedthru LUTs inserted to legalize global signals    	:	0
     Number of feedthru CARRYs inserted to legalize input of CARRYs 	:	0
     Number of inserted LUTs to Legalize IOs with PIN_TYPE= 01xxxx  	:	0
     Number of inserted LUTs to Legalize IOs with PIN_TYPE= 10xxxx  	:	0
     Number of inserted LUTs to Legalize IOs with PIN_TYPE= 11xxxx  	:	0
-    Total LUTs inserted                                            	:	7
+    Total LUTs inserted                                            	:	3
     Total CARRYs inserted                                          	:	0
 
 
@@ -77,7 +77,7 @@ Phase 3
 Warning-1034: Found non-unate timing arc, from pin "PACKAGEPIN" to pin "DIN0" of instance "CLK40_ibuf_gb_io", in the clock network. Converting the timing arc to positive-unate
 
 Design Statistics after Packing
-    Number of LUTs      	:	152
+    Number of LUTs      	:	156
     Number of DFFs      	:	56
     Number of DFFs packed to IO	:	0
     Number of Carrys    	:	14
@@ -87,29 +87,29 @@ Device Utilization Summary after Packing
         LUT and DFF      	:	46
         LUT, DFF and CARRY	:	10
     Combinational LogicCells
-        Only LUT         	:	93
+        Only LUT         	:	97
         CARRY Only       	:	1
         LUT with CARRY   	:	3
-    LogicCells                  :	153/1280
+    LogicCells                  :	157/1280
     PLBs                        :	21/160
     BRAMs                       :	0/16
     IOs and GBIOs               :	65/72
     PLLs                        :	0/0
 
 
-I2088: Phase 3, elapsed time : 0.3 (sec)
+I2088: Phase 3, elapsed time : 0.4 (sec)
 
 Phase 4
-I2088: Phase 4, elapsed time : 0.1 (sec)
+I2088: Phase 4, elapsed time : 0.2 (sec)
 
 Phase 5
-I2088: Phase 5, elapsed time : 0.1 (sec)
+I2088: Phase 5, elapsed time : 0.2 (sec)
 
 Phase 6
-I2088: Phase 6, elapsed time : 13.3 (sec)
+I2088: Phase 6, elapsed time : 14.7 (sec)
 
 Final Design Statistics
-    Number of LUTs      	:	152
+    Number of LUTs      	:	156
     Number of DFFs      	:	56
     Number of DFFs packed to IO	:	0
     Number of Carrys    	:	14
@@ -122,8 +122,8 @@ Final Design Statistics
     Number of PLLs      	:	0
 
 Device Utilization Summary
-    LogicCells                  :	153/1280
-    PLBs                        :	45/160
+    LogicCells                  :	157/1280
+    PLBs                        :	46/160
     BRAMs                       :	0/16
     IOs and GBIOs               :	65/72
     PLLs                        :	0/0
@@ -142,7 +142,7 @@ analysis after routing.
                      Clock Summary 
 =====================================================================
 Number of clocks: 1
-Clock: CLK40 | Frequency: 102.76 MHz | Target: 40.00 MHz
+Clock: CLK40 | Frequency: 83.17 MHz | Target: 40.00 MHz
 
 =====================================================================
                      End of Clock Summary
@@ -150,5 +150,5 @@ Clock: CLK40 | Frequency: 102.76 MHz | Target: 40.00 MHz
 
 I2054: Placement of design completed successfully
 
-I2076: Placer run-time: 14.2 sec.
+I2076: Placer run-time: 15.8 sec.
 

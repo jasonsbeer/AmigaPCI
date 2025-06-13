@@ -196,10 +196,10 @@ always @(negedge CLK40) begin
                 MA <= 13'b0000000100010; //CAS latency = 2, 4 word sequential bursts.
             end
             BANKACTIVATE : begin
-                MA <= {A[26], A[24], A[12:2]};
+                MA <= {A[26:25], A[20:10]}; //A0-12
             end
             READ, WRITE  : begin
-                MA <= {4'b0000, A[25], A[20:13]};
+                MA <= {4'b0000, A[24], A[9:2]}; //A0-8
             end
         endcase
 
@@ -270,11 +270,11 @@ always @(negedge CLK40) begin
                 //
                 //NON-BURST SDRAM cycles start here.
                 //
-                8'h03 : begin                    
+                8'h03 : begin    
+                    RAM_CYCLE <= 0;                
                     if (WRITE_CYCLE) begin
                         SDRAM_CMD <= WRITE;
                         TACK <= 1;
-                        RAM_CYCLE <= 0;
                     end else begin
                         SDRAM_CMD <=  READ;
                     end
@@ -285,6 +285,7 @@ always @(negedge CLK40) begin
                 end
                 8'h05 : begin
                     SDRAM_CMD <= NOP;
+                    //RAM_CYCLE <= 0;
                     if (WRITE_CYCLE) begin //End write cycle.
                         BANK0 <= 0;
                         BANK1 <= 0;                    
@@ -293,7 +294,6 @@ always @(negedge CLK40) begin
                         SDRAM_COUNTER <= 8'h00;
                     end else begin
                         TACK <= 1; //Read cycle TACK.
-                        RAM_CYCLE <= 0;
                     end
                 end
                 8'h06 : begin
@@ -313,7 +313,6 @@ always @(negedge CLK40) begin
                     if (WRITE_CYCLE) begin
                         SDRAM_CMD <= WRITE;
                         TACK <= 1; //Write cycle start TACK.
-                        RAM_CYCLE <= 0;
                     end else begin
                         SDRAM_CMD <=  READ;
                     end
@@ -330,9 +329,12 @@ always @(negedge CLK40) begin
                 end
                 8'h0C : begin
                     SDRAM_CMD <= WRITE_CYCLE ? PRECHARGE : NOP; //Follow write burst with precharge.
+                    //SDRAM_CMD <= PRECHARGE;
                 end
                 8'h0D : begin //End write burst cycle.
-                    SDRAM_CMD <= NOP;
+                    //SDRAM_CMD <= NOP;
+                    RAM_CYCLE <= 0;
+                    SDRAM_CMD <= !WRITE_CYCLE ? PRECHARGE : NOP;
                     if (WRITE_CYCLE) begin
                         BANK0 <= 0;
                         BANK1 <= 0;                    
@@ -342,10 +344,11 @@ always @(negedge CLK40) begin
                     end
                 end
                 8'h0E : begin
-                    SDRAM_CMD <= PRECHARGE; //Follow read burst with precharge.
+                    //SDRAM_CMD <= PRECHARGE; //Follow read burst with precharge.
+                    SDRAM_CMD <= NOP;
                 end
                 8'h0F : begin //End read burst cycle.
-                    SDRAM_CMD <= NOP;
+                    //SDRAM_CMD <= NOP;
                     BANK0 <= 0;
                     BANK1 <= 0;                    
                     CS0_EN <= 0;

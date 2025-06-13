@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:31:51
 
-* File Generated:     Mar 10 2025 20:32:08
+* File Generated:     Jun 12 2025 17:26:31
 
 * Purpose:            General info of design implementation
 
@@ -28,7 +28,7 @@ Device Info:
 Design statistics:
 ------------------
     FFs:                  56
-    LUTs:                 152
+    LUTs:                 156
     RAMs:                 0
     IOBs:                 65
     GBs:                  2
@@ -37,10 +37,10 @@ Design statistics:
 
 Logic Resource Utilization:
 ---------------------------
-    Total Logic Cells: 153/1280
-        Combinational Logic Cells: 97       out of   1280      7.57813%
+    Total Logic Cells: 157/1280
+        Combinational Logic Cells: 101      out of   1280      7.89063%
         Sequential Logic Cells:    56       out of   1280      4.375%
-        Logic Tiles:               45       out of   160       28.125%
+        Logic Tiles:               46       out of   160       28.75%
     Registers: 
         Logic Registers:           56       out of   1280      4.375%
         IO Registers:              0        out of   560       0
@@ -139,5 +139,5 @@ Detailed Global Buffer Info:
 ----------------------------
     Buffer Number  IO Bank  Driven By  Fanout  Signal Name   
     -------------  -------  ---------  ------  -----------   
-    3              3                   30      CLK40_c_g     
-    6              3                   37      RESETn_c_i_g  
+    3              3                   32      CLK40_c_g     
+    6              3                   30      RESETn_c_i_g  
