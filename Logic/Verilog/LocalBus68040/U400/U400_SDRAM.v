@@ -28,6 +28,7 @@ Revision History:
     19-FEB-2025 : INITIAL RELEASE
     09-MAR-2025 : INCLUDE BURST MODE SUPPORT
     13-JUN-2025 : Cleaned up code and optimaized cycles. JN
+                  Increased frequency of refreshes. JN
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 */
@@ -63,7 +64,7 @@ localparam [2:0] READ            = 3'b101;
 localparam [2:0] WRITE           = 3'b100;
 localparam [2:0] AUTOREFRESH     = 3'b001;
 localparam [2:0] MODEREGISTER    = 3'b000;
-localparam [8:0] REFRESH_DEFAULT = 9'h128; //296 clocks.
+localparam [7:0] REFRESH_DEFAULT = 8'hFF; //256 clocks.
 
 //THE REFRESH OPERATION MUST BE PERFORMED 8192 TIMES EVERY 64ms.
 //SO...8192 TIMES IN 64,000,000ns. THATS ONCE EVERY 7812.5ns.
@@ -167,13 +168,13 @@ always @(negedge CLK40) begin
         BURST <= 0;
         CS0_EN <= 0;
         CS1_EN <= 0;
-        MA <= 13'b0000000000000;
+        MA <= 13'b0;
         CS0n <= 1;
         CS1n <= 1;
         RASn <= 1;
         CASn <= 1;
         WEn <= 1;
-        REFRESH_COUNTER <= 0;
+        REFRESH_COUNTER <= 9'b0;
     end else begin
 
         REFRESH_COUNTER ++;
