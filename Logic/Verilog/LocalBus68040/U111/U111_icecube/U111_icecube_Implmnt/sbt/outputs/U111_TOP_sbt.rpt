@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:31:51
 
-* File Generated:     Jun 12 2025 19:37:55
+* File Generated:     Jun 13 2025 09:32:41
 
 * Purpose:            General info of design implementation
 
@@ -27,37 +27,37 @@ Device Info:
 
 Design statistics:
 ------------------
-    FFs:                  99
-    LUTs:                 239
+    FFs:                  37
+    LUTs:                 118
     RAMs:                 0
-    IOBs:                 95
-    GBs:                  2
+    IOBs:                 96
+    GBs:                  1
     PLLs:                 1
     Warm Boots:           0
 
 Logic Resource Utilization:
 ---------------------------
-    Total Logic Cells: 239/3520
-        Combinational Logic Cells: 140      out of   3520      3.97727%
-        Sequential Logic Cells:    99       out of   3520      2.8125%
-        Logic Tiles:               129      out of   440       29.3182%
+    Total Logic Cells: 118/3520
+        Combinational Logic Cells: 81       out of   3520      2.30114%
+        Sequential Logic Cells:    37       out of   3520      1.05114%
+        Logic Tiles:               39       out of   440       8.86364%
     Registers: 
-        Logic Registers:           99       out of   3520      2.8125%
+        Logic Registers:           37       out of   3520      1.05114%
         IO Registers:              0        out of   880       0
     Block RAMs:                    0        out of   20        0%
     Warm Boots:                    0        out of   1         0%
     Pins:
         Input Pins:                13       out of   107       12.1495%
-        Output Pins:               16       out of   107       14.9533%
-        InOut Pins:                66       out of   107       61.6822%
-    Global Buffers:                2        out of   8         25%
+        Output Pins:               15       out of   107       14.0187%
+        InOut Pins:                68       out of   107       63.5514%
+    Global Buffers:                1        out of   8         12.5%
     PLLs:                          1        out of   2         50%
 
 IO Bank Utilization:
 --------------------
     Bank 3: 27       out of   28        96.4286%
     Bank 1: 29       out of   29        100%
-    Bank 0: 24       out of   27        88.8889%
+    Bank 0: 25       out of   27        92.5926%
     Bank 2: 15       out of   23        65.2174%
 
 Detailed I/O Info:
@@ -69,15 +69,15 @@ Detailed I/O Info:
     37          Input      SB_LVCMOS    Yes      2        Simple Input                               A_040[0]       
     38          Input      SB_LVCMOS    Yes      2        Simple Input                               A_040[1]       
     42          Input      SB_LVCMOS    No       2        Simple Input                               PORTSIZE       
-    43          Input      SB_LVCMOS    Yes      2        Simple Input                               TEAn           
+    43          Input      SB_LVCMOS    No       2        Simple Input                               TEAn           
     44          Input      SB_LVCMOS    No       2        Simple Input                               TCIn           
     48          Input      SB_LVCMOS    No       2        Simple Input                               LBENn          
     55          Input      SB_LVCMOS    No       2        Simple Input                               TBIn           
-    96          Input      SB_LVCMOS    Yes      1        Simple Input                               BGn            
+    96          Input      SB_LVCMOS    No       1        Simple Input                               BGn            
     97          Input      SB_LVCMOS    No       1        Simple Input                               RnW            
     120         Input      SB_LVCMOS    No       0        Simple Input                               SIZ[1]         
     121         Input      SB_LVCMOS    No       0        Simple Input                               SIZ[0]         
-    125         Input      SB_LVCMOS    No       0        Simple Input                               TS_CPUn        
+    130         Input      SB_LVCMOS    No       0        Simple Input                               BBn            
 
     Output Pins: 
     Pin Number  Direction  IO Standard  Pull Up  IO Bank  IO Function                                Signal Name    
@@ -85,7 +85,6 @@ Detailed I/O Info:
     21          Output     SB_LVCMOS    No       3        Simple Output                              CLK40C         
     39          Output     SB_LVCMOS    Yes      2        Simple Output                              A_AMIGA[0]     
     41          Output     SB_LVCMOS    Yes      2        Simple Output                              A_AMIGA[1]     
-    45          Output     SB_LVCMOS    No       2        Simple Output                              TSn            
     49          Output     SB_LVCMOS    No       2        Simple Output                              CLK40B         
     52          Output     SB_LVCMOS    No       2        Simple Output                              CLKRAMB        
     56          Output     SB_LVCMOS    No       2        Simple Output                              CLKRAMA        
@@ -93,9 +92,9 @@ Detailed I/O Info:
     93          Output     SB_LVCMOS    No       1        Simple Output                              CLK40A         
     94          Output     SB_LVCMOS    No       1        Simple Output                              CLK80_CPU      
     101         Output     SB_LVCMOS    No       1        Simple Output                              TCI_CPUn       
-    102         Output     SB_LVCMOS    Yes      1        Simple Output                              CPUBGn         
+    102         Output     SB_LVCMOS    No       1        Simple Output                              CPUBGn         
     122         Output     SB_LVCMOS    No       0        Simple Output                              TEA_CPUn       
-    134         Output     SB_LVCMOS    No       0        Simple Output                              DMAn           
+    134         Output     SB_LVCMOS    No       0        Simple Output                              DMAAn          
     135         Output     SB_LVCMOS    No       0        Simple Output                              BUFENn         
     136         Output     SB_LVCMOS    No       0        Simple Output                              BUFDIR         
 
@@ -127,7 +126,8 @@ Detailed I/O Info:
     31          InOut      SB_LVCMOS    No       3        Simple Input Output Tristatable by Enable  D_LL_AMIGA[2]  
     32          InOut      SB_LVCMOS    No       3        Simple Input Output Tristatable by Enable  D_LL_AMIGA[3]  
     33          InOut      SB_LVCMOS    No       3        Simple Input Output Tristatable by Enable  D_LL_AMIGA[0]  
-    47          InOut      SB_LVCMOS    Yes      2        Simple Input Output Tristatable by Enable  TACKn          
+    45          InOut      SB_LVCMOS    No       2        Simple Input Output Tristatable by Enable  TSn            
+    47          InOut      SB_LVCMOS    No       2        Simple Input Output Tristatable by Enable  TACKn          
     73          InOut      SB_LVCMOS    No       1        Simple Input Output Tristatable by Enable  D_LL_040[3]    
     74          InOut      SB_LVCMOS    No       1        Simple Input Output Tristatable by Enable  D_LL_040[0]    
     75          InOut      SB_LVCMOS    No       1        Simple Input Output Tristatable by Enable  D_LL_040[1]    
@@ -161,6 +161,7 @@ Detailed I/O Info:
     118         InOut      SB_LVCMOS    No       0        Simple Input Output Tristatable by Enable  D_UU_040[2]    
     119         InOut      SB_LVCMOS    No       0        Simple Input Output Tristatable by Enable  D_UU_040[4]    
     124         InOut      SB_LVCMOS    No       0        Simple Input Output Tristatable by Enable  TAn            
+    125         InOut      SB_LVCMOS    No       0        Simple Input Output Tristatable by Enable  TS_CPUn        
     137         InOut      SB_LVCMOS    No       0        Simple Input Output Tristatable by Enable  D_UU_AMIGA[4]  
     138         InOut      SB_LVCMOS    No       0        Simple Input Output Tristatable by Enable  D_UU_AMIGA[0]  
     139         InOut      SB_LVCMOS    No       0        Simple Input Output Tristatable by Enable  D_UU_AMIGA[2]  
@@ -171,22 +172,21 @@ Detailed I/O Info:
 
 Detailed Global Buffer Info:
 ----------------------------
-    Buffer Number  IO Bank  Driven By  Fanout  Signal Name                      
-    -------------  -------  ---------  ------  -----------                      
-    6              3                   77      RESETn_c_i_g                     
-    3              3                   64      U111_CYCLE_SM.CYCLE_STATE_0_g_0  
+    Buffer Number  IO Bank  Driven By  Fanout  Signal Name   
+    -------------  -------  ---------  ------  -----------   
+    6              3                   30      RESETn_c_i_g  
 
 
 Router Summary:
 ---------------
     Status:  Successful
-    Runtime: 12 seconds
+    Runtime: 14 seconds
 
 Routing Resource Utilization:
 -----------------------------
-              Local line of tile     1592 out of 146184      1.08904%
-                          Span 4      833 out of  29696      2.80509%
-                         Span 12      478 out of   5632      8.48722%
-                  Global network        4 out of      8      50%
-      Vertical Inter-LUT Connect        8 out of   6720      0.119048%
+              Local line of tile     1221 out of 146184      0.835249%
+                          Span 4      576 out of  29696      1.93966%
+                         Span 12      399 out of   5632      7.08452%
+                  Global network        3 out of      8      37.5%
+      Vertical Inter-LUT Connect        6 out of   6720      0.0892857%
 

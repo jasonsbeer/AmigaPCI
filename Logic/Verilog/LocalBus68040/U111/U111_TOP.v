@@ -24,8 +24,7 @@ Target Devices: iCE40-HX4K-TQ144
 
 Description: U111 AMIGA PCI LOCAL BUS CARD BUS SIZING FPGA
 
-Revision History:
-    xxx
+See individual modules for revision history.
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 iceprog D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\sbt\outputs\bitmap\U111_TOP_bitmap.bin
@@ -34,12 +33,14 @@ iceprog D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\sbt\outputs\bitm
 module U111_TOP (
     input [1:0] A_040,
     input [1:0] SIZ,
-    input CLK40_IN, RESETn, TS_CPUn, RnW, BGn, PORTSIZE, LBENn, TBIn, TCIn, TEAn,
+    input CLK40_IN, RESETn, RnW, BGn, BBn, PORTSIZE, LBENn, TBIn, TCIn, TEAn,
 
     output [1:0] A_AMIGA,
     output CLK40A, CLK40B, CLK40C, CLK80_CPU, CLKRAMA, CLKRAMB,
-    output TSn, TBI_CPUn, TCI_CPUn, TEA_CPUn, CPUBGn, BUFENn, BUFDIR, DMAn,
+    output TBI_CPUn, TCI_CPUn, TEA_CPUn, CPUBGn, BUFENn, BUFDIR, DMAAn,
 
+    inout TSn,
+    inout TS_CPUn,
     inout TAn,
     inout TACKn,
 
@@ -96,21 +97,18 @@ SB_PLL40_2F_PAD #(
 // BUFFERS //
 ////////////
 
-wire CYCLE_EN = 1;
-//wire LBENn = 1;
-
 U111_BUFFERS U111_BUFFERS (
     //INPUTS
     .RnW (RnW),
     .LBENn (LBENn),
-    .CYCLE_EN (CYCLE_EN),
-    .BGn (BGn),
+    .BBn (BBn),
+    .CPU_CYCLE (CPU_CYCLE),
 
     //OUTPUTS
     .CPUBGn (CPUBGn),
     .BUFENn (BUFENn),
     .BUFDIR (BUFDIR),
-    .DMAn (DMAn)
+    .DMAAn (DMAAn)
 );
 
 //////////////////////////////////
@@ -141,6 +139,7 @@ U111_CYCLE_SM U111_CYCLE_SM (
     .TEA_CPUn (TEA_CPUn),
     .A_AMIGA (A_AMIGA),
     .TSn (TSn),
+    .CPU_CYCLE (CPU_CYCLE),
 
     //INOUT
     .D_UU_040 (D_UU_040),

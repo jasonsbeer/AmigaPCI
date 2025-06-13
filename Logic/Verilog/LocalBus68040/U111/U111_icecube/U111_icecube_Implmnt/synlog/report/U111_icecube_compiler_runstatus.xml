@@ -18,7 +18,7 @@ The file contains the job information from compiler to be displayed as part of t
   <report_link name="more"><data>D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\synlog\report\U111_icecube_compiler_notes.txt</data></report_link>
   </info>
 			<info name="Warnings">
-  <data>6</data>
+  <data>7</data>
   <report_link name="more"><data>D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\synlog\report\U111_icecube_compiler_warnings.txt</data></report_link>
   </info>
 			<info name="Errors">
@@ -29,13 +29,13 @@ The file contains the job information from compiler to be displayed as part of t
   <data>-</data>
   </info>
 			<info name="Real Time">
-  <data>00h:00m:00s</data>
+  <data>00h:00m:01s</data>
   </info>
 			<info name="Peak Memory">
   <data>-</data>
   </info>
 			<info name="Date &amp;Time">
-  <data type="timestamp">1749775053</data>
+  <data type="timestamp">1749825138</data>
   </info>
 			</job_info>
 </job_run_status>

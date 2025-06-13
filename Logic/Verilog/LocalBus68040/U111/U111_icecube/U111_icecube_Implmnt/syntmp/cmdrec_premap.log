@@ -1,14 +1,14 @@
 C:\lscc\iCEcube2.2020.12\synpbase\bin64\m_generic.exe  -prodtype  synplify_pro   -encrypt  -pro  -rundir  D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt   -part iCE40HX4K  -package TQ144    -maxfan 10000 -RWCheckOnRam 0 -pipe -fixgatedclocks 1 -fixgeneratedclocks 1 -summaryfile D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\synlog\report\U111_icecube_premap.xml  -oedif  D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\U111_icecube.edf  -conchk_prepass  D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\U111_icecube_cck.rpt   -autoconstraint  -freq 1.000   -tcl  D:\LocalBus68040\U111\U111_TOP.sdc  D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\synwork\U111_icecube_mult.srs  -flow prepass  -gcc_prepass  -osrd  D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\synwork\U111_icecube_prem.srd  -qsap  D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\U111_icecube.sap  -devicelib  C:\lscc\iCEcube2.2020.12\synpbase\lib\generic\sb_ice40.v  -ologparam  D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\syntmp\U111_icecube.plg  -osyn  D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\synwork\U111_icecube_prem.srd  -prjdir  D:\LocalBus68040\U111\U111_icecube\  -prjname  U111_icecube_syn  -log  D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\synlog\U111_icecube_premap.srr 
-rc:0 success:1 runtime:1
+rc:0 success:1 runtime:0
 file:D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\U111_icecube.edf|io:o|time:0|size:0|exec:0
-file:D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\U111_icecube_cck.rpt|io:o|time:1749775055|size:7101|exec:0
+file:D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\U111_icecube_cck.rpt|io:o|time:1749825139|size:7203|exec:0
 file:D:\LocalBus68040\U111\U111_TOP.sdc|io:i|time:1749769759|size:87|exec:0
-file:D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\synwork\U111_icecube_mult.srs|io:i|time:1749775054|size:6578|exec:0
-file:D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\synwork\U111_icecube_prem.srd|io:o|time:1749775054|size:17039|exec:0
-file:D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\U111_icecube.sap|io:o|time:1749775055|size:1193|exec:0
+file:D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\synwork\U111_icecube_mult.srs|io:i|time:1749825139|size:6584|exec:0
+file:D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\synwork\U111_icecube_prem.srd|io:o|time:1749825139|size:19068|exec:0
+file:D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\U111_icecube.sap|io:o|time:1749825139|size:1232|exec:0
 file:C:\lscc\iCEcube2.2020.12\synpbase\lib\generic\sb_ice40.v|io:i|time:1728534475|size:224837|exec:0
-file:D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\syntmp\U111_icecube.plg|io:o|time:1749775054|size:0|exec:0
-file:D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\synwork\U111_icecube_prem.srd|io:o|time:1749775054|size:17039|exec:0
-file:D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\synlog\U111_icecube_premap.srr|io:o|time:1749775055|size:3754|exec:0
+file:D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\syntmp\U111_icecube.plg|io:o|time:1749825139|size:0|exec:0
+file:D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\synwork\U111_icecube_prem.srd|io:o|time:1749825139|size:19068|exec:0
+file:D:\LocalBus68040\U111\U111_icecube\U111_icecube_Implmnt\synlog\U111_icecube_premap.srr|io:o|time:1749825139|size:3754|exec:0
 file:C:\lscc\iCEcube2.2020.12\synpbase\bin\m_generic.exe|io:i|time:1728534473|size:17853440|exec:1
 file:C:\lscc\iCEcube2.2020.12\synpbase\bin64\m_generic.exe|io:i|time:1728534474|size:32355840|exec:1

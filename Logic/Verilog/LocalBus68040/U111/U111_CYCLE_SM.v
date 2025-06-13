@@ -28,19 +28,22 @@ Revision History:
     19-APR-2025 : New bus sizing state machine. JN
     31-MAY-2025 : Fixed burst cycle count value. JN
     12-JUN-2025 : Fixed state machine crash when _LBEN is enabled. JN
+    13-JUN-2025 : Conditions most signals to support PCI DMA cycles. JN
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 */
 
 module U111_CYCLE_SM (
-    input CLK80, CLK40, TS_CPUn, RESETn, RnW, PORTSIZE, BGn, LBENn, TBIn, TCIn, TEAn,
+    input CLK80, CLK40, RESETn, RnW, PORTSIZE, BGn, LBENn, TBIn, TCIn, TEAn,
     input [1:0] SIZ,
     input [1:0] A_040,
 
     output TBI_CPUn, TCI_CPUn, TEA_CPUn,
     output [1:0] A_AMIGA,
-    output reg TSn,
+    
+    output CPU_CYCLE,
 
+    inout TSn, inout TS_CPUn,
     inout TAn, inout TACKn,
 
     inout [7:0] D_UU_040, //68040 DATA BUS
@@ -58,14 +61,19 @@ module U111_CYCLE_SM (
 // TRANSFER START //
 ///////////////////
 
-//TRANSFER START WILL NEED TO BE PASSED THROUGH DURING PCI DMA CYCLES.
-//WE DO NOT PASS _TS TO APCI DURING ON-BOARD MEMORY CYCLES.
+//TRANSFER START IS PASSED THROUGH DURING PCI DMA CYCLES.
+//DO NOT PASS _TS TO APCI DURING ON-BOARD MEMORY CYCLES (QUALIFIED BY _LBEN).
 
+wire CPU_CYCLE = !BGn || CYCLE_EN;
+assign TSn = CPU_CYCLE ? TS_OUT : 1'bz;
+assign TS_CPUn = !CPU_CYCLE ? TSn : 1'bz;
+
+reg TS_OUT;
 always @(negedge CLK40) begin
     if (!RESETn) begin
-        TSn <= 1;
+        TS_OUT <= 1;
     end else begin
-        TSn <= !(TS_EN || (!TS_DELAY && LBENn));
+        TS_OUT <= !(TS_EN || (!TS_DELAY && LBENn));
     end
 end
 
@@ -73,33 +81,41 @@ end
 // CYCLE TERMINATION //
 //////////////////////
 
-//WE PASS THE _TACK SIGNAL THROUGH WHEN THE _TA OUTPUT IS ENABLED.
-//TRANSFER BURST INHIBIT IS ENABLED WHEN ADDRESSING A WORD PORT.
-//_TA IS TRISTATE WHEN _LBEN IS ASSERTED DURING ON-BOARD MEMORY CYCLES.
-//_TA MUST BE PASSED THROUGH TO _TACK DURING PCI DMA CYCLES.
+//_TACK (_TA) AND _TEA COMPRISE THE CYCLE TERMINATION SIGNALS.
+//WE PASS THE _TACK SIGNAL TO _TA FOR OFF-BOARD CYCLES.
+//WE PASS THE _TA SIGNAL TO _TACK FOR ON-BOARD CYCLES.
 
 assign TAn = !TA_DIS && LBENn ? TACKn : 1'bz;
 assign TACKn = !LBENn ? TAn : 1'bz;
+assign TEA_CPUn = !TA_DIS ? TEAn : 1'b1;
 
 assign TBI_CPUn = TBIn;
 assign TCI_CPUn = TCIn;
-assign TEA_CPUn = TEAn;
+
+///////////////////////
+// DATA BUS ENABLES //
+/////////////////////
+
+//THE BUFFERS ARE ENABLED BASED ON WHO HAS THE BUS AND THE DIRECTION OF THE DATA FLOW.
+
+wire ONBOARD_EN = (READ_CYCLE_ACTIVE || (!CPU_CYCLE && !RnW));
+wire OFFBOARD_EN = (WRITE_CYCLE_ACTIVE || (!CPU_CYCLE && RnW));
 
 ////////////////////////
 // DATA PASS THROUGH //
 //////////////////////
 
 //READS
-assign D_UU_040 = READ_CYCLE_ACTIVE ? (LATCH_EN  ? UU_LATCHED : D_UU_AMIGA) : 8'bzzzzzzzz;
-assign D_UM_040 = READ_CYCLE_ACTIVE ? (LATCH_EN  ? UM_LATCHED : D_UM_AMIGA) : 8'bzzzzzzzz;
-assign D_LM_040 = READ_CYCLE_ACTIVE ? (FLIP_WORD ? D_UU_AMIGA : D_LM_AMIGA) : 8'bzzzzzzzz;
-assign D_LL_040 = READ_CYCLE_ACTIVE ? (FLIP_WORD ? D_UM_AMIGA : D_LL_AMIGA) : 8'bzzzzzzzz;
+assign D_UU_040 = ONBOARD_EN ? (LATCH_EN  ? UU_LATCHED : D_UU_AMIGA) : 8'bzzzzzzzz;
+assign D_UM_040 = ONBOARD_EN ? (LATCH_EN  ? UM_LATCHED : D_UM_AMIGA) : 8'bzzzzzzzz;
+assign D_LM_040 = ONBOARD_EN ? (FLIP_WORD ? D_UU_AMIGA : D_LM_AMIGA) : 8'bzzzzzzzz;
+assign D_LL_040 = ONBOARD_EN ? (FLIP_WORD ? D_UM_AMIGA : D_LL_AMIGA) : 8'bzzzzzzzz;
 
 //WRITES
-assign D_UU_AMIGA = WRITE_CYCLE_ACTIVE ? (FLIP_WORD ? D_LM_040 : D_UU_040) : 8'bzzzzzzzz;
-assign D_UM_AMIGA = WRITE_CYCLE_ACTIVE ? (FLIP_WORD ? D_LL_040 : D_UM_040) : 8'bzzzzzzzz;
-assign D_LM_AMIGA = WRITE_CYCLE_ACTIVE ? D_LM_040 : 8'bzzzzzzzz;
-assign D_LL_AMIGA = WRITE_CYCLE_ACTIVE ? D_LL_040 : 8'bzzzzzzzz;
+assign D_UU_AMIGA = OFFBOARD_EN ? (FLIP_WORD ? D_LM_040 : D_UU_040) : 8'bzzzzzzzz;
+assign D_UM_AMIGA = OFFBOARD_EN ? (FLIP_WORD ? D_LL_040 : D_UM_040) : 8'bzzzzzzzz;
+assign D_LM_AMIGA = OFFBOARD_EN ? D_LM_040 : 8'bzzzzzzzz;
+assign D_LL_AMIGA = OFFBOARD_EN ? D_LL_040 : 8'bzzzzzzzz;
 
 //These are for the bus sizing state machine.
 wire [7:0] UU_AMIGA_IN = D_UU_AMIGA;
@@ -135,6 +151,8 @@ localparam [1:0] TERM_WAIT   = 2'b11;
 //ARE SIMPLY PASSED THROUGH. CYCLES AGAINST LIKE PORTS AT ADDRESS 2 ARE "FLIPPED"
 //SO THE WORD APPEARS ON THE CORRECT BYTE LANES.
 
+//WE DO NOT RUN THIS STATE MACHINE FOR ON-BOARD CYCLES (QUALIFIED BY _LBEN).
+
 reg TS_EN;
 reg TA_DIS;
 reg LATCH_EN;
@@ -146,6 +164,7 @@ reg A2_EN;
 reg BURST;
 reg LW_TRANS;
 reg TS_DELAY;
+reg CYCLE_EN;
 
 reg [3:0] CYCLE_STATE;
 reg [7:0] UU_LATCHED;
@@ -169,6 +188,7 @@ always @(posedge CLK40) begin
         UU_LATCHED <= 8'h00;
         UM_LATCHED <= 8'h00;
         TS_DELAY <= 1;
+        CYCLE_EN <= 0;
     end else begin
 
         TS_DELAY <= TS_CPUn;
@@ -176,7 +196,8 @@ always @(posedge CLK40) begin
         case (CYCLE_STATE)
 
             4'h0 : begin
-                if (!TS_DELAY && !BGn && LBENn) begin
+                if (!TS_DELAY && LBENn) begin
+                    CYCLE_EN <= 1;
                     LATCH_EN <= 0;
                     READ_CYCLE_ACTIVE <= RnW;
                     WRITE_CYCLE_ACTIVE <= !RnW;
@@ -187,6 +208,7 @@ always @(posedge CLK40) begin
                 end else begin
                     READ_CYCLE_ACTIVE <= 0;
                     WRITE_CYCLE_ACTIVE <= 0;
+                    CYCLE_EN <= 0;
                 end
             end
             4'h1 : begin
@@ -204,11 +226,13 @@ always @(posedge CLK40) begin
                         UM_LATCHED <= READ_CYCLE_ACTIVE ? UM_AMIGA_IN : 8'h00;
                     end
                     TERM_RETRY : begin
-                        //Consider tha case where PORT_MISMATCH is true.
+                        //When there is a port mismatch condition, _TA-CPU and _TEA-CPU are disabled.
+                        //It will be necessary to terminate the cycle here by creating our own.
                         CYCLE_STATE <= 4'h0;
                     end
                     TERM_ERROR : begin
-                        //Consider tha case where PORT_MISMATCH is true.
+                        //When there is a port mismatch condition, _TEA-CPU is disabled.
+                        //It will be necessary to terminate the cycle here by creating our own.
                         CYCLE_STATE <= 4'h0;
                     end
                 endcase
@@ -232,10 +256,7 @@ always @(posedge CLK40) begin
                         TS_EN <= BURST;
                         A2_EN <= 0;
                     end
-                    TERM_RETRY : begin
-                        CYCLE_STATE <= 4'h0;
-                    end
-                    TERM_ERROR : begin
+                    TERM_RETRY, TERM_ERROR : begin
                         CYCLE_STATE <= 4'h0;
                     end
                 endcase

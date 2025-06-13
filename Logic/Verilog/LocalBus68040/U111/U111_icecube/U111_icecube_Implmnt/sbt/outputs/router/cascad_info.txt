@@ -1,9 +1,7 @@
 [VIC]
-U111_CYCLE_SM.N_40_cascade_=ltout:in0
-U111_CYCLE_SM.N_46_cascade_=ltout:in0
-U111_CYCLE_SM.N_55_cascade_=ltout:in0
-U111_CYCLE_SM.N_57_cascade_=ltout:in1
-U111_CYCLE_SM.N_60_cascade_=ltout:in1
-U111_CYCLE_SM.N_75_cascade_=ltout:in0
-U111_CYCLE_SM.READ_CYCLE_ACTIVE_0_sqmuxa_cascade_=ltout:in2
-U111_CYCLE_SM.READ_CYCLE_ACTIVE_RNIGTOZ0Z81_cascade_=ltout:in3
+CPUBGn_c_cascade_=ltout:in0
+U111_CYCLE_SM.N_109_cascade_=ltout:in0
+U111_CYCLE_SM.N_112_cascade_=ltout:in0
+U111_CYCLE_SM.N_144_cascade_=ltout:in1
+U111_CYCLE_SM.N_195_cascade_=ltout:in0
+U111_CYCLE_SM.un4_TS_OUT_i_0_cascade_=ltout:in1

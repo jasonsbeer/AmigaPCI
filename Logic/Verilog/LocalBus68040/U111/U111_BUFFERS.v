@@ -25,36 +25,39 @@ Target Devices: iCE40-HX4K-TQ144
 Description: BUFFER ENABLES
 
 Revision History:
-    xxx
+    13-JUN-2025 : Conditions most signals to support PCI DMA cycles. JN
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 */
 module U111_BUFFERS (
-    input RnW, LBENn, CYCLE_EN, BGn,
-    output CPUBGn, BUFENn, BUFDIR, DMAn
+    input RnW, LBENn, BBn, CPU_CYCLE,
+    output CPUBGn, BUFENn, BUFDIR, DMAAn
 );
+
+wire DMA_EN = !BBn && !CPU_CYCLE;
 
 ///////////////////////////////////
 // BUFFER ENABLES AND DIRECTION //
 /////////////////////////////////
 
 //ENABLE THE CPU DATA BUS BUFFERS
-assign CPUBGn = ~(!BGn || CYCLE_EN);
+assign CPUBGn = !(CPU_CYCLE);
 
-//DISABLE THE AMIGAPCI DATA BUS WHEN USING ONBOARD RESOURCES.
-//THIS IS NOT NECESSARY....THESE BUFFERS CAN ALWAYS BE ENABLED.
-//WE ISOLATE THE DATA BUS IN THE BUS SIZING STATE MACHINE.
-assign BUFENn = ~LBENn;
+//THE BUS SIZER TO AMIGA DATA BUS BUFFERS ARE ENABLED FOR ALL CPU DRIVEN CYCLES.
+//THEY SHOULD BE ENABLED FOR PCI DRIVEN DMA CYCLES TO THE ON-BOARD MEMORY SPACE.
+//DISABLED FOR ALL OTHER DMA CYCLES.
 
-//DIRECTION OF THE AMIGAPCI DATA BUS. INFLUENCED BY WHO HAS THE BUS.
+assign BUFENn = !(CPU_CYCLE || (DMA_EN && !LBENn));
+
+//DIRECTION OF THE BUS SIZER TO AMIGAPCI DATA BUS. INFLUENCED BY WHO HAS THE BUS.
 
 //        CPU_RD CPU_WR DMA_RD DMA_WR
 //_BG        0      0      1      1
 //BUFDIR     1      0      0      1
 
-assign BUFDIR = RnW;
+assign BUFDIR = ((CPU_CYCLE && RnW) || (DMA_EN && !RnW));
 
-//TURN ON ADDRESS BUFFERS DURING DMA
-assign DMAn = 1;
+//TURN ON A1 ADDRESS BUFFER DURING DMA
+assign DMAAn = !DMA_EN;
 
 endmodule
