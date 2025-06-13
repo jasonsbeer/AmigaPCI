@@ -24,8 +24,7 @@ Target Devices: iCE40-HX1K-VQ100
 
 Description: SDRAM CONTROLLER LOGIC
 
-Revision History:
-    19-FEB-2025 : INITIAL RELEASE
+See individual modules for revision history.
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 iceprog D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\sbt\outputs\bitmap\U400_TOP_bitmap.bin

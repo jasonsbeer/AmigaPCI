@@ -26,23 +26,14 @@ Selecting top level module U400_TOP
 
 @N: CG364 :"D:\LocalBus68040\U400\U400_TOP.v":34:7:34:14|Synthesizing module U400_TOP in library work.
 
-@N: CL201 :"D:\LocalBus68040\U400\U400_SDRAM.v":102:0:102:5|Trying to extract state machine for register TA_COUNTER.
-Extracted state machine for register TA_COUNTER
-State machine has 6 reachable states with original encodings of:
-   000000000
-   000000001
-   000000010
-   000000011
-   000000100
-   000000101
 @W: CL246 :"D:\LocalBus68040\U400\U400_SDRAM.v":37:17:37:17|Input port bits 1 to 0 of A[26:0] are unused. Assign logic for all port bits or change the input port size.
 
-At c_ver Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 72MB peak: 73MB)
+At c_ver Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 72MB peak: 74MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Thu Jun 12 17:26:10 2025
+# Fri Jun 13 12:13:06 2025
 
 ###########################################################]
 Synopsys Netlist Linker, version comp2016q3p1, Build 141R, built Dec  5 2016
@@ -55,7 +46,7 @@ At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Thu Jun 12 17:26:10 2025
+# Fri Jun 13 12:13:06 2025
 
 ###########################################################]
 @END
@@ -65,6 +56,6 @@ At c_hdl Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Thu Jun 12 17:26:10 2025
+# Fri Jun 13 12:13:06 2025
 
 ###########################################################]

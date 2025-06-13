@@ -1,12 +1,12 @@
-@P:  Worst Slack : -0.554
-@P:  CLK40 - Estimated Frequency : 38.3 MHz
+@P:  Worst Slack : 4.731
+@P:  CLK40 - Estimated Frequency : 64.4 MHz
 @P:  CLK40 - Requested Frequency : 40.0 MHz
-@P:  CLK40 - Estimated Period : 26.107
+@P:  CLK40 - Estimated Period : 15.539
 @P:  CLK40 - Requested Period : 25.000
-@P:  CLK40 - Slack : -0.554
+@P:  CLK40 - Slack : 4.731
 @P: U400_TOP Part : ice40hx1kvq100
 @P: U400_TOP I/O primitives : 65
 @P: U400_TOP I/O Register bits : 0
-@P: U400_TOP Register bits (Non I/O) : 56 (4%)
-@P: U400_TOP Total Luts : 152 (11%)
+@P: U400_TOP Register bits (Non I/O) : 54 (4%)
+@P: U400_TOP Total Luts : 147 (11%)
 @P:  CPU Time : 0h:00m:00s

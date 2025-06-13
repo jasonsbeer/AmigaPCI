@@ -9,18 +9,18 @@ Part:			ICE40HX1KVQ100 (Lattice)
 SEQUENTIAL ELEMENTS
 Name      Total elements     Utilization     Notes
 --------------------------------------------------
-FLOPS     56                 100 %                
+FLOPS     54                 100 %                
 ==================================================
-Total SEQUENTIAL ELEMENTS in the block U400_TOP:	56 (19.05 % Utilization)
+Total SEQUENTIAL ELEMENTS in the block U400_TOP:	54 (18.69 % Utilization)
 
 
 COMBINATIONAL LOGIC
 Name       Total elements     Utilization     Notes
 ---------------------------------------------------
-LUTS       152                100 %                
+LUTS       147                100 %                
 CARRYS     14                 100 %                
 ===================================================
-Total COMBINATIONAL LOGIC in the block U400_TOP:	166 (56.46 % Utilization)
+Total COMBINATIONAL LOGIC in the block U400_TOP:	161 (55.71 % Utilization)
 
 
 IO PADS
@@ -28,7 +28,7 @@ Name     Total elements     Utilization     Notes
 -------------------------------------------------
 PADS     66                 100 %                
 =================================================
-Total IO PADS in the block U400_TOP:	66 (22.45 % Utilization)
+Total IO PADS in the block U400_TOP:	66 (22.84 % Utilization)
 
 -------------------------------------------------------------------------
 ########   Utilization report for  cell:   U400_ADDRESS_DECODE   ########
@@ -38,9 +38,21 @@ Instance path:   U400_TOP.U400_ADDRESS_DECODE
 COMBINATIONAL LOGIC
 Name     Total elements     Utilization     Notes
 -------------------------------------------------
-LUTS     91                 59.9 %               
+LUTS     3                  2.04 %               
 =================================================
-Total COMBINATIONAL LOGIC in the block U400_TOP.U400_ADDRESS_DECODE:	91 (30.95 % Utilization)
+Total COMBINATIONAL LOGIC in the block U400_TOP.U400_ADDRESS_DECODE:	3 (1.04 % Utilization)
+
+----------------------------------------------------------------------
+########   Utilization report for  cell:   U400_BYTE_ENABLE   ########
+Instance path:   U400_TOP.U400_BYTE_ENABLE                            
+======================================================================
+
+COMBINATIONAL LOGIC
+Name     Total elements     Utilization     Notes
+-------------------------------------------------
+LUTS     7                  4.76 %               
+=================================================
+Total COMBINATIONAL LOGIC in the block U400_TOP.U400_BYTE_ENABLE:	7 (2.42 % Utilization)
 
 ----------------------------------------------------------------
 ########   Utilization report for  cell:   U400_SDRAM   ########
@@ -50,18 +62,18 @@ Instance path:   U400_TOP.U400_SDRAM
 SEQUENTIAL ELEMENTS
 Name      Total elements     Utilization     Notes
 --------------------------------------------------
-FLOPS     56                 100 %                
+FLOPS     54                 100 %                
 ==================================================
-Total SEQUENTIAL ELEMENTS in the block U400_TOP.U400_SDRAM:	56 (19.05 % Utilization)
+Total SEQUENTIAL ELEMENTS in the block U400_TOP.U400_SDRAM:	54 (18.69 % Utilization)
 
 
 COMBINATIONAL LOGIC
 Name       Total elements     Utilization     Notes
 ---------------------------------------------------
-LUTS       59                 38.8 %               
+LUTS       135                91.8 %               
 CARRYS     14                 100 %                
 ===================================================
-Total COMBINATIONAL LOGIC in the block U400_TOP.U400_SDRAM:	73 (24.83 % Utilization)
+Total COMBINATIONAL LOGIC in the block U400_TOP.U400_SDRAM:	149 (51.56 % Utilization)
 
 
 ##### END OF AREA REPORT #####]

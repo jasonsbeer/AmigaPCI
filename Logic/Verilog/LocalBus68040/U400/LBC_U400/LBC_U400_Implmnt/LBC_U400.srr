@@ -3,7 +3,7 @@
 #OS: Windows 8 6.2
 #Hostname: JASON-LAB
 
-# Thu Jun 12 17:26:10 2025
+# Fri Jun 13 12:13:06 2025
 
 #Implementation: LBC_U400_Implmnt
 
@@ -35,23 +35,14 @@ Selecting top level module U400_TOP
 
 @N: CG364 :"D:\LocalBus68040\U400\U400_TOP.v":34:7:34:14|Synthesizing module U400_TOP in library work.
 
-@N: CL201 :"D:\LocalBus68040\U400\U400_SDRAM.v":102:0:102:5|Trying to extract state machine for register TA_COUNTER.
-Extracted state machine for register TA_COUNTER
-State machine has 6 reachable states with original encodings of:
-   000000000
-   000000001
-   000000010
-   000000011
-   000000100
-   000000101
 @W: CL246 :"D:\LocalBus68040\U400\U400_SDRAM.v":37:17:37:17|Input port bits 1 to 0 of A[26:0] are unused. Assign logic for all port bits or change the input port size.
 
-At c_ver Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 72MB peak: 73MB)
+At c_ver Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 72MB peak: 74MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Thu Jun 12 17:26:10 2025
+# Fri Jun 13 12:13:06 2025
 
 ###########################################################]
 Synopsys Netlist Linker, version comp2016q3p1, Build 141R, built Dec  5 2016
@@ -64,7 +55,7 @@ At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Thu Jun 12 17:26:10 2025
+# Fri Jun 13 12:13:06 2025
 
 ###########################################################]
 @END
@@ -74,7 +65,7 @@ At c_hdl Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Thu Jun 12 17:26:10 2025
+# Fri Jun 13 12:13:06 2025
 
 ###########################################################]
 Synopsys Netlist Linker, version comp2016q3p1, Build 141R, built Dec  5 2016
@@ -88,12 +79,12 @@ At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Thu Jun 12 17:26:11 2025
+# Fri Jun 13 12:13:07 2025
 
 ###########################################################]
 Pre-mapping Report
 
-# Thu Jun 12 17:26:11 2025
+# Fri Jun 13 12:13:07 2025
 
 Synopsys Lattice Technology Pre-mapping, Version maplat, Build 1612R, Built Dec  5 2016 10:31:39
 Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
@@ -134,7 +125,7 @@ Clock Summary
 Start     Requested     Requested     Clock        Clock                Clock
 Clock     Frequency     Period        Type         Group                Load 
 -----------------------------------------------------------------------------
-CLK40     40.0 MHz      25.000        declared     default_clkgroup     56   
+CLK40     40.0 MHz      25.000        declared     default_clkgroup     54   
 =============================================================================
 
 Finished Pre Mapping Phase.
@@ -142,14 +133,6 @@ Finished Pre Mapping Phase.
 
 Starting constraint checker (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
 
-Encoding state machine TA_COUNTER[5:0] (in view: work.U400_SDRAM(verilog))
-original code -> new code
-   000000000 -> 000001
-   000000001 -> 000010
-   000000010 -> 000100
-   000000011 -> 001000
-   000000100 -> 010000
-   000000101 -> 100000
 None
 None
 
@@ -160,12 +143,12 @@ Pre-mapping successful!
 At Mapper Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 47MB peak: 133MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
-# Thu Jun 12 17:26:12 2025
+# Fri Jun 13 12:13:08 2025
 
 ###########################################################]
 Map & Optimize Report
 
-# Thu Jun 12 17:26:12 2025
+# Fri Jun 13 12:13:08 2025
 
 Synopsys Lattice Technology Mapper, Version maplat, Build 1612R, Built Dec  5 2016 10:31:39
 Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
@@ -202,15 +185,7 @@ Available hyper_sources - for debug and ip models
 
 Finished RTL optimizations (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
 
-Encoding state machine TA_COUNTER[5:0] (in view: work.U400_SDRAM(verilog))
-original code -> new code
-   000000000 -> 000001
-   000000001 -> 000010
-   000000010 -> 000100
-   000000011 -> 001000
-   000000100 -> 010000
-   000000101 -> 100000
-@N: MO231 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Found counter in view:work.U400_SDRAM(verilog) instance SDRAM_COUNTER[7:0] 
+@N: MO231 :"d:\localbus68040\u400\u400_sdram.v":156:0:156:5|Found counter in view:work.U400_SDRAM(verilog) instance SDRAM_COUNTER[7:0] 
 
 Starting factoring (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
 
@@ -218,49 +193,49 @@ Starting factoring (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; M
 Finished factoring (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 134MB peak: 134MB)
 
 
-Finished gated-clock and generated-clock conversion (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 133MB peak: 134MB)
+Finished gated-clock and generated-clock conversion (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 132MB peak: 134MB)
 
 
 Finished generic timing optimizations - Pass 1 (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 133MB peak: 134MB)
 
 
-Starting Early Timing Optimization (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 134MB peak: 134MB)
+Starting Early Timing Optimization (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 133MB peak: 134MB)
 
 
-Finished Early Timing Optimization (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 134MB peak: 135MB)
+Finished Early Timing Optimization (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 133MB peak: 134MB)
 
 
-Finished generic timing optimizations - Pass 2 (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 134MB peak: 135MB)
+Finished generic timing optimizations - Pass 2 (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 133MB peak: 134MB)
 
 
-Finished preparing to map (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 134MB peak: 135MB)
+Finished preparing to map (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 133MB peak: 134MB)
 
 
-Finished technology mapping (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 142MB peak: 144MB)
+Finished technology mapping (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 139MB peak: 142MB)
 
 Pass		 CPU time		Worst Slack		Luts / Registers
 ------------------------------------------------------------
-   1		0h:00m:00s		     5.23ns		 163 /        56
-@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[12] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
-@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[11] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
-@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[10] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
-@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[9] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
-@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[8] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
-@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[7] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
-@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[6] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
-@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[5] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
-@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[4] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
-@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[3] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
-@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[2] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
-@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[1] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
-@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":160:0:160:5|Boundary register U400_SDRAM.MA[0] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+   1		0h:00m:00s		     7.38ns		 151 /        54
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":156:0:156:5|Boundary register U400_SDRAM.MA[12] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":156:0:156:5|Boundary register U400_SDRAM.MA[11] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":156:0:156:5|Boundary register U400_SDRAM.MA[10] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":156:0:156:5|Boundary register U400_SDRAM.MA[9] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":156:0:156:5|Boundary register U400_SDRAM.MA[8] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":156:0:156:5|Boundary register U400_SDRAM.MA[7] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":156:0:156:5|Boundary register U400_SDRAM.MA[6] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":156:0:156:5|Boundary register U400_SDRAM.MA[5] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":156:0:156:5|Boundary register U400_SDRAM.MA[4] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":156:0:156:5|Boundary register U400_SDRAM.MA[3] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":156:0:156:5|Boundary register U400_SDRAM.MA[2] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":156:0:156:5|Boundary register U400_SDRAM.MA[1] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"d:\localbus68040\u400\u400_sdram.v":156:0:156:5|Boundary register U400_SDRAM.MA[0] (in view: work.U400_TOP(verilog)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
 @N: FX1016 :"d:\localbus68040\u400\u400_top.v":36:10:36:14|SB_GB_IO inserted on the port CLK40.
 @N: FX1017 :|SB_GB inserted on the net RESETn_c_i.
 
-Finished technology timing optimizations and critical path resynthesis (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 142MB peak: 144MB)
+Finished technology timing optimizations and critical path resynthesis (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 139MB peak: 142MB)
 
 
-Finished restoring hierarchy (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 142MB peak: 144MB)
+Finished restoring hierarchy (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 140MB peak: 142MB)
 
 
 
@@ -269,25 +244,25 @@ Finished restoring hierarchy (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:
 
 #### START OF CLOCK OPTIMIZATION REPORT #####[
 
-1 non-gated/non-generated clock tree(s) driving 56 clock pin(s) of sequential element(s)
+1 non-gated/non-generated clock tree(s) driving 54 clock pin(s) of sequential element(s)
 0 gated/generated clock tree(s) driving 0 clock pin(s) of sequential element(s)
 0 instances converted, 0 sequential instances remain driven by gated/generated clocks
 
-============================= Non-Gated/Non-Generated Clocks =============================
-Clock Tree ID     Driving Element      Drive Element Type     Fanout     Sample Instance  
-------------------------------------------------------------------------------------------
-@K:CKID0001       CLK40_ibuf_gb_io     SB_GB_IO               56         U400_SDRAM.TA_OUT
-==========================================================================================
+================================ Non-Gated/Non-Generated Clocks =================================
+Clock Tree ID     Driving Element      Drive Element Type     Fanout     Sample Instance         
+-------------------------------------------------------------------------------------------------
+@K:CKID0001       CLK40_ibuf_gb_io     SB_GB_IO               54         U400_SDRAM.TA_COUNTER[0]
+=================================================================================================
 
 
 ##### END OF CLOCK OPTIMIZATION REPORT ######]
 
 
-Start Writing Netlists (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 117MB peak: 144MB)
+Start Writing Netlists (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 114MB peak: 142MB)
 
 Writing Analyst data base D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\synwork\LBC_U400_m.srm
 
-Finished Writing Netlist Databases (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 142MB peak: 144MB)
+Finished Writing Netlist Databases (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 140MB peak: 142MB)
 
 Writing EDIF Netlist and constraint files
 @N: BW103 |The default time unit for the Synopsys Constraint File (SDC or FDC) is 1ns.
@@ -295,16 +270,16 @@ Writing EDIF Netlist and constraint files
 @N: FX1056 |Writing EDF file: D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\LBC_U400.edf
 L-2016.09L+ice40
 
-Finished Writing EDIF Netlist and constraint files (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 143MB peak: 145MB)
+Finished Writing EDIF Netlist and constraint files (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 141MB peak: 143MB)
 
 
-Start final timing analysis (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 142MB peak: 145MB)
+Start final timing analysis (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 140MB peak: 143MB)
 
 @N: MT615 |Found clock CLK40 with period 25.00ns 
 
 
 ##### START OF TIMING REPORT #####[
-# Timing Report written on Thu Jun 12 17:26:13 2025
+# Timing Report written on Fri Jun 13 12:13:10 2025
 #
 
 
@@ -324,13 +299,13 @@ Performance Summary
 *******************
 
 
-Worst slack in design: -0.554
+Worst slack in design: 4.731
 
-                   Requested     Estimated     Requested     Estimated                Clock        Clock           
-Starting Clock     Frequency     Frequency     Period        Period        Slack      Type         Group           
--------------------------------------------------------------------------------------------------------------------
-CLK40              40.0 MHz      38.3 MHz      25.000        26.107        -0.554     declared     default_clkgroup
-===================================================================================================================
+                   Requested     Estimated     Requested     Estimated               Clock        Clock           
+Starting Clock     Frequency     Frequency     Period        Period        Slack     Type         Group           
+------------------------------------------------------------------------------------------------------------------
+CLK40              40.0 MHz      64.4 MHz      25.000        15.539        4.731     declared     default_clkgroup
+==================================================================================================================
 
 
 
@@ -339,11 +314,11 @@ CLK40              40.0 MHz      38.3 MHz      25.000        26.107        -0.55
 Clock Relationships
 *******************
 
-Clocks            |    rise  to  rise    |    fall  to  fall   |    rise  to  fall    |    fall  to  rise 
+Clocks            |    rise  to  rise    |    fall  to  fall    |    rise  to  fall   |    fall  to  rise 
 ----------------------------------------------------------------------------------------------------------
-Starting  Ending  |  constraint  slack   |  constraint  slack  |  constraint  slack   |  constraint  slack
+Starting  Ending  |  constraint  slack   |  constraint  slack   |  constraint  slack  |  constraint  slack
 ----------------------------------------------------------------------------------------------------------
-CLK40     CLK40   |  25.000      17.210  |  25.000      8.447  |  12.500      -0.554  |  12.500      4.850
+CLK40     CLK40   |  25.000      17.280  |  25.000      12.003  |  12.500      4.731  |  12.500      4.815
 ==========================================================================================================
  Note: 'No paths' indicates there are no paths in the design for that pair of clock edges.
        'Diff grp' indicates that paths exist but the starting clock and ending clock are in different clock groups.
@@ -370,37 +345,37 @@ Starting Points with Worst Slack
 Instance                          Reference     Type          Pin     Net                    Time        Slack 
                                   Clock                                                                        
 ---------------------------------------------------------------------------------------------------------------
-U400_SDRAM.RAM_CYCLE_START        CLK40         SB_DFF        Q       RAM_CYCLE_START        0.540       -0.554
-U400_SDRAM.TACK                   CLK40         SB_DFFNSR     Q       TACK                   0.540       4.850 
-U400_SDRAM.BURST                  CLK40         SB_DFFNSR     Q       BURST                  0.540       6.550 
-U400_SDRAM.RAM_CYCLE              CLK40         SB_DFFNSR     Q       RAM_CYCLE              0.540       6.662 
-U400_SDRAM.REFRESH_COUNTER[3]     CLK40         SB_DFFNSR     Q       REFRESH_COUNTER[3]     0.540       8.447 
-U400_SDRAM.REFRESH_COUNTER[4]     CLK40         SB_DFFNSR     Q       REFRESH_COUNTER[4]     0.540       8.496 
-U400_SDRAM.REFRESH_COUNTER[5]     CLK40         SB_DFFNSR     Q       REFRESH_COUNTER[5]     0.540       8.517 
-U400_SDRAM.REFRESH_COUNTER[6]     CLK40         SB_DFFNSR     Q       REFRESH_COUNTER[6]     0.540       10.134
-U400_SDRAM.SDRAM_COUNTER[4]       CLK40         SB_DFFNE      Q       SDRAM_COUNTER[4]       0.540       10.141
-U400_SDRAM.SDRAM_COUNTER[5]       CLK40         SB_DFFNE      Q       SDRAM_COUNTER[5]       0.540       10.148
+U400_SDRAM.RAM_CYCLE_START        CLK40         SB_DFF        Q       RAM_CYCLE_START        0.540       4.731 
+U400_SDRAM.BURST                  CLK40         SB_DFFNSR     Q       BURST                  0.540       4.815 
+U400_SDRAM.TACK                   CLK40         SB_DFFNSR     Q       TACK                   0.540       6.578 
+U400_SDRAM.RAM_CYCLE              CLK40         SB_DFFNSR     Q       RAM_CYCLE              0.540       8.349 
+U400_SDRAM.SDRAM_COUNTER[7]       CLK40         SB_DFFNE      Q       SDRAM_COUNTER[7]       0.540       12.003
+U400_SDRAM.SDRAM_COUNTER[4]       CLK40         SB_DFFNE      Q       SDRAM_COUNTER[4]       0.540       12.052
+U400_SDRAM.SDRAM_COUNTER[6]       CLK40         SB_DFFNE      Q       SDRAM_COUNTER[6]       0.540       12.073
+U400_SDRAM.SDRAM_COUNTER[5]       CLK40         SB_DFFNE      Q       SDRAM_COUNTER[5]       0.540       12.136
+U400_SDRAM.SDRAM_COUNTER[1]       CLK40         SB_DFFNE      Q       SDRAM_COUNTER[1]       0.540       13.801
+U400_SDRAM.REFRESH_COUNTER[6]     CLK40         SB_DFFNSR     Q       REFRESH_COUNTER[6]     0.540       13.836
 ===============================================================================================================
 
 
 Ending Points with Worst Slack
 ******************************
 
-                                Starting                                                    Required           
-Instance                        Reference     Type          Pin     Net                     Time         Slack 
-                                Clock                                                                          
----------------------------------------------------------------------------------------------------------------
-U400_SDRAM.SDRAM_CMD[1]         CLK40         SB_DFFN       D       SDRAM_CMD_0             12.395       -0.554
-U400_SDRAM.SDRAM_CMD[0]         CLK40         SB_DFFN       D       SDRAM_CMD               12.395       -0.504
-U400_SDRAM.SDRAM_CMD[2]         CLK40         SB_DFFN       D       SDRAM_CMD_1             12.395       -0.504
-U400_SDRAM.SDRAM_COUNTER[0]     CLK40         SB_DFFNE      D       SDRAM_COUNTER_lm[0]     12.395       1.357 
-U400_SDRAM.CS0_EN               CLK40         SB_DFFNSR     D       CS0_EN_1                12.395       2.981 
-U400_SDRAM.CS1_EN               CLK40         SB_DFFNSR     D       CS1_EN_1                12.395       2.981 
-U400_SDRAM.BURST                CLK40         SB_DFFNSR     D       BURST_0                 12.395       4.710 
-U400_SDRAM.RAM_CYCLE            CLK40         SB_DFFNSR     D       RAM_CYCLE_0             12.395       4.710 
-U400_SDRAM.WRITE_CYCLE          CLK40         SB_DFFNSR     D       WRITE_CYCLE_0           12.395       4.759 
-U400_SDRAM.TA_EN_i              CLK40         SB_DFFSS      D       TA_EN_i_en_0            12.395       4.850 
-===============================================================================================================
+                                Starting                                                             Required          
+Instance                        Reference     Type          Pin     Net                              Time         Slack
+                                Clock                                                                                  
+-----------------------------------------------------------------------------------------------------------------------
+U400_SDRAM.SDRAM_COUNTER[0]     CLK40         SB_DFFNE      D       SDRAM_COUNTER_lm[0]              12.395       4.731
+U400_SDRAM.CS0_EN               CLK40         SB_DFFNSR     D       CS0_EN_1                         12.395       4.794
+U400_SDRAM.CS1_EN               CLK40         SB_DFFNSR     D       CS1_EN_1                         12.395       4.794
+U400_SDRAM.TA_EN_i_ess          CLK40         SB_DFFESS     E       TA_COUNTER_0_sqmuxa_1_1_en_0     12.500       4.815
+U400_SDRAM.RAM_CYCLE            CLK40         SB_DFFNSR     D       RAM_CYCLE_0                      12.395       4.829
+U400_SDRAM.SDRAM_COUNTER[1]     CLK40         SB_DFFNE      D       SDRAM_COUNTER_lm[1]              12.395       4.829
+U400_SDRAM.SDRAM_COUNTER[3]     CLK40         SB_DFFNE      D       SDRAM_COUNTER_lm[3]              12.395       4.829
+U400_SDRAM.TA_COUNTER[1]        CLK40         SB_DFF        D       TA_COUNTER_0                     12.395       4.983
+U400_SDRAM.TA_COUNTER[2]        CLK40         SB_DFF        D       TA_COUNTER_1                     12.395       4.983
+U400_SDRAM.BURST                CLK40         SB_DFFNSR     D       BURST_0                          12.395       6.480
+=======================================================================================================================
 
 
 
@@ -414,216 +389,33 @@ Path information for path number 1:
     + Clock delay at ending point:           0.000 (ideal)
     = Required time:                         12.395
 
-    - Propagation time:                      12.948
+    - Propagation time:                      7.664
     - Clock delay at starting point:         0.000 (ideal)
-    = Slack (critical) :                     -0.554
+    = Slack (critical) :                     4.731
 
-    Number of logic level(s):                6
+    Number of logic level(s):                3
     Starting point:                          U400_SDRAM.RAM_CYCLE_START / Q
-    Ending point:                            U400_SDRAM.SDRAM_CMD[1] / D
+    Ending point:                            U400_SDRAM.SDRAM_COUNTER[0] / D
     The start point is clocked by            CLK40 [rising] on pin C
     The end   point is clocked by            CLK40 [falling] on pin C
 
-Instance / Net                               Pin      Pin               Arrival     No. of    
-Name                             Type        Name     Dir     Delay     Time        Fan Out(s)
-----------------------------------------------------------------------------------------------
-U400_SDRAM.RAM_CYCLE_START       SB_DFF      Q        Out     0.540     0.540       -         
-RAM_CYCLE_START                  Net         -        -       1.599     -           7         
-U400_ADDRESS_DECODE.m36_e        SB_LUT4     I0       In      -         2.139       -         
-U400_ADDRESS_DECODE.m36_e        SB_LUT4     O        Out     0.386     2.525       -         
-N_185                            Net         -        -       1.371     -           4         
-U400_ADDRESS_DECODE.m71_am_1     SB_LUT4     I0       In      -         3.896       -         
-U400_ADDRESS_DECODE.m71_am_1     SB_LUT4     O        Out     0.449     4.345       -         
-m71_am_1                         Net         -        -       1.371     -           1         
-U400_ADDRESS_DECODE.m71_am       SB_LUT4     I3       In      -         5.715       -         
-U400_ADDRESS_DECODE.m71_am       SB_LUT4     O        Out     0.316     6.031       -         
-m71_am                           Net         -        -       1.371     -           1         
-U400_ADDRESS_DECODE.m71_ns       SB_LUT4     I0       In      -         7.402       -         
-U400_ADDRESS_DECODE.m71_ns       SB_LUT4     O        Out     0.449     7.851       -         
-N_72_0                           Net         -        -       1.371     -           1         
-U400_ADDRESS_DECODE.m72          SB_LUT4     I1       In      -         9.222       -         
-U400_ADDRESS_DECODE.m72          SB_LUT4     O        Out     0.400     9.622       -         
-N_73_0                           Net         -        -       1.371     -           3         
-U400_SDRAM.SDRAM_CMD_RNO[1]      SB_LUT4     I0       In      -         10.993      -         
-U400_SDRAM.SDRAM_CMD_RNO[1]      SB_LUT4     O        Out     0.449     11.441      -         
-SDRAM_CMD_0                      Net         -        -       1.507     -           1         
-U400_SDRAM.SDRAM_CMD[1]          SB_DFFN     D        In      -         12.948      -         
-==============================================================================================
-Total path delay (propagation time + setup) of 13.054 is 3.093(23.7%) logic and 9.961(76.3%) route.
-Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
-
-
-Path information for path number 2: 
-      Requested Period:                      12.500
-    - Setup time:                            0.105
-    + Clock delay at ending point:           0.000 (ideal)
-    = Required time:                         12.395
-
-    - Propagation time:                      12.899
-    - Clock delay at starting point:         0.000 (ideal)
-    = Slack (non-critical) :                 -0.505
-
-    Number of logic level(s):                6
-    Starting point:                          U400_SDRAM.RAM_CYCLE_START / Q
-    Ending point:                            U400_SDRAM.SDRAM_CMD[2] / D
-    The start point is clocked by            CLK40 [rising] on pin C
-    The end   point is clocked by            CLK40 [falling] on pin C
-
-Instance / Net                               Pin      Pin               Arrival     No. of    
-Name                             Type        Name     Dir     Delay     Time        Fan Out(s)
-----------------------------------------------------------------------------------------------
-U400_SDRAM.RAM_CYCLE_START       SB_DFF      Q        Out     0.540     0.540       -         
-RAM_CYCLE_START                  Net         -        -       1.599     -           7         
-U400_ADDRESS_DECODE.m36_e        SB_LUT4     I0       In      -         2.139       -         
-U400_ADDRESS_DECODE.m36_e        SB_LUT4     O        Out     0.386     2.525       -         
-N_185                            Net         -        -       1.371     -           4         
-U400_ADDRESS_DECODE.m71_am_1     SB_LUT4     I0       In      -         3.896       -         
-U400_ADDRESS_DECODE.m71_am_1     SB_LUT4     O        Out     0.449     4.345       -         
-m71_am_1                         Net         -        -       1.371     -           1         
-U400_ADDRESS_DECODE.m71_am       SB_LUT4     I3       In      -         5.715       -         
-U400_ADDRESS_DECODE.m71_am       SB_LUT4     O        Out     0.316     6.031       -         
-m71_am                           Net         -        -       1.371     -           1         
-U400_ADDRESS_DECODE.m71_ns       SB_LUT4     I0       In      -         7.402       -         
-U400_ADDRESS_DECODE.m71_ns       SB_LUT4     O        Out     0.449     7.851       -         
-N_72_0                           Net         -        -       1.371     -           1         
-U400_ADDRESS_DECODE.m72          SB_LUT4     I1       In      -         9.222       -         
-U400_ADDRESS_DECODE.m72          SB_LUT4     O        Out     0.400     9.622       -         
-N_73_0                           Net         -        -       1.371     -           3         
-U400_SDRAM.SDRAM_CMD_RNO[2]      SB_LUT4     I1       In      -         10.993      -         
-U400_SDRAM.SDRAM_CMD_RNO[2]      SB_LUT4     O        Out     0.400     11.392      -         
-SDRAM_CMD_1                      Net         -        -       1.507     -           1         
-U400_SDRAM.SDRAM_CMD[2]          SB_DFFN     D        In      -         12.899      -         
-==============================================================================================
-Total path delay (propagation time + setup) of 13.005 is 3.043(23.4%) logic and 9.961(76.6%) route.
-Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
-
-
-Path information for path number 3: 
-      Requested Period:                      12.500
-    - Setup time:                            0.105
-    + Clock delay at ending point:           0.000 (ideal)
-    = Required time:                         12.395
-
-    - Propagation time:                      12.899
-    - Clock delay at starting point:         0.000 (ideal)
-    = Slack (non-critical) :                 -0.505
-
-    Number of logic level(s):                6
-    Starting point:                          U400_SDRAM.RAM_CYCLE_START / Q
-    Ending point:                            U400_SDRAM.SDRAM_CMD[0] / D
-    The start point is clocked by            CLK40 [rising] on pin C
-    The end   point is clocked by            CLK40 [falling] on pin C
-
-Instance / Net                               Pin      Pin               Arrival     No. of    
-Name                             Type        Name     Dir     Delay     Time        Fan Out(s)
-----------------------------------------------------------------------------------------------
-U400_SDRAM.RAM_CYCLE_START       SB_DFF      Q        Out     0.540     0.540       -         
-RAM_CYCLE_START                  Net         -        -       1.599     -           7         
-U400_ADDRESS_DECODE.m36_e        SB_LUT4     I0       In      -         2.139       -         
-U400_ADDRESS_DECODE.m36_e        SB_LUT4     O        Out     0.386     2.525       -         
-N_185                            Net         -        -       1.371     -           4         
-U400_ADDRESS_DECODE.m71_am_1     SB_LUT4     I0       In      -         3.896       -         
-U400_ADDRESS_DECODE.m71_am_1     SB_LUT4     O        Out     0.449     4.345       -         
-m71_am_1                         Net         -        -       1.371     -           1         
-U400_ADDRESS_DECODE.m71_am       SB_LUT4     I3       In      -         5.715       -         
-U400_ADDRESS_DECODE.m71_am       SB_LUT4     O        Out     0.316     6.031       -         
-m71_am                           Net         -        -       1.371     -           1         
-U400_ADDRESS_DECODE.m71_ns       SB_LUT4     I0       In      -         7.402       -         
-U400_ADDRESS_DECODE.m71_ns       SB_LUT4     O        Out     0.449     7.851       -         
-N_72_0                           Net         -        -       1.371     -           1         
-U400_ADDRESS_DECODE.m72          SB_LUT4     I1       In      -         9.222       -         
-U400_ADDRESS_DECODE.m72          SB_LUT4     O        Out     0.400     9.622       -         
-N_73_0                           Net         -        -       1.371     -           3         
-U400_SDRAM.SDRAM_CMD_RNO[0]      SB_LUT4     I1       In      -         10.993      -         
-U400_SDRAM.SDRAM_CMD_RNO[0]      SB_LUT4     O        Out     0.400     11.392      -         
-SDRAM_CMD                        Net         -        -       1.507     -           1         
-U400_SDRAM.SDRAM_CMD[0]          SB_DFFN     D        In      -         12.899      -         
-==============================================================================================
-Total path delay (propagation time + setup) of 13.005 is 3.043(23.4%) logic and 9.961(76.6%) route.
-Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
-
-
-Path information for path number 4: 
-      Requested Period:                      12.500
-    - Setup time:                            0.105
-    + Clock delay at ending point:           0.000 (ideal)
-    = Required time:                         12.395
-
-    - Propagation time:                      11.227
-    - Clock delay at starting point:         0.000 (ideal)
-    = Slack (non-critical) :                 1.168
-
-    Number of logic level(s):                5
-    Starting point:                          U400_SDRAM.RAM_CYCLE_START / Q
-    Ending point:                            U400_SDRAM.SDRAM_CMD[1] / D
-    The start point is clocked by            CLK40 [rising] on pin C
-    The end   point is clocked by            CLK40 [falling] on pin C
-
-Instance / Net                               Pin      Pin               Arrival     No. of    
-Name                             Type        Name     Dir     Delay     Time        Fan Out(s)
-----------------------------------------------------------------------------------------------
-U400_SDRAM.RAM_CYCLE_START       SB_DFF      Q        Out     0.540     0.540       -         
-RAM_CYCLE_START                  Net         -        -       1.599     -           7         
-U400_ADDRESS_DECODE.m94_am_1     SB_LUT4     I0       In      -         2.139       -         
-U400_ADDRESS_DECODE.m94_am_1     SB_LUT4     O        Out     0.449     2.588       -         
-m94_am_1                         Net         -        -       1.371     -           1         
-U400_ADDRESS_DECODE.m94_am       SB_LUT4     I1       In      -         3.959       -         
-U400_ADDRESS_DECODE.m94_am       SB_LUT4     O        Out     0.400     4.359       -         
-m94_am                           Net         -        -       1.371     -           1         
-U400_ADDRESS_DECODE.m94_ns       SB_LUT4     I0       In      -         5.729       -         
-U400_ADDRESS_DECODE.m94_ns       SB_LUT4     O        Out     0.449     6.178       -         
-N_95_0                           Net         -        -       1.371     -           1         
-U400_ADDRESS_DECODE.m95_ns       SB_LUT4     I1       In      -         7.549       -         
-U400_ADDRESS_DECODE.m95_ns       SB_LUT4     O        Out     0.400     7.949       -         
-N_96_0                           Net         -        -       1.371     -           1         
-U400_SDRAM.SDRAM_CMD_RNO[1]      SB_LUT4     I1       In      -         9.320       -         
-U400_SDRAM.SDRAM_CMD_RNO[1]      SB_LUT4     O        Out     0.400     9.720       -         
-SDRAM_CMD_0                      Net         -        -       1.507     -           1         
-U400_SDRAM.SDRAM_CMD[1]          SB_DFFN     D        In      -         11.227      -         
-==============================================================================================
-Total path delay (propagation time + setup) of 11.332 is 2.742(24.2%) logic and 8.590(75.8%) route.
-Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
-
-
-Path information for path number 5: 
-      Requested Period:                      12.500
-    - Setup time:                            0.105
-    + Clock delay at ending point:           0.000 (ideal)
-    = Required time:                         12.395
-
-    - Propagation time:                      11.192
-    - Clock delay at starting point:         0.000 (ideal)
-    = Slack (non-critical) :                 1.203
-
-    Number of logic level(s):                5
-    Starting point:                          U400_SDRAM.RAM_CYCLE_START / Q
-    Ending point:                            U400_SDRAM.SDRAM_CMD[1] / D
-    The start point is clocked by            CLK40 [rising] on pin C
-    The end   point is clocked by            CLK40 [falling] on pin C
-
-Instance / Net                              Pin      Pin               Arrival     No. of    
-Name                            Type        Name     Dir     Delay     Time        Fan Out(s)
----------------------------------------------------------------------------------------------
-U400_SDRAM.RAM_CYCLE_START      SB_DFF      Q        Out     0.540     0.540       -         
-RAM_CYCLE_START                 Net         -        -       1.599     -           7         
-U400_ADDRESS_DECODE.m36_e       SB_LUT4     I0       In      -         2.139       -         
-U400_ADDRESS_DECODE.m36_e       SB_LUT4     O        Out     0.386     2.525       -         
-N_185                           Net         -        -       1.371     -           4         
-U400_ADDRESS_DECODE.m71_am      SB_LUT4     I2       In      -         3.896       -         
-U400_ADDRESS_DECODE.m71_am      SB_LUT4     O        Out     0.379     4.274       -         
-m71_am                          Net         -        -       1.371     -           1         
-U400_ADDRESS_DECODE.m71_ns      SB_LUT4     I0       In      -         5.645       -         
-U400_ADDRESS_DECODE.m71_ns      SB_LUT4     O        Out     0.449     6.094       -         
-N_72_0                          Net         -        -       1.371     -           1         
-U400_ADDRESS_DECODE.m72         SB_LUT4     I1       In      -         7.465       -         
-U400_ADDRESS_DECODE.m72         SB_LUT4     O        Out     0.400     7.865       -         
-N_73_0                          Net         -        -       1.371     -           3         
-U400_SDRAM.SDRAM_CMD_RNO[1]     SB_LUT4     I0       In      -         9.236       -         
-U400_SDRAM.SDRAM_CMD_RNO[1]     SB_LUT4     O        Out     0.449     9.685       -         
-SDRAM_CMD_0                     Net         -        -       1.507     -           1         
-U400_SDRAM.SDRAM_CMD[1]         SB_DFFN     D        In      -         11.192      -         
-=============================================================================================
-Total path delay (propagation time + setup) of 11.297 is 2.707(24.0%) logic and 8.590(76.0%) route.
+Instance / Net                                          Pin      Pin               Arrival     No. of    
+Name                                       Type         Name     Dir     Delay     Time        Fan Out(s)
+---------------------------------------------------------------------------------------------------------
+U400_SDRAM.RAM_CYCLE_START                 SB_DFF       Q        Out     0.540     0.540       -         
+RAM_CYCLE_START                            Net          -        -       1.599     -           8         
+U400_SDRAM.REFRESH_COUNTER_RNISRU82[8]     SB_LUT4      I0       In      -         2.139       -         
+U400_SDRAM.REFRESH_COUNTER_RNISRU82[8]     SB_LUT4      O        Out     0.449     2.588       -         
+N_59                                       Net          -        -       1.371     -           4         
+U400_SDRAM.SDRAM_COUNTER_RNO_0[0]          SB_LUT4      I1       In      -         3.959       -         
+U400_SDRAM.SDRAM_COUNTER_RNO_0[0]          SB_LUT4      O        Out     0.379     4.338       -         
+N_88                                       Net          -        -       1.371     -           1         
+U400_SDRAM.SDRAM_COUNTER_RNO[0]            SB_LUT4      I0       In      -         5.708       -         
+U400_SDRAM.SDRAM_COUNTER_RNO[0]            SB_LUT4      O        Out     0.449     6.157       -         
+SDRAM_COUNTER_lm[0]                        Net          -        -       1.507     -           1         
+U400_SDRAM.SDRAM_COUNTER[0]                SB_DFFNE     D        In      -         7.664       -         
+=========================================================================================================
+Total path delay (propagation time + setup) of 7.769 is 1.922(24.7%) logic and 5.848(75.3%) route.
 Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
 
 
@@ -633,28 +425,29 @@ Path delay compensated for clock skew. Clock skew is added to clock-to-out value
 Timing exceptions that could not be applied
 None
 
-Finished final timing analysis (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 142MB peak: 145MB)
+Finished final timing analysis (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 140MB peak: 143MB)
 
 
-Finished timing report (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 142MB peak: 145MB)
+Finished timing report (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 140MB peak: 143MB)
 
 ---------------------------------------
 Resource Usage Report for U400_TOP 
 
 Mapping to part: ice40hx1kvq100
 Cell usage:
-GND             2 uses
+GND             3 uses
 SB_CARRY        14 uses
-SB_DFF          7 uses
+SB_DFF          5 uses
+SB_DFFESS       1 use
 SB_DFFN         3 uses
 SB_DFFNE        8 uses
 SB_DFFNESR      13 uses
 SB_DFFNSR       18 uses
 SB_DFFNSS       5 uses
-SB_DFFSS        2 uses
+SB_DFFSS        1 use
 SB_GB           1 use
-VCC             2 uses
-SB_LUT4         152 uses
+VCC             3 uses
+SB_LUT4         147 uses
 
 I/O ports: 65
 I/O primitives: 65
@@ -662,21 +455,21 @@ SB_GB_IO       1 use
 SB_IO          64 uses
 
 I/O Register bits:                  0
-Register bits not including I/Os:   56 (4%)
+Register bits not including I/Os:   54 (4%)
 Total load per clock:
    CLK40: 1
 
 @S |Mapping Summary:
-Total  LUTs: 152 (11%)
+Total  LUTs: 147 (11%)
 
 Distribution of All Consumed LUTs = LUT4 
-Distribution of All Consumed Luts 152 = 152 
+Distribution of All Consumed Luts 147 = 147 
 
 Mapper successful!
 
-At Mapper Exit (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 27MB peak: 145MB)
+At Mapper Exit (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 27MB peak: 143MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
-# Thu Jun 12 17:26:13 2025
+# Fri Jun 13 12:13:10 2025
 
 ###########################################################]

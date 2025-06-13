@@ -1,15 +1,15 @@
 C:\lscc\iCEcube2.2020.12\synpbase\bin64\m_generic.exe  -prodtype  synplify_pro   -encrypt  -pro  -rundir  D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt   -part iCE40HX1K  -package VQ100    -maxfan 10000 -RWCheckOnRam 0 -pipe -fixgatedclocks 1 -fixgeneratedclocks 1 -summaryfile D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\synlog\report\LBC_U400_fpga_mapper.xml  -flow mapping  -multisrs  -oedif  D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\LBC_U400.edf   -autoconstraint  -freq 1.000   -tcl  D:\LocalBus68040\U400\U400_TOP.sdc  D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\synwork\LBC_U400_prem.srd  -sap  D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\LBC_U400.sap  -otap  D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\LBC_U400.tap  -omap  D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\LBC_U400.map  -devicelib  C:\lscc\iCEcube2.2020.12\synpbase\lib\generic\sb_ice40.v  -sap  D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\LBC_U400.sap  -ologparam  D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\syntmp\LBC_U400.plg  -osyn  D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\LBC_U400.srm  -prjdir  D:\LocalBus68040\U400\LBC_U400\  -prjname  LBC_U400_syn  -log  D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\synlog\LBC_U400_fpga_mapper.srr 
-rc:0 success:1 runtime:1
-file:D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\LBC_U400.edf|io:o|time:1749767173|size:171722|exec:0
+rc:0 success:1 runtime:2
+file:D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\LBC_U400.edf|io:o|time:1749834789|size:158920|exec:0
 file:D:\LocalBus68040\U400\U400_TOP.sdc|io:i|time:1741487613|size:103|exec:0
-file:D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\synwork\LBC_U400_prem.srd|io:i|time:1749767172|size:15699|exec:0
-file:D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\LBC_U400.sap|io:o|time:1749767172|size:1359|exec:0
+file:D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\synwork\LBC_U400_prem.srd|io:i|time:1749834788|size:15300|exec:0
+file:D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\LBC_U400.sap|io:o|time:1749834788|size:1359|exec:0
 file:D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\LBC_U400.tap|io:o|time:0|size:0|exec:0
-file:D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\LBC_U400.map|io:o|time:1749767173|size:28|exec:0
+file:D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\LBC_U400.map|io:o|time:1749834790|size:28|exec:0
 file:C:\lscc\iCEcube2.2020.12\synpbase\lib\generic\sb_ice40.v|io:i|time:1728534475|size:224837|exec:0
-file:D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\LBC_U400.sap|io:o|time:1749767172|size:1359|exec:0
-file:D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\syntmp\LBC_U400.plg|io:o|time:1749767173|size:445|exec:0
-file:D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\LBC_U400.srm|io:o|time:1749767173|size:15476|exec:0
-file:D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\synlog\LBC_U400_fpga_mapper.srr|io:o|time:1749767173|size:33062|exec:0
+file:D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\LBC_U400.sap|io:o|time:1749834788|size:1359|exec:0
+file:D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\syntmp\LBC_U400.plg|io:o|time:1749834790|size:443|exec:0
+file:D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\LBC_U400.srm|io:o|time:1749834789|size:13871|exec:0
+file:D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\synlog\LBC_U400_fpga_mapper.srr|io:o|time:1749834790|size:19315|exec:0
 file:C:\lscc\iCEcube2.2020.12\synpbase\bin\m_generic.exe|io:i|time:1728534473|size:17853440|exec:1
 file:C:\lscc\iCEcube2.2020.12\synpbase\bin64\m_generic.exe|io:i|time:1728534474|size:32355840|exec:1
