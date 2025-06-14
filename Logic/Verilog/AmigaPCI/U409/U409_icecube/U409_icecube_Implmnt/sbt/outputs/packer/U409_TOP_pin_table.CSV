@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:31:51
 
-* File Generated:     Jun 7 2025 10:58:39
+* File Generated:     Jun 14 2025 00:16:25
 
 * Purpose:            Detailed IO and package pin info
 
@@ -47,9 +47,9 @@ Pin Number, Pin Type Name, Signal Name, Direction, Global Buffer, IO Standard, P
 26, PIO, A[12], Input, , SB_LVCMOS, No Pull Up, Simple Input, leftBank
 27, VCC, not used, , , , , , UnknownBank
 28, PIO, A[13], Input, , SB_LVCMOS, No Pull Up, Simple Input, leftBank
-29, PIO, not used, , , , , , leftBank
+29, PIO, A[14], Input, , SB_LVCMOS, No Pull Up, Simple Input, leftBank
 30, VCCIO_3, not used, , , , , , leftBank
-31, PIO, not used, , , , , , leftBank
+31, PIO, A[15], Input, , SB_LVCMOS, No Pull Up, Simple Input, leftBank
 32, PIO, A[16], Input, , SB_LVCMOS, No Pull Up, Simple Input, leftBank
 33, PIO, A[17], Input, , SB_LVCMOS, No Pull Up, Simple Input, leftBank
 34, PIO, A[18], Input, , SB_LVCMOS, No Pull Up, Simple Input, leftBank
@@ -125,9 +125,9 @@ Pin Number, Pin Type Name, Signal Name, Direction, Global Buffer, IO Standard, P
 109, VPP_DIRECT, not used, , , , , , UnknownBank
 110, PIO, not used, , , , , , topBank
 111, VCC, not used, , , , , , UnknownBank
-112, PIO, AUTOBOOT, Input, , SB_LVCMOS, Pull Up, Simple Input, topBank
-113, PIO, ATA_MODE_P, Input, , SB_LVCMOS, Pull Up, Simple Input, topBank
-114, PIO, ATA_MODE_S, Input, , SB_LVCMOS, Pull Up, Simple Input, topBank
+112, PIO, not used, , , , , , topBank
+113, PIO, not used, , , , , , topBank
+114, PIO, not used, , , , , , topBank
 115, PIO, TCIn, Output, , SB_LVCMOS, No Pull Up, Output Tristatable by Enable, topBank
 116, PIO, TBIn, Output, , SB_LVCMOS, No Pull Up, Output Tristatable by Enable, topBank
 117, PIO, TACKn, InOut, , SB_LVCMOS, No Pull Up, Simple Input Output Tristatable by Enable, topBank
@@ -157,4 +157,4 @@ Pin Number, Pin Type Name, Signal Name, Direction, Global Buffer, IO Standard, P
 142, PIO, RnW, Input, , SB_LVCMOS, No Pull Up, Simple Input, topBank
 143, PIO, A[2], Input, , SB_LVCMOS, No Pull Up, Simple Input, topBank
 144, PIO, A[1], Input, , SB_LVCMOS, No Pull Up, Simple Input, topBank
-Total Number of Used Pins, 67
+Total Number of Used Pins, 66

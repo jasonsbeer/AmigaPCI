@@ -93,8 +93,8 @@ set_io PIO_S2 88
 set_io ATA_ENn 90
 
 #ATA MODES
-set_io AUTOBOOT    112 -pullup yes #ATA AUTOBOOT
-set_io ATA_MODE_P  113 -pullup yes #SANDISK ULTRA MODE, PRIMARY PORT
-set_io ATA_MODE_S  114 -pullup yes #SANDISK ULTRA MODE, SECONDARY PORT
+#set_io AUTOBOOT    112 -pullup yes #ATA AUTOBOOT
+#set_io ATA_MODE_P  113 -pullup yes
+#set_io ATA_MODE_S  114 -pullup yes
 
 

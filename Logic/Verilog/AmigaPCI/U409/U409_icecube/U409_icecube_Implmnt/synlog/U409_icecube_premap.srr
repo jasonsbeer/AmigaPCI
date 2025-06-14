@@ -1,4 +1,4 @@
-# Sat Jun 07 10:58:18 2025
+# Sat Jun 14 00:16:03 2025
 
 Synopsys Lattice Technology Pre-mapping, Version maplat, Build 1612R, Built Dec  5 2016 10:31:39
 Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
@@ -41,7 +41,7 @@ Clock                                Frequency     Period        Type           
 -----------------------------------------------------------------------------------------------------------------------
 CLK6                                 6.0 MHz       166.667       declared                    default_clkgroup     36   
 CLK28_IN                             28.6 MHz      34.916        declared                    default_clkgroup     10   
-CLK40_IN                             40.0 MHz      25.000        declared                    default_clkgroup     76   
+CLK40_IN                             40.0 MHz      25.000        declared                    default_clkgroup     77   
 U409_TOP|CLK80_OUT_derived_clock     80.0 MHz      12.500        derived (from CLK40_IN)     default_clkgroup     32   
 =======================================================================================================================
 
@@ -50,11 +50,13 @@ Finished Pre Mapping Phase.
 
 Starting constraint checker (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
 
-Encoding state machine STATE[1:0] (in view: work.U409_AUTOCONFIG(verilog))
+Encoding state machine STATE[3:0] (in view: work.U409_AUTOCONFIG(verilog))
 original code -> new code
-   0000 -> 0
-   0001 -> 1
-@N: MO225 :"d:\amigapci\u409\u409_autoconfig.v":94:0:94:5|There are no possible illegal states for state machine STATE[1:0] (in view: work.U409_AUTOCONFIG(verilog)); safe FSM implementation is not required.
+   0000 -> 00
+   0001 -> 01
+   0010 -> 10
+   0011 -> 11
+@N: MO225 :"d:\amigapci\u409\u409_autoconfig.v":93:0:93:5|There are no possible illegal states for state machine STATE[3:0] (in view: work.U409_AUTOCONFIG(verilog)); safe FSM implementation is not required.
 Encoding state machine TACK_COUNTER[3:0] (in view: work.U409_TRANSFER_ACK(verilog))
 original code -> new code
    0000 -> 00
@@ -79,6 +81,6 @@ Pre-mapping successful!
 At Mapper Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 48MB peak: 133MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
-# Sat Jun 07 10:58:19 2025
+# Sat Jun 14 00:16:04 2025
 
 ###########################################################]

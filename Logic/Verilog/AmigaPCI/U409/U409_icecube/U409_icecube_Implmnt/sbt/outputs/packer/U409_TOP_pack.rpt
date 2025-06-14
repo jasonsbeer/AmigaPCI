@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:31:51
 
-* File Generated:     Jun 7 2025 10:58:39
+* File Generated:     Jun 14 2025 00:16:25
 
 * Purpose:            General info of design implementation
 
@@ -28,26 +28,26 @@ Device Info:
 Design statistics:
 ------------------
     FFs:                  101
-    LUTs:                 258
+    LUTs:                 251
     RAMs:                 0
-    IOBs:                 67
+    IOBs:                 66
     GBs:                  4
     PLLs:                 1
     Warm Boots:           0
 
 Logic Resource Utilization:
 ---------------------------
-    Total Logic Cells: 261/3520
-        Combinational Logic Cells: 160      out of   3520      4.54545%
+    Total Logic Cells: 254/3520
+        Combinational Logic Cells: 153      out of   3520      4.34659%
         Sequential Logic Cells:    101      out of   3520      2.86932%
-        Logic Tiles:               68       out of   440       15.4545%
+        Logic Tiles:               69       out of   440       15.6818%
     Registers: 
         Logic Registers:           101      out of   3520      2.86932%
         IO Registers:              0        out of   880       0
     Block RAMs:                    0        out of   20        0%
     Warm Boots:                    0        out of   1         0%
     Pins:
-        Input Pins:                40       out of   107       37.3832%
+        Input Pins:                39       out of   107       36.4486%
         Output Pins:               22       out of   107       20.5607%
         InOut Pins:                5        out of   107       4.6729%
     Global Buffers:                4        out of   8         50%
@@ -55,9 +55,9 @@ Logic Resource Utilization:
 
 IO Bank Utilization:
 --------------------
-    Bank 3: 22       out of   28        78.5714%
+    Bank 3: 24       out of   28        85.7143%
     Bank 1: 13       out of   29        44.8276%
-    Bank 0: 21       out of   27        77.7778%
+    Bank 0: 18       out of   27        66.6667%
     Bank 2: 11       out of   23        47.8261%
 
 Detailed I/O Info:
@@ -84,6 +84,8 @@ Detailed I/O Info:
     21          Input      SB_LVCMOS    No       3        Simple Input                               A[7]        
     26          Input      SB_LVCMOS    No       3        Simple Input                               A[12]       
     28          Input      SB_LVCMOS    No       3        Simple Input                               A[13]       
+    29          Input      SB_LVCMOS    No       3        Simple Input                               A[14]       
+    31          Input      SB_LVCMOS    No       3        Simple Input                               A[15]       
     32          Input      SB_LVCMOS    No       3        Simple Input                               A[16]       
     33          Input      SB_LVCMOS    No       3        Simple Input                               A[17]       
     34          Input      SB_LVCMOS    No       3        Simple Input                               A[18]       
@@ -92,9 +94,6 @@ Detailed I/O Info:
     62          Input      SB_LVCMOS    No       2        Simple Input                               RESETn      
     81          Input      SB_LVCMOS    No       1        Simple Input                               OVL         
     94          Input      SB_LVCMOS    No       1        Simple Input                               CLK28_IN    
-    112         Input      SB_LVCMOS    Yes      0        Simple Input                               AUTOBOOT    
-    113         Input      SB_LVCMOS    Yes      0        Simple Input                               ATA_MODE_P  
-    114         Input      SB_LVCMOS    Yes      0        Simple Input                               ATA_MODE_S  
     129         Input      SB_LVCMOS    No       0        Simple Input                               CLK40_IN    
     130         Input      SB_LVCMOS    No       0        Simple Input                               CPUCONFn    
     134         Input      SB_LVCMOS    No       0        Simple Input                               TSn         
@@ -145,7 +144,7 @@ Detailed Global Buffer Info:
 ----------------------------
     Buffer Number  IO Bank  Driven By  Fanout  Signal Name   
     -------------  -------  ---------  ------  -----------   
-    7              0        IO         17      CLK40_IN_c_g  
+    7              0        IO         16      CLK40_IN_c_g  
     3              2        IO         36      CLK6_c_g      
     5              1        IO         10      CLK28_IN_c_g  
-    4              0                   34      RESETn_c_i_g  
+    4              0                   29      RESETn_c_i_g  

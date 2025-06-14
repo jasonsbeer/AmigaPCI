@@ -1,3 +1,2 @@
-@E: CG288 :"D:\AmigaPCI\U409\U409_ADDRESS_DECODE.v":166:0:166:8|Expecting delimiter: , or ;
-@E: CS187 :"D:\AmigaPCI\U409\U409_ADDRESS_DECODE.v":166:0:166:8|Expecting endmodule
+@E: CS168 :"D:\AmigaPCI\U409\U409_TOP.v":163:15:163:15|Port CONFIGENn does not exist
 

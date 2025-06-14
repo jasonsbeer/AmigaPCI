@@ -1,11 +1,15 @@
 
-fsm_encoding {11940941} sequential
+fsm_encoding {11930931} sequential
 
-fsm_state_encoding {11940941} 0000 {0}
+fsm_state_encoding {11930931} 0000 {00}
 
-fsm_state_encoding {11940941} 0001 {1}
+fsm_state_encoding {11930931} 0001 {01}
 
-fsm_registers {11940941} {STATE[0]} 
+fsm_state_encoding {11930931} 0010 {10}
+
+fsm_state_encoding {11930931} 0011 {11}
+
+fsm_registers {11930931} {STATE[1]}  {STATE[0]} 
 
 fsm_encoding {10610612} sequential
 

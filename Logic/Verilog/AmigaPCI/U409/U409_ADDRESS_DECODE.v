@@ -36,15 +36,17 @@ GitHub: https://github.com/jasonsbeer/AmigaPCI
 module U409_ADDRESS_DECODE
 (
 
-    input CLK40, RESETn, TSn, RnW, OVL, CIA_ENABLE, CONFIGENn,
+    input CLK40, RESETn, RnW, OVL, CIA_ENABLE, CONFIGURED,
     input [1:0] TT,
     input [1:0] TM,
     input [31:1] A,
     input [3:0] BRIDGE_BASE,
-    input [7:0] ATA_BASE,
+    input [7:1] ATA_BASE,
     
     output ROMEN, CIA_SPACE, CIACS0n, CIACS1n, RAMSPACEn, REGSPACEn,
-    output AUTOVECTOR, RTC_ENn, AUTOCONFIG_SPACE, ATA_ENn, BRIDGE_ENn
+    output AUTOVECTOR, RTC_ENn, AUTOCONFIG_SPACE, ATA_SPACE, ATA_ENn, BRIDGE_ENn
+    
+    //,output ATA_SPACE
 
 );
 
@@ -125,7 +127,6 @@ assign AUTOVECTOR = RESETn && TT[1] && TT[0] && A[31:16] == 16'hFFFF;
 //////////////////////
 
 //AUTOCONFIG IS VISIBLE IN THE DATA AND CODE SAPCE.
-//assign AUTOCONFIG_SPACE = RESETn && EITH_ACCESS && A[31:16] == 16'hFF00;
 assign AUTOCONFIG_SPACE = Z2_SPACE && EITH_ACCESS && A[23:16] == 8'hE8;
 
   /////////////////////
@@ -140,7 +141,7 @@ assign RTC_ENn = !(Z2_SPACE && DATA_ACCESS && A[23:17] == 7'b1101110);
  // ATA //
 /////////
 
-wire ATA_SPACE = Z2_SPACE && EITH_ACCESS && !CONFIGENn && A[23:16] == ATA_BASE; //128k
+assign ATA_SPACE = Z2_SPACE && EITH_ACCESS && CONFIGURED && A[23:17] == ATA_BASE; //128k 7'b1110101
 //wire ATA_ROM = ATA_SPACE && !ATA_EN;
 assign ATA_ENn = !(ATA_SPACE && ATA_EN);
 
@@ -149,7 +150,7 @@ always @(posedge CLK40) begin
     if (!RESETn) begin
         ATA_EN <= 0;
     end else begin
-        ATA_EN <= (ATA_SPACE && !RnW) || ATA_EN;
+        ATA_EN <= (ATA_SPACE && !RnW) || ATA_EN; //If present, !TSn breaks this.
     end
 end
 
@@ -160,6 +161,6 @@ end
 //The _BRIDGE_EN signal is used for prometheus compatability.
 //Access to AUTOCONFIG PCI cards is accomplished strictly by the PCI device's AUTOCONFIG assigned base address.
 
-assign BRIDGE_ENn = !(RESETn && EITH_ACCESS && !CONFIGENn && A[31:28] == BRIDGE_BASE);
+assign BRIDGE_ENn = !(RESETn && EITH_ACCESS && CONFIGURED && A[31:28] == BRIDGE_BASE);
 
 endmodule

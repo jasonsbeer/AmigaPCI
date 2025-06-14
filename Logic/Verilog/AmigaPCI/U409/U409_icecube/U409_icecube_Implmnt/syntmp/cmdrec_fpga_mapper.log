@@ -1,15 +1,15 @@
 C:\lscc\iCEcube2.2020.12\synpbase\bin64\m_generic.exe  -prodtype  synplify_pro   -encrypt  -pro  -rundir  D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt   -part iCE40HX4K  -package TQ144    -maxfan 10000 -RWCheckOnRam 0 -pipe -fixgatedclocks 1 -fixgeneratedclocks 1 -summaryfile D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\synlog\report\U409_icecube_fpga_mapper.xml  -flow mapping  -multisrs  -oedif  D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\U409_icecube.edf   -autoconstraint  -freq 1.000   -tcl  D:\AmigaPCI\U409\U409_TOP.sdc  D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\synwork\U409_icecube_prem.srd  -sap  D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\U409_icecube.sap  -otap  D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\U409_icecube.tap  -omap  D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\U409_icecube.map  -devicelib  C:\lscc\iCEcube2.2020.12\synpbase\lib\generic\sb_ice40.v  -sap  D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\U409_icecube.sap  -ologparam  D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\syntmp\U409_icecube.plg  -osyn  D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\U409_icecube.srm  -prjdir  D:\AmigaPCI\U409\U409_icecube\  -prjname  U409_icecube_syn  -log  D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\synlog\U409_icecube_fpga_mapper.srr 
-rc:1 success:1 runtime:1
-file:D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\U409_icecube.edf|io:o|time:1749311900|size:270622|exec:0
+rc:1 success:1 runtime:2
+file:D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\U409_icecube.edf|io:o|time:1749878165|size:258138|exec:0
 file:D:\AmigaPCI\U409\U409_TOP.sdc|io:i|time:1736391199|size:245|exec:0
-file:D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\synwork\U409_icecube_prem.srd|io:i|time:1749311899|size:29830|exec:0
-file:D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\U409_icecube.sap|io:o|time:1749311899|size:2859|exec:0
+file:D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\synwork\U409_icecube_prem.srd|io:i|time:1749878164|size:29942|exec:0
+file:D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\U409_icecube.sap|io:o|time:1749878164|size:2866|exec:0
 file:D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\U409_icecube.tap|io:o|time:0|size:0|exec:0
-file:D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\U409_icecube.map|io:o|time:1749311900|size:28|exec:0
+file:D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\U409_icecube.map|io:o|time:1749878166|size:28|exec:0
 file:C:\lscc\iCEcube2.2020.12\synpbase\lib\generic\sb_ice40.v|io:i|time:1728534475|size:224837|exec:0
-file:D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\U409_icecube.sap|io:o|time:1749311899|size:2859|exec:0
-file:D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\syntmp\U409_icecube.plg|io:o|time:1749311900|size:1201|exec:0
-file:D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\U409_icecube.srm|io:o|time:1749311900|size:20537|exec:0
-file:D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\synlog\U409_icecube_fpga_mapper.srr|io:o|time:1749311900|size:50434|exec:0
+file:D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\U409_icecube.sap|io:o|time:1749878164|size:2866|exec:0
+file:D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\syntmp\U409_icecube.plg|io:o|time:1749878166|size:1201|exec:0
+file:D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\U409_icecube.srm|io:o|time:1749878165|size:19790|exec:0
+file:D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\synlog\U409_icecube_fpga_mapper.srr|io:o|time:1749878166|size:50249|exec:0
 file:C:\lscc\iCEcube2.2020.12\synpbase\bin\m_generic.exe|io:i|time:1728534473|size:17853440|exec:1
 file:C:\lscc\iCEcube2.2020.12\synpbase\bin64\m_generic.exe|io:i|time:1728534474|size:32355840|exec:1

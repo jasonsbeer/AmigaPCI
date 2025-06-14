@@ -33,7 +33,7 @@ iceprog D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\sbt\outputs\bitmap\U4
 
 module U409_TOP (
 
-    input CLK40_IN, CLK6, CLK28_IN, RESETn, TSn, OVL, RnW, AUTOBOOT, CPUCONFn, ATA_MODE_P, ATA_MODE_S,  //ROM_DELAY
+    input CLK40_IN, CLK6, CLK28_IN, RESETn, TSn, OVL, RnW, AUTOBOOT, CPUCONFn, //ATA_MODE_P, //ATA_MODE_S,  //ROM_DELAY
     input [31:1] A,
     input [1:0] TT,
     input [1:0] TM,
@@ -44,7 +44,13 @@ module U409_TOP (
     inout [7:4] D,
     inout TACKn
 
+    //,output ATA_MODE_S
+
 );
+
+//assign ATA_MODE_S = ATA_SPACE;
+//assign ATA_MODE_S = CONFIGENn;
+//assign ATA_MODE_S = AUTOCONFIG_SPACE;
 
 /////////////
 // CLOCKS //
@@ -85,11 +91,12 @@ wire ROMEN;
 wire CIA_SPACE;
 wire CIA_ENABLE;
 wire [3:0] BRIDGE_BASE;
-wire [7:0] ATA_BASE;
+wire [7:1] ATA_BASE;
 wire [3:0] D_OUT;
 wire [3:0] D_IN = AUTOCONFIG_SPACE && !RnW ? D[7:4] : 4'h0;
 
 wire AGNUS_SPACE = !RAMSPACEn || !REGSPACEn;
+wire LV_SPACE = AGNUS_SPACE || AUTOCONFIG_SPACE || ATA_SPACE; // || !BRIDGE_ENn; //Enable the main level shifting buffers when we are in the LVTTL space. !BRIDGE_ENn crashes?
 wire NOCACHE_SPACE = CIA_SPACE || AUTOCONFIG_SPACE;
 assign D = AUTOCONFIG_SPACE && RnW ? D_OUT : 4'bz;
 
@@ -130,8 +137,7 @@ U409_TRANSFER_ACK U409_TRANSFER_ACK (
 
 U409_DATA_BUFFERS U409_DATA_BUFFERS (
     //INPUTS
-    .AGNUS_SPACE (AGNUS_SPACE),
-    .AUTOCONFIG_SPACE (AUTOCONFIG_SPACE),
+    .LV_SPACE (LV_SPACE),
 
     //OUTPUTS
     .BUFENn (BUFENn)
@@ -142,17 +148,18 @@ U409_DATA_BUFFERS U409_DATA_BUFFERS (
 ///////////////////////
 
 //Identify the 16-bit ports.
-assign PORTSIZE = CIA_SPACE || !REGSPACEn || !RTC_ENn || AUTOCONFIG_SPACE;
+wire CONFIGURED;
+
+assign PORTSIZE = CIA_SPACE || !REGSPACEn || !RTC_ENn || AUTOCONFIG_SPACE || !ATA_ENn;
 
 U409_ADDRESS_DECODE U409_ADDRESS_DECODE (
     //INPUTS
     .CLK40 (CLK40),
     .RESETn (RESETn),
-    .TSn (TSn),
     .RnW (RnW),
     .OVL (OVL),
     .CIA_ENABLE (CIA_ENABLE),
-    .CONFIGENn (CONFIGENn),
+    .CONFIGURED (CONFIGURED),
     .TT (TT),
     .TM (TM),
     .A (A),
@@ -169,6 +176,7 @@ U409_ADDRESS_DECODE U409_ADDRESS_DECODE (
     .AUTOVECTOR (AUTOVECTOR),
     .RTC_ENn (RTC_ENn),
     .AUTOCONFIG_SPACE (AUTOCONFIG_SPACE),
+    .ATA_SPACE (ATA_SPACE),
     .ATA_ENn (ATA_ENn),
     .BRIDGE_ENn (BRIDGE_ENn)
 );
@@ -216,6 +224,7 @@ U409_AUTOCONFIG U409_AUTOCONFIG (
     .ATA_BASE (ATA_BASE),
     .D_OUT (D_OUT),
     .CONFIGENn (CONFIGENn),
+    .CONFIGURED (CONFIGURED),
     .AC_TACK (AC_TACK)
 );
 
@@ -225,11 +234,19 @@ U409_AUTOCONFIG U409_AUTOCONFIG (
 
 //These are here for future use, as needed.
 
-assign PIO_P0 = ATA_MODE_P;
+/*assign PIO_P0 = ATA_MODE_P;
 assign PIO_P1 = 1'b1;
 assign PIO_P2 = 1'b1;
 assign PIO_S0 = ATA_MODE_S;
 assign PIO_S1 = 1'b1;
+assign PIO_S2 = 1'b1;*/
+
+//We are passing through address signals until we get the next revision hardware.
+assign PIO_P0 = A[12];
+assign PIO_P1 = A[13];
+assign PIO_P2 = A[14];
+assign PIO_S0 = A[15];
+assign PIO_S1 = A[16];
 assign PIO_S2 = 1'b1;
 
 endmodule

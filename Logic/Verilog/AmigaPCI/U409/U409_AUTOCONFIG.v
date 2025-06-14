@@ -26,6 +26,7 @@ Description: AUTOCONFIG
 
 Revision History:
     06-JUN-2025 : AUTOCONFIG for LIDE.device and PCI bridge.
+    14-JUN-2025 : Fixed latch timing for base address. JN
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 */
@@ -37,9 +38,10 @@ module U409_AUTOCONFIG (
     input [7:1] A,
 
     output reg CONFIGENn,
+    output reg CONFIGURED,
     output reg AC_TACK,
     output reg [3:0] BRIDGE_BASE,
-    output reg [7:0] ATA_BASE;
+    output reg [7:1] ATA_BASE;
     output [3:0] D_OUT
 );
 
@@ -58,14 +60,13 @@ localparam SERNUM = 32'd1;
 //////////////
 
 assign D_OUT = !LIDE_CONF   ? LIDE_OUT : 
-               !BRIDGE_CONF ? BRIDGE_OUT : 4'hF;
+               !CONFIGURED ? BRIDGE_OUT : 4'hF;
 
   /////////////////
  // ADDRESS BUS //
 /////////////////
 
-//wire [7:0] AC_AD = {A[7:2], A[8], 1'b0}; //Z3 Registers
-wire [7:0] AC_AD = {A[7:1], 1'b0}; //Z2 Registers
+wire [7:0] AC_AD = {A[7:1], 1'b0};
 
   ////////////////////
  // TRANSFER START //
@@ -77,7 +78,7 @@ always @(posedge CLK40) begin
     if (!RESETn) begin
         AC_START <= 0;
     end else begin
-        AC_START <= CONFIGENn && AUTOCONFIG_SPACE && !TSn;
+        AC_START <= !CONFIGURED && AUTOCONFIG_SPACE && !TSn;
     end
 end
 
@@ -86,7 +87,6 @@ end
 ////////////////
 
 reg LIDE_CONF;
-reg BRIDGE_CONF;
 reg [3:0] BRIDGE_OUT;
 reg [3:0] LIDE_OUT;
 reg [3:0] STATE;
@@ -94,11 +94,11 @@ reg [3:0] STATE;
 always @(negedge CLK40) begin
     if (!RESETn) begin
         CONFIGENn <= 1;
+        CONFIGURED <= 0;
         AC_TACK <= 0;
         LIDE_CONF <= 0;
         LIDE_OUT <= 4'h0;
-        ATA_BASE <= 8'hFF;
-        BRIDGE_CONF <= 0;
+        ATA_BASE <= 7'b0;
         BRIDGE_BASE <= 4'hF;
         BRIDGE_OUT <= 4'h0;
         STATE <= 4'h0;
@@ -110,7 +110,7 @@ always @(negedge CLK40) begin
                     STATE <= 4'h01;
                     if (RnW) begin
                         case (AC_AD)
-                            8'h00 : begin BRIDGE_OUT <= 4'b1000;            LIDE_OUT <= {4'b110, AUTOBOOT}; end
+                            8'h00 : begin BRIDGE_OUT <= 4'b1000;            LIDE_OUT <= 4'b1100; end //LIDE_OUT <= {4'b110, AUTOBOOT}; end
                             8'h02 : begin BRIDGE_OUT <= 4'b0100;            LIDE_OUT <= 4'b0010; end //256MB
                             8'h04 : begin BRIDGE_OUT <= ~(BRIDGE_PID[7:4]); LIDE_OUT <= ~(LIDE_PID[7:4]); end //Product Number High Nibble
                             8'h06 : begin BRIDGE_OUT <= ~(BRIDGE_PID[3:0]); LIDE_OUT <= ~(LIDE_PID[3:0]); end //Product Number Low Nibble
@@ -137,22 +137,31 @@ always @(negedge CLK40) begin
                 end
             end
             4'h1 : begin
-                AC_TACK <= 1;
-                STATE <= 4'h0;
-                if (!RnW) begin
-                    if (AC_AD == 8'h4A && !LIDE_CONF) begin
-                        ATA_BASE[3:0] <= D_IN;
-                    end else if (AC_AD == 8'h48) begin
-                        if (!LIDE_CONF) begin
-                            LIDE_CONF <= 1;
-                            ATA_BASE[7:4] <= D_IN;
-                        end else begin
-                            BRIDGE_CONF <= 1;
-                            BRIDGE_BASE <= D_IN[3:0]; //[31:28];
-                            CONFIGENn <= 0;
-                        end
+                if (RnW) begin
+                    AC_TACK <= 1;
+                    STATE <= 4'h0;
+                end else begin
+                    STATE <= 4'h2;
+                end
+            end
+            4'h2 : begin
+                STATE <= 4'h3;
+                if (AC_AD == 8'h4A && !LIDE_CONF) begin
+                    ATA_BASE[3:1] <= D_IN[3:1];
+                end else if (AC_AD == 8'h48) begin
+                    if (!LIDE_CONF) begin
+                        LIDE_CONF <= 1;
+                        ATA_BASE[7:4] <= D_IN;
+                    end else begin
+                        BRIDGE_BASE <= D_IN; //[31:28];
+                        CONFIGENn <= 0;
+                        CONFIGURED <= 1;
                     end
                 end
+            end
+            4'h3 : begin
+                AC_TACK <= 1;
+                STATE <= 4'h0;
             end
         endcase
     end
