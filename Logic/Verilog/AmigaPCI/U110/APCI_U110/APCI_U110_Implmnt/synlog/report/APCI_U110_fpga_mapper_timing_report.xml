@@ -14,4 +14,10 @@ Max Top 5 critical clocks will be reported. For rest user needs to refer to Deta
 <data tcl_name="est_freq">Est Freq</data>
 <data tcl_name="slack">Slack</data>
 </row>
+<row>
+<data>CLK40</data>
+<data>40.0 MHz</data>
+<data>85.6 MHz</data>
+<data>6.656</data>
+</row>
 </report_table>

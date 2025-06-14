@@ -1,3 +1,4 @@
-@W: CG360 :"D:\AmigaPCI\U110\U110_TOP.v":4:20:4:27|Removing wire IDEHRENn, as there is no assignment to it.
-@W: CL157 :"D:\AmigaPCI\U110\U110_TOP.v":4:20:4:27|*Output IDEHRENn has undriven bits; assigning undriven bits to 0.  Simulation mismatch possible. Assign all bits of the output.
+@W: CL169 :"D:\AmigaPCI\U110\U110_ATA.v":94:0:94:5|Pruning unused register ATA_START. Make sure that there are no unused intermediate registers.
+@W: CL169 :"D:\AmigaPCI\U110\U110_ATA.v":94:0:94:5|Pruning unused register ATA_CYCLE. Make sure that there are no unused intermediate registers.
+@W: CL169 :"D:\AmigaPCI\U110\U110_ATA.v":94:0:94:5|Pruning unused register CYCLE_COUNT[7:0]. Make sure that there are no unused intermediate registers.
 

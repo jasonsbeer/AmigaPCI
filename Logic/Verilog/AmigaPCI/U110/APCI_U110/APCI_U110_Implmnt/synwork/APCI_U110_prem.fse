@@ -1,0 +1,10 @@
+
+fsm_encoding {7540541} sequential
+
+fsm_state_encoding {7540541} 0000 {00}
+
+fsm_state_encoding {7540541} 0001 {01}
+
+fsm_state_encoding {7540541} 0010 {10}
+
+fsm_registers {7540541} {TACK_COUNT[1]}  {TACK_COUNT[0]} 

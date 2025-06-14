@@ -1,16 +1,19 @@
 module U110_BUFFERS (
 
-    output IDELENn, IDEHRENn, IDEHWENn, IDELATCH
+    input RESETn, ATA_ENn, RnW,
+    output IDELENn, IDEHRENn, IDEHWENn, IDEDIR
 
 );
 
-//ATA BUFFERS
-//DISABLE EVERYTHING FOR NOW
+  /////////////////
+ // ATA BUFFERS //
+/////////////////
 
-assign IDELENn = 1;
-assign IDEHRENn = 1;
-assign IDEHWENn = 1;
-assign IDELATCH = 0;
+assign IDEHRENn = !(RESETn && !ATA_ENn &&  RnW);
+assign IDEHWENn = !(RESETn && !ATA_ENn && !RnW);
+
+assign IDELENn  = 1;
+assign IDEDIR = !RnW;
 
 
 endmodule

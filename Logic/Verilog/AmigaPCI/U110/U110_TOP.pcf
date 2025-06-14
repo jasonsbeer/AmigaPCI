@@ -1,46 +1,53 @@
 #CLOCKS
-#set_io CLK40 52
+set_io CLK40 52
 #set_io CLK33 93
 
+#ADDRESS
+#set_io A0     62
+#set_io A1     61
+set_io A12    25
+set_io A13    24
+set_io A14    23
+set_io A15    22
+set_io A16    16
+
 #ATA SIGNALS
-#set_io PIO_P0    25
-#set_io PIO_P1    24
-#set_io PIO_P2    23
-#set_io PIO_S0    22
-#set_io PIO_S1    16
-#set_io PIO_S2    15
-#set_io IDE_ENn   12 
-#set_io DIOWAn    94
-#set_io IORDY    110
-#set_io INTRS    107
-#set_io INTRP    106
-#set_io CS1Bn    101
-#set_io DIORBn    99
-#set_io DIOWBn    98
-#set_io DIORAn    96
-#set_io CS1An     95
-#set_io CS0An     91
-set_io IDELENn   87
-set_io IDEHRENn  88
-set_io IDEHWENn  97
-set_io IDELATCH  85
-#set_io CS0Bn     84
-#set_io IDEDIR    83
+#set_io PIO_P0     25
+#set_io PIO_P1     24
+#set_io PIO_P2     23
+#set_io PIO_S0     22
+#set_io PIO_S1     16
+#set_io PIO_S2     15
+set_io ATA_ENn    12 
+set_io DIOW_PRIn  94
+#set_io IORDY     110
+#set_io INTRS     107
+#set_io INTRP     106
+set_io DIOR_SECn  99
+set_io DIOW_SECn  98
+set_io DIOR_PRIn  96
+set_io CS1_PRIn   95
+set_io CS0_PRIn   91
+set_io IDELENn    87
+set_io IDEHRENn   88
+set_io IDEHWENn   97
+set_io ATA_LATCH  85
+set_io CS0_SECn   84
+set_io CS1_SECn  101
+set_io IDEDIR     83
 
 #DATA TRANSFER SIGNALS
-#set_io RESETn 49
+set_io RESETn 49
 #set_io SIZ[1] 18
 #set_io SIZ[0] 17
 set_io TEAn   10
-#set_io TSn    47
+set_io TSn    47
 #set_io UPA[1] 44
 #set_io UPA[0] 42
-#set_io WEBn   79
-#set_io TACKn  74
+set_io RnW   79
+set_io TACKn  74
 #set_io TT[1]  73
 #set_io TT[0]  60
-#set_io A[1]   61
-#set_io A[0]   62
 
 #BUS ARBRITRATION
 #set_io LOCKn     43

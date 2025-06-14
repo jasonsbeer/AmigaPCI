@@ -1,7 +1,7 @@
 #--  Synopsys, Inc.
 #--  Version L-2016.09L+ice40
 #--  Project file D:\AmigaPCI\U110\APCI_U110\APCI_U110_Implmnt\run_options.txt
-#--  Written on Sat Feb 08 11:04:34 2025
+#--  Written on Sat Jun 14 11:16:32 2025
 
 
 #project files
@@ -10,6 +10,7 @@ add_file -verilog "../U110_BUFFERS.v"
 add_file -verilog "../U110_CYCLE_TERMINATION.v"
 add_file -verilog "../U110_INTERRUPT.v"
 add_file -verilog "../U110_TOP.v"
+add_file -verilog "../U110_ATA.v"
 add_file -constraint "../U110_TOP.sdc"
 
 

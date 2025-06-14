@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:31:51
 
-* File Generated:     Feb 8 2025 11:04:40
+* File Generated:     Jun 14 2025 11:16:52
 
 * Purpose:            General info of design implementation
 
@@ -27,49 +27,78 @@ Device Info:
 
 Design statistics:
 ------------------
-    FFs:                  0
-    LUTs:                 1
+    FFs:                  17
+    LUTs:                 56
     RAMs:                 0
-    IOBs:                 7
-    GBs:                  0
+    IOBs:                 27
+    GBs:                  1
     PLLs:                 0
     Warm Boots:           0
 
 Logic Resource Utilization:
 ---------------------------
-    Total Logic Cells: 1/3520
-        Combinational Logic Cells: 1        out of   3520      0.0284091%
-        Sequential Logic Cells:    0        out of   3520      0%
-        Logic Tiles:               1        out of   440       0.227273%
+    Total Logic Cells: 56/3520
+        Combinational Logic Cells: 39       out of   3520      1.10795%
+        Sequential Logic Cells:    17       out of   3520      0.482955%
+        Logic Tiles:               20       out of   440       4.54545%
     Registers: 
-        Logic Registers:           0        out of   3520      0%
+        Logic Registers:           17       out of   3520      0.482955%
         IO Registers:              0        out of   880       0
     Block RAMs:                    0        out of   20        0%
     Warm Boots:                    0        out of   1         0%
     Pins:
-        Input Pins:                0        out of   107       0%
-        Output Pins:               7        out of   107       6.54206%
+        Input Pins:                10       out of   107       9.34579%
+        Output Pins:               17       out of   107       15.8879%
         InOut Pins:                0        out of   107       0%
-    Global Buffers:                0        out of   8         0%
+    Global Buffers:                1        out of   8         12.5%
     PLLs:                          0        out of   2         0%
 
 IO Bank Utilization:
 --------------------
-    Bank 3: 1        out of   28        3.57143%
-    Bank 1: 5        out of   29        17.2414%
+    Bank 3: 7        out of   28        25%
+    Bank 1: 16       out of   29        55.1724%
     Bank 0: 1        out of   27        3.7037%
-    Bank 2: 0        out of   23        0%
+    Bank 2: 3        out of   23        13.0435%
 
 Detailed I/O Info:
 ------------------
-    Output Pins: 
-    Pin Number  Direction  IO Standard  Pull Up  IO Bank  IO Function    Signal Name
-    ----------  ---------  -----------  -------  -------  -----------    -----------
-    10          Output     SB_LVCMOS    No       3        Simple Output  TEAn      
-    75          Output     SB_LVCMOS    No       1        Simple Output  BGn       
-    85          Output     SB_LVCMOS    No       1        Simple Output  IDELATCH  
-    87          Output     SB_LVCMOS    No       1        Simple Output  IDELENn   
-    88          Output     SB_LVCMOS    No       1        Simple Output  IDEHRENn  
-    97          Output     SB_LVCMOS    No       1        Simple Output  IDEHWENn  
-    121         Output     SB_LVCMOS    No       0        Simple Output  INT2n     
+    Input Pins: 
+    Pin Number  Direction  IO Standard  Pull Up  IO Bank  IO Function                   Signal Name
+    ----------  ---------  -----------  -------  -------  -----------                   -----------
+    12          Input      SB_LVCMOS    No       3        Simple Input                  ATA_ENn    
+    16          Input      SB_LVCMOS    No       3        Simple Input                  A16        
+    22          Input      SB_LVCMOS    No       3        Simple Input                  A15        
+    23          Input      SB_LVCMOS    No       3        Simple Input                  A14        
+    24          Input      SB_LVCMOS    No       3        Simple Input                  A13        
+    25          Input      SB_LVCMOS    No       3        Simple Input                  A12        
+    47          Input      SB_LVCMOS    No       2        Simple Input                  TSn        
+    49          Input      SB_LVCMOS    No       2        Simple Input                  RESETn     
+    52          Input      SB_LVCMOS    No       2        Simple Input                  CLK40      
+    79          Input      SB_LVCMOS    No       1        Simple Input                  RnW        
 
+    Output Pins: 
+    Pin Number  Direction  IO Standard  Pull Up  IO Bank  IO Function                   Signal Name
+    ----------  ---------  -----------  -------  -------  -----------                   -----------
+    10          Output     SB_LVCMOS    No       3        Simple Output                 TEAn       
+    74          Output     SB_LVCMOS    No       1        Output Tristatable by Enable  TACKn      
+    75          Output     SB_LVCMOS    No       1        Simple Output                 BGn        
+    83          Output     SB_LVCMOS    No       1        Simple Output                 IDEDIR     
+    84          Output     SB_LVCMOS    No       1        Simple Output                 CS0_SECn   
+    85          Output     SB_LVCMOS    No       1        Simple Output                 ATA_LATCH  
+    87          Output     SB_LVCMOS    No       1        Simple Output                 IDELENn    
+    88          Output     SB_LVCMOS    No       1        Simple Output                 IDEHRENn   
+    91          Output     SB_LVCMOS    No       1        Simple Output                 CS0_PRIn   
+    94          Output     SB_LVCMOS    No       1        Simple Output                 DIOW_PRIn  
+    95          Output     SB_LVCMOS    No       1        Simple Output                 CS1_PRIn   
+    96          Output     SB_LVCMOS    No       1        Simple Output                 DIOR_PRIn  
+    97          Output     SB_LVCMOS    No       1        Simple Output                 IDEHWENn   
+    98          Output     SB_LVCMOS    No       1        Simple Output                 DIOW_SECn  
+    99          Output     SB_LVCMOS    No       1        Simple Output                 DIOR_SECn  
+    101         Output     SB_LVCMOS    No       1        Simple Output                 CS1_SECn   
+    121         Output     SB_LVCMOS    No       0        Simple Output                 INT2n      
+
+Detailed Global Buffer Info:
+----------------------------
+    Buffer Number  IO Bank  Driven By  Fanout  Signal Name
+    -------------  -------  ---------  ------  -----------
+    3              2        IO         15      CLK40_c_g  

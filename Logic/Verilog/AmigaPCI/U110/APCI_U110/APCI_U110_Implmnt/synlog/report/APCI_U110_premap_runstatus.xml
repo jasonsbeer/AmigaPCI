@@ -13,7 +13,7 @@ The file contains the job information from mapper to be displayed as part of the
 </job_status>
 <job_info>
 <info name="Notes">
-<data>7</data>
+<data>5</data>
 <report_link name="more">
 <data>D:\AmigaPCI\U110\APCI_U110\APCI_U110_Implmnt\synlog\report\APCI_U110_premap_notes.txt</data>
 </report_link>
@@ -40,7 +40,7 @@ The file contains the job information from mapper to be displayed as part of the
 <data>133MB</data>
 </info>
 <info name="Date &amp; Time">
-<data type="timestamp">1739034276</data>
+<data type="timestamp">1749917794</data>
 </info>
 </job_info>
 </job_run_status>

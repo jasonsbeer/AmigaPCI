@@ -1,7 +1,7 @@
 C:\lscc\iCEcube2.2020.12\synpbase\bin64\syn_nfilter.exe  -link  -multisrs  D:\AmigaPCI\U110\APCI_U110\APCI_U110_Implmnt\synwork\APCI_U110_comp.srs  -osyn  D:\AmigaPCI\U110\APCI_U110\APCI_U110_Implmnt\synwork\APCI_U110_mult.srs  -log  D:\AmigaPCI\U110\APCI_U110\APCI_U110_Implmnt\synlog\APCI_U110_multi_srs_gen.srr 
-rc:0 success:1 runtime:1
-file:D:\AmigaPCI\U110\APCI_U110\APCI_U110_Implmnt\synwork\APCI_U110_comp.srs|io:i|time:1739034274|size:3556|exec:0
-file:D:\AmigaPCI\U110\APCI_U110\APCI_U110_Implmnt\synwork\APCI_U110_mult.srs|io:o|time:1739034276|size:2552|exec:0
-file:D:\AmigaPCI\U110\APCI_U110\APCI_U110_Implmnt\synlog\APCI_U110_multi_srs_gen.srr|io:o|time:1739034276|size:743|exec:0
+rc:0 success:1 runtime:0
+file:D:\AmigaPCI\U110\APCI_U110\APCI_U110_Implmnt\synwork\APCI_U110_comp.srs|io:i|time:1749917792|size:9216|exec:0
+file:D:\AmigaPCI\U110\APCI_U110\APCI_U110_Implmnt\synwork\APCI_U110_mult.srs|io:o|time:1749917793|size:3974|exec:0
+file:D:\AmigaPCI\U110\APCI_U110\APCI_U110_Implmnt\synlog\APCI_U110_multi_srs_gen.srr|io:o|time:1749917793|size:743|exec:0
 file:C:\lscc\iCEcube2.2020.12\synpbase\bin\syn_nfilter.exe|io:i|time:1728534473|size:3128320|exec:1
 file:C:\lscc\iCEcube2.2020.12\synpbase\bin64\syn_nfilter.exe|io:i|time:1728534475|size:3947520|exec:1

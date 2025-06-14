@@ -1,4 +1,4 @@
-#OPTIONS:"|-layerid|0|-orig_srs|D:\\AmigaPCI\\U110\\APCI_U110\\APCI_U110_Implmnt\\synwork\\APCI_U110_comp.srs|-prodtype|synplify_pro|-primux|-fixsmult|-infer_seqShift|-ice|-sdff_counter|-nram|-divnmod|-nostructver|-I|D:\\AmigaPCI\\U110\\APCI_U110\\|-I|C:\\lscc\\iCEcube2.2020.12\\synpbase\\lib|-v2001|-devicelib|C:\\lscc\\iCEcube2.2020.12\\synpbase\\lib\\generic\\sb_ice40.v|-encrypt|-pro|-ui|-fid2|-ram|-sharing|on|-ll|2000|-autosm|-lib|work|-lib|work|-lib|work|-lib|work|-lib|work"
+#OPTIONS:"|-layerid|0|-orig_srs|D:\\AmigaPCI\\U110\\APCI_U110\\APCI_U110_Implmnt\\synwork\\APCI_U110_comp.srs|-prodtype|synplify_pro|-primux|-fixsmult|-infer_seqShift|-ice|-sdff_counter|-nram|-divnmod|-nostructver|-I|D:\\AmigaPCI\\U110\\APCI_U110\\|-I|C:\\lscc\\iCEcube2.2020.12\\synpbase\\lib|-v2001|-devicelib|C:\\lscc\\iCEcube2.2020.12\\synpbase\\lib\\generic\\sb_ice40.v|-encrypt|-pro|-ui|-fid2|-ram|-sharing|on|-ll|2000|-autosm|-lib|work|-lib|work|-lib|work|-lib|work|-lib|work|-lib|work"
 #CUR:"C:\\lscc\\iCEcube2.2020.12\\synpbase\\bin64\\c_ver.exe":1728534473
 #CUR:"C:\\lscc\\iCEcube2.2020.12\\synpbase\\lib\\generic\\sb_ice40.v":1728534475
 #CUR:"C:\\lscc\\iCEcube2.2020.12\\synpbase\\lib\\vlog\\hypermods.v":1728534477
@@ -6,29 +6,34 @@
 #CUR:"C:\\lscc\\iCEcube2.2020.12\\synpbase\\lib\\vlog\\scemi_objects.v":1728534477
 #CUR:"C:\\lscc\\iCEcube2.2020.12\\synpbase\\lib\\vlog\\scemi_pipes.svh":1728534477
 #CUR:"D:\\AmigaPCI\\U110\\U110_ARBITOR.v":1737819904
-#CUR:"D:\\AmigaPCI\\U110\\U110_BUFFERS.v":1738972612
-#CUR:"D:\\AmigaPCI\\U110\\U110_CYCLE_TERMINATION.v":1738510919
+#CUR:"D:\\AmigaPCI\\U110\\U110_BUFFERS.v":1749907551
+#CUR:"D:\\AmigaPCI\\U110\\U110_CYCLE_TERMINATION.v":1749916618
 #CUR:"D:\\AmigaPCI\\U110\\U110_INTERRUPT.v":1737819904
-#CUR:"D:\\AmigaPCI\\U110\\U110_TOP.v":1738512073
+#CUR:"D:\\AmigaPCI\\U110\\U110_TOP.v":1749909117
+#CUR:"D:\\AmigaPCI\\U110\\U110_ATA.v":1749917781
 0			"D:\AmigaPCI\U110\U110_ARBITOR.v" verilog
 1			"D:\AmigaPCI\U110\U110_BUFFERS.v" verilog
 2			"D:\AmigaPCI\U110\U110_CYCLE_TERMINATION.v" verilog
 3			"D:\AmigaPCI\U110\U110_INTERRUPT.v" verilog
 4			"D:\AmigaPCI\U110\U110_TOP.v" verilog
+5			"D:\AmigaPCI\U110\U110_ATA.v" verilog
 #Dependency Lists(Uses List)
 0 -1
 1 -1
 2 -1
 3 -1
-4 0 1 2 3
+4 0 5 1 2 3
+5 -1
 #Dependency Lists(Users Of)
 0 4
 1 4
 2 4
 3 4
 4 -1
+5 4
 #Design Unit to File Association
 module work U110_TOP 4
+module work U110_ATA 5
 module work U110_INTERRUPT 3
 module work U110_CYCLE_TERMINATION 2
 module work U110_BUFFERS 1
