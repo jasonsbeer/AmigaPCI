@@ -6,10 +6,10 @@
 @N: CG364 :"D:\AmigaPCI\U409\U409_ADDRESS_DECODE.v":36:7:36:25|Synthesizing module U409_ADDRESS_DECODE in library work.
 @N: CG364 :"D:\AmigaPCI\U409\U409_TICK.v":33:7:33:15|Synthesizing module U409_TICK in library work.
 @N: CG364 :"D:\AmigaPCI\U409\U409_CIA.v":35:7:35:14|Synthesizing module U409_CIA in library work.
-@N: CG364 :"D:\AmigaPCI\U409\U409_AUTOCONFIG.v":33:7:33:21|Synthesizing module U409_AUTOCONFIG in library work.
+@N: CG364 :"D:\AmigaPCI\U409\U409_AUTOCONFIG.v":34:7:34:21|Synthesizing module U409_AUTOCONFIG in library work.
 @N: CG364 :"D:\AmigaPCI\U409\U409_TOP.v":34:7:34:14|Synthesizing module U409_TOP in library work.
-@N: CL201 :"D:\AmigaPCI\U409\U409_AUTOCONFIG.v":93:0:93:5|Trying to extract state machine for register STATE.
-@N: CL159 :"D:\AmigaPCI\U409\U409_AUTOCONFIG.v":35:38:35:45|Input AUTOBOOT is unused.
+@N: CL201 :"D:\AmigaPCI\U409\U409_AUTOCONFIG.v":94:0:94:5|Trying to extract state machine for register STATE.
+@N: CL159 :"D:\AmigaPCI\U409\U409_AUTOCONFIG.v":36:38:36:45|Input AUTOBOOT is unused.
 @N: CL201 :"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v":61:0:61:5|Trying to extract state machine for register TACK_COUNTER.
 @N: CL201 :"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v":176:0:176:5|Trying to extract state machine for register CIA_STATE.
 @N|Running in 64-bit mode

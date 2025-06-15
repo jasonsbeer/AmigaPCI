@@ -90,6 +90,7 @@ wire AUTOVECTOR;
 wire ROMEN;
 wire CIA_SPACE;
 wire CIA_ENABLE;
+wire IO_SPACE;
 wire [3:0] BRIDGE_BASE;
 wire [7:1] ATA_BASE;
 wire [3:0] D_OUT;
@@ -97,7 +98,7 @@ wire [3:0] D_IN = AUTOCONFIG_SPACE && !RnW ? D[7:4] : 4'h0;
 
 wire AGNUS_SPACE = !RAMSPACEn || !REGSPACEn;
 wire LV_SPACE = AGNUS_SPACE || AUTOCONFIG_SPACE || ATA_SPACE; // || !BRIDGE_ENn; //Enable the main level shifting buffers when we are in the LVTTL space. !BRIDGE_ENn crashes?
-wire NOCACHE_SPACE = CIA_SPACE || AUTOCONFIG_SPACE;
+wire NOCACHE_SPACE = CIA_SPACE || IO_SPACE || AGNUS_SPACE;
 assign D = AUTOCONFIG_SPACE && RnW ? D_OUT : 4'bz;
 
 ///////////////////////
@@ -173,6 +174,7 @@ U409_ADDRESS_DECODE U409_ADDRESS_DECODE (
     .CIACS1n (CIACS1n),
     .RAMSPACEn (RAMSPACEn),
     .REGSPACEn (REGSPACEn),
+    .IO_SPACE (IO_SPACE),
     .AUTOVECTOR (AUTOVECTOR),
     .RTC_ENn (RTC_ENn),
     .AUTOCONFIG_SPACE (AUTOCONFIG_SPACE),

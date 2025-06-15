@@ -29,6 +29,7 @@ Revision History:
     20-MAR-2025 : Add data and code access type conditions. JN
     07-APR-2025 : Add Ranger, RTC, and AUTOCONFIG address spaces. JN
     06-JUN-2025 : Add PCI Bridge and ATA spaces. JN
+    15-JUN-2025 : Add I/O Space decode for caching purposes. JN
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 */
@@ -43,7 +44,7 @@ module U409_ADDRESS_DECODE
     input [3:0] BRIDGE_BASE,
     input [7:1] ATA_BASE,
     
-    output ROMEN, CIA_SPACE, CIACS0n, CIACS1n, RAMSPACEn, REGSPACEn,
+    output ROMEN, CIA_SPACE, CIACS0n, CIACS1n, RAMSPACEn, REGSPACEn, IO_SPACE,
     output AUTOVECTOR, RTC_ENn, AUTOCONFIG_SPACE, ATA_SPACE, ATA_ENn, BRIDGE_ENn
     
     //,output ATA_SPACE
@@ -121,6 +122,15 @@ assign REGSPACEn = !(Z2_SPACE && (RAN_SPACE || RES_SPACE || MBR_SPACE || REG_SPA
 //ALL INTERRUPT REQUESTS ARE SERVICED BY AUTOVECTORING.
 
 assign AUTOVECTOR = RESETn && TT[1] && TT[0] && A[31:16] == 16'hFFFF;
+
+  ///////////////
+ // I/O SPACE //
+////////////////
+
+//WE NEED THIS FOR CACHING PURPOSES. THIS INCLUDES THE 
+//AUTOCONFIG REGISTER SPACE.
+
+assign IO_SPACE = Z2_SPACE && A[23:19] == 5'b11101;
 
   //////////////////////
  // AUTOCONFIG SPACE //

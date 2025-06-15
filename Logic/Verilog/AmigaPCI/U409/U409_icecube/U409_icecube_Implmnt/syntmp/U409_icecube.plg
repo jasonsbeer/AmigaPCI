@@ -18,10 +18,10 @@
 @P:  U409_TOP|CLK80_OUT_derived_clock - Requested Frequency : 80.0 MHz
 @P:  U409_TOP|CLK80_OUT_derived_clock - Estimated Period : 99.571
 @P:  U409_TOP|CLK80_OUT_derived_clock - Requested Period : 12.500
-@P:  U409_TOP|CLK80_OUT_derived_clock - Slack : 2.911
+@P:  U409_TOP|CLK80_OUT_derived_clock - Slack : 2.904
 @P: U409_TOP Part : ice40hx4ktq144
 @P: U409_TOP I/O primitives : 66
 @P: U409_TOP I/O Register bits : 0
 @P: U409_TOP Register bits (Non I/O) : 101 (2%)
-@P: U409_TOP Total Luts : 243 (6%)
+@P: U409_TOP Total Luts : 256 (7%)
 @P:  CPU Time : 0h:00m:00s
