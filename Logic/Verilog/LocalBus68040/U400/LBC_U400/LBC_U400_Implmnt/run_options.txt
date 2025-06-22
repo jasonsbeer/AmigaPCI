@@ -1,7 +1,7 @@
 #--  Synopsys, Inc.
 #--  Version L-2016.09L+ice40
 #--  Project file D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\run_options.txt
-#--  Written on Fri Jun 13 15:27:13 2025
+#--  Written on Sun Jun 22 01:33:55 2025
 
 
 #project files

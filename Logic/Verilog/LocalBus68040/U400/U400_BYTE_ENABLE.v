@@ -26,14 +26,13 @@ Description: FAST MEMORY BYTE ENABLE.
 
 Revision History:
     19-FEB-2025 : INITIAL RELEASE
-    09-MAR-2025 : LIMIT ASSERTION OF DATA MASKS TO ONLY RAM CYCLES
+    18-JUN-2025 : Clean up byte assertions. JN
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 */
 
 module U400_BYTE_ENABLE (
 
-    input RAM_SPACE,
     input [1:0] A,
     input [1:0] SIZ,
 
@@ -42,10 +41,12 @@ module U400_BYTE_ENABLE (
 
 //ACTIVATE BYTES OF INTEREST FOR EACH DATA TRANSFER.
 
-wire LW_TRANS = (!SIZ[1] && !SIZ[0]) || (SIZ[1] && SIZ[0]);
-assign UUBEn = !(RAM_SPACE && ((!A[1] && !A[0]) || LW_TRANS));
-assign UMBEn = !(RAM_SPACE && ((!A[1] &&  A[0]) || LW_TRANS || (!A[1] && SIZ[1])));
-assign LMBEn = !(RAM_SPACE && (( A[1] && !A[0]) || LW_TRANS));
-assign LLBEn = !(RAM_SPACE && (( A[1] &&  A[0]) || LW_TRANS || ( A[1] && SIZ[1])));
+wire WORD = SIZ[1] && !SIZ[0];
+wire LONG = SIZ[1] ==  SIZ[0];
+
+assign UUBEn = !((!A[1] &&  !A[0]) || LONG);
+assign UMBEn = !((!A[1] && ( A[0]  || WORD)) || LONG);
+assign LMBEn = !(( A[1] &&  !A[0]) || LONG);
+assign LLBEn = !(( A[1] && ( A[0]  || WORD)) || LONG);
 
 endmodule

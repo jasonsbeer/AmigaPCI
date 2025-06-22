@@ -29,6 +29,8 @@ Revision History:
     09-MAR-2025 : INCLUDE BURST MODE SUPPORT
     13-JUN-2025 : Cleaned up code and optimaized cycles. JN
                   Increased frequency of refreshes. JN
+    22-JUN-2025 : Added default to address FSN to fix alignment issue.
+                  Enable auto-precharge for burst cycles.
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 */
@@ -180,8 +182,8 @@ always @(negedge CLK40) begin
         REFRESH_COUNTER ++;
         if (SDRAM_COUNTER != 8'h00) begin SDRAM_COUNTER ++; end       
 
-        CS0n <= SDRAM_CMD == NOP ? 1 : !CS0_EN;
-        CS1n <= SDRAM_CMD == NOP ? 1 : !CS1_EN;
+        CS0n <= SDRAM_CMD == NOP ? 1 : !(CS0_EN);
+        CS1n <= SDRAM_CMD == NOP ? 1 : !(CS1_EN);
         RASn <= SDRAM_CMD[2];
         CASn <= SDRAM_CMD[1];
         WEn  <= SDRAM_CMD[0];
@@ -197,7 +199,10 @@ always @(negedge CLK40) begin
                 MA <= {A[26:25], A[20:10]};
             end
             READ, WRITE  : begin
-                MA <= {4'b0000, A[24], A[9:2]};
+                MA <= {4'b0010, A[24], A[9:2]};
+            end
+            default : begin
+                MA <= 13'b0;
             end
         endcase
 
@@ -319,7 +324,7 @@ always @(negedge CLK40) begin
                     TACK <= 0;
                 end
                 8'h0C : begin
-                    SDRAM_CMD <= PRECHARGE;                
+                    //SDRAM_CMD <= PRECHARGE;                
                     SDRAM_COUNTER <= 8'h00;
                 end
             endcase

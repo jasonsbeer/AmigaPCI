@@ -1,10 +1,10 @@
 Selecting top level module U400_TOP
 @N: CG364 :"D:\LocalBus68040\U400\U400_ADDRESS_DECODE.v":33:7:33:25|Synthesizing module U400_ADDRESS_DECODE in library work.
 
-@N: CG364 :"D:\LocalBus68040\U400\U400_SDRAM.v":35:7:35:16|Synthesizing module U400_SDRAM in library work.
+@N: CG364 :"D:\LocalBus68040\U400\U400_SDRAM.v":36:7:36:16|Synthesizing module U400_SDRAM in library work.
 
-@N: CG364 :"D:\LocalBus68040\U400\U400_BYTE_ENABLE.v":34:7:34:22|Synthesizing module U400_BYTE_ENABLE in library work.
+@N: CG364 :"D:\LocalBus68040\U400\U400_BYTE_ENABLE.v":35:7:35:22|Synthesizing module U400_BYTE_ENABLE in library work.
 
 @N: CG364 :"D:\LocalBus68040\U400\U400_TOP.v":33:7:33:14|Synthesizing module U400_TOP in library work.
 
-@W: CL246 :"D:\LocalBus68040\U400\U400_SDRAM.v":38:17:38:17|Input port bits 1 to 0 of A[26:0] are unused. Assign logic for all port bits or change the input port size.
+@W: CL246 :"D:\LocalBus68040\U400\U400_SDRAM.v":39:17:39:17|Input port bits 1 to 0 of A[26:0] are unused. Assign logic for all port bits or change the input port size.

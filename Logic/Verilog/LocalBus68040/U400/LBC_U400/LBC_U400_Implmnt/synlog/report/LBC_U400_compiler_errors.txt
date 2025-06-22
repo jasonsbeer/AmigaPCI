@@ -1,3 +1,2 @@
-@E: CG288 :"D:\LocalBus68040\U400\U400_SDRAM.v":84:0:84:2|Expecting delimiter: , or ;
-@E: CS187 :"D:\LocalBus68040\U400\U400_SDRAM.v":329:0:329:8|Expecting endmodule
+@E: CS168 :"D:\LocalBus68040\U400\U400_TOP.v":101:15:101:15|Port RAM_SPACE does not exist
 
