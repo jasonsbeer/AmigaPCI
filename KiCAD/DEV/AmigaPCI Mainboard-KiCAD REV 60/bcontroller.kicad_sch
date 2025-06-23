@@ -5780,11 +5780,11 @@
 		(uuid "1d9b41f1-942c-4395-8a79-62bb358d7ee9")
 	)
 	(no_connect
-		(at 147.32 162.56)
-		(uuid "27438adf-1716-46db-9e1f-1820e8e0b16c")
+		(at 147.32 195.58)
+		(uuid "33d32a1d-279a-444f-befd-fb48205fa604")
 	)
 	(no_connect
-		(at 147.32 137.16)
+		(at 149.86 137.16)
 		(uuid "3cf0d26b-5b6d-4fcb-93d1-364abdd485d8")
 	)
 	(no_connect
@@ -5792,44 +5792,48 @@
 		(uuid "4957391e-4255-4b69-b4ee-060052fc2dbf")
 	)
 	(no_connect
+		(at 147.32 162.56)
+		(uuid "56274e87-fe73-4441-a7cf-79294697fa26")
+	)
+	(no_connect
 		(at 87.63 55.88)
 		(uuid "619d9623-6d4c-4572-a293-6ce72741c946")
 	)
 	(no_connect
-		(at 147.32 160.02)
-		(uuid "7fca87ad-1357-4007-adfe-574c726a995c")
-	)
-	(no_connect
-		(at 147.32 124.46)
-		(uuid "9ff8d3b2-b1a9-4dfb-bee9-0d305bfd6459")
-	)
-	(no_connect
 		(at 147.32 157.48)
-		(uuid "b60ca41d-83d6-4fe0-8dca-7dc2bb69f738")
+		(uuid "6ac18e30-2841-46b7-92db-6a2b4d7ad6a3")
+	)
+	(no_connect
+		(at 149.86 121.92)
+		(uuid "73facc77-e2d9-48a0-ace7-6834df506b84")
+	)
+	(no_connect
+		(at 147.32 160.02)
+		(uuid "79411970-0179-40cd-b09f-7387edd3aab1")
 	)
 	(no_connect
 		(at 299.72 200.66)
 		(uuid "bc5b568b-aea0-41e3-bbb0-353ec022ed58")
 	)
 	(no_connect
-		(at 147.32 195.58)
-		(uuid "c648e6eb-3716-4f7e-bc86-e530a8e99c4e")
-	)
-	(no_connect
 		(at 138.43 88.9)
 		(uuid "d6d63d43-9ab4-49b1-b07b-dbaba2b82ab1")
-	)
-	(no_connect
-		(at 147.32 154.94)
-		(uuid "da55086b-f6b9-4760-8c8b-c15f58671641")
 	)
 	(no_connect
 		(at 87.63 58.42)
 		(uuid "ebe7f92a-04b5-4cd3-8e19-7146a4373875")
 	)
 	(no_connect
+		(at 149.86 124.46)
+		(uuid "ecefa784-20f9-411a-84d9-23852f7c4dc8")
+	)
+	(no_connect
 		(at 78.74 96.52)
 		(uuid "f1b60741-d85b-465f-8c31-258b3f83e653")
+	)
+	(no_connect
+		(at 147.32 154.94)
+		(uuid "f931a584-ad44-4f46-b1cb-f96595d077a9")
 	)
 	(bus_entry
 		(at 383.57 93.98)
@@ -7554,7 +7558,7 @@
 	)
 	(wire
 		(pts
-			(xy 138.43 124.46) (xy 147.32 124.46)
+			(xy 138.43 124.46) (xy 149.86 124.46)
 		)
 		(stroke
 			(width 0)
@@ -8824,7 +8828,7 @@
 	)
 	(wire
 		(pts
-			(xy 147.32 137.16) (xy 138.43 137.16)
+			(xy 149.86 137.16) (xy 138.43 137.16)
 		)
 		(stroke
 			(width 0)
@@ -9921,6 +9925,16 @@
 			(type default)
 		)
 		(uuid "cb512b0c-cfa7-4281-94aa-d325dc84431c")
+	)
+	(wire
+		(pts
+			(xy 138.43 121.92) (xy 149.86 121.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cc527bbd-72e3-49c8-a762-4c873aa8fc10")
 	)
 	(wire
 		(pts
@@ -17239,7 +17253,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "IDE MODES"
+		(property "Value" "ATA MODES"
 			(at 185.166 169.672 0)
 			(effects
 				(font

@@ -3130,6 +3130,30 @@
       {
         "netclass": "Narrow",
         "pattern": "ST1"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_SLOT3"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_SLOT2"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_SLOT1"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_SLOT0"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_PROMEN"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_SLOT4"
       }
     ]
   },
