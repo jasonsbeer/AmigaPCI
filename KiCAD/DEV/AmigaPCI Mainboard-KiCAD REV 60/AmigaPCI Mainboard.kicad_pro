@@ -191,7 +191,8 @@
         0.5,
         1.0,
         1.5,
-        2.0
+        2.0,
+        3.0
       ],
       "tuning_pattern_settings": {
         "diff_pair_defaults": {
@@ -234,7 +235,7 @@
         },
         {
           "diameter": 0.9,
-          "drill": 0.6
+          "drill": 0.5
         }
       ],
       "zones_allow_external_fillets": false,
@@ -3226,6 +3227,14 @@
       {
         "netclass": "Narrow",
         "pattern": "/ATA Interface/IRDY"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/HID and User Ports/SCL"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/HID and User Ports/SDA"
       }
     ]
   },

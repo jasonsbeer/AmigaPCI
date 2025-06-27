@@ -6,7 +6,7 @@
 	(paper "B")
 	(title_block
 		(title "AMIGA PCI")
-		(date "2025-06-26")
+		(date "2025-06-27")
 		(rev "6.0")
 	)
 	(lib_symbols
@@ -9091,6 +9091,16 @@
 			(justify left bottom)
 		)
 		(uuid "a8c1c1e5-3504-43e4-98ee-cf3cc32a9685")
+	)
+	(text "PLACE BEAD CLOSE\nTO AUDIO JACK"
+		(exclude_from_sim no)
+		(at 113.792 216.662 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "a900f80b-cbe5-45e7-98f6-7ad5861b2265")
 	)
 	(text "+AV/-AV"
 		(exclude_from_sim no)

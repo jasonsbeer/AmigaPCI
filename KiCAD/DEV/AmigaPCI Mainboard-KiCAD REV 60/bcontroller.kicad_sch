@@ -6,7 +6,7 @@
 	(paper "B")
 	(title_block
 		(title "AMIGA PCI")
-		(date "2025-06-26")
+		(date "2025-06-27")
 		(rev "6.0")
 	)
 	(lib_symbols
@@ -10709,16 +10709,6 @@
 			(justify left bottom)
 		)
 		(uuid "94721fa1-cb69-41e0-a9d9-feebed2bc68c")
-	)
-	(text "SET ATA CHIP SELECTS HERE\nSIGNAL 1: P_CS0\nSIGNAL 2: P_CS1\nSIGNAL 3: S_CS0\nSIGNAL 4: S_CS1\nSIGNAL 5: PRIMARY PIO MODE (2/4)\nSIGNAL 6: SECONDARY PIO MODE (2/4)"
-		(exclude_from_sim no)
-		(at 44.958 109.728 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "b3f5a7f2-d730-4715-9b51-ab0a8ed4d327")
 	)
 	(text "U409 PROVIDES ONBOARD DEVICE AUTOCONFIG, ADDRESS DECODE,\nAND REPLACEMENT GARY FUNCTIONS"
 		(exclude_from_sim no)

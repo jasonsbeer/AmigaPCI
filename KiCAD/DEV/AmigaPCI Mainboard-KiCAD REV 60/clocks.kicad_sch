@@ -6,7 +6,7 @@
 	(paper "B")
 	(title_block
 		(title "AMIGA PCI")
-		(date "2025-06-26")
+		(date "2025-06-27")
 		(rev "6.0")
 	)
 	(lib_symbols
@@ -11685,7 +11685,7 @@
 		)
 		(uuid bdb09365-7f7d-4021-8a55-5100aa5c5719)
 	)
-	(text "BOTTOM BOOT 1Mx16 FLASH\n\nTREATED AS FOUR 512K ADDRESS SPACES\nAS DEFINED BY FBANKx."
+	(text "BOTTOM BOOT 1Mx16 FLASH\n\nFOUR 512K ADDRESS SPACES\nAS DEFINED BY FBANKx."
 		(exclude_from_sim no)
 		(at 90.932 98.298 0)
 		(effects
