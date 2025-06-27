@@ -6,7 +6,7 @@
 	(paper "USLedger")
 	(title_block
 		(title "AMIGA PCI")
-		(date "2025-05-27")
+		(date "2025-06-26")
 		(rev "6.0")
 	)
 	(lib_symbols)
@@ -437,7 +437,7 @@
 			(color 0 0 0 0.0000)
 		)
 		(uuid "7a35a97e-5686-44dd-976e-0306b0eb5ef2")
-		(property "Sheetname" "IDE Interface"
+		(property "Sheetname" "ATA Interface"
 			(at 76.2 52.6284 0)
 			(effects
 				(font

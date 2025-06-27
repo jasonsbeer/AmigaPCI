@@ -6,7 +6,7 @@
 	(paper "B")
 	(title_block
 		(title "AMIGA PCI")
-		(date "2025-05-27")
+		(date "2025-06-26")
 		(rev "6.0")
 	)
 	(lib_symbols
@@ -4547,12 +4547,20 @@
 		(uuid "5fdc34e0-ed59-41b0-9252-7a912fb27fe5")
 	)
 	(no_connect
+		(at 281.94 147.32)
+		(uuid "64a4dccd-b6b0-4960-af5f-42e99c25f7c5")
+	)
+	(no_connect
 		(at 281.94 203.2)
 		(uuid "6d1c7187-05b1-45dd-8a16-f5983050dedd")
 	)
 	(no_connect
 		(at 281.94 208.28)
 		(uuid "72b471f0-1af8-45f5-a20e-e68afc50ab68")
+	)
+	(no_connect
+		(at 279.4 66.04)
+		(uuid "7b2194c2-3f65-47e8-8391-732d6d8647e8")
 	)
 	(no_connect
 		(at 281.94 106.68)
@@ -4607,6 +4615,14 @@
 		(uuid "bf21f38d-acb5-45e5-a29d-7824d93508dc")
 	)
 	(no_connect
+		(at 213.36 104.14)
+		(uuid "c1558944-b2fe-4bc9-8911-cb963c83cc6e")
+	)
+	(no_connect
+		(at 281.94 144.78)
+		(uuid "c31a7904-237c-46ee-ba28-3985e9e97603")
+	)
+	(no_connect
 		(at 123.19 133.35)
 		(uuid "c3699742-5a23-4a7f-98e4-e084fdbb9c48")
 	)
@@ -4621,6 +4637,10 @@
 	(no_connect
 		(at 222.25 99.06)
 		(uuid "c851cf9e-ec5e-45e5-b944-f4f9610f52e8")
+	)
+	(no_connect
+		(at 279.4 68.58)
+		(uuid "d4fa23eb-c7db-4646-b6d7-0b93f99d8801")
 	)
 	(no_connect
 		(at 213.36 167.64)
@@ -12655,16 +12675,6 @@
 		)
 		(uuid "1b3931db-8c0e-43db-82a5-4c71047455d1")
 	)
-	(label "LVA12"
-		(at 279.4 68.58 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "1bc684e3-f387-497f-925f-211099a03a96")
-	)
 	(label "LVD25"
 		(at 383.54 175.26 0)
 		(effects
@@ -12834,16 +12844,6 @@
 			(justify left bottom)
 		)
 		(uuid "2d452f3e-2c67-44b7-8aaa-21a49d39540d")
-	)
-	(label "LVA15"
-		(at 281.94 147.32 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "30b04bc0-4dcb-40d5-8acd-0918ad6e974c")
 	)
 	(label "LVAD6"
 		(at 342.9 88.9 0)
@@ -13665,16 +13665,6 @@
 		)
 		(uuid "ab9af3e3-3216-46c9-8fb0-a129245b8394")
 	)
-	(label "LVA14"
-		(at 213.36 104.14 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "ac0a5d40-77d5-417a-9192-9b1e592a2f6a")
-	)
 	(label "LVA26"
 		(at 363.22 170.18 0)
 		(effects
@@ -13805,16 +13795,6 @@
 		)
 		(uuid "bc1b1bbc-a630-4acb-b481-8df992e4aa3f")
 	)
-	(label "LVA13"
-		(at 279.4 66.04 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "bca5b7ed-9eb1-4838-9bdb-c6ec23a778ea")
-	)
 	(label "U409_SDI"
 		(at 314.96 91.44 0)
 		(effects
@@ -13884,16 +13864,6 @@
 			(justify left bottom)
 		)
 		(uuid "c70a9c23-1e27-43d2-8e74-1b480e7b364b")
-	)
-	(label "LVA16"
-		(at 281.94 144.78 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "c7527b4c-673f-4c53-a9fd-bf9dba3aef78")
 	)
 	(label "LVD27"
 		(at 383.54 182.88 0)
@@ -14453,7 +14423,7 @@
 			)
 		)
 	)
-	(global_label "PIO_S0"
+	(global_label "SCS1"
 		(shape input)
 		(at 281.94 190.5 0)
 		(fields_autoplaced yes)
@@ -14663,7 +14633,7 @@
 			)
 		)
 	)
-	(global_label "PIO_P1"
+	(global_label "PCS1"
 		(shape input)
 		(at 281.94 195.58 0)
 		(fields_autoplaced yes)
@@ -14956,7 +14926,7 @@
 			)
 		)
 	)
-	(global_label "PIO_S1"
+	(global_label "PPIO"
 		(shape input)
 		(at 281.94 180.34 0)
 		(fields_autoplaced yes)
@@ -15061,7 +15031,7 @@
 			)
 		)
 	)
-	(global_label "PIO_S2"
+	(global_label "SPIO"
 		(shape input)
 		(at 281.94 177.8 0)
 		(fields_autoplaced yes)
@@ -15856,7 +15826,7 @@
 			)
 		)
 	)
-	(global_label "PIO_P0"
+	(global_label "PCS0"
 		(shape input)
 		(at 281.94 198.12 0)
 		(fields_autoplaced yes)
@@ -16292,7 +16262,7 @@
 			)
 		)
 	)
-	(global_label "PIO_P2"
+	(global_label "SCS0"
 		(shape input)
 		(at 281.94 193.04 0)
 		(fields_autoplaced yes)

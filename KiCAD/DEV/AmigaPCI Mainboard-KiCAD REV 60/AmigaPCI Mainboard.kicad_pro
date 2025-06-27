@@ -3154,6 +3154,78 @@
       {
         "netclass": "Narrow",
         "pattern": "_SLOT4"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/ATA Interface/_ACTIVITY"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "PPIO"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "SPIO"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "SCS1"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "SCS0"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "PCS1"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "PCS0"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "FBANK1"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_FWREN"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "FRDY"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "FBANK0"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_FRDEN"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_FEN"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/ATA Interface/_ACTB"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/ATA Interface/_ACTA"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/ATA Interface/INTRQP"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/ATA Interface/INTRQS"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/ATA Interface/IRDY"
       }
     ]
   },
@@ -3407,7 +3479,7 @@
     ],
     [
       "7a35a97e-5686-44dd-976e-0306b0eb5ef2",
-      "IDE Interface"
+      "ATA Interface"
     ],
     [
       "14024e2c-eaac-4547-8875-4a8ac58b1720",
