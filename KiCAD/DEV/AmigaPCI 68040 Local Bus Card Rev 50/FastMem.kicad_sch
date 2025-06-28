@@ -5322,10 +5322,6 @@
 		(at 377.19 80.01)
 		(uuid "2e0cd5c0-9636-4fca-8c88-7e5189a6108d")
 	)
-	(no_connect
-		(at 383.54 173.99)
-		(uuid "659d73b8-7a56-46c6-b153-08f88819be43")
-	)
 	(bus_entry
 		(at 129.54 140.97)
 		(size 2.54 -2.54)
@@ -14590,6 +14586,27 @@
 		(uuid "a36121fb-c2de-4cf0-8048-ad19062f07ba")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 400.1322 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "_MI"
+		(shape input)
+		(at 383.54 173.99 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "a831083e-c85d-4ca4-8e56-4348657d7350")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 389.549 173.99 0)
 			(effects
 				(font
 					(size 1.27 1.27)
