@@ -14125,8 +14125,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "68R"
-			(at 46.228 255.27 90)
+		(property "Value" "2k"
+			(at 46.99 255.27 90)
 			(effects
 				(font
 					(size 1.27 1.27)

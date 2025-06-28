@@ -9012,6 +9012,12 @@
 		(uuid "31de3dc5-b935-4a3d-a0ec-80f0a109f890")
 	)
 	(junction
+		(at 260.35 120.65)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "3ad780ca-463a-4149-9e48-ae27dfbd7a61")
+	)
+	(junction
 		(at 151.13 50.8)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -9238,6 +9244,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "7e7afafa-180e-49b9-ae59-270d59441bbe")
+	)
+	(junction
+		(at 278.13 146.05)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "8286f226-d4b7-4ca7-841c-04e111716191")
 	)
 	(junction
 		(at 68.58 213.36)
@@ -10528,6 +10540,16 @@
 			(type default)
 		)
 		(uuid "02f6763a-c3e7-4ebf-a5ea-9111cd59065c")
+	)
+	(wire
+		(pts
+			(xy 278.13 133.35) (xy 278.13 146.05)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "03024d6a-1091-4b59-b1ff-ce3a01fc39ad")
 	)
 	(bus
 		(pts
@@ -12691,7 +12713,7 @@
 	)
 	(wire
 		(pts
-			(xy 260.35 49.53) (xy 260.35 148.59)
+			(xy 260.35 49.53) (xy 260.35 120.65)
 		)
 		(stroke
 			(width 0)
@@ -13991,6 +14013,16 @@
 	)
 	(wire
 		(pts
+			(xy 278.13 146.05) (xy 280.67 146.05)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "84fcbca1-95cf-4fb1-b26b-0b02f406ded1")
+	)
+	(wire
+		(pts
 			(xy 242.57 118.11) (xy 250.19 118.11)
 		)
 		(stroke
@@ -15039,6 +15071,16 @@
 		)
 		(uuid "aaf0b001-f7b8-4541-81b5-15386c7aa4b2")
 	)
+	(wire
+		(pts
+			(xy 278.13 125.73) (xy 278.13 120.65)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "abaa4052-cb37-494f-a60a-ae010616baf1")
+	)
 	(bus
 		(pts
 			(xy 41.91 213.36) (xy 41.91 215.9)
@@ -15811,6 +15853,16 @@
 	)
 	(wire
 		(pts
+			(xy 260.35 120.65) (xy 260.35 148.59)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c1ba3910-cda0-4307-bb09-86508f62ab23")
+	)
+	(wire
+		(pts
 			(xy 334.01 118.11) (xy 328.93 118.11)
 		)
 		(stroke
@@ -15838,6 +15890,16 @@
 			(type default)
 		)
 		(uuid "c351d43b-7996-4f10-a611-69467c6a7e9f")
+	)
+	(wire
+		(pts
+			(xy 260.35 120.65) (xy 278.13 120.65)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c3b073b8-3198-4f84-8413-5a52f5f99f26")
 	)
 	(wire
 		(pts
@@ -16291,7 +16353,7 @@
 	)
 	(wire
 		(pts
-			(xy 242.57 146.05) (xy 264.16 146.05)
+			(xy 242.57 146.05) (xy 278.13 146.05)
 		)
 		(stroke
 			(width 0)
@@ -19689,7 +19751,7 @@
 	)
 	(global_label "_LBEN"
 		(shape output)
-		(at 264.16 146.05 0)
+		(at 280.67 146.05 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -19699,7 +19761,7 @@
 		)
 		(uuid "05d98716-0083-4395-89ff-aff6aed791ef")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 272.8904 146.05 0)
+			(at 289.4004 146.05 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24023,6 +24085,76 @@
 			(project "AmigaPCI Mainboard"
 				(path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
 					(reference "RN201")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 278.13 129.54 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "3173fd79-425a-46ed-b8b9-c0cc3ecee3fd")
+		(property "Reference" "R250"
+			(at 275.844 132.08 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "10k"
+			(at 278.13 131.572 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 279.908 129.54 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 278.13 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 278.13 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c41c819b-bb6e-46aa-97c9-402b59115f39")
+		)
+		(pin "2"
+			(uuid "bb0adca9-f90c-4ec4-b4a0-8c8afc2155d3")
+		)
+		(instances
+			(project "AmigaPCI Mainboard"
+				(path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
+					(reference "R250")
 					(unit 1)
 				)
 			)
