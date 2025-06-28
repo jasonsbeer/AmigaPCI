@@ -3235,6 +3235,10 @@
       {
         "netclass": "Narrow",
         "pattern": "/HID and User Ports/SDA"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_FWP"
       }
     ]
   },

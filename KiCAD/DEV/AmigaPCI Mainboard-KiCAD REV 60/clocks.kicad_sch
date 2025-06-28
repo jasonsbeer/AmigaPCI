@@ -9283,16 +9283,6 @@
 		)
 		(uuid "8f6cbe06-cb9f-419e-82af-d2c251cd9459")
 	)
-	(wire
-		(pts
-			(xy 116.84 82.55) (xy 116.84 86.36)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "8faadb0a-4e26-4b34-90ac-12f071b0c958")
-	)
 	(bus
 		(pts
 			(xy 45.72 161.29) (xy 45.72 163.83)
@@ -9842,6 +9832,16 @@
 			(type default)
 		)
 		(uuid "aa2eef3a-f1d1-4461-8819-cbd3f11e3230")
+	)
+	(wire
+		(pts
+			(xy 101.6 86.36) (xy 93.98 86.36)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "aaf2061c-8c39-4c4b-8955-f40f8b7a53f1")
 	)
 	(wire
 		(pts
@@ -11052,16 +11052,6 @@
 			(type default)
 		)
 		(uuid "e5cfb6c0-16d1-4c6c-9c2f-51614e679e21")
-	)
-	(wire
-		(pts
-			(xy 93.98 86.36) (xy 116.84 86.36)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e5f4cc2a-0b89-4c96-8ae5-61329bb180e3")
 	)
 	(wire
 		(pts
@@ -13732,6 +13722,27 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
+			)
+		)
+	)
+	(global_label "_FWP"
+		(shape input)
+		(at 101.6 86.36 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "30a61e45-31a3-4ba1-9172-8b092456414f")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 111.8423 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
 			)
 		)
 	)
@@ -19840,73 +19851,6 @@
 			(project "AmigaPCI Mainboard"
 				(path "/72453515-27fe-4336-91f3-e3c8054f7767/d671396a-959f-409b-8612-87cb620c51cb"
 					(reference "X1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_name "+3V3_1")
-		(lib_id "power:+3V3")
-		(at 116.84 82.55 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "ce22ebb7-b96f-4a97-bf27-aaa49661f489")
-		(property "Reference" "#PWR149"
-			(at 116.84 86.36 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+3V3"
-			(at 116.84 77.47 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 116.84 82.55 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 116.84 82.55 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"+3V3\""
-			(at 116.84 82.55 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "d81b8f18-2db8-478d-b1ac-ac8ab87475ee")
-		)
-		(instances
-			(project "AmigaPCI Mainboard"
-				(path "/72453515-27fe-4336-91f3-e3c8054f7767/d671396a-959f-409b-8612-87cb620c51cb"
-					(reference "#PWR149")
 					(unit 1)
 				)
 			)
