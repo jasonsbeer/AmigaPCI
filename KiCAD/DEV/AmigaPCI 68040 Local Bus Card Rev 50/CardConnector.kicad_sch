@@ -19359,7 +19359,7 @@
 		)
 	)
 	(global_label "SCL"
-		(shape input)
+		(shape bidirectional)
 		(at 116.84 140.97 0)
 		(fields_autoplaced yes)
 		(effects
@@ -19422,7 +19422,7 @@
 		)
 	)
 	(global_label "SDA"
-		(shape input)
+		(shape bidirectional)
 		(at 116.84 146.05 0)
 		(fields_autoplaced yes)
 		(effects

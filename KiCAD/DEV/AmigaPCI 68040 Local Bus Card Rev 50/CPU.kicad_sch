@@ -10962,16 +10962,6 @@
 		)
 		(uuid "be4104a2-3c36-4787-999b-6b4ec5673060")
 	)
-	(label "SC2"
-		(at 92.71 137.16 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "bf1e96e6-cc0d-4025-9f8d-2e3d882905a3")
-	)
 	(label "_CDIS"
 		(at 92.71 152.4 0)
 		(effects
