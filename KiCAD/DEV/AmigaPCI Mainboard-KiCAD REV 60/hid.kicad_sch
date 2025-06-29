@@ -6,7 +6,7 @@
 	(paper "B")
 	(title_block
 		(title "AMIGA PCI")
-		(date "2025-06-28")
+		(date "2025-06-29")
 		(rev "6.0")
 	)
 	(lib_symbols
@@ -9543,12 +9543,6 @@
 		(uuid "34d1a739-8179-4805-85ba-6f1099ec51bb")
 	)
 	(junction
-		(at 342.9 127)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "35f6005b-d225-4639-b71b-b62913f445d5")
-	)
-	(junction
 		(at 40.64 64.77)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -9825,12 +9819,6 @@
 		(uuid "e3c4a306-9664-4a01-bc6b-d76701008082")
 	)
 	(junction
-		(at 349.25 127)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "e42b9160-7088-48e0-9f23-7bc6fca5dcca")
-	)
-	(junction
 		(at 83.82 252.73)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -10040,7 +10028,7 @@
 	)
 	(wire
 		(pts
-			(xy 331.47 143.51) (xy 349.25 143.51)
+			(xy 334.01 142.24) (xy 346.71 142.24)
 		)
 		(stroke
 			(width 0)
@@ -10277,16 +10265,6 @@
 			(type default)
 		)
 		(uuid "16dda8a0-a444-4293-a97b-eaf06ab5020a")
-	)
-	(wire
-		(pts
-			(xy 342.9 134.62) (xy 342.9 140.97)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "1706a65d-b0cf-448d-9af1-d6b403e43d84")
 	)
 	(wire
 		(pts
@@ -10660,7 +10638,7 @@
 	)
 	(wire
 		(pts
-			(xy 331.47 140.97) (xy 342.9 140.97)
+			(xy 334.01 139.7) (xy 340.36 139.7)
 		)
 		(stroke
 			(width 0)
@@ -10887,16 +10865,6 @@
 			(type default)
 		)
 		(uuid "3befda67-562f-407a-aca4-6fd63d28133c")
-	)
-	(wire
-		(pts
-			(xy 349.25 127) (xy 349.25 143.51)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3cc8dd99-70f6-4bbe-acb2-cb0cd2f15134")
 	)
 	(wire
 		(pts
@@ -11207,16 +11175,6 @@
 			(type default)
 		)
 		(uuid "4fb912c8-eee4-451f-a0f2-7ea7cafaac3f")
-	)
-	(wire
-		(pts
-			(xy 342.9 127) (xy 342.9 129.54)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "4ff4bed7-6979-43dc-896c-38cc26b87e48")
 	)
 	(wire
 		(pts
@@ -11730,7 +11688,7 @@
 	)
 	(wire
 		(pts
-			(xy 349.25 146.05) (xy 349.25 148.59)
+			(xy 346.71 144.78) (xy 346.71 147.32)
 		)
 		(stroke
 			(width 0)
@@ -12000,7 +11958,7 @@
 	)
 	(wire
 		(pts
-			(xy 331.47 146.05) (xy 349.25 146.05)
+			(xy 334.01 144.78) (xy 346.71 144.78)
 		)
 		(stroke
 			(width 0)
@@ -12510,7 +12468,7 @@
 	)
 	(wire
 		(pts
-			(xy 349.25 125.73) (xy 349.25 127)
+			(xy 346.71 139.7) (xy 346.71 142.24)
 		)
 		(stroke
 			(width 0)
@@ -12780,16 +12738,6 @@
 	)
 	(wire
 		(pts
-			(xy 342.9 127) (xy 349.25 127)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a9dc4101-14df-444e-b489-bca83e11503c")
-	)
-	(wire
-		(pts
 			(xy 107.95 116.84) (xy 142.24 116.84)
 		)
 		(stroke
@@ -12950,16 +12898,6 @@
 	)
 	(wire
 		(pts
-			(xy 340.36 129.54) (xy 340.36 127)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b5756707-2a19-4fde-a694-93463c65246f")
-	)
-	(wire
-		(pts
 			(xy 110.49 175.26) (xy 119.38 175.26)
 		)
 		(stroke
@@ -13027,16 +12965,6 @@
 			(type default)
 		)
 		(uuid "bb5530ae-bd27-48ca-a425-6ad7fe8fc8d8")
-	)
-	(wire
-		(pts
-			(xy 340.36 127) (xy 342.9 127)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "bb9e8330-0ed9-4b93-9f34-a543ac1ef879")
 	)
 	(wire
 		(pts
@@ -13187,16 +13115,6 @@
 			(type default)
 		)
 		(uuid "c29a6bab-459a-4e86-9aa4-168d445e69b5")
-	)
-	(wire
-		(pts
-			(xy 340.36 134.62) (xy 340.36 138.43)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c4d81ebb-7f27-4413-92d4-5e6783e5b794")
 	)
 	(wire
 		(pts
@@ -14080,7 +13998,7 @@
 	)
 	(wire
 		(pts
-			(xy 331.47 138.43) (xy 340.36 138.43)
+			(xy 334.01 137.16) (xy 340.36 137.16)
 		)
 		(stroke
 			(width 0)
@@ -14842,12 +14760,12 @@
 		(uuid "2fde77a6-b4a8-4fe7-a4f6-71f9a2b33e47")
 	)
 	(label "SDA"
-		(at 331.47 140.97 0)
+		(at 340.36 139.7 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left bottom)
+			(justify right bottom)
 		)
 		(uuid "300c53d0-95b4-45a4-b54e-14607e856637")
 	)
@@ -14872,12 +14790,12 @@
 		(uuid "324bab83-ece9-431c-aa62-45cf71ec4ae8")
 	)
 	(label "SCL"
-		(at 331.47 138.43 0)
+		(at 340.36 137.16 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left bottom)
+			(justify right bottom)
 		)
 		(uuid "32de56a6-0941-43bb-abb0-baebed47a960")
 	)
@@ -15531,16 +15449,6 @@
 		)
 		(uuid "b2dead02-de8a-4e6e-8ecb-32d11463772f")
 	)
-	(label "SCL"
-		(at 298.45 72.39 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "b373ec28-9e1a-4f75-8164-027130d59886")
-	)
 	(label "VBUS1"
 		(at 388.62 91.44 180)
 		(effects
@@ -15720,16 +15628,6 @@
 			(justify right bottom)
 		)
 		(uuid "dbd02bb5-1bdf-4c64-8e8c-9c91cee80bda")
-	)
-	(label "SDA"
-		(at 298.45 85.09 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "dcad4130-384f-41c7-b5ff-61b9d1749367")
 	)
 	(label "VMON3V3"
 		(at 298.45 52.07 180)
@@ -16240,6 +16138,27 @@
 			)
 		)
 	)
+	(global_label "SDA"
+		(shape bidirectional)
+		(at 298.45 85.09 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "6de1b6a3-aac7-4f3a-919a-ec113e2fb7d3")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 306.1146 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
 	(global_label "R_WA"
 		(shape input)
 		(at 300.99 92.71 0)
@@ -16486,6 +16405,27 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
+			)
+		)
+	)
+	(global_label "SCL"
+		(shape bidirectional)
+		(at 298.45 72.39 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "ce972368-33f4-4b81-acf9-d9e5d643155b")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 306.0541 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
 			)
 		)
 	)
@@ -17965,7 +17905,7 @@
 	)
 	(symbol
 		(lib_id "Connector_Generic:Conn_01x04")
-		(at 326.39 143.51 180)
+		(at 328.93 142.24 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -17973,7 +17913,7 @@
 		(dnp no)
 		(uuid "22408621-bae3-4f55-8be2-beb6990c2a95")
 		(property "Reference" "CN206"
-			(at 329.692 134.874 0)
+			(at 332.232 133.604 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17982,7 +17922,7 @@
 			)
 		)
 		(property "Value" "I2C"
-			(at 327.914 132.588 0)
+			(at 330.454 131.318 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17991,7 +17931,7 @@
 			)
 		)
 		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical"
-			(at 326.39 143.51 0)
+			(at 328.93 142.24 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18000,7 +17940,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 326.39 143.51 0)
+			(at 328.93 142.24 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18009,7 +17949,7 @@
 			)
 		)
 		(property "Description" "Generic connector, single row, 01x04, script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 326.39 143.51 0)
+			(at 328.93 142.24 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20660,7 +20600,7 @@
 	(symbol
 		(lib_name "GND_1")
 		(lib_id "power:GND")
-		(at 349.25 148.59 0)
+		(at 346.71 147.32 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -20669,7 +20609,7 @@
 		(fields_autoplaced yes)
 		(uuid "6c263de8-acd5-4a69-b834-35b9d67ff25f")
 		(property "Reference" "#PWR385"
-			(at 349.25 154.94 0)
+			(at 346.71 153.67 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20678,7 +20618,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 349.25 153.67 0)
+			(at 346.71 152.4 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20686,7 +20626,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 349.25 148.59 0)
+			(at 346.71 147.32 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20695,7 +20635,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 349.25 148.59 0)
+			(at 346.71 147.32 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20704,7 +20644,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 349.25 148.59 0)
+			(at 346.71 147.32 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20937,7 +20877,7 @@
 	)
 	(symbol
 		(lib_id "AmigaPCI-Symbols:+3V3SB")
-		(at 349.25 125.73 0)
+		(at 346.71 139.7 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -20945,7 +20885,7 @@
 		(dnp no)
 		(uuid "78724cc3-934a-4ce3-9867-c368a9bed36a")
 		(property "Reference" "#PWR386"
-			(at 349.25 129.54 0)
+			(at 346.71 143.51 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20954,7 +20894,7 @@
 			)
 		)
 		(property "Value" "+3V3SB"
-			(at 349.25 121.92 0)
+			(at 346.71 135.89 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20962,7 +20902,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 349.25 125.73 0)
+			(at 346.71 139.7 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20971,7 +20911,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 349.25 125.73 0)
+			(at 346.71 139.7 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20980,7 +20920,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+3V3\""
-			(at 349.25 125.73 0)
+			(at 346.71 139.7 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21619,75 +21559,6 @@
 			(project "AmigaPCI Mainboard"
 				(path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
 					(reference "CN201")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R_Small")
-		(at 340.36 132.08 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "8e6142d3-5d4e-4ac5-8b48-848134ec106d")
-		(property "Reference" "R280"
-			(at 338.328 129.032 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "2k2"
-			(at 340.36 130.556 90)
-			(effects
-				(font
-					(size 1 1)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 340.36 132.08 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 340.36 132.08 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 340.36 132.08 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "fc8954f6-0d52-40a6-a743-9d5e294ce763")
-		)
-		(pin "2"
-			(uuid "42171b0e-6e8c-4283-a213-cfbdfafbdb5e")
-		)
-		(instances
-			(project "AmigaPCI Mainboard"
-				(path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
-					(reference "R280")
 					(unit 1)
 				)
 			)
@@ -24482,75 +24353,6 @@
 			(project "2000ATX"
 				(path "/bb595301-1c72-49dc-ac6f-007419f3a7fd/00000000-0000-0000-0000-000060592f9f"
 					(reference "#PWR0272")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R_Small")
-		(at 342.9 132.08 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "d1765f26-04a2-4ae5-a00c-5a07ebe46536")
-		(property "Reference" "R281"
-			(at 344.932 134.112 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "2k2"
-			(at 342.9 133.35 90)
-			(effects
-				(font
-					(size 1 1)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 342.9 132.08 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 342.9 132.08 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 342.9 132.08 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "63f1040c-37a7-406b-a417-a4dbb4008775")
-		)
-		(pin "2"
-			(uuid "d3ea820d-dc0f-4da0-9639-8e2fb404c54f")
-		)
-		(instances
-			(project "AmigaPCI Mainboard"
-				(path "/72453515-27fe-4336-91f3-e3c8054f7767/60b2ee65-4978-4bd8-934d-67b9c15d34cc"
-					(reference "R281")
 					(unit 1)
 				)
 			)

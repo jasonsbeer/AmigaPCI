@@ -3239,6 +3239,10 @@
       {
         "netclass": "Narrow",
         "pattern": "_FWP"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "POW_SW"
       }
     ]
   },
