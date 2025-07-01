@@ -6,7 +6,7 @@
 	(paper "B")
 	(title_block
 		(title "AMIGA PCI")
-		(date "2025-06-29")
+		(date "2025-06-30")
 		(rev "6.0")
 	)
 	(lib_symbols
@@ -4495,20 +4495,12 @@
 		(uuid "faf5c50f-a030-4c47-aec4-56d3577ff44c")
 	)
 	(no_connect
-		(at 123.19 128.27)
-		(uuid "11e6944b-5604-46b2-8ffe-3c291ca69263")
-	)
-	(no_connect
 		(at 121.92 214.63)
 		(uuid "1447068a-b740-4c73-b1db-201beaa26fb4")
 	)
 	(no_connect
 		(at 123.19 135.89)
 		(uuid "168a59a5-1a06-4767-bb40-bece15a8c4a0")
-	)
-	(no_connect
-		(at 123.19 125.73)
-		(uuid "178b2c3b-ba16-4ef1-bd1d-87e8852a06fa")
 	)
 	(no_connect
 		(at 281.94 86.36)
@@ -4531,10 +4523,6 @@
 		(uuid "4439375e-52fb-4174-8244-3fef2730f6a0")
 	)
 	(no_connect
-		(at 121.92 87.63)
-		(uuid "47d0ec85-3623-4daa-ad2b-ad8465b74a28")
-	)
-	(no_connect
 		(at 281.94 200.66)
 		(uuid "50057921-ba64-4af8-8e42-ea53bc79f35d")
 	)
@@ -4547,20 +4535,12 @@
 		(uuid "5fdc34e0-ed59-41b0-9252-7a912fb27fe5")
 	)
 	(no_connect
-		(at 281.94 147.32)
-		(uuid "64a4dccd-b6b0-4960-af5f-42e99c25f7c5")
-	)
-	(no_connect
 		(at 281.94 203.2)
 		(uuid "6d1c7187-05b1-45dd-8a16-f5983050dedd")
 	)
 	(no_connect
 		(at 281.94 208.28)
 		(uuid "72b471f0-1af8-45f5-a20e-e68afc50ab68")
-	)
-	(no_connect
-		(at 279.4 66.04)
-		(uuid "7b2194c2-3f65-47e8-8391-732d6d8647e8")
 	)
 	(no_connect
 		(at 281.94 106.68)
@@ -4607,8 +4587,8 @@
 		(uuid "a6a3161e-f95b-4777-98e5-d342e97e048e")
 	)
 	(no_connect
-		(at 213.36 142.24)
-		(uuid "bae8995b-5b18-4eff-8265-1bf2296e3811")
+		(at 123.19 107.95)
+		(uuid "b735ffc7-6a44-4812-8953-1287ace35afb")
 	)
 	(no_connect
 		(at 281.94 215.9)
@@ -4619,20 +4599,12 @@
 		(uuid "c1558944-b2fe-4bc9-8911-cb963c83cc6e")
 	)
 	(no_connect
-		(at 281.94 144.78)
-		(uuid "c31a7904-237c-46ee-ba28-3985e9e97603")
-	)
-	(no_connect
 		(at 123.19 133.35)
 		(uuid "c3699742-5a23-4a7f-98e4-e084fdbb9c48")
 	)
 	(no_connect
 		(at 121.92 212.09)
 		(uuid "c6ccb2dc-d872-4f9f-a6a4-7563e440135a")
-	)
-	(no_connect
-		(at 123.19 130.81)
-		(uuid "c6fa93ab-ec80-4270-abb7-c5bd503b07eb")
 	)
 	(no_connect
 		(at 222.25 99.06)
@@ -4657,10 +4629,6 @@
 	(no_connect
 		(at 281.94 124.46)
 		(uuid "e6ef9ede-edb9-4f74-9fd8-85fa65769a2f")
-	)
-	(no_connect
-		(at 121.92 85.09)
-		(uuid "e7fc1857-af0f-4c6a-90a6-1dc388447bc5")
 	)
 	(no_connect
 		(at 281.94 165.1)
@@ -8152,7 +8120,7 @@
 	)
 	(wire
 		(pts
-			(xy 279.4 66.04) (xy 273.05 66.04)
+			(xy 274.32 66.04) (xy 273.05 66.04)
 		)
 		(stroke
 			(width 0)
@@ -12432,7 +12400,7 @@
 		)
 		(uuid "a2476c3f-9c69-491d-bb25-12d606cbf025")
 	)
-	(text "U109: BUFFERS AD/D/A BUSSES, AD PARITY CALC, BRIDGE REGISTERS\n\nU110: BUS ARBITRATOR, INTERRUPT HANDLING, PARITY ERROR DETECTION, ATA CONTROLLER"
+	(text "U109: BUFFERS AD/D/A BUSSES, AD PARITY CALC, BRIDGE REGISTERS\n\nU110: BUS ARBITOR, INTERRUPT HANDLING, PARITY ERROR DETECTION, ATA CONTROLLER"
 		(exclude_from_sim no)
 		(at 22.86 33.02 0)
 		(effects
@@ -14298,6 +14266,27 @@
 			)
 		)
 	)
+	(global_label "_BPROEN"
+		(shape input)
+		(at 274.32 66.04 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "0391a457-4089-438a-8fc5-307d5bbe9b4a")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 285.8928 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
 	(global_label "PCIAT0"
 		(shape input)
 		(at 281.94 129.54 0)
@@ -14374,6 +14363,27 @@
 		(uuid "069a5f39-cb11-446b-b8f9-276cc1153455")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 292.9081 127 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "PCIAT1"
+		(shape input)
+		(at 123.19 125.73 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "081178c5-ca4c-4fd1-ba4f-392947e092ed")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 132.5857 125.73 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14989,6 +14999,27 @@
 			)
 		)
 	)
+	(global_label "PCI1"
+		(shape bidirectional)
+		(at 281.94 147.32 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "65a016d1-c782-4b4a-a294-4379f3508abd")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 290.3908 147.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
 	(global_label "IDSEL3"
 		(shape output)
 		(at 123.19 146.05 0)
@@ -15261,27 +15292,6 @@
 			)
 		)
 	)
-	(global_label "_BREG"
-		(shape input)
-		(at 123.19 123.19 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "80273067-eee2-417b-b821-0302373b9b74")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 132.1018 123.19 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-	)
 	(global_label "_BUSREQ4"
 		(shape input)
 		(at 213.36 193.04 180)
@@ -15428,6 +15438,27 @@
 			)
 		)
 	)
+	(global_label "PCI1"
+		(shape bidirectional)
+		(at 121.92 87.63 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "8e768eb6-5fff-4b55-877b-56611e2c0837")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 130.3708 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
 	(global_label "PHASEA_D"
 		(shape output)
 		(at 121.92 181.61 0)
@@ -15533,6 +15564,27 @@
 			)
 		)
 	)
+	(global_label "PCI0"
+		(shape bidirectional)
+		(at 281.94 144.78 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "a0204c75-62b1-48fc-a05b-dc0fc66b2c78")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 290.3908 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
 	(global_label "_LVTRDY"
 		(shape bidirectional)
 		(at 121.92 176.53 0)
@@ -15554,9 +15606,9 @@
 			)
 		)
 	)
-	(global_label "_BEN"
-		(shape input)
-		(at 123.19 107.95 0)
+	(global_label "PCI0"
+		(shape bidirectional)
+		(at 121.92 85.09 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -15564,9 +15616,9 @@
 			)
 			(justify left)
 		)
-		(uuid "abb1ea57-3f75-455a-aef2-c370a07eb37c")
+		(uuid "ab7ac073-05f8-4cc0-8416-547ccab1d9f5")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 130.8129 107.95 0)
+			(at 130.3708 85.09 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15847,6 +15899,27 @@
 			)
 		)
 	)
+	(global_label "PCIAT0"
+		(shape input)
+		(at 123.19 123.19 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "c82ed047-8b33-4f77-9910-cc651999d666")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 132.5857 123.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
 	(global_label "_RESETB"
 		(shape input)
 		(at 281.94 91.44 0)
@@ -15971,7 +16044,7 @@
 			)
 		)
 	)
-	(global_label "_BEN"
+	(global_label "_BREGEN"
 		(shape input)
 		(at 281.94 172.72 0)
 		(fields_autoplaced yes)
@@ -15983,7 +16056,7 @@
 		)
 		(uuid "d032be5f-12f0-40db-9094-28565051f284")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 289.6423 172.72 0)
+			(at 293.3313 172.72 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16096,6 +16169,27 @@
 			)
 		)
 	)
+	(global_label "_BPROEN"
+		(shape input)
+		(at 123.19 130.81 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "e5bf08dd-b876-4526-92e1-7f49c8f0a8bb")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 134.7628 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
 	(global_label "_DIOWB"
 		(shape output)
 		(at 213.36 154.94 180)
@@ -16135,6 +16229,27 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
+			)
+		)
+	)
+	(global_label "_BREGEN"
+		(shape input)
+		(at 123.19 128.27 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "e8d0ada3-90e2-4c44-a617-9f36be30528b")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 134.5813 128.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
 			)
 		)
 	)

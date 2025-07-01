@@ -3243,6 +3243,26 @@
       {
         "netclass": "Default",
         "pattern": "POW_SW"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "PCIAT2"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "PCI1"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "PCI0"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_BPROEN"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_BREGEN"
       }
     ]
   },

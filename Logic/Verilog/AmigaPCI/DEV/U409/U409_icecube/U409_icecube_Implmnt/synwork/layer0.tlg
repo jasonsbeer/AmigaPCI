@@ -1,0 +1,46 @@
+Selecting top level module U409_TOP
+@N: CG364 :"C:\lscc\iCEcube2.2020.12\synpbase\lib\generic\sb_ice40.v":698:7:698:19|Synthesizing module SB_PLL40_CORE in library work.
+
+@N: CG364 :"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v":35:7:35:23|Synthesizing module U409_TRANSFER_ACK in library work.
+
+@N: CG364 :"D:\AmigaPCI\U409\U409_DATA_BUFFERS.v":33:7:33:23|Synthesizing module U409_DATA_BUFFERS in library work.
+
+@N: CG364 :"D:\AmigaPCI\U409\U409_ADDRESS_DECODE.v":36:7:36:25|Synthesizing module U409_ADDRESS_DECODE in library work.
+
+@N: CG364 :"D:\AmigaPCI\U409\U409_TICK.v":33:7:33:15|Synthesizing module U409_TICK in library work.
+
+@N: CG364 :"D:\AmigaPCI\U409\U409_CIA.v":35:7:35:14|Synthesizing module U409_CIA in library work.
+
+@N: CG364 :"D:\AmigaPCI\U409\U409_AUTOCONFIG.v":34:7:34:21|Synthesizing module U409_AUTOCONFIG in library work.
+
+@N: CG364 :"D:\AmigaPCI\U409\U409_TOP.v":34:7:34:14|Synthesizing module U409_TOP in library work.
+
+@W: CG781 :"D:\AmigaPCI\U409\U409_TOP.v":76:2:76:4|Input EXTFEEDBACK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\AmigaPCI\U409\U409_TOP.v":76:2:76:4|Input DYNAMICDELAY on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\AmigaPCI\U409\U409_TOP.v":76:2:76:4|Input SDI on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\AmigaPCI\U409\U409_TOP.v":76:2:76:4|Input SCLK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\AmigaPCI\U409\U409_TOP.v":76:2:76:4|Input LATCHINPUTVALUE on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@N: CL201 :"D:\AmigaPCI\U409\U409_AUTOCONFIG.v":94:0:94:5|Trying to extract state machine for register STATE.
+Extracted state machine for register STATE
+State machine has 4 reachable states with original encodings of:
+   0000
+   0001
+   0010
+   0011
+@N: CL159 :"D:\AmigaPCI\U409\U409_AUTOCONFIG.v":36:38:36:45|Input AUTOBOOT is unused.
+@W: CL246 :"D:\AmigaPCI\U409\U409_ADDRESS_DECODE.v":42:17:42:17|Input port bits 15 to 14 of A[31:1] are unused. Assign logic for all port bits or change the input port size.
+@W: CL246 :"D:\AmigaPCI\U409\U409_ADDRESS_DECODE.v":42:17:42:17|Input port bits 11 to 1 of A[31:1] are unused. Assign logic for all port bits or change the input port size.
+@N: CL201 :"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v":61:0:61:5|Trying to extract state machine for register TACK_COUNTER.
+Extracted state machine for register TACK_COUNTER
+State machine has 4 reachable states with original encodings of:
+   0000
+   0001
+   0010
+   0011
+@N: CL201 :"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v":176:0:176:5|Trying to extract state machine for register CIA_STATE.
+Extracted state machine for register CIA_STATE
+State machine has 4 reachable states with original encodings of:
+   00
+   01
+   10
+   11

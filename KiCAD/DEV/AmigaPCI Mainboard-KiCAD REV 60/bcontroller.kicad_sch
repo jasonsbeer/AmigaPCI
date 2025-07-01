@@ -6,7 +6,7 @@
 	(paper "B")
 	(title_block
 		(title "AMIGA PCI")
-		(date "2025-06-29")
+		(date "2025-06-30")
 		(rev "6.0")
 	)
 	(lib_symbols
@@ -5774,6 +5774,10 @@
 	(no_connect
 		(at 341.63 198.12)
 		(uuid "1d9b41f1-942c-4395-8a79-62bb358d7ee9")
+	)
+	(no_connect
+		(at 147.32 205.74)
+		(uuid "446264d8-182a-4a43-96e5-2300ca0bebc6")
 	)
 	(no_connect
 		(at 341.63 200.66)
@@ -12979,27 +12983,6 @@
 		)
 		(uuid "ff32185e-57e9-42ef-9b03-aa7ccc397c39")
 	)
-	(global_label "_LBEN"
-		(shape input)
-		(at 147.32 205.74 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "01da9013-95ff-42f4-a82c-0ed222b694a9")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 156.0504 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-	)
 	(global_label "LVD[31..0]"
 		(shape bidirectional)
 		(at 227.33 63.5 0)
@@ -13312,7 +13295,7 @@
 			)
 		)
 	)
-	(global_label "_BREG"
+	(global_label "_BPROEN"
 		(shape output)
 		(at 78.74 129.54 180)
 		(fields_autoplaced yes)
@@ -13322,9 +13305,9 @@
 			)
 			(justify right)
 		)
-		(uuid "3c740157-062f-42aa-bcad-6613eb73f2cd")
+		(uuid "3a84ce72-28c9-4624-aa6f-3e19bdb4e583")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 69.8282 129.54 0)
+			(at 67.1672 129.54 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13584,7 +13567,7 @@
 			)
 		)
 	)
-	(global_label "_BEN"
+	(global_label "_BREGEN"
 		(shape output)
 		(at 149.86 134.62 0)
 		(fields_autoplaced yes)
@@ -13596,7 +13579,7 @@
 		)
 		(uuid "597efe6f-b052-4413-acb7-cb1d09700ef2")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 157.4829 134.62 0)
+			(at 161.2513 134.62 0)
 			(effects
 				(font
 					(size 1.27 1.27)

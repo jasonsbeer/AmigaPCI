@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- *************************************************************************************
+FILE DESCRIPTION
+Max Top 5 critical clocks will be reported. For rest user needs to refer to Detailed report
+*******************************************************************************************-->
+<report_table display_priority="2" name="Timing Summary">
+<report_link name="Detailed report">
+<data>D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\synlog\U409_icecube_fpga_mapper.srr</data>
+<title>START OF TIMING REPORT</title>
+</report_link>
+<row>
+<data tcl_name="clock_name">Clock Name</data>
+<data tcl_name="req_freq">Req Freq</data>
+<data tcl_name="est_freq">Est Freq</data>
+<data tcl_name="slack">Slack</data>
+</row>
+<row>
+<data>CLK6</data>
+<data>6.0 MHz</data>
+<data>131.0 MHz</data>
+<data>159.030</data>
+</row>
+<row>
+<data>CLK28_IN</data>
+<data>28.6 MHz</data>
+<data>3.6 MHz</data>
+<data>-3.630</data>
+</row>
+<row>
+<data>CLK40_IN</data>
+<data>40.0 MHz</data>
+<data>43.3 MHz</data>
+<data>0.631</data>
+</row>
+<row>
+<data>U409_TOP|CLK80_OUT_derived_clock</data>
+<data>80.0 MHz</data>
+<data>10.0 MHz</data>
+<data>2.904</data>
+</row>
+</report_table>

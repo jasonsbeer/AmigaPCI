@@ -1,0 +1,150 @@
+* ******************************************************************************
+
+* iCEcube Report
+
+* Version:            2020.12.27943
+
+* Build Date:         Dec  9 2020 17:31:51
+
+* File Generated:     Jun 15 2025 11:37:53
+
+* Purpose:            General info of design implementation
+
+* Copyright (C) 2006-2010 by Lattice Semiconductor Corp. All rights reserved.
+
+* ******************************************************************************
+
+Synthesis/Placement Summary:
+----------------------------
+    Status:  Successful
+    Runtime: 1 seconds
+
+Device Info:
+------------
+    Device Family: iCE40
+    Device:        iCE40HX4K
+    Package:       TQ144
+
+Design statistics:
+------------------
+    FFs:                  101
+    LUTs:                 261
+    RAMs:                 0
+    IOBs:                 66
+    GBs:                  4
+    PLLs:                 1
+    Warm Boots:           0
+
+Logic Resource Utilization:
+---------------------------
+    Total Logic Cells: 264/3520
+        Combinational Logic Cells: 163      out of   3520      4.63068%
+        Sequential Logic Cells:    101      out of   3520      2.86932%
+        Logic Tiles:               72       out of   440       16.3636%
+    Registers: 
+        Logic Registers:           101      out of   3520      2.86932%
+        IO Registers:              0        out of   880       0
+    Block RAMs:                    0        out of   20        0%
+    Warm Boots:                    0        out of   1         0%
+    Pins:
+        Input Pins:                39       out of   107       36.4486%
+        Output Pins:               22       out of   107       20.5607%
+        InOut Pins:                5        out of   107       4.6729%
+    Global Buffers:                4        out of   8         50%
+    PLLs:                          1        out of   2         50%
+
+IO Bank Utilization:
+--------------------
+    Bank 3: 24       out of   28        85.7143%
+    Bank 1: 13       out of   29        44.8276%
+    Bank 0: 18       out of   27        66.6667%
+    Bank 2: 11       out of   23        47.8261%
+
+Detailed I/O Info:
+------------------
+    Input Pins: 
+    Pin Number  Direction  IO Standard  Pull Up  IO Bank  IO Function                                Signal Name 
+    ----------  ---------  -----------  -------  -------  -----------                                ----------- 
+    1           Input      SB_LVCMOS    No       3        Simple Input                               A[3]        
+    2           Input      SB_LVCMOS    No       3        Simple Input                               A[28]       
+    3           Input      SB_LVCMOS    No       3        Simple Input                               A[22]       
+    4           Input      SB_LVCMOS    No       3        Simple Input                               A[26]       
+    7           Input      SB_LVCMOS    No       3        Simple Input                               A[29]       
+    8           Input      SB_LVCMOS    No       3        Simple Input                               A[24]       
+    9           Input      SB_LVCMOS    No       3        Simple Input                               A[30]       
+    10          Input      SB_LVCMOS    No       3        Simple Input                               A[31]       
+    11          Input      SB_LVCMOS    No       3        Simple Input                               A[27]       
+    12          Input      SB_LVCMOS    No       3        Simple Input                               A[25]       
+    15          Input      SB_LVCMOS    No       3        Simple Input                               A[21]       
+    16          Input      SB_LVCMOS    No       3        Simple Input                               A[23]       
+    17          Input      SB_LVCMOS    No       3        Simple Input                               A[20]       
+    18          Input      SB_LVCMOS    No       3        Simple Input                               A[4]        
+    19          Input      SB_LVCMOS    No       3        Simple Input                               A[5]        
+    20          Input      SB_LVCMOS    No       3        Simple Input                               A[6]        
+    21          Input      SB_LVCMOS    No       3        Simple Input                               A[7]        
+    26          Input      SB_LVCMOS    No       3        Simple Input                               A[12]       
+    28          Input      SB_LVCMOS    No       3        Simple Input                               A[13]       
+    29          Input      SB_LVCMOS    No       3        Simple Input                               A[14]       
+    31          Input      SB_LVCMOS    No       3        Simple Input                               A[15]       
+    32          Input      SB_LVCMOS    No       3        Simple Input                               A[16]       
+    33          Input      SB_LVCMOS    No       3        Simple Input                               A[17]       
+    34          Input      SB_LVCMOS    No       3        Simple Input                               A[18]       
+    37          Input      SB_LVCMOS    No       2        Simple Input                               A[19]       
+    52          Input      SB_LVCMOS    No       2        Simple Input                               CLK6        
+    62          Input      SB_LVCMOS    No       2        Simple Input                               RESETn      
+    81          Input      SB_LVCMOS    No       1        Simple Input                               OVL         
+    94          Input      SB_LVCMOS    No       1        Simple Input                               CLK28_IN    
+    129         Input      SB_LVCMOS    No       0        Simple Input                               CLK40_IN    
+    130         Input      SB_LVCMOS    No       0        Simple Input                               CPUCONFn    
+    134         Input      SB_LVCMOS    No       0        Simple Input                               TSn         
+    136         Input      SB_LVCMOS    No       0        Simple Input                               TM[0]       
+    137         Input      SB_LVCMOS    No       0        Simple Input                               TM[1]       
+    138         Input      SB_LVCMOS    No       0        Simple Input                               TT[0]       
+    139         Input      SB_LVCMOS    No       0        Simple Input                               TT[1]       
+    142         Input      SB_LVCMOS    No       0        Simple Input                               RnW         
+    143         Input      SB_LVCMOS    No       0        Simple Input                               A[2]        
+    144         Input      SB_LVCMOS    No       0        Simple Input                               A[1]        
+
+    Output Pins: 
+    Pin Number  Direction  IO Standard  Pull Up  IO Bank  IO Function                                Signal Name 
+    ----------  ---------  -----------  -------  -------  -----------                                ----------- 
+    48          Output     SB_LVCMOS    No       2        Simple Output                              RAMSPACEn   
+    55          Output     SB_LVCMOS    No       2        Simple Output                              TICK60      
+    56          Output     SB_LVCMOS    No       2        Simple Output                              TICK50      
+    61          Output     SB_LVCMOS    No       2        Simple Output                              CONFIGENn   
+    73          Output     SB_LVCMOS    No       1        Simple Output                              PIO_P0      
+    74          Output     SB_LVCMOS    No       1        Simple Output                              PIO_P1      
+    75          Output     SB_LVCMOS    No       1        Simple Output                              PIO_P2      
+    76          Output     SB_LVCMOS    No       1        Simple Output                              PIO_S0      
+    78          Output     SB_LVCMOS    No       1        Simple Output                              CIACS0n     
+    79          Output     SB_LVCMOS    No       1        Simple Output                              CIACS1n     
+    80          Output     SB_LVCMOS    No       1        Simple Output                              RTC_ENn     
+    87          Output     SB_LVCMOS    No       1        Simple Output                              PIO_S1      
+    88          Output     SB_LVCMOS    No       1        Simple Output                              PIO_S2      
+    90          Output     SB_LVCMOS    No       1        Simple Output                              ATA_ENn     
+    91          Output     SB_LVCMOS    No       1        Simple Output                              BRIDGE_ENn  
+    115         Output     SB_LVCMOS    No       0        Output Tristatable by Enable               TCIn        
+    116         Output     SB_LVCMOS    No       0        Output Tristatable by Enable               TBIn        
+    118         Output     SB_LVCMOS    No       0        Simple Output                              REGSPACEn   
+    119         Output     SB_LVCMOS    No       0        Simple Output                              BUFENn      
+    122         Output     SB_LVCMOS    No       0        Simple Output                              CLK_CIA     
+    124         Output     SB_LVCMOS    No       0        Simple Output                              ROMENn      
+    135         Output     SB_LVCMOS    No       0        Simple Output                              PORTSIZE    
+
+    Inoutput Pins: 
+    Pin Number  Direction  IO Standard  Pull Up  IO Bank  IO Function                                Signal Name 
+    ----------  ---------  -----------  -------  -------  -----------                                ----------- 
+    43          InOut      SB_LVCMOS    No       2        Simple Input Output Tristatable by Enable  D[4]        
+    44          InOut      SB_LVCMOS    No       2        Simple Input Output Tristatable by Enable  D[5]        
+    45          InOut      SB_LVCMOS    No       2        Simple Input Output Tristatable by Enable  D[6]        
+    47          InOut      SB_LVCMOS    No       2        Simple Input Output Tristatable by Enable  D[7]        
+    117         InOut      SB_LVCMOS    No       0        Simple Input Output Tristatable by Enable  TACKn       
+
+Detailed Global Buffer Info:
+----------------------------
+    Buffer Number  IO Bank  Driven By  Fanout  Signal Name   
+    -------------  -------  ---------  ------  -----------   
+    7              0        IO         17      CLK40_IN_c_g  
+    3              2        IO         36      CLK6_c_g      
+    5              1        IO         10      CLK28_IN_c_g  
+    4              0                   29      RESETn_c_i_g  
