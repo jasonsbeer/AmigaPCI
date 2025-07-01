@@ -1,15 +1,15 @@
 
 #1001 : create_clock -period 25.0000 [get_ports CLK40_IN]
-# line 2 in d:/amigapci/u409/u409_top.sdc
+# line 2 in c:/users/jason/documents/github/amigapci/logic/verilog/amigapci/dev/u409/u409_top.sdc
 
 create_clock -period {25.000} [get_ports {CLK40_IN}]
 
 #1002 : create_clock -period 166.6667 [get_ports CLK6]
-# line 3 in d:/amigapci/u409/u409_top.sdc
+# line 3 in c:/users/jason/documents/github/amigapci/logic/verilog/amigapci/dev/u409/u409_top.sdc
 
 create_clock -period {166.667} [get_ports {CLK6}]
 
 #1003 : create_clock -period 34.9162 [get_ports CLK28_IN]
-# line 5 in d:/amigapci/u409/u409_top.sdc
+# line 4 in c:/users/jason/documents/github/amigapci/logic/verilog/amigapci/dev/u409/u409_top.sdc
 
 create_clock -period {34.916} [get_ports {CLK28_IN}]

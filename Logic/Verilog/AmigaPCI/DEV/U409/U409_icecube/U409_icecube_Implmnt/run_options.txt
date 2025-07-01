@@ -1,7 +1,7 @@
 #--  Synopsys, Inc.
 #--  Version L-2016.09L+ice40
-#--  Project file D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\run_options.txt
-#--  Written on Sun Jun 15 11:37:23 2025
+#--  Project file C:\Users\jason\Documents\GitHub\AmigaPCI\Logic\Verilog\AmigaPCI\DEV\U409\U409_icecube\U409_icecube_Implmnt\run_options.txt
+#--  Written on Tue Jul 01 18:43:16 2025
 
 
 #project files
@@ -12,6 +12,7 @@ add_file -verilog "../U409_TICK.v"
 add_file -verilog "../U409_TOP.v"
 add_file -verilog "../U409_TRANSFER_ACK.v"
 add_file -verilog "../U409_AUTOCONFIG.v"
+add_file -verilog "../U409_FLASH.v"
 add_file -constraint "../U409_TOP.sdc"
 
 

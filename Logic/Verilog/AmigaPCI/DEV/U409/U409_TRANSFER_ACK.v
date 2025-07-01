@@ -25,16 +25,17 @@ Target Devices: iCE40-HX4K-TQ144
 Description: MC68040/MC68060 TRANSFER ACK
 
 Revision History:
-    25-JAN-2025 : INITIAL REV 5.0 CODE
-    09-FEB-2025 : SEPERATED ROM AND AUTOVECTOR CYCLE ACKS JN
-    31-MAY-2028 : Added _TBI and _TCI assertion to cycle terminiations. JN
+    01-JUL-2025 : INITIAL REV 6.0 CODE
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 */
 
 module U409_TRANSFER_ACK (
 
-    input CLK80, CLK40, RESETn, TSn, ROMEN, CIA_ENABLE, CLK_CIA, AGNUS_SPACE, AUTOVECTOR, ROM_DELAY, RTC_ENn, CACHE_SPACE, AC_TACK,
+    input CLK80, CLK40, RESETn, TSn, ROMEN, CIA_ENABLE, CLK_CIA, AGNUS_SPACE,
+    input AUTOVECTOR, RTC_ENn, CACHE_SPACE, AC_TACK,
+    
+    input [1:0] ROM_DELAY,
 
     output TBIn, TCIn,
     output reg ROMENn,
@@ -90,16 +91,12 @@ end
 // ROM CYCLE //
 //////////////
 
-//WE DELAY ASSERTION OF _TACK BY 100ns TO SUPPORT SETUP TIME FOR THE ROM.
-//5 is the appropriate delay for 100ns.
+//WE DELAY ASSERTION OF _TACK TO SUPPORT SETUP TIME FOR THE ROM.
 
-//4'h5 = 100ns
-//4'h9 = 150ns
-//4'hB = 200ns
-
-//wire [3:0]ROM_TACK_DELAY = ROM_DELAY ? 4'h5 : 4'h1;
-//wire [3:0]ROM_TACK_DELAY = ROM_DELAY ? 4'hB : 4'h5;
-wire [3:0] ROM_TACK_DELAY = ROM_DELAY ? 4'h8 : 4'h5;
+wire [3:0] ROM_TACK_DELAY = ROM_DELAY == 2'b01 ? 4'hB : //150ns
+                            ROM_DELAY == 2'b01 ? 4'h8 : //150ns
+                            ROM_DELAY == 2'b10 ? 4'h5 : //100ns
+                                                 4'h2 ; //50ns
 
 reg [3:0] ROM_TACK_COUNTER;
 reg ROM_TACK_EN;

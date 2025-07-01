@@ -25,7 +25,7 @@ Target Devices: iCE40-HX4K-TQ144
 Description: 50 AND 60Hz TICK CLOCKS
 
 Revision History:
-    25-JAN-2025 : INITIAL REV 5.0 CODE
+    01-JUL-2025 : INITIAL REV 6.0 CODE
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 */

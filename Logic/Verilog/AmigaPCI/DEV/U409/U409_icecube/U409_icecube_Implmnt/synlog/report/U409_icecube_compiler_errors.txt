@@ -1,2 +1,2 @@
-@E: CS168 :"D:\AmigaPCI\U409\U409_TOP.v":163:15:163:15|Port CONFIGENn does not exist
+@E: CS169 :"C:\Users\jason\Documents\GitHub\AmigaPCI\Logic\Verilog\AmigaPCI\DEV\U409\U409_TOP.v":133:15:133:15|Duplicate connection to named port ROM_DELAY
 

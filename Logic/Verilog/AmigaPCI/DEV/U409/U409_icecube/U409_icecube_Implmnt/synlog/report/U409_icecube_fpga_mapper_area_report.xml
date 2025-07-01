@@ -5,14 +5,14 @@ The file contains the area information from mapper to be displayed as part of th
 *******************************************************************************************-->
 <report_table display_priority="1" name="Area Summary">
 <report_link name="Detailed report">
-<data>D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\synlog\report\U409_icecube_fpga_mapper_resourceusage.rpt</data>
+<data>C:\Users\jason\Documents\GitHub\AmigaPCI\Logic\Verilog\AmigaPCI\DEV\U409\U409_icecube\U409_icecube_Implmnt\synlog\report\U409_icecube_fpga_mapper_resourceusage.rpt</data>
 <title>Resource Usage</title>
 </report_link>
 <parameter tooltip="Total PADS used" name="PADS">
-<data>71</data>
+<data>90</data>
 </parameter>
 <parameter tooltip="Total FLOPS used" name="FLOPS">
-<data>101</data>
+<data>113</data>
 </parameter>
 <parameter tcl_name="v_ram" tooltip="Total RAMS used" name="RAMS">
 <data>0</data>
@@ -21,6 +21,6 @@ The file contains the area information from mapper to be displayed as part of th
 <data>36</data>
 </parameter>
 <parameter tcl_name="total_luts" tooltip="Total LUTS used" name="LUTS">
-<data>256</data>
+<data>286</data>
 </parameter>
 </report_table>

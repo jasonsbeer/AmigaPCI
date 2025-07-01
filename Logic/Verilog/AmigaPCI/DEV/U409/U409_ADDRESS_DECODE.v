@@ -25,11 +25,7 @@ Target Devices: iCE40-HX4K-TQ144
 Description: ADDRESS DECODE
 
 Revision History:
-    25-JAN-2025 : INITIAL REV 5.0 CODE
-    20-MAR-2025 : Add data and code access type conditions. JN
-    07-APR-2025 : Add Ranger, RTC, and AUTOCONFIG address spaces. JN
-    06-JUN-2025 : Add PCI Bridge and ATA spaces. JN
-    15-JUN-2025 : Add I/O Space decode for caching purposes. JN
+    01-JUL-2025 : INITIAL REV 6.0 CODE
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 */
@@ -39,16 +35,16 @@ module U409_ADDRESS_DECODE
 
     input CLK40, RESETn, RnW, OVL, CIA_ENABLE, CONFIGURED,
     input [1:0] TT,
-    input [1:0] TM,
-    input [31:1] A,
+    input [2:0] TM,
+    input [31:12] A,
     input [7:0] BRIDGE_BASE,
     input [7:1] LIDE_BASE,
     input [2:0] PRO_BASE,
 
-    output ROMEN, CIA_SPACE, CIACS0n, CIACS1n, RAMSPACEn, REGSPACEn,
-    output AUTOVECTOR, RTC_ENn, AUTOCONFIG_SPACE, ATA_SPACE, ATA_ENn, BREG_ENn, BPRO_ENn
-
-    //,output ATA_SPACE
+    output ROMEN, CIA_SPACE, CIACS0n, CIACS1n, RAMSPACEn, REGSPACEn, FLASH_SPACE0, FLASH_SPACE1,
+    output AUTOVECTOR, RTC_ENn, AUTOCONFIG_SPACE, ATA_SPACE, ATA_ENn, BREG_ENn, BPRO_ENn,
+    output PCS0, PCS1, SCS0, SCS1,
+    output [1:0] PCIAT
 
 );
 
@@ -89,10 +85,10 @@ assign CIACS1n = !(CIA_ENABLE && !A[13]);
 //wire RAN_SPACE = A[23:19] == 4'hC; //C00000-C7FFFF & C80000-CFFFFF
 //wire RES_SPACE = A[23:18] == 5'b11010; //D00000 - D7FFFF
 //wire MBR_SPACE = A[23:16] == 8'hDE; //DE0000 - DEFFFF
-wire REG_SPACE = A[23:16] == 8'hDF; //DF0000 - DFFFFF
+//wire REG_SPACE = A[23:16] == 8'hDF; //DF0000 - DFFFFF
 
 assign RAMSPACEn = !(Z2_SPACE && !OVL && A[23:21] == 3'b000);
-assign REGSPACEn = !(Z2_SPACE && REG_SPACE);
+assign REGSPACEn = !(Z2_SPACE && A[23:16] == 8'hDF);
 
   //////////////////////
  // AUTOVECTOR SPACE //
@@ -119,6 +115,15 @@ assign RTC_ENn = !(Z2_SPACE && A[23:17] == 7'b1101110);
  // ATA //
 /////////
 
+//ATA ROM and chip selects.
+
+wire CS0 = !A[16] && !A[15] && !A[13] &&  A[12];
+wire CS1 = !A[16] && !A[15] &&  A[13] && !A[12];
+assign PCS0 = !A[14] && CS0;
+assign PCS1 =  A[14] && CS0;
+assign SCS0 = !A[14] && CS1;
+assign SCS1 =  A[14] && CS1;
+
 assign ATA_SPACE = Z2_SPACE && CONFIGURED && A[23:17] == LIDE_BASE; //128k 7'b1110101
 //wire ATA_ROM = ATA_SPACE && !ATA_EN;
 assign ATA_ENn = !(ATA_SPACE && ATA_EN);
@@ -128,7 +133,7 @@ always @(posedge CLK40) begin
     if (!RESETn) begin
         ATA_EN <= 0;
     end else begin
-        ATA_EN <= (ATA_SPACE && !RnW) || ATA_EN; //If present, !TSn breaks this.
+        ATA_EN <= (ATA_SPACE && !RnW) || ATA_EN;
     end
 end
 
@@ -157,5 +162,22 @@ wire CONF1_SPACE = !TM[2] &&  TM[1] &&  TM[0];
 
 assign PCIAT[1] = RESETn && (ALT_SPACE && CONF1_SPACE);
 assign PCIAT[0] = RESETn && (ALT_SPACE && CONF0_SPACE);
+
+  /////////////////
+ // FLASH SPACE //
+/////////////////
+
+//The flash is 4 x 512k spaces, defined by the values of FBANK1 and FBANK0.
+//The spaces are as follows...
+
+// SPACE               FBANK1  FBANK0
+//-----------------------------------
+// $E00000 - $E7FFFF     0       0
+// $F00000 - $F7FFFF     0       1
+// Reserved              1       0
+// Reserved              1       1
+
+assign FLASH_SPACE1 = Z2_SPACE && A[23:19] == 5'b11110;
+assign FLASH_SPACE0 = Z2_SPACE && A[23:19] == 5'b11100;
 
 endmodule

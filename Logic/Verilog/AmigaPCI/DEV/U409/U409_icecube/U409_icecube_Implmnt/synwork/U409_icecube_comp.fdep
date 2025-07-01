@@ -1,32 +1,35 @@
-#OPTIONS:"|-layerid|0|-orig_srs|D:\\AmigaPCI\\U409\\U409_icecube\\U409_icecube_Implmnt\\synwork\\U409_icecube_comp.srs|-prodtype|synplify_pro|-primux|-fixsmult|-infer_seqShift|-ice|-sdff_counter|-nram|-divnmod|-nostructver|-I|D:\\AmigaPCI\\U409\\U409_icecube\\|-I|C:\\lscc\\iCEcube2.2020.12\\synpbase\\lib|-v2001|-devicelib|C:\\lscc\\iCEcube2.2020.12\\synpbase\\lib\\generic\\sb_ice40.v|-encrypt|-pro|-ui|-fid2|-ram|-sharing|on|-ll|2000|-autosm|-lib|work|-lib|work|-lib|work|-lib|work|-lib|work|-lib|work|-lib|work"
+#OPTIONS:"|-layerid|0|-orig_srs|C:\\Users\\jason\\Documents\\GitHub\\AmigaPCI\\Logic\\Verilog\\AmigaPCI\\DEV\\U409\\U409_icecube\\U409_icecube_Implmnt\\synwork\\U409_icecube_comp.srs|-prodtype|synplify_pro|-primux|-fixsmult|-infer_seqShift|-ice|-sdff_counter|-nram|-divnmod|-nostructver|-I|C:\\Users\\jason\\Documents\\GitHub\\AmigaPCI\\Logic\\Verilog\\AmigaPCI\\DEV\\U409\\U409_icecube\\|-I|C:\\lscc\\iCEcube2.2020.12\\synpbase\\lib|-v2001|-devicelib|C:\\lscc\\iCEcube2.2020.12\\synpbase\\lib\\generic\\sb_ice40.v|-encrypt|-pro|-ui|-fid2|-ram|-sharing|on|-ll|2000|-autosm|-lib|work|-lib|work|-lib|work|-lib|work|-lib|work|-lib|work|-lib|work|-lib|work"
 #CUR:"C:\\lscc\\iCEcube2.2020.12\\synpbase\\bin64\\c_ver.exe":1728534473
 #CUR:"C:\\lscc\\iCEcube2.2020.12\\synpbase\\lib\\generic\\sb_ice40.v":1728534475
 #CUR:"C:\\lscc\\iCEcube2.2020.12\\synpbase\\lib\\vlog\\hypermods.v":1728534477
 #CUR:"C:\\lscc\\iCEcube2.2020.12\\synpbase\\lib\\vlog\\umr_capim.v":1728534477
 #CUR:"C:\\lscc\\iCEcube2.2020.12\\synpbase\\lib\\vlog\\scemi_objects.v":1728534477
 #CUR:"C:\\lscc\\iCEcube2.2020.12\\synpbase\\lib\\vlog\\scemi_pipes.svh":1728534477
-#CUR:"D:\\AmigaPCI\\U409\\U409_ADDRESS_DECODE.v":1749878456
-#CUR:"D:\\AmigaPCI\\U409\\U409_CIA.v":1742517299
-#CUR:"D:\\AmigaPCI\\U409\\U409_DATA_BUFFERS.v":1749862972
-#CUR:"D:\\AmigaPCI\\U409\\U409_TICK.v":1737824594
-#CUR:"D:\\AmigaPCI\\U409\\U409_TOP.v":1750005421
-#CUR:"D:\\AmigaPCI\\U409\\U409_TRANSFER_ACK.v":1748832370
-#CUR:"D:\\AmigaPCI\\U409\\U409_AUTOCONFIG.v":1749878382
-0			"D:\AmigaPCI\U409\U409_ADDRESS_DECODE.v" verilog
-1			"D:\AmigaPCI\U409\U409_CIA.v" verilog
-2			"D:\AmigaPCI\U409\U409_DATA_BUFFERS.v" verilog
-3			"D:\AmigaPCI\U409\U409_TICK.v" verilog
-4			"D:\AmigaPCI\U409\U409_TOP.v" verilog
-5			"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v" verilog
-6			"D:\AmigaPCI\U409\U409_AUTOCONFIG.v" verilog
+#CUR:"C:\\Users\\jason\\Documents\\GitHub\\AmigaPCI\\Logic\\Verilog\\AmigaPCI\\DEV\\U409\\U409_ADDRESS_DECODE.v":1751411044
+#CUR:"C:\\Users\\jason\\Documents\\GitHub\\AmigaPCI\\Logic\\Verilog\\AmigaPCI\\DEV\\U409\\U409_CIA.v":1751407191
+#CUR:"C:\\Users\\jason\\Documents\\GitHub\\AmigaPCI\\Logic\\Verilog\\AmigaPCI\\DEV\\U409\\U409_DATA_BUFFERS.v":1751407205
+#CUR:"C:\\Users\\jason\\Documents\\GitHub\\AmigaPCI\\Logic\\Verilog\\AmigaPCI\\DEV\\U409\\U409_TICK.v":1751407214
+#CUR:"C:\\Users\\jason\\Documents\\GitHub\\AmigaPCI\\Logic\\Verilog\\AmigaPCI\\DEV\\U409\\U409_TOP.v":1751413390
+#CUR:"C:\\Users\\jason\\Documents\\GitHub\\AmigaPCI\\Logic\\Verilog\\AmigaPCI\\DEV\\U409\\U409_TRANSFER_ACK.v":1751413363
+#CUR:"C:\\Users\\jason\\Documents\\GitHub\\AmigaPCI\\Logic\\Verilog\\AmigaPCI\\DEV\\U409\\U409_AUTOCONFIG.v":1751410963
+#CUR:"C:\\Users\\jason\\Documents\\GitHub\\AmigaPCI\\Logic\\Verilog\\AmigaPCI\\DEV\\U409\\U409_FLASH.v":1751408166
+0			"C:\Users\jason\Documents\GitHub\AmigaPCI\Logic\Verilog\AmigaPCI\DEV\U409\U409_ADDRESS_DECODE.v" verilog
+1			"C:\Users\jason\Documents\GitHub\AmigaPCI\Logic\Verilog\AmigaPCI\DEV\U409\U409_CIA.v" verilog
+2			"C:\Users\jason\Documents\GitHub\AmigaPCI\Logic\Verilog\AmigaPCI\DEV\U409\U409_DATA_BUFFERS.v" verilog
+3			"C:\Users\jason\Documents\GitHub\AmigaPCI\Logic\Verilog\AmigaPCI\DEV\U409\U409_TICK.v" verilog
+4			"C:\Users\jason\Documents\GitHub\AmigaPCI\Logic\Verilog\AmigaPCI\DEV\U409\U409_TOP.v" verilog
+5			"C:\Users\jason\Documents\GitHub\AmigaPCI\Logic\Verilog\AmigaPCI\DEV\U409\U409_TRANSFER_ACK.v" verilog
+6			"C:\Users\jason\Documents\GitHub\AmigaPCI\Logic\Verilog\AmigaPCI\DEV\U409\U409_AUTOCONFIG.v" verilog
+7			"C:\Users\jason\Documents\GitHub\AmigaPCI\Logic\Verilog\AmigaPCI\DEV\U409\U409_FLASH.v" verilog
 #Dependency Lists(Uses List)
 0 -1
 1 -1
 2 -1
 3 -1
-4 6 1 3 0 2 5
+4 7 6 1 3 0 2 5
 5 -1
 6 -1
+7 -1
 #Dependency Lists(Users Of)
 0 4
 1 4
@@ -35,8 +38,10 @@
 4 -1
 5 4
 6 4
+7 4
 #Design Unit to File Association
 module work U409_TOP 4
+module work U409_FLASH 7
 module work U409_AUTOCONFIG 6
 module work U409_TRANSFER_ACK 5
 module work U409_TICK 3

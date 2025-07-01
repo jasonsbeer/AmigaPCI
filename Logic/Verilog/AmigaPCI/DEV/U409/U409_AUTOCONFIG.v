@@ -25,8 +25,7 @@ Target Devices: iCE40-HX4K-TQ144
 Description: AUTOCONFIG
 
 Revision History:
-    06-JUN-2025 : AUTOCONFIG for LIDE.device and PCI bridge.
-    14-JUN-2025 : Fixed latch timing for base address. JN
+    01-JUL-2025 : INITIAL REV 6.0 CODE
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 */
@@ -63,7 +62,7 @@ localparam SERNUM = 32'd1;
 
 assign D_OUT = !BRIDGE_CONF ? BRIDGE_OUT :
                !LIDE_CONF   ? LIDE_OUT :
-               !CONFIGURED  ? FS_OUT :
+               !CONFIGURED  ? PR_OUT :
                               4'hF;
 
   /////////////////
@@ -90,10 +89,11 @@ end
  // AUTOCONFIG //
 ////////////////
 
+reg BRIDGE_CONF;
 reg LIDE_CONF;
 reg [3:0] BRIDGE_OUT;
 reg [3:0] LIDE_OUT;
-reg [3:0] FS_OUT;
+reg [3:0] PR_OUT;
 reg [3:0] STATE;
 
 always @(negedge CLK40) begin
@@ -108,7 +108,7 @@ always @(negedge CLK40) begin
 
         CONFIGURED <= 0;
         PRO_BASE <= 3'b0;
-        FS_OUT <= 4'h0;
+        PR_OUT <= 4'h0;
 
         AC_TACK <= 0;
         CONFIGENn <= 1;
@@ -124,92 +124,92 @@ always @(negedge CLK40) begin
                             8'h00 : begin
                                 BRIDGE_OUT <= 4'b1100;
                                 LIDE_OUT   <= {4'b110, AUTOBOOT};
-                                FS_OUT     <= 4'b1000;
+                                PR_OUT     <= 4'b1000;
                             end
                             8'h02 : begin
                                 BRIDGE_OUT <= 4'b0001;
                                 LIDE_OUT   <= 4'b0010;
-                                FS_OUT     <= 4'b0101;
+                                PR_OUT     <= 4'b0101;
                             end
                             8'h04 : begin //Product Number High Nibble
                                 BRIDGE_OUT <= ~(BRIDGE_PID[7:4]);
                                 LIDE_OUT   <= ~(LIDE_PID[7:4]);
-                                FS_OUT     <= ~(FS_PID[7:4]);
+                                PR_OUT     <= ~(FS_PID[7:4]);
                             end
                             8'h06 : begin //Product Number Low Nibble
                                 BRIDGE_OUT <= ~(BRIDGE_PID[3:0]);
                                 LIDE_OUT   <= ~(LIDE_PID[3:0]);
-                                FSE_OUT    <= ~(FS_PID[3:0]);
+                                PR_OUT     <= ~(FS_PID[3:0]);
                             end
                             8'h08 : begin
                                 BRIDGE_OUT <= ~(4'b1100);
                                 LIDE_OUT   <= ~(4'b0100);
-                                FS_OUT     <= ~(4'b0111);
+                                PR_OUT     <= ~(4'b0111);
                             end
                             8'h10 : begin //Manufacturer Number
                                 BRIDGE_OUT <= ~(MNF[15:12]);
                                 LIDE_OUT   <= ~(MNF[15:12]);
-                                FS_OUT     <= ~(FS_MNF[15:12]);
+                                PR_OUT     <= ~(FS_MNF[15:12]);
                             end
                             8'h12 : begin
                                 BRIDGE_OUT <= ~(MNF[11:8]);
                                 LIDE_OUT   <= ~(MNF[11:8]);
-                                FS_OUT     <= ~(FS_MNF[11:8]);
+                                PR_OUT     <= ~(FS_MNF[11:8]);
                             end //Manufacturer Number
                             8'h14 : begin
                                 BRIDGE_OUT <= ~(MNF[7:4]);
                                 LIDE_OUT   <= ~(MNF[7:4]);
-                                FS_OUT     <= ~(FS_MNF[7:4]);
+                                PR_OUT     <= ~(FS_MNF[7:4]);
                             end //Manufacturer Number
                             8'h16 : begin
                                 BRIDGE_OUT <= ~(MNF[3:0]);
                                 LIDE_OUT   <= ~(MNF[3:0]);
-                                FS_OUT     <= ~(FS_MNF[3:0]);
+                                PR_OUT     <= ~(FS_MNF[3:0]);
                             end //Manufacturer Number
                             8'h18 : begin
                                 BRIDGE_OUT <= ~(SERNUM[31:28]);
                                 LIDE_OUT   <= ~(SERNUM[31:28]);
-                                FS_OUT     <= ~(SERNUM[31:28]);
+                                PR_OUT     <= ~(SERNUM[31:28]);
                             end
                             8'h1A : begin //Serial number
                                 BRIDGE_OUT <= ~(SERNUM[27:24]);
                                 LIDE_OUT   <= ~(SERNUM[27:24]);
-                                FS_OUT     <= ~(SERNUM[27:24]);
+                                PR_OUT     <= ~(SERNUM[27:24]);
                             end
                             8'h1C : begin //Serial number
                                 BRIDGE_OUT <= ~(SERNUM[23:20]);
                                 LIDE_OUT   <= ~(SERNUM[23:20]);
-                                FS_OUT     <= ~(SERNUM[23:20]);
+                                PR_OUT     <= ~(SERNUM[23:20]);
                             end
                             8'h1E : begin //Serial number
                                 BRIDGE_OUT <= ~(SERNUM[19:16]);
                                 LIDE_OUT   <= ~(SERNUM[19:16]);
-                                FS_OUT     <= ~(SERNUM[19:16]);
+                                PR_OUT     <= ~(SERNUM[19:16]);
                             end
                             8'h20 : begin //Serial number
                                 BRIDGE_OUT <= ~(SERNUM[15:12]);
                                 LIDE_OUT   <= ~(SERNUM[15:12]);
-                                FS_OUT     <= ~(SERNUM[15:12]);
+                                PR_OUT     <= ~(SERNUM[15:12]);
                             end
                             8'h22 : begin //Serial number
                                 BRIDGE_OUT <= ~(SERNUM[11:8]);
                                 LIDE_OUT   <= ~(SERNUM[11:8]);
-                                FS_OUT     <= ~(SERNUM[11:8]);
+                                PR_OUT     <= ~(SERNUM[11:8]);
                             end
                             8'h24 : begin //Serial number
                                 BRIDGE_OUT <= ~(SERNUM[7:4]);
                                 LIDE_OUT   <= ~(SERNUM[7:4]);
-                                FS_OUT     <= ~(SERNUM[7:4]);
+                                PR_OUT     <= ~(SERNUM[7:4]);
                             end
                             8'h26 : begin //Serial number
                                 BRIDGE_OUT <= ~(SERNUM[3:0]);
                                 LIDE_OUT   <= ~(SERNUM[3:0]);
-                                FS_OUT     <= ~(SERNUM[3:0]);
+                                PR_OUT     <= ~(SERNUM[3:0]);
                             end
                             default : begin
                                 BRIDGE_OUT <= ~(4'b0000);
                                 LIDE_OUT   <= ~(4'b0000);
-                                FS_OUT     <= ~(4'b0000);
+                                PR_OUT     <= ~(4'b0000);
                             end
                         endcase
                     end
@@ -239,7 +239,7 @@ always @(negedge CLK40) begin
                         LIDE_CONF <= 1;
                         LIDE_BASE[7:4] <= D_IN;
                     end else begin
-                        PRO_BASE <= D_IN[31:29];
+                        PRO_BASE <= D_IN[3:1];
                         CONFIGENn <= 0;
                         CONFIGURED <= 1;
                     end

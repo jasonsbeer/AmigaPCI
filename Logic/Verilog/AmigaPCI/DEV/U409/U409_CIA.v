@@ -25,8 +25,7 @@ Target Devices: iCE40-HX4K-TQ144
 Description: CIA CLOCK
 
 Revision History:
-    25-JAN-2025 : INITIAL REV 5.0 CODE
-    20-MAR-2025 : Fixed back to back cycles. JN
+    01-JUL-2025 : INITIAL REV 6.0 CODE
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 TO BUILD WITH APIO: apio build --top-module U409_TOP --fpga iCE40-HX4K-TQ144

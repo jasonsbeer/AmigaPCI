@@ -5,7 +5,7 @@ Max Top 5 critical clocks will be reported. For rest user needs to refer to Deta
 *******************************************************************************************-->
 <report_table display_priority="2" name="Timing Summary">
 <report_link name="Detailed report">
-<data>D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\synlog\U409_icecube_fpga_mapper.srr</data>
+<data>C:\Users\jason\Documents\GitHub\AmigaPCI\Logic\Verilog\AmigaPCI\DEV\U409\U409_icecube\U409_icecube_Implmnt\synlog\U409_icecube_fpga_mapper.srr</data>
 <title>START OF TIMING REPORT</title>
 </report_link>
 <row>
@@ -36,6 +36,6 @@ Max Top 5 critical clocks will be reported. For rest user needs to refer to Deta
 <data>U409_TOP|CLK80_OUT_derived_clock</data>
 <data>80.0 MHz</data>
 <data>10.0 MHz</data>
-<data>2.904</data>
+<data>2.974</data>
 </row>
 </report_table>
