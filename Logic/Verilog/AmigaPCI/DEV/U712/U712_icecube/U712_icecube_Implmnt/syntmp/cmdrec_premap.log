@@ -1,0 +1,14 @@
+C:\lscc\iCEcube2.2020.12\synpbase\bin64\m_generic.exe  -prodtype  synplify_pro   -encrypt  -pro  -rundir  D:\U712\U712_icecube\U712_icecube_Implmnt   -part iCE40HX4K  -package TQ144    -maxfan 10000 -RWCheckOnRam 0 -pipe -fixgatedclocks 1 -fixgeneratedclocks 1 -summaryfile D:\U712\U712_icecube\U712_icecube_Implmnt\synlog\report\U712_icecube_premap.xml  -oedif  D:\U712\U712_icecube\U712_icecube_Implmnt\U712_icecube.edf  -conchk_prepass  D:\U712\U712_icecube\U712_icecube_Implmnt\U712_icecube_cck.rpt   -autoconstraint  -freq 1.000   -tcl  D:\U712\U712_TOP.sdc  D:\U712\U712_icecube\U712_icecube_Implmnt\synwork\U712_icecube_mult.srs  -flow prepass  -gcc_prepass  -osrd  D:\U712\U712_icecube\U712_icecube_Implmnt\synwork\U712_icecube_prem.srd  -qsap  D:\U712\U712_icecube\U712_icecube_Implmnt\U712_icecube.sap  -devicelib  C:\lscc\iCEcube2.2020.12\synpbase\lib\generic\sb_ice40.v  -ologparam  D:\U712\U712_icecube\U712_icecube_Implmnt\syntmp\U712_icecube.plg  -osyn  D:\U712\U712_icecube\U712_icecube_Implmnt\synwork\U712_icecube_prem.srd  -prjdir  D:\U712\U712_icecube\  -prjname  U712_icecube_syn  -log  D:\U712\U712_icecube\U712_icecube_Implmnt\synlog\U712_icecube_premap.srr 
+rc:0 success:1 runtime:1
+file:D:\U712\U712_icecube\U712_icecube_Implmnt\U712_icecube.edf|io:o|time:0|size:0|exec:0
+file:D:\U712\U712_icecube\U712_icecube_Implmnt\U712_icecube_cck.rpt|io:o|time:1751493577|size:4317|exec:0
+file:D:\U712\U712_TOP.sdc|io:i|time:1751491129|size:276|exec:0
+file:D:\U712\U712_icecube\U712_icecube_Implmnt\synwork\U712_icecube_mult.srs|io:i|time:1751493576|size:8144|exec:0
+file:D:\U712\U712_icecube\U712_icecube_Implmnt\synwork\U712_icecube_prem.srd|io:o|time:1751493577|size:30703|exec:0
+file:D:\U712\U712_icecube\U712_icecube_Implmnt\U712_icecube.sap|io:o|time:1751493577|size:2773|exec:0
+file:C:\lscc\iCEcube2.2020.12\synpbase\lib\generic\sb_ice40.v|io:i|time:1728534475|size:224837|exec:0
+file:D:\U712\U712_icecube\U712_icecube_Implmnt\syntmp\U712_icecube.plg|io:o|time:1751493576|size:0|exec:0
+file:D:\U712\U712_icecube\U712_icecube_Implmnt\synwork\U712_icecube_prem.srd|io:o|time:1751493577|size:30703|exec:0
+file:D:\U712\U712_icecube\U712_icecube_Implmnt\synlog\U712_icecube_premap.srr|io:o|time:1751493577|size:4248|exec:0
+file:C:\lscc\iCEcube2.2020.12\synpbase\bin\m_generic.exe|io:i|time:1728534473|size:17853440|exec:1
+file:C:\lscc\iCEcube2.2020.12\synpbase\bin64\m_generic.exe|io:i|time:1728534474|size:32355840|exec:1

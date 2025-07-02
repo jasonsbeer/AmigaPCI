@@ -1,0 +1,3 @@
+@W: MT116 |Paths from clock (C3:r) to clock (U712_TOP|CLK80_PLL_derived_clock:r) are overconstrained because the required time of 1.33 ns is too small.  
+@W: MT116 |Paths from clock (U712_TOP|CLK80_PLL_derived_clock:r) to clock (C1:r) are overconstrained because the required time of 2.84 ns is too small.  
+@W: MT116 |Paths from clock (C1:r) to clock (U712_TOP|CLK80_PLL_derived_clock:r) are overconstrained because the required time of 1.33 ns is too small.  

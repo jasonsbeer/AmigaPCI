@@ -34,7 +34,7 @@ module U409_TRANSFER_ACK (
 
     input CLK80, CLK40, RESETn, TSn, ROMEN, CIA_ENABLE, CLK_CIA, AGNUS_SPACE,
     input AUTOVECTOR, RTC_ENn, CACHE_SPACE, AC_TACK,
-    
+
     input [1:0] ROM_DELAY,
 
     output TBIn, TCIn,
@@ -49,7 +49,6 @@ module U409_TRANSFER_ACK (
 /////////////////////////
 
 //None of the cycles U409 handles support bursts, so all cycles are terminated with a burst inhibit.
-//We do not want CIA space to be cached, so those cycles are terminated with a cache inhibit.
 
 reg TACK_EN;
 reg TACK_OUTn;

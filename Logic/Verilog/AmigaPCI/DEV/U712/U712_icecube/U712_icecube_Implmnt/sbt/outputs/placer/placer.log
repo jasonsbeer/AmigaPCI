@@ -1,0 +1,162 @@
+* ******************************************************************************
+
+* iCEcube Placer
+
+* Version:            2020.12.27943
+
+* Build Date:         Dec  9 2020 17:55:50
+
+* File Generated:     Jul 2 2025 16:59:48
+
+* Purpose:            
+
+* Copyright (C) 2006-2010 by Lattice Semiconductor Corp. All rights reserved.
+
+* ******************************************************************************
+
+Executing : C:\lscc\iCEcube2.2020.12\sbt_backend\bin\win32\opt\sbtplacer.exe --des-lib D:/U712/U712_icecube/U712_icecube_Implmnt\sbt\netlist\oadb-U712_TOP --outdir D:/U712/U712_icecube/U712_icecube_Implmnt\sbt\outputs\placer --device-file C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P04.dev --package TQ144 --deviceMarketName iCE40HX4K --sdc-file D:/U712/U712_icecube/U712_icecube_Implmnt\sbt\Temp/sbt_temp.sdc --lib-file C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ice40HX8K.lib --effort_level std --out-sdc-file D:/U712/U712_icecube/U712_icecube_Implmnt\sbt\outputs\placer\U712_TOP_pl.sdc
+I2004: Option and Settings Summary
+=============================================================
+Device file          - C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P04.dev
+Package              - TQ144
+Design database      - D:/U712/U712_icecube/U712_icecube_Implmnt\sbt\netlist\oadb-U712_TOP
+SDC file             - D:/U712/U712_icecube/U712_icecube_Implmnt\sbt\Temp/sbt_temp.sdc
+Output directory     - D:/U712/U712_icecube/U712_icecube_Implmnt\sbt\outputs\placer
+Timing library       - C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ice40HX8K.lib
+Effort level         - std
+
+I2050: Starting reading inputs for placer
+=============================================================
+I2100: Reading design library: D:/U712/U712_icecube/U712_icecube_Implmnt\sbt\netlist\oadb-U712_TOP/BFPGA_DESIGN_ep
+I2065: Reading device file : C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P04.dev
+I2051: Reading of inputs for placer completed successfully
+
+I2053: Starting placement of the design
+=============================================================
+
+Input Design Statistics
+    Number of LUTs      	:	236
+    Number of DFFs      	:	122
+    Number of DFFs packed to IO	:	0
+    Number of Carrys    	:	17
+    Number of RAMs      	:	0
+    Number of ROMs      	:	0
+    Number of IOs       	:	97
+    Number of GBIOs     	:	0
+    Number of GBs       	:	4
+    Number of WarmBoot  	:	0
+    Number of PLLs      	:	1
+
+
+Phase 1
+I2077: Start design legalization
+
+Design Legalization Statistics
+    Number of feedthru LUTs inserted to legalize input of DFFs     	:	19
+    Number of feedthru LUTs inserted for LUTs driving multiple DFFs	:	0
+    Number of LUTs replicated for LUTs driving multiple DFFs       	:	11
+    Number of feedthru LUTs inserted to legalize output of CARRYs  	:	0
+    Number of feedthru LUTs inserted to legalize global signals    	:	0
+    Number of feedthru CARRYs inserted to legalize input of CARRYs 	:	0
+    Number of inserted LUTs to Legalize IOs with PIN_TYPE= 01xxxx  	:	0
+    Number of inserted LUTs to Legalize IOs with PIN_TYPE= 10xxxx  	:	0
+    Number of inserted LUTs to Legalize IOs with PIN_TYPE= 11xxxx  	:	0
+    Total LUTs inserted                                            	:	30
+    Total CARRYs inserted                                          	:	0
+
+
+I2078: Design legalization is completed successfully
+I2088: Phase 1, elapsed time : 0.0 (sec)
+
+
+Phase 2
+I2088: Phase 2, elapsed time : 0.0 (sec)
+
+Phase 3
+Info-1404: Inferred PLL generated clock at pll/PLLOUTCOREA
+Info-1404: Inferred PLL generated clock at pll/PLLOUTCOREB
+Info-1404: Inferred PLL generated clock at pll/PLLOUTGLOBALA
+Info-1404: Inferred PLL generated clock at pll/PLLOUTGLOBALB
+
+Design Statistics after Packing
+    Number of LUTs      	:	267
+    Number of DFFs      	:	122
+    Number of DFFs packed to IO	:	0
+    Number of Carrys    	:	17
+
+Device Utilization Summary after Packing
+    Sequential LogicCells
+        LUT and DFF      	:	110
+        LUT, DFF and CARRY	:	12
+    Combinational LogicCells
+        Only LUT         	:	140
+        CARRY Only       	:	0
+        LUT with CARRY   	:	5
+    LogicCells                  :	267/3520
+    PLBs                        :	40/440
+    BRAMs                       :	0/20
+    IOs and GBIOs               :	97/107
+    PLLs                        :	1/2
+
+
+I2088: Phase 3, elapsed time : 0.4 (sec)
+
+Phase 4
+I2088: Phase 4, elapsed time : 0.2 (sec)
+
+Phase 5
+I2088: Phase 5, elapsed time : 0.4 (sec)
+
+Phase 6
+I2088: Phase 6, elapsed time : 15.3 (sec)
+
+Final Design Statistics
+    Number of LUTs      	:	267
+    Number of DFFs      	:	122
+    Number of DFFs packed to IO	:	0
+    Number of Carrys    	:	17
+    Number of RAMs      	:	0
+    Number of ROMs      	:	0
+    Number of IOs       	:	97
+    Number of GBIOs     	:	0
+    Number of GBs       	:	4
+    Number of WarmBoot  	:	0
+    Number of PLLs      	:	1
+
+Device Utilization Summary
+    LogicCells                  :	267/3520
+    PLBs                        :	104/440
+    BRAMs                       :	0/20
+    IOs and GBIOs               :	97/107
+    PLLs                        :	1/2
+
+
+
+#####################################################################
+Placement Timing Summary
+
+The timing summary is based on estimated routing delays after
+placement. For final timing report, please carry out the timing
+analysis after routing.
+=====================================================================
+
+#####################################################################
+                     Clock Summary 
+=====================================================================
+Number of clocks: 7
+Clock: C1 | Frequency: 344.47 MHz | Target: 3.58 MHz
+Clock: C3 | Frequency: N/A | Target: 3.58 MHz
+Clock: CLK40_IN | Frequency: N/A | Target: 40.00 MHz
+Clock: pll/PLLOUTCOREA | Frequency: N/A | Target: 80.00 MHz
+Clock: pll/PLLOUTCOREB | Frequency: N/A | Target: 40.00 MHz
+Clock: pll/PLLOUTGLOBALA | Frequency: 122.77 MHz | Target: 80.00 MHz
+Clock: pll/PLLOUTGLOBALB | Frequency: N/A | Target: 40.00 MHz
+
+=====================================================================
+                     End of Clock Summary
+#####################################################################
+
+I2054: Placement of design completed successfully
+
+I2076: Placer run-time: 16.8 sec.
+

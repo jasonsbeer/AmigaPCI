@@ -20141,7 +20141,7 @@
 			)
 		)
 	)
-	(global_label "_AWEN"
+	(global_label "PR_W"
 		(shape output)
 		(at 137.16 187.96 0)
 		(fields_autoplaced yes)
@@ -20153,7 +20153,7 @@
 		)
 		(uuid "227a6771-e563-4e10-8bee-0670ec1af20a")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 146.1323 187.96 0)
+			(at 145.1042 187.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
