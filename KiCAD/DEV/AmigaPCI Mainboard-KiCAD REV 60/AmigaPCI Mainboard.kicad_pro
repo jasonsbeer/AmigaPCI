@@ -3263,6 +3263,10 @@
       {
         "netclass": "Narrow",
         "pattern": "_BREGEN"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "PR_W"
       }
     ]
   },
