@@ -99,6 +99,7 @@ always @(negedge CLK80) begin
                         WRITE_CYCLE <= !RnW;
                     end else begin
                         REGENn <= 1;
+                        PRnW <= 1;
                     end
                 end
             end
@@ -147,7 +148,6 @@ always @(negedge CLK80) begin
                     REG_CYCLE <= 0;
                     REG_TACK <= WRITE_CYCLE;
                     ASn <= 1;
-                    PRnW <= 1;
                     UDSn <= 1;
                     LDSn <= 1;
                     STATE_COUNT <= 4'h0;
