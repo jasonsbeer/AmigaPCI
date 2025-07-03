@@ -31,11 +31,11 @@ iceprog D:\AmigaPCI\U110\APCI_U110\APCI_U110_Implmnt\sbt\outputs\bitmap\U110_TOP
 
 module U110_TOP (
 
-    input CLK40, RESETn, TSn, RnW,
+    input CLK40, CLK33, RESETn, TSn, RnW,
     input ATA_ENn, PPIO, SPIO, PCS1 , PCS0, SCS1, SCS0,
 
     output INT2n, TEAn, TACKn,
-    output IDELENn, IDEDIR, IDEHRENn, IDEHWENn, ATA_LATCH,
+    output IDELENn, IDEDIR, IDEHRENn, IDEHWENn, ATA_LATCH, PCI_CYCLEn,
     output BGn,
     output CS0_PRIn, CS1_PRIn, CS0_SECn, CS1_SECn, DIOR_PRIn, DIOW_PRIn, DIOR_SECn, DIOW_SECn
 
@@ -66,7 +66,6 @@ U110_CYCLE_TERMINATION U110_CYCLE_TERMINATION (
     //output
     .TACKn (TACKn),
     .TEAn (TEAn)
-
 );
 
   /////////////
@@ -84,7 +83,6 @@ U110_BUFFERS U110_BUFFERS (
     .IDEHWENn (IDEHWENn),
     .IDELENn (IDELENn),
     .IDEDIR (IDEDIR)
-
 );
 
   ////////////////////
@@ -126,7 +124,16 @@ U110_ARBITOR U110_ARBITOR (
 
     //output
     .BGn (BGn)
+);
 
+  ////////////////////////
+ // PCI STSTAE MACHINE //
+////////////////////////
+
+U110_PCI_SM U110_PCI_SM (
+
+    //output
+    .PCI_CYCLEn (PCI_CYCLEn)
 );
 
 endmodule

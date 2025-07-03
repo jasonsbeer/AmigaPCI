@@ -1,6 +1,6 @@
 #CLOCKS
 set_io CLK40 52
-#set_io CLK33 93
+set_io CLK33 93
 
 #ADDRESS
 #set_io A0     73
@@ -69,19 +69,19 @@ set_io BGn       76
 #set_io PARITY    144
 #set_io PERRn     143
 #set_io PLOCKn    142
-#set_io FRAMEn    137
-#set_io DEVSELn   134
-#set_io CBE[0]    129
-#set_io CBE[1]    130
-#set_io CBE[2]    135
-#set_io CBE[3]    136
-#set_io RSTPCIn   122
+set_io FRAMEn    137
+set_io DEVSELn   134
+set_io CBE[0]    129
+set_io CBE[1]    130
+set_io CBE[2]    135
+set_io CBE[3]    136
+set_io RSTPCIn   122
 set_io INT2n     121
 #set_io PCIINTn   117
 #set_io PAR_DA     82
 #set_io PHASEA_D   81
 #set_io BURSTn     80
-#set_io PCICYCLEn  78
+set_io PCI_CYCLEn  78
 
 #Extra signals to U109
 #set_io PCI1 61

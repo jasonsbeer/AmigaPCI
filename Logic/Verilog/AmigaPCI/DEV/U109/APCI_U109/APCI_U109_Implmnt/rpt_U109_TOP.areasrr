@@ -1,0 +1,18 @@
+#### START OF AREA REPORT #####[
+
+Part:			ICE40HX4KTQ144 (Lattice)
+
+------------------------------------------------------------------------
+########   Utilization report for  Top level view:   U109_TOP   ########
+========================================================================
+
+IO PADS
+Name     Total elements     Utilization     Notes
+-------------------------------------------------
+PADS     68                 100 %                
+=================================================
+Total IO PADS in the block U109_TOP:	68 (97.14 % Utilization)
+
+
+##### END OF AREA REPORT #####]
+

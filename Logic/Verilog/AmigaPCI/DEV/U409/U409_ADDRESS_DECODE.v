@@ -142,16 +142,17 @@ end
 //////////////////////
 
 //The PCI bridge can be accessed in one of two ways.
-//The first is the PCI Bridge registers in the Z2 space as a 64k device. These registers are defined by the PCI spec.
-//The second way is as a prometheus bridge in the Z3 space.
+//The first is the PCI Bridge registers in the Z2 space as a 64k device. These registers are defined by the PCI spec and support AUTOCONFIG cards.
+//The second way is as a prometheus access in the Z3 space.
 //The PCIAT (PCI Access Type) bus identifies the acess type for bridge register accesses.
+//NOTE: The I/O space is basically deprectaed in the Rev 2.3 PCI spec, but is here for prometheus support.
 
 // Access Type         PCIAT1   PCIAT0
 //-------------------------------------
 //PCI Memory Space       0        0
 //PCI Config Space 0     0        1
 //PCI Config Space 1     1        0
-//Reserved               1        1
+//I/O Space              1        1
 
 assign BREG_ENn = !(Z2_SPACE && CONFIGURED && A[23:16] == BRIDGE_BASE);
 assign BPRO_ENn = !(RESETn   && CONFIGURED && A[31:29] == PRO_BASE);
@@ -160,8 +161,12 @@ wire ALT_SPACE   =  TT[1] && !TT[0];
 wire CONF0_SPACE = !TM[2] && !TM[1] && !TM[0];
 wire CONF1_SPACE = !TM[2] &&  TM[1] &&  TM[0];
 
-assign PCIAT[1] = RESETn && (ALT_SPACE && CONF1_SPACE);
-assign PCIAT[0] = RESETn && (ALT_SPACE && CONF0_SPACE);
+wire PRO_CONF0_SPACE = BPRO_ENn && A[28:20] == {1'b1, 8'hFC};
+wire PRO_CONF1_SPACE = BPRO_ENn && A[28:20] == {1'b1, 8'hFD};
+wire PRO_IO_SPACE    = BPRO_ENn && A[28:21] == 8'hFF;
+
+assign PCIAT[1] = RESETn && ((ALT_SPACE && CONF1_SPACE) || PRO_CONF1_SPACE || PRO_IO_SPACE);
+assign PCIAT[0] = RESETn && ((ALT_SPACE && CONF0_SPACE) || PRO_CONF0_SPACE || PRO_IO_SPACE);
 
   /////////////////
  // FLASH SPACE //
