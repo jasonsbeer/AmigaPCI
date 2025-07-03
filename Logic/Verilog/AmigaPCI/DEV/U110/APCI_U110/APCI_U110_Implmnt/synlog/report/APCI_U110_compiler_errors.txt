@@ -1,0 +1,2 @@
+@E: CS153 :"D:\AmigaPCI\U110\U110_ATA.v":112:46:112:56|Can't mix blocking and non-blocking assignments to a variable
+

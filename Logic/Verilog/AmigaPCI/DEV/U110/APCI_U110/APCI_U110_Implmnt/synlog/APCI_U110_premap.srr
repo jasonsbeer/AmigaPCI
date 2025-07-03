@@ -1,0 +1,69 @@
+# Wed Jul 02 19:05:40 2025
+
+Synopsys Lattice Technology Pre-mapping, Version maplat, Build 1612R, Built Dec  5 2016 10:31:39
+Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
+Product Version L-2016.09L+ice40
+
+Mapper Startup Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 99MB peak: 99MB)
+
+Reading constraint file: D:\U110\U110_TOP.sdc
+@L: D:\U110\APCI_U110\APCI_U110_Implmnt\APCI_U110_scck.rpt 
+Printing clock  summary report in "D:\U110\APCI_U110\APCI_U110_Implmnt\APCI_U110_scck.rpt" file 
+@N: MF248 |Running in 64-bit mode.
+@N: MF666 |Clock conversion enabled. (Command "set_option -fix_gated_and_generated_clocks 1" in the project file.)
+
+Design Input Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 99MB peak: 101MB)
+
+
+Mapper Initialization Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 99MB peak: 101MB)
+
+
+Start loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 100MB peak: 101MB)
+
+
+Finished loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 100MB peak: 103MB)
+
+@N: BN115 :"d:\u110\u110_top.v":48:15:48:28|Removing instance U110_INTERRUPT (in view: work.U110_TOP(verilog)) of type view:work.U110_INTERRUPT(verilog) because it does not drive other instances.
+@N: BN115 :"d:\u110\u110_top.v":125:13:125:24|Removing instance U110_ARBITOR (in view: work.U110_TOP(verilog)) of type view:work.U110_ARBITOR(verilog) because it does not drive other instances.
+
+ICG Latch Removal Summary:
+Number of ICG latches removed:	0
+Number of ICG latches not removed:	0
+syn_allowed_resources : blockrams=20  set on top level netlist U110_TOP
+
+Finished netlist restructuring (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
+
+
+
+Clock Summary
+*****************
+
+Start     Requested     Requested     Clock        Clock                Clock
+Clock     Frequency     Period        Type         Group                Load 
+-----------------------------------------------------------------------------
+CLK40     40.0 MHz      25.000        declared     default_clkgroup     18   
+=============================================================================
+
+Finished Pre Mapping Phase.
+@N: BN225 |Writing default property annotation file D:\U110\APCI_U110\APCI_U110_Implmnt\APCI_U110.sap.
+
+Starting constraint checker (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
+
+Encoding state machine TACK_COUNT[2:0] (in view: work.U110_CYCLE_TERMINATION(verilog))
+original code -> new code
+   0000 -> 00
+   0001 -> 01
+   0010 -> 10
+None
+None
+
+Finished constraint checker (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 133MB)
+
+Pre-mapping successful!
+
+At Mapper Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 47MB peak: 133MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+# Wed Jul 02 19:05:40 2025
+
+###########################################################]

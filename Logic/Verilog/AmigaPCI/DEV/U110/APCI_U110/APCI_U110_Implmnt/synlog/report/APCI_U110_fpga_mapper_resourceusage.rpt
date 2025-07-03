@@ -1,0 +1,27 @@
+---------------------------------------
+Resource Usage Report for U110_TOP 
+
+Mapping to part: ice40hx4ktq144
+Cell usage:
+GND             3 uses
+SB_CARRY        7 uses
+SB_DFF          12 uses
+SB_DFFN         4 uses
+SB_DFFNESS      1 use
+VCC             3 uses
+SB_LUT4         52 uses
+
+I/O ports: 28
+I/O primitives: 26
+SB_GB_IO       1 use
+SB_IO          25 uses
+
+I/O Register bits:                  0
+Register bits not including I/Os:   17 (0%)
+
+@S |Mapping Summary:
+Total  LUTs: 52 (1%)
+
+Distribution of All Consumed LUTs = LUT4 
+Distribution of All Consumed Luts 52 = 52 
+

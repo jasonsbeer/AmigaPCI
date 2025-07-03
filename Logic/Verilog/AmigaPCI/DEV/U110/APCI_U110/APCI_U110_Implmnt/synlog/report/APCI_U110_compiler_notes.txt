@@ -1,0 +1,16 @@
+@N|Running in 64-bit mode
+@N|Running in 64-bit mode
+@N: CG364 :"D:\U110\U110_INTERRUPT.v":1:7:1:20|Synthesizing module U110_INTERRUPT in library work.
+@N: CG364 :"D:\U110\U110_CYCLE_TERMINATION.v":31:7:31:28|Synthesizing module U110_CYCLE_TERMINATION in library work.
+@N: CG364 :"D:\U110\U110_BUFFERS.v":1:7:1:18|Synthesizing module U110_BUFFERS in library work.
+@N: CG364 :"D:\U110\U110_ATA.v":31:7:31:14|Synthesizing module U110_ATA in library work.
+@N: CG364 :"D:\U110\U110_ARBITOR.v":1:7:1:18|Synthesizing module U110_ARBITOR in library work.
+@N: CG364 :"D:\U110\U110_TOP.v":32:7:32:14|Synthesizing module U110_TOP in library work.
+@N: CL189 :"D:\U110\U110_ATA.v":98:0:98:5|Register bit ATA_LATCH is always 1.
+@N: CL159 :"D:\U110\U110_ATA.v":33:34:33:37|Input PPIO is unused.
+@N: CL159 :"D:\U110\U110_ATA.v":33:40:33:43|Input SPIO is unused.
+@N: CL201 :"D:\U110\U110_CYCLE_TERMINATION.v":54:0:54:5|Trying to extract state machine for register TACK_COUNT.
+@N|Running in 64-bit mode
+@N: NF107 :"D:\U110\U110_TOP.v":32:7:32:14|Selected library: work cell: U110_TOP view verilog as top level
+@N: NF107 :"D:\U110\U110_TOP.v":32:7:32:14|Selected library: work cell: U110_TOP view verilog as top level
+

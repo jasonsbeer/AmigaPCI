@@ -1,0 +1,5 @@
+
+#1001 : create_clock -period 25.0000 [get_ports CLK40]
+# line 1 in d:/u110/u110_top.sdc
+
+create_clock -period {25.000} [get_ports {CLK40}]
