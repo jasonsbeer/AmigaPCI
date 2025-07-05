@@ -96,11 +96,11 @@ assign PCI_DIR = !(DIRECTION);
 //THE PCI SLOT IDSELx VALUES ARE DRIVEN BY THE ADDRESS BUS AND LATCHED
 //DURING ADDRESS PHASE OF CONFIGURATION CYCLES.
 
-assign IDSEL0 = AD[16];
-assign IDSEL1 = AD[17];
-assign IDSEL2 = AD[18];
-assign IDSEL3 = AD[19];
-assign IDSEL4 = AD[20];
+assign IDSEL0 = AD2[0]; //A16
+assign IDSEL1 = AD2[1]; //A17
+assign IDSEL2 = AD2[2]; //A18
+assign IDSEL3 = AD2[3]; //A19
+assign IDSEL4 = AD2[4]; //A20
 
 
 endmodule
