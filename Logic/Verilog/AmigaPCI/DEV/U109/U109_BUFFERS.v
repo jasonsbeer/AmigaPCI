@@ -34,7 +34,6 @@ iceprog D:\AmigaPCI\U109\APCI_U109\APCI_U109_Implmnt\sbt\outputs\bitmap\U109_TOP
 module U109_BUFFERS
 (
     input RESETn, PHASEA_D, RnW, DMA_CYCLE,
-    input [20:16] A,
 
     output AD_ENn, PCI_DIR, IDSEL0, IDSEL1, IDSEL2, IDSEL3, IDSEL4,
 
@@ -101,6 +100,5 @@ assign IDSEL1 = AD2[1]; //A17
 assign IDSEL2 = AD2[2]; //A18
 assign IDSEL3 = AD2[3]; //A19
 assign IDSEL4 = AD2[4]; //A20
-
 
 endmodule
