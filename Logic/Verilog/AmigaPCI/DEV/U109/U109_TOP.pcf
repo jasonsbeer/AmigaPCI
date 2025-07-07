@@ -3,84 +3,151 @@ set_io CLKB  52
 set_io CLKP 129
 
 #AD BUS
-set_io AD0[0]    2 #AD0
-set_io AD0[1]    1 #AD1
-set_io AD0[2]  144 #AD2
-set_io AD0[3]  143 #AD3
-set_io AD0[4]  142 #AD4
-set_io AD0[5]  139 #AD5
-set_io AD0[6]  141 #AD6
-set_io AD0[7]  138 #AD7
-set_io AD1[0]    3 #AD8
-set_io AD1[1]  137 #AD9
-set_io AD1[2] 136 #AD10
-set_io AD1[3] 135 #AD11
-set_io AD1[4] 134 #AD12
-set_io AD1[5] 130 #AD13
-set_io AD1[6] 125 #AD14
-set_io AD1[7] 124 #AD15
-set_io AD2[0] 122 #AD16
-set_io AD2[1] 121 #AD17
-set_io AD2[2] 120 #AD18
-set_io AD2[3] 119 #AD19
-set_io AD2[4] 118 #AD20
-set_io AD2[5] 117 #AD21
-set_io AD2[6] 116 #AD22
-set_io AD2[7] 115 #AD23
-set_io AD3[0] 114 #AD24
-set_io AD3[1] 113 #AD25
-set_io AD3[2] 112 #AD26
-set_io AD3[3] 110 #AD27
-set_io AD3[4]   4 #AD28
-set_io AD3[5]   7 #AD29
-set_io AD3[6]   9 #AD30
-set_io AD3[7]   8 #AD31
+#set_io AD0[0]    2 #AD0
+#set_io AD0[1]    1 #AD1
+#set_io AD0[2]  144 #AD2
+#set_io AD0[3]  143 #AD3
+#set_io AD0[4]  142 #AD4
+#set_io AD0[5]  139 #AD5
+#set_io AD0[6]  141 #AD6
+#set_io AD0[7]  138 #AD7
+#set_io AD1[0]    3 #AD8
+#set_io AD1[1]  137 #AD9
+#set_io AD1[2] 136 #AD10
+#set_io AD1[3] 135 #AD11
+#set_io AD1[4] 134 #AD12
+#set_io AD1[5] 130 #AD13
+#set_io AD1[6] 125 #AD14
+#set_io AD1[7] 124 #AD15
+#set_io AD2[0] 122 #AD16
+#set_io AD2[1] 121 #AD17
+#set_io AD2[2] 120 #AD18
+#set_io AD2[3] 119 #AD19
+#set_io AD2[4] 118 #AD20
+#set_io AD2[5] 117 #AD21
+#set_io AD2[6] 116 #AD22
+#set_io AD2[7] 115 #AD23
+#set_io AD3[0] 114 #AD24
+#set_io AD3[1] 113 #AD25
+#set_io AD3[2] 112 #AD26
+#set_io AD3[3] 110 #AD27
+#set_io AD3[4]   4 #AD28
+#set_io AD3[5]   7 #AD29
+#set_io AD3[6]   9 #AD30
+#set_io AD3[7]   8 #AD31
+
+set_io AD[0]    2 #AD0
+set_io AD[1]    1 #AD1
+set_io AD[2]  144 #AD2
+set_io AD[3]  143 #AD3
+set_io AD[4]  142 #AD4
+set_io AD[5]  139 #AD5
+set_io AD[6]  141 #AD6
+set_io AD[7]  138 #AD7
+set_io AD[8]    3 #AD8
+set_io AD[9]  137 #AD9
+set_io AD[10] 136 #AD10
+set_io AD[11] 135 #AD11
+set_io AD[12] 134 #AD12
+set_io AD[13] 130 #AD13
+set_io AD[14] 125 #AD14
+set_io AD[15] 124 #AD15
+set_io AD[16] 122 #AD16
+set_io AD[17] 121 #AD17
+set_io AD[18] 120 #AD18
+set_io AD[19] 119 #AD19
+set_io AD[20] 118 #AD20
+set_io AD[21] 117 #AD21
+set_io AD[22] 116 #AD22
+set_io AD[23] 115 #AD23
+set_io AD[24] 114 #AD24
+set_io AD[25] 113 #AD25
+set_io AD[26] 112 #AD26
+set_io AD[27] 110 #AD27
+set_io AD[28]   4 #AD28
+set_io AD[29]   7 #AD29
+set_io AD[30]   9 #AD30
+set_io AD[31]   8 #AD31
+
 
 #D BUS
-set_io DLL[0]  62 #D0
-set_io DLL[1]  63 #D1
-set_io DLL[2]  64 #D2
-set_io DLL[3]  73 #D3
-set_io DLL[4]  74 #D4
-set_io DLL[5]  75 #D5
-set_io DLL[6]  76 #D6
-set_io DLL[7]  78 #D7
-set_io DLM[0]  79 #D8
-set_io DLM[1]  80 #D9
-set_io DLM[2]  81 #D10
-set_io DLM[3]  82 #D11
-set_io DLM[4]  83 #D12
-set_io DLM[5]  84 #D13
-set_io DLM[6]  85 #D14
-set_io DLM[7]  87 #D15
-set_io DUM[0]  88 #D16
-set_io DUM[1]  90 #D17
-set_io DUM[2]  91 #D18
-set_io DUM[3]  93 #D19
-set_io DUM[4]  94 #D20
-set_io DUM[5]  95 #D21
-set_io DUM[6]  96 #D22
-set_io DUM[7]  97 #D23
-set_io DUU[0]  98 #D24
-set_io DUU[1]  99 #D25
-set_io DUU[2] 101 #D26
-set_io DUU[3] 102 #D27
-set_io DUU[4] 104 #D28
-set_io DUU[5] 105 #D29
-set_io DUU[6] 106 #D30
-set_io DUU[7] 109 #D31
+#set_io DLL[0]  62 #D0
+#set_io DLL[1]  63 #D1
+#set_io DLL[2]  64 #D2
+#set_io DLL[3]  73 #D3
+#set_io DLL[4]  74 #D4
+#set_io DLL[5]  75 #D5
+#set_io DLL[6]  76 #D6
+#set_io DLL[7]  78 #D7
+#set_io DLM[0]  79 #D8
+#set_io DLM[1]  80 #D9
+#set_io DLM[2]  81 #D10
+#set_io DLM[3]  82 #D11
+#set_io DLM[4]  83 #D12
+#set_io DLM[5]  84 #D13
+#set_io DLM[6]  85 #D14
+#set_io DLM[7]  87 #D15
+#set_io DUM[0]  88 #D16
+#set_io DUM[1]  90 #D17
+#set_io DUM[2]  91 #D18
+#set_io DUM[3]  93 #D19
+#set_io DUM[4]  94 #D20
+#set_io DUM[5]  95 #D21
+#set_io DUM[6]  96 #D22
+#set_io DUM[7]  97 #D23
+#set_io DUU[0]  98 #D24
+#set_io DUU[1]  99 #D25
+#set_io DUU[2] 101 #D26
+#set_io DUU[3] 102 #D27
+#set_io DUU[4] 104 #D28
+#set_io DUU[5] 105 #D29
+#set_io DUU[6] 106 #D30
+#set_io DUU[7] 109 #D31
+
+set_io D[0]   62 #D0
+set_io D[1]   63 #D1
+set_io D[2]   64 #D2
+set_io D[3]   73 #D3
+set_io D[4]   74 #D4
+set_io D[5]   75 #D5
+set_io D[6]   76 #D6
+set_io D[7]   78 #D7
+set_io D[8]   79 #D8
+set_io D[9]   80 #D9
+set_io D[10]  81 #D10
+set_io D[11]  82 #D11
+set_io D[12]  83 #D12
+set_io D[13]  84 #D13
+set_io D[14]  85 #D14
+set_io D[15]  87 #D15
+set_io D[16]  88 #D16
+set_io D[17]  90 #D17
+set_io D[18]  91 #D18
+set_io D[19]  93 #D19
+set_io D[20]  94 #D20
+set_io D[21]  95 #D21
+set_io D[22]  96 #D22
+set_io D[23]  97 #D23
+set_io D[24]  98 #D24
+set_io D[25]  99 #D25
+set_io D[26] 101 #D26
+set_io D[27] 102 #D27
+set_io D[28] 104 #D28
+set_io D[29] 105 #D29
+set_io D[30] 106 #D30
+set_io D[31] 109 #D31
 
 #DATA TRANSFER SIGNALS
-#set_io RESETn 49
-#set_io TSn    29
-#set_io BGn    28
-#set_io TACKn  23
-#set_io WEn    18
+set_io RESETn 49
+set_io TSn    29
+set_io BGn    28
+set_io TACKn  23
+set_io RnW    18
 
 #PCI CYCLE SIGNALS
 set_io PCICYCLEn  19
-#set_io BURSTn     17
-#set_io PHASEA_D   16
+set_io BURSTn     17
+set_io PHASEA_D   16
 #set_io PAR_DA     15
 #set_io TRDYn      12
 #set_io IRDYn      11

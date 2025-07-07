@@ -33,50 +33,9 @@ iceprog D:\AmigaPCI\U109\APCI_U109\APCI_U109_Implmnt\sbt\outputs\bitmap\U109_TOP
 
 module U109_BUFFERS
 (
-    input RESETn, PHASEA_D, RnW, DMA_CYCLE,
-
-    output AD_ENn, PCI_DIR, IDSEL0, IDSEL1, IDSEL2, IDSEL3, IDSEL4,
-
-    inout [7:0] DLL,
-    inout [7:0] DLM,
-    inout [7:0] DUM,
-    inout [7:0] DUU,
-
-    inout [7:0] AD0,
-    inout [7:0] AD1,
-    inout [7:0] AD2,
-    inout [7:0] AD3
+    input RESETn, PHASEA_D, DIRECTION,
+    output AD_ENn, PCI_DIR, IDSEL0, IDSEL1, IDSEL2, IDSEL3, IDSEL4
 );
-
-  /////////////////////
- // AD DATA BUFFERS //
-/////////////////////
-
-//SET DIRECTION AND STATE OF D <-> AD DATA BUFFERS.
-//THE BYTES ARE SWAPPED FOR THE DATA BUS.
-//DURING THE ADDRESS PHASE, THESE ARE HI-Z.
-//R_W IS DRIVEN BY THE BRIDGE DURING PCI DMA CYCLES.
-
-//Data Flow     DIRECTION  DMA  R_W
-//PCI -> Amiga      0       0    1
-//Amiga -> PCI      1       0    0
-//Amiga -> PCI      1       1    1
-//PCI -> Amiga      0       1    0
-
-wire DIRECTION = DMA_CYCLE == RnW;
-wire DATA_EN = RESETn && !PHASEA_D;
-wire AD_EN = DATA_EN &&  DIRECTION;
-wire D_EN  = DATA_EN && !DIRECTION;
-
-assign AD0 = AD_EN ? DUU : 8'bz;
-assign AD1 = AD_EN ? DUM : 8'bz;
-assign AD2 = AD_EN ? DLM : 8'bz;
-assign AD3 = AD_EN ? DLL : 8'bz;
-
-assign DLL = D_EN  ? AD3 : 8'bz;
-assign DLM = D_EN  ? AD2 : 8'bz;
-assign DUM = D_EN  ? AD1 : 8'bz;
-assign DUU = D_EN  ? AD0 : 8'bz;
 
   /////////////////////
  // ADDRESS BUFFERS //
