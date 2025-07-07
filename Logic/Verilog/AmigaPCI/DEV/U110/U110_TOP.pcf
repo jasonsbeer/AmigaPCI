@@ -88,7 +88,7 @@ set_io PCI_CYCLEn  78
 #set_io PCI0 60
 
 #BYTE ENABLES
-#set_io UUBEn 37
-#set_io UMBEn 38
-#set_io LMBEn 39
-#set_io LLBEn 41
+set_io UUBEn 37
+set_io UMBEn 38
+set_io LMBEn 39
+set_io LLBEn 41

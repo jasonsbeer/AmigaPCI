@@ -33,12 +33,38 @@ module U110_TOP (
 
     input CLK40, CLK33, RESETn, TSn, RnW,
     input ATA_ENn, PPIO, SPIO, PCS1 , PCS0, SCS1, SCS0,
+    input BPRO_ENn, DEVSELn, TRDYn,
+    input [1:0] PCIAT,
+    input [1:0] SIZ,
 
     output INT2n, TEAn, TACKn,
     output IDELENn, IDEDIR, IDEHRENn, IDEHWENn, ATA_LATCH, PCI_CYCLEn,
-    output BGn,
+    output BGn, BURST,
     output CS0_PRIn, CS1_PRIn, CS0_SECn, CS1_SECn, DIOR_PRIn, DIOW_PRIn, DIOR_SECn, DIOW_SECn
 
+);
+
+  /////////
+ // PLL //
+/////////
+
+//DOUBLE CHECK THIS WITH ICECUBE2!
+wire CLK66;
+
+SB_PLL40_CORE #(
+    .FEEDBACK_PATH("SIMPLE"),
+    .PLLOUT_SELECT("GENCLK"),
+    .DIVR(4'b0000),     // DIVR = 0
+    .DIVF(7'b0000001),  // DIVF = 9
+    .DIVQ(3'b000),      // DIVQ = 1
+    .FILTER_RANGE(3'b001)
+) pll_inst (
+    .REFERENCECLK(CLK33),
+    .PLLOUTCORE(CLK66),
+    //.PLLOUTGLOBAL(CLK66);
+    .LOCK(),
+    .RESETB(1'b1),
+    .BYPASS(1'b0)
 );
 
   ///////////////
@@ -82,7 +108,8 @@ U110_BUFFERS U110_BUFFERS (
     .IDEHRENn (IDEHRENn),
     .IDEHWENn (IDEHWENn),
     .IDELENn (IDELENn),
-    .IDEDIR (IDEDIR)
+    .IDEDIR (IDEDIR),
+    .BURST (BURST)
 );
 
   ////////////////////
@@ -131,6 +158,17 @@ U110_ARBITOR U110_ARBITOR (
 ////////////////////////
 
 U110_PCI_SM U110_PCI_SM (
+    //input
+    .CLK40 (CLK40),
+    .CLK66 (CLK66),
+    .RESETn (RESETn),
+    .RnW (RnW),
+    .TSn (TSn),
+    .DEVSELn (DEVSELn),
+    .TRDYn (TRDYn),
+    .BURST (BURST),
+    .BPRO_ENn (BPRO_ENn),
+    .PCIAT (PCIAT),
 
     //output
     .PCI_CYCLEn (PCI_CYCLEn)
