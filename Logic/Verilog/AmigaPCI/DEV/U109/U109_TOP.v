@@ -32,11 +32,11 @@ iceprog D:\AmigaPCI\U109\APCI_U109\APCI_U109_Implmnt\sbt\outputs\bitmap\U109_TOP
 
 module U109_TOP (
 
-    input CLKB, CLKP, RESETn, RnW, PCICYCLEn, BGn,
+    input CLK40, CLK33, RESETn, RnW, PCICYCLEn, BGn,
 
     output AD_ENn, PCI_DIR,
     output ADLATCH, ALATCH, IDSEL0, IDSEL1, IDSEL2, IDSEL3, IDSEL4,
-    //output TACKn
+    output TACKn,
 
     inout [31:0] AD,
     inout [31:0] D
@@ -48,6 +48,33 @@ module U109_TOP (
 
 wire DMA_CYCLE;
 wire PHASEA_D;
+wire PCI_TACK;
+wire TACK_OUTn;
+wire CLK66;
+wire wr_ready;
+wire rd_ready;
+
+//////////
+// PLL //
+////////
+
+//DOUBLE CHECK THIS WITH ICECUBE2!
+
+SB_PLL40_CORE #(
+    .FEEDBACK_PATH("SIMPLE"),
+    .PLLOUT_SELECT("GENCLK"),
+    .DIVR(4'b0000),     // DIVR = 0
+    .DIVF(7'b0000001),  // DIVF = 9
+    .DIVQ(3'b000),      // DIVQ = 1
+    .FILTER_RANGE(3'b001)
+) pll_inst (
+    .REFERENCECLK(CLK33),
+    .PLLOUTCORE(CLK66),
+    //.PLLOUTGLOBAL(CLK66);
+    .LOCK(),
+    .RESETB(1'b1),
+    .BYPASS(1'b0)
+);
 
 ///////////////////
 // DATA BUFFERS //
@@ -95,14 +122,15 @@ U109_BUFFERS U109_BUFFERS(
 // FIFO //
 /////////
 
+//                      FIFO Function
+//                -------------------------
 //BUS OWNER  R/W  PCI (33)    MOTOROLA (40)
+//-----------------------------------------
 //CPU         R   WRITE       READ
 //CPU         W   READ        WRITE
 //PCI         R   READ        WRITE
 //PCI         W   WRITE       READ
 
-wire wr_ready;
-wire rd_ready;
 wire CPU_CYCLE = RESETn && !BGn;
 wire DMA_CYCLE = RESETn &&  BGn;
 wire CPU_RD_CYCLE = CPU_CYCLE &&  RnW;
@@ -112,12 +140,8 @@ wire DMA_WR_CYCLE = DMA_CYCLE && !RnW;
 
 wire wr_clk = (CPU_RD_CYCLE || DMA_WR_CYCLE) ?  CLK33 :  CLK40; //Data is latched on the rising clock edge.
 wire rd_clk = (CPU_WR_CYCLE || DMA_RD_CYCLE) ? !CLK40 : !CLK33; //Invert the read clock so data is driven on the falling edge.
-wire wr_valid = ((CPU_RD_CYCLE && !TRDYn) || (DMA_WR_CYCLE && !TACKn));
-wire rd_ready = ((CPU_WR_CYCLE && !TACKn) || (DMA_RD_CYCLE && !TRDYn));
-
-//We drive _TACK or _TRDY (depending on direction of data movement) based on when the FIFO is not empty.
-//Delay _TACK or _TRDY when the FIFO is not showing ready (wr_ready or rd_ready).
-//If the fifo is empty, we need to wait until there is something to latch.
+wire wr_valid = ((CPU_RD_CYCLE && !TRDYn) || (DMA_WR_CYCLE && !TACK_OUTn));
+wire rd_valid = ((CPU_WR_CYCLE && !TACK_OUTn) || (DMA_RD_CYCLE && !TRDYn));
 
 U109_FIFO U109_FIFO (
     .wr_clk (wr_clk),
@@ -131,8 +155,8 @@ U109_FIFO U109_FIFO (
     .wr_data (D_IN),
 
     // Read interface (read clock domain)
-    .rd_valid (rd_valid), //input - Tells the fifo when we have read the data. e.g. Not empty.
-    .rd_ready (rd_ready), //output - Tells us when the fifo is ready to supply data.
+    .rd_ready (rd_ready), //output - Tells us when the fifo is ready to supply data.  e.g. Not empty.
+    .rd_valid (rd_valid), //input - Tells the fifo when we have read the data.
     .rd_data (D_OUT)
 );
 
@@ -152,19 +176,29 @@ U109_PCI_STATE_MACHINE U109_PCI_STATE_MACHINE (
     .ALATCH (ALATCH),
     .PCI_DIR (PCI_DIR),
     .DMA_CYCLE (DMA_CYCLE),
-    .PHASEA_D (PHASEA_D)
-
+    .PHASEA_D (PHASEA_D),
+    .PCI_TACK (PCI_TACK)
 );
 
 ////////////////////////
 // CYCLE TERMINATION //
 //////////////////////
 
-//U109_CYCLE_TERMINATION U109_CYCLE_TERMINATION (
+U109_CYCLE_TERMINATION U109_CYCLE_TERMINATION (
+
+    //input
+    .CLK40 (CLK40),
+    .RESETn (RESETn),
+    .RnW (RnW),
+    .wr_ready (wr_ready),
+    .rd_ready (rd_ready),
+    .PCI_TACK (PCI_TACK),
+    .BURST (BURST),
 
     //output
-//    .TACKn (TACKn)
+    .TACK_OUTn (TACK_OUTn),
+    .TACKn (TACKn)
 
-//);
+);
 
 endmodule
