@@ -34,8 +34,10 @@ module U110_PCI_SM (
     input CLK66, CLK40, CLK33, RESETn, RnW, TSn, DEVSELn, DEVSELn, TRDYn, BURST, BPRO_ENn,
     input UUBEn, UMBEn, LMBEn, LLBEn,
     input [1:0] PCIAT,
+    input [1:0] A,
 
     output PCI_CYCLEn,
+    output [1:0] AD,
     output [3:0] CBE
 
 );
@@ -45,9 +47,9 @@ module U110_PCI_SM (
 ////////////////
 
 //PCIAT Cycle Types
-localparam MEM_ACCESS  = 2'b00;
-localparam CON0_ACCESS = 2'b01;
-localparam CON1_ACCESS = 2'b10;
+localparam CON0_ACCESS = 2'b00;
+localparam CON1_ACCESS = 2'b01;
+localparam MEM_ACCESS  = 2'b10;
 localparam IO_ACCESS   = 2'b11;
 
 //PCI State Machine States
@@ -63,6 +65,15 @@ localparam RD_MEM = 4'b0110;
 localparam WR_MEM = 4'b0111;
 localparam RD_CON = 4'b1010;
 localparam WR_CON = 4'b1011;
+
+  ////////////
+ // AD BUS //
+////////////
+
+//We drive the AD bus bits 1 and 0 during the address phase as dictated by the cycle type.
+//During the data phase, we hi-z.
+
+assign AD = PHASEA_D ? AD_OUT : 2'bz;
 
   ///////////////////////////
  // PCI CLOCK EDGE DETECT //
@@ -104,6 +115,7 @@ end
 //Drive the PCI signals on the falling clock edge.
 
 reg [1:0] PCI_STATE;
+reg [1:0] AD_OUT;
 
 always @(negedge CLK33) begin
     if (!RESETn) begin
@@ -112,6 +124,7 @@ always @(negedge CLK33) begin
         CBE <= RD_MEM;
         PCI_STATE <= IDLE;
         PCI_CYCLEn <= 1;
+        AD_OUT <= 2'b0;
     end else begin
         case (PCI_STATE)
             IDLE : begin
@@ -120,15 +133,25 @@ always @(negedge CLK33) begin
                     PCI_CYCLEn <= 0;
                     PCI_STATE  <= DATA;
                     case (PCIAT)
-                        MEM_ACCESS : CBE <= RnW ? RD_MEM : WR_MEM;
-                        IO_ACCESS  : CBE <= RnW ? RD_IO  : WR_IO;
-                        default    : CBE <= RnW ? RD_CON : WR_CON;
+                        MEM_ACCESS : begin
+                            CBE <= RnW ? RD_MEM : WR_MEM;
+                            AD_OUT <= A;
+                        end
+                        IO_ACCESS  : begin
+                            CBE <= RnW ? RD_IO  : WR_IO;
+                            AD_OUT <= A;
+                        end
+                        default    : begin
+                            CBE <= RnW ? RD_CON : WR_CON;
+                            AD_OUT <= PCIAT;
+                        end
                     endcase
                 end
             end
             DATA : begin
                 CBE <= RnW ? 4'b0000 : {LLBEn, LMBEn, UMBEn, UUBEn};
                 FRAMEn <= !(BURST);
+                PHASEA_D <= 0;
                 //Watch for TACK to know when to end the cycle.
             end
         endcase

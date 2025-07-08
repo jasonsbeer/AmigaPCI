@@ -6,7 +6,7 @@
 	(paper "B")
 	(title_block
 		(title "AMIGA PCI")
-		(date "2025-07-02")
+		(date "2025-07-07")
 		(rev "6.0")
 	)
 	(lib_symbols
@@ -2594,6 +2594,145 @@
 				)
 			)
 		)
+		(symbol "Connector_Generic:Conn_01x02"
+			(pin_names
+				(offset 1.016) hide)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "J"
+				(at 0 2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "Conn_01x02"
+				(at 0 -5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "connector"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "Connector*:*_1x??_*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "Conn_01x02_1_1"
+				(rectangle
+					(start -1.27 -2.413)
+					(end 0 -2.667)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 0.127)
+					(end 0 -0.127)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 1.27)
+					(end 1.27 -3.81)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin passive line
+					(at -5.08 0 0)
+					(length 3.81)
+					(name "Pin_1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 -2.54 0)
+					(length 3.81)
+					(name "Pin_2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
 		(symbol "Connector_Generic:Conn_01x06"
 			(pin_names
 				(offset 1.016) hide)
@@ -4551,10 +4690,6 @@
 		(uuid "7e5e2acf-e1ee-4640-a417-314e4f799f22")
 	)
 	(no_connect
-		(at 123.19 115.57)
-		(uuid "8269411e-566d-40e1-abda-a9522037f4ba")
-	)
-	(no_connect
 		(at 281.94 205.74)
 		(uuid "9103df85-0f71-4e39-9a79-e9707e3497c6")
 	)
@@ -4567,15 +4702,11 @@
 		(uuid "9871cd00-39b3-4d31-9014-4509f4a89d7a")
 	)
 	(no_connect
-		(at 281.94 162.56)
-		(uuid "9b36e77a-6080-43c7-8382-3039699a508b")
-	)
-	(no_connect
 		(at 213.36 236.22)
 		(uuid "9cde7381-ce17-428d-bb4b-41a389f1af29")
 	)
 	(no_connect
-		(at 213.36 165.1)
+		(at 281.94 165.1)
 		(uuid "9ec63671-d8e3-4a91-92d6-2ad51788908d")
 	)
 	(no_connect
@@ -4603,10 +4734,6 @@
 		(uuid "c1558944-b2fe-4bc9-8911-cb963c83cc6e")
 	)
 	(no_connect
-		(at 123.19 133.35)
-		(uuid "c3699742-5a23-4a7f-98e4-e084fdbb9c48")
-	)
-	(no_connect
 		(at 121.92 212.09)
 		(uuid "c6ccb2dc-d872-4f9f-a6a4-7563e440135a")
 	)
@@ -4619,7 +4746,7 @@
 		(uuid "d4fa23eb-c7db-4646-b6d7-0b93f99d8801")
 	)
 	(no_connect
-		(at 213.36 167.64)
+		(at 281.94 162.56)
 		(uuid "d69e763e-5eb4-4524-be88-cecfce8a2da5")
 	)
 	(no_connect
@@ -4633,10 +4760,6 @@
 	(no_connect
 		(at 281.94 124.46)
 		(uuid "e6ef9ede-edb9-4f74-9fd8-85fa65769a2f")
-	)
-	(no_connect
-		(at 281.94 165.1)
-		(uuid "fc9ccffc-89d7-42ba-8adf-45d3b3630b99")
 	)
 	(bus_entry
 		(at 394.97 87.63)
@@ -6211,6 +6334,16 @@
 			(type default)
 		)
 		(uuid "1999b1e5-7e06-4739-a934-24dc4ae596ac")
+	)
+	(wire
+		(pts
+			(xy 161.29 115.57) (xy 161.29 114.3)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1a011851-a668-4829-ad93-d7eefd58c840")
 	)
 	(wire
 		(pts
@@ -8614,7 +8747,7 @@
 	)
 	(wire
 		(pts
-			(xy 123.19 115.57) (xy 114.3 115.57)
+			(xy 114.3 115.57) (xy 161.29 115.57)
 		)
 		(stroke
 			(width 0)
@@ -9744,7 +9877,7 @@
 	)
 	(wire
 		(pts
-			(xy 123.19 118.11) (xy 114.3 118.11)
+			(xy 114.3 118.11) (xy 163.83 118.11)
 		)
 		(stroke
 			(width 0)
@@ -11494,6 +11627,16 @@
 	)
 	(wire
 		(pts
+			(xy 163.83 118.11) (xy 163.83 114.3)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "db9aa326-40ae-45ff-9320-4977b64d07e8")
+	)
+	(wire
+		(pts
 			(xy 20.32 101.6) (xy 20.32 106.68)
 		)
 		(stroke
@@ -12447,6 +12590,16 @@
 		)
 		(uuid "0340806d-f2c3-4d4f-b635-bd03e5db5d71")
 	)
+	(label "LVAD1"
+		(at 213.36 167.64 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "0369d904-2a88-47cc-a07a-7465e76331e8")
+	)
 	(label "LVD29"
 		(at 383.54 190.5 0)
 		(effects
@@ -13196,6 +13349,16 @@
 			(justify right bottom)
 		)
 		(uuid "6aaebda9-e29b-4149-8a6d-47640eeec5dd")
+	)
+	(label "LVAD0"
+		(at 213.36 165.1 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "6b97a978-e841-42b9-927d-ee0ff06f366c")
 	)
 	(label "LVD26"
 		(at 383.54 179.07 0)
@@ -14377,7 +14540,7 @@
 	)
 	(global_label "PCIAT1"
 		(shape input)
-		(at 123.19 125.73 0)
+		(at 123.19 128.27 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -14387,7 +14550,7 @@
 		)
 		(uuid "081178c5-ca4c-4fd1-ba4f-392947e092ed")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 132.5857 125.73 0)
+			(at 132.5857 128.27 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15089,7 +15252,7 @@
 	)
 	(global_label "ADLATCH"
 		(shape output)
-		(at 123.19 120.65 0)
+		(at 123.19 123.19 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -15099,7 +15262,7 @@
 		)
 		(uuid "6d419fab-4acc-4a8f-8390-1528eda8a1c7")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 134.2186 120.65 0)
+			(at 134.2186 123.19 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15171,7 +15334,7 @@
 			)
 		)
 	)
-	(global_label "LVAD[0..31]"
+	(global_label "LVAD[31..0]"
 		(shape bidirectional)
 		(at 361.95 63.5 0)
 		(effects
@@ -15675,7 +15838,7 @@
 	)
 	(global_label "PCIDIR"
 		(shape output)
-		(at 123.19 118.11 0)
+		(at 123.19 120.65 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -15685,7 +15848,7 @@
 		)
 		(uuid "b8423bc9-4bd6-4067-b71b-8695f4284011")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 132.4648 118.11 0)
+			(at 132.4648 120.65 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15905,7 +16068,7 @@
 	)
 	(global_label "PCIAT0"
 		(shape input)
-		(at 123.19 123.19 0)
+		(at 123.19 125.73 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -15915,7 +16078,7 @@
 		)
 		(uuid "c82ed047-8b33-4f77-9910-cc651999d666")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 132.5857 123.19 0)
+			(at 132.5857 125.73 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16175,7 +16338,7 @@
 	)
 	(global_label "_BPROEN"
 		(shape input)
-		(at 123.19 130.81 0)
+		(at 123.19 133.35 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -16185,7 +16348,7 @@
 		)
 		(uuid "e5bf08dd-b876-4526-92e1-7f49c8f0a8bb")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 134.7628 130.81 0)
+			(at 134.7628 133.35 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16238,7 +16401,7 @@
 	)
 	(global_label "_BREGEN"
 		(shape input)
-		(at 123.19 128.27 0)
+		(at 123.19 130.81 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -16248,7 +16411,7 @@
 		)
 		(uuid "e8d0ada3-90e2-4c44-a617-9f36be30528b")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 134.5813 128.27 0)
+			(at 134.5813 130.81 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16893,6 +17056,76 @@
 			(project "AmigaPCI Mainboard"
 				(path "/72453515-27fe-4336-91f3-e3c8054f7767/c71cba2c-aa10-44ea-a37d-abe4b67b6d89"
 					(reference "U110F1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector_Generic:Conn_01x02")
+		(at 163.83 109.22 270)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "13a2bdc3-3430-4948-8f0d-2b7ed70e4e3b")
+		(property "Reference" "TP_109"
+			(at 159.512 107.95 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "109_TP"
+			(at 159.512 110.49 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
+			(at 163.83 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 163.83 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"
+			(at 163.83 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e9900c77-016b-442d-8ad2-6c56a1662381")
+		)
+		(pin "2"
+			(uuid "4917c079-237e-48bf-b5ce-de1253eb0576")
+		)
+		(instances
+			(project "AmigaPCI Mainboard"
+				(path "/72453515-27fe-4336-91f3-e3c8054f7767/c71cba2c-aa10-44ea-a37d-abe4b67b6d89"
+					(reference "TP_109")
 					(unit 1)
 				)
 			)

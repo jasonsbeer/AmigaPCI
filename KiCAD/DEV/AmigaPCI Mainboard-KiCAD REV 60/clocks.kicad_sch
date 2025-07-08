@@ -6,7 +6,7 @@
 	(paper "B")
 	(title_block
 		(title "AMIGA PCI")
-		(date "2025-07-02")
+		(date "2025-07-07")
 		(rev "6.0")
 	)
 	(lib_symbols
@@ -13808,7 +13808,7 @@
 			)
 		)
 	)
-	(global_label "LVAD[0..31]"
+	(global_label "LVAD[31..0]"
 		(shape bidirectional)
 		(at 276.86 31.75 180)
 		(fields_autoplaced yes)
@@ -13871,7 +13871,7 @@
 			)
 		)
 	)
-	(global_label "AD[0..31]"
+	(global_label "AD[31..0]"
 		(shape bidirectional)
 		(at 332.74 31.75 0)
 		(effects
@@ -13882,7 +13882,7 @@
 		)
 		(uuid "6a062ffd-da5f-4114-8d7f-662b2864af3c")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 344.8376 34.163 0)
+			(at 344.932 31.75 0)
 			(effects
 				(font
 					(size 1.27 1.27)

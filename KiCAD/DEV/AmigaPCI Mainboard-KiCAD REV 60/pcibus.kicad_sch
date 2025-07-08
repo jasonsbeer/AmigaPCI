@@ -6,7 +6,7 @@
 	(paper "USLedger")
 	(title_block
 		(title "AMIGA PCI")
-		(date "2025-07-02")
+		(date "2025-07-07")
 		(rev "6.0")
 	)
 	(lib_symbols
@@ -23438,7 +23438,7 @@
 			)
 		)
 	)
-	(global_label "AD[0..31]"
+	(global_label "AD[31..0]"
 		(shape bidirectional)
 		(at 378.46 17.78 0)
 		(fields_autoplaced yes)
