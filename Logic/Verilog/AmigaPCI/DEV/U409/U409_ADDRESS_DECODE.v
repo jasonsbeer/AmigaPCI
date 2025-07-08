@@ -144,7 +144,7 @@ end
 //The PCI bridge can be accessed in one of two ways.
 //The first is the PCI Bridge registers in the Z2 space as a 64k device. These registers are defined by the PCI spec and support AUTOCONFIG cards.
 //The second way is as a prometheus access in the Z3 space.
-//The PCIAT (PCI Access Type) bus identifies the acess type for bridge register accesses.
+//The PCIAT (PCI Access Type) bus identifies the acess type for all bridge accesses.
 //NOTE: The I/O space is basically deprectaed in the Rev 2.3 PCI spec, but is here for prometheus support.
 
 // Access Type         PCIAT1   PCIAT0

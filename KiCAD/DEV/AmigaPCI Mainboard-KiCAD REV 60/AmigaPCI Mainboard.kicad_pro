@@ -3267,6 +3267,26 @@
       {
         "netclass": "Narrow",
         "pattern": "PR_W"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "LVAD29"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_PCIEND"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_PTIP"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_PCISTART"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "_PCITIP"
       }
     ]
   },

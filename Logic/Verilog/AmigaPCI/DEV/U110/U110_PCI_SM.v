@@ -31,12 +31,12 @@ iceprog D:\AmigaPCI\U110\APCI_U110\APCI_U110_Implmnt\sbt\outputs\bitmap\U110_TOP
 
 module U110_PCI_SM (
 
-    input CLK66, CLK40, CLK33, RESETn, RnW, TSn, DEVSELn, DEVSELn, TRDYn, BURST, BPRO_ENn,
-    input UUBEn, UMBEn, LMBEn, LLBEn,
+    input CLK40, CLK33, RESETn, RnW, TSn, DEVSELn, DEVSELn, TRDYn, BURST, BPRO_ENn,
+    input PCI_TIPn, UUBEn, UMBEn, LMBEn, LLBEn,
     input [1:0] PCIAT,
     input [1:0] A,
 
-    output PCI_CYCLEn,
+    output PCI_STARTn,
     output [1:0] AD,
     output [3:0] CBE
 
@@ -52,11 +52,14 @@ localparam CON1_ACCESS = 2'b01;
 localparam MEM_ACCESS  = 2'b10;
 localparam IO_ACCESS   = 2'b11;
 
+//Burst Order
+localparam LINEAR = 2'b00;
+localparam WRAP   = 2'b10;
+
 //PCI State Machine States
-localparam IDLE      = 2'b00;
-localparam ADDRESS   = 2'b01;
-localparam DATA      = 2'b10;
-localparam CYCLE_END = 2'b11;
+localparam IDLE = 2'b00;
+localparam DATA = 2'b01;
+localparam WAIT = 2'b10;
 
 //PCI Bus Commands
 localparam RD_IO  = 4'b0010;
@@ -96,46 +99,47 @@ end*/
 /////////////////
 
 //Catch the start of a new prometheus data transfer cycle.
-//We are only detecting prometheus cycles for now. Add autoconfig cycles later.
+//We are only detecting prometheus cycles for now. Add non-prometheus cycles later.
 
 reg CYCLE_START;
 always @(posedge CLK40) begin
     if (!RESETn) begin
         CYCLE_START <= 0;
     end else begin
-        CYCLE_START <= ((!TSn && !BPRO_ENn) || (CYCLE_START && PCI_CYCLEn));
+        CYCLE_START <= ((!TSn && !BPRO_ENn) || (CYCLE_START && PCI_STARTn));
     end
 end
 
-
-//THE PCI STATE MACHINE IS SPLIT BETWEEN U110 AND U109.PCI_CYCLEn
+//THE PCI STATE MACHINE IS SPLIT BETWEEN U110 AND U109.
 //U110 IDENTIFIES THE START OF A PCI CYCLE. WHEN A DEVICE ON THE
 //PCI BUS RESPONDS, THE CYCLE IS TURNED OVER TO U109 TO COMPLETE THE
 //DATA PORTION OF THE CYCLE.
-//Drive the PCI signals on the falling clock edge.
 
+reg BURST_CYCLE;
 reg [1:0] PCI_STATE;
 reg [1:0] AD_OUT;
 
 always @(negedge CLK33) begin
     if (!RESETn) begin
-        PHASEA_D <= 1;
         FRAMEn <= 1;
         CBE <= RD_MEM;
         PCI_STATE <= IDLE;
-        PCI_CYCLEn <= 1;
+        PCI_STARTn <= 1;
         AD_OUT <= 2'b0;
+        BURST_CYCLE <= 0;
+        PCI_STARTn <= 1;
     end else begin
         case (PCI_STATE)
             IDLE : begin
                 if (CYCLE_START) begin
                     FRAMEn     <= 0;
-                    PCI_CYCLEn <= 0;
+                    PCI_STARTn <= 0;
                     PCI_STATE  <= DATA;
+                    BURST_CYCLE = BURST;
                     case (PCIAT)
                         MEM_ACCESS : begin
                             CBE <= RnW ? RD_MEM : WR_MEM;
-                            AD_OUT <= A;
+                            AD_OUT <= WRAP;
                         end
                         IO_ACCESS  : begin
                             CBE <= RnW ? RD_IO  : WR_IO;
@@ -150,9 +154,17 @@ always @(negedge CLK33) begin
             end
             DATA : begin
                 CBE <= RnW ? 4'b0000 : {LLBEn, LMBEn, UMBEn, UUBEn};
-                FRAMEn <= !(BURST);
-                PHASEA_D <= 0;
-                //Watch for TACK to know when to end the cycle.
+                FRAMEn <= !(BURST_CYCLE); //Negate _FRAME now for non-burst cycles.
+                if (!PCI_TIPn) begin //Wait for U109 to signal it has started the data portion of the cycle.
+                    PCI_STATE <= WAIT;
+                    PCI_STARTn <= 1;
+                end
+            end
+            WAIT : begin
+                FRAMEn <= PCI_TIPn || FRAMEn; //Negate _FRAME when U109 negates _PCI-TIP.
+                if (PHASEA_D) begin //U109 says the PCI cycle is complete.
+                    PCI_STATE <= IDLE;
+                end
             end
         endcase
     end

@@ -33,7 +33,7 @@ module U110_TOP (
 
     input CLK40, CLK33, RESETn, TSn, RnW,
     input ATA_ENn, PPIO, SPIO, PCS1 , PCS0, SCS1, SCS0,
-    input BPRO_ENn, DEVSELn, TRDYn,
+    input BPRO_ENn, DEVSELn, TRDYn, PHASEA_D,
     input [1:0] PCIAT,
     input [1:0] SIZ,
 
@@ -49,7 +49,7 @@ module U110_TOP (
 /////////
 
 //DOUBLE CHECK THIS WITH ICECUBE2!
-wire CLK66;
+/*wire CLK66;
 
 SB_PLL40_CORE #(
     .FEEDBACK_PATH("SIMPLE"),
@@ -65,7 +65,7 @@ SB_PLL40_CORE #(
     .LOCK(),
     .RESETB(1'b1),
     .BYPASS(1'b0)
-);
+);*/
 
   ///////////////
  // INTERRUPT //
@@ -160,7 +160,7 @@ U110_ARBITOR U110_ARBITOR (
 U110_PCI_SM U110_PCI_SM (
     //input
     .CLK40 (CLK40),
-    .CLK66 (CLK66),
+    .CLK33 (CLK33),
     .RESETn (RESETn),
     .RnW (RnW),
     .TSn (TSn),
