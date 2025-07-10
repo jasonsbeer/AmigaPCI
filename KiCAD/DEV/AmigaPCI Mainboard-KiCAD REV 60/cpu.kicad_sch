@@ -6,7 +6,7 @@
 	(paper "B")
 	(title_block
 		(title "AMIGA PCI")
-		(date "2025-07-09")
+		(date "2025-07-10")
 		(rev "6.0")
 	)
 	(lib_symbols
@@ -9318,12 +9318,6 @@
 		(uuid "66eacf47-07ef-4bb5-be79-4f11e9474fcb")
 	)
 	(junction
-		(at 334.01 194.31)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "6700b27d-9a30-4b12-ac4e-6c7b9266d9e4")
-	)
-	(junction
 		(at 153.67 60.96)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -13755,16 +13749,6 @@
 		)
 		(uuid "79299658-4805-4f8c-a1b3-7172c9fc7545")
 	)
-	(wire
-		(pts
-			(xy 334.01 194.31) (xy 344.17 194.31)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "794f6e09-bddc-454a-9f9a-dc287a2ecf74")
-	)
 	(bus
 		(pts
 			(xy 326.39 69.85) (xy 326.39 72.39)
@@ -13927,7 +13911,7 @@
 	)
 	(wire
 		(pts
-			(xy 328.93 194.31) (xy 334.01 194.31)
+			(xy 328.93 194.31) (xy 344.17 194.31)
 		)
 		(stroke
 			(width 0)
@@ -16277,16 +16261,6 @@
 	)
 	(wire
 		(pts
-			(xy 334.01 191.77) (xy 334.01 194.31)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ce1b6b59-301e-435d-a8ae-f16b31a0d6b6")
-	)
-	(wire
-		(pts
 			(xy 222.25 54.61) (xy 229.87 54.61)
 		)
 		(stroke
@@ -17755,6 +17729,19 @@
 			(justify left bottom)
 		)
 		(uuid "1bf007dd-22da-4f7c-b60c-ce5ad074e0a9")
+	)
+	(text "U712 PROVIDES CHIP RAM AND MC68000 CYCLES"
+		(exclude_from_sim no)
+		(at 42.672 253.492 0)
+		(effects
+			(font
+				(size 3 3)
+				(thickness 0.6)
+				(bold yes)
+			)
+			(justify left bottom)
+		)
+		(uuid "2d8cfc99-bc65-40a1-af44-54d749a525ef")
 	)
 	(text "        ADDRESS PHASE     DATA PHASE\n        -------------     -------------\n        PAR     _PERR     PAR    _PERR\n---------------------------------------\nCPU WR  BRIDGE  PCI       BRIDGE PCI\nCPU RD  BRIDGE  PCI       PCI    BRIDGE\nDMA WR  PCI     BRIDGE    PCI    BRIDGE \nDMA RD  PCI     BRIDGE    BRIDGE PCI"
 		(exclude_from_sim no)
@@ -26244,139 +26231,6 @@
 			(project "AmigaPCI Mainboard"
 				(path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
 					(reference "C736")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_name "+3V3_1")
-		(lib_id "power:+3V3")
-		(at 334.01 186.69 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "895d031b-718b-47d0-ac9b-8f064dab08cc")
-		(property "Reference" "#PWR204"
-			(at 334.01 190.5 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+3V3"
-			(at 333.756 182.88 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 334.01 186.69 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 334.01 186.69 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"+3V3\""
-			(at 334.01 186.69 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "0b51d4f8-0f88-4b68-8af3-69e8136f06af")
-		)
-		(instances
-			(project "AmigaPCI Mainboard"
-				(path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
-					(reference "#PWR204")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R_Small")
-		(at 334.01 189.23 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "8aa53a22-3f72-47fa-b748-86a40c018ff9")
-		(property "Reference" "R163"
-			(at 332.105 189.23 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "2k7"
-			(at 334.01 189.23 90)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 334.01 189.23 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 334.01 189.23 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 334.01 189.23 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "734cd604-74dc-4269-9011-04dfdbc13157")
-		)
-		(pin "2"
-			(uuid "7b8f6cff-8eee-434c-bf41-c7d42366a6ab")
-		)
-		(instances
-			(project "AmigaPCI Mainboard"
-				(path "/72453515-27fe-4336-91f3-e3c8054f7767/14024e2c-eaac-4547-8875-4a8ac58b1720"
-					(reference "R163")
 					(unit 1)
 				)
 			)
