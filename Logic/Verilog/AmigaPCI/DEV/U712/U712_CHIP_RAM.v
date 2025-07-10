@@ -117,8 +117,8 @@ end
 // AGNUS DRAM ADDRESS LATCH //
 /////////////////////////////
 
-// AGNUS_REV = 8372A
-//!AGNUS_REV = 8375
+//!AGNUS_REV = 8372A
+// AGNUS_REV = 8375
 
 reg [9:0] DMA_ROW_ADDRESS;
 always @(posedge C3) begin
@@ -126,7 +126,7 @@ always @(posedge C3) begin
         DMA_ROW_ADDRESS <= 10'b0000000000;
     end else begin
         if (!DBRn) begin
-            DMA_ROW_ADDRESS <= !AGNUS_REV ? DRA : { RAS0n, DRA[9:1] };
+            DMA_ROW_ADDRESS <= AGNUS_REV ? DRA : { RAS0n, DRA[9:1] };
         end
     end
 end
@@ -139,7 +139,7 @@ always @(negedge C1) begin
         DMA_A1 <= 0;
     end else begin
         if (!DBRn) begin
-            if (!AGNUS_REV) begin
+            if (AGNUS_REV) begin
                 DMA_COL_ADDRESS <= DRA[9:1];
                 DMA_A1 <= DRA[0];
             end else begin
@@ -330,7 +330,7 @@ always @(negedge CLK80) begin
                         SDRAM_COUNTER <= 8'h01;
                     end else if (CPU_CYCLE_START && !RAM_CYCLE_DISABLE) begin
                         //States h05 - h0E handle CPU cycles.
-                        CPU_COL_ADDRESS <= !AGNUS_REV ? {A[20], A[18], A[8:2]} : {1'b0, A[18], A[8:2]};
+                        CPU_COL_ADDRESS <= AGNUS_REV ? {A[20], A[18], A[8:2]} : {1'b0, A[18], A[8:2]};
                         SDRAM_CMD <= BANKACTIVATE;
                         CPU_CYCLE <= 1;
                         SDRAM_COUNTER <= 8'h05;
