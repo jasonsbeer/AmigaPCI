@@ -20911,7 +20911,7 @@
 				)
 			)
 		)
-		(property "Value" "74HCT03"
+		(property "Value" "74HC03"
 			(at 298.4417 35.7411 0)
 			(effects
 				(font
@@ -21310,7 +21310,7 @@
 				)
 			)
 		)
-		(property "Value" "74AHCT04"
+		(property "Value" "74AHC04"
 			(at 301.752 24.638 0)
 			(effects
 				(font
@@ -26596,7 +26596,7 @@
 				)
 			)
 		)
-		(property "Value" "74HCT03"
+		(property "Value" "74HC03"
 			(at 298.4417 49.7111 0)
 			(effects
 				(font

@@ -16969,7 +16969,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "74AHCT04"
+		(property "Value" "74AHC04"
 			(at 192.278 249.428 90)
 			(effects
 				(font
@@ -17224,7 +17224,7 @@
 				)
 			)
 		)
-		(property "Value" "74AHCT04"
+		(property "Value" "74AHC04"
 			(at 184.023 109.728 0)
 			(effects
 				(font
@@ -19318,7 +19318,7 @@
 				)
 			)
 		)
-		(property "Value" "74AHCT04"
+		(property "Value" "74AHC04"
 			(at 179.578 97.409 0)
 			(effects
 				(font
@@ -19616,7 +19616,7 @@
 				)
 			)
 		)
-		(property "Value" "74AHCT04"
+		(property "Value" "74AHC04"
 			(at 180.213 84.582 0)
 			(effects
 				(font

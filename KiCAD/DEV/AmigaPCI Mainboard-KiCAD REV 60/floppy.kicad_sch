@@ -17393,7 +17393,7 @@
 				)
 			)
 		)
-		(property "Value" "74AHCT04"
+		(property "Value" "74AHC04"
 			(at 190.5 18.3896 0)
 			(effects
 				(font
@@ -17813,7 +17813,7 @@
 				)
 			)
 		)
-		(property "Value" "74HCT03"
+		(property "Value" "74HC03"
 			(at 304.7917 34.4711 0)
 			(effects
 				(font
@@ -19169,7 +19169,7 @@
 				)
 			)
 		)
-		(property "Value" "74HCT03"
+		(property "Value" "74HC03"
 			(at 303.5217 49.7111 0)
 			(effects
 				(font
@@ -20658,7 +20658,7 @@
 				)
 			)
 		)
-		(property "Value" "74AHCT04"
+		(property "Value" "74AHC04"
 			(at 205.994 18.288 0)
 			(effects
 				(font
@@ -20762,7 +20762,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "74HCT03"
+		(property "Value" "74HC03"
 			(at 163.322 242.951 90)
 			(effects
 				(font
