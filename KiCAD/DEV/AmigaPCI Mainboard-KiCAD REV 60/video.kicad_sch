@@ -6,7 +6,7 @@
 	(paper "B")
 	(title_block
 		(title "AMIGA PCI")
-		(date "2025-07-07")
+		(date "2025-07-09")
 		(rev "6.0")
 	)
 	(lib_symbols
@@ -14747,7 +14747,7 @@
 				)
 			)
 		)
-		(property "Value" "100pf"
+		(property "Value" "100pF"
 			(at 373.126 194.31 90)
 			(effects
 				(font
@@ -15152,7 +15152,7 @@
 				)
 			)
 		)
-		(property "Value" "100pf"
+		(property "Value" "100pF"
 			(at 136.779 104.394 0)
 			(effects
 				(font
@@ -15950,7 +15950,7 @@
 				)
 			)
 		)
-		(property "Value" "100pf"
+		(property "Value" "100pF"
 			(at 232.791 152.654 90)
 			(effects
 				(font
@@ -20533,7 +20533,7 @@
 				)
 			)
 		)
-		(property "Value" "100pf"
+		(property "Value" "100pF"
 			(at 374.396 171.45 90)
 			(effects
 				(font
