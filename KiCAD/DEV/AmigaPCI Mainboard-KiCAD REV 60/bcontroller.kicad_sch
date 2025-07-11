@@ -6,7 +6,7 @@
 	(paper "B")
 	(title_block
 		(title "AMIGA PCI")
-		(date "2025-07-10")
+		(date "2025-07-11")
 		(rev "6.0")
 	)
 	(lib_symbols
@@ -16623,7 +16623,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "a04deee8-576a-4ff2-9f77-6b9d681cdb98")
-		(property "Reference" "J211"
+		(property "Reference" "J212"
 			(at 196.596 154.94 0)
 			(effects
 				(font
@@ -16683,7 +16683,7 @@
 		(instances
 			(project "AmigaPCI Mainboard"
 				(path "/72453515-27fe-4336-91f3-e3c8054f7767/62a07d55-3759-49a3-8a3f-631cb4902a24"
-					(reference "J211")
+					(reference "J212")
 					(unit 1)
 				)
 			)

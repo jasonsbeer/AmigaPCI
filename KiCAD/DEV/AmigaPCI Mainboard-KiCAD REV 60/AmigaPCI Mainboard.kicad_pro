@@ -3287,6 +3287,10 @@
       {
         "netclass": "Narrow",
         "pattern": "_PCITIP"
+      },
+      {
+        "netclass": "Narrow",
+        "pattern": "/HID and User Ports/CLKCAL"
       }
     ]
   },
