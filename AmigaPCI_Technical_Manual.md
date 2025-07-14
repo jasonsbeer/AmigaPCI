@@ -75,7 +75,7 @@ CIA|8520A-1 or 8520PD|318029-03|2
 
 #### 1.3.2 Kickstart ROMs
 
-Kickstart ROMs for the Amiga 3000 should be burned to 100ns or faster 27C4096 EPROMs for use by the AmigaPCI. Original Amiga Kickstart Mask ROMs and EPROMs are not supported. 
+Kickstart ROMs for the Amiga 1200 should be burned to 100ns or faster 27C4096 EPROMs for use by the AmigaPCI. Original Amiga Kickstart Mask ROMs and EPROMs are not supported. 
 
 <p align="center"><img src="/DataSheets/TimingDiagrams/ROM Cycle.png"></p>
 
@@ -83,7 +83,7 @@ Kickstart ROMs for the Amiga 3000 should be burned to 100ns or faster 27C4096 EP
 
 The floppy disk interface is the primary way Amiga based computers store and retrieve external data. The AmigaPCI includes a header that supports two internal double density floppy disk drives. In the event two floppy disk drives (DF0 and DF1) are installed on the floppy disk drive header, J200 must have a jumper placed. When only one floppy disk drive is installed (DF0), there should be no jumper. See Table 1.4.1.
 
-In addition to supporting original Amiga floppy disk drives, the AmigaPCI supports floppy disk drives designed for the PC. An adaptation of Ian Steadman's PC floppy interface is implemented. Set the jumpers as shown in Table 1.4.2 depending on the type of floppy disk drives you are using. When using high density disk drives with high density floppy disks, it may be necessary to cover the high density hole with tape to prevent the disk drive from attempting to use the disk as high density, which is not supported by the Amiga chipset. This may not be necessary for all high density floppy disk drive mechanisms.
+In addition to supporting original Amiga floppy disk drives, the AmigaPCI supports floppy disk drives designed for the PC. An adaptation of Ian Steadman's PC floppy interface is implemented. Set the jumpers as shown in Table 1.4.2 depending on the type of floppy disk drives you are using. When using high density disk drives with high density floppy disks, it may be necessary to cover the high density hole with tape to prevent the disk drive from attempting to use the disk as high density, which is not supported by the Amiga chipset.
 
 > [!NOTE]
 > **You must use either Amiga disk drives or PC disk drives. Do not mix the two types.** 
