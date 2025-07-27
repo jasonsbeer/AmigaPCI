@@ -30,8 +30,8 @@ GitHub: https://github.com/jasonsbeer/AmigaPCI
 
 module U110_CYCLE_TERMINATION (
 
-    input CLK40, RESETn, ATA_TACK,
-    output TEAn, TACKn
+    input CLK40, RESETn, ATA_ENn, ATA_TACK,
+    output TEAn, TACKn, TCIn, TBIn
 
 );
 
@@ -39,12 +39,12 @@ module U110_CYCLE_TERMINATION (
  // CYCLE TERMINATION //
 ///////////////////////
 
-//WE HAVE A TACK ENABLE SIGNAL HERE TO HELP TERMINATE ATA CYCLES.
-//WHEN CALLED, THE STATE MACHINE WILL RUN ONE TIME AND THEN WAIT FOR
-//ATA_TACK TO BE NEGATED. THE CYCLE CAN THEN RUN AGAIN.
+//Terminate cycles for PCI and ATA access. We don't allow caching in either PCI or ATA spaces.
 
 assign TACKn = TACK_OUT_EN ? TACK_OUT : 1'bz;
-assign TEAn = 1;
+assign TCIn  = TACK_OUT_EN ? TACK_OUT : 1'bz;
+assign TBIn  = TACK_OUT_EN && !ATA_ENn ? TACK_OUT : 1'bz;
+assign TEAn  = 1;
 
 reg TACK_EN;
 reg TACK_OUT_EN;

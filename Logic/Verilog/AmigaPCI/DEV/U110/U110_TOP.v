@@ -37,7 +37,7 @@ module U110_TOP (
     input [1:0] PCIAT,
     input [1:0] SIZ,
 
-    output INT2n, TEAn, TACKn,
+    output INT2n, TEAn, TACKn, TCIn, TBIn
     output IDELENn, IDEDIR, IDEHRENn, IDEHWENn, ATA_LATCH, PCI_CYCLEn,
     output BGn, BURST,
     output CS0_PRIn, CS1_PRIn, CS0_SECn, CS1_SECn, DIOR_PRIn, DIOW_PRIn, DIOR_SECn, DIOW_SECn
@@ -87,11 +87,14 @@ U110_CYCLE_TERMINATION U110_CYCLE_TERMINATION (
     //INPUT
     .CLK40 (CLK40),
     .RESETn (RESETn),
+    .ATA_ENn (ATA_ENn),
     .ATA_TACK (ATA_TACK),
 
     //output
+    .TEAn (TEAn),
     .TACKn (TACKn),
-    .TEAn (TEAn)
+    .TCIn (TCIn),
+    .TBIn (TBIn)
 );
 
   /////////////
