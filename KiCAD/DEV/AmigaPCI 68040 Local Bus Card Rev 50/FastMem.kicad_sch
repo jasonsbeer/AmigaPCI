@@ -6,7 +6,7 @@
 	(paper "B")
 	(title_block
 		(title "AmigaPCI 68040 Local Bus Card")
-		(date "2025-06-29")
+		(date "2025-08-14")
 		(rev "5.0")
 	)
 	(lib_symbols
@@ -3570,6 +3570,125 @@
 						)
 					)
 					(number "9"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "Connector:Conn_01x01_Pin"
+			(pin_names
+				(offset 1.016) hide)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "J"
+				(at 0 2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "Conn_01x01_Pin"
+				(at 0 -2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Generic connector, single row, 01x01, script generated"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_locked" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "connector"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "Connector*:*_1x??_*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "Conn_01x01_Pin_1_1"
+				(polyline
+					(pts
+						(xy 1.27 0) (xy 0.8636 0)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start 0.8636 0.127)
+					(end 0 -0.127)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(pin passive line
+					(at 5.08 0 180)
+					(length 3.81)
+					(name "Pin_1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -14009,6 +14128,27 @@
 			)
 		)
 	)
+	(global_label "EMCLKE"
+		(shape input)
+		(at 81.28 246.38 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "1975f861-89de-4175-86f1-0e2d985e5747")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 81.28 256.6827 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+	)
 	(global_label "_EMWE"
 		(shape input)
 		(at 158.75 130.81 180)
@@ -14043,6 +14183,26 @@
 		(uuid "225d3e9f-f71c-43a5-88e5-fe5f2acadc2a")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 307.0762 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+	)
+	(global_label "RAMCLKA"
+		(shape input)
+		(at 83.82 246.38 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "22c1c478-f721-4217-b488-fc44368bafb2")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 83.566 256.794 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14132,6 +14292,27 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+			)
+		)
+	)
+	(global_label "_EMCAS"
+		(shape input)
+		(at 76.2 246.38 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "30c375f8-6753-4eba-97f6-30c108ea7ddb")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 76.2 256.5013 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
 			)
 		)
 	)
@@ -14260,6 +14441,27 @@
 			)
 		)
 	)
+	(global_label "_EM0CS"
+		(shape input)
+		(at 68.58 246.38 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "5d6533e3-2de0-4a41-a565-0b2f99fa0eb6")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 68.58 256.6222 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+	)
 	(global_label "BANK1"
 		(shape input)
 		(at 158.75 118.11 180)
@@ -14357,6 +14559,27 @@
 		(uuid "7550676b-b633-46e0-9b23-d1a85828b46e")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 307.0763 151.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+	)
+	(global_label "_EMWE"
+		(shape input)
+		(at 78.74 246.38 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "75a27c88-9376-44a3-8f60-97e27b231c29")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 78.74 255.5336 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14524,6 +14747,27 @@
 		(uuid "8a44c9ee-08b1-44ae-8a9d-b5092ef525b1")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 149.7966 151.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+	)
+	(global_label "_EM1CS"
+		(shape input)
+		(at 71.12 246.38 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "93c62d92-bdcc-411b-93a6-795f46637ced")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 71.12 256.6222 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14907,6 +15151,27 @@
 			)
 		)
 	)
+	(global_label "_EMRAS"
+		(shape input)
+		(at 73.66 246.38 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "ecdddfc4-8490-4a21-8a73-27c67ec66e2d")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 73.66 256.5013 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+	)
 	(global_label "_UUBE"
 		(shape input)
 		(at 55.88 151.13 180)
@@ -15254,6 +15519,72 @@
 			(project "AmigaPCI 68040"
 				(path "/e4eb271a-56d6-4281-ada6-40852f202c68/bb4ae098-973b-46ca-b387-f2229a81b6e3"
 					(reference "C406")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:Conn_01x01_Pin")
+		(at 76.2 241.3 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "180d890f-835b-434f-8ac5-9eae52d53e43")
+		(property "Reference" "J4"
+			(at 75.184 240.03 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "_CAS"
+			(at 76.2 233.934 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "TestPoint_Pad_D1.0mm"
+			(at 76.2 241.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 76.2 241.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Generic connector, single row, 01x01, script generated"
+			(at 76.2 241.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "6849d219-e453-45cb-915b-b06d08189c8c")
+		)
+		(instances
+			(project "AmigaPCI 68040"
+				(path "/e4eb271a-56d6-4281-ada6-40852f202c68/bb4ae098-973b-46ca-b387-f2229a81b6e3"
+					(reference "J4")
 					(unit 1)
 				)
 			)
@@ -16749,6 +17080,72 @@
 		)
 	)
 	(symbol
+		(lib_id "Connector:Conn_01x01_Pin")
+		(at 68.58 241.3 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "7e612e4f-c13b-4087-84ec-ce24f52316b1")
+		(property "Reference" "J1"
+			(at 67.564 240.03 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "_CS0"
+			(at 68.58 233.934 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "TestPoint_Pad_D1.0mm"
+			(at 68.58 241.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 68.58 241.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Generic connector, single row, 01x01, script generated"
+			(at 68.58 241.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "bc520ee8-f7d0-4d41-9c69-ae2568cbd9b2")
+		)
+		(instances
+			(project ""
+				(path "/e4eb271a-56d6-4281-ada6-40852f202c68/bb4ae098-973b-46ca-b387-f2229a81b6e3"
+					(reference "J1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:+3V3")
 		(at 184.15 63.5 0)
 		(unit 1)
@@ -16878,6 +17275,72 @@
 			(project "AmigaPCI 68040"
 				(path "/e4eb271a-56d6-4281-ada6-40852f202c68/bb4ae098-973b-46ca-b387-f2229a81b6e3"
 					(reference "C414")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:Conn_01x01_Pin")
+		(at 78.74 241.3 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "8aa81235-095f-4e78-b0eb-bf690c7a85bf")
+		(property "Reference" "J5"
+			(at 77.724 240.03 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "_WE"
+			(at 78.74 234.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "TestPoint_Pad_D1.0mm"
+			(at 78.74 241.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 78.74 241.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Generic connector, single row, 01x01, script generated"
+			(at 78.74 241.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "5b56bd3f-cf90-4289-8aa7-702920e2317c")
+		)
+		(instances
+			(project "AmigaPCI 68040"
+				(path "/e4eb271a-56d6-4281-ada6-40852f202c68/bb4ae098-973b-46ca-b387-f2229a81b6e3"
+					(reference "J5")
 					(unit 1)
 				)
 			)
@@ -17083,6 +17546,72 @@
 			(project "AmigaPCI 68040"
 				(path "/e4eb271a-56d6-4281-ada6-40852f202c68/bb4ae098-973b-46ca-b387-f2229a81b6e3"
 					(reference "C418")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:Conn_01x01_Pin")
+		(at 71.12 241.3 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "9f1e984d-0f65-46bf-b91a-140a3f19671e")
+		(property "Reference" "J2"
+			(at 70.104 240.03 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "_CS1"
+			(at 71.12 233.934 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "TestPoint_Pad_D1.0mm"
+			(at 71.12 241.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 71.12 241.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Generic connector, single row, 01x01, script generated"
+			(at 71.12 241.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "85f5b688-f9b0-4404-9e4b-816e02d60802")
+		)
+		(instances
+			(project "AmigaPCI 68040"
+				(path "/e4eb271a-56d6-4281-ada6-40852f202c68/bb4ae098-973b-46ca-b387-f2229a81b6e3"
+					(reference "J2")
 					(unit 1)
 				)
 			)
@@ -18306,6 +18835,72 @@
 		)
 	)
 	(symbol
+		(lib_id "Connector:Conn_01x01_Pin")
+		(at 81.28 241.3 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "f0b37e68-ec45-4f04-8599-7bd7b9cf5873")
+		(property "Reference" "J6"
+			(at 80.264 240.03 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "CLKEN"
+			(at 81.28 232.664 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "TestPoint_Pad_D1.0mm"
+			(at 81.28 241.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 81.28 241.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Generic connector, single row, 01x01, script generated"
+			(at 81.28 241.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "26996b9d-6560-4541-86de-c9ab21c6be50")
+		)
+		(instances
+			(project "AmigaPCI 68040"
+				(path "/e4eb271a-56d6-4281-ada6-40852f202c68/bb4ae098-973b-46ca-b387-f2229a81b6e3"
+					(reference "J6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "AmigaPCI-Symbols:SDRAM(16Mx32)")
 		(at 199.39 120.65 0)
 		(unit 1)
@@ -18703,6 +19298,72 @@
 		)
 	)
 	(symbol
+		(lib_id "Connector:Conn_01x01_Pin")
+		(at 83.82 241.3 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "f5dab4e7-2355-4ac1-8cae-93b8d097204d")
+		(property "Reference" "J7"
+			(at 82.804 240.03 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "RAMCLK"
+			(at 83.82 231.394 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "TestPoint_Pad_D1.0mm"
+			(at 83.82 241.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 83.82 241.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Generic connector, single row, 01x01, script generated"
+			(at 83.82 241.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "2eb19b04-5457-4abe-908e-46cd233cd2d9")
+		)
+		(instances
+			(project "AmigaPCI 68040"
+				(path "/e4eb271a-56d6-4281-ada6-40852f202c68/bb4ae098-973b-46ca-b387-f2229a81b6e3"
+					(reference "J7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:C_Small")
 		(at 394.97 69.85 90)
 		(unit 1)
@@ -18766,6 +19427,72 @@
 			(project "AmigaPCI 68040"
 				(path "/e4eb271a-56d6-4281-ada6-40852f202c68/bb4ae098-973b-46ca-b387-f2229a81b6e3"
 					(reference "C415")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:Conn_01x01_Pin")
+		(at 73.66 241.3 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "fbff1260-5773-4733-ba43-570d8ca29ac4")
+		(property "Reference" "J3"
+			(at 72.644 240.03 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "_RAS"
+			(at 73.66 233.934 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "TestPoint_Pad_D1.0mm"
+			(at 73.66 241.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 73.66 241.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Generic connector, single row, 01x01, script generated"
+			(at 73.66 241.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c544f0b4-04de-48ba-98de-91a037419785")
+		)
+		(instances
+			(project "AmigaPCI 68040"
+				(path "/e4eb271a-56d6-4281-ada6-40852f202c68/bb4ae098-973b-46ca-b387-f2229a81b6e3"
+					(reference "J3")
 					(unit 1)
 				)
 			)

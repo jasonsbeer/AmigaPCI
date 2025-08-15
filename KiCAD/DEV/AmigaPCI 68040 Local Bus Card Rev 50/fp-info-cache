@@ -1,4 +1,4 @@
-24615474764930066
+24750600566657481
 AmigaPCI
 48-BSSOP
 
@@ -13355,6 +13355,90 @@ connector Hirose DF63 vertical
 0
 5
 5
+Connector_Hirose_FX8
+Hirose_FX8-60P-SV_2x30_P0.6mm
+0.6mm Pitch, Stacking Height 3mm to 16mm, Header, vertical (source: https://www.hirose.com/de/product/document?clcode=&productname=&series=FX8&documenttype=Catalog&lang=en&documentid=D31612_en)
+conn hirose board to board stacking header
+0
+60
+60
+Connector_Hirose_FX8
+Hirose_FX8-60S-SV_2x30_P0.6mm
+0.6mm Pitch, Stacking Height 3mm to 16mm, Receptacle, vertical (source: https://www.hirose.com/de/product/document?clcode=&productname=&series=FX8&documenttype=Catalog&lang=en&documentid=D31612_en)
+conn hirose board to board stacking receptacle
+0
+60
+60
+Connector_Hirose_FX8
+Hirose_FX8-80P-SV_2x40_P0.6mm
+0.6mm Pitch, Stacking Height 3mm to 16mm, Header, vertical (source: https://www.hirose.com/de/product/document?clcode=&productname=&series=FX8&documenttype=Catalog&lang=en&documentid=D31612_en)
+conn hirose board to board stacking header
+0
+80
+80
+Connector_Hirose_FX8
+Hirose_FX8-80S-SV_2x40_P0.6mm
+0.6mm Pitch, Stacking Height 3mm to 16mm, Receptacle, vertical (source: https://www.hirose.com/de/product/document?clcode=&productname=&series=FX8&documenttype=Catalog&lang=en&documentid=D31612_en)
+conn hirose board to board stacking receptacle
+0
+80
+80
+Connector_Hirose_FX8
+Hirose_FX8-90P-SV_2x45_P0.6mm
+0.6mm Pitch, Stacking Height 3mm to 16mm, Header, vertical (source: https://www.hirose.com/de/product/document?clcode=&productname=&series=FX8&documenttype=Catalog&lang=en&documentid=D31612_en)
+conn hirose board to board stacking header
+0
+90
+90
+Connector_Hirose_FX8
+Hirose_FX8-90S-SV_2x45_P0.6mm
+0.6mm Pitch, Stacking Height 3mm to 16mm, Receptacle, vertical (source: https://www.hirose.com/de/product/document?clcode=&productname=&series=FX8&documenttype=Catalog&lang=en&documentid=D31612_en)
+conn hirose board to board stacking receptacle
+0
+90
+90
+Connector_Hirose_FX8
+Hirose_FX8-100P-SV_2x50_P0.6mm
+0.6mm Pitch, Stacking Height 3mm to 16mm, Header, vertical (source: https://www.hirose.com/de/product/document?clcode=&productname=&series=FX8&documenttype=Catalog&lang=en&documentid=D31612_en)
+conn hirose board to board stacking header
+0
+100
+100
+Connector_Hirose_FX8
+Hirose_FX8-100S-SV_2x50_P0.6mm
+0.6mm Pitch, Stacking Height 3mm to 16mm, Receptacle, vertical (source: https://www.hirose.com/de/product/document?clcode=&productname=&series=FX8&documenttype=Catalog&lang=en&documentid=D31612_en)
+conn hirose board to board stacking receptacle
+0
+100
+100
+Connector_Hirose_FX8
+Hirose_FX8-120P-SV_2x60_P0.6mm
+0.6mm Pitch, Stacking Height 3mm to 16mm, Header, vertical (source: https://www.hirose.com/de/product/document?clcode=&productname=&series=FX8&documenttype=Catalog&lang=en&documentid=D31612_en)
+conn hirose board to board stacking header
+0
+120
+120
+Connector_Hirose_FX8
+Hirose_FX8-120S-SV_2x60_P0.6mm
+0.6mm Pitch, Stacking Height 3mm to 16mm, Receptacle, vertical (source: https://www.hirose.com/de/product/document?clcode=&productname=&series=FX8&documenttype=Catalog&lang=en&documentid=D31612_en)
+conn hirose board to board stacking receptacle
+0
+120
+120
+Connector_Hirose_FX8
+Hirose_FX8-140P-SV_2x70_P0.6mm
+0.6mm Pitch, Stacking Height 3mm to 16mm, Header, vertical (source: https://www.hirose.com/de/product/document?clcode=&productname=&series=FX8&documenttype=Catalog&lang=en&documentid=D31612_en)
+conn hirose board to board stacking header
+0
+140
+140
+Connector_Hirose_FX8
+Hirose_FX8-140S-SV_2x70_P0.6mm
+0.6mm Pitch, Stacking Height 3mm to 16mm, Receptacle, vertical (source: https://www.hirose.com/de/product/document?clcode=&productname=&series=FX8&documenttype=Catalog&lang=en&documentid=D31612_en)
+conn hirose board to board stacking receptacle
+0
+140
+140
 Connector_IDC
 IDC-Header_2x03_P2.54mm_Horizontal
 Through hole IDC box header, 2x03, 2.54mm pitch, DIN 41651 / IEC 60603-13, double rows, https://docs.google.com/spreadsheets/d/16SsEcesNF15N3Lb4niX7dcUr-NY5_MFPQhobNuNppn4/edit#gid=0
@@ -14937,6 +15021,146 @@ SIM Card with Detect Switch
 0
 18
 9
+Connector_JAE_WP7B
+JAE_WP7B-P034VA1-R8000_2x17-1MP_P0.4mm
+0.4mm Pitch, Stacking Type, Board-to-Board FPC connector, 0.7mm Mating Height, Plug, vertical (source: https://www.jae.com/direct/topics/topics_file_download/topics_id=66869&ext_no=06&index=0&_lang=en&v=)
+conn jae fpc board to board
+0
+38
+35
+Connector_JAE_WP7B
+JAE_WP7B-P034VA1-R8000_Longpads_2x17-1MP_P0.4mm
+0.4mm Pitch, Stacking Type, Board-to-Board FPC connector, 0.7mm Mating Height, Reworkable, Plug, vertical (source: https://www.jae.com/direct/topics/topics_file_download/topics_id=66869&ext_no=06&index=0&_lang=en&v=)
+conn jae fpc board to board
+0
+38
+35
+Connector_JAE_WP7B
+JAE_WP7B-P040VA1-R8000_2x20-1MP_P0.4mm
+0.4mm Pitch, Stacking Type, Board-to-Board FPC connector, 0.7mm Mating Height, Plug, vertical (source: https://www.jae.com/direct/topics/topics_file_download/topics_id=66869&ext_no=06&index=0&_lang=en&v=)
+conn jae fpc board to board
+0
+44
+41
+Connector_JAE_WP7B
+JAE_WP7B-P040VA1-R8000_Longpads_2x20-1MP_P0.4mm
+0.4mm Pitch, Stacking Type, Board-to-Board FPC connector, 0.7mm Mating Height, Reworkable, Plug, vertical (source: https://www.jae.com/direct/topics/topics_file_download/topics_id=66869&ext_no=06&index=0&_lang=en&v=)
+conn jae fpc board to board
+0
+44
+41
+Connector_JAE_WP7B
+JAE_WP7B-P050VA1-R8000_2x25-1MP_P0.4mm
+0.4mm Pitch, Stacking Type, Board-to-Board FPC connector, 0.7mm Mating Height, Plug, vertical (source: https://www.jae.com/direct/topics/topics_file_download/topics_id=66869&ext_no=06&index=0&_lang=en&v=)
+conn jae fpc board to board
+0
+54
+51
+Connector_JAE_WP7B
+JAE_WP7B-P050VA1-R8000_Longpads_2x25-1MP_P0.4mm
+0.4mm Pitch, Stacking Type, Board-to-Board FPC connector, 0.7mm Mating Height, Reworkable, Plug, vertical (source: https://www.jae.com/direct/topics/topics_file_download/topics_id=66869&ext_no=06&index=0&_lang=en&v=)
+conn jae fpc board to board
+0
+54
+51
+Connector_JAE_WP7B
+JAE_WP7B-P060VA1-R8000_2x30-1MP_P0.4mm
+0.4mm Pitch, Stacking Type, Board-to-Board FPC connector, 0.7mm Mating Height, Plug, vertical (source: https://www.jae.com/direct/topics/topics_file_download/topics_id=66869&ext_no=06&index=0&_lang=en&v=)
+conn jae fpc board to board
+0
+64
+61
+Connector_JAE_WP7B
+JAE_WP7B-P060VA1-R8000_Longpads_2x30-1MP_P0.4mm
+0.4mm Pitch, Stacking Type, Board-to-Board FPC connector, 0.7mm Mating Height, Reworkable, Plug, vertical (source: https://www.jae.com/direct/topics/topics_file_download/topics_id=66869&ext_no=06&index=0&_lang=en&v=)
+conn jae fpc board to board
+0
+64
+61
+Connector_JAE_WP7B
+JAE_WP7B-P070VA1-R8000_2x35-1MP_P0.4mm
+0.4mm Pitch, Stacking Type, Board-to-Board FPC connector, 0.7mm Mating Height, Plug, vertical (source: https://www.jae.com/direct/topics/topics_file_download/topics_id=66869&ext_no=06&index=0&_lang=en&v=)
+conn jae fpc board to board
+0
+74
+71
+Connector_JAE_WP7B
+JAE_WP7B-P070VA1-R8000_Longpads_2x35-1MP_P0.4mm
+0.4mm Pitch, Stacking Type, Board-to-Board FPC connector, 0.7mm Mating Height, Reworkable, Plug, vertical (source: https://www.jae.com/direct/topics/topics_file_download/topics_id=66869&ext_no=06&index=0&_lang=en&v=)
+conn jae fpc board to board
+0
+74
+71
+Connector_JAE_WP7B
+JAE_WP7B-S034VA1-R8000_2x17-1MP_P0.4mm
+0.4mm Pitch, Stacking Type, Board-to-Board FPC connector, 0.7mm Mating Height, Receptacle, vertical (source: https://www.jae.com/direct/topics/topics_file_download/topics_id=66874&ext_no=06&index=0&_lang=en&v=)
+conn jae fpc board to board
+0
+38
+35
+Connector_JAE_WP7B
+JAE_WP7B-S034VA1-R8000_Longpads_2x17-1MP_P0.4mm
+0.4mm Pitch, Stacking Type, Board-to-Board FPC connector, 0.7mm Mating Height, Reworkable, Receptacle, vertical (source: https://www.jae.com/direct/topics/topics_file_download/topics_id=66874&ext_no=06&index=0&_lang=en&v=)
+conn jae fpc board to board
+0
+38
+35
+Connector_JAE_WP7B
+JAE_WP7B-S040VA1-R8000_2x20-1MP_P0.4mm
+0.4mm Pitch, Stacking Type, Board-to-Board FPC connector, 0.7mm Mating Height, Receptacle, vertical (source: https://www.jae.com/direct/topics/topics_file_download/topics_id=66874&ext_no=06&index=0&_lang=en&v=)
+conn jae fpc board to board
+0
+44
+41
+Connector_JAE_WP7B
+JAE_WP7B-S040VA1-R8000_Longpads_2x20-1MP_P0.4mm
+0.4mm Pitch, Stacking Type, Board-to-Board FPC connector, 0.7mm Mating Height, Reworkable, Receptacle, vertical (source: https://www.jae.com/direct/topics/topics_file_download/topics_id=66874&ext_no=06&index=0&_lang=en&v=)
+conn jae fpc board to board
+0
+44
+41
+Connector_JAE_WP7B
+JAE_WP7B-S050VA1-R8000_2x25-1MP_P0.4mm
+0.4mm Pitch, Stacking Type, Board-to-Board FPC connector, 0.7mm Mating Height, Receptacle, vertical (source: https://www.jae.com/direct/topics/topics_file_download/topics_id=66874&ext_no=06&index=0&_lang=en&v=)
+conn jae fpc board to board
+0
+54
+51
+Connector_JAE_WP7B
+JAE_WP7B-S050VA1-R8000_Longpads_2x25-1MP_P0.4mm
+0.4mm Pitch, Stacking Type, Board-to-Board FPC connector, 0.7mm Mating Height, Reworkable, Receptacle, vertical (source: https://www.jae.com/direct/topics/topics_file_download/topics_id=66874&ext_no=06&index=0&_lang=en&v=)
+conn jae fpc board to board
+0
+54
+51
+Connector_JAE_WP7B
+JAE_WP7B-S060VA1-R8000_2x30-1MP_P0.4mm
+0.4mm Pitch, Stacking Type, Board-to-Board FPC connector, 0.7mm Mating Height, Receptacle, vertical (source: https://www.jae.com/direct/topics/topics_file_download/topics_id=66874&ext_no=06&index=0&_lang=en&v=)
+conn jae fpc board to board
+0
+64
+61
+Connector_JAE_WP7B
+JAE_WP7B-S060VA1-R8000_Longpads_2x30-1MP_P0.4mm
+0.4mm Pitch, Stacking Type, Board-to-Board FPC connector, 0.7mm Mating Height, Reworkable, Receptacle, vertical (source: https://www.jae.com/direct/topics/topics_file_download/topics_id=66874&ext_no=06&index=0&_lang=en&v=)
+conn jae fpc board to board
+0
+64
+61
+Connector_JAE_WP7B
+JAE_WP7B-S070VA1-R8000_2x35-1MP_P0.4mm
+0.4mm Pitch, Stacking Type, Board-to-Board FPC connector, 0.7mm Mating Height, Receptacle, vertical (source: https://www.jae.com/direct/topics/topics_file_download/topics_id=66874&ext_no=06&index=0&_lang=en&v=)
+conn jae fpc board to board
+0
+74
+71
+Connector_JAE_WP7B
+JAE_WP7B-S070VA1-R8000_Longpads_2x35-1MP_P0.4mm
+0.4mm Pitch, Stacking Type, Board-to-Board FPC connector, 0.7mm Mating Height, Reworkable, Receptacle, vertical (source: https://www.jae.com/direct/topics/topics_file_download/topics_id=66874&ext_no=06&index=0&_lang=en&v=)
+conn jae fpc board to board
+0
+74
+71
 Connector_JST
 JST_ACH_BM01B-ACHSS-A-GAN-ETF_1x01-1MP_P1.20mm_Vertical
 JST ACH series connector, BM01B-ACHSS-A-GAN-ETF (http://www.jst-mfg.com/product/pdf/eng/eACH.pdf), generated with kicad-footprint-generator
@@ -93467,6 +93691,167 @@ TerminalBlock_Altech
 Altech_AK300_1x24_P5.00mm_45-Degree
 Altech AK300 serie terminal block (Script generated with StandardBox.py) (http://www.altechcorp.com/PDFS/PCBMETRC.PDF)
 Altech AK300 serie connector
+0
+24
+24
+TerminalBlock_CUI
+TerminalBlock_CUI_TB007-508-02_1x02_P5.08mm_Horizontal
+Terminal Block CUI TB007-508-02, 2 pins, pitch 5.08mm, size 10.8x10.2mm^2, drill diameter 1.6mm, pad diameter 2.4mm, see https://www.cuidevices.com/product/resource/tb007-508.pdf, script-generated using https://gitlab.com/kicad/libraries/kicad-footprint-generator/scripts/TerminalBlock_CUI
+THT Terminal Block CUI TB007-508-02 pitch 5.08mm size 10.8x10.2mm^2 drill 1.6mm pad 2.4mm
+0
+2
+2
+TerminalBlock_CUI
+TerminalBlock_CUI_TB007-508-03_1x03_P5.08mm_Horizontal
+Terminal Block CUI TB007-508-03, 3 pins, pitch 5.08mm, size 15.8x10.2mm^2, drill diameter 1.6mm, pad diameter 2.4mm, see https://www.cuidevices.com/product/resource/tb007-508.pdf, script-generated using https://gitlab.com/kicad/libraries/kicad-footprint-generator/scripts/TerminalBlock_CUI
+THT Terminal Block CUI TB007-508-03 pitch 5.08mm size 15.8x10.2mm^2 drill 1.6mm pad 2.4mm
+0
+3
+3
+TerminalBlock_CUI
+TerminalBlock_CUI_TB007-508-04_1x04_P5.08mm_Horizontal
+Terminal Block CUI TB007-508-04, 4 pins, pitch 5.08mm, size 20.9x10.2mm^2, drill diameter 1.6mm, pad diameter 2.4mm, see https://www.cuidevices.com/product/resource/tb007-508.pdf, script-generated using https://gitlab.com/kicad/libraries/kicad-footprint-generator/scripts/TerminalBlock_CUI
+THT Terminal Block CUI TB007-508-04 pitch 5.08mm size 20.9x10.2mm^2 drill 1.6mm pad 2.4mm
+0
+4
+4
+TerminalBlock_CUI
+TerminalBlock_CUI_TB007-508-05_1x05_P5.08mm_Horizontal
+Terminal Block CUI TB007-508-05, 5 pins, pitch 5.08mm, size 26x10.2mm^2, drill diameter 1.6mm, pad diameter 2.4mm, see https://www.cuidevices.com/product/resource/tb007-508.pdf, script-generated using https://gitlab.com/kicad/libraries/kicad-footprint-generator/scripts/TerminalBlock_CUI
+THT Terminal Block CUI TB007-508-05 pitch 5.08mm size 26x10.2mm^2 drill 1.6mm pad 2.4mm
+0
+5
+5
+TerminalBlock_CUI
+TerminalBlock_CUI_TB007-508-06_1x06_P5.08mm_Horizontal
+Terminal Block CUI TB007-508-06, 6 pins, pitch 5.08mm, size 31.1x10.2mm^2, drill diameter 1.6mm, pad diameter 2.4mm, see https://www.cuidevices.com/product/resource/tb007-508.pdf, script-generated using https://gitlab.com/kicad/libraries/kicad-footprint-generator/scripts/TerminalBlock_CUI
+THT Terminal Block CUI TB007-508-06 pitch 5.08mm size 31.1x10.2mm^2 drill 1.6mm pad 2.4mm
+0
+6
+6
+TerminalBlock_CUI
+TerminalBlock_CUI_TB007-508-07_1x07_P5.08mm_Horizontal
+Terminal Block CUI TB007-508-07, 7 pins, pitch 5.08mm, size 36.2x10.2mm^2, drill diameter 1.6mm, pad diameter 2.4mm, see https://www.cuidevices.com/product/resource/tb007-508.pdf, script-generated using https://gitlab.com/kicad/libraries/kicad-footprint-generator/scripts/TerminalBlock_CUI
+THT Terminal Block CUI TB007-508-07 pitch 5.08mm size 36.2x10.2mm^2 drill 1.6mm pad 2.4mm
+0
+7
+7
+TerminalBlock_CUI
+TerminalBlock_CUI_TB007-508-08_1x08_P5.08mm_Horizontal
+Terminal Block CUI TB007-508-08, 8 pins, pitch 5.08mm, size 41.2x10.2mm^2, drill diameter 1.6mm, pad diameter 2.4mm, see https://www.cuidevices.com/product/resource/tb007-508.pdf, script-generated using https://gitlab.com/kicad/libraries/kicad-footprint-generator/scripts/TerminalBlock_CUI
+THT Terminal Block CUI TB007-508-08 pitch 5.08mm size 41.2x10.2mm^2 drill 1.6mm pad 2.4mm
+0
+8
+8
+TerminalBlock_CUI
+TerminalBlock_CUI_TB007-508-09_1x09_P5.08mm_Horizontal
+Terminal Block CUI TB007-508-09, 9 pins, pitch 5.08mm, size 46.3x10.2mm^2, drill diameter 1.6mm, pad diameter 2.4mm, see https://www.cuidevices.com/product/resource/tb007-508.pdf, script-generated using https://gitlab.com/kicad/libraries/kicad-footprint-generator/scripts/TerminalBlock_CUI
+THT Terminal Block CUI TB007-508-09 pitch 5.08mm size 46.3x10.2mm^2 drill 1.6mm pad 2.4mm
+0
+9
+9
+TerminalBlock_CUI
+TerminalBlock_CUI_TB007-508-10_1x10_P5.08mm_Horizontal
+Terminal Block CUI TB007-508-10, 10 pins, pitch 5.08mm, size 51.4x10.2mm^2, drill diameter 1.6mm, pad diameter 2.4mm, see https://www.cuidevices.com/product/resource/tb007-508.pdf, script-generated using https://gitlab.com/kicad/libraries/kicad-footprint-generator/scripts/TerminalBlock_CUI
+THT Terminal Block CUI TB007-508-10 pitch 5.08mm size 51.4x10.2mm^2 drill 1.6mm pad 2.4mm
+0
+10
+10
+TerminalBlock_CUI
+TerminalBlock_CUI_TB007-508-11_1x11_P5.08mm_Horizontal
+Terminal Block CUI TB007-508-11, 11 pins, pitch 5.08mm, size 56.5x10.2mm^2, drill diameter 1.6mm, pad diameter 2.4mm, see https://www.cuidevices.com/product/resource/tb007-508.pdf, script-generated using https://gitlab.com/kicad/libraries/kicad-footprint-generator/scripts/TerminalBlock_CUI
+THT Terminal Block CUI TB007-508-11 pitch 5.08mm size 56.5x10.2mm^2 drill 1.6mm pad 2.4mm
+0
+11
+11
+TerminalBlock_CUI
+TerminalBlock_CUI_TB007-508-12_1x12_P5.08mm_Horizontal
+Terminal Block CUI TB007-508-12, 12 pins, pitch 5.08mm, size 61.6x10.2mm^2, drill diameter 1.6mm, pad diameter 2.4mm, see https://www.cuidevices.com/product/resource/tb007-508.pdf, script-generated using https://gitlab.com/kicad/libraries/kicad-footprint-generator/scripts/TerminalBlock_CUI
+THT Terminal Block CUI TB007-508-12 pitch 5.08mm size 61.6x10.2mm^2 drill 1.6mm pad 2.4mm
+0
+12
+12
+TerminalBlock_CUI
+TerminalBlock_CUI_TB007-508-13_1x13_P5.08mm_Horizontal
+Terminal Block CUI TB007-508-13, 13 pins, pitch 5.08mm, size 66.6x10.2mm^2, drill diameter 1.6mm, pad diameter 2.4mm, see https://www.cuidevices.com/product/resource/tb007-508.pdf, script-generated using https://gitlab.com/kicad/libraries/kicad-footprint-generator/scripts/TerminalBlock_CUI
+THT Terminal Block CUI TB007-508-13 pitch 5.08mm size 66.6x10.2mm^2 drill 1.6mm pad 2.4mm
+0
+13
+13
+TerminalBlock_CUI
+TerminalBlock_CUI_TB007-508-14_1x14_P5.08mm_Horizontal
+Terminal Block CUI TB007-508-14, 14 pins, pitch 5.08mm, size 71.7x10.2mm^2, drill diameter 1.6mm, pad diameter 2.4mm, see https://www.cuidevices.com/product/resource/tb007-508.pdf, script-generated using https://gitlab.com/kicad/libraries/kicad-footprint-generator/scripts/TerminalBlock_CUI
+THT Terminal Block CUI TB007-508-14 pitch 5.08mm size 71.7x10.2mm^2 drill 1.6mm pad 2.4mm
+0
+14
+14
+TerminalBlock_CUI
+TerminalBlock_CUI_TB007-508-15_1x15_P5.08mm_Horizontal
+Terminal Block CUI TB007-508-15, 15 pins, pitch 5.08mm, size 76.8x10.2mm^2, drill diameter 1.6mm, pad diameter 2.4mm, see https://www.cuidevices.com/product/resource/tb007-508.pdf, script-generated using https://gitlab.com/kicad/libraries/kicad-footprint-generator/scripts/TerminalBlock_CUI
+THT Terminal Block CUI TB007-508-15 pitch 5.08mm size 76.8x10.2mm^2 drill 1.6mm pad 2.4mm
+0
+15
+15
+TerminalBlock_CUI
+TerminalBlock_CUI_TB007-508-16_1x16_P5.08mm_Horizontal
+Terminal Block CUI TB007-508-16, 16 pins, pitch 5.08mm, size 81.9x10.2mm^2, drill diameter 1.6mm, pad diameter 2.4mm, see https://www.cuidevices.com/product/resource/tb007-508.pdf, script-generated using https://gitlab.com/kicad/libraries/kicad-footprint-generator/scripts/TerminalBlock_CUI
+THT Terminal Block CUI TB007-508-16 pitch 5.08mm size 81.9x10.2mm^2 drill 1.6mm pad 2.4mm
+0
+16
+16
+TerminalBlock_CUI
+TerminalBlock_CUI_TB007-508-17_1x17_P5.08mm_Horizontal
+Terminal Block CUI TB007-508-17, 17 pins, pitch 5.08mm, size 87x10.2mm^2, drill diameter 1.6mm, pad diameter 2.4mm, see https://www.cuidevices.com/product/resource/tb007-508.pdf, script-generated using https://gitlab.com/kicad/libraries/kicad-footprint-generator/scripts/TerminalBlock_CUI
+THT Terminal Block CUI TB007-508-17 pitch 5.08mm size 87x10.2mm^2 drill 1.6mm pad 2.4mm
+0
+17
+17
+TerminalBlock_CUI
+TerminalBlock_CUI_TB007-508-18_1x18_P5.08mm_Horizontal
+Terminal Block CUI TB007-508-18, 18 pins, pitch 5.08mm, size 92x10.2mm^2, drill diameter 1.6mm, pad diameter 2.4mm, see https://www.cuidevices.com/product/resource/tb007-508.pdf, script-generated using https://gitlab.com/kicad/libraries/kicad-footprint-generator/scripts/TerminalBlock_CUI
+THT Terminal Block CUI TB007-508-18 pitch 5.08mm size 92x10.2mm^2 drill 1.6mm pad 2.4mm
+0
+18
+18
+TerminalBlock_CUI
+TerminalBlock_CUI_TB007-508-19_1x19_P5.08mm_Horizontal
+Terminal Block CUI TB007-508-19, 19 pins, pitch 5.08mm, size 97.1x10.2mm^2, drill diameter 1.6mm, pad diameter 2.4mm, see https://www.cuidevices.com/product/resource/tb007-508.pdf, script-generated using https://gitlab.com/kicad/libraries/kicad-footprint-generator/scripts/TerminalBlock_CUI
+THT Terminal Block CUI TB007-508-19 pitch 5.08mm size 97.1x10.2mm^2 drill 1.6mm pad 2.4mm
+0
+19
+19
+TerminalBlock_CUI
+TerminalBlock_CUI_TB007-508-20_1x20_P5.08mm_Horizontal
+Terminal Block CUI TB007-508-20, 20 pins, pitch 5.08mm, size 102x10.2mm^2, drill diameter 1.6mm, pad diameter 2.4mm, see https://www.cuidevices.com/product/resource/tb007-508.pdf, script-generated using https://gitlab.com/kicad/libraries/kicad-footprint-generator/scripts/TerminalBlock_CUI
+THT Terminal Block CUI TB007-508-20 pitch 5.08mm size 102x10.2mm^2 drill 1.6mm pad 2.4mm
+0
+20
+20
+TerminalBlock_CUI
+TerminalBlock_CUI_TB007-508-21_1x21_P5.08mm_Horizontal
+Terminal Block CUI TB007-508-21, 21 pins, pitch 5.08mm, size 107x10.2mm^2, drill diameter 1.6mm, pad diameter 2.4mm, see https://www.cuidevices.com/product/resource/tb007-508.pdf, script-generated using https://gitlab.com/kicad/libraries/kicad-footprint-generator/scripts/TerminalBlock_CUI
+THT Terminal Block CUI TB007-508-21 pitch 5.08mm size 107x10.2mm^2 drill 1.6mm pad 2.4mm
+0
+21
+21
+TerminalBlock_CUI
+TerminalBlock_CUI_TB007-508-22_1x22_P5.08mm_Horizontal
+Terminal Block CUI TB007-508-22, 22 pins, pitch 5.08mm, size 112x10.2mm^2, drill diameter 1.6mm, pad diameter 2.4mm, see https://www.cuidevices.com/product/resource/tb007-508.pdf, script-generated using https://gitlab.com/kicad/libraries/kicad-footprint-generator/scripts/TerminalBlock_CUI
+THT Terminal Block CUI TB007-508-22 pitch 5.08mm size 112x10.2mm^2 drill 1.6mm pad 2.4mm
+0
+22
+22
+TerminalBlock_CUI
+TerminalBlock_CUI_TB007-508-23_1x23_P5.08mm_Horizontal
+Terminal Block CUI TB007-508-23, 23 pins, pitch 5.08mm, size 117x10.2mm^2, drill diameter 1.6mm, pad diameter 2.4mm, see https://www.cuidevices.com/product/resource/tb007-508.pdf, script-generated using https://gitlab.com/kicad/libraries/kicad-footprint-generator/scripts/TerminalBlock_CUI
+THT Terminal Block CUI TB007-508-23 pitch 5.08mm size 117x10.2mm^2 drill 1.6mm pad 2.4mm
+0
+23
+23
+TerminalBlock_CUI
+TerminalBlock_CUI_TB007-508-24_1x24_P5.08mm_Horizontal
+Terminal Block CUI TB007-508-24, 24 pins, pitch 5.08mm, size 123x10.2mm^2, drill diameter 1.6mm, pad diameter 2.4mm, see https://www.cuidevices.com/product/resource/tb007-508.pdf, script-generated using https://gitlab.com/kicad/libraries/kicad-footprint-generator/scripts/TerminalBlock_CUI
+THT Terminal Block CUI TB007-508-24 pitch 5.08mm size 123x10.2mm^2 drill 1.6mm pad 2.4mm
 0
 24
 24
