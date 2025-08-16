@@ -1,5 +1,0 @@
-@N: MF248 |Running in 64-bit mode.
-@N: MF666 |Clock conversion enabled. (Command "set_option -fix_gated_and_generated_clocks 1" in the project file.)
-@N: BN115 :"d:\amigapci\u110\u110_top.v":46:15:46:28|Removing instance U110_INTERRUPT (in view: work.U110_TOP(verilog)) of type view:work.U110_INTERRUPT(verilog) because it does not drive other instances.
-@N: BN115 :"d:\amigapci\u110\u110_top.v":122:13:122:24|Removing instance U110_ARBITOR (in view: work.U110_TOP(verilog)) of type view:work.U110_ARBITOR(verilog) because it does not drive other instances.
-@N: BN225 |Writing default property annotation file D:\AmigaPCI\U110\APCI_U110\APCI_U110_Implmnt\APCI_U110.sap.

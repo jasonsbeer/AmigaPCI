@@ -1,2 +1,0 @@
-@E: CS101 :"D:\AmigaPCI\U712\U712_CHIP_RAM.v":60:15:60:29|Index 2 is out of range for variable CAS_SYNC
-

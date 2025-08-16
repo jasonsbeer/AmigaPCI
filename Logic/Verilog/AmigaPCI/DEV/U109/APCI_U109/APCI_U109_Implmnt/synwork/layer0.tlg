@@ -1,7 +1,0 @@
-Selecting top level module U109_TOP
-@N: CG364 :"D:\AmigaPCI\U109\U109_PCI_STATE_MACHINE.v":1:7:1:28|Synthesizing module U109_PCI_STATE_MACHINE in library work.
-
-@N: CG364 :"D:\AmigaPCI\U109\U109_BUFFERS.v":1:7:1:18|Synthesizing module U109_BUFFERS in library work.
-
-@N: CG364 :"D:\AmigaPCI\U109\U109_TOP.v":34:7:34:14|Synthesizing module U109_TOP in library work.
-
