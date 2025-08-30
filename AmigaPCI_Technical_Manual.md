@@ -24,7 +24,6 @@ THIS IS A DRAFT AND SUBJECT TO CHANGE WITHOUT NOTICE.
 Revision|Date|Status
 -|-|-
 
-
 <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://github.com/jasonsbeer/AmigaPCI">AmigaPCI Hardware Reference</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://github.com/jasonsbeer">Jason Neus</a> is licensed under <a href="https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">Creative Commons Attribution-NonCommercial 4.0 International<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt=""></a></p>
 
 ---
@@ -81,23 +80,13 @@ Kickstart ROMs for the Amiga 1200 should be burned to 100ns or faster 27C4096 EP
 
 ### 1.4 Floppy Disk Drives
 
-The floppy disk interface is the primary way Amiga based computers store and retrieve external data. The AmigaPCI includes a header that supports two internal double density floppy disk drives. In the event two floppy disk drives (DF0 and DF1) are installed on the floppy disk drive header, J200 must have a jumper placed. When only one floppy disk drive is installed (DF0), there should be no jumper. See Table 1.4.1.
+The floppy disk interface is the primary way Amiga based computers store and retrieve external data. The AmigaPCI includes a header that supports two internal double density floppy disk drives. In the event two floppy disk drives (DF0 and DF1) are installed on the floppy disk drive header, J200 must have a jumper placed. When only one floppy disk drive is installed (DF0), there should be no jumper. See [Section 4.1](#41-floppy-disk-jumpers) for jumper settings.
 
 In addition to supporting original Amiga floppy disk drives, the AmigaPCI supports floppy disk drives designed for the PC. An adaptation of Ian Steadman's PC floppy interface is implemented. Set the jumpers as shown in Table 1.4.2 depending on the type of floppy disk drives you are using. When using high density disk drives with high density floppy disks, it may be necessary to cover the high density hole with tape to prevent the disk drive from attempting to use the disk as high density, which is not supported by the Amiga chipset.
 
 > [!NOTE]
 > **You must use either Amiga disk drives or PC disk drives. Do not mix the two types.** 
 
-Table 1.4.1. DF0/DF1 Configuration.
-Jumper|DF0 Only|DF1 Present
--|-|-
-J200|Open|Shorted
-
-Table 1.4.2. Floppy Drive Configuration.
-Jumper|Amiga Drive|PC Drive
--|-|-
-J201|1-2|2-3
-J202|1-2|2-3
 
 ### 1.5 ATA/ATAPI
 
@@ -145,10 +134,20 @@ Blue|3
 H-Sync|13
 V-Sync|14
 
-
 ### 1.10 Real Time Clock
 
 The real time clock (RTC) of the AmigaPCI is supplied by the STM32F205 microcontroller. When the RTC address space is active, the board controller signals the microcontroller with the associated request. The microcontroller then consumes or supplies the necessary data. The microcontroller is connected to an external crystal to supply an accurate clock signal for the microcontroller. The crystal is adjustable via the trim capacitor VC200.
+
+### 1.11 Flash ROM
+
+There is a 2 megabyte flash ROM on the AmigaPCI. The flash ROM is responds in one of four 512 kilobyte address spaces. These spaces are suited for storage of drivers for hardware devices on the AmigaPCI. The reserved space is scanned by Kickstart on startup, allowing modules to be executed at startup for hardware devices on the AmigaPCI.
+
+Address Block|Address Range|Description
+-|-|-
+0|$00C8 0000 - $00CF FFFF|Available.
+1|$00D0 0000 - $00D7 FFFF|Available.
+2|$00E0 0000 - $00E7 FFFF|Available.
+3|$00F0 0000 - $00F7 FFFF|Reserved.
 
 ## 2.0 Chipset Cycles
 
@@ -194,7 +193,7 @@ The CIA clock is driven by the 28MHz Agnus clock as supplied by the on-baord osc
 
 Any time the CPU initiates a data transfer cycle by asserting _TS (transfer start), it expects the cycle to be acknowledged by assertion of _TA (transfer acknowledge). A fatal condition (crash) occurs when the CPU begins a cycle and does not receive acknowledgment from the target device. This would not normally happen, but can result from malfunctioning or poorly designed hardware. To prevent this situation, the board controller will assert _TACK  after 1400ns has passed from assertion of _TS. This allows the CPU to continue processing.
 
-# 3.0 local bus Port
+# 3.0 Local Bus Port
 
 The AmigaPCI utilizes the Local Bus Port to attach CPU devices to the AmigaPCI main board. The AmigaPCI has no CPU on the main board. Instead, the CPU is contained on the Local Bus Card attached to this bus. This approach enables easier CPU upgrades and allows for inclusion of fast RAM and AUTOCONFIG devices on the local bus card. Because the AmigaPCI main board has no Fast RAM, fast Ram must be included on the Local Bus Card. RAM can then be optimized for the clock speed and capabilities of the CPU device implemented. This enables an upgrade path for increased performance while minimizing resources needed on the AmigaPCI main board. A reference design can be found with the [AmigaPCI project](https://github.com/jasonsbeer/AmigaPCI/tree/main).
 
@@ -239,12 +238,12 @@ Bus Master devices are devices that control the AmigaPCI while initiating data t
 
 A target device is any device that may be controlled by the bus master, such as memory or a drive controller. When addressed, the target device drives the data bus on reads, or latches the data on the data bus for writes. Each target device must terminate its cycles.
 
-## 3.4 local bus Signals
+## 3.4 Local Bus Signals
 
 The signals on the local bus Port are broken into categories. Some are specific to the MC68040/MC68060 and others are specific to the APCI. The signal descriptions are below. The flow of data (input/output/bidriections) are defined from the perspective of the local bus car. The pinout of the port is detailed in Table 3.4.
 
 > [!WARNING] 
-> **Applying TTL logic levels (+5V) to LVTTL only signals may damage logic on the Amiga PCI main board.**
+> **Applying TTL logic levels (+5V) to LVTTL only signals may damage devices on the Amiga PCI main board.**
 
 ### 3.4.1 Power
 
@@ -410,9 +409,9 @@ Correct clock distribution is critical to ensure stable operation of the local b
 
 ## 3.7 Cycle Termination
 
-The local bus card must support dynamic bus sizing to enable the 16-bit data ports of the Amiga chipset. The AmigaPCI supplies two data cycle termination signals, **PORTSIZE** and **_TACK**. **PORTSIZE** is an address driven signal from logic on the AmigaPCI that indicates the data port width of the device currently addressed. A logic low signal indicates the addressed data port is 32-bits wide, while a logic high signal indicates a 16-bit port. **_TACK** is asserted by the AmigaPCI logic to indicate the completion of a data transfer cycle of any port size and is latched on the rising edge of **BCLK**. Together, these signals are used to determine the status of the current data transfer cycle. The AmigaPCI implements 16-bit and 32-bit data ports. Support of 8-bit target devices is not necessary.
+The local bus card must support dynamic bus sizing to enable the 16-bit data ports of the Amiga chipset. The AmigaPCI supplies two data cycle termination signals, **PORTSIZE** and **_TACK**. **PORTSIZE** is an address driven signal indicating the data port width of the device currently addressed. A logic low signal indicates the addressed data port is 32-bits wide, while a logic high signal indicates a 16-bit port. **_TACK** is asserted by the AmigaPCI logic to indicate the completion of a data transfer cycle of any port size and is latched on the rising edge of **BCLK**. Together, these signals are used to determine the status of the current data transfer cycle. The AmigaPCI implements 16-bit and 32-bit data ports. Support of 8-bit target devices is not necessary.
 
-If the data to be transfered is larger than the data port of the addressed device, multiple transfer cycles are required to complete the data transfer. For example, if the MC68040/MC68060 initiates a long-word transfer and the target device responds as a 16-bit port, the dynamic bus sizer will latch the 16 bits of the first cycle, increment the address, and run a second cycle to latch the next 16 bits. These two cycles are driven by the dynamic bus sizer and are transparent to the MC68040/MC68060. Once the dynamic bus sizer latches all the requested data on a read cycle, or completes the necessary cycles on a write, it asserts **_TA** to signal the MC68040/MC68060 to complete the cycle. The dynamic bus sizer places the most significant byte of the transfer at D31-24. The next most significant at D23-16. Misaligned operands are treated the same, with the byte enable signals identifying the particular byte(s) to be latched.
+If the data width to be transfered is greater than the data port width of the addressed device, multiple transfer cycles are required to complete the data transfer. For example, if the MC68040/MC68060 initiates a long-word transfer and the target device responds as a 16-bit port, the dynamic bus sizer will latch the 16 bits of the first cycle, increment the address, and run a second cycle to latch the next 16 bits. These two cycles are driven by the dynamic bus sizer and are transparent to the MC68040/MC68060. Once the dynamic bus sizer latches all the requested data on a read cycle, or completes the necessary cycles on a write, it asserts **_TA** to signal the MC68040/MC68060 to complete the cycle. The dynamic bus sizer places the most significant byte of the transfer at D31-24. The next most significant at D23-16. Misaligned operands are treated the same, with the byte enable signals identifying the particular byte(s) to be latched.
 
 Dynamic bus sizing is described in great detail in the [Motorola MC68030](/DataSheets/Motorola/MC68030UM.pdf) user manual, Sections 7.2.1-7.2.3, and the [MC68040 Designer's Handbook](/DataSheets/Motorola/MC68040_Designers_Handbook_1990.pdf), Section 7. It is strongly advised to review these documents, as significant reproduction here is not attempted. A reference project can be found with the MC68040 Local Bus card with the [AmigaPCI project Github repo](https://github.com/jasonsbeer/AmigaPCI).
 
@@ -423,46 +422,66 @@ Figure 3.7.
 
 # 4.0 Jumpers
 
-There are a number of jumpers on the AmigaPCI mainboard that control how it behaves. Incorrect jumper settings can lead to system instability or a failure to boot.
+There are a number of jumpers on the AmigaPCI mainboard that control how it behaves. Incorrect jumper settings can lead to system instability or failure to boot.
+
+### 4.1 Floppy Disk Jumpers
 
 Description|Jumper|Setting|Result
 -|-|-|-
-PCI Mode|J100|[]()|RESERVED
-PCI Mode|J101|[]()|RESERVED
-PCI Mode|J102|[]()|RESERVED
-DF1 Presence|J200|Short|Second internal floppy drive present.
-[]()|[]()|Open|Second internal floppy drive not present.
-Floppy Disk Change Signal*|J201|1-2 Amiga|Amiga type floppy drive(s) installed.
-[]()|[]()|2-3 PC|PC type floppy drive(s) installed.
-Floppy Ready Signal*|J202|1-2 Amiga|Amiga type floppy drive(s) installed.
-[]()|[]()|2-3 PC|PC type floppy drive(s) installed.
-_RAMEN|J203|Short|Pass the _RAMEN signal to Agnus.
-[]()|[]()|Open|Do not pass the _RAMEN signal to Agnus. Factory Default.
-Agnus Part|J204|Short|Agnus 8372A Installed.
-[]()|[]()|Open|Agnus 8375 Installed.
-Agnus Video Mode|J205|Short|PAL 8375 Installed.
-[]()|[]()|Open|NTSC 8375 or any 8372A** Installed.
-Agnus Vbb|J206|1-2 Vbb|Agnus 8375 Vbb Only.
-[]()|[]()|2-3 Non-Vbb|Agnus 8372A and 8375 non-Vbb.
-TICK Frequency|J207|1-2 50Hz|PAL
-[]()|[]()|2-3 60HZ|NTSC
-Timebase Source|J208|1-2 VSYNC|Timebase driven by Agnus VSYNC.
-[]()|[]()|2-3 TICK|Timebase driven by TICK.
-STM Boot Mode|J209|Open|Factory default.
-Agnus Data/GND|J210|Short|Agnus 8372A
-[]()|[]()|Open|Agnus 8375
-Sync Source|J303|1-2 HSYNC|Supplies HSYNC to pin 13 of the HD15 video port.
-[]()|[]()|2-3 CSYNC|Supplies CSYNC to pin 13 of the HD15 video port.
-ATA Autoboot|J900|Short|ATA autoboot disabled.
-[]()|[]()|Open|ATA autoboot enabled.
-Primary ATA Port Ultra Mode|J901|Short|Enable Ultra 2*** mode.
-[]()|[]()|Open|Disable Ultra 2 mode.
-Secondary ATA Port Ultra Mode|J902|Short|Enable Ultra 2 mode.
-[]()|[]()|Open|Disable Ultra 2 mode.
+DF1 Presence|J200|Short<br>Open|Second internal floppy drive present.<br>Second internal floppy drive not present.
+Floppy Disk Change Signal|J201|1-2 Amiga<br>2-3 PC|Amiga type floppy drive(s) installed.<br>PC type floppy drive(s) installed.
+Floppy Ready Signal|J202|1-2 Amiga<br>2-3 PC|Amiga type floppy drive(s) installed.<br>PC type floppy drive(s) installed.
 
-*Jumpers J201 and J202 must both be set to PC Type or Amiga Type.  
-**Agnus 8372A is capable of either PAL or NTSC operation.  
-***Ultra 2 mode is an undocumented ATA PIO timing designed specifically for the SanDisk Ultra II compact flash card.  
+> [!NOTE]
+> Jumpers J201 and J202 must both be set to PC Type or Amiga Type.  
 
+### 4.2 Agnus Jumpers
+
+Description|Jumper|Setting|Result
+-|-|-|-
+_RAMEN|J203|Short<br>Open|Pass the _RAMEN signal to Agnus.<br>Do not pass the _RAMEN signal to Agnus. Factory Default.
+Agnus Part|J204|Short<br>Open|Agnus 8372A Installed.<br>Agnus 8375 Installed.
+Agnus Video Mode|J205|Short<br>Open|PAL 8375 Installed.<br>NTSC 8375 or any 8372A Installed.
+Agnus Vbb|J206|1-2 Vbb<br>2-3 Non-Vbb|Agnus 8375 Vbb Only.<br>Agnus 8372A and 8375 non-Vbb.
+Agnus Data/GND|J210|Short<br>Open|Agnus 8372A Installed<br>Agnus 8375 Installed
+
+> [!NOTE]
+> Agnus 8372A is capable of either PAL or NTSC operation.  
+> Agnus 8375 are PAL or NTSC specific by part number.
+
+### 4.3 TICK Jumpers
+
+Description|Jumper|Setting|Result
+-|-|-|-
+TICK Frequency|J207|1-2 50Hz<br>2-3 60Hz|PAL<br>NTSC
+Timebase Source|J208|1-2 VSYNC<br>2-3 TICK|Timebase driven by Agnus VSYNC.<br>Timebase driven by TICK.
+
+### 4.4 STM Microcontroller Jumpers
+
+Description|Jumper|Setting|Result
+-|-|-|-
+STM Boot Mode|J209|1-2 Program<br>2-3 Run|Program microcontroller via USB port.<br>Factory default.
+Clock Calibrate|J210|Short<br>Open|Factory Deafult.<br>Pin 2 used to calibrate clock crystal frequency.
+
+### 4.5 Video Jumpers
+
+Description|Jumper|Setting|Result
+-|-|-|-
+Sync Source|J303|1-2 HSYNC<br>2-3 CSYNC|Supplies HSYNC to pin 13 of the HD15 video port.<br>Supplies CSYNC to pin 13 of the HD15 video port.
+
+### 4.6 ATA Jumpers
+
+Description|Jumper|Setting|Result
+-|-|-|-
+ATA Autoboot|J900|Short<br>Open|ATA autoboot disabled.<br>ATA autoboot enabled.
+
+### 4.7 Reserved Jumpers
+Description|Jumper|Setting|Result
+-|-|-|-
+RESERVED|J100|[]()|
+RESERVED|J101|[]()|
+RESERVED|J102|[]()|
+RESERVED|J901|[]()|
+RESERVED|J902|[]()|
 
 **END**
