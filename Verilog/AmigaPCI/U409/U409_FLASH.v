@@ -34,12 +34,10 @@ module U409_FLASH
 (
 
     input CLK40, RESETn, TSn, RnW,
-    input FLASH_SPACE1, FLASH_SPACE0, F_RDY,
+    input FLASH_SPACE, F_RDY,
     input [23:1] A,
 
     output F_ENn, F_WPn, F_READn, F_WRITEn, F_RSTn, F_ACK,
-
-    output [1:0] F_BANK
 
 );
 
@@ -50,11 +48,6 @@ assign F_WPn = 0;
 assign F_READn = 1;
 assign F_WRITEn = 1;
 assign F_RSTn = 1;
-
 assign F_ACK = 0;
-
-assign F_BANK = FLASH_SPACE0 ? 2'b00 :
-                FLASH_SPACE1 ? 2'b01 :
-                               2'b11 ;
 
 endmodule
