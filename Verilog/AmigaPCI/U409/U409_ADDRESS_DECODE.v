@@ -41,10 +41,11 @@ module U409_ADDRESS_DECODE
     input [7:1] LIDE_BASE,
     input [2:0] PRO_BASE,
 
-    output ROMEN, CIA_SPACE, CIACS0n, CIACS1n, RAMSPACEn, REGSPACEn, FLASH_SPACE0, FLASH_SPACE1,
+    output ROMEN, CIA_SPACE, CIACS0n, CIACS1n, RAMSPACEn, REGSPACEn, FLASH_SPACE,
     output AUTOVECTOR, RTC_ENn, AUTOCONFIG_SPACE, ATA_SPACE, ATA_ENn, BREG_ENn, BPRO_ENn,
     output PCS0, PCS1, SCS0, SCS1,
-    output [1:0] PCIAT
+    output [1:0] PCIAT,
+    output [1:0] F_BANK
 
 );
 
@@ -175,14 +176,15 @@ assign PCIAT[0] = RESETn && (PRO_IO_SPACE || CONF1_SPACE || PRO_CONF1_SPACE);
 //The flash is 4 x 512k spaces, defined by the values of FBANK1 and FBANK0.
 //The spaces are as follows...
 
-// SPACE               FBANK1  FBANK0
-//-----------------------------------
-// $E00000 - $E7FFFF     0       0
-// $F00000 - $F7FFFF     0       1
-// Reserved              1       0
-// Reserved              1       1
+// SPACE               FBANK1  FBANK0  A[23:19]
+//-------------------------------------------------
+// $C80000 - $CFFFFF     0       0     11001
+// $D00000 - $D7FFFF     0       1     11010
+// $E00000 - $E7FFFF     1       0     11100
+// $F00000 - $F7FFFF     1       1     11110
 
-assign FLASH_SPACE1 = Z2_SPACE && A[23:19] == 5'b11110;
-assign FLASH_SPACE0 = Z2_SPACE && A[23:19] == 5'b11100;
+assign F_BANK = A[21:20];
+assign FLASH_SPACE = Z2_SPACE && A[23] && A[22] && (A[21:19] == 3'b001 || A[21:19] == 3'b010 || A[21:19] == 3'b110 || A[21:19] == 3'b100);
 
 endmodule
+
