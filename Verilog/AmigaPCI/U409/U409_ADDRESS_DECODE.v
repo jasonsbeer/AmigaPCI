@@ -178,13 +178,15 @@ assign PCIAT[0] = RESETn && (PRO_IO_SPACE || CONF1_SPACE || PRO_CONF1_SPACE);
 
 // SPACE               FBANK1  FBANK0  A[23:19]
 //-------------------------------------------------
-// $C80000 - $CFFFFF     0       0     11001
-// $D00000 - $D7FFFF     0       1     11010
-// $E00000 - $E7FFFF     1       0     11100
-// $F00000 - $F7FFFF     1       1     11110
+// $A80000 - $AFFFFF     0       0      10101
+// $B00000 - $B7FFFF     0       1      10110
+// $E00000 - $E7FFFF     1       0      11100
+// $F00000 - $F7FFFF     1       1      11110
 
-assign F_BANK = A[21:20];
-assign FLASH_SPACE = Z2_SPACE && A[23] && A[22] && (A[21:19] == 3'b001 || A[21:19] == 3'b010 || A[21:19] == 3'b110 || A[21:19] == 3'b100);
+assign F_BANK[1] = A[22];
+assign F_BANK[0] = A[20];
+assign FLASH_SPACE = Z2_SPACE && A[23] && A[21] && (A[20:19] == 2'b01 || A[20:19] == 2'b10 || A[20:19] == 2'b00);
 
 endmodule
+
 
