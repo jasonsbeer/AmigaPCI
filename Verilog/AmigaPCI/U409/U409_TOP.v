@@ -97,8 +97,7 @@ wire AUTOVECTOR;
 wire ROMEN;
 wire CIA_SPACE;
 wire CIA_ENABLE;
-wire FLASH_SPACE0;
-wire FLASH_SPACE1;
+wire FLASH_SPACE;
 wire F_ACK;
 wire [7:0] BRIDGE_BASE;
 wire [7:1] LIDE_BASE;
@@ -183,8 +182,7 @@ U409_ADDRESS_DECODE U409_ADDRESS_DECODE (
     .CIACS1n (CIACS1n),
     .RAMSPACEn (RAMSPACEn),
     .REGSPACEn (REGSPACEn),
-    .FLASH_SPACE0 (FLASH_SPACE0),
-    .FLASH_SPACE1 (FLASH_SPACE1),
+    .FLASH_SPACE (FLASH_SPACE),
     .AUTOVECTOR (AUTOVECTOR),
     .RTC_ENn (RTC_ENn),
     .AUTOCONFIG_SPACE (AUTOCONFIG_SPACE),
@@ -196,7 +194,8 @@ U409_ADDRESS_DECODE U409_ADDRESS_DECODE (
     .PCS1 (PCS1),
     .SCS0 (SCS0),
     .SCS1 (SCS1),
-    .PCIAT (PCIAT)
+    .PCIAT (PCIAT),
+    .F_BANK (F_BANK)
 );
 
 /////////////////////
@@ -257,8 +256,7 @@ U409_FLASH U409_FLASH (
     .RESETn (RESETn),
     .TSn (TSn),
     .RnW (RnW),
-    .FLASH_SPACE1 (FLASH_SPACE1),
-    .FLASH_SPACE0 (FLASH_SPACE0),
+    .FLASH_SPACE (FLASH_SPACE),
     .F_RDY (F_RDY),
     .A (A[23:1]),
 
@@ -268,8 +266,7 @@ U409_FLASH U409_FLASH (
     .F_READn (F_READn),
     .F_WRITEn (F_WRITEn),
     .F_RSTn (F_RSTn),
-    .F_ACK (F_ACK),
-    .F_BANK (F_BANK)
+    .F_ACK (F_ACK)
 );
 
 ////////////////
@@ -281,3 +278,4 @@ assign PPIO = PPIO_J;
 assign SPIO = SPIO_J;
 
 endmodule
+
