@@ -140,14 +140,14 @@ The real time clock (RTC) of the AmigaPCI is supplied by the STM32F205 microcont
 
 ### 1.11 Flash ROM
 
-There is a 2 megabyte flash ROM on the AmigaPCI. The flash ROM is responds in one of four 512 kilobyte address spaces. These spaces are suited for storage of drivers for hardware devices on the AmigaPCI. The reserved space is scanned by Kickstart on startup, allowing modules to be executed at startup for hardware devices on the AmigaPCI.
+The AmigaPCI has a two megabyte Flash ROM on board. The Flash ROM is responds in one of four 512 kilobyte address spaces. The address spaces of the Flash ROM are scanned by Kickstart on startup, allowing any present modules to be executed at startup. This could include drivers for hardware devices on the AmigaPCI, Kickstart patches, or other software.
 
-Address Block|Address Range|Description
--|-|-
-0|$00C8 0000 - $00CF FFFF|Available.
-1|$00D0 0000 - $00D7 FFFF|Available.
-2|$00E0 0000 - $00E7 FFFF|Available.
-3|$00F0 0000 - $00F7 FFFF|Reserved.
+Address Range|Description
+-|-
+$00A8 0000 - $00AF FFFF|EXTROM1
+$00B0 0000 - $00B7 FFFF|EXTROM1
+$00E0 0000 - $00E7 FFFF|EXTROM
+$00F0 0000 - $00F7 FFFF|CART
 
 ## 2.0 Chipset Cycles
 
