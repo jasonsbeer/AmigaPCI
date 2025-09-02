@@ -48,7 +48,7 @@ The AmigaPCI includes expansion busses that allow for the user to expand the mac
 
 #### 1.2.1 local bus Port
 
-The AmigaPCI utilizes a local bus port to attach CPU devices to the AmigaPCI main board. The AmigaPCI has no CPU or fast RAM on the main board. Instead, the CPU and fast RAM is contained on a daughter card. This approach enables easier CPU upgrades with RAM logic suited to the specific processor and allows for inclusion of AUTOCONFIG devices on the local bus card. See Section 2.0.
+The AmigaPCI utilizes a local bus port to attach CPU devices to the AmigaPCI main board. The AmigaPCI has no CPU or fast RAM on the main board. Instead, the CPU and fast RAM is contained on a daughter card. This approach enables easier CPU upgrades with RAM logic suited to the specific processor and allows for inclusion of AUTOCONFIG devices on the Local Bus Card. See Section 2.0.
 
 #### 1.2.2 PCI
 
@@ -195,11 +195,11 @@ Any time the CPU initiates a data transfer cycle by asserting _TS (transfer star
 
 # 3.0 Local Bus Port
 
-The AmigaPCI utilizes the Local Bus Port to attach CPU devices to the AmigaPCI main board. The AmigaPCI has no CPU on the main board. Instead, the CPU is contained on the Local Bus Card attached to this bus. This approach enables easier CPU upgrades and allows for inclusion of fast RAM and AUTOCONFIG devices on the local bus card. Because the AmigaPCI main board has no Fast RAM, fast Ram must be included on the Local Bus Card. RAM can then be optimized for the clock speed and capabilities of the CPU device implemented. This enables an upgrade path for increased performance while minimizing resources needed on the AmigaPCI main board. A reference design can be found with the [AmigaPCI project](https://github.com/jasonsbeer/AmigaPCI/tree/main).
+The AmigaPCI utilizes the Local Bus Port to attach CPU devices to the AmigaPCI main board. The AmigaPCI has no CPU on the main board. Instead, the CPU is contained on the Local Bus Card attached to this bus. This approach enables easier CPU upgrades and allows for inclusion of fast RAM and AUTOCONFIG devices on the Local Bus Card. Because the AmigaPCI main board has no Fast RAM, fast Ram must be included on the Local Bus Card. RAM can then be optimized for the clock speed and capabilities of the CPU device implemented. This enables an upgrade path for increased performance while minimizing resources needed on the AmigaPCI main board. A reference design can be found with the [AmigaPCI project](https://github.com/jasonsbeer/AmigaPCI/tree/main).
 
 ## 3.1 Devices
 
-The primary purpose of the Local Bus Port is to provide a means to connect a MC68040, MC68060, or other compatable processor to the local bus of the AmigaPCI. There is no CPU on the AmigaPCI main board, so it will not function without a local bus card attached. The Local Bus Port also supports other types of devices.
+The primary purpose of the Local Bus Port is to provide a means to connect a MC68040, MC68060, or other compatable processor to the local bus of the AmigaPCI. There is no CPU on the AmigaPCI main board, so it will not function without a Local Bus Card attached. The Local Bus Port also supports other types of devices.
 
 ### 3.1.1 Fast Memory
 
@@ -215,20 +215,20 @@ On startup, this range is scanned from $0800 0000 and upward, 1MB ($0010 0000) a
 
 ### 3.1.2 AUTOCONFIG Devices
 
-AUTOCONFIG devices may also be added via the Local Bus Port by supplying the necessary AUTOCONFIG logic on the Local Bus Card. AUTOCONFIG devices on the Local Bus Port are configured first. Once the devices on the local bus Card are configured, the **_CPUCONF** signal must be asserted. Failure to do so will prevent other devices on the AmigaPCI from being configured. AUTOCONFIG devices must terminate the data transfer cycle when the AUTOCONFIG device is addressed.
+AUTOCONFIG devices may also be added via the Local Bus Port by supplying the necessary AUTOCONFIG logic on the Local Bus Card. AUTOCONFIG devices on the Local Bus Port are configured first. Once the devices on the Local Bus Card are configured, the **_CPUCONF** signal must be asserted. Failure to do so will prevent other devices on the AmigaPCI from being configured. AUTOCONFIG devices must terminate the data transfer cycle when the AUTOCONFIG device is addressed.
 
 ## 3.2 Footprint and Connector
 
-The local bus physical connector of the AmigaPCI is a DIN 41612 120 pin socket, 3 rows by 40 columns. The female (receptical) portion is on the AmigaPCI main board. The male (plug) portion is on the local bus card. Examples of these connectors are part numbers 5535098-5 and 5650910-5 from TE Connectivity AMP Connectors. Specific footprint dimensions are not defined. The engineer may make the card any size they wish, within practical limits. The physical size must not extend outside the ATX specifications from the mounting point (not be larger than the AmigaPCI board). It must not interfere with the ATX power and ATA connectors and must not interfere with video cards or full size PCI plug in cards. In addition to the connector itself, there are two additional grounded mounting points to accomodate the Local Bus card.
+The local bus physical connector of the AmigaPCI is a DIN 41612 120 pin socket, 3 rows by 40 columns. The female (receptical) portion is on the AmigaPCI main board. The male (plug) portion is on the Local Bus Card. Examples of these connectors are part numbers 5535098-5 and 5650910-5 from TE Connectivity AMP Connectors. Specific footprint dimensions are not defined. The engineer may make the card any size they wish, within practical limits. The physical size must not extend outside the ATX specifications from the mounting point (not be larger than the AmigaPCI board). It must not interfere with the ATX power and ATA connectors and must not interfere with video cards or full size PCI plug in cards. In addition to the connector itself, there are two additional grounded mounting points to accomodate the Local Bus Card.
 
 The origin datum and component points can be seen in Image 3.1. The origin of all measurements is the upper left mounting hole (datum = 0,0). The image is looking down on top of the card. The DIN connector is attached to the back of the card.
 
-**Image 3.2**. Points from Datum 0,0 for the local bus Card.
+**Image 3.2**. Points from Datum 0,0 for the Local Bus Card.
 <img src="/Images/CPULocalBusCardDim.jpg" width="675">
 
 ## 3.3 Bus Devices
 
-The AmigaPCI local bus Port supplies signals to support master and target bus devices. Bus arbitration is handled by the arbitor on the AmigaPCI. The Local Bus Card may be a master, target, or both at once. The local bus card may contain one or more target devices as well as one or more bus master devices.
+The AmigaPCI local bus Port supplies signals to support master and target bus devices. Bus arbitration is handled by the arbitor on the AmigaPCI. The Local Bus Card may be a master, target, or both at once. The Local Bus Card may contain one or more target devices as well as one or more bus master devices.
 
 ### 3.3.1 Bus Master
 
@@ -248,7 +248,7 @@ The signals on the local bus Port are broken into categories. Some are specific 
 ### 3.4.1 Power
 
 **GND** (Ground)  
-This is the digital supply ground used by all digital devices in the system. local bus cards may connect to ground through the connector and the mounting posts.
+This is the digital supply ground used by all digital devices in the system. Local Bus Cards may connect to ground through the connector and the mounting posts.
 
 **+5VDC**  
 This is the digital supply for TTL and TTL-like devices, such as F, LS, or HCT logic families and the Motorola MC68040.
@@ -265,13 +265,13 @@ This is the digital supply for low power devices of certain logic families or FP
 ### 3.4.2 System Initialization
 
 **_RESET** (System Reset) Input  
-This LVTTL level signal is driven by the system reset logic and initiates a reset of all logic and I/O on the AmigaPCI and local bus Card, but not the CPU.
+This LVTTL level signal is driven by the system reset logic and initiates a reset of all logic and I/O on the AmigaPCI and Local Bus Card, but not the CPU.
 
 **_RSTOUT**  (Reset Out) Output  
-This TTL tolerant signal is driven by the CPU to initiate a reset of all logic and I/O on the AmigaPCI and local bus Card, but not the CPU itself.
+This TTL tolerant signal is driven by the CPU to initiate a reset of all logic and I/O on the AmigaPCI and Local Bus Card, but not the CPU itself.
 
 **CDONE** (Configuration Done) Output  
-This LVTTL signal is driven by programmable logic devices (e.g. FPGA) on the local bus card. When LOW, holds the entire system in reset until such time as all programmable logic devices on the AmigaPCI system have configured. In the absence of programmable logic devices, this may be left unconnected.
+This LVTTL signal is driven by programmable logic devices (e.g. FPGA) on the Local Bus Card. When LOW, holds the entire system in reset until such time as all programmable logic devices on the AmigaPCI system have configured. In the absence of programmable logic devices, this may be left unconnected.
 
 **_CPURST** (CPU Reset) Input  
 This LVTTL signal is driven by the system reset logic and initiates a reset of the CPU. This signal is asserted in reponse to the push button or keyboard reset action.
@@ -279,10 +279,10 @@ This LVTTL signal is driven by the system reset logic and initiates a reset of t
 ### 3.4.3 Data Transfer Signals
 
 **A(31..0)** (Address Bus) Bidirectional  
-This bus is driven by the bus master and tristated by inactive bus masters. The local bus devices may drive this bus with either TTL or LVTTL level logic. However, the AmigaPCI drives this bus at TTL levels. As such, it is necessary that the local bus Card devices be TTL, TTL tolerant, or use level shifting to convert the incoming TTL levels to the voltage required.
+This bus is driven by the bus master and tristated by inactive bus masters. The local bus devices may drive this bus with either TTL or LVTTL level logic. However, the AmigaPCI drives this bus at TTL levels. As such, it is necessary that the Local Bus Card devices be TTL, TTL tolerant, or use level shifting to convert the incoming TTL levels to the voltage required.
 
 **D(31..0)** (Data Bus) Bidirectional  
-This bus is driven by the bus master for writes and the target device for reads and tristated by inactive bus masters. The local bus devices may drive this bus with either TTL or LVTTL level logic. However, the AmigaPCI drives this bus at TTL levels. As such, it is necessary that the local bus Card devices be TTL, TTL tolerant, or use level shifting to convert the incoming TTL levels to the voltage required.
+This bus is driven by the bus master for writes and the target device for reads and tristated by inactive bus masters. The local bus devices may drive this bus with either TTL or LVTTL level logic. However, the AmigaPCI drives this bus at TTL levels. As such, it is necessary that the Local Bus Card devices be TTL, TTL tolerant, or use level shifting to convert the incoming TTL levels to the voltage required.
 
 **PORT** (Port Size) Input  
 This LVTTL signal is driven by the target device and tristated by inactive target devices. Strictly address driven. Used to indicate the data bus width of the target device. Logic low (0) indicates a 32-bit port. Logic high (1) indicates a 16-bit port.
@@ -331,27 +331,27 @@ This TTL tolerant signal is driven exclusively by the CPU, indicating a read-mod
 ### 3.4.5 Clocks
 
 **BCLK** (Bus Clock) Output  
-The 40MHz LVTTL bus clock is generated on the local bus Card and used to syncronize data transactions between the AmigaPCI and the local bus device.
+The 40MHz LVTTL bus clock is generated on the Local Bus Card and used to syncronize data transactions between the AmigaPCI and the local bus device.
 
 ### 3.4.6 Other local bus Port Signals
 
-**_CPUCONF** (local bus Card Configured) Output  
-This LVTTL signal is driven by AUTOCONFIG logic on the local bus Card. Indicates AUTOCONFIG devices on the local bus card have been configured. AUTOCONFIG devices on the local bus card are configured first. Once configured, asserting this signal allows devices on the AmigaPCI main board to be configured. In the absence of an AUTOCONFIG device, this may be left unconnected
+**_CPUCONF** (Local Bus Card Configured) Output  
+This LVTTL signal is driven by AUTOCONFIG logic on the Local Bus Card. Indicates AUTOCONFIG devices on the Local Bus Card have been configured. AUTOCONFIG devices on the Local Bus Card are configured first. Once configured, asserting this signal allows devices on the AmigaPCI main board to be configured. In the absence of an AUTOCONFIG device, this may be left unconnected
 
 **_INT2** (Amiga Interupt 2) Output  
-This TTL signal is driven by a target device on the local bus Card. Open drain.
+This TTL signal is driven by a target device on the Local Bus Card. Open drain.
 
 **_INT6** (Amiga Interupt 6) Output
-This TTL signal is driven by a target device on the local bus Card. Open drain.
+This TTL signal is driven by a target device on the Local Bus Card. Open drain.
 
 **IPL(2..0)** (Interupt Level) Input  
 This TTL bus is driven by the Amiga chipset.
 
 **SDA** (I2C Serial Data) Bidirectional  
-The I2C serial data signal is part of the I2C specification. This allows inclusion of I2C devices on the local bus card.
+The I2C serial data signal is part of the I2C specification. This allows inclusion of I2C devices on the Local Bus Card.
 
 **SCL** (I2C Serial Clock) Input  
-The I2C serial clock is part of the I2C specification. This allows inclusion of I2C devices on the local bus card.
+The I2C serial clock is part of the I2C specification. This allows inclusion of I2C devices on the Local Bus Card.
 
 **Table 3.4**. local bus Pinout.
 Pin|Signal|Pin|Signal|Pin|Signal
@@ -399,21 +399,21 @@ Pin|Signal|Pin|Signal|Pin|Signal
 
 ## 3.5 Signal Buffering
 
-It is necessary to implement buffers for the data bus of the local bus Card. It is possible to implement target devices on the card. When the target device is on the Local Bus card during a CPU cycle, it will be necessary to isolate the data bus on the Local Bus card with tristate buffers. This will prevent bus contention with the AmigaPCI data bus. The buffers should remain enabled during PCI DMA cycles for target devices on the local bus Card.
+It is necessary to implement +5V tolerant tristate buffers on the data bus on the Local Bus Card. When the target device is on the Local Bus Card during a CPU driven cycle, it will be necessary to isolate the data bus on the Local Bus Card. This will prevent bus contention with the AmigaPCI data bus at the Local Bus Card connector. The buffers should remain enabled during PCI DMA cycles for target devices on the Local Bus Card.
 
 ## 3.6 Clocks
 
-The bus clock (BCLK) is a 40MHz clock that is used to time data transer cycle responses to the local bus Card. The 40MHz bus clock is generated on the local bus card. This minimizes issues with clock skew where the local bus Card may have high-speed RAM or other timing sensitive devices. BCLK is unbuffered and routed to U712 on the AmigaPCI. The signal is then distributed to other FPGA's on the AmigaPCI via a PLL in U712.
+The bus clock (BCLK) is a 40MHz clock that is used to time data transer cycle responses to the Local Bus Card. The 40MHz bus clock is generated on the Local Bus Card. This minimizes issues with clock skew where the Local Bus Card may have high-speed RAM or other timing sensitive devices. BCLK is unbuffered and routed to U712 on the AmigaPCI. The signal is then distributed to other FPGA's on the AmigaPCI via a PLL in U712.
 
-Correct clock distribution is critical to ensure stable operation of the local bus card and AmigaPCI. Each clocked device should have a dedicated clock signal by using fanouts from a singal clock source. Traces should be kept as short as possible and small value series resistors should be implemented at the clock signal source.
+Correct clock distribution is critical to ensure stable operation of the Local Bus Card and AmigaPCI. Each clocked device should have a dedicated clock signal by using fanouts from a singal clock source. Traces should be kept as short as possible and small value series resistors should be implemented at the clock signal source.
 
 ## 3.7 Cycle Termination
 
-The local bus card must support dynamic bus sizing to enable the 16-bit data ports of the Amiga chipset. The AmigaPCI supplies two data cycle termination signals, **PORTSIZE** and **_TACK**. **PORTSIZE** is an address driven signal indicating the data port width of the device currently addressed. A logic low signal indicates the addressed data port is 32-bits wide, while a logic high signal indicates a 16-bit port. **_TACK** is asserted by the AmigaPCI logic to indicate the completion of a data transfer cycle of any port size and is latched on the rising edge of **BCLK**. Together, these signals are used to determine the status of the current data transfer cycle. The AmigaPCI implements 16-bit and 32-bit data ports. Support of 8-bit target devices is not necessary.
+The Local Bus Card must support dynamic bus sizing to enable the 16-bit data ports of the Amiga chipset. The AmigaPCI supplies two data cycle termination signals, **PORTSIZE** and **_TACK**. **PORTSIZE** is an address driven signal indicating the data port width of the device currently addressed. A logic low signal indicates the addressed data port is 32-bits wide, while a logic high signal indicates a 16-bit port. **_TACK** is asserted by the AmigaPCI logic to indicate the completion of a data transfer cycle of any port size and is latched on the rising edge of **BCLK**. Together, these signals are used to determine the status of the current data transfer cycle. The AmigaPCI implements 16-bit and 32-bit data ports. Support of 8-bit target devices is not necessary.
 
 If the data width to be transfered is greater than the data port width of the addressed device, multiple transfer cycles are required to complete the data transfer. For example, if the MC68040/MC68060 initiates a long-word transfer and the target device responds as a 16-bit port, the dynamic bus sizer will latch the 16 bits of the first cycle, increment the address, and run a second cycle to latch the next 16 bits. These two cycles are driven by the dynamic bus sizer and are transparent to the MC68040/MC68060. Once the dynamic bus sizer latches all the requested data on a read cycle, or completes the necessary cycles on a write, it asserts **_TA** to signal the MC68040/MC68060 to complete the cycle. The dynamic bus sizer places the most significant byte of the transfer at D31-24. The next most significant at D23-16. Misaligned operands are treated the same, with the byte enable signals identifying the particular byte(s) to be latched.
 
-Dynamic bus sizing is described in great detail in the [Motorola MC68030](/DataSheets/Motorola/MC68030UM.pdf) user manual, Sections 7.2.1-7.2.3, and the [MC68040 Designer's Handbook](/DataSheets/Motorola/MC68040_Designers_Handbook_1990.pdf), Section 7. It is strongly advised to review these documents, as significant reproduction here is not attempted. A reference project can be found with the MC68040 Local Bus card with the [AmigaPCI project Github repo](https://github.com/jasonsbeer/AmigaPCI).
+Dynamic bus sizing is described in great detail in the [Motorola MC68030](/DataSheets/Motorola/MC68030UM.pdf) user manual, Sections 7.2.1-7.2.3, and the [MC68040 Designer's Handbook](/DataSheets/Motorola/MC68040_Designers_Handbook_1990.pdf), Section 7. It is strongly advised to review these documents, as significant reproduction here is not attempted. A reference project can be found with the MC68040 Local Bus Card with the [AmigaPCI project Github repo](https://github.com/jasonsbeer/AmigaPCI).
 
 Figure 3.7 shows a state machine for enabling dynamic bus sizing. This state machine is adapted from Section 7 of the MC68040 Designer's Handbook from Motorola. 
 
@@ -428,22 +428,30 @@ There are a number of jumpers on the AmigaPCI mainboard that control how it beha
 
 Description|Jumper|Setting|Result
 -|-|-|-
-DF1 Presence|J200|Short<br>Open|Second internal floppy drive present.<br>Second internal floppy drive not present.
-Floppy Disk Change Signal|J201|1-2 Amiga<br>2-3 PC|Amiga type floppy drive(s) installed.<br>PC type floppy drive(s) installed.
-Floppy Ready Signal|J202|1-2 Amiga<br>2-3 PC|Amiga type floppy drive(s) installed.<br>PC type floppy drive(s) installed.
+DF1 Presence|J200|Short|Second internal floppy drive present.
+[]()|[]()|Open|Second internal floppy drive not present.
+Floppy Disk Change Signal|J201|1-2 Amiga|Amiga type floppy drive(s) installed.
+[]()|[]()|2-3 PC|PC type floppy drive(s) installed.
+Floppy Ready Signal|J202|1-2 Amiga|Amiga type floppy drive(s) installed.
+[]()|[]()|2-3 PC|PC type floppy drive(s) installed.
 
 > [!NOTE]
-> Jumpers J201 and J202 must both be set to PC Type or Amiga Type.  
+> Jumpers J201 and J202 must be set to PC Type or Amiga Type. It is not possible to mix the drive types.
 
 ### 4.2 Agnus Jumpers
 
 Description|Jumper|Setting|Result
 -|-|-|-
-_RAMEN|J203|Short<br>Open|Pass the _RAMEN signal to Agnus.<br>Do not pass the _RAMEN signal to Agnus. Factory Default.
-Agnus Part|J204|Short<br>Open|Agnus 8372A Installed.<br>Agnus 8375 Installed.
-Agnus Video Mode|J205|Short<br>Open|PAL 8375 Installed.<br>NTSC 8375 or any 8372A Installed.
-Agnus Vbb|J206|1-2 Vbb<br>2-3 Non-Vbb|Agnus 8375 Vbb Only.<br>Agnus 8372A and 8375 non-Vbb.
-Agnus Data/GND|J210|Short<br>Open|Agnus 8372A Installed<br>Agnus 8375 Installed
+_RAMEN|J203|Short|Pass the _RAMEN signal to Agnus.
+[]()|[]()|Open|Do not pass the _RAMEN signal to Agnus. Factory Default.
+Agnus Part|J204|Short|Agnus 8372A Installed.
+[]()|[]()|Open|Agnus 8375 Installed.
+Agnus Video Mode|J205|Short|PAL 8375 Installed.
+[]()|[]()|Open|NTSC 8375 or any 8372A Installed.
+Agnus Vbb|J206|1-2 Vbb|Agnus 8375 Vbb Only.
+[]()|[]()|2-3 Non-Vbb|Agnus 8372A and 8375 non-Vbb.
+Agnus Data/GND|J210|Short|Agnus 8372A Installed.
+[]()|[]()|Open|Agnus 8375 Installed.
 
 > [!NOTE]
 > Agnus 8372A is capable of either PAL or NTSC operation.  
@@ -453,27 +461,33 @@ Agnus Data/GND|J210|Short<br>Open|Agnus 8372A Installed<br>Agnus 8375 Installed
 
 Description|Jumper|Setting|Result
 -|-|-|-
-TICK Frequency|J207|1-2 50Hz<br>2-3 60Hz|PAL<br>NTSC
-Timebase Source|J208|1-2 VSYNC<br>2-3 TICK|Timebase driven by Agnus VSYNC.<br>Timebase driven by TICK.
+TICK Frequency|J207|1-2 50Hz|PAL
+[]()|[]()|2-3 60Hz|NTSC
+Timebase Source|J208|1-2 VSYNC|Timebase driven by Agnus VSYNC.
+[]()|[]()|2-3 TICK|Timebase driven by TICK.
 
 ### 4.4 STM Microcontroller Jumpers
 
 Description|Jumper|Setting|Result
 -|-|-|-
-STM Boot Mode|J209|1-2 Program<br>2-3 Run|Program microcontroller via USB port.<br>Factory default.
-Clock Calibrate|J210|Short<br>Open|Factory Deafult.<br>Pin 2 used to calibrate clock crystal frequency.
+STM Boot Mode|J209|1-2 Program|Program microcontroller via USB port.
+[]()|[]()|2-3 Run|Factory default.
+Clock Calibrate|J210|Short|Factory Default.
+[]()|[]()|Open|Pin 2 used to calibrate clock crystal frequency.
 
 ### 4.5 Video Jumpers
 
 Description|Jumper|Setting|Result
 -|-|-|-
-Sync Source|J303|1-2 HSYNC<br>2-3 CSYNC|Supplies HSYNC to pin 13 of the HD15 video port.<br>Supplies CSYNC to pin 13 of the HD15 video port.
+Sync Source|J303|1-2 HSYNC|Supplies HSYNC to pin 13 of the HD15 video port.
+[]()|[]()|2-3 CSYNC|Supplies CSYNC to pin 13 of the HD15 video port.
 
 ### 4.6 ATA Jumpers
 
 Description|Jumper|Setting|Result
 -|-|-|-
-ATA Autoboot|J900|Short<br>Open|ATA autoboot disabled.<br>ATA autoboot enabled.
+ATA Autoboot|J900|Short|ATA autoboot disabled.
+[]()|[]()|Open|ATA autoboot enabled.
 
 ### 4.7 Reserved Jumpers
 Description|Jumper|Setting|Result
