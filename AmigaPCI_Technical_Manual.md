@@ -140,14 +140,14 @@ The real time clock (RTC) of the AmigaPCI is supplied by the STM32F205 microcont
 
 ### 1.11 Flash ROM
 
-The AmigaPCI has a two megabyte Flash ROM on board. The Flash ROM is responds in one of four 512 kilobyte address spaces. The address spaces of the Flash ROM are scanned by Kickstart on startup, allowing any present modules to be executed at startup. This could include drivers for hardware devices on the AmigaPCI, Kickstart patches, or other software.
+The AmigaPCI has a two megabyte Flash ROM on board. The Flash ROM responds in one of four 512 kilobyte address spaces. The address spaces of the Flash ROM are scanned by Kickstart on startup, in the order shown, allowing modules to be executed at startup. This could include drivers for hardware devices on the AmigaPCI, Kickstart patches, or other software. If a valid ROM module header is found with a high enough priority, the entry will be added to the ROM tag list in RAM. The search then proceeds from the point immediately following the end of that module until the end of the region. Modules must be compiled in-place. The code may be position-independent, but the module header may not.
 
-Address Range|Description
+Flash ROM Block|Address Range
 -|-
-$00A8 0000 - $00AF FFFF|EXTROM1
-$00B0 0000 - $00B7 FFFF|EXTROM1
-$00E0 0000 - $00E7 FFFF|EXTROM
-$00F0 0000 - $00F7 FFFF|CART
+0|$00E0 0000 - $00E7 FFFF
+1|$00A8 0000 - $00AF FFFF
+2|$00B0 0000 - $00B7 FFFF
+3|$00F0 0000 - $00F7 FFFF
 
 ## 2.0 Chipset Cycles
 
@@ -243,7 +243,7 @@ A target device is any device that may be controlled by the bus master, such as 
 The signals on the local bus Port are broken into categories. Some are specific to the MC68040/MC68060 and others are specific to the APCI. The signal descriptions are below. The flow of data (input/output/bidriections) are defined from the perspective of the local bus car. The pinout of the port is detailed in Table 3.4.
 
 > [!WARNING] 
-> **Applying TTL logic levels (+5V) to LVTTL only signals may damage devices on the Amiga PCI main board.**
+> **Applying TTL logic levels (+5V) to LVTTL only signals may damage devices on the AmigaPCI main board.**
 
 ### 3.4.1 Power
 
