@@ -10,6 +10,7 @@ INPUT  TT[1] 	 location (5, 21, 0) 	 139
 OUTPUT PORTSIZE 	 location (7, 21, 0) 	 135 	 
 INPUT  A[17] 	 location (0, 1, 1) 	 33 	 
 OUTPUT TICK60 	 location (22, 0, 0) 	 63 	 
+INPUT  ROM_DELAY[0] 	 location (25, 19, 1) 	 106 	 
 OUTPUT PCS1 	 location (25, 2, 1) 	 76 	 
 OUTPUT CIACS0n 	 location (25, 4, 1) 	 80 	 
 INPUT  A[25] 	 location (0, 15, 0) 	 12 	 
@@ -45,6 +46,7 @@ OUTPUT RAMSPACEn 	 location (12, 0, 0) 	 48
 INPUT  A[26] 	 location (0, 19, 0) 	 4 	 
 INPUT  A[7] 	 location (0, 10, 1) 	 21 	 
 INPUT  A[14] 	 location (0, 3, 0) 	 29 	 
+INPUT  ROM_DELAY[1] 	 location (25, 20, 0) 	 107 	 
 OUTPUT PCS0 	 location (25, 2, 0) 	 75 	 
 INPUT  CLK40_IN 	 location (12, 21, 1) 	 129 	 
 INPUT  CLK28_IN 	 location (25, 11, 0) 	 94 	 

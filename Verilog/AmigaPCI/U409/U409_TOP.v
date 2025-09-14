@@ -79,7 +79,13 @@ SB_PLL40_CORE #(
     .RESETB         (1'b1),
     .REFERENCECLK   (CLK40_IN),
     .PLLOUTGLOBAL   (CLK80_OUT),
-    .BYPASS(1'b0)
+    .BYPASS(1'b0),
+
+    .EXTFEEDBACK       (1'b0),
+    .DYNAMICDELAY      (8'b00000000),
+    .SDI               (1'b0),
+    .SCLK              (1'b0),
+    .LATCHINPUTVALUE   (1'b0)
 );
 
 //////////////////
@@ -110,7 +116,6 @@ wire [3:0] D_IN = AUTOCONFIG_SPACE && !RnW ? D[7:4] : 4'h0;
 
 wire AGNUS_SPACE = !RAMSPACEn || !REGSPACEn;
 wire LV_SPACE = AGNUS_SPACE || AUTOCONFIG_SPACE || ATA_SPACE; // || !BRIDGE_ENn; //Enable the main level shifting buffers when we are in the LVTTL space.
-//wire CACHE_SPACE = ROMEN;
 assign D = AUTOCONFIG_SPACE && RnW ? D_OUT : 4'bz;
 
 ///////////////////////
@@ -129,7 +134,6 @@ U409_TRANSFER_ACK U409_TRANSFER_ACK (
     .AGNUS_SPACE (AGNUS_SPACE),
     .AUTOVECTOR (AUTOVECTOR),
     .RTC_ENn (RTC_ENn),
-    //.CACHE_SPACE (CACHE_SPACE),
     .AC_TACK (AC_TACK),
     .ROM_DELAY (ROM_DELAY),
 

@@ -17,10 +17,8 @@ Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys softwa
 @I::"D:\AmigaPCI\U409\U409_TICK.v" (library work)
 @I::"D:\AmigaPCI\U409\U409_TOP.v" (library work)
 @I::"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v" (library work)
-@W: CG921 :"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v":135:4:135:14|ROM_TACK_EN is already declared in this scope.
 @I::"D:\AmigaPCI\U409\U409_AUTOCONFIG.v" (library work)
 Verilog syntax check successful!
-File D:\AmigaPCI\U409\U409_ADDRESS_DECODE.v changed - recompiling
 File D:\AmigaPCI\U409\U409_TRANSFER_ACK.v changed - recompiling
 Selecting top level module U409_TOP
 @N: CG364 :"C:\lscc\iCEcube2.2020.12\synpbase\lib\generic\sb_ice40.v":698:7:698:19|Synthesizing module SB_PLL40_CORE in library work.
@@ -39,11 +37,6 @@ Selecting top level module U409_TOP
 
 @N: CG364 :"D:\AmigaPCI\U409\U409_TOP.v":34:7:34:14|Synthesizing module U409_TOP in library work.
 
-@W: CG781 :"D:\AmigaPCI\U409\U409_TOP.v":77:2:77:4|Input EXTFEEDBACK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG781 :"D:\AmigaPCI\U409\U409_TOP.v":77:2:77:4|Input DYNAMICDELAY on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG781 :"D:\AmigaPCI\U409\U409_TOP.v":77:2:77:4|Input SDI on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG781 :"D:\AmigaPCI\U409\U409_TOP.v":77:2:77:4|Input SCLK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG781 :"D:\AmigaPCI\U409\U409_TOP.v":77:2:77:4|Input LATCHINPUTVALUE on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
 @W: CL246 :"D:\AmigaPCI\U409\U409_TOP.v":38:17:38:17|Input port bits 11 to 8 of A[31:1] are unused. Assign logic for all port bits or change the input port size.
 @N: CL201 :"D:\AmigaPCI\U409\U409_AUTOCONFIG.v":99:0:99:5|Trying to extract state machine for register STATE.
 Extracted state machine for register STATE
@@ -55,28 +48,33 @@ State machine has 4 reachable states with original encodings of:
 @N: CL159 :"D:\AmigaPCI\U409\U409_ADDRESS_DECODE.v":38:16:38:17|Input TM is unused.
 @N: CL159 :"D:\AmigaPCI\U409\U409_ADDRESS_DECODE.v":40:16:40:26|Input BRIDGE_BASE is unused.
 @N: CL159 :"D:\AmigaPCI\U409\U409_ADDRESS_DECODE.v":42:16:42:23|Input PRO_BASE is unused.
-@N: CL201 :"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v":66:0:66:5|Trying to extract state machine for register TACK_COUNTER.
-Extracted state machine for register TACK_COUNTER
+@N: CL201 :"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v":120:0:120:5|Trying to extract state machine for register ROM_TACK_STATE.
+Extracted state machine for register ROM_TACK_STATE
 State machine has 4 reachable states with original encodings of:
-   0000
-   0001
-   0010
-   0011
-@N: CL201 :"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v":251:0:251:5|Trying to extract state machine for register CIA_STATE.
+   00
+   01
+   10
+   11
+@N: CL201 :"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v":258:0:258:5|Trying to extract state machine for register CIA_STATE.
 Extracted state machine for register CIA_STATE
 State machine has 4 reachable states with original encodings of:
    00
    01
    10
    11
-@N: CL159 :"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v":38:16:38:24|Input ROM_DELAY is unused.
+@N: CL201 :"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v":75:0:75:5|Trying to extract state machine for register TACK_STATE.
+Extracted state machine for register TACK_STATE
+State machine has 3 reachable states with original encodings of:
+   0000
+   0001
+   0010
 
 At c_ver Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 73MB peak: 74MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Sat Sep 13 21:17:38 2025
+# Sun Sep 14 12:25:34 2025
 
 ###########################################################]
 Synopsys Netlist Linker, version comp2016q3p1, Build 141R, built Dec  5 2016
@@ -89,7 +87,7 @@ At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Sat Sep 13 21:17:38 2025
+# Sun Sep 14 12:25:34 2025
 
 ###########################################################]
 @END
@@ -99,6 +97,6 @@ At c_hdl Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Sat Sep 13 21:17:38 2025
+# Sun Sep 14 12:25:34 2025
 
 ###########################################################]

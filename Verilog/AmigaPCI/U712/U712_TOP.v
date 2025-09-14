@@ -91,7 +91,14 @@ SB_PLL40_2F_CORE #(
     .PLLOUTGLOBALA  (CLK80_PLL),
     //.PLLOUTGLOBALB  (CLK40_PLL),
     //.PLLOUTCOREA    (CLK80_PLL),
-    .PLLOUTCOREB    (CLK40_PLL)
+    .PLLOUTCOREB    (CLK40_PLL),
+
+    .EXTFEEDBACK       (1'b0),
+    .DYNAMICDELAY      (8'b00000000),
+    .BYPASS            (1'b0),
+    .SDI               (1'b0),
+    .SCLK              (1'b0),
+    .LATCHINPUTVALUE   (1'b0)
 );
 
 ///////////////////////

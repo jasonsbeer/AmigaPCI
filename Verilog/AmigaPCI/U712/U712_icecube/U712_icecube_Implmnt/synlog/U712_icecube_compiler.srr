@@ -34,20 +34,12 @@ Selecting top level module U712_TOP
 
 @N: CG364 :"D:\AmigaPCI\U712\U712_TOP.v":34:7:34:14|Synthesizing module U712_TOP in library work.
 
-@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":87:2:87:4|Input EXTFEEDBACK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":87:2:87:4|Input DYNAMICDELAY on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":87:2:87:4|Input BYPASS on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":87:2:87:4|Input SDI on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":87:2:87:4|Input SCLK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG781 :"D:\AmigaPCI\U712\U712_TOP.v":87:2:87:4|Input LATCHINPUTVALUE on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@N: CL201 :"D:\AmigaPCI\U712\U712_CYCLE_TERM.v":56:0:56:5|Trying to extract state machine for register TACK_STATE.
+@N: CL201 :"D:\AmigaPCI\U712\U712_CYCLE_TERM.v":101:0:101:5|Trying to extract state machine for register TACK_STATE.
 Extracted state machine for register TACK_STATE
-State machine has 5 reachable states with original encodings of:
+State machine has 3 reachable states with original encodings of:
    0000
    0001
    0010
-   0011
-   0100
 @N: CL201 :"D:\AmigaPCI\U712\U712_REG_SM.v":64:0:64:5|Trying to extract state machine for register STATE_COUNT.
 Extracted state machine for register STATE_COUNT
 State machine has 9 reachable states with original encodings of:
@@ -66,7 +58,7 @@ At c_ver Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Sat Sep 13 21:11:47 2025
+# Sun Sep 14 10:30:16 2025
 
 ###########################################################]
 Synopsys Netlist Linker, version comp2016q3p1, Build 141R, built Dec  5 2016
@@ -79,7 +71,7 @@ At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Sat Sep 13 21:11:47 2025
+# Sun Sep 14 10:30:16 2025
 
 ###########################################################]
 @END
@@ -89,6 +81,6 @@ At c_hdl Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Sat Sep 13 21:11:47 2025
+# Sun Sep 14 10:30:16 2025
 
 ###########################################################]

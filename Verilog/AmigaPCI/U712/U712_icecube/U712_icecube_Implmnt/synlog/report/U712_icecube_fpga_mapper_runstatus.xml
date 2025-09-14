@@ -19,7 +19,7 @@ The file contains the job information from mapper to be displayed as part of the
 </report_link>
 </info>
 <info name="Warnings">
-<data>3</data>
+<data>4</data>
 <report_link name="more">
 <data>D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\synlog\report\U712_icecube_fpga_mapper_warnings.txt</data>
 </report_link>
@@ -37,10 +37,10 @@ The file contains the job information from mapper to be displayed as part of the
 <data>0h:00m:01s</data>
 </info>
 <info name="Peak Memory">
-<data>142MB</data>
+<data>145MB</data>
 </info>
 <info name="Date &amp; Time">
-<data type="timestamp">1757815911</data>
+<data type="timestamp">1757863820</data>
 </info>
 </job_info>
 </job_run_status>

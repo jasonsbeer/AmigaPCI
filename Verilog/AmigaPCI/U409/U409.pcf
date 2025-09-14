@@ -62,8 +62,8 @@ set_io TACKn        119
 set_io TSn          134
 set_io TT[0]        138
 set_io TT[1]        139
-set_io ROM_DELAY[1] 106 -pullup yes
-set_io ROM_DELAY[0] 107 -pullup yes
+set_io ROM_DELAY[1] 107 -pullup yes
+set_io ROM_DELAY[0] 106 -pullup yes
 set_io RnW          142
 set_io TM[0]        136
 set_io TM[1]        137

@@ -1,3 +1,4 @@
 CKID0001:@|S:pll@|E:DBR_SYNC[0]@|F:@syn_sample_clock_path==CKID0001@|M:ClockId0001 
-CKID0002:@|S:C1_ibuf@|E:U712_CHIP_RAM.REFRESH_COUNTER[7]@|F:@syn_sample_clock_path==CKID0002@|M:ClockId0002 
-CKID0003:@|S:C3_ibuf@|E:U712_CHIP_RAM.DMA_ROW_ADDRESS_esr[9]@|F:@syn_sample_clock_path==CKID0003@|M:ClockId0003 
+CKID0002:@|S:pll@|E:U712_CYCLE_TERM.TACK_OUT@|F:@syn_sample_clock_path1==CKID0002@|M:ClockId0002 
+CKID0003:@|S:C1_ibuf@|E:U712_CHIP_RAM.REFRESH_COUNTER[7]@|F:@syn_sample_clock_path==CKID0003@|M:ClockId0003 
+CKID0004:@|S:C3_ibuf@|E:U712_CHIP_RAM.DMA_ROW_ADDRESS_esr[9]@|F:@syn_sample_clock_path==CKID0004@|M:ClockId0004 

@@ -3,11 +3,11 @@
 @N: MT204 |Auto Constrain mode is disabled because clocks are defined in the SDC file
 @N: BN362 :"d:\amigapci\u409\u409_autoconfig.v":99:0:99:5|Removing sequential instance BRIDGE_BASE[7:0] (in view: work.U409_AUTOCONFIG(verilog)) of type view:PrimLib.sdffre(prim) because it does not drive other instances.
 @N: MO225 :"d:\amigapci\u409\u409_autoconfig.v":99:0:99:5|There are no possible illegal states for state machine STATE[3:0] (in view: work.U409_AUTOCONFIG(verilog)); safe FSM implementation is not required.
-@N: MO225 :"d:\amigapci\u409\u409_transfer_ack.v":66:0:66:5|There are no possible illegal states for state machine TACK_COUNTER[3:0] (in view: work.U409_TRANSFER_ACK(verilog)); safe FSM implementation is not required.
-@N: MO225 :"d:\amigapci\u409\u409_transfer_ack.v":251:0:251:5|There are no possible illegal states for state machine CIA_STATE[3:0] (in view: work.U409_TRANSFER_ACK(verilog)); safe FSM implementation is not required.
+@N: MO225 :"d:\amigapci\u409\u409_transfer_ack.v":120:0:120:5|There are no possible illegal states for state machine ROM_TACK_STATE[3:0] (in view: work.U409_TRANSFER_ACK(verilog)); safe FSM implementation is not required.
+@N: MO225 :"d:\amigapci\u409\u409_transfer_ack.v":258:0:258:5|There are no possible illegal states for state machine CIA_STATE[3:0] (in view: work.U409_TRANSFER_ACK(verilog)); safe FSM implementation is not required.
 @N: FX271 :"d:\amigapci\u409\u409_cia.v":57:20:57:33|Replicating instance U409_CIA.CIA_ENABLE (in view: work.U409_TOP(verilog)) with 3 loads 1 time(s) to improve timing.
-@N: FX1016 :"d:\amigapci\u409\u409_top.v":36:20:36:23|SB_GB_IO inserted on the port CLK6.
 @N: FX1016 :"d:\amigapci\u409\u409_top.v":36:10:36:17|SB_GB_IO inserted on the port CLK40_IN.
+@N: FX1016 :"d:\amigapci\u409\u409_top.v":36:20:36:23|SB_GB_IO inserted on the port CLK6.
 @N: FX1016 :"d:\amigapci\u409\u409_top.v":36:26:36:33|SB_GB_IO inserted on the port CLK28_IN.
 @N: FX1017 :|SB_GB inserted on the net RESETn_c_i.
 @N: BW103 |The default time unit for the Synopsys Constraint File (SDC or FDC) is 1ns.

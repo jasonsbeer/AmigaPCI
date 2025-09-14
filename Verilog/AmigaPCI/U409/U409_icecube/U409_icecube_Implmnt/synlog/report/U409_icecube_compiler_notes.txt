@@ -12,9 +12,9 @@
 @N: CL159 :"D:\AmigaPCI\U409\U409_ADDRESS_DECODE.v":38:16:38:17|Input TM is unused.
 @N: CL159 :"D:\AmigaPCI\U409\U409_ADDRESS_DECODE.v":40:16:40:26|Input BRIDGE_BASE is unused.
 @N: CL159 :"D:\AmigaPCI\U409\U409_ADDRESS_DECODE.v":42:16:42:23|Input PRO_BASE is unused.
-@N: CL201 :"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v":66:0:66:5|Trying to extract state machine for register TACK_COUNTER.
-@N: CL201 :"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v":251:0:251:5|Trying to extract state machine for register CIA_STATE.
-@N: CL159 :"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v":38:16:38:24|Input ROM_DELAY is unused.
+@N: CL201 :"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v":120:0:120:5|Trying to extract state machine for register ROM_TACK_STATE.
+@N: CL201 :"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v":258:0:258:5|Trying to extract state machine for register CIA_STATE.
+@N: CL201 :"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v":75:0:75:5|Trying to extract state machine for register TACK_STATE.
 @N|Running in 64-bit mode
 @N: NF107 :"D:\AmigaPCI\U409\U409_TOP.v":34:7:34:14|Selected library: work cell: U409_TOP view verilog as top level
 @N: NF107 :"D:\AmigaPCI\U409\U409_TOP.v":34:7:34:14|Selected library: work cell: U409_TOP view verilog as top level

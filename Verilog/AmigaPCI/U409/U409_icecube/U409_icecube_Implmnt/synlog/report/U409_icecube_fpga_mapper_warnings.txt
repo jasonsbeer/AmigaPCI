@@ -1,1 +1,3 @@
+@W: MT116 |Paths from clock (CLK40_IN:r) to clock (U409_TOP|CLK80_OUT_derived_clock:r) are overconstrained because the required time of 2.18 ns is too small.  
+@W: MT118 |Paths from clock (CLK40_IN:f) to clock (U409_TOP|CLK80_OUT_derived_clock:r) are overconstrained because the required time of 2.18 ns is too small.  
 @W: MT117 |Paths from clock (CLK28_IN:r) to clock (U409_TOP|CLK80_OUT_derived_clock:f) are overconstrained because the required time of 0.52 ns is too small.  

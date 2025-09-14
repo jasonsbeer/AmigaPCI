@@ -18,7 +18,7 @@ The file contains the job information from compiler to be displayed as part of t
   <report_link name="more"><data>D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\synlog\report\U712_icecube_compiler_notes.txt</data></report_link>
   </info>
 			<info name="Warnings">
-  <data>6</data>
+  <data>0</data>
   <report_link name="more"><data>D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\synlog\report\U712_icecube_compiler_warnings.txt</data></report_link>
   </info>
 			<info name="Errors">
@@ -35,7 +35,7 @@ The file contains the job information from compiler to be displayed as part of t
   <data>-</data>
   </info>
 			<info name="Date &amp;Time">
-  <data type="timestamp">1757815907</data>
+  <data type="timestamp">1757863816</data>
   </info>
 			</job_info>
 </job_run_status>
