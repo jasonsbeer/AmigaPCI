@@ -489,14 +489,12 @@ ATA Autoboot|J900|Short|ATA autoboot disabled.
 
 ### 4.7 ROM Wait State Jumpers
 
-Currently unimplemented. Wait is hard coded at 150ns in U409.
-
 Description|Jumper|Pin 1-2|Pin 3-4|Result
 -|-|-|-|-
-ROM Wait States|J212|Open|Open|50ns
-[]()|[]()|Short|Open|100ns
-[]()|[]()|Open|Short|150ns
-[]()|[]()|Short|Short|200ns
+ROM Wait States|J212|Open|Open|200ns
+[]()|[]()|Short|Open|150ns
+[]()|[]()|Open|Short|100ns
+[]()|[]()|Short|Short|75ns
 
 ### 4.8 Reserved Jumpers
 Description|Jumper|Setting|Result
