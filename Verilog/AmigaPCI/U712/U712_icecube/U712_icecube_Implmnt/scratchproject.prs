@@ -1,27 +1,27 @@
 #--  Synopsys, Inc.
 #--  Version L-2016.09L+ice40
-#--  Project file D:\U712\U712_icecube\U712_icecube_Implmnt\scratchproject.prs
+#--  Project file D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\scratchproject.prs
 
 #project files
-add_file -verilog "D:/U712/U712_BUFFERS.v"
-add_file -verilog "D:/U712/U712_REG_SM.v"
-add_file -verilog "D:/U712/U712_TOP.v"
-add_file -verilog "D:/U712/U712_BYTE_ENABLE.v"
-add_file -verilog "D:/U712/U712_CHIP_RAM.v"
-add_file -verilog "D:/U712/U712_CYCLE_TERM.v"
-add_file -constraint "D:/U712/U712_TOP.sdc"
+add_file -verilog "D:/AmigaPCI/U712/U712_BUFFERS.v"
+add_file -verilog "D:/AmigaPCI/U712/U712_REG_SM.v"
+add_file -verilog "D:/AmigaPCI/U712/U712_TOP.v"
+add_file -verilog "D:/AmigaPCI/U712/U712_BYTE_ENABLE.v"
+add_file -verilog "D:/AmigaPCI/U712/U712_CHIP_RAM.v"
+add_file -verilog "D:/AmigaPCI/U712/U712_CYCLE_TERM.v"
+add_file -constraint "D:/AmigaPCI/U712/U712_TOP.sdc"
 
 
 
 #implementation: "U712_icecube_Implmnt"
-impl -add D:\U712\U712_icecube\U712_icecube_Implmnt -type fpga
+impl -add D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt -type fpga
 
 #
 #implementation attributes
 
 set_option -vlog_std v2001
 set_option -project_relative_includes 1
-set_option -include_path {D:/U712/U712_icecube/}
+set_option -include_path {D:/AmigaPCI/U712/U712_icecube/}
 
 #device options
 set_option -technology SBTiCE40
@@ -70,5 +70,5 @@ set_option -auto_infer_blackbox 0
 set_option -write_apr_constraint 1
 
 #set result format/file last
-project -result_file "D:/U712/U712_icecube/U712_icecube_Implmnt/U712_icecube.edf"
+project -result_file "D:/AmigaPCI/U712/U712_icecube/U712_icecube_Implmnt/U712_icecube.edf"
 impl -active "U712_icecube_Implmnt"

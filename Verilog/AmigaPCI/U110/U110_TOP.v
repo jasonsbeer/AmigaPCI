@@ -37,9 +37,9 @@ module U110_TOP (
     input [1:0] PCIAT,
     input [1:0] SIZ,
 
-    output INT2n, TEAn, TACKn, TCIn, TBIn
-    output IDELENn, IDEDIR, IDEHRENn, IDEHWENn, ATA_LATCH, PCI_CYCLEn,
-    output BGn, BURST,
+    output INT2n, TEAn, TACKn, TCIn, TBIn, BUSDIR,
+    output IDELENn, IDEDIR, IDEHRENn, IDEHWENn, ATA_LATCH, //PCI_CYCLEn,
+    output BGn, BURSTn,
     output CS0_PRIn, CS1_PRIn, CS0_SECn, CS1_SECn, DIOR_PRIn, DIOW_PRIn, DIOR_SECn, DIOW_SECn
 
 );
@@ -106,13 +106,16 @@ U110_BUFFERS U110_BUFFERS (
     .RESETn (RESETn),
     .ATA_ENn (ATA_ENn),
     .RnW (RnW),
+    .SIZ (SIZ),
+    .BGn (BGn),
 
     //output
     .IDEHRENn (IDEHRENn),
     .IDEHWENn (IDEHWENn),
     .IDELENn (IDELENn),
     .IDEDIR (IDEDIR),
-    .BURST (BURST)
+    .BURSTn (BURSTn),
+    .BUSDIR (BUSDIR)
 );
 
   ////////////////////
@@ -157,10 +160,10 @@ U110_ARBITOR U110_ARBITOR (
 );
 
   ////////////////////////
- // PCI STSTAE MACHINE //
+ // PCI STATE MACHINE //
 ////////////////////////
 
-U110_PCI_SM U110_PCI_SM (
+/*U110_PCI_SM U110_PCI_SM (
     //input
     .CLK40 (CLK40),
     .CLK33 (CLK33),
@@ -175,6 +178,6 @@ U110_PCI_SM U110_PCI_SM (
 
     //output
     .PCI_CYCLEn (PCI_CYCLEn)
-);
+);*/
 
 endmodule

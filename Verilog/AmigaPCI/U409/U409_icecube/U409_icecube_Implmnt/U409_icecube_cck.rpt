@@ -1,13 +1,13 @@
 # Synopsys Constraint Checker, version maplat, Build 1612R, built Dec  5 2016
 # Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
 
-# Written on Tue Jul 01 18:43:18 2025
+# Written on Sat Sep 13 21:17:40 2025
 
 
 ##### DESIGN INFO #######################################################
 
 Top View:                "U409_TOP"
-Constraint File(s):      "C:\Users\jason\Documents\GitHub\AmigaPCI\Logic\Verilog\AmigaPCI\DEV\U409\U409_TOP.sdc"
+Constraint File(s):      "D:\AmigaPCI\U409\U409_TOP.sdc"
 
 
 
@@ -76,8 +76,6 @@ p:A[28]
 p:A[29]
 p:A[30]
 p:A[31]
-p:BPRO_ENn
-p:BREG_ENn
 p:BUFENn
 p:CIACS0n
 p:CIACS1n
@@ -92,17 +90,8 @@ p:D[6] (bidir end point)
 p:D[6] (bidir start point)
 p:D[7] (bidir end point)
 p:D[7] (bidir start point)
-p:F_BANK[0]
-p:F_BANK[1]
 p:F_ENn
-p:F_RDY
-p:F_READn
-p:F_RSTn
-p:F_WPn
-p:F_WRITEn
 p:OVL
-p:PCIAT[0]
-p:PCIAT[1]
 p:PCS0
 p:PCS1
 p:PORTSIZE

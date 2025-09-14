@@ -5,11 +5,11 @@ The file contains the area information from mapper to be displayed as part of th
 *******************************************************************************************-->
 <report_table display_priority="1" name="Area Summary">
 <report_link name="Detailed report">
-<data>D:\U712\U712_icecube\U712_icecube_Implmnt\synlog\report\U712_icecube_fpga_mapper_resourceusage.rpt</data>
+<data>D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\synlog\report\U712_icecube_fpga_mapper_resourceusage.rpt</data>
 <title>Resource Usage</title>
 </report_link>
 <parameter tooltip="Total PADS used" name="PADS">
-<data>97</data>
+<data>98</data>
 </parameter>
 <parameter tooltip="Total FLOPS used" name="FLOPS">
 <data>122</data>
@@ -21,6 +21,6 @@ The file contains the area information from mapper to be displayed as part of th
 <data>17</data>
 </parameter>
 <parameter tcl_name="total_luts" tooltip="Total LUTS used" name="LUTS">
-<data>236</data>
+<data>238</data>
 </parameter>
 </report_table>

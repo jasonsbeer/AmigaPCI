@@ -1,15 +1,15 @@
 @N|Running in 64-bit mode
 @N|Running in 64-bit mode
 @N: CG364 :"C:\lscc\iCEcube2.2020.12\synpbase\lib\generic\sb_ice40.v":870:7:870:22|Synthesizing module SB_PLL40_2F_CORE in library work.
-@N: CG364 :"D:\U712\U712_REG_SM.v":33:7:33:17|Synthesizing module U712_REG_SM in library work.
-@N: CG364 :"D:\U712\U712_BUFFERS.v":34:7:34:18|Synthesizing module U712_BUFFERS in library work.
-@N: CG364 :"D:\U712\U712_CYCLE_TERM.v":33:7:33:21|Synthesizing module U712_CYCLE_TERM in library work.
-@N: CG364 :"D:\U712\U712_CHIP_RAM.v":33:7:33:19|Synthesizing module U712_CHIP_RAM in library work.
-@N: CG364 :"D:\U712\U712_BYTE_ENABLE.v":33:7:33:22|Synthesizing module U712_BYTE_ENABLE in library work.
-@N: CG364 :"D:\U712\U712_TOP.v":34:7:34:14|Synthesizing module U712_TOP in library work.
-@N: CL201 :"D:\U712\U712_CYCLE_TERM.v":55:0:55:5|Trying to extract state machine for register TACK_STATE.
-@N: CL201 :"D:\U712\U712_REG_SM.v":64:0:64:5|Trying to extract state machine for register STATE_COUNT.
+@N: CG364 :"D:\AmigaPCI\U712\U712_REG_SM.v":33:7:33:17|Synthesizing module U712_REG_SM in library work.
+@N: CG364 :"D:\AmigaPCI\U712\U712_BUFFERS.v":34:7:34:18|Synthesizing module U712_BUFFERS in library work.
+@N: CG364 :"D:\AmigaPCI\U712\U712_CYCLE_TERM.v":33:7:33:21|Synthesizing module U712_CYCLE_TERM in library work.
+@N: CG364 :"D:\AmigaPCI\U712\U712_CHIP_RAM.v":33:7:33:19|Synthesizing module U712_CHIP_RAM in library work.
+@N: CG364 :"D:\AmigaPCI\U712\U712_BYTE_ENABLE.v":33:7:33:22|Synthesizing module U712_BYTE_ENABLE in library work.
+@N: CG364 :"D:\AmigaPCI\U712\U712_TOP.v":34:7:34:14|Synthesizing module U712_TOP in library work.
+@N: CL201 :"D:\AmigaPCI\U712\U712_CYCLE_TERM.v":56:0:56:5|Trying to extract state machine for register TACK_STATE.
+@N: CL201 :"D:\AmigaPCI\U712\U712_REG_SM.v":64:0:64:5|Trying to extract state machine for register STATE_COUNT.
 @N|Running in 64-bit mode
-@N: NF107 :"D:\U712\U712_TOP.v":34:7:34:14|Selected library: work cell: U712_TOP view verilog as top level
-@N: NF107 :"D:\U712\U712_TOP.v":34:7:34:14|Selected library: work cell: U712_TOP view verilog as top level
+@N: NF107 :"D:\AmigaPCI\U712\U712_TOP.v":34:7:34:14|Selected library: work cell: U712_TOP view verilog as top level
+@N: NF107 :"D:\AmigaPCI\U712\U712_TOP.v":34:7:34:14|Selected library: work cell: U712_TOP view verilog as top level
 

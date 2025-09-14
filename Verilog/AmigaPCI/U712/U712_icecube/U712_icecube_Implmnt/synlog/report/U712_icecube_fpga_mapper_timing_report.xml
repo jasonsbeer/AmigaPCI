@@ -5,7 +5,7 @@ Max Top 5 critical clocks will be reported. For rest user needs to refer to Deta
 *******************************************************************************************-->
 <report_table display_priority="2" name="Timing Summary">
 <report_link name="Detailed report">
-<data>D:\U712\U712_icecube\U712_icecube_Implmnt\synlog\U712_icecube_fpga_mapper.srr</data>
+<data>D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\synlog\U712_icecube_fpga_mapper.srr</data>
 <title>START OF TIMING REPORT</title>
 </report_link>
 <row>
@@ -36,6 +36,6 @@ Max Top 5 critical clocks will be reported. For rest user needs to refer to Deta
 <data>U712_TOP|CLK80_PLL_derived_clock</data>
 <data>80.0 MHz</data>
 <data>17.8 MHz</data>
-<data>-2.296</data>
+<data>-0.483</data>
 </row>
 </report_table>

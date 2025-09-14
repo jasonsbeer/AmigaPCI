@@ -33,7 +33,7 @@ GitHub: https://github.com/jasonsbeer/AmigaPCI
 module U409_TRANSFER_ACK (
 
     input CLK80, CLK40, RESETn, TSn, ROMEN, CIA_ENABLE, CLK_CIA, AGNUS_SPACE,
-    input AUTOVECTOR, RTC_ENn, CACHE_SPACE, AC_TACK,
+    input AUTOVECTOR, RTC_ENn, AC_TACK, //, CACHE_SPACE,
 
     input [1:0] ROM_DELAY,
 
@@ -44,23 +44,29 @@ module U409_TRANSFER_ACK (
 
 );
 
+// WIRES //
+reg ROM_TACK_EN;
+reg TACK_EN;
+reg TACK_OUT;
+
 ///////////////////////////
 // MC68040 TRANSFER ACK //
 /////////////////////////
 
 //None of the cycles U409 handles support bursts, so all cycles are terminated with a burst inhibit.
 
-reg TACK_EN;
-reg TACK_OUTn;
-
-assign TACKn = TACK_EN ? TACK_OUTn : 1'bz;
-assign TBIn  = TACK_EN ? TACK_OUTn : 1'bz;
-assign TCIn  = TACK_EN && !CACHE_SPACE ? TACK_OUTn : 1'bz;
+assign TACKn = TACK_EN ? TACK_OUT : 1'bz;
+//assign TBIn  = TACK_EN ? TACK_OUT : 1'bz;
+assign TBIn  = TACK_EN ? 1'b0 : 1'bz;
+//assign TCIn  = TACK_EN && !CACHE_SPACE ? TACK_OUT : 1'bz;
+//assign TCIn  = TACK_EN && !ROMEN ? TACK_OUT : 1'bz;
+assign TCIn  = TACK_EN && !ROMEN ? 1'b0 : 1'bz;
 
 reg [3:0] TACK_COUNTER;
 always @(posedge CLK80) begin
     if (!RESETn) begin
         TACK_EN <= 0;
+        TACK_OUT <= 1;
         TACK_COUNTER <= 4'h00;
     end else begin
         case (TACK_COUNTER)
@@ -68,14 +74,14 @@ always @(posedge CLK80) begin
             if (ROM_TACK_EN || CIA_TACK_EN || IRQ_TACK_EN || DELAYED_TACK_EN || AC_TACK) begin
                 TACK_COUNTER <= 4'h01;
                 TACK_EN <= 1;
-                TACK_OUTn <= 0;
+                TACK_OUT <= 0;
             end
         end
         4'h01 : begin
             TACK_COUNTER <= 4'h02;
         end
         4'h02 : begin
-            TACK_OUTn <= 1;
+            TACK_OUT <= 1;
             TACK_COUNTER <= 4'h03;
         end
         4'h03 : begin
@@ -86,16 +92,44 @@ always @(posedge CLK80) begin
     end
 end
 
+/*always @(posedge CLK40) begin
+     if (!RESETn) begin
+        TACK_EN <= 0;
+        TACK_COUNTER <= 4'h0;
+    end else begin
+        case (TACK_COUNTER)
+            4'h0 : begin
+                if (ROM_TACK_EN) begin
+                    TACK_EN <= 1'b1;
+                    TACK_OUT <= 1'b0;
+                    TACK_COUNTER <= 4'h1;
+                end
+            end
+            4'h1 : begin
+                TACK_OUT <= 1'b1;
+                TACK_COUNTER <= 4'h2;
+            end
+            4'h2 : begin
+                TACK_EN <= 1'b0;
+                TACK_COUNTER <= 4'h0;
+            end
+        endcase
+end
+    
+end*/
+
 ////////////////
 // ROM CYCLE //
 //////////////
 
 //WE DELAY ASSERTION OF _TACK TO SUPPORT SETUP TIME FOR THE ROM.
 
-wire [3:0] ROM_TACK_DELAY = ROM_DELAY == 2'b01 ? 4'hB : //150ns
-                            ROM_DELAY == 2'b01 ? 4'h8 : //150ns
-                            ROM_DELAY == 2'b10 ? 4'h5 : //100ns
-                                                 4'h2 ; //50ns
+//wire [3:0] ROM_TACK_DELAY = ROM_DELAY == 2'b00 ? 4'hC : //200ns
+//                            ROM_DELAY == 2'b01 ? 4'hA : //150ns
+//                            ROM_DELAY == 2'b10 ? 4'h5 : //100ns
+//                                                 4'h2 ; //50ns
+
+wire [3:0] ROM_TACK_DELAY = 4'hA; //150ns
 
 reg [3:0] ROM_TACK_COUNTER;
 reg ROM_TACK_EN;
@@ -116,16 +150,61 @@ always @(posedge CLK80) begin
             ROM_TACK_DELAY : begin
                 ROM_TACK_EN <= 1;
             end
-            ROM_TACK_DELAY + 1 : begin
+            ROM_TACK_DELAY + 2 : begin
                 ROM_TACK_EN <= 0;
             end
-            ROM_TACK_DELAY + 4 : begin
+            ROM_TACK_DELAY + 3 : begin
                 ROMENn <= 1;
                 ROM_TACK_COUNTER <= 4'h0;
             end
         endcase
     end
 end
+
+/*reg TS_DELAY;
+always @(posedge CLK40) begin
+    if (!RESETn) begin
+        TS_DELAY <= 1'b1;
+    end else begin
+        TS_DELAY <= TSn;
+    end
+end
+
+wire [3:0] ROM_TACK_DELAY = 4'h4;
+
+reg [3:0] ROM_TACK_COUNTER;
+always @(posedge CLK40) begin
+    if (!RESETn) begin
+        ROM_TACK_EN <= 0;
+        ROM_TACK_COUNTER <= 4'h0;
+        ROMENn <= 1;
+    end else begin
+        if (ROM_TACK_COUNTER != 4'h0) begin ROM_TACK_COUNTER ++; end
+        case (ROM_TACK_COUNTER)
+            4'h0 : begin
+                if (!TS_DELAY && ROMEN) begin
+                    ROM_TACK_COUNTER <= 4'h1;
+                    ROMENn <= 0;
+                end
+            end
+            ROM_TACK_DELAY : begin
+                ROM_TACK_EN <= 1;
+            //        TACK_EN <= 1'b1;
+            //        TACK_OUT <= 1'b0;
+            end
+            ROM_TACK_DELAY + 1 : begin
+                ROM_TACK_EN <= 0;
+                    
+            //        TACK_OUT <= 1'b1;
+            end
+            ROM_TACK_DELAY + 4 : begin
+                //TACK_EN <= 1'b0;
+                ROMENn <= 1;
+                ROM_TACK_COUNTER <= 4'h0;
+            end
+        endcase
+    end
+end*/
 
 ////////////////
 // IRQ CYCLE //

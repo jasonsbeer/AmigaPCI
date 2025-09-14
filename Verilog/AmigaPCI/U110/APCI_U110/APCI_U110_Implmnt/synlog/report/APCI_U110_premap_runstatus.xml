@@ -5,7 +5,7 @@ The file contains the job information from mapper to be displayed as part of the
 *******************************************************************************************-->
 <job_run_status name="Mapper">
 <report_link name="Detailed report">
-<data>D:\U110\APCI_U110\APCI_U110_Implmnt\synlog\APCI_U110_premap.srr</data>
+<data>D:\AmigaPCI\U110\APCI_U110\APCI_U110_Implmnt\synlog\APCI_U110_premap.srr</data>
 <title>Synopsys Lattice Technology Pre-mapping</title>
 </report_link>
 <job_status>
@@ -15,19 +15,19 @@ The file contains the job information from mapper to be displayed as part of the
 <info name="Notes">
 <data>5</data>
 <report_link name="more">
-<data>D:\U110\APCI_U110\APCI_U110_Implmnt\synlog\report\APCI_U110_premap_notes.txt</data>
+<data>D:\AmigaPCI\U110\APCI_U110\APCI_U110_Implmnt\synlog\report\APCI_U110_premap_notes.txt</data>
 </report_link>
 </info>
 <info name="Warnings">
 <data>0</data>
 <report_link name="more">
-<data>D:\U110\APCI_U110\APCI_U110_Implmnt\synlog\report\APCI_U110_premap_warnings.txt</data>
+<data>D:\AmigaPCI\U110\APCI_U110\APCI_U110_Implmnt\synlog\report\APCI_U110_premap_warnings.txt</data>
 </report_link>
 </info>
 <info name="Errors">
 <data>0</data>
 <report_link name="more">
-<data>D:\U110\APCI_U110\APCI_U110_Implmnt\synlog\report\APCI_U110_premap_errors.txt</data>
+<data>D:\AmigaPCI\U110\APCI_U110\APCI_U110_Implmnt\synlog\report\APCI_U110_premap_errors.txt</data>
 </report_link>
 </info>
 <info name="CPU Time">
@@ -40,7 +40,7 @@ The file contains the job information from mapper to be displayed as part of the
 <data>133MB</data>
 </info>
 <info name="Date &amp; Time">
-<data type="timestamp">1751501140</data>
+<data type="timestamp">1757778109</data>
 </info>
 </job_info>
 </job_run_status>

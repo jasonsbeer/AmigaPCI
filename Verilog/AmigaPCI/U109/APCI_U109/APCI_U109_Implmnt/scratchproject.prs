@@ -5,7 +5,6 @@
 #project files
 add_file -verilog "D:/AmigaPCI/U109/U109_PCI_STATE_MACHINE.v"
 add_file -verilog "D:/AmigaPCI/U109/U109_TOP.v"
-add_file -verilog "D:/AmigaPCI/U109/U109_BUFFERS.v"
 add_file -constraint "D:/AmigaPCI/U109/U109_TOP.sdc"
 
 

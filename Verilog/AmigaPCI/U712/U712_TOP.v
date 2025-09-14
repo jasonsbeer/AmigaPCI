@@ -43,13 +43,15 @@ module U712_TOP (
     output CLK40B_OUT, CLK40C_OUT, CLK40D_OUT, CLKRAM,
     output BLSn, LDSn, UDSn, ASn, REGENn, PRnW, DBDIR,
     output VBENn, DRDENn, DRDDIR, DMA_LATCH_EN, LATCH_CLK,
-    output CRCSn, CLK_EN, BANK1, BANK0, RASn, CASn, WEn, DBENn,
+    output CRCSn, CLK_EN, BANK1, BANK0, RASn, CASn, WEn, DBENn, RAMENn,
     output [10:0] CMA,
     output CUUBEn, CUMBEn, CLMBEn, CLLBEn,
     output UUBEn, UMBEn, LMBEn, LLBEn,
     output TACKn, TBIn, TCIn,
     output [2:0] DA
 );
+
+assign RAMENn = RAMSPACEn;
 
 ///////////////////
 // CLOCK FANOUT //

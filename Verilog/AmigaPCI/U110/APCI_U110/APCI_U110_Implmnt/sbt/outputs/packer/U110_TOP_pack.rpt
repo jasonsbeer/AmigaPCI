@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:31:51
 
-* File Generated:     Jul 2 2025 19:09:12
+* File Generated:     Sep 13 2025 10:42:07
 
 * Purpose:            General info of design implementation
 
@@ -30,7 +30,7 @@ Design statistics:
     FFs:                  17
     LUTs:                 55
     RAMs:                 0
-    IOBs:                 26
+    IOBs:                 32
     GBs:                  1
     PLLs:                 0
     Warm Boots:           0
@@ -40,25 +40,25 @@ Logic Resource Utilization:
     Total Logic Cells: 55/3520
         Combinational Logic Cells: 38       out of   3520      1.07955%
         Sequential Logic Cells:    17       out of   3520      0.482955%
-        Logic Tiles:               15       out of   440       3.40909%
+        Logic Tiles:               20       out of   440       4.54545%
     Registers: 
         Logic Registers:           17       out of   3520      0.482955%
         IO Registers:              0        out of   880       0
     Block RAMs:                    0        out of   20        0%
     Warm Boots:                    0        out of   1         0%
     Pins:
-        Input Pins:                9        out of   107       8.41121%
-        Output Pins:               17       out of   107       15.8879%
+        Input Pins:                11       out of   107       10.2804%
+        Output Pins:               21       out of   107       19.6262%
         InOut Pins:                0        out of   107       0%
     Global Buffers:                1        out of   8         12.5%
     PLLs:                          0        out of   2         0%
 
 IO Bank Utilization:
 --------------------
-    Bank 3: 6        out of   28        21.4286%
-    Bank 1: 16       out of   29        55.1724%
+    Bank 3: 10       out of   28        35.7143%
+    Bank 1: 17       out of   29        58.6207%
     Bank 0: 1        out of   27        3.7037%
-    Bank 2: 3        out of   23        13.0435%
+    Bank 2: 4        out of   23        17.3913%
 
 Detailed I/O Info:
 ------------------
@@ -66,6 +66,8 @@ Detailed I/O Info:
     Pin Number  Direction  IO Standard  Pull Up  IO Bank  IO Function                   Signal Name
     ----------  ---------  -----------  -------  -------  -----------                   -----------
     12          Input      SB_LVCMOS    No       3        Simple Input                  ATA_ENn    
+    17          Input      SB_LVCMOS    No       3        Simple Input                  SIZ[0]     
+    18          Input      SB_LVCMOS    No       3        Simple Input                  SIZ[1]     
     22          Input      SB_LVCMOS    No       3        Simple Input                  SCS1       
     23          Input      SB_LVCMOS    No       3        Simple Input                  SCS0       
     24          Input      SB_LVCMOS    No       3        Simple Input                  PCS1       
@@ -79,8 +81,12 @@ Detailed I/O Info:
     Pin Number  Direction  IO Standard  Pull Up  IO Bank  IO Function                   Signal Name
     ----------  ---------  -----------  -------  -------  -----------                   -----------
     10          Output     SB_LVCMOS    No       3        Simple Output                 TEAn       
+    33          Output     SB_LVCMOS    No       3        Output Tristatable by Enable  TCIn       
+    34          Output     SB_LVCMOS    No       3        Output Tristatable by Enable  TBIn       
+    55          Output     SB_LVCMOS    No       2        Simple Output                 BUSDIR     
     75          Output     SB_LVCMOS    No       1        Output Tristatable by Enable  TACKn      
     76          Output     SB_LVCMOS    No       1        Simple Output                 BGn        
+    80          Output     SB_LVCMOS    No       1        Simple Output                 BURSTn     
     83          Output     SB_LVCMOS    No       1        Simple Output                 IDEDIR     
     84          Output     SB_LVCMOS    No       1        Simple Output                 CS0_SECn   
     85          Output     SB_LVCMOS    No       1        Simple Output                 ATA_LATCH  
@@ -100,4 +106,4 @@ Detailed Global Buffer Info:
 ----------------------------
     Buffer Number  IO Bank  Driven By  Fanout  Signal Name
     -------------  -------  ---------  ------  -----------
-    3              2        IO         15      CLK40_c_g  
+    3              2        IO         14      CLK40_c_g  

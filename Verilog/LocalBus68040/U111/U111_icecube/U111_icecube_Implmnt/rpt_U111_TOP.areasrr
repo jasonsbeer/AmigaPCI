@@ -11,15 +11,15 @@ Name      Total elements     Utilization     Notes
 --------------------------------------------------
 FLOPS     37                 100 %                
 ==================================================
-Total SEQUENTIAL ELEMENTS in the block U111_TOP:	37 (14.45 % Utilization)
+Total SEQUENTIAL ELEMENTS in the block U111_TOP:	37 (14.62 % Utilization)
 
 
 COMBINATIONAL LOGIC
 Name     Total elements     Utilization     Notes
 -------------------------------------------------
-LUTS     114                100 %                
+LUTS     111                100 %                
 =================================================
-Total COMBINATIONAL LOGIC in the block U111_TOP:	114 (44.53 % Utilization)
+Total COMBINATIONAL LOGIC in the block U111_TOP:	111 (43.87 % Utilization)
 
 
 IO PADS
@@ -27,7 +27,7 @@ Name     Total elements     Utilization     Notes
 -------------------------------------------------
 PADS     97                 100 %                
 =================================================
-Total IO PADS in the block U111_TOP:	97 (37.89 % Utilization)
+Total IO PADS in the block U111_TOP:	97 (38.34 % Utilization)
 
 ------------------------------------------------------------------
 ########   Utilization report for  cell:   U111_BUFFERS   ########
@@ -37,9 +37,9 @@ Instance path:   U111_TOP.U111_BUFFERS
 COMBINATIONAL LOGIC
 Name     Total elements     Utilization     Notes
 -------------------------------------------------
-LUTS     3                  2.63 %               
+LUTS     3                  2.7 %                
 =================================================
-Total COMBINATIONAL LOGIC in the block U111_TOP.U111_BUFFERS:	3 (1.17 % Utilization)
+Total COMBINATIONAL LOGIC in the block U111_TOP.U111_BUFFERS:	3 (1.19 % Utilization)
 
 -------------------------------------------------------------------
 ########   Utilization report for  cell:   U111_CYCLE_SM   ########
@@ -51,15 +51,15 @@ Name      Total elements     Utilization     Notes
 --------------------------------------------------
 FLOPS     37                 100 %                
 ==================================================
-Total SEQUENTIAL ELEMENTS in the block U111_TOP.U111_CYCLE_SM:	37 (14.45 % Utilization)
+Total SEQUENTIAL ELEMENTS in the block U111_TOP.U111_CYCLE_SM:	37 (14.62 % Utilization)
 
 
 COMBINATIONAL LOGIC
 Name     Total elements     Utilization     Notes
 -------------------------------------------------
-LUTS     108                94.7 %               
+LUTS     104                93.7 %               
 =================================================
-Total COMBINATIONAL LOGIC in the block U111_TOP.U111_CYCLE_SM:	108 (42.19 % Utilization)
+Total COMBINATIONAL LOGIC in the block U111_TOP.U111_CYCLE_SM:	104 (41.11 % Utilization)
 
 
 ##### END OF AREA REPORT #####]

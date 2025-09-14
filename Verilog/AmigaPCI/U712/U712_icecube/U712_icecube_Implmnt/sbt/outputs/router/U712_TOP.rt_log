@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:45:10
 
-* File Generated:     Jul 2 2025 17:00:17
+* File Generated:     Sep 13 2025 21:12:18
 
 * Purpose:            Router runtime info
 
@@ -14,7 +14,7 @@
 
 * ******************************************************************************
 
-Executing : C:\lscc\iCEcube2.2020.12\sbt_backend\bin\win32\opt\sbrouter.exe C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P04.dev D:\U712\U712_icecube\U712_icecube_Implmnt\sbt\netlist\oadb-U712_TOP C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ice40HX8K.lib D:\U712\U712_icecube\U712_icecube_Implmnt\sbt\outputs\packer\U712_TOP_pk.sdc --outdir D:\U712\U712_icecube\U712_icecube_Implmnt\sbt\outputs\router --sdf_file D:/U712/U712_icecube/U712_icecube_Implmnt\sbt\outputs\simulation_netlist\U712_TOP_sbt.sdf --pin_permutation 
+Executing : C:\lscc\iCEcube2.2020.12\sbt_backend\bin\win32\opt\sbrouter.exe C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P04.dev D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\sbt\netlist\oadb-U712_TOP C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ice40HX8K.lib D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\sbt\outputs\packer\U712_TOP_pk.sdc --outdir D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\sbt\outputs\router --sdf_file D:/AmigaPCI/U712/U712_icecube/U712_icecube_Implmnt\sbt\outputs\simulation_netlist\U712_TOP_sbt.sdf --pin_permutation 
 I1203: Reading Design U712_TOP
 I1202: Reading Architecture of device iCE40HX4K
 Info-1404: Inferred PLL generated clock at pll/PLLOUTCOREB
@@ -22,13 +22,14 @@ Info-1404: Inferred PLL generated clock at pll/PLLOUTCOREA
 Info-1404: Inferred PLL generated clock at pll/PLLOUTGLOBALB
 Info-1404: Inferred PLL generated clock at pll/PLLOUTGLOBALA
 I1209: Started routing
-I1223: Total Nets : 354 
-I1212: Iteration  1 :   119 unrouted : 2 seconds
-I1212: Iteration  2 :    24 unrouted : 1 seconds
-I1212: Iteration  3 :     0 unrouted : 0 seconds
+I1223: Total Nets : 366 
+I1212: Iteration  1 :    91 unrouted : 3 seconds
+I1212: Iteration  2 :    20 unrouted : 1 seconds
+I1212: Iteration  3 :     2 unrouted : 0 seconds
+I1212: Iteration  4 :     0 unrouted : 0 seconds
 I1215: Routing is successful
 I1206: Completed routing
 I1204: Writing Design U712_TOP
 I1210: Writing routes
 I1218: Exiting the router
-I1224: Router run-time : 11 seconds
+I1224: Router run-time : 12 seconds

@@ -37,7 +37,7 @@ module U409_FLASH
     input FLASH_SPACE, F_RDY,
     input [23:1] A,
 
-    output F_ENn, F_WPn, F_READn, F_WRITEn, F_RSTn, F_ACK,
+    output F_ENn, F_WPn, F_READn, F_WRITEn, F_RSTn, F_ACK
 
 );
 

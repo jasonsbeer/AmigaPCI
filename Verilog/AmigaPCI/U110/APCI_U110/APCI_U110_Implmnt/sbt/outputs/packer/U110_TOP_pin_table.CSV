@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:31:51
 
-* File Generated:     Jul 2 2025 19:09:12
+* File Generated:     Sep 13 2025 10:42:07
 
 * Purpose:            Detailed IO and package pin info
 
@@ -35,8 +35,8 @@ Pin Number, Pin Type Name, Signal Name, Direction, Global Buffer, IO Standard, P
 14, GND, not used, , , , , , UnknownBank
 15, PIO, not used, , , , , , leftBank
 16, PIO, not used, , , , , , leftBank
-17, PIO, not used, , , , , , leftBank
-18, PIO, not used, , , , , , leftBank
+17, PIO, SIZ[0], Input, , SB_LVCMOS, No Pull Up, Simple Input, leftBank
+18, PIO, SIZ[1], Input, , SB_LVCMOS, No Pull Up, Simple Input, leftBank
 19, PIO, not used, , , , , , leftBank
 20, PIO_GBIN, not used, , , , , , leftBank
 21, PIO_GBIN, not used, , , , , , leftBank
@@ -51,8 +51,8 @@ Pin Number, Pin Type Name, Signal Name, Direction, Global Buffer, IO Standard, P
 30, VCCIO_3, not used, , , , , , leftBank
 31, PIO, not used, , , , , , leftBank
 32, PIO, not used, , , , , , leftBank
-33, PIO, not used, , , , , , leftBank
-34, PIO, not used, , , , , , leftBank
+33, PIO, TCIn, Output, , SB_LVCMOS, No Pull Up, Output Tristatable by Enable, leftBank
+34, PIO, TBIn, Output, , SB_LVCMOS, No Pull Up, Output Tristatable by Enable, leftBank
 37, PIO, not used, , , , , , bottomBank
 38, PIO, not used, , , , , , bottomBank
 39, PIO, not used, , , , , , bottomBank
@@ -69,7 +69,7 @@ Pin Number, Pin Type Name, Signal Name, Direction, Global Buffer, IO Standard, P
 52, PIO_GBIN, CLK40, Input, glb Buff, SB_LVCMOS, No Pull Up, Simple Input, bottomBank
 53, AGND_BOT, not used, , , , , , UnknownBank
 54, AVDD_BOT, not used, , , , , , UnknownBank
-55, PIO, not used, , , , , , bottomBank
+55, PIO, BUSDIR, Output, , SB_LVCMOS, No Pull Up, Simple Output, bottomBank
 56, PIO, not used, , , , , , bottomBank
 57, VCCIO_2, not used, , , , , , bottomBank
 59, GND, not used, , , , , , UnknownBank
@@ -93,7 +93,7 @@ Pin Number, Pin Type Name, Signal Name, Direction, Global Buffer, IO Standard, P
 77, TRST_B, not used, , , , , , rightBank
 78, PIO, not used, , , , , , rightBank
 79, PIO, RnW, Input, , SB_LVCMOS, No Pull Up, Simple Input, rightBank
-80, PIO, not used, , , , , , rightBank
+80, PIO, BURSTn, Output, , SB_LVCMOS, No Pull Up, Simple Output, rightBank
 81, PIO, not used, , , , , , rightBank
 82, PIO, not used, , , , , , rightBank
 83, PIO, IDEDIR, Output, , SB_LVCMOS, No Pull Up, Simple Output, rightBank
@@ -157,4 +157,4 @@ Pin Number, Pin Type Name, Signal Name, Direction, Global Buffer, IO Standard, P
 142, PIO, not used, , , , , , topBank
 143, PIO, not used, , , , , , topBank
 144, PIO, not used, , , , , , topBank
-Total Number of Used Pins, 26
+Total Number of Used Pins, 32

@@ -41,11 +41,12 @@ module U409_ADDRESS_DECODE
     input [7:1] LIDE_BASE,
     input [2:0] PRO_BASE,
 
-    output ROMEN, CIA_SPACE, CIACS0n, CIACS1n, RAMSPACEn, REGSPACEn, FLASH_SPACE,
-    output AUTOVECTOR, RTC_ENn, AUTOCONFIG_SPACE, ATA_SPACE, ATA_ENn, BREG_ENn, BPRO_ENn,
-    output PCS0, PCS1, SCS0, SCS1,
-    output [1:0] PCIAT,
-    output [1:0] F_BANK
+    output ROMEN, CIA_SPACE, CIACS0n, CIACS1n, RAMSPACEn, REGSPACEn,
+    output AUTOVECTOR, RTC_ENn, AUTOCONFIG_SPACE, ATA_SPACE, ATA_ENn,
+    output PCS0, PCS1, SCS0, SCS1
+    //output FLASH_SPACE
+    //output [1:0] PCIAT, BREG_ENn, BPRO_ENn,
+    //output [1:0] F_BANK
 
 );
 
@@ -83,11 +84,6 @@ assign CIACS1n = !(CIA_ENABLE && !A[13]);
 //AGNUS CONTROLS ACCESS TO CHIPSET REGISTERS.
 //REGISTERS ARE VISIBLE IN THE DATA SPACE.
 
-//wire RAN_SPACE = A[23:19] == 4'hC; //C00000-C7FFFF & C80000-CFFFFF
-//wire RES_SPACE = A[23:18] == 5'b11010; //D00000 - D7FFFF
-//wire MBR_SPACE = A[23:16] == 8'hDE; //DE0000 - DEFFFF
-//wire REG_SPACE = A[23:16] == 8'hDF; //DF0000 - DFFFFF
-
 assign RAMSPACEn = !(Z2_SPACE && !OVL && A[23:21] == 3'b000);
 assign REGSPACEn = !(Z2_SPACE && A[23:16] == 8'hDF);
 
@@ -111,6 +107,7 @@ assign AUTOCONFIG_SPACE = Z2_SPACE && A[23:16] == 8'hE8;
 
 //$00DC 0000 - $00DD FFFF
 assign RTC_ENn = !(Z2_SPACE && A[23:17] == 7'b1101110);
+//assign RTC_ENn = 1'b1;
 
   /////////
  // ATA //
@@ -128,6 +125,7 @@ assign SCS1 =  A[14] && CS1;
 assign ATA_SPACE = Z2_SPACE && CONFIGURED && A[23:17] == LIDE_BASE; //128k 7'b1110101
 //wire ATA_ROM = ATA_SPACE && !ATA_EN;
 assign ATA_ENn = !(ATA_SPACE && ATA_EN);
+//assign ATA_ENn = 1'b1;
 
 reg ATA_EN;
 always @(posedge CLK40) begin
@@ -146,7 +144,7 @@ end
 //The first is the PCI Bridge registers in the Z2 space as a 64k device. These registers are defined by the PCI spec and support AUTOCONFIG cards.
 //The second way is as a prometheus access in the Z3 space.
 //The PCIAT (PCI Access Type) bus identifies the acess type for all bridge accesses.
-//NOTE: The I/O space is basically deprectaed in the Rev 2.3 PCI spec, but is here for prometheus support.
+//NOTE: The I/O space is basically deprectaed in the Rev 2.3 PCI spec, but is here for prometheus support. The PCI I/O space is not supported for AUTOCONFIG cards.
 
 // Access Type         PCIAT1   PCIAT0
 //-------------------------------------
@@ -155,7 +153,7 @@ end
 //PCI Memory Space       1        0
 //I/O Space              1        1
 
-assign BREG_ENn = !(Z2_SPACE && CONFIGURED && A[23:16] == BRIDGE_BASE);
+/*assign BREG_ENn = !(Z2_SPACE && CONFIGURED && A[23:16] == BRIDGE_BASE);
 assign BPRO_ENn = !(RESETn   && CONFIGURED && A[31:29] == PRO_BASE);
 
 wire ALT_SPACE   =  TT[1] && !TT[0];
@@ -167,7 +165,7 @@ wire PRO_CONF1_SPACE = BPRO_ENn && A[28:20] == {1'b1, 8'hFD};
 wire PRO_IO_SPACE    = BPRO_ENn && A[28:21] == 8'hFF;
 
 assign PCIAT[1] = RESETn && ((PRO_IO_SPACE || !ALT_SPACE) && !PRO_CONF0_SPACE && !PRO_CONF1_SPACE);
-assign PCIAT[0] = RESETn && (PRO_IO_SPACE || CONF1_SPACE || PRO_CONF1_SPACE);
+assign PCIAT[0] = RESETn && (PRO_IO_SPACE || CONF1_SPACE || PRO_CONF1_SPACE);*/
 
   /////////////////
  // FLASH SPACE //
@@ -183,10 +181,8 @@ assign PCIAT[0] = RESETn && (PRO_IO_SPACE || CONF1_SPACE || PRO_CONF1_SPACE);
 // $E00000 - $E7FFFF     1       0      11100
 // $F00000 - $F7FFFF     1       1      11110
 
-assign F_BANK[1] = A[22];
-assign F_BANK[0] = A[20];
-assign FLASH_SPACE = Z2_SPACE && A[23] && A[21] && (A[20:19] == 2'b01 || A[20:19] == 2'b10 || A[20:19] == 2'b00);
+//assign F_BANK[1] = A[22];
+//assign F_BANK[0] = A[20];
+//assign FLASH_SPACE = Z2_SPACE && A[23] && A[21] && (A[20:19] == 2'b01 || A[20:19] == 2'b10 || A[20:19] == 2'b00);
 
 endmodule
-
-

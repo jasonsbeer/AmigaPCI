@@ -5,7 +5,7 @@ The file contains the job information from mapper to be displayed as part of the
 *******************************************************************************************-->
 <job_run_status name="Mapper">
 <report_link name="Detailed report">
-<data>D:\U110\APCI_U110\APCI_U110_Implmnt\synlog\APCI_U110_fpga_mapper.srr</data>
+<data>D:\AmigaPCI\U110\APCI_U110\APCI_U110_Implmnt\synlog\APCI_U110_fpga_mapper.srr</data>
 <title>Synopsys Lattice Technology Mapper</title>
 </report_link>
 <job_status>
@@ -13,21 +13,21 @@ The file contains the job information from mapper to be displayed as part of the
 </job_status>
 <job_info>
 <info name="Notes">
-<data>10</data>
+<data>12</data>
 <report_link name="more">
-<data>D:\U110\APCI_U110\APCI_U110_Implmnt\synlog\report\APCI_U110_fpga_mapper_notes.txt</data>
+<data>D:\AmigaPCI\U110\APCI_U110\APCI_U110_Implmnt\synlog\report\APCI_U110_fpga_mapper_notes.txt</data>
 </report_link>
 </info>
 <info name="Warnings">
 <data>0</data>
 <report_link name="more">
-<data>D:\U110\APCI_U110\APCI_U110_Implmnt\synlog\report\APCI_U110_fpga_mapper_warnings.txt</data>
+<data>D:\AmigaPCI\U110\APCI_U110\APCI_U110_Implmnt\synlog\report\APCI_U110_fpga_mapper_warnings.txt</data>
 </report_link>
 </info>
 <info name="Errors">
 <data>0</data>
 <report_link name="more">
-<data>D:\U110\APCI_U110\APCI_U110_Implmnt\synlog\report\APCI_U110_fpga_mapper_errors.txt</data>
+<data>D:\AmigaPCI\U110\APCI_U110\APCI_U110_Implmnt\synlog\report\APCI_U110_fpga_mapper_errors.txt</data>
 </report_link>
 </info>
 <info name="CPU Time">
@@ -40,7 +40,7 @@ The file contains the job information from mapper to be displayed as part of the
 <data>135MB</data>
 </info>
 <info name="Date &amp; Time">
-<data type="timestamp">1751501141</data>
+<data type="timestamp">1757778110</data>
 </info>
 </job_info>
 </job_run_status>

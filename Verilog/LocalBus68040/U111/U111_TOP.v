@@ -39,7 +39,8 @@ module U111_TOP (
     output CLK40A, CLK40B, CLK40C, CLK80_CPU, CLKRAMA, CLKRAMB,
     output TBI_CPUn, TCI_CPUn, TEA_CPUn, CPUBGn, BUFENn, BUFDIR, DMAAn,
 
-    inout TSn,
+    output TSn,
+    //inout TSn,
     inout TS_CPUn,
     inout TAn,
     inout TACKn,

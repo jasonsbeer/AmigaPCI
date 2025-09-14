@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:31:51
 
-* File Generated:     Jun 13 2025 09:32:41
+* File Generated:     Sep 11 2025 19:59:43
 
 * Purpose:            General info of design implementation
 
@@ -17,7 +17,7 @@
 Synthesis/Placement Summary:
 ----------------------------
     Status:  Successful
-    Runtime: 0 seconds
+    Runtime: 1 seconds
 
 Device Info:
 ------------
@@ -28,7 +28,7 @@ Device Info:
 Design statistics:
 ------------------
     FFs:                  37
-    LUTs:                 118
+    LUTs:                 123
     RAMs:                 0
     IOBs:                 96
     GBs:                  1
@@ -37,10 +37,10 @@ Design statistics:
 
 Logic Resource Utilization:
 ---------------------------
-    Total Logic Cells: 118/3520
-        Combinational Logic Cells: 81       out of   3520      2.30114%
+    Total Logic Cells: 123/3520
+        Combinational Logic Cells: 86       out of   3520      2.44318%
         Sequential Logic Cells:    37       out of   3520      1.05114%
-        Logic Tiles:               39       out of   440       8.86364%
+        Logic Tiles:               49       out of   440       11.1364%
     Registers: 
         Logic Registers:           37       out of   3520      1.05114%
         IO Registers:              0        out of   880       0
@@ -48,8 +48,8 @@ Logic Resource Utilization:
     Warm Boots:                    0        out of   1         0%
     Pins:
         Input Pins:                13       out of   107       12.1495%
-        Output Pins:               15       out of   107       14.0187%
-        InOut Pins:                68       out of   107       63.5514%
+        Output Pins:               16       out of   107       14.9533%
+        InOut Pins:                67       out of   107       62.6168%
     Global Buffers:                1        out of   8         12.5%
     PLLs:                          1        out of   2         50%
 
@@ -85,6 +85,7 @@ Detailed I/O Info:
     21          Output     SB_LVCMOS    No       3        Simple Output                              CLK40C         
     39          Output     SB_LVCMOS    Yes      2        Simple Output                              A_AMIGA[0]     
     41          Output     SB_LVCMOS    Yes      2        Simple Output                              A_AMIGA[1]     
+    45          Output     SB_LVCMOS    No       2        Output Tristatable by Enable               TSn            
     49          Output     SB_LVCMOS    No       2        Simple Output                              CLK40B         
     52          Output     SB_LVCMOS    No       2        Simple Output                              CLKRAMB        
     56          Output     SB_LVCMOS    No       2        Simple Output                              CLKRAMA        
@@ -126,7 +127,6 @@ Detailed I/O Info:
     31          InOut      SB_LVCMOS    No       3        Simple Input Output Tristatable by Enable  D_LL_AMIGA[2]  
     32          InOut      SB_LVCMOS    No       3        Simple Input Output Tristatable by Enable  D_LL_AMIGA[3]  
     33          InOut      SB_LVCMOS    No       3        Simple Input Output Tristatable by Enable  D_LL_AMIGA[0]  
-    45          InOut      SB_LVCMOS    No       2        Simple Input Output Tristatable by Enable  TSn            
     47          InOut      SB_LVCMOS    No       2        Simple Input Output Tristatable by Enable  TACKn          
     73          InOut      SB_LVCMOS    No       1        Simple Input Output Tristatable by Enable  D_LL_040[3]    
     74          InOut      SB_LVCMOS    No       1        Simple Input Output Tristatable by Enable  D_LL_040[0]    
@@ -174,4 +174,4 @@ Detailed Global Buffer Info:
 ----------------------------
     Buffer Number  IO Bank  Driven By  Fanout  Signal Name   
     -------------  -------  ---------  ------  -----------   
-    6              3                   30      RESETn_c_i_g  
+    6              3                   22      RESETn_c_i_g  

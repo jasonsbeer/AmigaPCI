@@ -4,7 +4,6 @@
 
 add_file -verilog -lib work "../U109_PCI_STATE_MACHINE.v" 
 add_file -verilog -lib work "../U109_TOP.v" 
-add_file -verilog -lib work "../U109_BUFFERS.v" 
 add_file -constraint -lib work "../U109_TOP.sdc"
 #implementation: "APCI_U109_Implmnt"
 impl -add APCI_U109_Implmnt -type fpga

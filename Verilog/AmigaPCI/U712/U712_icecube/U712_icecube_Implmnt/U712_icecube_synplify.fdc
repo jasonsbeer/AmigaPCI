@@ -1,15 +1,15 @@
 
 #1001 : create_clock -period 25.0000 [get_ports CLK40_IN]
-# line 2 in d:/u712/u712_top.sdc
+# line 2 in d:/amigapci/u712/u712_top.sdc
 
 create_clock -period {25.000} [get_ports {CLK40_IN}]
 
 #1002 : create_clock -period 279.3296 [get_ports C1]
-# line 4 in d:/u712/u712_top.sdc
+# line 4 in d:/amigapci/u712/u712_top.sdc
 
 create_clock -period {279.330} [get_ports {C1}]
 
 #1003 : create_clock -period 279.3296 [get_ports C3]
-# line 5 in d:/u712/u712_top.sdc
+# line 5 in d:/amigapci/u712/u712_top.sdc
 
 create_clock -period {279.330} [get_ports {C3}]

@@ -1,4 +1,4 @@
 @N: MF248 |Running in 64-bit mode.
 @N: MF666 |Clock conversion enabled. (Command "set_option -fix_gated_and_generated_clocks 1" in the project file.)
-@N: BN115 :"d:\amigapci\u109\u109_top.v":55:23:55:44|Removing instance U109_PCI_STATE_MACHINE (in view: work.U109_TOP(verilog)) of type view:work.U109_PCI_STATE_MACHINE(verilog) because it does not drive other instances.
+@N: BN115 :"d:\amigapci\u109\u109_top.v":49:23:49:44|Removing instance U109_PCI_STATE_MACHINE (in view: work.U109_TOP(verilog)) of type view:work.U109_PCI_STATE_MACHINE(verilog) because it does not drive other instances.
 @N: BN225 |Writing default property annotation file D:\AmigaPCI\U109\APCI_U109\APCI_U109_Implmnt\APCI_U109.sap.

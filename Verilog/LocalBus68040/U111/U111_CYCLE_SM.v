@@ -43,7 +43,7 @@ module U111_CYCLE_SM (
     
     output CPU_CYCLE,
 
-    inout TSn, inout TS_CPUn,
+    inout TS_CPUn, inout TSn,
     inout TAn, inout TACKn,
 
     inout [7:0] D_UU_040, //68040 DATA BUS
@@ -89,8 +89,12 @@ assign TAn = !TA_DIS && LBENn ? TACKn : 1'bz;
 assign TACKn = !LBENn ? TAn : 1'bz;
 assign TEA_CPUn = !TA_DIS ? TEAn : 1'b1;
 
-assign TBI_CPUn = TBIn;
-assign TCI_CPUn = TCIn;
+//assign TBI_CPUn = TBIn;
+//assign TBI_CPUn = !LBENn ? 1'b0 : TBIn;
+assign TBI_CPUn = !LBENn ? 1'b1 : TBIn;
+//assign TCI_CPUn = TCIn;
+//assign TCI_CPUn = !LBENn ? 1'b0 : TCIn;
+assign TCI_CPUn = !LBENn ? 1'b1 : TCIn;
 
 ///////////////////////
 // DATA BUS ENABLES //
@@ -215,6 +219,7 @@ always @(posedge CLK40) begin
                 PORT_MISMATCH <= (PORTSIZE && LW_TRANS);
                 TA_DIS <= (PORTSIZE && LW_TRANS);
                 FLIP_WORD <= (PORTSIZE && A_040[1]); //Flip the position of the words when at address $2.
+                TS_EN <= 0;
                 CYCLE_STATE <= 4'h2;
             end
             4'h2 : begin

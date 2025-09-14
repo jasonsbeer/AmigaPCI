@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:31:51
 
-* File Generated:     Jul 2 2025 17:00:17
+* File Generated:     Sep 13 2025 21:12:18
 
 * Purpose:            General info of design implementation
 
@@ -28,19 +28,19 @@ Device Info:
 Design statistics:
 ------------------
     FFs:                  122
-    LUTs:                 267
+    LUTs:                 271
     RAMs:                 0
-    IOBs:                 97
+    IOBs:                 98
     GBs:                  4
     PLLs:                 1
     Warm Boots:           0
 
 Logic Resource Utilization:
 ---------------------------
-    Total Logic Cells: 267/3520
-        Combinational Logic Cells: 145      out of   3520      4.11932%
+    Total Logic Cells: 271/3520
+        Combinational Logic Cells: 149      out of   3520      4.23295%
         Sequential Logic Cells:    122      out of   3520      3.46591%
-        Logic Tiles:               104      out of   440       23.6364%
+        Logic Tiles:               83       out of   440       18.8636%
     Registers: 
         Logic Registers:           122      out of   3520      3.46591%
         IO Registers:              0        out of   880       0
@@ -48,7 +48,7 @@ Logic Resource Utilization:
     Warm Boots:                    0        out of   1         0%
     Pins:
         Input Pins:                48       out of   107       44.8598%
-        Output Pins:               49       out of   107       45.7944%
+        Output Pins:               50       out of   107       46.729%
         InOut Pins:                0        out of   107       0%
     Global Buffers:                4        out of   8         50%
     PLLs:                          1        out of   2         50%
@@ -57,7 +57,7 @@ IO Bank Utilization:
 --------------------
     Bank 3: 26       out of   28        92.8571%
     Bank 1: 28       out of   29        96.5517%
-    Bank 0: 26       out of   27        96.2963%
+    Bank 0: 27       out of   27        100%
     Bank 2: 17       out of   23        73.913%
 
 Detailed I/O Info:
@@ -165,6 +165,7 @@ Detailed I/O Info:
     129         Output     SB_LVCMOS    No       0        Simple Output                 DA[0]         
     134         Output     SB_LVCMOS    No       0        Simple Output                 DMA_LATCH_EN  
     137         Output     SB_LVCMOS    No       0        Simple Output                 LATCH_CLK     
+    139         Output     SB_LVCMOS    No       0        Simple Output                 RAMENn        
     141         Output     SB_LVCMOS    No       0        Simple Output                 REGENn        
 
 Detailed Global Buffer Info:
@@ -172,6 +173,6 @@ Detailed Global Buffer Info:
     Buffer Number  IO Bank  Driven By  Fanout  Signal Name   
     -------------  -------  ---------  ------  -----------   
     1              0                   15      C1_c_g        
-    4              0                   78      RESETn_c_i_g  
+    4              0                   81      RESETn_c_i_g  
     3              3                   19      DBRn_c_i_0_g  
     7              1                   10      C3_c_g        

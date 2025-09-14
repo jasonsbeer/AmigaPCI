@@ -9,7 +9,6 @@ add_file -verilog -lib work "../U409_TICK.v"
 add_file -verilog -lib work "../U409_TOP.v" 
 add_file -verilog -lib work "../U409_TRANSFER_ACK.v" 
 add_file -verilog -lib work "../U409_AUTOCONFIG.v" 
-add_file -verilog -lib work "../U409_FLASH.v" 
 add_file -constraint -lib work "../U409_TOP.sdc"
 #implementation: "U409_icecube_Implmnt"
 impl -add U409_icecube_Implmnt -type fpga

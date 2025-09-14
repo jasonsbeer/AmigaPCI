@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:55:50
 
-* File Generated:     Jul 2 2025 19:08:47
+* File Generated:     Sep 13 2025 10:41:52
 
 * Purpose:            
 
@@ -14,27 +14,25 @@
 
 * ******************************************************************************
 
-Executing : C:\lscc\iCEcube2.2020.12\sbt_backend\bin\win32\opt\sbtplacer.exe --des-lib D:/U110/APCI_U110/APCI_U110_Implmnt\sbt\netlist\oadb-U110_TOP --outdir D:/U110/APCI_U110/APCI_U110_Implmnt\sbt\outputs\placer --device-file C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P04.dev --package TQ144 --deviceMarketName iCE40HX4K --sdc-file D:/U110/APCI_U110/APCI_U110_Implmnt\sbt\Temp/sbt_temp.sdc --lib-file C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ice40HX8K.lib --effort_level std --out-sdc-file D:/U110/APCI_U110/APCI_U110_Implmnt\sbt\outputs\placer\U110_TOP_pl.sdc
+Executing : C:\lscc\iCEcube2.2020.12\sbt_backend\bin\win32\opt\sbtplacer.exe --des-lib D:/AmigaPCI/U110/APCI_U110/APCI_U110_Implmnt\sbt\netlist\oadb-U110_TOP --outdir D:/AmigaPCI/U110/APCI_U110/APCI_U110_Implmnt\sbt\outputs\placer --device-file C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P04.dev --package TQ144 --deviceMarketName iCE40HX4K --sdc-file D:/AmigaPCI/U110/APCI_U110/APCI_U110_Implmnt\sbt\Temp/sbt_temp.sdc --lib-file C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ice40HX8K.lib --effort_level std --out-sdc-file D:/AmigaPCI/U110/APCI_U110/APCI_U110_Implmnt\sbt\outputs\placer\U110_TOP_pl.sdc
 I2004: Option and Settings Summary
 =============================================================
 Device file          - C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P04.dev
 Package              - TQ144
-Design database      - D:/U110/APCI_U110/APCI_U110_Implmnt\sbt\netlist\oadb-U110_TOP
-SDC file             - D:/U110/APCI_U110/APCI_U110_Implmnt\sbt\Temp/sbt_temp.sdc
-Output directory     - D:/U110/APCI_U110/APCI_U110_Implmnt\sbt\outputs\placer
+Design database      - D:/AmigaPCI/U110/APCI_U110/APCI_U110_Implmnt\sbt\netlist\oadb-U110_TOP
+SDC file             - D:/AmigaPCI/U110/APCI_U110/APCI_U110_Implmnt\sbt\Temp/sbt_temp.sdc
+Output directory     - D:/AmigaPCI/U110/APCI_U110/APCI_U110_Implmnt\sbt\outputs\placer
 Timing library       - C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ice40HX8K.lib
 Effort level         - std
 
 I2050: Starting reading inputs for placer
 =============================================================
-I2100: Reading design library: D:/U110/APCI_U110/APCI_U110_Implmnt\sbt\netlist\oadb-U110_TOP/BFPGA_DESIGN_ep
+I2100: Reading design library: D:/AmigaPCI/U110/APCI_U110/APCI_U110_Implmnt\sbt\netlist\oadb-U110_TOP/BFPGA_DESIGN_ep
 I2065: Reading device file : C:\lscc\iCEcube2.2020.12\sbt_backend\devices\ICE40P04.dev
 I2051: Reading of inputs for placer completed successfully
 
 I2053: Starting placement of the design
 =============================================================
-W2715: Warning for set_io Constraint: Ignoring pin assignment for PPIO, as it is not connected to any PAD
-W2715: Warning for set_io Constraint: Ignoring pin assignment for SPIO, as it is not connected to any PAD
 
 Input Design Statistics
     Number of LUTs      	:	52
@@ -43,7 +41,7 @@ Input Design Statistics
     Number of Carrys    	:	7
     Number of RAMs      	:	0
     Number of ROMs      	:	0
-    Number of IOs       	:	25
+    Number of IOs       	:	31
     Number of GBIOs     	:	1
     Number of GBs       	:	0
     Number of WarmBoot  	:	0
@@ -91,9 +89,9 @@ Device Utilization Summary after Packing
         CARRY Only       	:	0
         LUT with CARRY   	:	3
     LogicCells                  :	55/3520
-    PLBs                        :	7/440
+    PLBs                        :	8/440
     BRAMs                       :	0/20
-    IOs and GBIOs               :	26/107
+    IOs and GBIOs               :	32/107
     PLLs                        :	0/2
 
 
@@ -106,7 +104,7 @@ Phase 5
 I2088: Phase 5, elapsed time : 0.0 (sec)
 
 Phase 6
-I2088: Phase 6, elapsed time : 14.5 (sec)
+I2088: Phase 6, elapsed time : 13.3 (sec)
 
 Final Design Statistics
     Number of LUTs      	:	55
@@ -115,7 +113,7 @@ Final Design Statistics
     Number of Carrys    	:	7
     Number of RAMs      	:	0
     Number of ROMs      	:	0
-    Number of IOs       	:	25
+    Number of IOs       	:	31
     Number of GBIOs     	:	1
     Number of GBs       	:	0
     Number of WarmBoot  	:	0
@@ -123,9 +121,9 @@ Final Design Statistics
 
 Device Utilization Summary
     LogicCells                  :	55/3520
-    PLBs                        :	15/440
+    PLBs                        :	20/440
     BRAMs                       :	0/20
-    IOs and GBIOs               :	26/107
+    IOs and GBIOs               :	32/107
     PLLs                        :	0/2
 
 
@@ -141,8 +139,9 @@ analysis after routing.
 #####################################################################
                      Clock Summary 
 =====================================================================
-Number of clocks: 1
-Clock: CLK40 | Frequency: 157.03 MHz | Target: 40.00 MHz
+Number of clocks: 2
+Clock: CLK33 | Frequency: N/A | Target: 33.00 MHz
+Clock: CLK40 | Frequency: 153.94 MHz | Target: 40.00 MHz
 
 =====================================================================
                      End of Clock Summary
@@ -150,5 +149,5 @@ Clock: CLK40 | Frequency: 157.03 MHz | Target: 40.00 MHz
 
 I2054: Placement of design completed successfully
 
-I2076: Placer run-time: 15.2 sec.
+I2076: Placer run-time: 14.0 sec.
 

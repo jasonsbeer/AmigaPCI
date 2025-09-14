@@ -6,7 +6,7 @@ The file contains the job information from compiler to be displayed as part of t
 
 <job_run_status name="compiler"> 
   <report_link name="Detailed report">
-    <data>D:\U712\U712_icecube\U712_icecube_Implmnt\synlog\U712_icecube_compiler.srr</data>
+    <data>D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\synlog\U712_icecube_compiler.srr</data>
     <title>Synopsys HDL Compiler</title>
   </report_link> 
   <job_status>
@@ -15,15 +15,15 @@ The file contains the job information from compiler to be displayed as part of t
 <job_info> 
 			<info name="Notes">
   <data>14</data>
-  <report_link name="more"><data>D:\U712\U712_icecube\U712_icecube_Implmnt\synlog\report\U712_icecube_compiler_notes.txt</data></report_link>
+  <report_link name="more"><data>D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\synlog\report\U712_icecube_compiler_notes.txt</data></report_link>
   </info>
 			<info name="Warnings">
   <data>6</data>
-  <report_link name="more"><data>D:\U712\U712_icecube\U712_icecube_Implmnt\synlog\report\U712_icecube_compiler_warnings.txt</data></report_link>
+  <report_link name="more"><data>D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\synlog\report\U712_icecube_compiler_warnings.txt</data></report_link>
   </info>
 			<info name="Errors">
   <data>0</data>
-  <report_link name="more"><data>D:\U712\U712_icecube\U712_icecube_Implmnt\synlog\report\U712_icecube_compiler_errors.txt</data></report_link>
+  <report_link name="more"><data>D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\synlog\report\U712_icecube_compiler_errors.txt</data></report_link>
   </info>
 			<info name="CPU Time">
   <data>-</data>
@@ -35,7 +35,7 @@ The file contains the job information from compiler to be displayed as part of t
   <data>-</data>
   </info>
 			<info name="Date &amp;Time">
-  <data type="timestamp">1751493575</data>
+  <data type="timestamp">1757815907</data>
   </info>
 			</job_info>
 </job_run_status>

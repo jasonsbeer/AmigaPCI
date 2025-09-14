@@ -1,51 +1,48 @@
 Selecting top level module U409_TOP
 @N: CG364 :"C:\lscc\iCEcube2.2020.12\synpbase\lib\generic\sb_ice40.v":698:7:698:19|Synthesizing module SB_PLL40_CORE in library work.
 
-@N: CG364 :"C:\Users\jason\Documents\GitHub\AmigaPCI\Logic\Verilog\AmigaPCI\DEV\U409\U409_TRANSFER_ACK.v":33:7:33:23|Synthesizing module U409_TRANSFER_ACK in library work.
+@N: CG364 :"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v":33:7:33:23|Synthesizing module U409_TRANSFER_ACK in library work.
 
-@N: CG364 :"C:\Users\jason\Documents\GitHub\AmigaPCI\Logic\Verilog\AmigaPCI\DEV\U409\U409_DATA_BUFFERS.v":33:7:33:23|Synthesizing module U409_DATA_BUFFERS in library work.
+@N: CG364 :"D:\AmigaPCI\U409\U409_DATA_BUFFERS.v":33:7:33:23|Synthesizing module U409_DATA_BUFFERS in library work.
 
-@N: CG364 :"C:\Users\jason\Documents\GitHub\AmigaPCI\Logic\Verilog\AmigaPCI\DEV\U409\U409_ADDRESS_DECODE.v":33:7:33:25|Synthesizing module U409_ADDRESS_DECODE in library work.
+@N: CG364 :"D:\AmigaPCI\U409\U409_ADDRESS_DECODE.v":33:7:33:25|Synthesizing module U409_ADDRESS_DECODE in library work.
 
-@N: CG364 :"C:\Users\jason\Documents\GitHub\AmigaPCI\Logic\Verilog\AmigaPCI\DEV\U409\U409_TICK.v":33:7:33:15|Synthesizing module U409_TICK in library work.
+@N: CG364 :"D:\AmigaPCI\U409\U409_TICK.v":33:7:33:15|Synthesizing module U409_TICK in library work.
 
-@N: CG364 :"C:\Users\jason\Documents\GitHub\AmigaPCI\Logic\Verilog\AmigaPCI\DEV\U409\U409_CIA.v":34:7:34:14|Synthesizing module U409_CIA in library work.
+@N: CG364 :"D:\AmigaPCI\U409\U409_CIA.v":34:7:34:14|Synthesizing module U409_CIA in library work.
 
-@N: CG364 :"C:\Users\jason\Documents\GitHub\AmigaPCI\Logic\Verilog\AmigaPCI\DEV\U409\U409_AUTOCONFIG.v":33:7:33:21|Synthesizing module U409_AUTOCONFIG in library work.
+@N: CG364 :"D:\AmigaPCI\U409\U409_AUTOCONFIG.v":33:7:33:21|Synthesizing module U409_AUTOCONFIG in library work.
 
-@N: CG364 :"C:\Users\jason\Documents\GitHub\AmigaPCI\Logic\Verilog\AmigaPCI\DEV\U409\U409_FLASH.v":33:7:33:16|Synthesizing module U409_FLASH in library work.
+@N: CG364 :"D:\AmigaPCI\U409\U409_TOP.v":34:7:34:14|Synthesizing module U409_TOP in library work.
 
-@N: CG364 :"C:\Users\jason\Documents\GitHub\AmigaPCI\Logic\Verilog\AmigaPCI\DEV\U409\U409_TOP.v":34:7:34:14|Synthesizing module U409_TOP in library work.
-
-@W: CG781 :"C:\Users\jason\Documents\GitHub\AmigaPCI\Logic\Verilog\AmigaPCI\DEV\U409\U409_TOP.v":77:2:77:4|Input EXTFEEDBACK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG781 :"C:\Users\jason\Documents\GitHub\AmigaPCI\Logic\Verilog\AmigaPCI\DEV\U409\U409_TOP.v":77:2:77:4|Input DYNAMICDELAY on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG781 :"C:\Users\jason\Documents\GitHub\AmigaPCI\Logic\Verilog\AmigaPCI\DEV\U409\U409_TOP.v":77:2:77:4|Input SDI on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG781 :"C:\Users\jason\Documents\GitHub\AmigaPCI\Logic\Verilog\AmigaPCI\DEV\U409\U409_TOP.v":77:2:77:4|Input SCLK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG781 :"C:\Users\jason\Documents\GitHub\AmigaPCI\Logic\Verilog\AmigaPCI\DEV\U409\U409_TOP.v":77:2:77:4|Input LATCHINPUTVALUE on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@N: CL159 :"C:\Users\jason\Documents\GitHub\AmigaPCI\Logic\Verilog\AmigaPCI\DEV\U409\U409_FLASH.v":36:10:36:14|Input CLK40 is unused.
-@N: CL159 :"C:\Users\jason\Documents\GitHub\AmigaPCI\Logic\Verilog\AmigaPCI\DEV\U409\U409_FLASH.v":36:17:36:22|Input RESETn is unused.
-@N: CL159 :"C:\Users\jason\Documents\GitHub\AmigaPCI\Logic\Verilog\AmigaPCI\DEV\U409\U409_FLASH.v":36:25:36:27|Input TSn is unused.
-@N: CL159 :"C:\Users\jason\Documents\GitHub\AmigaPCI\Logic\Verilog\AmigaPCI\DEV\U409\U409_FLASH.v":36:30:36:32|Input RnW is unused.
-@N: CL159 :"C:\Users\jason\Documents\GitHub\AmigaPCI\Logic\Verilog\AmigaPCI\DEV\U409\U409_FLASH.v":37:38:37:42|Input F_RDY is unused.
-@N: CL159 :"C:\Users\jason\Documents\GitHub\AmigaPCI\Logic\Verilog\AmigaPCI\DEV\U409\U409_FLASH.v":38:17:38:17|Input A is unused.
-@N: CL201 :"C:\Users\jason\Documents\GitHub\AmigaPCI\Logic\Verilog\AmigaPCI\DEV\U409\U409_AUTOCONFIG.v":99:0:99:5|Trying to extract state machine for register STATE.
+@W: CG781 :"D:\AmigaPCI\U409\U409_TOP.v":77:2:77:4|Input EXTFEEDBACK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\AmigaPCI\U409\U409_TOP.v":77:2:77:4|Input DYNAMICDELAY on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\AmigaPCI\U409\U409_TOP.v":77:2:77:4|Input SDI on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\AmigaPCI\U409\U409_TOP.v":77:2:77:4|Input SCLK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\AmigaPCI\U409\U409_TOP.v":77:2:77:4|Input LATCHINPUTVALUE on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CL246 :"D:\AmigaPCI\U409\U409_TOP.v":38:17:38:17|Input port bits 11 to 8 of A[31:1] are unused. Assign logic for all port bits or change the input port size.
+@N: CL201 :"D:\AmigaPCI\U409\U409_AUTOCONFIG.v":99:0:99:5|Trying to extract state machine for register STATE.
 Extracted state machine for register STATE
 State machine has 4 reachable states with original encodings of:
    0000
    0001
    0010
    0011
-@N: CL201 :"C:\Users\jason\Documents\GitHub\AmigaPCI\Logic\Verilog\AmigaPCI\DEV\U409\U409_TRANSFER_ACK.v":62:0:62:5|Trying to extract state machine for register TACK_COUNTER.
+@N: CL159 :"D:\AmigaPCI\U409\U409_ADDRESS_DECODE.v":38:16:38:17|Input TM is unused.
+@N: CL159 :"D:\AmigaPCI\U409\U409_ADDRESS_DECODE.v":40:16:40:26|Input BRIDGE_BASE is unused.
+@N: CL159 :"D:\AmigaPCI\U409\U409_ADDRESS_DECODE.v":42:16:42:23|Input PRO_BASE is unused.
+@N: CL201 :"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v":66:0:66:5|Trying to extract state machine for register TACK_COUNTER.
 Extracted state machine for register TACK_COUNTER
 State machine has 4 reachable states with original encodings of:
    0000
    0001
    0010
    0011
-@N: CL201 :"C:\Users\jason\Documents\GitHub\AmigaPCI\Logic\Verilog\AmigaPCI\DEV\U409\U409_TRANSFER_ACK.v":173:0:173:5|Trying to extract state machine for register CIA_STATE.
+@N: CL201 :"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v":251:0:251:5|Trying to extract state machine for register CIA_STATE.
 Extracted state machine for register CIA_STATE
 State machine has 4 reachable states with original encodings of:
    00
    01
    10
    11
+@N: CL159 :"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v":38:16:38:24|Input ROM_DELAY is unused.

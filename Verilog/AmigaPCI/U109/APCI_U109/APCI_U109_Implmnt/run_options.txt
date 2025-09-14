@@ -1,13 +1,12 @@
 #--  Synopsys, Inc.
 #--  Version L-2016.09L+ice40
 #--  Project file D:\AmigaPCI\U109\APCI_U109\APCI_U109_Implmnt\run_options.txt
-#--  Written on Sat Feb 08 11:14:19 2025
+#--  Written on Tue Sep 09 19:42:26 2025
 
 
 #project files
 add_file -verilog "../U109_PCI_STATE_MACHINE.v"
 add_file -verilog "../U109_TOP.v"
-add_file -verilog "../U109_BUFFERS.v"
 add_file -constraint "../U109_TOP.sdc"
 
 

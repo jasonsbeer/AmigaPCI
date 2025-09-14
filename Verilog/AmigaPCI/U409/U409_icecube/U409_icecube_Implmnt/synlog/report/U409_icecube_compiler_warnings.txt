@@ -1,6 +1,8 @@
-@W: CG781 :"C:\Users\jason\Documents\GitHub\AmigaPCI\Logic\Verilog\AmigaPCI\DEV\U409\U409_TOP.v":77:2:77:4|Input EXTFEEDBACK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG781 :"C:\Users\jason\Documents\GitHub\AmigaPCI\Logic\Verilog\AmigaPCI\DEV\U409\U409_TOP.v":77:2:77:4|Input DYNAMICDELAY on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG781 :"C:\Users\jason\Documents\GitHub\AmigaPCI\Logic\Verilog\AmigaPCI\DEV\U409\U409_TOP.v":77:2:77:4|Input SDI on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG781 :"C:\Users\jason\Documents\GitHub\AmigaPCI\Logic\Verilog\AmigaPCI\DEV\U409\U409_TOP.v":77:2:77:4|Input SCLK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG781 :"C:\Users\jason\Documents\GitHub\AmigaPCI\Logic\Verilog\AmigaPCI\DEV\U409\U409_TOP.v":77:2:77:4|Input LATCHINPUTVALUE on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG921 :"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v":135:4:135:14|ROM_TACK_EN is already declared in this scope.
+@W: CG781 :"D:\AmigaPCI\U409\U409_TOP.v":77:2:77:4|Input EXTFEEDBACK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\AmigaPCI\U409\U409_TOP.v":77:2:77:4|Input DYNAMICDELAY on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\AmigaPCI\U409\U409_TOP.v":77:2:77:4|Input SDI on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\AmigaPCI\U409\U409_TOP.v":77:2:77:4|Input SCLK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\AmigaPCI\U409\U409_TOP.v":77:2:77:4|Input LATCHINPUTVALUE on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CL246 :"D:\AmigaPCI\U409\U409_TOP.v":38:17:38:17|Input port bits 11 to 8 of A[31:1] are unused. Assign logic for all port bits or change the input port size.
 

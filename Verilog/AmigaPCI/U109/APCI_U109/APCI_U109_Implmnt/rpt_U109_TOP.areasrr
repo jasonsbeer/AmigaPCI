@@ -9,9 +9,9 @@ Part:			ICE40HX4KTQ144 (Lattice)
 IO PADS
 Name     Total elements     Utilization     Notes
 -------------------------------------------------
-PADS     68                 100 %                
+PADS     5                  100 %                
 =================================================
-Total IO PADS in the block U109_TOP:	68 (97.14 % Utilization)
+Total IO PADS in the block U109_TOP:	5 (71.43 % Utilization)
 
 
 ##### END OF AREA REPORT #####]

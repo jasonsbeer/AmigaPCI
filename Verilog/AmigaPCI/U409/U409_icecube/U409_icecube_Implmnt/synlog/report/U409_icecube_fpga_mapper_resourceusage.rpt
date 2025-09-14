@@ -8,26 +8,25 @@ SB_CARRY        36 uses
 SB_DFF          48 uses
 SB_DFFN         7 uses
 SB_DFFNE        12 uses
-SB_DFFNER       1 use
-SB_DFFNR        8 uses
-SB_DFFNSR       35 uses
-SB_DFFNSS       2 uses
+SB_DFFNR        9 uses
+SB_DFFNSR       23 uses
+SB_DFFNSS       3 uses
 SB_GB           1 use
 SB_PLL40_CORE   1 use
 VCC             5 uses
-SB_LUT4         286 uses
+SB_LUT4         258 uses
 
-I/O ports: 90
-I/O primitives: 85
+I/O ports: 79
+I/O primitives: 70
 SB_GB_IO       3 uses
-SB_IO          82 uses
+SB_IO          67 uses
 
 I/O Register bits:                  0
-Register bits not including I/Os:   113 (3%)
+Register bits not including I/Os:   102 (2%)
 
 @S |Mapping Summary:
-Total  LUTs: 286 (8%)
+Total  LUTs: 258 (7%)
 
 Distribution of All Consumed LUTs = LUT4 
-Distribution of All Consumed Luts 286 = 286 
+Distribution of All Consumed Luts 258 = 258 
 

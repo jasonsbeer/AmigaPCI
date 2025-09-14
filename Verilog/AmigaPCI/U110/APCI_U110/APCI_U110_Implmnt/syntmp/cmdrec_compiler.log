@@ -1,13 +1,13 @@
-C:\lscc\iCEcube2.2020.12\synpbase\bin64\c_hdl.exe  -osyn  D:\U110\APCI_U110\APCI_U110_Implmnt\synwork\APCI_U110_comp.srs  -hdllog  D:\U110\APCI_U110\APCI_U110_Implmnt\synlog\APCI_U110_compiler.srr  -encrypt  -mp  4  -verification_mode 0  -verilog  -prodtype  synplify_pro  -primux -fixsmult -infer_seqShift -ice -sdff_counter -nram -divnmod -nostructver   -I D:\U110\APCI_U110\  -I C:\lscc\iCEcube2.2020.12\synpbase\lib   -v2001  -devicelib  C:\lscc\iCEcube2.2020.12\synpbase\lib\generic\sb_ice40.v  -encrypt  -pro  -dmgen  D:\U110\APCI_U110\APCI_U110_Implmnt\dm  -ui -fid2 -ram -sharing on -ll 2000 -autosm  -lib work D:\U110\U110_ARBITOR.v -lib work D:\U110\U110_BUFFERS.v -lib work D:\U110\U110_CYCLE_TERMINATION.v -lib work D:\U110\U110_INTERRUPT.v -lib work D:\U110\U110_TOP.v -lib work D:\U110\U110_ATA.v 
+C:\lscc\iCEcube2.2020.12\synpbase\bin64\c_hdl.exe  -osyn  D:\AmigaPCI\U110\APCI_U110\APCI_U110_Implmnt\synwork\APCI_U110_comp.srs  -hdllog  D:\AmigaPCI\U110\APCI_U110\APCI_U110_Implmnt\synlog\APCI_U110_compiler.srr  -encrypt  -mp  4  -verification_mode 0  -verilog  -prodtype  synplify_pro  -primux -fixsmult -infer_seqShift -ice -sdff_counter -nram -divnmod -nostructver   -I D:\AmigaPCI\U110\APCI_U110\  -I C:\lscc\iCEcube2.2020.12\synpbase\lib   -v2001  -devicelib  C:\lscc\iCEcube2.2020.12\synpbase\lib\generic\sb_ice40.v  -encrypt  -pro  -dmgen  D:\AmigaPCI\U110\APCI_U110\APCI_U110_Implmnt\dm  -ui -fid2 -ram -sharing on -ll 2000 -autosm  -lib work D:\AmigaPCI\U110\U110_ARBITOR.v -lib work D:\AmigaPCI\U110\U110_BUFFERS.v -lib work D:\AmigaPCI\U110\U110_CYCLE_TERMINATION.v -lib work D:\AmigaPCI\U110\U110_INTERRUPT.v -lib work D:\AmigaPCI\U110\U110_TOP.v -lib work D:\AmigaPCI\U110\U110_ATA.v 
 rc:0 success:1 runtime:2
-file:D:\U110\APCI_U110\APCI_U110_Implmnt\synwork\APCI_U110_comp.srs|io:o|time:1751501139|size:9197|exec:0
-file:D:\U110\APCI_U110\APCI_U110_Implmnt\synlog\APCI_U110_compiler.srr|io:o|time:1751501139|size:4106|exec:0
+file:D:\AmigaPCI\U110\APCI_U110\APCI_U110_Implmnt\synwork\APCI_U110_comp.srs|io:o|time:1757778108|size:10024|exec:0
+file:D:\AmigaPCI\U110\APCI_U110\APCI_U110_Implmnt\synlog\APCI_U110_compiler.srr|io:o|time:1757778108|size:4845|exec:0
 file:C:\lscc\iCEcube2.2020.12\synpbase\lib\generic\sb_ice40.v|io:i|time:1728534475|size:224837|exec:0
-file:D:\U110\U110_ARBITOR.v|io:i|time:1751491129|size:120|exec:0
-file:D:\U110\U110_BUFFERS.v|io:i|time:1751491129|size:319|exec:0
-file:D:\U110\U110_CYCLE_TERMINATION.v|io:i|time:1751496791|size:2517|exec:0
-file:D:\U110\U110_INTERRUPT.v|io:i|time:1751491129|size:108|exec:0
-file:D:\U110\U110_TOP.v|io:i|time:1751496748|size:2953|exec:0
-file:D:\U110\U110_ATA.v|io:i|time:1751496771|size:4060|exec:0
+file:D:\AmigaPCI\U110\U110_ARBITOR.v|io:i|time:1757192506|size:130|exec:0
+file:D:\AmigaPCI\U110\U110_BUFFERS.v|io:i|time:1757640678|size:777|exec:0
+file:D:\AmigaPCI\U110\U110_CYCLE_TERMINATION.v|io:i|time:1757777235|size:2633|exec:0
+file:D:\AmigaPCI\U110\U110_INTERRUPT.v|io:i|time:1757192506|size:119|exec:0
+file:D:\AmigaPCI\U110\U110_TOP.v|io:i|time:1757640129|size:4221|exec:0
+file:D:\AmigaPCI\U110\U110_ATA.v|io:i|time:1757192506|size:4204|exec:0
 file:C:\lscc\iCEcube2.2020.12\synpbase\bin\c_hdl.exe|io:i|time:1728534472|size:1338368|exec:1
 file:C:\lscc\iCEcube2.2020.12\synpbase\bin64\c_hdl.exe|io:i|time:1728534473|size:1754112|exec:1

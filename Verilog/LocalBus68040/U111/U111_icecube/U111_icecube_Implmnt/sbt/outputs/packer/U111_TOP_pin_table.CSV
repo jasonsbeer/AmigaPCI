@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:31:51
 
-* File Generated:     Jun 13 2025 09:32:41
+* File Generated:     Sep 11 2025 19:59:43
 
 * Purpose:            Detailed IO and package pin info
 
@@ -61,7 +61,7 @@ Pin Number, Pin Type Name, Signal Name, Direction, Global Buffer, IO Standard, P
 42, PIO, PORTSIZE, Input, , SB_LVCMOS, No Pull Up, Simple Input, bottomBank
 43, PIO, TEAn, Input, , SB_LVCMOS, No Pull Up, Simple Input, bottomBank
 44, PIO, TCIn, Input, , SB_LVCMOS, No Pull Up, Simple Input, bottomBank
-45, PIO, TSn, InOut, , SB_LVCMOS, No Pull Up, Simple Input Output Tristatable by Enable, bottomBank
+45, PIO, TSn, Output, , SB_LVCMOS, No Pull Up, Output Tristatable by Enable, bottomBank
 46, VCCIO_2, not used, , , , , , bottomBank
 47, PIO, TACKn, InOut, , SB_LVCMOS, No Pull Up, Simple Input Output Tristatable by Enable, bottomBank
 48, PIO, LBENn, Input, , SB_LVCMOS, No Pull Up, Simple Input, bottomBank

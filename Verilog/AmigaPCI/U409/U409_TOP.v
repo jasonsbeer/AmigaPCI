@@ -33,7 +33,7 @@ iceprog D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\sbt\outputs\bitmap\U4
 
 module U409_TOP (
 
-    input CLK40_IN, CLK6, CLK28_IN, XCLK, XCLK_ENn, RESETn, TSn, OVL, RnW, AUTOBOOT, CPUCONFn, F_RDY,
+    input CLK40_IN, CLK6, CLK28_IN, XCLK, XCLK_ENn, RESETn, TSn, OVL, RnW, AUTOBOOT, CPUCONFn, //F_RDY,
     input PPIO_J, SPIO_J,
     input [31:1] A,
     input [1:0] TT,
@@ -42,11 +42,11 @@ module U409_TOP (
 
     output ROMENn, BUFENn, AGNUS_CLK, TICK60, TICK50, CLK_CIA, CIACS0n, CIACS1n,
     output RAMSPACEn, REGSPACEn, RTC_ENn,
-    output PORTSIZE, TBIn, TCIn, CONFIGENn, ATA_ENn, BREG_ENn, BPRO_ENn,
+    output PORTSIZE, TBIn, TCIn, CONFIGENn, ATA_ENn,
     output PCS0, PCS1, SCS0, SCS1, PPIO, SPIO,
-    output F_ENn, F_WPn, F_READn, F_WRITEn, F_RSTn,
-    output [1:0] F_BANK,
-    output [1:0] PCIAT,
+    output F_ENn, //F_WPn, F_READn, F_WRITEn, F_RSTn,
+    //output [1:0] F_BANK,
+    //output [1:0] PCIAT, BREG_ENn, BPRO_ENn
 
     inout [7:4] D,
     inout TACKn
@@ -86,6 +86,9 @@ SB_PLL40_CORE #(
 // AGNUS CLOCK //
 ////////////////
 
+//Agnus is clocked by the oscillator at X3 unless XCLK is enabled by a video device.
+//In that case, pass the XCLK signal instead.
+
 assign AGNUS_CLK = XCLK_ENn ? CLK28_IN : XCLK;
 
 ///////////////////
@@ -97,8 +100,8 @@ wire AUTOVECTOR;
 wire ROMEN;
 wire CIA_SPACE;
 wire CIA_ENABLE;
-wire FLASH_SPACE;
-wire F_ACK;
+//wire FLASH_SPACE;
+//wire F_ACK;
 wire [7:0] BRIDGE_BASE;
 wire [7:1] LIDE_BASE;
 wire [2:0] PRO_BASE;
@@ -107,7 +110,7 @@ wire [3:0] D_IN = AUTOCONFIG_SPACE && !RnW ? D[7:4] : 4'h0;
 
 wire AGNUS_SPACE = !RAMSPACEn || !REGSPACEn;
 wire LV_SPACE = AGNUS_SPACE || AUTOCONFIG_SPACE || ATA_SPACE; // || !BRIDGE_ENn; //Enable the main level shifting buffers when we are in the LVTTL space.
-wire CACHE_SPACE = ROMEN;
+//wire CACHE_SPACE = ROMEN;
 assign D = AUTOCONFIG_SPACE && RnW ? D_OUT : 4'bz;
 
 ///////////////////////
@@ -126,7 +129,7 @@ U409_TRANSFER_ACK U409_TRANSFER_ACK (
     .AGNUS_SPACE (AGNUS_SPACE),
     .AUTOVECTOR (AUTOVECTOR),
     .RTC_ENn (RTC_ENn),
-    .CACHE_SPACE (CACHE_SPACE),
+    //.CACHE_SPACE (CACHE_SPACE),
     .AC_TACK (AC_TACK),
     .ROM_DELAY (ROM_DELAY),
 
@@ -182,20 +185,20 @@ U409_ADDRESS_DECODE U409_ADDRESS_DECODE (
     .CIACS1n (CIACS1n),
     .RAMSPACEn (RAMSPACEn),
     .REGSPACEn (REGSPACEn),
-    .FLASH_SPACE (FLASH_SPACE),
     .AUTOVECTOR (AUTOVECTOR),
     .RTC_ENn (RTC_ENn),
     .AUTOCONFIG_SPACE (AUTOCONFIG_SPACE),
     .ATA_SPACE (ATA_SPACE),
     .ATA_ENn (ATA_ENn),
-    .BREG_ENn (BREG_ENn),
-    .BPRO_ENn (BPRO_ENn),
     .PCS0 (PCS0),
     .PCS1 (PCS1),
     .SCS0 (SCS0),
-    .SCS1 (SCS1),
-    .PCIAT (PCIAT),
-    .F_BANK (F_BANK)
+    .SCS1 (SCS1)//,
+    //.PCIAT (PCIAT),
+    //.BREG_ENn (BREG_ENn),
+    //.BPRO_ENn (BPRO_ENn),
+    //.F_BANK (F_BANK)
+    //.FLASH_SPACE (FLASH_SPACE),
 );
 
 /////////////////////
@@ -250,7 +253,9 @@ U409_AUTOCONFIG U409_AUTOCONFIG (
 // FLASH //
 //////////
 
-U409_FLASH U409_FLASH (
+assign F_ENn = 1'b1;
+
+/*U409_FLASH U409_FLASH (
     //INPUT
     .CLK40 (CLK40),
     .RESETn (RESETn),
@@ -267,7 +272,7 @@ U409_FLASH U409_FLASH (
     .F_WRITEn (F_WRITEn),
     .F_RSTn (F_RSTn),
     .F_ACK (F_ACK)
-);
+);*/
 
 ////////////////
 // ATA STUFF //

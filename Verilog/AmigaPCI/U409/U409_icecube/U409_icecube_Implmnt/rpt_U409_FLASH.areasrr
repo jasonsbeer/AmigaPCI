@@ -1,0 +1,18 @@
+#### START OF AREA REPORT #####[
+
+Part:			ICE40HX4KTQ144 (Lattice)
+
+--------------------------------------------------------------------------
+########   Utilization report for  Top level view:   U409_FLASH   ########
+==========================================================================
+
+IO PADS
+Name     Total elements     Utilization     Notes
+-------------------------------------------------
+PADS     6                  100 %                
+=================================================
+Total IO PADS in the block U409_FLASH:	6 (75.00 % Utilization)
+
+
+##### END OF AREA REPORT #####]
+

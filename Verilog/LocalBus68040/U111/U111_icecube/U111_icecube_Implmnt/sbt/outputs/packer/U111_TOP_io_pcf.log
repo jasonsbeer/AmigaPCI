@@ -8,7 +8,7 @@ INOUT D_LL_040[1] 	 location (25, 2, 0) 	 75
 INOUT D_LM_AMIGA[6] 	 location (0, 17, 1) 	 9 	 
 INPUT  TEAn 	 location (7, 0, 1) 	 43 	 
 INPUT  A_040[1] 	 location (2, 0, 1) 	 38 	 
-INOUT TSn 	 location (8, 0, 1) 	 45 	 
+OUTPUT TSn 	 location (8, 0, 1) 	 45 	 
 INOUT D_UM_AMIGA[0] 	 location (0, 12, 1) 	 17 	 
 INOUT D_UM_040[0] 	 location (25, 9, 0) 	 88 	 
 INOUT D_LM_040[4] 	 location (25, 8, 1) 	 87 	 

@@ -1,11 +1,11 @@
 #CLOCKS
-set_io CLKRAMB   52
-set_io CLK80_CPU 94
-set_io CLK40C    21
-set_io CLK40B    49
-set_io CLK40A    93
-set_io CLK40_IN 129
-set_io CLKRAMA   56
+set_io CLK40_IN  129
+set_io CLK80_CPU  94
+set_io CLKRAMA    56
+set_io CLKRAMB    52
+set_io CLK40A     93
+set_io CLK40B     49
+set_io CLK40C     21
 
 #68040 DATA BUS
 set_io  D_LL_040[0] 74  #DA0
@@ -76,7 +76,7 @@ set_io  D_UU_AMIGA[6] 142 #DB30
 set_io  D_UU_AMIGA[7] 143 #DB31
 
 #DATA TRANSFER SIGALS
-set_io TS_CPUn  125
+set_io TS_CPUn  125 
 set_io TSn       45
 set_io TAn      124
 set_io TACKn     47

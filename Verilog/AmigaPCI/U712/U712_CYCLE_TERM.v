@@ -43,19 +43,21 @@ module U712_CYCLE_TERM (
 //ASSERT _TACK, _TBI, and _TCI TO TERMINATE DATA TRANSFER CYCLE.
 //WE DON'T ALLOW CACHING OR BURST TRANSFERS TO CHIP RAM OR REGISTER SPACES.
 
-assign TACKn = TACK_EN ? TACK_OUTn : 1'bz;
-assign TBIn  = TACK_EN ? TACK_OUTn : 1'bz;
-assign TCIn  = TACK_EN ? TACK_OUTn : 1'bz;
+assign TACKn = TACK_EN ? TACK_OUT : 1'bz;
+//assign TBIn  = TACK_EN ? TACK_OUT : 1'bz;
+assign TBIn  = TACK_EN ? 1'b0 : 1'bz;
+//assign TCIn  = TACK_EN ? TACK_OUT : 1'bz;
+assign TCIn  = TACK_EN ? 1'b0 : 1'bz;
 
 //_TACK STATE MACHINE
-reg TACK_OUTn;
+reg TACK_OUT;
 reg TACK_EN;
 reg [3:0] TACK_STATE;
 
-always @(negedge CLK80) begin
+always @(posedge CLK80) begin
     if (!RESETn) begin
-        TACK_EN <=0;
-        TACK_OUTn <= 1;
+        TACK_EN <= 0;
+        TACK_OUT <= 1;
         TACK_STATE <= 4'h0;
     end else begin
         case (TACK_STATE)
@@ -68,14 +70,14 @@ always @(negedge CLK80) begin
             4'h1 : begin
                 if (CLK40) begin
                     TACK_STATE <= 4'h2;
-                    TACK_OUTn <= 0;
+                    TACK_OUT <= 0;
                 end
             end
             4'h2 : begin
                 TACK_STATE <= 4'h3;
             end
             4'h3 : begin
-                TACK_OUTn <= 1;
+                TACK_OUT <= 1;
                 TACK_STATE <= 4'h4;
             end
             4'h4 : begin

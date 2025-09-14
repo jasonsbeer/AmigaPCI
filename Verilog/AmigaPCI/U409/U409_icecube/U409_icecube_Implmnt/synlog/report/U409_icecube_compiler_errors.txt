@@ -1,2 +1,2 @@
-@E: CS169 :"C:\Users\jason\Documents\GitHub\AmigaPCI\Logic\Verilog\AmigaPCI\DEV\U409\U409_TOP.v":133:15:133:15|Duplicate connection to named port ROM_DELAY
+@E: CG342 :"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v":74:16:74:24|Expecting target variable, found TACK_OUTn -- possible misspelling
 
