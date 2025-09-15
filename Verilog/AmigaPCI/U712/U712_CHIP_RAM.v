@@ -185,7 +185,7 @@ end
 
 reg RAM_CYCLE_DISABLE;
 reg [3:0] CAS_COUNTER;
-localparam CAS_CNT = 4'h9; //9 is good.
+localparam CAS_CNT = 4'h8; //8 is good.
 
 always @(negedge CLK80) begin
     if (!RESETn) begin

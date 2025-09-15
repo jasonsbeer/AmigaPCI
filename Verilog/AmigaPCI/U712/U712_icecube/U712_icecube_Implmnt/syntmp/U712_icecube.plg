@@ -23,7 +23,7 @@
 @P:  U712_TOP|CLK80_PLL_derived_clock - Requested Frequency : 80.0 MHz
 @P:  U712_TOP|CLK80_PLL_derived_clock - Estimated Period : 56.577
 @P:  U712_TOP|CLK80_PLL_derived_clock - Requested Period : 12.500
-@P:  U712_TOP|CLK80_PLL_derived_clock - Slack : -0.799
+@P:  U712_TOP|CLK80_PLL_derived_clock - Slack : -2.317
 @P: U712_TOP Part : ice40hx4ktq144
 @P: U712_TOP I/O primitives : 98
 @P: U712_TOP I/O Register bits : 0

@@ -21,12 +21,12 @@ fsm_state_encoding {6640642} 1000 {100000000}
 
 fsm_registers {6640642} {STATE_COUNT[8]}  {STATE_COUNT[7]}  {STATE_COUNT[6]}  {STATE_COUNT[5]}  {STATE_COUNT[4]}  {STATE_COUNT[3]}  {STATE_COUNT[2]}  {STATE_COUNT[1]}  {STATE_COUNT[0]} 
 
-fsm_encoding {1010101011} sequential
+fsm_encoding {10680681} sequential
 
-fsm_state_encoding {1010101011} 0000 {00}
+fsm_state_encoding {10680681} 0000 {00}
 
-fsm_state_encoding {1010101011} 0001 {01}
+fsm_state_encoding {10680681} 0001 {01}
 
-fsm_state_encoding {1010101011} 0010 {10}
+fsm_state_encoding {10680681} 0010 {10}
 
-fsm_registers {1010101011} {TACK_STATE[1]}  {TACK_STATE[0]} 
+fsm_registers {10680681} {TACK_STATE[1]}  {TACK_STATE[0]} 

@@ -5,7 +5,7 @@ Selecting top level module U712_TOP
 
 @N: CG364 :"D:\AmigaPCI\U712\U712_BUFFERS.v":34:7:34:18|Synthesizing module U712_BUFFERS in library work.
 
-@N: CG364 :"D:\AmigaPCI\U712\U712_CYCLE_TERM.v":33:7:33:21|Synthesizing module U712_CYCLE_TERM in library work.
+@N: CG364 :"D:\AmigaPCI\U712\U712_CYCLE_TERM.v":34:7:34:21|Synthesizing module U712_CYCLE_TERM in library work.
 
 @N: CG364 :"D:\AmigaPCI\U712\U712_CHIP_RAM.v":33:7:33:19|Synthesizing module U712_CHIP_RAM in library work.
 
@@ -13,7 +13,7 @@ Selecting top level module U712_TOP
 
 @N: CG364 :"D:\AmigaPCI\U712\U712_TOP.v":34:7:34:14|Synthesizing module U712_TOP in library work.
 
-@N: CL201 :"D:\AmigaPCI\U712\U712_CYCLE_TERM.v":101:0:101:5|Trying to extract state machine for register TACK_STATE.
+@N: CL201 :"D:\AmigaPCI\U712\U712_CYCLE_TERM.v":68:0:68:5|Trying to extract state machine for register TACK_STATE.
 Extracted state machine for register TACK_STATE
 State machine has 3 reachable states with original encodings of:
    0000
