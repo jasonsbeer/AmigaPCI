@@ -1,2 +1,2 @@
-@E: CS187 :"D:\AmigaPCI\U712\U712_TOP.v":96:4:96:4|Expecting ,
+@E: CS171 :"D:\AmigaPCI\U712\U712_CHIP_RAM.v":278:29:278:44|Reversed range
 

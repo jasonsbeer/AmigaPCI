@@ -25,7 +25,8 @@ Target Devices: iCE40-HX4K-TQ144
 Description: CHIP MEMORY SDRAM CONTROLLER
 
 Revision History:
-    02-JUL-2025 Initial Rev 6.0 release.
+    02-JUL-2025 : Initial Rev 6.0 release.
+    14-SEP-2025 : Fixed chip ram timing to address video artifacting. JN
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 */
@@ -157,14 +158,14 @@ end
 //START OF A DMA CYCLE IS DEFINED AS ASSERTION OF AT LEAST ONE AGNUS _CASn SIGNALS.
 
 reg [1:0] CAS_SYNC;
-reg [5:0] RAS_SYNC;
+reg [4:0] RAS_SYNC;
 
 always @(negedge CLK80) begin
     if (!RESETn) begin
         CAS_SYNC <= 2'b0;
         RAS_SYNC <= 6'b0;
     end else begin
-        RAS_SYNC[5] <= RAS_SYNC[4];
+        //RAS_SYNC[5] <= RAS_SYNC[4];
         RAS_SYNC[4] <= RAS_SYNC[3];
         RAS_SYNC[3] <= RAS_SYNC[2];
         RAS_SYNC[2] <= RAS_SYNC[1];
@@ -274,7 +275,8 @@ always @(negedge CLK80) begin
 
         if (SDRAM_COUNTER != 8'h00) begin SDRAM_COUNTER ++; end
 
-        DMA_CYCLE_START <= ((RAS_SYNC[5:4] == 2'b11 && !CAS_SYNC[1]) || (DMA_CYCLE_START && !DMA_CYCLE));
+        //DMA_CYCLE_START <= ((RAS_SYNC[5:4] == 2'b11 && !CAS_SYNC[1]) || (DMA_CYCLE_START && !DMA_CYCLE));
+        DMA_CYCLE_START <= ((RAS_SYNC[4:3] == 2'b11 && !CAS_SYNC[1]) || (DMA_CYCLE_START && !DMA_CYCLE));
         CPU_CYCLE_START <= (!TSn && !RAMSPACEn) || (CPU_CYCLE_START && !CPU_CYCLE);
 
         CRCSn <= SDRAM_CMD[3];

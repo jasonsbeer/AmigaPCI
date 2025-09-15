@@ -6,7 +6,7 @@
 
 * Build Date:         Dec  9 2020 17:31:51
 
-* File Generated:     Sep 14 2025 20:14:40
+* File Generated:     Sep 14 2025 20:46:14
 
 * Purpose:            General info of design implementation
 
@@ -27,8 +27,8 @@ Device Info:
 
 Design statistics:
 ------------------
-    FFs:                  120
-    LUTs:                 271
+    FFs:                  119
+    LUTs:                 263
     RAMs:                 0
     IOBs:                 98
     GBs:                  4
@@ -37,12 +37,12 @@ Design statistics:
 
 Logic Resource Utilization:
 ---------------------------
-    Total Logic Cells: 271/3520
-        Combinational Logic Cells: 151      out of   3520      4.28977%
-        Sequential Logic Cells:    120      out of   3520      3.40909%
-        Logic Tiles:               106      out of   440       24.0909%
+    Total Logic Cells: 263/3520
+        Combinational Logic Cells: 144      out of   3520      4.09091%
+        Sequential Logic Cells:    119      out of   3520      3.38068%
+        Logic Tiles:               86       out of   440       19.5455%
     Registers: 
-        Logic Registers:           120      out of   3520      3.40909%
+        Logic Registers:           119      out of   3520      3.38068%
         IO Registers:              0        out of   880       0
     Block RAMs:                    0        out of   20        0%
     Warm Boots:                    0        out of   1         0%
@@ -172,7 +172,7 @@ Detailed Global Buffer Info:
 ----------------------------
     Buffer Number  IO Bank  Driven By  Fanout  Signal Name   
     -------------  -------  ---------  ------  -----------   
-    1              0                   17      C1_c_g        
-    4              0                   87      RESETn_c_i_g  
+    1              0                   14      C1_c_g        
+    4              0                   75      RESETn_c_i_g  
     3              3                   19      DBRn_c_i_0_g  
     7              1                   10      C3_c_g        
