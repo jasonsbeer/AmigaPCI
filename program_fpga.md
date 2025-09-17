@@ -16,9 +16,9 @@ We will discuss programming the flash memory modules using iceprog with cheap FT
    FT232H|AmigaPCI
    -|-
    GND|GND
-   D0|SCK
-   D1|SDI
-   D2|SDO
+   D0/SCK/SCL|SCK
+   D1/MOSI|SDI
+   D2/MOSO|SDO
    D4|SS
    D7|CRST
    
