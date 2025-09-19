@@ -440,8 +440,6 @@ Floppy Ready Signal|J202|1-2 Amiga|Amiga type floppy drive(s) installed.
 
 Description|Jumper|Setting|Result
 -|-|-|-
-_RAMEN|J203|Short|Pass the _RAMEN signal to Agnus.
-[]()|[]()|Open|Do not pass the _RAMEN signal to Agnus. Factory Default.
 Agnus Part|J204|Short|Agnus 8372A Installed.
 []()|[]()|Open|Agnus 8375 Installed.
 Agnus Video Mode|J205|Short|PAL 8375 Installed.
@@ -497,11 +495,15 @@ ROM Wait States|J212|Open|Open|200ns
 []()|[]()|Short|Short|75ns
 
 ### 4.8 Reserved Jumpers
+
+Reserved jumpers are for future use. Do not place jumpers at these locations.  
+
 Description|Jumper|Setting|Result
 -|-|-|-
 RESERVED|J100|[]()|
 RESERVED|J101|[]()|
 RESERVED|J102|[]()|
+RESERVED|J203|[]()|
 RESERVED|J901|[]()|
 RESERVED|J902|[]()|
 
