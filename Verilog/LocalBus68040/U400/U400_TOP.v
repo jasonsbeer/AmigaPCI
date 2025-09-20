@@ -49,10 +49,10 @@ module U400_TOP (
 // RAM SPACE ADDRESS DECODE //
 /////////////////////////////
 
-wire RAM_SPACEm;
+wire RAM_SPACE;
 
 //DISABLE THE DATA BUFFERS WHEN ACCESSING THE ONBOARD RAM.
-assign LBENn = !RAM_SPACEm;
+assign LBENn = !RAM_SPACE;
 
 U400_ADDRESS_DECODE U400_ADDRESS_DECODE (
     //INPUTS
@@ -60,7 +60,7 @@ U400_ADDRESS_DECODE U400_ADDRESS_DECODE (
     .A (A[31:27]),
     
     //OUTPUTS
-    .RAM_SPACE (RAM_SPACEm)
+    .RAM_SPACE (RAM_SPACE)
 );
 
 //////////////////////////
@@ -73,9 +73,9 @@ U400_SDRAM U400_SDRAM (
     .CLK40 (CLK40),
     .RESETn (RESETn),
     .TSn (TSn),
-    .RAM_SPACE (RAM_SPACEm),
+    .RAM_SPACE (RAM_SPACE),
     .RnW (RnW),
-    .A (A[26:0]),
+    .A (A[26:2]),
     .SIZ (SIZ),
 
     //OUTPUTS
@@ -98,6 +98,7 @@ U400_SDRAM U400_SDRAM (
 
 U400_BYTE_ENABLE U400_BYTE_ENABLE (
     //INPUTS
+    .RAM_SPACE (RAM_SPACE),
     .A (A[1:0]),
     .SIZ (SIZ),
 

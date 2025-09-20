@@ -33,6 +33,7 @@ GitHub: https://github.com/jasonsbeer/AmigaPCI
 
 module U400_BYTE_ENABLE (
 
+    input RAM_SPACE,
     input [1:0] A,
     input [1:0] SIZ,
 
@@ -44,9 +45,9 @@ module U400_BYTE_ENABLE (
 wire WORD = SIZ[1] && !SIZ[0];
 wire LONG = SIZ[1] ==  SIZ[0];
 
-assign UUBEn = !((!A[1] &&  !A[0]) || LONG);
-assign UMBEn = !((!A[1] && ( A[0]  || WORD)) || LONG);
-assign LMBEn = !(( A[1] &&  !A[0]) || LONG);
-assign LLBEn = !(( A[1] && ( A[0]  || WORD)) || LONG);
+assign UUBEn = !(RAM_SPACE && ((!A[1] &&  !A[0]) || LONG));
+assign UMBEn = !(RAM_SPACE && ((!A[1] && ( A[0]  || WORD)) || LONG));
+assign LMBEn = !(RAM_SPACE && (( A[1] &&  !A[0]) || LONG));
+assign LLBEn = !(RAM_SPACE && (( A[1] && ( A[0]  || WORD)) || LONG));
 
 endmodule

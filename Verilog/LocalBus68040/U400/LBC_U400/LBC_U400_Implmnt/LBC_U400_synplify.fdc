@@ -1,5 +1,0 @@
-
-#1001 : create_clock -period 25.0000 [get_ports CLK40]
-# line 1 in d:/localbus68040/u400/u400_top.sdc
-
-create_clock -period {25.000} [get_ports {CLK40}]

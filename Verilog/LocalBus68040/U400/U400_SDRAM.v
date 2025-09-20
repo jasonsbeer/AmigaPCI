@@ -38,7 +38,7 @@ GitHub: https://github.com/jasonsbeer/AmigaPCI
 module U400_SDRAM (
 
     input CLK40, RESETn, TSn, RAM_SPACE, RnW,
-    input [26:0] A,
+    input [26:2] A,
     input [1:0] SIZ,
 
     output TAn,

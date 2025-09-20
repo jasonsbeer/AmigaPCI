@@ -46,4 +46,5 @@ module U400_ADDRESS_DECODE (
 
 assign RAM_SPACE = RESETn && A == 5'b00001; //Coprocessor slot RAM.
 
+//assign RAM_SPACE = 1'b0;
 endmodule

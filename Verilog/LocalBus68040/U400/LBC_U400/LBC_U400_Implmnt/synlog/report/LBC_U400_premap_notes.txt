@@ -1,3 +1,0 @@
-@N: MF248 |Running in 64-bit mode.
-@N: MF666 |Clock conversion enabled. (Command "set_option -fix_gated_and_generated_clocks 1" in the project file.)
-@N: BN225 |Writing default property annotation file D:\LocalBus68040\U400\LBC_U400\LBC_U400_Implmnt\LBC_U400.sap.
