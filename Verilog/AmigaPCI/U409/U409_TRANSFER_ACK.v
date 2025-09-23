@@ -27,6 +27,7 @@ Description: MC68040/MC68060 TRANSFER ACK
 Revision History:
     01-JUL-2025 : INITIAL REV 6.0 CODE
     14-SEP-2025 : Added ROM delay and improved _TACK timing.
+    22-SEP-2025 : Added RTC termination.
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 */
@@ -60,6 +61,7 @@ reg TACK_OUT;
 assign TACKn = TACK_EN ? TACK_OUT : 1'bz;
 assign TBIn  = TACK_EN ? TACK_OUT : 1'bz;
 assign TCIn  = TACK_EN ? (ROMEN ? 1'b1 : TACK_OUT) : 1'bz;
+//assign TCIn  = TACK_EN ? TACK_OUT : 1'bz;
 
 wire TACK_RST = !RESETn || TACK_EN;
 reg TACK_START;
@@ -80,7 +82,7 @@ always @(posedge CLK40) begin
     end else begin
         case (TACK_STATE)
             4'h0 : begin
-                if (TACK_START || ROM_TACK_EN) begin
+                if (TACK_START || ROM_TACK_EN || RTC_TACK_EN) begin
                     TACK_EN <= 1;
                     TACK_STATE <= 4'h1;
                     TACK_OUT <= 0;
@@ -105,7 +107,7 @@ end
 //We support multiple timing options for ROM cycle termination.
 //The exact timing is user selected by jumpers on the APCI board.
 
-localparam [3:0] ROM_DELAY_200 = 4'h5; //200ns
+localparam [3:0] ROM_DELAY_200 = 4'h7; //200ns
 localparam [3:0] ROM_DELAY_150 = 4'h3; //150ns
 localparam [3:0] ROM_DELAY_100 = 4'h1; //100ns
 localparam [3:0] ROM_DELAY_050 = 4'h0; // 75ns
@@ -175,6 +177,44 @@ always @(posedge CLK40) begin
 end
 
 ////////////////
+// RTC CYCLE //
+//////////////
+
+localparam [6:0] RTC_CYCLE_COUNTER = 7'd80;
+
+reg RTC_TACK_EN;
+reg [6:0] RTC_COUNTER;
+reg [1:0] RTC_TACK_STATE;
+always @(posedge CLK40) begin
+    if (!RESETn) begin
+        RTC_TACK_EN <= 0;
+        RTC_TACK_STATE <= 2'b0;
+        RTC_COUNTER <= 7'b0;
+    end else begin
+        case (RTC_TACK_STATE)        
+            2'b00 : begin
+                if (!RTC_ENn) begin
+                    RTC_TACK_STATE <= 2'b01;
+                end
+            end
+            2'b01 : begin
+                if (RTC_COUNTER == RTC_CYCLE_COUNTER) begin
+                    RTC_TACK_EN <= 1;
+                    RTC_TACK_STATE <= 2'b10;
+                end else begin
+                    RTC_COUNTER ++;
+                end
+            end
+            2'b10 : begin
+                RTC_TACK_EN <= 0;
+                RTC_COUNTER <= 7'b0;
+                RTC_TACK_STATE <= 2'b00;
+            end
+        endcase
+    end
+end
+
+////////////////
 // IRQ CYCLE //
 //////////////
 
@@ -190,7 +230,8 @@ always @(posedge CLK80) begin
     end else begin
         case (IRQ_TACK_COUNTER)
             1'b0 : begin
-                if (CLK40 && !TSn && (AUTOVECTOR || !RTC_ENn)) begin
+                //if (CLK40 && !TSn && (AUTOVECTOR || !RTC_ENn)) begin
+                if (CLK40 && !TSn && AUTOVECTOR) begin
                     IRQ_TACK_COUNTER <= 1'b1;
                 end else begin
                     IRQ_TACK_EN <= 0;

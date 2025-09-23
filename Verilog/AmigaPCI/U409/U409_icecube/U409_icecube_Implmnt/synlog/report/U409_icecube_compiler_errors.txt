@@ -1,7 +1,0 @@
-@E: CG501 :"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v":112:27:112:27|Expecting delimiter: , or ; or )
-@E: CG501 :"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v":113:27:113:27|Expecting delimiter: , or ; or )
-@E: CG501 :"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v":114:27:114:27|Expecting delimiter: , or ; or )
-@E: CG501 :"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v":115:27:115:27|Expecting delimiter: , or ; or )
-@E: CG342 :"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v":311:8:311:22|Expecting target variable, found DELAYED_TACK_EN -- possible misspelling
-@E: CS187 :"D:\AmigaPCI\U409\U409_TRANSFER_ACK.v":331:0:331:8|Expecting endmodule
-

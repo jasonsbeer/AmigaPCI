@@ -34,7 +34,7 @@ iceprog D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\sbt\outputs\bitmap\U4
 module U409_TOP (
 
     input CLK40_IN, CLK6, CLK28_IN, XCLK, XCLK_ENn, RESETn, TSn, OVL, RnW, AUTOBOOT, CPUCONFn, //F_RDY,
-    input PPIO_J, SPIO_J,
+    //input SPIO_J, PPIO_J,
     input [31:1] A,
     input [1:0] TT,
     input [2:0] TM,
@@ -47,6 +47,8 @@ module U409_TOP (
     output F_ENn, //F_WPn, F_READn, F_WRITEn, F_RSTn,
     //output [1:0] F_BANK,
     //output [1:0] PCIAT, BREG_ENn, BPRO_ENn
+
+    output PPIO_J, SPIO_J,
 
     inout [7:4] D,
     inout TACKn
@@ -283,8 +285,12 @@ assign F_ENn = 1'b1;
 //////////////
 
 //Pass through the ATA PIO jumper settings
-assign PPIO = PPIO_J;
-assign SPIO = SPIO_J;
+//assign PPIO = PPIO_J;
+assign PPIO = 1;
+assign PPIO_J = RAMSPACEn;
 
+assign SPIO = 1;
+//assign SPIO_J = REGSPACEn;
+assign SPIO_J = RTC_ENn;
 endmodule
 
