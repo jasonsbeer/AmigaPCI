@@ -1,2 +1,0 @@
-@W: CL157 :"D:\AmigaPCI\U110\U110_CYCLE_TERMINATION.v":34:17:34:21|*Output TACKn has undriven bits; assigning undriven bits to 0.  Simulation mismatch possible. Assign all bits of the output.
-

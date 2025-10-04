@@ -1,2 +1,0 @@
-@W: CL265 :"D:\AmigaPCI\U712\U712_CHIP_RAM.v":162:0:162:5|Removing unused bit 5 of RAS_SYNC[5:0]. Either assign all bits or reduce the width of the signal.
-

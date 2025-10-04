@@ -1,3 +1,0 @@
-@N: MF248 |Running in 64-bit mode.
-@N: MF666 |Clock conversion enabled. (Command "set_option -fix_gated_and_generated_clocks 1" in the project file.)
-@N: BN225 |Writing default property annotation file D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\U712_icecube.sap.

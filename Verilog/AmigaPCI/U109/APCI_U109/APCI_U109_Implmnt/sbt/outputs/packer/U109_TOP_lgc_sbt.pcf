@@ -1,7 +1,0 @@
-set_location CONSTANT_ONE_LUT4 1 10 0 #SB_LUT4
-set_location GND -1 -1 -1 #GND
-set_io PCI_DIR 38
-set_io PCICYCLEn 19
-set_io AD_ENn 22
-set_io ADLATCH 39
-set_io ALATCH 37

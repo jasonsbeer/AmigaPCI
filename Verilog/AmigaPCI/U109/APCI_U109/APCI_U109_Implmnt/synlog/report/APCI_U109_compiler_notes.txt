@@ -1,8 +1,0 @@
-@N|Running in 64-bit mode
-@N|Running in 64-bit mode
-@N: CG364 :"D:\AmigaPCI\U109\U109_PCI_STATE_MACHINE.v":1:7:1:28|Synthesizing module U109_PCI_STATE_MACHINE in library work.
-@N: CG364 :"D:\AmigaPCI\U109\U109_TOP.v":34:7:34:14|Synthesizing module U109_TOP in library work.
-@N|Running in 64-bit mode
-@N: NF107 :"D:\AmigaPCI\U109\U109_TOP.v":34:7:34:14|Selected library: work cell: U109_TOP view verilog as top level
-@N: NF107 :"D:\AmigaPCI\U109\U109_TOP.v":34:7:34:14|Selected library: work cell: U109_TOP view verilog as top level
-

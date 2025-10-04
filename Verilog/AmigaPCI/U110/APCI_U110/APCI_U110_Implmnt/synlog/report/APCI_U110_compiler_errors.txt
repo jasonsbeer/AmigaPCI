@@ -1,3 +1,0 @@
-@E: CG341 :"D:\AmigaPCI\U110\U110_TOP.v":42:11:42:13| BGn is already declared in this scope.
-@E: CS243 :"D:\AmigaPCI\U110\U110_TOP.v":42:11:42:13|Direction (input, output, inout) set multiple times for port BGn
-

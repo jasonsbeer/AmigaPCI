@@ -1,2 +1,0 @@
-@E: CS171 :"D:\AmigaPCI\U712\U712_CHIP_RAM.v":278:29:278:44|Reversed range
-

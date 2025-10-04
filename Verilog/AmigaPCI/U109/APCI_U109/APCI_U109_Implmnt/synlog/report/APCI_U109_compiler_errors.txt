@@ -1,2 +1,0 @@
-@E: CG829 :"D:\AmigaPCI\U109\U109_TOP.v":43:0:43:0|Unexpected ) after comma -- missing port in ANSI port list
-

@@ -1,8 +1,0 @@
-ble_pack CONSTANT_ONE_LUT4_LC_1_10_0 { CONSTANT_ONE_LUT4 }
-clb_pack LT_1_10 { CONSTANT_ONE_LUT4_LC_1_10_0 }
-set_location LT_1_10 1 10
-set_io PCI_DIR 38
-set_io PCICYCLEn 19
-set_io AD_ENn 22
-set_io ADLATCH 39
-set_io ALATCH 37

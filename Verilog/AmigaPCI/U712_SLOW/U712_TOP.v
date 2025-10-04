@@ -22,7 +22,7 @@ Module Name: U712_TOP
 Project Name: AmigaPCI
 Target Devices: iCE40-HX4K-TQ144
 
-Description: U712 AMIGA PCI FPGA
+Description: U712 AMIGA PCI FPGA. Provides MC68000 compatable cycles for chip ram and chip set register access.
 
 See individual modules for revision history.
 
@@ -31,207 +31,112 @@ GitHub: https://github.com/jasonsbeer/AmigaPCI
 iceprog D:\AmigaPCI\U712\U712_icecube\U712_icecube_Implmnt\sbt\outputs\bitmap\U712_TOP_bitmap.bin
 */
 
-module U712_TOP (
+module U712_TOP
 
-    input CLK40_IN, C1, C3, RESETn,
-    input RnW, TSn, DBRn, REGSPACEn, RAMSPACEn,
-    input AWEn, RAS1n, RAS0n, CASLn, CASUn, AGNUS_REV,
-    input [1:0] SIZ,
-    input [20:0] A,
-    input [9:0] DRA,
-
+(
+    //CLOCKS
+    input CLK40_IN, CLK7, C1, C3, RESETn,
     output CLK40B_OUT, CLK40C_OUT, CLK40D_OUT, CLKRAM,
-    output BLSn, LDSn, UDSn, ASn, REGENn, RAMENn, PRnW, DBDIR,
-    output VBENn, DRDENn, DRDDIR, DMA_LATCH_EN, LATCH_CLK,
-    output CRCSn, CLK_EN, BANK1, BANK0, RASn, CASn, WEn, DBENn,
+
+    //AGNUS
+    input DBRn, RAMSPACEn, REGSPACEn, AWEn, CASLn, CASUn, RAS1n, RAS0n, AGNUS_REV,
+    input [9:0] DRA,
+    output DRD_ENn, DRD_DIR, REGENn, RAMENn, UDSn, LDSn, ASn, BLSn, PRWn, VBENn, SAB_LATCH_EN, SAB_LATCH_CLK,
+
+    //CYCLE START/TERMINATION
+    input RnW, TSn,
+    output TACKn, TCIn, TBIn,
+
+    //BYTE ENABLES
+    input [1:0] A, SIZ,
+    output CUUBEn, CUMBEn, CLMBEn, CLLBEn, UUBEn, UMBEn, LMBEn, LLBEn,
+
+    //SDRAM
+    output BANK1, BANK0, SDRAM_CSn, RASn, CASn, WEn, CLK_EN, DB_ENn, DB_DIR,
     output [10:0] CMA,
-    output CUUBEn, CUMBEn, CLMBEn, CLLBEn,
-    output UUBEn, UMBEn, LMBEn, LLBEn,
-    output TACKn, TBIn, TCIn,
-    output [2:0] DA
+
+    //ATA
+    input [11:9] ATA_A,
+    output [2:0] ATA_AB
 );
 
-///////////////////////////
-// PLL AND CLOCK FANOUT //
-/////////////////////////
+/////////////////////
+// INTERNAL WIRES //
+///////////////////
 
-//WE GENERATE THE 40MHz AND 80MHz CLOCKS HERE BASED ON THE CLK40_IN CLOCK SIGNAL FROM THE LOCAL BUS CARD.
-//WE DISTRIBUTE THE CLOCKS FROM THE PLL TO OTHER DEVICES ON THE AMIGAPCI. SINCE THIS PLL INVERTS THE CLOCK SIGNAL,
-//WE PHASE MATCH IT BEFORE PUTTING THE SIGNAL OUT.
+wire
+    AGNUS_TACK,
+    UDS,
+    LDS,
+    REG_CYCLE,
+    REG_WRITE_CYCLE,
+    CPU_CYCLE,
+    DMA_CYCLE,
+    CLK40_PLL,
+    DMA_WRITE_CYCLE;
 
-wire CLK40_PLL;
-wire CLK80_PLL;
+wire CLK40 = !CLK40_PLL;
+wire CLK40_PAD = CLK40_IN;
 
+///////////////////
+// OUTPUT WIRES //
+/////////////////
+
+assign DRD_ENn = !(REG_CYCLE || DMA_CYCLE);
+assign DRD_DIR = !((REG_CYCLE && !REG_WRITE_CYCLE) || (DMA_CYCLE && DMA_WRITE_CYCLE)); //REG READS & DMA WRITES = 0, REG WRITES & DMA READS = 1
 assign CLK40B_OUT = !CLK40_PLL;
 assign CLK40C_OUT = !CLK40_PLL;
 assign CLK40D_OUT = !CLK40_PLL;
-wire   CLK40      = !CLK40_PLL;
+assign CLKRAM     = !CLK40_PLL;
 
-wire   CLK80  = !CLK80_PLL;
-assign CLKRAM = !CLK80_PLL;
-
-SB_PLL40_2F_CORE #(
-    .DIVR (4'b0000),
-    .DIVF (7'b0000001),
-    .DIVQ (3'b011),
-    .FILTER_RANGE (3'b011),
-    .FEEDBACK_PATH ("DELAY"),
-    .DELAY_ADJUSTMENT_MODE_FEEDBACK ("FIXED"),
-    .FDA_FEEDBACK   (4'b0000),
-    .DELAY_ADJUSTMENT_MODE_RELATIVE ("FIXED"),
-    .FDA_RELATIVE   (4'b0000),
-    .PLLOUT_SELECT_PORTA ("GENCLK"),
-    .PLLOUT_SELECT_PORTB ("GENCLK_HALF")
-) pll (
-    .LOCK           (),
-    .RESETB         (1'b1),
-    .REFERENCECLK   (CLK40_IN),
-    .PLLOUTGLOBALA  (CLK80_PLL),
-    //.PLLOUTGLOBALB  (CLK40_PLL),
-    //.PLLOUTCOREA    (CLK80_PLL),
-    .PLLOUTCOREB    (CLK40_PLL)
-);
-
-////////////
-// WIRES //
-//////////
-
-wire REG_TACK;
-wire REG_CYCLEm;
-wire UDS;
-wire LDS;
-wire CPU_CYCLE;
-wire DMA_CYCLE;
-
-assign BLSn = !(!REGENn || !RAMENn);
-
-///////////////////////
-// _DBR SYNCRONIZER //
-/////////////////////
-
-//WE NEED TO SAMPLE _DBR FROM AGNUS IN MULTIPLE
-//PROCESSES, SO WE HAVE THE SYNCRONIZER HERE.
-
-reg [1:0] DBR_SYNC;
-always @(negedge CLK80) begin
-    if (!RESETn) begin
-        DBR_SYNC <= 2'b11;
-    end else begin
-        DBR_SYNC[1] <= DBR_SYNC[0];
-        DBR_SYNC[0] <= DBRn;
-    end
-end
-
-///////////////////////////////////
-// AGNUS MC68000 REGISTER CYCLE //
-/////////////////////////////////
-
-U712_REG_SM U712_REG_SM (
-    //INPUTS
-    .CLK80 (CLK80),
-    .C1 (C1),
-    .C3 (C3),
-    .RESETn (RESETn),
-    .TSn (TSn),
-    .REGSPACEn (REGSPACEn),
-    .RnW (RnW),
-    .UDS (UDS),
-    .LDS (LDS),
-    .DBR_SYNC (DBR_SYNC[1]),
-
-    //OUTPUTS
-    .ASn (ASn),
-    .REGENn (REGENn),
-    .REG_TACK (REG_TACK),
-    .REG_CYCLE (REG_CYCLEm),
-    .UDSn (UDSn),
-    .LDSn (LDSn),
-    .PRnW (PRnW)
-);
-
-///////////////////////////
-// CHIPSET DATA BUFFERS //
-/////////////////////////
-
-wire DMA_WRITE_CYCLE;
-
-U712_BUFFERS U712_BUFFERS (
-    //INPUTS
-    .RnW (RnW),
-    .REG_CYCLE (REG_CYCLEm),
-    .CPU_CYCLE (CPU_CYCLE),
-    .CASUn (CASUn),
-    .CASLn (CASLn),
-    .DMA_WRITE_CYCLE (DMA_WRITE_CYCLE),
-
-    //OUTPUTS
-    .VBENn (VBENn),
-    .DRDENn (DRDENn),
-    .DRDDIR (DRDDIR),
-    .DMA_LATCH_EN (DMA_LATCH_EN)
-);
-
-////////////////////////////
-// CPU CYCLE TERMINATION //
 //////////////////////////
+// AGNUS STATE MACHINE //
+////////////////////////
 
-wire CPU_TACKm;
+U712_AGNUS_SM U712_AGNUS_SM
+(
+    //input
+        .CLK40 (CLK40),
+        .C1 (C1),
+        .C3 (C3),
+        .RESETn (RESETn),
+        .RnW (RnW),
+        .DBRn (DBRn),
+        .RAMSPACEn (RAMSPACEn),
+        .REGSPACEn (REGSPACEn),
+        .TSn (TSn),
+        .UDS (UDS),
+        .LDS (LDS),
 
-U712_CYCLE_TERM U712_CYCLE_TERM (
-    //INPUTS
-    .CLK80 (CLK80),
-    .CLK40 (CLK40),
-    .RESETn (RESETn),
-    .REG_TACK (REG_TACK),
-    .CPU_TACK (CPU_TACKm),
-
-    //OUTPUTS
-    .TACKn (TACKn),
-    .TBIn (TBIn),
-    .TCIn (TCIn)
+    //output
+        .REG_CYCLE (REG_CYCLE),
+        .REG_WRITE_CYCLE (REG_WRITE_CYCLE),
+        .REGENn (REGENn),
+        .RAMENn (RAMENn),
+        .UDSn (UDSn),
+        .LDSn (LDSn),
+        .ASn (ASn),
+        .BLSn (BLSn),
+        .PRWn (PRWn),
+        .VBENn (VBENn),
+        .AGNUS_TACK (AGNUS_TACK)
 );
 
-/////////////////////
-// CHIP RAM CYCLE //
-///////////////////
+////////////////////////
+// CYCLE TERMINATION //
+//////////////////////
 
-U712_CHIP_RAM U712_CHIP_RAM (
-    //INPUTS
-    .CLK80 (CLK80),
-    .C1 (C1),
-    .C3 (C3),
-    .RESETn (RESETn),
-    .RAMSPACEn (RAMSPACEn),
-    .TSn (TSn),
-    .RnW (RnW),
-    .AGNUS_REV (AGNUS_REV),
-    .AWEn (AWEn),
-    .RAS1n (RAS1n),
-    .RAS0n (RAS0n),
-    .CASUn (CASUn),
-    .CASLn (CASLn),
-    .DBRn (DBRn),
-    .A (A[20:2]),
-    .DRA (DRA),
-    .DBR_SYNC (DBR_SYNC[1]),
+U712_CYCLE_TERMINATION U712_CYCLE_TERMINATION
+(
+    //input
+        .CLK40 (CLK40),
+        .RESETn (RESETn),
+        .AGNUS_TACK (AGNUS_TACK),
 
-    //OUTPUTS
-    .BANK1 (BANK1),
-    .BANK0 (BANK0),
-    .CRCSn (CRCSn),
-    .RASn (RASn),
-    .CASn (CASn),
-    .WEn (WEn),
-    .CLK_EN (CLK_EN),
-    .DMA_CYCLE (DMA_CYCLE),
-    .CPU_CYCLE (CPU_CYCLE),
-    .DBENn (DBENn),
-    .DBDIR (DBDIR),
-    .CPU_TACK (CPU_TACKm),
-    .CMA (CMA),
-    .LATCH_CLK (LATCH_CLK),
-    .DMA_WRITE_CYCLE (DMA_WRITE_CYCLE),
-    .RAMENn (RAMENn)
+    //output
+        .TACKn (TACKn),
+        .TCIn (TCIn),
+        .TBIn (TBIn) 
 );
 
 ///////////////////
@@ -239,33 +144,109 @@ U712_CHIP_RAM U712_CHIP_RAM (
 /////////////////
 
 U712_BYTE_ENABLE U712_BYTE_ENABLE (
-    //INPUTS
+
+    //input
+        .CPU_CYCLE (CPU_CYCLE),
+        .DMA_CYCLE (DMA_CYCLE),
+        .CASLn (CASLn),
+        .CASUn (CASUn),
+        .DB_ENn (DB_ENn),
+        .RnW (RnW),
+        .A (A),
+        .SIZ (SIZ),
+
+    //output
+        .CUUBEn (CUUBEn),
+        .CUMBEn (CUMBEn),
+        .CLMBEn (CLMBEn),
+        .CLLBEn (CLLBEn),
+        .UUBEn (UUBEn),
+        .UMBEn (UMBEn),
+        .LMBEn (LMBEn),
+        .LLBEn (LLBEn),
+        .UDS (UDS),
+        .LDS (LDS)
+);
+
+/////////////////////////////
+// CHIP RAM STATE MACHINE //
+///////////////////////////
+
+U712_CHIP_RAM_SM U712_CHIP_RAM_SM
+(
+    //input
+    .CLK40 (CLK40),
+    .CLK7 (CLK7),
+    .C1 (C1),
+    .C3 (C3),     
+    .RESETn (RESETn),
+    .DBRn (DBRn),
+    .AWEn (AWEn),
+    .RAS1n (RAS1n),
+    .RAS0n (RAS0n),
+    .AGNUS_REV (AGNUS_REV),
+    .DRA (DRA),
+    
+    //Output
+    .BANK1 (BANK1),
+    .BANK0 (BANK0),
+    .CLK_EN (CLK_EN),
+    .SDRAM_CSn (SDRAM_CSn),
+    .RASn (RASn),
+    .CASn (CASn),
+    .WEn (WEn),
+    .CMA (CMA),
+    .DB_ENn (DB_ENn),
+    .DB_DIR (DB_DIR),
+    .SAB_LATCH_EN (SAB_LATCH_EN),
+    .SAB_LATCH_CLK (SAB_LATCH_CLK),
     .CPU_CYCLE (CPU_CYCLE),
     .DMA_CYCLE (DMA_CYCLE),
-    .CASLn (CASLn),
-    .CASUn (CASUn),
-    .DBENn (DBENn),
-    .RnW (RnW),
-    .A (A[1:0]),
-    .SIZ (SIZ),
-
-    //OUTPUTS
-    .CUUBEn (CUUBEn),
-    .CUMBEn (CUMBEn),
-    .CLMBEn (CLMBEn),
-    .CLLBEn (CLLBEn),
-    .UUBEn (UUBEn),
-    .UMBEn (UMBEn),
-    .LMBEn (LMBEn),
-    .LLBEn (LLBEn),
-    .UDS (UDS),
-    .LDS (LDS)
+    .WRITE_CYCLE (DMA_WRITE_CYCLE)
 );
 
 //////////////////
 // ATA ADDRESS //
 ////////////////
 
-assign DA = A[11:9];
+assign ATA_AB = ATA_A;
+
+//////////
+// PLL //
+////////
+
+//WE GENERATE THE 40MHz CLOCKS HERE BASED ON THE CLK40_IN CLOCK SIGNAL FROM THE LOCAL BUS CARD.
+//WE DISTRIBUTE THE CLOCKS FROM THE PLL TO OTHER DEVICES ON THE AMIGAPCI. SINCE THIS PLL INVERTS THE CLOCK SIGNAL,
+//WE PHASE MATCH IT BEFORE PUTTING THE SIGNAL OUT.
+
+//Effect of FDA_FEEDBACK value
+//0  = Almost exact peak match
+//7  = ~2ns early peak
+//15 = ~4ns early peak
+
+SB_PLL40_CORE #(
+    .DIVR (4'b0000),
+    .DIVF (7'b0000000),
+    .DIVQ (3'b100),
+    .FILTER_RANGE (3'b011),
+    .FEEDBACK_PATH ("DELAY"),
+    .DELAY_ADJUSTMENT_MODE_FEEDBACK ("FIXED"),
+    .FDA_FEEDBACK   (4'b0111),
+    .DELAY_ADJUSTMENT_MODE_RELATIVE ("FIXED"),
+    .FDA_RELATIVE   (4'b0000),
+    .PLLOUT_SELECT ("GENCLK")
+) pll (
+    .LOCK           (),
+    .RESETB         (1'b1),
+    .REFERENCECLK   (CLK40_PAD),
+    .PLLOUTGLOBAL   (CLK40_PLL),
+
+    .EXTFEEDBACK       (1'b0),
+    .DYNAMICDELAY      (8'b00000000),
+    .BYPASS            (1'b0),
+    .SDI               (1'b0),
+    .SCLK              (1'b0),
+    .LATCHINPUTVALUE   (1'b0)
+);
 
 endmodule

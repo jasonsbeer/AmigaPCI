@@ -1,7 +1,0 @@
-set_io ADLATCH_obuf 3 0 1 # ICE_IO
-set_io AD_ENn_obuf 0 10 0 # ICE_IO
-set_io ALATCH_obuf 2 0 0 # ICE_IO
-set_location GND -1 -1 -1 # GND
-set_io PCICYCLEn_obuf 0 11 1 # ICE_IO
-set_io PCI_DIR_obuf 2 0 1 # ICE_IO
-set_location CONSTANT_ONE_LUT4 1 10 0 # SB_LUT4 (LogicCell: LC_0)
