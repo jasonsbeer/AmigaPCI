@@ -8,7 +8,7 @@ set_io XCLK       93
 set_io CLK28_IN   94
 set_io AGNUS_CLK  97
 set_io CLK_CIA   122
-set_io CLK40_IN  129
+set_io CLK40     129
 set_io XCLK_ENn  102
 
 #CPU DATA BUS
@@ -101,10 +101,13 @@ set_io SPIO_J   113 -pullup yes
 
 #FLASH
 #set_io F_RDY     101
-set_io F_ENn      95
-#set_io F_WPn      99
+set_io F_ENn       95
+#set_io F_WPn       99
 #set_io F_READn    96
 #set_io F_WRITEn   60
 #set_io F_RSTn     61
 #set_io F_BANK[1]  84
 #set_io F_BANK[0]  85
+
+#Test
+#set_io TP0 110 -pullup yes

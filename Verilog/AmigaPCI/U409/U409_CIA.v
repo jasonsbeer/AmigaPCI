@@ -24,8 +24,10 @@ Target Devices: iCE40-HX4K-TQ144
 
 Description: CIA CLOCK
 
-Revision History:
-    01-JUL-2025 : INITIAL REV 6.0 CODE
+Date          Who  Description
+-----------------------------------
+01-JUL-2025   JN   INITIAL REV 6.0 CODE
+11-OCT-2025   JN   Shifted CIA chip select later.
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 TO BUILD WITH APIO: apio build --top-module U409_TOP --fpga iCE40-HX4K-TQ144
@@ -33,9 +35,14 @@ TO BUILD WITH APIO: apio build --top-module U409_TOP --fpga iCE40-HX4K-TQ144
 
 module U409_CIA
 (
-    input CLK28_IN, RESETn, CIA_SPACE,
+    //Clocks
+    input CLK28_IN, RESETn,
     output reg CLK_CIA,
+
+    //CIA Control Signals
+    input CIA_SPACE,
     output CIA_ENABLE
+
 );
 
 ////////////////////////////////
@@ -71,10 +78,10 @@ always @(posedge CLK28_IN) begin
 		8'h00 : begin
 			CLK_CIA <= 0;
         end
-        8'h03 : begin
+        8'h04 : begin
             VMA <= 0; //Hold the chip select until the cycle has been TACKed.
         end
-        8'h11 : begin //13
+        8'h13 : begin
             VMA <= CIA_SPACE;
         end
         8'h18 : begin

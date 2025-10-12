@@ -33,61 +33,44 @@ iceprog D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\sbt\outputs\bitmap\U4
 
 module U409_TOP (
 
-    input CLK40_IN, CLK6, CLK28_IN, XCLK, XCLK_ENn, RESETn, TSn, OVL, RnW, AUTOBOOT, CPUCONFn, //F_RDY,
-    //input SPIO_J, PPIO_J,
-    input [31:1] A,
+    //Clocks
+    input  CLK40, CLK6, CLK28_IN, XCLK, XCLK_ENn, RESETn,
+    output AGNUS_CLK, TICK60, TICK50, CLK_CIA, 
+    
+    //Cycle Start/Termination    
+    input  TSn, OVL, RnW, CPUCONFn,
+    output TBIn, TCIn,
     input [1:0] TT,
     input [2:0] TM,
-    input [1:0] ROM_DELAY,
+    inout TACKn,
 
-    output ROMENn, BUFENn, AGNUS_CLK, TICK60, TICK50, CLK_CIA, CIACS0n, CIACS1n,
-    output RAMSPACEn, REGSPACEn, RTC_ENn,
-    output PORTSIZE, TBIn, TCIn, CONFIGENn, ATA_ENn,
-    output PCS0, PCS1, SCS0, SCS1, PPIO, SPIO,
-    output F_ENn, //F_WPn, F_READn, F_WRITEn, F_RSTn,
-    //output [1:0] F_BANK,
+    //Data and Address Bus    
+    input [31:1] A,
+    inout [7:4] D,
+
+    //Chip Selects/Address Spaces
+    output ROMENn, BUFENn, CIACS0n, CIACS1n, RAMSPACEn, REGSPACEn, RTC_ENn, PORTSIZE,
+    
+    //Configuration Signals
+    input AUTOBOOT,
+    input [1:0] ROM_DELAY,    
+    output CONFIGENn, 
+
+    //PCI
     //output [1:0] PCIAT, BREG_ENn, BPRO_ENn
 
-    output PPIO_J, SPIO_J,
+    //ATA
+    input SPIO_J, PPIO_J,
+    output PCS0, PCS1, SCS0, SCS1, PPIO, SPIO, ATA_ENn,
 
-    inout [7:4] D,
-    inout TACKn
+    //Flash
+    input  F_RDY,
+    output F_ENn //F_WPn, F_READn, F_WRITEn, F_RSTn,
+    //output [1:0] F_BANK,
 
-);
+    //Test Point
+    //output TP0
 
-//////////
-// PLL //
-////////
-
-//WE MAKE 80MHz CLOCK HERE FROM THE 40MHz BUS CLOCK WITH THE PLL
-
-wire CLK80_OUT;
-wire CLK40 = CLK40_IN;
-wire CLK80 = !CLK80_OUT;
-
-SB_PLL40_CORE #(
-    .DIVR (4'b0000),
-    .DIVF (7'b0001111),
-    .DIVQ (3'b011),
-    .FILTER_RANGE (3'b011),
-    .FEEDBACK_PATH ("SIMPLE"),
-    .PLLOUT_SELECT ("GENCLK"),
-    .DELAY_ADJUSTMENT_MODE_FEEDBACK ("FIXED"),
-    .FDA_FEEDBACK (4'b0000),
-    .DELAY_ADJUSTMENT_MODE_RELATIVE ("FIXED"),
-    .FDA_RELATIVE (4'b0000)
-) pll (
-    .LOCK           (),
-    .RESETB         (1'b1),
-    .REFERENCECLK   (CLK40_IN),
-    .PLLOUTGLOBAL   (CLK80_OUT),
-    .BYPASS(1'b0),
-
-    .EXTFEEDBACK       (1'b0),
-    .DYNAMICDELAY      (8'b00000000),
-    .SDI               (1'b0),
-    .SCLK              (1'b0),
-    .LATCHINPUTVALUE   (1'b0)
 );
 
 //////////////////
@@ -126,7 +109,6 @@ assign D = AUTOCONFIG_SPACE && RnW ? D_OUT : 4'bz;
 
 U409_TRANSFER_ACK U409_TRANSFER_ACK (
     //INPUTS
-    .CLK80 (CLK80),
     .CLK40 (CLK40),
     .RESETn (RESETn),
     .TSn (TSn),
@@ -285,12 +267,15 @@ assign F_ENn = 1'b1;
 //////////////
 
 //Pass through the ATA PIO jumper settings
-//assign PPIO = PPIO_J;
-assign PPIO = 1;
-assign PPIO_J = RAMSPACEn;
+assign PPIO = PPIO_J;
+//assign PPIO = 1;
+//assign PPIO_J = REGSPACEn;
 
-assign SPIO = 1;
-//assign SPIO_J = REGSPACEn;
-assign SPIO_J = RTC_ENn;
+assign SPIO = SPIO_J;
+//assign SPIO = 1;
+//assign SPIO_J = RAMSPACEn;
+//assign SPIO_J = RTC_ENn;
+
+//assign TP0 = TBIn;
 endmodule
 

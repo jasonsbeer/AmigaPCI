@@ -24,25 +24,37 @@ Target Devices: iCE40-HX4K-TQ144
 
 Description: AUTOCONFIG
 
-Revision History:
-    01-JUL-2025 : INITIAL REV 6.0 CODE
+Date          Who  Description
+-----------------------------------
+01-JUL-2025   JN   INITIAL REV 6.0 CODE
+11-OCT-2025   JN   Flipped SM to positive clock edge.
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 */
 
 module U409_AUTOCONFIG (
+
+    //Clocks
     input CLK40, RESETn,
-    input AUTOCONFIG_SPACE, RnW, TSn, AUTOBOOT, CPUCONFn,
+    
+    //Cycle Start/Termination
+    input AUTOCONFIG_SPACE, RnW, TSn,
+    output reg AC_TACK,
+
+    //Data and Address Bus
     input [3:0] D_IN, //D31-28
     input [7:1] A,
+    output [3:0] D_OUT, //D31-28
 
-    output reg CONFIGENn,
-    output reg CONFIGURED,
-    output reg AC_TACK,
+    //Configuration Signals
+    input  CPUCONFn, AUTOBOOT,
+    output reg CONFIGENn, CONFIGURED,
+
+    //Base Addresses
     output reg [7:0] BRIDGE_BASE,
     output reg [7:1] LIDE_BASE,
-    output reg [2:0] PRO_BASE,
-    output [3:0] D_OUT //D31-28
+    output reg [2:0] PRO_BASE
+    
 );
 
   ////////////////
@@ -96,7 +108,7 @@ reg [3:0] LIDE_OUT;
 reg [3:0] PR_OUT;
 reg [3:0] STATE;
 
-always @(negedge CLK40) begin
+always @(posedge CLK40) begin
     if (!RESETn) begin
         LIDE_CONF <= 0;
         LIDE_OUT <= 4'h0;

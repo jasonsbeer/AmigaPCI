@@ -24,25 +24,32 @@ Target Devices: iCE40-HX4K-TQ144
 
 Description: MC68040/MC68060 TRANSFER ACK
 
-Revision History:
-    01-JUL-2025 : INITIAL REV 6.0 CODE
-    14-SEP-2025 : Added ROM delay and improved _TACK timing.
-    22-SEP-2025 : Added RTC termination.
+Date          Who  Description
+-----------------------------------
+01-JUL-2025   JN   INITIAL REV 6.0 CODE
+14-SEP-2025   JN   Added ROM delay and improved _TACK timing.
+22-SEP-2025   JN   Added RTC termination.
+11-OCT-2025   JN   Fixed erroneous assertion of RTC termination.
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 */
 
 module U409_TRANSFER_ACK (
 
-    input CLK80, CLK40, RESETn, TSn, ROMEN, CIA_ENABLE, CLK_CIA, AGNUS_SPACE,
-    input AUTOVECTOR, RTC_ENn, AC_TACK, //, CACHE_SPACE,
-
-    input [1:0] ROM_DELAY,
-
+    //Clocks
+    input CLK40, CLK_CIA, RESETn,
+    
+    //Cycle Start/Termination
+    input TSn, AC_TACK,
     output TBIn, TCIn,
-    output reg ROMENn,
+    inout TACKn,
 
-    inout TACKn
+    //Address Spaces
+    input ROMEN, CIA_ENABLE, AGNUS_SPACE, AUTOVECTOR, RTC_ENn,
+
+    //ROM
+    input [1:0] ROM_DELAY,    
+    output reg ROMENn
 
 );
 
@@ -61,17 +68,6 @@ reg TACK_OUT;
 assign TACKn = TACK_EN ? TACK_OUT : 1'bz;
 assign TBIn  = TACK_EN ? TACK_OUT : 1'bz;
 assign TCIn  = TACK_EN ? (ROMEN ? 1'b1 : TACK_OUT) : 1'bz;
-//assign TCIn  = TACK_EN ? TACK_OUT : 1'bz;
-
-wire TACK_RST = !RESETn || TACK_EN;
-reg TACK_START;
-always @(negedge CLK80, posedge TACK_RST) begin
-    if (TACK_RST) begin
-        TACK_START <= 1'b0;
-    end else begin
-        TACK_START <= CIA_TACK_EN || IRQ_TACK_EN || DELAYED_TACK_EN || AC_TACK || TACK_START;
-    end
-end
 
 reg [3:0] TACK_STATE;
 always @(posedge CLK40) begin
@@ -82,10 +78,10 @@ always @(posedge CLK40) begin
     end else begin
         case (TACK_STATE)
             4'h0 : begin
-                if (TACK_START || ROM_TACK_EN || RTC_TACK_EN) begin
-                    TACK_EN <= 1;
-                    TACK_STATE <= 4'h1;
+                if (ROM_TACK_EN || RTC_TACK_EN || IRQ_TACK_EN || AC_TACK || CIA_TACK_EN || DELAYED_TACK_EN) begin
+                    TACK_EN  <= 1;
                     TACK_OUT <= 0;
+                    TACK_STATE <= 4'h1;
                 end
             end
             4'h1 : begin
@@ -193,7 +189,7 @@ always @(posedge CLK40) begin
     end else begin
         case (RTC_TACK_STATE)        
             2'b00 : begin
-                if (!RTC_ENn) begin
+                if (!RTC_ENn && !TSn) begin
                     RTC_TACK_STATE <= 2'b01;
                 end
             end
@@ -221,25 +217,27 @@ end
 //EVERYTHING IS AUTOVECTORED. BECAUSE THERE IS NO DATA ACTUALLY
 //TRANSFERRED, WE USE THE SHORTEST CYCLE POSSIBLE. TWO CLOCKS.
 
-reg IRQ_TACK_COUNTER;
 reg IRQ_TACK_EN;
-always @(posedge CLK80) begin
+reg [1:0] IRQ_TACK_COUNTER;
+
+always @(posedge CLK40) begin
     if (!RESETn) begin
-        IRQ_TACK_COUNTER <= 1'b0;
+        IRQ_TACK_COUNTER <= 2'b0;
         IRQ_TACK_EN <= 0;
     end else begin
         case (IRQ_TACK_COUNTER)
-            1'b0 : begin
-                //if (CLK40 && !TSn && (AUTOVECTOR || !RTC_ENn)) begin
-                if (CLK40 && !TSn && AUTOVECTOR) begin
-                    IRQ_TACK_COUNTER <= 1'b1;
-                end else begin
-                    IRQ_TACK_EN <= 0;
+            2'b00 : begin
+                if (!TSn && AUTOVECTOR) begin
+                    IRQ_TACK_COUNTER <= 2'b01;
                 end
             end
-            1'b1 : begin
+            2'b01 : begin
                 IRQ_TACK_EN <= 1;
-                IRQ_TACK_COUNTER <= 1'b0;
+                IRQ_TACK_COUNTER <= 2'b10;
+            end
+            2'b10 : begin
+                IRQ_TACK_EN <= 0;
+                IRQ_TACK_COUNTER <= 2'b00;
             end
         endcase
     end
@@ -252,17 +250,15 @@ end
 //CYCLE TERMINATION FOR CIA CYCLES MUST OCCUR AT OR JUST AFTER THE
 //FALLING EDGE OF THE CIA CLOCK WHILE THE CHIP SELECT IS ENABLED.
 
-reg [1:0] LASTCLK;
-reg [1:0] CIA_ENABLED;
-reg [1:0] CIA_STATE;
+reg [1:0] LASTCLK, CIA_ENABLED, CIA_STATE;
 reg CIA_TACK_EN;
 
-always @(posedge CLK80) begin
+always @(posedge CLK40) begin
     if (!RESETn) begin
-        LASTCLK <= 2'b00;
-        CIA_ENABLED <= 2'b00;
         CIA_TACK_EN <= 0;
-        CIA_STATE <= 2'b00;
+        LASTCLK     <= 2'b00;
+        CIA_ENABLED <= 2'b00;
+        CIA_STATE   <= 2'b00;
     end else begin
         LASTCLK[1] <= LASTCLK[0];
         LASTCLK[0] <= CLK_CIA;
@@ -272,20 +268,20 @@ always @(posedge CLK80) begin
 
         case (CIA_STATE)
             2'b00 : begin
-                if (CIA_ENABLED == 2'b11) CIA_STATE <= 2'b01;
+                if (CIA_ENABLED[1]) CIA_STATE <= 2'b01;
             end
             2'b01 : begin
-                if (LASTCLK == 2'b11) CIA_STATE <= 2'b10;
+                if (LASTCLK[1]) CIA_STATE <= 2'b10;
             end
             2'b10 : begin
-                if (LASTCLK == 2'b00 && !CLK40) begin
+                if (!LASTCLK[1]) begin
                     CIA_TACK_EN <= 1;
                     CIA_STATE <= 2'b11;
                 end
             end
             2'b11 : begin
                 CIA_TACK_EN <= 0;
-                if (CIA_ENABLED == 2'b00) begin
+                if (!CIA_ENABLED[1]) begin
                     CIA_STATE <= 2'b00;
                 end
             end
@@ -298,36 +294,46 @@ end
 ////////////////////////
 
 //END THE CYCLE WHEN THE CPU LOOKS FOR AN ADDRESS WE DON'T EXPLICITLY SUPPORT.
-//CIA CYCLES ARE THE LONGEST CYCLES WE SUPPORT, WHICH TAKE ~1us. WE WAIT A LITTLE
-//LONGER AND THEN ASSERT _TACK OURSELVES.
-//We can include the Fat Gary register to assert a bus error with this at a later time.
+//CIA CYCLES ARE THE LONGEST CYCLES WE SUPPORT, WHICH TAKE ~1us. WE WAIT AABOUT 3us
+//AND THEN ASSERT _TACK OURSELVES.
 
-localparam DELAYED_TACK_DELAY = 8'hF9; //249 CLOCK CYCLES
-reg [7:0] DELAYED_TACK_COUNTER;
+localparam DELAYED_TACK_DELAY = 7'd125;
+
+reg [6:0] DELAYED_TACK_COUNTER;
+reg [1:0] DELAYED_TACK_STATE;
 reg DELAYED_TACK_EN;
     
 wire DELAYED_TACK_RST = !TACKn || !RESETn || AGNUS_SPACE;
     
-always @(posedge CLK80, posedge DELAYED_TACK_RST) begin
+always @(posedge CLK40, posedge DELAYED_TACK_RST) begin
     if (DELAYED_TACK_RST) begin
         DELAYED_TACK_EN <= 0;
-        DELAYED_TACK_COUNTER <= 8'h00;
+        DELAYED_TACK_STATE <= 2'b0;
+        DELAYED_TACK_COUNTER <= 7'b0;
     end else begin
-        if (DELAYED_TACK_COUNTER != 8'h00) begin DELAYED_TACK_COUNTER ++; end
-        case (DELAYED_TACK_COUNTER)
-        8'h00 : begin
-            DELAYED_TACK_EN <= 0;
-            if (!TSn && CLK40) begin
-                DELAYED_TACK_COUNTER <= 8'h01;
+
+        case (DELAYED_TACK_STATE)
+            2'b00 : begin
+                if (!TSn) begin
+                    DELAYED_TACK_COUNTER <= 7'd1;
+                    DELAYED_TACK_STATE <= 2'b01;
+                end
             end
-        end
-        DELAYED_TACK_DELAY : begin
-            DELAYED_TACK_EN <= 1;
-            DELAYED_TACK_COUNTER <= 8'h00;
-        end
+            2'b01 : begin
+                if (DELAYED_TACK_COUNTER == DELAYED_TACK_DELAY) begin
+                    DELAYED_TACK_EN <= 1;
+                    DELAYED_TACK_STATE <= 2'b10;
+                end else begin
+                    DELAYED_TACK_COUNTER ++;
+                end
+            end
+            2'b10 : begin
+                DELAYED_TACK_EN <= 0;
+                DELAYED_TACK_COUNTER <= 7'b0;
+                DELAYED_TACK_STATE <= 2'b00;
+            end
         endcase
     end
 end
-
 
 endmodule
