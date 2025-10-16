@@ -1,5 +1,5 @@
 #CLOCKS
-set_io CLK40 52
+set_io CLK40_IN 52
 #set_io CLK33 93
 
 #ADDRESS
@@ -7,8 +7,8 @@ set_io CLK40 52
 #set_io A[1]     74
 
 #ATA SIGNALS
-#set_io PPIO       16
-#set_io SPIO       15
+set_io PPIO       16
+set_io SPIO       15
 set_io PCS1       24
 set_io PCS0       25
 set_io SCS1       22
@@ -98,4 +98,6 @@ set_io BURSTn     80
 #set_io LLBEn 41
 
 #Test (J100,101,102)
-set_io TP0    2
+#set_io TP0    2
+#set_io TP1    3
+#set_io TP2    4
