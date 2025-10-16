@@ -484,6 +484,10 @@ Description|Jumper|Setting|Result
 -|-|-|-
 ATA Autoboot|J900|Short|ATA autoboot disabled.
 []()|[]()|Open|ATA autoboot enabled.
+Primary PIO Mode|J901|Short|PIO2
+[]()|[]()|Open|PIO4
+Secondary PIO Mode|J902|Short|PIO2
+[]()|[]()|Open|PIO4
 
 ### 4.7 ROM Wait State Jumpers
 
@@ -504,7 +508,5 @@ RESERVED|J100|[]()|
 RESERVED|J101|[]()|
 RESERVED|J102|[]()|
 RESERVED|J203|[]()|
-RESERVED|J901|[]()|
-RESERVED|J902|[]()|
 
 **END**
