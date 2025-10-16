@@ -1,0 +1,8 @@
+@W: CG921 :"D:\LocalBus68040\U111\U111_CYCLE_SM.v":67:5:67:13|CPU_CYCLE is already declared in this scope.
+@W: CG781 :"D:\LocalBus68040\U111\U111_TOP.v":89:2:89:4|Input EXTFEEDBACK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\LocalBus68040\U111\U111_TOP.v":89:2:89:4|Input DYNAMICDELAY on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\LocalBus68040\U111\U111_TOP.v":89:2:89:4|Input BYPASS on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\LocalBus68040\U111\U111_TOP.v":89:2:89:4|Input SDI on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\LocalBus68040\U111\U111_TOP.v":89:2:89:4|Input SCLK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\LocalBus68040\U111\U111_TOP.v":89:2:89:4|Input LATCHINPUTVALUE on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+

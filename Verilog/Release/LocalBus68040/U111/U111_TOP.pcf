@@ -1,0 +1,108 @@
+#CLOCKS
+set_io CLK40_IN  129
+set_io CLK80_CPU  94
+set_io CLKRAMA    56
+set_io CLKRAMB    52
+set_io CLK40A     93
+set_io CLK40B     49
+set_io CLK40C     21
+
+#68040 DATA BUS
+set_io  D_LL_040[0] 74  #DA0
+set_io  D_LL_040[1] 75  #DA1
+set_io  D_LL_040[2] 78  #DA2
+set_io  D_LL_040[3] 73  #DA3
+set_io  D_LL_040[4] 76  #DA4
+set_io  D_LL_040[5] 79  #DA5
+set_io  D_LL_040[6] 80  #DA6
+set_io  D_LL_040[7] 81  #DA7
+set_io  D_LM_040[0] 82  #DA8
+set_io  D_LM_040[1] 83  #DA9
+set_io  D_LM_040[2] 84  #DA10
+set_io  D_LM_040[3] 85  #DA11
+set_io  D_LM_040[4] 87  #DA12
+set_io  D_LM_040[5] 90  #DA13
+set_io  D_LM_040[6] 98  #DA14
+set_io  D_LM_040[7] 99  #DA15
+set_io  D_UM_040[0] 88  #DA16
+set_io  D_UM_040[1] 104 #DA17
+set_io  D_UM_040[2] 91  #DA18
+set_io  D_UM_040[3] 106 #DA19
+set_io  D_UM_040[4] 110 #DA20
+set_io  D_UM_040[5] 114 #DA21
+set_io  D_UM_040[6] 95  #DA22
+set_io  D_UM_040[7] 105 #DA23
+set_io  D_UU_040[0] 117 #DA24
+set_io  D_UU_040[1] 107 #DA25
+set_io  D_UU_040[2] 118 #DA26
+set_io  D_UU_040[3] 112 #DA27
+set_io  D_UU_040[4] 119 #DA28
+set_io  D_UU_040[5] 113 #DA29
+set_io  D_UU_040[6] 115 #DA30
+set_io  D_UU_040[7] 116 #DA31
+
+#AMIGA DATA BUS
+set_io  D_LL_AMIGA[0] 33  #DB0
+set_io  D_LL_AMIGA[1] 28  #DB1
+set_io  D_LL_AMIGA[2] 31  #DB2
+set_io  D_LL_AMIGA[3] 32  #DB3
+set_io  D_LL_AMIGA[4] 29  #DB4
+set_io  D_LL_AMIGA[5] 25  #DB5
+set_io  D_LL_AMIGA[6] 26  #DB6
+set_io  D_LL_AMIGA[7] 24  #DB7
+set_io  D_LM_AMIGA[0] 23  #DB8
+set_io  D_LM_AMIGA[1] 22  #DB9
+set_io  D_LM_AMIGA[2] 18  #DB10
+set_io  D_LM_AMIGA[3] 19  #DB11
+set_io  D_LM_AMIGA[4] 16  #DB12
+set_io  D_LM_AMIGA[5] 12  #DB13
+set_io  D_LM_AMIGA[6] 9   #DB14
+set_io  D_LM_AMIGA[7] 10  #DB15
+set_io  D_UM_AMIGA[0] 17  #DB16
+set_io  D_UM_AMIGA[1] 11  #DB17
+set_io  D_UM_AMIGA[2] 15  #DB18
+set_io  D_UM_AMIGA[3] 7   #DB19
+set_io  D_UM_AMIGA[4] 3   #DB20
+set_io  D_UM_AMIGA[5] 141 #DB21
+set_io  D_UM_AMIGA[6] 2   #DB22
+set_io  D_UM_AMIGA[7] 4   #DB23
+set_io  D_UU_AMIGA[0] 138 #DB24
+set_io  D_UU_AMIGA[1] 8   #DB25
+set_io  D_UU_AMIGA[2] 139 #DB26
+set_io  D_UU_AMIGA[3] 144 #DB27
+set_io  D_UU_AMIGA[4] 137 #DB28
+set_io  D_UU_AMIGA[5] 1   #DB29
+set_io  D_UU_AMIGA[6] 142 #DB30
+set_io  D_UU_AMIGA[7] 143 #DB31
+
+#DATA TRANSFER SIGALS
+set_io TS_CPUn  125 
+set_io TSn       45
+set_io TAn      124
+set_io TACKn     47
+set_io PORTSIZE  42
+set_io SIZ[1]   120
+set_io SIZ[0]   121
+set_io RnW       97
+set_io TCIn     44
+set_io TCI_CPUn 101
+set_io TEAn      43
+set_io TEA_CPUn 122
+set_io TBIn      55
+set_io TBI_CPUn  64
+
+#BUS ARBITRATION
+set_io RESETn  34
+set_io CPUBGn 102
+set_io BUFENn 135
+set_io BUFDIR 136
+set_io BGn     96
+set_io BBn    130
+set_io DMAAn  134
+set_io LBENn   48
+
+#ADDRESS
+set_io A_040[0]   37 -pullup yes
+set_io A_040[1]   38 -pullup yes
+set_io A_AMIGA[0] 39 -pullup yes
+set_io A_AMIGA[1] 41 -pullup yes

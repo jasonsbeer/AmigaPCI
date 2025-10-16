@@ -1,0 +1,29 @@
+---------------------------------------
+Resource Usage Report for U111_TOP 
+
+Mapping to part: ice40hx4ktq144
+Cell usage:
+GND             2 uses
+SB_DFF          6 uses
+SB_DFFESR       8 uses
+SB_DFFN         1 use
+SB_DFFSR        21 uses
+SB_DFFSS        1 use
+SB_GB           1 use
+VCC             2 uses
+SB_LUT4         111 uses
+
+I/O ports: 97
+I/O primitives: 97
+SB_IO          96 uses
+SB_PLL40_2F_PAD 1 use
+
+I/O Register bits:                  0
+Register bits not including I/Os:   37 (1%)
+
+@S |Mapping Summary:
+Total  LUTs: 111 (3%)
+
+Distribution of All Consumed LUTs = LUT4 
+Distribution of All Consumed Luts 111 = 111 
+

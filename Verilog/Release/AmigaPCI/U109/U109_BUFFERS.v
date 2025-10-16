@@ -1,0 +1,15 @@
+module U109_BUFFERS
+(
+    input [31:0] D,
+
+    output [31:0] AD
+);
+
+//SET DIRECTION AND STATE OF D <-> AD DATA BUFFERS.
+//THE BYTES ARE SWAPPED FOR THE INTERFACE.
+
+//THIS IS JUST FOR TESTING, ATM.
+
+assign AD = D;
+
+endmodule

@@ -1,0 +1,25 @@
+Selecting top level module U111_TOP
+@N: CG364 :"C:\lscc\iCEcube2.2020.12\synpbase\lib\generic\sb_ice40.v":931:7:931:21|Synthesizing module SB_PLL40_2F_PAD in library work.
+
+@N: CG364 :"D:\LocalBus68040\U111\U111_BUFFERS.v":32:7:32:18|Synthesizing module U111_BUFFERS in library work.
+
+@N: CG364 :"D:\LocalBus68040\U111\U111_CYCLE_SM.v":36:7:36:19|Synthesizing module U111_CYCLE_SM in library work.
+
+@N: CG364 :"D:\LocalBus68040\U111\U111_TOP.v":33:7:33:14|Synthesizing module U111_TOP in library work.
+
+@W: CG781 :"D:\LocalBus68040\U111\U111_TOP.v":89:2:89:4|Input EXTFEEDBACK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\LocalBus68040\U111\U111_TOP.v":89:2:89:4|Input DYNAMICDELAY on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\LocalBus68040\U111\U111_TOP.v":89:2:89:4|Input BYPASS on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\LocalBus68040\U111\U111_TOP.v":89:2:89:4|Input SDI on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\LocalBus68040\U111\U111_TOP.v":89:2:89:4|Input SCLK on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"D:\LocalBus68040\U111\U111_TOP.v":89:2:89:4|Input LATCHINPUTVALUE on instance pll is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@N: CL201 :"D:\LocalBus68040\U111\U111_CYCLE_SM.v":178:0:178:5|Trying to extract state machine for register CYCLE_STATE.
+Extracted state machine for register CYCLE_STATE
+State machine has 6 reachable states with original encodings of:
+   0000
+   0001
+   0010
+   0011
+   0100
+   0101
+@N: CL159 :"D:\LocalBus68040\U111\U111_CYCLE_SM.v":37:10:37:14|Input CLK80 is unused.
