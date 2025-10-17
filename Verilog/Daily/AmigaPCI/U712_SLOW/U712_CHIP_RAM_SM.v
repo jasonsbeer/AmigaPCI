@@ -321,6 +321,10 @@ always @(negedge CLK40) begin
                 end
 
                 4'h7 : begin
+                    SDRAM_STATE <= 4'h8;
+                end
+
+                4'h8 : begin
                     DMA_CYCLE <= 0;
                     CPU_CYCLE <= 0;           
                     CLK_EN <= 1;

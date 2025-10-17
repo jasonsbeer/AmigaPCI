@@ -19,9 +19,9 @@ set_io A[1]  10
 #set_io A[6]  17
 #set_io A[7]  18
 #set_io A[8]  19
-set_io ATA_A[9]  22
-set_io ATA_A[10] 23
-set_io ATA_A[11] 24
+#set_io A[9]  22
+#set_io A[10] 23
+#set_io A[11] 24
 #set_io A[12] 25
 #set_io A[13] 26
 #set_io A[14] 28
@@ -31,6 +31,10 @@ set_io ATA_A[11] 24
 #set_io A[18] 33
 #set_io A[19] 34
 #set_io A[20] 11
+
+set_io ATA_A[0] 22 //A9
+set_io ATA_A[1] 23 //A10
+set_io ATA_A[2] 24 //A11
 
 #AGNUS ADDRESS BUS - INPUTS
 set_io DRA[0] 102
@@ -58,21 +62,21 @@ set_io CMA[9]  83
 set_io CMA[10] 56
 
 #DRAM CONTROL SIGNALS
-set_io CLLBEn     45
-set_io BANK1      49
-set_io BANK0      52
-set_io SDRAM_CSn  60 #OUTPUT - SDRAM CHIP SELECT SIGNAL
-set_io RASn       61 #OUTPUT - SDRAM RAS
-set_io CASn       62 #OUTPUT - SDRAM CAS
-set_io WEn        73 #OUTPUT - SDRAM WRITE ENABLE
-set_io CUMBEn     74
-set_io CLMBEn     75
-set_io CLK_EN     84 #OUTPUT - SDRAM CLOCK ENABLE
-set_io CUUBEn     85
+set_io CLLBEn      45
+set_io BANK1       49
+set_io BANK0       52
+set_io SDRAM_CSn   60 #OUTPUT - SDRAM CHIP SELECT SIGNAL
+set_io RASn        61 #OUTPUT - SDRAM RAS
+set_io CASn        62 #OUTPUT - SDRAM CAS
+set_io WEn         73 #OUTPUT - SDRAM WRITE ENABLE
+set_io CUMBEn      74
+set_io CLMBEn      75
+set_io CLK_EN      84 #OUTPUT - SDRAM CLOCK ENABLE
+set_io CUUBEn      85
 set_io DB_ENn      42 #OUTPUT - ENABLE FOR CHIPSET DATA BRIDGE
 set_io DB_DIR      43
-set_io VBENn      44
-set_io RAMSPACEn 130 #INPUT - CHIP RAM ADDRESS SPACE
+set_io VBENn       44
+set_io RAMSPACEn  130 #INPUT - CHIP RAM ADDRESS SPACE
 set_io DRD_DIR    107
 set_io DRD_ENn    110
 
@@ -117,3 +121,6 @@ set_io UUBEn      125
 set_io ATA_AB[2] 120
 set_io ATA_AB[1] 128
 set_io ATA_AB[0] 129
+
+#TEST POINTS
+#set_io TP0 37

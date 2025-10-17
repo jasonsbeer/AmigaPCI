@@ -56,8 +56,9 @@ module U712_TOP
     output [10:0] CMA,
 
     //ATA
-    input [11:9] ATA_A,
+    input  [2:0] ATA_A,
     output [2:0] ATA_AB
+
 );
 
 /////////////////////
@@ -209,6 +210,8 @@ U712_CHIP_RAM_SM U712_CHIP_RAM_SM
 // ATA ADDRESS //
 ////////////////
 
+//Connect address signals 11:9 to ATA address bits 2:0.
+
 assign ATA_AB = ATA_A;
 
 //////////
@@ -231,7 +234,7 @@ SB_PLL40_CORE #(
     .FILTER_RANGE (3'b011),
     .FEEDBACK_PATH ("DELAY"),
     .DELAY_ADJUSTMENT_MODE_FEEDBACK ("FIXED"),
-    .FDA_FEEDBACK   (4'b0111),
+    .FDA_FEEDBACK   (4'b1111),
     .DELAY_ADJUSTMENT_MODE_RELATIVE ("FIXED"),
     .FDA_RELATIVE   (4'b0000),
     .PLLOUT_SELECT ("GENCLK")
