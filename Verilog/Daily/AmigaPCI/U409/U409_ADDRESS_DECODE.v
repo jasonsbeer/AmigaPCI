@@ -46,17 +46,18 @@ module U409_ADDRESS_DECODE
 
     //Chip Selects
     output ROMENn, CIA_SPACE, CIACS0n, CIACS1n, RAMSPACEn, REGSPACEn,
-    output AUTOVECTOR, RTC_ENn, AUTOCONFIG_SPACE, ATA_SPACE, ATA_ENn,
-    output PCS0, PCS1, SCS0, SCS1,
+    output AUTOVECTOR, RTC_SPACE, AUTOCONFIG_SPACE, ATA_SPACE, ATA_ENn,
+    output PCS0, PCS1, SCS0, SCS1, BREG_ENn, BPRO_ENn,
+    output [1:0] PCIAT,
 
     //Base Addresses
     input [7:0] BRIDGE_BASE,
     input [7:1] LIDE_BASE,
-    input [2:0] PRO_BASE    
+    input [3:0] PRO_BASE,    
     
-    //output FLASH_SPACE
-    //output [1:0] PCIAT, BREG_ENn, BPRO_ENn,
-    //output [1:0] F_BANK
+    //FLASH
+    output FLASH_SPACE,
+    output [1:0] FLASH_BANK
 
 );
 
@@ -116,8 +117,7 @@ assign AUTOCONFIG_SPACE = Z2_SPACE && A[23:16] == 8'hE8;
 /////////////////////
 
 //$00DC 0000 - $00DD FFFF
-assign RTC_ENn = !(Z2_SPACE && A[23:17] == 7'b1101110);
-//assign RTC_ENn = 1'b1;
+assign RTC_SPACE = Z2_SPACE && A[23:17] == 7'b1101110;
 
   /////////
  // ATA //
@@ -163,19 +163,19 @@ end
 //PCI Memory Space       1        0
 //I/O Space              1        1
 
-/*assign BREG_ENn = !(Z2_SPACE && CONFIGURED && A[23:16] == BRIDGE_BASE);
-assign BPRO_ENn = !(RESETn   && CONFIGURED && A[31:29] == PRO_BASE);
+assign BREG_ENn = !(Z2_SPACE && CONFIGURED && A[23:16] == BRIDGE_BASE); //64k
+assign BPRO_ENn = !(RESETn   && CONFIGURED && A[31:28] == PRO_BASE); //256mb
 
 wire ALT_SPACE   =  TT[1] && !TT[0];
 wire CONF0_SPACE = ALT_SPACE && (!TM[2] && !TM[1] && !TM[0]);
 wire CONF1_SPACE = ALT_SPACE && (!TM[2] &&  TM[1] &&  TM[0]);
 
-wire PRO_CONF0_SPACE = BPRO_ENn && A[28:20] == {1'b1, 8'hFC};
-wire PRO_CONF1_SPACE = BPRO_ENn && A[28:20] == {1'b1, 8'hFD};
-wire PRO_IO_SPACE    = BPRO_ENn && A[28:21] == 8'hFF;
+wire PRO_CONF0_SPACE = BPRO_ENn && A[27:20] == 8'hFC;
+wire PRO_CONF1_SPACE = BPRO_ENn && A[27:20] == 8'hFD;
+wire PRO_IO_SPACE    = BPRO_ENn && A[27:20] == 8'hFE;
 
 assign PCIAT[1] = RESETn && ((PRO_IO_SPACE || !ALT_SPACE) && !PRO_CONF0_SPACE && !PRO_CONF1_SPACE);
-assign PCIAT[0] = RESETn && (PRO_IO_SPACE || CONF1_SPACE || PRO_CONF1_SPACE);*/
+assign PCIAT[0] = RESETn && (PRO_IO_SPACE || CONF1_SPACE || PRO_CONF1_SPACE);
 
   /////////////////
  // FLASH SPACE //
@@ -184,15 +184,20 @@ assign PCIAT[0] = RESETn && (PRO_IO_SPACE || CONF1_SPACE || PRO_CONF1_SPACE);*/
 //The flash is 4 x 512k spaces, defined by the values of FBANK1 and FBANK0.
 //The spaces are as follows...
 
-// SPACE               FBANK1  FBANK0  A[23:19]
-//-------------------------------------------------
-// $A80000 - $AFFFFF     0       0      10101
-// $B00000 - $B7FFFF     0       1      10110
-// $E00000 - $E7FFFF     1       0      11100
-// $F00000 - $F7FFFF     1       1      11110
+// Amiga Address      FBANK1  FBANK0    FLASH Address
+//-------------------------------------------------------
+// $A80000 - $AFFFFF     0       0      $000000 - $07FFFF
+// $B00000 - $B7FFFF     0       1      $080000 - $0FFFFF
+// $E00000 - $E7FFFF     1       0      $100000 - $17FFFF
+// $F00000 - $F7FFFF     1       1      $180000 - $1FFFFF
 
-//assign F_BANK[1] = A[22];
-//assign F_BANK[0] = A[20];
-//assign FLASH_SPACE = Z2_SPACE && A[23] && A[21] && (A[20:19] == 2'b01 || A[20:19] == 2'b10 || A[20:19] == 2'b00);
+wire ROM_SPACE_A = A[23:19] == 5'b10101; //A8-AF
+wire ROM_SPACE_B = A[23:19] == 5'b10110; //B0-B7
+wire ROM_SPACE_E = A[23:19] == 5'b11100; //E0-E7
+wire ROM_SPACE_F = A[23:19] == 5'b11110; //F0-F7
+
+assign FLASH_BANK[1] = A[22];
+assign FLASH_BANK[0] = A[20];
+assign FLASH_SPACE = Z2_SPACE && (ROM_SPACE_F || ROM_SPACE_E || ROM_SPACE_B ||ROM_SPACE_A);
 
 endmodule

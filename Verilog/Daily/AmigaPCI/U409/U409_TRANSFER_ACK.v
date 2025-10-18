@@ -30,6 +30,7 @@ Date          Who  Description
 14-SEP-2025   JN   Added ROM delay and improved _TACK timing.
 22-SEP-2025   JN   Added RTC termination.
 11-OCT-2025   JN   Fixed erroneous assertion of RTC termination.
+18-OCT-2025   JN   Moved RTC to dedicated module.
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 */
@@ -45,12 +46,13 @@ module U409_TRANSFER_ACK (
     inout TACKn,
 
     //Address Spaces
-    input ROMENn, CIA_ENABLE, AGNUS_SPACE, AUTOVECTOR, RTC_ENn,
+    input ROMENn, CIA_ENABLE, AGNUS_SPACE, AUTOVECTOR, 
+    
+    //External TACK Enables
+    input RTC_TACK, FLASH_TACK,
 
     //ROM
     input [1:0] ROM_DELAY
-    //output reg ROMENn
-
 );
 
 ///////////////////////////
@@ -78,7 +80,7 @@ always @(posedge CLK40) begin
     end else begin
         case (TACK_STATE)
             4'h0 : begin
-                if (ROM_TACK_EN || RTC_TACK_EN || IRQ_TACK_EN || AC_TACK || CIA_TACK_EN || DELAYED_TACK_EN) begin
+                if (ROM_TACK_EN || RTC_TACK || IRQ_TACK_EN || AC_TACK || CIA_TACK_EN || DELAYED_TACK_EN || FLASH_TACK) begin
                     TACK_EN  <= 1;
                     TACK_OUT <= 0;
                     TACK_STATE <= 4'h1;
@@ -160,115 +162,6 @@ always @(posedge CLK40) begin
             2'b10 : begin
                 ROM_TACK_EN <= 0;
                 ROM_TACK_STATE <= 2'b00;
-            end
-        endcase
-    end
-end
-
-/*
-localparam [3:0] ROM_DELAY_200 = 4'h5; //200ns
-localparam [3:0] ROM_DELAY_150 = 4'h3; //150ns
-localparam [3:0] ROM_DELAY_100 = 4'h1; //100ns
-localparam [3:0] ROM_DELAY_050 = 4'h0; // 75ns
-
-wire [1:0] DELAY_200 = ROM_DELAY == 2'b11;
-wire [1:0] DELAY_150 = ROM_DELAY == 2'b10;
-wire [1:0] DELAY_100 = ROM_DELAY == 2'b01;
-wire [1:0] DELAY_050 = ROM_DELAY == 2'b00;
-
-reg [1:0] ROM_TACK_STATE;
-reg [3:0] ROM_TACK_COUNTER;
-reg ROM_TACK_EN;
-always @(posedge CLK40) begin
-    if (!RESETn) begin
-        ROM_TACK_EN <= 0;
-        ROM_TACK_COUNTER <= 4'h0;
-        ROM_TACK_STATE <= 2'b00;
-        ROMENn <= 1;
-    end else begin
-        case (ROM_TACK_STATE)
-            2'b00 : begin
-                if (!TSn && ROMEN) begin
-                    ROM_TACK_STATE <= 2'b01;
-                    ROMENn <= 0;
-                end
-            end
-            2'b01 : begin
-                ROM_TACK_COUNTER ++;
-                case (ROM_TACK_COUNTER)
-                    ROM_DELAY_050 : begin
-                        if (DELAY_050) begin 
-                            ROM_TACK_EN <= 1;
-                            ROM_TACK_STATE <= 2'b10;
-                        end
-                    end
-                    ROM_DELAY_100 : begin
-                        if (DELAY_100) begin 
-                            ROM_TACK_EN <= 1;
-                            ROM_TACK_STATE <= 2'b10;
-                        end
-                    end
-                    ROM_DELAY_150 : begin
-                        if (DELAY_150) begin 
-                            ROM_TACK_EN <= 1;
-                            ROM_TACK_STATE <= 2'b10;
-                        end
-                    end
-                    ROM_DELAY_200 : begin
-                        if (DELAY_200) begin 
-                            ROM_TACK_EN <= 1;
-                            ROM_TACK_STATE <= 2'b10;
-                        end
-                    end
-                endcase
-            end
-            2'b10 : begin
-                ROM_TACK_EN <= 0;
-                ROM_TACK_STATE <= 2'b11;
-            end
-            2'b11 : begin
-                ROMENn <= 1;
-                ROM_TACK_COUNTER <= 4'h0;
-                ROM_TACK_STATE <= 2'b00;
-            end
-        endcase
-    end
-end
-*/
-
-////////////////
-// RTC CYCLE //
-//////////////
-
-localparam [6:0] RTC_CYCLE_COUNTER = 7'd80;
-
-reg RTC_TACK_EN;
-reg [6:0] RTC_COUNTER;
-reg [1:0] RTC_TACK_STATE;
-always @(posedge CLK40) begin
-    if (!RESETn) begin
-        RTC_TACK_EN <= 0;
-        RTC_TACK_STATE <= 2'b0;
-        RTC_COUNTER <= 7'b0;
-    end else begin
-        case (RTC_TACK_STATE)        
-            2'b00 : begin
-                if (!RTC_ENn && !TSn) begin
-                    RTC_TACK_STATE <= 2'b01;
-                end
-            end
-            2'b01 : begin
-                if (RTC_COUNTER == RTC_CYCLE_COUNTER) begin
-                    RTC_TACK_EN <= 1;
-                    RTC_TACK_STATE <= 2'b10;
-                end else begin
-                    RTC_COUNTER ++;
-                end
-            end
-            2'b10 : begin
-                RTC_TACK_EN <= 0;
-                RTC_COUNTER <= 7'b0;
-                RTC_TACK_STATE <= 2'b00;
             end
         endcase
     end

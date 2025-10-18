@@ -54,7 +54,7 @@ module U409_AUTOCONFIG (
     //Base Addresses
     output reg [7:0] BRIDGE_BASE,
     output reg [7:1] LIDE_BASE,
-    output reg [2:0] PRO_BASE
+    output reg [3:0] PRO_BASE
     
 );
 
@@ -256,7 +256,7 @@ always @(posedge CLK40) begin
                         LIDE_CONF <= 1;
                         LIDE_BASE[7:4] <= D_IN;
                     end else begin
-                        PRO_BASE <= D_IN[3:1];
+                        PRO_BASE <= D_IN[3:0];
                         CONFIGENn <= 0;
                         CONFIGURED <= 1;
                     end
