@@ -61,8 +61,7 @@ module U409_TOP (
     output [1:0] PCIAT,
 
     //ATA
-    //input SPIO_J, PPIO_J,
-    output SPIO_J, PPIO_J,
+    input SPIO_J, PPIO_J,
     output PCS0, PCS1, SCS0, SCS1, PPIO, SPIO, ATA_ENn,
 
     //Flash
