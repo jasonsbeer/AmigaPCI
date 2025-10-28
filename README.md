@@ -107,7 +107,7 @@ The AmigaPCI includes the Amiga OCS/ECS video bus. This allows for the use of OC
 **Rev 6.0**  Current engineering prototype. 
 
 # Acknowledgements  
-Chris Hooper for his work on the STM32F205 microcontroller code.
+Chris Hooper for his work on the STM32F205 microcontroller code.  
 Frédéric Requin for helping me better understand the ATA protocol.  
 Ian Steadman for his [Amiga PC floppy interface](https://github.com/istedman/Floppy_adaptor) design.
 
