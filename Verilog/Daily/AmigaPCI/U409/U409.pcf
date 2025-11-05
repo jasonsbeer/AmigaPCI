@@ -1,14 +1,14 @@
 
 #CLOCKS
 set_io RESETn     62
-set_io CLK6       52
+#set_io CLK6       52
 set_io TICK60     63
 set_io TICK50     64
 set_io XCLK       93
 set_io CLK28_IN   94
 set_io AGNUS_CLK  97
 set_io CLK_CIA   122
-set_io CLK40     129
+set_io CLK40_IN     129
 set_io XCLK_ENn  102
 
 #CPU DATA BUS
@@ -76,7 +76,7 @@ set_io CIACS0n    80
 set_io CIACS1n    81
 set_io REGSPACEn 120
 set_io BUFENn    121
-set_io ROMENn    124
+set_io ROM_ENn    124
 set_io RTC_ENn    82
 set_io CPUCONFn  130
 

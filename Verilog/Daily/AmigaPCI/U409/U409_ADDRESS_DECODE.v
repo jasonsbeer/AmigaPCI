@@ -36,7 +36,7 @@ module U409_ADDRESS_DECODE
 (
 
     //Clocks
-    input CLK40,  OVL, CIA_ENABLE, CONFIGURED,
+    input CLK40, OVL, CIA_ENABLE, CONFIGURED,
     
     //Cycle Start/Terminate
     input RESETn, RnW,
@@ -45,7 +45,7 @@ module U409_ADDRESS_DECODE
     input [31:12] A,
 
     //Chip Selects
-    output ROMENn, CIA_SPACE, CIACS0n, CIACS1n, RAMSPACEn, REGSPACEn,
+    output ROM_SPACE, CIA_SPACE, CIACS0n, CIACS1n, RAMSPACEn, REGSPACEn,
     output AUTOVECTOR, RTC_SPACE, AUTOCONFIG_SPACE, ATA_SPACE, ATA_ENn,
     output PCS0, PCS1, SCS0, SCS1, BREG_ENn, BPRO_ENn,
     output [1:0] PCIAT,
@@ -76,7 +76,7 @@ wire Z2_SPACE = RESETn && A[31:24] == 8'h00;
 //ROM IS ENABLED AT THE RESET VECTOR $0000 0000 WHEN OVL IS ASSERTED (HIGH) AND AT $00F8 0000 - $00FF FFFF.
 //KICKSTART JUMPS TO THE HIROM ADDRESS SPACE BEFORE OVL IS NEGATED, SO WE DON'T CHECK FOR IT AT THE HIROM ADDRESS.
 
-assign ROMENn  = !(Z2_SPACE && (LOWROM || HIROM));
+assign ROM_SPACE  = Z2_SPACE && (LOWROM || HIROM);
 wire   LOWROM  = A[23:19] == 5'b00000 && OVL;
 wire   HIROM   = A[23:19] == 5'b11111;
 
@@ -132,7 +132,7 @@ assign PCS1 =  A[14] && CS0;
 assign SCS0 = !A[14] && CS1;
 assign SCS1 =  A[14] && CS1;
 
-assign ATA_SPACE = Z2_SPACE && CONFIGURED && A[23:17] == LIDE_BASE; //128k 7'b1110101
+assign ATA_SPACE = Z2_SPACE && CONFIGURED && A[23:17] == LIDE_BASE; //128k
 //wire ATA_ROM = ATA_SPACE && !ATA_EN;
 assign ATA_ENn = !(ATA_SPACE && ATA_EN);
 //assign ATA_ENn = 1'b1;
@@ -198,6 +198,6 @@ wire ROM_SPACE_F = A[23:19] == 5'b11110; //F0-F7
 
 assign FLASH_BANK[1] = A[22];
 assign FLASH_BANK[0] = A[20];
-assign FLASH_SPACE = Z2_SPACE && (ROM_SPACE_F || ROM_SPACE_E || ROM_SPACE_B ||ROM_SPACE_A);
+assign FLASH_SPACE = Z2_SPACE && (ROM_SPACE_F || ROM_SPACE_E || ROM_SPACE_B || ROM_SPACE_A);
 
 endmodule

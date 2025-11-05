@@ -38,7 +38,7 @@ GitHub: https://github.com/jasonsbeer/AmigaPCI
 module U409_TRANSFER_ACK (
 
     //Clocks
-    input CLK40, CLK_CIA, RESETn,
+    input CLK40_IN, CLK40, CLK_CIA, RESETn,
     
     //Cycle Start/Termination
     input TSn, AC_TACK,
@@ -46,7 +46,8 @@ module U409_TRANSFER_ACK (
     inout TACKn,
 
     //Address Spaces
-    input ROMENn, CIA_ENABLE, AGNUS_SPACE, AUTOVECTOR, 
+    input ROM_SPACE,CIA_ENABLE, AGNUS_SPACE, AUTOVECTOR,
+    output reg ROM_ENn,
     
     //External TACK Enables
     input RTC_TACK, FLASH_TACK,
@@ -69,10 +70,10 @@ reg TACK_OUT;
 
 assign TACKn = TACK_EN ? TACK_OUT : 1'bz;
 assign TBIn  = TACK_EN ? TACK_OUT : 1'bz;
-assign TCIn  = TACK_EN ? (ROMENn ? TACK_OUT : 1'b1) : 1'bz;
+assign TCIn  = TACK_EN ? (ROM_ENn ? TACK_OUT : 1'b1) : 1'bz;
 
 reg [3:0] TACK_STATE;
-always @(posedge CLK40) begin
+always @(posedge CLK40_IN) begin
     if (!RESETn) begin
         TACK_EN <= 0;
         TACK_OUT <= 1;
@@ -123,11 +124,15 @@ always @(posedge CLK40) begin
         ROM_TACK_EN <= 0;
         ROM_TACK_COUNTER <= 4'h0;
         ROM_TACK_STATE <= 2'b00;
+        ROM_ENn <= 1;
     end else begin
         case (ROM_TACK_STATE)
             2'b00 : begin
-                if (!TSn && !ROMENn) begin
+                if (!TSn && ROM_SPACE) begin
                     ROM_TACK_STATE <= 2'b01;
+                    ROM_ENn <= 0;
+                end else begin
+                    ROM_ENn <= 1;
                 end
             end
             2'b01 : begin
@@ -161,6 +166,11 @@ always @(posedge CLK40) begin
             end
             2'b10 : begin
                 ROM_TACK_EN <= 0;
+                ROM_TACK_STATE <= 2'b11;
+            end
+            2'b11 : begin
+                //ROM_ENn <= 1;
+                ROM_TACK_COUNTER <= 4'h0;
                 ROM_TACK_STATE <= 2'b00;
             end
         endcase

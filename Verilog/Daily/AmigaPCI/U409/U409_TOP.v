@@ -34,7 +34,7 @@ iceprog D:\AmigaPCI\U409\U409_icecube\U409_icecube_Implmnt\sbt\outputs\bitmap\U4
 module U409_TOP (
 
     //Clocks
-    input  CLK40, CLK6, CLK28_IN, XCLK, XCLK_ENn, RESETn,
+    input  CLK40_IN, CLK28_IN, XCLK, XCLK_ENn, RESETn,
     output AGNUS_CLK, TICK60, TICK50, CLK_CIA, 
     
     //Cycle Start/Termination    
@@ -49,7 +49,7 @@ module U409_TOP (
     inout [7:4] D,
 
     //Chip Selects/Address Spaces
-    output ROMENn, BUFENn, CIACS0n, CIACS1n, RAMSPACEn, REGSPACEn, RTC_ENn, PORTSIZE,
+    output ROM_ENn, BUFENn, CIACS0n, CIACS1n, RAMSPACEn, REGSPACEn, RTC_ENn, PORTSIZE,
     
     //Configuration Signals
     input AUTOBOOT,
@@ -61,7 +61,7 @@ module U409_TOP (
     output [1:0] PCIAT,
 
     //ATA
-    input SPIO_J, PPIO_J,
+    input PPIO_J, SPIO_J,
     output PCS0, PCS1, SCS0, SCS1, PPIO, SPIO, ATA_ENn,
 
     //Flash
@@ -84,6 +84,7 @@ assign AGNUS_CLK = XCLK_ENn ? CLK28_IN : XCLK;
 // SIGNAL WIRES //
 /////////////////
 
+wire CLK40;
 wire AUTOCONFIG_SPACE;
 wire AUTOVECTOR;
 wire CIA_SPACE;
@@ -92,6 +93,7 @@ wire FLASH_TACK;
 wire FLASH_SPACE;
 wire RTC_TACK;
 wire RTC_SPACE;
+wire ROM_SPACE;
 
 wire [7:0] BRIDGE_BASE;
 wire [7:1] LIDE_BASE;
@@ -100,7 +102,7 @@ wire [3:0] D_OUT;
 wire [3:0] D_IN = AUTOCONFIG_SPACE && !RnW ? D[7:4] : 4'h0;
 
 wire AGNUS_SPACE = !RAMSPACEn || !REGSPACEn;
-wire LV_SPACE = AGNUS_SPACE || AUTOCONFIG_SPACE || ATA_SPACE; // || !BRIDGE_ENn; //Enable the main level shifting buffers when we are in the LVTTL space.
+wire LV_SPACE = AGNUS_SPACE || AUTOCONFIG_SPACE || ATA_SPACE || FLASH_SPACE; // || !BRIDGE_ENn; //Enable the main level shifting buffers when we are in the LVTTL space.
 assign D = AUTOCONFIG_SPACE && RnW ? D_OUT : 4'bz;
 
 ///////////////////////
@@ -109,10 +111,11 @@ assign D = AUTOCONFIG_SPACE && RnW ? D_OUT : 4'bz;
 
 U409_TRANSFER_ACK U409_TRANSFER_ACK (
     //INPUTS
+    .CLK40_IN (CLK40_IN),
     .CLK40 (CLK40),
     .RESETn (RESETn),
     .TSn (TSn),
-    .ROMENn (ROMENn),
+    .ROM_SPACE (ROM_SPACE),
     .CIA_ENABLE (CIA_ENABLE),
     .CLK_CIA (CLK_CIA),
     .AGNUS_SPACE (AGNUS_SPACE),
@@ -125,6 +128,7 @@ U409_TRANSFER_ACK U409_TRANSFER_ACK (
     //OUTPUTS
     .TBIn (TBIn),
     .TCIn (TCIn),
+    .ROM_ENn (ROM_ENn),
 
     //INOUTS
     .TACKn (TACKn)
@@ -149,7 +153,7 @@ U409_DATA_BUFFERS U409_DATA_BUFFERS (
 //Identify the 16-bit ports.
 wire CONFIGURED;
 
-assign PORTSIZE = CIA_SPACE || !REGSPACEn || RTC_SPACE || AUTOCONFIG_SPACE || !ATA_ENn;
+assign PORTSIZE = CIA_SPACE || !REGSPACEn || RTC_SPACE || AUTOCONFIG_SPACE || ATA_SPACE || FLASH_SPACE;
 
 U409_ADDRESS_DECODE U409_ADDRESS_DECODE (
     //INPUTS
@@ -167,7 +171,7 @@ U409_ADDRESS_DECODE U409_ADDRESS_DECODE (
     .PRO_BASE (PRO_BASE),
 
     //OUTPUTS
-    .ROMENn (ROMENn),
+    .ROM_SPACE (ROM_SPACE),
     .CIA_SPACE (CIA_SPACE),
     .CIACS0n (CIACS0n),
     .CIACS1n (CIACS1n),
@@ -294,5 +298,37 @@ assign SPIO = SPIO_J;
 //assign PPIO_J = FLASH_ENn;
 //assign SPIO_J = FLASH_READn;
 //assign AUTOBOOTJ = RTC_ENn;
+
+//////////
+// PLL //
+////////
+
+wire CLK40_PAD = CLK40_IN;
+
+SB_PLL40_CORE #(
+    .DIVR (4'b0000),
+    .DIVF (7'b0000000),
+    .DIVQ (3'b100),
+    .FILTER_RANGE (3'b011),
+    .FEEDBACK_PATH ("PHASE_AND_DELAY"),
+    .DELAY_ADJUSTMENT_MODE_FEEDBACK ("FIXED"),
+    .FDA_FEEDBACK   (4'b0000),
+    //.DELAY_ADJUSTMENT_MODE_RELATIVE ("FIXED"),
+    //.FDA_RELATIVE   (4'b0000),
+    .PLLOUT_SELECT ("SHIFTREG_0deg"),
+    .SHIFTREG_DIV_MODE (1'b0)
+) pll (
+    .LOCK           (),
+    .RESETB         (1'b1),
+    .REFERENCECLK   (CLK40_PAD),
+    .PLLOUTGLOBAL   (CLK40),
+    
+    .EXTFEEDBACK       (1'b0),
+    .DYNAMICDELAY      (8'b00001111),
+    .BYPASS            (1'b0),
+    .SDI               (1'b0),
+    .SCLK              (1'b0),
+    .LATCHINPUTVALUE   (1'b0)
+);
 
 endmodule

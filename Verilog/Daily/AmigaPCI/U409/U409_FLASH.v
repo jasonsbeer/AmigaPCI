@@ -44,28 +44,30 @@ module U409_FLASH
 
     //FLASH Control Signals
     input FLASH_SPACE, FLASH_RDY,
-    output FLASH_WPn, FLASH_RSTn,
-    output reg FLASH_ENn, FLASH_READn, FLASH_WRITEn
+    output FLASH_WPn, FLASH_RSTn, FLASH_READn, FLASH_WRITEn,
+    output reg FLASH_ENn//, FLASH_READn, FLASH_WRITEn
 
 );
 
 assign FLASH_WPn = 1;
-assign FLASH_RSTn = 1;
+assign FLASH_RSTn = RESETn;
 
 //////////////////////////
 // FLASH STATE MACHINE //
 ////////////////////////
 
-reg WRITE_CYCLE;
+assign FLASH_READn  = !(FLASH_ENABLED && !WRITE_CYCLE);
+assign FLASH_WRITEn = !(FLASH_ENABLED &&  WRITE_CYCLE);
+
+reg WRITE_CYCLE, FLASH_ENABLED;
 reg [3:0] FLASH_STATE_COUNTER;
 
 always @(posedge CLK40) begin
     if (!RESETn) begin
         FLASH_ENn <= 1;
-        FLASH_READn <= 1;
-        FLASH_WRITEn <= 1;
         FLASH_TACK <= 0;
         WRITE_CYCLE <= 0;
+        FLASH_ENABLED <= 0;
         FLASH_STATE_COUNTER <= 4'h0;
     end else begin
 
@@ -73,9 +75,8 @@ always @(posedge CLK40) begin
             4'h0 : begin
                 if (!TSn && FLASH_SPACE) begin
                     FLASH_ENn <= 0;
-                    FLASH_READn  <= !RnW;
-                    FLASH_WRITEn <=  RnW;
-                    WRITE_CYCLE  <= !RnW;
+                    FLASH_ENABLED <= 1;
+                    WRITE_CYCLE  <= !(RnW);
                     FLASH_STATE_COUNTER <= 4'h1;
                 end
             end
@@ -85,18 +86,21 @@ always @(posedge CLK40) begin
             end
             4'h2 : begin
                 FLASH_TACK <= 0;
-                FLASH_STATE_COUNTER <= 4'h3;
                 if (WRITE_CYCLE) begin
-                    FLASH_WRITEn <= 1;
-                    FLASH_ENn    <= 1;
+                    FLASH_ENABLED <= 0;
                 end
+                FLASH_STATE_COUNTER <= 4'h3;
             end
             4'h3 : begin
+                if (WRITE_CYCLE) begin
+                    FLASH_ENn <= 1;
+                end
                 FLASH_STATE_COUNTER <= 4'h4;
             end
             4'h4 : begin
-                FLASH_READn <= 1;
-                FLASH_ENn   <= 1;
+                FLASH_ENn     <= 1;
+                WRITE_CYCLE   <= 0;
+                FLASH_ENABLED <= 0;
                 FLASH_STATE_COUNTER <= 4'h0;
             end
         endcase
