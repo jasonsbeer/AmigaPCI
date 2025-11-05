@@ -94,6 +94,7 @@ wire FLASH_SPACE;
 wire RTC_TACK;
 wire RTC_SPACE;
 wire ROM_SPACE;
+wire CONFIGURED;
 
 wire [7:0] BRIDGE_BASE;
 wire [7:1] LIDE_BASE;
@@ -103,6 +104,7 @@ wire [3:0] D_IN = AUTOCONFIG_SPACE && !RnW ? D[7:4] : 4'h0;
 
 wire AGNUS_SPACE = !RAMSPACEn || !REGSPACEn;
 wire LV_SPACE = AGNUS_SPACE || AUTOCONFIG_SPACE || ATA_SPACE || FLASH_SPACE; // || !BRIDGE_ENn; //Enable the main level shifting buffers when we are in the LVTTL space.
+assign PORTSIZE = CIA_SPACE || !REGSPACEn || RTC_SPACE || AUTOCONFIG_SPACE || ATA_SPACE || FLASH_SPACE;
 assign D = AUTOCONFIG_SPACE && RnW ? D_OUT : 4'bz;
 
 ///////////////////////
@@ -149,11 +151,6 @@ U409_DATA_BUFFERS U409_DATA_BUFFERS (
 /////////////////////////
 // ADDRESS DECODE TOP //
 ///////////////////////
-
-//Identify the 16-bit ports.
-wire CONFIGURED;
-
-assign PORTSIZE = CIA_SPACE || !REGSPACEn || RTC_SPACE || AUTOCONFIG_SPACE || ATA_SPACE || FLASH_SPACE;
 
 U409_ADDRESS_DECODE U409_ADDRESS_DECODE (
     //INPUTS

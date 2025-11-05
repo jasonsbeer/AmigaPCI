@@ -24,9 +24,10 @@ Target Devices: iCE40-HX4K-TQ144
 
 Description: Flash Cycle State Machine
 
-Date          Who  Description
------------------------------------
-17-OCT-2025 : JN   INITIAL CODE
+Date         Who  Description
+----------------------------------
+17-OCT-2025  JN   INITIAL CODE
+05-NOV-2025  JN   Add one clock to read cycle.
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 */
@@ -45,7 +46,7 @@ module U409_FLASH
     //FLASH Control Signals
     input FLASH_SPACE, FLASH_RDY,
     output FLASH_WPn, FLASH_RSTn, FLASH_READn, FLASH_WRITEn,
-    output reg FLASH_ENn//, FLASH_READn, FLASH_WRITEn
+    output reg FLASH_ENn
 
 );
 
@@ -71,39 +72,48 @@ always @(posedge CLK40) begin
         FLASH_STATE_COUNTER <= 4'h0;
     end else begin
 
-        case (FLASH_STATE_COUNTER)
-            4'h0 : begin
-                if (!TSn && FLASH_SPACE) begin
-                    FLASH_ENn <= 0;
-                    FLASH_ENABLED <= 1;
-                    WRITE_CYCLE  <= !(RnW);
-                    FLASH_STATE_COUNTER <= 4'h1;
-                end
+    case (FLASH_STATE_COUNTER)
+        4'h0 : begin
+            if (!TSn && FLASH_SPACE) begin
+                FLASH_ENn     <= 0;
+                FLASH_ENABLED <= 1;
+                WRITE_CYCLE   <= !(RnW);
+                FLASH_STATE_COUNTER <= 4'h1;
             end
-            4'h1 : begin
+        end
+        4'h1 : begin
+            FLASH_STATE_COUNTER <= 4'h2;
+            FLASH_TACK <= WRITE_CYCLE;
+        end
+        4'h2 : begin
+            if (WRITE_CYCLE) begin
+                FLASH_ENABLED <= 0;
+                FLASH_TACK    <= 0;
+            end else begin
                 FLASH_TACK <= 1;
-                FLASH_STATE_COUNTER <= 4'h2;
             end
-            4'h2 : begin
+            FLASH_STATE_COUNTER <= 4'h3;
+        end
+        4'h3 : begin
+            if (WRITE_CYCLE) begin
+                FLASH_ENn   <= 1;
+                WRITE_CYCLE <= 0;
+                FLASH_STATE_COUNTER <= 4'h0;
+            end else begin
                 FLASH_TACK <= 0;
-                if (WRITE_CYCLE) begin
-                    FLASH_ENABLED <= 0;
-                end
-                FLASH_STATE_COUNTER <= 4'h3;
-            end
-            4'h3 : begin
-                if (WRITE_CYCLE) begin
-                    FLASH_ENn <= 1;
-                end
                 FLASH_STATE_COUNTER <= 4'h4;
             end
-            4'h4 : begin
-                FLASH_ENn     <= 1;
-                WRITE_CYCLE   <= 0;
-                FLASH_ENABLED <= 0;
-                FLASH_STATE_COUNTER <= 4'h0;
-            end
-        endcase
+        end
+        4'h4 : begin
+            FLASH_STATE_COUNTER <= 4'h5;
+        end
+        4'h5 : begin
+            FLASH_ENn     <= 1;
+            FLASH_ENABLED <= 0;
+            FLASH_STATE_COUNTER <= 4'h0;
+        end
+    endcase
+
     end   
 end
 
