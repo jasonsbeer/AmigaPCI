@@ -213,7 +213,7 @@ On startup, this range is scanned from $0800 0000 and upward, 1MB ($0010 0000) a
 
 ### 3.1.2 AUTOCONFIG Devices
 
-AUTOCONFIG devices may also be added via the Local Bus Port by supplying the necessary AUTOCONFIG logic on the Local Bus Card. AUTOCONFIG devices on the Local Bus Port are configured first. Once the devices on the Local Bus Card are configured, the **_CPUCONF** signal must be asserted. Failure to do so will prevent other devices on the AmigaPCI from being configured. AUTOCONFIG devices must terminate the data transfer cycle when the AUTOCONFIG device is addressed.
+AUTOCONFIG devices may be added via the Local Bus Port by supplying the necessary AUTOCONFIG logic on the Local Bus Card. AUTOCONFIG devices on the Local Bus Port are always configured last. AUTOCONFIG devices on the local bus port must wait for assertion of _CPUCONF before attempting to configure.
 
 ## 3.2 Footprint and Connector
 
@@ -333,8 +333,8 @@ The 40MHz LVTTL bus clock is generated on the Local Bus Card and used to syncron
 
 ### 3.4.6 Other local bus Port Signals
 
-**_CPUCONF** (Local Bus Card Configured) Output  
-This LVTTL signal is driven by AUTOCONFIG logic on the Local Bus Card. Indicates AUTOCONFIG devices on the Local Bus Card have been configured. AUTOCONFIG devices on the Local Bus Card are configured first. Once configured, asserting this signal allows devices on the AmigaPCI main board to be configured. In the absence of an AUTOCONFIG device, this may be left unconnected
+**_CPUCONF** (Local Bus Card Configure) Input  
+This LVTTL signal is driven by logic on the AmigaPCI. It indicates AUTOCONFIG devices on the Local Bus Card may now be configured. AUTOCONFIG devices on the Local Bus Card are always configured last.
 
 **_INT2** (Amiga Interupt 2) Output  
 This TTL signal is driven by a target device on the Local Bus Card. Open drain.
