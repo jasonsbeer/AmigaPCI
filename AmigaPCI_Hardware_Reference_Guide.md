@@ -522,7 +522,7 @@ $00A8 0000|$00B7 FFFF|Flash Memory Block 1
 $00B8 0000|$00BE FFFF|Reserved
 $00BF 0000|$00BF FFFF|CIA Ports and Timers
 $00C0 0000|$00DB FFFF|Reserved
-$00DC 0000|$00DD FFFF|Real Time Clock
+$00DC 0000|$00DC FFFF|Real Time Clock
 $00DD 0000|$00DE FFFF|Reserved
 $00DF 0000|$00DF FFFF|Chipset Registers
 $00E0 0000|$00E7 FFFF|Flash Memory Block 2
