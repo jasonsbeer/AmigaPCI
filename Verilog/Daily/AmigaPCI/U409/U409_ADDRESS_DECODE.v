@@ -28,6 +28,7 @@ Date          Who  Description
 -----------------------------------
 01-JUL-2025   JN   INITIAL REV 6.0 CODE
 15-OCT-2025   JN   Assert _ROMEN directly from address.
+01-NOV-2025   JN   Roll back _ROMEN change above.
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 */
