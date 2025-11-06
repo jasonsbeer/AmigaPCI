@@ -519,7 +519,7 @@ $00DC 0000|$00DC FFFF|Real Time Clock
 $00DD 0000|$00DE FFFF|Reserved
 $00DF 0000|$00DF FFFF|Chipset Registers
 $00E0 0000|$00E7 FFFF|Flash Memory Block 2
-$00E8 0000|$00EF FFFF|Zorro 2 Configuration and I/O Space
+$00E8 0000|$00EF FFFF|Zorro 2 Configuration Space
 $00F0 0000|$00F7 FFFF|Flash Memory Block 3
 $00F8 0000|$00FF FFFF|ROM
 $0100 0000|$07FF FFFF|Reserved
