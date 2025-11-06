@@ -509,4 +509,29 @@ RESERVED|J101|[]()|
 RESERVED|J102|[]()|
 RESERVED|J203|[]()|
 
+# Appendix A - AmigaPCI Memory Map
+
+The AmigaPCI memory map is a modification of the Amiga 1200 memory map. Some of the address space implemented occupies the Gayle PCMCIA register spaces. Gayle-like PCMCIA devices must not be added to the AmigaPCI.
+
+Address Start|Address End|Description
+-|-|-
+$0000 0000|$001F FFFF|Amiga Chip Memory
+$0020 0000|$009F FFFF|Zorro 2 Memory Expansion Space
+$00A0 0000|$00A7 FFFF|Flash Memory Block 0
+$00A8 0000|$00B7 FFFF|Flash Memory Block 1
+$00B8 0000|$00BE FFFF|Reserved
+$00BF 0000|$00BF FFFF|CIA Ports and Timers
+$00C0 0000|$00DB FFFF|Reserved
+$00DC 0000|$00DD FFFF|Real Time Clock
+$00DD 0000|$00DE FFFF|Reserved
+$00DF 0000|$00DF FFFF|Chipset Registers
+$00E0 0000|$00E7 FFFF|Flash Memory Block 2
+$00E8 0000|$00EF FFFF|Zorro 2 Configuration and I/O Space
+$00F0 0000|$00F7 FFFF|Flash Memory Block 3
+$00F8 0000|$00FF FFFF|ROM
+$0100 0000|$07FF FFFF|Reserved
+$0800 0000|$0FFF FFFF|Local Bus Port RAM
+$1000 0000|$7FFF FFFF|PCI Expansion
+$8000 0000|$FFFF FFFF|Reserved
+
 **END**
