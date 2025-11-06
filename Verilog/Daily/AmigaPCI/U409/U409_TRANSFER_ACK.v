@@ -31,6 +31,7 @@ Date          Who  Description
 22-SEP-2025   JN   Added RTC termination.
 11-OCT-2025   JN   Fixed erroneous assertion of RTC termination.
 18-OCT-2025   JN   Moved RTC to dedicated module.
+05-NOV-2025   JN   Changed ROM timing options to support Kicksmash.
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 */
@@ -106,15 +107,15 @@ end
 //We support multiple timing options for ROM cycle termination.
 //The exact timing is user selected by jumpers on the APCI board.
 
-localparam [3:0] ROM_DELAY_200 = 4'h7; //250ns
-localparam [3:0] ROM_DELAY_150 = 4'h5; //200ns
-localparam [3:0] ROM_DELAY_100 = 4'h3; //150ns
-localparam [3:0] ROM_DELAY_050 = 4'h1; //100ns
+localparam [3:0] ROM_DELAY_250 = 4'h7; //250ns
+localparam [3:0] ROM_DELAY_250 = 4'h5; //200ns
+localparam [3:0] ROM_DELAY_200 = 4'h3; //150ns
+localparam [3:0] ROM_DELAY_150 = 4'h1; //100ns
 
-wire [1:0] DELAY_200 = ROM_DELAY == 2'b11;
-wire [1:0] DELAY_150 = ROM_DELAY == 2'b10;
-wire [1:0] DELAY_100 = ROM_DELAY == 2'b01;
-wire [1:0] DELAY_050 = ROM_DELAY == 2'b00;
+wire [1:0] DELAY_250 = ROM_DELAY == 2'b11;
+wire [1:0] DELAY_200 = ROM_DELAY == 2'b10;
+wire [1:0] DELAY_150 = ROM_DELAY == 2'b01;
+wire [1:0] DELAY_100 = ROM_DELAY == 2'b00;
 
 reg [1:0] ROM_TACK_STATE;
 reg [3:0] ROM_TACK_COUNTER;
@@ -138,12 +139,6 @@ always @(posedge CLK40) begin
             2'b01 : begin
                 ROM_TACK_COUNTER ++;
                 case (ROM_TACK_COUNTER)
-                    ROM_DELAY_050 : begin
-                        if (DELAY_050) begin 
-                            ROM_TACK_EN <= 1;
-                            ROM_TACK_STATE <= 2'b10;
-                        end
-                    end
                     ROM_DELAY_100 : begin
                         if (DELAY_100) begin 
                             ROM_TACK_EN <= 1;
@@ -162,6 +157,12 @@ always @(posedge CLK40) begin
                             ROM_TACK_STATE <= 2'b10;
                         end
                     end
+                    ROM_DELAY_250 : begin
+                        if (DELAY_250) begin 
+                            ROM_TACK_EN <= 1;
+                            ROM_TACK_STATE <= 2'b10;
+                        end
+                    end
                 endcase
             end
             2'b10 : begin
@@ -169,7 +170,6 @@ always @(posedge CLK40) begin
                 ROM_TACK_STATE <= 2'b11;
             end
             2'b11 : begin
-                //ROM_ENn <= 1;
                 ROM_TACK_COUNTER <= 4'h0;
                 ROM_TACK_STATE <= 2'b00;
             end
@@ -181,8 +181,8 @@ end
 // IRQ CYCLE //
 //////////////
 
-//EVERYTHING IS AUTOVECTORED. BECAUSE THERE IS NO DATA ACTUALLY
-//TRANSFERRED, WE USE THE SHORTEST CYCLE POSSIBLE. TWO CLOCKS.
+//The AmigaPCI only supports autovectoring, which is how all Amiga's are.
+//No data is actually transfered, so we ack interrupt acknowledge cycles after two clocks.
 
 reg IRQ_TACK_EN;
 reg [1:0] IRQ_TACK_COUNTER;
@@ -261,8 +261,11 @@ end
 ////////////////////////
 
 //END THE CYCLE WHEN THE CPU LOOKS FOR AN ADDRESS WE DON'T EXPLICITLY SUPPORT.
-//CIA CYCLES ARE THE LONGEST CYCLES WE SUPPORT, WHICH TAKE ~1us. WE WAIT AABOUT 3us
+//CIA CYCLES ARE THE LONGEST CYCLES WE SUPPORT, WHICH TAKE ~1us. WE WAIT ABOUT 3us
 //AND THEN ASSERT _TACK OURSELVES.
+
+//Because of the potential length of time Agnus can hold the bus, we do not
+//apply the unresponsive count to chip ram or register cycles.
 
 localparam DELAYED_TACK_DELAY = 7'd125;
 
