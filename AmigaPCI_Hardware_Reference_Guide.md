@@ -509,8 +509,9 @@ Address Start|Address End|Description
 -|-|-
 $0000 0000|$001F FFFF|Amiga Chip Memory
 $0020 0000|$009F FFFF|Zorro 2 Memory Expansion Space
-$00A0 0000|$00A7 FFFF|Flash Memory Block 0
-$00A8 0000|$00B7 FFFF|Flash Memory Block 1
+$00A0 0000|$00A7 FFFF|Zorro 2 I/O Expansion Space
+$00A8 0000|$00AF FFFF|Flash Memory Block 0
+$00B0 0000|$00B7 FFFF|Flash Memory Block 1
 $00B8 0000|$00BE FFFF|Reserved
 $00BF 0000|$00BF FFFF|CIA Ports and Timers
 $00C0 0000|$00DB FFFF|Reserved
