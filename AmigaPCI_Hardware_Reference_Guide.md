@@ -493,10 +493,10 @@ Secondary PIO Mode|J902|Short|PIO2
 
 Description|Jumper|Pin 1-2|Pin 3-4|Result
 -|-|-|-|-
-ROM Wait States|J212|Open|Open|200ns
-[]()|[]()|Short|Open|150ns
-[]()|[]()|Open|Short|100ns
-[]()|[]()|Short|Short|75ns
+ROM Wait States|J212|Open|Open|250ns
+[]()|[]()|Short|Open|200ns
+[]()|[]()|Open|Short|150ns
+[]()|[]()|Short|Short|100ns
 
 ### 4.8 Reserved Jumpers
 
