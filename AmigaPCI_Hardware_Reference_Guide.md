@@ -201,15 +201,7 @@ The primary purpose of the Local Bus Port is to provide a means to connect a MC6
 
 ### 3.1.1 Fast Memory
 
-The Amiga memory map reserves the address ranges $0400 0000 - $07FF FFFF and $0800 0000 - $0FFF FFFF for fast memory. These two regions are treated differently by Kickstart. Any memory responding in these regions will be automatically sized and added to the Amiga memory pool with the highest priority available. These address ranges are fixed and are not part of the AUTOCONFIG space. 
-
-#### 3.1.1.1 Address Range $0400 0000 - $07FF FFFF
-
-On startup, this range is scanned from $07F0 0000 and downward, 1MB ($0010 0000) at a time. RAM in this range must be located at $07F0 0000 and lower to be detected. This area is not automatically scanned by the A1200 Kickstart ROM.
-
-#### 3.1.1.2 Address Range $0800 0000 - $0FFF FFFF
-
-On startup, this range is scanned from $0800 0000 and upward, 1MB ($0010 0000) at a time. RAM in this range must be located at $0800 0000 and higher to be detected. This area is automatically scanned by the A1200 Kickstart ROM.
+The Amiga memory map reserves address range $0800 0000 - $0FFF FFFF for expansion fast memory. Any memory responding in this region will be automatically sized and added to the Amiga memory pool with the highest priority available. This address range is not part of the AUTOCONFIG space. On startup, this range is scanned from $0800 0000 and upward, 1MB ($0010 0000) at a time. RAM in this range must be located at $0800 0000 and higher to be detected.
 
 ### 3.1.2 AUTOCONFIG Devices
 
