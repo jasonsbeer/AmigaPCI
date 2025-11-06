@@ -230,7 +230,7 @@ A target device is any device that may be controlled by the bus master, such as 
 
 ## 3.4 Local Bus Signals
 
-The signals on the local bus Port are broken into categories. Some are specific to the MC68040/MC68060 and others are specific to the APCI. The signal descriptions are below. The flow of data (input/output/bidriections) are defined from the perspective of the local bus car. The pinout of the port is detailed in Table 3.4.
+The signals on the local bus Port are broken into categories. Some are specific to the MC68040/MC68060 and others are specific to the APCI. The signal descriptions are below. The flow of data (input/output/bidriectional) are defined from the perspective of the Local Bus Card. The pinout of the port is detailed in Table 3.4.
 
 > [!WARNING] 
 > **Applying TTL logic levels (+5V) to LVTTL only signals may damage devices on the AmigaPCI main board.**
