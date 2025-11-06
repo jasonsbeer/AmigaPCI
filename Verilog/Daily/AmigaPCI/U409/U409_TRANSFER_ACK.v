@@ -106,10 +106,10 @@ end
 //We support multiple timing options for ROM cycle termination.
 //The exact timing is user selected by jumpers on the APCI board.
 
-localparam [3:0] ROM_DELAY_200 = 4'h5; //200ns
-localparam [3:0] ROM_DELAY_150 = 4'h3; //150ns
-localparam [3:0] ROM_DELAY_100 = 4'h1; //100ns
-localparam [3:0] ROM_DELAY_050 = 4'h0; // 75ns
+localparam [3:0] ROM_DELAY_200 = 4'h7; //250ns
+localparam [3:0] ROM_DELAY_150 = 4'h5; //200ns
+localparam [3:0] ROM_DELAY_100 = 4'h3; //150ns
+localparam [3:0] ROM_DELAY_050 = 4'h1; //100ns
 
 wire [1:0] DELAY_200 = ROM_DELAY == 2'b11;
 wire [1:0] DELAY_150 = ROM_DELAY == 2'b10;
