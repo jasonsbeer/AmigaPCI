@@ -32,38 +32,47 @@ GitHub: https://github.com/jasonsbeer/AmigaPCI
 
 module U409_TICK
 (
-    input CLK6,
-    output reg TICK60,
-    output reg TICK50
+    input CLK28_IN,
+    output reg TICK60, TICK50
 );
 
 //////////////////
 // TICK CLOCKS //
 ////////////////
 
-parameter integer DIV_60HZ = 50000;
-parameter integer DIV_50HZ = 60000;
+localparam [8:0] H_TOTAL      = 9'd455;
+localparam [9:0] V_TOTAL_PAL  = 9'd312;
+localparam [9:0] V_TOTAL_NTSC = 9'd262;
 
-reg [16:0] COUNTER60;
-reg [16:0] COUNTER50;
+reg [8:0] H_COUNT;
+reg [9:0] V_COUNT_PAL, V_COUNT_NTSC;
 
-always @(posedge CLK6) begin
-    // 60Hz
-    if (COUNTER60 == DIV_60HZ) begin
-        TICK60 <= ~TICK60;
-        COUNTER60 <= 0;
+always @(posedge CLK28_IN) begin
+
+    if (H_COUNT == H_TOTAL -1) begin
+
+        H_COUNT <= 0;
+
+        if (V_COUNT_PAL == (V_TOTAL_PAL * 2) - 1) begin
+            V_COUNT_PAL <= 0;
+            TICK50 <= ~TICK50;
+        end else begin
+            V_COUNT_PAL <= V_COUNT_PAL + 1;
+        end
+
+        if (V_COUNT_NTSC == (V_TOTAL_NTSC * 2) - 1) begin
+            V_COUNT_NTSC <= 0;
+            TICK60 <= ~TICK60;
+        end else begin
+            V_COUNT_NTSC <= V_COUNT_NTSC + 1;
+        end
+
     end else begin
-        COUNTER60 <= COUNTER60 + 1;
-    end
-
-    // 50Hz
-    if (COUNTER50 == DIV_50HZ) begin
-        TICK50 <= ~TICK50;
-        COUNTER50 <= 0;
-    end else begin
-        COUNTER50 <= COUNTER50 + 1;
+        H_COUNT <= H_COUNT + 1;
     end
 end
+
+
 
 endmodule
 

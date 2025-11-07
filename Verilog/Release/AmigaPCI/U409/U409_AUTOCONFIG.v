@@ -28,6 +28,7 @@ Date          Who  Description
 -----------------------------------
 01-JUL-2025   JN   INITIAL REV 6.0 CODE
 11-OCT-2025   JN   Flipped SM to positive clock edge.
+14-OCT-2025   JN   Changed prometheus device to 256MB.
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 */
@@ -53,7 +54,7 @@ module U409_AUTOCONFIG (
     //Base Addresses
     output reg [7:0] BRIDGE_BASE,
     output reg [7:1] LIDE_BASE,
-    output reg [2:0] PRO_BASE
+    output reg [3:0] PRO_BASE
     
 );
 
@@ -101,6 +102,10 @@ end
  // AUTOCONFIG //
 ////////////////
 
+//The LIDE ATA device is configured as a 128k device with optional autoboot, as defined by user jumper J900.
+//The PCI bridge is actually configured twice. Once as a 64k device for "Made for 68K" devices and once as 
+//a 258MB Prometheum compatable device.
+
 reg BRIDGE_CONF;
 reg LIDE_CONF;
 reg [3:0] BRIDGE_OUT;
@@ -139,9 +144,9 @@ always @(posedge CLK40) begin
                                 PR_OUT     <= 4'b1000;
                             end
                             8'h02 : begin
-                                BRIDGE_OUT <= 4'b0001;
-                                LIDE_OUT   <= 4'b0010;
-                                PR_OUT     <= 4'b0101;
+                                BRIDGE_OUT <= 4'b0001; //64K address space.
+                                LIDE_OUT   <= 4'b0010; //128K address space.
+                                PR_OUT     <= 4'b0100; //256MB address space.
                             end
                             8'h04 : begin //Product Number High Nibble
                                 BRIDGE_OUT <= ~(BRIDGE_PID[7:4]);
@@ -251,7 +256,7 @@ always @(posedge CLK40) begin
                         LIDE_CONF <= 1;
                         LIDE_BASE[7:4] <= D_IN;
                     end else begin
-                        PRO_BASE <= D_IN[3:1];
+                        PRO_BASE <= D_IN[3:0];
                         CONFIGENn <= 0;
                         CONFIGURED <= 1;
                     end
