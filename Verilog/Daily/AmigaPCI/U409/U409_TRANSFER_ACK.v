@@ -32,6 +32,7 @@ Date          Who  Description
 11-OCT-2025   JN   Fixed erroneous assertion of RTC termination.
 18-OCT-2025   JN   Moved RTC to dedicated module.
 05-NOV-2025   JN   Changed ROM timing options to support Kicksmash.
+07-NOV-2025   JN   Modified ROM state machine.
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 */
@@ -137,33 +138,15 @@ always @(posedge CLK40) begin
                 end
             end
             2'b01 : begin
-                ROM_TACK_COUNTER ++;
-                case (ROM_TACK_COUNTER)
-                    ROM_DELAY_100 : begin
-                        if (DELAY_100) begin 
-                            ROM_TACK_EN <= 1;
-                            ROM_TACK_STATE <= 2'b10;
-                        end
-                    end
-                    ROM_DELAY_150 : begin
-                        if (DELAY_150) begin 
-                            ROM_TACK_EN <= 1;
-                            ROM_TACK_STATE <= 2'b10;
-                        end
-                    end
-                    ROM_DELAY_200 : begin
-                        if (DELAY_200) begin 
-                            ROM_TACK_EN <= 1;
-                            ROM_TACK_STATE <= 2'b10;
-                        end
-                    end
-                    ROM_DELAY_250 : begin
-                        if (DELAY_250) begin 
-                            ROM_TACK_EN <= 1;
-                            ROM_TACK_STATE <= 2'b10;
-                        end
-                    end
-                endcase
+                if ((ROM_TACK_COUNTER == ROM_DELAY_100 && DELAY_100) ||
+                    (ROM_TACK_COUNTER == ROM_DELAY_150 && DELAY_150) ||
+                    (ROM_TACK_COUNTER == ROM_DELAY_200 && DELAY_200) ||
+                    (ROM_TACK_COUNTER == ROM_DELAY_250 && DELAY_250)) begin
+                    ROM_TACK_EN <= 1;
+                    ROM_TACK_STATE <= 2'b10;
+                end else begin
+                    ROM_TACK_COUNTER ++;
+                end
             end
             2'b10 : begin
                 ROM_TACK_EN <= 0;

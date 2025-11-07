@@ -29,6 +29,7 @@ Date          Who  Description
 01-JUL-2025   JN   INITIAL REV 6.0 CODE
 15-OCT-2025   JN   Assert _ROMEN directly from address.
 01-NOV-2025   JN   Roll back _ROMEN change above.
+06-NOV-2025   JN   Fixed RTC address space.
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 */
@@ -140,11 +141,11 @@ assign ATA_ENn = !(ATA_SPACE && ATA_EN);
 
 reg ATA_EN;
 always @(posedge CLK40) begin
-    if (!RESETn) begin
-        ATA_EN <= 0;
-    end else begin
-        ATA_EN <= (ATA_SPACE && !RnW) || ATA_EN;
-    end
+  if (!RESETn) begin
+    ATA_EN <= 0;
+  end else begin
+    ATA_EN <= (ATA_SPACE && !RnW) || ATA_EN;
+  end
 end
 
   //////////////////////
@@ -167,7 +168,7 @@ end
 assign BREG_ENn = !(Z2_SPACE && CONFIGURED && A[23:16] == BRIDGE_BASE); //64k
 assign BPRO_ENn = !(RESETn   && CONFIGURED && A[31:28] == PRO_BASE); //256mb
 
-wire ALT_SPACE   =  TT[1] && !TT[0];
+wire ALT_SPACE   = TT[1] && !TT[0];
 wire CONF0_SPACE = ALT_SPACE && (!TM[2] && !TM[1] && !TM[0]);
 wire CONF1_SPACE = ALT_SPACE && (!TM[2] &&  TM[1] &&  TM[0]);
 

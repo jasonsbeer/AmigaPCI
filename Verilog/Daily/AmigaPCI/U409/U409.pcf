@@ -75,7 +75,7 @@ set_io RAMSPACEn  48
 set_io CIACS0n    80
 set_io CIACS1n    81
 set_io REGSPACEn 120
-set_io BUFENn    121
+set_io BUF_ENn    121
 set_io ROM_ENn    124
 set_io RTC_ENn    82
 set_io CPUCONFn  130
