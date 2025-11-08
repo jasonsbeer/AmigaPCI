@@ -22,16 +22,25 @@ Target Devices: iCE40-HX4K-TQ144
 
 Description: Terminate ATA and PCI data transfers.
 
-Revision History:
-    02-JUL-2025 : Initial release for Rev 6.0 hardware.
+Date          Who  Description
+-----------------------------------
+02-JUL-2025   JN   Initial release for Rev 6.0 hardware.
+16-OCT-2025   JN   Changed to rising clock edge to better accomodate latency in the FPGA.
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 */
 
 module U110_CYCLE_TERMINATION (
 
-    input CLK40, RESETn, ATA_ENn, ATA_TACK,
-    output TEAn, TACKn, TCIn, TBIn
+    //Clcoks
+    input CLK40, 
+    
+    //Cycle Start/Terminate
+    input RESETn, ATA_TACK,
+    output TEAn, TACKn, TCIn, TBIn,
+
+    //Condition Signals
+    input ATA_ENn
 
 );
 
@@ -51,7 +60,7 @@ reg TACK_OUT_EN;
 reg TACK_OUT;
 reg [3:0] TACK_COUNT;
 
-always @(negedge CLK40) begin
+always @(posedge CLK40) begin
     if (!RESETn) begin
         TACK_OUT_EN <= 0;
         TACK_OUT <= 1;

@@ -27,22 +27,39 @@ See individual modules for revision history.
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 
 iceprog D:\AmigaPCI\U110\APCI_U110\APCI_U110_Implmnt\sbt\outputs\bitmap\U110_TOP_bitmap.bin
+
+NOTE:This one has the "slow" PLL!
 */
 
 module U110_TOP (
 
-    input CLK40, CLK33, RESETn, TSn, RnW,
+    //Clocks
+    input CLK40_IN, CLK33,
+    
+    //Cycle Start/Terminate
+    input RESETn, TSn, RnW,
+    input [1:0] SIZ,
+    output TEAn, TACKn, TCIn, TBIn,
+    
+    //ATA Chip Selects
     input ATA_ENn, PPIO, SPIO, PCS1 , PCS0, SCS1, SCS0,
+    output CS0_PRIn, CS1_PRIn, CS0_SECn, CS1_SECn, DIOR_PRIn, DIOW_PRIn, DIOR_SECn, DIOW_SECn,
+
+    //ATA Buffers
+    output IDELENn, IDEDIR, IDEHRENn, IDEHWENn, ATA_LATCH,
+
+    //PCI 
     input BPRO_ENn, DEVSELn, TRDYn, PHASEA_D,
     input [1:0] PCIAT,
-    input [1:0] SIZ,
+    //output PCI_CYCLEn,
 
-    output INT2n, TEAn, TACKn, TCIn, TBIn, BUSDIR,
-    output IDELENn, IDEDIR, IDEHRENn, IDEHWENn, ATA_LATCH, //PCI_CYCLEn,
-    output BGn, BURSTn,
-    output CS0_PRIn, CS1_PRIn, CS0_SECn, CS1_SECn, DIOR_PRIn, DIOW_PRIn, DIOR_SECn, DIOW_SECn
+    //Arbitor and Interrupts
+    output INT2n, BUSDIR, BGn, BURSTn
 
 );
+
+wire CLK40_PAD = CLK40_IN;
+wire CLK40 = CLK40_PLL;
 
   /////////
  // PLL //
@@ -179,5 +196,35 @@ U110_ARBITOR U110_ARBITOR (
     //output
     .PCI_CYCLEn (PCI_CYCLEn)
 );*/
+
+  /////////
+ // PLL //
+/////////
+
+SB_PLL40_CORE #(
+    .DIVR (4'b0000),
+    .DIVF (7'b0000000),
+    .DIVQ (3'b100),
+    .FILTER_RANGE (3'b011),
+    .FEEDBACK_PATH ("PHASE_AND_DELAY"),
+    .DELAY_ADJUSTMENT_MODE_FEEDBACK ("FIXED"),
+    .FDA_FEEDBACK   (4'b1111),
+    //.DELAY_ADJUSTMENT_MODE_RELATIVE ("FIXED"),
+    //.FDA_RELATIVE   (4'b0000),
+    .PLLOUT_SELECT ("SHIFTREG_0deg"),
+    .SHIFTREG_DIV_MODE (1'b0)
+) pll (
+    .LOCK           (),
+    .RESETB         (1'b1),
+    .REFERENCECLK   (CLK40_PAD),
+    .PLLOUTGLOBAL   (CLK40_PLL),
+    
+    .EXTFEEDBACK       (1'b0),
+    .DYNAMICDELAY      (8'b00001111),
+    .BYPASS            (1'b0),
+    .SDI               (1'b0),
+    .SCLK              (1'b0),
+    .LATCHINPUTVALUE   (1'b0)
+);
 
 endmodule
