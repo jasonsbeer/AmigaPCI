@@ -29,6 +29,7 @@ Date          Who  Description
 01-JUL-2025   JN   INITIAL REV 6.0 CODE
 15-OCT-2025   JN   Assert _ROMEN directly from address.
 01-NOV-2025   JN   Roll back _ROMEN change above.
+06-NOV-2025   JN   Fixed RTC address space.
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 */
@@ -46,9 +47,9 @@ module U409_ADDRESS_DECODE
     input [31:12] A,
 
     //Chip Selects
-    output ROM_SPACE, CIA_SPACE, CIACS0n, CIACS1n, RAMSPACEn, REGSPACEn,
+    output ROM_SPACE, CIA_SPACE, CIACS0n, CIACS1n, RAMSPACEn, REGSPACEn, AGNUS_SPACE,
     output AUTOVECTOR, RTC_SPACE, AUTOCONFIG_SPACE, ATA_SPACE, ATA_ENn,
-    output PCS0, PCS1, SCS0, SCS1, BREG_ENn, BPRO_ENn,
+    output PCS0, PCS1, SCS0, SCS1, BREG_ENn, BPRO_ENn, PCI_SPACE,
     output [1:0] PCIAT,
 
     //Base Addresses
@@ -98,6 +99,7 @@ assign CIACS1n = !(CIA_ENABLE && !A[13]);
 
 assign RAMSPACEn = !(Z2_SPACE && !OVL && A[23:21] == 3'b000);
 assign REGSPACEn = !(Z2_SPACE && A[23:16] == 8'hDF);
+wire AGNUS_SPACE =  (!RAMSPACEn || !REGSPACEn);
 
   //////////////////////
  // AUTOVECTOR SPACE //
@@ -117,8 +119,8 @@ assign AUTOCONFIG_SPACE = Z2_SPACE && A[23:16] == 8'hE8;
  // REAL TIME CLOCK //
 /////////////////////
 
-//$00DC 0000 - $00DD FFFF
-assign RTC_SPACE = Z2_SPACE && A[23:17] == 7'b1101110;
+//$00DC 0000 - $00DC FFFF
+assign RTC_SPACE = Z2_SPACE && A[23:16] == 8'hDC;
 
   /////////
  // ATA //
@@ -140,11 +142,11 @@ assign ATA_ENn = !(ATA_SPACE && ATA_EN);
 
 reg ATA_EN;
 always @(posedge CLK40) begin
-    if (!RESETn) begin
-        ATA_EN <= 0;
-    end else begin
-        ATA_EN <= (ATA_SPACE && !RnW) || ATA_EN;
-    end
+  if (!RESETn) begin
+    ATA_EN <= 0;
+  end else begin
+    ATA_EN <= (ATA_SPACE && !RnW) || ATA_EN;
+  end
 end
 
   //////////////////////
@@ -164,10 +166,11 @@ end
 //PCI Memory Space       1        0
 //I/O Space              1        1
 
-assign BREG_ENn = !(Z2_SPACE && CONFIGURED && A[23:16] == BRIDGE_BASE); //64k
-assign BPRO_ENn = !(RESETn   && CONFIGURED && A[31:28] == PRO_BASE); //256mb
+assign BREG_ENn  = !(Z2_SPACE && CONFIGURED && A[23:16] == BRIDGE_BASE); //64k
+assign BPRO_ENn  = !(RESETn   && CONFIGURED && A[31:28] == PRO_BASE); //256mb
+assign PCI_SPACE =  (!BREG_ENn || !BPRO_ENn);
 
-wire ALT_SPACE   =  TT[1] && !TT[0];
+wire ALT_SPACE   = TT[1] && !TT[0];
 wire CONF0_SPACE = ALT_SPACE && (!TM[2] && !TM[1] && !TM[0]);
 wire CONF1_SPACE = ALT_SPACE && (!TM[2] &&  TM[1] &&  TM[0]);
 

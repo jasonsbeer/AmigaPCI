@@ -29,6 +29,7 @@ Date          Who  Description
 01-JUL-2025   JN   INITIAL REV 6.0 CODE
 11-OCT-2025   JN   Flipped SM to positive clock edge.
 14-OCT-2025   JN   Changed prometheus device to 256MB.
+06-NOV-2025   JN   Fixed prometheus bridge base address.
 
 GitHub: https://github.com/jasonsbeer/AmigaPCI
 */
@@ -48,8 +49,8 @@ module U409_AUTOCONFIG (
     output [3:0] D_OUT, //D31-28
 
     //Configuration Signals
-    input  CPUCONFn, AUTOBOOT,
-    output reg CONFIGENn, CONFIGURED,
+    input  AUTOBOOT,
+    output reg CONFIGURED,
 
     //Base Addresses
     output reg [7:0] BRIDGE_BASE,
@@ -84,20 +85,6 @@ assign D_OUT = !BRIDGE_CONF ? BRIDGE_OUT :
 
 wire [7:0] AC_AD = {A[7:1], 1'b0};
 
-  ////////////////////
- // TRANSFER START //
-////////////////////
-
-reg AC_START;
-
-always @(posedge CLK40) begin
-    if (!RESETn) begin
-        AC_START <= 0;
-    end else begin
-        AC_START <= !CONFIGURED && AUTOCONFIG_SPACE && !TSn;
-    end
-end
-
   ////////////////
  // AUTOCONFIG //
 ////////////////
@@ -124,17 +111,16 @@ always @(posedge CLK40) begin
         BRIDGE_OUT <= 4'h0;
 
         CONFIGURED <= 0;
-        PRO_BASE <= 3'b0;
+        PRO_BASE <= 4'h0;
         PR_OUT <= 4'h0;
 
         AC_TACK <= 0;
-        CONFIGENn <= 1;
         STATE <= 4'h0;
     end else begin
         case (STATE)
             4'h0 : begin
                 AC_TACK <= 0;
-                if (AC_START && !CPUCONFn) begin
+                if (!CONFIGURED && AUTOCONFIG_SPACE && !TSn) begin
                     STATE <= 4'h01;
                     if (RnW) begin
                         case (AC_AD)
@@ -242,25 +228,34 @@ always @(posedge CLK40) begin
             end
             4'h2 : begin
                 STATE <= 4'h3;
-                if (AC_AD == 8'h4A) begin
-                    if (!BRIDGE_CONF) begin
-                        BRIDGE_BASE[3:0] <= D_IN;
-                    end else if (!LIDE_CONF) begin
-                        LIDE_BASE[3:1] <= D_IN[3:1];
+
+                case (AC_AD)
+                    8'h44 : begin
+                        if (BRIDGE_CONF && LIDE_CONF) begin
+                            PRO_BASE <= D_IN;
+                            CONFIGURED <= 1;
+                        end
                     end
-                end else if (AC_AD == 8'h48) begin
-                    if (!BRIDGE_CONF) begin
-                        BRIDGE_CONF <= 1;
-                        BRIDGE_BASE[7:4] <= D_IN;
-                    end else if (!LIDE_CONF) begin
-                        LIDE_CONF <= 1;
-                        LIDE_BASE[7:4] <= D_IN;
-                    end else begin
-                        PRO_BASE <= D_IN[3:0];
-                        CONFIGENn <= 0;
-                        CONFIGURED <= 1;
+
+                    8'h4A : begin
+                        if (!BRIDGE_CONF) begin
+                            BRIDGE_BASE[3:0] <= D_IN;
+                        end else if (!LIDE_CONF) begin
+                            LIDE_BASE[3:1] <= D_IN[3:1];
+                        end
                     end
-                end
+
+                    8'h48 : begin
+                        if (!BRIDGE_CONF) begin
+                            BRIDGE_CONF <= 1;
+                            BRIDGE_BASE[7:4] <= D_IN;
+                        end else if (!LIDE_CONF) begin
+                            LIDE_CONF <= 1;
+                            LIDE_BASE[7:4] <= D_IN;
+                        end
+                    end
+
+                endcase
             end
             4'h3 : begin
                 AC_TACK <= 1;

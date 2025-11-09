@@ -38,7 +38,7 @@ module U409_TOP (
     output AGNUS_CLK, TICK60, TICK50, CLK_CIA, 
     
     //Cycle Start/Termination    
-    input  TSn, OVL, RnW, CPUCONFn,
+    input  TSn, OVL, RnW,
     output TBIn, TCIn,
     input [1:0] TT,
     input [2:0] TM,
@@ -49,19 +49,21 @@ module U409_TOP (
     inout [7:4] D,
 
     //Chip Selects/Address Spaces
-    output ROM_ENn, BUFENn, CIACS0n, CIACS1n, RAMSPACEn, REGSPACEn, RTC_ENn, PORTSIZE,
+    output ROM_ENn, CIACS0n, CIACS1n, RAMSPACEn, REGSPACEn, RTC_ENn, PORTSIZE,
+    output reg BUF_ENn,
     
     //Configuration Signals
-    input AUTOBOOT,
+    input AUTOBOOT, //PCI_CONFIGUREDn
     input [1:0] ROM_DELAY,    
-    output CONFIGENn, 
+    output CONFIGENn, CPUCONFn,
 
     //PCI
-    output  BREG_ENn, BPRO_ENn,
+    output BREG_ENn, BPRO_ENn,
     output [1:0] PCIAT,
 
     //ATA
     input PPIO_J, SPIO_J,
+    //output PPIO_J, SPIO_J,
     output PCS0, PCS1, SCS0, SCS1, PPIO, SPIO, ATA_ENn,
 
     //Flash
@@ -94,7 +96,9 @@ wire FLASH_SPACE;
 wire RTC_TACK;
 wire RTC_SPACE;
 wire ROM_SPACE;
+wire PCI_SPACE;
 wire CONFIGURED;
+wire AGNUS_SPACE;
 
 wire [7:0] BRIDGE_BASE;
 wire [7:1] LIDE_BASE;
@@ -102,10 +106,30 @@ wire [3:0] PRO_BASE;
 wire [3:0] D_OUT;
 wire [3:0] D_IN = AUTOCONFIG_SPACE && !RnW ? D[7:4] : 4'h0;
 
-wire AGNUS_SPACE = !RAMSPACEn || !REGSPACEn;
-wire LV_SPACE = AGNUS_SPACE || AUTOCONFIG_SPACE || ATA_SPACE || FLASH_SPACE; // || !BRIDGE_ENn; //Enable the main level shifting buffers when we are in the LVTTL space.
+//wire AGNUS_SPACE = !RAMSPACEn || !REGSPACEn;
+wire LV_SPACE = AGNUS_SPACE || AUTOCONFIG_SPACE || ATA_SPACE || FLASH_SPACE || PCI_SPACE;
+
 assign PORTSIZE = CIA_SPACE || !REGSPACEn || RTC_SPACE || AUTOCONFIG_SPACE || ATA_SPACE || FLASH_SPACE;
 assign D = AUTOCONFIG_SPACE && RnW ? D_OUT : 4'bz;
+assign CONFIGENn = !(CONFIGURED); //Signal PCI bridge to start autoconfig
+assign CPUCONFn  = 1; //!(!CONFIGURED && !PCI_CONFIGUREDn); //Signal local bus card to start autoconfig
+
+//////////////
+// BUFFERS //
+////////////
+
+//Enable the level shifting buffers when we are in the LVTTL space.
+always @(posedge CLK40) begin
+    if (!RESETn) begin
+        BUF_ENn <= 1;
+    end else begin
+        if (!TSn && LV_SPACE) begin
+            BUF_ENn <= 0;
+        end else if (!LV_SPACE) begin
+            BUF_ENn <= 1;
+        end
+    end
+end
 
 ///////////////////////
 // TRANSFER ACK TOP //
@@ -136,18 +160,6 @@ U409_TRANSFER_ACK U409_TRANSFER_ACK (
     .TACKn (TACKn)
 );
 
-/////////////////////////////
-// DATA BUFFER ENABLE TOP //
-///////////////////////////
-
-U409_DATA_BUFFERS U409_DATA_BUFFERS (
-    //INPUTS
-    .LV_SPACE (LV_SPACE),
-
-    //OUTPUTS
-    .BUFENn (BUFENn)
-);
-
 /////////////////////////
 // ADDRESS DECODE TOP //
 ///////////////////////
@@ -174,6 +186,7 @@ U409_ADDRESS_DECODE U409_ADDRESS_DECODE (
     .CIACS1n (CIACS1n),
     .RAMSPACEn (RAMSPACEn),
     .REGSPACEn (REGSPACEn),
+    .AGNUS_SPACE (AGNUS_SPACE),
     .AUTOVECTOR (AUTOVECTOR),
     .RTC_SPACE (RTC_SPACE),
     .AUTOCONFIG_SPACE (AUTOCONFIG_SPACE),
@@ -186,6 +199,7 @@ U409_ADDRESS_DECODE U409_ADDRESS_DECODE (
     .PCIAT (PCIAT),
     .BREG_ENn (BREG_ENn),
     .BPRO_ENn (BPRO_ENn),
+    .PCI_SPACE (PCI_SPACE),
     .FLASH_BANK (FLASH_BANK),
     .FLASH_SPACE (FLASH_SPACE)
 );
@@ -227,7 +241,6 @@ U409_AUTOCONFIG U409_AUTOCONFIG (
     .RnW (RnW),
     .TSn (TSn),
     .AUTOBOOT (AUTOBOOT),
-    .CPUCONFn (CPUCONFn),
     .D_IN (D_IN),
     .A (A[7:1]),
 
@@ -236,7 +249,6 @@ U409_AUTOCONFIG U409_AUTOCONFIG (
     .LIDE_BASE (LIDE_BASE),
     .PRO_BASE (PRO_BASE),
     .D_OUT (D_OUT),
-    .CONFIGENn (CONFIGENn),
     .CONFIGURED (CONFIGURED),
     .AC_TACK (AC_TACK)
 );
@@ -288,13 +300,6 @@ U409_RTC_SM U409_RTC_SM (
 //Pass through the ATA PIO jumper settings
 assign PPIO = PPIO_J;
 assign SPIO = SPIO_J;
-
-//assign PPIO = 1;
-//assign SPIO = 1;
-
-//assign PPIO_J = FLASH_ENn;
-//assign SPIO_J = FLASH_READn;
-//assign AUTOBOOTJ = RTC_ENn;
 
 //////////
 // PLL //
