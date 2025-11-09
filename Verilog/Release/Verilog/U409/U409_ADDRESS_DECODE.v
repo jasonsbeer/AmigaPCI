@@ -97,9 +97,9 @@ assign CIACS1n = !(CIA_ENABLE && !A[13]);
 //AGNUS CONTROLS ACCESS TO CHIPSET REGISTERS.
 //REGISTERS ARE VISIBLE IN THE DATA SPACE.
 
-assign RAMSPACEn = !(Z2_SPACE && !OVL && A[23:21] == 3'b000);
-assign REGSPACEn = !(Z2_SPACE && A[23:16] == 8'hDF);
-wire AGNUS_SPACE =  (!RAMSPACEn || !REGSPACEn);
+assign RAMSPACEn   = !(Z2_SPACE && !OVL && A[23:21] == 3'b000);
+assign REGSPACEn   = !(Z2_SPACE && A[23:16] == 8'hDF);
+assign AGNUS_SPACE =  (!RAMSPACEn || !REGSPACEn);
 
   //////////////////////
  // AUTOVECTOR SPACE //
