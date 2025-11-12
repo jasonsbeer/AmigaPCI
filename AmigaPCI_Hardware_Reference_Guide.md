@@ -519,13 +519,14 @@ $00DC 0000|$00DC FFFF|Real Time Clock
 $00DD 0000|$00DE FFFF|Reserved
 $00DF 0000|$00DF FFFF|Chipset Registers
 $00E0 0000|$00E7 FFFF|Flash Memory Block 2
-$00E8 0000|$00E8 FFFF|Zorro 2 Configuration Space
+$00E8 0000|$00E8 FFFF|AUTOCONFIG Configuration Registers
 $00E9 0000|$00EF FFFF|Zorro 2 I/O Expansion Space
 $00F0 0000|$00F7 FFFF|Flash Memory Block 3
 $00F8 0000|$00FF FFFF|ROM
 $0100 0000|$07FF FFFF|Reserved
 $0800 0000|$0FFF FFFF|Local Bus Port RAM
-$1000 0000|$7FFF FFFF|PCI Expansion
-$8000 0000|$FFFF FFFF|Reserved
+$1000 0000|$7FFF FFFF|32-Bit Memory Expansion Space
+$8000 0000|$9FFF FFFF|PCI Register and Memory Expansion Space
+$A000 0000|$FFFF FFFF|Reserved
 
 **END**
