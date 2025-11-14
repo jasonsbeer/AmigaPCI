@@ -41,33 +41,31 @@ module U409_TOP (
     input  TSn, OVL, RnW,
     output TBIn, TCIn,
     input [1:0] TT,
-    input [2:0] TM,
     inout TACKn,
 
     //Data and Address Bus    
     input [31:1] A,
-    inout [7:4] D,
+    //inout [7:4] D,
 
     //Chip Selects/Address Spaces
     output ROM_ENn, CIACS0n, CIACS1n, RAMSPACEn, REGSPACEn, RTC_ENn, PORTSIZE,
     output reg BUF_ENn,
     
     //Configuration Signals
-    input AUTOBOOT, //PCI_CONFIGUREDn
+    //input PCI_CONFIGUREDn
     input [1:0] ROM_DELAY,    
     output CONFIGENn, CPUCONFn,
 
     //PCI
-    output BREG_ENn, BPRO_ENn,
-    output [1:0] PCIAT,
+    input BRIDGE_ENn,
+    //output [1:0] PCIAT,
 
     //ATA
-    input PPIO_J, SPIO_J,
-    //output PPIO_J, SPIO_J,
+    input AUTOBOOT, PPIO_J, SPIO_J,
     output PCS0, PCS1, SCS0, SCS1, PPIO, SPIO, ATA_ENn,
 
     //Flash
-    input  FLASH_RDY,
+    input  FLASH_DISJn,
     output FLASH_ENn, FLASH_READn, FLASH_WRITEn, FLASH_WPn, FLASH_RSTn,
     output [1:0] FLASH_BANK
 
@@ -87,7 +85,7 @@ assign AGNUS_CLK = XCLK_ENn ? CLK28_IN : XCLK;
 /////////////////
 
 wire CLK40;
-wire AUTOCONFIG_SPACE;
+//wire AUTOCONFIG_SPACE;
 wire AUTOVECTOR;
 wire CIA_SPACE;
 wire CIA_ENABLE;
@@ -96,21 +94,22 @@ wire FLASH_SPACE;
 wire RTC_TACK;
 wire RTC_SPACE;
 wire ROM_SPACE;
-wire CONFIGURED;
+//wire CONFIGURED;
+wire AGNUS_SPACE;
 
-wire [7:0] BRIDGE_BASE;
-wire [7:1] LIDE_BASE;
-wire [3:0] PRO_BASE;
-wire [3:0] D_OUT;
-wire [3:0] D_IN = AUTOCONFIG_SPACE && !RnW ? D[7:4] : 4'h0;
+//wire [7:1] LIDE_BASE;
+//wire [3:0] PRO_BASE;
+//wire [3:0] D_OUT;
+//wire [3:0] D_IN = AUTOCONFIG_SPACE && !RnW ? D[7:4] : 4'h0;
 
-wire AGNUS_SPACE = !RAMSPACEn || !REGSPACEn;
-wire PCI_SPACE = !BREG_ENn || !BPRO_ENn;
-wire LV_SPACE = AGNUS_SPACE || AUTOCONFIG_SPACE || ATA_SPACE || FLASH_SPACE || PCI_SPACE;
-
-assign PORTSIZE = CIA_SPACE || !REGSPACEn || RTC_SPACE || AUTOCONFIG_SPACE || ATA_SPACE || FLASH_SPACE;
-assign D = AUTOCONFIG_SPACE && RnW ? D_OUT : 4'bz;
-assign CONFIGENn = !(CONFIGURED); //Signal PCI bridge to start autoconfig
+//wire BRIDGE_ENn = 1;
+//assign BUF_ENn = !((!ROM_SPACE && !CIA_SPACE && !RTC_SPACE) && (AGNUS_SPACE || ATA_SPACE || FLASH_SPACE || !BRIDGE_ENn));
+assign PORTSIZE = CIA_SPACE || !REGSPACEn || RTC_SPACE || ATA_SPACE || FLASH_SPACE;
+//assign BUF_ENn = !(AGNUS_SPACE || AUTOCONFIG_SPACE || ATA_SPACE || FLASH_SPACE || !BRIDGE_ENn);
+//assign PORTSIZE = CIA_SPACE || !REGSPACEn || RTC_SPACE || AUTOCONFIG_SPACE || ATA_SPACE || FLASH_SPACE;
+//assign D = AUTOCONFIG_SPACE && RnW ? D_OUT : 4'bz;
+//assign CONFIGENn = !(CONFIGURED); //Signal PCI bridge to start autoconfig
+assign CONFIGENn = 0;
 assign CPUCONFn  = 1; //!(!CONFIGURED && !PCI_CONFIGUREDn); //Signal local bus card to start autoconfig
 
 //////////////
@@ -118,6 +117,8 @@ assign CPUCONFn  = 1; //!(!CONFIGURED && !PCI_CONFIGUREDn); //Signal local bus c
 ////////////
 
 //Enable the level shifting buffers when we are in the LVTTL space.
+//wire LV_SPACE = AGNUS_SPACE || AUTOCONFIG_SPACE || ATA_SPACE || FLASH_SPACE || !BRIDGE_ENn; // PCI_SPACE;
+wire LV_SPACE = ((!ROM_SPACE && !CIA_SPACE && !RTC_SPACE) && (AGNUS_SPACE || ATA_SPACE || FLASH_SPACE || !BRIDGE_ENn));
 always @(posedge CLK40) begin
     if (!RESETn) begin
         BUF_ENn <= 1;
@@ -145,7 +146,7 @@ U409_TRANSFER_ACK U409_TRANSFER_ACK (
     .CLK_CIA (CLK_CIA),
     .AGNUS_SPACE (AGNUS_SPACE),
     .AUTOVECTOR (AUTOVECTOR),
-    .AC_TACK (AC_TACK),
+    //.AC_TACK (AC_TACK),
     .ROM_DELAY (ROM_DELAY),
     .FLASH_TACK (FLASH_TACK),
     .RTC_TACK (RTC_TACK),
@@ -170,13 +171,12 @@ U409_ADDRESS_DECODE U409_ADDRESS_DECODE (
     .RnW (RnW),
     .OVL (OVL),
     .CIA_ENABLE (CIA_ENABLE),
-    .CONFIGURED (CONFIGURED),
+    //.CONFIGURED (CONFIGURED),
     .TT (TT),
-    .TM (TM),
     .A (A[31:12]),
-    .BRIDGE_BASE (BRIDGE_BASE),
-    .LIDE_BASE (LIDE_BASE),
-    .PRO_BASE (PRO_BASE),
+    //.LIDE_BASE (LIDE_BASE),
+    .AUTOBOOT (AUTOBOOT),
+    .FLASH_DISJn (FLASH_DISJn),
 
     //OUTPUTS
     .ROM_SPACE (ROM_SPACE),
@@ -185,18 +185,18 @@ U409_ADDRESS_DECODE U409_ADDRESS_DECODE (
     .CIACS1n (CIACS1n),
     .RAMSPACEn (RAMSPACEn),
     .REGSPACEn (REGSPACEn),
+    .AGNUS_SPACE (AGNUS_SPACE),
     .AUTOVECTOR (AUTOVECTOR),
     .RTC_SPACE (RTC_SPACE),
-    .AUTOCONFIG_SPACE (AUTOCONFIG_SPACE),
+    //.AUTOCONFIG_SPACE (AUTOCONFIG_SPACE),
     .ATA_SPACE (ATA_SPACE),
     .ATA_ENn (ATA_ENn),
     .PCS0 (PCS0),
     .PCS1 (PCS1),
     .SCS0 (SCS0),
     .SCS1 (SCS1),
-    .PCIAT (PCIAT),
-    .BREG_ENn (BREG_ENn),
-    .BPRO_ENn (BPRO_ENn),
+    //.PCIAT (PCIAT),
+    //.BRIDGE_ENn (BRIDGE_ENn),
     .FLASH_BANK (FLASH_BANK),
     .FLASH_SPACE (FLASH_SPACE)
 );
@@ -230,7 +230,7 @@ U409_CIA U409_CIA (
 // AUTOCONFIG //
 ///////////////
 
-U409_AUTOCONFIG U409_AUTOCONFIG (
+/*U409_AUTOCONFIG U409_AUTOCONFIG (
     //INPUT
     .CLK40,
     .RESETn,
@@ -242,13 +242,13 @@ U409_AUTOCONFIG U409_AUTOCONFIG (
     .A (A[7:1]),
 
     //OUTPUT
-    .BRIDGE_BASE (BRIDGE_BASE),
+    //.BRIDGE_BASE (BRIDGE_BASE),
     .LIDE_BASE (LIDE_BASE),
-    .PRO_BASE (PRO_BASE),
+    //.PRO_BASE (PRO_BASE),
     .D_OUT (D_OUT),
     .CONFIGURED (CONFIGURED),
     .AC_TACK (AC_TACK)
-);
+);*/
 
 ////////////
 // FLASH //
@@ -261,8 +261,6 @@ U409_FLASH U409_FLASH (
     .TSn (TSn),
     .RnW (RnW),
     .FLASH_SPACE (FLASH_SPACE),
-    .FLASH_RDY (FLASH_RDY),
-    .A (A[23:1]),
 
     //OUTPUTS
     .FLASH_ENn (FLASH_ENn),
@@ -282,7 +280,6 @@ U409_RTC_SM U409_RTC_SM (
     .CLK40 (CLK40),
     .RESETn (RESETn),
     .TSn (TSn),
-    .RnW (RnW),
     .RTC_SPACE (RTC_SPACE), 
 
     //output
