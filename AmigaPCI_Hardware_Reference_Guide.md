@@ -515,6 +515,7 @@ $00B0 0000|$00B7 FFFF|Flash Memory Block 1
 $00B8 0000|$00BE FFFF|Reserved
 $00BF 0000|$00BF FFFF|CIA Ports and Timers
 $00C0 0000|$00DB FFFF|Reserved
+$00DB 0000|$00DB FFFF|ATA Registers
 $00DC 0000|$00DC FFFF|Real Time Clock
 $00DD 0000|$00DE FFFF|Reserved
 $00DF 0000|$00DF FFFF|Chipset Registers
